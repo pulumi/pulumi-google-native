@@ -29,7 +29,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Maximum number of instances that can be unavailable when autohealing. When 'percent' is used, the value is rounded if necessary. The instance is considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's currentAction is NONE (in particular its liveness health check result was observed to be HEALTHY at least once as it passed VERIFYING). 3. There is no outgoing action on an instance triggered by IGM. By default, number of concurrently autohealed instances is smaller than the managed instance group target size. However, if a zonal managed instance group has only one instance, or a regional managed instance group has only one instance per zone, autohealing will recreate these instances when they become unhealthy.
         /// </summary>
         public readonly Outputs.FixedOrPercentResponse MaxUnavailable;
-        public readonly string UpdateInstances;
 
         [OutputConstructor]
         private InstanceGroupManagerAutoHealingPolicyResponse(
@@ -39,15 +38,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int initialDelaySec,
 
-            Outputs.FixedOrPercentResponse maxUnavailable,
-
-            string updateInstances)
+            Outputs.FixedOrPercentResponse maxUnavailable)
         {
             AutoHealingTriggers = autoHealingTriggers;
             HealthCheck = healthCheck;
             InitialDelaySec = initialDelaySec;
             MaxUnavailable = maxUnavailable;
-            UpdateInstances = updateInstances;
         }
     }
 }

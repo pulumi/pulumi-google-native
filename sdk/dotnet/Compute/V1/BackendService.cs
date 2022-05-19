@@ -208,6 +208,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        /// </summary>
+        [Output("serviceBindings")]
+        public Output<ImmutableArray<string>> ServiceBindings { get; private set; } = null!;
+
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         /// </summary>
         [Output("sessionAffinity")]
@@ -455,6 +461,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("securitySettings")]
         public Input<Inputs.SecuritySettingsArgs>? SecuritySettings { get; set; }
+
+        [Input("serviceBindings")]
+        private InputList<string>? _serviceBindings;
+
+        /// <summary>
+        /// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        /// </summary>
+        public InputList<string> ServiceBindings
+        {
+            get => _serviceBindings ?? (_serviceBindings = new InputList<string>());
+            set => _serviceBindings = value;
+        }
 
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).

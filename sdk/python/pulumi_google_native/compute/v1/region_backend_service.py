@@ -45,6 +45,7 @@ class RegionBackendServiceArgs:
                  protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['SecuritySettingsArgs']] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input['SubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
@@ -75,6 +76,7 @@ class RegionBackendServiceArgs:
         :param pulumi.Input['RegionBackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['SecuritySettingsArgs'] security_settings: This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_bindings: URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
         :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
@@ -138,6 +140,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "request_id", request_id)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
+        if service_bindings is not None:
+            pulumi.set(__self__, "service_bindings", service_bindings)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if subsetting is not None:
@@ -482,6 +486,18 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "security_settings", value)
 
     @property
+    @pulumi.getter(name="serviceBindings")
+    def service_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        """
+        return pulumi.get(self, "service_bindings")
+
+    @service_bindings.setter
+    def service_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "service_bindings", value)
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input['RegionBackendServiceSessionAffinity']]:
         """
@@ -549,6 +565,7 @@ class RegionBackendService(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -583,6 +600,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input['RegionBackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['SecuritySettingsArgs']] security_settings: This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_bindings: URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
         :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
@@ -639,6 +657,7 @@ class RegionBackendService(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -688,6 +707,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["security_settings"] = security_settings
+            __props__.__dict__["service_bindings"] = service_bindings
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
@@ -752,6 +772,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["security_policy"] = None
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["service_bindings"] = None
         __props__.__dict__["session_affinity"] = None
         __props__.__dict__["subsetting"] = None
         __props__.__dict__["timeout_sec"] = None
@@ -1014,6 +1035,14 @@ class RegionBackendService(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceBindings")
+    def service_bindings(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        """
+        return pulumi.get(self, "service_bindings")
 
     @property
     @pulumi.getter(name="sessionAffinity")

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOccurrenceResult:
-    def __init__(__self__, attestation=None, build=None, create_time=None, deployment=None, derived_image=None, discovered=None, installation=None, intoto=None, kind=None, name=None, note_name=None, remediation=None, resource=None, sbom=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, vulnerability=None):
+    def __init__(__self__, attestation=None, build=None, create_time=None, deployment=None, derived_image=None, discovered=None, envelope=None, installation=None, intoto=None, kind=None, name=None, note_name=None, remediation=None, resource=None, sbom=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, vulnerability=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
@@ -37,6 +37,9 @@ class GetOccurrenceResult:
         if discovered and not isinstance(discovered, dict):
             raise TypeError("Expected argument 'discovered' to be a dict")
         pulumi.set(__self__, "discovered", discovered)
+        if envelope and not isinstance(envelope, dict):
+            raise TypeError("Expected argument 'envelope' to be a dict")
+        pulumi.set(__self__, "envelope", envelope)
         if installation and not isinstance(installation, dict):
             raise TypeError("Expected argument 'installation' to be a dict")
         pulumi.set(__self__, "installation", installation)
@@ -124,6 +127,14 @@ class GetOccurrenceResult:
         Describes when a resource was discovered.
         """
         return pulumi.get(self, "discovered")
+
+    @property
+    @pulumi.getter
+    def envelope(self) -> 'outputs.EnvelopeResponse':
+        """
+        https://github.com/secure-systems-lab/dsse
+        """
+        return pulumi.get(self, "envelope")
 
     @property
     @pulumi.getter
@@ -242,6 +253,7 @@ class AwaitableGetOccurrenceResult(GetOccurrenceResult):
             deployment=self.deployment,
             derived_image=self.derived_image,
             discovered=self.discovered,
+            envelope=self.envelope,
             installation=self.installation,
             intoto=self.intoto,
             kind=self.kind,
@@ -279,6 +291,7 @@ def get_occurrence(occurrence_id: Optional[str] = None,
         deployment=__ret__.deployment,
         derived_image=__ret__.derived_image,
         discovered=__ret__.discovered,
+        envelope=__ret__.envelope,
         installation=__ret__.installation,
         intoto=__ret__.intoto,
         kind=__ret__.kind,

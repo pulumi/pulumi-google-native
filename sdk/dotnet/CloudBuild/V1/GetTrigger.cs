@@ -120,6 +120,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly ImmutableArray<string> IgnoredFiles;
         /// <summary>
+        /// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+        /// </summary>
+        public readonly string IncludeBuildLogs;
+        /// <summary>
         /// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         /// </summary>
         public readonly ImmutableArray<string> IncludedFiles;
@@ -188,6 +192,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             ImmutableArray<string> ignoredFiles,
 
+            string includeBuildLogs,
+
             ImmutableArray<string> includedFiles,
 
             string name,
@@ -221,6 +227,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
             GitFileSource = gitFileSource;
             Github = github;
             IgnoredFiles = ignoredFiles;
+            IncludeBuildLogs = includeBuildLogs;
             IncludedFiles = includedFiles;
             Name = name;
             PubsubConfig = pubsubConfig;

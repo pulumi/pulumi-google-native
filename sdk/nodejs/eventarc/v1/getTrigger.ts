@@ -29,6 +29,10 @@ export interface GetTriggerArgs {
 
 export interface GetTriggerResult {
     /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     */
+    readonly channel: string;
+    /**
      * The creation time.
      */
     readonly createTime: string;

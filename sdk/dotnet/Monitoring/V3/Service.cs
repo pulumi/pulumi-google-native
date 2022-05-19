@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<Outputs.CloudEndpointsResponse> CloudEndpoints { get; private set; } = null!;
 
         /// <summary>
+        /// Type used for Cloud Run services.
+        /// </summary>
+        [Output("cloudRun")]
+        public Output<Outputs.CloudRunResponse> CloudRun { get; private set; } = null!;
+
+        /// <summary>
         /// Type used for Istio services that live in a Kubernetes cluster.
         /// </summary>
         [Output("clusterIstio")]
@@ -45,6 +51,24 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Type used for GKE Namespaces.
+        /// </summary>
+        [Output("gkeNamespace")]
+        public Output<Outputs.GkeNamespaceResponse> GkeNamespace { get; private set; } = null!;
+
+        /// <summary>
+        /// Type used for GKE Services (the Kubernetes concept of a service).
+        /// </summary>
+        [Output("gkeService")]
+        public Output<Outputs.GkeServiceResponse> GkeService { get; private set; } = null!;
+
+        /// <summary>
+        /// Type used for GKE Workloads.
+        /// </summary>
+        [Output("gkeWorkload")]
+        public Output<Outputs.GkeWorkloadResponse> GkeWorkload { get; private set; } = null!;
 
         /// <summary>
         /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
@@ -134,6 +158,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Input<Inputs.CloudEndpointsArgs>? CloudEndpoints { get; set; }
 
         /// <summary>
+        /// Type used for Cloud Run services.
+        /// </summary>
+        [Input("cloudRun")]
+        public Input<Inputs.CloudRunArgs>? CloudRun { get; set; }
+
+        /// <summary>
         /// Type used for Istio services that live in a Kubernetes cluster.
         /// </summary>
         [Input("clusterIstio")]
@@ -150,6 +180,24 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Type used for GKE Namespaces.
+        /// </summary>
+        [Input("gkeNamespace")]
+        public Input<Inputs.GkeNamespaceArgs>? GkeNamespace { get; set; }
+
+        /// <summary>
+        /// Type used for GKE Services (the Kubernetes concept of a service).
+        /// </summary>
+        [Input("gkeService")]
+        public Input<Inputs.GkeServiceArgs>? GkeService { get; set; }
+
+        /// <summary>
+        /// Type used for GKE Workloads.
+        /// </summary>
+        [Input("gkeWorkload")]
+        public Input<Inputs.GkeWorkloadArgs>? GkeWorkload { get; set; }
 
         /// <summary>
         /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)

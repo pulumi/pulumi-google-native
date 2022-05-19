@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -28,6 +28,9 @@ class GetSnapshotResult:
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
+        if creation_size_bytes and not isinstance(creation_size_bytes, str):
+            raise TypeError("Expected argument 'creation_size_bytes' to be a str")
+        pulumi.set(__self__, "creation_size_bytes", creation_size_bytes)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -142,6 +145,14 @@ class GetSnapshotResult:
         Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         """
         return pulumi.get(self, "chain_name")
+
+    @property
+    @pulumi.getter(name="creationSizeBytes")
+    def creation_size_bytes(self) -> str:
+        """
+        Size in bytes of the snapshot at creation time.
+        """
+        return pulumi.get(self, "creation_size_bytes")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -393,6 +404,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             architecture=self.architecture,
             auto_created=self.auto_created,
             chain_name=self.chain_name,
+            creation_size_bytes=self.creation_size_bytes,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_size_gb=self.disk_size_gb,
@@ -444,6 +456,7 @@ def get_snapshot(project: Optional[str] = None,
         architecture=__ret__.architecture,
         auto_created=__ret__.auto_created,
         chain_name=__ret__.chain_name,
+        creation_size_bytes=__ret__.creation_size_bytes,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_size_gb=__ret__.disk_size_gb,

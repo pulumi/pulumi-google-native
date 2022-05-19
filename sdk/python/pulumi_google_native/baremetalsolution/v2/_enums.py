@@ -9,7 +9,6 @@ __all__ = [
     'NetworkConfigServiceCidr',
     'NetworkConfigType',
     'NfsExportPermissions',
-    'SnapshotSchedulePolicyState',
     'VolumeConfigProtocol',
     'VolumeConfigType',
 ]
@@ -100,20 +99,6 @@ class NfsExportPermissions(str, Enum):
     READ_WRITE = "READ_WRITE"
     """
     Read-write permission.
-    """
-
-
-class SnapshotSchedulePolicyState(str, Enum):
-    """
-    The state of the snapshot schedule policy.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """
-    The policy is in an unknown state.
-    """
-    PROVISIONED = "PROVISIONED"
-    """
-    The policy is been provisioned.
     """
 
 

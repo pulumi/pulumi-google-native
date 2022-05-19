@@ -47,6 +47,10 @@ export interface GetTaskResult {
      */
     readonly executionSpec: outputs.dataplex.v1.GoogleCloudDataplexV1TaskExecutionSpecResponse;
     /**
+     * Status of the latest task executions.
+     */
+    readonly executionStatus: outputs.dataplex.v1.GoogleCloudDataplexV1TaskExecutionStatusResponse;
+    /**
      * Optional. User-defined labels for the task.
      */
     readonly labels: {[key: string]: string};

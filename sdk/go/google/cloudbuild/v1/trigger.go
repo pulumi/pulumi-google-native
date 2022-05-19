@@ -41,6 +41,8 @@ type Trigger struct {
 	Github GitHubEventsConfigResponseOutput `pulumi:"github"`
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayOutput `pulumi:"ignoredFiles"`
+	// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+	IncludeBuildLogs pulumi.StringOutput `pulumi:"includeBuildLogs"`
 	// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
 	IncludedFiles pulumi.StringArrayOutput `pulumi:"includedFiles"`
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
@@ -129,6 +131,8 @@ type triggerArgs struct {
 	Github *GitHubEventsConfig `pulumi:"github"`
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
+	// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+	IncludeBuildLogs *TriggerIncludeBuildLogs `pulumi:"includeBuildLogs"`
 	// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
 	Location      *string  `pulumi:"location"`
@@ -181,6 +185,8 @@ type TriggerArgs struct {
 	Github GitHubEventsConfigPtrInput
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayInput
+	// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+	IncludeBuildLogs TriggerIncludeBuildLogsPtrInput
 	// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
 	IncludedFiles pulumi.StringArrayInput
 	Location      pulumi.StringPtrInput
@@ -307,6 +313,11 @@ func (o TriggerOutput) Github() GitHubEventsConfigResponseOutput {
 // ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
 func (o TriggerOutput) IgnoredFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.IgnoredFiles }).(pulumi.StringArrayOutput)
+}
+
+// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+func (o TriggerOutput) IncludeBuildLogs() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.IncludeBuildLogs }).(pulumi.StringOutput)
 }
 
 // If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.

@@ -2522,17 +2522,17 @@ func (in *transferJobStatusPtr) ToTransferJobStatusPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TransferJobStatusPtrOutput)
 }
 
-// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 type TransferOptionsOverwriteWhen string
 
 const (
-	// Indicate the option is not set.
+	// Overwrite behavior is unspecified.
 	TransferOptionsOverwriteWhenOverwriteWhenUnspecified = TransferOptionsOverwriteWhen("OVERWRITE_WHEN_UNSPECIFIED")
-	// Overwrite destination object with source if the two objects are different.
+	// Overwrites destination objects with the source objects, only if the objects have the same name but different HTTP ETags or checksum values.
 	TransferOptionsOverwriteWhenDifferent = TransferOptionsOverwriteWhen("DIFFERENT")
-	// Never overwrite destination object.
+	// Never overwrites a destination object if a source object has the same name. In this case, the source object is not transferred.
 	TransferOptionsOverwriteWhenNever = TransferOptionsOverwriteWhen("NEVER")
-	// Always overwrite destination object.
+	// Always overwrite the destination object with the source object, even if the HTTP Etags or checksum values are the same.
 	TransferOptionsOverwriteWhenAlways = TransferOptionsOverwriteWhen("ALWAYS")
 )
 

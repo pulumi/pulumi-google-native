@@ -6,8 +6,10 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .channel import *
 from .channel_connection_iam_policy import *
 from .channel_iam_policy import *
+from .get_channel import *
 from .get_channel_connection_iam_policy import *
 from .get_channel_iam_policy import *
 from .get_trigger import *

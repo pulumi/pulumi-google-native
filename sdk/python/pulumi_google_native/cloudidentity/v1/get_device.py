@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDeviceResult:
-    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, compromised_state=None, create_time=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
+    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, compromised_state=None, create_time=None, device_id=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
         if android_specific_attributes and not isinstance(android_specific_attributes, dict):
             raise TypeError("Expected argument 'android_specific_attributes' to be a dict")
         pulumi.set(__self__, "android_specific_attributes", android_specific_attributes)
@@ -43,6 +43,9 @@ class GetDeviceResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if device_id and not isinstance(device_id, str):
+            raise TypeError("Expected argument 'device_id' to be a str")
+        pulumi.set(__self__, "device_id", device_id)
         if device_type and not isinstance(device_type, str):
             raise TypeError("Expected argument 'device_type' to be a str")
         pulumi.set(__self__, "device_type", device_type)
@@ -167,6 +170,14 @@ class GetDeviceResult:
         When the Company-Owned device was imported. This field is empty for BYOD devices.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> str:
+        """
+        Unique identifier for the device.
+        """
+        return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter(name="deviceType")
@@ -343,6 +354,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             build_number=self.build_number,
             compromised_state=self.compromised_state,
             create_time=self.create_time,
+            device_id=self.device_id,
             device_type=self.device_type,
             enabled_developer_options=self.enabled_developer_options,
             enabled_usb_debugging=self.enabled_usb_debugging,
@@ -389,6 +401,7 @@ def get_device(customer: Optional[str] = None,
         build_number=__ret__.build_number,
         compromised_state=__ret__.compromised_state,
         create_time=__ret__.create_time,
+        device_id=__ret__.device_id,
         device_type=__ret__.device_type,
         enabled_developer_options=__ret__.enabled_developer_options,
         enabled_usb_debugging=__ret__.enabled_usb_debugging,

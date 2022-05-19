@@ -37,6 +37,10 @@ export interface GetTcpRouteResult {
      */
     readonly description: string;
     /**
+     * Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*&#47;locations/global/gateways/`
+     */
+    readonly gateways: string[];
+    /**
      * Optional. Set of label tags associated with the TcpRoute resource.
      */
     readonly labels: {[key: string]: string};

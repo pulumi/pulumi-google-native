@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<Outputs.ApiConfigHandlerResponse> ApiConfig { get; private set; } = null!;
 
         /// <summary>
-        /// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        /// Allows App Engine second generation runtimes to access the legacy bundled services.
         /// </summary>
         [Output("appEngineApis")]
         public Output<bool> AppEngineApis { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Input<Inputs.ApiConfigHandlerArgs>? ApiConfig { get; set; }
 
         /// <summary>
-        /// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        /// Allows App Engine second generation runtimes to access the legacy bundled services.
         /// </summary>
         [Input("appEngineApis")]
         public Input<bool>? AppEngineApis { get; set; }

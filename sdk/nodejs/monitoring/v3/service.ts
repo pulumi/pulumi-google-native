@@ -45,6 +45,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly cloudEndpoints!: pulumi.Output<outputs.monitoring.v3.CloudEndpointsResponse>;
     /**
+     * Type used for Cloud Run services.
+     */
+    public readonly cloudRun!: pulumi.Output<outputs.monitoring.v3.CloudRunResponse>;
+    /**
      * Type used for Istio services that live in a Kubernetes cluster.
      */
     public readonly clusterIstio!: pulumi.Output<outputs.monitoring.v3.ClusterIstioResponse>;
@@ -56,6 +60,18 @@ export class Service extends pulumi.CustomResource {
      * Name used for UI elements listing this Service.
      */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Type used for GKE Namespaces.
+     */
+    public readonly gkeNamespace!: pulumi.Output<outputs.monitoring.v3.GkeNamespaceResponse>;
+    /**
+     * Type used for GKE Services (the Kubernetes concept of a service).
+     */
+    public readonly gkeService!: pulumi.Output<outputs.monitoring.v3.GkeServiceResponse>;
+    /**
+     * Type used for GKE Workloads.
+     */
+    public readonly gkeWorkload!: pulumi.Output<outputs.monitoring.v3.GkeWorkloadResponse>;
     /**
      * Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
      */
@@ -96,9 +112,13 @@ export class Service extends pulumi.CustomResource {
             }
             resourceInputs["appEngine"] = args ? args.appEngine : undefined;
             resourceInputs["cloudEndpoints"] = args ? args.cloudEndpoints : undefined;
+            resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
             resourceInputs["clusterIstio"] = args ? args.clusterIstio : undefined;
             resourceInputs["custom"] = args ? args.custom : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["gkeNamespace"] = args ? args.gkeNamespace : undefined;
+            resourceInputs["gkeService"] = args ? args.gkeService : undefined;
+            resourceInputs["gkeWorkload"] = args ? args.gkeWorkload : undefined;
             resourceInputs["istioCanonicalService"] = args ? args.istioCanonicalService : undefined;
             resourceInputs["meshIstio"] = args ? args.meshIstio : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -110,9 +130,13 @@ export class Service extends pulumi.CustomResource {
         } else {
             resourceInputs["appEngine"] = undefined /*out*/;
             resourceInputs["cloudEndpoints"] = undefined /*out*/;
+            resourceInputs["cloudRun"] = undefined /*out*/;
             resourceInputs["clusterIstio"] = undefined /*out*/;
             resourceInputs["custom"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["gkeNamespace"] = undefined /*out*/;
+            resourceInputs["gkeService"] = undefined /*out*/;
+            resourceInputs["gkeWorkload"] = undefined /*out*/;
             resourceInputs["istioCanonicalService"] = undefined /*out*/;
             resourceInputs["meshIstio"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -137,6 +161,10 @@ export interface ServiceArgs {
      */
     cloudEndpoints?: pulumi.Input<inputs.monitoring.v3.CloudEndpointsArgs>;
     /**
+     * Type used for Cloud Run services.
+     */
+    cloudRun?: pulumi.Input<inputs.monitoring.v3.CloudRunArgs>;
+    /**
      * Type used for Istio services that live in a Kubernetes cluster.
      */
     clusterIstio?: pulumi.Input<inputs.monitoring.v3.ClusterIstioArgs>;
@@ -148,6 +176,18 @@ export interface ServiceArgs {
      * Name used for UI elements listing this Service.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Type used for GKE Namespaces.
+     */
+    gkeNamespace?: pulumi.Input<inputs.monitoring.v3.GkeNamespaceArgs>;
+    /**
+     * Type used for GKE Services (the Kubernetes concept of a service).
+     */
+    gkeService?: pulumi.Input<inputs.monitoring.v3.GkeServiceArgs>;
+    /**
+     * Type used for GKE Workloads.
+     */
+    gkeWorkload?: pulumi.Input<inputs.monitoring.v3.GkeWorkloadArgs>;
     /**
      * Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
      */

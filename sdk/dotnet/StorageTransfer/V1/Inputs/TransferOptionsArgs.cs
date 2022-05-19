@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<bool>? OverwriteObjectsAlreadyExistingInSink { get; set; }
 
         /// <summary>
-        /// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+        /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
         /// </summary>
         [Input("overwriteWhen")]
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.TransferOptionsOverwriteWhen>? OverwriteWhen { get; set; }

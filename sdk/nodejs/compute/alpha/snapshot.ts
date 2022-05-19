@@ -48,6 +48,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly chainName!: pulumi.Output<string>;
     /**
+     * Size in bytes of the snapshot at creation time.
+     */
+    public /*out*/ readonly creationSizeBytes!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -195,6 +199,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["autoCreated"] = undefined /*out*/;
+            resourceInputs["creationSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
@@ -218,6 +223,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["autoCreated"] = undefined /*out*/;
             resourceInputs["chainName"] = undefined /*out*/;
+            resourceInputs["creationSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;

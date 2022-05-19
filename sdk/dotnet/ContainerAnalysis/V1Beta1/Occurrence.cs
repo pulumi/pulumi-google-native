@@ -53,6 +53,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<Outputs.GrafeasV1beta1DiscoveryDetailsResponse> Discovered { get; private set; } = null!;
 
         /// <summary>
+        /// https://github.com/secure-systems-lab/dsse
+        /// </summary>
+        [Output("envelope")]
+        public Output<Outputs.EnvelopeResponse> Envelope { get; private set; } = null!;
+
+        /// <summary>
         /// Describes the installation of a package on the linked resource.
         /// </summary>
         [Output("installation")]
@@ -204,6 +210,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         [Input("discovered")]
         public Input<Inputs.GrafeasV1beta1DiscoveryDetailsArgs>? Discovered { get; set; }
+
+        /// <summary>
+        /// https://github.com/secure-systems-lab/dsse
+        /// </summary>
+        [Input("envelope")]
+        public Input<Inputs.EnvelopeArgs>? Envelope { get; set; }
 
         /// <summary>
         /// Describes the installation of a package on the linked resource.

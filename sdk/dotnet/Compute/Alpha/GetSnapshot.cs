@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string ChainName;
         /// <summary>
+        /// Size in bytes of the snapshot at creation time.
+        /// </summary>
+        public readonly string CreationSizeBytes;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -196,6 +200,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string chainName,
 
+            string creationSizeBytes,
+
             string creationTimestamp,
 
             string description,
@@ -259,6 +265,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Architecture = architecture;
             AutoCreated = autoCreated;
             ChainName = chainName;
+            CreationSizeBytes = creationSizeBytes;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskSizeGb = diskSizeGb;

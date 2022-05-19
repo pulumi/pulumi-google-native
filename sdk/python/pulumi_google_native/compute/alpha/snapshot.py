@@ -346,6 +346,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["architecture"] = None
             __props__.__dict__["auto_created"] = None
+            __props__.__dict__["creation_size_bytes"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["disk_size_gb"] = None
             __props__.__dict__["download_bytes"] = None
@@ -390,6 +391,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["architecture"] = None
         __props__.__dict__["auto_created"] = None
         __props__.__dict__["chain_name"] = None
+        __props__.__dict__["creation_size_bytes"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
@@ -445,6 +447,14 @@ class Snapshot(pulumi.CustomResource):
         Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         """
         return pulumi.get(self, "chain_name")
+
+    @property
+    @pulumi.getter(name="creationSizeBytes")
+    def creation_size_bytes(self) -> pulumi.Output[str]:
+        """
+        Size in bytes of the snapshot at creation time.
+        """
+        return pulumi.get(self, "creation_size_bytes")
 
     @property
     @pulumi.getter(name="creationTimestamp")

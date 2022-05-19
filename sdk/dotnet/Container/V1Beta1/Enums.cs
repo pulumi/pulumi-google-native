@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Container.V1Beta1
 {
     /// <summary>
+    /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+    /// </summary>
+    [EnumType]
+    public readonly struct BinaryAuthorizationEvaluationMode : IEquatable<BinaryAuthorizationEvaluationMode>
+    {
+        private readonly string _value;
+
+        private BinaryAuthorizationEvaluationMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, equivalent to DISABLED.
+        /// </summary>
+        public static BinaryAuthorizationEvaluationMode EvaluationModeUnspecified { get; } = new BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Disable BinaryAuthorization
+        /// </summary>
+        public static BinaryAuthorizationEvaluationMode Disabled { get; } = new BinaryAuthorizationEvaluationMode("DISABLED");
+        /// <summary>
+        /// If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+        /// </summary>
+        public static BinaryAuthorizationEvaluationMode ProjectSingletonPolicyEnforce { get; } = new BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE");
+
+        public static bool operator ==(BinaryAuthorizationEvaluationMode left, BinaryAuthorizationEvaluationMode right) => left.Equals(right);
+        public static bool operator !=(BinaryAuthorizationEvaluationMode left, BinaryAuthorizationEvaluationMode right) => !left.Equals(right);
+
+        public static explicit operator string(BinaryAuthorizationEvaluationMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BinaryAuthorizationEvaluationMode other && Equals(other);
+        public bool Equals(BinaryAuthorizationEvaluationMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Which load balancer type is installed for Cloud Run.
     /// </summary>
     [EnumType]

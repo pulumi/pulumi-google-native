@@ -7838,6 +7838,8 @@ type DistributionPolicyTargetShape string
 const (
 	// The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
 	DistributionPolicyTargetShapeAny = DistributionPolicyTargetShape("ANY")
+	// The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.
+	DistributionPolicyTargetShapeAnySingleZone = DistributionPolicyTargetShape("ANY_SINGLE_ZONE")
 	// The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
 	DistributionPolicyTargetShapeBalanced = DistributionPolicyTargetShape("BALANCED")
 	// The group schedules VM instance creation and deletion to achieve and maintain an even number of managed instances across the selected zones. The distribution is even when the number of managed instances does not differ by more than 1 between any two zones. Recommended for highly available serving workloads.
@@ -14756,172 +14758,6 @@ func (in *instanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckP
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput)
 }
 
-type InstanceGroupManagerAutoHealingPolicyUpdateInstances string
-
-const (
-	// Autohealer always updates instances with a new version for both PROACTIVE and OPPORTUNISTIC updates.
-	InstanceGroupManagerAutoHealingPolicyUpdateInstancesAlways = InstanceGroupManagerAutoHealingPolicyUpdateInstances("ALWAYS")
-	// (Default) Autohealer updates instance with new version according to update policy constraints: - OPPORTUNISTIC: autohealing does not perform updates. - PROACTIVE: autohealing performs updates according to maxSurge and maxUnavailable constraints.
-	InstanceGroupManagerAutoHealingPolicyUpdateInstancesFollowUpdatePolicy = InstanceGroupManagerAutoHealingPolicyUpdateInstances("FOLLOW_UPDATE_POLICY")
-)
-
-func (InstanceGroupManagerAutoHealingPolicyUpdateInstances) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyUpdateInstances)(nil)).Elem()
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput {
-	return pulumi.ToOutput(e).(InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput)
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput)
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return e.ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(context.Background())
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return InstanceGroupManagerAutoHealingPolicyUpdateInstances(e).ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesOutputWithContext(ctx).ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(ctx)
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e InstanceGroupManagerAutoHealingPolicyUpdateInstances) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyUpdateInstances)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return o.ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerAutoHealingPolicyUpdateInstances) *InstanceGroupManagerAutoHealingPolicyUpdateInstances {
-		return &v
-	}).(InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput)
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerAutoHealingPolicyUpdateInstances) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerAutoHealingPolicyUpdateInstances) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerAutoHealingPolicyUpdateInstances)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput) Elem() InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerAutoHealingPolicyUpdateInstances) InstanceGroupManagerAutoHealingPolicyUpdateInstances {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceGroupManagerAutoHealingPolicyUpdateInstances
-		return ret
-	}).(InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput)
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceGroupManagerAutoHealingPolicyUpdateInstances) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// InstanceGroupManagerAutoHealingPolicyUpdateInstancesInput is an input type that accepts InstanceGroupManagerAutoHealingPolicyUpdateInstancesArgs and InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerAutoHealingPolicyUpdateInstancesInput` via:
-//
-//          InstanceGroupManagerAutoHealingPolicyUpdateInstancesArgs{...}
-type InstanceGroupManagerAutoHealingPolicyUpdateInstancesInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput
-	ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesOutputWithContext(context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput
-}
-
-var instanceGroupManagerAutoHealingPolicyUpdateInstancesPtrType = reflect.TypeOf((**InstanceGroupManagerAutoHealingPolicyUpdateInstances)(nil)).Elem()
-
-type InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput
-	ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput
-}
-
-type instanceGroupManagerAutoHealingPolicyUpdateInstancesPtr string
-
-func InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtr(v string) InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrInput {
-	return (*instanceGroupManagerAutoHealingPolicyUpdateInstancesPtr)(&v)
-}
-
-func (*instanceGroupManagerAutoHealingPolicyUpdateInstancesPtr) ElementType() reflect.Type {
-	return instanceGroupManagerAutoHealingPolicyUpdateInstancesPtrType
-}
-
-func (in *instanceGroupManagerAutoHealingPolicyUpdateInstancesPtr) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput() InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return pulumi.ToOutput(in).(InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput)
-}
-
-func (in *instanceGroupManagerAutoHealingPolicyUpdateInstancesPtr) ToInstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput)
-}
-
 // The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 type InstanceGroupManagerFailoverAction string
 
@@ -15085,6 +14921,171 @@ func (in *instanceGroupManagerFailoverActionPtr) ToInstanceGroupManagerFailoverA
 
 func (in *instanceGroupManagerFailoverActionPtr) ToInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerFailoverActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerFailoverActionPtrOutput)
+}
+
+// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair.
+type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair string
+
+const (
+	InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairNo  = InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO")
+	InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairYes = InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("YES")
+)
+
+func (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair)(nil)).Elem()
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput {
+	return pulumi.ToOutput(e).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return e.ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(e).ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutputWithContext(ctx).ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return o.ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) *InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair {
+		return &v
+	}).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) Elem() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair
+		return ret
+	}).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput)
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput is an input type that accepts InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairArgs and InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput` via:
+//
+//          InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairArgs{...}
+type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput
+	ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutputWithContext(context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput
+}
+
+var instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrType = reflect.TypeOf((**InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair)(nil)).Elem()
+
+type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput
+	ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput
+}
+
+type instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr string
+
+func InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr(v string) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrInput {
+	return (*instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr)(&v)
+}
+
+func (*instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ElementType() reflect.Type {
+	return instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrType
+}
+
+func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput() InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return pulumi.ToOutput(in).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
+}
+
+func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToInstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
 }
 
 // Pagination behavior of listManagedInstances API method for this Managed Instance Group.
@@ -15421,7 +15422,7 @@ func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToInsta
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput)
 }
 
-// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 type InstanceGroupManagerUpdatePolicyMinimalAction string
 
 const (
@@ -29519,7 +29520,7 @@ func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutputWithContext(ctx 
 type RouterNatEndpointTypesItem string
 
 const (
-	// This is used for Secure Web Gateway (go/securewebgateway) endpoints.
+	// This is used for Secure Web Gateway endpoints.
 	RouterNatEndpointTypesItemEndpointTypeSwg = RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG")
 	// This is the default.
 	RouterNatEndpointTypesItemEndpointTypeVm = RouterNatEndpointTypesItem("ENDPOINT_TYPE_VM")
@@ -38337,10 +38338,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageSourceTypePtrInput)(nil)).Elem(), ImageSourceType("RAW"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck("OFF"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck("OFF"))
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyUpdateInstancesInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyUpdateInstances("ALWAYS"))
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyUpdateInstances("ALWAYS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerFailoverActionInput)(nil)).Elem(), InstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), InstanceGroupManagerFailoverAction("NO_FAILOVER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE"))
@@ -38791,10 +38792,10 @@ func init() {
 	pulumi.RegisterOutputType(ImageSourceTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyUpdateInstancesOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyUpdateInstancesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerFailoverActionOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerFailoverActionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput{})

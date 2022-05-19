@@ -37,6 +37,10 @@ export interface GetServiceResult {
      */
     readonly cloudEndpoints: outputs.monitoring.v3.CloudEndpointsResponse;
     /**
+     * Type used for Cloud Run services.
+     */
+    readonly cloudRun: outputs.monitoring.v3.CloudRunResponse;
+    /**
      * Type used for Istio services that live in a Kubernetes cluster.
      */
     readonly clusterIstio: outputs.monitoring.v3.ClusterIstioResponse;
@@ -48,6 +52,18 @@ export interface GetServiceResult {
      * Name used for UI elements listing this Service.
      */
     readonly displayName: string;
+    /**
+     * Type used for GKE Namespaces.
+     */
+    readonly gkeNamespace: outputs.monitoring.v3.GkeNamespaceResponse;
+    /**
+     * Type used for GKE Services (the Kubernetes concept of a service).
+     */
+    readonly gkeService: outputs.monitoring.v3.GkeServiceResponse;
+    /**
+     * Type used for GKE Workloads.
+     */
+    readonly gkeWorkload: outputs.monitoring.v3.GkeWorkloadResponse;
     /**
      * Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
      */

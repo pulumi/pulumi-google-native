@@ -31,6 +31,8 @@ type Device struct {
 	CompromisedState pulumi.StringOutput `pulumi:"compromisedState"`
 	// When the Company-Owned device was imported. This field is empty for BYOD devices.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Unique identifier for the device.
+	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// Type of device.
 	DeviceType pulumi.StringOutput `pulumi:"deviceType"`
 	// Whether developer options is enabled on device.
@@ -116,6 +118,8 @@ type deviceArgs struct {
 	AssetTag *string `pulumi:"assetTag"`
 	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
 	Customer *string `pulumi:"customer"`
+	// Unique identifier for the device.
+	DeviceId *string `pulumi:"deviceId"`
 	// Most recent time when device synced with this service.
 	LastSyncTime *string `pulumi:"lastSyncTime"`
 	// Serial Number of device. Example: HT82V1A01076.
@@ -130,6 +134,8 @@ type DeviceArgs struct {
 	AssetTag pulumi.StringPtrInput
 	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
 	Customer pulumi.StringPtrInput
+	// Unique identifier for the device.
+	DeviceId pulumi.StringPtrInput
 	// Most recent time when device synced with this service.
 	LastSyncTime pulumi.StringPtrInput
 	// Serial Number of device. Example: HT82V1A01076.
@@ -215,6 +221,11 @@ func (o DeviceOutput) CompromisedState() pulumi.StringOutput {
 // When the Company-Owned device was imported. This field is empty for BYOD devices.
 func (o DeviceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the device.
+func (o DeviceOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
 // Type of device.

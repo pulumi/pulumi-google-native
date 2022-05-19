@@ -5744,6 +5744,168 @@ func (o DetailResponseArrayOutput) Index(i pulumi.IntInput) DetailResponseOutput
 	}).(DetailResponseOutput)
 }
 
+// Digest information.
+type Digest struct {
+	// `SHA1`, `SHA512` etc.
+	Algo *string `pulumi:"algo"`
+	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+	DigestValue *string `pulumi:"digestValue"`
+}
+
+// DigestInput is an input type that accepts DigestArgs and DigestOutput values.
+// You can construct a concrete instance of `DigestInput` via:
+//
+//          DigestArgs{...}
+type DigestInput interface {
+	pulumi.Input
+
+	ToDigestOutput() DigestOutput
+	ToDigestOutputWithContext(context.Context) DigestOutput
+}
+
+// Digest information.
+type DigestArgs struct {
+	// `SHA1`, `SHA512` etc.
+	Algo pulumi.StringPtrInput `pulumi:"algo"`
+	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+	DigestValue pulumi.StringPtrInput `pulumi:"digestValue"`
+}
+
+func (DigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Digest)(nil)).Elem()
+}
+
+func (i DigestArgs) ToDigestOutput() DigestOutput {
+	return i.ToDigestOutputWithContext(context.Background())
+}
+
+func (i DigestArgs) ToDigestOutputWithContext(ctx context.Context) DigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DigestOutput)
+}
+
+// DigestArrayInput is an input type that accepts DigestArray and DigestArrayOutput values.
+// You can construct a concrete instance of `DigestArrayInput` via:
+//
+//          DigestArray{ DigestArgs{...} }
+type DigestArrayInput interface {
+	pulumi.Input
+
+	ToDigestArrayOutput() DigestArrayOutput
+	ToDigestArrayOutputWithContext(context.Context) DigestArrayOutput
+}
+
+type DigestArray []DigestInput
+
+func (DigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Digest)(nil)).Elem()
+}
+
+func (i DigestArray) ToDigestArrayOutput() DigestArrayOutput {
+	return i.ToDigestArrayOutputWithContext(context.Background())
+}
+
+func (i DigestArray) ToDigestArrayOutputWithContext(ctx context.Context) DigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DigestArrayOutput)
+}
+
+// Digest information.
+type DigestOutput struct{ *pulumi.OutputState }
+
+func (DigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Digest)(nil)).Elem()
+}
+
+func (o DigestOutput) ToDigestOutput() DigestOutput {
+	return o
+}
+
+func (o DigestOutput) ToDigestOutputWithContext(ctx context.Context) DigestOutput {
+	return o
+}
+
+// `SHA1`, `SHA512` etc.
+func (o DigestOutput) Algo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Digest) *string { return v.Algo }).(pulumi.StringPtrOutput)
+}
+
+// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+func (o DigestOutput) DigestValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Digest) *string { return v.DigestValue }).(pulumi.StringPtrOutput)
+}
+
+type DigestArrayOutput struct{ *pulumi.OutputState }
+
+func (DigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Digest)(nil)).Elem()
+}
+
+func (o DigestArrayOutput) ToDigestArrayOutput() DigestArrayOutput {
+	return o
+}
+
+func (o DigestArrayOutput) ToDigestArrayOutputWithContext(ctx context.Context) DigestArrayOutput {
+	return o
+}
+
+func (o DigestArrayOutput) Index(i pulumi.IntInput) DigestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Digest {
+		return vs[0].([]Digest)[vs[1].(int)]
+	}).(DigestOutput)
+}
+
+// Digest information.
+type DigestResponse struct {
+	// `SHA1`, `SHA512` etc.
+	Algo string `pulumi:"algo"`
+	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+	DigestValue string `pulumi:"digestValue"`
+}
+
+// Digest information.
+type DigestResponseOutput struct{ *pulumi.OutputState }
+
+func (DigestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DigestResponse)(nil)).Elem()
+}
+
+func (o DigestResponseOutput) ToDigestResponseOutput() DigestResponseOutput {
+	return o
+}
+
+func (o DigestResponseOutput) ToDigestResponseOutputWithContext(ctx context.Context) DigestResponseOutput {
+	return o
+}
+
+// `SHA1`, `SHA512` etc.
+func (o DigestResponseOutput) Algo() pulumi.StringOutput {
+	return o.ApplyT(func(v DigestResponse) string { return v.Algo }).(pulumi.StringOutput)
+}
+
+// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+func (o DigestResponseOutput) DigestValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DigestResponse) string { return v.DigestValue }).(pulumi.StringOutput)
+}
+
+type DigestResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DigestResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DigestResponse)(nil)).Elem()
+}
+
+func (o DigestResponseArrayOutput) ToDigestResponseArrayOutput() DigestResponseArrayOutput {
+	return o
+}
+
+func (o DigestResponseArrayOutput) ToDigestResponseArrayOutputWithContext(ctx context.Context) DigestResponseArrayOutput {
+	return o
+}
+
+func (o DigestResponseArrayOutput) Index(i pulumi.IntInput) DigestResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DigestResponse {
+		return vs[0].([]DigestResponse)[vs[1].(int)]
+	}).(DigestResponseOutput)
+}
+
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
 type DiscoveryNote struct {
 	// Immutable. The kind of analysis that is handled by this discovery.
@@ -9486,13 +9648,209 @@ func (o LayerResponseArrayOutput) Index(i pulumi.IntInput) LayerResponseOutput {
 	}).(LayerResponseOutput)
 }
 
+// License information.
+type License struct {
+	// Comments
+	Comments *string `pulumi:"comments"`
+	// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+	Expression *string `pulumi:"expression"`
+}
+
+// LicenseInput is an input type that accepts LicenseArgs and LicenseOutput values.
+// You can construct a concrete instance of `LicenseInput` via:
+//
+//          LicenseArgs{...}
+type LicenseInput interface {
+	pulumi.Input
+
+	ToLicenseOutput() LicenseOutput
+	ToLicenseOutputWithContext(context.Context) LicenseOutput
+}
+
+// License information.
+type LicenseArgs struct {
+	// Comments
+	Comments pulumi.StringPtrInput `pulumi:"comments"`
+	// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+}
+
+func (LicenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (i LicenseArgs) ToLicenseOutput() LicenseOutput {
+	return i.ToLicenseOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
+}
+
+func (i LicenseArgs) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput).ToLicensePtrOutputWithContext(ctx)
+}
+
+// LicensePtrInput is an input type that accepts LicenseArgs, LicensePtr and LicensePtrOutput values.
+// You can construct a concrete instance of `LicensePtrInput` via:
+//
+//          LicenseArgs{...}
+//
+//  or:
+//
+//          nil
+type LicensePtrInput interface {
+	pulumi.Input
+
+	ToLicensePtrOutput() LicensePtrOutput
+	ToLicensePtrOutputWithContext(context.Context) LicensePtrOutput
+}
+
+type licensePtrType LicenseArgs
+
+func LicensePtr(v *LicenseArgs) LicensePtrInput {
+	return (*licensePtrType)(v)
+}
+
+func (*licensePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (i *licensePtrType) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i *licensePtrType) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicensePtrOutput)
+}
+
+// License information.
+type LicenseOutput struct{ *pulumi.OutputState }
+
+func (LicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v License) *License {
+		return &v
+	}).(LicensePtrOutput)
+}
+
+// Comments
+func (o LicenseOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Comments }).(pulumi.StringPtrOutput)
+}
+
+// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+func (o LicenseOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+type LicensePtrOutput struct{ *pulumi.OutputState }
+
+func (LicensePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) Elem() LicenseOutput {
+	return o.ApplyT(func(v *License) License {
+		if v != nil {
+			return *v
+		}
+		var ret License
+		return ret
+	}).(LicenseOutput)
+}
+
+// Comments
+func (o LicensePtrOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comments
+	}).(pulumi.StringPtrOutput)
+}
+
+// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+func (o LicensePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// License information.
+type LicenseResponse struct {
+	// Comments
+	Comments string `pulumi:"comments"`
+	// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+	Expression string `pulumi:"expression"`
+}
+
+// License information.
+type LicenseResponseOutput struct{ *pulumi.OutputState }
+
+func (LicenseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseResponse)(nil)).Elem()
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutput() LicenseResponseOutput {
+	return o
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutputWithContext(ctx context.Context) LicenseResponseOutput {
+	return o
+}
+
+// Comments
+func (o LicenseResponseOutput) Comments() pulumi.StringOutput {
+	return o.ApplyT(func(v LicenseResponse) string { return v.Comments }).(pulumi.StringOutput)
+}
+
+// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+func (o LicenseResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LicenseResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type Location struct {
-	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri string `pulumi:"cpeUri"`
+	// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+	//
+	// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+	CpeUri *string `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path *string `pulumi:"path"`
-	// The version installed at this location.
+	// Deprecated. The version installed at this location.
+	//
+	// Deprecated: Deprecated. The version installed at this location.
 	Version *Version `pulumi:"version"`
 }
 
@@ -9509,11 +9867,15 @@ type LocationInput interface {
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationArgs struct {
-	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+	//
+	// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The version installed at this location.
+	// Deprecated. The version installed at this location.
+	//
+	// Deprecated: Deprecated. The version installed at this location.
 	Version VersionPtrInput `pulumi:"version"`
 }
 
@@ -9569,9 +9931,11 @@ func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) Locatio
 	return o
 }
 
-// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-func (o LocationOutput) CpeUri() pulumi.StringOutput {
-	return o.ApplyT(func(v Location) string { return v.CpeUri }).(pulumi.StringOutput)
+// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+//
+// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+func (o LocationOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Location) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
 }
 
 // The path from which we gathered that this package/version is installed.
@@ -9579,7 +9943,9 @@ func (o LocationOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Location) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The version installed at this location.
+// Deprecated. The version installed at this location.
+//
+// Deprecated: Deprecated. The version installed at this location.
 func (o LocationOutput) Version() VersionPtrOutput {
 	return o.ApplyT(func(v Location) *Version { return v.Version }).(VersionPtrOutput)
 }
@@ -9606,11 +9972,15 @@ func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationResponse struct {
-	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+	//
+	// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
 	CpeUri string `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path string `pulumi:"path"`
-	// The version installed at this location.
+	// Deprecated. The version installed at this location.
+	//
+	// Deprecated: Deprecated. The version installed at this location.
 	Version VersionResponse `pulumi:"version"`
 }
 
@@ -9629,7 +9999,9 @@ func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
+//
+// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
 func (o LocationResponseOutput) CpeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationResponse) string { return v.CpeUri }).(pulumi.StringOutput)
 }
@@ -9639,7 +10011,9 @@ func (o LocationResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The version installed at this location.
+// Deprecated. The version installed at this location.
+//
+// Deprecated: Deprecated. The version installed at this location.
 func (o LocationResponseOutput) Version() VersionResponseOutput {
 	return o.ApplyT(func(v LocationResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
 }
@@ -10531,12 +10905,32 @@ func (o PackageIssueResponseArrayOutput) Index(i pulumi.IntInput) PackageIssueRe
 	}).(PackageIssueResponseOutput)
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// PackageNote represents a particular package version.
 type PackageNote struct {
-	// The various channels by which a package is distributed.
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture *PackageNoteArchitecture `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri *string `pulumi:"cpeUri"`
+	// The description of this package.
+	Description *string `pulumi:"description"`
+	// Hash value, typically a file digest, that allows unique identification a specific package.
+	Digest []Digest `pulumi:"digest"`
+	// Deprecated. The various channels by which a package is distributed.
+	//
+	// Deprecated: Deprecated. The various channels by which a package is distributed.
 	Distribution []Distribution `pulumi:"distribution"`
+	// Licenses that have been declared by the authors of the package.
+	License *License `pulumi:"license"`
+	// A freeform text denoting the maintainer of this package.
+	Maintainer *string `pulumi:"maintainer"`
 	// Immutable. The name of the package.
 	Name string `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType *string `pulumi:"packageType"`
+	// The homepage for this package.
+	Url *string `pulumi:"url"`
+	// The version of the package.
+	Version *Version `pulumi:"version"`
 }
 
 // PackageNoteInput is an input type that accepts PackageNoteArgs and PackageNoteOutput values.
@@ -10550,12 +10944,32 @@ type PackageNoteInput interface {
 	ToPackageNoteOutputWithContext(context.Context) PackageNoteOutput
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// PackageNote represents a particular package version.
 type PackageNoteArgs struct {
-	// The various channels by which a package is distributed.
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture PackageNoteArchitecturePtrInput `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
+	// The description of this package.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Hash value, typically a file digest, that allows unique identification a specific package.
+	Digest DigestArrayInput `pulumi:"digest"`
+	// Deprecated. The various channels by which a package is distributed.
+	//
+	// Deprecated: Deprecated. The various channels by which a package is distributed.
 	Distribution DistributionArrayInput `pulumi:"distribution"`
+	// Licenses that have been declared by the authors of the package.
+	License LicensePtrInput `pulumi:"license"`
+	// A freeform text denoting the maintainer of this package.
+	Maintainer pulumi.StringPtrInput `pulumi:"maintainer"`
 	// Immutable. The name of the package.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
+	// The homepage for this package.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The version of the package.
+	Version VersionPtrInput `pulumi:"version"`
 }
 
 func (PackageNoteArgs) ElementType() reflect.Type {
@@ -10611,7 +11025,7 @@ func (i *packageNotePtrType) ToPackageNotePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PackageNotePtrOutput)
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// PackageNote represents a particular package version.
 type PackageNoteOutput struct{ *pulumi.OutputState }
 
 func (PackageNoteOutput) ElementType() reflect.Type {
@@ -10636,14 +11050,61 @@ func (o PackageNoteOutput) ToPackageNotePtrOutputWithContext(ctx context.Context
 	}).(PackageNotePtrOutput)
 }
 
-// The various channels by which a package is distributed.
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o PackageNoteOutput) Architecture() PackageNoteArchitecturePtrOutput {
+	return o.ApplyT(func(v PackageNote) *PackageNoteArchitecture { return v.Architecture }).(PackageNoteArchitecturePtrOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o PackageNoteOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageNote) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+}
+
+// The description of this package.
+func (o PackageNoteOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageNote) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Hash value, typically a file digest, that allows unique identification a specific package.
+func (o PackageNoteOutput) Digest() DigestArrayOutput {
+	return o.ApplyT(func(v PackageNote) []Digest { return v.Digest }).(DigestArrayOutput)
+}
+
+// Deprecated. The various channels by which a package is distributed.
+//
+// Deprecated: Deprecated. The various channels by which a package is distributed.
 func (o PackageNoteOutput) Distribution() DistributionArrayOutput {
 	return o.ApplyT(func(v PackageNote) []Distribution { return v.Distribution }).(DistributionArrayOutput)
+}
+
+// Licenses that have been declared by the authors of the package.
+func (o PackageNoteOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v PackageNote) *License { return v.License }).(LicensePtrOutput)
+}
+
+// A freeform text denoting the maintainer of this package.
+func (o PackageNoteOutput) Maintainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageNote) *string { return v.Maintainer }).(pulumi.StringPtrOutput)
 }
 
 // Immutable. The name of the package.
 func (o PackageNoteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageNote) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o PackageNoteOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageNote) *string { return v.PackageType }).(pulumi.StringPtrOutput)
+}
+
+// The homepage for this package.
+func (o PackageNoteOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageNote) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The version of the package.
+func (o PackageNoteOutput) Version() VersionPtrOutput {
+	return o.ApplyT(func(v PackageNote) *Version { return v.Version }).(VersionPtrOutput)
 }
 
 type PackageNotePtrOutput struct{ *pulumi.OutputState }
@@ -10670,7 +11131,49 @@ func (o PackageNotePtrOutput) Elem() PackageNoteOutput {
 	}).(PackageNoteOutput)
 }
 
-// The various channels by which a package is distributed.
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o PackageNotePtrOutput) Architecture() PackageNoteArchitecturePtrOutput {
+	return o.ApplyT(func(v *PackageNote) *PackageNoteArchitecture {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(PackageNoteArchitecturePtrOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o PackageNotePtrOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpeUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of this package.
+func (o PackageNotePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hash value, typically a file digest, that allows unique identification a specific package.
+func (o PackageNotePtrOutput) Digest() DigestArrayOutput {
+	return o.ApplyT(func(v *PackageNote) []Digest {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(DigestArrayOutput)
+}
+
+// Deprecated. The various channels by which a package is distributed.
+//
+// Deprecated: Deprecated. The various channels by which a package is distributed.
 func (o PackageNotePtrOutput) Distribution() DistributionArrayOutput {
 	return o.ApplyT(func(v *PackageNote) []Distribution {
 		if v == nil {
@@ -10678,6 +11181,26 @@ func (o PackageNotePtrOutput) Distribution() DistributionArrayOutput {
 		}
 		return v.Distribution
 	}).(DistributionArrayOutput)
+}
+
+// Licenses that have been declared by the authors of the package.
+func (o PackageNotePtrOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v *PackageNote) *License {
+		if v == nil {
+			return nil
+		}
+		return v.License
+	}).(LicensePtrOutput)
+}
+
+// A freeform text denoting the maintainer of this package.
+func (o PackageNotePtrOutput) Maintainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Maintainer
+	}).(pulumi.StringPtrOutput)
 }
 
 // Immutable. The name of the package.
@@ -10690,15 +11213,65 @@ func (o PackageNotePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
-type PackageNoteResponse struct {
-	// The various channels by which a package is distributed.
-	Distribution []DistributionResponse `pulumi:"distribution"`
-	// Immutable. The name of the package.
-	Name string `pulumi:"name"`
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o PackageNotePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageType
+	}).(pulumi.StringPtrOutput)
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// The homepage for this package.
+func (o PackageNotePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the package.
+func (o PackageNotePtrOutput) Version() VersionPtrOutput {
+	return o.ApplyT(func(v *PackageNote) *Version {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(VersionPtrOutput)
+}
+
+// PackageNote represents a particular package version.
+type PackageNoteResponse struct {
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture string `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri string `pulumi:"cpeUri"`
+	// The description of this package.
+	Description string `pulumi:"description"`
+	// Hash value, typically a file digest, that allows unique identification a specific package.
+	Digest []DigestResponse `pulumi:"digest"`
+	// Deprecated. The various channels by which a package is distributed.
+	//
+	// Deprecated: Deprecated. The various channels by which a package is distributed.
+	Distribution []DistributionResponse `pulumi:"distribution"`
+	// Licenses that have been declared by the authors of the package.
+	License LicenseResponse `pulumi:"license"`
+	// A freeform text denoting the maintainer of this package.
+	Maintainer string `pulumi:"maintainer"`
+	// Immutable. The name of the package.
+	Name string `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType string `pulumi:"packageType"`
+	// The homepage for this package.
+	Url string `pulumi:"url"`
+	// The version of the package.
+	Version VersionResponse `pulumi:"version"`
+}
+
+// PackageNote represents a particular package version.
 type PackageNoteResponseOutput struct{ *pulumi.OutputState }
 
 func (PackageNoteResponseOutput) ElementType() reflect.Type {
@@ -10713,9 +11286,41 @@ func (o PackageNoteResponseOutput) ToPackageNoteResponseOutputWithContext(ctx co
 	return o
 }
 
-// The various channels by which a package is distributed.
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o PackageNoteResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageNoteResponse) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o PackageNoteResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageNoteResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// The description of this package.
+func (o PackageNoteResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageNoteResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Hash value, typically a file digest, that allows unique identification a specific package.
+func (o PackageNoteResponseOutput) Digest() DigestResponseArrayOutput {
+	return o.ApplyT(func(v PackageNoteResponse) []DigestResponse { return v.Digest }).(DigestResponseArrayOutput)
+}
+
+// Deprecated. The various channels by which a package is distributed.
+//
+// Deprecated: Deprecated. The various channels by which a package is distributed.
 func (o PackageNoteResponseOutput) Distribution() DistributionResponseArrayOutput {
 	return o.ApplyT(func(v PackageNoteResponse) []DistributionResponse { return v.Distribution }).(DistributionResponseArrayOutput)
+}
+
+// Licenses that have been declared by the authors of the package.
+func (o PackageNoteResponseOutput) License() LicenseResponseOutput {
+	return o.ApplyT(func(v PackageNoteResponse) LicenseResponse { return v.License }).(LicenseResponseOutput)
+}
+
+// A freeform text denoting the maintainer of this package.
+func (o PackageNoteResponseOutput) Maintainer() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageNoteResponse) string { return v.Maintainer }).(pulumi.StringOutput)
 }
 
 // Immutable. The name of the package.
@@ -10723,8 +11328,25 @@ func (o PackageNoteResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageNoteResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o PackageNoteResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageNoteResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// The homepage for this package.
+func (o PackageNoteResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageNoteResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// The version of the package.
+func (o PackageNoteResponseOutput) Version() VersionResponseOutput {
+	return o.ApplyT(func(v PackageNoteResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
+}
+
 // Details on how a particular software package was installed on a system.
 type PackageOccurrence struct {
+	// Licenses that have been declared by the authors of the package.
+	License *License `pulumi:"license"`
 	// All of the places within the filesystem versions of this package have been found.
 	Location []Location `pulumi:"location"`
 }
@@ -10742,6 +11364,8 @@ type PackageOccurrenceInput interface {
 
 // Details on how a particular software package was installed on a system.
 type PackageOccurrenceArgs struct {
+	// Licenses that have been declared by the authors of the package.
+	License LicensePtrInput `pulumi:"license"`
 	// All of the places within the filesystem versions of this package have been found.
 	Location LocationArrayInput `pulumi:"location"`
 }
@@ -10824,6 +11448,11 @@ func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutputWithContext(ctx con
 	}).(PackageOccurrencePtrOutput)
 }
 
+// Licenses that have been declared by the authors of the package.
+func (o PackageOccurrenceOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v PackageOccurrence) *License { return v.License }).(LicensePtrOutput)
+}
+
 // All of the places within the filesystem versions of this package have been found.
 func (o PackageOccurrenceOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v PackageOccurrence) []Location { return v.Location }).(LocationArrayOutput)
@@ -10853,6 +11482,16 @@ func (o PackageOccurrencePtrOutput) Elem() PackageOccurrenceOutput {
 	}).(PackageOccurrenceOutput)
 }
 
+// Licenses that have been declared by the authors of the package.
+func (o PackageOccurrencePtrOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v *PackageOccurrence) *License {
+		if v == nil {
+			return nil
+		}
+		return v.License
+	}).(LicensePtrOutput)
+}
+
 // All of the places within the filesystem versions of this package have been found.
 func (o PackageOccurrencePtrOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v *PackageOccurrence) []Location {
@@ -10865,10 +11504,20 @@ func (o PackageOccurrencePtrOutput) Location() LocationArrayOutput {
 
 // Details on how a particular software package was installed on a system.
 type PackageOccurrenceResponse struct {
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture string `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri string `pulumi:"cpeUri"`
+	// Licenses that have been declared by the authors of the package.
+	License LicenseResponse `pulumi:"license"`
 	// All of the places within the filesystem versions of this package have been found.
 	Location []LocationResponse `pulumi:"location"`
 	// The name of the installed package.
 	Name string `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType string `pulumi:"packageType"`
+	// The version of the package.
+	Version VersionResponse `pulumi:"version"`
 }
 
 // Details on how a particular software package was installed on a system.
@@ -10886,6 +11535,21 @@ func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponseOutputWithCo
 	return o
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o PackageOccurrenceResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o PackageOccurrenceResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// Licenses that have been declared by the authors of the package.
+func (o PackageOccurrenceResponseOutput) License() LicenseResponseOutput {
+	return o.ApplyT(func(v PackageOccurrenceResponse) LicenseResponse { return v.License }).(LicenseResponseOutput)
+}
+
 // All of the places within the filesystem versions of this package have been found.
 func (o PackageOccurrenceResponseOutput) Location() LocationResponseArrayOutput {
 	return o.ApplyT(func(v PackageOccurrenceResponse) []LocationResponse { return v.Location }).(LocationResponseArrayOutput)
@@ -10894,6 +11558,16 @@ func (o PackageOccurrenceResponseOutput) Location() LocationResponseArrayOutput 
 // The name of the installed package.
 func (o PackageOccurrenceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o PackageOccurrenceResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// The version of the package.
+func (o PackageOccurrenceResponseOutput) Version() VersionResponseOutput {
+	return o.ApplyT(func(v PackageOccurrenceResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
 }
 
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
@@ -16175,6 +16849,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentOccurrencePtrInput)(nil)).Elem(), DeploymentOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailInput)(nil)).Elem(), DetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailArrayInput)(nil)).Elem(), DetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DigestInput)(nil)).Elem(), DigestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DigestArrayInput)(nil)).Elem(), DigestArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryNoteInput)(nil)).Elem(), DiscoveryNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryNotePtrInput)(nil)).Elem(), DiscoveryNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryOccurrenceInput)(nil)).Elem(), DiscoveryOccurrenceArgs{})
@@ -16213,6 +16889,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KnowledgeBaseArrayInput)(nil)).Elem(), KnowledgeBaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerInput)(nil)).Elem(), LayerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerArrayInput)(nil)).Elem(), LayerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseInput)(nil)).Elem(), LicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicensePtrInput)(nil)).Elem(), LicenseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationInput)(nil)).Elem(), LocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationArrayInput)(nil)).Elem(), LocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaterialInput)(nil)).Elem(), MaterialArgs{})
@@ -16354,6 +17032,10 @@ func init() {
 	pulumi.RegisterOutputType(DetailArrayOutput{})
 	pulumi.RegisterOutputType(DetailResponseOutput{})
 	pulumi.RegisterOutputType(DetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(DigestOutput{})
+	pulumi.RegisterOutputType(DigestArrayOutput{})
+	pulumi.RegisterOutputType(DigestResponseOutput{})
+	pulumi.RegisterOutputType(DigestResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiscoveryNoteOutput{})
 	pulumi.RegisterOutputType(DiscoveryNotePtrOutput{})
 	pulumi.RegisterOutputType(DiscoveryNoteResponseOutput{})
@@ -16417,6 +17099,9 @@ func init() {
 	pulumi.RegisterOutputType(LayerArrayOutput{})
 	pulumi.RegisterOutputType(LayerResponseOutput{})
 	pulumi.RegisterOutputType(LayerResponseArrayOutput{})
+	pulumi.RegisterOutputType(LicenseOutput{})
+	pulumi.RegisterOutputType(LicensePtrOutput{})
+	pulumi.RegisterOutputType(LicenseResponseOutput{})
 	pulumi.RegisterOutputType(LocationOutput{})
 	pulumi.RegisterOutputType(LocationArrayOutput{})
 	pulumi.RegisterOutputType(LocationResponseOutput{})

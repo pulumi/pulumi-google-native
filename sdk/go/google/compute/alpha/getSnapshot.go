@@ -32,6 +32,8 @@ type LookupSnapshotResult struct {
 	AutoCreated bool `pulumi:"autoCreated"`
 	// Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
 	ChainName string `pulumi:"chainName"`
+	// Size in bytes of the snapshot at creation time.
+	CreationSizeBytes string `pulumi:"creationSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -143,6 +145,11 @@ func (o LookupSnapshotResultOutput) AutoCreated() pulumi.BoolOutput {
 // Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
 func (o LookupSnapshotResultOutput) ChainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.ChainName }).(pulumi.StringOutput)
+}
+
+// Size in bytes of the snapshot at creation time.
+func (o LookupSnapshotResultOutput) CreationSizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.CreationSizeBytes }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

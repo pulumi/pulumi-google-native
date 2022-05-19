@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const BinaryAuthorizationEvaluationMode = {
+    /**
+     * Default value, equivalent to DISABLED.
+     */
+    EvaluationModeUnspecified: "EVALUATION_MODE_UNSPECIFIED",
+    /**
+     * Disable BinaryAuthorization
+     */
+    Disabled: "DISABLED",
+    /**
+     * If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+     */
+    ProjectSingletonPolicyEnforce: "PROJECT_SINGLETON_POLICY_ENFORCE",
+} as const;
+
+/**
+ * Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+ */
+export type BinaryAuthorizationEvaluationMode = (typeof BinaryAuthorizationEvaluationMode)[keyof typeof BinaryAuthorizationEvaluationMode];
+
 export const CloudRunConfigLoadBalancerType = {
     /**
      * Load balancer type for Cloud Run is unspecified.

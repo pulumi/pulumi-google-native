@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly Outputs.DefaultPoolResponse DefaultPool;
         /// <summary>
+        /// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        /// </summary>
+        public readonly string ExecutionTimeout;
+        /// <summary>
         /// Optional. Use private Cloud Build pool.
         /// </summary>
         public readonly Outputs.PrivatePoolResponse PrivatePool;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
             Outputs.DefaultPoolResponse defaultPool,
 
+            string executionTimeout,
+
             Outputs.PrivatePoolResponse privatePool,
 
             string serviceAccount,
@@ -57,6 +63,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         {
             ArtifactStorage = artifactStorage;
             DefaultPool = defaultPool;
+            ExecutionTimeout = executionTimeout;
             PrivatePool = privatePool;
             ServiceAccount = serviceAccount;
             Usages = usages;

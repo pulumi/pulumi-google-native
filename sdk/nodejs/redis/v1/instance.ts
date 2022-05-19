@@ -84,6 +84,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.redis.v1.MaintenanceScheduleResponse>;
     /**
+     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+     */
+    public readonly maintenanceVersion!: pulumi.Output<string>;
+    /**
      * Redis memory size in GiB.
      */
     public readonly memorySizeGb!: pulumi.Output<number>;
@@ -189,6 +193,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
             resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -226,6 +231,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maintenancePolicy"] = undefined /*out*/;
             resourceInputs["maintenanceSchedule"] = undefined /*out*/;
+            resourceInputs["maintenanceVersion"] = undefined /*out*/;
             resourceInputs["memorySizeGb"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
@@ -291,6 +297,10 @@ export interface InstanceArgs {
      * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
      */
     maintenancePolicy?: pulumi.Input<inputs.redis.v1.MaintenancePolicyArgs>;
+    /**
+     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
      */

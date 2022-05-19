@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+    /// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
     /// </summary>
     [OutputType]
     public sealed class DocumentNoteResponse

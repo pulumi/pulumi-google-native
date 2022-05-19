@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        /// </summary>
+        public readonly ImmutableArray<string> Gateways;
+        /// <summary>
         /// Optional. Set of label tags associated with the TcpRoute resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 
             string description,
 
+            ImmutableArray<string> gateways,
+
             ImmutableDictionary<string, string> labels,
 
             ImmutableArray<string> meshes,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         {
             CreateTime = createTime;
             Description = description;
+            Gateways = gateways;
             Labels = labels;
             Meshes = meshes;
             Name = name;

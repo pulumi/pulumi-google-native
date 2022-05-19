@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        [Output("maintenanceVersion")]
+        public Output<string> MaintenanceVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         [Output("memorySizeGb")]
@@ -305,6 +311,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.MaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// Redis memory size in GiB.

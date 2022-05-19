@@ -422,7 +422,7 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse(dict):
         Agent Assist Article Suggestion data.
         :param float confidence_score: The system's confidence score that this article is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
         :param Mapping[str, str] metadata: Map that contains metadata about the Article Suggestion and the document that it originates from.
-        :param str query_record: Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        :param str query_record: The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         :param str source: The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}
         :param str title: Article title.
         :param str uri: Article URI.
@@ -454,7 +454,7 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse(dict):
     @pulumi.getter(name="queryRecord")
     def query_record(self) -> str:
         """
-        Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         """
         return pulumi.get(self, "query_record")
 
@@ -1409,7 +1409,7 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse(dict):
         :param str answer: The piece of text from the `source` knowledge base document.
         :param float confidence_score: The system's confidence score that this answer is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
         :param Mapping[str, str] metadata: Map that contains metadata about the FAQ answer and the document that it originates from.
-        :param str query_record: Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}.
+        :param str query_record: The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         :param str question: The corresponding FAQ question.
         :param str source: The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}.
         """
@@ -1448,7 +1448,7 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse(dict):
     @pulumi.getter(name="queryRecord")
     def query_record(self) -> str:
         """
-        Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}.
+        The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         """
         return pulumi.get(self, "query_record")
 
@@ -2240,7 +2240,7 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse(dict)
         Agent Assist Smart Compose suggestion data.
         :param float confidence_score: The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
         :param Mapping[str, str] metadata: Map that contains metadata about the Smart Compose suggestion and the document from which it originates.
-        :param str query_record: Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        :param str query_record: The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         :param str suggestion: The content of the suggestion.
         """
         pulumi.set(__self__, "confidence_score", confidence_score)
@@ -2268,7 +2268,7 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse(dict)
     @pulumi.getter(name="queryRecord")
     def query_record(self) -> str:
         """
-        Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         """
         return pulumi.get(self, "query_record")
 
@@ -2314,7 +2314,7 @@ class GoogleCloudContactcenterinsightsV1SmartReplyDataResponse(dict):
         Agent Assist Smart Reply data.
         :param float confidence_score: The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
         :param Mapping[str, str] metadata: Map that contains metadata about the Smart Reply and the document from which it originates.
-        :param str query_record: Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        :param str query_record: The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         :param str reply: The content of the reply.
         """
         pulumi.set(__self__, "confidence_score", confidence_score)
@@ -2342,7 +2342,7 @@ class GoogleCloudContactcenterinsightsV1SmartReplyDataResponse(dict):
     @pulumi.getter(name="queryRecord")
     def query_record(self) -> str:
         """
-        Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+        The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         """
         return pulumi.get(self, "query_record")
 

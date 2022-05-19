@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         private InputList<Inputs.CidrBlockArgs>? _cidrBlocks;
 
         /// <summary>
-        /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+        /// Up to 50 external networks that could access Kubernetes master through HTTPS.
         /// </summary>
         public InputList<Inputs.CidrBlockArgs> CidrBlocks
         {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Whether or not master authorized networks is enabled.
+        /// Whether or not master authorized networks feature is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

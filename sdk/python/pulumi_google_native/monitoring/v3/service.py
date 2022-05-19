@@ -19,9 +19,13 @@ class ServiceArgs:
                  v3_id1: pulumi.Input[str],
                  app_engine: Optional[pulumi.Input['AppEngineArgs']] = None,
                  cloud_endpoints: Optional[pulumi.Input['CloudEndpointsArgs']] = None,
+                 cloud_run: Optional[pulumi.Input['CloudRunArgs']] = None,
                  cluster_istio: Optional[pulumi.Input['ClusterIstioArgs']] = None,
                  custom: Optional[pulumi.Input['CustomArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 gke_namespace: Optional[pulumi.Input['GkeNamespaceArgs']] = None,
+                 gke_service: Optional[pulumi.Input['GkeServiceArgs']] = None,
+                 gke_workload: Optional[pulumi.Input['GkeWorkloadArgs']] = None,
                  istio_canonical_service: Optional[pulumi.Input['IstioCanonicalServiceArgs']] = None,
                  mesh_istio: Optional[pulumi.Input['MeshIstioArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -32,9 +36,13 @@ class ServiceArgs:
         The set of arguments for constructing a Service resource.
         :param pulumi.Input['AppEngineArgs'] app_engine: Type used for App Engine services.
         :param pulumi.Input['CloudEndpointsArgs'] cloud_endpoints: Type used for Cloud Endpoints services.
+        :param pulumi.Input['CloudRunArgs'] cloud_run: Type used for Cloud Run services.
         :param pulumi.Input['ClusterIstioArgs'] cluster_istio: Type used for Istio services that live in a Kubernetes cluster.
         :param pulumi.Input['CustomArgs'] custom: Custom service type.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
+        :param pulumi.Input['GkeNamespaceArgs'] gke_namespace: Type used for GKE Namespaces.
+        :param pulumi.Input['GkeServiceArgs'] gke_service: Type used for GKE Services (the Kubernetes concept of a service).
+        :param pulumi.Input['GkeWorkloadArgs'] gke_workload: Type used for GKE Workloads.
         :param pulumi.Input['IstioCanonicalServiceArgs'] istio_canonical_service: Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
         :param pulumi.Input['MeshIstioArgs'] mesh_istio: Type used for Istio services scoped to an Istio mesh.
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
@@ -48,12 +56,20 @@ class ServiceArgs:
             pulumi.set(__self__, "app_engine", app_engine)
         if cloud_endpoints is not None:
             pulumi.set(__self__, "cloud_endpoints", cloud_endpoints)
+        if cloud_run is not None:
+            pulumi.set(__self__, "cloud_run", cloud_run)
         if cluster_istio is not None:
             pulumi.set(__self__, "cluster_istio", cluster_istio)
         if custom is not None:
             pulumi.set(__self__, "custom", custom)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if gke_namespace is not None:
+            pulumi.set(__self__, "gke_namespace", gke_namespace)
+        if gke_service is not None:
+            pulumi.set(__self__, "gke_service", gke_service)
+        if gke_workload is not None:
+            pulumi.set(__self__, "gke_workload", gke_workload)
         if istio_canonical_service is not None:
             pulumi.set(__self__, "istio_canonical_service", istio_canonical_service)
         if mesh_istio is not None:
@@ -110,6 +126,18 @@ class ServiceArgs:
         pulumi.set(self, "cloud_endpoints", value)
 
     @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> Optional[pulumi.Input['CloudRunArgs']]:
+        """
+        Type used for Cloud Run services.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @cloud_run.setter
+    def cloud_run(self, value: Optional[pulumi.Input['CloudRunArgs']]):
+        pulumi.set(self, "cloud_run", value)
+
+    @property
     @pulumi.getter(name="clusterIstio")
     def cluster_istio(self) -> Optional[pulumi.Input['ClusterIstioArgs']]:
         """
@@ -144,6 +172,42 @@ class ServiceArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gkeNamespace")
+    def gke_namespace(self) -> Optional[pulumi.Input['GkeNamespaceArgs']]:
+        """
+        Type used for GKE Namespaces.
+        """
+        return pulumi.get(self, "gke_namespace")
+
+    @gke_namespace.setter
+    def gke_namespace(self, value: Optional[pulumi.Input['GkeNamespaceArgs']]):
+        pulumi.set(self, "gke_namespace", value)
+
+    @property
+    @pulumi.getter(name="gkeService")
+    def gke_service(self) -> Optional[pulumi.Input['GkeServiceArgs']]:
+        """
+        Type used for GKE Services (the Kubernetes concept of a service).
+        """
+        return pulumi.get(self, "gke_service")
+
+    @gke_service.setter
+    def gke_service(self, value: Optional[pulumi.Input['GkeServiceArgs']]):
+        pulumi.set(self, "gke_service", value)
+
+    @property
+    @pulumi.getter(name="gkeWorkload")
+    def gke_workload(self) -> Optional[pulumi.Input['GkeWorkloadArgs']]:
+        """
+        Type used for GKE Workloads.
+        """
+        return pulumi.get(self, "gke_workload")
+
+    @gke_workload.setter
+    def gke_workload(self, value: Optional[pulumi.Input['GkeWorkloadArgs']]):
+        pulumi.set(self, "gke_workload", value)
 
     @property
     @pulumi.getter(name="istioCanonicalService")
@@ -225,9 +289,13 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['AppEngineArgs']]] = None,
                  cloud_endpoints: Optional[pulumi.Input[pulumi.InputType['CloudEndpointsArgs']]] = None,
+                 cloud_run: Optional[pulumi.Input[pulumi.InputType['CloudRunArgs']]] = None,
                  cluster_istio: Optional[pulumi.Input[pulumi.InputType['ClusterIstioArgs']]] = None,
                  custom: Optional[pulumi.Input[pulumi.InputType['CustomArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 gke_namespace: Optional[pulumi.Input[pulumi.InputType['GkeNamespaceArgs']]] = None,
+                 gke_service: Optional[pulumi.Input[pulumi.InputType['GkeServiceArgs']]] = None,
+                 gke_workload: Optional[pulumi.Input[pulumi.InputType['GkeWorkloadArgs']]] = None,
                  istio_canonical_service: Optional[pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']]] = None,
                  mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -245,9 +313,13 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppEngineArgs']] app_engine: Type used for App Engine services.
         :param pulumi.Input[pulumi.InputType['CloudEndpointsArgs']] cloud_endpoints: Type used for Cloud Endpoints services.
+        :param pulumi.Input[pulumi.InputType['CloudRunArgs']] cloud_run: Type used for Cloud Run services.
         :param pulumi.Input[pulumi.InputType['ClusterIstioArgs']] cluster_istio: Type used for Istio services that live in a Kubernetes cluster.
         :param pulumi.Input[pulumi.InputType['CustomArgs']] custom: Custom service type.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
+        :param pulumi.Input[pulumi.InputType['GkeNamespaceArgs']] gke_namespace: Type used for GKE Namespaces.
+        :param pulumi.Input[pulumi.InputType['GkeServiceArgs']] gke_service: Type used for GKE Services (the Kubernetes concept of a service).
+        :param pulumi.Input[pulumi.InputType['GkeWorkloadArgs']] gke_workload: Type used for GKE Workloads.
         :param pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']] istio_canonical_service: Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
         :param pulumi.Input[pulumi.InputType['MeshIstioArgs']] mesh_istio: Type used for Istio services scoped to an Istio mesh.
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
@@ -282,9 +354,13 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['AppEngineArgs']]] = None,
                  cloud_endpoints: Optional[pulumi.Input[pulumi.InputType['CloudEndpointsArgs']]] = None,
+                 cloud_run: Optional[pulumi.Input[pulumi.InputType['CloudRunArgs']]] = None,
                  cluster_istio: Optional[pulumi.Input[pulumi.InputType['ClusterIstioArgs']]] = None,
                  custom: Optional[pulumi.Input[pulumi.InputType['CustomArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 gke_namespace: Optional[pulumi.Input[pulumi.InputType['GkeNamespaceArgs']]] = None,
+                 gke_service: Optional[pulumi.Input[pulumi.InputType['GkeServiceArgs']]] = None,
+                 gke_workload: Optional[pulumi.Input[pulumi.InputType['GkeWorkloadArgs']]] = None,
                  istio_canonical_service: Optional[pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']]] = None,
                  mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -307,9 +383,13 @@ class Service(pulumi.CustomResource):
 
             __props__.__dict__["app_engine"] = app_engine
             __props__.__dict__["cloud_endpoints"] = cloud_endpoints
+            __props__.__dict__["cloud_run"] = cloud_run
             __props__.__dict__["cluster_istio"] = cluster_istio
             __props__.__dict__["custom"] = custom
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["gke_namespace"] = gke_namespace
+            __props__.__dict__["gke_service"] = gke_service
+            __props__.__dict__["gke_workload"] = gke_workload
             __props__.__dict__["istio_canonical_service"] = istio_canonical_service
             __props__.__dict__["mesh_istio"] = mesh_istio
             __props__.__dict__["name"] = name
@@ -346,9 +426,13 @@ class Service(pulumi.CustomResource):
 
         __props__.__dict__["app_engine"] = None
         __props__.__dict__["cloud_endpoints"] = None
+        __props__.__dict__["cloud_run"] = None
         __props__.__dict__["cluster_istio"] = None
         __props__.__dict__["custom"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["gke_namespace"] = None
+        __props__.__dict__["gke_service"] = None
+        __props__.__dict__["gke_workload"] = None
         __props__.__dict__["istio_canonical_service"] = None
         __props__.__dict__["mesh_istio"] = None
         __props__.__dict__["name"] = None
@@ -373,6 +457,14 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "cloud_endpoints")
 
     @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> pulumi.Output['outputs.CloudRunResponse']:
+        """
+        Type used for Cloud Run services.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @property
     @pulumi.getter(name="clusterIstio")
     def cluster_istio(self) -> pulumi.Output['outputs.ClusterIstioResponse']:
         """
@@ -395,6 +487,30 @@ class Service(pulumi.CustomResource):
         Name used for UI elements listing this Service.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="gkeNamespace")
+    def gke_namespace(self) -> pulumi.Output['outputs.GkeNamespaceResponse']:
+        """
+        Type used for GKE Namespaces.
+        """
+        return pulumi.get(self, "gke_namespace")
+
+    @property
+    @pulumi.getter(name="gkeService")
+    def gke_service(self) -> pulumi.Output['outputs.GkeServiceResponse']:
+        """
+        Type used for GKE Services (the Kubernetes concept of a service).
+        """
+        return pulumi.get(self, "gke_service")
+
+    @property
+    @pulumi.getter(name="gkeWorkload")
+    def gke_workload(self) -> pulumi.Output['outputs.GkeWorkloadResponse']:
+        """
+        Type used for GKE Workloads.
+        """
+        return pulumi.get(self, "gke_workload")
 
     @property
     @pulumi.getter(name="istioCanonicalService")

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class InternalCheckerResponse
     {
         /// <summary>
-        /// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+        /// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string GcpZone;
         /// <summary>
-        /// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+        /// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+        /// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
         /// </summary>
         public readonly string PeerProjectId;
         /// <summary>

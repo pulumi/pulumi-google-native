@@ -28,6 +28,8 @@ type Occurrence struct {
 	DerivedImage GrafeasV1beta1ImageDetailsResponseOutput `pulumi:"derivedImage"`
 	// Describes when a resource was discovered.
 	Discovered GrafeasV1beta1DiscoveryDetailsResponseOutput `pulumi:"discovered"`
+	// https://github.com/secure-systems-lab/dsse
+	Envelope EnvelopeResponseOutput `pulumi:"envelope"`
 	// Describes the installation of a package on the linked resource.
 	Installation GrafeasV1beta1PackageDetailsResponseOutput `pulumi:"installation"`
 	// Describes a specific in-toto link.
@@ -111,6 +113,8 @@ type occurrenceArgs struct {
 	DerivedImage *GrafeasV1beta1ImageDetails `pulumi:"derivedImage"`
 	// Describes when a resource was discovered.
 	Discovered *GrafeasV1beta1DiscoveryDetails `pulumi:"discovered"`
+	// https://github.com/secure-systems-lab/dsse
+	Envelope *Envelope `pulumi:"envelope"`
 	// Describes the installation of a package on the linked resource.
 	Installation *GrafeasV1beta1PackageDetails `pulumi:"installation"`
 	// Describes a specific in-toto link.
@@ -146,6 +150,8 @@ type OccurrenceArgs struct {
 	DerivedImage GrafeasV1beta1ImageDetailsPtrInput
 	// Describes when a resource was discovered.
 	Discovered GrafeasV1beta1DiscoveryDetailsPtrInput
+	// https://github.com/secure-systems-lab/dsse
+	Envelope EnvelopePtrInput
 	// Describes the installation of a package on the linked resource.
 	Installation GrafeasV1beta1PackageDetailsPtrInput
 	// Describes a specific in-toto link.
@@ -234,6 +240,11 @@ func (o OccurrenceOutput) DerivedImage() GrafeasV1beta1ImageDetailsResponseOutpu
 // Describes when a resource was discovered.
 func (o OccurrenceOutput) Discovered() GrafeasV1beta1DiscoveryDetailsResponseOutput {
 	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1DiscoveryDetailsResponseOutput { return v.Discovered }).(GrafeasV1beta1DiscoveryDetailsResponseOutput)
+}
+
+// https://github.com/secure-systems-lab/dsse
+func (o OccurrenceOutput) Envelope() EnvelopeResponseOutput {
+	return o.ApplyT(func(v *Occurrence) EnvelopeResponseOutput { return v.Envelope }).(EnvelopeResponseOutput)
 }
 
 // Describes the installation of a package on the linked resource.

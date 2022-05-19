@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// CidrBlock contains an optional name and one CIDR block.
+    /// CIDR block with an optional name.
     /// </summary>
     public sealed class CidrBlockArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// cidr_block must be specified in CIDR notation.
+        /// CIDR block that must be specified in CIDR notation.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// display_name is a field for users to identify CIDR blocks.
+        /// User-defined name that identifies the CIDR block.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

@@ -18,7 +18,7 @@ type UptimeCheckConfig struct {
 	CheckerType pulumi.StringOutput `pulumi:"checkerType"`
 	// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
 	ContentMatchers ContentMatcherResponseArrayOutput `pulumi:"contentMatchers"`
-	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Contains information needed to make an HTTP or HTTPS check.
 	HttpCheck HttpCheckResponseOutput `pulumi:"httpCheck"`
@@ -85,7 +85,7 @@ type uptimeCheckConfigArgs struct {
 	CheckerType *UptimeCheckConfigCheckerType `pulumi:"checkerType"`
 	// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
 	ContentMatchers []ContentMatcher `pulumi:"contentMatchers"`
-	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
 	DisplayName *string `pulumi:"displayName"`
 	// Contains information needed to make an HTTP or HTTPS check.
 	HttpCheck *HttpCheck `pulumi:"httpCheck"`
@@ -116,7 +116,7 @@ type UptimeCheckConfigArgs struct {
 	CheckerType UptimeCheckConfigCheckerTypePtrInput
 	// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
 	ContentMatchers ContentMatcherArrayInput
-	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+	// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
 	DisplayName pulumi.StringPtrInput
 	// Contains information needed to make an HTTP or HTTPS check.
 	HttpCheck HttpCheckPtrInput
@@ -188,7 +188,7 @@ func (o UptimeCheckConfigOutput) ContentMatchers() ContentMatcherResponseArrayOu
 	return o.ApplyT(func(v *UptimeCheckConfig) ContentMatcherResponseArrayOutput { return v.ContentMatchers }).(ContentMatcherResponseArrayOutput)
 }
 
-// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
 func (o UptimeCheckConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public Input<Inputs.DefaultPoolArgs>? DefaultPool { get; set; }
 
         /// <summary>
+        /// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        /// </summary>
+        [Input("executionTimeout")]
+        public Input<string>? ExecutionTimeout { get; set; }
+
+        /// <summary>
         /// Optional. Use private Cloud Build pool.
         /// </summary>
         [Input("privatePool")]

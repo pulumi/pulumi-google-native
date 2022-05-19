@@ -172,11 +172,11 @@ func (o AllowedIpRangeResponseArrayOutput) Index(i pulumi.IntInput) AllowedIpRan
 	}).(AllowedIpRangeResponseOutput)
 }
 
-// CidrBlock contains an optional name and one CIDR block.
+// CIDR block with an optional name.
 type CidrBlock struct {
-	// cidr_block must be specified in CIDR notation.
+	// CIDR block that must be specified in CIDR notation.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// display_name is a field for users to identify CIDR blocks.
+	// User-defined name that identifies the CIDR block.
 	DisplayName *string `pulumi:"displayName"`
 }
 
@@ -191,11 +191,11 @@ type CidrBlockInput interface {
 	ToCidrBlockOutputWithContext(context.Context) CidrBlockOutput
 }
 
-// CidrBlock contains an optional name and one CIDR block.
+// CIDR block with an optional name.
 type CidrBlockArgs struct {
-	// cidr_block must be specified in CIDR notation.
+	// CIDR block that must be specified in CIDR notation.
 	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
-	// display_name is a field for users to identify CIDR blocks.
+	// User-defined name that identifies the CIDR block.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 }
 
@@ -236,7 +236,7 @@ func (i CidrBlockArray) ToCidrBlockArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CidrBlockArrayOutput)
 }
 
-// CidrBlock contains an optional name and one CIDR block.
+// CIDR block with an optional name.
 type CidrBlockOutput struct{ *pulumi.OutputState }
 
 func (CidrBlockOutput) ElementType() reflect.Type {
@@ -251,12 +251,12 @@ func (o CidrBlockOutput) ToCidrBlockOutputWithContext(ctx context.Context) CidrB
 	return o
 }
 
-// cidr_block must be specified in CIDR notation.
+// CIDR block that must be specified in CIDR notation.
 func (o CidrBlockOutput) CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CidrBlock) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// display_name is a field for users to identify CIDR blocks.
+// User-defined name that identifies the CIDR block.
 func (o CidrBlockOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CidrBlock) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -281,15 +281,15 @@ func (o CidrBlockArrayOutput) Index(i pulumi.IntInput) CidrBlockOutput {
 	}).(CidrBlockOutput)
 }
 
-// CidrBlock contains an optional name and one CIDR block.
+// CIDR block with an optional name.
 type CidrBlockResponse struct {
-	// cidr_block must be specified in CIDR notation.
+	// CIDR block that must be specified in CIDR notation.
 	CidrBlock string `pulumi:"cidrBlock"`
-	// display_name is a field for users to identify CIDR blocks.
+	// User-defined name that identifies the CIDR block.
 	DisplayName string `pulumi:"displayName"`
 }
 
-// CidrBlock contains an optional name and one CIDR block.
+// CIDR block with an optional name.
 type CidrBlockResponseOutput struct{ *pulumi.OutputState }
 
 func (CidrBlockResponseOutput) ElementType() reflect.Type {
@@ -304,12 +304,12 @@ func (o CidrBlockResponseOutput) ToCidrBlockResponseOutputWithContext(ctx contex
 	return o
 }
 
-// cidr_block must be specified in CIDR notation.
+// CIDR block that must be specified in CIDR notation.
 func (o CidrBlockResponseOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v CidrBlockResponse) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
-// display_name is a field for users to identify CIDR blocks.
+// User-defined name that identifies the CIDR block.
 func (o CidrBlockResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v CidrBlockResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -676,7 +676,7 @@ type EnvironmentConfig struct {
 	EnvironmentSize *EnvironmentConfigEnvironmentSize `pulumi:"environmentSize"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
-	// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+	// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 	MasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
@@ -715,7 +715,7 @@ type EnvironmentConfigArgs struct {
 	EnvironmentSize EnvironmentConfigEnvironmentSizePtrInput `pulumi:"environmentSize"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
-	// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+	// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput `pulumi:"masterAuthorizedNetworksConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigPtrInput `pulumi:"nodeConfig"`
@@ -831,7 +831,7 @@ func (o EnvironmentConfigOutput) MaintenanceWindow() MaintenanceWindowPtrOutput 
 	return o.ApplyT(func(v EnvironmentConfig) *MaintenanceWindow { return v.MaintenanceWindow }).(MaintenanceWindowPtrOutput)
 }
 
-// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 func (o EnvironmentConfigOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *MasterAuthorizedNetworksConfig { return v.MasterAuthorizedNetworksConfig }).(MasterAuthorizedNetworksConfigPtrOutput)
 }
@@ -935,7 +935,7 @@ func (o EnvironmentConfigPtrOutput) MaintenanceWindow() MaintenanceWindowPtrOutp
 	}).(MaintenanceWindowPtrOutput)
 }
 
-// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 func (o EnvironmentConfigPtrOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *MasterAuthorizedNetworksConfig {
 		if v == nil {
@@ -1031,7 +1031,7 @@ type EnvironmentConfigResponse struct {
 	GkeCluster string `pulumi:"gkeCluster"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
-	// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+	// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponse `pulumi:"masterAuthorizedNetworksConfig"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
@@ -1099,7 +1099,7 @@ func (o EnvironmentConfigResponseOutput) MaintenanceWindow() MaintenanceWindowRe
 	return o.ApplyT(func(v EnvironmentConfigResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
 
-// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
 func (o EnvironmentConfigResponseOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) MasterAuthorizedNetworksConfigResponse {
 		return v.MasterAuthorizedNetworksConfig
@@ -1633,9 +1633,9 @@ func (o MaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
 
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 type MasterAuthorizedNetworksConfig struct {
-	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+	// Up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks []CidrBlock `pulumi:"cidrBlocks"`
-	// Whether or not master authorized networks is enabled.
+	// Whether or not master authorized networks feature is enabled.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1652,9 +1652,9 @@ type MasterAuthorizedNetworksConfigInput interface {
 
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 type MasterAuthorizedNetworksConfigArgs struct {
-	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+	// Up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks CidrBlockArrayInput `pulumi:"cidrBlocks"`
-	// Whether or not master authorized networks is enabled.
+	// Whether or not master authorized networks feature is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1736,12 +1736,12 @@ func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigPt
 	}).(MasterAuthorizedNetworksConfigPtrOutput)
 }
 
-// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+// Up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o MasterAuthorizedNetworksConfigOutput) CidrBlocks() CidrBlockArrayOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) []CidrBlock { return v.CidrBlocks }).(CidrBlockArrayOutput)
 }
 
-// Whether or not master authorized networks is enabled.
+// Whether or not master authorized networks feature is enabled.
 func (o MasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1770,7 +1770,7 @@ func (o MasterAuthorizedNetworksConfigPtrOutput) Elem() MasterAuthorizedNetworks
 	}).(MasterAuthorizedNetworksConfigOutput)
 }
 
-// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+// Up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o MasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() CidrBlockArrayOutput {
 	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) []CidrBlock {
 		if v == nil {
@@ -1780,7 +1780,7 @@ func (o MasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() CidrBlockArrayOutp
 	}).(CidrBlockArrayOutput)
 }
 
-// Whether or not master authorized networks is enabled.
+// Whether or not master authorized networks feature is enabled.
 func (o MasterAuthorizedNetworksConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) *bool {
 		if v == nil {
@@ -1792,9 +1792,9 @@ func (o MasterAuthorizedNetworksConfigPtrOutput) Enabled() pulumi.BoolPtrOutput 
 
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 type MasterAuthorizedNetworksConfigResponse struct {
-	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+	// Up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks []CidrBlockResponse `pulumi:"cidrBlocks"`
-	// Whether or not master authorized networks is enabled.
+	// Whether or not master authorized networks feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -1813,12 +1813,12 @@ func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworks
 	return o
 }
 
-// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+// Up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o MasterAuthorizedNetworksConfigResponseOutput) CidrBlocks() CidrBlockResponseArrayOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) []CidrBlockResponse { return v.CidrBlocks }).(CidrBlockResponseArrayOutput)
 }
 
-// Whether or not master authorized networks is enabled.
+// Whether or not master authorized networks feature is enabled.
 func (o MasterAuthorizedNetworksConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

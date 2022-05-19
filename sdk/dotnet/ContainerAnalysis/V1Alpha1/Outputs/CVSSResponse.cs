@@ -11,28 +11,52 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
     /// <summary>
-    /// Common Vulnerability Scoring System.
+    /// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
     /// </summary>
     [OutputType]
     public sealed class CVSSResponse
     {
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         public readonly string AttackComplexity;
         /// <summary>
-        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
         /// </summary>
         public readonly string AttackVector;
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
         public readonly string Authentication;
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         public readonly string AvailabilityImpact;
         /// <summary>
         /// The base score is a function of the base metric scores.
         /// </summary>
         public readonly double BaseScore;
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         public readonly string ConfidentialityImpact;
         public readonly double ExploitabilityScore;
         public readonly double ImpactScore;
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         public readonly string IntegrityImpact;
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
         public readonly string PrivilegesRequired;
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
         public readonly string Scope;
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
         public readonly string UserInteraction;
 
         [OutputConstructor]

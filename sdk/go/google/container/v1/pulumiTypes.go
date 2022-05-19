@@ -1826,6 +1826,8 @@ func (o BigQueryDestinationResponseOutput) DatasetId() pulumi.StringOutput {
 type BinaryAuthorization struct {
 	// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
 	Enabled *bool `pulumi:"enabled"`
+	// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+	EvaluationMode *BinaryAuthorizationEvaluationMode `pulumi:"evaluationMode"`
 }
 
 // BinaryAuthorizationInput is an input type that accepts BinaryAuthorizationArgs and BinaryAuthorizationOutput values.
@@ -1843,6 +1845,8 @@ type BinaryAuthorizationInput interface {
 type BinaryAuthorizationArgs struct {
 	// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+	EvaluationMode BinaryAuthorizationEvaluationModePtrInput `pulumi:"evaluationMode"`
 }
 
 func (BinaryAuthorizationArgs) ElementType() reflect.Type {
@@ -1928,6 +1932,11 @@ func (o BinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BinaryAuthorization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+func (o BinaryAuthorizationOutput) EvaluationMode() BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ApplyT(func(v BinaryAuthorization) *BinaryAuthorizationEvaluationMode { return v.EvaluationMode }).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
 type BinaryAuthorizationPtrOutput struct{ *pulumi.OutputState }
 
 func (BinaryAuthorizationPtrOutput) ElementType() reflect.Type {
@@ -1962,10 +1971,22 @@ func (o BinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+func (o BinaryAuthorizationPtrOutput) EvaluationMode() BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ApplyT(func(v *BinaryAuthorization) *BinaryAuthorizationEvaluationMode {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMode
+	}).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
 // Configuration for Binary Authorization.
 type BinaryAuthorizationResponse struct {
 	// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
 	Enabled bool `pulumi:"enabled"`
+	// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+	EvaluationMode string `pulumi:"evaluationMode"`
 }
 
 // Configuration for Binary Authorization.
@@ -1986,6 +2007,11 @@ func (o BinaryAuthorizationResponseOutput) ToBinaryAuthorizationResponseOutputWi
 // Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
 func (o BinaryAuthorizationResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BinaryAuthorizationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+func (o BinaryAuthorizationResponseOutput) EvaluationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BinaryAuthorizationResponse) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
 // CidrBlock contains an optional name and one CIDR block.

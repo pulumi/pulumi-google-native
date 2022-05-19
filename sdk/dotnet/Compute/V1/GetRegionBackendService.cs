@@ -188,6 +188,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
+        /// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        /// </summary>
+        public readonly ImmutableArray<string> ServiceBindings;
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         /// </summary>
         public readonly string SessionAffinity;
@@ -265,6 +269,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string selfLink,
 
+            ImmutableArray<string> serviceBindings,
+
             string sessionAffinity,
 
             Outputs.SubsettingResponse subsetting,
@@ -304,6 +310,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             SecurityPolicy = securityPolicy;
             SecuritySettings = securitySettings;
             SelfLink = selfLink;
+            ServiceBindings = serviceBindings;
             SessionAffinity = sessionAffinity;
             Subsetting = subsetting;
             TimeoutSec = timeoutSec;

@@ -30,6 +30,7 @@ __all__ = [
     'GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse',
     'GoogleCloudDataplexV1EnvironmentSessionSpecResponse',
     'GoogleCloudDataplexV1EnvironmentSessionStatusResponse',
+    'GoogleCloudDataplexV1JobResponse',
     'GoogleCloudDataplexV1LakeMetastoreResponse',
     'GoogleCloudDataplexV1LakeMetastoreStatusResponse',
     'GoogleCloudDataplexV1SchemaPartitionFieldResponse',
@@ -39,6 +40,7 @@ __all__ = [
     'GoogleCloudDataplexV1StorageFormatJsonOptionsResponse',
     'GoogleCloudDataplexV1StorageFormatResponse',
     'GoogleCloudDataplexV1TaskExecutionSpecResponse',
+    'GoogleCloudDataplexV1TaskExecutionStatusResponse',
     'GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse',
     'GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse',
     'GoogleCloudDataplexV1TaskInfrastructureSpecResponse',
@@ -1102,6 +1104,139 @@ class GoogleCloudDataplexV1EnvironmentSessionStatusResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1JobResponse(dict):
+    """
+    A job represents an instance of a task.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "retryCount":
+            suggest = "retry_count"
+        elif key == "serviceJob":
+            suggest = "service_job"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1JobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1JobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1JobResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 message: str,
+                 name: str,
+                 retry_count: int,
+                 service: str,
+                 service_job: str,
+                 start_time: str,
+                 state: str,
+                 uid: str):
+        """
+        A job represents an instance of a task.
+        :param str end_time: The time when the job ended.
+        :param str message: Additional information about the current state.
+        :param str name: The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+        :param int retry_count: . The number of times the job has been retried (excluding the initial attempt).
+        :param str service: The underlying service running a job.
+        :param str service_job: The full resource name for the job run under a particular service.
+        :param str start_time: The time when the job was started.
+        :param str state: Execution state for the job.
+        :param str uid: System generated globally unique ID for the job.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "retry_count", retry_count)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "service_job", service_job)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time when the job ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Additional information about the current state.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="retryCount")
+    def retry_count(self) -> int:
+        """
+        . The number of times the job has been retried (excluding the initial attempt).
+        """
+        return pulumi.get(self, "retry_count")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The underlying service running a job.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceJob")
+    def service_job(self) -> str:
+        """
+        The full resource name for the job run under a particular service.
+        """
+        return pulumi.get(self, "service_job")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time when the job was started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Execution state for the job.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        System generated globally unique ID for the job.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1LakeMetastoreResponse(dict):
     """
     Settings to manage association of Dataproc Metastore with a lake.
@@ -1576,15 +1711,18 @@ class GoogleCloudDataplexV1TaskExecutionSpecResponse(dict):
     def __init__(__self__, *,
                  args: Mapping[str, str],
                  max_job_execution_lifetime: str,
+                 project: str,
                  service_account: str):
         """
         Execution related settings, like retry and service_account.
         :param Mapping[str, str] args: Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
         :param str max_job_execution_lifetime: Optional. The maximum duration after which the job execution is expired.
+        :param str project: Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
         :param str service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "max_job_execution_lifetime", max_job_execution_lifetime)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account", service_account)
 
     @property
@@ -1604,12 +1742,72 @@ class GoogleCloudDataplexV1TaskExecutionSpecResponse(dict):
         return pulumi.get(self, "max_job_execution_lifetime")
 
     @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+        """
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
         Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         """
         return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1TaskExecutionStatusResponse(dict):
+    """
+    Status of the task execution (e.g. Jobs).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latestJob":
+            suggest = "latest_job"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1TaskExecutionStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1TaskExecutionStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1TaskExecutionStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 latest_job: 'outputs.GoogleCloudDataplexV1JobResponse',
+                 update_time: str):
+        """
+        Status of the task execution (e.g. Jobs).
+        :param 'GoogleCloudDataplexV1JobResponse' latest_job: latest job execution
+        :param str update_time: Last update time of the status.
+        """
+        pulumi.set(__self__, "latest_job", latest_job)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="latestJob")
+    def latest_job(self) -> 'outputs.GoogleCloudDataplexV1JobResponse':
+        """
+        latest job execution
+        """
+        return pulumi.get(self, "latest_job")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Last update time of the status.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type
@@ -1641,8 +1839,8 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse(d
                  max_executors_count: int):
         """
         Batch compute resources associated with the task.
-        :param int executors_count: Optional. Total number of job executors.
-        :param int max_executors_count: Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+        :param int executors_count: Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
+        :param int max_executors_count: Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
         """
         pulumi.set(__self__, "executors_count", executors_count)
         pulumi.set(__self__, "max_executors_count", max_executors_count)
@@ -1651,7 +1849,7 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse(d
     @pulumi.getter(name="executorsCount")
     def executors_count(self) -> int:
         """
-        Optional. Total number of job executors.
+        Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
         """
         return pulumi.get(self, "executors_count")
 
@@ -1659,7 +1857,7 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse(d
     @pulumi.getter(name="maxExecutorsCount")
     def max_executors_count(self) -> int:
         """
-        Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+        Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
         """
         return pulumi.get(self, "max_executors_count")
 
@@ -2445,7 +2643,7 @@ class GoogleIamV1BindingResponse(dict):
         """
         Associates members, or principals, with a role.
         :param 'GoogleTypeExprResponse' condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         :param str role: Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         pulumi.set(__self__, "condition", condition)
@@ -2464,7 +2662,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "members")
 

@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         public readonly Outputs.MaintenanceScheduleResponse MaintenanceSchedule;
         /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        public readonly string MaintenanceVersion;
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         public readonly int MemorySizeGb;
@@ -212,6 +216,8 @@ namespace Pulumi.GoogleNative.Redis.V1
 
             Outputs.MaintenanceScheduleResponse maintenanceSchedule,
 
+            string maintenanceVersion,
+
             int memorySizeGb,
 
             string name,
@@ -262,6 +268,7 @@ namespace Pulumi.GoogleNative.Redis.V1
             Location = location;
             MaintenancePolicy = maintenancePolicy;
             MaintenanceSchedule = maintenanceSchedule;
+            MaintenanceVersion = maintenanceVersion;
             MemorySizeGb = memorySizeGb;
             Name = name;
             Nodes = nodes;

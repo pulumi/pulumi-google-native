@@ -15,6 +15,36 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// </summary>
     public sealed class PackageArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        /// </summary>
+        [Input("architecture")]
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.PackageArchitecture>? Architecture { get; set; }
+
+        /// <summary>
+        /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        /// </summary>
+        [Input("cpeUri")]
+        public Input<string>? CpeUri { get; set; }
+
+        /// <summary>
+        /// The description of this package.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("digest")]
+        private InputList<Inputs.DigestArgs>? _digest;
+
+        /// <summary>
+        /// Hash value, typically a file digest, that allows unique identification a specific package.
+        /// </summary>
+        public InputList<Inputs.DigestArgs> Digest
+        {
+            get => _digest ?? (_digest = new InputList<Inputs.DigestArgs>());
+            set => _digest = value;
+        }
+
         [Input("distribution")]
         private InputList<Inputs.DistributionArgs>? _distribution;
 
@@ -28,10 +58,40 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         }
 
         /// <summary>
+        /// Licenses that have been declared by the authors of the package.
+        /// </summary>
+        [Input("license")]
+        public Input<Inputs.LicenseArgs>? License { get; set; }
+
+        /// <summary>
+        /// A freeform text denoting the maintainer of this package.
+        /// </summary>
+        [Input("maintainer")]
+        public Input<string>? Maintainer { get; set; }
+
+        /// <summary>
         /// The name of the package.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        /// </summary>
+        [Input("packageType")]
+        public Input<string>? PackageType { get; set; }
+
+        /// <summary>
+        /// The homepage for this package.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
+
+        /// <summary>
+        /// The version of the package.
+        /// </summary>
+        [Input("version")]
+        public Input<Inputs.VersionArgs>? Version { get; set; }
 
         public PackageArgs()
         {

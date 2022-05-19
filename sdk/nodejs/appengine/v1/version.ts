@@ -41,7 +41,7 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly apiConfig!: pulumi.Output<outputs.appengine.v1.ApiConfigHandlerResponse>;
     /**
-     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
      */
     public readonly appEngineApis!: pulumi.Output<boolean>;
     /**
@@ -309,7 +309,7 @@ export interface VersionArgs {
      */
     apiConfig?: pulumi.Input<inputs.appengine.v1.ApiConfigHandlerArgs>;
     /**
-     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
      */
     appEngineApis?: pulumi.Input<boolean>;
     appId: pulumi.Input<string>;

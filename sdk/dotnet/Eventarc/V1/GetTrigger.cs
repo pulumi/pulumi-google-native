@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     public sealed class GetTriggerResult
     {
         /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        public readonly string Channel;
+        /// <summary>
         /// The creation time.
         /// </summary>
         public readonly string CreateTime;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1
 
         [OutputConstructor]
         private GetTriggerResult(
+            string channel,
+
             string createTime,
 
             Outputs.DestinationResponse destination,
@@ -124,6 +130,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
 
             string updateTime)
         {
+            Channel = channel;
             CreateTime = createTime;
             Destination = destination;
             Etag = etag;

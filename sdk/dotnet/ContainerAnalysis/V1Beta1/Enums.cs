@@ -93,6 +93,431 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Defined in CVSS v3, CVSS v2
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSAttackComplexity : IEquatable<CVSSAttackComplexity>
+    {
+        private readonly string _value;
+
+        private CVSSAttackComplexity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAttackComplexity AttackComplexityUnspecified { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAttackComplexity AttackComplexityLow { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_LOW");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAttackComplexity AttackComplexityHigh { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_HIGH");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSAttackComplexity AttackComplexityMedium { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_MEDIUM");
+
+        public static bool operator ==(CVSSAttackComplexity left, CVSSAttackComplexity right) => left.Equals(right);
+        public static bool operator !=(CVSSAttackComplexity left, CVSSAttackComplexity right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAttackComplexity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAttackComplexity other && Equals(other);
+        public bool Equals(CVSSAttackComplexity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSAttackVector : IEquatable<CVSSAttackVector>
+    {
+        private readonly string _value;
+
+        private CVSSAttackVector(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAttackVector AttackVectorUnspecified { get; } = new CVSSAttackVector("ATTACK_VECTOR_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAttackVector AttackVectorNetwork { get; } = new CVSSAttackVector("ATTACK_VECTOR_NETWORK");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAttackVector AttackVectorAdjacent { get; } = new CVSSAttackVector("ATTACK_VECTOR_ADJACENT");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAttackVector AttackVectorLocal { get; } = new CVSSAttackVector("ATTACK_VECTOR_LOCAL");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSAttackVector AttackVectorPhysical { get; } = new CVSSAttackVector("ATTACK_VECTOR_PHYSICAL");
+
+        public static bool operator ==(CVSSAttackVector left, CVSSAttackVector right) => left.Equals(right);
+        public static bool operator !=(CVSSAttackVector left, CVSSAttackVector right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAttackVector value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAttackVector other && Equals(other);
+        public bool Equals(CVSSAttackVector other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defined in CVSS v2
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSAuthentication : IEquatable<CVSSAuthentication>
+    {
+        private readonly string _value;
+
+        private CVSSAuthentication(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSAuthentication AuthenticationUnspecified { get; } = new CVSSAuthentication("AUTHENTICATION_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSAuthentication AuthenticationMultiple { get; } = new CVSSAuthentication("AUTHENTICATION_MULTIPLE");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSAuthentication AuthenticationSingle { get; } = new CVSSAuthentication("AUTHENTICATION_SINGLE");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSAuthentication AuthenticationNone { get; } = new CVSSAuthentication("AUTHENTICATION_NONE");
+
+        public static bool operator ==(CVSSAuthentication left, CVSSAuthentication right) => left.Equals(right);
+        public static bool operator !=(CVSSAuthentication left, CVSSAuthentication right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAuthentication value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAuthentication other && Equals(other);
+        public bool Equals(CVSSAuthentication other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defined in CVSS v3, CVSS v2
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSAvailabilityImpact : IEquatable<CVSSAvailabilityImpact>
+    {
+        private readonly string _value;
+
+        private CVSSAvailabilityImpact(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAvailabilityImpact ImpactUnspecified { get; } = new CVSSAvailabilityImpact("IMPACT_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSAvailabilityImpact ImpactHigh { get; } = new CVSSAvailabilityImpact("IMPACT_HIGH");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSAvailabilityImpact ImpactLow { get; } = new CVSSAvailabilityImpact("IMPACT_LOW");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSAvailabilityImpact ImpactNone { get; } = new CVSSAvailabilityImpact("IMPACT_NONE");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSAvailabilityImpact ImpactPartial { get; } = new CVSSAvailabilityImpact("IMPACT_PARTIAL");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSAvailabilityImpact ImpactComplete { get; } = new CVSSAvailabilityImpact("IMPACT_COMPLETE");
+
+        public static bool operator ==(CVSSAvailabilityImpact left, CVSSAvailabilityImpact right) => left.Equals(right);
+        public static bool operator !=(CVSSAvailabilityImpact left, CVSSAvailabilityImpact right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSAvailabilityImpact value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSAvailabilityImpact other && Equals(other);
+        public bool Equals(CVSSAvailabilityImpact other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defined in CVSS v3, CVSS v2
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSConfidentialityImpact : IEquatable<CVSSConfidentialityImpact>
+    {
+        private readonly string _value;
+
+        private CVSSConfidentialityImpact(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSConfidentialityImpact ImpactUnspecified { get; } = new CVSSConfidentialityImpact("IMPACT_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSConfidentialityImpact ImpactHigh { get; } = new CVSSConfidentialityImpact("IMPACT_HIGH");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSConfidentialityImpact ImpactLow { get; } = new CVSSConfidentialityImpact("IMPACT_LOW");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSConfidentialityImpact ImpactNone { get; } = new CVSSConfidentialityImpact("IMPACT_NONE");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSConfidentialityImpact ImpactPartial { get; } = new CVSSConfidentialityImpact("IMPACT_PARTIAL");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSConfidentialityImpact ImpactComplete { get; } = new CVSSConfidentialityImpact("IMPACT_COMPLETE");
+
+        public static bool operator ==(CVSSConfidentialityImpact left, CVSSConfidentialityImpact right) => left.Equals(right);
+        public static bool operator !=(CVSSConfidentialityImpact left, CVSSConfidentialityImpact right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSConfidentialityImpact value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSConfidentialityImpact other && Equals(other);
+        public bool Equals(CVSSConfidentialityImpact other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defined in CVSS v3, CVSS v2
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSIntegrityImpact : IEquatable<CVSSIntegrityImpact>
+    {
+        private readonly string _value;
+
+        private CVSSIntegrityImpact(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSIntegrityImpact ImpactUnspecified { get; } = new CVSSIntegrityImpact("IMPACT_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSIntegrityImpact ImpactHigh { get; } = new CVSSIntegrityImpact("IMPACT_HIGH");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSIntegrityImpact ImpactLow { get; } = new CVSSIntegrityImpact("IMPACT_LOW");
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
+        public static CVSSIntegrityImpact ImpactNone { get; } = new CVSSIntegrityImpact("IMPACT_NONE");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSIntegrityImpact ImpactPartial { get; } = new CVSSIntegrityImpact("IMPACT_PARTIAL");
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
+        public static CVSSIntegrityImpact ImpactComplete { get; } = new CVSSIntegrityImpact("IMPACT_COMPLETE");
+
+        public static bool operator ==(CVSSIntegrityImpact left, CVSSIntegrityImpact right) => left.Equals(right);
+        public static bool operator !=(CVSSIntegrityImpact left, CVSSIntegrityImpact right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSIntegrityImpact value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSIntegrityImpact other && Equals(other);
+        public bool Equals(CVSSIntegrityImpact other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defined in CVSS v3
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSPrivilegesRequired : IEquatable<CVSSPrivilegesRequired>
+    {
+        private readonly string _value;
+
+        private CVSSPrivilegesRequired(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSPrivilegesRequired PrivilegesRequiredUnspecified { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSPrivilegesRequired PrivilegesRequiredNone { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_NONE");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSPrivilegesRequired PrivilegesRequiredLow { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_LOW");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSPrivilegesRequired PrivilegesRequiredHigh { get; } = new CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_HIGH");
+
+        public static bool operator ==(CVSSPrivilegesRequired left, CVSSPrivilegesRequired right) => left.Equals(right);
+        public static bool operator !=(CVSSPrivilegesRequired left, CVSSPrivilegesRequired right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSPrivilegesRequired value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSPrivilegesRequired other && Equals(other);
+        public bool Equals(CVSSPrivilegesRequired other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defined in CVSS v3
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSScope : IEquatable<CVSSScope>
+    {
+        private readonly string _value;
+
+        private CVSSScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSScope ScopeUnspecified { get; } = new CVSSScope("SCOPE_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSScope ScopeUnchanged { get; } = new CVSSScope("SCOPE_UNCHANGED");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSScope ScopeChanged { get; } = new CVSSScope("SCOPE_CHANGED");
+
+        public static bool operator ==(CVSSScope left, CVSSScope right) => left.Equals(right);
+        public static bool operator !=(CVSSScope left, CVSSScope right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSScope other && Equals(other);
+        public bool Equals(CVSSScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defined in CVSS v3
+    /// </summary>
+    [EnumType]
+    public readonly struct CVSSUserInteraction : IEquatable<CVSSUserInteraction>
+    {
+        private readonly string _value;
+
+        private CVSSUserInteraction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSUserInteraction UserInteractionUnspecified { get; } = new CVSSUserInteraction("USER_INTERACTION_UNSPECIFIED");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSUserInteraction UserInteractionNone { get; } = new CVSSUserInteraction("USER_INTERACTION_NONE");
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
+        public static CVSSUserInteraction UserInteractionRequired { get; } = new CVSSUserInteraction("USER_INTERACTION_REQUIRED");
+
+        public static bool operator ==(CVSSUserInteraction left, CVSSUserInteraction right) => left.Equals(right);
+        public static bool operator !=(CVSSUserInteraction left, CVSSUserInteraction right) => !left.Equals(right);
+
+        public static explicit operator string(CVSSUserInteraction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CVSSUserInteraction other && Equals(other);
+        public bool Equals(CVSSUserInteraction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct CVSSv3AttackComplexity : IEquatable<CVSSv3AttackComplexity>
     {
@@ -942,6 +1367,47 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is LayerDirective other && Equals(other);
         public bool Equals(LayerDirective other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+    /// </summary>
+    [EnumType]
+    public readonly struct PackageArchitecture : IEquatable<PackageArchitecture>
+    {
+        private readonly string _value;
+
+        private PackageArchitecture(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown architecture.
+        /// </summary>
+        public static PackageArchitecture ArchitectureUnspecified { get; } = new PackageArchitecture("ARCHITECTURE_UNSPECIFIED");
+        /// <summary>
+        /// X86 architecture.
+        /// </summary>
+        public static PackageArchitecture X86 { get; } = new PackageArchitecture("X86");
+        /// <summary>
+        /// X64 architecture.
+        /// </summary>
+        public static PackageArchitecture X64 { get; } = new PackageArchitecture("X64");
+
+        public static bool operator ==(PackageArchitecture left, PackageArchitecture right) => left.Equals(right);
+        public static bool operator !=(PackageArchitecture left, PackageArchitecture right) => !left.Equals(right);
+
+        public static explicit operator string(PackageArchitecture value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PackageArchitecture other && Equals(other);
+        public bool Equals(PackageArchitecture other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

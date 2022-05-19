@@ -21,6 +21,8 @@ __all__ = [
     'GoogleCloudFunctionsV2alphaStateMessageResponse',
     'RepoSourceResponse',
     'SecretEnvVarResponse',
+    'SecretVersionResponse',
+    'SecretVolumeResponse',
     'ServiceConfigResponse',
     'SourceProvenanceResponse',
     'SourceResponse',
@@ -30,7 +32,7 @@ __all__ = [
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
-    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -53,7 +55,7 @@ class AuditConfigResponse(dict):
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param Sequence['AuditLogConfigResponse'] audit_log_configs: The configuration for logging of each type of permission.
         :param str service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
@@ -692,7 +694,7 @@ class SecretEnvVarResponse(dict):
         """
         Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
         :param str key: Name of the environment variable.
-        :param str project: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param str project: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
         :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
@@ -713,7 +715,7 @@ class SecretEnvVarResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
         """
         return pulumi.get(self, "project")
 
@@ -732,6 +734,111 @@ class SecretEnvVarResponse(dict):
         Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SecretVersionResponse(dict):
+    """
+    Configuration for a single version.
+    """
+    def __init__(__self__, *,
+                 path: str,
+                 version: str):
+        """
+        Configuration for a single version.
+        :param str path: Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+        :param str version: Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SecretVolumeResponse(dict):
+    """
+    Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretVolumeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretVolumeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretVolumeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: str,
+                 project: str,
+                 secret: str,
+                 versions: Sequence['outputs.SecretVersionResponse']):
+        """
+        Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+        :param str mount_path: The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        :param str project: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+        :param str secret: Name of the secret in secret manager (not the full resource name).
+        :param Sequence['SecretVersionResponse'] versions: List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        Name of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.SecretVersionResponse']:
+        """
+        List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+        """
+        return pulumi.get(self, "versions")
 
 
 @pulumi.output_type
@@ -756,6 +863,8 @@ class ServiceConfigResponse(dict):
             suggest = "min_instance_count"
         elif key == "secretEnvironmentVariables":
             suggest = "secret_environment_variables"
+        elif key == "secretVolumes":
+            suggest = "secret_volumes"
         elif key == "serviceAccountEmail":
             suggest = "service_account_email"
         elif key == "timeoutSeconds":
@@ -785,6 +894,7 @@ class ServiceConfigResponse(dict):
                  min_instance_count: int,
                  revision: str,
                  secret_environment_variables: Sequence['outputs.SecretEnvVarResponse'],
+                 secret_volumes: Sequence['outputs.SecretVolumeResponse'],
                  service: str,
                  service_account_email: str,
                  timeout_seconds: int,
@@ -801,6 +911,7 @@ class ServiceConfigResponse(dict):
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         :param str revision: The name of service revision.
         :param Sequence['SecretEnvVarResponse'] secret_environment_variables: Secret environment variables configuration.
+        :param Sequence['SecretVolumeResponse'] secret_volumes: Secret volumes configuration.
         :param str service: Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         :param str service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param int timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -816,6 +927,7 @@ class ServiceConfigResponse(dict):
         pulumi.set(__self__, "min_instance_count", min_instance_count)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        pulumi.set(__self__, "secret_volumes", secret_volumes)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
@@ -886,6 +998,14 @@ class ServiceConfigResponse(dict):
         Secret environment variables configuration.
         """
         return pulumi.get(self, "secret_environment_variables")
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Sequence['outputs.SecretVolumeResponse']:
+        """
+        Secret volumes configuration.
+        """
+        return pulumi.get(self, "secret_volumes")
 
     @property
     @pulumi.getter

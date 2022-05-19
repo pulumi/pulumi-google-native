@@ -39,6 +39,10 @@ export interface GetSnapshotResult {
      */
     readonly chainName: string;
     /**
+     * Size in bytes of the snapshot at creation time.
+     */
+    readonly creationSizeBytes: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;

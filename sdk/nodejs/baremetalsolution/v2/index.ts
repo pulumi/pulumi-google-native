@@ -6,19 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./getProvisioningConfig";
-export * from "./getSnapshot";
-export * from "./getSnapshotSchedulePolicy";
 export * from "./provisioningConfig";
-export * from "./snapshot";
-export * from "./snapshotSchedulePolicy";
 
 // Export enums:
 export * from "../../types/enums/baremetalsolution/v2";
 
 // Import resources to register:
 import { ProvisioningConfig } from "./provisioningConfig";
-import { Snapshot } from "./snapshot";
-import { SnapshotSchedulePolicy } from "./snapshotSchedulePolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -26,10 +20,6 @@ const _module = {
         switch (type) {
             case "google-native:baremetalsolution/v2:ProvisioningConfig":
                 return new ProvisioningConfig(name, <any>undefined, { urn })
-            case "google-native:baremetalsolution/v2:Snapshot":
-                return new Snapshot(name, <any>undefined, { urn })
-            case "google-native:baremetalsolution/v2:SnapshotSchedulePolicy":
-                return new SnapshotSchedulePolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

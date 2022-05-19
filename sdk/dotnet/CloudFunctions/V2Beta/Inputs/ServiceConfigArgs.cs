@@ -69,6 +69,18 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
             set => _secretEnvironmentVariables = value;
         }
 
+        [Input("secretVolumes")]
+        private InputList<Inputs.SecretVolumeArgs>? _secretVolumes;
+
+        /// <summary>
+        /// Secret volumes configuration.
+        /// </summary>
+        public InputList<Inputs.SecretVolumeArgs> SecretVolumes
+        {
+            get => _secretVolumes ?? (_secretVolumes = new InputList<Inputs.SecretVolumeArgs>());
+            set => _secretVolumes = value;
+        }
+
         /// <summary>
         /// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         /// </summary>

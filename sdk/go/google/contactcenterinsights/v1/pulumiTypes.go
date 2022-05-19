@@ -246,7 +246,7 @@ type GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse struct {
 	ConfidenceScore float64 `pulumi:"confidenceScore"`
 	// Map that contains metadata about the Article Suggestion and the document that it originates from.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+	// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `pulumi:"queryRecord"`
 	// The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}
 	Source string `pulumi:"source"`
@@ -285,7 +285,7 @@ func (o GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponseOutput) M
 	}).(pulumi.StringMapOutput)
 }
 
-// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 func (o GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponseOutput) QueryRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse) string { return v.QueryRecord }).(pulumi.StringOutput)
 }
@@ -1624,7 +1624,7 @@ type GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse struct {
 	ConfidenceScore float64 `pulumi:"confidenceScore"`
 	// Map that contains metadata about the FAQ answer and the document that it originates from.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}.
+	// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `pulumi:"queryRecord"`
 	// The corresponding FAQ question.
 	Question string `pulumi:"question"`
@@ -1662,7 +1662,7 @@ func (o GoogleCloudContactcenterinsightsV1FaqAnswerDataResponseOutput) Metadata(
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}.
+// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 func (o GoogleCloudContactcenterinsightsV1FaqAnswerDataResponseOutput) QueryRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse) string { return v.QueryRecord }).(pulumi.StringOutput)
 }
@@ -3013,7 +3013,7 @@ type GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse struct
 	ConfidenceScore float64 `pulumi:"confidenceScore"`
 	// Map that contains metadata about the Smart Compose suggestion and the document from which it originates.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+	// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `pulumi:"queryRecord"`
 	// The content of the suggestion.
 	Suggestion string `pulumi:"suggestion"`
@@ -3048,7 +3048,7 @@ func (o GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponseOutp
 	}).(pulumi.StringMapOutput)
 }
 
-// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 func (o GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponseOutput) QueryRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse) string {
 		return v.QueryRecord
@@ -3068,7 +3068,7 @@ type GoogleCloudContactcenterinsightsV1SmartReplyDataResponse struct {
 	ConfidenceScore float64 `pulumi:"confidenceScore"`
 	// Map that contains metadata about the Smart Reply and the document from which it originates.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+	// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `pulumi:"queryRecord"`
 	// The content of the reply.
 	Reply string `pulumi:"reply"`
@@ -3099,7 +3099,7 @@ func (o GoogleCloudContactcenterinsightsV1SmartReplyDataResponseOutput) Metadata
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1SmartReplyDataResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
 func (o GoogleCloudContactcenterinsightsV1SmartReplyDataResponseOutput) QueryRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1SmartReplyDataResponse) string { return v.QueryRecord }).(pulumi.StringOutput)
 }

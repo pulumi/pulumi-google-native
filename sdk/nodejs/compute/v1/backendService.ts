@@ -164,6 +164,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+     */
+    public readonly serviceBindings!: pulumi.Output<string[]>;
+    /**
      * Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
@@ -212,6 +216,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
+            resourceInputs["serviceBindings"] = args ? args.serviceBindings : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             resourceInputs["subsetting"] = args ? args.subsetting : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
@@ -256,6 +261,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["securityPolicy"] = undefined /*out*/;
             resourceInputs["securitySettings"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceBindings"] = undefined /*out*/;
             resourceInputs["sessionAffinity"] = undefined /*out*/;
             resourceInputs["subsetting"] = undefined /*out*/;
             resourceInputs["timeoutSec"] = undefined /*out*/;
@@ -374,6 +380,10 @@ export interface BackendServiceArgs {
      * This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      */
     securitySettings?: pulumi.Input<inputs.compute.v1.SecuritySettingsArgs>;
+    /**
+     * URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+     */
+    serviceBindings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
      */

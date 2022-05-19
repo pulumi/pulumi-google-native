@@ -2625,8 +2625,12 @@ type BucketLifecycleRuleItemCondition struct {
 	IsLive *bool `pulumi:"isLive"`
 	// A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
 	MatchesPattern *string `pulumi:"matchesPattern"`
+	// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+	MatchesPrefix []string `pulumi:"matchesPrefix"`
 	// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
 	MatchesStorageClass []string `pulumi:"matchesStorageClass"`
+	// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+	MatchesSuffix []string `pulumi:"matchesSuffix"`
 	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
 	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
@@ -2660,8 +2664,12 @@ type BucketLifecycleRuleItemConditionArgs struct {
 	IsLive pulumi.BoolPtrInput `pulumi:"isLive"`
 	// A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
 	MatchesPattern pulumi.StringPtrInput `pulumi:"matchesPattern"`
+	// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+	MatchesPrefix pulumi.StringArrayInput `pulumi:"matchesPrefix"`
 	// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
 	MatchesStorageClass pulumi.StringArrayInput `pulumi:"matchesStorageClass"`
+	// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+	MatchesSuffix pulumi.StringArrayInput `pulumi:"matchesSuffix"`
 	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
 	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
@@ -2781,9 +2789,19 @@ func (o BucketLifecycleRuleItemConditionOutput) MatchesPattern() pulumi.StringPt
 	return o.ApplyT(func(v BucketLifecycleRuleItemCondition) *string { return v.MatchesPattern }).(pulumi.StringPtrOutput)
 }
 
+// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+func (o BucketLifecycleRuleItemConditionOutput) MatchesPrefix() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleItemCondition) []string { return v.MatchesPrefix }).(pulumi.StringArrayOutput)
+}
+
 // Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
 func (o BucketLifecycleRuleItemConditionOutput) MatchesStorageClass() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleItemCondition) []string { return v.MatchesStorageClass }).(pulumi.StringArrayOutput)
+}
+
+// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+func (o BucketLifecycleRuleItemConditionOutput) MatchesSuffix() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleItemCondition) []string { return v.MatchesSuffix }).(pulumi.StringArrayOutput)
 }
 
 // A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
@@ -2890,6 +2908,16 @@ func (o BucketLifecycleRuleItemConditionPtrOutput) MatchesPattern() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+func (o BucketLifecycleRuleItemConditionPtrOutput) MatchesPrefix() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleItemCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchesPrefix
+	}).(pulumi.StringArrayOutput)
+}
+
 // Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
 func (o BucketLifecycleRuleItemConditionPtrOutput) MatchesStorageClass() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleItemCondition) []string {
@@ -2897,6 +2925,16 @@ func (o BucketLifecycleRuleItemConditionPtrOutput) MatchesStorageClass() pulumi.
 			return nil
 		}
 		return v.MatchesStorageClass
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+func (o BucketLifecycleRuleItemConditionPtrOutput) MatchesSuffix() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketLifecycleRuleItemCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchesSuffix
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -2936,8 +2974,12 @@ type BucketLifecycleRuleItemConditionResponse struct {
 	IsLive bool `pulumi:"isLive"`
 	// A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
 	MatchesPattern string `pulumi:"matchesPattern"`
+	// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+	MatchesPrefix []string `pulumi:"matchesPrefix"`
 	// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
 	MatchesStorageClass []string `pulumi:"matchesStorageClass"`
+	// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+	MatchesSuffix []string `pulumi:"matchesSuffix"`
 	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
 	NoncurrentTimeBefore string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
@@ -2994,9 +3036,19 @@ func (o BucketLifecycleRuleItemConditionResponseOutput) MatchesPattern() pulumi.
 	return o.ApplyT(func(v BucketLifecycleRuleItemConditionResponse) string { return v.MatchesPattern }).(pulumi.StringOutput)
 }
 
+// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+func (o BucketLifecycleRuleItemConditionResponseOutput) MatchesPrefix() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleItemConditionResponse) []string { return v.MatchesPrefix }).(pulumi.StringArrayOutput)
+}
+
 // Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
 func (o BucketLifecycleRuleItemConditionResponseOutput) MatchesStorageClass() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleItemConditionResponse) []string { return v.MatchesStorageClass }).(pulumi.StringArrayOutput)
+}
+
+// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+func (o BucketLifecycleRuleItemConditionResponseOutput) MatchesSuffix() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleItemConditionResponse) []string { return v.MatchesSuffix }).(pulumi.StringArrayOutput)
 }
 
 // A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.

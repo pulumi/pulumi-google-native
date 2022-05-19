@@ -17,6 +17,7 @@ __all__ = [
     'PubsubConfigState',
     'PullRequestFilterCommentControl',
     'TriggerEventType',
+    'TriggerIncludeBuildLogs',
     'WebhookConfigState',
 ]
 
@@ -267,6 +268,20 @@ class TriggerEventType(str, Enum):
     MANUAL = "MANUAL"
     """
     MANUAL corresponds to manual-only invoked triggers.
+    """
+
+
+class TriggerIncludeBuildLogs(str, Enum):
+    """
+    If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+    """
+    INCLUDE_BUILD_LOGS_UNSPECIFIED = "INCLUDE_BUILD_LOGS_UNSPECIFIED"
+    """
+    Build logs will not be shown on GitHub.
+    """
+    INCLUDE_BUILD_LOGS_WITH_STATUS = "INCLUDE_BUILD_LOGS_WITH_STATUS"
+    """
+    Build logs will be shown on GitHub.
     """
 
 

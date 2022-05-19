@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
-        /// Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}.
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
         /// </summary>
         public readonly string QueryRecord;
         /// <summary>

@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// </summary>
     public sealed class InstallationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Licenses that have been declared by the authors of the package.
+        /// </summary>
+        [Input("license")]
+        public Input<Inputs.LicenseArgs>? License { get; set; }
+
         [Input("location")]
         private InputList<Inputs.LocationArgs>? _location;
 

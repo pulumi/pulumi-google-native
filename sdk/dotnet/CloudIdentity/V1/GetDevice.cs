@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Unique identifier for the device.
+        /// </summary>
+        public readonly string DeviceId;
+        /// <summary>
         /// Type of device.
         /// </summary>
         public readonly string DeviceType;
@@ -186,6 +190,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
 
             string createTime,
 
+            string deviceId,
+
             string deviceType,
 
             bool enabledDeveloperOptions,
@@ -234,6 +240,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
             BuildNumber = buildNumber;
             CompromisedState = compromisedState;
             CreateTime = createTime;
+            DeviceId = deviceId;
             DeviceType = deviceType;
             EnabledDeveloperOptions = enabledDeveloperOptions;
             EnabledUsbDebugging = enabledUsbDebugging;

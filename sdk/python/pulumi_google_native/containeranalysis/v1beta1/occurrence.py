@@ -23,6 +23,7 @@ class OccurrenceArgs:
                  deployment: Optional[pulumi.Input['GrafeasV1beta1DeploymentDetailsArgs']] = None,
                  derived_image: Optional[pulumi.Input['GrafeasV1beta1ImageDetailsArgs']] = None,
                  discovered: Optional[pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs']] = None,
+                 envelope: Optional[pulumi.Input['EnvelopeArgs']] = None,
                  installation: Optional[pulumi.Input['GrafeasV1beta1PackageDetailsArgs']] = None,
                  intoto: Optional[pulumi.Input['GrafeasV1beta1IntotoDetailsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class OccurrenceArgs:
         :param pulumi.Input['GrafeasV1beta1DeploymentDetailsArgs'] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input['GrafeasV1beta1ImageDetailsArgs'] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs'] discovered: Describes when a resource was discovered.
+        :param pulumi.Input['EnvelopeArgs'] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input['GrafeasV1beta1PackageDetailsArgs'] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input['GrafeasV1beta1IntotoDetailsArgs'] intoto: Describes a specific in-toto link.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
@@ -62,6 +64,8 @@ class OccurrenceArgs:
             pulumi.set(__self__, "derived_image", derived_image)
         if discovered is not None:
             pulumi.set(__self__, "discovered", discovered)
+        if envelope is not None:
+            pulumi.set(__self__, "envelope", envelope)
         if installation is not None:
             pulumi.set(__self__, "installation", installation)
         if intoto is not None:
@@ -164,6 +168,18 @@ class OccurrenceArgs:
     @discovered.setter
     def discovered(self, value: Optional[pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs']]):
         pulumi.set(self, "discovered", value)
+
+    @property
+    @pulumi.getter
+    def envelope(self) -> Optional[pulumi.Input['EnvelopeArgs']]:
+        """
+        https://github.com/secure-systems-lab/dsse
+        """
+        return pulumi.get(self, "envelope")
+
+    @envelope.setter
+    def envelope(self, value: Optional[pulumi.Input['EnvelopeArgs']]):
+        pulumi.set(self, "envelope", value)
 
     @property
     @pulumi.getter
@@ -281,6 +297,7 @@ class Occurrence(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DeploymentDetailsArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1ImageDetailsArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']]] = None,
+                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
@@ -304,6 +321,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DeploymentDetailsArgs']] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1ImageDetailsArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']] discovered: Describes when a resource was discovered.
+        :param pulumi.Input[pulumi.InputType['EnvelopeArgs']] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']] intoto: Describes a specific in-toto link.
         :param pulumi.Input[str] note_name: Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
@@ -345,6 +363,7 @@ class Occurrence(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DeploymentDetailsArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1ImageDetailsArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']]] = None,
+                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']]] = None,
                  intoto: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
@@ -373,6 +392,7 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["derived_image"] = derived_image
             __props__.__dict__["discovered"] = discovered
+            __props__.__dict__["envelope"] = envelope
             __props__.__dict__["installation"] = installation
             __props__.__dict__["intoto"] = intoto
             if note_name is None and not opts.urn:
@@ -420,6 +440,7 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["deployment"] = None
         __props__.__dict__["derived_image"] = None
         __props__.__dict__["discovered"] = None
+        __props__.__dict__["envelope"] = None
         __props__.__dict__["installation"] = None
         __props__.__dict__["intoto"] = None
         __props__.__dict__["kind"] = None
@@ -482,6 +503,14 @@ class Occurrence(pulumi.CustomResource):
         Describes when a resource was discovered.
         """
         return pulumi.get(self, "discovered")
+
+    @property
+    @pulumi.getter
+    def envelope(self) -> pulumi.Output['outputs.EnvelopeResponse']:
+        """
+        https://github.com/secure-systems-lab/dsse
+        """
+        return pulumi.get(self, "envelope")
 
     @property
     @pulumi.getter

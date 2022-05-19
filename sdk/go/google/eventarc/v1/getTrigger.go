@@ -27,6 +27,8 @@ type LookupTriggerArgs struct {
 }
 
 type LookupTriggerResult struct {
+	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+	Channel string `pulumi:"channel"`
 	// The creation time.
 	CreateTime string `pulumi:"createTime"`
 	// Destination specifies where the events should be sent to.
@@ -84,6 +86,11 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutput() LookupTriggerRe
 
 func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx context.Context) LookupTriggerResultOutput {
 	return o
+}
+
+// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+func (o LookupTriggerResultOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.Channel }).(pulumi.StringOutput)
 }
 
 // The creation time.

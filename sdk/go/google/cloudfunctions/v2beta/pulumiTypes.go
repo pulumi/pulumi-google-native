@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfig `pulumi:"auditLogConfigs"`
@@ -29,7 +29,7 @@ type AuditConfigInput interface {
 	ToAuditConfigOutputWithContext(context.Context) AuditConfigOutput
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigArgs struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
@@ -74,7 +74,7 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
 func (AuditConfigOutput) ElementType() reflect.Type {
@@ -119,7 +119,7 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigResponse struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
@@ -127,7 +127,7 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (AuditConfigResponseOutput) ElementType() reflect.Type {
@@ -1959,7 +1959,7 @@ func (o RepoSourceResponseOutput) TagName() pulumi.StringOutput {
 type SecretEnvVar struct {
 	// Name of the environment variable.
 	Key *string `pulumi:"key"`
-	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
 	Project *string `pulumi:"project"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret *string `pulumi:"secret"`
@@ -1982,7 +1982,7 @@ type SecretEnvVarInput interface {
 type SecretEnvVarArgs struct {
 	// Name of the environment variable.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringPtrInput `pulumi:"secret"`
@@ -2047,7 +2047,7 @@ func (o SecretEnvVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretEnvVar) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
 func (o SecretEnvVarOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretEnvVar) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -2086,7 +2086,7 @@ func (o SecretEnvVarArrayOutput) Index(i pulumi.IntInput) SecretEnvVarOutput {
 type SecretEnvVarResponse struct {
 	// Name of the environment variable.
 	Key string `pulumi:"key"`
-	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
 	Project string `pulumi:"project"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
@@ -2114,7 +2114,7 @@ func (o SecretEnvVarResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
 func (o SecretEnvVarResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -2149,6 +2149,362 @@ func (o SecretEnvVarResponseArrayOutput) Index(i pulumi.IntInput) SecretEnvVarRe
 	}).(SecretEnvVarResponseOutput)
 }
 
+// Configuration for a single version.
+type SecretVersion struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+	Path *string `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	Version *string `pulumi:"version"`
+}
+
+// SecretVersionInput is an input type that accepts SecretVersionArgs and SecretVersionOutput values.
+// You can construct a concrete instance of `SecretVersionInput` via:
+//
+//          SecretVersionArgs{...}
+type SecretVersionInput interface {
+	pulumi.Input
+
+	ToSecretVersionOutput() SecretVersionOutput
+	ToSecretVersionOutputWithContext(context.Context) SecretVersionOutput
+}
+
+// Configuration for a single version.
+type SecretVersionArgs struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SecretVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (i SecretVersionArgs) ToSecretVersionOutput() SecretVersionOutput {
+	return i.ToSecretVersionOutputWithContext(context.Background())
+}
+
+func (i SecretVersionArgs) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionOutput)
+}
+
+// SecretVersionArrayInput is an input type that accepts SecretVersionArray and SecretVersionArrayOutput values.
+// You can construct a concrete instance of `SecretVersionArrayInput` via:
+//
+//          SecretVersionArray{ SecretVersionArgs{...} }
+type SecretVersionArrayInput interface {
+	pulumi.Input
+
+	ToSecretVersionArrayOutput() SecretVersionArrayOutput
+	ToSecretVersionArrayOutputWithContext(context.Context) SecretVersionArrayOutput
+}
+
+type SecretVersionArray []SecretVersionInput
+
+func (SecretVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVersion)(nil)).Elem()
+}
+
+func (i SecretVersionArray) ToSecretVersionArrayOutput() SecretVersionArrayOutput {
+	return i.ToSecretVersionArrayOutputWithContext(context.Background())
+}
+
+func (i SecretVersionArray) ToSecretVersionArrayOutputWithContext(ctx context.Context) SecretVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionArrayOutput)
+}
+
+// Configuration for a single version.
+type SecretVersionOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutput() SecretVersionOutput {
+	return o
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return o
+}
+
+// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+func (o SecretVersionOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVersion) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+func (o SecretVersionOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVersion) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SecretVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVersion)(nil)).Elem()
+}
+
+func (o SecretVersionArrayOutput) ToSecretVersionArrayOutput() SecretVersionArrayOutput {
+	return o
+}
+
+func (o SecretVersionArrayOutput) ToSecretVersionArrayOutputWithContext(ctx context.Context) SecretVersionArrayOutput {
+	return o
+}
+
+func (o SecretVersionArrayOutput) Index(i pulumi.IntInput) SecretVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVersion {
+		return vs[0].([]SecretVersion)[vs[1].(int)]
+	}).(SecretVersionOutput)
+}
+
+// Configuration for a single version.
+type SecretVersionResponse struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+	Path string `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	Version string `pulumi:"version"`
+}
+
+// Configuration for a single version.
+type SecretVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersionResponse)(nil)).Elem()
+}
+
+func (o SecretVersionResponseOutput) ToSecretVersionResponseOutput() SecretVersionResponseOutput {
+	return o
+}
+
+func (o SecretVersionResponseOutput) ToSecretVersionResponseOutputWithContext(ctx context.Context) SecretVersionResponseOutput {
+	return o
+}
+
+// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+func (o SecretVersionResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVersionResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+func (o SecretVersionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type SecretVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVersionResponse)(nil)).Elem()
+}
+
+func (o SecretVersionResponseArrayOutput) ToSecretVersionResponseArrayOutput() SecretVersionResponseArrayOutput {
+	return o
+}
+
+func (o SecretVersionResponseArrayOutput) ToSecretVersionResponseArrayOutputWithContext(ctx context.Context) SecretVersionResponseArrayOutput {
+	return o
+}
+
+func (o SecretVersionResponseArrayOutput) Index(i pulumi.IntInput) SecretVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVersionResponse {
+		return vs[0].([]SecretVersionResponse)[vs[1].(int)]
+	}).(SecretVersionResponseOutput)
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+type SecretVolume struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+	MountPath *string `pulumi:"mountPath"`
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+	Project *string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret *string `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+	Versions []SecretVersion `pulumi:"versions"`
+}
+
+// SecretVolumeInput is an input type that accepts SecretVolumeArgs and SecretVolumeOutput values.
+// You can construct a concrete instance of `SecretVolumeInput` via:
+//
+//          SecretVolumeArgs{...}
+type SecretVolumeInput interface {
+	pulumi.Input
+
+	ToSecretVolumeOutput() SecretVolumeOutput
+	ToSecretVolumeOutputWithContext(context.Context) SecretVolumeOutput
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+type SecretVolumeArgs struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+	Versions SecretVersionArrayInput `pulumi:"versions"`
+}
+
+func (SecretVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolume)(nil)).Elem()
+}
+
+func (i SecretVolumeArgs) ToSecretVolumeOutput() SecretVolumeOutput {
+	return i.ToSecretVolumeOutputWithContext(context.Background())
+}
+
+func (i SecretVolumeArgs) ToSecretVolumeOutputWithContext(ctx context.Context) SecretVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeOutput)
+}
+
+// SecretVolumeArrayInput is an input type that accepts SecretVolumeArray and SecretVolumeArrayOutput values.
+// You can construct a concrete instance of `SecretVolumeArrayInput` via:
+//
+//          SecretVolumeArray{ SecretVolumeArgs{...} }
+type SecretVolumeArrayInput interface {
+	pulumi.Input
+
+	ToSecretVolumeArrayOutput() SecretVolumeArrayOutput
+	ToSecretVolumeArrayOutputWithContext(context.Context) SecretVolumeArrayOutput
+}
+
+type SecretVolumeArray []SecretVolumeInput
+
+func (SecretVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVolume)(nil)).Elem()
+}
+
+func (i SecretVolumeArray) ToSecretVolumeArrayOutput() SecretVolumeArrayOutput {
+	return i.ToSecretVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i SecretVolumeArray) ToSecretVolumeArrayOutputWithContext(ctx context.Context) SecretVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeArrayOutput)
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+type SecretVolumeOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolume)(nil)).Elem()
+}
+
+func (o SecretVolumeOutput) ToSecretVolumeOutput() SecretVolumeOutput {
+	return o
+}
+
+func (o SecretVolumeOutput) ToSecretVolumeOutputWithContext(ctx context.Context) SecretVolumeOutput {
+	return o
+}
+
+// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+func (o SecretVolumeOutput) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVolume) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+func (o SecretVolumeOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVolume) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretVolumeOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVolume) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+func (o SecretVolumeOutput) Versions() SecretVersionArrayOutput {
+	return o.ApplyT(func(v SecretVolume) []SecretVersion { return v.Versions }).(SecretVersionArrayOutput)
+}
+
+type SecretVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVolume)(nil)).Elem()
+}
+
+func (o SecretVolumeArrayOutput) ToSecretVolumeArrayOutput() SecretVolumeArrayOutput {
+	return o
+}
+
+func (o SecretVolumeArrayOutput) ToSecretVolumeArrayOutputWithContext(ctx context.Context) SecretVolumeArrayOutput {
+	return o
+}
+
+func (o SecretVolumeArrayOutput) Index(i pulumi.IntInput) SecretVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVolume {
+		return vs[0].([]SecretVolume)[vs[1].(int)]
+	}).(SecretVolumeOutput)
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+type SecretVolumeResponse struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+	MountPath string `pulumi:"mountPath"`
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+	Project string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+	Versions []SecretVersionResponse `pulumi:"versions"`
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+type SecretVolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolumeResponse)(nil)).Elem()
+}
+
+func (o SecretVolumeResponseOutput) ToSecretVolumeResponseOutput() SecretVolumeResponseOutput {
+	return o
+}
+
+func (o SecretVolumeResponseOutput) ToSecretVolumeResponseOutputWithContext(ctx context.Context) SecretVolumeResponseOutput {
+	return o
+}
+
+// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+func (o SecretVolumeResponseOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+func (o SecretVolumeResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretVolumeResponseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+func (o SecretVolumeResponseOutput) Versions() SecretVersionResponseArrayOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) []SecretVersionResponse { return v.Versions }).(SecretVersionResponseArrayOutput)
+}
+
+type SecretVolumeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVolumeResponse)(nil)).Elem()
+}
+
+func (o SecretVolumeResponseArrayOutput) ToSecretVolumeResponseArrayOutput() SecretVolumeResponseArrayOutput {
+	return o
+}
+
+func (o SecretVolumeResponseArrayOutput) ToSecretVolumeResponseArrayOutputWithContext(ctx context.Context) SecretVolumeResponseArrayOutput {
+	return o
+}
+
+func (o SecretVolumeResponseArrayOutput) Index(i pulumi.IntInput) SecretVolumeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVolumeResponse {
+		return vs[0].([]SecretVolumeResponse)[vs[1].(int)]
+	}).(SecretVolumeResponseOutput)
+}
+
 // Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
 type ServiceConfig struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
@@ -2165,6 +2521,8 @@ type ServiceConfig struct {
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 	// Secret environment variables configuration.
 	SecretEnvironmentVariables []SecretEnvVar `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	SecretVolumes []SecretVolume `pulumi:"secretVolumes"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -2202,6 +2560,8 @@ type ServiceConfigArgs struct {
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 	// Secret environment variables configuration.
 	SecretEnvironmentVariables SecretEnvVarArrayInput `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	SecretVolumes SecretVolumeArrayInput `pulumi:"secretVolumes"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -2325,6 +2685,11 @@ func (o ServiceConfigOutput) SecretEnvironmentVariables() SecretEnvVarArrayOutpu
 	return o.ApplyT(func(v ServiceConfig) []SecretEnvVar { return v.SecretEnvironmentVariables }).(SecretEnvVarArrayOutput)
 }
 
+// Secret volumes configuration.
+func (o ServiceConfigOutput) SecretVolumes() SecretVolumeArrayOutput {
+	return o.ApplyT(func(v ServiceConfig) []SecretVolume { return v.SecretVolumes }).(SecretVolumeArrayOutput)
+}
+
 // The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 func (o ServiceConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
@@ -2439,6 +2804,16 @@ func (o ServiceConfigPtrOutput) SecretEnvironmentVariables() SecretEnvVarArrayOu
 	}).(SecretEnvVarArrayOutput)
 }
 
+// Secret volumes configuration.
+func (o ServiceConfigPtrOutput) SecretVolumes() SecretVolumeArrayOutput {
+	return o.ApplyT(func(v *ServiceConfig) []SecretVolume {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVolumes
+	}).(SecretVolumeArrayOutput)
+}
+
 // The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 func (o ServiceConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *string {
@@ -2497,6 +2872,8 @@ type ServiceConfigResponse struct {
 	Revision string `pulumi:"revision"`
 	// Secret environment variables configuration.
 	SecretEnvironmentVariables []SecretEnvVarResponse `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	SecretVolumes []SecretVolumeResponse `pulumi:"secretVolumes"`
 	// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
 	Service string `pulumi:"service"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
@@ -2564,6 +2941,11 @@ func (o ServiceConfigResponseOutput) Revision() pulumi.StringOutput {
 // Secret environment variables configuration.
 func (o ServiceConfigResponseOutput) SecretEnvironmentVariables() SecretEnvVarResponseArrayOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) []SecretEnvVarResponse { return v.SecretEnvironmentVariables }).(SecretEnvVarResponseArrayOutput)
+}
+
+// Secret volumes configuration.
+func (o ServiceConfigResponseOutput) SecretVolumes() SecretVolumeResponseArrayOutput {
+	return o.ApplyT(func(v ServiceConfigResponse) []SecretVolumeResponse { return v.SecretVolumes }).(SecretVolumeResponseArrayOutput)
 }
 
 // Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
@@ -3058,6 +3440,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourcePtrInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarInput)(nil)).Elem(), SecretEnvVarArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarArrayInput)(nil)).Elem(), SecretEnvVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionInput)(nil)).Elem(), SecretVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionArrayInput)(nil)).Elem(), SecretVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeInput)(nil)).Elem(), SecretVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVolumeArrayInput)(nil)).Elem(), SecretVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigInput)(nil)).Elem(), ServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigPtrInput)(nil)).Elem(), ServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
@@ -3098,6 +3484,14 @@ func init() {
 	pulumi.RegisterOutputType(SecretEnvVarArrayOutput{})
 	pulumi.RegisterOutputType(SecretEnvVarResponseOutput{})
 	pulumi.RegisterOutputType(SecretEnvVarResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecretVersionOutput{})
+	pulumi.RegisterOutputType(SecretVersionArrayOutput{})
+	pulumi.RegisterOutputType(SecretVersionResponseOutput{})
+	pulumi.RegisterOutputType(SecretVersionResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecretVolumeOutput{})
+	pulumi.RegisterOutputType(SecretVolumeArrayOutput{})
+	pulumi.RegisterOutputType(SecretVolumeResponseOutput{})
+	pulumi.RegisterOutputType(SecretVolumeResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceConfigOutput{})
 	pulumi.RegisterOutputType(ServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConfigResponseOutput{})

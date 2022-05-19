@@ -865,6 +865,8 @@ const (
 	AddressPurposeNatAuto = AddressPurpose("NAT_AUTO")
 	// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
 	AddressPurposePrivateServiceConnect = AddressPurpose("PRIVATE_SERVICE_CONNECT")
+	// A regional internal IP address range reserved for Serverless.
+	AddressPurposeServerless = AddressPurpose("SERVERLESS")
 	// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
 	AddressPurposeSharedLoadbalancerVip = AddressPurpose("SHARED_LOADBALANCER_VIP")
 	// IP range for peer networks.
@@ -7840,6 +7842,8 @@ const (
 	GlobalAddressPurposeNatAuto = GlobalAddressPurpose("NAT_AUTO")
 	// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
 	GlobalAddressPurposePrivateServiceConnect = GlobalAddressPurpose("PRIVATE_SERVICE_CONNECT")
+	// A regional internal IP address range reserved for Serverless.
+	GlobalAddressPurposeServerless = GlobalAddressPurpose("SERVERLESS")
 	// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
 	GlobalAddressPurposeSharedLoadbalancerVip = GlobalAddressPurpose("SHARED_LOADBALANCER_VIP")
 	// IP range for peer networks.
@@ -11038,7 +11042,7 @@ func (in *instanceGroupManagerUpdatePolicyInstanceRedistributionTypePtr) ToInsta
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput)
 }
 
-// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 type InstanceGroupManagerUpdatePolicyMinimalAction string
 
 const (
@@ -19929,6 +19933,217 @@ func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerEnablePtrOutput)
 }
 
+type RouterNatEndpointTypesItem string
+
+const (
+	// This is used for Secure Web Gateway endpoints.
+	RouterNatEndpointTypesItemEndpointTypeSwg = RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG")
+	// This is the default.
+	RouterNatEndpointTypesItemEndpointTypeVm = RouterNatEndpointTypesItem("ENDPOINT_TYPE_VM")
+)
+
+func (RouterNatEndpointTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatEndpointTypesItem)(nil)).Elem()
+}
+
+func (e RouterNatEndpointTypesItem) ToRouterNatEndpointTypesItemOutput() RouterNatEndpointTypesItemOutput {
+	return pulumi.ToOutput(e).(RouterNatEndpointTypesItemOutput)
+}
+
+func (e RouterNatEndpointTypesItem) ToRouterNatEndpointTypesItemOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RouterNatEndpointTypesItemOutput)
+}
+
+func (e RouterNatEndpointTypesItem) ToRouterNatEndpointTypesItemPtrOutput() RouterNatEndpointTypesItemPtrOutput {
+	return e.ToRouterNatEndpointTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e RouterNatEndpointTypesItem) ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemPtrOutput {
+	return RouterNatEndpointTypesItem(e).ToRouterNatEndpointTypesItemOutputWithContext(ctx).ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e RouterNatEndpointTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterNatEndpointTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterNatEndpointTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RouterNatEndpointTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RouterNatEndpointTypesItemOutput struct{ *pulumi.OutputState }
+
+func (RouterNatEndpointTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatEndpointTypesItem)(nil)).Elem()
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToRouterNatEndpointTypesItemOutput() RouterNatEndpointTypesItemOutput {
+	return o
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToRouterNatEndpointTypesItemOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemOutput {
+	return o
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToRouterNatEndpointTypesItemPtrOutput() RouterNatEndpointTypesItemPtrOutput {
+	return o.ToRouterNatEndpointTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNatEndpointTypesItem) *RouterNatEndpointTypesItem {
+		return &v
+	}).(RouterNatEndpointTypesItemPtrOutput)
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterNatEndpointTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatEndpointTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterNatEndpointTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterNatEndpointTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterNatEndpointTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatEndpointTypesItem)(nil)).Elem()
+}
+
+func (o RouterNatEndpointTypesItemPtrOutput) ToRouterNatEndpointTypesItemPtrOutput() RouterNatEndpointTypesItemPtrOutput {
+	return o
+}
+
+func (o RouterNatEndpointTypesItemPtrOutput) ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemPtrOutput {
+	return o
+}
+
+func (o RouterNatEndpointTypesItemPtrOutput) Elem() RouterNatEndpointTypesItemOutput {
+	return o.ApplyT(func(v *RouterNatEndpointTypesItem) RouterNatEndpointTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatEndpointTypesItem
+		return ret
+	}).(RouterNatEndpointTypesItemOutput)
+}
+
+func (o RouterNatEndpointTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatEndpointTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RouterNatEndpointTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RouterNatEndpointTypesItemInput is an input type that accepts RouterNatEndpointTypesItemArgs and RouterNatEndpointTypesItemOutput values.
+// You can construct a concrete instance of `RouterNatEndpointTypesItemInput` via:
+//
+//          RouterNatEndpointTypesItemArgs{...}
+type RouterNatEndpointTypesItemInput interface {
+	pulumi.Input
+
+	ToRouterNatEndpointTypesItemOutput() RouterNatEndpointTypesItemOutput
+	ToRouterNatEndpointTypesItemOutputWithContext(context.Context) RouterNatEndpointTypesItemOutput
+}
+
+var routerNatEndpointTypesItemPtrType = reflect.TypeOf((**RouterNatEndpointTypesItem)(nil)).Elem()
+
+type RouterNatEndpointTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToRouterNatEndpointTypesItemPtrOutput() RouterNatEndpointTypesItemPtrOutput
+	ToRouterNatEndpointTypesItemPtrOutputWithContext(context.Context) RouterNatEndpointTypesItemPtrOutput
+}
+
+type routerNatEndpointTypesItemPtr string
+
+func RouterNatEndpointTypesItemPtr(v string) RouterNatEndpointTypesItemPtrInput {
+	return (*routerNatEndpointTypesItemPtr)(&v)
+}
+
+func (*routerNatEndpointTypesItemPtr) ElementType() reflect.Type {
+	return routerNatEndpointTypesItemPtrType
+}
+
+func (in *routerNatEndpointTypesItemPtr) ToRouterNatEndpointTypesItemPtrOutput() RouterNatEndpointTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(RouterNatEndpointTypesItemPtrOutput)
+}
+
+func (in *routerNatEndpointTypesItemPtr) ToRouterNatEndpointTypesItemPtrOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RouterNatEndpointTypesItemPtrOutput)
+}
+
+// RouterNatEndpointTypesItemArrayInput is an input type that accepts RouterNatEndpointTypesItemArray and RouterNatEndpointTypesItemArrayOutput values.
+// You can construct a concrete instance of `RouterNatEndpointTypesItemArrayInput` via:
+//
+//          RouterNatEndpointTypesItemArray{ RouterNatEndpointTypesItemArgs{...} }
+type RouterNatEndpointTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToRouterNatEndpointTypesItemArrayOutput() RouterNatEndpointTypesItemArrayOutput
+	ToRouterNatEndpointTypesItemArrayOutputWithContext(context.Context) RouterNatEndpointTypesItemArrayOutput
+}
+
+type RouterNatEndpointTypesItemArray []RouterNatEndpointTypesItem
+
+func (RouterNatEndpointTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatEndpointTypesItem)(nil)).Elem()
+}
+
+func (i RouterNatEndpointTypesItemArray) ToRouterNatEndpointTypesItemArrayOutput() RouterNatEndpointTypesItemArrayOutput {
+	return i.ToRouterNatEndpointTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i RouterNatEndpointTypesItemArray) ToRouterNatEndpointTypesItemArrayOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatEndpointTypesItemArrayOutput)
+}
+
+type RouterNatEndpointTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterNatEndpointTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNatEndpointTypesItem)(nil)).Elem()
+}
+
+func (o RouterNatEndpointTypesItemArrayOutput) ToRouterNatEndpointTypesItemArrayOutput() RouterNatEndpointTypesItemArrayOutput {
+	return o
+}
+
+func (o RouterNatEndpointTypesItemArrayOutput) ToRouterNatEndpointTypesItemArrayOutputWithContext(ctx context.Context) RouterNatEndpointTypesItemArrayOutput {
+	return o
+}
+
+func (o RouterNatEndpointTypesItemArrayOutput) Index(i pulumi.IntInput) RouterNatEndpointTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNatEndpointTypesItem {
+		return vs[0].([]RouterNatEndpointTypesItem)[vs[1].(int)]
+	}).(RouterNatEndpointTypesItemOutput)
+}
+
 // Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: - ERRORS_ONLY: Export logs only for connection failures. - TRANSLATIONS_ONLY: Export logs only for successful connections. - ALL: Export logs for all connections, successful and unsuccessful.
 type RouterNatLogConfigFilter string
 
@@ -27083,6 +27298,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdSessionInitializationModePtrInput)(nil)).Elem(), RouterBgpPeerBfdSessionInitializationMode("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnableInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnablePtrInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemPtrInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemArrayInput)(nil)).Elem(), RouterNatEndpointTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigFilterInput)(nil)).Elem(), RouterNatLogConfigFilter("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigFilterPtrInput)(nil)).Elem(), RouterNatLogConfigFilter("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatNatIpAllocateOptionInput)(nil)).Elem(), RouterNatNatIpAllocateOption("AUTO_ONLY"))
@@ -27402,6 +27620,9 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPeerBfdSessionInitializationModePtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnableOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnablePtrOutput{})
+	pulumi.RegisterOutputType(RouterNatEndpointTypesItemOutput{})
+	pulumi.RegisterOutputType(RouterNatEndpointTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(RouterNatEndpointTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatLogConfigFilterOutput{})
 	pulumi.RegisterOutputType(RouterNatLogConfigFilterPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatNatIpAllocateOptionOutput{})

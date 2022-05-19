@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<ImmutableArray<Outputs.ContentMatcherResponse>> ContentMatchers { get; private set; } = null!;
 
         /// <summary>
-        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
 
         /// <summary>
-        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

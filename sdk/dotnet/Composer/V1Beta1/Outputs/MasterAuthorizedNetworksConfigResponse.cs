@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
     public sealed class MasterAuthorizedNetworksConfigResponse
     {
         /// <summary>
-        /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+        /// Up to 50 external networks that could access Kubernetes master through HTTPS.
         /// </summary>
         public readonly ImmutableArray<Outputs.CidrBlockResponse> CidrBlocks;
         /// <summary>
-        /// Whether or not master authorized networks is enabled.
+        /// Whether or not master authorized networks feature is enabled.
         /// </summary>
         public readonly bool Enabled;
 

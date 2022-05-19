@@ -2100,6 +2100,173 @@ func (in *triggerEventTypePtr) ToTriggerEventTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerEventTypePtrOutput)
 }
 
+// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+type TriggerIncludeBuildLogs string
+
+const (
+	// Build logs will not be shown on GitHub.
+	TriggerIncludeBuildLogsIncludeBuildLogsUnspecified = TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_UNSPECIFIED")
+	// Build logs will be shown on GitHub.
+	TriggerIncludeBuildLogsIncludeBuildLogsWithStatus = TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_WITH_STATUS")
+)
+
+func (TriggerIncludeBuildLogs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerIncludeBuildLogs)(nil)).Elem()
+}
+
+func (e TriggerIncludeBuildLogs) ToTriggerIncludeBuildLogsOutput() TriggerIncludeBuildLogsOutput {
+	return pulumi.ToOutput(e).(TriggerIncludeBuildLogsOutput)
+}
+
+func (e TriggerIncludeBuildLogs) ToTriggerIncludeBuildLogsOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TriggerIncludeBuildLogsOutput)
+}
+
+func (e TriggerIncludeBuildLogs) ToTriggerIncludeBuildLogsPtrOutput() TriggerIncludeBuildLogsPtrOutput {
+	return e.ToTriggerIncludeBuildLogsPtrOutputWithContext(context.Background())
+}
+
+func (e TriggerIncludeBuildLogs) ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsPtrOutput {
+	return TriggerIncludeBuildLogs(e).ToTriggerIncludeBuildLogsOutputWithContext(ctx).ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx)
+}
+
+func (e TriggerIncludeBuildLogs) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TriggerIncludeBuildLogs) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TriggerIncludeBuildLogs) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TriggerIncludeBuildLogs) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TriggerIncludeBuildLogsOutput struct{ *pulumi.OutputState }
+
+func (TriggerIncludeBuildLogsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerIncludeBuildLogs)(nil)).Elem()
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToTriggerIncludeBuildLogsOutput() TriggerIncludeBuildLogsOutput {
+	return o
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToTriggerIncludeBuildLogsOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsOutput {
+	return o
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToTriggerIncludeBuildLogsPtrOutput() TriggerIncludeBuildLogsPtrOutput {
+	return o.ToTriggerIncludeBuildLogsPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerIncludeBuildLogs) *TriggerIncludeBuildLogs {
+		return &v
+	}).(TriggerIncludeBuildLogsPtrOutput)
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerIncludeBuildLogs) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerIncludeBuildLogsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerIncludeBuildLogs) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerIncludeBuildLogsPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerIncludeBuildLogsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerIncludeBuildLogs)(nil)).Elem()
+}
+
+func (o TriggerIncludeBuildLogsPtrOutput) ToTriggerIncludeBuildLogsPtrOutput() TriggerIncludeBuildLogsPtrOutput {
+	return o
+}
+
+func (o TriggerIncludeBuildLogsPtrOutput) ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsPtrOutput {
+	return o
+}
+
+func (o TriggerIncludeBuildLogsPtrOutput) Elem() TriggerIncludeBuildLogsOutput {
+	return o.ApplyT(func(v *TriggerIncludeBuildLogs) TriggerIncludeBuildLogs {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerIncludeBuildLogs
+		return ret
+	}).(TriggerIncludeBuildLogsOutput)
+}
+
+func (o TriggerIncludeBuildLogsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerIncludeBuildLogsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TriggerIncludeBuildLogs) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TriggerIncludeBuildLogsInput is an input type that accepts TriggerIncludeBuildLogsArgs and TriggerIncludeBuildLogsOutput values.
+// You can construct a concrete instance of `TriggerIncludeBuildLogsInput` via:
+//
+//          TriggerIncludeBuildLogsArgs{...}
+type TriggerIncludeBuildLogsInput interface {
+	pulumi.Input
+
+	ToTriggerIncludeBuildLogsOutput() TriggerIncludeBuildLogsOutput
+	ToTriggerIncludeBuildLogsOutputWithContext(context.Context) TriggerIncludeBuildLogsOutput
+}
+
+var triggerIncludeBuildLogsPtrType = reflect.TypeOf((**TriggerIncludeBuildLogs)(nil)).Elem()
+
+type TriggerIncludeBuildLogsPtrInput interface {
+	pulumi.Input
+
+	ToTriggerIncludeBuildLogsPtrOutput() TriggerIncludeBuildLogsPtrOutput
+	ToTriggerIncludeBuildLogsPtrOutputWithContext(context.Context) TriggerIncludeBuildLogsPtrOutput
+}
+
+type triggerIncludeBuildLogsPtr string
+
+func TriggerIncludeBuildLogsPtr(v string) TriggerIncludeBuildLogsPtrInput {
+	return (*triggerIncludeBuildLogsPtr)(&v)
+}
+
+func (*triggerIncludeBuildLogsPtr) ElementType() reflect.Type {
+	return triggerIncludeBuildLogsPtrType
+}
+
+func (in *triggerIncludeBuildLogsPtr) ToTriggerIncludeBuildLogsPtrOutput() TriggerIncludeBuildLogsPtrOutput {
+	return pulumi.ToOutput(in).(TriggerIncludeBuildLogsPtrOutput)
+}
+
+func (in *triggerIncludeBuildLogsPtr) ToTriggerIncludeBuildLogsPtrOutputWithContext(ctx context.Context) TriggerIncludeBuildLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TriggerIncludeBuildLogsPtrOutput)
+}
+
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
 type WebhookConfigState string
 
@@ -2295,6 +2462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterCommentControlPtrInput)(nil)).Elem(), PullRequestFilterCommentControl("COMMENTS_DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerEventTypeInput)(nil)).Elem(), TriggerEventType("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerEventTypePtrInput)(nil)).Elem(), TriggerEventType("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerIncludeBuildLogsInput)(nil)).Elem(), TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerIncludeBuildLogsPtrInput)(nil)).Elem(), TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigStateInput)(nil)).Elem(), WebhookConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigStatePtrInput)(nil)).Elem(), WebhookConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(BuildOptionsLogStreamingOptionOutput{})
@@ -2322,6 +2491,8 @@ func init() {
 	pulumi.RegisterOutputType(PullRequestFilterCommentControlPtrOutput{})
 	pulumi.RegisterOutputType(TriggerEventTypeOutput{})
 	pulumi.RegisterOutputType(TriggerEventTypePtrOutput{})
+	pulumi.RegisterOutputType(TriggerIncludeBuildLogsOutput{})
+	pulumi.RegisterOutputType(TriggerIncludeBuildLogsPtrOutput{})
 	pulumi.RegisterOutputType(WebhookConfigStateOutput{})
 	pulumi.RegisterOutputType(WebhookConfigStatePtrOutput{})
 }

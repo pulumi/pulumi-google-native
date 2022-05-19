@@ -110,6 +110,10 @@ export const AddressPurpose = {
      */
     PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
     /**
+     * A regional internal IP address range reserved for Serverless.
+     */
+    Serverless: "SERVERLESS",
+    /**
      * A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
      */
     SharedLoadbalancerVip: "SHARED_LOADBALANCER_VIP",
@@ -1044,6 +1048,10 @@ export const GlobalAddressPurpose = {
      */
     PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
     /**
+     * A regional internal IP address range reserved for Serverless.
+     */
+    Serverless: "SERVERLESS",
+    /**
      * A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
      */
     SharedLoadbalancerVip: "SHARED_LOADBALANCER_VIP",
@@ -1393,7 +1401,7 @@ export const InstanceGroupManagerUpdatePolicyMinimalAction = {
 } as const;
 
 /**
- * Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+ * Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes. 
  */
 export type InstanceGroupManagerUpdatePolicyMinimalAction = (typeof InstanceGroupManagerUpdatePolicyMinimalAction)[keyof typeof InstanceGroupManagerUpdatePolicyMinimalAction];
 
@@ -2362,6 +2370,50 @@ export const RegionSslCertificateType = {
  */
 export type RegionSslCertificateType = (typeof RegionSslCertificateType)[keyof typeof RegionSslCertificateType];
 
+export const RegionSslPolicyMinTlsVersion = {
+    /**
+     * TLS 1.0
+     */
+    Tls10: "TLS_1_0",
+    /**
+     * TLS 1.1
+     */
+    Tls11: "TLS_1_1",
+    /**
+     * TLS 1.2
+     */
+    Tls12: "TLS_1_2",
+} as const;
+
+/**
+ * The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+ */
+export type RegionSslPolicyMinTlsVersion = (typeof RegionSslPolicyMinTlsVersion)[keyof typeof RegionSslPolicyMinTlsVersion];
+
+export const RegionSslPolicyProfile = {
+    /**
+     * Compatible profile. Allows the broadset set of clients, even those which support only out-of-date SSL features to negotiate with the load balancer.
+     */
+    Compatible: "COMPATIBLE",
+    /**
+     * Custom profile. Allow only the set of allowed SSL features specified in the customFeatures field.
+     */
+    Custom: "CUSTOM",
+    /**
+     * Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the load balancer.
+     */
+    Modern: "MODERN",
+    /**
+     * Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+     */
+    Restricted: "RESTRICTED",
+} as const;
+
+/**
+ * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+ */
+export type RegionSslPolicyProfile = (typeof RegionSslPolicyProfile)[keyof typeof RegionSslPolicyProfile];
+
 export const RegionTargetHttpsProxyQuicOverride = {
     /**
      * The load balancer will not attempt to negotiate QUIC with clients.
@@ -2525,6 +2577,19 @@ export const RouterBgpPeerEnable = {
  * The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
  */
 export type RouterBgpPeerEnable = (typeof RouterBgpPeerEnable)[keyof typeof RouterBgpPeerEnable];
+
+export const RouterNatEndpointTypesItem = {
+    /**
+     * This is used for Secure Web Gateway endpoints.
+     */
+    EndpointTypeSwg: "ENDPOINT_TYPE_SWG",
+    /**
+     * This is the default.
+     */
+    EndpointTypeVm: "ENDPOINT_TYPE_VM",
+} as const;
+
+export type RouterNatEndpointTypesItem = (typeof RouterNatEndpointTypesItem)[keyof typeof RouterNatEndpointTypesItem];
 
 export const RouterNatLogConfigFilter = {
     /**

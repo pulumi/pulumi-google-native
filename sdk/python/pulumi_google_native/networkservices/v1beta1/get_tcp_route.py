@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTcpRouteResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, meshes=None, name=None, rules=None, self_link=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, gateways=None, labels=None, meshes=None, name=None, rules=None, self_link=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if gateways and not isinstance(gateways, list):
+            raise TypeError("Expected argument 'gateways' to be a list")
+        pulumi.set(__self__, "gateways", gateways)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -59,6 +62,14 @@ class GetTcpRouteResult:
         Optional. A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def gateways(self) -> Sequence[str]:
+        """
+        Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        """
+        return pulumi.get(self, "gateways")
 
     @property
     @pulumi.getter
@@ -117,6 +128,7 @@ class AwaitableGetTcpRouteResult(GetTcpRouteResult):
         return GetTcpRouteResult(
             create_time=self.create_time,
             description=self.description,
+            gateways=self.gateways,
             labels=self.labels,
             meshes=self.meshes,
             name=self.name,
@@ -145,6 +157,7 @@ def get_tcp_route(location: Optional[str] = None,
     return AwaitableGetTcpRouteResult(
         create_time=__ret__.create_time,
         description=__ret__.description,
+        gateways=__ret__.gateways,
         labels=__ret__.labels,
         meshes=__ret__.meshes,
         name=__ret__.name,

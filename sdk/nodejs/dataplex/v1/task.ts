@@ -53,6 +53,10 @@ export class Task extends pulumi.CustomResource {
      */
     public readonly executionSpec!: pulumi.Output<outputs.dataplex.v1.GoogleCloudDataplexV1TaskExecutionSpecResponse>;
     /**
+     * Status of the latest task executions.
+     */
+    public /*out*/ readonly executionStatus!: pulumi.Output<outputs.dataplex.v1.GoogleCloudDataplexV1TaskExecutionStatusResponse>;
+    /**
      * Optional. User-defined labels for the task.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -116,6 +120,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["triggerSpec"] = args ? args.triggerSpec : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["executionStatus"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -125,6 +130,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["executionSpec"] = undefined /*out*/;
+            resourceInputs["executionStatus"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["spark"] = undefined /*out*/;

@@ -653,13 +653,17 @@ class BigQueryDestinationArgs:
 @pulumi.input_type
 class BinaryAuthorizationArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[bool]] = None):
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 evaluation_mode: Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']] = None):
         """
         Configuration for Binary Authorization.
         :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
+        :param pulumi.Input['BinaryAuthorizationEvaluationMode'] evaluation_mode: Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
 
     @property
     @pulumi.getter
@@ -672,6 +676,18 @@ class BinaryAuthorizationArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']]:
+        """
+        Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @evaluation_mode.setter
+    def evaluation_mode(self, value: Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']]):
+        pulumi.set(self, "evaluation_mode", value)
 
 
 @pulumi.input_type

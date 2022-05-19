@@ -4118,25 +4118,31 @@ class FirewallPolicyRuleMatcherLayer4ConfigArgs:
 @pulumi.input_type
 class FirewallPolicyRuleMatcherArgs:
     def __init__(__self__, *,
+                 dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]] = None,
+                 src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         """
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
         if dest_region_codes is not None:
@@ -4145,6 +4151,8 @@ class FirewallPolicyRuleMatcherArgs:
             pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
         if layer4_configs is not None:
             pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
         if src_region_codes is not None:
@@ -4153,6 +4161,18 @@ class FirewallPolicyRuleMatcherArgs:
             pulumi.set(__self__, "src_secure_tags", src_secure_tags)
         if src_threat_intelligences is not None:
             pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @dest_address_groups.setter
+    def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_address_groups", value)
 
     @property
     @pulumi.getter(name="destIpRanges")
@@ -4201,6 +4221,18 @@ class FirewallPolicyRuleMatcherArgs:
     @layer4_configs.setter
     def layer4_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]]):
         pulumi.set(self, "layer4_configs", value)
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @src_address_groups.setter
+    def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_address_groups", value)
 
     @property
     @pulumi.getter(name="srcIpRanges")
@@ -5039,7 +5071,7 @@ class HostRuleArgs:
         """
         UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         :param pulumi.Input[str] path_matcher: The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
         """
         if description is not None:
@@ -5065,7 +5097,7 @@ class HostRuleArgs:
     @pulumi.getter
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         """
         return pulumi.get(self, "hosts")
 
@@ -5771,7 +5803,7 @@ class HttpRouteActionArgs:
                  weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['WeightedBackendServiceArgs']]]] = None):
         """
         :param pulumi.Input['CorsPolicyArgs'] cors_policy: The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
-        :param pulumi.Input['HttpFaultInjectionArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        :param pulumi.Input['HttpFaultInjectionArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
         :param pulumi.Input['DurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input['RequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         :param pulumi.Input['HttpRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
@@ -5812,7 +5844,7 @@ class HttpRouteActionArgs:
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> Optional[pulumi.Input['HttpFaultInjectionArgs']]:
         """
-        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
         """
         return pulumi.get(self, "fault_injection_policy")
 
@@ -6374,7 +6406,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
         :param pulumi.Input['FixedOrPercentArgs'] max_surge: The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates. At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
         :param pulumi.Input['FixedOrPercentArgs'] max_unavailable: The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied: - The instance's status is RUNNING. - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded if necessary. The default value for maxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates. At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
         :param pulumi.Input[int] min_ready_sec: Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
-        :param pulumi.Input['InstanceGroupManagerUpdatePolicyMinimalAction'] minimal_action: Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        :param pulumi.Input['InstanceGroupManagerUpdatePolicyMinimalAction'] minimal_action: Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes. 
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction'] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyReplacementMethod'] replacement_method: What action should be used to replace instances. See minimal_action.REPLACE
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyType'] type: The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -6448,7 +6480,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
     @pulumi.getter(name="minimalAction")
     def minimal_action(self) -> Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyMinimalAction']]:
         """
-        Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes. 
         """
         return pulumi.get(self, "minimal_action")
 
@@ -9341,9 +9373,9 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                  vm_count: Optional[pulumi.Input[int]] = None):
         """
         A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
-        :param pulumi.Input[int] availability_domain_count: The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+        :param pulumi.Input[int] availability_domain_count: The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyCollocation'] collocation: Specifies network collocation
-        :param pulumi.Input[int] vm_count: Number of vms in this placement group
+        :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
         """
         if availability_domain_count is not None:
             pulumi.set(__self__, "availability_domain_count", availability_domain_count)
@@ -9356,7 +9388,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @pulumi.getter(name="availabilityDomainCount")
     def availability_domain_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+        The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
         """
         return pulumi.get(self, "availability_domain_count")
 
@@ -9380,7 +9412,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @pulumi.getter(name="vmCount")
     def vm_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of vms in this placement group
+        Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
         """
         return pulumi.get(self, "vm_count")
 
@@ -10687,6 +10719,7 @@ class RouterNatArgs:
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatEndpointTypesItem']]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -10705,6 +10738,7 @@ class RouterNatArgs:
         Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
+        :param pulumi.Input[Sequence[pulumi.Input['RouterNatEndpointTypesItem']]] endpoint_types: List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input['RouterNatLogConfigArgs'] log_config: Configure logging on this NAT.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
@@ -10726,6 +10760,8 @@ class RouterNatArgs:
             pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         if enable_endpoint_independent_mapping is not None:
             pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
+        if endpoint_types is not None:
+            pulumi.set(__self__, "endpoint_types", endpoint_types)
         if icmp_idle_timeout_sec is not None:
             pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
         if log_config is not None:
@@ -10787,6 +10823,18 @@ class RouterNatArgs:
     @enable_endpoint_independent_mapping.setter
     def enable_endpoint_independent_mapping(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_endpoint_independent_mapping", value)
+
+    @property
+    @pulumi.getter(name="endpointTypes")
+    def endpoint_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatEndpointTypesItem']]]]:
+        """
+        List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        """
+        return pulumi.get(self, "endpoint_types")
+
+    @endpoint_types.setter
+    def endpoint_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatEndpointTypesItem']]]]):
+        pulumi.set(self, "endpoint_types", value)
 
     @property
     @pulumi.getter(name="icmpIdleTimeoutSec")

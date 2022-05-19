@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class GetTargetSslProxyResult
     {
         /// <summary>
+        /// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        /// </summary>
+        public readonly string CertificateMap;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [OutputConstructor]
         private GetTargetSslProxyResult(
+            string certificateMap,
+
             string creationTimestamp,
 
             string description,
@@ -112,6 +118,7 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string sslPolicy)
         {
+            CertificateMap = certificateMap;
             CreationTimestamp = creationTimestamp;
             Description = description;
             Kind = kind;

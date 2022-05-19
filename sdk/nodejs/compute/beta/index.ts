@@ -80,6 +80,7 @@ export * from "./getRegionNetworkFirewallPolicyIamPolicy";
 export * from "./getRegionNotificationEndpoint";
 export * from "./getRegionSecurityPolicy";
 export * from "./getRegionSslCertificate";
+export * from "./getRegionSslPolicy";
 export * from "./getRegionTargetHttpProxy";
 export * from "./getRegionTargetHttpsProxy";
 export * from "./getRegionTargetTcpProxy";
@@ -159,6 +160,7 @@ export * from "./regionNetworkFirewallPolicyIamPolicy";
 export * from "./regionNotificationEndpoint";
 export * from "./regionSecurityPolicy";
 export * from "./regionSslCertificate";
+export * from "./regionSslPolicy";
 export * from "./regionTargetHttpProxy";
 export * from "./regionTargetHttpsProxy";
 export * from "./regionTargetTcpProxy";
@@ -256,6 +258,7 @@ import { RegionNetworkFirewallPolicyIamPolicy } from "./regionNetworkFirewallPol
 import { RegionNotificationEndpoint } from "./regionNotificationEndpoint";
 import { RegionSecurityPolicy } from "./regionSecurityPolicy";
 import { RegionSslCertificate } from "./regionSslCertificate";
+import { RegionSslPolicy } from "./regionSslPolicy";
 import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
 import { RegionTargetHttpsProxy } from "./regionTargetHttpsProxy";
 import { RegionTargetTcpProxy } from "./regionTargetTcpProxy";
@@ -415,6 +418,8 @@ const _module = {
                 return new RegionSecurityPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
+            case "google-native:compute/beta:RegionSslPolicy":
+                return new RegionSslPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionTargetHttpProxy":
                 return new RegionTargetHttpProxy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionTargetHttpsProxy":

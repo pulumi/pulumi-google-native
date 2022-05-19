@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly Outputs.GrafeasV1beta1DiscoveryDetailsResponse Discovered;
         /// <summary>
+        /// https://github.com/secure-systems-lab/dsse
+        /// </summary>
+        public readonly Outputs.EnvelopeResponse Envelope;
+        /// <summary>
         /// Describes the installation of a package on the linked resource.
         /// </summary>
         public readonly Outputs.GrafeasV1beta1PackageDetailsResponse Installation;
@@ -146,6 +150,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 
             Outputs.GrafeasV1beta1DiscoveryDetailsResponse discovered,
 
+            Outputs.EnvelopeResponse envelope,
+
             Outputs.GrafeasV1beta1PackageDetailsResponse installation,
 
             Outputs.GrafeasV1beta1IntotoDetailsResponse intoto,
@@ -178,6 +184,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
             Deployment = deployment;
             DerivedImage = derivedImage;
             Discovered = discovered;
+            Envelope = envelope;
             Installation = installation;
             Intoto = intoto;
             Kind = kind;

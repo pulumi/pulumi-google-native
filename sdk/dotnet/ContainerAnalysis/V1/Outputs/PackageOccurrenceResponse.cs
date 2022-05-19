@@ -17,6 +17,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     public sealed class PackageOccurrenceResponse
     {
         /// <summary>
+        /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
+        /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        /// </summary>
+        public readonly string CpeUri;
+        /// <summary>
+        /// Licenses that have been declared by the authors of the package.
+        /// </summary>
+        public readonly Outputs.LicenseResponse License;
+        /// <summary>
         /// All of the places within the filesystem versions of this package have been found.
         /// </summary>
         public readonly ImmutableArray<Outputs.LocationResponse> Location;
@@ -24,15 +36,38 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// The name of the installed package.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        /// </summary>
+        public readonly string PackageType;
+        /// <summary>
+        /// The version of the package.
+        /// </summary>
+        public readonly Outputs.VersionResponse Version;
 
         [OutputConstructor]
         private PackageOccurrenceResponse(
+            string architecture,
+
+            string cpeUri,
+
+            Outputs.LicenseResponse license,
+
             ImmutableArray<Outputs.LocationResponse> location,
 
-            string name)
+            string name,
+
+            string packageType,
+
+            Outputs.VersionResponse version)
         {
+            Architecture = architecture;
+            CpeUri = cpeUri;
+            License = license;
             Location = location;
             Name = name;
+            PackageType = packageType;
+            Version = version;
         }
     }
 }

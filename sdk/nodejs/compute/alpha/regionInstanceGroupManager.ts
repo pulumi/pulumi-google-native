@@ -76,7 +76,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
-     * Instance lifecycle policy for this Instance Group Manager.
+     * The repair policy for this managed instance group.
      */
     public readonly instanceLifecyclePolicy!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerInstanceLifecyclePolicyResponse>;
     /**
@@ -268,7 +268,7 @@ export interface RegionInstanceGroupManagerArgs {
      */
     failoverAction?: pulumi.Input<enums.compute.alpha.RegionInstanceGroupManagerFailoverAction>;
     /**
-     * Instance lifecycle policy for this Instance Group Manager.
+     * The repair policy for this managed instance group.
      */
     instanceLifecyclePolicy?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerInstanceLifecyclePolicyArgs>;
     /**

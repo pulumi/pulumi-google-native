@@ -31,6 +31,8 @@ if typing.TYPE_CHECKING:
     authorization = __authorization
     import pulumi_google_native.baremetalsolution as __baremetalsolution
     baremetalsolution = __baremetalsolution
+    import pulumi_google_native.beyondcorp as __beyondcorp
+    beyondcorp = __beyondcorp
     import pulumi_google_native.bigquery as __bigquery
     bigquery = __bigquery
     import pulumi_google_native.bigqueryconnection as __bigqueryconnection
@@ -265,6 +267,7 @@ else:
     assuredworkloads = _utilities.lazy_import('pulumi_google_native.assuredworkloads')
     authorization = _utilities.lazy_import('pulumi_google_native.authorization')
     baremetalsolution = _utilities.lazy_import('pulumi_google_native.baremetalsolution')
+    beyondcorp = _utilities.lazy_import('pulumi_google_native.beyondcorp')
     bigquery = _utilities.lazy_import('pulumi_google_native.bigquery')
     bigqueryconnection = _utilities.lazy_import('pulumi_google_native.bigqueryconnection')
     bigquerydatatransfer = _utilities.lazy_import('pulumi_google_native.bigquerydatatransfer')
@@ -586,9 +589,28 @@ _utilities.register(
   "mod": "baremetalsolution/v2",
   "fqn": "pulumi_google_native.baremetalsolution.v2",
   "classes": {
-   "google-native:baremetalsolution/v2:ProvisioningConfig": "ProvisioningConfig",
-   "google-native:baremetalsolution/v2:Snapshot": "Snapshot",
-   "google-native:baremetalsolution/v2:SnapshotSchedulePolicy": "SnapshotSchedulePolicy"
+   "google-native:baremetalsolution/v2:ProvisioningConfig": "ProvisioningConfig"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "beyondcorp/v1alpha",
+  "fqn": "pulumi_google_native.beyondcorp.v1alpha",
+  "classes": {
+   "google-native:beyondcorp/v1alpha:AppConnection": "AppConnection",
+   "google-native:beyondcorp/v1alpha:AppConnectionIamPolicy": "AppConnectionIamPolicy",
+   "google-native:beyondcorp/v1alpha:AppConnector": "AppConnector",
+   "google-native:beyondcorp/v1alpha:AppConnectorIamPolicy": "AppConnectorIamPolicy",
+   "google-native:beyondcorp/v1alpha:AppGateway": "AppGateway",
+   "google-native:beyondcorp/v1alpha:AppGatewayIamPolicy": "AppGatewayIamPolicy",
+   "google-native:beyondcorp/v1alpha:ClientConnectorService": "ClientConnectorService",
+   "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamPolicy": "ClientConnectorServiceIamPolicy",
+   "google-native:beyondcorp/v1alpha:ClientGateway": "ClientGateway",
+   "google-native:beyondcorp/v1alpha:ClientGatewayIamPolicy": "ClientGatewayIamPolicy",
+   "google-native:beyondcorp/v1alpha:Connection": "Connection",
+   "google-native:beyondcorp/v1alpha:ConnectionIamPolicy": "ConnectionIamPolicy",
+   "google-native:beyondcorp/v1alpha:Connector": "Connector",
+   "google-native:beyondcorp/v1alpha:ConnectorIamPolicy": "ConnectorIamPolicy"
   }
  },
  {
@@ -787,6 +809,14 @@ _utilities.register(
   "classes": {
    "google-native:cloudfunctions/v1:Function": "Function",
    "google-native:cloudfunctions/v1:FunctionIamPolicy": "FunctionIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "cloudfunctions/v2",
+  "fqn": "pulumi_google_native.cloudfunctions.v2",
+  "classes": {
+   "google-native:cloudfunctions/v2:FunctionIamPolicy": "FunctionIamPolicy"
   }
  },
  {
@@ -1174,6 +1204,7 @@ _utilities.register(
    "google-native:compute/beta:RegionNotificationEndpoint": "RegionNotificationEndpoint",
    "google-native:compute/beta:RegionSecurityPolicy": "RegionSecurityPolicy",
    "google-native:compute/beta:RegionSslCertificate": "RegionSslCertificate",
+   "google-native:compute/beta:RegionSslPolicy": "RegionSslPolicy",
    "google-native:compute/beta:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/beta:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
    "google-native:compute/beta:RegionTargetTcpProxy": "RegionTargetTcpProxy",
@@ -1704,6 +1735,7 @@ _utilities.register(
   "classes": {
    "google-native:dns/v1beta2:Change": "Change",
    "google-native:dns/v1beta2:ManagedZone": "ManagedZone",
+   "google-native:dns/v1beta2:ManagedZoneIamPolicy": "ManagedZoneIamPolicy",
    "google-native:dns/v1beta2:Policy": "Policy",
    "google-native:dns/v1beta2:ResourceRecordSet": "ResourceRecordSet",
    "google-native:dns/v1beta2:ResponsePolicy": "ResponsePolicy",
@@ -1778,6 +1810,7 @@ _utilities.register(
   "mod": "eventarc/v1",
   "fqn": "pulumi_google_native.eventarc.v1",
   "classes": {
+   "google-native:eventarc/v1:Channel": "Channel",
    "google-native:eventarc/v1:ChannelConnectionIamPolicy": "ChannelConnectionIamPolicy",
    "google-native:eventarc/v1:ChannelIamPolicy": "ChannelIamPolicy",
    "google-native:eventarc/v1:Trigger": "Trigger",
@@ -2176,7 +2209,6 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1alpha",
   "classes": {
    "google-native:metastore/v1alpha:Backup": "Backup",
-   "google-native:metastore/v1alpha:Federation": "Federation",
    "google-native:metastore/v1alpha:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1alpha:MetadataImport": "MetadataImport",
    "google-native:metastore/v1alpha:Service": "Service",

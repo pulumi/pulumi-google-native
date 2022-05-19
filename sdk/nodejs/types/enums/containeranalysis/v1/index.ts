@@ -358,6 +358,26 @@ export const DistributionArchitecture = {
  */
 export type DistributionArchitecture = (typeof DistributionArchitecture)[keyof typeof DistributionArchitecture];
 
+export const PackageNoteArchitecture = {
+    /**
+     * Unknown architecture.
+     */
+    ArchitectureUnspecified: "ARCHITECTURE_UNSPECIFIED",
+    /**
+     * X86 architecture.
+     */
+    X86: "X86",
+    /**
+     * X64 architecture.
+     */
+    X64: "X64",
+} as const;
+
+/**
+ * The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+ */
+export type PackageNoteArchitecture = (typeof PackageNoteArchitecture)[keyof typeof PackageNoteArchitecture];
+
 export const VersionKind = {
     /**
      * Unknown.

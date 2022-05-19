@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 {
 
     /// <summary>
-    /// CycleStep hold information about a step progress.
+    /// CycleStep holds information about a step progress.
     /// </summary>
     [OutputType]
     public sealed class CycleStepResponse

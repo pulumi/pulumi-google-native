@@ -5,6 +5,7 @@
 from enum import Enum
 
 __all__ = [
+    'BinaryAuthorizationEvaluationMode',
     'CloudRunConfigLoadBalancerType',
     'ClusterAutoscalingAutoscalingProfile',
     'ClusterUpdateDesiredDatapathProvider',
@@ -28,6 +29,24 @@ __all__ = [
     'StatusConditionCode',
     'WorkloadMetadataConfigMode',
 ]
+
+
+class BinaryAuthorizationEvaluationMode(str, Enum):
+    """
+    Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+    """
+    EVALUATION_MODE_UNSPECIFIED = "EVALUATION_MODE_UNSPECIFIED"
+    """
+    Default value, equivalent to DISABLED.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable BinaryAuthorization
+    """
+    PROJECT_SINGLETON_POLICY_ENFORCE = "PROJECT_SINGLETON_POLICY_ENFORCE"
+    """
+    If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+    """
 
 
 class CloudRunConfigLoadBalancerType(str, Enum):

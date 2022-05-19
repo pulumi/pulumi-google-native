@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        /// </summary>
+        [Output("resourcePolicies")]
+        public Output<ImmutableDictionary<string, string>> ResourcePolicies { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
@@ -158,6 +164,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("resourcePolicies")]
+        private InputMap<string>? _resourcePolicies;
+
+        /// <summary>
+        /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        /// </summary>
+        public InputMap<string> ResourcePolicies
+        {
+            get => _resourcePolicies ?? (_resourcePolicies = new InputMap<string>());
+            set => _resourcePolicies = value;
+        }
 
         /// <summary>
         /// Share-settings for shared-reservation

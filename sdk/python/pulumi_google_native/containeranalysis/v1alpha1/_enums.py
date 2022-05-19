@@ -26,6 +26,7 @@ __all__ = [
     'GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind',
     'HashType',
     'LayerDirective',
+    'PackageArchitecture',
     'PgpSignedAttestationContentType',
     'RelationshipNoteType',
     'VersionKind',
@@ -53,67 +54,221 @@ class BuildSignatureKeyType(str, Enum):
 
 
 class CVSSAttackComplexity(str, Enum):
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     ATTACK_COMPLEXITY_UNSPECIFIED = "ATTACK_COMPLEXITY_UNSPECIFIED"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     ATTACK_COMPLEXITY_LOW = "ATTACK_COMPLEXITY_LOW"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     ATTACK_COMPLEXITY_HIGH = "ATTACK_COMPLEXITY_HIGH"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
+    ATTACK_COMPLEXITY_MEDIUM = "ATTACK_COMPLEXITY_MEDIUM"
+    """
+    Defined in CVSS v2
+    """
 
 
 class CVSSAttackVector(str, Enum):
     """
-    Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+    Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
     """
     ATTACK_VECTOR_UNSPECIFIED = "ATTACK_VECTOR_UNSPECIFIED"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     ATTACK_VECTOR_NETWORK = "ATTACK_VECTOR_NETWORK"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     ATTACK_VECTOR_ADJACENT = "ATTACK_VECTOR_ADJACENT"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     ATTACK_VECTOR_LOCAL = "ATTACK_VECTOR_LOCAL"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     ATTACK_VECTOR_PHYSICAL = "ATTACK_VECTOR_PHYSICAL"
+    """
+    Defined in CVSS v3
+    """
 
 
 class CVSSAuthentication(str, Enum):
+    """
+    Defined in CVSS v2
+    """
     AUTHENTICATION_UNSPECIFIED = "AUTHENTICATION_UNSPECIFIED"
+    """
+    Defined in CVSS v2
+    """
     AUTHENTICATION_MULTIPLE = "AUTHENTICATION_MULTIPLE"
+    """
+    Defined in CVSS v2
+    """
     AUTHENTICATION_SINGLE = "AUTHENTICATION_SINGLE"
+    """
+    Defined in CVSS v2
+    """
     AUTHENTICATION_NONE = "AUTHENTICATION_NONE"
+    """
+    Defined in CVSS v2
+    """
 
 
 class CVSSAvailabilityImpact(str, Enum):
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     IMPACT_UNSPECIFIED = "IMPACT_UNSPECIFIED"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     IMPACT_HIGH = "IMPACT_HIGH"
+    """
+    Defined in CVSS v3
+    """
     IMPACT_LOW = "IMPACT_LOW"
+    """
+    Defined in CVSS v3
+    """
     IMPACT_NONE = "IMPACT_NONE"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
+    IMPACT_PARTIAL = "IMPACT_PARTIAL"
+    """
+    Defined in CVSS v2
+    """
+    IMPACT_COMPLETE = "IMPACT_COMPLETE"
+    """
+    Defined in CVSS v2
+    """
 
 
 class CVSSConfidentialityImpact(str, Enum):
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     IMPACT_UNSPECIFIED = "IMPACT_UNSPECIFIED"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     IMPACT_HIGH = "IMPACT_HIGH"
+    """
+    Defined in CVSS v3
+    """
     IMPACT_LOW = "IMPACT_LOW"
+    """
+    Defined in CVSS v3
+    """
     IMPACT_NONE = "IMPACT_NONE"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
+    IMPACT_PARTIAL = "IMPACT_PARTIAL"
+    """
+    Defined in CVSS v2
+    """
+    IMPACT_COMPLETE = "IMPACT_COMPLETE"
+    """
+    Defined in CVSS v2
+    """
 
 
 class CVSSIntegrityImpact(str, Enum):
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     IMPACT_UNSPECIFIED = "IMPACT_UNSPECIFIED"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
     IMPACT_HIGH = "IMPACT_HIGH"
+    """
+    Defined in CVSS v3
+    """
     IMPACT_LOW = "IMPACT_LOW"
+    """
+    Defined in CVSS v3
+    """
     IMPACT_NONE = "IMPACT_NONE"
+    """
+    Defined in CVSS v3, CVSS v2
+    """
+    IMPACT_PARTIAL = "IMPACT_PARTIAL"
+    """
+    Defined in CVSS v2
+    """
+    IMPACT_COMPLETE = "IMPACT_COMPLETE"
+    """
+    Defined in CVSS v2
+    """
 
 
 class CVSSPrivilegesRequired(str, Enum):
+    """
+    Defined in CVSS v3
+    """
     PRIVILEGES_REQUIRED_UNSPECIFIED = "PRIVILEGES_REQUIRED_UNSPECIFIED"
+    """
+    Defined in CVSS v3
+    """
     PRIVILEGES_REQUIRED_NONE = "PRIVILEGES_REQUIRED_NONE"
+    """
+    Defined in CVSS v3
+    """
     PRIVILEGES_REQUIRED_LOW = "PRIVILEGES_REQUIRED_LOW"
+    """
+    Defined in CVSS v3
+    """
     PRIVILEGES_REQUIRED_HIGH = "PRIVILEGES_REQUIRED_HIGH"
+    """
+    Defined in CVSS v3
+    """
 
 
 class CVSSScope(str, Enum):
+    """
+    Defined in CVSS v3
+    """
     SCOPE_UNSPECIFIED = "SCOPE_UNSPECIFIED"
+    """
+    Defined in CVSS v3
+    """
     SCOPE_UNCHANGED = "SCOPE_UNCHANGED"
+    """
+    Defined in CVSS v3
+    """
     SCOPE_CHANGED = "SCOPE_CHANGED"
+    """
+    Defined in CVSS v3
+    """
 
 
 class CVSSUserInteraction(str, Enum):
+    """
+    Defined in CVSS v3
+    """
     USER_INTERACTION_UNSPECIFIED = "USER_INTERACTION_UNSPECIFIED"
+    """
+    Defined in CVSS v3
+    """
     USER_INTERACTION_NONE = "USER_INTERACTION_NONE"
+    """
+    Defined in CVSS v3
+    """
     USER_INTERACTION_REQUIRED = "USER_INTERACTION_REQUIRED"
+    """
+    Defined in CVSS v3
+    """
 
 
 class CisBenchmarkSeverity(str, Enum):
@@ -491,6 +646,24 @@ class LayerDirective(str, Enum):
     SHELL = "SHELL"
     """
     https://docs.docker.com/engine/reference/builder/
+    """
+
+
+class PackageArchitecture(str, Enum):
+    """
+    The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Unknown architecture
+    """
+    X86 = "X86"
+    """
+    X86 architecture
+    """
+    X64 = "X64"
+    """
+    X64 architecture
     """
 
 

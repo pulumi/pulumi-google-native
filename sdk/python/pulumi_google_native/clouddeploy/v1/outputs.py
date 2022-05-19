@@ -55,7 +55,7 @@ class AnthosClusterResponse(dict):
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
-    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -78,7 +78,7 @@ class AuditConfigResponse(dict):
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param Sequence['AuditLogConfigResponse'] audit_log_configs: The configuration for logging of each type of permission.
         :param str service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
@@ -437,6 +437,8 @@ class ExecutionConfigResponse(dict):
             suggest = "artifact_storage"
         elif key == "defaultPool":
             suggest = "default_pool"
+        elif key == "executionTimeout":
+            suggest = "execution_timeout"
         elif key == "privatePool":
             suggest = "private_pool"
         elif key == "serviceAccount":
@@ -458,6 +460,7 @@ class ExecutionConfigResponse(dict):
     def __init__(__self__, *,
                  artifact_storage: str,
                  default_pool: 'outputs.DefaultPoolResponse',
+                 execution_timeout: str,
                  private_pool: 'outputs.PrivatePoolResponse',
                  service_account: str,
                  usages: Sequence[str],
@@ -466,6 +469,7 @@ class ExecutionConfigResponse(dict):
         Configuration of the environment to use when calling Skaffold.
         :param str artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         :param 'DefaultPoolResponse' default_pool: Optional. Use default Cloud Build pool.
+        :param str execution_timeout: Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
         :param 'PrivatePoolResponse' private_pool: Optional. Use private Cloud Build pool.
         :param str service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         :param Sequence[str] usages: Usages when this configuration should be applied.
@@ -473,6 +477,7 @@ class ExecutionConfigResponse(dict):
         """
         pulumi.set(__self__, "artifact_storage", artifact_storage)
         pulumi.set(__self__, "default_pool", default_pool)
+        pulumi.set(__self__, "execution_timeout", execution_timeout)
         pulumi.set(__self__, "private_pool", private_pool)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "usages", usages)
@@ -493,6 +498,14 @@ class ExecutionConfigResponse(dict):
         Optional. Use default Cloud Build pool.
         """
         return pulumi.get(self, "default_pool")
+
+    @property
+    @pulumi.getter(name="executionTimeout")
+    def execution_timeout(self) -> str:
+        """
+        Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        """
+        return pulumi.get(self, "execution_timeout")
 
     @property
     @pulumi.getter(name="privatePool")

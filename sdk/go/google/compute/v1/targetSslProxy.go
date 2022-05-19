@@ -14,6 +14,8 @@ import (
 type TargetSslProxy struct {
 	pulumi.CustomResourceState
 
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	CertificateMap pulumi.StringOutput `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -73,6 +75,8 @@ func (TargetSslProxyState) ElementType() reflect.Type {
 }
 
 type targetSslProxyArgs struct {
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	CertificateMap *string `pulumi:"certificateMap"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -92,6 +96,8 @@ type targetSslProxyArgs struct {
 
 // The set of arguments for constructing a TargetSslProxy resource.
 type TargetSslProxyArgs struct {
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	CertificateMap pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -144,6 +150,11 @@ func (o TargetSslProxyOutput) ToTargetSslProxyOutput() TargetSslProxyOutput {
 
 func (o TargetSslProxyOutput) ToTargetSslProxyOutputWithContext(ctx context.Context) TargetSslProxyOutput {
 	return o
+}
+
+// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+func (o TargetSslProxyOutput) CertificateMap() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringOutput { return v.CertificateMap }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

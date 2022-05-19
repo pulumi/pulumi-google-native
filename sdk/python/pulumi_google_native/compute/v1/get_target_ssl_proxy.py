@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetSslProxyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, proxy_header=None, self_link=None, service=None, ssl_certificates=None, ssl_policy=None):
+    def __init__(__self__, certificate_map=None, creation_timestamp=None, description=None, kind=None, name=None, proxy_header=None, self_link=None, service=None, ssl_certificates=None, ssl_policy=None):
+        if certificate_map and not isinstance(certificate_map, str):
+            raise TypeError("Expected argument 'certificate_map' to be a str")
+        pulumi.set(__self__, "certificate_map", certificate_map)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -45,6 +48,14 @@ class GetTargetSslProxyResult:
         if ssl_policy and not isinstance(ssl_policy, str):
             raise TypeError("Expected argument 'ssl_policy' to be a str")
         pulumi.set(__self__, "ssl_policy", ssl_policy)
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> str:
+        """
+        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        """
+        return pulumi.get(self, "certificate_map")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -125,6 +136,7 @@ class AwaitableGetTargetSslProxyResult(GetTargetSslProxyResult):
         if False:
             yield self
         return GetTargetSslProxyResult(
+            certificate_map=self.certificate_map,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             kind=self.kind,
@@ -152,6 +164,7 @@ def get_target_ssl_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getTargetSslProxy', __args__, opts=opts, typ=GetTargetSslProxyResult).value
 
     return AwaitableGetTargetSslProxyResult(
+        certificate_map=__ret__.certificate_map,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         kind=__ret__.kind,

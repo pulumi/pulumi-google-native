@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     public sealed class LocationResponse
     {
         /// <summary>
-        /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        /// Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         /// </summary>
         public readonly string CpeUri;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// The version installed at this location.
+        /// Deprecated. The version installed at this location.
         /// </summary>
         public readonly Outputs.VersionResponse Version;
 

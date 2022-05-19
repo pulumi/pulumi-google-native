@@ -12883,6 +12883,8 @@ func (o FirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRu
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcher struct {
+	// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+	DestAddressGroups []string `pulumi:"destAddressGroups"`
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
 	// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
@@ -12891,6 +12893,8 @@ type FirewallPolicyRuleMatcher struct {
 	DestThreatIntelligences []string `pulumi:"destThreatIntelligences"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4Config `pulumi:"layer4Configs"`
+	// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+	SrcAddressGroups []string `pulumi:"srcAddressGroups"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 	// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
@@ -12914,6 +12918,8 @@ type FirewallPolicyRuleMatcherInput interface {
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherArgs struct {
+	// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+	DestAddressGroups pulumi.StringArrayInput `pulumi:"destAddressGroups"`
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
 	// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
@@ -12922,6 +12928,8 @@ type FirewallPolicyRuleMatcherArgs struct {
 	DestThreatIntelligences pulumi.StringArrayInput `pulumi:"destThreatIntelligences"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigArrayInput `pulumi:"layer4Configs"`
+	// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+	SrcAddressGroups pulumi.StringArrayInput `pulumi:"srcAddressGroups"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
 	// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
@@ -13010,6 +13018,11 @@ func (o FirewallPolicyRuleMatcherOutput) ToFirewallPolicyRuleMatcherPtrOutputWit
 	}).(FirewallPolicyRuleMatcherPtrOutput)
 }
 
+// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+func (o FirewallPolicyRuleMatcherOutput) DestAddressGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestAddressGroups }).(pulumi.StringArrayOutput)
+}
+
 // CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
@@ -13028,6 +13041,11 @@ func (o FirewallPolicyRuleMatcherOutput) DestThreatIntelligences() pulumi.String
 // Pairs of IP protocols and ports that the rule should match.
 func (o FirewallPolicyRuleMatcherOutput) Layer4Configs() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []FirewallPolicyRuleMatcherLayer4Config { return v.Layer4Configs }).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
+}
+
+// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+func (o FirewallPolicyRuleMatcherOutput) SrcAddressGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcAddressGroups }).(pulumi.StringArrayOutput)
 }
 
 // CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
@@ -13074,6 +13092,16 @@ func (o FirewallPolicyRuleMatcherPtrOutput) Elem() FirewallPolicyRuleMatcherOutp
 	}).(FirewallPolicyRuleMatcherOutput)
 }
 
+// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+func (o FirewallPolicyRuleMatcherPtrOutput) DestAddressGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestAddressGroups
+	}).(pulumi.StringArrayOutput)
+}
+
 // CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
@@ -13112,6 +13140,16 @@ func (o FirewallPolicyRuleMatcherPtrOutput) Layer4Configs() FirewallPolicyRuleMa
 		}
 		return v.Layer4Configs
 	}).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
+}
+
+// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+func (o FirewallPolicyRuleMatcherPtrOutput) SrcAddressGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcAddressGroups
+	}).(pulumi.StringArrayOutput)
 }
 
 // CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
@@ -13313,6 +13351,8 @@ func (o FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput) Index(i pulumi
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherResponse struct {
+	// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+	DestAddressGroups []string `pulumi:"destAddressGroups"`
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
 	// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
@@ -13321,6 +13361,8 @@ type FirewallPolicyRuleMatcherResponse struct {
 	DestThreatIntelligences []string `pulumi:"destThreatIntelligences"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4ConfigResponse `pulumi:"layer4Configs"`
+	// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+	SrcAddressGroups []string `pulumi:"srcAddressGroups"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 	// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
@@ -13346,6 +13388,11 @@ func (o FirewallPolicyRuleMatcherResponseOutput) ToFirewallPolicyRuleMatcherResp
 	return o
 }
 
+// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+func (o FirewallPolicyRuleMatcherResponseOutput) DestAddressGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestAddressGroups }).(pulumi.StringArrayOutput)
+}
+
 // CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
@@ -13366,6 +13413,11 @@ func (o FirewallPolicyRuleMatcherResponseOutput) Layer4Configs() FirewallPolicyR
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []FirewallPolicyRuleMatcherLayer4ConfigResponse {
 		return v.Layer4Configs
 	}).(FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput)
+}
+
+// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+func (o FirewallPolicyRuleMatcherResponseOutput) SrcAddressGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcAddressGroups }).(pulumi.StringArrayOutput)
 }
 
 // CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
@@ -15551,7 +15603,7 @@ func (o HealthCheckLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 type HostRule struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	Hosts []string `pulumi:"hosts"`
 	// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 	PathMatcher *string `pulumi:"pathMatcher"`
@@ -15572,7 +15624,7 @@ type HostRuleInput interface {
 type HostRuleArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
 	// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 	PathMatcher pulumi.StringPtrInput `pulumi:"pathMatcher"`
@@ -15635,7 +15687,7 @@ func (o HostRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HostRuleOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HostRule) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
@@ -15669,7 +15721,7 @@ func (o HostRuleArrayOutput) Index(i pulumi.IntInput) HostRuleOutput {
 type HostRuleResponse struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	Hosts []string `pulumi:"hosts"`
 	// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 	PathMatcher string `pulumi:"pathMatcher"`
@@ -15695,7 +15747,7 @@ func (o HostRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v HostRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HostRuleResponseOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HostRuleResponse) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
@@ -17870,7 +17922,7 @@ func (o HttpRetryPolicyResponseOutput) RetryConditions() pulumi.StringArrayOutpu
 type HttpRouteAction struct {
 	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy *CorsPolicy `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 	FaultInjectionPolicy *HttpFaultInjection `pulumi:"faultInjectionPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration *Duration `pulumi:"maxStreamDuration"`
@@ -17900,7 +17952,7 @@ type HttpRouteActionInput interface {
 type HttpRouteActionArgs struct {
 	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy CorsPolicyPtrInput `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 	FaultInjectionPolicy HttpFaultInjectionPtrInput `pulumi:"faultInjectionPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationPtrInput `pulumi:"maxStreamDuration"`
@@ -17998,7 +18050,7 @@ func (o HttpRouteActionOutput) CorsPolicy() CorsPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *CorsPolicy { return v.CorsPolicy }).(CorsPolicyPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 func (o HttpRouteActionOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *HttpFaultInjection { return v.FaultInjectionPolicy }).(HttpFaultInjectionPtrOutput)
 }
@@ -18067,7 +18119,7 @@ func (o HttpRouteActionPtrOutput) CorsPolicy() CorsPolicyPtrOutput {
 	}).(CorsPolicyPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 func (o HttpRouteActionPtrOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *HttpFaultInjection {
 		if v == nil {
@@ -18140,7 +18192,7 @@ func (o HttpRouteActionPtrOutput) WeightedBackendServices() WeightedBackendServi
 type HttpRouteActionResponse struct {
 	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy CorsPolicyResponse `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 	FaultInjectionPolicy HttpFaultInjectionResponse `pulumi:"faultInjectionPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationResponse `pulumi:"maxStreamDuration"`
@@ -18175,7 +18227,7 @@ func (o HttpRouteActionResponseOutput) CorsPolicy() CorsPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) CorsPolicyResponse { return v.CorsPolicy }).(CorsPolicyResponseOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection. Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: Routing and traffic management features.
 func (o HttpRouteActionResponseOutput) FaultInjectionPolicy() HttpFaultInjectionResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) HttpFaultInjectionResponse { return v.FaultInjectionPolicy }).(HttpFaultInjectionResponseOutput)
 }
@@ -19818,7 +19870,7 @@ type InstanceGroupManagerUpdatePolicy struct {
 	MaxUnavailable *FixedOrPercent `pulumi:"maxUnavailable"`
 	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
 	MinReadySec *int `pulumi:"minReadySec"`
-	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 	MinimalAction *InstanceGroupManagerUpdatePolicyMinimalAction `pulumi:"minimalAction"`
 	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction *InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction `pulumi:"mostDisruptiveAllowedAction"`
@@ -19848,7 +19900,7 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	MaxUnavailable FixedOrPercentPtrInput `pulumi:"maxUnavailable"`
 	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
 	MinReadySec pulumi.IntPtrInput `pulumi:"minReadySec"`
-	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 	MinimalAction InstanceGroupManagerUpdatePolicyMinimalActionPtrInput `pulumi:"minimalAction"`
 	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrInput `pulumi:"mostDisruptiveAllowedAction"`
@@ -19957,7 +20009,7 @@ func (o InstanceGroupManagerUpdatePolicyOutput) MinReadySec() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *int { return v.MinReadySec }).(pulumi.IntPtrOutput)
 }
 
-// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 func (o InstanceGroupManagerUpdatePolicyOutput) MinimalAction() InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *InstanceGroupManagerUpdatePolicyMinimalAction {
 		return v.MinimalAction
@@ -20047,7 +20099,7 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) MinReadySec() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) MinimalAction() InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *InstanceGroupManagerUpdatePolicyMinimalAction {
 		if v == nil {
@@ -20096,7 +20148,7 @@ type InstanceGroupManagerUpdatePolicyResponse struct {
 	MaxUnavailable FixedOrPercentResponse `pulumi:"maxUnavailable"`
 	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
 	MinReadySec int `pulumi:"minReadySec"`
-	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 	MinimalAction string `pulumi:"minimalAction"`
 	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction string `pulumi:"mostDisruptiveAllowedAction"`
@@ -20140,7 +20192,7 @@ func (o InstanceGroupManagerUpdatePolicyResponseOutput) MinReadySec() pulumi.Int
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) int { return v.MinReadySec }).(pulumi.IntOutput)
 }
 
-// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes.
 func (o InstanceGroupManagerUpdatePolicyResponseOutput) MinimalAction() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
@@ -25866,6 +25918,8 @@ type NetworkPeeringResponse struct {
 	Network string `pulumi:"network"`
 	// Maximum Transmission Unit in bytes.
 	PeerMtu int `pulumi:"peerMtu"`
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+	StackType string `pulumi:"stackType"`
 	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
 	State string `pulumi:"state"`
 	// Details about the current state of the peering.
@@ -25930,6 +25984,11 @@ func (o NetworkPeeringResponseOutput) Network() pulumi.StringOutput {
 // Maximum Transmission Unit in bytes.
 func (o NetworkPeeringResponseOutput) PeerMtu() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) int { return v.PeerMtu }).(pulumi.IntOutput)
+}
+
+// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+func (o NetworkPeeringResponseOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPeeringResponse) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 // State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
@@ -29378,6 +29437,117 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput) Index(
 	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput)
 }
 
+type RegionSslPolicyWarningsItemDataItemResponse struct {
+	// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+type RegionSslPolicyWarningsItemDataItemResponseOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyWarningsItemDataItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSslPolicyWarningsItemDataItemResponse)(nil)).Elem()
+}
+
+func (o RegionSslPolicyWarningsItemDataItemResponseOutput) ToRegionSslPolicyWarningsItemDataItemResponseOutput() RegionSslPolicyWarningsItemDataItemResponseOutput {
+	return o
+}
+
+func (o RegionSslPolicyWarningsItemDataItemResponseOutput) ToRegionSslPolicyWarningsItemDataItemResponseOutputWithContext(ctx context.Context) RegionSslPolicyWarningsItemDataItemResponseOutput {
+	return o
+}
+
+// A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o RegionSslPolicyWarningsItemDataItemResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionSslPolicyWarningsItemDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A warning data value corresponding to the key.
+func (o RegionSslPolicyWarningsItemDataItemResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionSslPolicyWarningsItemDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RegionSslPolicyWarningsItemDataItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyWarningsItemDataItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionSslPolicyWarningsItemDataItemResponse)(nil)).Elem()
+}
+
+func (o RegionSslPolicyWarningsItemDataItemResponseArrayOutput) ToRegionSslPolicyWarningsItemDataItemResponseArrayOutput() RegionSslPolicyWarningsItemDataItemResponseArrayOutput {
+	return o
+}
+
+func (o RegionSslPolicyWarningsItemDataItemResponseArrayOutput) ToRegionSslPolicyWarningsItemDataItemResponseArrayOutputWithContext(ctx context.Context) RegionSslPolicyWarningsItemDataItemResponseArrayOutput {
+	return o
+}
+
+func (o RegionSslPolicyWarningsItemDataItemResponseArrayOutput) Index(i pulumi.IntInput) RegionSslPolicyWarningsItemDataItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionSslPolicyWarningsItemDataItemResponse {
+		return vs[0].([]RegionSslPolicyWarningsItemDataItemResponse)[vs[1].(int)]
+	}).(RegionSslPolicyWarningsItemDataItemResponseOutput)
+}
+
+type RegionSslPolicyWarningsItemResponse struct {
+	// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data []RegionSslPolicyWarningsItemDataItemResponse `pulumi:"data"`
+	// A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+type RegionSslPolicyWarningsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyWarningsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSslPolicyWarningsItemResponse)(nil)).Elem()
+}
+
+func (o RegionSslPolicyWarningsItemResponseOutput) ToRegionSslPolicyWarningsItemResponseOutput() RegionSslPolicyWarningsItemResponseOutput {
+	return o
+}
+
+func (o RegionSslPolicyWarningsItemResponseOutput) ToRegionSslPolicyWarningsItemResponseOutputWithContext(ctx context.Context) RegionSslPolicyWarningsItemResponseOutput {
+	return o
+}
+
+// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o RegionSslPolicyWarningsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionSslPolicyWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+func (o RegionSslPolicyWarningsItemResponseOutput) Data() RegionSslPolicyWarningsItemDataItemResponseArrayOutput {
+	return o.ApplyT(func(v RegionSslPolicyWarningsItemResponse) []RegionSslPolicyWarningsItemDataItemResponse {
+		return v.Data
+	}).(RegionSslPolicyWarningsItemDataItemResponseArrayOutput)
+}
+
+// A human-readable description of the warning code.
+func (o RegionSslPolicyWarningsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionSslPolicyWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type RegionSslPolicyWarningsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyWarningsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionSslPolicyWarningsItemResponse)(nil)).Elem()
+}
+
+func (o RegionSslPolicyWarningsItemResponseArrayOutput) ToRegionSslPolicyWarningsItemResponseArrayOutput() RegionSslPolicyWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o RegionSslPolicyWarningsItemResponseArrayOutput) ToRegionSslPolicyWarningsItemResponseArrayOutputWithContext(ctx context.Context) RegionSslPolicyWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o RegionSslPolicyWarningsItemResponseArrayOutput) Index(i pulumi.IntInput) RegionSslPolicyWarningsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionSslPolicyWarningsItemResponse {
+		return vs[0].([]RegionSslPolicyWarningsItemResponse)[vs[1].(int)]
+	}).(RegionSslPolicyWarningsItemResponseOutput)
+}
+
 // A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
@@ -30411,11 +30581,11 @@ func (o ResourcePolicyDailyCycleResponseOutput) StartTime() pulumi.StringOutput 
 
 // A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 type ResourcePolicyGroupPlacementPolicy struct {
-	// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+	// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
 	AvailabilityDomainCount *int `pulumi:"availabilityDomainCount"`
 	// Specifies network collocation
 	Collocation *ResourcePolicyGroupPlacementPolicyCollocation `pulumi:"collocation"`
-	// Number of vms in this placement group
+	// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 	VmCount *int `pulumi:"vmCount"`
 }
 
@@ -30432,11 +30602,11 @@ type ResourcePolicyGroupPlacementPolicyInput interface {
 
 // A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 type ResourcePolicyGroupPlacementPolicyArgs struct {
-	// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+	// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
 	AvailabilityDomainCount pulumi.IntPtrInput `pulumi:"availabilityDomainCount"`
 	// Specifies network collocation
 	Collocation ResourcePolicyGroupPlacementPolicyCollocationPtrInput `pulumi:"collocation"`
-	// Number of vms in this placement group
+	// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
 }
 
@@ -30518,7 +30688,7 @@ func (o ResourcePolicyGroupPlacementPolicyOutput) ToResourcePolicyGroupPlacement
 	}).(ResourcePolicyGroupPlacementPolicyPtrOutput)
 }
 
-// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
 func (o ResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *int { return v.AvailabilityDomainCount }).(pulumi.IntPtrOutput)
 }
@@ -30530,7 +30700,7 @@ func (o ResourcePolicyGroupPlacementPolicyOutput) Collocation() ResourcePolicyGr
 	}).(ResourcePolicyGroupPlacementPolicyCollocationPtrOutput)
 }
 
-// Number of vms in this placement group
+// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 func (o ResourcePolicyGroupPlacementPolicyOutput) VmCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *int { return v.VmCount }).(pulumi.IntPtrOutput)
 }
@@ -30559,7 +30729,7 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Elem() ResourcePolicyGroupP
 	}).(ResourcePolicyGroupPlacementPolicyOutput)
 }
 
-// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
 func (o ResourcePolicyGroupPlacementPolicyPtrOutput) AvailabilityDomainCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *int {
 		if v == nil {
@@ -30579,7 +30749,7 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Collocation() ResourcePolic
 	}).(ResourcePolicyGroupPlacementPolicyCollocationPtrOutput)
 }
 
-// Number of vms in this placement group
+// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 func (o ResourcePolicyGroupPlacementPolicyPtrOutput) VmCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *int {
 		if v == nil {
@@ -30591,11 +30761,11 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) VmCount() pulumi.IntPtrOutp
 
 // A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 type ResourcePolicyGroupPlacementPolicyResponse struct {
-	// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+	// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
 	AvailabilityDomainCount int `pulumi:"availabilityDomainCount"`
 	// Specifies network collocation
 	Collocation string `pulumi:"collocation"`
-	// Number of vms in this placement group
+	// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 	VmCount int `pulumi:"vmCount"`
 }
 
@@ -30614,7 +30784,7 @@ func (o ResourcePolicyGroupPlacementPolicyResponseOutput) ToResourcePolicyGroupP
 	return o
 }
 
-// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
 func (o ResourcePolicyGroupPlacementPolicyResponseOutput) AvailabilityDomainCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicyResponse) int { return v.AvailabilityDomainCount }).(pulumi.IntOutput)
 }
@@ -30624,7 +30794,7 @@ func (o ResourcePolicyGroupPlacementPolicyResponseOutput) Collocation() pulumi.S
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicyResponse) string { return v.Collocation }).(pulumi.StringOutput)
 }
 
-// Number of vms in this placement group
+// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 func (o ResourcePolicyGroupPlacementPolicyResponseOutput) VmCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicyResponse) int { return v.VmCount }).(pulumi.IntOutput)
 }
@@ -34367,6 +34537,8 @@ type RouterNat struct {
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
 	EnableDynamicPortAllocation      *bool `pulumi:"enableDynamicPortAllocation"`
 	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
+	// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+	EndpointTypes []RouterNatEndpointTypesItem `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
 	// Configure logging on this NAT.
@@ -34415,6 +34587,8 @@ type RouterNatArgs struct {
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
 	EnableDynamicPortAllocation      pulumi.BoolPtrInput `pulumi:"enableDynamicPortAllocation"`
 	EnableEndpointIndependentMapping pulumi.BoolPtrInput `pulumi:"enableEndpointIndependentMapping"`
+	// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+	EndpointTypes RouterNatEndpointTypesItemArrayInput `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput `pulumi:"icmpIdleTimeoutSec"`
 	// Configure logging on this NAT.
@@ -34509,6 +34683,11 @@ func (o RouterNatOutput) EnableDynamicPortAllocation() pulumi.BoolPtrOutput {
 
 func (o RouterNatOutput) EnableEndpointIndependentMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RouterNat) *bool { return v.EnableEndpointIndependentMapping }).(pulumi.BoolPtrOutput)
+}
+
+// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+func (o RouterNatOutput) EndpointTypes() RouterNatEndpointTypesItemArrayOutput {
+	return o.ApplyT(func(v RouterNat) []RouterNatEndpointTypesItem { return v.EndpointTypes }).(RouterNatEndpointTypesItemArrayOutput)
 }
 
 // Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -34800,6 +34979,8 @@ type RouterNatResponse struct {
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
 	EnableDynamicPortAllocation      bool `pulumi:"enableDynamicPortAllocation"`
 	EnableEndpointIndependentMapping bool `pulumi:"enableEndpointIndependentMapping"`
+	// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+	EndpointTypes []string `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec int `pulumi:"icmpIdleTimeoutSec"`
 	// Configure logging on this NAT.
@@ -34857,6 +35038,11 @@ func (o RouterNatResponseOutput) EnableDynamicPortAllocation() pulumi.BoolOutput
 
 func (o RouterNatResponseOutput) EnableEndpointIndependentMapping() pulumi.BoolOutput {
 	return o.ApplyT(func(v RouterNatResponse) bool { return v.EnableEndpointIndependentMapping }).(pulumi.BoolOutput)
+}
+
+// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+func (o RouterNatResponseOutput) EndpointTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterNatResponse) []string { return v.EndpointTypes }).(pulumi.StringArrayOutput)
 }
 
 // Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -45960,6 +46146,10 @@ func init() {
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyWarningsItemDataItemResponseOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyWarningsItemDataItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyWarningsItemResponseOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyWarningsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(RequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(RequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RequestMirrorPolicyResponseOutput{})

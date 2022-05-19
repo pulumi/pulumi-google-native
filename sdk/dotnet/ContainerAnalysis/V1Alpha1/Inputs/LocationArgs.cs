@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class LocationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        /// Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         /// </summary>
         [Input("cpeUri")]
         public Input<string>? CpeUri { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The version installed at this location.
+        /// Deprecated. The version installed at this location.
         /// </summary>
         [Input("version")]
         public Input<Inputs.VersionArgs>? Version { get; set; }

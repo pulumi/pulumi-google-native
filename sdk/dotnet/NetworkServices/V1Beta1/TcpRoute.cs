@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        /// </summary>
+        [Output("gateways")]
+        public Output<ImmutableArray<string>> Gateways { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Set of label tags associated with the TcpRoute resource.
         /// </summary>
         [Output("labels")]
@@ -113,6 +119,18 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("gateways")]
+        private InputList<string>? _gateways;
+
+        /// <summary>
+        /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        /// </summary>
+        public InputList<string> Gateways
+        {
+            get => _gateways ?? (_gateways = new InputList<string>());
+            set => _gateways = value;
+        }
 
         [Input("labels")]
         private InputMap<string>? _labels;

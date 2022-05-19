@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, resource_policies=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
@@ -34,6 +34,9 @@ class GetReservationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if resource_policies and not isinstance(resource_policies, dict):
+            raise TypeError("Expected argument 'resource_policies' to be a dict")
+        pulumi.set(__self__, "resource_policies", resource_policies)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -98,6 +101,14 @@ class GetReservationResult:
         The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Mapping[str, str]:
+        """
+        Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        """
+        return pulumi.get(self, "resource_policies")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -175,6 +186,7 @@ class AwaitableGetReservationResult(GetReservationResult):
             description=self.description,
             kind=self.kind,
             name=self.name,
+            resource_policies=self.resource_policies,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -208,6 +220,7 @@ def get_reservation(project: Optional[str] = None,
         description=__ret__.description,
         kind=__ret__.kind,
         name=__ret__.name,
+        resource_policies=__ret__.resource_policies,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,

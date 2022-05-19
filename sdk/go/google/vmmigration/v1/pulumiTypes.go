@@ -245,6 +245,8 @@ type ComputeEngineTargetDefaults struct {
 	ComputeScheduling *ComputeScheduling `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType *ComputeEngineTargetDefaultsDiskType `pulumi:"diskType"`
+	// The hostname to assign to the VM.
+	Hostname *string `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
 	Labels map[string]string `pulumi:"labels"`
 	// The license type to use in OS adaptation.
@@ -290,6 +292,8 @@ type ComputeEngineTargetDefaultsArgs struct {
 	ComputeScheduling ComputeSchedulingPtrInput `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType ComputeEngineTargetDefaultsDiskTypePtrInput `pulumi:"diskType"`
+	// The hostname to assign to the VM.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The license type to use in OS adaptation.
@@ -409,6 +413,11 @@ func (o ComputeEngineTargetDefaultsOutput) DiskType() ComputeEngineTargetDefault
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) *ComputeEngineTargetDefaultsDiskType { return v.DiskType }).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
 }
 
+// The hostname to assign to the VM.
+func (o ComputeEngineTargetDefaultsOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDefaults) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
 // A map of labels to associate with the VM.
 func (o ComputeEngineTargetDefaultsOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaults) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -521,6 +530,16 @@ func (o ComputeEngineTargetDefaultsPtrOutput) DiskType() ComputeEngineTargetDefa
 		}
 		return v.DiskType
 	}).(ComputeEngineTargetDefaultsDiskTypePtrOutput)
+}
+
+// The hostname to assign to the VM.
+func (o ComputeEngineTargetDefaultsPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeEngineTargetDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
 }
 
 // A map of labels to associate with the VM.
@@ -655,6 +674,8 @@ type ComputeEngineTargetDefaultsResponse struct {
 	ComputeScheduling ComputeSchedulingResponse `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType string `pulumi:"diskType"`
+	// The hostname to assign to the VM.
+	Hostname string `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
 	Labels map[string]string `pulumi:"labels"`
 	// The license type to use in OS adaptation.
@@ -719,6 +740,11 @@ func (o ComputeEngineTargetDefaultsResponseOutput) ComputeScheduling() ComputeSc
 // The disk type to use in the VM.
 func (o ComputeEngineTargetDefaultsResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The hostname to assign to the VM.
+func (o ComputeEngineTargetDefaultsResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDefaultsResponse) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // A map of labels to associate with the VM.
@@ -793,6 +819,8 @@ type ComputeEngineTargetDetailsResponse struct {
 	ComputeScheduling ComputeSchedulingResponse `pulumi:"computeScheduling"`
 	// The disk type to use in the VM.
 	DiskType string `pulumi:"diskType"`
+	// The hostname to assign to the VM.
+	Hostname string `pulumi:"hostname"`
 	// A map of labels to associate with the VM.
 	Labels map[string]string `pulumi:"labels"`
 	// The license type to use in OS adaptation.
@@ -857,6 +885,11 @@ func (o ComputeEngineTargetDetailsResponseOutput) ComputeScheduling() ComputeSch
 // The disk type to use in the VM.
 func (o ComputeEngineTargetDetailsResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The hostname to assign to the VM.
+func (o ComputeEngineTargetDetailsResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // A map of labels to associate with the VM.

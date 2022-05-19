@@ -281,6 +281,7 @@ class Task(pulumi.CustomResource):
             __props__.__dict__["trigger_spec"] = trigger_spec
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["execution_status"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
@@ -311,6 +312,7 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["execution_spec"] = None
+        __props__.__dict__["execution_status"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["spark"] = None
@@ -351,6 +353,14 @@ class Task(pulumi.CustomResource):
         Spec related to how a task is executed.
         """
         return pulumi.get(self, "execution_spec")
+
+    @property
+    @pulumi.getter(name="executionStatus")
+    def execution_status(self) -> pulumi.Output['outputs.GoogleCloudDataplexV1TaskExecutionStatusResponse']:
+        """
+        Status of the latest task executions.
+        """
+        return pulumi.get(self, "execution_status")
 
     @property
     @pulumi.getter

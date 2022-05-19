@@ -76,9 +76,9 @@ class CidrBlockArgs:
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None):
         """
-        CidrBlock contains an optional name and one CIDR block.
-        :param pulumi.Input[str] cidr_block: cidr_block must be specified in CIDR notation.
-        :param pulumi.Input[str] display_name: display_name is a field for users to identify CIDR blocks.
+        CIDR block with an optional name.
+        :param pulumi.Input[str] cidr_block: CIDR block that must be specified in CIDR notation.
+        :param pulumi.Input[str] display_name: User-defined name that identifies the CIDR block.
         """
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
@@ -89,7 +89,7 @@ class CidrBlockArgs:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        cidr_block must be specified in CIDR notation.
+        CIDR block that must be specified in CIDR notation.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -101,7 +101,7 @@ class CidrBlockArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        display_name is a field for users to identify CIDR blocks.
+        User-defined name that identifies the CIDR block.
         """
         return pulumi.get(self, "display_name")
 
@@ -179,7 +179,7 @@ class EnvironmentConfigArgs:
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         :param pulumi.Input['EnvironmentConfigEnvironmentSize'] environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
-        :param pulumi.Input['MasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+        :param pulumi.Input['MasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
@@ -265,7 +265,7 @@ class EnvironmentConfigArgs:
     @pulumi.getter(name="masterAuthorizedNetworksConfig")
     def master_authorized_networks_config(self) -> Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']]:
         """
-        Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+        Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
         """
         return pulumi.get(self, "master_authorized_networks_config")
 
@@ -506,8 +506,8 @@ class MasterAuthorizedNetworksConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
-        :param pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]] cidr_blocks: cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
-        :param pulumi.Input[bool] enabled: Whether or not master authorized networks is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]] cidr_blocks: Up to 50 external networks that could access Kubernetes master through HTTPS.
+        :param pulumi.Input[bool] enabled: Whether or not master authorized networks feature is enabled.
         """
         if cidr_blocks is not None:
             pulumi.set(__self__, "cidr_blocks", cidr_blocks)
@@ -518,7 +518,7 @@ class MasterAuthorizedNetworksConfigArgs:
     @pulumi.getter(name="cidrBlocks")
     def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]]:
         """
-        cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+        Up to 50 external networks that could access Kubernetes master through HTTPS.
         """
         return pulumi.get(self, "cidr_blocks")
 
@@ -530,7 +530,7 @@ class MasterAuthorizedNetworksConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not master authorized networks is enabled.
+        Whether or not master authorized networks feature is enabled.
         """
         return pulumi.get(self, "enabled")
 

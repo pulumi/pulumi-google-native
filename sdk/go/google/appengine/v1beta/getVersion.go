@@ -30,7 +30,7 @@ type LookupVersionArgs struct {
 type LookupVersionResult struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerResponse `pulumi:"apiConfig"`
-	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis bool `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling AutomaticScalingResponse `pulumi:"automaticScaling"`
@@ -153,7 +153,7 @@ func (o LookupVersionResultOutput) ApiConfig() ApiConfigHandlerResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) ApiConfigHandlerResponse { return v.ApiConfig }).(ApiConfigHandlerResponseOutput)
 }
 
-// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+// Allows App Engine second generation runtimes to access the legacy bundled services.
 func (o LookupVersionResultOutput) AppEngineApis() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupVersionResult) bool { return v.AppEngineApis }).(pulumi.BoolOutput)
 }

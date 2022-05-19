@@ -36,6 +36,7 @@ __all__ = [
     'DeploymentNoteResponse',
     'DeploymentOccurrenceResponse',
     'DetailResponse',
+    'DigestResponse',
     'DiscoveryNoteResponse',
     'DiscoveryOccurrenceResponse',
     'DistributionResponse',
@@ -55,6 +56,7 @@ __all__ = [
     'JwtResponse',
     'KnowledgeBaseResponse',
     'LayerResponse',
+    'LicenseResponse',
     'LocationResponse',
     'MaterialResponse',
     'MetadataResponse',
@@ -1774,6 +1776,56 @@ class DetailResponse(dict):
 
 
 @pulumi.output_type
+class DigestResponse(dict):
+    """
+    Digest information.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "digestValue":
+            suggest = "digest_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DigestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DigestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DigestResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 algo: str,
+                 digest_value: str):
+        """
+        Digest information.
+        :param str algo: `SHA1`, `SHA512` etc.
+        :param str digest_value: Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        pulumi.set(__self__, "algo", algo)
+        pulumi.set(__self__, "digest_value", digest_value)
+
+    @property
+    @pulumi.getter
+    def algo(self) -> str:
+        """
+        `SHA1`, `SHA512` etc.
+        """
+        return pulumi.get(self, "algo")
+
+    @property
+    @pulumi.getter(name="digestValue")
+    def digest_value(self) -> str:
+        """
+        Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        return pulumi.get(self, "digest_value")
+
+
+@pulumi.output_type
 class DiscoveryNoteResponse(dict):
     """
     A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
@@ -2813,6 +2865,39 @@ class LayerResponse(dict):
 
 
 @pulumi.output_type
+class LicenseResponse(dict):
+    """
+    License information.
+    """
+    def __init__(__self__, *,
+                 comments: str,
+                 expression: str):
+        """
+        License information.
+        :param str comments: Comments
+        :param str expression: Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+        """
+        pulumi.set(__self__, "comments", comments)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> str:
+        """
+        Comments
+        """
+        return pulumi.get(self, "comments")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
 class LocationResponse(dict):
     """
     An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
@@ -2840,9 +2925,9 @@ class LocationResponse(dict):
                  version: 'outputs.VersionResponse'):
         """
         An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
-        :param str cpe_uri: The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        :param str cpe_uri: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
         :param str path: The path from which we gathered that this package/version is installed.
-        :param 'VersionResponse' version: The version installed at this location.
+        :param 'VersionResponse' version: Deprecated. The version installed at this location.
         """
         pulumi.set(__self__, "cpe_uri", cpe_uri)
         pulumi.set(__self__, "path", path)
@@ -2852,7 +2937,7 @@ class LocationResponse(dict):
     @pulumi.getter(name="cpeUri")
     def cpe_uri(self) -> str:
         """
-        The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
         """
         return pulumi.get(self, "cpe_uri")
 
@@ -2868,7 +2953,7 @@ class LocationResponse(dict):
     @pulumi.getter
     def version(self) -> 'outputs.VersionResponse':
         """
-        The version installed at this location.
+        Deprecated. The version installed at this location.
         """
         return pulumi.get(self, "version")
 
@@ -3199,26 +3284,120 @@ class PackageIssueResponse(dict):
 @pulumi.output_type
 class PackageNoteResponse(dict):
     """
-    This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+    PackageNote represents a particular package version.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+        elif key == "packageType":
+            suggest = "package_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageNoteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageNoteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageNoteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 architecture: str,
+                 cpe_uri: str,
+                 description: str,
+                 digest: Sequence['outputs.DigestResponse'],
                  distribution: Sequence['outputs.DistributionResponse'],
-                 name: str):
+                 license: 'outputs.LicenseResponse',
+                 maintainer: str,
+                 name: str,
+                 package_type: str,
+                 url: str,
+                 version: 'outputs.VersionResponse'):
         """
-        This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
-        :param Sequence['DistributionResponse'] distribution: The various channels by which a package is distributed.
+        PackageNote represents a particular package version.
+        :param str architecture: The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        :param str cpe_uri: The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        :param str description: The description of this package.
+        :param Sequence['DigestResponse'] digest: Hash value, typically a file digest, that allows unique identification a specific package.
+        :param Sequence['DistributionResponse'] distribution: Deprecated. The various channels by which a package is distributed.
+        :param 'LicenseResponse' license: Licenses that have been declared by the authors of the package.
+        :param str maintainer: A freeform text denoting the maintainer of this package.
         :param str name: Immutable. The name of the package.
+        :param str package_type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        :param str url: The homepage for this package.
+        :param 'VersionResponse' version: The version of the package.
         """
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "cpe_uri", cpe_uri)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "digest", digest)
         pulumi.set(__self__, "distribution", distribution)
+        pulumi.set(__self__, "license", license)
+        pulumi.set(__self__, "maintainer", maintainer)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        """
+        return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter(name="cpeUri")
+    def cpe_uri(self) -> str:
+        """
+        The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        """
+        return pulumi.get(self, "cpe_uri")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of this package.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Sequence['outputs.DigestResponse']:
+        """
+        Hash value, typically a file digest, that allows unique identification a specific package.
+        """
+        return pulumi.get(self, "digest")
 
     @property
     @pulumi.getter
     def distribution(self) -> Sequence['outputs.DistributionResponse']:
         """
-        The various channels by which a package is distributed.
+        Deprecated. The various channels by which a package is distributed.
         """
         return pulumi.get(self, "distribution")
+
+    @property
+    @pulumi.getter
+    def license(self) -> 'outputs.LicenseResponse':
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter
+    def maintainer(self) -> str:
+        """
+        A freeform text denoting the maintainer of this package.
+        """
+        return pulumi.get(self, "maintainer")
 
     @property
     @pulumi.getter
@@ -3228,22 +3407,104 @@ class PackageNoteResponse(dict):
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        """
+        return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The homepage for this package.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def version(self) -> 'outputs.VersionResponse':
+        """
+        The version of the package.
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class PackageOccurrenceResponse(dict):
     """
     Details on how a particular software package was installed on a system.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+        elif key == "packageType":
+            suggest = "package_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageOccurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageOccurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 architecture: str,
+                 cpe_uri: str,
+                 license: 'outputs.LicenseResponse',
                  location: Sequence['outputs.LocationResponse'],
-                 name: str):
+                 name: str,
+                 package_type: str,
+                 version: 'outputs.VersionResponse'):
         """
         Details on how a particular software package was installed on a system.
+        :param str architecture: The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        :param str cpe_uri: The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        :param 'LicenseResponse' license: Licenses that have been declared by the authors of the package.
         :param Sequence['LocationResponse'] location: All of the places within the filesystem versions of this package have been found.
         :param str name: The name of the installed package.
+        :param str package_type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        :param 'VersionResponse' version: The version of the package.
         """
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "cpe_uri", cpe_uri)
+        pulumi.set(__self__, "license", license)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        """
+        return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter(name="cpeUri")
+    def cpe_uri(self) -> str:
+        """
+        The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        """
+        return pulumi.get(self, "cpe_uri")
+
+    @property
+    @pulumi.getter
+    def license(self) -> 'outputs.LicenseResponse':
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
 
     @property
     @pulumi.getter
@@ -3260,6 +3521,22 @@ class PackageOccurrenceResponse(dict):
         The name of the installed package.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        """
+        return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter
+    def version(self) -> 'outputs.VersionResponse':
+        """
+        The version of the package.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

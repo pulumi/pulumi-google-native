@@ -8,11 +8,13 @@ import * as utilities from "../../utilities";
 export * from "./change";
 export * from "./getChange";
 export * from "./getManagedZone";
+export * from "./getManagedZoneIamPolicy";
 export * from "./getPolicy";
 export * from "./getResourceRecordSet";
 export * from "./getResponsePolicy";
 export * from "./getResponsePolicyRule";
 export * from "./managedZone";
+export * from "./managedZoneIamPolicy";
 export * from "./policy";
 export * from "./resourceRecordSet";
 export * from "./responsePolicy";
@@ -24,6 +26,7 @@ export * from "../../types/enums/dns/v1beta2";
 // Import resources to register:
 import { Change } from "./change";
 import { ManagedZone } from "./managedZone";
+import { ManagedZoneIamPolicy } from "./managedZoneIamPolicy";
 import { Policy } from "./policy";
 import { ResourceRecordSet } from "./resourceRecordSet";
 import { ResponsePolicy } from "./responsePolicy";
@@ -37,6 +40,8 @@ const _module = {
                 return new Change(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
+            case "google-native:dns/v1beta2:ManagedZoneIamPolicy":
+                return new ManagedZoneIamPolicy(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:ResourceRecordSet":

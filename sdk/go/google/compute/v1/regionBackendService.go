@@ -81,6 +81,8 @@ type RegionBackendService struct {
 	SecuritySettings SecuritySettingsResponseOutput `pulumi:"securitySettings"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+	ServiceBindings pulumi.StringArrayOutput `pulumi:"serviceBindings"`
 	// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 	SessionAffinity pulumi.StringOutput      `pulumi:"sessionAffinity"`
 	Subsetting      SubsettingResponseOutput `pulumi:"subsetting"`
@@ -186,6 +188,8 @@ type regionBackendServiceArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings *SecuritySettings `pulumi:"securitySettings"`
+	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+	ServiceBindings []string `pulumi:"serviceBindings"`
 	// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 	SessionAffinity *RegionBackendServiceSessionAffinity `pulumi:"sessionAffinity"`
 	Subsetting      *Subsetting                          `pulumi:"subsetting"`
@@ -251,6 +255,8 @@ type RegionBackendServiceArgs struct {
 	RequestId pulumi.StringPtrInput
 	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	SecuritySettings SecuritySettingsPtrInput
+	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+	ServiceBindings pulumi.StringArrayInput
 	// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 	SessionAffinity RegionBackendServiceSessionAffinityPtrInput
 	Subsetting      SubsettingPtrInput
@@ -464,6 +470,11 @@ func (o RegionBackendServiceOutput) SecuritySettings() SecuritySettingsResponseO
 // Server-defined URL for the resource.
 func (o RegionBackendServiceOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+func (o RegionBackendServiceOutput) ServiceBindings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.StringArrayOutput { return v.ServiceBindings }).(pulumi.StringArrayOutput)
 }
 
 // Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).

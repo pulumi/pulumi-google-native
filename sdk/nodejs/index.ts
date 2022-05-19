@@ -19,6 +19,7 @@ import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as authorization from "./authorization";
 import * as baremetalsolution from "./baremetalsolution";
+import * as beyondcorp from "./beyondcorp";
 import * as bigquery from "./bigquery";
 import * as bigqueryconnection from "./bigqueryconnection";
 import * as bigquerydatatransfer from "./bigquerydatatransfer";
@@ -144,6 +145,7 @@ export {
     assuredworkloads,
     authorization,
     baremetalsolution,
+    beyondcorp,
     bigquery,
     bigqueryconnection,
     bigquerydatatransfer,

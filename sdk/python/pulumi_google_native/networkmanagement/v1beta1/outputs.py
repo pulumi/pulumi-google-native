@@ -2210,8 +2210,8 @@ class StepResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "appEngineVersionInfo":
-            suggest = "app_engine_version_info"
+        if key == "appEngineVersion":
+            suggest = "app_engine_version"
         elif key == "causesDrop":
             suggest = "causes_drop"
         elif key == "cloudFunction":
@@ -2244,7 +2244,7 @@ class StepResponse(dict):
 
     def __init__(__self__, *,
                  abort: 'outputs.AbortInfoResponse',
-                 app_engine_version_info: 'outputs.AppEngineVersionInfoResponse',
+                 app_engine_version: 'outputs.AppEngineVersionInfoResponse',
                  causes_drop: bool,
                  cloud_function: 'outputs.CloudFunctionInfoResponse',
                  cloud_sql_instance: 'outputs.CloudSQLInstanceInfoResponse',
@@ -2268,7 +2268,7 @@ class StepResponse(dict):
         """
         A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
         :param 'AbortInfoResponse' abort: Display information of the final state "abort" and reason.
-        :param 'AppEngineVersionInfoResponse' app_engine_version_info: Display information of an App Engine service version.
+        :param 'AppEngineVersionInfoResponse' app_engine_version: Display information of an App Engine service version.
         :param bool causes_drop: This is a step that leads to the final state Drop.
         :param 'CloudFunctionInfoResponse' cloud_function: Display information of a Cloud function.
         :param 'CloudSQLInstanceInfoResponse' cloud_sql_instance: Display information of a Cloud SQL instance.
@@ -2291,7 +2291,7 @@ class StepResponse(dict):
         :param 'VpnTunnelInfoResponse' vpn_tunnel: Display information of a Compute Engine VPN tunnel.
         """
         pulumi.set(__self__, "abort", abort)
-        pulumi.set(__self__, "app_engine_version_info", app_engine_version_info)
+        pulumi.set(__self__, "app_engine_version", app_engine_version)
         pulumi.set(__self__, "causes_drop", causes_drop)
         pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
@@ -2322,12 +2322,12 @@ class StepResponse(dict):
         return pulumi.get(self, "abort")
 
     @property
-    @pulumi.getter(name="appEngineVersionInfo")
-    def app_engine_version_info(self) -> 'outputs.AppEngineVersionInfoResponse':
+    @pulumi.getter(name="appEngineVersion")
+    def app_engine_version(self) -> 'outputs.AppEngineVersionInfoResponse':
         """
         Display information of an App Engine service version.
         """
-        return pulumi.get(self, "app_engine_version_info")
+        return pulumi.get(self, "app_engine_version")
 
     @property
     @pulumi.getter(name="causesDrop")

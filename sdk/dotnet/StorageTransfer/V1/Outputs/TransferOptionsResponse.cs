@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly bool OverwriteObjectsAlreadyExistingInSink;
         /// <summary>
-        /// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+        /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
         /// </summary>
         public readonly string OverwriteWhen;
 

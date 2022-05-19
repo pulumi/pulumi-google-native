@@ -179,12 +179,18 @@ func (in *buildSignatureKeyTypePtr) ToBuildSignatureKeyTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(BuildSignatureKeyTypePtrOutput)
 }
 
+// Defined in CVSS v3, CVSS v2
 type CVSSAttackComplexity string
 
 const (
+	// Defined in CVSS v3, CVSS v2
 	CVSSAttackComplexityAttackComplexityUnspecified = CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED")
-	CVSSAttackComplexityAttackComplexityLow         = CVSSAttackComplexity("ATTACK_COMPLEXITY_LOW")
-	CVSSAttackComplexityAttackComplexityHigh        = CVSSAttackComplexity("ATTACK_COMPLEXITY_HIGH")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackComplexityAttackComplexityLow = CVSSAttackComplexity("ATTACK_COMPLEXITY_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackComplexityAttackComplexityHigh = CVSSAttackComplexity("ATTACK_COMPLEXITY_HIGH")
+	// Defined in CVSS v2
+	CVSSAttackComplexityAttackComplexityMedium = CVSSAttackComplexity("ATTACK_COMPLEXITY_MEDIUM")
 )
 
 func (CVSSAttackComplexity) ElementType() reflect.Type {
@@ -344,15 +350,20 @@ func (in *cvssattackComplexityPtr) ToCVSSAttackComplexityPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAttackComplexityPtrOutput)
 }
 
-// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
 type CVSSAttackVector string
 
 const (
+	// Defined in CVSS v3, CVSS v2
 	CVSSAttackVectorAttackVectorUnspecified = CVSSAttackVector("ATTACK_VECTOR_UNSPECIFIED")
-	CVSSAttackVectorAttackVectorNetwork     = CVSSAttackVector("ATTACK_VECTOR_NETWORK")
-	CVSSAttackVectorAttackVectorAdjacent    = CVSSAttackVector("ATTACK_VECTOR_ADJACENT")
-	CVSSAttackVectorAttackVectorLocal       = CVSSAttackVector("ATTACK_VECTOR_LOCAL")
-	CVSSAttackVectorAttackVectorPhysical    = CVSSAttackVector("ATTACK_VECTOR_PHYSICAL")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackVectorAttackVectorNetwork = CVSSAttackVector("ATTACK_VECTOR_NETWORK")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackVectorAttackVectorAdjacent = CVSSAttackVector("ATTACK_VECTOR_ADJACENT")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackVectorAttackVectorLocal = CVSSAttackVector("ATTACK_VECTOR_LOCAL")
+	// Defined in CVSS v3
+	CVSSAttackVectorAttackVectorPhysical = CVSSAttackVector("ATTACK_VECTOR_PHYSICAL")
 )
 
 func (CVSSAttackVector) ElementType() reflect.Type {
@@ -512,13 +523,18 @@ func (in *cvssattackVectorPtr) ToCVSSAttackVectorPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAttackVectorPtrOutput)
 }
 
+// Defined in CVSS v2
 type CVSSAuthentication string
 
 const (
+	// Defined in CVSS v2
 	CVSSAuthenticationAuthenticationUnspecified = CVSSAuthentication("AUTHENTICATION_UNSPECIFIED")
-	CVSSAuthenticationAuthenticationMultiple    = CVSSAuthentication("AUTHENTICATION_MULTIPLE")
-	CVSSAuthenticationAuthenticationSingle      = CVSSAuthentication("AUTHENTICATION_SINGLE")
-	CVSSAuthenticationAuthenticationNone        = CVSSAuthentication("AUTHENTICATION_NONE")
+	// Defined in CVSS v2
+	CVSSAuthenticationAuthenticationMultiple = CVSSAuthentication("AUTHENTICATION_MULTIPLE")
+	// Defined in CVSS v2
+	CVSSAuthenticationAuthenticationSingle = CVSSAuthentication("AUTHENTICATION_SINGLE")
+	// Defined in CVSS v2
+	CVSSAuthenticationAuthenticationNone = CVSSAuthentication("AUTHENTICATION_NONE")
 )
 
 func (CVSSAuthentication) ElementType() reflect.Type {
@@ -678,13 +694,22 @@ func (in *cvssauthenticationPtr) ToCVSSAuthenticationPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAuthenticationPtrOutput)
 }
 
+// Defined in CVSS v3, CVSS v2
 type CVSSAvailabilityImpact string
 
 const (
+	// Defined in CVSS v3, CVSS v2
 	CVSSAvailabilityImpactImpactUnspecified = CVSSAvailabilityImpact("IMPACT_UNSPECIFIED")
-	CVSSAvailabilityImpactImpactHigh        = CVSSAvailabilityImpact("IMPACT_HIGH")
-	CVSSAvailabilityImpactImpactLow         = CVSSAvailabilityImpact("IMPACT_LOW")
-	CVSSAvailabilityImpactImpactNone        = CVSSAvailabilityImpact("IMPACT_NONE")
+	// Defined in CVSS v3
+	CVSSAvailabilityImpactImpactHigh = CVSSAvailabilityImpact("IMPACT_HIGH")
+	// Defined in CVSS v3
+	CVSSAvailabilityImpactImpactLow = CVSSAvailabilityImpact("IMPACT_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAvailabilityImpactImpactNone = CVSSAvailabilityImpact("IMPACT_NONE")
+	// Defined in CVSS v2
+	CVSSAvailabilityImpactImpactPartial = CVSSAvailabilityImpact("IMPACT_PARTIAL")
+	// Defined in CVSS v2
+	CVSSAvailabilityImpactImpactComplete = CVSSAvailabilityImpact("IMPACT_COMPLETE")
 )
 
 func (CVSSAvailabilityImpact) ElementType() reflect.Type {
@@ -844,13 +869,22 @@ func (in *cvssavailabilityImpactPtr) ToCVSSAvailabilityImpactPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSAvailabilityImpactPtrOutput)
 }
 
+// Defined in CVSS v3, CVSS v2
 type CVSSConfidentialityImpact string
 
 const (
+	// Defined in CVSS v3, CVSS v2
 	CVSSConfidentialityImpactImpactUnspecified = CVSSConfidentialityImpact("IMPACT_UNSPECIFIED")
-	CVSSConfidentialityImpactImpactHigh        = CVSSConfidentialityImpact("IMPACT_HIGH")
-	CVSSConfidentialityImpactImpactLow         = CVSSConfidentialityImpact("IMPACT_LOW")
-	CVSSConfidentialityImpactImpactNone        = CVSSConfidentialityImpact("IMPACT_NONE")
+	// Defined in CVSS v3
+	CVSSConfidentialityImpactImpactHigh = CVSSConfidentialityImpact("IMPACT_HIGH")
+	// Defined in CVSS v3
+	CVSSConfidentialityImpactImpactLow = CVSSConfidentialityImpact("IMPACT_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSConfidentialityImpactImpactNone = CVSSConfidentialityImpact("IMPACT_NONE")
+	// Defined in CVSS v2
+	CVSSConfidentialityImpactImpactPartial = CVSSConfidentialityImpact("IMPACT_PARTIAL")
+	// Defined in CVSS v2
+	CVSSConfidentialityImpactImpactComplete = CVSSConfidentialityImpact("IMPACT_COMPLETE")
 )
 
 func (CVSSConfidentialityImpact) ElementType() reflect.Type {
@@ -1010,13 +1044,22 @@ func (in *cvssconfidentialityImpactPtr) ToCVSSConfidentialityImpactPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSConfidentialityImpactPtrOutput)
 }
 
+// Defined in CVSS v3, CVSS v2
 type CVSSIntegrityImpact string
 
 const (
+	// Defined in CVSS v3, CVSS v2
 	CVSSIntegrityImpactImpactUnspecified = CVSSIntegrityImpact("IMPACT_UNSPECIFIED")
-	CVSSIntegrityImpactImpactHigh        = CVSSIntegrityImpact("IMPACT_HIGH")
-	CVSSIntegrityImpactImpactLow         = CVSSIntegrityImpact("IMPACT_LOW")
-	CVSSIntegrityImpactImpactNone        = CVSSIntegrityImpact("IMPACT_NONE")
+	// Defined in CVSS v3
+	CVSSIntegrityImpactImpactHigh = CVSSIntegrityImpact("IMPACT_HIGH")
+	// Defined in CVSS v3
+	CVSSIntegrityImpactImpactLow = CVSSIntegrityImpact("IMPACT_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSIntegrityImpactImpactNone = CVSSIntegrityImpact("IMPACT_NONE")
+	// Defined in CVSS v2
+	CVSSIntegrityImpactImpactPartial = CVSSIntegrityImpact("IMPACT_PARTIAL")
+	// Defined in CVSS v2
+	CVSSIntegrityImpactImpactComplete = CVSSIntegrityImpact("IMPACT_COMPLETE")
 )
 
 func (CVSSIntegrityImpact) ElementType() reflect.Type {
@@ -1176,13 +1219,18 @@ func (in *cvssintegrityImpactPtr) ToCVSSIntegrityImpactPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSIntegrityImpactPtrOutput)
 }
 
+// Defined in CVSS v3
 type CVSSPrivilegesRequired string
 
 const (
+	// Defined in CVSS v3
 	CVSSPrivilegesRequiredPrivilegesRequiredUnspecified = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_UNSPECIFIED")
-	CVSSPrivilegesRequiredPrivilegesRequiredNone        = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_NONE")
-	CVSSPrivilegesRequiredPrivilegesRequiredLow         = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_LOW")
-	CVSSPrivilegesRequiredPrivilegesRequiredHigh        = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_HIGH")
+	// Defined in CVSS v3
+	CVSSPrivilegesRequiredPrivilegesRequiredNone = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_NONE")
+	// Defined in CVSS v3
+	CVSSPrivilegesRequiredPrivilegesRequiredLow = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_LOW")
+	// Defined in CVSS v3
+	CVSSPrivilegesRequiredPrivilegesRequiredHigh = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_HIGH")
 )
 
 func (CVSSPrivilegesRequired) ElementType() reflect.Type {
@@ -1342,12 +1390,16 @@ func (in *cvssprivilegesRequiredPtr) ToCVSSPrivilegesRequiredPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSPrivilegesRequiredPtrOutput)
 }
 
+// Defined in CVSS v3
 type CVSSScope string
 
 const (
+	// Defined in CVSS v3
 	CVSSScopeScopeUnspecified = CVSSScope("SCOPE_UNSPECIFIED")
-	CVSSScopeScopeUnchanged   = CVSSScope("SCOPE_UNCHANGED")
-	CVSSScopeScopeChanged     = CVSSScope("SCOPE_CHANGED")
+	// Defined in CVSS v3
+	CVSSScopeScopeUnchanged = CVSSScope("SCOPE_UNCHANGED")
+	// Defined in CVSS v3
+	CVSSScopeScopeChanged = CVSSScope("SCOPE_CHANGED")
 )
 
 func (CVSSScope) ElementType() reflect.Type {
@@ -1507,12 +1559,16 @@ func (in *cvssscopePtr) ToCVSSScopePtrOutputWithContext(ctx context.Context) CVS
 	return pulumi.ToOutputWithContext(ctx, in).(CVSSScopePtrOutput)
 }
 
+// Defined in CVSS v3
 type CVSSUserInteraction string
 
 const (
+	// Defined in CVSS v3
 	CVSSUserInteractionUserInteractionUnspecified = CVSSUserInteraction("USER_INTERACTION_UNSPECIFIED")
-	CVSSUserInteractionUserInteractionNone        = CVSSUserInteraction("USER_INTERACTION_NONE")
-	CVSSUserInteractionUserInteractionRequired    = CVSSUserInteraction("USER_INTERACTION_REQUIRED")
+	// Defined in CVSS v3
+	CVSSUserInteractionUserInteractionNone = CVSSUserInteraction("USER_INTERACTION_NONE")
+	// Defined in CVSS v3
+	CVSSUserInteractionUserInteractionRequired = CVSSUserInteraction("USER_INTERACTION_REQUIRED")
 )
 
 func (CVSSUserInteraction) ElementType() reflect.Type {
@@ -3621,6 +3677,175 @@ func (in *layerDirectivePtr) ToLayerDirectivePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LayerDirectivePtrOutput)
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+type PackageArchitecture string
+
+const (
+	// Unknown architecture
+	PackageArchitectureArchitectureUnspecified = PackageArchitecture("ARCHITECTURE_UNSPECIFIED")
+	// X86 architecture
+	PackageArchitectureX86 = PackageArchitecture("X86")
+	// X64 architecture
+	PackageArchitectureX64 = PackageArchitecture("X64")
+)
+
+func (PackageArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageArchitecture)(nil)).Elem()
+}
+
+func (e PackageArchitecture) ToPackageArchitectureOutput() PackageArchitectureOutput {
+	return pulumi.ToOutput(e).(PackageArchitectureOutput)
+}
+
+func (e PackageArchitecture) ToPackageArchitectureOutputWithContext(ctx context.Context) PackageArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PackageArchitectureOutput)
+}
+
+func (e PackageArchitecture) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return e.ToPackageArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e PackageArchitecture) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return PackageArchitecture(e).ToPackageArchitectureOutputWithContext(ctx).ToPackageArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e PackageArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PackageArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PackageArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PackageArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PackageArchitectureOutput struct{ *pulumi.OutputState }
+
+func (PackageArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageArchitecture)(nil)).Elem()
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitectureOutput() PackageArchitectureOutput {
+	return o
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitectureOutputWithContext(ctx context.Context) PackageArchitectureOutput {
+	return o
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return o.ToPackageArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageArchitecture) *PackageArchitecture {
+		return &v
+	}).(PackageArchitecturePtrOutput)
+}
+
+func (o PackageArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PackageArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PackageArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PackageArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageArchitecture)(nil)).Elem()
+}
+
+func (o PackageArchitecturePtrOutput) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return o
+}
+
+func (o PackageArchitecturePtrOutput) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return o
+}
+
+func (o PackageArchitecturePtrOutput) Elem() PackageArchitectureOutput {
+	return o.ApplyT(func(v *PackageArchitecture) PackageArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret PackageArchitecture
+		return ret
+	}).(PackageArchitectureOutput)
+}
+
+func (o PackageArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PackageArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageArchitectureInput is an input type that accepts PackageArchitectureArgs and PackageArchitectureOutput values.
+// You can construct a concrete instance of `PackageArchitectureInput` via:
+//
+//          PackageArchitectureArgs{...}
+type PackageArchitectureInput interface {
+	pulumi.Input
+
+	ToPackageArchitectureOutput() PackageArchitectureOutput
+	ToPackageArchitectureOutputWithContext(context.Context) PackageArchitectureOutput
+}
+
+var packageArchitecturePtrType = reflect.TypeOf((**PackageArchitecture)(nil)).Elem()
+
+type PackageArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput
+	ToPackageArchitecturePtrOutputWithContext(context.Context) PackageArchitecturePtrOutput
+}
+
+type packageArchitecturePtr string
+
+func PackageArchitecturePtr(v string) PackageArchitecturePtrInput {
+	return (*packageArchitecturePtr)(&v)
+}
+
+func (*packageArchitecturePtr) ElementType() reflect.Type {
+	return packageArchitecturePtrType
+}
+
+func (in *packageArchitecturePtr) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(PackageArchitecturePtrOutput)
+}
+
+func (in *packageArchitecturePtr) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PackageArchitecturePtrOutput)
+}
+
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 type PgpSignedAttestationContentType string
 
@@ -4601,6 +4826,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HashTypePtrInput)(nil)).Elem(), HashType("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerDirectiveInput)(nil)).Elem(), LayerDirective("DIRECTIVE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerDirectivePtrInput)(nil)).Elem(), LayerDirective("DIRECTIVE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageArchitectureInput)(nil)).Elem(), PackageArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageArchitecturePtrInput)(nil)).Elem(), PackageArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationContentTypeInput)(nil)).Elem(), PgpSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationContentTypePtrInput)(nil)).Elem(), PgpSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteTypeInput)(nil)).Elem(), RelationshipNoteType("RELATIONSHIP_TYPE_UNSPECIFIED"))
@@ -4653,6 +4880,8 @@ func init() {
 	pulumi.RegisterOutputType(HashTypePtrOutput{})
 	pulumi.RegisterOutputType(LayerDirectiveOutput{})
 	pulumi.RegisterOutputType(LayerDirectivePtrOutput{})
+	pulumi.RegisterOutputType(PackageArchitectureOutput{})
+	pulumi.RegisterOutputType(PackageArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypeOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypePtrOutput{})
 	pulumi.RegisterOutputType(RelationshipNoteTypeOutput{})
