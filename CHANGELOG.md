@@ -2,12 +2,18 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
+
+
+## 0.19.0 (2022-05-19)
+
 - Update discovery docs
 
-** BUG FIXES **
+### BUG FIXES
 - Disable autonaming for certain resources [#291](https://github.com/pulumi/pulumi-google-native/issues/291)
+- Revert "use sequence numbers to generate deterministic autonames" [#435](https://github.com/pulumi/pulumi-google-native/pull/435)
 
-** BREAKING CHANGES **
+### BREAKING CHANGES
 - Resource `google-native:bigquery/v2:Dataset` - output `satisfiesPZS` was renamed
 - Function `google-native:bigquery/v2:getDataset` output `satisfiesPZS` was renamed
 - Resource `google-native:networkservices/v1beta1:TcpRoute` missing input `gateways`
