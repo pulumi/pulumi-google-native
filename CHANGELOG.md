@@ -53,7 +53,6 @@ Improvements:
 Bug fixes:
 
 - Add custom retry logic for cloud run [#411](https://github.com/pulumi/pulumi-google-native/pull/411)
-- Use sequence numbers to generate deterministic autonames. [#435](https://github.com/pulumi/pulumi-google-native/pull/435)
 
 ## 0.18.0 (2022-03-30)
 - Reflect renamed types as defined in cloud run v2 API specs [#419](https://github.com/pulumi/pulumi-google-native/pull/419)

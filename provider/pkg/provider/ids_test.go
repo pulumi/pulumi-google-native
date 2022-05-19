@@ -70,7 +70,7 @@ func TestGetDefaultName_Generated(t *testing.T) {
 		"location": "west",
 		"ignoreMe": 1.2,
 	})
-	actual := getDefaultName(urn, 1, "projects/{project}/locations/{location}/things/{name}", olds, news)
+	actual := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
 	expectedPrefix := "projects/p01/locations/west/things/myName-"
 	assert.True(t, strings.HasPrefix(actual.StringValue(), expectedPrefix))
 	assert.Equal(t, len(expectedPrefix)+7, len(actual.StringValue()))
@@ -87,7 +87,7 @@ func TestGetDefaultName_OldApplied(t *testing.T) {
 		"location": "west",
 		"ignoreMe": 1.2,
 	})
-	actual := getDefaultName(urn, 1, "projects/{project}/locations/{location}/things/{name}", olds, news)
+	actual := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
 	assert.Equal(t, fixedName, actual.StringValue())
 }
 
