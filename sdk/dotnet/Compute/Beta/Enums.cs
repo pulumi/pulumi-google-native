@@ -2780,7 +2780,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The type of the image used to create this disk. The default and only value is RAW
+    /// The type of the image used to create this disk. The default and only valid value is RAW.
     /// </summary>
     [EnumType]
     public readonly struct ImageSourceType : IEquatable<ImageSourceType>
@@ -4588,6 +4588,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
         public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
+        public static RegionCommitmentType MemoryOptimizedM3 { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED_M3");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
 
         public static bool operator ==(RegionCommitmentType left, RegionCommitmentType right) => left.Equals(right);

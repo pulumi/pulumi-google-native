@@ -32,6 +32,7 @@ __all__ = [
     'HttpCheckResponse',
     'InternalCheckerResponse',
     'IstioCanonicalServiceResponse',
+    'JsonPathMatcherResponse',
     'LabelDescriptorResponse',
     'LatencyCriteriaResponse',
     'LogMatchResponse',
@@ -591,15 +592,35 @@ class ContentMatcherResponse(dict):
     """
     Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonPathMatcher":
+            suggest = "json_path_matcher"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContentMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContentMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContentMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content: str,
+                 json_path_matcher: 'outputs.JsonPathMatcherResponse',
                  matcher: str):
         """
         Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
         :param str content: String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+        :param 'JsonPathMatcherResponse' json_path_matcher: Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
         :param str matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         """
         pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "json_path_matcher", json_path_matcher)
         pulumi.set(__self__, "matcher", matcher)
 
     @property
@@ -609,6 +630,14 @@ class ContentMatcherResponse(dict):
         String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
         """
         return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="jsonPathMatcher")
+    def json_path_matcher(self) -> 'outputs.JsonPathMatcherResponse':
+        """
+        Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+        """
+        return pulumi.get(self, "json_path_matcher")
 
     @property
     @pulumi.getter
@@ -1334,6 +1363,58 @@ class IstioCanonicalServiceResponse(dict):
         Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
         """
         return pulumi.get(self, "mesh_uid")
+
+
+@pulumi.output_type
+class JsonPathMatcherResponse(dict):
+    """
+    Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonMatcher":
+            suggest = "json_matcher"
+        elif key == "jsonPath":
+            suggest = "json_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JsonPathMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JsonPathMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JsonPathMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 json_matcher: str,
+                 json_path: str):
+        """
+        Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+        :param str json_matcher: The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+        :param str json_path: JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+        """
+        pulumi.set(__self__, "json_matcher", json_matcher)
+        pulumi.set(__self__, "json_path", json_path)
+
+    @property
+    @pulumi.getter(name="jsonMatcher")
+    def json_matcher(self) -> str:
+        """
+        The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+        """
+        return pulumi.get(self, "json_matcher")
+
+    @property
+    @pulumi.getter(name="jsonPath")
+    def json_path(self) -> str:
+        """
+        JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+        """
+        return pulumi.get(self, "json_path")
 
 
 @pulumi.output_type

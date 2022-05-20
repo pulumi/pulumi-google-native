@@ -23,7 +23,7 @@ class EkmConnectionArgs:
         """
         The set of arguments for constructing a EkmConnection resource.
         :param pulumi.Input[str] ekm_connection_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
-        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceResolverArgs']]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
         """
         if ekm_connection_id is not None:
@@ -53,7 +53,7 @@ class EkmConnectionArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -111,7 +111,7 @@ class EkmConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ekm_connection_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
-        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceResolverArgs']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
         """
         ...
@@ -204,7 +204,7 @@ class EkmConnection(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 

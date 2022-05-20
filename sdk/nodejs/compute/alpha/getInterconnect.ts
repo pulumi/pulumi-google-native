@@ -115,6 +115,10 @@ export interface GetInterconnectResult {
      */
     readonly provisionedLinkCount: number;
     /**
+     * Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+     */
+    readonly remoteLocation: string;
+    /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */
     readonly requestedLinkCount: number;

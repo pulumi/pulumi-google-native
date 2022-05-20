@@ -1752,7 +1752,7 @@ class ImageRawDiskContainerType(str, Enum):
 
 class ImageSourceType(str, Enum):
     """
-    The type of the image used to create this disk. The default and only value is RAW
+    The type of the image used to create this disk. The default and only valid value is RAW.
     """
     RAW = "RAW"
 

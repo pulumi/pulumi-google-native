@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Input<string>? EkmConnectionId { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

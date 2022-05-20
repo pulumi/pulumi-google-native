@@ -211,6 +211,46 @@ export const FilterEventTypeItem = {
 
 export type FilterEventTypeItem = (typeof FilterEventTypeItem)[keyof typeof FilterEventTypeItem];
 
+export const IPAllocationPolicyIpv6AccessType = {
+    /**
+     * Default value, will be defaulted as type external.
+     */
+    Ipv6AccessTypeUnspecified: "IPV6_ACCESS_TYPE_UNSPECIFIED",
+    /**
+     * Access type internal (all v6 addresses are internal IPs)
+     */
+    Internal: "INTERNAL",
+    /**
+     * Access type external (all v6 addresses are external IPs)
+     */
+    External: "EXTERNAL",
+} as const;
+
+/**
+ * The ipv6 access type (internal or external) when create_subnetwork is true
+ */
+export type IPAllocationPolicyIpv6AccessType = (typeof IPAllocationPolicyIpv6AccessType)[keyof typeof IPAllocationPolicyIpv6AccessType];
+
+export const IPAllocationPolicyStackType = {
+    /**
+     * By default, the clusters will be IPV4 only
+     */
+    StackTypeUnspecified: "STACK_TYPE_UNSPECIFIED",
+    /**
+     * The value used if the cluster is a IPV4 only
+     */
+    Ipv4: "IPV4",
+    /**
+     * The value used if the cluster is a dual stack cluster
+     */
+    Ipv4Ipv6: "IPV4_IPV6",
+} as const;
+
+/**
+ * IP stack type
+ */
+export type IPAllocationPolicyStackType = (typeof IPAllocationPolicyStackType)[keyof typeof IPAllocationPolicyStackType];
+
 export const IstioConfigAuth = {
     /**
      * auth not enabled
@@ -588,6 +628,34 @@ export const StatusConditionCode = {
  * Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
  */
 export type StatusConditionCode = (typeof StatusConditionCode)[keyof typeof StatusConditionCode];
+
+export const WorkloadConfigAuditMode = {
+    /**
+     * Default value meaning that no mode has been specified.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * This disables Workload Configuration auditing on the cluster, meaning that nothing is surfaced.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Applies the default set of policy auditing to a cluster's workloads.
+     */
+    Basic: "BASIC",
+    /**
+     * Surfaces configurations that are not in line with the Pod Security Standard Baseline policy.
+     */
+    Baseline: "BASELINE",
+    /**
+     * Surfaces configurations that are not in line with the Pod Security Standard Restricted policy.
+     */
+    Restricted: "RESTRICTED",
+} as const;
+
+/**
+ * Sets which mode of auditing should be used for the cluster's workloads.
+ */
+export type WorkloadConfigAuditMode = (typeof WorkloadConfigAuditMode)[keyof typeof WorkloadConfigAuditMode];
 
 export const WorkloadMetadataConfigMode = {
     /**

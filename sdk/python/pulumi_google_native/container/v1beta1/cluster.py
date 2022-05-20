@@ -62,6 +62,7 @@ class ClusterArgs:
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protect_config: Optional[pulumi.Input['ProtectConfigArgs']] = None,
                  release_channel: Optional[pulumi.Input['ReleaseChannelArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ResourceUsageExportConfigArgs']] = None,
@@ -120,6 +121,7 @@ class ClusterArgs:
         :param pulumi.Input[bool] private_cluster: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
+        :param pulumi.Input['ProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster.
         :param pulumi.Input['ReleaseChannelArgs'] release_channel: Release channel configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input['ResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
@@ -245,6 +247,8 @@ class ClusterArgs:
             pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protect_config is not None:
+            pulumi.set(__self__, "protect_config", protect_config)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if resource_labels is not None:
@@ -821,6 +825,18 @@ class ClusterArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="protectConfig")
+    def protect_config(self) -> Optional[pulumi.Input['ProtectConfigArgs']]:
+        """
+        Enable/Disable Protect API features for the cluster.
+        """
+        return pulumi.get(self, "protect_config")
+
+    @protect_config.setter
+    def protect_config(self, value: Optional[pulumi.Input['ProtectConfigArgs']]):
+        pulumi.set(self, "protect_config", value)
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input['ReleaseChannelArgs']]:
         """
@@ -1004,6 +1020,7 @@ class Cluster(pulumi.CustomResource):
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protect_config: Optional[pulumi.Input[pulumi.InputType['ProtectConfigArgs']]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1066,6 +1083,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] private_cluster: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
         :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
+        :param pulumi.Input[pulumi.InputType['ProtectConfigArgs']] protect_config: Enable/Disable Protect API features for the cluster.
         :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
@@ -1148,6 +1166,7 @@ class Cluster(pulumi.CustomResource):
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protect_config: Optional[pulumi.Input[pulumi.InputType['ProtectConfigArgs']]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1238,6 +1257,7 @@ class Cluster(pulumi.CustomResource):
                 warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["project"] = project
+            __props__.__dict__["protect_config"] = protect_config
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
@@ -1339,6 +1359,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["pod_security_policy_config"] = None
         __props__.__dict__["private_cluster"] = None
         __props__.__dict__["private_cluster_config"] = None
+        __props__.__dict__["protect_config"] = None
         __props__.__dict__["release_channel"] = None
         __props__.__dict__["resource_labels"] = None
         __props__.__dict__["resource_usage_export_config"] = None
@@ -1772,6 +1793,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for private cluster.
         """
         return pulumi.get(self, "private_cluster_config")
+
+    @property
+    @pulumi.getter(name="protectConfig")
+    def protect_config(self) -> pulumi.Output['outputs.ProtectConfigResponse']:
+        """
+        Enable/Disable Protect API features for the cluster.
+        """
+        return pulumi.get(self, "protect_config")
 
     @property
     @pulumi.getter(name="releaseChannel")

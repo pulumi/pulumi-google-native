@@ -72,7 +72,7 @@ type Image struct {
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceSnapshotEncryptionKey"`
 	// The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
-	// The type of the image used to create this disk. The default and only value is RAW
+	// The type of the image used to create this disk. The default and only valid value is RAW.
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -168,7 +168,7 @@ type imageArgs struct {
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 	SourceSnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
-	// The type of the image used to create this disk. The default and only value is RAW
+	// The type of the image used to create this disk. The default and only valid value is RAW.
 	SourceType *ImageSourceType `pulumi:"sourceType"`
 	// Cloud Storage bucket storage location of the image (regional or multi-regional).
 	StorageLocations []string `pulumi:"storageLocations"`
@@ -225,7 +225,7 @@ type ImageArgs struct {
 	SourceSnapshot pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyPtrInput
-	// The type of the image used to create this disk. The default and only value is RAW
+	// The type of the image used to create this disk. The default and only valid value is RAW.
 	SourceType ImageSourceTypePtrInput
 	// Cloud Storage bucket storage location of the image (regional or multi-regional).
 	StorageLocations pulumi.StringArrayInput
@@ -415,7 +415,7 @@ func (o ImageOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
 }
 
-// The type of the image used to create this disk. The default and only value is RAW
+// The type of the image used to create this disk. The default and only valid value is RAW.
 func (o ImageOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
 }

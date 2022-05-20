@@ -330,7 +330,7 @@ class GetImageResult:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
         """
-        The type of the image used to create this disk. The default and only value is RAW
+        The type of the image used to create this disk. The default and only valid value is RAW.
         """
         return pulumi.get(self, "source_type")
 

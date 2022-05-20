@@ -195,6 +195,14 @@ export const ContentMatcherMatcher = {
      * Selects negation of regular-expression matching. The match succeeds if the output does NOT match the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
      */
     NotMatchesRegex: "NOT_MATCHES_REGEX",
+    /**
+     * Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. JSONPath matching is only supported for HTTP/HTTPS checks.
+     */
+    MatchesJsonPath: "MATCHES_JSON_PATH",
+    /**
+     * Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. Succeeds when output does NOT match as specified. JSONPath is only supported for HTTP/HTTPS checks.
+     */
+    NotMatchesJsonPath: "NOT_MATCHES_JSON_PATH",
 } as const;
 
 /**
@@ -257,6 +265,26 @@ export const InternalCheckerState = {
  * The current operational state of the internal checker.
  */
 export type InternalCheckerState = (typeof InternalCheckerState)[keyof typeof InternalCheckerState];
+
+export const JsonPathMatcherJsonMatcher = {
+    /**
+     * No JSONPath matcher type specified (not valid).
+     */
+    JsonPathMatcherOptionUnspecified: "JSON_PATH_MATCHER_OPTION_UNSPECIFIED",
+    /**
+     * Selects 'exact string' matching. The match succeeds if the content at the json_path within the output is exactly the same as the content string.
+     */
+    ExactMatch: "EXACT_MATCH",
+    /**
+     * Selects regular-expression matching. The match succeeds if the content at the json_path within the output matches the regular expression specified in the content string.
+     */
+    RegexMatch: "REGEX_MATCH",
+} as const;
+
+/**
+ * The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+ */
+export type JsonPathMatcherJsonMatcher = (typeof JsonPathMatcherJsonMatcher)[keyof typeof JsonPathMatcherJsonMatcher];
 
 export const LabelDescriptorValueType = {
     /**

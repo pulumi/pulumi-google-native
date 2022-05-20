@@ -1351,7 +1351,7 @@ export const ImageSourceType = {
 } as const;
 
 /**
- * The type of the image used to create this disk. The default and only value is RAW
+ * The type of the image used to create this disk. The default and only valid value is RAW.
  */
 export type ImageSourceType = (typeof ImageSourceType)[keyof typeof ImageSourceType];
 
@@ -2219,6 +2219,7 @@ export const RegionCommitmentType = {
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
     GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
     MemoryOptimized: "MEMORY_OPTIMIZED",
+    MemoryOptimizedM3: "MEMORY_OPTIMIZED_M3",
     TypeUnspecified: "TYPE_UNSPECIFIED",
 } as const;
 

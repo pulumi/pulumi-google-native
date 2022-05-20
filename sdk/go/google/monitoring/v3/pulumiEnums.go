@@ -587,6 +587,10 @@ const (
 	ContentMatcherMatcherMatchesRegex = ContentMatcherMatcher("MATCHES_REGEX")
 	// Selects negation of regular-expression matching. The match succeeds if the output does NOT match the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
 	ContentMatcherMatcherNotMatchesRegex = ContentMatcherMatcher("NOT_MATCHES_REGEX")
+	// Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. JSONPath matching is only supported for HTTP/HTTPS checks.
+	ContentMatcherMatcherMatchesJsonPath = ContentMatcherMatcher("MATCHES_JSON_PATH")
+	// Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. Succeeds when output does NOT match as specified. JSONPath is only supported for HTTP/HTTPS checks.
+	ContentMatcherMatcherNotMatchesJsonPath = ContentMatcherMatcher("NOT_MATCHES_JSON_PATH")
 )
 
 func (ContentMatcherMatcher) ElementType() reflect.Type {
@@ -1249,6 +1253,175 @@ func (in *internalCheckerStatePtr) ToInternalCheckerStatePtrOutput() InternalChe
 
 func (in *internalCheckerStatePtr) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalCheckerStatePtrOutput)
+}
+
+// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+type JsonPathMatcherJsonMatcher string
+
+const (
+	// No JSONPath matcher type specified (not valid).
+	JsonPathMatcherJsonMatcherJsonPathMatcherOptionUnspecified = JsonPathMatcherJsonMatcher("JSON_PATH_MATCHER_OPTION_UNSPECIFIED")
+	// Selects 'exact string' matching. The match succeeds if the content at the json_path within the output is exactly the same as the content string.
+	JsonPathMatcherJsonMatcherExactMatch = JsonPathMatcherJsonMatcher("EXACT_MATCH")
+	// Selects regular-expression matching. The match succeeds if the content at the json_path within the output matches the regular expression specified in the content string.
+	JsonPathMatcherJsonMatcherRegexMatch = JsonPathMatcherJsonMatcher("REGEX_MATCH")
+)
+
+func (JsonPathMatcherJsonMatcher) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonPathMatcherJsonMatcher)(nil)).Elem()
+}
+
+func (e JsonPathMatcherJsonMatcher) ToJsonPathMatcherJsonMatcherOutput() JsonPathMatcherJsonMatcherOutput {
+	return pulumi.ToOutput(e).(JsonPathMatcherJsonMatcherOutput)
+}
+
+func (e JsonPathMatcherJsonMatcher) ToJsonPathMatcherJsonMatcherOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JsonPathMatcherJsonMatcherOutput)
+}
+
+func (e JsonPathMatcherJsonMatcher) ToJsonPathMatcherJsonMatcherPtrOutput() JsonPathMatcherJsonMatcherPtrOutput {
+	return e.ToJsonPathMatcherJsonMatcherPtrOutputWithContext(context.Background())
+}
+
+func (e JsonPathMatcherJsonMatcher) ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherPtrOutput {
+	return JsonPathMatcherJsonMatcher(e).ToJsonPathMatcherJsonMatcherOutputWithContext(ctx).ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx)
+}
+
+func (e JsonPathMatcherJsonMatcher) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JsonPathMatcherJsonMatcher) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JsonPathMatcherJsonMatcher) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JsonPathMatcherJsonMatcher) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JsonPathMatcherJsonMatcherOutput struct{ *pulumi.OutputState }
+
+func (JsonPathMatcherJsonMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonPathMatcherJsonMatcher)(nil)).Elem()
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToJsonPathMatcherJsonMatcherOutput() JsonPathMatcherJsonMatcherOutput {
+	return o
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToJsonPathMatcherJsonMatcherOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherOutput {
+	return o
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToJsonPathMatcherJsonMatcherPtrOutput() JsonPathMatcherJsonMatcherPtrOutput {
+	return o.ToJsonPathMatcherJsonMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JsonPathMatcherJsonMatcher) *JsonPathMatcherJsonMatcher {
+		return &v
+	}).(JsonPathMatcherJsonMatcherPtrOutput)
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JsonPathMatcherJsonMatcher) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JsonPathMatcherJsonMatcherOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JsonPathMatcherJsonMatcher) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JsonPathMatcherJsonMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (JsonPathMatcherJsonMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JsonPathMatcherJsonMatcher)(nil)).Elem()
+}
+
+func (o JsonPathMatcherJsonMatcherPtrOutput) ToJsonPathMatcherJsonMatcherPtrOutput() JsonPathMatcherJsonMatcherPtrOutput {
+	return o
+}
+
+func (o JsonPathMatcherJsonMatcherPtrOutput) ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherPtrOutput {
+	return o
+}
+
+func (o JsonPathMatcherJsonMatcherPtrOutput) Elem() JsonPathMatcherJsonMatcherOutput {
+	return o.ApplyT(func(v *JsonPathMatcherJsonMatcher) JsonPathMatcherJsonMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret JsonPathMatcherJsonMatcher
+		return ret
+	}).(JsonPathMatcherJsonMatcherOutput)
+}
+
+func (o JsonPathMatcherJsonMatcherPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JsonPathMatcherJsonMatcherPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JsonPathMatcherJsonMatcher) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JsonPathMatcherJsonMatcherInput is an input type that accepts JsonPathMatcherJsonMatcherArgs and JsonPathMatcherJsonMatcherOutput values.
+// You can construct a concrete instance of `JsonPathMatcherJsonMatcherInput` via:
+//
+//          JsonPathMatcherJsonMatcherArgs{...}
+type JsonPathMatcherJsonMatcherInput interface {
+	pulumi.Input
+
+	ToJsonPathMatcherJsonMatcherOutput() JsonPathMatcherJsonMatcherOutput
+	ToJsonPathMatcherJsonMatcherOutputWithContext(context.Context) JsonPathMatcherJsonMatcherOutput
+}
+
+var jsonPathMatcherJsonMatcherPtrType = reflect.TypeOf((**JsonPathMatcherJsonMatcher)(nil)).Elem()
+
+type JsonPathMatcherJsonMatcherPtrInput interface {
+	pulumi.Input
+
+	ToJsonPathMatcherJsonMatcherPtrOutput() JsonPathMatcherJsonMatcherPtrOutput
+	ToJsonPathMatcherJsonMatcherPtrOutputWithContext(context.Context) JsonPathMatcherJsonMatcherPtrOutput
+}
+
+type jsonPathMatcherJsonMatcherPtr string
+
+func JsonPathMatcherJsonMatcherPtr(v string) JsonPathMatcherJsonMatcherPtrInput {
+	return (*jsonPathMatcherJsonMatcherPtr)(&v)
+}
+
+func (*jsonPathMatcherJsonMatcherPtr) ElementType() reflect.Type {
+	return jsonPathMatcherJsonMatcherPtrType
+}
+
+func (in *jsonPathMatcherJsonMatcherPtr) ToJsonPathMatcherJsonMatcherPtrOutput() JsonPathMatcherJsonMatcherPtrOutput {
+	return pulumi.ToOutput(in).(JsonPathMatcherJsonMatcherPtrOutput)
+}
+
+func (in *jsonPathMatcherJsonMatcherPtr) ToJsonPathMatcherJsonMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherJsonMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JsonPathMatcherJsonMatcherPtrOutput)
 }
 
 // The type of data that can be assigned to the label.
@@ -3563,6 +3736,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpCheckRequestMethodPtrInput)(nil)).Elem(), HttpCheckRequestMethod("METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalCheckerStateInput)(nil)).Elem(), InternalCheckerState("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalCheckerStatePtrInput)(nil)).Elem(), InternalCheckerState("UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JsonPathMatcherJsonMatcherInput)(nil)).Elem(), JsonPathMatcherJsonMatcher("JSON_PATH_MATCHER_OPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JsonPathMatcherJsonMatcherPtrInput)(nil)).Elem(), JsonPathMatcherJsonMatcher("JSON_PATH_MATCHER_OPTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorValueTypeInput)(nil)).Elem(), LabelDescriptorValueType("STRING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorValueTypePtrInput)(nil)).Elem(), LabelDescriptorValueType("STRING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorLaunchStageInput)(nil)).Elem(), MetricDescriptorLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
@@ -3604,6 +3779,8 @@ func init() {
 	pulumi.RegisterOutputType(HttpCheckRequestMethodPtrOutput{})
 	pulumi.RegisterOutputType(InternalCheckerStateOutput{})
 	pulumi.RegisterOutputType(InternalCheckerStatePtrOutput{})
+	pulumi.RegisterOutputType(JsonPathMatcherJsonMatcherOutput{})
+	pulumi.RegisterOutputType(JsonPathMatcherJsonMatcherPtrOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorValueTypeOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorValueTypePtrOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorLaunchStageOutput{})

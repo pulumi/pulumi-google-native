@@ -88,7 +88,7 @@ type LookupImageResult struct {
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceSnapshotEncryptionKey"`
 	// The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
 	SourceSnapshotId string `pulumi:"sourceSnapshotId"`
-	// The type of the image used to create this disk. The default and only value is RAW
+	// The type of the image used to create this disk. The default and only valid value is RAW.
 	SourceType string `pulumi:"sourceType"`
 	// The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
 	Status string `pulumi:"status"`
@@ -289,7 +289,7 @@ func (o LookupImageResultOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.SourceSnapshotId }).(pulumi.StringOutput)
 }
 
-// The type of the image used to create this disk. The default and only value is RAW
+// The type of the image used to create this disk. The default and only valid value is RAW.
 func (o LookupImageResultOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.SourceType }).(pulumi.StringOutput)
 }

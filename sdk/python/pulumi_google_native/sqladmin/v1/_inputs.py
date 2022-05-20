@@ -2020,7 +2020,7 @@ class SqlScheduledMaintenanceArgs:
                  schedule_deadline_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
-        Any scheduled maintenancce for this instance.
+        Any scheduled maintenance for this instance.
         :param pulumi.Input[bool] can_reschedule: If the scheduled maintenance can be rescheduled.
         :param pulumi.Input[str] schedule_deadline_time: Maintenance cannot be rescheduled to start beyond this deadline.
         :param pulumi.Input[str] start_time: The start time of any upcoming scheduled maintenance for this instance.

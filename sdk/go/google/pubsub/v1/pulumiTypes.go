@@ -10,6 +10,257 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Configuration for a BigQuery subscription.
+type BigQueryConfig struct {
+	// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
+	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	Table *string `pulumi:"table"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	UseTopicSchema *bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// BigQueryConfigInput is an input type that accepts BigQueryConfigArgs and BigQueryConfigOutput values.
+// You can construct a concrete instance of `BigQueryConfigInput` via:
+//
+//          BigQueryConfigArgs{...}
+type BigQueryConfigInput interface {
+	pulumi.Input
+
+	ToBigQueryConfigOutput() BigQueryConfigOutput
+	ToBigQueryConfigOutputWithContext(context.Context) BigQueryConfigOutput
+}
+
+// Configuration for a BigQuery subscription.
+type BigQueryConfigArgs struct {
+	// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
+	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	Table pulumi.StringPtrInput `pulumi:"table"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (BigQueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryConfig)(nil)).Elem()
+}
+
+func (i BigQueryConfigArgs) ToBigQueryConfigOutput() BigQueryConfigOutput {
+	return i.ToBigQueryConfigOutputWithContext(context.Background())
+}
+
+func (i BigQueryConfigArgs) ToBigQueryConfigOutputWithContext(ctx context.Context) BigQueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryConfigOutput)
+}
+
+func (i BigQueryConfigArgs) ToBigQueryConfigPtrOutput() BigQueryConfigPtrOutput {
+	return i.ToBigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryConfigArgs) ToBigQueryConfigPtrOutputWithContext(ctx context.Context) BigQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryConfigOutput).ToBigQueryConfigPtrOutputWithContext(ctx)
+}
+
+// BigQueryConfigPtrInput is an input type that accepts BigQueryConfigArgs, BigQueryConfigPtr and BigQueryConfigPtrOutput values.
+// You can construct a concrete instance of `BigQueryConfigPtrInput` via:
+//
+//          BigQueryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type BigQueryConfigPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryConfigPtrOutput() BigQueryConfigPtrOutput
+	ToBigQueryConfigPtrOutputWithContext(context.Context) BigQueryConfigPtrOutput
+}
+
+type bigQueryConfigPtrType BigQueryConfigArgs
+
+func BigQueryConfigPtr(v *BigQueryConfigArgs) BigQueryConfigPtrInput {
+	return (*bigQueryConfigPtrType)(v)
+}
+
+func (*bigQueryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryConfig)(nil)).Elem()
+}
+
+func (i *bigQueryConfigPtrType) ToBigQueryConfigPtrOutput() BigQueryConfigPtrOutput {
+	return i.ToBigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryConfigPtrType) ToBigQueryConfigPtrOutputWithContext(ctx context.Context) BigQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryConfigPtrOutput)
+}
+
+// Configuration for a BigQuery subscription.
+type BigQueryConfigOutput struct{ *pulumi.OutputState }
+
+func (BigQueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryConfig)(nil)).Elem()
+}
+
+func (o BigQueryConfigOutput) ToBigQueryConfigOutput() BigQueryConfigOutput {
+	return o
+}
+
+func (o BigQueryConfigOutput) ToBigQueryConfigOutputWithContext(ctx context.Context) BigQueryConfigOutput {
+	return o
+}
+
+func (o BigQueryConfigOutput) ToBigQueryConfigPtrOutput() BigQueryConfigPtrOutput {
+	return o.ToBigQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryConfigOutput) ToBigQueryConfigPtrOutputWithContext(ctx context.Context) BigQueryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryConfig) *BigQueryConfig {
+		return &v
+	}).(BigQueryConfigPtrOutput)
+}
+
+// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+func (o BigQueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BigQueryConfig) *bool { return v.DropUnknownFields }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+func (o BigQueryConfigOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryConfig) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+func (o BigQueryConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BigQueryConfig) *bool { return v.UseTopicSchema }).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+func (o BigQueryConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BigQueryConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
+}
+
+type BigQueryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryConfig)(nil)).Elem()
+}
+
+func (o BigQueryConfigPtrOutput) ToBigQueryConfigPtrOutput() BigQueryConfigPtrOutput {
+	return o
+}
+
+func (o BigQueryConfigPtrOutput) ToBigQueryConfigPtrOutputWithContext(ctx context.Context) BigQueryConfigPtrOutput {
+	return o
+}
+
+func (o BigQueryConfigPtrOutput) Elem() BigQueryConfigOutput {
+	return o.ApplyT(func(v *BigQueryConfig) BigQueryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryConfig
+		return ret
+	}).(BigQueryConfigOutput)
+}
+
+// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+func (o BigQueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropUnknownFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+func (o BigQueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+func (o BigQueryConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+func (o BigQueryConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for a BigQuery subscription.
+type BigQueryConfigResponse struct {
+	// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	DropUnknownFields bool `pulumi:"dropUnknownFields"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State string `pulumi:"state"`
+	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	Table string `pulumi:"table"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	UseTopicSchema bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata bool `pulumi:"writeMetadata"`
+}
+
+// Configuration for a BigQuery subscription.
+type BigQueryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BigQueryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryConfigResponse)(nil)).Elem()
+}
+
+func (o BigQueryConfigResponseOutput) ToBigQueryConfigResponseOutput() BigQueryConfigResponseOutput {
+	return o
+}
+
+func (o BigQueryConfigResponseOutput) ToBigQueryConfigResponseOutputWithContext(ctx context.Context) BigQueryConfigResponseOutput {
+	return o
+}
+
+// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+func (o BigQueryConfigResponseOutput) DropUnknownFields() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryConfigResponse) bool { return v.DropUnknownFields }).(pulumi.BoolOutput)
+}
+
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o BigQueryConfigResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v BigQueryConfigResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+func (o BigQueryConfigResponseOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v BigQueryConfigResponse) string { return v.Table }).(pulumi.StringOutput)
+}
+
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+func (o BigQueryConfigResponseOutput) UseTopicSchema() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryConfigResponse) bool { return v.UseTopicSchema }).(pulumi.BoolOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+func (o BigQueryConfigResponseOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryConfigResponse) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
 // Associates `members`, or principals, with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -1745,6 +1996,8 @@ func (o SchemaSettingsResponseOutput) Schema() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryConfigInput)(nil)).Elem(), BigQueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryConfigPtrInput)(nil)).Elem(), BigQueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterPolicyInput)(nil)).Elem(), DeadLetterPolicyArgs{})
@@ -1763,6 +2016,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryPolicyPtrInput)(nil)).Elem(), RetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsInput)(nil)).Elem(), SchemaSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsPtrInput)(nil)).Elem(), SchemaSettingsArgs{})
+	pulumi.RegisterOutputType(BigQueryConfigOutput{})
+	pulumi.RegisterOutputType(BigQueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryConfigResponseOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})

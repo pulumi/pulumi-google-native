@@ -1919,7 +1919,7 @@ class SqlOutOfDiskReportResponse(dict):
 @pulumi.output_type
 class SqlScheduledMaintenanceResponse(dict):
     """
-    Any scheduled maintenancce for this instance.
+    Any scheduled maintenance for this instance.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1950,7 +1950,7 @@ class SqlScheduledMaintenanceResponse(dict):
                  schedule_deadline_time: str,
                  start_time: str):
         """
-        Any scheduled maintenancce for this instance.
+        Any scheduled maintenance for this instance.
         :param bool can_reschedule: If the scheduled maintenance can be rescheduled.
         :param str schedule_deadline_time: Maintenance cannot be rescheduled to start beyond this deadline.
         :param str start_time: The start time of any upcoming scheduled maintenance for this instance.

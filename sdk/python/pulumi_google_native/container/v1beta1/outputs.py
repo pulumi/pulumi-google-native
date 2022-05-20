@@ -81,6 +81,7 @@ __all__ = [
     'PodSecurityPolicyConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateClusterMasterGlobalAccessConfigResponse',
+    'ProtectConfigResponse',
     'PubSubResponse',
     'RecurringTimeWindowResponse',
     'ReleaseChannelResponse',
@@ -99,6 +100,7 @@ __all__ = [
     'VirtualNICResponse',
     'WorkloadALTSConfigResponse',
     'WorkloadCertificatesResponse',
+    'WorkloadConfigResponse',
     'WorkloadIdentityConfigResponse',
     'WorkloadMetadataConfigResponse',
 ]
@@ -1511,6 +1513,8 @@ class IPAllocationPolicyResponse(dict):
             suggest = "cluster_secondary_range_name"
         elif key == "createSubnetwork":
             suggest = "create_subnetwork"
+        elif key == "ipv6AccessType":
+            suggest = "ipv6_access_type"
         elif key == "nodeIpv4Cidr":
             suggest = "node_ipv4_cidr"
         elif key == "nodeIpv4CidrBlock":
@@ -1521,6 +1525,8 @@ class IPAllocationPolicyResponse(dict):
             suggest = "services_ipv4_cidr_block"
         elif key == "servicesSecondaryRangeName":
             suggest = "services_secondary_range_name"
+        elif key == "stackType":
+            suggest = "stack_type"
         elif key == "subnetworkName":
             suggest = "subnetwork_name"
         elif key == "tpuIpv4CidrBlock":
@@ -1547,11 +1553,13 @@ class IPAllocationPolicyResponse(dict):
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
                  create_subnetwork: bool,
+                 ipv6_access_type: str,
                  node_ipv4_cidr: str,
                  node_ipv4_cidr_block: str,
                  services_ipv4_cidr: str,
                  services_ipv4_cidr_block: str,
                  services_secondary_range_name: str,
+                 stack_type: str,
                  subnetwork_name: str,
                  tpu_ipv4_cidr_block: str,
                  use_ip_aliases: bool,
@@ -1563,11 +1571,13 @@ class IPAllocationPolicyResponse(dict):
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         :param bool create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
+        :param str ipv6_access_type: The ipv6 access type (internal or external) when create_subnetwork is true
         :param str node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param str node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param str services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
+        :param str stack_type: IP stack type
         :param str subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
         :param str tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
         :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -1578,11 +1588,13 @@ class IPAllocationPolicyResponse(dict):
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         pulumi.set(__self__, "node_ipv4_cidr", node_ipv4_cidr)
         pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "subnetwork_name", subnetwork_name)
         pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
@@ -1629,6 +1641,14 @@ class IPAllocationPolicyResponse(dict):
         return pulumi.get(self, "create_subnetwork")
 
     @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> str:
+        """
+        The ipv6 access type (internal or external) when create_subnetwork is true
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @property
     @pulumi.getter(name="nodeIpv4Cidr")
     def node_ipv4_cidr(self) -> str:
         """
@@ -1667,6 +1687,14 @@ class IPAllocationPolicyResponse(dict):
         The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         """
         return pulumi.get(self, "services_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        """
+        IP stack type
+        """
+        return pulumi.get(self, "stack_type")
 
     @property
     @pulumi.getter(name="subnetworkName")
@@ -3943,6 +3971,45 @@ class PrivateClusterMasterGlobalAccessConfigResponse(dict):
 
 
 @pulumi.output_type
+class ProtectConfigResponse(dict):
+    """
+    ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workloadConfig":
+            suggest = "workload_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProtectConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProtectConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProtectConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workload_config: 'outputs.WorkloadConfigResponse'):
+        """
+        ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+        :param 'WorkloadConfigResponse' workload_config: WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+        """
+        pulumi.set(__self__, "workload_config", workload_config)
+
+    @property
+    @pulumi.getter(name="workloadConfig")
+    def workload_config(self) -> 'outputs.WorkloadConfigResponse':
+        """
+        WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+        """
+        return pulumi.get(self, "workload_config")
+
+
+@pulumi.output_type
 class PubSubResponse(dict):
     """
     Pub/Sub specific notification config.
@@ -4731,6 +4798,45 @@ class WorkloadCertificatesResponse(dict):
         enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
         """
         return pulumi.get(self, "enable_certificates")
+
+
+@pulumi.output_type
+class WorkloadConfigResponse(dict):
+    """
+    WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditMode":
+            suggest = "audit_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_mode: str):
+        """
+        WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+        :param str audit_mode: Sets which mode of auditing should be used for the cluster's workloads.
+        """
+        pulumi.set(__self__, "audit_mode", audit_mode)
+
+    @property
+    @pulumi.getter(name="auditMode")
+    def audit_mode(self) -> str:
+        """
+        Sets which mode of auditing should be used for the cluster's workloads.
+        """
+        return pulumi.get(self, "audit_mode")
 
 
 @pulumi.output_type

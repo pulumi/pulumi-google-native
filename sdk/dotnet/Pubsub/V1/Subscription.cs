@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<int> AckDeadlineSeconds { get; private set; } = null!;
 
         /// <summary>
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// </summary>
+        [Output("bigqueryConfig")]
+        public Output<Outputs.BigQueryConfigResponse> BigqueryConfig { get; private set; } = null!;
+
+        /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
         /// </summary>
         [Output("deadLetterPolicy")]
@@ -161,6 +167,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         [Input("ackDeadlineSeconds")]
         public Input<int>? AckDeadlineSeconds { get; set; }
+
+        /// <summary>
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// </summary>
+        [Input("bigqueryConfig")]
+        public Input<Inputs.BigQueryConfigArgs>? BigqueryConfig { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.

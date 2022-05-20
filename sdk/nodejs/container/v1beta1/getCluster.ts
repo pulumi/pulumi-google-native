@@ -255,6 +255,10 @@ export interface GetClusterResult {
      */
     readonly privateClusterConfig: outputs.container.v1beta1.PrivateClusterConfigResponse;
     /**
+     * Enable/Disable Protect API features for the cluster.
+     */
+    readonly protectConfig: outputs.container.v1beta1.ProtectConfigResponse;
+    /**
      * Release channel configuration.
      */
     readonly releaseChannel: outputs.container.v1beta1.ReleaseChannelResponse;

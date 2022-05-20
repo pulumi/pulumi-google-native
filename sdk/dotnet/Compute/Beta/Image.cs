@@ -190,7 +190,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the image used to create this disk. The default and only value is RAW
+        /// The type of the image used to create this disk. The default and only valid value is RAW.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -424,7 +424,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// The type of the image used to create this disk. The default and only value is RAW
+        /// The type of the image used to create this disk. The default and only valid value is RAW.
         /// </summary>
         [Input("sourceType")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ImageSourceType>? SourceType { get; set; }

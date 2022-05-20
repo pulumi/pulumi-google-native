@@ -7,8 +7,10 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .backup import *
+from .federation import *
 from .federation_iam_policy import *
 from .get_backup import *
+from .get_federation import *
 from .get_federation_iam_policy import *
 from .get_metadata_import import *
 from .get_service import *

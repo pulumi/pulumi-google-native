@@ -18,6 +18,7 @@ class SubscriptionArgs:
                  subscription_id: pulumi.Input[str],
                  topic: pulumi.Input[str],
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
+                 bigquery_config: Optional[pulumi.Input['BigQueryConfigArgs']] = None,
                  dead_letter_policy: Optional[pulumi.Input['DeadLetterPolicyArgs']] = None,
                  detached: Optional[pulumi.Input[bool]] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
@@ -35,6 +36,7 @@ class SubscriptionArgs:
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
         :param pulumi.Input[int] ack_deadline_seconds: The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        :param pulumi.Input['BigQueryConfigArgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         :param pulumi.Input['DeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
         :param pulumi.Input[bool] detached: Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
@@ -52,6 +54,8 @@ class SubscriptionArgs:
         pulumi.set(__self__, "topic", topic)
         if ack_deadline_seconds is not None:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
+        if bigquery_config is not None:
+            pulumi.set(__self__, "bigquery_config", bigquery_config)
         if dead_letter_policy is not None:
             pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
         if detached is not None:
@@ -111,6 +115,18 @@ class SubscriptionArgs:
     @ack_deadline_seconds.setter
     def ack_deadline_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ack_deadline_seconds", value)
+
+    @property
+    @pulumi.getter(name="bigqueryConfig")
+    def bigquery_config(self) -> Optional[pulumi.Input['BigQueryConfigArgs']]:
+        """
+        If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        """
+        return pulumi.get(self, "bigquery_config")
+
+    @bigquery_config.setter
+    def bigquery_config(self, value: Optional[pulumi.Input['BigQueryConfigArgs']]):
+        pulumi.set(self, "bigquery_config", value)
 
     @property
     @pulumi.getter(name="deadLetterPolicy")
@@ -272,6 +288,7 @@ class Subscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
+                 bigquery_config: Optional[pulumi.Input[pulumi.InputType['BigQueryConfigArgs']]] = None,
                  dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['DeadLetterPolicyArgs']]] = None,
                  detached: Optional[pulumi.Input[bool]] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
@@ -294,6 +311,7 @@ class Subscription(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ack_deadline_seconds: The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        :param pulumi.Input[pulumi.InputType['BigQueryConfigArgs']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         :param pulumi.Input[pulumi.InputType['DeadLetterPolicyArgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
         :param pulumi.Input[bool] detached: Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If true, Pub/Sub provides the following guarantees for the delivery of a message with a given value of `message_id` on this subscription: * The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires. * An acknowledged message will not be resent to a subscriber. Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery` is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct `message_id` values.
@@ -333,6 +351,7 @@ class Subscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
+                 bigquery_config: Optional[pulumi.Input[pulumi.InputType['BigQueryConfigArgs']]] = None,
                  dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['DeadLetterPolicyArgs']]] = None,
                  detached: Optional[pulumi.Input[bool]] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
@@ -361,6 +380,7 @@ class Subscription(pulumi.CustomResource):
             __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
+            __props__.__dict__["bigquery_config"] = bigquery_config
             __props__.__dict__["dead_letter_policy"] = dead_letter_policy
             __props__.__dict__["detached"] = detached
             __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
@@ -405,6 +425,7 @@ class Subscription(pulumi.CustomResource):
         __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
         __props__.__dict__["ack_deadline_seconds"] = None
+        __props__.__dict__["bigquery_config"] = None
         __props__.__dict__["dead_letter_policy"] = None
         __props__.__dict__["detached"] = None
         __props__.__dict__["enable_exactly_once_delivery"] = None
@@ -429,6 +450,14 @@ class Subscription(pulumi.CustomResource):
         The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
         """
         return pulumi.get(self, "ack_deadline_seconds")
+
+    @property
+    @pulumi.getter(name="bigqueryConfig")
+    def bigquery_config(self) -> pulumi.Output['outputs.BigQueryConfigResponse']:
+        """
+        If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        """
+        return pulumi.get(self, "bigquery_config")
 
     @property
     @pulumi.getter(name="deadLetterPolicy")

@@ -192,6 +192,8 @@ class AutoscalingTargetsResponse(dict):
         suggest = None
         if key == "cpuUtilizationPercent":
             suggest = "cpu_utilization_percent"
+        elif key == "storageUtilizationGibPerNode":
+            suggest = "storage_utilization_gib_per_node"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AutoscalingTargetsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -205,12 +207,15 @@ class AutoscalingTargetsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cpu_utilization_percent: int):
+                 cpu_utilization_percent: int,
+                 storage_utilization_gib_per_node: int):
         """
         The Autoscaling targets for a Cluster. These determine the recommended nodes.
         :param int cpu_utilization_percent: The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
+        :param int storage_utilization_gib_per_node: The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
         """
         pulumi.set(__self__, "cpu_utilization_percent", cpu_utilization_percent)
+        pulumi.set(__self__, "storage_utilization_gib_per_node", storage_utilization_gib_per_node)
 
     @property
     @pulumi.getter(name="cpuUtilizationPercent")
@@ -219,6 +224,14 @@ class AutoscalingTargetsResponse(dict):
         The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
         """
         return pulumi.get(self, "cpu_utilization_percent")
+
+    @property
+    @pulumi.getter(name="storageUtilizationGibPerNode")
+    def storage_utilization_gib_per_node(self) -> int:
+        """
+        The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+        """
+        return pulumi.get(self, "storage_utilization_gib_per_node")
 
 
 @pulumi.output_type

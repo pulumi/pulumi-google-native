@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
 {
 
     /// <summary>
-    /// Any scheduled maintenancce for this instance.
+    /// Any scheduled maintenance for this instance.
     /// </summary>
     public sealed class SqlScheduledMaintenanceArgs : Pulumi.ResourceArgs
     {

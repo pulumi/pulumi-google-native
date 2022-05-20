@@ -3116,6 +3116,8 @@ type ClusterUpdate struct {
 	DesiredPrivateClusterConfig *PrivateClusterConfig `pulumi:"desiredPrivateClusterConfig"`
 	// The desired state of IPv6 connectivity to Google Services.
 	DesiredPrivateIpv6GoogleAccess *ClusterUpdateDesiredPrivateIpv6GoogleAccess `pulumi:"desiredPrivateIpv6GoogleAccess"`
+	// Enable/Disable Protect API features for the cluster.
+	DesiredProtectConfig *ProtectConfig `pulumi:"desiredProtectConfig"`
 	// The desired release channel configuration.
 	DesiredReleaseChannel *ReleaseChannel `pulumi:"desiredReleaseChannel"`
 	// The desired configuration for exporting resource usage.
@@ -5897,6 +5899,8 @@ type IPAllocationPolicy struct {
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork *bool `pulumi:"createSubnetwork"`
+	// The ipv6 access type (internal or external) when create_subnetwork is true
+	Ipv6AccessType *IPAllocationPolicyIpv6AccessType `pulumi:"ipv6AccessType"`
 	// This field is deprecated, use node_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -5911,6 +5915,8 @@ type IPAllocationPolicy struct {
 	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
+	// IP stack type
+	StackType *IPAllocationPolicyStackType `pulumi:"stackType"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName *string `pulumi:"subnetworkName"`
 	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
@@ -5948,6 +5954,8 @@ type IPAllocationPolicyArgs struct {
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork pulumi.BoolPtrInput `pulumi:"createSubnetwork"`
+	// The ipv6 access type (internal or external) when create_subnetwork is true
+	Ipv6AccessType IPAllocationPolicyIpv6AccessTypePtrInput `pulumi:"ipv6AccessType"`
 	// This field is deprecated, use node_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -5962,6 +5970,8 @@ type IPAllocationPolicyArgs struct {
 	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
+	// IP stack type
+	StackType IPAllocationPolicyStackTypePtrInput `pulumi:"stackType"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName pulumi.StringPtrInput `pulumi:"subnetworkName"`
 	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
@@ -6079,6 +6089,11 @@ func (o IPAllocationPolicyOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *bool { return v.CreateSubnetwork }).(pulumi.BoolPtrOutput)
 }
 
+// The ipv6 access type (internal or external) when create_subnetwork is true
+func (o IPAllocationPolicyOutput) Ipv6AccessType() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *IPAllocationPolicyIpv6AccessType { return v.Ipv6AccessType }).(IPAllocationPolicyIpv6AccessTypePtrOutput)
+}
+
 // This field is deprecated, use node_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -6106,6 +6121,11 @@ func (o IPAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput
 // The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 func (o IPAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+}
+
+// IP stack type
+func (o IPAllocationPolicyOutput) StackType() IPAllocationPolicyStackTypePtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *IPAllocationPolicyStackType { return v.StackType }).(IPAllocationPolicyStackTypePtrOutput)
 }
 
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -6206,6 +6226,16 @@ func (o IPAllocationPolicyPtrOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ipv6 access type (internal or external) when create_subnetwork is true
+func (o IPAllocationPolicyPtrOutput) Ipv6AccessType() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *IPAllocationPolicyIpv6AccessType {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6AccessType
+	}).(IPAllocationPolicyIpv6AccessTypePtrOutput)
+}
+
 // This field is deprecated, use node_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -6258,6 +6288,16 @@ func (o IPAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringP
 		}
 		return v.ServicesSecondaryRangeName
 	}).(pulumi.StringPtrOutput)
+}
+
+// IP stack type
+func (o IPAllocationPolicyPtrOutput) StackType() IPAllocationPolicyStackTypePtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *IPAllocationPolicyStackType {
+		if v == nil {
+			return nil
+		}
+		return v.StackType
+	}).(IPAllocationPolicyStackTypePtrOutput)
 }
 
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -6316,6 +6356,8 @@ type IPAllocationPolicyResponse struct {
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork bool `pulumi:"createSubnetwork"`
+	// The ipv6 access type (internal or external) when create_subnetwork is true
+	Ipv6AccessType string `pulumi:"ipv6AccessType"`
 	// This field is deprecated, use node_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -6330,6 +6372,8 @@ type IPAllocationPolicyResponse struct {
 	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
+	// IP stack type
+	StackType string `pulumi:"stackType"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName string `pulumi:"subnetworkName"`
 	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
@@ -6384,6 +6428,11 @@ func (o IPAllocationPolicyResponseOutput) CreateSubnetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.CreateSubnetwork }).(pulumi.BoolOutput)
 }
 
+// The ipv6 access type (internal or external) when create_subnetwork is true
+func (o IPAllocationPolicyResponseOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
 // This field is deprecated, use node_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -6411,6 +6460,11 @@ func (o IPAllocationPolicyResponseOutput) ServicesIpv4CidrBlock() pulumi.StringO
 // The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
 func (o IPAllocationPolicyResponseOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
+}
+
+// IP stack type
+func (o IPAllocationPolicyResponseOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -14669,6 +14723,172 @@ func (o PrivateClusterMasterGlobalAccessConfigResponseOutput) Enabled() pulumi.B
 	return o.ApplyT(func(v PrivateClusterMasterGlobalAccessConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+type ProtectConfig struct {
+	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+	WorkloadConfig *WorkloadConfig `pulumi:"workloadConfig"`
+}
+
+// ProtectConfigInput is an input type that accepts ProtectConfigArgs and ProtectConfigOutput values.
+// You can construct a concrete instance of `ProtectConfigInput` via:
+//
+//          ProtectConfigArgs{...}
+type ProtectConfigInput interface {
+	pulumi.Input
+
+	ToProtectConfigOutput() ProtectConfigOutput
+	ToProtectConfigOutputWithContext(context.Context) ProtectConfigOutput
+}
+
+// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+type ProtectConfigArgs struct {
+	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+	WorkloadConfig WorkloadConfigPtrInput `pulumi:"workloadConfig"`
+}
+
+func (ProtectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectConfig)(nil)).Elem()
+}
+
+func (i ProtectConfigArgs) ToProtectConfigOutput() ProtectConfigOutput {
+	return i.ToProtectConfigOutputWithContext(context.Background())
+}
+
+func (i ProtectConfigArgs) ToProtectConfigOutputWithContext(ctx context.Context) ProtectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectConfigOutput)
+}
+
+func (i ProtectConfigArgs) ToProtectConfigPtrOutput() ProtectConfigPtrOutput {
+	return i.ToProtectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ProtectConfigArgs) ToProtectConfigPtrOutputWithContext(ctx context.Context) ProtectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectConfigOutput).ToProtectConfigPtrOutputWithContext(ctx)
+}
+
+// ProtectConfigPtrInput is an input type that accepts ProtectConfigArgs, ProtectConfigPtr and ProtectConfigPtrOutput values.
+// You can construct a concrete instance of `ProtectConfigPtrInput` via:
+//
+//          ProtectConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ProtectConfigPtrInput interface {
+	pulumi.Input
+
+	ToProtectConfigPtrOutput() ProtectConfigPtrOutput
+	ToProtectConfigPtrOutputWithContext(context.Context) ProtectConfigPtrOutput
+}
+
+type protectConfigPtrType ProtectConfigArgs
+
+func ProtectConfigPtr(v *ProtectConfigArgs) ProtectConfigPtrInput {
+	return (*protectConfigPtrType)(v)
+}
+
+func (*protectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectConfig)(nil)).Elem()
+}
+
+func (i *protectConfigPtrType) ToProtectConfigPtrOutput() ProtectConfigPtrOutput {
+	return i.ToProtectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *protectConfigPtrType) ToProtectConfigPtrOutputWithContext(ctx context.Context) ProtectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectConfigPtrOutput)
+}
+
+// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+type ProtectConfigOutput struct{ *pulumi.OutputState }
+
+func (ProtectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectConfig)(nil)).Elem()
+}
+
+func (o ProtectConfigOutput) ToProtectConfigOutput() ProtectConfigOutput {
+	return o
+}
+
+func (o ProtectConfigOutput) ToProtectConfigOutputWithContext(ctx context.Context) ProtectConfigOutput {
+	return o
+}
+
+func (o ProtectConfigOutput) ToProtectConfigPtrOutput() ProtectConfigPtrOutput {
+	return o.ToProtectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ProtectConfigOutput) ToProtectConfigPtrOutputWithContext(ctx context.Context) ProtectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProtectConfig) *ProtectConfig {
+		return &v
+	}).(ProtectConfigPtrOutput)
+}
+
+// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+func (o ProtectConfigOutput) WorkloadConfig() WorkloadConfigPtrOutput {
+	return o.ApplyT(func(v ProtectConfig) *WorkloadConfig { return v.WorkloadConfig }).(WorkloadConfigPtrOutput)
+}
+
+type ProtectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ProtectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectConfig)(nil)).Elem()
+}
+
+func (o ProtectConfigPtrOutput) ToProtectConfigPtrOutput() ProtectConfigPtrOutput {
+	return o
+}
+
+func (o ProtectConfigPtrOutput) ToProtectConfigPtrOutputWithContext(ctx context.Context) ProtectConfigPtrOutput {
+	return o
+}
+
+func (o ProtectConfigPtrOutput) Elem() ProtectConfigOutput {
+	return o.ApplyT(func(v *ProtectConfig) ProtectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ProtectConfig
+		return ret
+	}).(ProtectConfigOutput)
+}
+
+// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+func (o ProtectConfigPtrOutput) WorkloadConfig() WorkloadConfigPtrOutput {
+	return o.ApplyT(func(v *ProtectConfig) *WorkloadConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadConfig
+	}).(WorkloadConfigPtrOutput)
+}
+
+// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+type ProtectConfigResponse struct {
+	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+	WorkloadConfig WorkloadConfigResponse `pulumi:"workloadConfig"`
+}
+
+// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+type ProtectConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ProtectConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectConfigResponse)(nil)).Elem()
+}
+
+func (o ProtectConfigResponseOutput) ToProtectConfigResponseOutput() ProtectConfigResponseOutput {
+	return o
+}
+
+func (o ProtectConfigResponseOutput) ToProtectConfigResponseOutputWithContext(ctx context.Context) ProtectConfigResponseOutput {
+	return o
+}
+
+// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+func (o ProtectConfigResponseOutput) WorkloadConfig() WorkloadConfigResponseOutput {
+	return o.ApplyT(func(v ProtectConfigResponse) WorkloadConfigResponse { return v.WorkloadConfig }).(WorkloadConfigResponseOutput)
+}
+
 // Pub/Sub specific notification config.
 type PubSub struct {
 	// Enable notifications for Pub/Sub.
@@ -18054,6 +18274,172 @@ func (o WorkloadCertificatesResponseOutput) EnableCertificates() pulumi.BoolOutp
 	return o.ApplyT(func(v WorkloadCertificatesResponse) bool { return v.EnableCertificates }).(pulumi.BoolOutput)
 }
 
+// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+type WorkloadConfig struct {
+	// Sets which mode of auditing should be used for the cluster's workloads.
+	AuditMode *WorkloadConfigAuditMode `pulumi:"auditMode"`
+}
+
+// WorkloadConfigInput is an input type that accepts WorkloadConfigArgs and WorkloadConfigOutput values.
+// You can construct a concrete instance of `WorkloadConfigInput` via:
+//
+//          WorkloadConfigArgs{...}
+type WorkloadConfigInput interface {
+	pulumi.Input
+
+	ToWorkloadConfigOutput() WorkloadConfigOutput
+	ToWorkloadConfigOutputWithContext(context.Context) WorkloadConfigOutput
+}
+
+// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+type WorkloadConfigArgs struct {
+	// Sets which mode of auditing should be used for the cluster's workloads.
+	AuditMode WorkloadConfigAuditModePtrInput `pulumi:"auditMode"`
+}
+
+func (WorkloadConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadConfig)(nil)).Elem()
+}
+
+func (i WorkloadConfigArgs) ToWorkloadConfigOutput() WorkloadConfigOutput {
+	return i.ToWorkloadConfigOutputWithContext(context.Background())
+}
+
+func (i WorkloadConfigArgs) ToWorkloadConfigOutputWithContext(ctx context.Context) WorkloadConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadConfigOutput)
+}
+
+func (i WorkloadConfigArgs) ToWorkloadConfigPtrOutput() WorkloadConfigPtrOutput {
+	return i.ToWorkloadConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadConfigArgs) ToWorkloadConfigPtrOutputWithContext(ctx context.Context) WorkloadConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadConfigOutput).ToWorkloadConfigPtrOutputWithContext(ctx)
+}
+
+// WorkloadConfigPtrInput is an input type that accepts WorkloadConfigArgs, WorkloadConfigPtr and WorkloadConfigPtrOutput values.
+// You can construct a concrete instance of `WorkloadConfigPtrInput` via:
+//
+//          WorkloadConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkloadConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadConfigPtrOutput() WorkloadConfigPtrOutput
+	ToWorkloadConfigPtrOutputWithContext(context.Context) WorkloadConfigPtrOutput
+}
+
+type workloadConfigPtrType WorkloadConfigArgs
+
+func WorkloadConfigPtr(v *WorkloadConfigArgs) WorkloadConfigPtrInput {
+	return (*workloadConfigPtrType)(v)
+}
+
+func (*workloadConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadConfig)(nil)).Elem()
+}
+
+func (i *workloadConfigPtrType) ToWorkloadConfigPtrOutput() WorkloadConfigPtrOutput {
+	return i.ToWorkloadConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadConfigPtrType) ToWorkloadConfigPtrOutputWithContext(ctx context.Context) WorkloadConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadConfigPtrOutput)
+}
+
+// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+type WorkloadConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkloadConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadConfig)(nil)).Elem()
+}
+
+func (o WorkloadConfigOutput) ToWorkloadConfigOutput() WorkloadConfigOutput {
+	return o
+}
+
+func (o WorkloadConfigOutput) ToWorkloadConfigOutputWithContext(ctx context.Context) WorkloadConfigOutput {
+	return o
+}
+
+func (o WorkloadConfigOutput) ToWorkloadConfigPtrOutput() WorkloadConfigPtrOutput {
+	return o.ToWorkloadConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadConfigOutput) ToWorkloadConfigPtrOutputWithContext(ctx context.Context) WorkloadConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadConfig) *WorkloadConfig {
+		return &v
+	}).(WorkloadConfigPtrOutput)
+}
+
+// Sets which mode of auditing should be used for the cluster's workloads.
+func (o WorkloadConfigOutput) AuditMode() WorkloadConfigAuditModePtrOutput {
+	return o.ApplyT(func(v WorkloadConfig) *WorkloadConfigAuditMode { return v.AuditMode }).(WorkloadConfigAuditModePtrOutput)
+}
+
+type WorkloadConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadConfig)(nil)).Elem()
+}
+
+func (o WorkloadConfigPtrOutput) ToWorkloadConfigPtrOutput() WorkloadConfigPtrOutput {
+	return o
+}
+
+func (o WorkloadConfigPtrOutput) ToWorkloadConfigPtrOutputWithContext(ctx context.Context) WorkloadConfigPtrOutput {
+	return o
+}
+
+func (o WorkloadConfigPtrOutput) Elem() WorkloadConfigOutput {
+	return o.ApplyT(func(v *WorkloadConfig) WorkloadConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadConfig
+		return ret
+	}).(WorkloadConfigOutput)
+}
+
+// Sets which mode of auditing should be used for the cluster's workloads.
+func (o WorkloadConfigPtrOutput) AuditMode() WorkloadConfigAuditModePtrOutput {
+	return o.ApplyT(func(v *WorkloadConfig) *WorkloadConfigAuditMode {
+		if v == nil {
+			return nil
+		}
+		return v.AuditMode
+	}).(WorkloadConfigAuditModePtrOutput)
+}
+
+// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+type WorkloadConfigResponse struct {
+	// Sets which mode of auditing should be used for the cluster's workloads.
+	AuditMode string `pulumi:"auditMode"`
+}
+
+// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+type WorkloadConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkloadConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadConfigResponse)(nil)).Elem()
+}
+
+func (o WorkloadConfigResponseOutput) ToWorkloadConfigResponseOutput() WorkloadConfigResponseOutput {
+	return o
+}
+
+func (o WorkloadConfigResponseOutput) ToWorkloadConfigResponseOutputWithContext(ctx context.Context) WorkloadConfigResponseOutput {
+	return o
+}
+
+// Sets which mode of auditing should be used for the cluster's workloads.
+func (o WorkloadConfigResponseOutput) AuditMode() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkloadConfigResponse) string { return v.AuditMode }).(pulumi.StringOutput)
+}
+
 // Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 type WorkloadIdentityConfig struct {
 	// IAM Identity Namespace to attach all Kubernetes Service Accounts to.
@@ -18605,6 +18991,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigPtrInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectConfigInput)(nil)).Elem(), ProtectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectConfigPtrInput)(nil)).Elem(), ProtectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubSubInput)(nil)).Elem(), PubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubSubPtrInput)(nil)).Elem(), PubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecurringTimeWindowInput)(nil)).Elem(), RecurringTimeWindowArgs{})
@@ -18641,6 +19029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadALTSConfigPtrInput)(nil)).Elem(), WorkloadALTSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesInput)(nil)).Elem(), WorkloadCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesPtrInput)(nil)).Elem(), WorkloadCertificatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadConfigInput)(nil)).Elem(), WorkloadConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadConfigPtrInput)(nil)).Elem(), WorkloadConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigInput)(nil)).Elem(), WorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigPtrInput)(nil)).Elem(), WorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigInput)(nil)).Elem(), WorkloadMetadataConfigArgs{})
@@ -18859,6 +19249,9 @@ func init() {
 	pulumi.RegisterOutputType(PrivateClusterMasterGlobalAccessConfigOutput{})
 	pulumi.RegisterOutputType(PrivateClusterMasterGlobalAccessConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateClusterMasterGlobalAccessConfigResponseOutput{})
+	pulumi.RegisterOutputType(ProtectConfigOutput{})
+	pulumi.RegisterOutputType(ProtectConfigPtrOutput{})
+	pulumi.RegisterOutputType(ProtectConfigResponseOutput{})
 	pulumi.RegisterOutputType(PubSubOutput{})
 	pulumi.RegisterOutputType(PubSubPtrOutput{})
 	pulumi.RegisterOutputType(PubSubResponseOutput{})
@@ -18915,6 +19308,9 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadCertificatesOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesResponseOutput{})
+	pulumi.RegisterOutputType(WorkloadConfigOutput{})
+	pulumi.RegisterOutputType(WorkloadConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadConfigResponseOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityConfigOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityConfigResponseOutput{})

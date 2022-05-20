@@ -40,6 +40,10 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly ackDeadlineSeconds!: pulumi.Output<number>;
     /**
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+     */
+    public readonly bigqueryConfig!: pulumi.Output<outputs.pubsub.v1.BigQueryConfigResponse>;
+    /**
      * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
      */
     public readonly deadLetterPolicy!: pulumi.Output<outputs.pubsub.v1.DeadLetterPolicyResponse>;
@@ -118,6 +122,7 @@ export class Subscription extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topic'");
             }
             resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
+            resourceInputs["bigqueryConfig"] = args ? args.bigqueryConfig : undefined;
             resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
             resourceInputs["detached"] = args ? args.detached : undefined;
             resourceInputs["enableExactlyOnceDelivery"] = args ? args.enableExactlyOnceDelivery : undefined;
@@ -137,6 +142,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["topicMessageRetentionDuration"] = undefined /*out*/;
         } else {
             resourceInputs["ackDeadlineSeconds"] = undefined /*out*/;
+            resourceInputs["bigqueryConfig"] = undefined /*out*/;
             resourceInputs["deadLetterPolicy"] = undefined /*out*/;
             resourceInputs["detached"] = undefined /*out*/;
             resourceInputs["enableExactlyOnceDelivery"] = undefined /*out*/;
@@ -166,6 +172,10 @@ export interface SubscriptionArgs {
      * The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
      */
     ackDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+     */
+    bigqueryConfig?: pulumi.Input<inputs.pubsub.v1.BigQueryConfigArgs>;
     /**
      * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
      */

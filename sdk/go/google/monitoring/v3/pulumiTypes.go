@@ -1998,6 +1998,8 @@ func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponse
 type ContentMatcher struct {
 	// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 	Content *string `pulumi:"content"`
+	// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+	JsonPathMatcher *JsonPathMatcher `pulumi:"jsonPathMatcher"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	Matcher *ContentMatcherMatcher `pulumi:"matcher"`
 }
@@ -2017,6 +2019,8 @@ type ContentMatcherInput interface {
 type ContentMatcherArgs struct {
 	// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+	JsonPathMatcher JsonPathMatcherPtrInput `pulumi:"jsonPathMatcher"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	Matcher ContentMatcherMatcherPtrInput `pulumi:"matcher"`
 }
@@ -2078,6 +2082,11 @@ func (o ContentMatcherOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentMatcher) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+func (o ContentMatcherOutput) JsonPathMatcher() JsonPathMatcherPtrOutput {
+	return o.ApplyT(func(v ContentMatcher) *JsonPathMatcher { return v.JsonPathMatcher }).(JsonPathMatcherPtrOutput)
+}
+
 // The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 func (o ContentMatcherOutput) Matcher() ContentMatcherMatcherPtrOutput {
 	return o.ApplyT(func(v ContentMatcher) *ContentMatcherMatcher { return v.Matcher }).(ContentMatcherMatcherPtrOutput)
@@ -2107,6 +2116,8 @@ func (o ContentMatcherArrayOutput) Index(i pulumi.IntInput) ContentMatcherOutput
 type ContentMatcherResponse struct {
 	// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 	Content string `pulumi:"content"`
+	// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+	JsonPathMatcher JsonPathMatcherResponse `pulumi:"jsonPathMatcher"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	Matcher string `pulumi:"matcher"`
 }
@@ -2129,6 +2140,11 @@ func (o ContentMatcherResponseOutput) ToContentMatcherResponseOutputWithContext(
 // String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 func (o ContentMatcherResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentMatcherResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+func (o ContentMatcherResponseOutput) JsonPathMatcher() JsonPathMatcherResponseOutput {
+	return o.ApplyT(func(v ContentMatcherResponse) JsonPathMatcherResponse { return v.JsonPathMatcher }).(JsonPathMatcherResponseOutput)
 }
 
 // The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
@@ -4467,6 +4483,198 @@ func (o IstioCanonicalServiceResponseOutput) CanonicalServiceNamespace() pulumi.
 // Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
 func (o IstioCanonicalServiceResponseOutput) MeshUid() pulumi.StringOutput {
 	return o.ApplyT(func(v IstioCanonicalServiceResponse) string { return v.MeshUid }).(pulumi.StringOutput)
+}
+
+// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+type JsonPathMatcher struct {
+	// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+	JsonMatcher *JsonPathMatcherJsonMatcher `pulumi:"jsonMatcher"`
+	// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+	JsonPath *string `pulumi:"jsonPath"`
+}
+
+// JsonPathMatcherInput is an input type that accepts JsonPathMatcherArgs and JsonPathMatcherOutput values.
+// You can construct a concrete instance of `JsonPathMatcherInput` via:
+//
+//          JsonPathMatcherArgs{...}
+type JsonPathMatcherInput interface {
+	pulumi.Input
+
+	ToJsonPathMatcherOutput() JsonPathMatcherOutput
+	ToJsonPathMatcherOutputWithContext(context.Context) JsonPathMatcherOutput
+}
+
+// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+type JsonPathMatcherArgs struct {
+	// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+	JsonMatcher JsonPathMatcherJsonMatcherPtrInput `pulumi:"jsonMatcher"`
+	// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
+}
+
+func (JsonPathMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonPathMatcher)(nil)).Elem()
+}
+
+func (i JsonPathMatcherArgs) ToJsonPathMatcherOutput() JsonPathMatcherOutput {
+	return i.ToJsonPathMatcherOutputWithContext(context.Background())
+}
+
+func (i JsonPathMatcherArgs) ToJsonPathMatcherOutputWithContext(ctx context.Context) JsonPathMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonPathMatcherOutput)
+}
+
+func (i JsonPathMatcherArgs) ToJsonPathMatcherPtrOutput() JsonPathMatcherPtrOutput {
+	return i.ToJsonPathMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i JsonPathMatcherArgs) ToJsonPathMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonPathMatcherOutput).ToJsonPathMatcherPtrOutputWithContext(ctx)
+}
+
+// JsonPathMatcherPtrInput is an input type that accepts JsonPathMatcherArgs, JsonPathMatcherPtr and JsonPathMatcherPtrOutput values.
+// You can construct a concrete instance of `JsonPathMatcherPtrInput` via:
+//
+//          JsonPathMatcherArgs{...}
+//
+//  or:
+//
+//          nil
+type JsonPathMatcherPtrInput interface {
+	pulumi.Input
+
+	ToJsonPathMatcherPtrOutput() JsonPathMatcherPtrOutput
+	ToJsonPathMatcherPtrOutputWithContext(context.Context) JsonPathMatcherPtrOutput
+}
+
+type jsonPathMatcherPtrType JsonPathMatcherArgs
+
+func JsonPathMatcherPtr(v *JsonPathMatcherArgs) JsonPathMatcherPtrInput {
+	return (*jsonPathMatcherPtrType)(v)
+}
+
+func (*jsonPathMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JsonPathMatcher)(nil)).Elem()
+}
+
+func (i *jsonPathMatcherPtrType) ToJsonPathMatcherPtrOutput() JsonPathMatcherPtrOutput {
+	return i.ToJsonPathMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *jsonPathMatcherPtrType) ToJsonPathMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonPathMatcherPtrOutput)
+}
+
+// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+type JsonPathMatcherOutput struct{ *pulumi.OutputState }
+
+func (JsonPathMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonPathMatcher)(nil)).Elem()
+}
+
+func (o JsonPathMatcherOutput) ToJsonPathMatcherOutput() JsonPathMatcherOutput {
+	return o
+}
+
+func (o JsonPathMatcherOutput) ToJsonPathMatcherOutputWithContext(ctx context.Context) JsonPathMatcherOutput {
+	return o
+}
+
+func (o JsonPathMatcherOutput) ToJsonPathMatcherPtrOutput() JsonPathMatcherPtrOutput {
+	return o.ToJsonPathMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o JsonPathMatcherOutput) ToJsonPathMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JsonPathMatcher) *JsonPathMatcher {
+		return &v
+	}).(JsonPathMatcherPtrOutput)
+}
+
+// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+func (o JsonPathMatcherOutput) JsonMatcher() JsonPathMatcherJsonMatcherPtrOutput {
+	return o.ApplyT(func(v JsonPathMatcher) *JsonPathMatcherJsonMatcher { return v.JsonMatcher }).(JsonPathMatcherJsonMatcherPtrOutput)
+}
+
+// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+func (o JsonPathMatcherOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonPathMatcher) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
+}
+
+type JsonPathMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (JsonPathMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JsonPathMatcher)(nil)).Elem()
+}
+
+func (o JsonPathMatcherPtrOutput) ToJsonPathMatcherPtrOutput() JsonPathMatcherPtrOutput {
+	return o
+}
+
+func (o JsonPathMatcherPtrOutput) ToJsonPathMatcherPtrOutputWithContext(ctx context.Context) JsonPathMatcherPtrOutput {
+	return o
+}
+
+func (o JsonPathMatcherPtrOutput) Elem() JsonPathMatcherOutput {
+	return o.ApplyT(func(v *JsonPathMatcher) JsonPathMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret JsonPathMatcher
+		return ret
+	}).(JsonPathMatcherOutput)
+}
+
+// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+func (o JsonPathMatcherPtrOutput) JsonMatcher() JsonPathMatcherJsonMatcherPtrOutput {
+	return o.ApplyT(func(v *JsonPathMatcher) *JsonPathMatcherJsonMatcher {
+		if v == nil {
+			return nil
+		}
+		return v.JsonMatcher
+	}).(JsonPathMatcherJsonMatcherPtrOutput)
+}
+
+// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+func (o JsonPathMatcherPtrOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JsonPathMatcher) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+type JsonPathMatcherResponse struct {
+	// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+	JsonMatcher string `pulumi:"jsonMatcher"`
+	// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+	JsonPath string `pulumi:"jsonPath"`
+}
+
+// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+type JsonPathMatcherResponseOutput struct{ *pulumi.OutputState }
+
+func (JsonPathMatcherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonPathMatcherResponse)(nil)).Elem()
+}
+
+func (o JsonPathMatcherResponseOutput) ToJsonPathMatcherResponseOutput() JsonPathMatcherResponseOutput {
+	return o
+}
+
+func (o JsonPathMatcherResponseOutput) ToJsonPathMatcherResponseOutputWithContext(ctx context.Context) JsonPathMatcherResponseOutput {
+	return o
+}
+
+// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+func (o JsonPathMatcherResponseOutput) JsonMatcher() pulumi.StringOutput {
+	return o.ApplyT(func(v JsonPathMatcherResponse) string { return v.JsonMatcher }).(pulumi.StringOutput)
+}
+
+// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+func (o JsonPathMatcherResponseOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v JsonPathMatcherResponse) string { return v.JsonPath }).(pulumi.StringOutput)
 }
 
 // A description of a label.
@@ -9217,6 +9425,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalCheckerArrayInput)(nil)).Elem(), InternalCheckerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IstioCanonicalServiceInput)(nil)).Elem(), IstioCanonicalServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IstioCanonicalServicePtrInput)(nil)).Elem(), IstioCanonicalServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JsonPathMatcherInput)(nil)).Elem(), JsonPathMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JsonPathMatcherPtrInput)(nil)).Elem(), JsonPathMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorInput)(nil)).Elem(), LabelDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorArrayInput)(nil)).Elem(), LabelDescriptorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LatencyCriteriaInput)(nil)).Elem(), LatencyCriteriaArgs{})
@@ -9329,6 +9539,9 @@ func init() {
 	pulumi.RegisterOutputType(IstioCanonicalServiceOutput{})
 	pulumi.RegisterOutputType(IstioCanonicalServicePtrOutput{})
 	pulumi.RegisterOutputType(IstioCanonicalServiceResponseOutput{})
+	pulumi.RegisterOutputType(JsonPathMatcherOutput{})
+	pulumi.RegisterOutputType(JsonPathMatcherPtrOutput{})
+	pulumi.RegisterOutputType(JsonPathMatcherResponseOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorArrayOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorResponseOutput{})

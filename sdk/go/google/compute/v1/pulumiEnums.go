@@ -10711,7 +10711,7 @@ func (in *imageRawDiskContainerTypePtr) ToImageRawDiskContainerTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ImageRawDiskContainerTypePtrOutput)
 }
 
-// The type of the image used to create this disk. The default and only value is RAW
+// The type of the image used to create this disk. The default and only valid value is RAW.
 type ImageSourceType string
 
 const (
@@ -16837,6 +16837,7 @@ const (
 	RegionCommitmentTypeGeneralPurposeN2d    = RegionCommitmentType("GENERAL_PURPOSE_N2D")
 	RegionCommitmentTypeGeneralPurposeT2d    = RegionCommitmentType("GENERAL_PURPOSE_T2D")
 	RegionCommitmentTypeMemoryOptimized      = RegionCommitmentType("MEMORY_OPTIMIZED")
+	RegionCommitmentTypeMemoryOptimizedM3    = RegionCommitmentType("MEMORY_OPTIMIZED_M3")
 	RegionCommitmentTypeTypeUnspecified      = RegionCommitmentType("TYPE_UNSPECIFIED")
 )
 

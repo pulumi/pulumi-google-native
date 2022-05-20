@@ -5868,7 +5868,7 @@ func (o SqlOutOfDiskReportResponseOutput) SqlOutOfDiskState() pulumi.StringOutpu
 	return o.ApplyT(func(v SqlOutOfDiskReportResponse) string { return v.SqlOutOfDiskState }).(pulumi.StringOutput)
 }
 
-// Any scheduled maintenancce for this instance.
+// Any scheduled maintenance for this instance.
 type SqlScheduledMaintenance struct {
 	CanDefer *bool `pulumi:"canDefer"`
 	// If the scheduled maintenance can be rescheduled.
@@ -5890,7 +5890,7 @@ type SqlScheduledMaintenanceInput interface {
 	ToSqlScheduledMaintenanceOutputWithContext(context.Context) SqlScheduledMaintenanceOutput
 }
 
-// Any scheduled maintenancce for this instance.
+// Any scheduled maintenance for this instance.
 type SqlScheduledMaintenanceArgs struct {
 	CanDefer pulumi.BoolPtrInput `pulumi:"canDefer"`
 	// If the scheduled maintenance can be rescheduled.
@@ -5954,7 +5954,7 @@ func (i *sqlScheduledMaintenancePtrType) ToSqlScheduledMaintenancePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SqlScheduledMaintenancePtrOutput)
 }
 
-// Any scheduled maintenancce for this instance.
+// Any scheduled maintenance for this instance.
 type SqlScheduledMaintenanceOutput struct{ *pulumi.OutputState }
 
 func (SqlScheduledMaintenanceOutput) ElementType() reflect.Type {
@@ -6061,7 +6061,7 @@ func (o SqlScheduledMaintenancePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Any scheduled maintenancce for this instance.
+// Any scheduled maintenance for this instance.
 type SqlScheduledMaintenanceResponse struct {
 	CanDefer bool `pulumi:"canDefer"`
 	// If the scheduled maintenance can be rescheduled.
@@ -6072,7 +6072,7 @@ type SqlScheduledMaintenanceResponse struct {
 	StartTime string `pulumi:"startTime"`
 }
 
-// Any scheduled maintenancce for this instance.
+// Any scheduled maintenance for this instance.
 type SqlScheduledMaintenanceResponseOutput struct{ *pulumi.OutputState }
 
 func (SqlScheduledMaintenanceResponseOutput) ElementType() reflect.Type {

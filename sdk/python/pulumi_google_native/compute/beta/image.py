@@ -68,7 +68,7 @@ class ImageArgs:
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image. The following are valid formats for the URL: - https://www.googleapis.com/compute/v1/projects/project_id/global/ snapshots/snapshot_name - projects/project_id/global/snapshots/snapshot_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
-        :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
+        :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only valid value is RAW.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
@@ -416,7 +416,7 @@ class ImageArgs:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input['ImageSourceType']]:
         """
-        The type of the image used to create this disk. The default and only value is RAW
+        The type of the image used to create this disk. The default and only valid value is RAW.
         """
         return pulumi.get(self, "source_type")
 
@@ -510,7 +510,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image. The following are valid formats for the URL: - https://www.googleapis.com/compute/v1/projects/project_id/global/ snapshots/snapshot_name - projects/project_id/global/snapshots/snapshot_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
-        :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
+        :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only valid value is RAW.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
@@ -906,7 +906,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[str]:
         """
-        The type of the image used to create this disk. The default and only value is RAW
+        The type of the image used to create this disk. The default and only valid value is RAW.
         """
         return pulumi.get(self, "source_type")
 

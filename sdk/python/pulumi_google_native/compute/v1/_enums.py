@@ -1314,7 +1314,7 @@ class ImageRawDiskContainerType(str, Enum):
 
 class ImageSourceType(str, Enum):
     """
-    The type of the image used to create this disk. The default and only value is RAW
+    The type of the image used to create this disk. The default and only valid value is RAW.
     """
     RAW = "RAW"
 
@@ -1992,6 +1992,7 @@ class RegionCommitmentType(str, Enum):
     GENERAL_PURPOSE_N2D = "GENERAL_PURPOSE_N2D"
     GENERAL_PURPOSE_T2D = "GENERAL_PURPOSE_T2D"
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
+    MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 
 

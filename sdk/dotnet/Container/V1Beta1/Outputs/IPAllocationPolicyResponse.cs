@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool CreateSubnetwork;
         /// <summary>
+        /// The ipv6 access type (internal or external) when create_subnetwork is true
+        /// </summary>
+        public readonly string Ipv6AccessType;
+        /// <summary>
         /// This field is deprecated, use node_ipv4_cidr_block.
         /// </summary>
         public readonly string NodeIpv4Cidr;
@@ -56,6 +60,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         /// </summary>
         public readonly string ServicesSecondaryRangeName;
+        /// <summary>
+        /// IP stack type
+        /// </summary>
+        public readonly string StackType;
         /// <summary>
         /// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
         /// </summary>
@@ -85,6 +93,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             bool createSubnetwork,
 
+            string ipv6AccessType,
+
             string nodeIpv4Cidr,
 
             string nodeIpv4CidrBlock,
@@ -94,6 +104,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             string servicesIpv4CidrBlock,
 
             string servicesSecondaryRangeName,
+
+            string stackType,
 
             string subnetworkName,
 
@@ -108,11 +120,13 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             CreateSubnetwork = createSubnetwork;
+            Ipv6AccessType = ipv6AccessType;
             NodeIpv4Cidr = nodeIpv4Cidr;
             NodeIpv4CidrBlock = nodeIpv4CidrBlock;
             ServicesIpv4Cidr = servicesIpv4Cidr;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
+            StackType = stackType;
             SubnetworkName = subnetworkName;
             TpuIpv4CidrBlock = tpuIpv4CidrBlock;
             UseIpAliases = useIpAliases;

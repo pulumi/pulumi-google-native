@@ -427,6 +427,88 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
+    /// The ipv6 access type (internal or external) when create_subnetwork is true
+    /// </summary>
+    [EnumType]
+    public readonly struct IPAllocationPolicyIpv6AccessType : IEquatable<IPAllocationPolicyIpv6AccessType>
+    {
+        private readonly string _value;
+
+        private IPAllocationPolicyIpv6AccessType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, will be defaulted as type external.
+        /// </summary>
+        public static IPAllocationPolicyIpv6AccessType Ipv6AccessTypeUnspecified { get; } = new IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Access type internal (all v6 addresses are internal IPs)
+        /// </summary>
+        public static IPAllocationPolicyIpv6AccessType Internal { get; } = new IPAllocationPolicyIpv6AccessType("INTERNAL");
+        /// <summary>
+        /// Access type external (all v6 addresses are external IPs)
+        /// </summary>
+        public static IPAllocationPolicyIpv6AccessType External { get; } = new IPAllocationPolicyIpv6AccessType("EXTERNAL");
+
+        public static bool operator ==(IPAllocationPolicyIpv6AccessType left, IPAllocationPolicyIpv6AccessType right) => left.Equals(right);
+        public static bool operator !=(IPAllocationPolicyIpv6AccessType left, IPAllocationPolicyIpv6AccessType right) => !left.Equals(right);
+
+        public static explicit operator string(IPAllocationPolicyIpv6AccessType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IPAllocationPolicyIpv6AccessType other && Equals(other);
+        public bool Equals(IPAllocationPolicyIpv6AccessType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// IP stack type
+    /// </summary>
+    [EnumType]
+    public readonly struct IPAllocationPolicyStackType : IEquatable<IPAllocationPolicyStackType>
+    {
+        private readonly string _value;
+
+        private IPAllocationPolicyStackType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// By default, the clusters will be IPV4 only
+        /// </summary>
+        public static IPAllocationPolicyStackType StackTypeUnspecified { get; } = new IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The value used if the cluster is a IPV4 only
+        /// </summary>
+        public static IPAllocationPolicyStackType Ipv4 { get; } = new IPAllocationPolicyStackType("IPV4");
+        /// <summary>
+        /// The value used if the cluster is a dual stack cluster
+        /// </summary>
+        public static IPAllocationPolicyStackType Ipv4Ipv6 { get; } = new IPAllocationPolicyStackType("IPV4_IPV6");
+
+        public static bool operator ==(IPAllocationPolicyStackType left, IPAllocationPolicyStackType right) => left.Equals(right);
+        public static bool operator !=(IPAllocationPolicyStackType left, IPAllocationPolicyStackType right) => !left.Equals(right);
+
+        public static explicit operator string(IPAllocationPolicyStackType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IPAllocationPolicyStackType other && Equals(other);
+        public bool Equals(IPAllocationPolicyStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The specified Istio auth mode, either none, or mutual TLS.
     /// </summary>
     [EnumType]
@@ -1133,6 +1215,55 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is StatusConditionCode other && Equals(other);
         public bool Equals(StatusConditionCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Sets which mode of auditing should be used for the cluster's workloads.
+    /// </summary>
+    [EnumType]
+    public readonly struct WorkloadConfigAuditMode : IEquatable<WorkloadConfigAuditMode>
+    {
+        private readonly string _value;
+
+        private WorkloadConfigAuditMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value meaning that no mode has been specified.
+        /// </summary>
+        public static WorkloadConfigAuditMode ModeUnspecified { get; } = new WorkloadConfigAuditMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// This disables Workload Configuration auditing on the cluster, meaning that nothing is surfaced.
+        /// </summary>
+        public static WorkloadConfigAuditMode Disabled { get; } = new WorkloadConfigAuditMode("DISABLED");
+        /// <summary>
+        /// Applies the default set of policy auditing to a cluster's workloads.
+        /// </summary>
+        public static WorkloadConfigAuditMode Basic { get; } = new WorkloadConfigAuditMode("BASIC");
+        /// <summary>
+        /// Surfaces configurations that are not in line with the Pod Security Standard Baseline policy.
+        /// </summary>
+        public static WorkloadConfigAuditMode Baseline { get; } = new WorkloadConfigAuditMode("BASELINE");
+        /// <summary>
+        /// Surfaces configurations that are not in line with the Pod Security Standard Restricted policy.
+        /// </summary>
+        public static WorkloadConfigAuditMode Restricted { get; } = new WorkloadConfigAuditMode("RESTRICTED");
+
+        public static bool operator ==(WorkloadConfigAuditMode left, WorkloadConfigAuditMode right) => left.Equals(right);
+        public static bool operator !=(WorkloadConfigAuditMode left, WorkloadConfigAuditMode right) => !left.Equals(right);
+
+        public static explicit operator string(WorkloadConfigAuditMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WorkloadConfigAuditMode other && Equals(other);
+        public bool Equals(WorkloadConfigAuditMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

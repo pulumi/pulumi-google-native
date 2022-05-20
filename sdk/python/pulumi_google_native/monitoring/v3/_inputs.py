@@ -31,6 +31,7 @@ __all__ = [
     'HttpCheckArgs',
     'InternalCheckerArgs',
     'IstioCanonicalServiceArgs',
+    'JsonPathMatcherArgs',
     'LabelDescriptorArgs',
     'LatencyCriteriaArgs',
     'LogMatchArgs',
@@ -572,14 +573,18 @@ class ConditionArgs:
 class ContentMatcherArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
+                 json_path_matcher: Optional[pulumi.Input['JsonPathMatcherArgs']] = None,
                  matcher: Optional[pulumi.Input['ContentMatcherMatcher']] = None):
         """
         Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
         :param pulumi.Input[str] content: String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+        :param pulumi.Input['JsonPathMatcherArgs'] json_path_matcher: Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
         :param pulumi.Input['ContentMatcherMatcher'] matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if json_path_matcher is not None:
+            pulumi.set(__self__, "json_path_matcher", json_path_matcher)
         if matcher is not None:
             pulumi.set(__self__, "matcher", matcher)
 
@@ -594,6 +599,18 @@ class ContentMatcherArgs:
     @content.setter
     def content(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="jsonPathMatcher")
+    def json_path_matcher(self) -> Optional[pulumi.Input['JsonPathMatcherArgs']]:
+        """
+        Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+        """
+        return pulumi.get(self, "json_path_matcher")
+
+    @json_path_matcher.setter
+    def json_path_matcher(self, value: Optional[pulumi.Input['JsonPathMatcherArgs']]):
+        pulumi.set(self, "json_path_matcher", value)
 
     @property
     @pulumi.getter
@@ -1279,6 +1296,46 @@ class IstioCanonicalServiceArgs:
     @mesh_uid.setter
     def mesh_uid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mesh_uid", value)
+
+
+@pulumi.input_type
+class JsonPathMatcherArgs:
+    def __init__(__self__, *,
+                 json_matcher: Optional[pulumi.Input['JsonPathMatcherJsonMatcher']] = None,
+                 json_path: Optional[pulumi.Input[str]] = None):
+        """
+        Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
+        :param pulumi.Input['JsonPathMatcherJsonMatcher'] json_matcher: The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+        :param pulumi.Input[str] json_path: JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+        """
+        if json_matcher is not None:
+            pulumi.set(__self__, "json_matcher", json_matcher)
+        if json_path is not None:
+            pulumi.set(__self__, "json_path", json_path)
+
+    @property
+    @pulumi.getter(name="jsonMatcher")
+    def json_matcher(self) -> Optional[pulumi.Input['JsonPathMatcherJsonMatcher']]:
+        """
+        The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+        """
+        return pulumi.get(self, "json_matcher")
+
+    @json_matcher.setter
+    def json_matcher(self, value: Optional[pulumi.Input['JsonPathMatcherJsonMatcher']]):
+        pulumi.set(self, "json_matcher", value)
+
+    @property
+    @pulumi.getter(name="jsonPath")
+    def json_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
+        """
+        return pulumi.get(self, "json_path")
+
+    @json_path.setter
+    def json_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json_path", value)
 
 
 @pulumi.input_type

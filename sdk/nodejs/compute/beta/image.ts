@@ -152,7 +152,7 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     /**
-     * The type of the image used to create this disk. The default and only value is RAW
+     * The type of the image used to create this disk. The default and only valid value is RAW.
      */
     public readonly sourceType!: pulumi.Output<string>;
     /**
@@ -353,7 +353,7 @@ export interface ImageArgs {
      */
     sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
-     * The type of the image used to create this disk. The default and only value is RAW
+     * The type of the image used to create this disk. The default and only valid value is RAW.
      */
     sourceType?: pulumi.Input<enums.compute.beta.ImageSourceType>;
     /**

@@ -147,6 +147,8 @@ type LookupClusterResult struct {
 	PrivateCluster bool `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
+	// Enable/Disable Protect API features for the cluster.
+	ProtectConfig ProtectConfigResponse `pulumi:"protectConfig"`
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelResponse `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -498,6 +500,11 @@ func (o LookupClusterResultOutput) PrivateCluster() pulumi.BoolOutput {
 // Configuration for private cluster.
 func (o LookupClusterResultOutput) PrivateClusterConfig() PrivateClusterConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) PrivateClusterConfigResponse { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
+}
+
+// Enable/Disable Protect API features for the cluster.
+func (o LookupClusterResultOutput) ProtectConfig() ProtectConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) ProtectConfigResponse { return v.ProtectConfig }).(ProtectConfigResponseOutput)
 }
 
 // Release channel configuration.

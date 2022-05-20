@@ -180,7 +180,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceSnapshotId;
         /// <summary>
-        /// The type of the image used to create this disk. The default and only value is RAW
+        /// The type of the image used to create this disk. The default and only valid value is RAW.
         /// </summary>
         public readonly string SourceType;
         /// <summary>

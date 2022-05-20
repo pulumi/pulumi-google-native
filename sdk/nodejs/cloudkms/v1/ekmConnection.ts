@@ -42,7 +42,7 @@ export class EkmConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -92,7 +92,7 @@ export interface EkmConnectionArgs {
      */
     ekmConnectionId?: pulumi.Input<string>;
     /**
-     * This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     location?: pulumi.Input<string>;

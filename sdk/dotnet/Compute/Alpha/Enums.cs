@@ -3479,7 +3479,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type of the image used to create this disk. The default and only value is RAW
+    /// The type of the image used to create this disk. The default and only valid value is RAW.
     /// </summary>
     [EnumType]
     public readonly struct ImageSourceType : IEquatable<ImageSourceType>

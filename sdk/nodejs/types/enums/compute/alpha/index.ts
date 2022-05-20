@@ -1693,7 +1693,7 @@ export const ImageSourceType = {
 } as const;
 
 /**
- * The type of the image used to create this disk. The default and only value is RAW
+ * The type of the image used to create this disk. The default and only valid value is RAW.
  */
 export type ImageSourceType = (typeof ImageSourceType)[keyof typeof ImageSourceType];
 

@@ -275,6 +275,14 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Selects negation of regular-expression matching. The match succeeds if the output does NOT match the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
         /// </summary>
         public static ContentMatcherMatcher NotMatchesRegex { get; } = new ContentMatcherMatcher("NOT_MATCHES_REGEX");
+        /// <summary>
+        /// Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. JSONPath matching is only supported for HTTP/HTTPS checks.
+        /// </summary>
+        public static ContentMatcherMatcher MatchesJsonPath { get; } = new ContentMatcherMatcher("MATCHES_JSON_PATH");
+        /// <summary>
+        /// Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. Succeeds when output does NOT match as specified. JSONPath is only supported for HTTP/HTTPS checks.
+        /// </summary>
+        public static ContentMatcherMatcher NotMatchesJsonPath { get; } = new ContentMatcherMatcher("NOT_MATCHES_JSON_PATH");
 
         public static bool operator ==(ContentMatcherMatcher left, ContentMatcherMatcher right) => left.Equals(right);
         public static bool operator !=(ContentMatcherMatcher left, ContentMatcherMatcher right) => !left.Equals(right);
@@ -403,6 +411,47 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InternalCheckerState other && Equals(other);
         public bool Equals(InternalCheckerState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+    /// </summary>
+    [EnumType]
+    public readonly struct JsonPathMatcherJsonMatcher : IEquatable<JsonPathMatcherJsonMatcher>
+    {
+        private readonly string _value;
+
+        private JsonPathMatcherJsonMatcher(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No JSONPath matcher type specified (not valid).
+        /// </summary>
+        public static JsonPathMatcherJsonMatcher JsonPathMatcherOptionUnspecified { get; } = new JsonPathMatcherJsonMatcher("JSON_PATH_MATCHER_OPTION_UNSPECIFIED");
+        /// <summary>
+        /// Selects 'exact string' matching. The match succeeds if the content at the json_path within the output is exactly the same as the content string.
+        /// </summary>
+        public static JsonPathMatcherJsonMatcher ExactMatch { get; } = new JsonPathMatcherJsonMatcher("EXACT_MATCH");
+        /// <summary>
+        /// Selects regular-expression matching. The match succeeds if the content at the json_path within the output matches the regular expression specified in the content string.
+        /// </summary>
+        public static JsonPathMatcherJsonMatcher RegexMatch { get; } = new JsonPathMatcherJsonMatcher("REGEX_MATCH");
+
+        public static bool operator ==(JsonPathMatcherJsonMatcher left, JsonPathMatcherJsonMatcher right) => left.Equals(right);
+        public static bool operator !=(JsonPathMatcherJsonMatcher left, JsonPathMatcherJsonMatcher right) => !left.Equals(right);
+
+        public static explicit operator string(JsonPathMatcherJsonMatcher value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JsonPathMatcherJsonMatcher other && Equals(other);
+        public bool Equals(JsonPathMatcherJsonMatcher other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

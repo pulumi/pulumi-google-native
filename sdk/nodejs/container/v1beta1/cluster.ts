@@ -258,6 +258,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly privateClusterConfig!: pulumi.Output<outputs.container.v1beta1.PrivateClusterConfigResponse>;
     /**
+     * Enable/Disable Protect API features for the cluster.
+     */
+    public readonly protectConfig!: pulumi.Output<outputs.container.v1beta1.ProtectConfigResponse>;
+    /**
      * Release channel configuration.
      */
     public readonly releaseChannel!: pulumi.Output<outputs.container.v1beta1.ReleaseChannelResponse>;
@@ -383,6 +387,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["privateCluster"] = args ? args.privateCluster : undefined;
             resourceInputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protectConfig"] = args ? args.protectConfig : undefined;
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
@@ -460,6 +465,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["podSecurityPolicyConfig"] = undefined /*out*/;
             resourceInputs["privateCluster"] = undefined /*out*/;
             resourceInputs["privateClusterConfig"] = undefined /*out*/;
+            resourceInputs["protectConfig"] = undefined /*out*/;
             resourceInputs["releaseChannel"] = undefined /*out*/;
             resourceInputs["resourceLabels"] = undefined /*out*/;
             resourceInputs["resourceUsageExportConfig"] = undefined /*out*/;
@@ -681,6 +687,10 @@ export interface ClusterArgs {
      * @deprecated Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Enable/Disable Protect API features for the cluster.
+     */
+    protectConfig?: pulumi.Input<inputs.container.v1beta1.ProtectConfigArgs>;
     /**
      * Release channel configuration.
      */

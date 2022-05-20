@@ -282,6 +282,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly Outputs.PrivateClusterConfigResponse PrivateClusterConfig;
         /// <summary>
+        /// Enable/Disable Protect API features for the cluster.
+        /// </summary>
+        public readonly Outputs.ProtectConfigResponse ProtectConfig;
+        /// <summary>
         /// Release channel configuration.
         /// </summary>
         public readonly Outputs.ReleaseChannelResponse ReleaseChannel;
@@ -452,6 +456,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             Outputs.PrivateClusterConfigResponse privateClusterConfig,
 
+            Outputs.ProtectConfigResponse protectConfig,
+
             Outputs.ReleaseChannelResponse releaseChannel,
 
             ImmutableDictionary<string, string> resourceLabels,
@@ -536,6 +542,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             PodSecurityPolicyConfig = podSecurityPolicyConfig;
             PrivateCluster = privateCluster;
             PrivateClusterConfig = privateClusterConfig;
+            ProtectConfig = protectConfig;
             ReleaseChannel = releaseChannel;
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfig = resourceUsageExportConfig;

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
     /// <summary>
-    /// Any scheduled maintenancce for this instance.
+    /// Any scheduled maintenance for this instance.
     /// </summary>
     [OutputType]
     public sealed class SqlScheduledMaintenanceResponse

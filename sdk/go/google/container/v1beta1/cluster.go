@@ -132,6 +132,8 @@ type Cluster struct {
 	PrivateCluster pulumi.BoolOutput `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponseOutput `pulumi:"privateClusterConfig"`
+	// Enable/Disable Protect API features for the cluster.
+	ProtectConfig ProtectConfigResponseOutput `pulumi:"protectConfig"`
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelResponseOutput `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -314,6 +316,8 @@ type clusterArgs struct {
 	//
 	// Deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project *string `pulumi:"project"`
+	// Enable/Disable Protect API features for the cluster.
+	ProtectConfig *ProtectConfig `pulumi:"protectConfig"`
 	// Release channel configuration.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -447,6 +451,8 @@ type ClusterArgs struct {
 	//
 	// Deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project pulumi.StringPtrInput
+	// Enable/Disable Protect API features for the cluster.
+	ProtectConfig ProtectConfigPtrInput
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -782,6 +788,11 @@ func (o ClusterOutput) PrivateCluster() pulumi.BoolOutput {
 // Configuration for private cluster.
 func (o ClusterOutput) PrivateClusterConfig() PrivateClusterConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) PrivateClusterConfigResponseOutput { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
+}
+
+// Enable/Disable Protect API features for the cluster.
+func (o ClusterOutput) ProtectConfig() ProtectConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) ProtectConfigResponseOutput { return v.ProtectConfig }).(ProtectConfigResponseOutput)
 }
 
 // Release channel configuration.

@@ -28,6 +28,7 @@ class InterconnectArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None):
         """
@@ -43,6 +44,7 @@ class InterconnectArgs:
         :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+        :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
@@ -70,6 +72,8 @@ class InterconnectArgs:
             pulumi.set(__self__, "noc_contact_email", noc_contact_email)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remote_location is not None:
+            pulumi.set(__self__, "remote_location", remote_location)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if requested_link_count is not None:
@@ -217,6 +221,18 @@ class InterconnectArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="remoteLocation")
+    def remote_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+        """
+        return pulumi.get(self, "remote_location")
+
+    @remote_location.setter
+    def remote_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remote_location", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -258,6 +274,7 @@ class Interconnect(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -277,6 +294,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+        :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
@@ -316,6 +334,7 @@ class Interconnect(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -342,6 +361,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["noc_contact_email"] = noc_contact_email
             __props__.__dict__["project"] = project
+            __props__.__dict__["remote_location"] = remote_location
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["requested_link_count"] = requested_link_count
             __props__.__dict__["circuit_infos"] = None
@@ -403,6 +423,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["operational_status"] = None
         __props__.__dict__["peer_ip_address"] = None
         __props__.__dict__["provisioned_link_count"] = None
+        __props__.__dict__["remote_location"] = None
         __props__.__dict__["requested_link_count"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
@@ -585,6 +606,14 @@ class Interconnect(pulumi.CustomResource):
         Number of links actually provisioned in this interconnect.
         """
         return pulumi.get(self, "provisioned_link_count")
+
+    @property
+    @pulumi.getter(name="remoteLocation")
+    def remote_location(self) -> pulumi.Output[str]:
+        """
+        Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+        """
+        return pulumi.get(self, "remote_location")
 
     @property
     @pulumi.getter(name="requestedLinkCount")

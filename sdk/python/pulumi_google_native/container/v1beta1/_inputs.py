@@ -80,6 +80,7 @@ __all__ = [
     'PodSecurityPolicyConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateClusterMasterGlobalAccessConfigArgs',
+    'ProtectConfigArgs',
     'PubSubArgs',
     'RecurringTimeWindowArgs',
     'ReleaseChannelArgs',
@@ -98,6 +99,7 @@ __all__ = [
     'VirtualNICArgs',
     'WorkloadALTSConfigArgs',
     'WorkloadCertificatesArgs',
+    'WorkloadConfigArgs',
     'WorkloadIdentityConfigArgs',
     'WorkloadMetadataConfigArgs',
 ]
@@ -1346,11 +1348,13 @@ class IPAllocationPolicyArgs:
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  create_subnetwork: Optional[pulumi.Input[bool]] = None,
+                 ipv6_access_type: Optional[pulumi.Input['IPAllocationPolicyIpv6AccessType']] = None,
                  node_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_secondary_range_name: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['IPAllocationPolicyStackType']] = None,
                  subnetwork_name: Optional[pulumi.Input[str]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  use_ip_aliases: Optional[pulumi.Input[bool]] = None,
@@ -1362,11 +1366,13 @@ class IPAllocationPolicyArgs:
         :param pulumi.Input[str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         :param pulumi.Input[bool] create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
+        :param pulumi.Input['IPAllocationPolicyIpv6AccessType'] ipv6_access_type: The ipv6 access type (internal or external) when create_subnetwork is true
         :param pulumi.Input[str] node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param pulumi.Input[str] node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param pulumi.Input[str] services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
+        :param pulumi.Input['IPAllocationPolicyStackType'] stack_type: IP stack type
         :param pulumi.Input[str] subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
         :param pulumi.Input[bool] use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -1385,6 +1391,8 @@ class IPAllocationPolicyArgs:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         if create_subnetwork is not None:
             pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if node_ipv4_cidr is not None:
             warnings.warn("""This field is deprecated, use node_ipv4_cidr_block.""", DeprecationWarning)
             pulumi.log.warn("""node_ipv4_cidr is deprecated: This field is deprecated, use node_ipv4_cidr_block.""")
@@ -1401,6 +1409,8 @@ class IPAllocationPolicyArgs:
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork_name is not None:
             pulumi.set(__self__, "subnetwork_name", subnetwork_name)
         if tpu_ipv4_cidr_block is not None:
@@ -1474,6 +1484,18 @@ class IPAllocationPolicyArgs:
         pulumi.set(self, "create_subnetwork", value)
 
     @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input['IPAllocationPolicyIpv6AccessType']]:
+        """
+        The ipv6 access type (internal or external) when create_subnetwork is true
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input['IPAllocationPolicyIpv6AccessType']]):
+        pulumi.set(self, "ipv6_access_type", value)
+
+    @property
     @pulumi.getter(name="nodeIpv4Cidr")
     def node_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1532,6 +1554,18 @@ class IPAllocationPolicyArgs:
     @services_secondary_range_name.setter
     def services_secondary_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "services_secondary_range_name", value)
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input['IPAllocationPolicyStackType']]:
+        """
+        IP stack type
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input['IPAllocationPolicyStackType']]):
+        pulumi.set(self, "stack_type", value)
 
     @property
     @pulumi.getter(name="subnetworkName")
@@ -3636,6 +3670,30 @@ class PrivateClusterMasterGlobalAccessConfigArgs:
 
 
 @pulumi.input_type
+class ProtectConfigArgs:
+    def __init__(__self__, *,
+                 workload_config: Optional[pulumi.Input['WorkloadConfigArgs']] = None):
+        """
+        ProtectConfig defines the flags needed to enable/disable features for the Protect API.
+        :param pulumi.Input['WorkloadConfigArgs'] workload_config: WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+        """
+        if workload_config is not None:
+            pulumi.set(__self__, "workload_config", workload_config)
+
+    @property
+    @pulumi.getter(name="workloadConfig")
+    def workload_config(self) -> Optional[pulumi.Input['WorkloadConfigArgs']]:
+        """
+        WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+        """
+        return pulumi.get(self, "workload_config")
+
+    @workload_config.setter
+    def workload_config(self, value: Optional[pulumi.Input['WorkloadConfigArgs']]):
+        pulumi.set(self, "workload_config", value)
+
+
+@pulumi.input_type
 class PubSubArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -4355,6 +4413,30 @@ class WorkloadCertificatesArgs:
     @enable_certificates.setter
     def enable_certificates(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_certificates", value)
+
+
+@pulumi.input_type
+class WorkloadConfigArgs:
+    def __init__(__self__, *,
+                 audit_mode: Optional[pulumi.Input['WorkloadConfigAuditMode']] = None):
+        """
+        WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
+        :param pulumi.Input['WorkloadConfigAuditMode'] audit_mode: Sets which mode of auditing should be used for the cluster's workloads.
+        """
+        if audit_mode is not None:
+            pulumi.set(__self__, "audit_mode", audit_mode)
+
+    @property
+    @pulumi.getter(name="auditMode")
+    def audit_mode(self) -> Optional[pulumi.Input['WorkloadConfigAuditMode']]:
+        """
+        Sets which mode of auditing should be used for the cluster's workloads.
+        """
+        return pulumi.get(self, "audit_mode")
+
+    @audit_mode.setter
+    def audit_mode(self, value: Optional[pulumi.Input['WorkloadConfigAuditMode']]):
+        pulumi.set(self, "audit_mode", value)
 
 
 @pulumi.input_type

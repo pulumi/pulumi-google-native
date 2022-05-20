@@ -530,6 +530,8 @@ func (o AutoscalingLimitsResponseOutput) MinServeNodes() pulumi.IntOutput {
 type AutoscalingTargets struct {
 	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
 	CpuUtilizationPercent *int `pulumi:"cpuUtilizationPercent"`
+	// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+	StorageUtilizationGibPerNode *int `pulumi:"storageUtilizationGibPerNode"`
 }
 
 // AutoscalingTargetsInput is an input type that accepts AutoscalingTargetsArgs and AutoscalingTargetsOutput values.
@@ -547,6 +549,8 @@ type AutoscalingTargetsInput interface {
 type AutoscalingTargetsArgs struct {
 	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
 	CpuUtilizationPercent pulumi.IntPtrInput `pulumi:"cpuUtilizationPercent"`
+	// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+	StorageUtilizationGibPerNode pulumi.IntPtrInput `pulumi:"storageUtilizationGibPerNode"`
 }
 
 func (AutoscalingTargetsArgs) ElementType() reflect.Type {
@@ -632,6 +636,11 @@ func (o AutoscalingTargetsOutput) CpuUtilizationPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AutoscalingTargets) *int { return v.CpuUtilizationPercent }).(pulumi.IntPtrOutput)
 }
 
+// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+func (o AutoscalingTargetsOutput) StorageUtilizationGibPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalingTargets) *int { return v.StorageUtilizationGibPerNode }).(pulumi.IntPtrOutput)
+}
+
 type AutoscalingTargetsPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingTargetsPtrOutput) ElementType() reflect.Type {
@@ -666,10 +675,22 @@ func (o AutoscalingTargetsPtrOutput) CpuUtilizationPercent() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+func (o AutoscalingTargetsPtrOutput) StorageUtilizationGibPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StorageUtilizationGibPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
 // The Autoscaling targets for a Cluster. These determine the recommended nodes.
 type AutoscalingTargetsResponse struct {
 	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
 	CpuUtilizationPercent int `pulumi:"cpuUtilizationPercent"`
+	// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+	StorageUtilizationGibPerNode int `pulumi:"storageUtilizationGibPerNode"`
 }
 
 // The Autoscaling targets for a Cluster. These determine the recommended nodes.
@@ -690,6 +711,11 @@ func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponseOutputWith
 // The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
 func (o AutoscalingTargetsResponseOutput) CpuUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingTargetsResponse) int { return v.CpuUtilizationPercent }).(pulumi.IntOutput)
+}
+
+// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+func (o AutoscalingTargetsResponseOutput) StorageUtilizationGibPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingTargetsResponse) int { return v.StorageUtilizationGibPerNode }).(pulumi.IntOutput)
 }
 
 // Information about a backup.

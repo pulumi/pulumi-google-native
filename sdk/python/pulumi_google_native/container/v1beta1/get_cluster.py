@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, protect_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -203,6 +203,9 @@ class GetClusterResult:
         if private_cluster_config and not isinstance(private_cluster_config, dict):
             raise TypeError("Expected argument 'private_cluster_config' to be a dict")
         pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+        if protect_config and not isinstance(protect_config, dict):
+            raise TypeError("Expected argument 'protect_config' to be a dict")
+        pulumi.set(__self__, "protect_config", protect_config)
         if release_channel and not isinstance(release_channel, dict):
             raise TypeError("Expected argument 'release_channel' to be a dict")
         pulumi.set(__self__, "release_channel", release_channel)
@@ -677,6 +680,14 @@ class GetClusterResult:
         return pulumi.get(self, "private_cluster_config")
 
     @property
+    @pulumi.getter(name="protectConfig")
+    def protect_config(self) -> 'outputs.ProtectConfigResponse':
+        """
+        Enable/Disable Protect API features for the cluster.
+        """
+        return pulumi.get(self, "protect_config")
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> 'outputs.ReleaseChannelResponse':
         """
@@ -863,6 +874,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             pod_security_policy_config=self.pod_security_policy_config,
             private_cluster=self.private_cluster,
             private_cluster_config=self.private_cluster_config,
+            protect_config=self.protect_config,
             release_channel=self.release_channel,
             resource_labels=self.resource_labels,
             resource_usage_export_config=self.resource_usage_export_config,
@@ -955,6 +967,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         pod_security_policy_config=__ret__.pod_security_policy_config,
         private_cluster=__ret__.private_cluster,
         private_cluster_config=__ret__.private_cluster_config,
+        protect_config=__ret__.protect_config,
         release_channel=__ret__.release_channel,
         resource_labels=__ret__.resource_labels,
         resource_usage_export_config=__ret__.resource_usage_export_config,

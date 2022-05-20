@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubscriptionResult:
-    def __init__(__self__, ack_deadline_seconds=None, dead_letter_policy=None, detached=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, state=None, topic=None, topic_message_retention_duration=None):
+    def __init__(__self__, ack_deadline_seconds=None, bigquery_config=None, dead_letter_policy=None, detached=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, state=None, topic=None, topic_message_retention_duration=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
+        if bigquery_config and not isinstance(bigquery_config, dict):
+            raise TypeError("Expected argument 'bigquery_config' to be a dict")
+        pulumi.set(__self__, "bigquery_config", bigquery_config)
         if dead_letter_policy and not isinstance(dead_letter_policy, dict):
             raise TypeError("Expected argument 'dead_letter_policy' to be a dict")
         pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
@@ -75,6 +78,14 @@ class GetSubscriptionResult:
         The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
         """
         return pulumi.get(self, "ack_deadline_seconds")
+
+    @property
+    @pulumi.getter(name="bigqueryConfig")
+    def bigquery_config(self) -> 'outputs.BigQueryConfigResponse':
+        """
+        If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        """
+        return pulumi.get(self, "bigquery_config")
 
     @property
     @pulumi.getter(name="deadLetterPolicy")
@@ -204,6 +215,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             yield self
         return GetSubscriptionResult(
             ack_deadline_seconds=self.ack_deadline_seconds,
+            bigquery_config=self.bigquery_config,
             dead_letter_policy=self.dead_letter_policy,
             detached=self.detached,
             enable_exactly_once_delivery=self.enable_exactly_once_delivery,
@@ -238,6 +250,7 @@ def get_subscription(project: Optional[str] = None,
 
     return AwaitableGetSubscriptionResult(
         ack_deadline_seconds=__ret__.ack_deadline_seconds,
+        bigquery_config=__ret__.bigquery_config,
         dead_letter_policy=__ret__.dead_letter_policy,
         detached=__ret__.detached,
         enable_exactly_once_delivery=__ret__.enable_exactly_once_delivery,

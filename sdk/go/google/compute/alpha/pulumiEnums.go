@@ -14427,7 +14427,7 @@ func (in *imageRawDiskContainerTypePtr) ToImageRawDiskContainerTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ImageRawDiskContainerTypePtrOutput)
 }
 
-// The type of the image used to create this disk. The default and only value is RAW
+// The type of the image used to create this disk. The default and only valid value is RAW.
 type ImageSourceType string
 
 const (

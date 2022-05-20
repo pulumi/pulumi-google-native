@@ -12,6 +12,7 @@ __all__ = [
     'HttpCheckContentType',
     'HttpCheckRequestMethod',
     'InternalCheckerState',
+    'JsonPathMatcherJsonMatcher',
     'LabelDescriptorValueType',
     'MetricDescriptorLaunchStage',
     'MetricDescriptorMetadataLaunchStage',
@@ -218,6 +219,14 @@ class ContentMatcherMatcher(str, Enum):
     """
     Selects negation of regular-expression matching. The match succeeds if the output does NOT match the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
     """
+    MATCHES_JSON_PATH = "MATCHES_JSON_PATH"
+    """
+    Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. JSONPath matching is only supported for HTTP/HTTPS checks.
+    """
+    NOT_MATCHES_JSON_PATH = "NOT_MATCHES_JSON_PATH"
+    """
+    Selects JSONPath matching. See JsonPathMatcher for details on when the match succeeds. Succeeds when output does NOT match as specified. JSONPath is only supported for HTTP/HTTPS checks.
+    """
 
 
 class HttpCheckContentType(str, Enum):
@@ -267,6 +276,24 @@ class InternalCheckerState(str, Enum):
     RUNNING = "RUNNING"
     """
     The checker is running and available for use. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker as well as by examining the long running Operation (https://cloud.google.com/apis/design/design_patterns#long_running_operations) that created it. If a checker is being torn down, it is neither visible nor usable, so there is no "deleting" or "down" state.
+    """
+
+
+class JsonPathMatcherJsonMatcher(str, Enum):
+    """
+    The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
+    """
+    JSON_PATH_MATCHER_OPTION_UNSPECIFIED = "JSON_PATH_MATCHER_OPTION_UNSPECIFIED"
+    """
+    No JSONPath matcher type specified (not valid).
+    """
+    EXACT_MATCH = "EXACT_MATCH"
+    """
+    Selects 'exact string' matching. The match succeeds if the content at the json_path within the output is exactly the same as the content string.
+    """
+    REGEX_MATCH = "REGEX_MATCH"
+    """
+    Selects regular-expression matching. The match succeeds if the content at the json_path within the output matches the regular expression specified in the content string.
     """
 
 

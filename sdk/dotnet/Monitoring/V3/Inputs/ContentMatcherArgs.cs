@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public Input<string>? Content { get; set; }
 
         /// <summary>
+        /// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+        /// </summary>
+        [Input("jsonPathMatcher")]
+        public Input<Inputs.JsonPathMatcherArgs>? JsonPathMatcher { get; set; }
+
+        /// <summary>
         /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         /// </summary>
         [Input("matcher")]

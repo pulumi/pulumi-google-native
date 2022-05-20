@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<bool>? CreateSubnetwork { get; set; }
 
         /// <summary>
+        /// The ipv6 access type (internal or external) when create_subnetwork is true
+        /// </summary>
+        [Input("ipv6AccessType")]
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.IPAllocationPolicyIpv6AccessType>? Ipv6AccessType { get; set; }
+
+        /// <summary>
         /// This field is deprecated, use node_ipv4_cidr_block.
         /// </summary>
         [Input("nodeIpv4Cidr")]
@@ -74,6 +80,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// </summary>
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
+
+        /// <summary>
+        /// IP stack type
+        /// </summary>
+        [Input("stackType")]
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.IPAllocationPolicyStackType>? StackType { get; set; }
 
         /// <summary>
         /// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.

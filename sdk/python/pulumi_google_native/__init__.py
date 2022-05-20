@@ -2209,6 +2209,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1alpha",
   "classes": {
    "google-native:metastore/v1alpha:Backup": "Backup",
+   "google-native:metastore/v1alpha:Federation": "Federation",
    "google-native:metastore/v1alpha:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1alpha:MetadataImport": "MetadataImport",
    "google-native:metastore/v1alpha:Service": "Service",

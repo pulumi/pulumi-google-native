@@ -328,6 +328,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.PrivateClusterConfigResponse> PrivateClusterConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Enable/Disable Protect API features for the cluster.
+        /// </summary>
+        [Output("protectConfig")]
+        public Output<Outputs.ProtectConfigResponse> ProtectConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Release channel configuration.
         /// </summary>
         [Output("releaseChannel")]
@@ -765,6 +771,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Enable/Disable Protect API features for the cluster.
+        /// </summary>
+        [Input("protectConfig")]
+        public Input<Inputs.ProtectConfigArgs>? ProtectConfig { get; set; }
 
         /// <summary>
         /// Release channel configuration.

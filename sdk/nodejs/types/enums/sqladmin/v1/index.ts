@@ -204,6 +204,10 @@ export const InstanceDatabaseVersion = {
      */
     Mysql8028: "MYSQL_8_0_28",
     /**
+     * The database major version is MySQL 8.0 and the minor version is 29.
+     */
+    Mysql8029: "MYSQL_8_0_29",
+    /**
      * The database version is PostgreSQL 13.
      */
     Postgres13: "POSTGRES_13",

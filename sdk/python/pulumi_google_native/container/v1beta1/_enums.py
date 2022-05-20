@@ -15,6 +15,8 @@ __all__ = [
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'FilterEventTypeItem',
+    'IPAllocationPolicyIpv6AccessType',
+    'IPAllocationPolicyStackType',
     'IstioConfigAuth',
     'LoggingComponentConfigEnableComponentsItem',
     'MaintenanceExclusionOptionsScope',
@@ -31,6 +33,7 @@ __all__ = [
     'SandboxConfigType',
     'StatusConditionCanonicalCode',
     'StatusConditionCode',
+    'WorkloadConfigAuditMode',
     'WorkloadMetadataConfigMode',
     'WorkloadMetadataConfigNodeMetadata',
 ]
@@ -222,6 +225,42 @@ class FilterEventTypeItem(str, Enum):
     SECURITY_BULLETIN_EVENT = "SECURITY_BULLETIN_EVENT"
     """
     Corresponds with SecurityBulletinEvent.
+    """
+
+
+class IPAllocationPolicyIpv6AccessType(str, Enum):
+    """
+    The ipv6 access type (internal or external) when create_subnetwork is true
+    """
+    IPV6_ACCESS_TYPE_UNSPECIFIED = "IPV6_ACCESS_TYPE_UNSPECIFIED"
+    """
+    Default value, will be defaulted as type external.
+    """
+    INTERNAL = "INTERNAL"
+    """
+    Access type internal (all v6 addresses are internal IPs)
+    """
+    EXTERNAL = "EXTERNAL"
+    """
+    Access type external (all v6 addresses are external IPs)
+    """
+
+
+class IPAllocationPolicyStackType(str, Enum):
+    """
+    IP stack type
+    """
+    STACK_TYPE_UNSPECIFIED = "STACK_TYPE_UNSPECIFIED"
+    """
+    By default, the clusters will be IPV4 only
+    """
+    IPV4 = "IPV4"
+    """
+    The value used if the cluster is a IPV4 only
+    """
+    IPV4_IPV6 = "IPV4_IPV6"
+    """
+    The value used if the cluster is a dual stack cluster
     """
 
 
@@ -568,6 +607,32 @@ class StatusConditionCode(str, Enum):
     CA_EXPIRING = "CA_EXPIRING"
     """
     Cluster CA is expiring soon. More codes TBA
+    """
+
+
+class WorkloadConfigAuditMode(str, Enum):
+    """
+    Sets which mode of auditing should be used for the cluster's workloads.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value meaning that no mode has been specified.
+    """
+    DISABLED = "DISABLED"
+    """
+    This disables Workload Configuration auditing on the cluster, meaning that nothing is surfaced.
+    """
+    BASIC = "BASIC"
+    """
+    Applies the default set of policy auditing to a cluster's workloads.
+    """
+    BASELINE = "BASELINE"
+    """
+    Surfaces configurations that are not in line with the Pod Security Standard Baseline policy.
+    """
+    RESTRICTED = "RESTRICTED"
+    """
+    Surfaces configurations that are not in line with the Pod Security Standard Restricted policy.
     """
 
 

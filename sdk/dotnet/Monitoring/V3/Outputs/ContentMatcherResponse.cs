@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string Content;
         /// <summary>
+        /// Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
+        /// </summary>
+        public readonly Outputs.JsonPathMatcherResponse JsonPathMatcher;
+        /// <summary>
         /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         /// </summary>
         public readonly string Matcher;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         private ContentMatcherResponse(
             string content,
 
+            Outputs.JsonPathMatcherResponse jsonPathMatcher,
+
             string matcher)
         {
             Content = content;
+            JsonPathMatcher = jsonPathMatcher;
             Matcher = matcher;
         }
     }
