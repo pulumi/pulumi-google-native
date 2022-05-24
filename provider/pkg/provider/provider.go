@@ -465,7 +465,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
 		}
 	} else {
-		op, err = p.client.RequestWithTimeout(res.Create.Verb, uri, body, 0)
+		op, err = retryRequest(p.client, res.Create.Verb, uri, body)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
@@ -662,7 +662,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	// Read the current state of the resource from the API.
-	newState, err := p.client.RequestWithTimeout(res.Read.Verb, uri, nil, 0)
+	newState, err := retryRequest(p.client, res.Read.Verb, uri, nil)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -790,7 +790,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, err
 	}
 
-	op, err := p.client.RequestWithTimeout(res.Update.Verb, uri, body, 0)
+	op, err := retryRequest(p.client, res.Update.Verb, uri, body)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
@@ -873,7 +873,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := p.client.RequestWithTimeout(res.Delete.Verb, uri, nil, 0)
+	resp, err := retryRequest(p.client, res.Delete.Verb, uri, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
@@ -884,6 +884,41 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 	}
 
 	return &empty.Empty{}, nil
+}
+
+// Deprecated: retryRequest is a temporary retry helper that will be replaced by centralized retry logic after some
+// additional refactoring. This function should not be used outside the provider CRUD methods.
+func retryRequest(client *googleclient.GoogleClient, method string, rawurl string, body map[string]interface{},
+) (map[string]interface{}, error) {
+	retryPolicy := backoff.Backoff{
+		Min:    1 * time.Second,
+		Max:    30 * time.Second,
+		Factor: 1.5,
+		Jitter: true,
+	}
+	timeout := 30 * time.Minute
+	ctx, cancel := context.WithTimeout(context.TODO(), 30*time.Minute)
+	defer cancel()
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, fmt.Errorf("request %s %s timed out after %s", method, rawurl, timeout)
+		case <-time.After(retryPolicy.Duration()):
+			resp, err := client.RequestWithTimeout(method, rawurl, body, 0)
+			if err != nil {
+				// Retryable error
+				if gerr, ok := err.(*googleapi.Error); ok {
+					if gerr.Code == 400 && strings.Contains(gerr.Body, "Please wait and try again once it is done") {
+						continue
+					}
+				}
+
+				// Non-retryable error
+				return nil, err
+			}
+			return resp, nil
+		}
+	}
 }
 
 // Construct creates a new component resource.
