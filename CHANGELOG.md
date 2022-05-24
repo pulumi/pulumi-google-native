@@ -2,8 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
 
+- fix: Retry GKE cluster operations [#496](https://github.com/pulumi/pulumi-google-native/issues/496)
 
 ## 0.19.0 (2022-05-19)
 
