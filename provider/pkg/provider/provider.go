@@ -410,6 +410,12 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	// Extract old inputs from the `__inputs` field of the old state.
 	oldInputs := parseCheckpointObject(oldState)
 
+	var isAutonamed bool
+	if v, ok := oldInputs[autonamed]; ok && v.IsBool() {
+		isAutonamed = v.BoolValue()
+	}
+	delete(oldInputs, autonamed)
+
 	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
 		Label:        fmt.Sprintf("%s.newInputs", label),
 		KeepUnknowns: true,
@@ -441,9 +447,9 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	}
 
 	// If replacement needs to be triggered, prefer deletion first, unless the resource is autonamed.
-	deleteBeforeReplace := len(replaces) > 0
-	if v, ok := oldInputs[autonamed]; ok && v.IsBool() {
-		deleteBeforeReplace = !v.BoolValue()
+	var deleteBeforeReplace bool
+	if len(replaces) > 0 && isAutonamed {
+		deleteBeforeReplace = false
 	}
 	changeType := rpc.DiffResponse_DIFF_NONE
 	if len(detailedDiff) > 0 {
