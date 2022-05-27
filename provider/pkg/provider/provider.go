@@ -447,8 +447,8 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	}
 
 	// If replacement needs to be triggered, prefer deletion first, unless the resource is autonamed.
-	var deleteBeforeReplace bool
-	if len(replaces) > 0 && isAutonamed {
+	deleteBeforeReplace := len(replaces) > 0
+	if deleteBeforeReplace && isAutonamed {
 		deleteBeforeReplace = false
 	}
 	changeType := rpc.DiffResponse_DIFF_NONE
