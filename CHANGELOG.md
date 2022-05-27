@@ -2,7 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
+- Multiple bug fixes in [#453](https://github.com/pulumi/pulumi-google-native/pull/453)
+  - Store partial state more consistently in the presence of partial failure
+  - Fixes for bigtable instance and cluster recreation
+  - Add support for replace-on-changes based on annotations and manual override for replace-on-change behavior
+  - Make method discovery deterministic
+  - Improvements to discovering operation endpoints
 
 ## 0.19.1 (2022-05-24)
 
@@ -56,6 +61,13 @@ Improvements:
 Bug fixes:
 
 - Convert token expiry to string on assignment [#470](https://github.com/pulumi/pulumi-google-native/pull/470)
+
+Improvements:
+- Initial support for handling immutable resources [453](https://github.com/pulumi/pulumi-google-native/pull/453)
+
+Bug fixes:
+- https://github.com/pulumi/pulumi-google-native/issues/426
+- https://github.com/pulumi/pulumi-google-native/issues/291
 
 ## 0.18.1 (2022-04-20)
 

@@ -120,12 +120,12 @@ func getDefaultName(
 	urn resource.URN,
 	pattern string,
 	olds, news resource.PropertyMap,
-) resource.PropertyValue {
+) (resource.PropertyValue, bool) {
 	if v, ok := olds[resource.PropertyKey("name")]; ok {
-		return v
+		return v, false
 	}
 	if v, ok := olds[resource.PropertyKey(pattern)]; ok {
-		return v
+		return v, false
 	}
 
 	name := urn.Name().String()
@@ -136,7 +136,7 @@ func getDefaultName(
 
 	// Simple field replacement, so just return the autoname.
 	if autonameFieldRegex.MatchString(pattern) {
-		return resource.NewStringProperty(random)
+		return resource.NewStringProperty(random), true
 	}
 
 	result := strings.Replace(pattern, "{name}", random, 1)
@@ -149,7 +149,7 @@ func getDefaultName(
 		result = strings.Replace(result, part, value.StringValue(), 1)
 	}
 
-	return resource.NewStringProperty(result)
+	return resource.NewStringProperty(result), true
 }
 
 // applyPropertyPattern composes a pattern-based string value from the given property map, if the property

@@ -32,6 +32,7 @@ require (
 	cloud.google.com/go/iam v0.3.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0
 	github.com/imdario/mergo v0.3.12
+	github.com/jtacoma/uritemplates v1.0.0
 )
 
 require (

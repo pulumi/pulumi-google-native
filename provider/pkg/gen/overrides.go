@@ -174,6 +174,20 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			},
 		},
 	},
+	"google-native:bigtableadmin/v2:Instance": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				SDKProperties: map[string]resources.CloudAPIProperty{
+					"clusters": {
+						Required: true,
+						ForceNew: true, // clusters are a sub-resource which don't provide a simple
+						// means to update. Mark clusters as immutable and require replacement on
+						//change to avoid errors with updates.
+					},
+				},
+			},
+		},
+	},
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
