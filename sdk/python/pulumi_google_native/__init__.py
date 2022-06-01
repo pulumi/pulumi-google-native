@@ -1714,6 +1714,9 @@ _utilities.register(
    "google-native:dlp/v2:DlpJob": "DlpJob",
    "google-native:dlp/v2:InspectTemplate": "InspectTemplate",
    "google-native:dlp/v2:JobTrigger": "JobTrigger",
+   "google-native:dlp/v2:OrganizationInspectTemplate": "OrganizationInspectTemplate",
+   "google-native:dlp/v2:OrganizationJobTrigger": "OrganizationJobTrigger",
+   "google-native:dlp/v2:OrganizationsDeidentifyTemplate": "OrganizationsDeidentifyTemplate",
    "google-native:dlp/v2:StoredInfoType": "StoredInfoType"
   }
  },
@@ -2145,7 +2148,20 @@ _utilities.register(
   "fqn": "pulumi_google_native.logging.v2",
   "classes": {
    "google-native:logging/v2:BillingAccountExclusion": "BillingAccountExclusion",
-   "google-native:logging/v2:BillingAccountSink": "BillingAccountSink"
+   "google-native:logging/v2:BillingAccountSink": "BillingAccountSink",
+   "google-native:logging/v2:Bucket": "Bucket",
+   "google-native:logging/v2:BucketView": "BucketView",
+   "google-native:logging/v2:Exclusion": "Exclusion",
+   "google-native:logging/v2:FolderBucket": "FolderBucket",
+   "google-native:logging/v2:FolderBucketView": "FolderBucketView",
+   "google-native:logging/v2:FolderExclusion": "FolderExclusion",
+   "google-native:logging/v2:FolderSink": "FolderSink",
+   "google-native:logging/v2:Metric": "Metric",
+   "google-native:logging/v2:OrganizationBucket": "OrganizationBucket",
+   "google-native:logging/v2:OrganizationBucketView": "OrganizationBucketView",
+   "google-native:logging/v2:OrganizationExclusion": "OrganizationExclusion",
+   "google-native:logging/v2:OrganizationSink": "OrganizationSink",
+   "google-native:logging/v2:Sink": "Sink"
   }
  },
  {
