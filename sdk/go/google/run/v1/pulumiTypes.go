@@ -2822,6 +2822,130 @@ func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
+// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+type ExecutionReferenceResponse struct {
+	// Optional. Creation timestamp of the execution.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// Optional. Name of the execution.
+	Name string `pulumi:"name"`
+}
+
+// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+type ExecutionReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecutionReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionReferenceResponse)(nil)).Elem()
+}
+
+func (o ExecutionReferenceResponseOutput) ToExecutionReferenceResponseOutput() ExecutionReferenceResponseOutput {
+	return o
+}
+
+func (o ExecutionReferenceResponseOutput) ToExecutionReferenceResponseOutputWithContext(ctx context.Context) ExecutionReferenceResponseOutput {
+	return o
+}
+
+// Optional. Creation timestamp of the execution.
+func (o ExecutionReferenceResponseOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionReferenceResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Optional. Name of the execution.
+func (o ExecutionReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ExecutionSpec describes how the execution will look.
+type ExecutionSpec struct {
+	// Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional
+	Parallelism *int `pulumi:"parallelism"`
+	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	TaskCount *int `pulumi:"taskCount"`
+	// Optional. Describes the task(s) that will be created when executing an execution.
+	Template *TaskTemplateSpec `pulumi:"template"`
+}
+
+// ExecutionSpec describes how the execution will look.
+type ExecutionSpecResponse struct {
+	// Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional
+	Parallelism int `pulumi:"parallelism"`
+	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	TaskCount int `pulumi:"taskCount"`
+	// Optional. Describes the task(s) that will be created when executing an execution.
+	Template TaskTemplateSpecResponse `pulumi:"template"`
+}
+
+// ExecutionSpec describes how the execution will look.
+type ExecutionSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecutionSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionSpecResponse)(nil)).Elem()
+}
+
+func (o ExecutionSpecResponseOutput) ToExecutionSpecResponseOutput() ExecutionSpecResponseOutput {
+	return o
+}
+
+func (o ExecutionSpecResponseOutput) ToExecutionSpecResponseOutputWithContext(ctx context.Context) ExecutionSpecResponseOutput {
+	return o
+}
+
+// Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional
+func (o ExecutionSpecResponseOutput) Parallelism() pulumi.IntOutput {
+	return o.ApplyT(func(v ExecutionSpecResponse) int { return v.Parallelism }).(pulumi.IntOutput)
+}
+
+// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o ExecutionSpecResponseOutput) TaskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ExecutionSpecResponse) int { return v.TaskCount }).(pulumi.IntOutput)
+}
+
+// Optional. Describes the task(s) that will be created when executing an execution.
+func (o ExecutionSpecResponseOutput) Template() TaskTemplateSpecResponseOutput {
+	return o.ApplyT(func(v ExecutionSpecResponse) TaskTemplateSpecResponse { return v.Template }).(TaskTemplateSpecResponseOutput)
+}
+
+// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+type ExecutionTemplateSpec struct {
+	// Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
+	Metadata *ObjectMeta `pulumi:"metadata"`
+	// ExecutionSpec holds the desired configuration for executions of this job.
+	Spec ExecutionSpec `pulumi:"spec"`
+}
+
+// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+type ExecutionTemplateSpecResponse struct {
+	// Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
+	Metadata ObjectMetaResponse `pulumi:"metadata"`
+	// ExecutionSpec holds the desired configuration for executions of this job.
+	Spec ExecutionSpecResponse `pulumi:"spec"`
+}
+
+// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+type ExecutionTemplateSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecutionTemplateSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionTemplateSpecResponse)(nil)).Elem()
+}
+
+func (o ExecutionTemplateSpecResponseOutput) ToExecutionTemplateSpecResponseOutput() ExecutionTemplateSpecResponseOutput {
+	return o
+}
+
+func (o ExecutionTemplateSpecResponseOutput) ToExecutionTemplateSpecResponseOutputWithContext(ctx context.Context) ExecutionTemplateSpecResponseOutput {
+	return o
+}
+
+// Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
+func (o ExecutionTemplateSpecResponseOutput) Metadata() ObjectMetaResponseOutput {
+	return o.ApplyT(func(v ExecutionTemplateSpecResponse) ObjectMetaResponse { return v.Metadata }).(ObjectMetaResponseOutput)
+}
+
+// ExecutionSpec holds the desired configuration for executions of this job.
+func (o ExecutionTemplateSpecResponseOutput) Spec() ExecutionSpecResponseOutput {
+	return o.ApplyT(func(v ExecutionTemplateSpecResponse) ExecutionSpecResponse { return v.Spec }).(ExecutionSpecResponseOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -3759,6 +3883,85 @@ func (o HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) HTTPHeaderRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HTTPHeaderResponse {
 		return vs[0].([]HTTPHeaderResponse)[vs[1].(int)]
 	}).(HTTPHeaderResponseOutput)
+}
+
+// JobSpec describes how the job will look.
+type JobSpec struct {
+	// Optional. Describes the execution that will be created when running a job.
+	Template *ExecutionTemplateSpec `pulumi:"template"`
+}
+
+// JobSpec describes how the job will look.
+type JobSpecResponse struct {
+	// Optional. Describes the execution that will be created when running a job.
+	Template ExecutionTemplateSpecResponse `pulumi:"template"`
+}
+
+// JobSpec describes how the job will look.
+type JobSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (JobSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSpecResponse)(nil)).Elem()
+}
+
+func (o JobSpecResponseOutput) ToJobSpecResponseOutput() JobSpecResponseOutput {
+	return o
+}
+
+func (o JobSpecResponseOutput) ToJobSpecResponseOutputWithContext(ctx context.Context) JobSpecResponseOutput {
+	return o
+}
+
+// Optional. Describes the execution that will be created when running a job.
+func (o JobSpecResponseOutput) Template() ExecutionTemplateSpecResponseOutput {
+	return o.ApplyT(func(v JobSpecResponse) ExecutionTemplateSpecResponse { return v.Template }).(ExecutionTemplateSpecResponseOutput)
+}
+
+// JobStatus represents the current state of a Job.
+type JobStatusResponse struct {
+	// The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Conditions []GoogleCloudRunV1ConditionResponse `pulumi:"conditions"`
+	// Number of executions created for this job.
+	ExecutionCount int `pulumi:"executionCount"`
+	// A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
+	LatestCreatedExecution ExecutionReferenceResponse `pulumi:"latestCreatedExecution"`
+	// The 'generation' of the job that was last processed by the controller.
+	ObservedGeneration int `pulumi:"observedGeneration"`
+}
+
+// JobStatus represents the current state of a Job.
+type JobStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (JobStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusResponse)(nil)).Elem()
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponseOutput() JobStatusResponseOutput {
+	return o
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
+	return o
+}
+
+// The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+func (o JobStatusResponseOutput) Conditions() GoogleCloudRunV1ConditionResponseArrayOutput {
+	return o.ApplyT(func(v JobStatusResponse) []GoogleCloudRunV1ConditionResponse { return v.Conditions }).(GoogleCloudRunV1ConditionResponseArrayOutput)
+}
+
+// Number of executions created for this job.
+func (o JobStatusResponseOutput) ExecutionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v JobStatusResponse) int { return v.ExecutionCount }).(pulumi.IntOutput)
+}
+
+// A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
+func (o JobStatusResponseOutput) LatestCreatedExecution() ExecutionReferenceResponseOutput {
+	return o.ApplyT(func(v JobStatusResponse) ExecutionReferenceResponse { return v.LatestCreatedExecution }).(ExecutionReferenceResponseOutput)
+}
+
+// The 'generation' of the job that was last processed by the controller.
+func (o JobStatusResponseOutput) ObservedGeneration() pulumi.IntOutput {
+	return o.ApplyT(func(v JobStatusResponse) int { return v.ObservedGeneration }).(pulumi.IntOutput)
 }
 
 // Maps a string key to a path within a volume.
@@ -7412,6 +7615,106 @@ func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TCPSocketActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// TaskSpec is a description of a task.
+type TaskSpec struct {
+	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+	Containers []Container `pulumi:"containers"`
+	// Optional. Number of retries allowed per task, before marking this job failed.
+	MaxRetries *int `pulumi:"maxRetries"`
+	// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
+	ServiceAccountName *string `pulumi:"serviceAccountName"`
+	// Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
+	TimeoutSeconds *string `pulumi:"timeoutSeconds"`
+	// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+	Volumes []Volume `pulumi:"volumes"`
+}
+
+// TaskSpec is a description of a task.
+type TaskSpecResponse struct {
+	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+	Containers []ContainerResponse `pulumi:"containers"`
+	// Optional. Number of retries allowed per task, before marking this job failed.
+	MaxRetries int `pulumi:"maxRetries"`
+	// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
+	ServiceAccountName string `pulumi:"serviceAccountName"`
+	// Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
+	TimeoutSeconds string `pulumi:"timeoutSeconds"`
+	// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+	Volumes []VolumeResponse `pulumi:"volumes"`
+}
+
+// TaskSpec is a description of a task.
+type TaskSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (TaskSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSpecResponse)(nil)).Elem()
+}
+
+func (o TaskSpecResponseOutput) ToTaskSpecResponseOutput() TaskSpecResponseOutput {
+	return o
+}
+
+func (o TaskSpecResponseOutput) ToTaskSpecResponseOutputWithContext(ctx context.Context) TaskSpecResponseOutput {
+	return o
+}
+
+// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+func (o TaskSpecResponseOutput) Containers() ContainerResponseArrayOutput {
+	return o.ApplyT(func(v TaskSpecResponse) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
+}
+
+// Optional. Number of retries allowed per task, before marking this job failed.
+func (o TaskSpecResponseOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v TaskSpecResponse) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
+func (o TaskSpecResponseOutput) ServiceAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskSpecResponse) string { return v.ServiceAccountName }).(pulumi.StringOutput)
+}
+
+// Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
+func (o TaskSpecResponseOutput) TimeoutSeconds() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskSpecResponse) string { return v.TimeoutSeconds }).(pulumi.StringOutput)
+}
+
+// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+func (o TaskSpecResponseOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v TaskSpecResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+// TaskTemplateSpec describes the data a task should have when created from a template.
+type TaskTemplateSpec struct {
+	// Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+	Spec *TaskSpec `pulumi:"spec"`
+}
+
+// TaskTemplateSpec describes the data a task should have when created from a template.
+type TaskTemplateSpecResponse struct {
+	// Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+	Spec TaskSpecResponse `pulumi:"spec"`
+}
+
+// TaskTemplateSpec describes the data a task should have when created from a template.
+type TaskTemplateSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (TaskTemplateSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskTemplateSpecResponse)(nil)).Elem()
+}
+
+func (o TaskTemplateSpecResponseOutput) ToTaskTemplateSpecResponseOutput() TaskTemplateSpecResponseOutput {
+	return o
+}
+
+func (o TaskTemplateSpecResponseOutput) ToTaskTemplateSpecResponseOutputWithContext(ctx context.Context) TaskTemplateSpecResponseOutput {
+	return o
+}
+
+// Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+func (o TaskTemplateSpecResponseOutput) Spec() TaskSpecResponseOutput {
+	return o.ApplyT(func(v TaskTemplateSpecResponse) TaskSpecResponse { return v.Spec }).(TaskSpecResponseOutput)
+}
+
 // TrafficTarget holds a single entry of the routing table for a Route.
 type TrafficTarget struct {
 	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
@@ -8109,6 +8412,9 @@ func init() {
 	pulumi.RegisterOutputType(ExecActionOutput{})
 	pulumi.RegisterOutputType(ExecActionPtrOutput{})
 	pulumi.RegisterOutputType(ExecActionResponseOutput{})
+	pulumi.RegisterOutputType(ExecutionReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ExecutionSpecResponseOutput{})
+	pulumi.RegisterOutputType(ExecutionTemplateSpecResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -8124,6 +8430,8 @@ func init() {
 	pulumi.RegisterOutputType(HTTPHeaderArrayOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderResponseOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(JobSpecResponseOutput{})
+	pulumi.RegisterOutputType(JobStatusResponseOutput{})
 	pulumi.RegisterOutputType(KeyToPathOutput{})
 	pulumi.RegisterOutputType(KeyToPathArrayOutput{})
 	pulumi.RegisterOutputType(KeyToPathResponseOutput{})
@@ -8173,6 +8481,8 @@ func init() {
 	pulumi.RegisterOutputType(TCPSocketActionOutput{})
 	pulumi.RegisterOutputType(TCPSocketActionPtrOutput{})
 	pulumi.RegisterOutputType(TCPSocketActionResponseOutput{})
+	pulumi.RegisterOutputType(TaskSpecResponseOutput{})
+	pulumi.RegisterOutputType(TaskTemplateSpecResponseOutput{})
 	pulumi.RegisterOutputType(TrafficTargetOutput{})
 	pulumi.RegisterOutputType(TrafficTargetArrayOutput{})
 	pulumi.RegisterOutputType(TrafficTargetResponseOutput{})
