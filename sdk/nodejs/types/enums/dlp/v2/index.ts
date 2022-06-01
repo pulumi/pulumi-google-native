@@ -461,3 +461,27 @@ export const JobTriggerStatus = {
  * Required. A status for this trigger.
  */
 export type JobTriggerStatus = (typeof JobTriggerStatus)[keyof typeof JobTriggerStatus];
+
+export const OrganizationJobTriggerStatus = {
+    /**
+     * Unused.
+     */
+    StatusUnspecified: "STATUS_UNSPECIFIED",
+    /**
+     * Trigger is healthy.
+     */
+    Healthy: "HEALTHY",
+    /**
+     * Trigger is temporarily paused.
+     */
+    Paused: "PAUSED",
+    /**
+     * Trigger is cancelled and can not be resumed.
+     */
+    Cancelled: "CANCELLED",
+} as const;
+
+/**
+ * Required. A status for this trigger.
+ */
+export type OrganizationJobTriggerStatus = (typeof OrganizationJobTriggerStatus)[keyof typeof OrganizationJobTriggerStatus];

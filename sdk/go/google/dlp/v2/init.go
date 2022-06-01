@@ -29,6 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InspectTemplate{}
 	case "google-native:dlp/v2:JobTrigger":
 		r = &JobTrigger{}
+	case "google-native:dlp/v2:OrganizationInspectTemplate":
+		r = &OrganizationInspectTemplate{}
+	case "google-native:dlp/v2:OrganizationJobTrigger":
+		r = &OrganizationJobTrigger{}
+	case "google-native:dlp/v2:OrganizationsDeidentifyTemplate":
+		r = &OrganizationsDeidentifyTemplate{}
 	case "google-native:dlp/v2:StoredInfoType":
 		r = &StoredInfoType{}
 	default:

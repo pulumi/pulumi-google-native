@@ -22,6 +22,7 @@ __all__ = [
     'GooglePrivacyDlpV2TimePartConfigPartToExtract',
     'GooglePrivacyDlpV2ValueDayOfWeekValue',
     'JobTriggerStatus',
+    'OrganizationJobTriggerStatus',
 ]
 
 
@@ -430,6 +431,28 @@ class GooglePrivacyDlpV2ValueDayOfWeekValue(str, Enum):
 
 
 class JobTriggerStatus(str, Enum):
+    """
+    Required. A status for this trigger.
+    """
+    STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
+    """
+    Unused.
+    """
+    HEALTHY = "HEALTHY"
+    """
+    Trigger is healthy.
+    """
+    PAUSED = "PAUSED"
+    """
+    Trigger is temporarily paused.
+    """
+    CANCELLED = "CANCELLED"
+    """
+    Trigger is cancelled and can not be resumed.
+    """
+
+
+class OrganizationJobTriggerStatus(str, Enum):
     """
     Required. A status for this trigger.
     """

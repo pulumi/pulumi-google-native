@@ -823,4 +823,49 @@ namespace Pulumi.GoogleNative.DLP.V2
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Required. A status for this trigger.
+    /// </summary>
+    [EnumType]
+    public readonly struct OrganizationJobTriggerStatus : IEquatable<OrganizationJobTriggerStatus>
+    {
+        private readonly string _value;
+
+        private OrganizationJobTriggerStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static OrganizationJobTriggerStatus StatusUnspecified { get; } = new OrganizationJobTriggerStatus("STATUS_UNSPECIFIED");
+        /// <summary>
+        /// Trigger is healthy.
+        /// </summary>
+        public static OrganizationJobTriggerStatus Healthy { get; } = new OrganizationJobTriggerStatus("HEALTHY");
+        /// <summary>
+        /// Trigger is temporarily paused.
+        /// </summary>
+        public static OrganizationJobTriggerStatus Paused { get; } = new OrganizationJobTriggerStatus("PAUSED");
+        /// <summary>
+        /// Trigger is cancelled and can not be resumed.
+        /// </summary>
+        public static OrganizationJobTriggerStatus Cancelled { get; } = new OrganizationJobTriggerStatus("CANCELLED");
+
+        public static bool operator ==(OrganizationJobTriggerStatus left, OrganizationJobTriggerStatus right) => left.Equals(right);
+        public static bool operator !=(OrganizationJobTriggerStatus left, OrganizationJobTriggerStatus right) => !left.Equals(right);
+
+        public static explicit operator string(OrganizationJobTriggerStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OrganizationJobTriggerStatus other && Equals(other);
+        public bool Equals(OrganizationJobTriggerStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

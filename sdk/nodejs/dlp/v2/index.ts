@@ -11,9 +11,15 @@ export * from "./getDeidentifyTemplate";
 export * from "./getDlpJob";
 export * from "./getInspectTemplate";
 export * from "./getJobTrigger";
+export * from "./getOrganizationInspectTemplate";
+export * from "./getOrganizationJobTrigger";
+export * from "./getOrganizationsDeidentifyTemplate";
 export * from "./getStoredInfoType";
 export * from "./inspectTemplate";
 export * from "./jobTrigger";
+export * from "./organizationInspectTemplate";
+export * from "./organizationJobTrigger";
+export * from "./organizationsDeidentifyTemplate";
 export * from "./storedInfoType";
 
 // Export enums:
@@ -24,6 +30,9 @@ import { DeidentifyTemplate } from "./deidentifyTemplate";
 import { DlpJob } from "./dlpJob";
 import { InspectTemplate } from "./inspectTemplate";
 import { JobTrigger } from "./jobTrigger";
+import { OrganizationInspectTemplate } from "./organizationInspectTemplate";
+import { OrganizationJobTrigger } from "./organizationJobTrigger";
+import { OrganizationsDeidentifyTemplate } from "./organizationsDeidentifyTemplate";
 import { StoredInfoType } from "./storedInfoType";
 
 const _module = {
@@ -38,6 +47,12 @@ const _module = {
                 return new InspectTemplate(name, <any>undefined, { urn })
             case "google-native:dlp/v2:JobTrigger":
                 return new JobTrigger(name, <any>undefined, { urn })
+            case "google-native:dlp/v2:OrganizationInspectTemplate":
+                return new OrganizationInspectTemplate(name, <any>undefined, { urn })
+            case "google-native:dlp/v2:OrganizationJobTrigger":
+                return new OrganizationJobTrigger(name, <any>undefined, { urn })
+            case "google-native:dlp/v2:OrganizationsDeidentifyTemplate":
+                return new OrganizationsDeidentifyTemplate(name, <any>undefined, { urn })
             case "google-native:dlp/v2:StoredInfoType":
                 return new StoredInfoType(name, <any>undefined, { urn })
             default:

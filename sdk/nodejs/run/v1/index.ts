@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./domainMapping";
 export * from "./getDomainMapping";
+export * from "./getJob";
 export * from "./getJobIamPolicy";
 export * from "./getService";
 export * from "./getServiceIamPolicy";

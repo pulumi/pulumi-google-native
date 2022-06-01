@@ -25,6 +25,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BillingAccountExclusion{}
 	case "google-native:logging/v2:BillingAccountSink":
 		r = &BillingAccountSink{}
+	case "google-native:logging/v2:Bucket":
+		r = &Bucket{}
+	case "google-native:logging/v2:BucketView":
+		r = &BucketView{}
+	case "google-native:logging/v2:Exclusion":
+		r = &Exclusion{}
+	case "google-native:logging/v2:FolderBucket":
+		r = &FolderBucket{}
+	case "google-native:logging/v2:FolderBucketView":
+		r = &FolderBucketView{}
+	case "google-native:logging/v2:FolderExclusion":
+		r = &FolderExclusion{}
+	case "google-native:logging/v2:FolderSink":
+		r = &FolderSink{}
+	case "google-native:logging/v2:Metric":
+		r = &Metric{}
+	case "google-native:logging/v2:OrganizationBucket":
+		r = &OrganizationBucket{}
+	case "google-native:logging/v2:OrganizationBucketView":
+		r = &OrganizationBucketView{}
+	case "google-native:logging/v2:OrganizationExclusion":
+		r = &OrganizationExclusion{}
+	case "google-native:logging/v2:OrganizationSink":
+		r = &OrganizationSink{}
+	case "google-native:logging/v2:Sink":
+		r = &Sink{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

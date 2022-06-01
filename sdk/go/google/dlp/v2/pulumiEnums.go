@@ -3039,6 +3039,177 @@ func (in *jobTriggerStatusPtr) ToJobTriggerStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(JobTriggerStatusPtrOutput)
 }
 
+// Required. A status for this trigger.
+type OrganizationJobTriggerStatus string
+
+const (
+	// Unused.
+	OrganizationJobTriggerStatusStatusUnspecified = OrganizationJobTriggerStatus("STATUS_UNSPECIFIED")
+	// Trigger is healthy.
+	OrganizationJobTriggerStatusHealthy = OrganizationJobTriggerStatus("HEALTHY")
+	// Trigger is temporarily paused.
+	OrganizationJobTriggerStatusPaused = OrganizationJobTriggerStatus("PAUSED")
+	// Trigger is cancelled and can not be resumed.
+	OrganizationJobTriggerStatusCancelled = OrganizationJobTriggerStatus("CANCELLED")
+)
+
+func (OrganizationJobTriggerStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationJobTriggerStatus)(nil)).Elem()
+}
+
+func (e OrganizationJobTriggerStatus) ToOrganizationJobTriggerStatusOutput() OrganizationJobTriggerStatusOutput {
+	return pulumi.ToOutput(e).(OrganizationJobTriggerStatusOutput)
+}
+
+func (e OrganizationJobTriggerStatus) ToOrganizationJobTriggerStatusOutputWithContext(ctx context.Context) OrganizationJobTriggerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationJobTriggerStatusOutput)
+}
+
+func (e OrganizationJobTriggerStatus) ToOrganizationJobTriggerStatusPtrOutput() OrganizationJobTriggerStatusPtrOutput {
+	return e.ToOrganizationJobTriggerStatusPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationJobTriggerStatus) ToOrganizationJobTriggerStatusPtrOutputWithContext(ctx context.Context) OrganizationJobTriggerStatusPtrOutput {
+	return OrganizationJobTriggerStatus(e).ToOrganizationJobTriggerStatusOutputWithContext(ctx).ToOrganizationJobTriggerStatusPtrOutputWithContext(ctx)
+}
+
+func (e OrganizationJobTriggerStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationJobTriggerStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationJobTriggerStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationJobTriggerStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrganizationJobTriggerStatusOutput struct{ *pulumi.OutputState }
+
+func (OrganizationJobTriggerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationJobTriggerStatus)(nil)).Elem()
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToOrganizationJobTriggerStatusOutput() OrganizationJobTriggerStatusOutput {
+	return o
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToOrganizationJobTriggerStatusOutputWithContext(ctx context.Context) OrganizationJobTriggerStatusOutput {
+	return o
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToOrganizationJobTriggerStatusPtrOutput() OrganizationJobTriggerStatusPtrOutput {
+	return o.ToOrganizationJobTriggerStatusPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToOrganizationJobTriggerStatusPtrOutputWithContext(ctx context.Context) OrganizationJobTriggerStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationJobTriggerStatus) *OrganizationJobTriggerStatus {
+		return &v
+	}).(OrganizationJobTriggerStatusPtrOutput)
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationJobTriggerStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationJobTriggerStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationJobTriggerStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationJobTriggerStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationJobTriggerStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationJobTriggerStatus)(nil)).Elem()
+}
+
+func (o OrganizationJobTriggerStatusPtrOutput) ToOrganizationJobTriggerStatusPtrOutput() OrganizationJobTriggerStatusPtrOutput {
+	return o
+}
+
+func (o OrganizationJobTriggerStatusPtrOutput) ToOrganizationJobTriggerStatusPtrOutputWithContext(ctx context.Context) OrganizationJobTriggerStatusPtrOutput {
+	return o
+}
+
+func (o OrganizationJobTriggerStatusPtrOutput) Elem() OrganizationJobTriggerStatusOutput {
+	return o.ApplyT(func(v *OrganizationJobTriggerStatus) OrganizationJobTriggerStatus {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationJobTriggerStatus
+		return ret
+	}).(OrganizationJobTriggerStatusOutput)
+}
+
+func (o OrganizationJobTriggerStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationJobTriggerStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationJobTriggerStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrganizationJobTriggerStatusInput is an input type that accepts OrganizationJobTriggerStatusArgs and OrganizationJobTriggerStatusOutput values.
+// You can construct a concrete instance of `OrganizationJobTriggerStatusInput` via:
+//
+//          OrganizationJobTriggerStatusArgs{...}
+type OrganizationJobTriggerStatusInput interface {
+	pulumi.Input
+
+	ToOrganizationJobTriggerStatusOutput() OrganizationJobTriggerStatusOutput
+	ToOrganizationJobTriggerStatusOutputWithContext(context.Context) OrganizationJobTriggerStatusOutput
+}
+
+var organizationJobTriggerStatusPtrType = reflect.TypeOf((**OrganizationJobTriggerStatus)(nil)).Elem()
+
+type OrganizationJobTriggerStatusPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationJobTriggerStatusPtrOutput() OrganizationJobTriggerStatusPtrOutput
+	ToOrganizationJobTriggerStatusPtrOutputWithContext(context.Context) OrganizationJobTriggerStatusPtrOutput
+}
+
+type organizationJobTriggerStatusPtr string
+
+func OrganizationJobTriggerStatusPtr(v string) OrganizationJobTriggerStatusPtrInput {
+	return (*organizationJobTriggerStatusPtr)(&v)
+}
+
+func (*organizationJobTriggerStatusPtr) ElementType() reflect.Type {
+	return organizationJobTriggerStatusPtrType
+}
+
+func (in *organizationJobTriggerStatusPtr) ToOrganizationJobTriggerStatusPtrOutput() OrganizationJobTriggerStatusPtrOutput {
+	return pulumi.ToOutput(in).(OrganizationJobTriggerStatusPtrOutput)
+}
+
+func (in *organizationJobTriggerStatusPtr) ToOrganizationJobTriggerStatusPtrOutputWithContext(ctx context.Context) OrganizationJobTriggerStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationJobTriggerStatusPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsSampleMethodInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED"))
@@ -3076,6 +3247,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueDayOfWeekValuePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ValueDayOfWeekValue("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerStatusInput)(nil)).Elem(), JobTriggerStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerStatusPtrInput)(nil)).Elem(), JobTriggerStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationJobTriggerStatusInput)(nil)).Elem(), OrganizationJobTriggerStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationJobTriggerStatusPtrInput)(nil)).Elem(), OrganizationJobTriggerStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput{})
@@ -3112,4 +3285,6 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerStatusOutput{})
 	pulumi.RegisterOutputType(JobTriggerStatusPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationJobTriggerStatusOutput{})
+	pulumi.RegisterOutputType(OrganizationJobTriggerStatusPtrOutput{})
 }

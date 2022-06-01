@@ -26,11 +26,16 @@ __all__ = [
     'EnvVarResponse',
     'EnvVarSourceResponse',
     'ExecActionResponse',
+    'ExecutionReferenceResponse',
+    'ExecutionSpecResponse',
+    'ExecutionTemplateSpecResponse',
     'ExprResponse',
     'GRPCActionResponse',
     'GoogleCloudRunV1ConditionResponse',
     'HTTPGetActionResponse',
     'HTTPHeaderResponse',
+    'JobSpecResponse',
+    'JobStatusResponse',
     'KeyToPathResponse',
     'LocalObjectReferenceResponse',
     'ObjectMetaResponse',
@@ -47,6 +52,8 @@ __all__ = [
     'ServiceSpecResponse',
     'ServiceStatusResponse',
     'TCPSocketActionResponse',
+    'TaskSpecResponse',
+    'TaskTemplateSpecResponse',
     'TrafficTargetResponse',
     'VolumeMountResponse',
     'VolumeResponse',
@@ -1062,6 +1069,116 @@ class ExecActionResponse(dict):
 
 
 @pulumi.output_type
+class ExecutionReferenceResponse(dict):
+    """
+    Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+    """
+    def __init__(__self__, *,
+                 creation_timestamp: str,
+                 name: str):
+        """
+        Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+        :param str creation_timestamp: Optional. Creation timestamp of the execution.
+        :param str name: Optional. Name of the execution.
+        """
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Optional. Creation timestamp of the execution.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Optional. Name of the execution.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ExecutionSpecResponse(dict):
+    """
+    ExecutionSpec describes how the execution will look.
+    """
+    def __init__(__self__, *,
+                 parallelism: int,
+                 task_count: int,
+                 template: 'outputs.TaskTemplateSpecResponse'):
+        """
+        ExecutionSpec describes how the execution will look.
+        :param int parallelism: Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional
+        :param int task_count: Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        :param 'TaskTemplateSpecResponse' template: Optional. Describes the task(s) that will be created when executing an execution.
+        """
+        pulumi.set(__self__, "parallelism", parallelism)
+        pulumi.set(__self__, "task_count", task_count)
+        pulumi.set(__self__, "template", template)
+
+    @property
+    @pulumi.getter
+    def parallelism(self) -> int:
+        """
+        Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional
+        """
+        return pulumi.get(self, "parallelism")
+
+    @property
+    @pulumi.getter(name="taskCount")
+    def task_count(self) -> int:
+        """
+        Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        """
+        return pulumi.get(self, "task_count")
+
+    @property
+    @pulumi.getter
+    def template(self) -> 'outputs.TaskTemplateSpecResponse':
+        """
+        Optional. Describes the task(s) that will be created when executing an execution.
+        """
+        return pulumi.get(self, "template")
+
+
+@pulumi.output_type
+class ExecutionTemplateSpecResponse(dict):
+    """
+    ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+    """
+    def __init__(__self__, *,
+                 metadata: 'outputs.ObjectMetaResponse',
+                 spec: 'outputs.ExecutionSpecResponse'):
+        """
+        ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+        :param 'ObjectMetaResponse' metadata: Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
+        :param 'ExecutionSpecResponse' spec: ExecutionSpec holds the desired configuration for executions of this job.
+        """
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.ObjectMetaResponse':
+        """
+        Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> 'outputs.ExecutionSpecResponse':
+        """
+        ExecutionSpec holds the desired configuration for executions of this job.
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1346,6 +1463,83 @@ class HTTPHeaderResponse(dict):
         The header field value
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class JobSpecResponse(dict):
+    """
+    JobSpec describes how the job will look.
+    """
+    def __init__(__self__, *,
+                 template: 'outputs.ExecutionTemplateSpecResponse'):
+        """
+        JobSpec describes how the job will look.
+        :param 'ExecutionTemplateSpecResponse' template: Optional. Describes the execution that will be created when running a job.
+        """
+        pulumi.set(__self__, "template", template)
+
+    @property
+    @pulumi.getter
+    def template(self) -> 'outputs.ExecutionTemplateSpecResponse':
+        """
+        Optional. Describes the execution that will be created when running a job.
+        """
+        return pulumi.get(self, "template")
+
+
+@pulumi.output_type
+class JobStatusResponse(dict):
+    """
+    JobStatus represents the current state of a Job.
+    """
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GoogleCloudRunV1ConditionResponse'],
+                 execution_count: int,
+                 latest_created_execution: 'outputs.ExecutionReferenceResponse',
+                 observed_generation: int):
+        """
+        JobStatus represents the current state of a Job.
+        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        :param int execution_count: Number of executions created for this job.
+        :param 'ExecutionReferenceResponse' latest_created_execution: A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
+        :param int observed_generation: The 'generation' of the job that was last processed by the controller.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "execution_count", execution_count)
+        pulumi.set(__self__, "latest_created_execution", latest_created_execution)
+        pulumi.set(__self__, "observed_generation", observed_generation)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GoogleCloudRunV1ConditionResponse']:
+        """
+        The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="executionCount")
+    def execution_count(self) -> int:
+        """
+        Number of executions created for this job.
+        """
+        return pulumi.get(self, "execution_count")
+
+    @property
+    @pulumi.getter(name="latestCreatedExecution")
+    def latest_created_execution(self) -> 'outputs.ExecutionReferenceResponse':
+        """
+        A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
+        """
+        return pulumi.get(self, "latest_created_execution")
+
+    @property
+    @pulumi.getter(name="observedGeneration")
+    def observed_generation(self) -> int:
+        """
+        The 'generation' of the job that was last processed by the controller.
+        """
+        return pulumi.get(self, "observed_generation")
 
 
 @pulumi.output_type
@@ -2496,6 +2690,94 @@ class TCPSocketActionResponse(dict):
         Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class TaskSpecResponse(dict):
+    """
+    TaskSpec is a description of a task.
+    """
+    def __init__(__self__, *,
+                 containers: Sequence['outputs.ContainerResponse'],
+                 max_retries: int,
+                 service_account_name: str,
+                 timeout_seconds: str,
+                 volumes: Sequence['outputs.VolumeResponse']):
+        """
+        TaskSpec is a description of a task.
+        :param Sequence['ContainerResponse'] containers: Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+        :param int max_retries: Optional. Number of retries allowed per task, before marking this job failed.
+        :param str service_account_name: Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
+        :param str timeout_seconds: Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
+        :param Sequence['VolumeResponse'] volumes: Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        """
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "service_account_name", service_account_name)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> Sequence['outputs.ContainerResponse']:
+        """
+        Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+        """
+        return pulumi.get(self, "containers")
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> int:
+        """
+        Optional. Number of retries allowed per task, before marking this job failed.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> str:
+        """
+        Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
+        """
+        return pulumi.get(self, "service_account_name")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> str:
+        """
+        Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.VolumeResponse']:
+        """
+        Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class TaskTemplateSpecResponse(dict):
+    """
+    TaskTemplateSpec describes the data a task should have when created from a template.
+    """
+    def __init__(__self__, *,
+                 spec: 'outputs.TaskSpecResponse'):
+        """
+        TaskTemplateSpec describes the data a task should have when created from a template.
+        :param 'TaskSpecResponse' spec: Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+        """
+        pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> 'outputs.TaskSpecResponse':
+        """
+        Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+        """
+        return pulumi.get(self, "spec")
 
 
 @pulumi.output_type
