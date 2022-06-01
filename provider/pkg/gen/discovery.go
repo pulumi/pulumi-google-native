@@ -187,7 +187,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			}
 			if override, has := resourceNameByPathOverrides[path]; has {
 				if override == "" {
-					return nil
+					continue
 				}
 				typeName = override
 			}
@@ -197,7 +197,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			}
 			if override, has := resourceNameByTypeOverrides[ref]; has {
 				if override == "" {
-					return nil
+					continue
 				}
 				typeName = override
 			}

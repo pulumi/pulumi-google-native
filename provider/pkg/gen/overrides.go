@@ -52,6 +52,7 @@ var resourceNameByTypeOverrides = map[string]string{
 var resourceNameByPathOverrides = map[string]string{
 	// Cloud Run: remove domain mapping on the KNative path.
 	"apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings": "",
+	"apis/serving.knative.dev/v1/namespaces/{namespacesId}/services":        "",
 
 	// Apigee.
 	"v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments": "EnvgroupAttachment",
@@ -67,6 +68,8 @@ var resourceNameByPathOverrides = map[string]string{
 	"v2/organizations/{organizationsId}/inspectTemplates":                            "",
 	"v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
 	"v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
+	"v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes":     "",
+	"v2/organizations/{organizationsId}/storedInfoTypes":                             "",
 
 	// Essential Contracts.
 	"v1/folders/{foldersId}/contacts":             "FolderContact",
@@ -90,6 +93,8 @@ var resourceNameByPathOverrides = map[string]string{
 	"v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views":                 "FolderBucketView",
 	"v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views":     "OrganizationBucketView",
 	"v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views":               "BucketView",
+	"v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets":                                        "",
+	"v2/{v2Id}/{v2Id1}/sinks":                                                                  "",
 
 	// Org Policy.
 	"v2/folders/{foldersId}/policies":             "FolderPolicy",
