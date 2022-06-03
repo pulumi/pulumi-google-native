@@ -8,6 +8,7 @@ CHANGELOG
   - Add support for replace-on-changes based on annotations and manual override for replace-on-change behavior
   - Make method discovery deterministic
   - Improvements to discovering operation endpoints
+- Relax heuristics on setting update mask in metadata [#515](https://github.com/pulumi/pulumi-google-native/pull/515)
 
 ## 0.19.1 (2022-05-24)
 
