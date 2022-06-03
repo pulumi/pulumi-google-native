@@ -70,6 +70,19 @@ func TestPubSubTs(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestIAMServiceAccountTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:         filepath.Join(getCwd(t), "iam-serviceaccount-ts", "step1"),
+			SkipRefresh: true,
+			EditDirs: []integration.EditDir{
+				{Dir: filepath.Join(getCwd(t), "iam-serviceaccount-ts", "step2"), Additive: true},
+			},
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestWebserverTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
