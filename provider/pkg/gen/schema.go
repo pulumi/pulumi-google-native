@@ -587,7 +587,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			}
 
 			for name, param := range dd.updateMethod.Parameters {
-				if param.Format == "google-fieldmask" && isRequired(param) {
+				if param.Format == "google-fieldmask" {
 					contract.Assert(param.Location == "query")
 					resourceMeta.Update.UpdateMask.QueryParamName = name
 				}
@@ -597,7 +597,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				if _, has := bodyBag.properties[name]; has {
 					resourceMeta.Update.SDKProperties[name] = value
 				} else {
-					if value.Format == "google-fieldmask" && value.Required {
+					if value.Format == "google-fieldmask" {
 						resourceMeta.Update.UpdateMask.BodyPropertyName = name
 					} else {
 						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, dd.updateMethod.Request.Ref, name)
