@@ -8,8 +8,8 @@ CHANGELOG
   - Add support for replace-on-changes based on annotations and manual override for replace-on-change behavior
   - Make method discovery deterministic
   - Improvements to discovering operation endpoints
-- Relax heuristics on setting update mask in metadata [#515](https://github.com/pulumi/pulumi-google-native/pull/515)
 - Set force-new for storage bucket resource [#516](https://github.com/pulumi/pulumi-google-native/pull/516)
+- Override field-mask for iam:v1/ServiceAccount [#518](https://github.com/pulumi/pulumi-google-native/pull/518)
 
 ## 0.19.1 (2022-05-24)
 
