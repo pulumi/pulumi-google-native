@@ -210,6 +210,13 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			},
 		},
 	},
+	"google-native:iam/v1:ServiceAccount": {
+		Update: resources.UpdateAPIOperation{
+			UpdateMask: resources.UpdateMask{
+				BodyPropertyName: "updateMask",
+			},
+		},
+	},
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
