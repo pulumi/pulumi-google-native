@@ -162,6 +162,11 @@ type UpdateMask struct {
 	// QueryParamName identifies an additional query param name that must be specified as field-mask in the query
 	// params.
 	QueryParamName string `json:"queryParamName,omitempty"`
+	// MutableProperties is a list of fields that can be mutated.
+	MutableProperties []string `json:"mutableProperties,omitempty"`
+	// WildcardAllowed signifies that a value of "*" is allowed fpr fieldmask properties.
+	WildcardAllowed bool   `json:"wildcardAllowed,omitempty"`
+	Description     string `json:"description,omitempty"`
 }
 
 // CloudAPIResource is a resource in the Google Cloud REST API.
@@ -223,9 +228,10 @@ func AssembleURL(fragments ...string) string {
 
 // CloudAPIProperty is a property of a body of an API call payload.
 type CloudAPIProperty struct {
-	Ref      string `json:"$ref,omitempty"`
-	Format   string `json:"format,omitempty"`
-	Required bool   `json:"required,omitempty"`
+	Ref         string `json:"$ref,omitempty"`
+	Format      string `json:"format,omitempty"`
+	Description string `json:"description,omitempty"`
+	Required    bool   `json:"required,omitempty"`
 
 	Items                *CloudAPIProperty `json:"items,omitempty"`
 	AdditionalProperties *CloudAPIProperty `json:"additionalProperties,omitempty"`

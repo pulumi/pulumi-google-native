@@ -590,6 +590,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				if param.Format == "google-fieldmask" {
 					contract.Assert(param.Location == "query")
 					resourceMeta.Update.UpdateMask.QueryParamName = name
+					resourceMeta.Update.UpdateMask.Description = param.Description
 				}
 			}
 
@@ -599,6 +600,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				} else {
 					if value.Format == "google-fieldmask" {
 						resourceMeta.Update.UpdateMask.BodyPropertyName = name
+						resourceMeta.Update.UpdateMask.Description = value.Description
 					} else {
 						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, dd.updateMethod.Request.Ref, name)
 					}
@@ -1071,11 +1073,16 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			result.specs[sdkName] = p
 		}
 
+		var desc string
+		if prop.Format == "google-fieldmask" {
+			desc = prop.Description
+		}
 		apiProp := resources.CloudAPIProperty{
-			Ref:      typeSpec.Ref,
-			Format:   prop.Format,
-			Required: isRequired(prop),
-			ForceNew: !isOutput && isImmutable(prop.Description),
+			Ref:         typeSpec.Ref,
+			Format:      prop.Format,
+			Description: desc,
+			Required:    isRequired(prop),
+			ForceNew:    !isOutput && isImmutable(prop.Description),
 
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
