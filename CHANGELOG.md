@@ -2,6 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
+
+## 0.20.0 (2022-06-06)
 - Multiple bug fixes in [#453](https://github.com/pulumi/pulumi-google-native/pull/453)
   - Store partial state more consistently in the presence of partial failure
   - Fixes for bigtable instance and cluster recreation
