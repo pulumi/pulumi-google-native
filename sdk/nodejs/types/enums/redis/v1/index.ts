@@ -42,6 +42,19 @@ export const InstanceReadReplicasMode = {
  */
 export type InstanceReadReplicasMode = (typeof InstanceReadReplicasMode)[keyof typeof InstanceReadReplicasMode];
 
+export const InstanceSuspensionReasonsItem = {
+    /**
+     * Not set.
+     */
+    SuspensionReasonUnspecified: "SUSPENSION_REASON_UNSPECIFIED",
+    /**
+     * Something wrong with the CMEK key provided by customer.
+     */
+    CustomerManagedKeyIssue: "CUSTOMER_MANAGED_KEY_ISSUE",
+} as const;
+
+export type InstanceSuspensionReasonsItem = (typeof InstanceSuspensionReasonsItem)[keyof typeof InstanceSuspensionReasonsItem];
+
 export const InstanceTier = {
     /**
      * Not set.

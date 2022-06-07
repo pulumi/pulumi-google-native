@@ -19,6 +19,10 @@ export const ScanConfigTargetPlatformsItem = {
      * Google Cloud Run service.
      */
     CloudRun: "CLOUD_RUN",
+    /**
+     * Google Cloud Function service.
+     */
+    CloudFunctions: "CLOUD_FUNCTIONS",
 } as const;
 
 export type ScanConfigTargetPlatformsItem = (typeof ScanConfigTargetPlatformsItem)[keyof typeof ScanConfigTargetPlatformsItem];

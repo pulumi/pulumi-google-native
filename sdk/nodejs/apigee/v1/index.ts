@@ -16,9 +16,11 @@ export * from "./datastore";
 export * from "./debugSession";
 export * from "./developer";
 export * from "./endpointAttachment";
+export * from "./entry";
 export * from "./envgroup";
 export * from "./envgroupAttachment";
 export * from "./environment";
+export * from "./environmentEntry";
 export * from "./export";
 export * from "./getAlias";
 export * from "./getApi";
@@ -32,9 +34,11 @@ export * from "./getDatastore";
 export * from "./getDebugSession";
 export * from "./getDeveloper";
 export * from "./getEndpointAttachment";
+export * from "./getEntry";
 export * from "./getEnvgroup";
 export * from "./getEnvgroupAttachment";
 export * from "./getEnvironment";
+export * from "./getEnvironmentEntry";
 export * from "./getExport";
 export * from "./getHostQuery";
 export * from "./getInstance";
@@ -85,9 +89,11 @@ import { Datastore } from "./datastore";
 import { DebugSession } from "./debugSession";
 import { Developer } from "./developer";
 import { EndpointAttachment } from "./endpointAttachment";
+import { Entry } from "./entry";
 import { Envgroup } from "./envgroup";
 import { EnvgroupAttachment } from "./envgroupAttachment";
 import { Environment } from "./environment";
+import { EnvironmentEntry } from "./environmentEntry";
 import { Export } from "./export";
 import { HostQuery } from "./hostQuery";
 import { Instance } from "./instance";
@@ -132,12 +138,16 @@ const _module = {
                 return new Developer(name, <any>undefined, { urn })
             case "google-native:apigee/v1:EndpointAttachment":
                 return new EndpointAttachment(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Entry":
+                return new Entry(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Envgroup":
                 return new Envgroup(name, <any>undefined, { urn })
             case "google-native:apigee/v1:EnvgroupAttachment":
                 return new EnvgroupAttachment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:EnvironmentEntry":
+                return new EnvironmentEntry(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Export":
                 return new Export(name, <any>undefined, { urn })
             case "google-native:apigee/v1:HostQuery":

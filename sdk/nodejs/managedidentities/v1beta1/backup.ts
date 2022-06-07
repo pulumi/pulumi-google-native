@@ -40,6 +40,10 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. A short description of the backup.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * Optional. Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -82,6 +86,7 @@ export class Backup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'domainId'");
             }
             resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["domainId"] = args ? args.domainId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -93,6 +98,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -113,6 +119,10 @@ export interface BackupArgs {
      * Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
      */
     backupId: pulumi.Input<string>;
+    /**
+     * Optional. A short description of the backup.
+     */
+    description?: pulumi.Input<string>;
     domainId: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user provided metadata.

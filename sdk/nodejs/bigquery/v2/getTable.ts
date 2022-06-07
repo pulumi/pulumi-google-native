@@ -19,6 +19,7 @@ export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promi
         "project": args.project,
         "selectedFields": args.selectedFields,
         "tableId": args.tableId,
+        "view": args.view,
     }, opts);
 }
 
@@ -27,6 +28,7 @@ export interface GetTableArgs {
     project?: string;
     selectedFields?: string;
     tableId: string;
+    view?: string;
 }
 
 export interface GetTableResult {
@@ -193,4 +195,5 @@ export interface GetTableOutputArgs {
     project?: pulumi.Input<string>;
     selectedFields?: pulumi.Input<string>;
     tableId: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
 }

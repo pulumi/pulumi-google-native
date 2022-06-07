@@ -36,7 +36,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     }
 
     /**
-     * Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     public readonly affinityCookieTtlSec!: pulumi.Output<number>;
     /**
@@ -188,6 +188,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      * The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
      */
     public readonly timeoutSec!: pulumi.Output<number>;
+    /**
+     * The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+     */
+    public readonly vpcNetworkScope!: pulumi.Output<string>;
 
     /**
      * Create a RegionBackendService resource with the given unique name, arguments, and options.
@@ -238,6 +242,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             resourceInputs["subsetting"] = args ? args.subsetting : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            resourceInputs["vpcNetworkScope"] = args ? args.vpcNetworkScope : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -286,6 +291,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["sessionAffinity"] = undefined /*out*/;
             resourceInputs["subsetting"] = undefined /*out*/;
             resourceInputs["timeoutSec"] = undefined /*out*/;
+            resourceInputs["vpcNetworkScope"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionBackendService.__pulumiType, name, resourceInputs, opts);
@@ -297,7 +303,7 @@ export class RegionBackendService extends pulumi.CustomResource {
  */
 export interface RegionBackendServiceArgs {
     /**
-     * Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+     * Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     affinityCookieTtlSec?: pulumi.Input<number>;
     /**
@@ -423,4 +429,8 @@ export interface RegionBackendServiceArgs {
      * The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
      */
     timeoutSec?: pulumi.Input<number>;
+    /**
+     * The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+     */
+    vpcNetworkScope?: pulumi.Input<enums.compute.alpha.RegionBackendServiceVpcNetworkScope>;
 }

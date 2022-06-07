@@ -1231,7 +1231,7 @@ export const HealthCheckType = {
 } as const;
 
 /**
- * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+ * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
  */
 export type HealthCheckType = (typeof HealthCheckType)[keyof typeof HealthCheckType];
 
@@ -2059,7 +2059,7 @@ export const RegionHealthCheckType = {
 } as const;
 
 /**
- * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+ * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
  */
 export type RegionHealthCheckType = (typeof RegionHealthCheckType)[keyof typeof RegionHealthCheckType];
 
@@ -2474,7 +2474,7 @@ export const SchedulingOnHostMaintenance = {
 } as const;
 
 /**
- * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+ * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
  */
 export type SchedulingOnHostMaintenance = (typeof SchedulingOnHostMaintenance)[keyof typeof SchedulingOnHostMaintenance];
 

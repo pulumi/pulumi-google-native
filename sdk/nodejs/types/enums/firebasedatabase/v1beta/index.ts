@@ -2,30 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const InstanceState = {
-    /**
-     * Unspecified state, likely the result of an error on the backend. This is only used for distinguishing unset values.
-     */
-    LifecycleStateUnspecified: "LIFECYCLE_STATE_UNSPECIFIED",
-    /**
-     * The normal and active state.
-     */
-    Active: "ACTIVE",
-    /**
-     * The database is in a disabled state. It can be re-enabled later.
-     */
-    Disabled: "DISABLED",
-    /**
-     * The database is in a deleted state.
-     */
-    Deleted: "DELETED",
-} as const;
-
-/**
- * The database's lifecycle state. Read-only.
- */
-export type InstanceState = (typeof InstanceState)[keyof typeof InstanceState];
-
 export const InstanceType = {
     /**
      * Unknown state, likely the result of an error on the backend. This is only used for distinguishing unset values.
@@ -42,6 +18,6 @@ export const InstanceType = {
 } as const;
 
 /**
- * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+ * Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
  */
 export type InstanceType = (typeof InstanceType)[keyof typeof InstanceType];

@@ -37,6 +37,14 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+     */
+    public readonly capacityGb!: pulumi.Output<string>;
+    /**
+     * The increase/decrease capacity step size.
+     */
+    public /*out*/ readonly capacityStepSizeGb!: pulumi.Output<string>;
+    /**
      * The time when the instance was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -60,6 +68,18 @@ export class Instance extends pulumi.CustomResource {
      * Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The max capacity of the instance.
+     */
+    public /*out*/ readonly maxCapacityGb!: pulumi.Output<string>;
+    /**
+     * The max number of shares allowed.
+     */
+    public /*out*/ readonly maxShareCount!: pulumi.Output<string>;
+    /**
+     * Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+     */
+    public readonly multiShareEnabled!: pulumi.Output<boolean>;
     /**
      * The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
      */
@@ -103,6 +123,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["capacityGb"] = args ? args.capacityGb : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["fileShares"] = args ? args.fileShares : undefined;
@@ -110,22 +131,31 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["multiShareEnabled"] = args ? args.multiShareEnabled : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["capacityStepSizeGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["maxCapacityGb"] = undefined /*out*/;
+            resourceInputs["maxShareCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
             resourceInputs["suspensionReasons"] = undefined /*out*/;
         } else {
+            resourceInputs["capacityGb"] = undefined /*out*/;
+            resourceInputs["capacityStepSizeGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fileShares"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["maxCapacityGb"] = undefined /*out*/;
+            resourceInputs["maxShareCount"] = undefined /*out*/;
+            resourceInputs["multiShareEnabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
@@ -143,6 +173,10 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+     */
+    capacityGb?: pulumi.Input<string>;
     /**
      * The description of the instance (2048 characters or less).
      */
@@ -168,6 +202,10 @@ export interface InstanceArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+     */
+    multiShareEnabled?: pulumi.Input<boolean>;
     /**
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */

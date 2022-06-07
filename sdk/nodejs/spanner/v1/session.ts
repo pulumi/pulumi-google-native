@@ -44,6 +44,10 @@ export class Session extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The database role which created this session.
+     */
+    public readonly creatorRole!: pulumi.Output<string>;
+    /**
      * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -69,6 +73,7 @@ export class Session extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["creatorRole"] = args ? args.creatorRole : undefined;
             resourceInputs["databaseId"] = args ? args.databaseId : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -79,6 +84,7 @@ export class Session extends pulumi.CustomResource {
         } else {
             resourceInputs["approximateLastUseTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creatorRole"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -91,6 +97,10 @@ export class Session extends pulumi.CustomResource {
  * The set of arguments for constructing a Session resource.
  */
 export interface SessionArgs {
+    /**
+     * The database role which created this session.
+     */
+    creatorRole?: pulumi.Input<string>;
     databaseId: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
     /**

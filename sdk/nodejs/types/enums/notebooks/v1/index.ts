@@ -338,6 +338,26 @@ export const RuntimeAccessConfigAccessType = {
  */
 export type RuntimeAccessConfigAccessType = (typeof RuntimeAccessConfigAccessType)[keyof typeof RuntimeAccessConfigAccessType];
 
+export const RuntimeSoftwareConfigPostStartupScriptBehavior = {
+    /**
+     * Unspecified post startup script behavior. Will run only once at creation.
+     */
+    PostStartupScriptBehaviorUnspecified: "POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED",
+    /**
+     * Runs the post startup script provided during creation at every start.
+     */
+    RunEveryStart: "RUN_EVERY_START",
+    /**
+     * Downloads and runs the provided post startup script at every start.
+     */
+    DownloadAndRunEveryStart: "DOWNLOAD_AND_RUN_EVERY_START",
+} as const;
+
+/**
+ * Behavior for the post startup script.
+ */
+export type RuntimeSoftwareConfigPostStartupScriptBehavior = (typeof RuntimeSoftwareConfigPostStartupScriptBehavior)[keyof typeof RuntimeSoftwareConfigPostStartupScriptBehavior];
+
 export const ScheduleState = {
     /**
      * Unspecified state.

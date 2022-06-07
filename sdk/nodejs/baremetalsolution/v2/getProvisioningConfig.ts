@@ -63,7 +63,7 @@ export interface GetProvisioningConfigResult {
      */
     readonly state: string;
     /**
-     * A generated buganizer id to track provisioning request.
+     * A generated ticket id to track provisioning request.
      */
     readonly ticketId: string;
     /**

@@ -29,6 +29,14 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
+     * The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+     */
+    readonly capacityGb: string;
+    /**
+     * The increase/decrease capacity step size.
+     */
+    readonly capacityStepSizeGb: string;
+    /**
      * The time when the instance was created.
      */
     readonly createTime: string;
@@ -52,6 +60,18 @@ export interface GetInstanceResult {
      * Resource labels to represent user provided metadata.
      */
     readonly labels: {[key: string]: string};
+    /**
+     * The max capacity of the instance.
+     */
+    readonly maxCapacityGb: string;
+    /**
+     * The max number of shares allowed.
+     */
+    readonly maxShareCount: string;
+    /**
+     * Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+     */
+    readonly multiShareEnabled: boolean;
     /**
      * The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
      */

@@ -28,7 +28,7 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
-     * Immutable. The globally unique hostname of the database.
+     * Output Only. The globally unique hostname of the database.
      */
     readonly databaseUrl: string;
     /**
@@ -44,7 +44,7 @@ export interface GetInstanceResult {
      */
     readonly state: string;
     /**
-     * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+     * Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     readonly type: string;
 }

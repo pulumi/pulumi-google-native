@@ -59,6 +59,10 @@ export class Environment extends pulumi.CustomResource {
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
     public readonly versionConfigs!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse[]>;
+    /**
+     * The webhook configuration for this environment.
+     */
+    public readonly webhookConfig!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -88,6 +92,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["testCasesConfig"] = args ? args.testCasesConfig : undefined;
             resourceInputs["versionConfigs"] = args ? args.versionConfigs : undefined;
+            resourceInputs["webhookConfig"] = args ? args.webhookConfig : undefined;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["description"] = undefined /*out*/;
@@ -96,6 +101,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["testCasesConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["versionConfigs"] = undefined /*out*/;
+            resourceInputs["webhookConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
@@ -129,4 +135,8 @@ export interface EnvironmentArgs {
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
     versionConfigs: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs>[]>;
+    /**
+     * The webhook configuration for this environment.
+     */
+    webhookConfig?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs>;
 }

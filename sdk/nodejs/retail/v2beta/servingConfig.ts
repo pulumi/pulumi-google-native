@@ -77,7 +77,7 @@ export class ServingConfig extends pulumi.CustomResource {
      */
     public readonly modelId!: pulumi.Output<string>;
     /**
-     * Immutable. Fully qualified name projects/*&#47;locations/global/catalogs/*&#47;servingConfig/*
+     * Immutable. Fully qualified name `projects/*&#47;locations/global/catalogs/*&#47;servingConfig/*`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -220,7 +220,7 @@ export interface ServingConfigArgs {
      */
     modelId?: pulumi.Input<string>;
     /**
-     * Immutable. Fully qualified name projects/*&#47;locations/global/catalogs/*&#47;servingConfig/*
+     * Immutable. Fully qualified name `projects/*&#47;locations/global/catalogs/*&#47;servingConfig/*`
      */
     name?: pulumi.Input<string>;
     /**

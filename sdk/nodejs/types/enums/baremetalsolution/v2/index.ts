@@ -2,6 +2,46 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const InstanceConfigNetworkConfig = {
+    /**
+     * The unspecified network configuration.
+     */
+    NetworkconfigUnspecified: "NETWORKCONFIG_UNSPECIFIED",
+    /**
+     * Instance part of single client network and single private network.
+     */
+    SingleVlan: "SINGLE_VLAN",
+    /**
+     * Instance part of multiple (or single) client networks and private networks.
+     */
+    MultiVlan: "MULTI_VLAN",
+} as const;
+
+/**
+ * The type of network configuration on the instance.
+ */
+export type InstanceConfigNetworkConfig = (typeof InstanceConfigNetworkConfig)[keyof typeof InstanceConfigNetworkConfig];
+
+export const LogicalNetworkInterfaceNetworkType = {
+    /**
+     * Unspecified value.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Client network, a network peered to a Google Cloud VPC.
+     */
+    Client: "CLIENT",
+    /**
+     * Private network, a network local to the Bare Metal Solution environment.
+     */
+    Private: "PRIVATE",
+} as const;
+
+/**
+ * Type of network.
+ */
+export type LogicalNetworkInterfaceNetworkType = (typeof LogicalNetworkInterfaceNetworkType)[keyof typeof LogicalNetworkInterfaceNetworkType];
+
 export const NetworkConfigBandwidth = {
     /**
      * Unspecified value.

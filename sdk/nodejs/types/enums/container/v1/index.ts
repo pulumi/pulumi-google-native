@@ -183,6 +183,22 @@ export const FilterEventTypeItem = {
 
 export type FilterEventTypeItem = (typeof FilterEventTypeItem)[keyof typeof FilterEventTypeItem];
 
+export const GPUSharingConfigGpuSharingStrategy = {
+    /**
+     * Default value.
+     */
+    GpuSharingStrategyUnspecified: "GPU_SHARING_STRATEGY_UNSPECIFIED",
+    /**
+     * GPUs are time-shared between containers.
+     */
+    TimeSharing: "TIME_SHARING",
+} as const;
+
+/**
+ * The type of GPU sharing strategy to enable on the GPU node.
+ */
+export type GPUSharingConfigGpuSharingStrategy = (typeof GPUSharingConfigGpuSharingStrategy)[keyof typeof GPUSharingConfigGpuSharingStrategy];
+
 export const LoggingComponentConfigEnableComponentsItem = {
     /**
      * Default value. This shouldn't be used.

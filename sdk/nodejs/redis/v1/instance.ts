@@ -60,6 +60,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly currentLocationId!: pulumi.Output<string>;
     /**
+     * Optional. The KMS key reference that the customer provides when trying to create the instance.
+     */
+    public readonly customerManagedKey!: pulumi.Output<string>;
+    /**
      * An arbitrary and optional user-provided name for the instance.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -83,10 +87,6 @@ export class Instance extends pulumi.CustomResource {
      * Date and time of upcoming maintenance events which have been scheduled.
      */
     public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.redis.v1.MaintenanceScheduleResponse>;
-    /**
-     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-     */
-    public readonly maintenanceVersion!: pulumi.Output<string>;
     /**
      * Redis memory size in GiB.
      */
@@ -156,6 +156,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
     /**
+     * Optional. reasons that causes instance in "SUSPENDED" state.
+     */
+    public readonly suspensionReasons!: pulumi.Output<string[]>;
+    /**
      * The service tier of the instance.
      */
     public readonly tier!: pulumi.Output<string>;
@@ -188,12 +192,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authEnabled"] = args ? args.authEnabled : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["connectMode"] = args ? args.connectMode : undefined;
+            resourceInputs["customerManagedKey"] = args ? args.customerManagedKey : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
             resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -204,6 +208,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
             resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
             resourceInputs["secondaryIpRange"] = args ? args.secondaryIpRange : undefined;
+            resourceInputs["suspensionReasons"] = args ? args.suspensionReasons : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -225,13 +230,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["connectMode"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentLocationId"] = undefined /*out*/;
+            resourceInputs["customerManagedKey"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maintenancePolicy"] = undefined /*out*/;
             resourceInputs["maintenanceSchedule"] = undefined /*out*/;
-            resourceInputs["maintenanceVersion"] = undefined /*out*/;
             resourceInputs["memorySizeGb"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
@@ -249,6 +254,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["serverCaCerts"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["suspensionReasons"] = undefined /*out*/;
             resourceInputs["tier"] = undefined /*out*/;
             resourceInputs["transitEncryptionMode"] = undefined /*out*/;
         }
@@ -278,6 +284,10 @@ export interface InstanceArgs {
      */
     connectMode?: pulumi.Input<enums.redis.v1.InstanceConnectMode>;
     /**
+     * Optional. The KMS key reference that the customer provides when trying to create the instance.
+     */
+    customerManagedKey?: pulumi.Input<string>;
+    /**
      * An arbitrary and optional user-provided name for the instance.
      */
     displayName?: pulumi.Input<string>;
@@ -297,10 +307,6 @@ export interface InstanceArgs {
      * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
      */
     maintenancePolicy?: pulumi.Input<inputs.redis.v1.MaintenancePolicyArgs>;
-    /**
-     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-     */
-    maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
      */
@@ -338,6 +344,10 @@ export interface InstanceArgs {
      * Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
      */
     secondaryIpRange?: pulumi.Input<string>;
+    /**
+     * Optional. reasons that causes instance in "SUSPENDED" state.
+     */
+    suspensionReasons?: pulumi.Input<pulumi.Input<enums.redis.v1.InstanceSuspensionReasonsItem>[]>;
     /**
      * The service tier of the instance.
      */

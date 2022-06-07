@@ -53,6 +53,10 @@ export interface GetInstanceResult {
      */
     readonly currentLocationId: string;
     /**
+     * Optional. The KMS key reference that the customer provides when trying to create the instance.
+     */
+    readonly customerManagedKey: string;
+    /**
      * An arbitrary and optional user-provided name for the instance.
      */
     readonly displayName: string;
@@ -76,10 +80,6 @@ export interface GetInstanceResult {
      * Date and time of upcoming maintenance events which have been scheduled.
      */
     readonly maintenanceSchedule: outputs.redis.v1.MaintenanceScheduleResponse;
-    /**
-     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-     */
-    readonly maintenanceVersion: string;
     /**
      * Redis memory size in GiB.
      */
@@ -148,6 +148,10 @@ export interface GetInstanceResult {
      * Additional information about the current status of this instance, if available.
      */
     readonly statusMessage: string;
+    /**
+     * Optional. reasons that causes instance in "SUSPENDED" state.
+     */
+    readonly suspensionReasons: string[];
     /**
      * The service tier of the instance.
      */

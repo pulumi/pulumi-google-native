@@ -32,6 +32,10 @@ export interface GetBackupResult {
      */
     readonly createTime: string;
     /**
+     * Optional. A short description of the backup.
+     */
+    readonly description: string;
+    /**
      * Optional. Resource labels to represent user provided metadata.
      */
     readonly labels: {[key: string]: string};
