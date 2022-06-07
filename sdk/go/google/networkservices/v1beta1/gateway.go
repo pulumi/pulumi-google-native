@@ -21,7 +21,7 @@ type Gateway struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
 	Ports pulumi.IntArrayOutput `pulumi:"ports"`
@@ -92,7 +92,7 @@ type gatewayArgs struct {
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name *string `pulumi:"name"`
 	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
 	Ports   []int   `pulumi:"ports"`
@@ -114,7 +114,7 @@ type GatewayArgs struct {
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name pulumi.StringPtrInput
 	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
 	Ports   pulumi.IntArrayInput
@@ -179,7 +179,7 @@ func (o GatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

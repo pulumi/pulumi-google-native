@@ -25,6 +25,7 @@ type LookupTableArgs struct {
 	Project        *string `pulumi:"project"`
 	SelectedFields *string `pulumi:"selectedFields"`
 	TableId        string  `pulumi:"tableId"`
+	View           *string `pulumi:"view"`
 }
 
 type LookupTableResult struct {
@@ -124,6 +125,7 @@ type LookupTableOutputArgs struct {
 	Project        pulumi.StringPtrInput `pulumi:"project"`
 	SelectedFields pulumi.StringPtrInput `pulumi:"selectedFields"`
 	TableId        pulumi.StringInput    `pulumi:"tableId"`
+	View           pulumi.StringPtrInput `pulumi:"view"`
 }
 
 func (LookupTableOutputArgs) ElementType() reflect.Type {

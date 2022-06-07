@@ -14,7 +14,7 @@ import (
 type BigQueryConfig struct {
 	// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
-	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table *string `pulumi:"table"`
 	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
 	UseTopicSchema *bool `pulumi:"useTopicSchema"`
@@ -37,7 +37,7 @@ type BigQueryConfigInput interface {
 type BigQueryConfigArgs struct {
 	// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
-	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table pulumi.StringPtrInput `pulumi:"table"`
 	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
 	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
@@ -128,7 +128,7 @@ func (o BigQueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BigQueryConfig) *bool { return v.DropUnknownFields }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o BigQueryConfigOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BigQueryConfig) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
@@ -177,7 +177,7 @@ func (o BigQueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o BigQueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BigQueryConfig) *string {
 		if v == nil {
@@ -213,7 +213,7 @@ type BigQueryConfigResponse struct {
 	DropUnknownFields bool `pulumi:"dropUnknownFields"`
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State string `pulumi:"state"`
-	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table string `pulumi:"table"`
 	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
 	UseTopicSchema bool `pulumi:"useTopicSchema"`
@@ -246,7 +246,7 @@ func (o BigQueryConfigResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v BigQueryConfigResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o BigQueryConfigResponseOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v BigQueryConfigResponse) string { return v.Table }).(pulumi.StringOutput)
 }
@@ -1807,6 +1807,10 @@ func (o RetryPolicyResponseOutput) MinimumBackoff() pulumi.StringOutput {
 type SchemaSettings struct {
 	// The encoding of messages validated against `schema`.
 	Encoding *SchemaSettingsEncoding `pulumi:"encoding"`
+	// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+	FirstRevisionId *string `pulumi:"firstRevisionId"`
+	// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+	LastRevisionId *string `pulumi:"lastRevisionId"`
 	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 	Schema string `pulumi:"schema"`
 }
@@ -1826,6 +1830,10 @@ type SchemaSettingsInput interface {
 type SchemaSettingsArgs struct {
 	// The encoding of messages validated against `schema`.
 	Encoding SchemaSettingsEncodingPtrInput `pulumi:"encoding"`
+	// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+	FirstRevisionId pulumi.StringPtrInput `pulumi:"firstRevisionId"`
+	// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+	LastRevisionId pulumi.StringPtrInput `pulumi:"lastRevisionId"`
 	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -1913,6 +1921,16 @@ func (o SchemaSettingsOutput) Encoding() SchemaSettingsEncodingPtrOutput {
 	return o.ApplyT(func(v SchemaSettings) *SchemaSettingsEncoding { return v.Encoding }).(SchemaSettingsEncodingPtrOutput)
 }
 
+// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+func (o SchemaSettingsOutput) FirstRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaSettings) *string { return v.FirstRevisionId }).(pulumi.StringPtrOutput)
+}
+
+// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+func (o SchemaSettingsOutput) LastRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaSettings) *string { return v.LastRevisionId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 func (o SchemaSettingsOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettings) string { return v.Schema }).(pulumi.StringOutput)
@@ -1952,6 +1970,26 @@ func (o SchemaSettingsPtrOutput) Encoding() SchemaSettingsEncodingPtrOutput {
 	}).(SchemaSettingsEncodingPtrOutput)
 }
 
+// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+func (o SchemaSettingsPtrOutput) FirstRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstRevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+func (o SchemaSettingsPtrOutput) LastRevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastRevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 func (o SchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaSettings) *string {
@@ -1966,6 +2004,10 @@ func (o SchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 type SchemaSettingsResponse struct {
 	// The encoding of messages validated against `schema`.
 	Encoding string `pulumi:"encoding"`
+	// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+	FirstRevisionId string `pulumi:"firstRevisionId"`
+	// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+	LastRevisionId string `pulumi:"lastRevisionId"`
 	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 	Schema string `pulumi:"schema"`
 }
@@ -1988,6 +2030,16 @@ func (o SchemaSettingsResponseOutput) ToSchemaSettingsResponseOutputWithContext(
 // The encoding of messages validated against `schema`.
 func (o SchemaSettingsResponseOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.Encoding }).(pulumi.StringOutput)
+}
+
+// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+func (o SchemaSettingsResponseOutput) FirstRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.FirstRevisionId }).(pulumi.StringOutput)
+}
+
+// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+func (o SchemaSettingsResponseOutput) LastRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.LastRevisionId }).(pulumi.StringOutput)
 }
 
 // The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.

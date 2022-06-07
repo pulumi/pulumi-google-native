@@ -18,6 +18,8 @@ type Backup struct {
 
 	// The time the backups was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. A short description of the backup.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}
@@ -79,7 +81,9 @@ func (BackupState) ElementType() reflect.Type {
 type backupArgs struct {
 	// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
 	BackupId string `pulumi:"backupId"`
-	DomainId string `pulumi:"domainId"`
+	// Optional. A short description of the backup.
+	Description *string `pulumi:"description"`
+	DomainId    string  `pulumi:"domainId"`
 	// Optional. Resource labels to represent user provided metadata.
 	Labels  map[string]string `pulumi:"labels"`
 	Project *string           `pulumi:"project"`
@@ -89,7 +93,9 @@ type backupArgs struct {
 type BackupArgs struct {
 	// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
 	BackupId pulumi.StringInput
-	DomainId pulumi.StringInput
+	// Optional. A short description of the backup.
+	Description pulumi.StringPtrInput
+	DomainId    pulumi.StringInput
 	// Optional. Resource labels to represent user provided metadata.
 	Labels  pulumi.StringMapInput
 	Project pulumi.StringPtrInput
@@ -135,6 +141,11 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 // The time the backups was created.
 func (o BackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A short description of the backup.
+func (o BackupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Optional. Resource labels to represent user provided metadata.

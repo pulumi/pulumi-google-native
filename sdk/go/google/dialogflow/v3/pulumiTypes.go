@@ -2191,6 +2191,176 @@ func (o GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayOutput) In
 	}).(GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseOutput)
 }
 
+// Configuration for webhooks.
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfig struct {
+	// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+	WebhookOverrides []GoogleCloudDialogflowCxV3Webhook `pulumi:"webhookOverrides"`
+}
+
+// GoogleCloudDialogflowCxV3EnvironmentWebhookConfigInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs and GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentWebhookConfigInput` via:
+//
+//          GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{...}
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput
+	ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutputWithContext(context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput
+}
+
+// Configuration for webhooks.
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs struct {
+	// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+	WebhookOverrides GoogleCloudDialogflowCxV3WebhookArrayInput `pulumi:"webhookOverrides"`
+}
+
+func (GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentWebhookConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput).ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs, GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtr and GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput
+	ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput
+}
+
+type googleCloudDialogflowCxV3EnvironmentWebhookConfigPtrType GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs
+
+func GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtr(v *GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput {
+	return (*googleCloudDialogflowCxV3EnvironmentWebhookConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3EnvironmentWebhookConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3EnvironmentWebhookConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3EnvironmentWebhookConfigPtrType) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3EnvironmentWebhookConfigPtrType) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput)
+}
+
+// Configuration for webhooks.
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentWebhookConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3EnvironmentWebhookConfig) *GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
+		return &v
+	}).(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput)
+}
+
+// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput) WebhookOverrides() GoogleCloudDialogflowCxV3WebhookArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentWebhookConfig) []GoogleCloudDialogflowCxV3Webhook {
+		return v.WebhookOverrides
+	}).(GoogleCloudDialogflowCxV3WebhookArrayOutput)
+}
+
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3EnvironmentWebhookConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput) Elem() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentWebhookConfig) GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3EnvironmentWebhookConfig
+		return ret
+	}).(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput)
+}
+
+// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput) WebhookOverrides() GoogleCloudDialogflowCxV3WebhookArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3EnvironmentWebhookConfig) []GoogleCloudDialogflowCxV3Webhook {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookOverrides
+	}).(GoogleCloudDialogflowCxV3WebhookArrayOutput)
+}
+
+// Configuration for webhooks.
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse struct {
+	// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+	WebhookOverrides []GoogleCloudDialogflowCxV3WebhookResponse `pulumi:"webhookOverrides"`
+}
+
+// Configuration for webhooks.
+type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput) ToGoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput {
+	return o
+}
+
+// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+func (o GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput) WebhookOverrides() GoogleCloudDialogflowCxV3WebhookResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse) []GoogleCloudDialogflowCxV3WebhookResponse {
+		return v.WebhookOverrides
+	}).(GoogleCloudDialogflowCxV3WebhookResponseArrayOutput)
+}
+
 // An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
 type GoogleCloudDialogflowCxV3EventHandler struct {
 	// The name of the event to handle.
@@ -11703,6 +11873,155 @@ func (o GoogleCloudDialogflowCxV3VersionVariantsVariantResponseArrayOutput) Inde
 	}).(GoogleCloudDialogflowCxV3VersionVariantsVariantResponseOutput)
 }
 
+// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
+type GoogleCloudDialogflowCxV3Webhook struct {
+	// Indicates whether the webhook is disabled.
+	Disabled *bool `pulumi:"disabled"`
+	// The human-readable name of the webhook, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
+	// Configuration for a generic web service.
+	GenericWebService *GoogleCloudDialogflowCxV3WebhookGenericWebService `pulumi:"genericWebService"`
+	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+	Name *string `pulumi:"name"`
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory *GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig `pulumi:"serviceDirectory"`
+	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+	Timeout *string `pulumi:"timeout"`
+}
+
+// GoogleCloudDialogflowCxV3WebhookInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookArgs and GoogleCloudDialogflowCxV3WebhookOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookInput` via:
+//
+//          GoogleCloudDialogflowCxV3WebhookArgs{...}
+type GoogleCloudDialogflowCxV3WebhookInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3WebhookOutput() GoogleCloudDialogflowCxV3WebhookOutput
+	ToGoogleCloudDialogflowCxV3WebhookOutputWithContext(context.Context) GoogleCloudDialogflowCxV3WebhookOutput
+}
+
+// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
+type GoogleCloudDialogflowCxV3WebhookArgs struct {
+	// Indicates whether the webhook is disabled.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The human-readable name of the webhook, unique within the agent.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Configuration for a generic web service.
+	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput `pulumi:"genericWebService"`
+	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrInput `pulumi:"serviceDirectory"`
+	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+func (GoogleCloudDialogflowCxV3WebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3Webhook)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3WebhookArgs) ToGoogleCloudDialogflowCxV3WebhookOutput() GoogleCloudDialogflowCxV3WebhookOutput {
+	return i.ToGoogleCloudDialogflowCxV3WebhookOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3WebhookArgs) ToGoogleCloudDialogflowCxV3WebhookOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3WebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3WebhookOutput)
+}
+
+// GoogleCloudDialogflowCxV3WebhookArrayInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookArray and GoogleCloudDialogflowCxV3WebhookArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3WebhookArray{ GoogleCloudDialogflowCxV3WebhookArgs{...} }
+type GoogleCloudDialogflowCxV3WebhookArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3WebhookArrayOutput() GoogleCloudDialogflowCxV3WebhookArrayOutput
+	ToGoogleCloudDialogflowCxV3WebhookArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3WebhookArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3WebhookArray []GoogleCloudDialogflowCxV3WebhookInput
+
+func (GoogleCloudDialogflowCxV3WebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3Webhook)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3WebhookArray) ToGoogleCloudDialogflowCxV3WebhookArrayOutput() GoogleCloudDialogflowCxV3WebhookArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3WebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3WebhookArray) ToGoogleCloudDialogflowCxV3WebhookArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3WebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3WebhookArrayOutput)
+}
+
+// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
+type GoogleCloudDialogflowCxV3WebhookOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3WebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3Webhook)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookOutput) ToGoogleCloudDialogflowCxV3WebhookOutput() GoogleCloudDialogflowCxV3WebhookOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookOutput) ToGoogleCloudDialogflowCxV3WebhookOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3WebhookOutput {
+	return o
+}
+
+// Indicates whether the webhook is disabled.
+func (o GoogleCloudDialogflowCxV3WebhookOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Webhook) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The human-readable name of the webhook, unique within the agent.
+func (o GoogleCloudDialogflowCxV3WebhookOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Webhook) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for a generic web service.
+func (o GoogleCloudDialogflowCxV3WebhookOutput) GenericWebService() GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Webhook) *GoogleCloudDialogflowCxV3WebhookGenericWebService {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput)
+}
+
+// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+func (o GoogleCloudDialogflowCxV3WebhookOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Webhook) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+func (o GoogleCloudDialogflowCxV3WebhookOutput) ServiceDirectory() GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Webhook) *GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
+		return v.ServiceDirectory
+	}).(GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrOutput)
+}
+
+// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+func (o GoogleCloudDialogflowCxV3WebhookOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Webhook) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3WebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3WebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3Webhook)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookArrayOutput) ToGoogleCloudDialogflowCxV3WebhookArrayOutput() GoogleCloudDialogflowCxV3WebhookArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookArrayOutput) ToGoogleCloudDialogflowCxV3WebhookArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3WebhookArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3WebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3Webhook {
+		return vs[0].([]GoogleCloudDialogflowCxV3Webhook)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3WebhookOutput)
+}
+
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3WebhookGenericWebService struct {
 	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
@@ -11973,6 +12292,91 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) Uri() p
 // The user name for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
+type GoogleCloudDialogflowCxV3WebhookResponse struct {
+	// Indicates whether the webhook is disabled.
+	Disabled bool `pulumi:"disabled"`
+	// The human-readable name of the webhook, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
+	// Configuration for a generic web service.
+	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse `pulumi:"genericWebService"`
+	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+	Name string `pulumi:"name"`
+	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+	ServiceDirectory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse `pulumi:"serviceDirectory"`
+	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+	Timeout string `pulumi:"timeout"`
+}
+
+// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
+type GoogleCloudDialogflowCxV3WebhookResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3WebhookResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) ToGoogleCloudDialogflowCxV3WebhookResponseOutput() GoogleCloudDialogflowCxV3WebhookResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) ToGoogleCloudDialogflowCxV3WebhookResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3WebhookResponseOutput {
+	return o
+}
+
+// Indicates whether the webhook is disabled.
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable name of the webhook, unique within the agent.
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for a generic web service.
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) GenericWebService() GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookResponse) GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput)
+}
+
+// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) ServiceDirectory() GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookResponse) GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse {
+		return v.ServiceDirectory
+	}).(GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseOutput)
+}
+
+// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+func (o GoogleCloudDialogflowCxV3WebhookResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowCxV3WebhookResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3WebhookResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3WebhookResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookResponseArrayOutput) ToGoogleCloudDialogflowCxV3WebhookResponseArrayOutput() GoogleCloudDialogflowCxV3WebhookResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookResponseArrayOutput) ToGoogleCloudDialogflowCxV3WebhookResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3WebhookResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3WebhookResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3WebhookResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3WebhookResponse {
+		return vs[0].([]GoogleCloudDialogflowCxV3WebhookResponse)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3WebhookResponseOutput)
 }
 
 // Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
@@ -12412,6 +12816,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentVersionConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentWebhookConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventHandlerInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventHandlerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventHandlerArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3EventInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3EventInputArgs{})
@@ -12502,6 +12908,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsVariantInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsVariantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VersionVariantsVariantArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VersionVariantsVariantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookGenericWebServiceInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs{})
@@ -12545,6 +12953,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EventHandlerOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EventHandlerResponseOutput{})
@@ -12702,9 +13113,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3VersionVariantsVariantArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3VersionVariantsVariantResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3VersionVariantsVariantResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponseOutput{})

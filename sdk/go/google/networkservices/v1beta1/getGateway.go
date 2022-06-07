@@ -33,7 +33,7 @@ type LookupGatewayResult struct {
 	Description string `pulumi:"description"`
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name string `pulumi:"name"`
 	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
 	Ports []int `pulumi:"ports"`
@@ -101,7 +101,7 @@ func (o LookupGatewayResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGatewayResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 func (o LookupGatewayResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Name }).(pulumi.StringOutput)
 }

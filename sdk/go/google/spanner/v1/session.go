@@ -20,6 +20,8 @@ type Session struct {
 	ApproximateLastUseTime pulumi.StringOutput `pulumi:"approximateLastUseTime"`
 	// The timestamp when the session is created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The database role which created this session.
+	CreatorRole pulumi.StringOutput `pulumi:"creatorRole"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the session. This is always system-assigned.
@@ -71,8 +73,10 @@ func (SessionState) ElementType() reflect.Type {
 }
 
 type sessionArgs struct {
-	DatabaseId string `pulumi:"databaseId"`
-	InstanceId string `pulumi:"instanceId"`
+	// The database role which created this session.
+	CreatorRole *string `pulumi:"creatorRole"`
+	DatabaseId  string  `pulumi:"databaseId"`
+	InstanceId  string  `pulumi:"instanceId"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 	Labels  map[string]string `pulumi:"labels"`
 	Project *string           `pulumi:"project"`
@@ -80,8 +84,10 @@ type sessionArgs struct {
 
 // The set of arguments for constructing a Session resource.
 type SessionArgs struct {
-	DatabaseId pulumi.StringInput
-	InstanceId pulumi.StringInput
+	// The database role which created this session.
+	CreatorRole pulumi.StringPtrInput
+	DatabaseId  pulumi.StringInput
+	InstanceId  pulumi.StringInput
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 	Labels  pulumi.StringMapInput
 	Project pulumi.StringPtrInput
@@ -132,6 +138,11 @@ func (o SessionOutput) ApproximateLastUseTime() pulumi.StringOutput {
 // The timestamp when the session is created.
 func (o SessionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The database role which created this session.
+func (o SessionOutput) CreatorRole() pulumi.StringOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.CreatorRole }).(pulumi.StringOutput)
 }
 
 // The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.

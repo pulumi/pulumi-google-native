@@ -27,6 +27,10 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
+	// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+	CapacityGb string `pulumi:"capacityGb"`
+	// The increase/decrease capacity step size.
+	CapacityStepSizeGb string `pulumi:"capacityStepSizeGb"`
 	// The time when the instance was created.
 	CreateTime string `pulumi:"createTime"`
 	// The description of the instance (2048 characters or less).
@@ -39,6 +43,12 @@ type LookupInstanceResult struct {
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
+	// The max capacity of the instance.
+	MaxCapacityGb string `pulumi:"maxCapacityGb"`
+	// The max number of shares allowed.
+	MaxShareCount string `pulumi:"maxShareCount"`
+	// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+	MultiShareEnabled bool `pulumi:"multiShareEnabled"`
 	// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
 	Name string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
@@ -92,6 +102,16 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
+// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+func (o LookupInstanceResultOutput) CapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CapacityGb }).(pulumi.StringOutput)
+}
+
+// The increase/decrease capacity step size.
+func (o LookupInstanceResultOutput) CapacityStepSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CapacityStepSizeGb }).(pulumi.StringOutput)
+}
+
 // The time when the instance was created.
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -120,6 +140,21 @@ func (o LookupInstanceResultOutput) KmsKeyName() pulumi.StringOutput {
 // Resource labels to represent user provided metadata.
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The max capacity of the instance.
+func (o LookupInstanceResultOutput) MaxCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.MaxCapacityGb }).(pulumi.StringOutput)
+}
+
+// The max number of shares allowed.
+func (o LookupInstanceResultOutput) MaxShareCount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.MaxShareCount }).(pulumi.StringOutput)
+}
+
+// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+func (o LookupInstanceResultOutput) MultiShareEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.MultiShareEnabled }).(pulumi.BoolOutput)
 }
 
 // The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.

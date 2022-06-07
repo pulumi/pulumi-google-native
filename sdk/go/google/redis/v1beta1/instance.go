@@ -21,12 +21,16 @@ type Instance struct {
 	AuthEnabled pulumi.BoolOutput `pulumi:"authEnabled"`
 	// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
+	// Optional. The available maintenance versions that an instance could update to.
+	AvailableMaintenanceVersions pulumi.StringArrayOutput `pulumi:"availableMaintenanceVersions"`
 	// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 	ConnectMode pulumi.StringOutput `pulumi:"connectMode"`
 	// The time the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
 	CurrentLocationId pulumi.StringOutput `pulumi:"currentLocationId"`
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey pulumi.StringOutput `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
@@ -75,6 +79,8 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current status of this instance, if available.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons pulumi.StringArrayOutput `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -135,8 +141,12 @@ type instanceArgs struct {
 	AuthEnabled *bool `pulumi:"authEnabled"`
 	// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// Optional. The available maintenance versions that an instance could update to.
+	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 	ConnectMode *InstanceConnectMode `pulumi:"connectMode"`
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey *string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
@@ -168,6 +178,8 @@ type instanceArgs struct {
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
 	SecondaryIpRange *string `pulumi:"secondaryIpRange"`
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons []InstanceSuspensionReasonsItem `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier InstanceTier `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -182,8 +194,12 @@ type InstanceArgs struct {
 	AuthEnabled pulumi.BoolPtrInput
 	// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
+	// Optional. The available maintenance versions that an instance could update to.
+	AvailableMaintenanceVersions pulumi.StringArrayInput
 	// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 	ConnectMode InstanceConnectModePtrInput
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
@@ -215,6 +231,8 @@ type InstanceArgs struct {
 	ReservedIpRange pulumi.StringPtrInput
 	// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
 	SecondaryIpRange pulumi.StringPtrInput
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons InstanceSuspensionReasonsItemArrayInput
 	// The service tier of the instance.
 	Tier InstanceTierInput
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -273,6 +291,11 @@ func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizedNetwork }).(pulumi.StringOutput)
 }
 
+// Optional. The available maintenance versions that an instance could update to.
+func (o InstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 // Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 func (o InstanceOutput) ConnectMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectMode }).(pulumi.StringOutput)
@@ -286,6 +309,11 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
 func (o InstanceOutput) CurrentLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CurrentLocationId }).(pulumi.StringOutput)
+}
+
+// Optional. The KMS key reference that the customer provides when trying to create the instance.
+func (o InstanceOutput) CustomerManagedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CustomerManagedKey }).(pulumi.StringOutput)
 }
 
 // An arbitrary and optional user-provided name for the instance.
@@ -406,6 +434,11 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 // Additional information about the current status of this instance, if available.
 func (o InstanceOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Optional. reasons that causes instance in "SUSPENDED" state.
+func (o InstanceOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
 }
 
 // The service tier of the instance.

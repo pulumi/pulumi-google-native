@@ -40,6 +40,8 @@ type LookupEnvironmentResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse `pulumi:"versionConfigs"`
+	// The webhook configuration for this environment.
+	WebhookConfig GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse `pulumi:"webhookConfig"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -112,6 +114,13 @@ func (o LookupEnvironmentResultOutput) VersionConfigs() GoogleCloudDialogflowCxV
 	return o.ApplyT(func(v LookupEnvironmentResult) []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse {
 		return v.VersionConfigs
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayOutput)
+}
+
+// The webhook configuration for this environment.
+func (o LookupEnvironmentResultOutput) WebhookConfig() GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse {
+		return v.WebhookConfig
+	}).(GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponseOutput)
 }
 
 func init() {

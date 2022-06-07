@@ -24,6 +24,8 @@ type Backup struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Amount of bytes that will be downloaded if the backup is restored
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
+	// Immutable. KMS key name used for data encryption.
+	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
@@ -88,6 +90,8 @@ type backupArgs struct {
 	BackupId string `pulumi:"backupId"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
+	// Immutable. KMS key name used for data encryption.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -104,6 +108,8 @@ type BackupArgs struct {
 	BackupId pulumi.StringInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
+	// Immutable. KMS key name used for data encryption.
+	KmsKeyName pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -169,6 +175,11 @@ func (o BackupOutput) Description() pulumi.StringOutput {
 // Amount of bytes that will be downloaded if the backup is restored
 func (o BackupOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DownloadBytes }).(pulumi.StringOutput)
+}
+
+// Immutable. KMS key name used for data encryption.
+func (o BackupOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // Resource labels to represent user provided metadata.

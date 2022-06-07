@@ -29,6 +29,8 @@ type LookupBackupArgs struct {
 type LookupBackupResult struct {
 	// The time the backups was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. A short description of the backup.
+	Description string `pulumi:"description"`
 	// Optional. Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}
@@ -83,6 +85,11 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx cont
 // The time the backups was created.
 func (o LookupBackupResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A short description of the backup.
+func (o LookupBackupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Optional. Resource labels to represent user provided metadata.

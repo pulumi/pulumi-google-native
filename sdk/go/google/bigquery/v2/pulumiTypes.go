@@ -5753,6 +5753,71 @@ func (o HivePartitioningOptionsResponseOutput) SourceUriPrefix() pulumi.StringOu
 	return o.ApplyT(func(v HivePartitioningOptionsResponse) string { return v.SourceUriPrefix }).(pulumi.StringOutput)
 }
 
+type IndexUnusedReasonResponse struct {
+	// Specifies the base table involved in the reason that no search index was used.
+	BaseTable TableReferenceResponse `pulumi:"baseTable"`
+	// Specifies the high-level reason for the scenario when no search index was used.
+	Code string `pulumi:"code"`
+	// Specifies the name of the unused search index, if available.
+	IndexName string `pulumi:"indexName"`
+	// Free form human-readable reason for the scenario when no search index was used.
+	Message string `pulumi:"message"`
+}
+
+type IndexUnusedReasonResponseOutput struct{ *pulumi.OutputState }
+
+func (IndexUnusedReasonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexUnusedReasonResponse)(nil)).Elem()
+}
+
+func (o IndexUnusedReasonResponseOutput) ToIndexUnusedReasonResponseOutput() IndexUnusedReasonResponseOutput {
+	return o
+}
+
+func (o IndexUnusedReasonResponseOutput) ToIndexUnusedReasonResponseOutputWithContext(ctx context.Context) IndexUnusedReasonResponseOutput {
+	return o
+}
+
+// Specifies the base table involved in the reason that no search index was used.
+func (o IndexUnusedReasonResponseOutput) BaseTable() TableReferenceResponseOutput {
+	return o.ApplyT(func(v IndexUnusedReasonResponse) TableReferenceResponse { return v.BaseTable }).(TableReferenceResponseOutput)
+}
+
+// Specifies the high-level reason for the scenario when no search index was used.
+func (o IndexUnusedReasonResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v IndexUnusedReasonResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the unused search index, if available.
+func (o IndexUnusedReasonResponseOutput) IndexName() pulumi.StringOutput {
+	return o.ApplyT(func(v IndexUnusedReasonResponse) string { return v.IndexName }).(pulumi.StringOutput)
+}
+
+// Free form human-readable reason for the scenario when no search index was used.
+func (o IndexUnusedReasonResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v IndexUnusedReasonResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type IndexUnusedReasonResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IndexUnusedReasonResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IndexUnusedReasonResponse)(nil)).Elem()
+}
+
+func (o IndexUnusedReasonResponseArrayOutput) ToIndexUnusedReasonResponseArrayOutput() IndexUnusedReasonResponseArrayOutput {
+	return o
+}
+
+func (o IndexUnusedReasonResponseArrayOutput) ToIndexUnusedReasonResponseArrayOutputWithContext(ctx context.Context) IndexUnusedReasonResponseArrayOutput {
+	return o
+}
+
+func (o IndexUnusedReasonResponseArrayOutput) Index(i pulumi.IntInput) IndexUnusedReasonResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndexUnusedReasonResponse {
+		return vs[0].([]IndexUnusedReasonResponse)[vs[1].(int)]
+	}).(IndexUnusedReasonResponseOutput)
+}
+
 type IterationResultResponse struct {
 	// Time taken to run the iteration in milliseconds.
 	DurationMs string `pulumi:"durationMs"`
@@ -8922,6 +8987,8 @@ type JobStatistics2Response struct {
 	ReservationUsage []JobStatistics2ReservationUsageItemResponse `pulumi:"reservationUsage"`
 	// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema TableSchemaResponse `pulumi:"schema"`
+	// Search query specific statistics.
+	SearchStatistics SearchStatisticsResponse `pulumi:"searchStatistics"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
 	StatementType string `pulumi:"statementType"`
 	// [Beta] Describes a timeline of job execution.
@@ -9066,6 +9133,11 @@ func (o JobStatistics2ResponseOutput) ReservationUsage() JobStatistics2Reservati
 // The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 func (o JobStatistics2ResponseOutput) Schema() TableSchemaResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) TableSchemaResponse { return v.Schema }).(TableSchemaResponseOutput)
+}
+
+// Search query specific statistics.
+func (o JobStatistics2ResponseOutput) SearchStatistics() SearchStatisticsResponseOutput {
+	return o.ApplyT(func(v JobStatistics2Response) SearchStatisticsResponse { return v.SearchStatistics }).(SearchStatisticsResponseOutput)
 }
 
 // The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
@@ -12553,6 +12625,37 @@ func (o ScriptStatisticsResponseOutput) StackFrames() ScriptStackFrameResponseAr
 	return o.ApplyT(func(v ScriptStatisticsResponse) []ScriptStackFrameResponse { return v.StackFrames }).(ScriptStackFrameResponseArrayOutput)
 }
 
+type SearchStatisticsResponse struct {
+	// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
+	IndexUnusedReason []IndexUnusedReasonResponse `pulumi:"indexUnusedReason"`
+	// Specifies index usage mode for the query.
+	IndexUsageMode string `pulumi:"indexUsageMode"`
+}
+
+type SearchStatisticsResponseOutput struct{ *pulumi.OutputState }
+
+func (SearchStatisticsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchStatisticsResponse)(nil)).Elem()
+}
+
+func (o SearchStatisticsResponseOutput) ToSearchStatisticsResponseOutput() SearchStatisticsResponseOutput {
+	return o
+}
+
+func (o SearchStatisticsResponseOutput) ToSearchStatisticsResponseOutputWithContext(ctx context.Context) SearchStatisticsResponseOutput {
+	return o
+}
+
+// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
+func (o SearchStatisticsResponseOutput) IndexUnusedReason() IndexUnusedReasonResponseArrayOutput {
+	return o.ApplyT(func(v SearchStatisticsResponse) []IndexUnusedReasonResponse { return v.IndexUnusedReason }).(IndexUnusedReasonResponseArrayOutput)
+}
+
+// Specifies index usage mode for the query.
+func (o SearchStatisticsResponseOutput) IndexUsageMode() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchStatisticsResponse) string { return v.IndexUsageMode }).(pulumi.StringOutput)
+}
+
 type SessionInfoResponse struct {
 	// // [Preview] Id of the session.
 	SessionId string `pulumi:"sessionId"`
@@ -15380,6 +15483,8 @@ func init() {
 	pulumi.RegisterOutputType(HivePartitioningOptionsOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsPtrOutput{})
 	pulumi.RegisterOutputType(HivePartitioningOptionsResponseOutput{})
+	pulumi.RegisterOutputType(IndexUnusedReasonResponseOutput{})
+	pulumi.RegisterOutputType(IndexUnusedReasonResponseArrayOutput{})
 	pulumi.RegisterOutputType(IterationResultResponseOutput{})
 	pulumi.RegisterOutputType(IterationResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobConfigurationOutput{})
@@ -15463,6 +15568,7 @@ func init() {
 	pulumi.RegisterOutputType(ScriptStackFrameResponseOutput{})
 	pulumi.RegisterOutputType(ScriptStackFrameResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScriptStatisticsResponseOutput{})
+	pulumi.RegisterOutputType(SearchStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(SessionInfoResponseOutput{})
 	pulumi.RegisterOutputType(SnapshotDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeOutput{})

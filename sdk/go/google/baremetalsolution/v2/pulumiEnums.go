@@ -10,6 +10,344 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The type of network configuration on the instance.
+type InstanceConfigNetworkConfig string
+
+const (
+	// The unspecified network configuration.
+	InstanceConfigNetworkConfigNetworkconfigUnspecified = InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED")
+	// Instance part of single client network and single private network.
+	InstanceConfigNetworkConfigSingleVlan = InstanceConfigNetworkConfig("SINGLE_VLAN")
+	// Instance part of multiple (or single) client networks and private networks.
+	InstanceConfigNetworkConfigMultiVlan = InstanceConfigNetworkConfig("MULTI_VLAN")
+)
+
+func (InstanceConfigNetworkConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigNetworkConfig)(nil)).Elem()
+}
+
+func (e InstanceConfigNetworkConfig) ToInstanceConfigNetworkConfigOutput() InstanceConfigNetworkConfigOutput {
+	return pulumi.ToOutput(e).(InstanceConfigNetworkConfigOutput)
+}
+
+func (e InstanceConfigNetworkConfig) ToInstanceConfigNetworkConfigOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceConfigNetworkConfigOutput)
+}
+
+func (e InstanceConfigNetworkConfig) ToInstanceConfigNetworkConfigPtrOutput() InstanceConfigNetworkConfigPtrOutput {
+	return e.ToInstanceConfigNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceConfigNetworkConfig) ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigPtrOutput {
+	return InstanceConfigNetworkConfig(e).ToInstanceConfigNetworkConfigOutputWithContext(ctx).ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx)
+}
+
+func (e InstanceConfigNetworkConfig) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceConfigNetworkConfig) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceConfigNetworkConfig) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceConfigNetworkConfig) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceConfigNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToInstanceConfigNetworkConfigOutput() InstanceConfigNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToInstanceConfigNetworkConfigOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigOutput {
+	return o
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToInstanceConfigNetworkConfigPtrOutput() InstanceConfigNetworkConfigPtrOutput {
+	return o.ToInstanceConfigNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConfigNetworkConfig) *InstanceConfigNetworkConfig {
+		return &v
+	}).(InstanceConfigNetworkConfigPtrOutput)
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceConfigNetworkConfig) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConfigNetworkConfigOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceConfigNetworkConfig) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceConfigNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceConfigNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceConfigNetworkConfig)(nil)).Elem()
+}
+
+func (o InstanceConfigNetworkConfigPtrOutput) ToInstanceConfigNetworkConfigPtrOutput() InstanceConfigNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceConfigNetworkConfigPtrOutput) ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigPtrOutput {
+	return o
+}
+
+func (o InstanceConfigNetworkConfigPtrOutput) Elem() InstanceConfigNetworkConfigOutput {
+	return o.ApplyT(func(v *InstanceConfigNetworkConfig) InstanceConfigNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConfigNetworkConfig
+		return ret
+	}).(InstanceConfigNetworkConfigOutput)
+}
+
+func (o InstanceConfigNetworkConfigPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConfigNetworkConfigPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceConfigNetworkConfig) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceConfigNetworkConfigInput is an input type that accepts InstanceConfigNetworkConfigArgs and InstanceConfigNetworkConfigOutput values.
+// You can construct a concrete instance of `InstanceConfigNetworkConfigInput` via:
+//
+//          InstanceConfigNetworkConfigArgs{...}
+type InstanceConfigNetworkConfigInput interface {
+	pulumi.Input
+
+	ToInstanceConfigNetworkConfigOutput() InstanceConfigNetworkConfigOutput
+	ToInstanceConfigNetworkConfigOutputWithContext(context.Context) InstanceConfigNetworkConfigOutput
+}
+
+var instanceConfigNetworkConfigPtrType = reflect.TypeOf((**InstanceConfigNetworkConfig)(nil)).Elem()
+
+type InstanceConfigNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceConfigNetworkConfigPtrOutput() InstanceConfigNetworkConfigPtrOutput
+	ToInstanceConfigNetworkConfigPtrOutputWithContext(context.Context) InstanceConfigNetworkConfigPtrOutput
+}
+
+type instanceConfigNetworkConfigPtr string
+
+func InstanceConfigNetworkConfigPtr(v string) InstanceConfigNetworkConfigPtrInput {
+	return (*instanceConfigNetworkConfigPtr)(&v)
+}
+
+func (*instanceConfigNetworkConfigPtr) ElementType() reflect.Type {
+	return instanceConfigNetworkConfigPtrType
+}
+
+func (in *instanceConfigNetworkConfigPtr) ToInstanceConfigNetworkConfigPtrOutput() InstanceConfigNetworkConfigPtrOutput {
+	return pulumi.ToOutput(in).(InstanceConfigNetworkConfigPtrOutput)
+}
+
+func (in *instanceConfigNetworkConfigPtr) ToInstanceConfigNetworkConfigPtrOutputWithContext(ctx context.Context) InstanceConfigNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceConfigNetworkConfigPtrOutput)
+}
+
+// Type of network.
+type LogicalNetworkInterfaceNetworkType string
+
+const (
+	// Unspecified value.
+	LogicalNetworkInterfaceNetworkTypeTypeUnspecified = LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED")
+	// Client network, a network peered to a Google Cloud VPC.
+	LogicalNetworkInterfaceNetworkTypeClient = LogicalNetworkInterfaceNetworkType("CLIENT")
+	// Private network, a network local to the Bare Metal Solution environment.
+	LogicalNetworkInterfaceNetworkTypePrivate = LogicalNetworkInterfaceNetworkType("PRIVATE")
+)
+
+func (LogicalNetworkInterfaceNetworkType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkInterfaceNetworkType)(nil)).Elem()
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToLogicalNetworkInterfaceNetworkTypeOutput() LogicalNetworkInterfaceNetworkTypeOutput {
+	return pulumi.ToOutput(e).(LogicalNetworkInterfaceNetworkTypeOutput)
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToLogicalNetworkInterfaceNetworkTypeOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LogicalNetworkInterfaceNetworkTypeOutput)
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToLogicalNetworkInterfaceNetworkTypePtrOutput() LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return e.ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(context.Background())
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return LogicalNetworkInterfaceNetworkType(e).ToLogicalNetworkInterfaceNetworkTypeOutputWithContext(ctx).ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx)
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LogicalNetworkInterfaceNetworkType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LogicalNetworkInterfaceNetworkTypeOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkInterfaceNetworkTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkInterfaceNetworkType)(nil)).Elem()
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToLogicalNetworkInterfaceNetworkTypeOutput() LogicalNetworkInterfaceNetworkTypeOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToLogicalNetworkInterfaceNetworkTypeOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypeOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToLogicalNetworkInterfaceNetworkTypePtrOutput() LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return o.ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(context.Background())
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogicalNetworkInterfaceNetworkType) *LogicalNetworkInterfaceNetworkType {
+		return &v
+	}).(LogicalNetworkInterfaceNetworkTypePtrOutput)
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LogicalNetworkInterfaceNetworkType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LogicalNetworkInterfaceNetworkTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LogicalNetworkInterfaceNetworkType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogicalNetworkInterfaceNetworkTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkInterfaceNetworkTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogicalNetworkInterfaceNetworkType)(nil)).Elem()
+}
+
+func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToLogicalNetworkInterfaceNetworkTypePtrOutput() LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceNetworkTypePtrOutput) Elem() LogicalNetworkInterfaceNetworkTypeOutput {
+	return o.ApplyT(func(v *LogicalNetworkInterfaceNetworkType) LogicalNetworkInterfaceNetworkType {
+		if v != nil {
+			return *v
+		}
+		var ret LogicalNetworkInterfaceNetworkType
+		return ret
+	}).(LogicalNetworkInterfaceNetworkTypeOutput)
+}
+
+func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LogicalNetworkInterfaceNetworkType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LogicalNetworkInterfaceNetworkTypeInput is an input type that accepts LogicalNetworkInterfaceNetworkTypeArgs and LogicalNetworkInterfaceNetworkTypeOutput values.
+// You can construct a concrete instance of `LogicalNetworkInterfaceNetworkTypeInput` via:
+//
+//          LogicalNetworkInterfaceNetworkTypeArgs{...}
+type LogicalNetworkInterfaceNetworkTypeInput interface {
+	pulumi.Input
+
+	ToLogicalNetworkInterfaceNetworkTypeOutput() LogicalNetworkInterfaceNetworkTypeOutput
+	ToLogicalNetworkInterfaceNetworkTypeOutputWithContext(context.Context) LogicalNetworkInterfaceNetworkTypeOutput
+}
+
+var logicalNetworkInterfaceNetworkTypePtrType = reflect.TypeOf((**LogicalNetworkInterfaceNetworkType)(nil)).Elem()
+
+type LogicalNetworkInterfaceNetworkTypePtrInput interface {
+	pulumi.Input
+
+	ToLogicalNetworkInterfaceNetworkTypePtrOutput() LogicalNetworkInterfaceNetworkTypePtrOutput
+	ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput
+}
+
+type logicalNetworkInterfaceNetworkTypePtr string
+
+func LogicalNetworkInterfaceNetworkTypePtr(v string) LogicalNetworkInterfaceNetworkTypePtrInput {
+	return (*logicalNetworkInterfaceNetworkTypePtr)(&v)
+}
+
+func (*logicalNetworkInterfaceNetworkTypePtr) ElementType() reflect.Type {
+	return logicalNetworkInterfaceNetworkTypePtrType
+}
+
+func (in *logicalNetworkInterfaceNetworkTypePtr) ToLogicalNetworkInterfaceNetworkTypePtrOutput() LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return pulumi.ToOutput(in).(LogicalNetworkInterfaceNetworkTypePtrOutput)
+}
+
+func (in *logicalNetworkInterfaceNetworkTypePtr) ToLogicalNetworkInterfaceNetworkTypePtrOutputWithContext(ctx context.Context) LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LogicalNetworkInterfaceNetworkTypePtrOutput)
+}
+
 // Interconnect bandwidth. Set only when type is CLIENT.
 type NetworkConfigBandwidth string
 
@@ -1033,6 +1371,10 @@ func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigPtrInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceNetworkTypeInput)(nil)).Elem(), LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceNetworkTypePtrInput)(nil)).Elem(), LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigBandwidthInput)(nil)).Elem(), NetworkConfigBandwidth("BANDWIDTH_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigBandwidthPtrInput)(nil)).Elem(), NetworkConfigBandwidth("BANDWIDTH_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigServiceCidrInput)(nil)).Elem(), NetworkConfigServiceCidr("SERVICE_CIDR_UNSPECIFIED"))
@@ -1045,6 +1387,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigProtocolPtrInput)(nil)).Elem(), VolumeConfigProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigTypeInput)(nil)).Elem(), VolumeConfigType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigTypePtrInput)(nil)).Elem(), VolumeConfigType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(InstanceConfigNetworkConfigOutput{})
+	pulumi.RegisterOutputType(InstanceConfigNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkInterfaceNetworkTypeOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkInterfaceNetworkTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigBandwidthOutput{})
 	pulumi.RegisterOutputType(NetworkConfigBandwidthPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigServiceCidrOutput{})

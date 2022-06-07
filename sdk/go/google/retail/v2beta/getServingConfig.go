@@ -48,7 +48,7 @@ type LookupServingConfigResult struct {
 	IgnoreControlIds []string `pulumi:"ignoreControlIds"`
 	// The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
 	ModelId string `pulumi:"modelId"`
-	// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
 	Name string `pulumi:"name"`
 	// Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway synonyms controls in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
 	OnewaySynonymsControlIds []string `pulumi:"onewaySynonymsControlIds"`
@@ -154,7 +154,7 @@ func (o LookupServingConfigResultOutput) ModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServingConfigResult) string { return v.ModelId }).(pulumi.StringOutput)
 }
 
-// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
 func (o LookupServingConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServingConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

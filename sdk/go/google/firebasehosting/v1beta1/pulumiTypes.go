@@ -629,6 +629,8 @@ type RewriteResponse struct {
 	DynamicLinks bool `pulumi:"dynamicLinks"`
 	// The function to proxy requests to. Must match the exported function name exactly.
 	Function string `pulumi:"function"`
+	// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
+	FunctionRegion string `pulumi:"functionRegion"`
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
 	Glob string `pulumi:"glob"`
 	// The URL path to rewrite the request to.
@@ -662,6 +664,11 @@ func (o RewriteResponseOutput) DynamicLinks() pulumi.BoolOutput {
 // The function to proxy requests to. Must match the exported function name exactly.
 func (o RewriteResponseOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v RewriteResponse) string { return v.Function }).(pulumi.StringOutput)
+}
+
+// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
+func (o RewriteResponseOutput) FunctionRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v RewriteResponse) string { return v.FunctionRegion }).(pulumi.StringOutput)
 }
 
 // The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.

@@ -27,7 +27,7 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
-	// Immutable. The globally unique hostname of the database.
+	// Output Only. The globally unique hostname of the database.
 	DatabaseUrl string `pulumi:"databaseUrl"`
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name string `pulumi:"name"`
@@ -35,7 +35,7 @@ type LookupInstanceResult struct {
 	Project string `pulumi:"project"`
 	// The database's lifecycle state. Read-only.
 	State string `pulumi:"state"`
-	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type string `pulumi:"type"`
 }
 
@@ -76,7 +76,7 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
-// Immutable. The globally unique hostname of the database.
+// Output Only. The globally unique hostname of the database.
 func (o LookupInstanceResultOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DatabaseUrl }).(pulumi.StringOutput)
 }
@@ -96,7 +96,7 @@ func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 func (o LookupInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Type }).(pulumi.StringOutput)
 }

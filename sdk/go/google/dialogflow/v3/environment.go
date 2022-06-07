@@ -27,6 +27,8 @@ type Environment struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayOutput `pulumi:"versionConfigs"`
+	// The webhook configuration for this environment.
+	WebhookConfig GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput `pulumi:"webhookConfig"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -90,6 +92,8 @@ type environmentArgs struct {
 	TestCasesConfig *GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig `pulumi:"testCasesConfig"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3EnvironmentVersionConfig `pulumi:"versionConfigs"`
+	// The webhook configuration for this environment.
+	WebhookConfig *GoogleCloudDialogflowCxV3EnvironmentWebhookConfig `pulumi:"webhookConfig"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -107,6 +111,8 @@ type EnvironmentArgs struct {
 	TestCasesConfig GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput
+	// The webhook configuration for this environment.
+	WebhookConfig GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -178,6 +184,13 @@ func (o EnvironmentOutput) VersionConfigs() GoogleCloudDialogflowCxV3Environment
 	return o.ApplyT(func(v *Environment) GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayOutput {
 		return v.VersionConfigs
 	}).(GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayOutput)
+}
+
+// The webhook configuration for this environment.
+func (o EnvironmentOutput) WebhookConfig() GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput {
+		return v.WebhookConfig
+	}).(GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponseOutput)
 }
 
 func init() {

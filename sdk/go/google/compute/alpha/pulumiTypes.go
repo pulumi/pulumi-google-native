@@ -1399,7 +1399,7 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesResponseOutput)
 	}).(pulumi.StringOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservation struct {
 	// Specifies the number of resources that are allocated.
 	Count *string `pulumi:"count"`
@@ -1418,7 +1418,7 @@ type AllocationSpecificSKUReservationInput interface {
 	ToAllocationSpecificSKUReservationOutputWithContext(context.Context) AllocationSpecificSKUReservationOutput
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationArgs struct {
 	// Specifies the number of resources that are allocated.
 	Count pulumi.StringPtrInput `pulumi:"count"`
@@ -1479,7 +1479,7 @@ func (i *allocationSpecificSKUReservationPtrType) ToAllocationSpecificSKUReserva
 	return pulumi.ToOutputWithContext(ctx, i).(AllocationSpecificSKUReservationPtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationOutput) ElementType() reflect.Type {
@@ -1560,7 +1560,7 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationResponse struct {
 	// Indicates how many instances are actually usable currently.
 	AssuredCount string `pulumi:"assuredCount"`
@@ -1572,7 +1572,7 @@ type AllocationSpecificSKUReservationResponse struct {
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesResponse `pulumi:"instanceProperties"`
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationResponseOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationResponseOutput) ElementType() reflect.Type {
@@ -8483,7 +8483,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) Inde
 type BackendServiceLogConfig struct {
 	// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
 	Enable *bool `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 	SampleRate *float64 `pulumi:"sampleRate"`
 }
 
@@ -8502,7 +8502,7 @@ type BackendServiceLogConfigInput interface {
 type BackendServiceLogConfigArgs struct {
 	// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 	SampleRate pulumi.Float64PtrInput `pulumi:"sampleRate"`
 }
 
@@ -8589,7 +8589,7 @@ func (o BackendServiceLogConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 func (o BackendServiceLogConfigOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendServiceLogConfig) *float64 { return v.SampleRate }).(pulumi.Float64PtrOutput)
 }
@@ -8628,7 +8628,7 @@ func (o BackendServiceLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BackendServiceLogConfig) *float64 {
 		if v == nil {
@@ -8642,7 +8642,7 @@ func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 type BackendServiceLogConfigResponse struct {
 	// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
 	Enable bool `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 	SampleRate float64 `pulumi:"sampleRate"`
 }
 
@@ -8666,7 +8666,7 @@ func (o BackendServiceLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackendServiceLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 func (o BackendServiceLogConfigResponseOutput) SampleRate() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendServiceLogConfigResponse) float64 { return v.SampleRate }).(pulumi.Float64Output)
 }
@@ -36503,6 +36503,146 @@ func (o ResourcePolicyDailyCycleResponseOutput) StartTime() pulumi.StringOutput 
 	return o.ApplyT(func(v ResourcePolicyDailyCycleResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicy struct {
+}
+
+// ResourcePolicyDiskConsistencyGroupPolicyInput is an input type that accepts ResourcePolicyDiskConsistencyGroupPolicyArgs and ResourcePolicyDiskConsistencyGroupPolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicyDiskConsistencyGroupPolicyInput` via:
+//
+//          ResourcePolicyDiskConsistencyGroupPolicyArgs{...}
+type ResourcePolicyDiskConsistencyGroupPolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicyDiskConsistencyGroupPolicyOutput() ResourcePolicyDiskConsistencyGroupPolicyOutput
+	ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Context) ResourcePolicyDiskConsistencyGroupPolicyOutput
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyArgs struct {
+}
+
+func (ResourcePolicyDiskConsistencyGroupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyOutput() ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return i.ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return i.ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyDiskConsistencyGroupPolicyOutput).ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyDiskConsistencyGroupPolicyPtrInput is an input type that accepts ResourcePolicyDiskConsistencyGroupPolicyArgs, ResourcePolicyDiskConsistencyGroupPolicyPtr and ResourcePolicyDiskConsistencyGroupPolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyDiskConsistencyGroupPolicyPtrInput` via:
+//
+//          ResourcePolicyDiskConsistencyGroupPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyDiskConsistencyGroupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput
+	ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput
+}
+
+type resourcePolicyDiskConsistencyGroupPolicyPtrType ResourcePolicyDiskConsistencyGroupPolicyArgs
+
+func ResourcePolicyDiskConsistencyGroupPolicyPtr(v *ResourcePolicyDiskConsistencyGroupPolicyArgs) ResourcePolicyDiskConsistencyGroupPolicyPtrInput {
+	return (*resourcePolicyDiskConsistencyGroupPolicyPtrType)(v)
+}
+
+func (*resourcePolicyDiskConsistencyGroupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicyDiskConsistencyGroupPolicyPtrType) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return i.ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyDiskConsistencyGroupPolicyPtrType) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyDiskConsistencyGroupPolicyPtrOutput)
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyDiskConsistencyGroupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyOutput() ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o.ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicyDiskConsistencyGroupPolicy) *ResourcePolicyDiskConsistencyGroupPolicy {
+		return &v
+	}).(ResourcePolicyDiskConsistencyGroupPolicyPtrOutput)
+}
+
+type ResourcePolicyDiskConsistencyGroupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) Elem() ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicyDiskConsistencyGroupPolicy) ResourcePolicyDiskConsistencyGroupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicyDiskConsistencyGroupPolicy
+		return ret
+	}).(ResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyResponse struct {
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyDiskConsistencyGroupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicyResponse)(nil)).Elem()
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyResponseOutput) ToResourcePolicyDiskConsistencyGroupPolicyResponseOutput() ResourcePolicyDiskConsistencyGroupPolicyResponseOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyResponseOutput) ToResourcePolicyDiskConsistencyGroupPolicyResponseOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyResponseOutput {
+	return o
+}
+
 // A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 type ResourcePolicyGroupPlacementPolicy struct {
 	// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
@@ -43339,7 +43479,7 @@ type Scheduling struct {
 	MinNodeCpus *int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinity `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 	OnHostMaintenance *SchedulingOnHostMaintenance `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible *bool `pulumi:"preemptible"`
@@ -43388,7 +43528,7 @@ type SchedulingArgs struct {
 	MinNodeCpus pulumi.IntPtrInput `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities SchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 	OnHostMaintenance SchedulingOnHostMaintenancePtrInput `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
@@ -43541,7 +43681,7 @@ func (o SchedulingOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput {
 	return o.ApplyT(func(v Scheduling) []SchedulingNodeAffinity { return v.NodeAffinities }).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v Scheduling) *SchedulingOnHostMaintenance { return v.OnHostMaintenance }).(SchedulingOnHostMaintenancePtrOutput)
 }
@@ -43715,7 +43855,7 @@ func (o SchedulingPtrOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput 
 	}).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingPtrOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v *Scheduling) *SchedulingOnHostMaintenance {
 		if v == nil {
@@ -43961,7 +44101,7 @@ type SchedulingResponse struct {
 	MinNodeCpus int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinityResponse `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 	OnHostMaintenance string `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible bool `pulumi:"preemptible"`
@@ -44051,7 +44191,7 @@ func (o SchedulingResponseOutput) NodeAffinities() SchedulingNodeAffinityRespons
 	return o.ApplyT(func(v SchedulingResponse) []SchedulingNodeAffinityResponse { return v.NodeAffinities }).(SchedulingNodeAffinityResponseArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingResponseOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
 }
@@ -44239,6 +44379,7 @@ func (o SdsConfigResponseOutput) GrpcServiceConfig() GrpcServiceConfigResponseOu
 
 // Configuration options for Cloud Armor Adaptive Protection (CAAP).
 type SecurityPolicyAdaptiveProtectionConfig struct {
+	AutoDeployConfig *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig `pulumi:"autoDeployConfig"`
 	// If set to true, enables Cloud Armor Machine Learning.
 	Layer7DdosDefenseConfig *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig `pulumi:"layer7DdosDefenseConfig"`
 }
@@ -44256,6 +44397,7 @@ type SecurityPolicyAdaptiveProtectionConfigInput interface {
 
 // Configuration options for Cloud Armor Adaptive Protection (CAAP).
 type SecurityPolicyAdaptiveProtectionConfigArgs struct {
+	AutoDeployConfig SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput `pulumi:"autoDeployConfig"`
 	// If set to true, enables Cloud Armor Machine Learning.
 	Layer7DdosDefenseConfig SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput `pulumi:"layer7DdosDefenseConfig"`
 }
@@ -44338,6 +44480,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigOutput) ToSecurityPolicyAdaptivePr
 	}).(SecurityPolicyAdaptiveProtectionConfigPtrOutput)
 }
 
+func (o SecurityPolicyAdaptiveProtectionConfigOutput) AutoDeployConfig() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return v.AutoDeployConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
 // If set to true, enables Cloud Armor Machine Learning.
 func (o SecurityPolicyAdaptiveProtectionConfigOutput) Layer7DdosDefenseConfig() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
@@ -44369,6 +44517,15 @@ func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Elem() SecurityPolicyAd
 	}).(SecurityPolicyAdaptiveProtectionConfigOutput)
 }
 
+func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) AutoDeployConfig() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutoDeployConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
 // If set to true, enables Cloud Armor Machine Learning.
 func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Layer7DdosDefenseConfig() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
@@ -44377,6 +44534,232 @@ func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Layer7DdosDefenseConfig
 		}
 		return v.Layer7DdosDefenseConfig
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+// Configuration options for Adaptive Protection auto-deploy feature.
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig struct {
+	ConfidenceThreshold       *float64 `pulumi:"confidenceThreshold"`
+	ExpirationSec             *int     `pulumi:"expirationSec"`
+	ImpactedBaselineThreshold *float64 `pulumi:"impactedBaselineThreshold"`
+	LoadThreshold             *float64 `pulumi:"loadThreshold"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs and SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput` via:
+//
+//          SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput
+}
+
+// Configuration options for Adaptive Protection auto-deploy feature.
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs struct {
+	ConfidenceThreshold       pulumi.Float64PtrInput `pulumi:"confidenceThreshold"`
+	ExpirationSec             pulumi.IntPtrInput     `pulumi:"expirationSec"`
+	ImpactedBaselineThreshold pulumi.Float64PtrInput `pulumi:"impactedBaselineThreshold"`
+	LoadThreshold             pulumi.Float64PtrInput `pulumi:"loadThreshold"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput).ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs, SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtr and SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput` via:
+//
+//          SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput
+	ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput
+}
+
+type securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs
+
+func SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtr(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput {
+	return (*securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType)(v)
+}
+
+func (*securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
+// Configuration options for Adaptive Protection auto-deploy feature.
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		return &v
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 { return v.ConfidenceThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ExpirationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *int { return v.ExpirationSec }).(pulumi.IntPtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) ImpactedBaselineThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		return v.ImpactedBaselineThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput) LoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 { return v.LoadThreshold }).(pulumi.Float64PtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig
+		return ret
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ExpirationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationSec
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) ImpactedBaselineThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ImpactedBaselineThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput) LoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LoadThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Configuration options for Adaptive Protection auto-deploy feature.
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse struct {
+	ConfidenceThreshold       float64 `pulumi:"confidenceThreshold"`
+	ExpirationSec             int     `pulumi:"expirationSec"`
+	ImpactedBaselineThreshold float64 `pulumi:"impactedBaselineThreshold"`
+	LoadThreshold             float64 `pulumi:"loadThreshold"`
+}
+
+// Configuration options for Adaptive Protection auto-deploy feature.
+type SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) ToSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) ConfidenceThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse) float64 {
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) ExpirationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse) int { return v.ExpirationSec }).(pulumi.IntOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) ImpactedBaselineThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse) float64 {
+		return v.ImpactedBaselineThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) LoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse) float64 { return v.LoadThreshold }).(pulumi.Float64Output)
 }
 
 // Configuration options for L7 DDoS detection.
@@ -44577,6 +44960,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOut
 
 // Configuration options for Cloud Armor Adaptive Protection (CAAP).
 type SecurityPolicyAdaptiveProtectionConfigResponse struct {
+	AutoDeployConfig SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse `pulumi:"autoDeployConfig"`
 	// If set to true, enables Cloud Armor Machine Learning.
 	Layer7DdosDefenseConfig SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse `pulumi:"layer7DdosDefenseConfig"`
 }
@@ -44594,6 +44978,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigResponseOutput) ToSecurityPolicyAd
 
 func (o SecurityPolicyAdaptiveProtectionConfigResponseOutput) ToSecurityPolicyAdaptiveProtectionConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigResponseOutput {
 	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigResponseOutput) AutoDeployConfig() SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigResponse) SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse {
+		return v.AutoDeployConfig
+	}).(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput)
 }
 
 // If set to true, enables Cloud Armor Machine Learning.
@@ -54647,6 +55037,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCommitmentArrayInput)(nil)).Elem(), ResourceCommitmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCycleInput)(nil)).Elem(), ResourcePolicyDailyCycleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCyclePtrInput)(nil)).Elem(), ResourcePolicyDailyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicyInput)(nil)).Elem(), ResourcePolicyDiskConsistencyGroupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicyPtrInput)(nil)).Elem(), ResourcePolicyDiskConsistencyGroupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyPtrInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyHourlyCycleInput)(nil)).Elem(), ResourcePolicyHourlyCycleArgs{})
@@ -54711,6 +55103,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SdsConfigPtrInput)(nil)).Elem(), SdsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
@@ -55372,6 +55766,9 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyDailyCycleOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyDailyCyclePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyDailyCycleResponseOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyDiskConsistencyGroupPolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyDiskConsistencyGroupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyDiskConsistencyGroupPolicyResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyResponseOutput{})
@@ -55491,6 +55888,9 @@ func init() {
 	pulumi.RegisterOutputType(SdsConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput{})

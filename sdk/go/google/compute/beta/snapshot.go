@@ -54,6 +54,10 @@ type Snapshot struct {
 	SourceDiskEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceDiskEncryptionKey"`
 	// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
+	// URL of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicy pulumi.StringOutput `pulumi:"sourceSnapshotSchedulePolicy"`
+	// ID of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicyId pulumi.StringOutput `pulumi:"sourceSnapshotSchedulePolicyId"`
 	// The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
@@ -292,6 +296,16 @@ func (o SnapshotOutput) SourceDiskEncryptionKey() CustomerEncryptionKeyResponseO
 // The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 func (o SnapshotOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// URL of the resource policy which created this scheduled snapshot.
+func (o SnapshotOutput) SourceSnapshotSchedulePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceSnapshotSchedulePolicy }).(pulumi.StringOutput)
+}
+
+// ID of the resource policy which created this scheduled snapshot.
+func (o SnapshotOutput) SourceSnapshotSchedulePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceSnapshotSchedulePolicyId }).(pulumi.StringOutput)
 }
 
 // The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.

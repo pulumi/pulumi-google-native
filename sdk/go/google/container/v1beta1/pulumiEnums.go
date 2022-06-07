@@ -1436,6 +1436,173 @@ func (o FilterEventTypeItemArrayOutput) Index(i pulumi.IntInput) FilterEventType
 	}).(FilterEventTypeItemOutput)
 }
 
+// The type of GPU sharing strategy to enable on the GPU node.
+type GPUSharingConfigGpuSharingStrategy string
+
+const (
+	// Default value.
+	GPUSharingConfigGpuSharingStrategyGpuSharingStrategyUnspecified = GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED")
+	// GPUs are time-shared between containers.
+	GPUSharingConfigGpuSharingStrategyTimeSharing = GPUSharingConfigGpuSharingStrategy("TIME_SHARING")
+)
+
+func (GPUSharingConfigGpuSharingStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUSharingConfigGpuSharingStrategy)(nil)).Elem()
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToGPUSharingConfigGpuSharingStrategyOutput() GPUSharingConfigGpuSharingStrategyOutput {
+	return pulumi.ToOutput(e).(GPUSharingConfigGpuSharingStrategyOutput)
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToGPUSharingConfigGpuSharingStrategyOutputWithContext(ctx context.Context) GPUSharingConfigGpuSharingStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GPUSharingConfigGpuSharingStrategyOutput)
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToGPUSharingConfigGpuSharingStrategyPtrOutput() GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return e.ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(ctx context.Context) GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return GPUSharingConfigGpuSharingStrategy(e).ToGPUSharingConfigGpuSharingStrategyOutputWithContext(ctx).ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(ctx)
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GPUSharingConfigGpuSharingStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GPUSharingConfigGpuSharingStrategyOutput struct{ *pulumi.OutputState }
+
+func (GPUSharingConfigGpuSharingStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUSharingConfigGpuSharingStrategy)(nil)).Elem()
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToGPUSharingConfigGpuSharingStrategyOutput() GPUSharingConfigGpuSharingStrategyOutput {
+	return o
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToGPUSharingConfigGpuSharingStrategyOutputWithContext(ctx context.Context) GPUSharingConfigGpuSharingStrategyOutput {
+	return o
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToGPUSharingConfigGpuSharingStrategyPtrOutput() GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return o.ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(ctx context.Context) GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GPUSharingConfigGpuSharingStrategy) *GPUSharingConfigGpuSharingStrategy {
+		return &v
+	}).(GPUSharingConfigGpuSharingStrategyPtrOutput)
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GPUSharingConfigGpuSharingStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GPUSharingConfigGpuSharingStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GPUSharingConfigGpuSharingStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GPUSharingConfigGpuSharingStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (GPUSharingConfigGpuSharingStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GPUSharingConfigGpuSharingStrategy)(nil)).Elem()
+}
+
+func (o GPUSharingConfigGpuSharingStrategyPtrOutput) ToGPUSharingConfigGpuSharingStrategyPtrOutput() GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return o
+}
+
+func (o GPUSharingConfigGpuSharingStrategyPtrOutput) ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(ctx context.Context) GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return o
+}
+
+func (o GPUSharingConfigGpuSharingStrategyPtrOutput) Elem() GPUSharingConfigGpuSharingStrategyOutput {
+	return o.ApplyT(func(v *GPUSharingConfigGpuSharingStrategy) GPUSharingConfigGpuSharingStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret GPUSharingConfigGpuSharingStrategy
+		return ret
+	}).(GPUSharingConfigGpuSharingStrategyOutput)
+}
+
+func (o GPUSharingConfigGpuSharingStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GPUSharingConfigGpuSharingStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GPUSharingConfigGpuSharingStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GPUSharingConfigGpuSharingStrategyInput is an input type that accepts GPUSharingConfigGpuSharingStrategyArgs and GPUSharingConfigGpuSharingStrategyOutput values.
+// You can construct a concrete instance of `GPUSharingConfigGpuSharingStrategyInput` via:
+//
+//          GPUSharingConfigGpuSharingStrategyArgs{...}
+type GPUSharingConfigGpuSharingStrategyInput interface {
+	pulumi.Input
+
+	ToGPUSharingConfigGpuSharingStrategyOutput() GPUSharingConfigGpuSharingStrategyOutput
+	ToGPUSharingConfigGpuSharingStrategyOutputWithContext(context.Context) GPUSharingConfigGpuSharingStrategyOutput
+}
+
+var gpusharingConfigGpuSharingStrategyPtrType = reflect.TypeOf((**GPUSharingConfigGpuSharingStrategy)(nil)).Elem()
+
+type GPUSharingConfigGpuSharingStrategyPtrInput interface {
+	pulumi.Input
+
+	ToGPUSharingConfigGpuSharingStrategyPtrOutput() GPUSharingConfigGpuSharingStrategyPtrOutput
+	ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(context.Context) GPUSharingConfigGpuSharingStrategyPtrOutput
+}
+
+type gpusharingConfigGpuSharingStrategyPtr string
+
+func GPUSharingConfigGpuSharingStrategyPtr(v string) GPUSharingConfigGpuSharingStrategyPtrInput {
+	return (*gpusharingConfigGpuSharingStrategyPtr)(&v)
+}
+
+func (*gpusharingConfigGpuSharingStrategyPtr) ElementType() reflect.Type {
+	return gpusharingConfigGpuSharingStrategyPtrType
+}
+
+func (in *gpusharingConfigGpuSharingStrategyPtr) ToGPUSharingConfigGpuSharingStrategyPtrOutput() GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return pulumi.ToOutput(in).(GPUSharingConfigGpuSharingStrategyPtrOutput)
+}
+
+func (in *gpusharingConfigGpuSharingStrategyPtr) ToGPUSharingConfigGpuSharingStrategyPtrOutputWithContext(ctx context.Context) GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GPUSharingConfigGpuSharingStrategyPtrOutput)
+}
+
 // The ipv6 access type (internal or external) when create_subnetwork is true
 type IPAllocationPolicyIpv6AccessType string
 
@@ -5129,6 +5296,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemInput)(nil)).Elem(), FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemPtrInput)(nil)).Elem(), FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemArrayInput)(nil)).Elem(), FilterEventTypeItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyPtrInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypeInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypePtrInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyStackTypeInput)(nil)).Elem(), IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED"))
@@ -5190,6 +5359,8 @@ func init() {
 	pulumi.RegisterOutputType(FilterEventTypeItemOutput{})
 	pulumi.RegisterOutputType(FilterEventTypeItemPtrOutput{})
 	pulumi.RegisterOutputType(FilterEventTypeItemArrayOutput{})
+	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyOutput{})
+	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypeOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypePtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyStackTypeOutput{})

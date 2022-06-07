@@ -1927,6 +1927,175 @@ func (in *runtimeAccessConfigAccessTypePtr) ToRuntimeAccessConfigAccessTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(RuntimeAccessConfigAccessTypePtrOutput)
 }
 
+// Behavior for the post startup script.
+type RuntimeSoftwareConfigPostStartupScriptBehavior string
+
+const (
+	// Unspecified post startup script behavior. Will run only once at creation.
+	RuntimeSoftwareConfigPostStartupScriptBehaviorPostStartupScriptBehaviorUnspecified = RuntimeSoftwareConfigPostStartupScriptBehavior("POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED")
+	// Runs the post startup script provided during creation at every start.
+	RuntimeSoftwareConfigPostStartupScriptBehaviorRunEveryStart = RuntimeSoftwareConfigPostStartupScriptBehavior("RUN_EVERY_START")
+	// Downloads and runs the provided post startup script at every start.
+	RuntimeSoftwareConfigPostStartupScriptBehaviorDownloadAndRunEveryStart = RuntimeSoftwareConfigPostStartupScriptBehavior("DOWNLOAD_AND_RUN_EVERY_START")
+)
+
+func (RuntimeSoftwareConfigPostStartupScriptBehavior) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfigPostStartupScriptBehavior)(nil)).Elem()
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToRuntimeSoftwareConfigPostStartupScriptBehaviorOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorOutput {
+	return pulumi.ToOutput(e).(RuntimeSoftwareConfigPostStartupScriptBehaviorOutput)
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToRuntimeSoftwareConfigPostStartupScriptBehaviorOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RuntimeSoftwareConfigPostStartupScriptBehaviorOutput)
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return e.ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return RuntimeSoftwareConfigPostStartupScriptBehavior(e).ToRuntimeSoftwareConfigPostStartupScriptBehaviorOutputWithContext(ctx).ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx)
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RuntimeSoftwareConfigPostStartupScriptBehavior) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RuntimeSoftwareConfigPostStartupScriptBehaviorOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeSoftwareConfigPostStartupScriptBehavior)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return o.ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeSoftwareConfigPostStartupScriptBehavior) *RuntimeSoftwareConfigPostStartupScriptBehavior {
+		return &v
+	}).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuntimeSoftwareConfigPostStartupScriptBehavior) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuntimeSoftwareConfigPostStartupScriptBehavior) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeSoftwareConfigPostStartupScriptBehavior)(nil)).Elem()
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return o
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) Elem() RuntimeSoftwareConfigPostStartupScriptBehaviorOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfigPostStartupScriptBehavior) RuntimeSoftwareConfigPostStartupScriptBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeSoftwareConfigPostStartupScriptBehavior
+		return ret
+	}).(RuntimeSoftwareConfigPostStartupScriptBehaviorOutput)
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RuntimeSoftwareConfigPostStartupScriptBehavior) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RuntimeSoftwareConfigPostStartupScriptBehaviorInput is an input type that accepts RuntimeSoftwareConfigPostStartupScriptBehaviorArgs and RuntimeSoftwareConfigPostStartupScriptBehaviorOutput values.
+// You can construct a concrete instance of `RuntimeSoftwareConfigPostStartupScriptBehaviorInput` via:
+//
+//          RuntimeSoftwareConfigPostStartupScriptBehaviorArgs{...}
+type RuntimeSoftwareConfigPostStartupScriptBehaviorInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigPostStartupScriptBehaviorOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorOutput
+	ToRuntimeSoftwareConfigPostStartupScriptBehaviorOutputWithContext(context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorOutput
+}
+
+var runtimeSoftwareConfigPostStartupScriptBehaviorPtrType = reflect.TypeOf((**RuntimeSoftwareConfigPostStartupScriptBehavior)(nil)).Elem()
+
+type RuntimeSoftwareConfigPostStartupScriptBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput
+	ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput
+}
+
+type runtimeSoftwareConfigPostStartupScriptBehaviorPtr string
+
+func RuntimeSoftwareConfigPostStartupScriptBehaviorPtr(v string) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrInput {
+	return (*runtimeSoftwareConfigPostStartupScriptBehaviorPtr)(&v)
+}
+
+func (*runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ElementType() reflect.Type {
+	return runtimeSoftwareConfigPostStartupScriptBehaviorPtrType
+}
+
+func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput() RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return pulumi.ToOutput(in).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
+}
+
+func (in *runtimeSoftwareConfigPostStartupScriptBehaviorPtr) ToRuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
+}
+
 type ScheduleStateEnum string
 
 const (
@@ -2816,6 +2985,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAcceleratorConfigTypePtrInput)(nil)).Elem(), RuntimeAcceleratorConfigType("ACCELERATOR_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigAccessTypeInput)(nil)).Elem(), RuntimeAccessConfigAccessType("RUNTIME_ACCESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeAccessConfigAccessTypePtrInput)(nil)).Elem(), RuntimeAccessConfigAccessType("RUNTIME_ACCESS_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigPostStartupScriptBehaviorInput)(nil)).Elem(), RuntimeSoftwareConfigPostStartupScriptBehavior("POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeSoftwareConfigPostStartupScriptBehaviorPtrInput)(nil)).Elem(), RuntimeSoftwareConfigPostStartupScriptBehavior("POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleStateEnumInput)(nil)).Elem(), ScheduleStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleStateEnumPtrInput)(nil)).Elem(), ScheduleStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerAcceleratorConfigTypeInput)(nil)).Elem(), SchedulerAcceleratorConfigType("SCHEDULER_ACCELERATOR_TYPE_UNSPECIFIED"))
@@ -2848,6 +3019,8 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeAcceleratorConfigTypePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeAccessConfigAccessTypeOutput{})
 	pulumi.RegisterOutputType(RuntimeAccessConfigAccessTypePtrOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigPostStartupScriptBehaviorOutput{})
+	pulumi.RegisterOutputType(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleStateEnumOutput{})
 	pulumi.RegisterOutputType(ScheduleStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(SchedulerAcceleratorConfigTypeOutput{})

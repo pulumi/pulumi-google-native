@@ -1827,6 +1827,8 @@ func (o MasterAuthorizedNetworksConfigResponseOutput) Enabled() pulumi.BoolOutpu
 type NodeConfig struct {
 	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+	EnableIpMasqAgent *bool `pulumi:"enableIpMasqAgent"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1860,6 +1862,8 @@ type NodeConfigInput interface {
 type NodeConfigArgs struct {
 	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+	EnableIpMasqAgent pulumi.BoolPtrInput `pulumi:"enableIpMasqAgent"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy IPAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
 	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1961,6 +1965,11 @@ func (o NodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+func (o NodeConfigOutput) EnableIpMasqAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *bool { return v.EnableIpMasqAgent }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 func (o NodeConfigOutput) IpAllocationPolicy() IPAllocationPolicyPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *IPAllocationPolicy { return v.IpAllocationPolicy }).(IPAllocationPolicyPtrOutput)
@@ -2033,6 +2042,16 @@ func (o NodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 		}
 		return v.DiskSizeGb
 	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+func (o NodeConfigPtrOutput) EnableIpMasqAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIpMasqAgent
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
@@ -2119,6 +2138,8 @@ func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 type NodeConfigResponse struct {
 	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+	EnableIpMasqAgent bool `pulumi:"enableIpMasqAgent"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy IPAllocationPolicyResponse `pulumi:"ipAllocationPolicy"`
 	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2155,6 +2176,11 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx cont
 // Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+func (o NodeConfigResponseOutput) EnableIpMasqAgent() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeConfigResponse) bool { return v.EnableIpMasqAgent }).(pulumi.BoolOutput)
 }
 
 // Optional. The configuration for controlling how IPs are allocated in the GKE cluster.

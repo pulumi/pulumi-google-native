@@ -45,7 +45,7 @@ type LookupProvisioningConfigResult struct {
 	Networks []NetworkConfigResponse `pulumi:"networks"`
 	// State of ProvisioningConfig.
 	State string `pulumi:"state"`
-	// A generated buganizer id to track provisioning request.
+	// A generated ticket id to track provisioning request.
 	TicketId string `pulumi:"ticketId"`
 	// Last update timestamp.
 	UpdateTime string `pulumi:"updateTime"`
@@ -132,7 +132,7 @@ func (o LookupProvisioningConfigResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// A generated buganizer id to track provisioning request.
+// A generated ticket id to track provisioning request.
 func (o LookupProvisioningConfigResultOutput) TicketId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.TicketId }).(pulumi.StringOutput)
 }

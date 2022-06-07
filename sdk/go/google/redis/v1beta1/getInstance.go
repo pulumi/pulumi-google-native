@@ -33,12 +33,16 @@ type LookupInstanceResult struct {
 	AuthEnabled bool `pulumi:"authEnabled"`
 	// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
 	AuthorizedNetwork string `pulumi:"authorizedNetwork"`
+	// Optional. The available maintenance versions that an instance could update to.
+	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 	ConnectMode string `pulumi:"connectMode"`
 	// The time the instance was created.
 	CreateTime string `pulumi:"createTime"`
 	// The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
 	CurrentLocationId string `pulumi:"currentLocationId"`
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName string `pulumi:"displayName"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
@@ -87,6 +91,8 @@ type LookupInstanceResult struct {
 	State string `pulumi:"state"`
 	// Additional information about the current status of this instance, if available.
 	StatusMessage string `pulumi:"statusMessage"`
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons []string `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -145,6 +151,11 @@ func (o LookupInstanceResultOutput) AuthorizedNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.AuthorizedNetwork }).(pulumi.StringOutput)
 }
 
+// Optional. The available maintenance versions that an instance could update to.
+func (o LookupInstanceResultOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 // Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 func (o LookupInstanceResultOutput) ConnectMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ConnectMode }).(pulumi.StringOutput)
@@ -158,6 +169,11 @@ func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 // The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
 func (o LookupInstanceResultOutput) CurrentLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentLocationId }).(pulumi.StringOutput)
+}
+
+// Optional. The KMS key reference that the customer provides when trying to create the instance.
+func (o LookupInstanceResultOutput) CustomerManagedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CustomerManagedKey }).(pulumi.StringOutput)
 }
 
 // An arbitrary and optional user-provided name for the instance.
@@ -278,6 +294,11 @@ func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 // Additional information about the current status of this instance, if available.
 func (o LookupInstanceResultOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Optional. reasons that causes instance in "SUSPENDED" state.
+func (o LookupInstanceResultOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
 }
 
 // The service tier of the instance.
