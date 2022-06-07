@@ -17,9 +17,11 @@ from .datastore import *
 from .debug_session import *
 from .developer import *
 from .endpoint_attachment import *
+from .entry import *
 from .envgroup import *
 from .envgroup_attachment import *
 from .environment import *
+from .environment_entry import *
 from .export import *
 from .get_alias import *
 from .get_api import *
@@ -33,9 +35,11 @@ from .get_datastore import *
 from .get_debug_session import *
 from .get_developer import *
 from .get_endpoint_attachment import *
+from .get_entry import *
 from .get_envgroup import *
 from .get_envgroup_attachment import *
 from .get_environment import *
+from .get_environment_entry import *
 from .get_export import *
 from .get_host_query import *
 from .get_instance import *

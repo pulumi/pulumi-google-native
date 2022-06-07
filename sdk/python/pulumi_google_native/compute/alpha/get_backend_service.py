@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None, vpc_network_scope=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -143,12 +143,15 @@ class GetBackendServiceResult:
         if timeout_sec and not isinstance(timeout_sec, int):
             raise TypeError("Expected argument 'timeout_sec' to be a int")
         pulumi.set(__self__, "timeout_sec", timeout_sec)
+        if vpc_network_scope and not isinstance(vpc_network_scope, str):
+            raise TypeError("Expected argument 'vpc_network_scope' to be a str")
+        pulumi.set(__self__, "vpc_network_scope", vpc_network_scope)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> int:
         """
-        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -455,6 +458,14 @@ class GetBackendServiceResult:
         """
         return pulumi.get(self, "timeout_sec")
 
+    @property
+    @pulumi.getter(name="vpcNetworkScope")
+    def vpc_network_scope(self) -> str:
+        """
+        The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        """
+        return pulumi.get(self, "vpc_network_scope")
+
 
 class AwaitableGetBackendServiceResult(GetBackendServiceResult):
     # pylint: disable=using-constant-test
@@ -501,7 +512,8 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             service_lb_policy=self.service_lb_policy,
             session_affinity=self.session_affinity,
             subsetting=self.subsetting,
-            timeout_sec=self.timeout_sec)
+            timeout_sec=self.timeout_sec,
+            vpc_network_scope=self.vpc_network_scope)
 
 
 def get_backend_service(backend_service: Optional[str] = None,
@@ -559,7 +571,8 @@ def get_backend_service(backend_service: Optional[str] = None,
         service_lb_policy=__ret__.service_lb_policy,
         session_affinity=__ret__.session_affinity,
         subsetting=__ret__.subsetting,
-        timeout_sec=__ret__.timeout_sec)
+        timeout_sec=__ret__.timeout_sec,
+        vpc_network_scope=__ret__.vpc_network_scope)
 
 
 @_utilities.lift_output_func(get_backend_service)

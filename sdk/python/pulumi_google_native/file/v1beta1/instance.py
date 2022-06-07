@@ -17,27 +17,33 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
+                 capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_id: Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        :param pulumi.Input[str] capacity_gb: The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[bool] multi_share_enabled: Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
+        if capacity_gb is not None:
+            pulumi.set(__self__, "capacity_gb", capacity_gb)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -50,6 +56,8 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_share_enabled is not None:
+            pulumi.set(__self__, "multi_share_enabled", multi_share_enabled)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
@@ -68,6 +76,18 @@ class InstanceArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="capacityGb")
+    def capacity_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+        """
+        return pulumi.get(self, "capacity_gb")
+
+    @capacity_gb.setter
+    def capacity_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "capacity_gb", value)
 
     @property
     @pulumi.getter
@@ -139,6 +159,18 @@ class InstanceArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="multiShareEnabled")
+    def multi_share_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+        """
+        return pulumi.get(self, "multi_share_enabled")
+
+    @multi_share_enabled.setter
+    def multi_share_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_share_enabled", value)
+
+    @property
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]]:
         """
@@ -177,6 +209,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
@@ -184,6 +217,7 @@ class Instance(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
@@ -194,12 +228,14 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] capacity_gb: The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[str] instance_id: Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[bool] multi_share_enabled: Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
@@ -228,6 +264,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
@@ -235,6 +272,7 @@ class Instance(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
@@ -250,6 +288,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["capacity_gb"] = capacity_gb
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             __props__.__dict__["file_shares"] = file_shares
@@ -259,10 +298,14 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["multi_share_enabled"] = multi_share_enabled
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
             __props__.__dict__["tier"] = tier
+            __props__.__dict__["capacity_step_size_gb"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["max_capacity_gb"] = None
+            __props__.__dict__["max_share_count"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
@@ -290,12 +333,17 @@ class Instance(pulumi.CustomResource):
 
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
+        __props__.__dict__["capacity_gb"] = None
+        __props__.__dict__["capacity_step_size_gb"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["file_shares"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["max_capacity_gb"] = None
+        __props__.__dict__["max_share_count"] = None
+        __props__.__dict__["multi_share_enabled"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
         __props__.__dict__["satisfies_pzs"] = None
@@ -304,6 +352,22 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["suspension_reasons"] = None
         __props__.__dict__["tier"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="capacityGb")
+    def capacity_gb(self) -> pulumi.Output[str]:
+        """
+        The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+        """
+        return pulumi.get(self, "capacity_gb")
+
+    @property
+    @pulumi.getter(name="capacityStepSizeGb")
+    def capacity_step_size_gb(self) -> pulumi.Output[str]:
+        """
+        The increase/decrease capacity step size.
+        """
+        return pulumi.get(self, "capacity_step_size_gb")
 
     @property
     @pulumi.getter(name="createTime")
@@ -352,6 +416,30 @@ class Instance(pulumi.CustomResource):
         Resource labels to represent user provided metadata.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxCapacityGb")
+    def max_capacity_gb(self) -> pulumi.Output[str]:
+        """
+        The max capacity of the instance.
+        """
+        return pulumi.get(self, "max_capacity_gb")
+
+    @property
+    @pulumi.getter(name="maxShareCount")
+    def max_share_count(self) -> pulumi.Output[str]:
+        """
+        The max number of shares allowed.
+        """
+        return pulumi.get(self, "max_share_count")
+
+    @property
+    @pulumi.getter(name="multiShareEnabled")
+    def multi_share_enabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+        """
+        return pulumi.get(self, "multi_share_enabled")
 
     @property
     @pulumi.getter

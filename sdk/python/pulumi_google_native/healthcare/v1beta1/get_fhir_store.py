@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFhirStoreResult:
-    def __init__(__self__, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, search_config=None, stream_configs=None, validation_config=None, version=None):
+    def __init__(__self__, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, notification_configs=None, search_config=None, stream_configs=None, validation_config=None, version=None):
         if default_search_handling_strict and not isinstance(default_search_handling_strict, bool):
             raise TypeError("Expected argument 'default_search_handling_strict' to be a bool")
         pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
@@ -40,6 +40,9 @@ class GetFhirStoreResult:
         if notification_config and not isinstance(notification_config, dict):
             raise TypeError("Expected argument 'notification_config' to be a dict")
         pulumi.set(__self__, "notification_config", notification_config)
+        if notification_configs and not isinstance(notification_configs, list):
+            raise TypeError("Expected argument 'notification_configs' to be a list")
+        pulumi.set(__self__, "notification_configs", notification_configs)
         if search_config and not isinstance(search_config, dict):
             raise TypeError("Expected argument 'search_config' to be a dict")
         pulumi.set(__self__, "search_config", search_config)
@@ -110,6 +113,14 @@ class GetFhirStoreResult:
         return pulumi.get(self, "notification_config")
 
     @property
+    @pulumi.getter(name="notificationConfigs")
+    def notification_configs(self) -> Sequence['outputs.FhirNotificationConfigResponse']:
+        """
+        Specifies where and whether to send notifications upon changes to a Fhir store.
+        """
+        return pulumi.get(self, "notification_configs")
+
+    @property
     @pulumi.getter(name="searchConfig")
     def search_config(self) -> 'outputs.SearchConfigResponse':
         """
@@ -155,6 +166,7 @@ class AwaitableGetFhirStoreResult(GetFhirStoreResult):
             labels=self.labels,
             name=self.name,
             notification_config=self.notification_config,
+            notification_configs=self.notification_configs,
             search_config=self.search_config,
             stream_configs=self.stream_configs,
             validation_config=self.validation_config,
@@ -188,6 +200,7 @@ def get_fhir_store(dataset_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         notification_config=__ret__.notification_config,
+        notification_configs=__ret__.notification_configs,
         search_config=__ret__.search_config,
         stream_configs=__ret__.stream_configs,
         validation_config=__ret__.validation_config,

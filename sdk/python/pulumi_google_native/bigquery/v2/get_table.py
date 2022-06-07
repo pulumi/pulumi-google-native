@@ -489,6 +489,7 @@ def get_table(dataset_id: Optional[str] = None,
               project: Optional[str] = None,
               selected_fields: Optional[str] = None,
               table_id: Optional[str] = None,
+              view: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableResult:
     """
     Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
@@ -498,6 +499,7 @@ def get_table(dataset_id: Optional[str] = None,
     __args__['project'] = project
     __args__['selectedFields'] = selected_fields
     __args__['tableId'] = table_id
+    __args__['view'] = view
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -550,6 +552,7 @@ def get_table_output(dataset_id: Optional[pulumi.Input[str]] = None,
                      project: Optional[pulumi.Input[Optional[str]]] = None,
                      selected_fields: Optional[pulumi.Input[Optional[str]]] = None,
                      table_id: Optional[pulumi.Input[str]] = None,
+                     view: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableResult]:
     """
     Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.

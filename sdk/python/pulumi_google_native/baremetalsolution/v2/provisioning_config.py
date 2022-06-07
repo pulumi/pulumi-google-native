@@ -31,7 +31,7 @@ class ProvisioningConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] instances: Instances to be created.
         :param pulumi.Input[str] location: Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: Networks to be created.
-        :param pulumi.Input[str] ticket_id: A generated buganizer id to track provisioning request.
+        :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]] volumes: Volumes to be created.
         """
         if email is not None:
@@ -127,7 +127,7 @@ class ProvisioningConfigArgs:
     @pulumi.getter(name="ticketId")
     def ticket_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A generated buganizer id to track provisioning request.
+        A generated ticket id to track provisioning request.
         """
         return pulumi.get(self, "ticket_id")
 
@@ -175,7 +175,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] instances: Instances to be created.
         :param pulumi.Input[str] location: Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: Networks to be created.
-        :param pulumi.Input[str] ticket_id: A generated buganizer id to track provisioning request.
+        :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]] volumes: Volumes to be created.
         """
         ...
@@ -343,7 +343,7 @@ class ProvisioningConfig(pulumi.CustomResource):
     @pulumi.getter(name="ticketId")
     def ticket_id(self) -> pulumi.Output[str]:
         """
-        A generated buganizer id to track provisioning request.
+        A generated ticket id to track provisioning request.
         """
         return pulumi.get(self, "ticket_id")
 

@@ -155,7 +155,7 @@ class GetServingConfigResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         """
         return pulumi.get(self, "name")
 

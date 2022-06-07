@@ -629,6 +629,8 @@ class NodeConfigResponse(dict):
         suggest = None
         if key == "diskSizeGb":
             suggest = "disk_size_gb"
+        elif key == "enableIpMasqAgent":
+            suggest = "enable_ip_masq_agent"
         elif key == "ipAllocationPolicy":
             suggest = "ip_allocation_policy"
         elif key == "machineType":
@@ -651,6 +653,7 @@ class NodeConfigResponse(dict):
 
     def __init__(__self__, *,
                  disk_size_gb: int,
+                 enable_ip_masq_agent: bool,
                  ip_allocation_policy: 'outputs.IPAllocationPolicyResponse',
                  location: str,
                  machine_type: str,
@@ -662,6 +665,7 @@ class NodeConfigResponse(dict):
         """
         The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
         :param int disk_size_gb: Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param bool enable_ip_masq_agent: Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
         :param 'IPAllocationPolicyResponse' ip_allocation_policy: Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
         :param str location: Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param str machine_type: Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -672,6 +676,7 @@ class NodeConfigResponse(dict):
         :param Sequence[str] tags: Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "enable_ip_masq_agent", enable_ip_masq_agent)
         pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -688,6 +693,14 @@ class NodeConfigResponse(dict):
         Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="enableIpMasqAgent")
+    def enable_ip_masq_agent(self) -> bool:
+        """
+        Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+        """
+        return pulumi.get(self, "enable_ip_masq_agent")
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")

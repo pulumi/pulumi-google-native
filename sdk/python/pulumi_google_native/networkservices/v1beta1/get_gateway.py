@@ -77,7 +77,7 @@ class GetGatewayResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         """
         return pulumi.get(self, "name")
 

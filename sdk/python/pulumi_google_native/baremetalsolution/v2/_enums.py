@@ -5,6 +5,8 @@
 from enum import Enum
 
 __all__ = [
+    'InstanceConfigNetworkConfig',
+    'LogicalNetworkInterfaceNetworkType',
     'NetworkConfigBandwidth',
     'NetworkConfigServiceCidr',
     'NetworkConfigType',
@@ -12,6 +14,42 @@ __all__ = [
     'VolumeConfigProtocol',
     'VolumeConfigType',
 ]
+
+
+class InstanceConfigNetworkConfig(str, Enum):
+    """
+    The type of network configuration on the instance.
+    """
+    NETWORKCONFIG_UNSPECIFIED = "NETWORKCONFIG_UNSPECIFIED"
+    """
+    The unspecified network configuration.
+    """
+    SINGLE_VLAN = "SINGLE_VLAN"
+    """
+    Instance part of single client network and single private network.
+    """
+    MULTI_VLAN = "MULTI_VLAN"
+    """
+    Instance part of multiple (or single) client networks and private networks.
+    """
+
+
+class LogicalNetworkInterfaceNetworkType(str, Enum):
+    """
+    Type of network.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Unspecified value.
+    """
+    CLIENT = "CLIENT"
+    """
+    Client network, a network peered to a Google Cloud VPC.
+    """
+    PRIVATE = "PRIVATE"
+    """
+    Private network, a network local to the Bare Metal Solution environment.
+    """
 
 
 class NetworkConfigBandwidth(str, Enum):

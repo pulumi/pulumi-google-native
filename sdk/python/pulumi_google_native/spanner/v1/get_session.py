@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetSessionResult:
-    def __init__(__self__, approximate_last_use_time=None, create_time=None, labels=None, name=None):
+    def __init__(__self__, approximate_last_use_time=None, create_time=None, creator_role=None, labels=None, name=None):
         if approximate_last_use_time and not isinstance(approximate_last_use_time, str):
             raise TypeError("Expected argument 'approximate_last_use_time' to be a str")
         pulumi.set(__self__, "approximate_last_use_time", approximate_last_use_time)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if creator_role and not isinstance(creator_role, str):
+            raise TypeError("Expected argument 'creator_role' to be a str")
+        pulumi.set(__self__, "creator_role", creator_role)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -46,6 +49,14 @@ class GetSessionResult:
         The timestamp when the session is created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="creatorRole")
+    def creator_role(self) -> str:
+        """
+        The database role which created this session.
+        """
+        return pulumi.get(self, "creator_role")
 
     @property
     @pulumi.getter
@@ -72,6 +83,7 @@ class AwaitableGetSessionResult(GetSessionResult):
         return GetSessionResult(
             approximate_last_use_time=self.approximate_last_use_time,
             create_time=self.create_time,
+            creator_role=self.creator_role,
             labels=self.labels,
             name=self.name)
 
@@ -98,6 +110,7 @@ def get_session(database_id: Optional[str] = None,
     return AwaitableGetSessionResult(
         approximate_last_use_time=__ret__.approximate_last_use_time,
         create_time=__ret__.create_time,
+        creator_role=__ret__.creator_role,
         labels=__ret__.labels,
         name=__ret__.name)
 

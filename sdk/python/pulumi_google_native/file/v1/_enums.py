@@ -23,11 +23,11 @@ class InstanceTier(str, Enum):
     """
     STANDARD = "STANDARD"
     """
-    STANDARD tier.
+    STANDARD tier. BASIC_HDD is the preferred term for this tier.
     """
     PREMIUM = "PREMIUM"
     """
-    PREMIUM tier.
+    PREMIUM tier. BASIC_SSD is the preferred term for this tier.
     """
     BASIC_HDD = "BASIC_HDD"
     """

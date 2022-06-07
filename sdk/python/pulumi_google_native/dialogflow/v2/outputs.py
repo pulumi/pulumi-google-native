@@ -735,12 +735,12 @@ class GoogleCloudDialogflowV2GcsSourcesResponse(dict):
 @pulumi.output_type
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse(dict):
     """
-    Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+    Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
     """
     def __init__(__self__, *,
                  model: str):
         """
-        Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+        Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
         :param str model: Conversation model resource name. Format: `projects//conversationModels/`.
         """
         pulumi.set(__self__, "model", model)

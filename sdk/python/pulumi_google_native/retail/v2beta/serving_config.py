@@ -51,7 +51,7 @@ class ServingConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filter_control_ids: Condition filter specifications. If a product matches multiple conditions in the specifications, filters from these specifications are all applied and combined via the AND operator. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_control_ids: Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[str] model_id: The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
-        :param pulumi.Input[str] name: Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        :param pulumi.Input[str] name: Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oneway_synonyms_control_ids: Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway synonyms controls in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[str] price_reranking_level: How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_control_ids: Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
@@ -263,7 +263,7 @@ class ServingConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         """
         return pulumi.get(self, "name")
 
@@ -384,7 +384,7 @@ class ServingConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filter_control_ids: Condition filter specifications. If a product matches multiple conditions in the specifications, filters from these specifications are all applied and combined via the AND operator. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_control_ids: Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[str] model_id: The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
-        :param pulumi.Input[str] name: Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        :param pulumi.Input[str] name: Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oneway_synonyms_control_ids: Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway synonyms controls in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[str] price_reranking_level: How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_control_ids: Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
@@ -605,7 +605,7 @@ class ServingConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         """
         return pulumi.get(self, "name")
 

@@ -38,7 +38,7 @@ class GetInstanceResult:
     @pulumi.getter(name="databaseUrl")
     def database_url(self) -> str:
         """
-        Immutable. The globally unique hostname of the database.
+        Output Only. The globally unique hostname of the database.
         """
         return pulumi.get(self, "database_url")
 
@@ -70,7 +70,7 @@ class GetInstanceResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         return pulumi.get(self, "type")
 

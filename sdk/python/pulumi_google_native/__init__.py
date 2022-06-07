@@ -458,9 +458,11 @@ _utilities.register(
    "google-native:apigee/v1:DebugSession": "DebugSession",
    "google-native:apigee/v1:Developer": "Developer",
    "google-native:apigee/v1:EndpointAttachment": "EndpointAttachment",
+   "google-native:apigee/v1:Entry": "Entry",
    "google-native:apigee/v1:Envgroup": "Envgroup",
    "google-native:apigee/v1:EnvgroupAttachment": "EnvgroupAttachment",
    "google-native:apigee/v1:Environment": "Environment",
+   "google-native:apigee/v1:EnvironmentEntry": "EnvironmentEntry",
    "google-native:apigee/v1:Export": "Export",
    "google-native:apigee/v1:HostQuery": "HostQuery",
    "google-native:apigee/v1:Instance": "Instance",
@@ -1727,6 +1729,7 @@ _utilities.register(
   "classes": {
    "google-native:dns/v1:Change": "Change",
    "google-native:dns/v1:ManagedZone": "ManagedZone",
+   "google-native:dns/v1:ManagedZoneIamPolicy": "ManagedZoneIamPolicy",
    "google-native:dns/v1:Policy": "Policy",
    "google-native:dns/v1:ResourceRecordSet": "ResourceRecordSet"
   }
@@ -1846,6 +1849,7 @@ _utilities.register(
   "classes": {
    "google-native:file/v1beta1:Backup": "Backup",
    "google-native:file/v1beta1:Instance": "Instance",
+   "google-native:file/v1beta1:Share": "Share",
    "google-native:file/v1beta1:Snapshot": "Snapshot"
   }
  },
@@ -2225,7 +2229,6 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1alpha",
   "classes": {
    "google-native:metastore/v1alpha:Backup": "Backup",
-   "google-native:metastore/v1alpha:Federation": "Federation",
    "google-native:metastore/v1alpha:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1alpha:MetadataImport": "MetadataImport",
    "google-native:metastore/v1alpha:Service": "Service",
@@ -2241,7 +2244,6 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1beta",
   "classes": {
    "google-native:metastore/v1beta:Backup": "Backup",
-   "google-native:metastore/v1beta:Federation": "Federation",
    "google-native:metastore/v1beta:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1beta:MetadataImport": "MetadataImport",
    "google-native:metastore/v1beta:Service": "Service",

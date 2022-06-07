@@ -66,7 +66,7 @@ class GetControlResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         """
         return pulumi.get(self, "name")
 

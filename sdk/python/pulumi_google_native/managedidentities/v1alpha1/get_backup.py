@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, create_time=None, labels=None, name=None, state=None, status_message=None, type=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, labels=None, name=None, state=None, status_message=None, type=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -47,6 +50,14 @@ class GetBackupResult:
         The time the backups was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. A short description of the backup.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -104,6 +115,7 @@ class AwaitableGetBackupResult(GetBackupResult):
             yield self
         return GetBackupResult(
             create_time=self.create_time,
+            description=self.description,
             labels=self.labels,
             name=self.name,
             state=self.state,
@@ -131,6 +143,7 @@ def get_backup(backup_id: Optional[str] = None,
 
     return AwaitableGetBackupResult(
         create_time=__ret__.create_time,
+        description=__ret__.description,
         labels=__ret__.labels,
         name=__ret__.name,
         state=__ret__.state,

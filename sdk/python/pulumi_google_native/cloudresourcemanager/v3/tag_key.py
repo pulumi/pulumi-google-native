@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['TagKeyArgs', 'TagKey']
 
@@ -18,6 +19,8 @@ class TagKeyArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input['TagKeyPurpose']] = None,
+                 purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagKey resource.
@@ -26,6 +29,8 @@ class TagKeyArgs:
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
         :param pulumi.Input[str] name: Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        :param pulumi.Input['TagKeyPurpose'] purpose: Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
         :param pulumi.Input[str] validate_only: Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
         """
         pulumi.set(__self__, "short_name", short_name)
@@ -37,6 +42,10 @@ class TagKeyArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+        if purpose_data is not None:
+            pulumi.set(__self__, "purpose_data", purpose_data)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
 
@@ -101,6 +110,30 @@ class TagKeyArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input['TagKeyPurpose']]:
+        """
+        Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input['TagKeyPurpose']]):
+        pulumi.set(self, "purpose", value)
+
+    @property
+    @pulumi.getter(name="purposeData")
+    def purpose_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
+        """
+        return pulumi.get(self, "purpose_data")
+
+    @purpose_data.setter
+    def purpose_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "purpose_data", value)
+
+    @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
         """
@@ -122,6 +155,8 @@ class TagKey(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input['TagKeyPurpose']] = None,
+                 purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -134,6 +169,8 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
         :param pulumi.Input[str] name: Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        :param pulumi.Input['TagKeyPurpose'] purpose: Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
         :param pulumi.Input[str] short_name: Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] validate_only: Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
         """
@@ -165,6 +202,8 @@ class TagKey(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input['TagKeyPurpose']] = None,
+                 purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -183,6 +222,8 @@ class TagKey(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["purpose"] = purpose
+            __props__.__dict__["purpose_data"] = purpose_data
             if short_name is None and not opts.urn:
                 raise TypeError("Missing required property 'short_name'")
             __props__.__dict__["short_name"] = short_name
@@ -218,6 +259,8 @@ class TagKey(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["namespaced_name"] = None
         __props__.__dict__["parent"] = None
+        __props__.__dict__["purpose"] = None
+        __props__.__dict__["purpose_data"] = None
         __props__.__dict__["short_name"] = None
         __props__.__dict__["update_time"] = None
         return TagKey(resource_name, opts=opts, __props__=__props__)
@@ -269,6 +312,22 @@ class TagKey(pulumi.CustomResource):
         Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> pulumi.Output[str]:
+        """
+        Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter(name="purposeData")
+    def purpose_data(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
+        """
+        return pulumi.get(self, "purpose_data")
 
     @property
     @pulumi.getter(name="shortName")

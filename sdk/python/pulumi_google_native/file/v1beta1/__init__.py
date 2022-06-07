@@ -9,8 +9,10 @@ from ._enums import *
 from .backup import *
 from .get_backup import *
 from .get_instance import *
+from .get_share import *
 from .get_snapshot import *
 from .instance import *
+from .share import *
 from .snapshot import *
 from ._inputs import *
 from . import outputs

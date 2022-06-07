@@ -43,6 +43,7 @@ __all__ = [
     'ExternalDataConfigurationResponse',
     'GoogleSheetsOptionsResponse',
     'HivePartitioningOptionsResponse',
+    'IndexUnusedReasonResponse',
     'IterationResultResponse',
     'JobConfigurationExtractResponse',
     'JobConfigurationLoadResponse',
@@ -77,6 +78,7 @@ __all__ = [
     'RowLevelSecurityStatisticsResponse',
     'ScriptStackFrameResponse',
     'ScriptStatisticsResponse',
+    'SearchStatisticsResponse',
     'SessionInfoResponse',
     'SnapshotDefinitionResponse',
     'StandardSqlDataTypeResponse',
@@ -2470,6 +2472,76 @@ class HivePartitioningOptionsResponse(dict):
 
 
 @pulumi.output_type
+class IndexUnusedReasonResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseTable":
+            suggest = "base_table"
+        elif key == "indexName":
+            suggest = "index_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexUnusedReasonResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexUnusedReasonResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexUnusedReasonResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_table: 'outputs.TableReferenceResponse',
+                 code: str,
+                 index_name: str,
+                 message: str):
+        """
+        :param 'TableReferenceResponse' base_table: Specifies the base table involved in the reason that no search index was used.
+        :param str code: Specifies the high-level reason for the scenario when no search index was used.
+        :param str index_name: Specifies the name of the unused search index, if available.
+        :param str message: Free form human-readable reason for the scenario when no search index was used.
+        """
+        pulumi.set(__self__, "base_table", base_table)
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "index_name", index_name)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter(name="baseTable")
+    def base_table(self) -> 'outputs.TableReferenceResponse':
+        """
+        Specifies the base table involved in the reason that no search index was used.
+        """
+        return pulumi.get(self, "base_table")
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Specifies the high-level reason for the scenario when no search index was used.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="indexName")
+    def index_name(self) -> str:
+        """
+        Specifies the name of the unused search index, if available.
+        """
+        return pulumi.get(self, "index_name")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Free form human-readable reason for the scenario when no search index was used.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
 class IterationResultResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3826,6 +3898,8 @@ class JobStatistics2Response(dict):
             suggest = "referenced_tables"
         elif key == "reservationUsage":
             suggest = "reservation_usage"
+        elif key == "searchStatistics":
+            suggest = "search_statistics"
         elif key == "statementType":
             suggest = "statement_type"
         elif key == "totalBytesBilled":
@@ -3875,6 +3949,7 @@ class JobStatistics2Response(dict):
                  referenced_tables: Sequence['outputs.TableReferenceResponse'],
                  reservation_usage: Sequence['outputs.JobStatistics2ReservationUsageItemResponse'],
                  schema: 'outputs.TableSchemaResponse',
+                 search_statistics: 'outputs.SearchStatisticsResponse',
                  statement_type: str,
                  timeline: Sequence['outputs.QueryTimelineSampleResponse'],
                  total_bytes_billed: str,
@@ -3906,6 +3981,7 @@ class JobStatistics2Response(dict):
         :param Sequence['TableReferenceResponse'] referenced_tables: Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
         :param Sequence['JobStatistics2ReservationUsageItemResponse'] reservation_usage: Job resource usage breakdown by reservation.
         :param 'TableSchemaResponse' schema: The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        :param 'SearchStatisticsResponse' search_statistics: Search query specific statistics.
         :param str statement_type: The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
         :param Sequence['QueryTimelineSampleResponse'] timeline: [Beta] Describes a timeline of job execution.
         :param str total_bytes_billed: Total bytes billed for the job.
@@ -3937,6 +4013,7 @@ class JobStatistics2Response(dict):
         pulumi.set(__self__, "referenced_tables", referenced_tables)
         pulumi.set(__self__, "reservation_usage", reservation_usage)
         pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "search_statistics", search_statistics)
         pulumi.set(__self__, "statement_type", statement_type)
         pulumi.set(__self__, "timeline", timeline)
         pulumi.set(__self__, "total_bytes_billed", total_bytes_billed)
@@ -4121,6 +4198,14 @@ class JobStatistics2Response(dict):
         The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         """
         return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="searchStatistics")
+    def search_statistics(self) -> 'outputs.SearchStatisticsResponse':
+        """
+        Search query specific statistics.
+        """
+        return pulumi.get(self, "search_statistics")
 
     @property
     @pulumi.getter(name="statementType")
@@ -5834,6 +5919,54 @@ class ScriptStatisticsResponse(dict):
         Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
         """
         return pulumi.get(self, "stack_frames")
+
+
+@pulumi.output_type
+class SearchStatisticsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "indexUnusedReason":
+            suggest = "index_unused_reason"
+        elif key == "indexUsageMode":
+            suggest = "index_usage_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 index_unused_reason: Sequence['outputs.IndexUnusedReasonResponse'],
+                 index_usage_mode: str):
+        """
+        :param Sequence['IndexUnusedReasonResponse'] index_unused_reason: When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
+        :param str index_usage_mode: Specifies index usage mode for the query.
+        """
+        pulumi.set(__self__, "index_unused_reason", index_unused_reason)
+        pulumi.set(__self__, "index_usage_mode", index_usage_mode)
+
+    @property
+    @pulumi.getter(name="indexUnusedReason")
+    def index_unused_reason(self) -> Sequence['outputs.IndexUnusedReasonResponse']:
+        """
+        When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
+        """
+        return pulumi.get(self, "index_unused_reason")
+
+    @property
+    @pulumi.getter(name="indexUsageMode")
+    def index_usage_mode(self) -> str:
+        """
+        Specifies index usage mode for the query.
+        """
+        return pulumi.get(self, "index_usage_mode")
 
 
 @pulumi.output_type

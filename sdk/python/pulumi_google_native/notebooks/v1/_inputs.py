@@ -926,7 +926,8 @@ class RuntimeSoftwareConfigArgs:
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  kernels: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]] = None,
                  notebook_upgrade_schedule: Optional[pulumi.Input[str]] = None,
-                 post_startup_script: Optional[pulumi.Input[str]] = None):
+                 post_startup_script: Optional[pulumi.Input[str]] = None,
+                 post_startup_script_behavior: Optional[pulumi.Input['RuntimeSoftwareConfigPostStartupScriptBehavior']] = None):
         """
         Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -937,6 +938,7 @@ class RuntimeSoftwareConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] kernels: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
+        :param pulumi.Input['RuntimeSoftwareConfigPostStartupScriptBehavior'] post_startup_script_behavior: Behavior for the post startup script.
         """
         if custom_gpu_driver_path is not None:
             pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
@@ -954,6 +956,8 @@ class RuntimeSoftwareConfigArgs:
             pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
         if post_startup_script is not None:
             pulumi.set(__self__, "post_startup_script", post_startup_script)
+        if post_startup_script_behavior is not None:
+            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
 
     @property
     @pulumi.getter(name="customGpuDriverPath")
@@ -1050,6 +1054,18 @@ class RuntimeSoftwareConfigArgs:
     @post_startup_script.setter
     def post_startup_script(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "post_startup_script", value)
+
+    @property
+    @pulumi.getter(name="postStartupScriptBehavior")
+    def post_startup_script_behavior(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigPostStartupScriptBehavior']]:
+        """
+        Behavior for the post startup script.
+        """
+        return pulumi.get(self, "post_startup_script_behavior")
+
+    @post_startup_script_behavior.setter
+    def post_startup_script_behavior(self, value: Optional[pulumi.Input['RuntimeSoftwareConfigPostStartupScriptBehavior']]):
+        pulumi.set(self, "post_startup_script_behavior", value)
 
 
 @pulumi.input_type
@@ -1634,7 +1650,7 @@ class VmImageArgs:
                  image_name: Optional[pulumi.Input[str]] = None):
         """
         Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
         :param pulumi.Input[str] image_family: Use this VM image family to find the image; the newest image in this family will be used.
         :param pulumi.Input[str] image_name: Use VM image name to find the image.
         """
@@ -1648,7 +1664,7 @@ class VmImageArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
         """
         return pulumi.get(self, "project")
 

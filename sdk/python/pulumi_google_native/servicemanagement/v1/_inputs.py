@@ -2517,17 +2517,33 @@ class MetricDescriptorArgs:
 @pulumi.input_type
 class MetricRuleArgs:
     def __init__(__self__, *,
+                 dynamic_metric_costs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metric_costs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  selector: Optional[pulumi.Input[str]] = None):
         """
         Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dynamic_metric_costs: Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metric_costs: Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
         :param pulumi.Input[str] selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
+        if dynamic_metric_costs is not None:
+            pulumi.set(__self__, "dynamic_metric_costs", dynamic_metric_costs)
         if metric_costs is not None:
             pulumi.set(__self__, "metric_costs", metric_costs)
         if selector is not None:
             pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="dynamicMetricCosts")
+    def dynamic_metric_costs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
+        """
+        return pulumi.get(self, "dynamic_metric_costs")
+
+    @dynamic_metric_costs.setter
+    def dynamic_metric_costs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "dynamic_metric_costs", value)
 
     @property
     @pulumi.getter(name="metricCosts")

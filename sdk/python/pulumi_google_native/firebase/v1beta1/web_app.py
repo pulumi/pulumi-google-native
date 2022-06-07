@@ -14,7 +14,6 @@ __all__ = ['WebAppArgs', 'WebApp']
 class WebAppArgs:
     def __init__(__self__, *,
                  api_key_id: Optional[pulumi.Input[str]] = None,
-                 app_id: Optional[pulumi.Input[str]] = None,
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -22,16 +21,12 @@ class WebAppArgs:
         """
         The set of arguments for constructing a WebApp resource.
         :param pulumi.Input[str] api_key_id: The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
-        :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `WebApp`.
         :param pulumi.Input[str] name: The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
-        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         """
         if api_key_id is not None:
             pulumi.set(__self__, "api_key_id", api_key_id)
-        if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
         if app_urls is not None:
             pulumi.set(__self__, "app_urls", app_urls)
         if display_name is not None:
@@ -52,18 +47,6 @@ class WebAppArgs:
     @api_key_id.setter
     def api_key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "api_key_id", value)
-
-    @property
-    @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
-        """
-        return pulumi.get(self, "app_id")
-
-    @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter(name="appUrls")
@@ -104,9 +87,6 @@ class WebAppArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -120,7 +100,6 @@ class WebApp(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key_id: Optional[pulumi.Input[str]] = None,
-                 app_id: Optional[pulumi.Input[str]] = None,
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -134,11 +113,9 @@ class WebApp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key_id: The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
-        :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `WebApp`.
         :param pulumi.Input[str] name: The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
-        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         """
         ...
     @overload
@@ -167,7 +144,6 @@ class WebApp(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key_id: Optional[pulumi.Input[str]] = None,
-                 app_id: Optional[pulumi.Input[str]] = None,
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -185,11 +161,11 @@ class WebApp(pulumi.CustomResource):
             __props__ = WebAppArgs.__new__(WebAppArgs)
 
             __props__.__dict__["api_key_id"] = api_key_id
-            __props__.__dict__["app_id"] = app_id
             __props__.__dict__["app_urls"] = app_urls
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["app_id"] = None
             __props__.__dict__["web_id"] = None
         super(WebApp, __self__).__init__(
             'google-native:firebase/v1beta1:WebApp',

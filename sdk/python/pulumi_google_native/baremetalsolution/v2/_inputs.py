@@ -10,14 +10,72 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs',
     'InstanceConfigArgs',
     'IntakeVlanAttachmentArgs',
+    'LogicalNetworkInterfaceArgs',
     'LunRangeArgs',
     'NetworkAddressArgs',
     'NetworkConfigArgs',
     'NfsExportArgs',
     'VolumeConfigArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs:
+    def __init__(__self__, *,
+                 interface_index: Optional[pulumi.Input[int]] = None,
+                 logical_network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['LogicalNetworkInterfaceArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
+        :param pulumi.Input[int] interface_index: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        :param pulumi.Input[Sequence[pulumi.Input['LogicalNetworkInterfaceArgs']]] logical_network_interfaces: List of logical network interfaces within a logical interface.
+        :param pulumi.Input[str] name: Interface name. This is of syntax or and forms part of the network template name.
+        """
+        if interface_index is not None:
+            pulumi.set(__self__, "interface_index", interface_index)
+        if logical_network_interfaces is not None:
+            pulumi.set(__self__, "logical_network_interfaces", logical_network_interfaces)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="interfaceIndex")
+    def interface_index(self) -> Optional[pulumi.Input[int]]:
+        """
+        The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        """
+        return pulumi.get(self, "interface_index")
+
+    @interface_index.setter
+    def interface_index(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "interface_index", value)
+
+    @property
+    @pulumi.getter(name="logicalNetworkInterfaces")
+    def logical_network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogicalNetworkInterfaceArgs']]]]:
+        """
+        List of logical network interfaces within a logical interface.
+        """
+        return pulumi.get(self, "logical_network_interfaces")
+
+    @logical_network_interfaces.setter
+    def logical_network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LogicalNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "logical_network_interfaces", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Interface name. This is of syntax or and forms part of the network template name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
 
 @pulumi.input_type
 class InstanceConfigArgs:
@@ -27,18 +85,24 @@ class InstanceConfigArgs:
                  hyperthreading: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 logical_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]]] = None,
+                 network_config: Optional[pulumi.Input['InstanceConfigNetworkConfig']] = None,
+                 network_template: Optional[pulumi.Input[str]] = None,
                  os_image: Optional[pulumi.Input[str]] = None,
                  private_network: Optional[pulumi.Input['NetworkAddressArgs']] = None,
                  user_note: Optional[pulumi.Input[str]] = None):
         """
         Configuration parameters for a new instance.
         :param pulumi.Input[bool] account_networks_enabled: If true networks can be from different projects of the same vendor account.
-        :param pulumi.Input['NetworkAddressArgs'] client_network: Client network address.
+        :param pulumi.Input['NetworkAddressArgs'] client_network: Client network address. Filled if InstanceConfig.multivlan_config is false.
         :param pulumi.Input[bool] hyperthreading: Whether the instance should be provisioned with Hyperthreading enabled.
         :param pulumi.Input[str] id: A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         :param pulumi.Input[str] instance_type: Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]] logical_interfaces: List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+        :param pulumi.Input['InstanceConfigNetworkConfig'] network_config: The type of network configuration on the instance.
+        :param pulumi.Input[str] network_template: Server network template name. Filled if InstanceConfig.multivlan_config is true.
         :param pulumi.Input[str] os_image: OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
-        :param pulumi.Input['NetworkAddressArgs'] private_network: Private network address, if any.
+        :param pulumi.Input['NetworkAddressArgs'] private_network: Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
         :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
         if account_networks_enabled is not None:
@@ -51,6 +115,12 @@ class InstanceConfigArgs:
             pulumi.set(__self__, "id", id)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if logical_interfaces is not None:
+            pulumi.set(__self__, "logical_interfaces", logical_interfaces)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
+        if network_template is not None:
+            pulumi.set(__self__, "network_template", network_template)
         if os_image is not None:
             pulumi.set(__self__, "os_image", os_image)
         if private_network is not None:
@@ -74,7 +144,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="clientNetwork")
     def client_network(self) -> Optional[pulumi.Input['NetworkAddressArgs']]:
         """
-        Client network address.
+        Client network address. Filled if InstanceConfig.multivlan_config is false.
         """
         return pulumi.get(self, "client_network")
 
@@ -119,6 +189,42 @@ class InstanceConfigArgs:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="logicalInterfaces")
+    def logical_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]]]:
+        """
+        List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+        """
+        return pulumi.get(self, "logical_interfaces")
+
+    @logical_interfaces.setter
+    def logical_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]]]):
+        pulumi.set(self, "logical_interfaces", value)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['InstanceConfigNetworkConfig']]:
+        """
+        The type of network configuration on the instance.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['InstanceConfigNetworkConfig']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
+    @pulumi.getter(name="networkTemplate")
+    def network_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server network template name. Filled if InstanceConfig.multivlan_config is true.
+        """
+        return pulumi.get(self, "network_template")
+
+    @network_template.setter
+    def network_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_template", value)
+
+    @property
     @pulumi.getter(name="osImage")
     def os_image(self) -> Optional[pulumi.Input[str]]:
         """
@@ -134,7 +240,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="privateNetwork")
     def private_network(self) -> Optional[pulumi.Input['NetworkAddressArgs']]:
         """
-        Private network address, if any.
+        Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
         """
         return pulumi.get(self, "private_network")
 
@@ -193,6 +299,94 @@ class IntakeVlanAttachmentArgs:
     @pairing_key.setter
     def pairing_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pairing_key", value)
+
+
+@pulumi.input_type
+class LogicalNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 default_gateway: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input['LogicalNetworkInterfaceNetworkType']] = None):
+        """
+        Each logical network interface is effectively a network and IP pair.
+        :param pulumi.Input[bool] default_gateway: Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
+        :param pulumi.Input[str] id: An identifier for the `Network`, generated by the backend.
+        :param pulumi.Input[str] ip_address: IP address in the network
+        :param pulumi.Input[str] network: Name of the network
+        :param pulumi.Input['LogicalNetworkInterfaceNetworkType'] network_type: Type of network.
+        """
+        if default_gateway is not None:
+            pulumi.set(__self__, "default_gateway", default_gateway)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+
+    @property
+    @pulumi.getter(name="defaultGateway")
+    def default_gateway(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
+        """
+        return pulumi.get(self, "default_gateway")
+
+    @default_gateway.setter
+    def default_gateway(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_gateway", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An identifier for the `Network`, generated by the backend.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address in the network
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the network
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input['LogicalNetworkInterfaceNetworkType']]:
+        """
+        Type of network.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input['LogicalNetworkInterfaceNetworkType']]):
+        pulumi.set(self, "network_type", value)
 
 
 @pulumi.input_type
@@ -311,7 +505,7 @@ class NetworkConfigArgs:
         :param pulumi.Input[str] id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         :param pulumi.Input['NetworkConfigServiceCidr'] service_cidr: Service CIDR, if any.
         :param pulumi.Input['NetworkConfigType'] type: The type of this network, either Client or Private.
-        :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+        :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
         :param pulumi.Input[Sequence[pulumi.Input['IntakeVlanAttachmentArgs']]] vlan_attachments: List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
         :param pulumi.Input[bool] vlan_same_project: Whether the VLAN attachment pair is located in the same project.
         """
@@ -410,7 +604,7 @@ class NetworkConfigArgs:
     @pulumi.getter(name="userNote")
     def user_note(self) -> Optional[pulumi.Input[str]]:
         """
-        User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+        User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
         return pulumi.get(self, "user_note")
 
@@ -587,7 +781,7 @@ class VolumeConfigArgs:
         :param pulumi.Input[int] size_gb: The requested size of this volume, in GB.
         :param pulumi.Input[bool] snapshots_enabled: Whether snapshots should be enabled.
         :param pulumi.Input['VolumeConfigType'] type: The type of this Volume.
-        :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+        :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
         if gcp_service is not None:
             pulumi.set(__self__, "gcp_service", gcp_service)
@@ -722,7 +916,7 @@ class VolumeConfigArgs:
     @pulumi.getter(name="userNote")
     def user_note(self) -> Optional[pulumi.Input[str]]:
         """
-        User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+        User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
         return pulumi.get(self, "user_note")
 

@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'InstanceConnectMode',
     'InstanceReadReplicasMode',
+    'InstanceSuspensionReasonsItem',
     'InstanceTier',
     'InstanceTransitEncryptionMode',
     'PersistenceConfigPersistenceMode',
@@ -48,6 +49,17 @@ class InstanceReadReplicasMode(str, Enum):
     READ_REPLICAS_ENABLED = "READ_REPLICAS_ENABLED"
     """
     If enabled, read endpoint will be provided and the instance can scale up and down the number of replicas. Not valid for basic tier.
+    """
+
+
+class InstanceSuspensionReasonsItem(str, Enum):
+    SUSPENSION_REASON_UNSPECIFIED = "SUSPENSION_REASON_UNSPECIFIED"
+    """
+    Not set.
+    """
+    CUSTOMER_MANAGED_KEY_ISSUE = "CUSTOMER_MANAGED_KEY_ISSUE"
+    """
+    Something wrong with the CMEK key provided by customer.
     """
 
 

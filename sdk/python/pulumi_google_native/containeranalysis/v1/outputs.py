@@ -47,6 +47,12 @@ __all__ = [
     'GerritSourceContextResponse',
     'GitSourceContextResponse',
     'GrafeasV1FileLocationResponse',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse',
     'HintResponse',
     'IdentityResponse',
     'ImageNoteResponse',
@@ -73,6 +79,7 @@ __all__ = [
     'SlsaCompletenessResponse',
     'SlsaMetadataResponse',
     'SlsaProvenanceResponse',
+    'SlsaProvenanceZeroTwoResponse',
     'SlsaRecipeResponse',
     'SourceContextResponse',
     'SourceResponse',
@@ -2418,6 +2425,240 @@ class GrafeasV1FileLocationResponse(dict):
 
 
 @pulumi.output_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse(dict):
+    """
+    Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+    """
+    def __init__(__self__):
+        """
+        Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+        """
+        pass
+
+
+@pulumi.output_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse(dict):
+    """
+    Indicates that the builder claims certain fields in this message to be complete.
+    """
+    def __init__(__self__, *,
+                 environment: bool,
+                 materials: bool,
+                 parameters: bool):
+        """
+        Indicates that the builder claims certain fields in this message to be complete.
+        """
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "materials", materials)
+        pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> bool:
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def materials(self) -> bool:
+        return pulumi.get(self, "materials")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> bool:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse(dict):
+    """
+    Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryPoint":
+            suggest = "entry_point"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 entry_point: str,
+                 uri: str):
+        """
+        Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "entry_point", entry_point)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter(name="entryPoint")
+    def entry_point(self) -> str:
+        return pulumi.get(self, "entry_point")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse(dict):
+    """
+    Identifies the event that kicked off the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configSource":
+            suggest = "config_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_source: 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse',
+                 environment: Mapping[str, str],
+                 parameters: Mapping[str, str]):
+        """
+        Identifies the event that kicked off the build.
+        """
+        pulumi.set(__self__, "config_source", config_source)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="configSource")
+    def config_source(self) -> 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse':
+        return pulumi.get(self, "config_source")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Mapping[str, str]:
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Mapping[str, str]:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse(dict):
+    """
+    The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+    """
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 uri: str):
+        """
+        The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse(dict):
+    """
+    Other properties of the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildFinishedOn":
+            suggest = "build_finished_on"
+        elif key == "buildInvocationId":
+            suggest = "build_invocation_id"
+        elif key == "buildStartedOn":
+            suggest = "build_started_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_finished_on: str,
+                 build_invocation_id: str,
+                 build_started_on: str,
+                 completeness: 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse',
+                 reproducible: bool):
+        """
+        Other properties of the build.
+        """
+        pulumi.set(__self__, "build_finished_on", build_finished_on)
+        pulumi.set(__self__, "build_invocation_id", build_invocation_id)
+        pulumi.set(__self__, "build_started_on", build_started_on)
+        pulumi.set(__self__, "completeness", completeness)
+        pulumi.set(__self__, "reproducible", reproducible)
+
+    @property
+    @pulumi.getter(name="buildFinishedOn")
+    def build_finished_on(self) -> str:
+        return pulumi.get(self, "build_finished_on")
+
+    @property
+    @pulumi.getter(name="buildInvocationId")
+    def build_invocation_id(self) -> str:
+        return pulumi.get(self, "build_invocation_id")
+
+    @property
+    @pulumi.getter(name="buildStartedOn")
+    def build_started_on(self) -> str:
+        return pulumi.get(self, "build_started_on")
+
+    @property
+    @pulumi.getter
+    def completeness(self) -> 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse':
+        return pulumi.get(self, "completeness")
+
+    @property
+    @pulumi.getter
+    def reproducible(self) -> bool:
+        return pulumi.get(self, "reproducible")
+
+
+@pulumi.output_type
 class HintResponse(dict):
     """
     This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
@@ -2706,6 +2947,8 @@ class InTotoStatementResponse(dict):
             suggest = "predicate_type"
         elif key == "slsaProvenance":
             suggest = "slsa_provenance"
+        elif key == "slsaProvenanceZeroTwo":
+            suggest = "slsa_provenance_zero_two"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InTotoStatementResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2722,6 +2965,7 @@ class InTotoStatementResponse(dict):
                  predicate_type: str,
                  provenance: 'outputs.InTotoProvenanceResponse',
                  slsa_provenance: 'outputs.SlsaProvenanceResponse',
+                 slsa_provenance_zero_two: 'outputs.SlsaProvenanceZeroTwoResponse',
                  subject: Sequence['outputs.SubjectResponse'],
                  type: str):
         """
@@ -2732,6 +2976,7 @@ class InTotoStatementResponse(dict):
         pulumi.set(__self__, "predicate_type", predicate_type)
         pulumi.set(__self__, "provenance", provenance)
         pulumi.set(__self__, "slsa_provenance", slsa_provenance)
+        pulumi.set(__self__, "slsa_provenance_zero_two", slsa_provenance_zero_two)
         pulumi.set(__self__, "subject", subject)
         pulumi.set(__self__, "type", type)
 
@@ -2752,6 +2997,11 @@ class InTotoStatementResponse(dict):
     @pulumi.getter(name="slsaProvenance")
     def slsa_provenance(self) -> 'outputs.SlsaProvenanceResponse':
         return pulumi.get(self, "slsa_provenance")
+
+    @property
+    @pulumi.getter(name="slsaProvenanceZeroTwo")
+    def slsa_provenance_zero_two(self) -> 'outputs.SlsaProvenanceZeroTwoResponse':
+        return pulumi.get(self, "slsa_provenance_zero_two")
 
     @property
     @pulumi.getter
@@ -3989,6 +4239,78 @@ class SlsaProvenanceResponse(dict):
         Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
         """
         return pulumi.get(self, "recipe")
+
+
+@pulumi.output_type
+class SlsaProvenanceZeroTwoResponse(dict):
+    """
+    See full explanation of fields at slsa.dev/provenance/v0.2.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildConfig":
+            suggest = "build_config"
+        elif key == "buildType":
+            suggest = "build_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsaProvenanceZeroTwoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsaProvenanceZeroTwoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsaProvenanceZeroTwoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_config: Mapping[str, str],
+                 build_type: str,
+                 builder: 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse',
+                 invocation: 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse',
+                 materials: Sequence['outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse'],
+                 metadata: 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse'):
+        """
+        See full explanation of fields at slsa.dev/provenance/v0.2.
+        """
+        pulumi.set(__self__, "build_config", build_config)
+        pulumi.set(__self__, "build_type", build_type)
+        pulumi.set(__self__, "builder", builder)
+        pulumi.set(__self__, "invocation", invocation)
+        pulumi.set(__self__, "materials", materials)
+        pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter(name="buildConfig")
+    def build_config(self) -> Mapping[str, str]:
+        return pulumi.get(self, "build_config")
+
+    @property
+    @pulumi.getter(name="buildType")
+    def build_type(self) -> str:
+        return pulumi.get(self, "build_type")
+
+    @property
+    @pulumi.getter
+    def builder(self) -> 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse':
+        return pulumi.get(self, "builder")
+
+    @property
+    @pulumi.getter
+    def invocation(self) -> 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse':
+        return pulumi.get(self, "invocation")
+
+    @property
+    @pulumi.getter
+    def materials(self) -> Sequence['outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse']:
+        return pulumi.get(self, "materials")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse':
+        return pulumi.get(self, "metadata")
 
 
 @pulumi.output_type

@@ -56,6 +56,12 @@ __all__ = [
     'GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse',
     'GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse',
     'GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse',
+    'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse',
+    'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse',
+    'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse',
+    'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse',
+    'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse',
+    'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse',
     'GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse',
     'HashResponse',
     'InTotoProvenanceResponse',
@@ -83,6 +89,7 @@ __all__ = [
     'SlsaCompletenessResponse',
     'SlsaMetadataResponse',
     'SlsaProvenanceResponse',
+    'SlsaProvenanceZeroTwoResponse',
     'SlsaRecipeResponse',
     'SourceResponse',
     'StatusResponse',
@@ -3019,6 +3026,304 @@ class GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse(dict):
 
 
 @pulumi.output_type
+class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse(dict):
+    """
+    Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+    """
+    def __init__(__self__):
+        """
+        Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse(dict):
+    """
+    Indicates that the builder claims certain fields in this message to be complete.
+    """
+    def __init__(__self__, *,
+                 environment: bool,
+                 materials: bool,
+                 parameters: bool):
+        """
+        Indicates that the builder claims certain fields in this message to be complete.
+        :param bool environment: If true, the builder claims that invocation.environment is complete.
+        :param bool materials: If true, the builder claims that materials is complete.
+        :param bool parameters: If true, the builder claims that invocation.parameters is complete.
+        """
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "materials", materials)
+        pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> bool:
+        """
+        If true, the builder claims that invocation.environment is complete.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def materials(self) -> bool:
+        """
+        If true, the builder claims that materials is complete.
+        """
+        return pulumi.get(self, "materials")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> bool:
+        """
+        If true, the builder claims that invocation.parameters is complete.
+        """
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse(dict):
+    """
+    Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryPoint":
+            suggest = "entry_point"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 entry_point: str,
+                 uri: str):
+        """
+        Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+        :param Mapping[str, str] digest: Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+        :param str entry_point: String identifying the entry point into the build.
+        :param str uri: URI indicating the identity of the source of the config.
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "entry_point", entry_point)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        """
+        Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter(name="entryPoint")
+    def entry_point(self) -> str:
+        """
+        String identifying the entry point into the build.
+        """
+        return pulumi.get(self, "entry_point")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI indicating the identity of the source of the config.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse(dict):
+    """
+    Identifies the event that kicked off the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configSource":
+            suggest = "config_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_source: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse',
+                 environment: Mapping[str, str],
+                 parameters: Mapping[str, str]):
+        """
+        Identifies the event that kicked off the build.
+        :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse' config_source: Describes where the config file that kicked off the build came from.
+        :param Mapping[str, str] environment: Any other builder-controlled inputs necessary for correctly evaluating the build.
+        :param Mapping[str, str] parameters: Collection of all external inputs that influenced the build on top of invocation.configSource.
+        """
+        pulumi.set(__self__, "config_source", config_source)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="configSource")
+    def config_source(self) -> 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse':
+        """
+        Describes where the config file that kicked off the build came from.
+        """
+        return pulumi.get(self, "config_source")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Mapping[str, str]:
+        """
+        Any other builder-controlled inputs necessary for correctly evaluating the build.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Mapping[str, str]:
+        """
+        Collection of all external inputs that influenced the build on top of invocation.configSource.
+        """
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse(dict):
+    """
+    The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+    """
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 uri: str):
+        """
+        The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+        :param Mapping[str, str] digest: Collection of cryptographic digests for the contents of this artifact.
+        :param str uri: The method by which this artifact was referenced during the build.
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        """
+        Collection of cryptographic digests for the contents of this artifact.
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The method by which this artifact was referenced during the build.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse(dict):
+    """
+    Other properties of the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildFinishedOn":
+            suggest = "build_finished_on"
+        elif key == "buildInvocationId":
+            suggest = "build_invocation_id"
+        elif key == "buildStartedOn":
+            suggest = "build_started_on"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_finished_on: str,
+                 build_invocation_id: str,
+                 build_started_on: str,
+                 completeness: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse',
+                 reproducible: bool):
+        """
+        Other properties of the build.
+        :param str build_finished_on: The timestamp of when the build completed.
+        :param str build_invocation_id: Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+        :param str build_started_on: The timestamp of when the build started.
+        :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse' completeness: Indicates that the builder claims certain fields in this message to be complete.
+        :param bool reproducible: If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+        """
+        pulumi.set(__self__, "build_finished_on", build_finished_on)
+        pulumi.set(__self__, "build_invocation_id", build_invocation_id)
+        pulumi.set(__self__, "build_started_on", build_started_on)
+        pulumi.set(__self__, "completeness", completeness)
+        pulumi.set(__self__, "reproducible", reproducible)
+
+    @property
+    @pulumi.getter(name="buildFinishedOn")
+    def build_finished_on(self) -> str:
+        """
+        The timestamp of when the build completed.
+        """
+        return pulumi.get(self, "build_finished_on")
+
+    @property
+    @pulumi.getter(name="buildInvocationId")
+    def build_invocation_id(self) -> str:
+        """
+        Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+        """
+        return pulumi.get(self, "build_invocation_id")
+
+    @property
+    @pulumi.getter(name="buildStartedOn")
+    def build_started_on(self) -> str:
+        """
+        The timestamp of when the build started.
+        """
+        return pulumi.get(self, "build_started_on")
+
+    @property
+    @pulumi.getter
+    def completeness(self) -> 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse':
+        """
+        Indicates that the builder claims certain fields in this message to be complete.
+        """
+        return pulumi.get(self, "completeness")
+
+    @property
+    @pulumi.getter
+    def reproducible(self) -> bool:
+        """
+        If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+        """
+        return pulumi.get(self, "reproducible")
+
+
+@pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse(dict):
     """
     A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
@@ -3199,6 +3504,8 @@ class InTotoStatementResponse(dict):
             suggest = "predicate_type"
         elif key == "slsaProvenance":
             suggest = "slsa_provenance"
+        elif key == "slsaProvenanceZeroTwo":
+            suggest = "slsa_provenance_zero_two"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InTotoStatementResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3215,19 +3522,22 @@ class InTotoStatementResponse(dict):
                  predicate_type: str,
                  provenance: 'outputs.InTotoProvenanceResponse',
                  slsa_provenance: 'outputs.SlsaProvenanceResponse',
+                 slsa_provenance_zero_two: 'outputs.SlsaProvenanceZeroTwoResponse',
                  subject: Sequence['outputs.SubjectResponse'],
                  type: str):
         """
         Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
         :param str predicate_type: "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
-        :param 'InTotoProvenanceResponse' provenance: provenance is a predicate of type intotoprovenance
-        :param 'SlsaProvenanceResponse' slsa_provenance: slsa_provenance is a predicate of type slsaProvenance
+        :param 'InTotoProvenanceResponse' provenance: Generic Grafeas provenance.
+        :param 'SlsaProvenanceResponse' slsa_provenance: SLSA 0.1 provenance.
+        :param 'SlsaProvenanceZeroTwoResponse' slsa_provenance_zero_two: SLSA 0.2 provenance.
         :param Sequence['SubjectResponse'] subject: subject is the subjects of the intoto statement
         :param str type: Always "https://in-toto.io/Statement/v0.1".
         """
         pulumi.set(__self__, "predicate_type", predicate_type)
         pulumi.set(__self__, "provenance", provenance)
         pulumi.set(__self__, "slsa_provenance", slsa_provenance)
+        pulumi.set(__self__, "slsa_provenance_zero_two", slsa_provenance_zero_two)
         pulumi.set(__self__, "subject", subject)
         pulumi.set(__self__, "type", type)
 
@@ -3243,7 +3553,7 @@ class InTotoStatementResponse(dict):
     @pulumi.getter
     def provenance(self) -> 'outputs.InTotoProvenanceResponse':
         """
-        provenance is a predicate of type intotoprovenance
+        Generic Grafeas provenance.
         """
         return pulumi.get(self, "provenance")
 
@@ -3251,9 +3561,17 @@ class InTotoStatementResponse(dict):
     @pulumi.getter(name="slsaProvenance")
     def slsa_provenance(self) -> 'outputs.SlsaProvenanceResponse':
         """
-        slsa_provenance is a predicate of type slsaProvenance
+        SLSA 0.1 provenance.
         """
         return pulumi.get(self, "slsa_provenance")
+
+    @property
+    @pulumi.getter(name="slsaProvenanceZeroTwo")
+    def slsa_provenance_zero_two(self) -> 'outputs.SlsaProvenanceZeroTwoResponse':
+        """
+        SLSA 0.2 provenance.
+        """
+        return pulumi.get(self, "slsa_provenance_zero_two")
 
     @property
     @pulumi.getter
@@ -4961,6 +5279,102 @@ class SlsaProvenanceResponse(dict):
         Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
         """
         return pulumi.get(self, "recipe")
+
+
+@pulumi.output_type
+class SlsaProvenanceZeroTwoResponse(dict):
+    """
+    SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildConfig":
+            suggest = "build_config"
+        elif key == "buildType":
+            suggest = "build_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsaProvenanceZeroTwoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsaProvenanceZeroTwoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsaProvenanceZeroTwoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_config: Mapping[str, str],
+                 build_type: str,
+                 builder: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse',
+                 invocation: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse',
+                 materials: Sequence['outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse'],
+                 metadata: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse'):
+        """
+        SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
+        :param Mapping[str, str] build_config: Lists the steps in the build.
+        :param str build_type: URI indicating what type of build was performed.
+        :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse' builder: Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+        :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse' invocation: Identifies the event that kicked off the build.
+        :param Sequence['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse'] materials: The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+        :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse' metadata: Other properties of the build.
+        """
+        pulumi.set(__self__, "build_config", build_config)
+        pulumi.set(__self__, "build_type", build_type)
+        pulumi.set(__self__, "builder", builder)
+        pulumi.set(__self__, "invocation", invocation)
+        pulumi.set(__self__, "materials", materials)
+        pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter(name="buildConfig")
+    def build_config(self) -> Mapping[str, str]:
+        """
+        Lists the steps in the build.
+        """
+        return pulumi.get(self, "build_config")
+
+    @property
+    @pulumi.getter(name="buildType")
+    def build_type(self) -> str:
+        """
+        URI indicating what type of build was performed.
+        """
+        return pulumi.get(self, "build_type")
+
+    @property
+    @pulumi.getter
+    def builder(self) -> 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse':
+        """
+        Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+        """
+        return pulumi.get(self, "builder")
+
+    @property
+    @pulumi.getter
+    def invocation(self) -> 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse':
+        """
+        Identifies the event that kicked off the build.
+        """
+        return pulumi.get(self, "invocation")
+
+    @property
+    @pulumi.getter
+    def materials(self) -> Sequence['outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse']:
+        """
+        The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+        """
+        return pulumi.get(self, "materials")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse':
+        """
+        Other properties of the build.
+        """
+        return pulumi.get(self, "metadata")
 
 
 @pulumi.output_type

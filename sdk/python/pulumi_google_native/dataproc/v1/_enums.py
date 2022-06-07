@@ -5,7 +5,6 @@
 from enum import Enum
 
 __all__ = [
-    'AuthenticationConfigAuthenticationType',
     'GceClusterConfigPrivateIpv6GoogleAccess',
     'GkeNodePoolTargetRolesItem',
     'InstanceGroupConfigPreemptibility',
@@ -13,24 +12,6 @@ __all__ = [
     'ReservationAffinityConsumeReservationType',
     'SoftwareConfigOptionalComponentsItem',
 ]
-
-
-class AuthenticationConfigAuthenticationType(str, Enum):
-    """
-    Authentication type for session execution.
-    """
-    AUTHENTICATION_TYPE_UNSPECIFIED = "AUTHENTICATION_TYPE_UNSPECIFIED"
-    """
-    If AuthenticationType is unspecified, SERVICE_ACCOUNT is used
-    """
-    SERVICE_ACCOUNT = "SERVICE_ACCOUNT"
-    """
-    Defaults to using service account credentials
-    """
-    INJECTABLE_CREDENTIALS = "INJECTABLE_CREDENTIALS"
-    """
-    Injectable credentials authentication type
-    """
 
 
 class GceClusterConfigPrivateIpv6GoogleAccess(str, Enum):

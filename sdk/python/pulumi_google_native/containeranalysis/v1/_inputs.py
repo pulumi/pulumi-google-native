@@ -46,6 +46,12 @@ __all__ = [
     'GerritSourceContextArgs',
     'GitSourceContextArgs',
     'GrafeasV1FileLocationArgs',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs',
+    'GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs',
     'HintArgs',
     'IdentityArgs',
     'ImageNoteArgs',
@@ -71,6 +77,7 @@ __all__ = [
     'SlsaBuilderArgs',
     'SlsaCompletenessArgs',
     'SlsaMetadataArgs',
+    'SlsaProvenanceZeroTwoArgs',
     'SlsaProvenanceArgs',
     'SlsaRecipeArgs',
     'SourceContextArgs',
@@ -2458,6 +2465,258 @@ class GrafeasV1FileLocationArgs:
 
 
 @pulumi.input_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs:
+    def __init__(__self__, *,
+                 environment: Optional[pulumi.Input[bool]] = None,
+                 materials: Optional[pulumi.Input[bool]] = None,
+                 parameters: Optional[pulumi.Input[bool]] = None):
+        """
+        Indicates that the builder claims certain fields in this message to be complete.
+        """
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if materials is not None:
+            pulumi.set(__self__, "materials", materials)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def materials(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "materials")
+
+    @materials.setter
+    def materials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "materials", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs:
+    def __init__(__self__, *,
+                 digest: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 entry_point: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+        """
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if entry_point is not None:
+            pulumi.set(__self__, "entry_point", entry_point)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter(name="entryPoint")
+    def entry_point(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "entry_point")
+
+    @entry_point.setter
+    def entry_point(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entry_point", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs:
+    def __init__(__self__, *,
+                 config_source: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs']] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Identifies the event that kicked off the build.
+        """
+        if config_source is not None:
+            pulumi.set(__self__, "config_source", config_source)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="configSource")
+    def config_source(self) -> Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs']]:
+        return pulumi.get(self, "config_source")
+
+    @config_source.setter
+    def config_source(self, value: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs']]):
+        pulumi.set(self, "config_source", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs:
+    def __init__(__self__, *,
+                 digest: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+        """
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs:
+    def __init__(__self__, *,
+                 build_finished_on: Optional[pulumi.Input[str]] = None,
+                 build_invocation_id: Optional[pulumi.Input[str]] = None,
+                 build_started_on: Optional[pulumi.Input[str]] = None,
+                 completeness: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs']] = None,
+                 reproducible: Optional[pulumi.Input[bool]] = None):
+        """
+        Other properties of the build.
+        """
+        if build_finished_on is not None:
+            pulumi.set(__self__, "build_finished_on", build_finished_on)
+        if build_invocation_id is not None:
+            pulumi.set(__self__, "build_invocation_id", build_invocation_id)
+        if build_started_on is not None:
+            pulumi.set(__self__, "build_started_on", build_started_on)
+        if completeness is not None:
+            pulumi.set(__self__, "completeness", completeness)
+        if reproducible is not None:
+            pulumi.set(__self__, "reproducible", reproducible)
+
+    @property
+    @pulumi.getter(name="buildFinishedOn")
+    def build_finished_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "build_finished_on")
+
+    @build_finished_on.setter
+    def build_finished_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_finished_on", value)
+
+    @property
+    @pulumi.getter(name="buildInvocationId")
+    def build_invocation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "build_invocation_id")
+
+    @build_invocation_id.setter
+    def build_invocation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_invocation_id", value)
+
+    @property
+    @pulumi.getter(name="buildStartedOn")
+    def build_started_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "build_started_on")
+
+    @build_started_on.setter
+    def build_started_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_started_on", value)
+
+    @property
+    @pulumi.getter
+    def completeness(self) -> Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs']]:
+        return pulumi.get(self, "completeness")
+
+    @completeness.setter
+    def completeness(self, value: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs']]):
+        pulumi.set(self, "completeness", value)
+
+    @property
+    @pulumi.getter
+    def reproducible(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "reproducible")
+
+    @reproducible.setter
+    def reproducible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reproducible", value)
+
+
+@pulumi.input_type
 class HintArgs:
     def __init__(__self__, *,
                  human_readable_name: pulumi.Input[str]):
@@ -2670,6 +2929,7 @@ class InTotoStatementArgs:
                  predicate_type: Optional[pulumi.Input[str]] = None,
                  provenance: Optional[pulumi.Input['InTotoProvenanceArgs']] = None,
                  slsa_provenance: Optional[pulumi.Input['SlsaProvenanceArgs']] = None,
+                 slsa_provenance_zero_two: Optional[pulumi.Input['SlsaProvenanceZeroTwoArgs']] = None,
                  subject: Optional[pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -2683,6 +2943,8 @@ class InTotoStatementArgs:
             pulumi.set(__self__, "provenance", provenance)
         if slsa_provenance is not None:
             pulumi.set(__self__, "slsa_provenance", slsa_provenance)
+        if slsa_provenance_zero_two is not None:
+            pulumi.set(__self__, "slsa_provenance_zero_two", slsa_provenance_zero_two)
         if subject is not None:
             pulumi.set(__self__, "subject", subject)
         if type is not None:
@@ -2717,6 +2979,15 @@ class InTotoStatementArgs:
     @slsa_provenance.setter
     def slsa_provenance(self, value: Optional[pulumi.Input['SlsaProvenanceArgs']]):
         pulumi.set(self, "slsa_provenance", value)
+
+    @property
+    @pulumi.getter(name="slsaProvenanceZeroTwo")
+    def slsa_provenance_zero_two(self) -> Optional[pulumi.Input['SlsaProvenanceZeroTwoArgs']]:
+        return pulumi.get(self, "slsa_provenance_zero_two")
+
+    @slsa_provenance_zero_two.setter
+    def slsa_provenance_zero_two(self, value: Optional[pulumi.Input['SlsaProvenanceZeroTwoArgs']]):
+        pulumi.set(self, "slsa_provenance_zero_two", value)
 
     @property
     @pulumi.getter
@@ -3881,6 +4152,86 @@ class SlsaMetadataArgs:
     @reproducible.setter
     def reproducible(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reproducible", value)
+
+
+@pulumi.input_type
+class SlsaProvenanceZeroTwoArgs:
+    def __init__(__self__, *,
+                 build_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_type: Optional[pulumi.Input[str]] = None,
+                 builder: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs']] = None,
+                 invocation: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs']] = None,
+                 materials: Optional[pulumi.Input[Sequence[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs']]]] = None,
+                 metadata: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs']] = None):
+        """
+        See full explanation of fields at slsa.dev/provenance/v0.2.
+        """
+        if build_config is not None:
+            pulumi.set(__self__, "build_config", build_config)
+        if build_type is not None:
+            pulumi.set(__self__, "build_type", build_type)
+        if builder is not None:
+            pulumi.set(__self__, "builder", builder)
+        if invocation is not None:
+            pulumi.set(__self__, "invocation", invocation)
+        if materials is not None:
+            pulumi.set(__self__, "materials", materials)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter(name="buildConfig")
+    def build_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "build_config")
+
+    @build_config.setter
+    def build_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "build_config", value)
+
+    @property
+    @pulumi.getter(name="buildType")
+    def build_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "build_type")
+
+    @build_type.setter
+    def build_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_type", value)
+
+    @property
+    @pulumi.getter
+    def builder(self) -> Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs']]:
+        return pulumi.get(self, "builder")
+
+    @builder.setter
+    def builder(self, value: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs']]):
+        pulumi.set(self, "builder", value)
+
+    @property
+    @pulumi.getter
+    def invocation(self) -> Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs']]:
+        return pulumi.get(self, "invocation")
+
+    @invocation.setter
+    def invocation(self, value: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs']]):
+        pulumi.set(self, "invocation", value)
+
+    @property
+    @pulumi.getter
+    def materials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs']]]]:
+        return pulumi.get(self, "materials")
+
+    @materials.setter
+    def materials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs']]]]):
+        pulumi.set(self, "materials", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs']]:
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
 
 
 @pulumi.input_type

@@ -16,6 +16,7 @@ __all__ = [
     'ReservationAffinityConsumeReservationType',
     'RuntimeAcceleratorConfigType',
     'RuntimeAccessConfigAccessType',
+    'RuntimeSoftwareConfigPostStartupScriptBehavior',
     'ScheduleState',
     'SchedulerAcceleratorConfigType',
     'UpgradeHistoryEntryAction',
@@ -335,6 +336,24 @@ class RuntimeAccessConfigAccessType(str, Enum):
     SERVICE_ACCOUNT = "SERVICE_ACCOUNT"
     """
     Service Account mode. In Service Account mode, Runtime creator will specify a SA that exists in the consumer project. Using Runtime Service Account field. Users accessing the Runtime need ActAs (Service Account User) permission.
+    """
+
+
+class RuntimeSoftwareConfigPostStartupScriptBehavior(str, Enum):
+    """
+    Behavior for the post startup script.
+    """
+    POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED = "POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED"
+    """
+    Unspecified post startup script behavior. Will run only once at creation.
+    """
+    RUN_EVERY_START = "RUN_EVERY_START"
+    """
+    Runs the post startup script provided during creation at every start.
+    """
+    DOWNLOAD_AND_RUN_EVERY_START = "DOWNLOAD_AND_RUN_EVERY_START"
+    """
+    Downloads and runs the provided post startup script at every start.
     """
 
 

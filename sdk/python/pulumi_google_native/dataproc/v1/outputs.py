@@ -12,7 +12,6 @@ from ._enums import *
 
 __all__ = [
     'AcceleratorConfigResponse',
-    'AuthenticationConfigResponse',
     'AutoscalingConfigResponse',
     'AuxiliaryServicesConfigResponse',
     'BasicAutoscalingAlgorithmResponse',
@@ -40,7 +39,6 @@ __all__ = [
     'HadoopJobResponse',
     'HiveJobResponse',
     'IdentityConfigResponse',
-    'InjectableCredentialsConfigResponse',
     'InstanceGroupAutoscalingPolicyConfigResponse',
     'InstanceGroupConfigResponse',
     'InstanceReferenceResponse',
@@ -141,58 +139,6 @@ class AcceleratorConfigResponse(dict):
         Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).Examples: https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80.
         """
         return pulumi.get(self, "accelerator_type_uri")
-
-
-@pulumi.output_type
-class AuthenticationConfigResponse(dict):
-    """
-    Configuration for using injectable credentials or service account
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "authenticationType":
-            suggest = "authentication_type"
-        elif key == "injectableCredentialsConfig":
-            suggest = "injectable_credentials_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AuthenticationConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AuthenticationConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AuthenticationConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 authentication_type: str,
-                 injectable_credentials_config: 'outputs.InjectableCredentialsConfigResponse'):
-        """
-        Configuration for using injectable credentials or service account
-        :param str authentication_type: Authentication type for session execution.
-        :param 'InjectableCredentialsConfigResponse' injectable_credentials_config: Configuration for using end user authentication
-        """
-        pulumi.set(__self__, "authentication_type", authentication_type)
-        pulumi.set(__self__, "injectable_credentials_config", injectable_credentials_config)
-
-    @property
-    @pulumi.getter(name="authenticationType")
-    def authentication_type(self) -> str:
-        """
-        Authentication type for session execution.
-        """
-        return pulumi.get(self, "authentication_type")
-
-    @property
-    @pulumi.getter(name="injectableCredentialsConfig")
-    def injectable_credentials_config(self) -> 'outputs.InjectableCredentialsConfigResponse':
-        """
-        Configuration for using end user authentication
-        """
-        return pulumi.get(self, "injectable_credentials_config")
 
 
 @pulumi.output_type
@@ -2165,18 +2111,6 @@ class IdentityConfigResponse(dict):
         Map of user to service account.
         """
         return pulumi.get(self, "user_service_account_mapping")
-
-
-@pulumi.output_type
-class InjectableCredentialsConfigResponse(dict):
-    """
-    Specific injectable credentials authentication parameters
-    """
-    def __init__(__self__):
-        """
-        Specific injectable credentials authentication parameters
-        """
-        pass
 
 
 @pulumi.output_type
@@ -4358,8 +4292,6 @@ class RuntimeConfigResponse(dict):
         suggest = None
         if key == "containerImage":
             suggest = "container_image"
-        elif key == "sessionAuthenticationConfig":
-            suggest = "session_authentication_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuntimeConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4375,18 +4307,15 @@ class RuntimeConfigResponse(dict):
     def __init__(__self__, *,
                  container_image: str,
                  properties: Mapping[str, str],
-                 session_authentication_config: 'outputs.AuthenticationConfigResponse',
                  version: str):
         """
         Runtime configuration for a workload.
         :param str container_image: Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         :param Mapping[str, str] properties: Optional. A mapping of property names to values, which are used to configure workload execution.
-        :param 'AuthenticationConfigResponse' session_authentication_config: Optional. Authentication configuration for the session execution.
         :param str version: Optional. Version of the batch runtime.
         """
         pulumi.set(__self__, "container_image", container_image)
         pulumi.set(__self__, "properties", properties)
-        pulumi.set(__self__, "session_authentication_config", session_authentication_config)
         pulumi.set(__self__, "version", version)
 
     @property
@@ -4404,14 +4333,6 @@ class RuntimeConfigResponse(dict):
         Optional. A mapping of property names to values, which are used to configure workload execution.
         """
         return pulumi.get(self, "properties")
-
-    @property
-    @pulumi.getter(name="sessionAuthenticationConfig")
-    def session_authentication_config(self) -> 'outputs.AuthenticationConfigResponse':
-        """
-        Optional. Authentication configuration for the session execution.
-        """
-        return pulumi.get(self, "session_authentication_config")
 
     @property
     @pulumi.getter

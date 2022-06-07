@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, capacity_gb=None, create_time=None, description=None, download_bytes=None, labels=None, name=None, satisfies_pzs=None, source_file_share=None, source_instance=None, source_instance_tier=None, state=None, storage_bytes=None):
+    def __init__(__self__, capacity_gb=None, create_time=None, description=None, download_bytes=None, kms_key_name=None, labels=None, name=None, satisfies_pzs=None, source_file_share=None, source_instance=None, source_instance_tier=None, state=None, storage_bytes=None):
         if capacity_gb and not isinstance(capacity_gb, str):
             raise TypeError("Expected argument 'capacity_gb' to be a str")
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -30,6 +30,9 @@ class GetBackupResult:
         if download_bytes and not isinstance(download_bytes, str):
             raise TypeError("Expected argument 'download_bytes' to be a str")
         pulumi.set(__self__, "download_bytes", download_bytes)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -86,6 +89,14 @@ class GetBackupResult:
         Amount of bytes that will be downloaded if the backup is restored
         """
         return pulumi.get(self, "download_bytes")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Immutable. KMS key name used for data encryption.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter
@@ -162,6 +173,7 @@ class AwaitableGetBackupResult(GetBackupResult):
             create_time=self.create_time,
             description=self.description,
             download_bytes=self.download_bytes,
+            kms_key_name=self.kms_key_name,
             labels=self.labels,
             name=self.name,
             satisfies_pzs=self.satisfies_pzs,
@@ -194,6 +206,7 @@ def get_backup(backup_id: Optional[str] = None,
         create_time=__ret__.create_time,
         description=__ret__.description,
         download_bytes=__ret__.download_bytes,
+        kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
         name=__ret__.name,
         satisfies_pzs=__ret__.satisfies_pzs,
