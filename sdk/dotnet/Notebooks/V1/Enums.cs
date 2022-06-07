@@ -574,6 +574,47 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Behavior for the post startup script.
+    /// </summary>
+    [EnumType]
+    public readonly struct RuntimeSoftwareConfigPostStartupScriptBehavior : IEquatable<RuntimeSoftwareConfigPostStartupScriptBehavior>
+    {
+        private readonly string _value;
+
+        private RuntimeSoftwareConfigPostStartupScriptBehavior(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified post startup script behavior. Will run only once at creation.
+        /// </summary>
+        public static RuntimeSoftwareConfigPostStartupScriptBehavior PostStartupScriptBehaviorUnspecified { get; } = new RuntimeSoftwareConfigPostStartupScriptBehavior("POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED");
+        /// <summary>
+        /// Runs the post startup script provided during creation at every start.
+        /// </summary>
+        public static RuntimeSoftwareConfigPostStartupScriptBehavior RunEveryStart { get; } = new RuntimeSoftwareConfigPostStartupScriptBehavior("RUN_EVERY_START");
+        /// <summary>
+        /// Downloads and runs the provided post startup script at every start.
+        /// </summary>
+        public static RuntimeSoftwareConfigPostStartupScriptBehavior DownloadAndRunEveryStart { get; } = new RuntimeSoftwareConfigPostStartupScriptBehavior("DOWNLOAD_AND_RUN_EVERY_START");
+
+        public static bool operator ==(RuntimeSoftwareConfigPostStartupScriptBehavior left, RuntimeSoftwareConfigPostStartupScriptBehavior right) => left.Equals(right);
+        public static bool operator !=(RuntimeSoftwareConfigPostStartupScriptBehavior left, RuntimeSoftwareConfigPostStartupScriptBehavior right) => !left.Equals(right);
+
+        public static explicit operator string(RuntimeSoftwareConfigPostStartupScriptBehavior value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RuntimeSoftwareConfigPostStartupScriptBehavior other && Equals(other);
+        public bool Equals(RuntimeSoftwareConfigPostStartupScriptBehavior other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct ScheduleState : IEquatable<ScheduleState>
     {

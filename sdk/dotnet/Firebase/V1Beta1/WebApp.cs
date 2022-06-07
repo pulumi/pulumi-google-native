@@ -110,12 +110,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Input("apiKeyId")]
         public Input<string>? ApiKeyId { get; set; }
 
-        /// <summary>
-        /// Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
-        /// </summary>
-        [Input("appId")]
-        public Input<string>? AppId { get; set; }
-
         [Input("appUrls")]
         private InputList<string>? _appUrls;
 
@@ -140,9 +134,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

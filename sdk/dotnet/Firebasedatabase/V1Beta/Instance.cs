@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Immutable. The globally unique hostname of the database.
+        /// Output Only. The globally unique hostname of the database.
         /// </summary>
         [Output("databaseUrl")]
         public Output<string> DatabaseUrl { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -96,12 +96,6 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Input("databaseId")]
         public Input<string>? DatabaseId { get; set; }
 
-        /// <summary>
-        /// Immutable. The globally unique hostname of the database.
-        /// </summary>
-        [Input("databaseUrl")]
-        public Input<string>? DatabaseUrl { get; set; }
-
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -111,20 +105,11 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The database's lifecycle state. Read-only.
-        /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Firebasedatabase.V1Beta.InstanceState>? State { get; set; }
-
-        /// <summary>
-        /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Firebasedatabase.V1Beta.InstanceType>? Type { get; set; }

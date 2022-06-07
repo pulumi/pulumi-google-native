@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class CloudRunResponse
     {
         /// <summary>
-        /// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        /// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        /// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         /// </summary>
         public readonly string ServiceName;
 

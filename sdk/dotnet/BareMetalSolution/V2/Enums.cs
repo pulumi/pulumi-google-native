@@ -8,6 +8,88 @@ using Pulumi;
 namespace Pulumi.GoogleNative.BareMetalSolution.V2
 {
     /// <summary>
+    /// The type of network configuration on the instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceConfigNetworkConfig : IEquatable<InstanceConfigNetworkConfig>
+    {
+        private readonly string _value;
+
+        private InstanceConfigNetworkConfig(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The unspecified network configuration.
+        /// </summary>
+        public static InstanceConfigNetworkConfig NetworkconfigUnspecified { get; } = new InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED");
+        /// <summary>
+        /// Instance part of single client network and single private network.
+        /// </summary>
+        public static InstanceConfigNetworkConfig SingleVlan { get; } = new InstanceConfigNetworkConfig("SINGLE_VLAN");
+        /// <summary>
+        /// Instance part of multiple (or single) client networks and private networks.
+        /// </summary>
+        public static InstanceConfigNetworkConfig MultiVlan { get; } = new InstanceConfigNetworkConfig("MULTI_VLAN");
+
+        public static bool operator ==(InstanceConfigNetworkConfig left, InstanceConfigNetworkConfig right) => left.Equals(right);
+        public static bool operator !=(InstanceConfigNetworkConfig left, InstanceConfigNetworkConfig right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceConfigNetworkConfig value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceConfigNetworkConfig other && Equals(other);
+        public bool Equals(InstanceConfigNetworkConfig other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of network.
+    /// </summary>
+    [EnumType]
+    public readonly struct LogicalNetworkInterfaceNetworkType : IEquatable<LogicalNetworkInterfaceNetworkType>
+    {
+        private readonly string _value;
+
+        private LogicalNetworkInterfaceNetworkType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified value.
+        /// </summary>
+        public static LogicalNetworkInterfaceNetworkType TypeUnspecified { get; } = new LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Client network, a network peered to a Google Cloud VPC.
+        /// </summary>
+        public static LogicalNetworkInterfaceNetworkType Client { get; } = new LogicalNetworkInterfaceNetworkType("CLIENT");
+        /// <summary>
+        /// Private network, a network local to the Bare Metal Solution environment.
+        /// </summary>
+        public static LogicalNetworkInterfaceNetworkType Private { get; } = new LogicalNetworkInterfaceNetworkType("PRIVATE");
+
+        public static bool operator ==(LogicalNetworkInterfaceNetworkType left, LogicalNetworkInterfaceNetworkType right) => left.Equals(right);
+        public static bool operator !=(LogicalNetworkInterfaceNetworkType left, LogicalNetworkInterfaceNetworkType right) => !left.Equals(right);
+
+        public static explicit operator string(LogicalNetworkInterfaceNetworkType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LogicalNetworkInterfaceNetworkType other && Equals(other);
+        public bool Equals(LogicalNetworkInterfaceNetworkType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Interconnect bandwidth. Set only when type is CLIENT.
     /// </summary>
     [EnumType]

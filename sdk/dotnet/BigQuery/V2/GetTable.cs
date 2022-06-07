@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("tableId", required: true)]
         public string TableId { get; set; } = null!;
 
+        [Input("view")]
+        public string? View { get; set; }
+
         public GetTableArgs()
         {
         }
@@ -57,6 +60,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         [Input("tableId", required: true)]
         public Input<string> TableId { get; set; } = null!;
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
 
         public GetTableInvokeArgs()
         {

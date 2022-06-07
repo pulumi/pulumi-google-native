@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. A short description of the backup.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// Optional. Resource labels to represent user provided metadata.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         private GetBackupResult(
             string createTime,
 
+            string description,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -107,6 +113,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
             string updateTime)
         {
             CreateTime = createTime;
+            Description = description;
             Labels = labels;
             Name = name;
             State = state;

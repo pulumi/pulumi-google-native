@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        /// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         /// </summary>
         public readonly string Table;
         /// <summary>

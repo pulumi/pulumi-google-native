@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
     public sealed class GetInstanceResult
     {
         /// <summary>
-        /// Immutable. The globally unique hostname of the database.
+        /// Output Only. The globally unique hostname of the database.
         /// </summary>
         public readonly string DatabaseUrl;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         /// </summary>
         public readonly string Type;
 

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class AppEngineResponse
     {
         /// <summary>
-        /// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+        /// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
         /// </summary>
         public readonly string ModuleId;
 

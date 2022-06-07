@@ -59,6 +59,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies where and whether to send notifications upon changes to a Fhir store.
+        /// </summary>
+        [Output("notificationConfigs")]
+        public Output<ImmutableArray<Outputs.FhirNotificationConfigResponse>> NotificationConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for how FHIR resources can be searched.
         /// </summary>
         [Output("searchConfig")]
@@ -180,6 +186,18 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
+
+        [Input("notificationConfigs")]
+        private InputList<Inputs.FhirNotificationConfigArgs>? _notificationConfigs;
+
+        /// <summary>
+        /// Specifies where and whether to send notifications upon changes to a Fhir store.
+        /// </summary>
+        public InputList<Inputs.FhirNotificationConfigArgs> NotificationConfigs
+        {
+            get => _notificationConfigs ?? (_notificationConfigs = new InputList<Inputs.FhirNotificationConfigArgs>());
+            set => _notificationConfigs = value;
+        }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

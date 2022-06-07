@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        /// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         /// </summary>
         public readonly string Name;
         /// <summary>

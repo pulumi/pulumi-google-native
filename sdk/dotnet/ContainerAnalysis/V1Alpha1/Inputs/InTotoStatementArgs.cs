@@ -22,16 +22,22 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<string>? PredicateType { get; set; }
 
         /// <summary>
-        /// provenance is a predicate of type intotoprovenance
+        /// Generic Grafeas provenance.
         /// </summary>
         [Input("provenance")]
         public Input<Inputs.InTotoProvenanceArgs>? Provenance { get; set; }
 
         /// <summary>
-        /// slsa_provenance is a predicate of type slsaProvenance
+        /// SLSA 0.1 provenance.
         /// </summary>
         [Input("slsaProvenance")]
         public Input<Inputs.SlsaProvenanceArgs>? SlsaProvenance { get; set; }
+
+        /// <summary>
+        /// SLSA 0.2 provenance.
+        /// </summary>
+        [Input("slsaProvenanceZeroTwo")]
+        public Input<Inputs.SlsaProvenanceZeroTwoArgs>? SlsaProvenanceZeroTwo { get; set; }
 
         [Input("subject")]
         private InputList<Inputs.SubjectArgs>? _subject;

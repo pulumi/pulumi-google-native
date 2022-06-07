@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<int> AckDeadlineSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Output("bigqueryConfig")]
         public Output<Outputs.BigQueryConfigResponse> BigqueryConfig { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Output("pushConfig")]
         public Output<Outputs.PushConfigResponse> PushConfig { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Input<int>? AckDeadlineSeconds { get; set; }
 
         /// <summary>
-        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Input("bigqueryConfig")]
         public Input<Inputs.BigQueryConfigArgs>? BigqueryConfig { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Input("pushConfig")]
         public Input<Inputs.PushConfigArgs>? PushConfig { get; set; }

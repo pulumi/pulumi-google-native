@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class BackendService : Pulumi.CustomResource
     {
         /// <summary>
-        /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Output("affinityCookieTtlSec")]
         public Output<int> AffinityCookieTtlSec { get; private set; } = null!;
@@ -246,6 +246,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("timeoutSec")]
         public Output<int> TimeoutSec { get; private set; } = null!;
 
+        /// <summary>
+        /// The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        /// </summary>
+        [Output("vpcNetworkScope")]
+        public Output<string> VpcNetworkScope { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a BackendService resource with the given unique name, arguments, and options.
@@ -292,7 +298,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class BackendServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("affinityCookieTtlSec")]
         public Input<int>? AffinityCookieTtlSec { get; set; }
@@ -518,6 +524,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
+
+        /// <summary>
+        /// The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        /// </summary>
+        [Input("vpcNetworkScope")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.BackendServiceVpcNetworkScope>? VpcNetworkScope { get; set; }
 
         public BackendServiceArgs()
         {

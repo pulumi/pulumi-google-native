@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly Outputs.NotificationConfigResponse NotificationConfig;
         /// <summary>
+        /// Specifies where and whether to send notifications upon changes to a Fhir store.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FhirNotificationConfigResponse> NotificationConfigs;
+        /// <summary>
         /// Configuration for how FHIR resources can be searched.
         /// </summary>
         public readonly Outputs.SearchConfigResponse SearchConfig;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
             Outputs.NotificationConfigResponse notificationConfig,
 
+            ImmutableArray<Outputs.FhirNotificationConfigResponse> notificationConfigs,
+
             Outputs.SearchConfigResponse searchConfig,
 
             ImmutableArray<Outputs.StreamConfigResponse> streamConfigs,
@@ -143,6 +149,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             Labels = labels;
             Name = name;
             NotificationConfig = notificationConfig;
+            NotificationConfigs = notificationConfigs;
             SearchConfig = searchConfig;
             StreamConfigs = streamConfigs;
             ValidationConfig = validationConfig;

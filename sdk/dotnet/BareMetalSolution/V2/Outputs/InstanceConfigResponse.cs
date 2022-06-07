@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly bool AccountNetworksEnabled;
         /// <summary>
-        /// Client network address.
+        /// Client network address. Filled if InstanceConfig.multivlan_config is false.
         /// </summary>
         public readonly Outputs.NetworkAddressResponse ClientNetwork;
         /// <summary>
@@ -33,15 +33,27 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
+        /// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse> LogicalInterfaces;
+        /// <summary>
         /// The name of the instance config.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The type of network configuration on the instance.
+        /// </summary>
+        public readonly string NetworkConfig;
+        /// <summary>
+        /// Server network template name. Filled if InstanceConfig.multivlan_config is true.
+        /// </summary>
+        public readonly string NetworkTemplate;
         /// <summary>
         /// OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         /// </summary>
         public readonly string OsImage;
         /// <summary>
-        /// Private network address, if any.
+        /// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
         /// </summary>
         public readonly Outputs.NetworkAddressResponse PrivateNetwork;
         /// <summary>
@@ -59,7 +71,13 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string instanceType,
 
+            ImmutableArray<Outputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse> logicalInterfaces,
+
             string name,
+
+            string networkConfig,
+
+            string networkTemplate,
 
             string osImage,
 
@@ -71,7 +89,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             ClientNetwork = clientNetwork;
             Hyperthreading = hyperthreading;
             InstanceType = instanceType;
+            LogicalInterfaces = logicalInterfaces;
             Name = name;
+            NetworkConfig = networkConfig;
+            NetworkTemplate = networkTemplate;
             OsImage = osImage;
             PrivateNetwork = privateNetwork;
             UserNote = userNote;

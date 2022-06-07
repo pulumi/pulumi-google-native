@@ -21,13 +21,17 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly string PredicateType;
         /// <summary>
-        /// provenance is a predicate of type intotoprovenance
+        /// Generic Grafeas provenance.
         /// </summary>
         public readonly Outputs.InTotoProvenanceResponse Provenance;
         /// <summary>
-        /// slsa_provenance is a predicate of type slsaProvenance
+        /// SLSA 0.1 provenance.
         /// </summary>
         public readonly Outputs.SlsaProvenanceResponse SlsaProvenance;
+        /// <summary>
+        /// SLSA 0.2 provenance.
+        /// </summary>
+        public readonly Outputs.SlsaProvenanceZeroTwoResponse SlsaProvenanceZeroTwo;
         /// <summary>
         /// subject is the subjects of the intoto statement
         /// </summary>
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             Outputs.SlsaProvenanceResponse slsaProvenance,
 
+            Outputs.SlsaProvenanceZeroTwoResponse slsaProvenanceZeroTwo,
+
             ImmutableArray<Outputs.SubjectResponse> subject,
 
             string type)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             PredicateType = predicateType;
             Provenance = provenance;
             SlsaProvenance = slsaProvenance;
+            SlsaProvenanceZeroTwo = slsaProvenanceZeroTwo;
             Subject = subject;
             Type = type;
         }

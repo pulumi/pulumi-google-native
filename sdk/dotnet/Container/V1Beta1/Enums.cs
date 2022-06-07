@@ -427,6 +427,43 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
+    /// The type of GPU sharing strategy to enable on the GPU node.
+    /// </summary>
+    [EnumType]
+    public readonly struct GPUSharingConfigGpuSharingStrategy : IEquatable<GPUSharingConfigGpuSharingStrategy>
+    {
+        private readonly string _value;
+
+        private GPUSharingConfigGpuSharingStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static GPUSharingConfigGpuSharingStrategy GpuSharingStrategyUnspecified { get; } = new GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// GPUs are time-shared between containers.
+        /// </summary>
+        public static GPUSharingConfigGpuSharingStrategy TimeSharing { get; } = new GPUSharingConfigGpuSharingStrategy("TIME_SHARING");
+
+        public static bool operator ==(GPUSharingConfigGpuSharingStrategy left, GPUSharingConfigGpuSharingStrategy right) => left.Equals(right);
+        public static bool operator !=(GPUSharingConfigGpuSharingStrategy left, GPUSharingConfigGpuSharingStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(GPUSharingConfigGpuSharingStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GPUSharingConfigGpuSharingStrategy other && Equals(other);
+        public bool Equals(GPUSharingConfigGpuSharingStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The ipv6 access type (internal or external) when create_subnetwork is true
     /// </summary>
     [EnumType]

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string ImageName;
         /// <summary>
-        /// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        /// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
         /// </summary>
         public readonly string Project;
 

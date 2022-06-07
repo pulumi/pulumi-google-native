@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<int> TimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<int>? TimeoutSec { get; set; }
 
         /// <summary>
-        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.RegionHealthCheckType>? Type { get; set; }

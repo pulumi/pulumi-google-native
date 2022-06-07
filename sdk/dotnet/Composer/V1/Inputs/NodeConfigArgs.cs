@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
+        /// Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+        /// </summary>
+        [Input("enableIpMasqAgent")]
+        public Input<bool>? EnableIpMasqAgent { get; set; }
+
+        /// <summary>
         /// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
         /// </summary>
         [Input("ipAllocationPolicy")]

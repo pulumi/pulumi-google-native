@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        /// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        /// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<Outputs.GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse> FacetSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

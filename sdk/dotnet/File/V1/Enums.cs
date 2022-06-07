@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         public static InstanceTier TierUnspecified { get; } = new InstanceTier("TIER_UNSPECIFIED");
         /// <summary>
-        /// STANDARD tier.
+        /// STANDARD tier. BASIC_HDD is the preferred term for this tier.
         /// </summary>
         public static InstanceTier Standard { get; } = new InstanceTier("STANDARD");
         /// <summary>
-        /// PREMIUM tier.
+        /// PREMIUM tier. BASIC_SSD is the preferred term for this tier.
         /// </summary>
         public static InstanceTier Premium { get; } = new InstanceTier("PREMIUM");
         /// <summary>

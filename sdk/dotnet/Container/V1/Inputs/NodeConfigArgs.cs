@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
 {
 
     /// <summary>
-    /// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+    /// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     /// </summary>
     public sealed class NodeConfigArgs : Pulumi.ResourceArgs
     {
@@ -38,6 +38,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// </summary>
         [Input("bootDiskKmsKey")]
         public Input<string>? BootDiskKmsKey { get; set; }
+
+        /// <summary>
+        /// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        /// </summary>
+        [Input("confidentialNodes")]
+        public Input<Inputs.ConfidentialNodesArgs>? ConfidentialNodes { get; set; }
 
         /// <summary>
         /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.

@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         public readonly string AuthorizedNetwork;
         /// <summary>
+        /// Optional. The available maintenance versions that an instance could update to.
+        /// </summary>
+        public readonly ImmutableArray<string> AvailableMaintenanceVersions;
+        /// <summary>
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         /// </summary>
         public readonly string ConnectMode;
@@ -85,6 +89,10 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
         /// </summary>
         public readonly string CurrentLocationId;
+        /// <summary>
+        /// Optional. The KMS key reference that the customer provides when trying to create the instance.
+        /// </summary>
+        public readonly string CustomerManagedKey;
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
@@ -182,6 +190,10 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         public readonly string StatusMessage;
         /// <summary>
+        /// Optional. reasons that causes instance in "SUSPENDED" state.
+        /// </summary>
+        public readonly ImmutableArray<string> SuspensionReasons;
+        /// <summary>
         /// The service tier of the instance.
         /// </summary>
         public readonly string Tier;
@@ -198,11 +210,15 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
 
             string authorizedNetwork,
 
+            ImmutableArray<string> availableMaintenanceVersions,
+
             string connectMode,
 
             string createTime,
 
             string currentLocationId,
+
+            string customerManagedKey,
 
             string displayName,
 
@@ -252,6 +268,8 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
 
             string statusMessage,
 
+            ImmutableArray<string> suspensionReasons,
+
             string tier,
 
             string transitEncryptionMode)
@@ -259,9 +277,11 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
             AlternativeLocationId = alternativeLocationId;
             AuthEnabled = authEnabled;
             AuthorizedNetwork = authorizedNetwork;
+            AvailableMaintenanceVersions = availableMaintenanceVersions;
             ConnectMode = connectMode;
             CreateTime = createTime;
             CurrentLocationId = currentLocationId;
+            CustomerManagedKey = customerManagedKey;
             DisplayName = displayName;
             Host = host;
             Labels = labels;
@@ -286,6 +306,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
             ServerCaCerts = serverCaCerts;
             State = state;
             StatusMessage = statusMessage;
+            SuspensionReasons = suspensionReasons;
             Tier = tier;
             TransitEncryptionMode = transitEncryptionMode;
         }

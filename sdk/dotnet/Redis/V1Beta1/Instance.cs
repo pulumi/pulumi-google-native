@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Output<string> AuthorizedNetwork { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The available maintenance versions that an instance could update to.
+        /// </summary>
+        [Output("availableMaintenanceVersions")]
+        public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         /// </summary>
         [Output("connectMode")]
@@ -50,6 +56,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         [Output("currentLocationId")]
         public Output<string> CurrentLocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The KMS key reference that the customer provides when trying to create the instance.
+        /// </summary>
+        [Output("customerManagedKey")]
+        public Output<string> CustomerManagedKey { get; private set; } = null!;
 
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
@@ -196,6 +208,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Output<string> StatusMessage { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. reasons that causes instance in "SUSPENDED" state.
+        /// </summary>
+        [Output("suspensionReasons")]
+        public Output<ImmutableArray<string>> SuspensionReasons { get; private set; } = null!;
+
+        /// <summary>
         /// The service tier of the instance.
         /// </summary>
         [Output("tier")]
@@ -270,11 +288,29 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
 
+        [Input("availableMaintenanceVersions")]
+        private InputList<string>? _availableMaintenanceVersions;
+
+        /// <summary>
+        /// Optional. The available maintenance versions that an instance could update to.
+        /// </summary>
+        public InputList<string> AvailableMaintenanceVersions
+        {
+            get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
+            set => _availableMaintenanceVersions = value;
+        }
+
         /// <summary>
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         /// </summary>
         [Input("connectMode")]
         public Input<Pulumi.GoogleNative.Redis.V1Beta1.InstanceConnectMode>? ConnectMode { get; set; }
+
+        /// <summary>
+        /// Optional. The KMS key reference that the customer provides when trying to create the instance.
+        /// </summary>
+        [Input("customerManagedKey")]
+        public Input<string>? CustomerManagedKey { get; set; }
 
         /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
@@ -380,6 +416,18 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         [Input("secondaryIpRange")]
         public Input<string>? SecondaryIpRange { get; set; }
+
+        [Input("suspensionReasons")]
+        private InputList<Pulumi.GoogleNative.Redis.V1Beta1.InstanceSuspensionReasonsItem>? _suspensionReasons;
+
+        /// <summary>
+        /// Optional. reasons that causes instance in "SUSPENDED" state.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.Redis.V1Beta1.InstanceSuspensionReasonsItem> SuspensionReasons
+        {
+            get => _suspensionReasons ?? (_suspensionReasons = new InputList<Pulumi.GoogleNative.Redis.V1Beta1.InstanceSuspensionReasonsItem>());
+            set => _suspensionReasons = value;
+        }
 
         /// <summary>
         /// The service tier of the instance.

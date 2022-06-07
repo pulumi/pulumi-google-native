@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     public sealed class AppEngineArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+        /// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
         /// </summary>
         [Input("moduleId")]
         public Input<string>? ModuleId { get; set; }

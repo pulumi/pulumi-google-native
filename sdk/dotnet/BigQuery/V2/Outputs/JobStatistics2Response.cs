@@ -102,6 +102,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
         /// <summary>
+        /// Search query specific statistics.
+        /// </summary>
+        public readonly Outputs.SearchStatisticsResponse SearchStatistics;
+        /// <summary>
         /// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
         /// </summary>
         public readonly string StatementType;
@@ -180,6 +184,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.TableSchemaResponse schema,
 
+            Outputs.SearchStatisticsResponse searchStatistics,
+
             string statementType,
 
             ImmutableArray<Outputs.QueryTimelineSampleResponse> timeline,
@@ -218,6 +224,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ReferencedTables = referencedTables;
             ReservationUsage = reservationUsage;
             Schema = schema;
+            SearchStatistics = searchStatistics;
             StatementType = statementType;
             Timeline = timeline;
             TotalBytesBilled = totalBytesBilled;

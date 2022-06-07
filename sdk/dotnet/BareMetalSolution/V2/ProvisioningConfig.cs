@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A generated buganizer id to track provisioning request.
+        /// A generated ticket id to track provisioning request.
         /// </summary>
         [Output("ticketId")]
         public Output<string> TicketId { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A generated buganizer id to track provisioning request.
+        /// A generated ticket id to track provisioning request.
         /// </summary>
         [Input("ticketId")]
         public Input<string>? TicketId { get; set; }

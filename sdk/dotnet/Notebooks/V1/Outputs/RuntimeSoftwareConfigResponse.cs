@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string PostStartupScript;
         /// <summary>
+        /// Behavior for the post startup script.
+        /// </summary>
+        public readonly string PostStartupScriptBehavior;
+        /// <summary>
         /// Bool indicating whether an newer image is available in an image family.
         /// </summary>
         public readonly bool Upgradeable;
@@ -71,6 +75,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string postStartupScript,
 
+            string postStartupScriptBehavior,
+
             bool upgradeable)
         {
             CustomGpuDriverPath = customGpuDriverPath;
@@ -81,6 +87,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             Kernels = kernels;
             NotebookUpgradeSchedule = notebookUpgradeSchedule;
             PostStartupScript = postStartupScript;
+            PostStartupScriptBehavior = postStartupScriptBehavior;
             Upgradeable = upgradeable;
         }
     }

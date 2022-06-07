@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha
         /// Google Cloud Run service.
         /// </summary>
         public static ScanConfigTargetPlatformsItem CloudRun { get; } = new ScanConfigTargetPlatformsItem("CLOUD_RUN");
+        /// <summary>
+        /// Google Cloud Function service.
+        /// </summary>
+        public static ScanConfigTargetPlatformsItem CloudFunctions { get; } = new ScanConfigTargetPlatformsItem("CLOUD_FUNCTIONS");
 
         public static bool operator ==(ScanConfigTargetPlatformsItem left, ScanConfigTargetPlatformsItem right) => left.Equals(right);
         public static bool operator !=(ScanConfigTargetPlatformsItem left, ScanConfigTargetPlatformsItem right) => !left.Equals(right);

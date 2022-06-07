@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// </summary>
         public readonly string ModelId;
         /// <summary>
-        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         /// </summary>
         public readonly string Name;
         /// <summary>
