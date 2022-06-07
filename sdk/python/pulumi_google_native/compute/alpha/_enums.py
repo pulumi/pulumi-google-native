@@ -39,6 +39,7 @@ __all__ = [
     'BackendServiceLocalityLoadBalancingPolicyConfigPolicyName',
     'BackendServiceProtocol',
     'BackendServiceSessionAffinity',
+    'BackendServiceVpcNetworkScope',
     'CallCredentialsCallCredentialType',
     'ChannelCredentialsChannelCredentialType',
     'ClientTlsSettingsMode',
@@ -141,6 +142,7 @@ __all__ = [
     'RegionBackendServiceLocalityLbPolicy',
     'RegionBackendServiceProtocol',
     'RegionBackendServiceSessionAffinity',
+    'RegionBackendServiceVpcNetworkScope',
     'RegionCommitmentCategory',
     'RegionCommitmentPlan',
     'RegionCommitmentType',
@@ -871,6 +873,20 @@ class BackendServiceSessionAffinity(str, Enum):
     NONE = "NONE"
     """
     No session affinity. Connections from the same client IP may go to any instance in the pool.
+    """
+
+
+class BackendServiceVpcNetworkScope(str, Enum):
+    """
+    The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    """
+    GLOBAL_VPC_NETWORK = "GLOBAL_VPC_NETWORK"
+    """
+    The backend service can only have backends in global VPCs
+    """
+    REGIONAL_VPC_NETWORK = "REGIONAL_VPC_NETWORK"
+    """
+    The backend service can only have backends in regional VPCs
     """
 
 
@@ -1687,7 +1703,7 @@ class HTTPSHealthCheckWeightReportMode(str, Enum):
 
 class HealthCheckType(str, Enum):
     """
-    Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+    Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
     """
     GRPC = "GRPC"
     HTTP = "HTTP"
@@ -2634,6 +2650,20 @@ class RegionBackendServiceSessionAffinity(str, Enum):
     """
 
 
+class RegionBackendServiceVpcNetworkScope(str, Enum):
+    """
+    The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+    """
+    GLOBAL_VPC_NETWORK = "GLOBAL_VPC_NETWORK"
+    """
+    The backend service can only have backends in global VPCs
+    """
+    REGIONAL_VPC_NETWORK = "REGIONAL_VPC_NETWORK"
+    """
+    The backend service can only have backends in regional VPCs
+    """
+
+
 class RegionCommitmentCategory(str, Enum):
     """
     The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
@@ -2734,7 +2764,7 @@ class RegionHealthCheckServiceHealthStatusAggregationStrategy(str, Enum):
 
 class RegionHealthCheckType(str, Enum):
     """
-    Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+    Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
     """
     GRPC = "GRPC"
     HTTP = "HTTP"
@@ -3328,7 +3358,7 @@ class SchedulingNodeAffinityOperator(str, Enum):
 
 class SchedulingOnHostMaintenance(str, Enum):
     """
-    Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+    Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
     """
     MIGRATE = "MIGRATE"
     """

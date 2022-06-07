@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        /// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

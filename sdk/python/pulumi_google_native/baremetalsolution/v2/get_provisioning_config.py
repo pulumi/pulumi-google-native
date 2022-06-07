@@ -125,7 +125,7 @@ class GetProvisioningConfigResult:
     @pulumi.getter(name="ticketId")
     def ticket_id(self) -> str:
         """
-        A generated buganizer id to track provisioning request.
+        A generated ticket id to track provisioning request.
         """
         return pulumi.get(self, "ticket_id")
 

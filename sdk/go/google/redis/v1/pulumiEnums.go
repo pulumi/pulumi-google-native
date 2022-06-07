@@ -348,6 +348,217 @@ func (in *instanceReadReplicasModePtr) ToInstanceReadReplicasModePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceReadReplicasModePtrOutput)
 }
 
+type InstanceSuspensionReasonsItem string
+
+const (
+	// Not set.
+	InstanceSuspensionReasonsItemSuspensionReasonUnspecified = InstanceSuspensionReasonsItem("SUSPENSION_REASON_UNSPECIFIED")
+	// Something wrong with the CMEK key provided by customer.
+	InstanceSuspensionReasonsItemCustomerManagedKeyIssue = InstanceSuspensionReasonsItem("CUSTOMER_MANAGED_KEY_ISSUE")
+)
+
+func (InstanceSuspensionReasonsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSuspensionReasonsItem)(nil)).Elem()
+}
+
+func (e InstanceSuspensionReasonsItem) ToInstanceSuspensionReasonsItemOutput() InstanceSuspensionReasonsItemOutput {
+	return pulumi.ToOutput(e).(InstanceSuspensionReasonsItemOutput)
+}
+
+func (e InstanceSuspensionReasonsItem) ToInstanceSuspensionReasonsItemOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceSuspensionReasonsItemOutput)
+}
+
+func (e InstanceSuspensionReasonsItem) ToInstanceSuspensionReasonsItemPtrOutput() InstanceSuspensionReasonsItemPtrOutput {
+	return e.ToInstanceSuspensionReasonsItemPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceSuspensionReasonsItem) ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemPtrOutput {
+	return InstanceSuspensionReasonsItem(e).ToInstanceSuspensionReasonsItemOutputWithContext(ctx).ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx)
+}
+
+func (e InstanceSuspensionReasonsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceSuspensionReasonsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceSuspensionReasonsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceSuspensionReasonsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceSuspensionReasonsItemOutput struct{ *pulumi.OutputState }
+
+func (InstanceSuspensionReasonsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSuspensionReasonsItem)(nil)).Elem()
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToInstanceSuspensionReasonsItemOutput() InstanceSuspensionReasonsItemOutput {
+	return o
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToInstanceSuspensionReasonsItemOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemOutput {
+	return o
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToInstanceSuspensionReasonsItemPtrOutput() InstanceSuspensionReasonsItemPtrOutput {
+	return o.ToInstanceSuspensionReasonsItemPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSuspensionReasonsItem) *InstanceSuspensionReasonsItem {
+		return &v
+	}).(InstanceSuspensionReasonsItemPtrOutput)
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceSuspensionReasonsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSuspensionReasonsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceSuspensionReasonsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceSuspensionReasonsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSuspensionReasonsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSuspensionReasonsItem)(nil)).Elem()
+}
+
+func (o InstanceSuspensionReasonsItemPtrOutput) ToInstanceSuspensionReasonsItemPtrOutput() InstanceSuspensionReasonsItemPtrOutput {
+	return o
+}
+
+func (o InstanceSuspensionReasonsItemPtrOutput) ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemPtrOutput {
+	return o
+}
+
+func (o InstanceSuspensionReasonsItemPtrOutput) Elem() InstanceSuspensionReasonsItemOutput {
+	return o.ApplyT(func(v *InstanceSuspensionReasonsItem) InstanceSuspensionReasonsItem {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSuspensionReasonsItem
+		return ret
+	}).(InstanceSuspensionReasonsItemOutput)
+}
+
+func (o InstanceSuspensionReasonsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSuspensionReasonsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceSuspensionReasonsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceSuspensionReasonsItemInput is an input type that accepts InstanceSuspensionReasonsItemArgs and InstanceSuspensionReasonsItemOutput values.
+// You can construct a concrete instance of `InstanceSuspensionReasonsItemInput` via:
+//
+//          InstanceSuspensionReasonsItemArgs{...}
+type InstanceSuspensionReasonsItemInput interface {
+	pulumi.Input
+
+	ToInstanceSuspensionReasonsItemOutput() InstanceSuspensionReasonsItemOutput
+	ToInstanceSuspensionReasonsItemOutputWithContext(context.Context) InstanceSuspensionReasonsItemOutput
+}
+
+var instanceSuspensionReasonsItemPtrType = reflect.TypeOf((**InstanceSuspensionReasonsItem)(nil)).Elem()
+
+type InstanceSuspensionReasonsItemPtrInput interface {
+	pulumi.Input
+
+	ToInstanceSuspensionReasonsItemPtrOutput() InstanceSuspensionReasonsItemPtrOutput
+	ToInstanceSuspensionReasonsItemPtrOutputWithContext(context.Context) InstanceSuspensionReasonsItemPtrOutput
+}
+
+type instanceSuspensionReasonsItemPtr string
+
+func InstanceSuspensionReasonsItemPtr(v string) InstanceSuspensionReasonsItemPtrInput {
+	return (*instanceSuspensionReasonsItemPtr)(&v)
+}
+
+func (*instanceSuspensionReasonsItemPtr) ElementType() reflect.Type {
+	return instanceSuspensionReasonsItemPtrType
+}
+
+func (in *instanceSuspensionReasonsItemPtr) ToInstanceSuspensionReasonsItemPtrOutput() InstanceSuspensionReasonsItemPtrOutput {
+	return pulumi.ToOutput(in).(InstanceSuspensionReasonsItemPtrOutput)
+}
+
+func (in *instanceSuspensionReasonsItemPtr) ToInstanceSuspensionReasonsItemPtrOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceSuspensionReasonsItemPtrOutput)
+}
+
+// InstanceSuspensionReasonsItemArrayInput is an input type that accepts InstanceSuspensionReasonsItemArray and InstanceSuspensionReasonsItemArrayOutput values.
+// You can construct a concrete instance of `InstanceSuspensionReasonsItemArrayInput` via:
+//
+//          InstanceSuspensionReasonsItemArray{ InstanceSuspensionReasonsItemArgs{...} }
+type InstanceSuspensionReasonsItemArrayInput interface {
+	pulumi.Input
+
+	ToInstanceSuspensionReasonsItemArrayOutput() InstanceSuspensionReasonsItemArrayOutput
+	ToInstanceSuspensionReasonsItemArrayOutputWithContext(context.Context) InstanceSuspensionReasonsItemArrayOutput
+}
+
+type InstanceSuspensionReasonsItemArray []InstanceSuspensionReasonsItem
+
+func (InstanceSuspensionReasonsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSuspensionReasonsItem)(nil)).Elem()
+}
+
+func (i InstanceSuspensionReasonsItemArray) ToInstanceSuspensionReasonsItemArrayOutput() InstanceSuspensionReasonsItemArrayOutput {
+	return i.ToInstanceSuspensionReasonsItemArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceSuspensionReasonsItemArray) ToInstanceSuspensionReasonsItemArrayOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSuspensionReasonsItemArrayOutput)
+}
+
+type InstanceSuspensionReasonsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceSuspensionReasonsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSuspensionReasonsItem)(nil)).Elem()
+}
+
+func (o InstanceSuspensionReasonsItemArrayOutput) ToInstanceSuspensionReasonsItemArrayOutput() InstanceSuspensionReasonsItemArrayOutput {
+	return o
+}
+
+func (o InstanceSuspensionReasonsItemArrayOutput) ToInstanceSuspensionReasonsItemArrayOutputWithContext(ctx context.Context) InstanceSuspensionReasonsItemArrayOutput {
+	return o
+}
+
+func (o InstanceSuspensionReasonsItemArrayOutput) Index(i pulumi.IntInput) InstanceSuspensionReasonsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSuspensionReasonsItem {
+		return vs[0].([]InstanceSuspensionReasonsItem)[vs[1].(int)]
+	}).(InstanceSuspensionReasonsItemOutput)
+}
+
 // Required. The service tier of the instance.
 type InstanceTier string
 
@@ -1212,6 +1423,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectModePtrInput)(nil)).Elem(), InstanceConnectMode("CONNECT_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadReplicasModeInput)(nil)).Elem(), InstanceReadReplicasMode("READ_REPLICAS_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadReplicasModePtrInput)(nil)).Elem(), InstanceReadReplicasMode("READ_REPLICAS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSuspensionReasonsItemInput)(nil)).Elem(), InstanceSuspensionReasonsItem("SUSPENSION_REASON_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSuspensionReasonsItemPtrInput)(nil)).Elem(), InstanceSuspensionReasonsItem("SUSPENSION_REASON_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSuspensionReasonsItemArrayInput)(nil)).Elem(), InstanceSuspensionReasonsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierPtrInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTransitEncryptionModeInput)(nil)).Elem(), InstanceTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"))
@@ -1226,6 +1440,9 @@ func init() {
 	pulumi.RegisterOutputType(InstanceConnectModePtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadReplicasModeOutput{})
 	pulumi.RegisterOutputType(InstanceReadReplicasModePtrOutput{})
+	pulumi.RegisterOutputType(InstanceSuspensionReasonsItemOutput{})
+	pulumi.RegisterOutputType(InstanceSuspensionReasonsItemPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSuspensionReasonsItemArrayOutput{})
 	pulumi.RegisterOutputType(InstanceTierOutput{})
 	pulumi.RegisterOutputType(InstanceTierPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTransitEncryptionModeOutput{})

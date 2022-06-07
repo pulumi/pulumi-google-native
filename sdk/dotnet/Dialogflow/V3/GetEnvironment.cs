@@ -91,6 +91,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse> VersionConfigs;
+        /// <summary>
+        /// The webhook configuration for this environment.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse WebhookConfig;
 
         [OutputConstructor]
         private GetEnvironmentResult(
@@ -104,7 +108,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
             string updateTime,
 
-            ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse> versionConfigs)
+            ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse> versionConfigs,
+
+            Outputs.GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse webhookConfig)
         {
             Description = description;
             DisplayName = displayName;
@@ -112,6 +118,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             TestCasesConfig = testCasesConfig;
             UpdateTime = updateTime;
             VersionConfigs = versionConfigs;
+            WebhookConfig = webhookConfig;
         }
     }
 }

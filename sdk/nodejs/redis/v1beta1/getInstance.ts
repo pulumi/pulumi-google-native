@@ -41,6 +41,10 @@ export interface GetInstanceResult {
      */
     readonly authorizedNetwork: string;
     /**
+     * Optional. The available maintenance versions that an instance could update to.
+     */
+    readonly availableMaintenanceVersions: string[];
+    /**
      * Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
      */
     readonly connectMode: string;
@@ -52,6 +56,10 @@ export interface GetInstanceResult {
      * The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
      */
     readonly currentLocationId: string;
+    /**
+     * Optional. The KMS key reference that the customer provides when trying to create the instance.
+     */
+    readonly customerManagedKey: string;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */
@@ -148,6 +156,10 @@ export interface GetInstanceResult {
      * Additional information about the current status of this instance, if available.
      */
     readonly statusMessage: string;
+    /**
+     * Optional. reasons that causes instance in "SUSPENDED" state.
+     */
+    readonly suspensionReasons: string[];
     /**
      * The service tier of the instance.
      */

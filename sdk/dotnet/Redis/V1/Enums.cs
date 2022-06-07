@@ -89,6 +89,40 @@ namespace Pulumi.GoogleNative.Redis.V1
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct InstanceSuspensionReasonsItem : IEquatable<InstanceSuspensionReasonsItem>
+    {
+        private readonly string _value;
+
+        private InstanceSuspensionReasonsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set.
+        /// </summary>
+        public static InstanceSuspensionReasonsItem SuspensionReasonUnspecified { get; } = new InstanceSuspensionReasonsItem("SUSPENSION_REASON_UNSPECIFIED");
+        /// <summary>
+        /// Something wrong with the CMEK key provided by customer.
+        /// </summary>
+        public static InstanceSuspensionReasonsItem CustomerManagedKeyIssue { get; } = new InstanceSuspensionReasonsItem("CUSTOMER_MANAGED_KEY_ISSUE");
+
+        public static bool operator ==(InstanceSuspensionReasonsItem left, InstanceSuspensionReasonsItem right) => left.Equals(right);
+        public static bool operator !=(InstanceSuspensionReasonsItem left, InstanceSuspensionReasonsItem right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceSuspensionReasonsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceSuspensionReasonsItem other && Equals(other);
+        public bool Equals(InstanceSuspensionReasonsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Required. The service tier of the instance.
     /// </summary>

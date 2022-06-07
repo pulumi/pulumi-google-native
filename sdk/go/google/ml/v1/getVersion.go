@@ -49,7 +49,7 @@ type LookupVersionResult struct {
 	Framework string `pulumi:"framework"`
 	// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
 	IsDefault bool `pulumi:"isDefault"`
-	// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+	// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels. Note that this field is not updatable for mls1* models.
 	Labels map[string]string `pulumi:"labels"`
 	// The [AI Platform (Unified) `Model`](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models) ID for the last [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
 	LastMigrationModelId string `pulumi:"lastMigrationModelId"`
@@ -173,7 +173,7 @@ func (o LookupVersionResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupVersionResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels. Note that this field is not updatable for mls1* models.
 func (o LookupVersionResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVersionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

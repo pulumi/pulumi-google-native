@@ -83,7 +83,7 @@ class GetSubscriptionResult:
     @pulumi.getter(name="bigqueryConfig")
     def bigquery_config(self) -> 'outputs.BigQueryConfigResponse':
         """
-        If delivery to BigQuery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
         """
         return pulumi.get(self, "bigquery_config")
 
@@ -163,7 +163,7 @@ class GetSubscriptionResult:
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> 'outputs.PushConfigResponse':
         """
-        If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
+        If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
         """
         return pulumi.get(self, "push_config")
 

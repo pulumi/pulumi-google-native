@@ -36,9 +36,9 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Immutable. The globally unique hostname of the database.
+     * Output Only. The globally unique hostname of the database.
      */
-    public readonly databaseUrl!: pulumi.Output<string>;
+    public /*out*/ readonly databaseUrl!: pulumi.Output<string>;
     /**
      * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
      */
@@ -50,9 +50,9 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The database's lifecycle state. Read-only.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+     * Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -68,13 +68,13 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["databaseId"] = args ? args.databaseId : undefined;
-            resourceInputs["databaseUrl"] = args ? args.databaseUrl : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["databaseUrl"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["databaseUrl"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -95,25 +95,14 @@ export interface InstanceArgs {
      * The globally unique identifier of the database instance.
      */
     databaseId?: pulumi.Input<string>;
-    /**
-     * Immutable. The globally unique hostname of the database.
-     */
-    databaseUrl?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
      * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The database's lifecycle state. Read-only.
-     */
-    state?: pulumi.Input<enums.firebasedatabase.v1beta.InstanceState>;
-    /**
-     * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+     * Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     type?: pulumi.Input<enums.firebasedatabase.v1beta.InstanceType>;
     /**

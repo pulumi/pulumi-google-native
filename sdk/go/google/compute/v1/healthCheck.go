@@ -40,7 +40,7 @@ type HealthCheck struct {
 	TcpHealthCheck TCPHealthCheckResponseOutput `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
 	UnhealthyThreshold pulumi.IntOutput `pulumi:"unhealthyThreshold"`
@@ -108,7 +108,7 @@ type healthCheckArgs struct {
 	TcpHealthCheck *TCPHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec *int `pulumi:"timeoutSec"`
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
 	Type *HealthCheckType `pulumi:"type"`
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
@@ -139,7 +139,7 @@ type HealthCheckArgs struct {
 	TcpHealthCheck TCPHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec pulumi.IntPtrInput
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
 	Type HealthCheckTypePtrInput
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
 	UnhealthyThreshold pulumi.IntPtrInput
@@ -256,7 +256,7 @@ func (o HealthCheckOutput) TimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v *HealthCheck) pulumi.IntOutput { return v.TimeoutSec }).(pulumi.IntOutput)
 }
 
-// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
 func (o HealthCheckOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

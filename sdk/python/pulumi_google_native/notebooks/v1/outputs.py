@@ -1412,6 +1412,8 @@ class RuntimeSoftwareConfigResponse(dict):
             suggest = "notebook_upgrade_schedule"
         elif key == "postStartupScript":
             suggest = "post_startup_script"
+        elif key == "postStartupScriptBehavior":
+            suggest = "post_startup_script_behavior"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuntimeSoftwareConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1433,6 +1435,7 @@ class RuntimeSoftwareConfigResponse(dict):
                  kernels: Sequence['outputs.ContainerImageResponse'],
                  notebook_upgrade_schedule: str,
                  post_startup_script: str,
+                 post_startup_script_behavior: str,
                  upgradeable: bool):
         """
         Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
@@ -1444,6 +1447,7 @@ class RuntimeSoftwareConfigResponse(dict):
         :param Sequence['ContainerImageResponse'] kernels: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param str notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param str post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
+        :param str post_startup_script_behavior: Behavior for the post startup script.
         :param bool upgradeable: Bool indicating whether an newer image is available in an image family.
         """
         pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
@@ -1454,6 +1458,7 @@ class RuntimeSoftwareConfigResponse(dict):
         pulumi.set(__self__, "kernels", kernels)
         pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
         pulumi.set(__self__, "post_startup_script", post_startup_script)
+        pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
         pulumi.set(__self__, "upgradeable", upgradeable)
 
     @property
@@ -1519,6 +1524,14 @@ class RuntimeSoftwareConfigResponse(dict):
         Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
         return pulumi.get(self, "post_startup_script")
+
+    @property
+    @pulumi.getter(name="postStartupScriptBehavior")
+    def post_startup_script_behavior(self) -> str:
+        """
+        Behavior for the post startup script.
+        """
+        return pulumi.get(self, "post_startup_script_behavior")
 
     @property
     @pulumi.getter
@@ -2155,7 +2168,7 @@ class VmImageResponse(dict):
         Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
         :param str image_family: Use this VM image family to find the image; the newest image in this family will be used.
         :param str image_name: Use VM image name to find the image.
-        :param str project: The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        :param str project: The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
         """
         pulumi.set(__self__, "image_family", image_family)
         pulumi.set(__self__, "image_name", image_name)
@@ -2181,7 +2194,7 @@ class VmImageResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
         """
         return pulumi.get(self, "project")
 

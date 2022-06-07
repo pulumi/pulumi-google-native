@@ -19,6 +19,7 @@ __all__ = [
     'BoundingPolyResponse',
     'CloudHealthcareSourceResponse',
     'ExprResponse',
+    'FhirNotificationConfigResponse',
     'FieldResponse',
     'GoogleCloudHealthcareV1beta1ConsentPolicyResponse',
     'GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse',
@@ -392,6 +393,58 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FhirNotificationConfigResponse(dict):
+    """
+    Contains the configuration for FHIR notifications.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopic":
+            suggest = "pubsub_topic"
+        elif key == "sendFullResource":
+            suggest = "send_full_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirNotificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirNotificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirNotificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pubsub_topic: str,
+                 send_full_resource: bool):
+        """
+        Contains the configuration for FHIR notifications.
+        :param str pubsub_topic: The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+        :param bool send_full_resource: Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
+        """
+        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        pulumi.set(__self__, "send_full_resource", send_full_resource)
+
+    @property
+    @pulumi.getter(name="pubsubTopic")
+    def pubsub_topic(self) -> str:
+        """
+        The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+        """
+        return pulumi.get(self, "pubsub_topic")
+
+    @property
+    @pulumi.getter(name="sendFullResource")
+    def send_full_resource(self) -> bool:
+        """
+        Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
+        """
+        return pulumi.get(self, "send_full_resource")
 
 
 @pulumi.output_type

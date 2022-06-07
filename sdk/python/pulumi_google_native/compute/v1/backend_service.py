@@ -50,7 +50,7 @@ class BackendServiceArgs:
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BackendService resource.
-        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input['BackendArgs']]] backends: The list of backends that serve this BackendService.
         :param pulumi.Input['BackendServiceCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
         :param pulumi.Input['BackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
@@ -151,7 +151,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -563,7 +563,7 @@ class BackendService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]] backends: The list of backends that serve this BackendService.
         :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
         :param pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
@@ -767,7 +767,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> pulumi.Output[int]:
         """
-        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 

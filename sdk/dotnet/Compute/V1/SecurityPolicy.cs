@@ -177,6 +177,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.SecurityPolicyType>? Type { get; set; }
 
+        /// <summary>
+        /// If true, the request will not be committed.
+        /// </summary>
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
+
         public SecurityPolicyArgs()
         {
         }

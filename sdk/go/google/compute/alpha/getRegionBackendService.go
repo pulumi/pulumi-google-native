@@ -27,7 +27,7 @@ type LookupRegionBackendServiceArgs struct {
 }
 
 type LookupRegionBackendServiceResult struct {
-	// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	AffinityCookieTtlSec int `pulumi:"affinityCookieTtlSec"`
 	// The list of backends that serve this BackendService.
 	Backends []BackendResponse `pulumi:"backends"`
@@ -106,6 +106,8 @@ type LookupRegionBackendServiceResult struct {
 	Subsetting      SubsettingResponse `pulumi:"subsetting"`
 	// The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 	TimeoutSec int `pulumi:"timeoutSec"`
+	// The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+	VpcNetworkScope string `pulumi:"vpcNetworkScope"`
 }
 
 func LookupRegionBackendServiceOutput(ctx *pulumi.Context, args LookupRegionBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupRegionBackendServiceResultOutput {
@@ -145,7 +147,7 @@ func (o LookupRegionBackendServiceResultOutput) ToLookupRegionBackendServiceResu
 	return o
 }
 
-// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o LookupRegionBackendServiceResultOutput) AffinityCookieTtlSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.AffinityCookieTtlSec }).(pulumi.IntOutput)
 }
@@ -348,6 +350,11 @@ func (o LookupRegionBackendServiceResultOutput) Subsetting() SubsettingResponseO
 // The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 func (o LookupRegionBackendServiceResultOutput) TimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+// The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+func (o LookupRegionBackendServiceResultOutput) VpcNetworkScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.VpcNetworkScope }).(pulumi.StringOutput)
 }
 
 func init() {

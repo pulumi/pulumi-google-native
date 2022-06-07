@@ -48,7 +48,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Name of the Gateway resource. It matches pattern `projects/*&#47;locations/global/gateways/`.
+     * Name of the Gateway resource. It matches pattern `projects/*&#47;locations/*&#47;gateways/`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export interface GatewayArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Name of the Gateway resource. It matches pattern `projects/*&#47;locations/global/gateways/`.
+     * Name of the Gateway resource. It matches pattern `projects/*&#47;locations/*&#47;gateways/`.
      */
     name?: pulumi.Input<string>;
     /**

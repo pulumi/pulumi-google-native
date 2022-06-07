@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. A short description of the backup.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Resource labels to represent user provided metadata.
         /// </summary>
         [Output("labels")]
@@ -108,6 +114,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         /// </summary>
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. A short description of the backup.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         [Input("domainId", required: true)]
         public Input<string> DomainId { get; set; } = null!;

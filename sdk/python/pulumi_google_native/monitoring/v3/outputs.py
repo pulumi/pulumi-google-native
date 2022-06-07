@@ -213,7 +213,7 @@ class AppEngineResponse(dict):
                  module_id: str):
         """
         App Engine service. Learn more at https://cloud.google.com/appengine.
-        :param str module_id: The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+        :param str module_id: The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
         """
         pulumi.set(__self__, "module_id", module_id)
 
@@ -221,7 +221,7 @@ class AppEngineResponse(dict):
     @pulumi.getter(name="moduleId")
     def module_id(self) -> str:
         """
-        The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+        The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
         """
         return pulumi.get(self, "module_id")
 
@@ -346,7 +346,7 @@ class CloudEndpointsResponse(dict):
                  service: str):
         """
         Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
-        :param str service: The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+        :param str service: The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
         """
         pulumi.set(__self__, "service", service)
 
@@ -354,7 +354,7 @@ class CloudEndpointsResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+        The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
         """
         return pulumi.get(self, "service")
 
@@ -386,8 +386,8 @@ class CloudRunResponse(dict):
                  service_name: str):
         """
         Cloud Run service. Learn more at https://cloud.google.com/run.
-        :param str location: The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
-        :param str service_name: The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        :param str location: The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
+        :param str service_name: The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "service_name", service_name)
@@ -396,7 +396,7 @@ class CloudRunResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         """
         return pulumi.get(self, "location")
 
@@ -404,7 +404,7 @@ class CloudRunResponse(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         """
         return pulumi.get(self, "service_name")
 
@@ -763,7 +763,7 @@ class DocumentationResponse(dict):
 @pulumi.output_type
 class GkeNamespaceResponse(dict):
     """
-    GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+    GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -790,7 +790,7 @@ class GkeNamespaceResponse(dict):
                  namespace_name: str,
                  project: str):
         """
-        GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+        GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
         :param str cluster_name: The name of the parent cluster.
         :param str location: The location of the parent cluster. This may be a zone or region.
         :param str namespace_name: The name of this namespace.
@@ -837,7 +837,7 @@ class GkeNamespaceResponse(dict):
 @pulumi.output_type
 class GkeServiceResponse(dict):
     """
-    GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+    GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -867,7 +867,7 @@ class GkeServiceResponse(dict):
                  project: str,
                  service_name: str):
         """
-        GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+        GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
         :param str cluster_name: The name of the parent cluster.
         :param str location: The location of the parent cluster. This may be a zone or region.
         :param str namespace_name: The name of the parent namespace.
@@ -924,7 +924,7 @@ class GkeServiceResponse(dict):
 @pulumi.output_type
 class GkeWorkloadResponse(dict):
     """
-    A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+    A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -957,13 +957,13 @@ class GkeWorkloadResponse(dict):
                  top_level_controller_name: str,
                  top_level_controller_type: str):
         """
-        A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+        A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
         :param str cluster_name: The name of the parent cluster.
         :param str location: The location of the parent cluster. This may be a zone or region.
         :param str namespace_name: The name of the parent namespace.
         :param str project: The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
         :param str top_level_controller_name: The name of this workload.
-        :param str top_level_controller_type: The type of this workload (e.g. "Deployment" or "DaemonSet")
+        :param str top_level_controller_type: The type of this workload (for example, "Deployment" or "DaemonSet")
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "location", location)
@@ -1016,7 +1016,7 @@ class GkeWorkloadResponse(dict):
     @pulumi.getter(name="topLevelControllerType")
     def top_level_controller_type(self) -> str:
         """
-        The type of this workload (e.g. "Deployment" or "DaemonSet")
+        The type of this workload (for example, "Deployment" or "DaemonSet")
         """
         return pulumi.get(self, "top_level_controller_type")
 

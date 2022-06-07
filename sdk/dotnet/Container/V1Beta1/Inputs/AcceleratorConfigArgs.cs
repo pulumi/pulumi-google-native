@@ -33,6 +33,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("gpuPartitionSize")]
         public Input<string>? GpuPartitionSize { get; set; }
 
+        /// <summary>
+        /// The configuration for GPU sharing options.
+        /// </summary>
+        [Input("gpuSharingConfig")]
+        public Input<Inputs.GPUSharingConfigArgs>? GpuSharingConfig { get; set; }
+
+        /// <summary>
+        /// The number of time-shared GPU resources to expose for each physical GPU.
+        /// </summary>
+        [Input("maxTimeSharedClientsPerGpu")]
+        public Input<string>? MaxTimeSharedClientsPerGpu { get; set; }
+
         public AcceleratorConfigArgs()
         {
         }

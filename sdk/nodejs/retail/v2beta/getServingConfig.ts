@@ -71,7 +71,7 @@ export interface GetServingConfigResult {
      */
     readonly modelId: string;
     /**
-     * Immutable. Fully qualified name projects/*&#47;locations/global/catalogs/*&#47;servingConfig/*
+     * Immutable. Fully qualified name `projects/*&#47;locations/global/catalogs/*&#47;servingConfig/*`
      */
     readonly name: string;
     /**

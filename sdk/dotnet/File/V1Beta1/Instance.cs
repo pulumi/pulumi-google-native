@@ -17,6 +17,18 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+        /// </summary>
+        [Output("capacityGb")]
+        public Output<string> CapacityGb { get; private set; } = null!;
+
+        /// <summary>
+        /// The increase/decrease capacity step size.
+        /// </summary>
+        [Output("capacityStepSizeGb")]
+        public Output<string> CapacityStepSizeGb { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the instance was created.
         /// </summary>
         [Output("createTime")]
@@ -51,6 +63,24 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The max capacity of the instance.
+        /// </summary>
+        [Output("maxCapacityGb")]
+        public Output<string> MaxCapacityGb { get; private set; } = null!;
+
+        /// <summary>
+        /// The max number of shares allowed.
+        /// </summary>
+        [Output("maxShareCount")]
+        public Output<string> MaxShareCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+        /// </summary>
+        [Output("multiShareEnabled")]
+        public Output<bool> MultiShareEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
@@ -140,6 +170,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+        /// </summary>
+        [Input("capacityGb")]
+        public Input<string>? CapacityGb { get; set; }
+
+        /// <summary>
         /// The description of the instance (2048 characters or less).
         /// </summary>
         [Input("description")]
@@ -189,6 +225,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+        /// </summary>
+        [Input("multiShareEnabled")]
+        public Input<bool>? MultiShareEnabled { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.NetworkConfigArgs>? _networks;

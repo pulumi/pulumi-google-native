@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
     /// <summary>
-    /// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+    /// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
     /// </summary>
     [OutputType]
     public sealed class GkeWorkloadResponse
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string TopLevelControllerName;
         /// <summary>
-        /// The type of this workload (e.g. "Deployment" or "DaemonSet")
+        /// The type of this workload (for example, "Deployment" or "DaemonSet")
         /// </summary>
         public readonly string TopLevelControllerType;
 

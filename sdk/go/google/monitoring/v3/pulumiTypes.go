@@ -398,7 +398,7 @@ func (o AlertStrategyResponseOutput) NotificationRateLimit() NotificationRateLim
 
 // App Engine service. Learn more at https://cloud.google.com/appengine.
 type AppEngine struct {
-	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 	ModuleId *string `pulumi:"moduleId"`
 }
 
@@ -415,7 +415,7 @@ type AppEngineInput interface {
 
 // App Engine service. Learn more at https://cloud.google.com/appengine.
 type AppEngineArgs struct {
-	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 	ModuleId pulumi.StringPtrInput `pulumi:"moduleId"`
 }
 
@@ -497,7 +497,7 @@ func (o AppEngineOutput) ToAppEnginePtrOutputWithContext(ctx context.Context) Ap
 	}).(AppEnginePtrOutput)
 }
 
-// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 func (o AppEngineOutput) ModuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppEngine) *string { return v.ModuleId }).(pulumi.StringPtrOutput)
 }
@@ -526,7 +526,7 @@ func (o AppEnginePtrOutput) Elem() AppEngineOutput {
 	}).(AppEngineOutput)
 }
 
-// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 func (o AppEnginePtrOutput) ModuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppEngine) *string {
 		if v == nil {
@@ -538,7 +538,7 @@ func (o AppEnginePtrOutput) ModuleId() pulumi.StringPtrOutput {
 
 // App Engine service. Learn more at https://cloud.google.com/appengine.
 type AppEngineResponse struct {
-	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 	ModuleId string `pulumi:"moduleId"`
 }
 
@@ -557,7 +557,7 @@ func (o AppEngineResponseOutput) ToAppEngineResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
 func (o AppEngineResponseOutput) ModuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineResponse) string { return v.ModuleId }).(pulumi.StringOutput)
 }
@@ -1166,7 +1166,7 @@ func (o BasicSliResponseOutput) Version() pulumi.StringArrayOutput {
 
 // Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
 type CloudEndpoints struct {
-	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
 	Service *string `pulumi:"service"`
 }
 
@@ -1183,7 +1183,7 @@ type CloudEndpointsInput interface {
 
 // Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
 type CloudEndpointsArgs struct {
-	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -1265,7 +1265,7 @@ func (o CloudEndpointsOutput) ToCloudEndpointsPtrOutputWithContext(ctx context.C
 	}).(CloudEndpointsPtrOutput)
 }
 
-// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
 func (o CloudEndpointsOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudEndpoints) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -1294,7 +1294,7 @@ func (o CloudEndpointsPtrOutput) Elem() CloudEndpointsOutput {
 	}).(CloudEndpointsOutput)
 }
 
-// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
 func (o CloudEndpointsPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudEndpoints) *string {
 		if v == nil {
@@ -1306,7 +1306,7 @@ func (o CloudEndpointsPtrOutput) Service() pulumi.StringPtrOutput {
 
 // Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
 type CloudEndpointsResponse struct {
-	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
 	Service string `pulumi:"service"`
 }
 
@@ -1325,16 +1325,16 @@ func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponseOutputWithContext(
 	return o
 }
 
-// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
 func (o CloudEndpointsResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudEndpointsResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
 // Cloud Run service. Learn more at https://cloud.google.com/run.
 type CloudRun struct {
-	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 	Location *string `pulumi:"location"`
-	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -1351,9 +1351,9 @@ type CloudRunInput interface {
 
 // Cloud Run service. Learn more at https://cloud.google.com/run.
 type CloudRunArgs struct {
-	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
@@ -1435,12 +1435,12 @@ func (o CloudRunOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) Clou
 	}).(CloudRunPtrOutput)
 }
 
-// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 func (o CloudRunOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRun) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 func (o CloudRunOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRun) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -1469,7 +1469,7 @@ func (o CloudRunPtrOutput) Elem() CloudRunOutput {
 	}).(CloudRunOutput)
 }
 
-// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 func (o CloudRunPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRun) *string {
 		if v == nil {
@@ -1479,7 +1479,7 @@ func (o CloudRunPtrOutput) Location() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 func (o CloudRunPtrOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRun) *string {
 		if v == nil {
@@ -1491,9 +1491,9 @@ func (o CloudRunPtrOutput) ServiceName() pulumi.StringPtrOutput {
 
 // Cloud Run service. Learn more at https://cloud.google.com/run.
 type CloudRunResponse struct {
-	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 	Location string `pulumi:"location"`
-	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -1512,12 +1512,12 @@ func (o CloudRunResponseOutput) ToCloudRunResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 func (o CloudRunResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
 func (o CloudRunResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -2696,7 +2696,7 @@ func (o DocumentationResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }
 
-// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 type GkeNamespace struct {
 	// The name of the parent cluster.
 	ClusterName *string `pulumi:"clusterName"`
@@ -2717,7 +2717,7 @@ type GkeNamespaceInput interface {
 	ToGkeNamespaceOutputWithContext(context.Context) GkeNamespaceOutput
 }
 
-// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 type GkeNamespaceArgs struct {
 	// The name of the parent cluster.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
@@ -2780,7 +2780,7 @@ func (i *gkeNamespacePtrType) ToGkeNamespacePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GkeNamespacePtrOutput)
 }
 
-// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 type GkeNamespaceOutput struct{ *pulumi.OutputState }
 
 func (GkeNamespaceOutput) ElementType() reflect.Type {
@@ -2874,7 +2874,7 @@ func (o GkeNamespacePtrOutput) NamespaceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 type GkeNamespaceResponse struct {
 	// The name of the parent cluster.
 	ClusterName string `pulumi:"clusterName"`
@@ -2886,7 +2886,7 @@ type GkeNamespaceResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 type GkeNamespaceResponseOutput struct{ *pulumi.OutputState }
 
 func (GkeNamespaceResponseOutput) ElementType() reflect.Type {
@@ -2921,7 +2921,7 @@ func (o GkeNamespaceResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeNamespaceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 type GkeService struct {
 	// The name of the parent cluster.
 	ClusterName *string `pulumi:"clusterName"`
@@ -2944,7 +2944,7 @@ type GkeServiceInput interface {
 	ToGkeServiceOutputWithContext(context.Context) GkeServiceOutput
 }
 
-// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 type GkeServiceArgs struct {
 	// The name of the parent cluster.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
@@ -3009,7 +3009,7 @@ func (i *gkeServicePtrType) ToGkeServicePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GkeServicePtrOutput)
 }
 
-// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 type GkeServiceOutput struct{ *pulumi.OutputState }
 
 func (GkeServiceOutput) ElementType() reflect.Type {
@@ -3118,7 +3118,7 @@ func (o GkeServicePtrOutput) ServiceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 type GkeServiceResponse struct {
 	// The name of the parent cluster.
 	ClusterName string `pulumi:"clusterName"`
@@ -3132,7 +3132,7 @@ type GkeServiceResponse struct {
 	ServiceName string `pulumi:"serviceName"`
 }
 
-// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 type GkeServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (GkeServiceResponseOutput) ElementType() reflect.Type {
@@ -3172,7 +3172,7 @@ func (o GkeServiceResponseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeServiceResponse) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
 type GkeWorkload struct {
 	// The name of the parent cluster.
 	ClusterName *string `pulumi:"clusterName"`
@@ -3182,7 +3182,7 @@ type GkeWorkload struct {
 	NamespaceName *string `pulumi:"namespaceName"`
 	// The name of this workload.
 	TopLevelControllerName *string `pulumi:"topLevelControllerName"`
-	// The type of this workload (e.g. "Deployment" or "DaemonSet")
+	// The type of this workload (for example, "Deployment" or "DaemonSet")
 	TopLevelControllerType *string `pulumi:"topLevelControllerType"`
 }
 
@@ -3197,7 +3197,7 @@ type GkeWorkloadInput interface {
 	ToGkeWorkloadOutputWithContext(context.Context) GkeWorkloadOutput
 }
 
-// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
 type GkeWorkloadArgs struct {
 	// The name of the parent cluster.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
@@ -3207,7 +3207,7 @@ type GkeWorkloadArgs struct {
 	NamespaceName pulumi.StringPtrInput `pulumi:"namespaceName"`
 	// The name of this workload.
 	TopLevelControllerName pulumi.StringPtrInput `pulumi:"topLevelControllerName"`
-	// The type of this workload (e.g. "Deployment" or "DaemonSet")
+	// The type of this workload (for example, "Deployment" or "DaemonSet")
 	TopLevelControllerType pulumi.StringPtrInput `pulumi:"topLevelControllerType"`
 }
 
@@ -3264,7 +3264,7 @@ func (i *gkeWorkloadPtrType) ToGkeWorkloadPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GkeWorkloadPtrOutput)
 }
 
-// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
 type GkeWorkloadOutput struct{ *pulumi.OutputState }
 
 func (GkeWorkloadOutput) ElementType() reflect.Type {
@@ -3309,7 +3309,7 @@ func (o GkeWorkloadOutput) TopLevelControllerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeWorkload) *string { return v.TopLevelControllerName }).(pulumi.StringPtrOutput)
 }
 
-// The type of this workload (e.g. "Deployment" or "DaemonSet")
+// The type of this workload (for example, "Deployment" or "DaemonSet")
 func (o GkeWorkloadOutput) TopLevelControllerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeWorkload) *string { return v.TopLevelControllerType }).(pulumi.StringPtrOutput)
 }
@@ -3378,7 +3378,7 @@ func (o GkeWorkloadPtrOutput) TopLevelControllerName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of this workload (e.g. "Deployment" or "DaemonSet")
+// The type of this workload (for example, "Deployment" or "DaemonSet")
 func (o GkeWorkloadPtrOutput) TopLevelControllerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GkeWorkload) *string {
 		if v == nil {
@@ -3388,7 +3388,7 @@ func (o GkeWorkloadPtrOutput) TopLevelControllerType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
 type GkeWorkloadResponse struct {
 	// The name of the parent cluster.
 	ClusterName string `pulumi:"clusterName"`
@@ -3400,11 +3400,11 @@ type GkeWorkloadResponse struct {
 	Project string `pulumi:"project"`
 	// The name of this workload.
 	TopLevelControllerName string `pulumi:"topLevelControllerName"`
-	// The type of this workload (e.g. "Deployment" or "DaemonSet")
+	// The type of this workload (for example, "Deployment" or "DaemonSet")
 	TopLevelControllerType string `pulumi:"topLevelControllerType"`
 }
 
-// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
 type GkeWorkloadResponseOutput struct{ *pulumi.OutputState }
 
 func (GkeWorkloadResponseOutput) ElementType() reflect.Type {
@@ -3444,7 +3444,7 @@ func (o GkeWorkloadResponseOutput) TopLevelControllerName() pulumi.StringOutput 
 	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.TopLevelControllerName }).(pulumi.StringOutput)
 }
 
-// The type of this workload (e.g. "Deployment" or "DaemonSet")
+// The type of this workload (for example, "Deployment" or "DaemonSet")
 func (o GkeWorkloadResponseOutput) TopLevelControllerType() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.TopLevelControllerType }).(pulumi.StringOutput)
 }

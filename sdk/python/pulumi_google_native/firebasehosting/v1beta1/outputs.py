@@ -633,6 +633,8 @@ class RewriteResponse(dict):
         suggest = None
         if key == "dynamicLinks":
             suggest = "dynamic_links"
+        elif key == "functionRegion":
+            suggest = "function_region"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RewriteResponse. Access the value via the '{suggest}' property getter instead.")
@@ -648,6 +650,7 @@ class RewriteResponse(dict):
     def __init__(__self__, *,
                  dynamic_links: bool,
                  function: str,
+                 function_region: str,
                  glob: str,
                  path: str,
                  regex: str,
@@ -656,6 +659,7 @@ class RewriteResponse(dict):
         A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
         :param bool dynamic_links: The request will be forwarded to Firebase Dynamic Links.
         :param str function: The function to proxy requests to. Must match the exported function name exactly.
+        :param str function_region: Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
         :param str glob: The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
         :param str path: The URL path to rewrite the request to.
         :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
@@ -663,6 +667,7 @@ class RewriteResponse(dict):
         """
         pulumi.set(__self__, "dynamic_links", dynamic_links)
         pulumi.set(__self__, "function", function)
+        pulumi.set(__self__, "function_region", function_region)
         pulumi.set(__self__, "glob", glob)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "regex", regex)
@@ -683,6 +688,14 @@ class RewriteResponse(dict):
         The function to proxy requests to. Must match the exported function name exactly.
         """
         return pulumi.get(self, "function")
+
+    @property
+    @pulumi.getter(name="functionRegion")
+    def function_region(self) -> str:
+        """
+        Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
+        """
+        return pulumi.get(self, "function_region")
 
     @property
     @pulumi.getter

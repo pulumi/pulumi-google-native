@@ -22,7 +22,7 @@ type Control struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A facet specification to perform faceted search.
 	FacetSpec GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput `pulumi:"facetSpec"`
-	// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2alphaRuleResponseOutput `pulumi:"rule"`
@@ -89,7 +89,7 @@ type controlArgs struct {
 	// A facet specification to perform faceted search.
 	FacetSpec *GoogleCloudRetailV2alphaSearchRequestFacetSpec `pulumi:"facetSpec"`
 	Location  *string                                         `pulumi:"location"`
-	// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
@@ -108,7 +108,7 @@ type ControlArgs struct {
 	// A facet specification to perform faceted search.
 	FacetSpec GoogleCloudRetailV2alphaSearchRequestFacetSpecPtrInput
 	Location  pulumi.StringPtrInput
-	// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
@@ -169,7 +169,7 @@ func (o ControlOutput) FacetSpec() GoogleCloudRetailV2alphaSearchRequestFacetSpe
 	return o.ApplyT(func(v *Control) GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput { return v.FacetSpec }).(GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput)
 }
 
-// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
 func (o ControlOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Control) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

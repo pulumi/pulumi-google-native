@@ -2,26 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const AuthenticationConfigAuthenticationType = {
-    /**
-     * If AuthenticationType is unspecified, SERVICE_ACCOUNT is used
-     */
-    AuthenticationTypeUnspecified: "AUTHENTICATION_TYPE_UNSPECIFIED",
-    /**
-     * Defaults to using service account credentials
-     */
-    ServiceAccount: "SERVICE_ACCOUNT",
-    /**
-     * Injectable credentials authentication type
-     */
-    InjectableCredentials: "INJECTABLE_CREDENTIALS",
-} as const;
-
-/**
- * Authentication type for session execution.
- */
-export type AuthenticationConfigAuthenticationType = (typeof AuthenticationConfigAuthenticationType)[keyof typeof AuthenticationConfigAuthenticationType];
-
 export const GceClusterConfigPrivateIpv6GoogleAccess = {
     /**
      * If unspecified, Compute Engine default behavior will apply, which is the same as INHERIT_FROM_SUBNETWORK.

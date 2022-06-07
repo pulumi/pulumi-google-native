@@ -14,6 +14,7 @@ __all__ = [
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'FilterEventTypeItem',
+    'GPUSharingConfigGpuSharingStrategy',
     'LoggingComponentConfigEnableComponentsItem',
     'MaintenanceExclusionOptionsScope',
     'MonitoringComponentConfigEnableComponentsItem',
@@ -191,6 +192,20 @@ class FilterEventTypeItem(str, Enum):
     SECURITY_BULLETIN_EVENT = "SECURITY_BULLETIN_EVENT"
     """
     Corresponds with SecurityBulletinEvent.
+    """
+
+
+class GPUSharingConfigGpuSharingStrategy(str, Enum):
+    """
+    The type of GPU sharing strategy to enable on the GPU node.
+    """
+    GPU_SHARING_STRATEGY_UNSPECIFIED = "GPU_SHARING_STRATEGY_UNSPECIFIED"
+    """
+    Default value.
+    """
+    TIME_SHARING = "TIME_SHARING"
+    """
+    GPUs are time-shared between containers.
     """
 
 

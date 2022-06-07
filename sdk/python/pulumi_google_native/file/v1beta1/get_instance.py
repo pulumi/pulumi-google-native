@@ -18,7 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, name=None, networks=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
+    def __init__(__self__, capacity_gb=None, capacity_step_size_gb=None, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_capacity_gb=None, max_share_count=None, multi_share_enabled=None, name=None, networks=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
+        if capacity_gb and not isinstance(capacity_gb, str):
+            raise TypeError("Expected argument 'capacity_gb' to be a str")
+        pulumi.set(__self__, "capacity_gb", capacity_gb)
+        if capacity_step_size_gb and not isinstance(capacity_step_size_gb, str):
+            raise TypeError("Expected argument 'capacity_step_size_gb' to be a str")
+        pulumi.set(__self__, "capacity_step_size_gb", capacity_step_size_gb)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,6 +43,15 @@ class GetInstanceResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if max_capacity_gb and not isinstance(max_capacity_gb, str):
+            raise TypeError("Expected argument 'max_capacity_gb' to be a str")
+        pulumi.set(__self__, "max_capacity_gb", max_capacity_gb)
+        if max_share_count and not isinstance(max_share_count, str):
+            raise TypeError("Expected argument 'max_share_count' to be a str")
+        pulumi.set(__self__, "max_share_count", max_share_count)
+        if multi_share_enabled and not isinstance(multi_share_enabled, bool):
+            raise TypeError("Expected argument 'multi_share_enabled' to be a bool")
+        pulumi.set(__self__, "multi_share_enabled", multi_share_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -58,6 +73,22 @@ class GetInstanceResult:
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
+
+    @property
+    @pulumi.getter(name="capacityGb")
+    def capacity_gb(self) -> str:
+        """
+        The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+        """
+        return pulumi.get(self, "capacity_gb")
+
+    @property
+    @pulumi.getter(name="capacityStepSizeGb")
+    def capacity_step_size_gb(self) -> str:
+        """
+        The increase/decrease capacity step size.
+        """
+        return pulumi.get(self, "capacity_step_size_gb")
 
     @property
     @pulumi.getter(name="createTime")
@@ -106,6 +137,30 @@ class GetInstanceResult:
         Resource labels to represent user provided metadata.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxCapacityGb")
+    def max_capacity_gb(self) -> str:
+        """
+        The max capacity of the instance.
+        """
+        return pulumi.get(self, "max_capacity_gb")
+
+    @property
+    @pulumi.getter(name="maxShareCount")
+    def max_share_count(self) -> str:
+        """
+        The max number of shares allowed.
+        """
+        return pulumi.get(self, "max_share_count")
+
+    @property
+    @pulumi.getter(name="multiShareEnabled")
+    def multi_share_enabled(self) -> bool:
+        """
+        Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+        """
+        return pulumi.get(self, "multi_share_enabled")
 
     @property
     @pulumi.getter
@@ -170,12 +225,17 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            capacity_gb=self.capacity_gb,
+            capacity_step_size_gb=self.capacity_step_size_gb,
             create_time=self.create_time,
             description=self.description,
             etag=self.etag,
             file_shares=self.file_shares,
             kms_key_name=self.kms_key_name,
             labels=self.labels,
+            max_capacity_gb=self.max_capacity_gb,
+            max_share_count=self.max_share_count,
+            multi_share_enabled=self.multi_share_enabled,
             name=self.name,
             networks=self.networks,
             satisfies_pzs=self.satisfies_pzs,
@@ -203,12 +263,17 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:file/v1beta1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        capacity_gb=__ret__.capacity_gb,
+        capacity_step_size_gb=__ret__.capacity_step_size_gb,
         create_time=__ret__.create_time,
         description=__ret__.description,
         etag=__ret__.etag,
         file_shares=__ret__.file_shares,
         kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
+        max_capacity_gb=__ret__.max_capacity_gb,
+        max_share_count=__ret__.max_share_count,
+        multi_share_enabled=__ret__.multi_share_enabled,
         name=__ret__.name,
         networks=__ret__.networks,
         satisfies_pzs=__ret__.satisfies_pzs,

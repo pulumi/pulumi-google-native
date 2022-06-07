@@ -73,7 +73,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * A generated buganizer id to track provisioning request.
+     * A generated ticket id to track provisioning request.
      */
     public readonly ticketId!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export interface ProvisioningConfigArgs {
     networks?: pulumi.Input<pulumi.Input<inputs.baremetalsolution.v2.NetworkConfigArgs>[]>;
     project?: pulumi.Input<string>;
     /**
-     * A generated buganizer id to track provisioning request.
+     * A generated ticket id to track provisioning request.
      */
     ticketId?: pulumi.Input<string>;
     /**

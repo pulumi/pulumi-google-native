@@ -51,4 +51,41 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+    /// </summary>
+    [EnumType]
+    public readonly struct TagKeyPurpose : IEquatable<TagKeyPurpose>
+    {
+        private readonly string _value;
+
+        private TagKeyPurpose(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified purpose.
+        /// </summary>
+        public static TagKeyPurpose PurposeUnspecified { get; } = new TagKeyPurpose("PURPOSE_UNSPECIFIED");
+        /// <summary>
+        /// Purpose for Compute Engine firewalls. A corresponding purpose_data should be set for the network the tag is intended for. The key should be 'network' and the value should be in the format of the network url id string: http://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+        /// </summary>
+        public static TagKeyPurpose GceFirewall { get; } = new TagKeyPurpose("GCE_FIREWALL");
+
+        public static bool operator ==(TagKeyPurpose left, TagKeyPurpose right) => left.Equals(right);
+        public static bool operator !=(TagKeyPurpose left, TagKeyPurpose right) => !left.Equals(right);
+
+        public static explicit operator string(TagKeyPurpose value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TagKeyPurpose other && Equals(other);
+        public bool Equals(TagKeyPurpose other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

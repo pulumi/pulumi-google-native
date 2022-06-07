@@ -16,9 +16,9 @@ type InstanceTier string
 const (
 	// Not set.
 	InstanceTierTierUnspecified = InstanceTier("TIER_UNSPECIFIED")
-	// STANDARD tier.
+	// STANDARD tier. BASIC_HDD is the preferred term for this tier.
 	InstanceTierStandard = InstanceTier("STANDARD")
-	// PREMIUM tier.
+	// PREMIUM tier. BASIC_SSD is the preferred term for this tier.
 	InstanceTierPremium = InstanceTier("PREMIUM")
 	// BASIC instances offer a maximum capacity of 63.9 TB. BASIC_HDD is an alias for STANDARD Tier, offering economical performance backed by HDD.
 	InstanceTierBasicHdd = InstanceTier("BASIC_HDD")

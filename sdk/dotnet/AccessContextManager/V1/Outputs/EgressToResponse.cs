@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
     public sealed class EgressToResponse
     {
         /// <summary>
+        /// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> ExternalResources;
+        /// <summary>
         /// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApiOperationResponse> Operations;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 
         [OutputConstructor]
         private EgressToResponse(
+            ImmutableArray<string> externalResources,
+
             ImmutableArray<Outputs.ApiOperationResponse> operations,
 
             ImmutableArray<string> resources)
         {
+            ExternalResources = externalResources;
             Operations = operations;
             Resources = resources;
         }

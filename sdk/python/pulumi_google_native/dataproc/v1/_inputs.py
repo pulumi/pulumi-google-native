@@ -11,7 +11,6 @@ from ._enums import *
 
 __all__ = [
     'AcceleratorConfigArgs',
-    'AuthenticationConfigArgs',
     'AutoscalingConfigArgs',
     'AuxiliaryServicesConfigArgs',
     'BasicAutoscalingAlgorithmArgs',
@@ -37,7 +36,6 @@ __all__ = [
     'HadoopJobArgs',
     'HiveJobArgs',
     'IdentityConfigArgs',
-    'InjectableCredentialsConfigArgs',
     'InstanceGroupAutoscalingPolicyConfigArgs',
     'InstanceGroupConfigArgs',
     'JobPlacementArgs',
@@ -120,46 +118,6 @@ class AcceleratorConfigArgs:
     @accelerator_type_uri.setter
     def accelerator_type_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "accelerator_type_uri", value)
-
-
-@pulumi.input_type
-class AuthenticationConfigArgs:
-    def __init__(__self__, *,
-                 authentication_type: Optional[pulumi.Input['AuthenticationConfigAuthenticationType']] = None,
-                 injectable_credentials_config: Optional[pulumi.Input['InjectableCredentialsConfigArgs']] = None):
-        """
-        Configuration for using injectable credentials or service account
-        :param pulumi.Input['AuthenticationConfigAuthenticationType'] authentication_type: Authentication type for session execution.
-        :param pulumi.Input['InjectableCredentialsConfigArgs'] injectable_credentials_config: Configuration for using end user authentication
-        """
-        if authentication_type is not None:
-            pulumi.set(__self__, "authentication_type", authentication_type)
-        if injectable_credentials_config is not None:
-            pulumi.set(__self__, "injectable_credentials_config", injectable_credentials_config)
-
-    @property
-    @pulumi.getter(name="authenticationType")
-    def authentication_type(self) -> Optional[pulumi.Input['AuthenticationConfigAuthenticationType']]:
-        """
-        Authentication type for session execution.
-        """
-        return pulumi.get(self, "authentication_type")
-
-    @authentication_type.setter
-    def authentication_type(self, value: Optional[pulumi.Input['AuthenticationConfigAuthenticationType']]):
-        pulumi.set(self, "authentication_type", value)
-
-    @property
-    @pulumi.getter(name="injectableCredentialsConfig")
-    def injectable_credentials_config(self) -> Optional[pulumi.Input['InjectableCredentialsConfigArgs']]:
-        """
-        Configuration for using end user authentication
-        """
-        return pulumi.get(self, "injectable_credentials_config")
-
-    @injectable_credentials_config.setter
-    def injectable_credentials_config(self, value: Optional[pulumi.Input['InjectableCredentialsConfigArgs']]):
-        pulumi.set(self, "injectable_credentials_config", value)
 
 
 @pulumi.input_type
@@ -1939,15 +1897,6 @@ class IdentityConfigArgs:
     @user_service_account_mapping.setter
     def user_service_account_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "user_service_account_mapping", value)
-
-
-@pulumi.input_type
-class InjectableCredentialsConfigArgs:
-    def __init__(__self__):
-        """
-        Specific injectable credentials authentication parameters
-        """
-        pass
 
 
 @pulumi.input_type
@@ -3749,21 +3698,17 @@ class RuntimeConfigArgs:
     def __init__(__self__, *,
                  container_image: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 session_authentication_config: Optional[pulumi.Input['AuthenticationConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Runtime configuration for a workload.
         :param pulumi.Input[str] container_image: Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, which are used to configure workload execution.
-        :param pulumi.Input['AuthenticationConfigArgs'] session_authentication_config: Optional. Authentication configuration for the session execution.
         :param pulumi.Input[str] version: Optional. Version of the batch runtime.
         """
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
-        if session_authentication_config is not None:
-            pulumi.set(__self__, "session_authentication_config", session_authentication_config)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -3790,18 +3735,6 @@ class RuntimeConfigArgs:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
-
-    @property
-    @pulumi.getter(name="sessionAuthenticationConfig")
-    def session_authentication_config(self) -> Optional[pulumi.Input['AuthenticationConfigArgs']]:
-        """
-        Optional. Authentication configuration for the session execution.
-        """
-        return pulumi.get(self, "session_authentication_config")
-
-    @session_authentication_config.setter
-    def session_authentication_config(self, value: Optional[pulumi.Input['AuthenticationConfigArgs']]):
-        pulumi.set(self, "session_authentication_config", value)
 
     @property
     @pulumi.getter

@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         /// </summary>
         public readonly string Function;
         /// <summary>
+        /// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
+        /// </summary>
+        public readonly string FunctionRegion;
+        /// <summary>
         /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
         /// </summary>
         public readonly string Glob;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 
             string function,
 
+            string functionRegion,
+
             string glob,
 
             string path,
@@ -57,6 +63,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         {
             DynamicLinks = dynamicLinks;
             Function = function;
+            FunctionRegion = functionRegion;
             Glob = glob;
             Path = path;
             Regex = regex;

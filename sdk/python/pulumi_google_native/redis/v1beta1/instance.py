@@ -22,7 +22,9 @@ class InstanceArgs:
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
+                 customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -37,6 +39,7 @@ class InstanceArgs:
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[str]] = None,
+                 suspension_reasons: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonsItem']]]] = None,
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -46,7 +49,9 @@ class InstanceArgs:
         :param pulumi.Input[str] alternative_location_id: Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: Optional. The available maintenance versions that an instance could update to.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+        :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that the customer provides when trying to create the instance.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
@@ -60,6 +65,7 @@ class InstanceArgs:
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonsItem']]] suspension_reasons: Optional. reasons that causes instance in "SUSPENDED" state.
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -71,8 +77,12 @@ class InstanceArgs:
             pulumi.set(__self__, "auth_enabled", auth_enabled)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
+        if available_maintenance_versions is not None:
+            pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if connect_mode is not None:
             pulumi.set(__self__, "connect_mode", connect_mode)
+        if customer_managed_key is not None:
+            pulumi.set(__self__, "customer_managed_key", customer_managed_key)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -101,6 +111,8 @@ class InstanceArgs:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if secondary_ip_range is not None:
             pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
+        if suspension_reasons is not None:
+            pulumi.set(__self__, "suspension_reasons", suspension_reasons)
         if transit_encryption_mode is not None:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
 
@@ -177,6 +189,18 @@ class InstanceArgs:
         pulumi.set(self, "authorized_network", value)
 
     @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The available maintenance versions that an instance could update to.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @available_maintenance_versions.setter
+    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "available_maintenance_versions", value)
+
+    @property
     @pulumi.getter(name="connectMode")
     def connect_mode(self) -> Optional[pulumi.Input['InstanceConnectMode']]:
         """
@@ -187,6 +211,18 @@ class InstanceArgs:
     @connect_mode.setter
     def connect_mode(self, value: Optional[pulumi.Input['InstanceConnectMode']]):
         pulumi.set(self, "connect_mode", value)
+
+    @property
+    @pulumi.getter(name="customerManagedKey")
+    def customer_managed_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The KMS key reference that the customer provides when trying to create the instance.
+        """
+        return pulumi.get(self, "customer_managed_key")
+
+    @customer_managed_key.setter
+    def customer_managed_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_managed_key", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -354,6 +390,18 @@ class InstanceArgs:
         pulumi.set(self, "secondary_ip_range", value)
 
     @property
+    @pulumi.getter(name="suspensionReasons")
+    def suspension_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonsItem']]]]:
+        """
+        Optional. reasons that causes instance in "SUSPENDED" state.
+        """
+        return pulumi.get(self, "suspension_reasons")
+
+    @suspension_reasons.setter
+    def suspension_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonsItem']]]]):
+        pulumi.set(self, "suspension_reasons", value)
+
+    @property
     @pulumi.getter(name="transitEncryptionMode")
     def transit_encryption_mode(self) -> Optional[pulumi.Input['InstanceTransitEncryptionMode']]:
         """
@@ -374,7 +422,9 @@ class Instance(pulumi.CustomResource):
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
+                 customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -391,6 +441,7 @@ class Instance(pulumi.CustomResource):
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[str]] = None,
+                 suspension_reasons: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonsItem']]]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None,
                  __props__=None):
@@ -402,7 +453,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] alternative_location_id: Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: Optional. The available maintenance versions that an instance could update to.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+        :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that the customer provides when trying to create the instance.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[str] instance_id: Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
@@ -418,6 +471,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonsItem']]] suspension_reasons: Optional. reasons that causes instance in "SUSPENDED" state.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
@@ -448,7 +502,9 @@ class Instance(pulumi.CustomResource):
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
+                 customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -465,6 +521,7 @@ class Instance(pulumi.CustomResource):
                  replica_count: Optional[pulumi.Input[int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[str]] = None,
+                 suspension_reasons: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonsItem']]]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None,
                  __props__=None):
@@ -482,7 +539,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["alternative_location_id"] = alternative_location_id
             __props__.__dict__["auth_enabled"] = auth_enabled
             __props__.__dict__["authorized_network"] = authorized_network
+            __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
             __props__.__dict__["connect_mode"] = connect_mode
+            __props__.__dict__["customer_managed_key"] = customer_managed_key
             __props__.__dict__["display_name"] = display_name
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
@@ -503,6 +562,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["replica_count"] = replica_count
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
             __props__.__dict__["secondary_ip_range"] = secondary_ip_range
+            __props__.__dict__["suspension_reasons"] = suspension_reasons
             if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")
             __props__.__dict__["tier"] = tier
@@ -544,9 +604,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["alternative_location_id"] = None
         __props__.__dict__["auth_enabled"] = None
         __props__.__dict__["authorized_network"] = None
+        __props__.__dict__["available_maintenance_versions"] = None
         __props__.__dict__["connect_mode"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_location_id"] = None
+        __props__.__dict__["customer_managed_key"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["host"] = None
         __props__.__dict__["labels"] = None
@@ -571,6 +633,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["server_ca_certs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
+        __props__.__dict__["suspension_reasons"] = None
         __props__.__dict__["tier"] = None
         __props__.__dict__["transit_encryption_mode"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -600,6 +663,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "authorized_network")
 
     @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. The available maintenance versions that an instance could update to.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @property
     @pulumi.getter(name="connectMode")
     def connect_mode(self) -> pulumi.Output[str]:
         """
@@ -622,6 +693,14 @@ class Instance(pulumi.CustomResource):
         The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
         """
         return pulumi.get(self, "current_location_id")
+
+    @property
+    @pulumi.getter(name="customerManagedKey")
+    def customer_managed_key(self) -> pulumi.Output[str]:
+        """
+        Optional. The KMS key reference that the customer provides when trying to create the instance.
+        """
+        return pulumi.get(self, "customer_managed_key")
 
     @property
     @pulumi.getter(name="displayName")
@@ -814,6 +893,14 @@ class Instance(pulumi.CustomResource):
         Additional information about the current status of this instance, if available.
         """
         return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="suspensionReasons")
+    def suspension_reasons(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. reasons that causes instance in "SUSPENDED" state.
+        """
+        return pulumi.get(self, "suspension_reasons")
 
     @property
     @pulumi.getter

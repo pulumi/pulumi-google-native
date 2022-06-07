@@ -543,6 +543,7 @@ class MasterAuthorizedNetworksConfigArgs:
 class NodeConfigArgs:
     def __init__(__self__, *,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
+                 enable_ip_masq_agent: Optional[pulumi.Input[bool]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -554,6 +555,7 @@ class NodeConfigArgs:
         """
         The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
         :param pulumi.Input[int] disk_size_gb: Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param pulumi.Input[bool] enable_ip_masq_agent: Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
         :param pulumi.Input[str] location: Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[str] machine_type: Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -565,6 +567,8 @@ class NodeConfigArgs:
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if enable_ip_masq_agent is not None:
+            pulumi.set(__self__, "enable_ip_masq_agent", enable_ip_masq_agent)
         if ip_allocation_policy is not None:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if location is not None:
@@ -593,6 +597,18 @@ class NodeConfigArgs:
     @disk_size_gb.setter
     def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="enableIpMasqAgent")
+    def enable_ip_masq_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+        """
+        return pulumi.get(self, "enable_ip_masq_agent")
+
+    @enable_ip_masq_agent.setter
+    def enable_ip_masq_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ip_masq_agent", value)
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")

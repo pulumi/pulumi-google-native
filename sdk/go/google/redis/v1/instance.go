@@ -27,6 +27,8 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
 	CurrentLocationId pulumi.StringOutput `pulumi:"currentLocationId"`
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey pulumi.StringOutput `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
@@ -39,8 +41,6 @@ type Instance struct {
 	MaintenancePolicy MaintenancePolicyResponseOutput `pulumi:"maintenancePolicy"`
 	// Date and time of upcoming maintenance events which have been scheduled.
 	MaintenanceSchedule MaintenanceScheduleResponseOutput `pulumi:"maintenanceSchedule"`
-	// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
@@ -75,6 +75,8 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current status of this instance, if available.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons pulumi.StringArrayOutput `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -137,6 +139,8 @@ type instanceArgs struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 	ConnectMode *InstanceConnectMode `pulumi:"connectMode"`
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey *string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
@@ -147,8 +151,6 @@ type instanceArgs struct {
 	Location *string `pulumi:"location"`
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy *MaintenancePolicy `pulumi:"maintenancePolicy"`
-	// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
@@ -168,6 +170,8 @@ type instanceArgs struct {
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
 	SecondaryIpRange *string `pulumi:"secondaryIpRange"`
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons []InstanceSuspensionReasonsItem `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier InstanceTier `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -184,6 +188,8 @@ type InstanceArgs struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
 	ConnectMode InstanceConnectModePtrInput
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
@@ -194,8 +200,6 @@ type InstanceArgs struct {
 	Location pulumi.StringPtrInput
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy MaintenancePolicyPtrInput
-	// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntInput
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
@@ -215,6 +219,8 @@ type InstanceArgs struct {
 	ReservedIpRange pulumi.StringPtrInput
 	// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
 	SecondaryIpRange pulumi.StringPtrInput
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons InstanceSuspensionReasonsItemArrayInput
 	// The service tier of the instance.
 	Tier InstanceTierInput
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -288,6 +294,11 @@ func (o InstanceOutput) CurrentLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CurrentLocationId }).(pulumi.StringOutput)
 }
 
+// Optional. The KMS key reference that the customer provides when trying to create the instance.
+func (o InstanceOutput) CustomerManagedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CustomerManagedKey }).(pulumi.StringOutput)
+}
+
 // An arbitrary and optional user-provided name for the instance.
 func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -316,11 +327,6 @@ func (o InstanceOutput) MaintenancePolicy() MaintenancePolicyResponseOutput {
 // Date and time of upcoming maintenance events which have been scheduled.
 func (o InstanceOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
 	return o.ApplyT(func(v *Instance) MaintenanceScheduleResponseOutput { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
-}
-
-// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-func (o InstanceOutput) MaintenanceVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 // Redis memory size in GiB.
@@ -406,6 +412,11 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 // Additional information about the current status of this instance, if available.
 func (o InstanceOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Optional. reasons that causes instance in "SUSPENDED" state.
+func (o InstanceOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
 }
 
 // The service tier of the instance.

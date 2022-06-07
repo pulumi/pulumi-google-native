@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<bool> IsDefault { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        /// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels. Note that this field is not updatable for mls1* models.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        /// Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels. Note that this field is not updatable for mls1* models.
         /// </summary>
         public InputMap<string> Labels
         {

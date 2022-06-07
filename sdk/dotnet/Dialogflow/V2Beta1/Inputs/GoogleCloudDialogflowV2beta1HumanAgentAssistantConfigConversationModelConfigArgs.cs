@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
 {
 
     /// <summary>
-    /// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+    /// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
     /// </summary>
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs : Pulumi.ResourceArgs
     {

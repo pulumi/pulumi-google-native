@@ -65,6 +65,10 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1beta1.NotificationConfigResponse>;
     /**
+     * Specifies where and whether to send notifications upon changes to a Fhir store.
+     */
+    public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.v1beta1.FhirNotificationConfigResponse[]>;
+    /**
      * Configuration for how FHIR resources can be searched.
      */
     public readonly searchConfig!: pulumi.Output<outputs.healthcare.v1beta1.SearchConfigResponse>;
@@ -104,6 +108,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["searchConfig"] = args ? args.searchConfig : undefined;
             resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
@@ -118,6 +123,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["notificationConfigs"] = undefined /*out*/;
             resourceInputs["searchConfig"] = undefined /*out*/;
             resourceInputs["streamConfigs"] = undefined /*out*/;
             resourceInputs["validationConfig"] = undefined /*out*/;
@@ -162,6 +168,10 @@ export interface FhirStoreArgs {
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
+    /**
+     * Specifies where and whether to send notifications upon changes to a Fhir store.
+     */
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.FhirNotificationConfigArgs>[]>;
     project?: pulumi.Input<string>;
     /**
      * Configuration for how FHIR resources can be searched.

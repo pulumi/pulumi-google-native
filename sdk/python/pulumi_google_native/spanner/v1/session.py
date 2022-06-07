@@ -15,14 +15,18 @@ class SessionArgs:
     def __init__(__self__, *,
                  database_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
+                 creator_role: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Session resource.
+        :param pulumi.Input[str] creator_role: The database role which created this session.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
         """
         pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "instance_id", instance_id)
+        if creator_role is not None:
+            pulumi.set(__self__, "creator_role", creator_role)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -45,6 +49,18 @@ class SessionArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="creatorRole")
+    def creator_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database role which created this session.
+        """
+        return pulumi.get(self, "creator_role")
+
+    @creator_role.setter
+    def creator_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creator_role", value)
 
     @property
     @pulumi.getter
@@ -73,6 +89,7 @@ class Session(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 creator_role: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -84,6 +101,7 @@ class Session(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creator_role: The database role which created this session.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
         """
         ...
@@ -111,6 +129,7 @@ class Session(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 creator_role: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -127,6 +146,7 @@ class Session(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SessionArgs.__new__(SessionArgs)
 
+            __props__.__dict__["creator_role"] = creator_role
             if database_id is None and not opts.urn:
                 raise TypeError("Missing required property 'database_id'")
             __props__.__dict__["database_id"] = database_id
@@ -162,6 +182,7 @@ class Session(pulumi.CustomResource):
 
         __props__.__dict__["approximate_last_use_time"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["creator_role"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         return Session(resource_name, opts=opts, __props__=__props__)
@@ -181,6 +202,14 @@ class Session(pulumi.CustomResource):
         The timestamp when the session is created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="creatorRole")
+    def creator_role(self) -> pulumi.Output[str]:
+        """
+        The database role which created this session.
+        """
+        return pulumi.get(self, "creator_role")
 
     @property
     @pulumi.getter

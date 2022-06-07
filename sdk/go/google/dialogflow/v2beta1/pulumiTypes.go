@@ -1484,7 +1484,7 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) Notifica
 	}).(GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput)
 }
 
-// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig struct {
 	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model *string `pulumi:"model"`
@@ -1501,7 +1501,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfi
 	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput
 }
 
-// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs struct {
 	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model pulumi.StringPtrInput `pulumi:"model"`
@@ -1560,7 +1560,7 @@ func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput)
 }
 
-// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) ElementType() reflect.Type {
@@ -1626,13 +1626,13 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse struct {
 	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model string `pulumi:"model"`
 }
 
-// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponseOutput) ElementType() reflect.Type {

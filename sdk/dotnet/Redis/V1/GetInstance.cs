@@ -86,6 +86,10 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         public readonly string CurrentLocationId;
         /// <summary>
+        /// Optional. The KMS key reference that the customer provides when trying to create the instance.
+        /// </summary>
+        public readonly string CustomerManagedKey;
+        /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
         public readonly string DisplayName;
@@ -109,10 +113,6 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// Date and time of upcoming maintenance events which have been scheduled.
         /// </summary>
         public readonly Outputs.MaintenanceScheduleResponse MaintenanceSchedule;
-        /// <summary>
-        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-        /// </summary>
-        public readonly string MaintenanceVersion;
         /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
@@ -182,6 +182,10 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         public readonly string StatusMessage;
         /// <summary>
+        /// Optional. reasons that causes instance in "SUSPENDED" state.
+        /// </summary>
+        public readonly ImmutableArray<string> SuspensionReasons;
+        /// <summary>
         /// The service tier of the instance.
         /// </summary>
         public readonly string Tier;
@@ -204,6 +208,8 @@ namespace Pulumi.GoogleNative.Redis.V1
 
             string currentLocationId,
 
+            string customerManagedKey,
+
             string displayName,
 
             string host,
@@ -215,8 +221,6 @@ namespace Pulumi.GoogleNative.Redis.V1
             Outputs.MaintenancePolicyResponse maintenancePolicy,
 
             Outputs.MaintenanceScheduleResponse maintenanceSchedule,
-
-            string maintenanceVersion,
 
             int memorySizeGb,
 
@@ -252,6 +256,8 @@ namespace Pulumi.GoogleNative.Redis.V1
 
             string statusMessage,
 
+            ImmutableArray<string> suspensionReasons,
+
             string tier,
 
             string transitEncryptionMode)
@@ -262,13 +268,13 @@ namespace Pulumi.GoogleNative.Redis.V1
             ConnectMode = connectMode;
             CreateTime = createTime;
             CurrentLocationId = currentLocationId;
+            CustomerManagedKey = customerManagedKey;
             DisplayName = displayName;
             Host = host;
             Labels = labels;
             Location = location;
             MaintenancePolicy = maintenancePolicy;
             MaintenanceSchedule = maintenanceSchedule;
-            MaintenanceVersion = maintenanceVersion;
             MemorySizeGb = memorySizeGb;
             Name = name;
             Nodes = nodes;
@@ -286,6 +292,7 @@ namespace Pulumi.GoogleNative.Redis.V1
             ServerCaCerts = serverCaCerts;
             State = state;
             StatusMessage = statusMessage;
+            SuspensionReasons = suspensionReasons;
             Tier = tier;
             TransitEncryptionMode = transitEncryptionMode;
         }

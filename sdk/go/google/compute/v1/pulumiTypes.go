@@ -1264,7 +1264,7 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesResponseOutput)
 	}).(pulumi.StringOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservation struct {
 	// Specifies the number of resources that are allocated.
 	Count *string `pulumi:"count"`
@@ -1283,7 +1283,7 @@ type AllocationSpecificSKUReservationInput interface {
 	ToAllocationSpecificSKUReservationOutputWithContext(context.Context) AllocationSpecificSKUReservationOutput
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationArgs struct {
 	// Specifies the number of resources that are allocated.
 	Count pulumi.StringPtrInput `pulumi:"count"`
@@ -1344,7 +1344,7 @@ func (i *allocationSpecificSKUReservationPtrType) ToAllocationSpecificSKUReserva
 	return pulumi.ToOutputWithContext(ctx, i).(AllocationSpecificSKUReservationPtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationOutput) ElementType() reflect.Type {
@@ -1425,7 +1425,7 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationResponse struct {
 	// Indicates how many instances are actually usable currently.
 	AssuredCount string `pulumi:"assuredCount"`
@@ -1437,7 +1437,7 @@ type AllocationSpecificSKUReservationResponse struct {
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesResponse `pulumi:"instanceProperties"`
 }
 
-// This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationResponseOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationResponseOutput) ElementType() reflect.Type {
@@ -7238,7 +7238,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) Inde
 type BackendServiceLogConfig struct {
 	// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
 	Enable *bool `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 	SampleRate *float64 `pulumi:"sampleRate"`
 }
 
@@ -7257,7 +7257,7 @@ type BackendServiceLogConfigInput interface {
 type BackendServiceLogConfigArgs struct {
 	// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 	SampleRate pulumi.Float64PtrInput `pulumi:"sampleRate"`
 }
 
@@ -7344,7 +7344,7 @@ func (o BackendServiceLogConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 func (o BackendServiceLogConfigOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendServiceLogConfig) *float64 { return v.SampleRate }).(pulumi.Float64PtrOutput)
 }
@@ -7383,7 +7383,7 @@ func (o BackendServiceLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BackendServiceLogConfig) *float64 {
 		if v == nil {
@@ -7397,7 +7397,7 @@ func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 type BackendServiceLogConfigResponse struct {
 	// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
 	Enable bool `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 	SampleRate float64 `pulumi:"sampleRate"`
 }
 
@@ -7421,7 +7421,7 @@ func (o BackendServiceLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackendServiceLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
 func (o BackendServiceLogConfigResponseOutput) SampleRate() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendServiceLogConfigResponse) float64 { return v.SampleRate }).(pulumi.Float64Output)
 }
@@ -34245,7 +34245,7 @@ type Scheduling struct {
 	MinNodeCpus *int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinity `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 	OnHostMaintenance *SchedulingOnHostMaintenance `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible *bool `pulumi:"preemptible"`
@@ -34276,7 +34276,7 @@ type SchedulingArgs struct {
 	MinNodeCpus pulumi.IntPtrInput `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities SchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 	OnHostMaintenance SchedulingOnHostMaintenancePtrInput `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
@@ -34387,7 +34387,7 @@ func (o SchedulingOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput {
 	return o.ApplyT(func(v Scheduling) []SchedulingNodeAffinity { return v.NodeAffinities }).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v Scheduling) *SchedulingOnHostMaintenance { return v.OnHostMaintenance }).(SchedulingOnHostMaintenancePtrOutput)
 }
@@ -34476,7 +34476,7 @@ func (o SchedulingPtrOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput 
 	}).(SchedulingNodeAffinityArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingPtrOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v *Scheduling) *SchedulingOnHostMaintenance {
 		if v == nil {
@@ -34696,7 +34696,7 @@ type SchedulingResponse struct {
 	MinNodeCpus int `pulumi:"minNodeCpus"`
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinityResponse `pulumi:"nodeAffinities"`
-	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 	OnHostMaintenance string `pulumi:"onHostMaintenance"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible bool `pulumi:"preemptible"`
@@ -34744,7 +34744,7 @@ func (o SchedulingResponseOutput) NodeAffinities() SchedulingNodeAffinityRespons
 	return o.ApplyT(func(v SchedulingResponse) []SchedulingNodeAffinityResponse { return v.NodeAffinities }).(SchedulingNodeAffinityResponseArrayOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingResponseOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
 }

@@ -189,6 +189,7 @@ __all__ = [
     'ReservationResponse',
     'ResourceCommitmentResponse',
     'ResourcePolicyDailyCycleResponse',
+    'ResourcePolicyDiskConsistencyGroupPolicyResponse',
     'ResourcePolicyGroupPlacementPolicyResponse',
     'ResourcePolicyHourlyCycleResponse',
     'ResourcePolicyInstanceSchedulePolicyResponse',
@@ -229,6 +230,7 @@ __all__ = [
     'SchedulingNodeAffinityResponse',
     'SchedulingResponse',
     'SdsConfigResponse',
+    'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse',
     'SecurityPolicyAdaptiveProtectionConfigResponse',
     'SecurityPolicyAdvancedOptionsConfigResponse',
@@ -810,7 +812,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(dict):
 @pulumi.output_type
 class AllocationSpecificSKUReservationResponse(dict):
     """
-    This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+    This reservation type allows to pre allocate specific instance configuration. Next ID: 6
     """
     @staticmethod
     def __key_warning(key: str):
@@ -839,7 +841,7 @@ class AllocationSpecificSKUReservationResponse(dict):
                  in_use_count: str,
                  instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse'):
         """
-        This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+        This reservation type allows to pre allocate specific instance configuration. Next ID: 6
         :param str assured_count: Indicates how many instances are actually usable currently.
         :param str count: Specifies the number of resources that are allocated.
         :param str in_use_count: Indicates how many instances are in use.
@@ -3299,7 +3301,7 @@ class BackendServiceLogConfigResponse(dict):
         """
         The available logging options for the load balancer traffic served by this backend service.
         :param bool enable: This field denotes whether to enable logging for the load balancer traffic served by this backend service.
-        :param float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+        :param float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
         """
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "sample_rate", sample_rate)
@@ -3316,7 +3318,7 @@ class BackendServiceLogConfigResponse(dict):
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> float:
         """
-        This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+        This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
         """
         return pulumi.get(self, "sample_rate")
 
@@ -12955,6 +12957,18 @@ class ResourcePolicyDailyCycleResponse(dict):
 
 
 @pulumi.output_type
+class ResourcePolicyDiskConsistencyGroupPolicyResponse(dict):
+    """
+    Resource policy for disk consistency groups.
+    """
+    def __init__(__self__):
+        """
+        Resource policy for disk consistency groups.
+        """
+        pass
+
+
+@pulumi.output_type
 class ResourcePolicyGroupPlacementPolicyResponse(dict):
     """
     A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
@@ -15808,7 +15822,7 @@ class SchedulingResponse(dict):
         :param 'DurationResponse' max_run_duration: Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['SchedulingNodeAffinityResponse'] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
-        :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+        :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         :param bool preemptible: Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         :param str provisioning_model: Specifies the provisioning model of the instance.
         :param str termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
@@ -15939,7 +15953,7 @@ class SchedulingResponse(dict):
     @pulumi.getter(name="onHostMaintenance")
     def on_host_maintenance(self) -> str:
         """
-        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         """
         return pulumi.get(self, "on_host_maintenance")
 
@@ -16008,6 +16022,68 @@ class SdsConfigResponse(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse(dict):
+    """
+    Configuration options for Adaptive Protection auto-deploy feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidenceThreshold":
+            suggest = "confidence_threshold"
+        elif key == "expirationSec":
+            suggest = "expiration_sec"
+        elif key == "impactedBaselineThreshold":
+            suggest = "impacted_baseline_threshold"
+        elif key == "loadThreshold":
+            suggest = "load_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 confidence_threshold: float,
+                 expiration_sec: int,
+                 impacted_baseline_threshold: float,
+                 load_threshold: float):
+        """
+        Configuration options for Adaptive Protection auto-deploy feature.
+        """
+        pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        pulumi.set(__self__, "expiration_sec", expiration_sec)
+        pulumi.set(__self__, "impacted_baseline_threshold", impacted_baseline_threshold)
+        pulumi.set(__self__, "load_threshold", load_threshold)
+
+    @property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> float:
+        return pulumi.get(self, "confidence_threshold")
+
+    @property
+    @pulumi.getter(name="expirationSec")
+    def expiration_sec(self) -> int:
+        return pulumi.get(self, "expiration_sec")
+
+    @property
+    @pulumi.getter(name="impactedBaselineThreshold")
+    def impacted_baseline_threshold(self) -> float:
+        return pulumi.get(self, "impacted_baseline_threshold")
+
+    @property
+    @pulumi.getter(name="loadThreshold")
+    def load_threshold(self) -> float:
+        return pulumi.get(self, "load_threshold")
+
+
+@pulumi.output_type
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse(dict):
     """
     Configuration options for L7 DDoS detection.
@@ -16065,7 +16141,9 @@ class SecurityPolicyAdaptiveProtectionConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "layer7DdosDefenseConfig":
+        if key == "autoDeployConfig":
+            suggest = "auto_deploy_config"
+        elif key == "layer7DdosDefenseConfig":
             suggest = "layer7_ddos_defense_config"
 
         if suggest:
@@ -16080,12 +16158,19 @@ class SecurityPolicyAdaptiveProtectionConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_deploy_config: 'outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse',
                  layer7_ddos_defense_config: 'outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse'):
         """
         Configuration options for Cloud Armor Adaptive Protection (CAAP).
         :param 'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse' layer7_ddos_defense_config: If set to true, enables Cloud Armor Machine Learning.
         """
+        pulumi.set(__self__, "auto_deploy_config", auto_deploy_config)
         pulumi.set(__self__, "layer7_ddos_defense_config", layer7_ddos_defense_config)
+
+    @property
+    @pulumi.getter(name="autoDeployConfig")
+    def auto_deploy_config(self) -> 'outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse':
+        return pulumi.get(self, "auto_deploy_config")
 
     @property
     @pulumi.getter(name="layer7DdosDefenseConfig")

@@ -669,7 +669,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(dict):
 @pulumi.output_type
 class AllocationSpecificSKUReservationResponse(dict):
     """
-    This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+    This reservation type allows to pre allocate specific instance configuration. Next ID: 6
     """
     @staticmethod
     def __key_warning(key: str):
@@ -698,7 +698,7 @@ class AllocationSpecificSKUReservationResponse(dict):
                  in_use_count: str,
                  instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse'):
         """
-        This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+        This reservation type allows to pre allocate specific instance configuration. Next ID: 6
         :param str assured_count: Indicates how many instances are actually usable currently.
         :param str count: Specifies the number of resources that are allocated.
         :param str in_use_count: Indicates how many instances are in use.
@@ -2779,7 +2779,7 @@ class BackendServiceLogConfigResponse(dict):
         """
         The available logging options for the load balancer traffic served by this backend service.
         :param bool enable: This field denotes whether to enable logging for the load balancer traffic served by this backend service.
-        :param float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+        :param float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
         """
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "sample_rate", sample_rate)
@@ -2796,7 +2796,7 @@ class BackendServiceLogConfigResponse(dict):
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> float:
         """
-        This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+        This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
         """
         return pulumi.get(self, "sample_rate")
 
@@ -12528,7 +12528,7 @@ class SchedulingResponse(dict):
         :param str location_hint: An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['SchedulingNodeAffinityResponse'] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
-        :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+        :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         :param bool preemptible: Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         :param str provisioning_model: Specifies the provisioning model of the instance.
         """
@@ -12585,7 +12585,7 @@ class SchedulingResponse(dict):
     @pulumi.getter(name="onHostMaintenance")
     def on_host_maintenance(self) -> str:
         """
-        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         """
         return pulumi.get(self, "on_host_maintenance")
 

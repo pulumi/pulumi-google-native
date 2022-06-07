@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTagKeyResult:
-    def __init__(__self__, create_time=None, description=None, etag=None, name=None, namespaced_name=None, parent=None, short_name=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, etag=None, name=None, namespaced_name=None, parent=None, purpose=None, purpose_data=None, short_name=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -36,6 +36,12 @@ class GetTagKeyResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if purpose and not isinstance(purpose, str):
+            raise TypeError("Expected argument 'purpose' to be a str")
+        pulumi.set(__self__, "purpose", purpose)
+        if purpose_data and not isinstance(purpose_data, dict):
+            raise TypeError("Expected argument 'purpose_data' to be a dict")
+        pulumi.set(__self__, "purpose_data", purpose_data)
         if short_name and not isinstance(short_name, str):
             raise TypeError("Expected argument 'short_name' to be a str")
         pulumi.set(__self__, "short_name", short_name)
@@ -92,6 +98,22 @@ class GetTagKeyResult:
         return pulumi.get(self, "parent")
 
     @property
+    @pulumi.getter
+    def purpose(self) -> str:
+        """
+        Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter(name="purposeData")
+    def purpose_data(self) -> Mapping[str, str]:
+        """
+        Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
+        """
+        return pulumi.get(self, "purpose_data")
+
+    @property
     @pulumi.getter(name="shortName")
     def short_name(self) -> str:
         """
@@ -120,6 +142,8 @@ class AwaitableGetTagKeyResult(GetTagKeyResult):
             name=self.name,
             namespaced_name=self.namespaced_name,
             parent=self.parent,
+            purpose=self.purpose,
+            purpose_data=self.purpose_data,
             short_name=self.short_name,
             update_time=self.update_time)
 
@@ -144,6 +168,8 @@ def get_tag_key(tag_key_id: Optional[str] = None,
         name=__ret__.name,
         namespaced_name=__ret__.namespaced_name,
         parent=__ret__.parent,
+        purpose=__ret__.purpose,
+        purpose_data=__ret__.purpose_data,
         short_name=__ret__.short_name,
         update_time=__ret__.update_time)
 

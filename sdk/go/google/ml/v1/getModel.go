@@ -32,7 +32,7 @@ type LookupModelResult struct {
 	Description string `pulumi:"description"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to ensure that their change will be applied to the model as intended.
 	Etag string `pulumi:"etag"`
-	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels. Note that this field is not updatable for mls1* models.
 	Labels map[string]string `pulumi:"labels"`
 	// The name specified for the model when it was created. The model name must be unique within the project it is created in.
 	Name string `pulumi:"name"`
@@ -95,7 +95,7 @@ func (o LookupModelResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels. Note that this field is not updatable for mls1* models.
 func (o LookupModelResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupModelResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

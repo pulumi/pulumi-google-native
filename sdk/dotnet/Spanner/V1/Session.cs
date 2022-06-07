@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The database role which created this session.
+        /// </summary>
+        [Output("creatorRole")]
+        public Output<string> CreatorRole { get; private set; } = null!;
+
+        /// <summary>
         /// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
         /// </summary>
         [Output("labels")]
@@ -85,6 +91,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
     public sealed class SessionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The database role which created this session.
+        /// </summary>
+        [Input("creatorRole")]
+        public Input<string>? CreatorRole { get; set; }
+
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;
 

@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+        /// User note field, it can be used by customers to add additional information for the BMS Ops team .
         /// </summary>
         public readonly string UserNote;
         /// <summary>

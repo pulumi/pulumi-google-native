@@ -6,10 +6,8 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./backup";
-export * from "./federation";
 export * from "./federationIamPolicy";
 export * from "./getBackup";
-export * from "./getFederation";
 export * from "./getFederationIamPolicy";
 export * from "./getMetadataImport";
 export * from "./getService";
@@ -29,7 +27,6 @@ export * from "../../types/enums/metastore/v1alpha";
 
 // Import resources to register:
 import { Backup } from "./backup";
-import { Federation } from "./federation";
 import { FederationIamPolicy } from "./federationIamPolicy";
 import { MetadataImport } from "./metadataImport";
 import { Service } from "./service";
@@ -44,8 +41,6 @@ const _module = {
         switch (type) {
             case "google-native:metastore/v1alpha:Backup":
                 return new Backup(name, <any>undefined, { urn })
-            case "google-native:metastore/v1alpha:Federation":
-                return new Federation(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:FederationIamPolicy":
                 return new FederationIamPolicy(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:MetadataImport":

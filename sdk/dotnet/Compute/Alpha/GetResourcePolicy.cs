@@ -67,6 +67,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public readonly string CreationTimestamp;
         public readonly string Description;
         /// <summary>
+        /// Resource policy for disk consistency groups.
+        /// </summary>
+        public readonly Outputs.ResourcePolicyDiskConsistencyGroupPolicyResponse DiskConsistencyGroupPolicy;
+        /// <summary>
         /// Resource policy for instances for placement configuration.
         /// </summary>
         public readonly Outputs.ResourcePolicyGroupPlacementPolicyResponse GroupPlacementPolicy;
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            Outputs.ResourcePolicyDiskConsistencyGroupPolicyResponse diskConsistencyGroupPolicy,
+
             Outputs.ResourcePolicyGroupPlacementPolicyResponse groupPlacementPolicy,
 
             Outputs.ResourcePolicyInstanceSchedulePolicyResponse instanceSchedulePolicy,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
+            DiskConsistencyGroupPolicy = diskConsistencyGroupPolicy;
             GroupPlacementPolicy = groupPlacementPolicy;
             InstanceSchedulePolicy = instanceSchedulePolicy;
             Kind = kind;

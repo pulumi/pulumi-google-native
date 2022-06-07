@@ -14,7 +14,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Immutable. The globally unique hostname of the database.
+	// Output Only. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringOutput `pulumi:"databaseUrl"`
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -22,7 +22,7 @@ type Instance struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The database's lifecycle state. Read-only.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -67,16 +67,11 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The globally unique identifier of the database instance.
 	DatabaseId *string `pulumi:"databaseId"`
-	// Immutable. The globally unique hostname of the database.
-	DatabaseUrl *string `pulumi:"databaseUrl"`
-	Location    *string `pulumi:"location"`
+	Location   *string `pulumi:"location"`
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-	Name *string `pulumi:"name"`
-	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// The database's lifecycle state. Read-only.
-	State *InstanceStateEnum `pulumi:"state"`
-	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type *InstanceType `pulumi:"type"`
 	// When set to true, the request will be validated but not submitted.
 	ValidateOnly *string `pulumi:"validateOnly"`
@@ -86,16 +81,11 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The globally unique identifier of the database instance.
 	DatabaseId pulumi.StringPtrInput
-	// Immutable. The globally unique hostname of the database.
-	DatabaseUrl pulumi.StringPtrInput
-	Location    pulumi.StringPtrInput
+	Location   pulumi.StringPtrInput
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-	Name pulumi.StringPtrInput
-	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// The database's lifecycle state. Read-only.
-	State InstanceStateEnumPtrInput
-	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type InstanceTypePtrInput
 	// When set to true, the request will be validated but not submitted.
 	ValidateOnly pulumi.StringPtrInput
@@ -138,7 +128,7 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Immutable. The globally unique hostname of the database.
+// Output Only. The globally unique hostname of the database.
 func (o InstanceOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DatabaseUrl }).(pulumi.StringOutput)
 }
@@ -158,7 +148,7 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 func (o InstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

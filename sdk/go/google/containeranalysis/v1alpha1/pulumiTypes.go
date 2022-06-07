@@ -10014,6 +10014,1313 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) Uid() pulum
 	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) string { return v.Uid }).(pulumi.StringOutput)
 }
 
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder struct {
+	// URI indicating the builder’s identity.
+	Id *string `pulumi:"id"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs struct {
+	// URI indicating the builder’s identity.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput).ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs, GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtr and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrType GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtr(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+// URI indicating the builder’s identity.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder
+		return ret
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput)
+}
+
+// URI indicating the builder’s identity.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse struct {
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
+	return o
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness struct {
+	// If true, the builder claims that invocation.environment is complete.
+	Environment *bool `pulumi:"environment"`
+	// If true, the builder claims that materials is complete.
+	Materials *bool `pulumi:"materials"`
+	// If true, the builder claims that invocation.parameters is complete.
+	Parameters *bool `pulumi:"parameters"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs struct {
+	// If true, the builder claims that invocation.environment is complete.
+	Environment pulumi.BoolPtrInput `pulumi:"environment"`
+	// If true, the builder claims that materials is complete.
+	Materials pulumi.BoolPtrInput `pulumi:"materials"`
+	// If true, the builder claims that invocation.parameters is complete.
+	Parameters pulumi.BoolPtrInput `pulumi:"parameters"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput).ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs, GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtr and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrType GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtr(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+// If true, the builder claims that invocation.environment is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) Environment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		return v.Environment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that materials is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) Materials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		return v.Materials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that invocation.parameters is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput) Parameters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		return v.Parameters
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness
+		return ret
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput)
+}
+
+// If true, the builder claims that invocation.environment is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Environment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that materials is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Materials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Materials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that invocation.parameters is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Parameters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse struct {
+	// If true, the builder claims that invocation.environment is complete.
+	Environment bool `pulumi:"environment"`
+	// If true, the builder claims that materials is complete.
+	Materials bool `pulumi:"materials"`
+	// If true, the builder claims that invocation.parameters is complete.
+	Parameters bool `pulumi:"parameters"`
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput {
+	return o
+}
+
+// If true, the builder claims that invocation.environment is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) Environment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse) bool {
+		return v.Environment
+	}).(pulumi.BoolOutput)
+}
+
+// If true, the builder claims that materials is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) Materials() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse) bool {
+		return v.Materials
+	}).(pulumi.BoolOutput)
+}
+
+// If true, the builder claims that invocation.parameters is complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) Parameters() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse) bool {
+		return v.Parameters
+	}).(pulumi.BoolOutput)
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource struct {
+	// Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+	Digest map[string]string `pulumi:"digest"`
+	// String identifying the entry point into the build.
+	EntryPoint *string `pulumi:"entryPoint"`
+	// URI indicating the identity of the source of the config.
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs struct {
+	// Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+	Digest pulumi.StringMapInput `pulumi:"digest"`
+	// String identifying the entry point into the build.
+	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
+	// URI indicating the identity of the source of the config.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput).ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs, GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtr and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtr(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+// Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) map[string]string {
+		return v.Digest
+	}).(pulumi.StringMapOutput)
+}
+
+// String identifying the entry point into the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) *string {
+		return v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI indicating the identity of the source of the config.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource
+		return ret
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput)
+}
+
+// Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringMapOutput)
+}
+
+// String identifying the entry point into the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI indicating the identity of the source of the config.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse struct {
+	// Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+	Digest map[string]string `pulumi:"digest"`
+	// String identifying the entry point into the build.
+	EntryPoint string `pulumi:"entryPoint"`
+	// URI indicating the identity of the source of the config.
+	Uri string `pulumi:"uri"`
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput {
+	return o
+}
+
+// Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse) map[string]string {
+		return v.Digest
+	}).(pulumi.StringMapOutput)
+}
+
+// String identifying the entry point into the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) EntryPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse) string {
+		return v.EntryPoint
+	}).(pulumi.StringOutput)
+}
+
+// URI indicating the identity of the source of the config.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+// Identifies the event that kicked off the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation struct {
+	// Describes where the config file that kicked off the build came from.
+	ConfigSource *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource `pulumi:"configSource"`
+	// Any other builder-controlled inputs necessary for correctly evaluating the build.
+	Environment map[string]string `pulumi:"environment"`
+	// Collection of all external inputs that influenced the build on top of invocation.configSource.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput
+}
+
+// Identifies the event that kicked off the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs struct {
+	// Describes where the config file that kicked off the build came from.
+	ConfigSource GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput `pulumi:"configSource"`
+	// Any other builder-controlled inputs necessary for correctly evaluating the build.
+	Environment pulumi.StringMapInput `pulumi:"environment"`
+	// Collection of all external inputs that influenced the build on top of invocation.configSource.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput).ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs, GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtr and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrType GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtr(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+// Identifies the event that kicked off the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+// Describes where the config file that kicked off the build came from.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) ConfigSource() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource {
+		return v.ConfigSource
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+// Any other builder-controlled inputs necessary for correctly evaluating the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+		return v.Environment
+	}).(pulumi.StringMapOutput)
+}
+
+// Collection of all external inputs that influenced the build on top of invocation.configSource.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
+		return ret
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput)
+}
+
+// Describes where the config file that kicked off the build came from.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ConfigSource() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigSource
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+// Any other builder-controlled inputs necessary for correctly evaluating the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringMapOutput)
+}
+
+// Collection of all external inputs that influenced the build on top of invocation.configSource.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Identifies the event that kicked off the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse struct {
+	// Describes where the config file that kicked off the build came from.
+	ConfigSource GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse `pulumi:"configSource"`
+	// Any other builder-controlled inputs necessary for correctly evaluating the build.
+	Environment map[string]string `pulumi:"environment"`
+	// Collection of all external inputs that influenced the build on top of invocation.configSource.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// Identifies the event that kicked off the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput {
+	return o
+}
+
+// Describes where the config file that kicked off the build came from.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ConfigSource() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse {
+		return v.ConfigSource
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput)
+}
+
+// Any other builder-controlled inputs necessary for correctly evaluating the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]string {
+		return v.Environment
+	}).(pulumi.StringMapOutput)
+}
+
+// Collection of all external inputs that influenced the build on top of invocation.configSource.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]string {
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial struct {
+	// Collection of cryptographic digests for the contents of this artifact.
+	Digest map[string]string `pulumi:"digest"`
+	// The method by which this artifact was referenced during the build.
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs struct {
+	// Collection of cryptographic digests for the contents of this artifact.
+	Digest pulumi.StringMapInput `pulumi:"digest"`
+	// The method by which this artifact was referenced during the build.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArray and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArray{ GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs{...} }
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArray []GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialInput
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArray) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArray) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return o
+}
+
+// Collection of cryptographic digests for the contents of this artifact.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial) map[string]string {
+		return v.Digest
+	}).(pulumi.StringMapOutput)
+}
+
+// The method by which this artifact was referenced during the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) Index(i pulumi.IntInput) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial {
+		return vs[0].([]GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial)[vs[1].(int)]
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse struct {
+	// Collection of cryptographic digests for the contents of this artifact.
+	Digest map[string]string `pulumi:"digest"`
+	// The method by which this artifact was referenced during the build.
+	Uri string `pulumi:"uri"`
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput {
+	return o
+}
+
+// Collection of cryptographic digests for the contents of this artifact.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse) map[string]string {
+		return v.Digest
+	}).(pulumi.StringMapOutput)
+}
+
+// The method by which this artifact was referenced during the build.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) Index(i pulumi.IntInput) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse {
+		return vs[0].([]GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse)[vs[1].(int)]
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput)
+}
+
+// Other properties of the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata struct {
+	// The timestamp of when the build completed.
+	BuildFinishedOn *string `pulumi:"buildFinishedOn"`
+	// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+	BuildInvocationId *string `pulumi:"buildInvocationId"`
+	// The timestamp of when the build started.
+	BuildStartedOn *string `pulumi:"buildStartedOn"`
+	// Indicates that the builder claims certain fields in this message to be complete.
+	Completeness *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness `pulumi:"completeness"`
+	// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+	Reproducible *bool `pulumi:"reproducible"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput
+}
+
+// Other properties of the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs struct {
+	// The timestamp of when the build completed.
+	BuildFinishedOn pulumi.StringPtrInput `pulumi:"buildFinishedOn"`
+	// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+	BuildInvocationId pulumi.StringPtrInput `pulumi:"buildInvocationId"`
+	// The timestamp of when the build started.
+	BuildStartedOn pulumi.StringPtrInput `pulumi:"buildStartedOn"`
+	// Indicates that the builder claims certain fields in this message to be complete.
+	Completeness GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput `pulumi:"completeness"`
+	// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+	Reproducible pulumi.BoolPtrInput `pulumi:"reproducible"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput).ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs, GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtr and GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrType GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtr(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+// Other properties of the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+// The timestamp of when the build completed.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) BuildFinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		return v.BuildFinishedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) BuildInvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		return v.BuildInvocationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of when the build started.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) BuildStartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		return v.BuildStartedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) Completeness() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness {
+		return v.Completeness
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput) Reproducible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *bool {
+		return v.Reproducible
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata
+		return ret
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput)
+}
+
+// The timestamp of when the build completed.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) BuildFinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildFinishedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) BuildInvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildInvocationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of when the build started.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) BuildStartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildStartedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) Completeness() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness {
+		if v == nil {
+			return nil
+		}
+		return v.Completeness
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) Reproducible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Reproducible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Other properties of the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse struct {
+	// The timestamp of when the build completed.
+	BuildFinishedOn string `pulumi:"buildFinishedOn"`
+	// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+	BuildInvocationId string `pulumi:"buildInvocationId"`
+	// The timestamp of when the build started.
+	BuildStartedOn string `pulumi:"buildStartedOn"`
+	// Indicates that the builder claims certain fields in this message to be complete.
+	Completeness GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse `pulumi:"completeness"`
+	// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+	Reproducible bool `pulumi:"reproducible"`
+}
+
+// Other properties of the build.
+type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput {
+	return o
+}
+
+// The timestamp of when the build completed.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) BuildFinishedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse) string {
+		return v.BuildFinishedOn
+	}).(pulumi.StringOutput)
+}
+
+// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) BuildInvocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse) string {
+		return v.BuildInvocationId
+	}).(pulumi.StringOutput)
+}
+
+// The timestamp of when the build started.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) BuildStartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse) string {
+		return v.BuildStartedOn
+	}).(pulumi.StringOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) Completeness() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
+		return v.Completeness
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput)
+}
+
+// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) Reproducible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse) bool {
+		return v.Reproducible
+	}).(pulumi.BoolOutput)
+}
+
 // A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
 type GoogleDevtoolsContaineranalysisV1alpha1SourceContext struct {
 	// A SourceContext referring to a revision in a Google Cloud Source Repo.
@@ -10766,10 +12073,12 @@ func (o InTotoProvenanceResponseOutput) Recipe() RecipeResponseOutput {
 type InTotoStatement struct {
 	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
 	PredicateType *string `pulumi:"predicateType"`
-	// provenance is a predicate of type intotoprovenance
+	// Generic Grafeas provenance.
 	Provenance *InTotoProvenance `pulumi:"provenance"`
-	// slsa_provenance is a predicate of type slsaProvenance
+	// SLSA 0.1 provenance.
 	SlsaProvenance *SlsaProvenance `pulumi:"slsaProvenance"`
+	// SLSA 0.2 provenance.
+	SlsaProvenanceZeroTwo *SlsaProvenanceZeroTwo `pulumi:"slsaProvenanceZeroTwo"`
 	// subject is the subjects of the intoto statement
 	Subject []Subject `pulumi:"subject"`
 	// Always "https://in-toto.io/Statement/v0.1".
@@ -10791,10 +12100,12 @@ type InTotoStatementInput interface {
 type InTotoStatementArgs struct {
 	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
 	PredicateType pulumi.StringPtrInput `pulumi:"predicateType"`
-	// provenance is a predicate of type intotoprovenance
+	// Generic Grafeas provenance.
 	Provenance InTotoProvenancePtrInput `pulumi:"provenance"`
-	// slsa_provenance is a predicate of type slsaProvenance
+	// SLSA 0.1 provenance.
 	SlsaProvenance SlsaProvenancePtrInput `pulumi:"slsaProvenance"`
+	// SLSA 0.2 provenance.
+	SlsaProvenanceZeroTwo SlsaProvenanceZeroTwoPtrInput `pulumi:"slsaProvenanceZeroTwo"`
 	// subject is the subjects of the intoto statement
 	Subject SubjectArrayInput `pulumi:"subject"`
 	// Always "https://in-toto.io/Statement/v0.1".
@@ -10884,14 +12195,19 @@ func (o InTotoStatementOutput) PredicateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *string { return v.PredicateType }).(pulumi.StringPtrOutput)
 }
 
-// provenance is a predicate of type intotoprovenance
+// Generic Grafeas provenance.
 func (o InTotoStatementOutput) Provenance() InTotoProvenancePtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *InTotoProvenance { return v.Provenance }).(InTotoProvenancePtrOutput)
 }
 
-// slsa_provenance is a predicate of type slsaProvenance
+// SLSA 0.1 provenance.
 func (o InTotoStatementOutput) SlsaProvenance() SlsaProvenancePtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *SlsaProvenance { return v.SlsaProvenance }).(SlsaProvenancePtrOutput)
+}
+
+// SLSA 0.2 provenance.
+func (o InTotoStatementOutput) SlsaProvenanceZeroTwo() SlsaProvenanceZeroTwoPtrOutput {
+	return o.ApplyT(func(v InTotoStatement) *SlsaProvenanceZeroTwo { return v.SlsaProvenanceZeroTwo }).(SlsaProvenanceZeroTwoPtrOutput)
 }
 
 // subject is the subjects of the intoto statement
@@ -10938,7 +12254,7 @@ func (o InTotoStatementPtrOutput) PredicateType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// provenance is a predicate of type intotoprovenance
+// Generic Grafeas provenance.
 func (o InTotoStatementPtrOutput) Provenance() InTotoProvenancePtrOutput {
 	return o.ApplyT(func(v *InTotoStatement) *InTotoProvenance {
 		if v == nil {
@@ -10948,7 +12264,7 @@ func (o InTotoStatementPtrOutput) Provenance() InTotoProvenancePtrOutput {
 	}).(InTotoProvenancePtrOutput)
 }
 
-// slsa_provenance is a predicate of type slsaProvenance
+// SLSA 0.1 provenance.
 func (o InTotoStatementPtrOutput) SlsaProvenance() SlsaProvenancePtrOutput {
 	return o.ApplyT(func(v *InTotoStatement) *SlsaProvenance {
 		if v == nil {
@@ -10956,6 +12272,16 @@ func (o InTotoStatementPtrOutput) SlsaProvenance() SlsaProvenancePtrOutput {
 		}
 		return v.SlsaProvenance
 	}).(SlsaProvenancePtrOutput)
+}
+
+// SLSA 0.2 provenance.
+func (o InTotoStatementPtrOutput) SlsaProvenanceZeroTwo() SlsaProvenanceZeroTwoPtrOutput {
+	return o.ApplyT(func(v *InTotoStatement) *SlsaProvenanceZeroTwo {
+		if v == nil {
+			return nil
+		}
+		return v.SlsaProvenanceZeroTwo
+	}).(SlsaProvenanceZeroTwoPtrOutput)
 }
 
 // subject is the subjects of the intoto statement
@@ -10982,10 +12308,12 @@ func (o InTotoStatementPtrOutput) Type() pulumi.StringPtrOutput {
 type InTotoStatementResponse struct {
 	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
 	PredicateType string `pulumi:"predicateType"`
-	// provenance is a predicate of type intotoprovenance
+	// Generic Grafeas provenance.
 	Provenance InTotoProvenanceResponse `pulumi:"provenance"`
-	// slsa_provenance is a predicate of type slsaProvenance
+	// SLSA 0.1 provenance.
 	SlsaProvenance SlsaProvenanceResponse `pulumi:"slsaProvenance"`
+	// SLSA 0.2 provenance.
+	SlsaProvenanceZeroTwo SlsaProvenanceZeroTwoResponse `pulumi:"slsaProvenanceZeroTwo"`
 	// subject is the subjects of the intoto statement
 	Subject []SubjectResponse `pulumi:"subject"`
 	// Always "https://in-toto.io/Statement/v0.1".
@@ -11012,14 +12340,19 @@ func (o InTotoStatementResponseOutput) PredicateType() pulumi.StringOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) string { return v.PredicateType }).(pulumi.StringOutput)
 }
 
-// provenance is a predicate of type intotoprovenance
+// Generic Grafeas provenance.
 func (o InTotoStatementResponseOutput) Provenance() InTotoProvenanceResponseOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) InTotoProvenanceResponse { return v.Provenance }).(InTotoProvenanceResponseOutput)
 }
 
-// slsa_provenance is a predicate of type slsaProvenance
+// SLSA 0.1 provenance.
 func (o InTotoStatementResponseOutput) SlsaProvenance() SlsaProvenanceResponseOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) SlsaProvenanceResponse { return v.SlsaProvenance }).(SlsaProvenanceResponseOutput)
+}
+
+// SLSA 0.2 provenance.
+func (o InTotoStatementResponseOutput) SlsaProvenanceZeroTwo() SlsaProvenanceZeroTwoResponseOutput {
+	return o.ApplyT(func(v InTotoStatementResponse) SlsaProvenanceZeroTwoResponse { return v.SlsaProvenanceZeroTwo }).(SlsaProvenanceZeroTwoResponseOutput)
 }
 
 // subject is the subjects of the intoto statement
@@ -16397,6 +17730,318 @@ func (o SlsaProvenanceResponseOutput) Recipe() SlsaRecipeResponseOutput {
 	return o.ApplyT(func(v SlsaProvenanceResponse) SlsaRecipeResponse { return v.Recipe }).(SlsaRecipeResponseOutput)
 }
 
+// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwo struct {
+	// Lists the steps in the build.
+	BuildConfig map[string]string `pulumi:"buildConfig"`
+	// URI indicating what type of build was performed.
+	BuildType *string `pulumi:"buildType"`
+	// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+	Builder *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder `pulumi:"builder"`
+	// Identifies the event that kicked off the build.
+	Invocation *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation `pulumi:"invocation"`
+	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+	Materials []GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial `pulumi:"materials"`
+	// Other properties of the build.
+	Metadata *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata `pulumi:"metadata"`
+}
+
+// SlsaProvenanceZeroTwoInput is an input type that accepts SlsaProvenanceZeroTwoArgs and SlsaProvenanceZeroTwoOutput values.
+// You can construct a concrete instance of `SlsaProvenanceZeroTwoInput` via:
+//
+//          SlsaProvenanceZeroTwoArgs{...}
+type SlsaProvenanceZeroTwoInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceZeroTwoOutput() SlsaProvenanceZeroTwoOutput
+	ToSlsaProvenanceZeroTwoOutputWithContext(context.Context) SlsaProvenanceZeroTwoOutput
+}
+
+// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoArgs struct {
+	// Lists the steps in the build.
+	BuildConfig pulumi.StringMapInput `pulumi:"buildConfig"`
+	// URI indicating what type of build was performed.
+	BuildType pulumi.StringPtrInput `pulumi:"buildType"`
+	// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+	Builder GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrInput `pulumi:"builder"`
+	// Identifies the event that kicked off the build.
+	Invocation GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrInput `pulumi:"invocation"`
+	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+	Materials GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayInput `pulumi:"materials"`
+	// Other properties of the build.
+	Metadata GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrInput `pulumi:"metadata"`
+}
+
+func (SlsaProvenanceZeroTwoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoOutput() SlsaProvenanceZeroTwoOutput {
+	return i.ToSlsaProvenanceZeroTwoOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceZeroTwoOutput)
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return i.ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceZeroTwoOutput).ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx)
+}
+
+// SlsaProvenanceZeroTwoPtrInput is an input type that accepts SlsaProvenanceZeroTwoArgs, SlsaProvenanceZeroTwoPtr and SlsaProvenanceZeroTwoPtrOutput values.
+// You can construct a concrete instance of `SlsaProvenanceZeroTwoPtrInput` via:
+//
+//          SlsaProvenanceZeroTwoArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaProvenanceZeroTwoPtrInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput
+	ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Context) SlsaProvenanceZeroTwoPtrOutput
+}
+
+type slsaProvenanceZeroTwoPtrType SlsaProvenanceZeroTwoArgs
+
+func SlsaProvenanceZeroTwoPtr(v *SlsaProvenanceZeroTwoArgs) SlsaProvenanceZeroTwoPtrInput {
+	return (*slsaProvenanceZeroTwoPtrType)(v)
+}
+
+func (*slsaProvenanceZeroTwoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (i *slsaProvenanceZeroTwoPtrType) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return i.ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Background())
+}
+
+func (i *slsaProvenanceZeroTwoPtrType) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceZeroTwoPtrOutput)
+}
+
+// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceZeroTwoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoOutput() SlsaProvenanceZeroTwoOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return o.ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Background())
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaProvenanceZeroTwo) *SlsaProvenanceZeroTwo {
+		return &v
+	}).(SlsaProvenanceZeroTwoPtrOutput)
+}
+
+// Lists the steps in the build.
+func (o SlsaProvenanceZeroTwoOutput) BuildConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) map[string]string { return v.BuildConfig }).(pulumi.StringMapOutput)
+}
+
+// URI indicating what type of build was performed.
+func (o SlsaProvenanceZeroTwoOutput) BuildType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *string { return v.BuildType }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+func (o SlsaProvenanceZeroTwoOutput) Builder() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder {
+		return v.Builder
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+// Identifies the event that kicked off the build.
+func (o SlsaProvenanceZeroTwoOutput) Invocation() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation {
+		return v.Invocation
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+func (o SlsaProvenanceZeroTwoOutput) Materials() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) []GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial {
+		return v.Materials
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput)
+}
+
+// Other properties of the build.
+func (o SlsaProvenanceZeroTwoOutput) Metadata() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata {
+		return v.Metadata
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+type SlsaProvenanceZeroTwoPtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceZeroTwoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) Elem() SlsaProvenanceZeroTwoOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) SlsaProvenanceZeroTwo {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaProvenanceZeroTwo
+		return ret
+	}).(SlsaProvenanceZeroTwoOutput)
+}
+
+// Lists the steps in the build.
+func (o SlsaProvenanceZeroTwoPtrOutput) BuildConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildConfig
+	}).(pulumi.StringMapOutput)
+}
+
+// URI indicating what type of build was performed.
+func (o SlsaProvenanceZeroTwoPtrOutput) BuildType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+func (o SlsaProvenanceZeroTwoPtrOutput) Builder() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder {
+		if v == nil {
+			return nil
+		}
+		return v.Builder
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+// Identifies the event that kicked off the build.
+func (o SlsaProvenanceZeroTwoPtrOutput) Invocation() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation {
+		if v == nil {
+			return nil
+		}
+		return v.Invocation
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+func (o SlsaProvenanceZeroTwoPtrOutput) Materials() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) []GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial {
+		if v == nil {
+			return nil
+		}
+		return v.Materials
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput)
+}
+
+// Other properties of the build.
+func (o SlsaProvenanceZeroTwoPtrOutput) Metadata() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoResponse struct {
+	// Lists the steps in the build.
+	BuildConfig map[string]string `pulumi:"buildConfig"`
+	// URI indicating what type of build was performed.
+	BuildType string `pulumi:"buildType"`
+	// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+	Builder GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse `pulumi:"builder"`
+	// Identifies the event that kicked off the build.
+	Invocation GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse `pulumi:"invocation"`
+	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+	Materials []GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse `pulumi:"materials"`
+	// Other properties of the build.
+	Metadata GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse `pulumi:"metadata"`
+}
+
+// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceZeroTwoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceZeroTwoResponse)(nil)).Elem()
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) ToSlsaProvenanceZeroTwoResponseOutput() SlsaProvenanceZeroTwoResponseOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) ToSlsaProvenanceZeroTwoResponseOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoResponseOutput {
+	return o
+}
+
+// Lists the steps in the build.
+func (o SlsaProvenanceZeroTwoResponseOutput) BuildConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) map[string]string { return v.BuildConfig }).(pulumi.StringMapOutput)
+}
+
+// URI indicating what type of build was performed.
+func (o SlsaProvenanceZeroTwoResponseOutput) BuildType() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) string { return v.BuildType }).(pulumi.StringOutput)
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+func (o SlsaProvenanceZeroTwoResponseOutput) Builder() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse {
+		return v.Builder
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput)
+}
+
+// Identifies the event that kicked off the build.
+func (o SlsaProvenanceZeroTwoResponseOutput) Invocation() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse {
+		return v.Invocation
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+func (o SlsaProvenanceZeroTwoResponseOutput) Materials() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) []GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponse {
+		return v.Materials
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput)
+}
+
+// Other properties of the build.
+func (o SlsaProvenanceZeroTwoResponseOutput) Metadata() GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse {
+		return v.Metadata
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput)
+}
+
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type SlsaRecipe struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
@@ -19441,6 +21086,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextArrayInput)(nil)).Elem(), GoogleDevtoolsContaineranalysisV1alpha1SourceContextArray{})
@@ -19494,6 +21151,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataPtrInput)(nil)).Elem(), SlsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceInput)(nil)).Elem(), SlsaProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenancePtrInput)(nil)).Elem(), SlsaProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceZeroTwoInput)(nil)).Elem(), SlsaProvenanceZeroTwoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceZeroTwoPtrInput)(nil)).Elem(), SlsaProvenanceZeroTwoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeInput)(nil)).Elem(), SlsaRecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipePtrInput)(nil)).Elem(), SlsaRecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
@@ -19664,6 +21323,25 @@ func init() {
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1RepoIdOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextArrayOutput{})
@@ -19751,6 +21429,9 @@ func init() {
 	pulumi.RegisterOutputType(SlsaProvenanceOutput{})
 	pulumi.RegisterOutputType(SlsaProvenancePtrOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceResponseOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoPtrOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoResponseOutput{})
 	pulumi.RegisterOutputType(SlsaRecipeOutput{})
 	pulumi.RegisterOutputType(SlsaRecipePtrOutput{})
 	pulumi.RegisterOutputType(SlsaRecipeResponseOutput{})

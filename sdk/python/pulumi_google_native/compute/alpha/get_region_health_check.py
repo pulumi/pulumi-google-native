@@ -202,7 +202,7 @@ class GetRegionHealthCheckResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
         """
         return pulumi.get(self, "type")
 

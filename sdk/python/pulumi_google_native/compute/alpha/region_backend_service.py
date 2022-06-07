@@ -50,10 +50,11 @@ class RegionBackendServiceArgs:
                  service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input['SubsettingArgs']] = None,
-                 timeout_sec: Optional[pulumi.Input[int]] = None):
+                 timeout_sec: Optional[pulumi.Input[int]] = None,
+                 vpc_network_scope: Optional[pulumi.Input['RegionBackendServiceVpcNetworkScope']] = None):
         """
         The set of arguments for constructing a RegionBackendService resource.
-        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input['BackendArgs']]] backends: The list of backends that serve this BackendService.
         :param pulumi.Input['BackendServiceCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
         :param pulumi.Input['RegionBackendServiceCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -83,6 +84,7 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
         :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
+        :param pulumi.Input['RegionBackendServiceVpcNetworkScope'] vpc_network_scope: The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
         """
         pulumi.set(__self__, "region", region)
         if affinity_cookie_ttl_sec is not None:
@@ -156,6 +158,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
+        if vpc_network_scope is not None:
+            pulumi.set(__self__, "vpc_network_scope", vpc_network_scope)
 
     @property
     @pulumi.getter
@@ -170,7 +174,7 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -562,6 +566,18 @@ class RegionBackendServiceArgs:
     def timeout_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_sec", value)
 
+    @property
+    @pulumi.getter(name="vpcNetworkScope")
+    def vpc_network_scope(self) -> Optional[pulumi.Input['RegionBackendServiceVpcNetworkScope']]:
+        """
+        The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        """
+        return pulumi.get(self, "vpc_network_scope")
+
+    @vpc_network_scope.setter
+    def vpc_network_scope(self, value: Optional[pulumi.Input['RegionBackendServiceVpcNetworkScope']]):
+        pulumi.set(self, "vpc_network_scope", value)
+
 
 class RegionBackendService(pulumi.CustomResource):
     @overload
@@ -603,13 +619,14 @@ class RegionBackendService(pulumi.CustomResource):
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
+                 vpc_network_scope: Optional[pulumi.Input['RegionBackendServiceVpcNetworkScope']] = None,
                  __props__=None):
         """
         Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]] backends: The list of backends that serve this BackendService.
         :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
         :param pulumi.Input['RegionBackendServiceCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -639,6 +656,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED. If used with a backend service, must reference a global policy. If used with a regional backend service, must reference a regional policy.
         :param pulumi.Input['RegionBackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
+        :param pulumi.Input['RegionBackendServiceVpcNetworkScope'] vpc_network_scope: The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
         """
         ...
     @overload
@@ -699,6 +717,7 @@ class RegionBackendService(pulumi.CustomResource):
                  session_affinity: Optional[pulumi.Input['RegionBackendServiceSessionAffinity']] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['SubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
+                 vpc_network_scope: Optional[pulumi.Input['RegionBackendServiceVpcNetworkScope']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -751,6 +770,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
+            __props__.__dict__["vpc_network_scope"] = vpc_network_scope
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["fingerprint"] = None
@@ -820,13 +840,14 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["session_affinity"] = None
         __props__.__dict__["subsetting"] = None
         __props__.__dict__["timeout_sec"] = None
+        __props__.__dict__["vpc_network_scope"] = None
         return RegionBackendService(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> pulumi.Output[int]:
         """
-        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -1132,4 +1153,12 @@ class RegionBackendService(pulumi.CustomResource):
         The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
         return pulumi.get(self, "timeout_sec")
+
+    @property
+    @pulumi.getter(name="vpcNetworkScope")
+    def vpc_network_scope(self) -> pulumi.Output[str]:
+        """
+        The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+        """
+        return pulumi.get(self, "vpc_network_scope")
 

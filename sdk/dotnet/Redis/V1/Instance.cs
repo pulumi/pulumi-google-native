@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> CurrentLocationId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The KMS key reference that the customer provides when trying to create the instance.
+        /// </summary>
+        [Output("customerManagedKey")]
+        public Output<string> CustomerManagedKey { get; private set; } = null!;
+
+        /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
         [Output("displayName")]
@@ -86,12 +92,6 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Output("maintenanceSchedule")]
         public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
-
-        /// <summary>
-        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-        /// </summary>
-        [Output("maintenanceVersion")]
-        public Output<string> MaintenanceVersion { get; private set; } = null!;
 
         /// <summary>
         /// Redis memory size in GiB.
@@ -196,6 +196,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> StatusMessage { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. reasons that causes instance in "SUSPENDED" state.
+        /// </summary>
+        [Output("suspensionReasons")]
+        public Output<ImmutableArray<string>> SuspensionReasons { get; private set; } = null!;
+
+        /// <summary>
         /// The service tier of the instance.
         /// </summary>
         [Output("tier")]
@@ -277,6 +283,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Input<Pulumi.GoogleNative.Redis.V1.InstanceConnectMode>? ConnectMode { get; set; }
 
         /// <summary>
+        /// Optional. The KMS key reference that the customer provides when trying to create the instance.
+        /// </summary>
+        [Input("customerManagedKey")]
+        public Input<string>? CustomerManagedKey { get; set; }
+
+        /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
         [Input("displayName")]
@@ -311,12 +323,6 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.MaintenancePolicyArgs>? MaintenancePolicy { get; set; }
-
-        /// <summary>
-        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-        /// </summary>
-        [Input("maintenanceVersion")]
-        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// Redis memory size in GiB.
@@ -380,6 +386,18 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Input("secondaryIpRange")]
         public Input<string>? SecondaryIpRange { get; set; }
+
+        [Input("suspensionReasons")]
+        private InputList<Pulumi.GoogleNative.Redis.V1.InstanceSuspensionReasonsItem>? _suspensionReasons;
+
+        /// <summary>
+        /// Optional. reasons that causes instance in "SUSPENDED" state.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.Redis.V1.InstanceSuspensionReasonsItem> SuspensionReasons
+        {
+            get => _suspensionReasons ?? (_suspensionReasons = new InputList<Pulumi.GoogleNative.Redis.V1.InstanceSuspensionReasonsItem>());
+            set => _suspensionReasons = value;
+        }
 
         /// <summary>
         /// The service tier of the instance.

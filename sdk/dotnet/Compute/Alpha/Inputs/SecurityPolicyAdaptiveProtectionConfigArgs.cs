@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// </summary>
     public sealed class SecurityPolicyAdaptiveProtectionConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("autoDeployConfig")]
+        public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs>? AutoDeployConfig { get; set; }
+
         /// <summary>
         /// If set to true, enables Cloud Armor Machine Learning.
         /// </summary>

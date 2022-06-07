@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly int TimeoutSec;
         /// <summary>
-        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
         /// </summary>
         public readonly string Type;
         /// <summary>

@@ -31,7 +31,7 @@ class GatewayArgs:
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Gateway resource.
-        :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         :param pulumi.Input[str] server_tls_policy: Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         :param pulumi.Input['GatewayType'] type: Immutable. The type of the customer managed gateway.
         """
@@ -126,7 +126,7 @@ class GatewayArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         """
         return pulumi.get(self, "name")
 
@@ -192,7 +192,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[str] gateway_id: Required. Short name of the Gateway resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Gateway resource.
-        :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] server_tls_policy: Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
@@ -325,7 +325,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+        Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         """
         return pulumi.get(self, "name")
 

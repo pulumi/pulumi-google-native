@@ -8,52 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
 {
     /// <summary>
-    /// The database's lifecycle state. Read-only.
-    /// </summary>
-    [EnumType]
-    public readonly struct InstanceState : IEquatable<InstanceState>
-    {
-        private readonly string _value;
-
-        private InstanceState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Unspecified state, likely the result of an error on the backend. This is only used for distinguishing unset values.
-        /// </summary>
-        public static InstanceState LifecycleStateUnspecified { get; } = new InstanceState("LIFECYCLE_STATE_UNSPECIFIED");
-        /// <summary>
-        /// The normal and active state.
-        /// </summary>
-        public static InstanceState Active { get; } = new InstanceState("ACTIVE");
-        /// <summary>
-        /// The database is in a disabled state. It can be re-enabled later.
-        /// </summary>
-        public static InstanceState Disabled { get; } = new InstanceState("DISABLED");
-        /// <summary>
-        /// The database is in a deleted state.
-        /// </summary>
-        public static InstanceState Deleted { get; } = new InstanceState("DELETED");
-
-        public static bool operator ==(InstanceState left, InstanceState right) => left.Equals(right);
-        public static bool operator !=(InstanceState left, InstanceState right) => !left.Equals(right);
-
-        public static explicit operator string(InstanceState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InstanceState other && Equals(other);
-        public bool Equals(InstanceState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+    /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
     /// </summary>
     [EnumType]
     public readonly struct InstanceType : IEquatable<InstanceType>

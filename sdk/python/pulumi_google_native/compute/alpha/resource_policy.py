@@ -18,6 +18,7 @@ class ResourcePolicyArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
                  instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class ResourcePolicyArgs:
                  vm_maintenance_policy: Optional[pulumi.Input['ResourcePolicyVmMaintenancePolicyArgs']] = None):
         """
         The set of arguments for constructing a ResourcePolicy resource.
+        :param pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs'] disk_consistency_group_policy: Resource policy for disk consistency groups.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs'] group_placement_policy: Resource policy for instances for placement configuration.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs'] instance_schedule_policy: Resource policy for scheduling instance operations.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -37,6 +39,8 @@ class ResourcePolicyArgs:
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_consistency_group_policy is not None:
+            pulumi.set(__self__, "disk_consistency_group_policy", disk_consistency_group_policy)
         if group_placement_policy is not None:
             pulumi.set(__self__, "group_placement_policy", group_placement_policy)
         if instance_schedule_policy is not None:
@@ -69,6 +73,18 @@ class ResourcePolicyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskConsistencyGroupPolicy")
+    def disk_consistency_group_policy(self) -> Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]:
+        """
+        Resource policy for disk consistency groups.
+        """
+        return pulumi.get(self, "disk_consistency_group_policy")
+
+    @disk_consistency_group_policy.setter
+    def disk_consistency_group_policy(self, value: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]):
+        pulumi.set(self, "disk_consistency_group_policy", value)
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
@@ -158,6 +174,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
                  instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -172,6 +189,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']] disk_consistency_group_policy: Resource policy for disk consistency groups.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances for placement configuration.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -204,6 +222,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
                  instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -225,6 +244,7 @@ class ResourcePolicy(pulumi.CustomResource):
             __props__ = ResourcePolicyArgs.__new__(ResourcePolicyArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["disk_consistency_group_policy"] = disk_consistency_group_policy
             __props__.__dict__["group_placement_policy"] = group_placement_policy
             __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
             __props__.__dict__["name"] = name
@@ -265,6 +285,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["disk_consistency_group_policy"] = None
         __props__.__dict__["group_placement_policy"] = None
         __props__.__dict__["instance_schedule_policy"] = None
         __props__.__dict__["kind"] = None
@@ -290,6 +311,14 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskConsistencyGroupPolicy")
+    def disk_consistency_group_policy(self) -> pulumi.Output['outputs.ResourcePolicyDiskConsistencyGroupPolicyResponse']:
+        """
+        Resource policy for disk consistency groups.
+        """
+        return pulumi.get(self, "disk_consistency_group_policy")
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")

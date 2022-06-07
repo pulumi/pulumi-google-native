@@ -181,9 +181,180 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+type TagKeyPurpose string
+
+const (
+	// Unspecified purpose.
+	TagKeyPurposePurposeUnspecified = TagKeyPurpose("PURPOSE_UNSPECIFIED")
+	// Purpose for Compute Engine firewalls. A corresponding purpose_data should be set for the network the tag is intended for. The key should be 'network' and the value should be in the format of the network url id string: http://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+	TagKeyPurposeGceFirewall = TagKeyPurpose("GCE_FIREWALL")
+)
+
+func (TagKeyPurpose) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagKeyPurpose)(nil)).Elem()
+}
+
+func (e TagKeyPurpose) ToTagKeyPurposeOutput() TagKeyPurposeOutput {
+	return pulumi.ToOutput(e).(TagKeyPurposeOutput)
+}
+
+func (e TagKeyPurpose) ToTagKeyPurposeOutputWithContext(ctx context.Context) TagKeyPurposeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TagKeyPurposeOutput)
+}
+
+func (e TagKeyPurpose) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutput {
+	return e.ToTagKeyPurposePtrOutputWithContext(context.Background())
+}
+
+func (e TagKeyPurpose) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
+	return TagKeyPurpose(e).ToTagKeyPurposeOutputWithContext(ctx).ToTagKeyPurposePtrOutputWithContext(ctx)
+}
+
+func (e TagKeyPurpose) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TagKeyPurpose) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TagKeyPurpose) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TagKeyPurpose) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TagKeyPurposeOutput struct{ *pulumi.OutputState }
+
+func (TagKeyPurposeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagKeyPurpose)(nil)).Elem()
+}
+
+func (o TagKeyPurposeOutput) ToTagKeyPurposeOutput() TagKeyPurposeOutput {
+	return o
+}
+
+func (o TagKeyPurposeOutput) ToTagKeyPurposeOutputWithContext(ctx context.Context) TagKeyPurposeOutput {
+	return o
+}
+
+func (o TagKeyPurposeOutput) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutput {
+	return o.ToTagKeyPurposePtrOutputWithContext(context.Background())
+}
+
+func (o TagKeyPurposeOutput) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKeyPurpose) *TagKeyPurpose {
+		return &v
+	}).(TagKeyPurposePtrOutput)
+}
+
+func (o TagKeyPurposeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TagKeyPurposeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TagKeyPurpose) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TagKeyPurposeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TagKeyPurposeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TagKeyPurpose) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TagKeyPurposePtrOutput struct{ *pulumi.OutputState }
+
+func (TagKeyPurposePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagKeyPurpose)(nil)).Elem()
+}
+
+func (o TagKeyPurposePtrOutput) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutput {
+	return o
+}
+
+func (o TagKeyPurposePtrOutput) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
+	return o
+}
+
+func (o TagKeyPurposePtrOutput) Elem() TagKeyPurposeOutput {
+	return o.ApplyT(func(v *TagKeyPurpose) TagKeyPurpose {
+		if v != nil {
+			return *v
+		}
+		var ret TagKeyPurpose
+		return ret
+	}).(TagKeyPurposeOutput)
+}
+
+func (o TagKeyPurposePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TagKeyPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TagKeyPurpose) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TagKeyPurposeInput is an input type that accepts TagKeyPurposeArgs and TagKeyPurposeOutput values.
+// You can construct a concrete instance of `TagKeyPurposeInput` via:
+//
+//          TagKeyPurposeArgs{...}
+type TagKeyPurposeInput interface {
+	pulumi.Input
+
+	ToTagKeyPurposeOutput() TagKeyPurposeOutput
+	ToTagKeyPurposeOutputWithContext(context.Context) TagKeyPurposeOutput
+}
+
+var tagKeyPurposePtrType = reflect.TypeOf((**TagKeyPurpose)(nil)).Elem()
+
+type TagKeyPurposePtrInput interface {
+	pulumi.Input
+
+	ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutput
+	ToTagKeyPurposePtrOutputWithContext(context.Context) TagKeyPurposePtrOutput
+}
+
+type tagKeyPurposePtr string
+
+func TagKeyPurposePtr(v string) TagKeyPurposePtrInput {
+	return (*tagKeyPurposePtr)(&v)
+}
+
+func (*tagKeyPurposePtr) ElementType() reflect.Type {
+	return tagKeyPurposePtrType
+}
+
+func (in *tagKeyPurposePtr) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutput {
+	return pulumi.ToOutput(in).(TagKeyPurposePtrOutput)
+}
+
+func (in *tagKeyPurposePtr) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TagKeyPurposePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyPurposeInput)(nil)).Elem(), TagKeyPurpose("PURPOSE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyPurposePtrInput)(nil)).Elem(), TagKeyPurpose("PURPOSE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(TagKeyPurposeOutput{})
+	pulumi.RegisterOutputType(TagKeyPurposePtrOutput{})
 }

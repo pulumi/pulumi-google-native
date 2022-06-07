@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'AppDevExperienceFeatureSpecResponse',
     'AppDevExperienceFeatureStateResponse',
+    'ApplianceClusterResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'AuthorityResponse',
@@ -85,6 +86,45 @@ class AppDevExperienceFeatureStateResponse(dict):
         Status of subcomponent that detects configured Service Mesh resources.
         """
         return pulumi.get(self, "networking_install_succeeded")
+
+
+@pulumi.output_type
+class ApplianceClusterResponse(dict):
+    """
+    ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplianceClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplianceClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplianceClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_link: str):
+        """
+        ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+        :param str resource_link: Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        """
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        """
+        return pulumi.get(self, "resource_link")
 
 
 @pulumi.output_type
@@ -794,7 +834,9 @@ class MembershipEndpointResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "edgeCluster":
+        if key == "applianceCluster":
+            suggest = "appliance_cluster"
+        elif key == "edgeCluster":
             suggest = "edge_cluster"
         elif key == "gkeCluster":
             suggest = "gke_cluster"
@@ -819,6 +861,7 @@ class MembershipEndpointResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 appliance_cluster: 'outputs.ApplianceClusterResponse',
                  edge_cluster: 'outputs.EdgeClusterResponse',
                  gke_cluster: 'outputs.GkeClusterResponse',
                  kubernetes_metadata: 'outputs.KubernetesMetadataResponse',
@@ -827,6 +870,7 @@ class MembershipEndpointResponse(dict):
                  on_prem_cluster: 'outputs.OnPremClusterResponse'):
         """
         MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+        :param 'ApplianceClusterResponse' appliance_cluster: Optional. Specific information for a GDC Edge Appliance cluster.
         :param 'EdgeClusterResponse' edge_cluster: Optional. Specific information for a Google Edge cluster.
         :param 'GkeClusterResponse' gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
         :param 'KubernetesMetadataResponse' kubernetes_metadata: Useful Kubernetes-specific metadata.
@@ -834,12 +878,21 @@ class MembershipEndpointResponse(dict):
         :param 'MultiCloudClusterResponse' multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
         :param 'OnPremClusterResponse' on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         """
+        pulumi.set(__self__, "appliance_cluster", appliance_cluster)
         pulumi.set(__self__, "edge_cluster", edge_cluster)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
         pulumi.set(__self__, "kubernetes_metadata", kubernetes_metadata)
         pulumi.set(__self__, "kubernetes_resource", kubernetes_resource)
         pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
         pulumi.set(__self__, "on_prem_cluster", on_prem_cluster)
+
+    @property
+    @pulumi.getter(name="applianceCluster")
+    def appliance_cluster(self) -> 'outputs.ApplianceClusterResponse':
+        """
+        Optional. Specific information for a GDC Edge Appliance cluster.
+        """
+        return pulumi.get(self, "appliance_cluster")
 
     @property
     @pulumi.getter(name="edgeCluster")

@@ -74,6 +74,14 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public readonly string Parent;
         /// <summary>
+        /// Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+        /// </summary>
+        public readonly string Purpose;
+        /// <summary>
+        /// Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> PurposeData;
+        /// <summary>
         /// Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// </summary>
         public readonly string ShortName;
@@ -96,6 +104,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
 
             string parent,
 
+            string purpose,
+
+            ImmutableDictionary<string, string> purposeData,
+
             string shortName,
 
             string updateTime)
@@ -106,6 +118,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
             Name = name;
             NamespacedName = namespacedName;
             Parent = parent;
+            Purpose = purpose;
+            PurposeData = purposeData;
             ShortName = shortName;
             UpdateTime = updateTime;
         }

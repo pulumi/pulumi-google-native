@@ -170,6 +170,7 @@ __all__ = [
     'ReservationArgs',
     'ResourceCommitmentArgs',
     'ResourcePolicyDailyCycleArgs',
+    'ResourcePolicyDiskConsistencyGroupPolicyArgs',
     'ResourcePolicyGroupPlacementPolicyArgs',
     'ResourcePolicyHourlyCycleArgs',
     'ResourcePolicyInstanceSchedulePolicyScheduleArgs',
@@ -201,6 +202,7 @@ __all__ = [
     'SchedulingNodeAffinityArgs',
     'SchedulingArgs',
     'SdsConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
     'SecurityPolicyAdvancedOptionsConfigArgs',
@@ -736,7 +738,7 @@ class AllocationSpecificSKUReservationArgs:
                  count: Optional[pulumi.Input[str]] = None,
                  instance_properties: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']] = None):
         """
-        This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+        This reservation type allows to pre allocate specific instance configuration. Next ID: 6
         :param pulumi.Input[str] count: Specifies the number of resources that are allocated.
         :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
         """
@@ -2836,7 +2838,7 @@ class BackendServiceLogConfigArgs:
         """
         The available logging options for the load balancer traffic served by this backend service.
         :param pulumi.Input[bool] enable: This field denotes whether to enable logging for the load balancer traffic served by this backend service.
-        :param pulumi.Input[float] sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+        :param pulumi.Input[float] sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -2859,7 +2861,7 @@ class BackendServiceLogConfigArgs:
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> Optional[pulumi.Input[float]]:
         """
-        This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
+        This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 0.0.
         """
         return pulumi.get(self, "sample_rate")
 
@@ -11141,6 +11143,15 @@ class ResourcePolicyDailyCycleArgs:
 
 
 @pulumi.input_type
+class ResourcePolicyDiskConsistencyGroupPolicyArgs:
+    def __init__(__self__):
+        """
+        Resource policy for disk consistency groups.
+        """
+        pass
+
+
+@pulumi.input_type
 class ResourcePolicyGroupPlacementPolicyArgs:
     def __init__(__self__, *,
                  availability_domain_count: Optional[pulumi.Input[int]] = None,
@@ -13349,7 +13360,7 @@ class SchedulingArgs:
         :param pulumi.Input['DurationArgs'] max_run_duration: Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param pulumi.Input[Sequence[pulumi.Input['SchedulingNodeAffinityArgs']]] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
-        :param pulumi.Input['SchedulingOnHostMaintenance'] on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+        :param pulumi.Input['SchedulingOnHostMaintenance'] on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         :param pulumi.Input[bool] preemptible: Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         :param pulumi.Input['SchedulingProvisioningModel'] provisioning_model: Specifies the provisioning model of the instance.
         :param pulumi.Input[str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
@@ -13549,7 +13560,7 @@ class SchedulingArgs:
     @pulumi.getter(name="onHostMaintenance")
     def on_host_maintenance(self) -> Optional[pulumi.Input['SchedulingOnHostMaintenance']]:
         """
-        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+        Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         """
         return pulumi.get(self, "on_host_maintenance")
 
@@ -13619,6 +13630,62 @@ class SdsConfigArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs:
+    def __init__(__self__, *,
+                 confidence_threshold: Optional[pulumi.Input[float]] = None,
+                 expiration_sec: Optional[pulumi.Input[int]] = None,
+                 impacted_baseline_threshold: Optional[pulumi.Input[float]] = None,
+                 load_threshold: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration options for Adaptive Protection auto-deploy feature.
+        """
+        if confidence_threshold is not None:
+            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        if expiration_sec is not None:
+            pulumi.set(__self__, "expiration_sec", expiration_sec)
+        if impacted_baseline_threshold is not None:
+            pulumi.set(__self__, "impacted_baseline_threshold", impacted_baseline_threshold)
+        if load_threshold is not None:
+            pulumi.set(__self__, "load_threshold", load_threshold)
+
+    @property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "confidence_threshold")
+
+    @confidence_threshold.setter
+    def confidence_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "confidence_threshold", value)
+
+    @property
+    @pulumi.getter(name="expirationSec")
+    def expiration_sec(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "expiration_sec")
+
+    @expiration_sec.setter
+    def expiration_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration_sec", value)
+
+    @property
+    @pulumi.getter(name="impactedBaselineThreshold")
+    def impacted_baseline_threshold(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "impacted_baseline_threshold")
+
+    @impacted_baseline_threshold.setter
+    def impacted_baseline_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "impacted_baseline_threshold", value)
+
+    @property
+    @pulumi.getter(name="loadThreshold")
+    def load_threshold(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "load_threshold")
+
+    @load_threshold.setter
+    def load_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "load_threshold", value)
+
+
+@pulumi.input_type
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
@@ -13661,13 +13728,25 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
 @pulumi.input_type
 class SecurityPolicyAdaptiveProtectionConfigArgs:
     def __init__(__self__, *,
+                 auto_deploy_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']] = None,
                  layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']] = None):
         """
         Configuration options for Cloud Armor Adaptive Protection (CAAP).
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_config: If set to true, enables Cloud Armor Machine Learning.
         """
+        if auto_deploy_config is not None:
+            pulumi.set(__self__, "auto_deploy_config", auto_deploy_config)
         if layer7_ddos_defense_config is not None:
             pulumi.set(__self__, "layer7_ddos_defense_config", layer7_ddos_defense_config)
+
+    @property
+    @pulumi.getter(name="autoDeployConfig")
+    def auto_deploy_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']]:
+        return pulumi.get(self, "auto_deploy_config")
+
+    @auto_deploy_config.setter
+    def auto_deploy_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']]):
+        pulumi.set(self, "auto_deploy_config", value)
 
     @property
     @pulumi.getter(name="layer7DdosDefenseConfig")

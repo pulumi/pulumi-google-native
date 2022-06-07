@@ -32,7 +32,7 @@ class BigQueryConfigArgs:
         """
         Configuration for a BigQuery subscription.
         :param pulumi.Input[bool] drop_unknown_fields: When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
-        :param pulumi.Input[str] table: The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        :param pulumi.Input[str] table: The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         :param pulumi.Input[bool] use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
         :param pulumi.Input[bool] write_metadata: When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
         """
@@ -61,7 +61,7 @@ class BigQueryConfigArgs:
     @pulumi.getter
     def table(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         """
         return pulumi.get(self, "table")
 
@@ -446,15 +446,23 @@ class RetryPolicyArgs:
 class SchemaSettingsArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
-                 encoding: Optional[pulumi.Input['SchemaSettingsEncoding']] = None):
+                 encoding: Optional[pulumi.Input['SchemaSettingsEncoding']] = None,
+                 first_revision_id: Optional[pulumi.Input[str]] = None,
+                 last_revision_id: Optional[pulumi.Input[str]] = None):
         """
         Settings for validating messages published against a schema.
         :param pulumi.Input[str] schema: The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         :param pulumi.Input['SchemaSettingsEncoding'] encoding: The encoding of messages validated against `schema`.
+        :param pulumi.Input[str] first_revision_id: The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        :param pulumi.Input[str] last_revision_id: The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
         """
         pulumi.set(__self__, "schema", schema)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
+        if first_revision_id is not None:
+            pulumi.set(__self__, "first_revision_id", first_revision_id)
+        if last_revision_id is not None:
+            pulumi.set(__self__, "last_revision_id", last_revision_id)
 
     @property
     @pulumi.getter
@@ -479,5 +487,29 @@ class SchemaSettingsArgs:
     @encoding.setter
     def encoding(self, value: Optional[pulumi.Input['SchemaSettingsEncoding']]):
         pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="firstRevisionId")
+    def first_revision_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        """
+        return pulumi.get(self, "first_revision_id")
+
+    @first_revision_id.setter
+    def first_revision_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "first_revision_id", value)
+
+    @property
+    @pulumi.getter(name="lastRevisionId")
+    def last_revision_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+        """
+        return pulumi.get(self, "last_revision_id")
+
+    @last_revision_id.setter
+    def last_revision_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_revision_id", value)
 
 

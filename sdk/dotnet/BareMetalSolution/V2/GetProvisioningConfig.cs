@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// A generated buganizer id to track provisioning request.
+        /// A generated ticket id to track provisioning request.
         /// </summary>
         public readonly string TicketId;
         /// <summary>

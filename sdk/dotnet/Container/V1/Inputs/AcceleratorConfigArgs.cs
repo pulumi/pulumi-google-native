@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("gpuPartitionSize")]
         public Input<string>? GpuPartitionSize { get; set; }
 
+        /// <summary>
+        /// The configuration for GPU sharing options.
+        /// </summary>
+        [Input("gpuSharingConfig")]
+        public Input<Inputs.GPUSharingConfigArgs>? GpuSharingConfig { get; set; }
+
         public AcceleratorConfigArgs()
         {
         }

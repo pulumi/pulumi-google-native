@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location=None, maintenance_policy=None, maintenance_schedule=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_config=None, persistence_iam_identity=None, port=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, state=None, status_message=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, available_maintenance_versions=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, labels=None, location=None, maintenance_policy=None, maintenance_schedule=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_config=None, persistence_iam_identity=None, port=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, state=None, status_message=None, suspension_reasons=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -28,6 +28,9 @@ class GetInstanceResult:
         if authorized_network and not isinstance(authorized_network, str):
             raise TypeError("Expected argument 'authorized_network' to be a str")
         pulumi.set(__self__, "authorized_network", authorized_network)
+        if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
+            raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
+        pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if connect_mode and not isinstance(connect_mode, str):
             raise TypeError("Expected argument 'connect_mode' to be a str")
         pulumi.set(__self__, "connect_mode", connect_mode)
@@ -37,6 +40,9 @@ class GetInstanceResult:
         if current_location_id and not isinstance(current_location_id, str):
             raise TypeError("Expected argument 'current_location_id' to be a str")
         pulumi.set(__self__, "current_location_id", current_location_id)
+        if customer_managed_key and not isinstance(customer_managed_key, str):
+            raise TypeError("Expected argument 'customer_managed_key' to be a str")
+        pulumi.set(__self__, "customer_managed_key", customer_managed_key)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -109,6 +115,9 @@ class GetInstanceResult:
         if status_message and not isinstance(status_message, str):
             raise TypeError("Expected argument 'status_message' to be a str")
         pulumi.set(__self__, "status_message", status_message)
+        if suspension_reasons and not isinstance(suspension_reasons, list):
+            raise TypeError("Expected argument 'suspension_reasons' to be a list")
+        pulumi.set(__self__, "suspension_reasons", suspension_reasons)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
@@ -141,6 +150,14 @@ class GetInstanceResult:
         return pulumi.get(self, "authorized_network")
 
     @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Sequence[str]:
+        """
+        Optional. The available maintenance versions that an instance could update to.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @property
     @pulumi.getter(name="connectMode")
     def connect_mode(self) -> str:
         """
@@ -163,6 +180,14 @@ class GetInstanceResult:
         The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
         """
         return pulumi.get(self, "current_location_id")
+
+    @property
+    @pulumi.getter(name="customerManagedKey")
+    def customer_managed_key(self) -> str:
+        """
+        Optional. The KMS key reference that the customer provides when trying to create the instance.
+        """
+        return pulumi.get(self, "customer_managed_key")
 
     @property
     @pulumi.getter(name="displayName")
@@ -357,6 +382,14 @@ class GetInstanceResult:
         return pulumi.get(self, "status_message")
 
     @property
+    @pulumi.getter(name="suspensionReasons")
+    def suspension_reasons(self) -> Sequence[str]:
+        """
+        Optional. reasons that causes instance in "SUSPENDED" state.
+        """
+        return pulumi.get(self, "suspension_reasons")
+
+    @property
     @pulumi.getter
     def tier(self) -> str:
         """
@@ -382,9 +415,11 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             alternative_location_id=self.alternative_location_id,
             auth_enabled=self.auth_enabled,
             authorized_network=self.authorized_network,
+            available_maintenance_versions=self.available_maintenance_versions,
             connect_mode=self.connect_mode,
             create_time=self.create_time,
             current_location_id=self.current_location_id,
+            customer_managed_key=self.customer_managed_key,
             display_name=self.display_name,
             host=self.host,
             labels=self.labels,
@@ -409,6 +444,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             server_ca_certs=self.server_ca_certs,
             state=self.state,
             status_message=self.status_message,
+            suspension_reasons=self.suspension_reasons,
             tier=self.tier,
             transit_encryption_mode=self.transit_encryption_mode)
 
@@ -434,9 +470,11 @@ def get_instance(instance_id: Optional[str] = None,
         alternative_location_id=__ret__.alternative_location_id,
         auth_enabled=__ret__.auth_enabled,
         authorized_network=__ret__.authorized_network,
+        available_maintenance_versions=__ret__.available_maintenance_versions,
         connect_mode=__ret__.connect_mode,
         create_time=__ret__.create_time,
         current_location_id=__ret__.current_location_id,
+        customer_managed_key=__ret__.customer_managed_key,
         display_name=__ret__.display_name,
         host=__ret__.host,
         labels=__ret__.labels,
@@ -461,6 +499,7 @@ def get_instance(instance_id: Optional[str] = None,
         server_ca_certs=__ret__.server_ca_certs,
         state=__ret__.state,
         status_message=__ret__.status_message,
+        suspension_reasons=__ret__.suspension_reasons,
         tier=__ret__.tier,
         transit_encryption_mode=__ret__.transit_encryption_mode)
 

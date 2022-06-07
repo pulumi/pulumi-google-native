@@ -7947,6 +7947,1161 @@ func (o GrafeasV1FileLocationResponseArrayOutput) Index(i pulumi.IntInput) Grafe
 	}).(GrafeasV1FileLocationResponseOutput)
 }
 
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder struct {
+	Id *string `pulumi:"id"`
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs{...}
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput)
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput).ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx)
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs, GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtr and GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs{...}
+//
+//  or:
+//
+//          nil
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput
+}
+
+type grafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrType GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs
+
+func GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtr(v *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrInput {
+	return (*grafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrType)(v)
+}
+
+func (*grafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder) *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder {
+		return &v
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) Elem() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
+		return ret
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse struct {
+}
+
+// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
+	return o
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness struct {
+	Environment *bool `pulumi:"environment"`
+	Materials   *bool `pulumi:"materials"`
+	Parameters  *bool `pulumi:"parameters"`
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs{...}
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs struct {
+	Environment pulumi.BoolPtrInput `pulumi:"environment"`
+	Materials   pulumi.BoolPtrInput `pulumi:"materials"`
+	Parameters  pulumi.BoolPtrInput `pulumi:"parameters"`
+}
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput)
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput).ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx)
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs, GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtr and GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs{...}
+//
+//  or:
+//
+//          nil
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput
+}
+
+type grafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrType GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs
+
+func GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtr(v *GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput {
+	return (*grafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrType)(v)
+}
+
+func (*grafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
+		return &v
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) Environment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) *bool { return v.Environment }).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) Materials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) *bool { return v.Materials }).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput) Parameters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) *bool { return v.Parameters }).(pulumi.BoolPtrOutput)
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Elem() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+		return ret
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Environment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Materials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Materials
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput) Parameters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse struct {
+	Environment bool `pulumi:"environment"`
+	Materials   bool `pulumi:"materials"`
+	Parameters  bool `pulumi:"parameters"`
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) Environment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse) bool { return v.Environment }).(pulumi.BoolOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) Materials() pulumi.BoolOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse) bool { return v.Materials }).(pulumi.BoolOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput) Parameters() pulumi.BoolOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse) bool { return v.Parameters }).(pulumi.BoolOutput)
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource struct {
+	Digest     map[string]string `pulumi:"digest"`
+	EntryPoint *string           `pulumi:"entryPoint"`
+	Uri        *string           `pulumi:"uri"`
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{...}
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs struct {
+	Digest     pulumi.StringMapInput `pulumi:"digest"`
+	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
+	Uri        pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput)
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput).ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx)
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs, GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtr and GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput
+}
+
+type grafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs
+
+func GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtr(v *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput {
+	return (*grafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType)(v)
+}
+
+func (*grafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
+		return &v
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) Elem() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+		return ret
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse struct {
+	Digest     map[string]string `pulumi:"digest"`
+	EntryPoint string            `pulumi:"entryPoint"`
+	Uri        string            `pulumi:"uri"`
+}
+
+// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) EntryPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse) string { return v.EntryPoint }).(pulumi.StringOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Identifies the event that kicked off the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation struct {
+	ConfigSource *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource `pulumi:"configSource"`
+	Environment  map[string]string                               `pulumi:"environment"`
+	Parameters   map[string]string                               `pulumi:"parameters"`
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs{...}
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput
+}
+
+// Identifies the event that kicked off the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs struct {
+	ConfigSource GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput `pulumi:"configSource"`
+	Environment  pulumi.StringMapInput                                  `pulumi:"environment"`
+	Parameters   pulumi.StringMapInput                                  `pulumi:"parameters"`
+}
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput)
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput).ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx)
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs, GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtr and GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs{...}
+//
+//  or:
+//
+//          nil
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput
+}
+
+type grafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrType GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs
+
+func GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtr(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrInput {
+	return (*grafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrType)(v)
+}
+
+func (*grafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Background())
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+// Identifies the event that kicked off the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(context.Background())
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
+		return &v
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) ConfigSource() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
+		return v.ConfigSource
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Elem() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation
+		return ret
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ConfigSource() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigSource
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Identifies the event that kicked off the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse struct {
+	ConfigSource GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse `pulumi:"configSource"`
+	Environment  map[string]string                                      `pulumi:"environment"`
+	Parameters   map[string]string                                      `pulumi:"parameters"`
+}
+
+// Identifies the event that kicked off the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ConfigSource() GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse) GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse {
+		return v.ConfigSource
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial struct {
+	Digest map[string]string `pulumi:"digest"`
+	Uri    *string           `pulumi:"uri"`
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs{...}
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs struct {
+	Digest pulumi.StringMapInput `pulumi:"digest"`
+	Uri    pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput)
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray and GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray{ GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs{...} }
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray []GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialInput
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput) Index(i pulumi.IntInput) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
+		return vs[0].([]GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial)[vs[1].(int)]
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse struct {
+	Digest map[string]string `pulumi:"digest"`
+	Uri    string            `pulumi:"uri"`
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput) Index(i pulumi.IntInput) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse {
+		return vs[0].([]GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse)[vs[1].(int)]
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput)
+}
+
+// Other properties of the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata struct {
+	BuildFinishedOn   *string                                         `pulumi:"buildFinishedOn"`
+	BuildInvocationId *string                                         `pulumi:"buildInvocationId"`
+	BuildStartedOn    *string                                         `pulumi:"buildStartedOn"`
+	Completeness      *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness `pulumi:"completeness"`
+	Reproducible      *bool                                           `pulumi:"reproducible"`
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs{...}
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput
+}
+
+// Other properties of the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs struct {
+	BuildFinishedOn   pulumi.StringPtrInput                                  `pulumi:"buildFinishedOn"`
+	BuildInvocationId pulumi.StringPtrInput                                  `pulumi:"buildInvocationId"`
+	BuildStartedOn    pulumi.StringPtrInput                                  `pulumi:"buildStartedOn"`
+	Completeness      GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput `pulumi:"completeness"`
+	Reproducible      pulumi.BoolPtrInput                                    `pulumi:"reproducible"`
+}
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput)
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput).ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx)
+}
+
+// GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs, GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtr and GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput values.
+// You can construct a concrete instance of `GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrInput` via:
+//
+//          GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput
+	ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput
+}
+
+type grafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrType GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs
+
+func GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtr(v *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrInput {
+	return (*grafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrType)(v)
+}
+
+func (*grafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return i.ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *grafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrType) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+// Other properties of the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
+		return &v
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) BuildFinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *string { return v.BuildFinishedOn }).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) BuildInvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *string { return v.BuildInvocationId }).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) BuildStartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *string { return v.BuildStartedOn }).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) Completeness() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
+		return v.Completeness
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput) Reproducible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *bool { return v.Reproducible }).(pulumi.BoolPtrOutput)
+}
+
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) Elem() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata
+		return ret
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) BuildFinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildFinishedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) BuildInvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildInvocationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) BuildStartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildStartedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) Completeness() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
+		if v == nil {
+			return nil
+		}
+		return v.Completeness
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput) Reproducible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Reproducible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Other properties of the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse struct {
+	BuildFinishedOn   string                                                 `pulumi:"buildFinishedOn"`
+	BuildInvocationId string                                                 `pulumi:"buildInvocationId"`
+	BuildStartedOn    string                                                 `pulumi:"buildStartedOn"`
+	Completeness      GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse `pulumi:"completeness"`
+	Reproducible      bool                                                   `pulumi:"reproducible"`
+}
+
+// Other properties of the build.
+type GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput {
+	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) BuildFinishedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse) string { return v.BuildFinishedOn }).(pulumi.StringOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) BuildInvocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse) string { return v.BuildInvocationId }).(pulumi.StringOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) BuildStartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse) string { return v.BuildStartedOn }).(pulumi.StringOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) Completeness() GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse) GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
+		return v.Completeness
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput)
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) Reproducible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse) bool { return v.Reproducible }).(pulumi.BoolOutput)
+}
+
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type Hint struct {
 	// The human readable name of this attestation authority, for example "qa".
@@ -8939,10 +10094,11 @@ func (o InTotoProvenanceResponseOutput) Recipe() RecipeResponseOutput {
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatement struct {
 	// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
-	PredicateType  *string           `pulumi:"predicateType"`
-	Provenance     *InTotoProvenance `pulumi:"provenance"`
-	SlsaProvenance *SlsaProvenance   `pulumi:"slsaProvenance"`
-	Subject        []Subject         `pulumi:"subject"`
+	PredicateType         *string                `pulumi:"predicateType"`
+	Provenance            *InTotoProvenance      `pulumi:"provenance"`
+	SlsaProvenance        *SlsaProvenance        `pulumi:"slsaProvenance"`
+	SlsaProvenanceZeroTwo *SlsaProvenanceZeroTwo `pulumi:"slsaProvenanceZeroTwo"`
+	Subject               []Subject              `pulumi:"subject"`
 	// Always `https://in-toto.io/Statement/v0.1`.
 	Type *string `pulumi:"type"`
 }
@@ -8961,10 +10117,11 @@ type InTotoStatementInput interface {
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementArgs struct {
 	// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
-	PredicateType  pulumi.StringPtrInput    `pulumi:"predicateType"`
-	Provenance     InTotoProvenancePtrInput `pulumi:"provenance"`
-	SlsaProvenance SlsaProvenancePtrInput   `pulumi:"slsaProvenance"`
-	Subject        SubjectArrayInput        `pulumi:"subject"`
+	PredicateType         pulumi.StringPtrInput         `pulumi:"predicateType"`
+	Provenance            InTotoProvenancePtrInput      `pulumi:"provenance"`
+	SlsaProvenance        SlsaProvenancePtrInput        `pulumi:"slsaProvenance"`
+	SlsaProvenanceZeroTwo SlsaProvenanceZeroTwoPtrInput `pulumi:"slsaProvenanceZeroTwo"`
+	Subject               SubjectArrayInput             `pulumi:"subject"`
 	// Always `https://in-toto.io/Statement/v0.1`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -9060,6 +10217,10 @@ func (o InTotoStatementOutput) SlsaProvenance() SlsaProvenancePtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *SlsaProvenance { return v.SlsaProvenance }).(SlsaProvenancePtrOutput)
 }
 
+func (o InTotoStatementOutput) SlsaProvenanceZeroTwo() SlsaProvenanceZeroTwoPtrOutput {
+	return o.ApplyT(func(v InTotoStatement) *SlsaProvenanceZeroTwo { return v.SlsaProvenanceZeroTwo }).(SlsaProvenanceZeroTwoPtrOutput)
+}
+
 func (o InTotoStatementOutput) Subject() SubjectArrayOutput {
 	return o.ApplyT(func(v InTotoStatement) []Subject { return v.Subject }).(SubjectArrayOutput)
 }
@@ -9121,6 +10282,15 @@ func (o InTotoStatementPtrOutput) SlsaProvenance() SlsaProvenancePtrOutput {
 	}).(SlsaProvenancePtrOutput)
 }
 
+func (o InTotoStatementPtrOutput) SlsaProvenanceZeroTwo() SlsaProvenanceZeroTwoPtrOutput {
+	return o.ApplyT(func(v *InTotoStatement) *SlsaProvenanceZeroTwo {
+		if v == nil {
+			return nil
+		}
+		return v.SlsaProvenanceZeroTwo
+	}).(SlsaProvenanceZeroTwoPtrOutput)
+}
+
 func (o InTotoStatementPtrOutput) Subject() SubjectArrayOutput {
 	return o.ApplyT(func(v *InTotoStatement) []Subject {
 		if v == nil {
@@ -9143,10 +10313,11 @@ func (o InTotoStatementPtrOutput) Type() pulumi.StringPtrOutput {
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementResponse struct {
 	// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
-	PredicateType  string                   `pulumi:"predicateType"`
-	Provenance     InTotoProvenanceResponse `pulumi:"provenance"`
-	SlsaProvenance SlsaProvenanceResponse   `pulumi:"slsaProvenance"`
-	Subject        []SubjectResponse        `pulumi:"subject"`
+	PredicateType         string                        `pulumi:"predicateType"`
+	Provenance            InTotoProvenanceResponse      `pulumi:"provenance"`
+	SlsaProvenance        SlsaProvenanceResponse        `pulumi:"slsaProvenance"`
+	SlsaProvenanceZeroTwo SlsaProvenanceZeroTwoResponse `pulumi:"slsaProvenanceZeroTwo"`
+	Subject               []SubjectResponse             `pulumi:"subject"`
 	// Always `https://in-toto.io/Statement/v0.1`.
 	Type string `pulumi:"type"`
 }
@@ -9177,6 +10348,10 @@ func (o InTotoStatementResponseOutput) Provenance() InTotoProvenanceResponseOutp
 
 func (o InTotoStatementResponseOutput) SlsaProvenance() SlsaProvenanceResponseOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) SlsaProvenanceResponse { return v.SlsaProvenance }).(SlsaProvenanceResponseOutput)
+}
+
+func (o InTotoStatementResponseOutput) SlsaProvenanceZeroTwo() SlsaProvenanceZeroTwoResponseOutput {
+	return o.ApplyT(func(v InTotoStatementResponse) SlsaProvenanceZeroTwoResponse { return v.SlsaProvenanceZeroTwo }).(SlsaProvenanceZeroTwoResponseOutput)
 }
 
 func (o InTotoStatementResponseOutput) Subject() SubjectResponseArrayOutput {
@@ -13419,6 +14594,274 @@ func (o SlsaProvenanceResponseOutput) Recipe() SlsaRecipeResponseOutput {
 	return o.ApplyT(func(v SlsaProvenanceResponse) SlsaRecipeResponse { return v.Recipe }).(SlsaRecipeResponseOutput)
 }
 
+// See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwo struct {
+	BuildConfig map[string]string                             `pulumi:"buildConfig"`
+	BuildType   *string                                       `pulumi:"buildType"`
+	Builder     *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder    `pulumi:"builder"`
+	Invocation  *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation `pulumi:"invocation"`
+	Materials   []GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial  `pulumi:"materials"`
+	Metadata    *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata   `pulumi:"metadata"`
+}
+
+// SlsaProvenanceZeroTwoInput is an input type that accepts SlsaProvenanceZeroTwoArgs and SlsaProvenanceZeroTwoOutput values.
+// You can construct a concrete instance of `SlsaProvenanceZeroTwoInput` via:
+//
+//          SlsaProvenanceZeroTwoArgs{...}
+type SlsaProvenanceZeroTwoInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceZeroTwoOutput() SlsaProvenanceZeroTwoOutput
+	ToSlsaProvenanceZeroTwoOutputWithContext(context.Context) SlsaProvenanceZeroTwoOutput
+}
+
+// See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoArgs struct {
+	BuildConfig pulumi.StringMapInput                                `pulumi:"buildConfig"`
+	BuildType   pulumi.StringPtrInput                                `pulumi:"buildType"`
+	Builder     GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrInput    `pulumi:"builder"`
+	Invocation  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrInput `pulumi:"invocation"`
+	Materials   GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayInput `pulumi:"materials"`
+	Metadata    GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrInput   `pulumi:"metadata"`
+}
+
+func (SlsaProvenanceZeroTwoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoOutput() SlsaProvenanceZeroTwoOutput {
+	return i.ToSlsaProvenanceZeroTwoOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceZeroTwoOutput)
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return i.ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceZeroTwoArgs) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceZeroTwoOutput).ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx)
+}
+
+// SlsaProvenanceZeroTwoPtrInput is an input type that accepts SlsaProvenanceZeroTwoArgs, SlsaProvenanceZeroTwoPtr and SlsaProvenanceZeroTwoPtrOutput values.
+// You can construct a concrete instance of `SlsaProvenanceZeroTwoPtrInput` via:
+//
+//          SlsaProvenanceZeroTwoArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaProvenanceZeroTwoPtrInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput
+	ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Context) SlsaProvenanceZeroTwoPtrOutput
+}
+
+type slsaProvenanceZeroTwoPtrType SlsaProvenanceZeroTwoArgs
+
+func SlsaProvenanceZeroTwoPtr(v *SlsaProvenanceZeroTwoArgs) SlsaProvenanceZeroTwoPtrInput {
+	return (*slsaProvenanceZeroTwoPtrType)(v)
+}
+
+func (*slsaProvenanceZeroTwoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (i *slsaProvenanceZeroTwoPtrType) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return i.ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Background())
+}
+
+func (i *slsaProvenanceZeroTwoPtrType) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceZeroTwoPtrOutput)
+}
+
+// See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceZeroTwoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoOutput() SlsaProvenanceZeroTwoOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return o.ToSlsaProvenanceZeroTwoPtrOutputWithContext(context.Background())
+}
+
+func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaProvenanceZeroTwo) *SlsaProvenanceZeroTwo {
+		return &v
+	}).(SlsaProvenanceZeroTwoPtrOutput)
+}
+
+func (o SlsaProvenanceZeroTwoOutput) BuildConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) map[string]string { return v.BuildConfig }).(pulumi.StringMapOutput)
+}
+
+func (o SlsaProvenanceZeroTwoOutput) BuildType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *string { return v.BuildType }).(pulumi.StringPtrOutput)
+}
+
+func (o SlsaProvenanceZeroTwoOutput) Builder() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder { return v.Builder }).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+func (o SlsaProvenanceZeroTwoOutput) Invocation() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation { return v.Invocation }).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+func (o SlsaProvenanceZeroTwoOutput) Materials() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) []GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial { return v.Materials }).(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput)
+}
+
+func (o SlsaProvenanceZeroTwoOutput) Metadata() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata { return v.Metadata }).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+type SlsaProvenanceZeroTwoPtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceZeroTwoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceZeroTwo)(nil)).Elem()
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) ToSlsaProvenanceZeroTwoPtrOutput() SlsaProvenanceZeroTwoPtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) ToSlsaProvenanceZeroTwoPtrOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoPtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) Elem() SlsaProvenanceZeroTwoOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) SlsaProvenanceZeroTwo {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaProvenanceZeroTwo
+		return ret
+	}).(SlsaProvenanceZeroTwoOutput)
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) BuildConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildConfig
+	}).(pulumi.StringMapOutput)
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) BuildType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) Builder() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder {
+		if v == nil {
+			return nil
+		}
+		return v.Builder
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) Invocation() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
+		if v == nil {
+			return nil
+		}
+		return v.Invocation
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput)
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) Materials() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) []GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
+		if v == nil {
+			return nil
+		}
+		return v.Materials
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput)
+}
+
+func (o SlsaProvenanceZeroTwoPtrOutput) Metadata() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) *GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput)
+}
+
+// See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoResponse struct {
+	BuildConfig map[string]string                                    `pulumi:"buildConfig"`
+	BuildType   string                                               `pulumi:"buildType"`
+	Builder     GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse    `pulumi:"builder"`
+	Invocation  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse `pulumi:"invocation"`
+	Materials   []GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse `pulumi:"materials"`
+	Metadata    GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse   `pulumi:"metadata"`
+}
+
+// See full explanation of fields at slsa.dev/provenance/v0.2.
+type SlsaProvenanceZeroTwoResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceZeroTwoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceZeroTwoResponse)(nil)).Elem()
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) ToSlsaProvenanceZeroTwoResponseOutput() SlsaProvenanceZeroTwoResponseOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) ToSlsaProvenanceZeroTwoResponseOutputWithContext(ctx context.Context) SlsaProvenanceZeroTwoResponseOutput {
+	return o
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) BuildConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) map[string]string { return v.BuildConfig }).(pulumi.StringMapOutput)
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) BuildType() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) string { return v.BuildType }).(pulumi.StringOutput)
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) Builder() GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse {
+		return v.Builder
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput)
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) Invocation() GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
+		return v.Invocation
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput)
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) Materials() GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) []GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse {
+		return v.Materials
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput)
+}
+
+func (o SlsaProvenanceZeroTwoResponseOutput) Metadata() GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse {
+		return v.Metadata
+	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput)
+}
+
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type SlsaRecipe struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
@@ -16871,6 +18314,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceContextPtrInput)(nil)).Elem(), GitSourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1FileLocationInput)(nil)).Elem(), GrafeasV1FileLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1FileLocationArrayInput)(nil)).Elem(), GrafeasV1FileLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintPtrInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityInput)(nil)).Elem(), IdentityArgs{})
@@ -16923,6 +18378,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataPtrInput)(nil)).Elem(), SlsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceInput)(nil)).Elem(), SlsaProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenancePtrInput)(nil)).Elem(), SlsaProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceZeroTwoInput)(nil)).Elem(), SlsaProvenanceZeroTwoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceZeroTwoPtrInput)(nil)).Elem(), SlsaProvenanceZeroTwoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeInput)(nil)).Elem(), SlsaRecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipePtrInput)(nil)).Elem(), SlsaRecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
@@ -17069,6 +18526,25 @@ func init() {
 	pulumi.RegisterOutputType(GrafeasV1FileLocationArrayOutput{})
 	pulumi.RegisterOutputType(GrafeasV1FileLocationResponseOutput{})
 	pulumi.RegisterOutputType(GrafeasV1FileLocationResponseArrayOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessPtrOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponseOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponseArrayOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput{})
 	pulumi.RegisterOutputType(HintOutput{})
 	pulumi.RegisterOutputType(HintPtrOutput{})
 	pulumi.RegisterOutputType(HintResponseOutput{})
@@ -17156,6 +18632,9 @@ func init() {
 	pulumi.RegisterOutputType(SlsaProvenanceOutput{})
 	pulumi.RegisterOutputType(SlsaProvenancePtrOutput{})
 	pulumi.RegisterOutputType(SlsaProvenanceResponseOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoPtrOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceZeroTwoResponseOutput{})
 	pulumi.RegisterOutputType(SlsaRecipeOutput{})
 	pulumi.RegisterOutputType(SlsaRecipePtrOutput{})
 	pulumi.RegisterOutputType(SlsaRecipeResponseOutput{})

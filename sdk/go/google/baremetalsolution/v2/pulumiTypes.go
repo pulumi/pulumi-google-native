@@ -10,11 +10,193 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
+type GoogleCloudBaremetalsolutionV2LogicalInterface struct {
+	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+	InterfaceIndex *int `pulumi:"interfaceIndex"`
+	// List of logical network interfaces within a logical interface.
+	LogicalNetworkInterfaces []LogicalNetworkInterface `pulumi:"logicalNetworkInterfaces"`
+	// Interface name. This is of syntax or and forms part of the network template name.
+	Name *string `pulumi:"name"`
+}
+
+// GoogleCloudBaremetalsolutionV2LogicalInterfaceInput is an input type that accepts GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs and GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput values.
+// You can construct a concrete instance of `GoogleCloudBaremetalsolutionV2LogicalInterfaceInput` via:
+//
+//          GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{...}
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput
+	ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutputWithContext(context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput
+}
+
+// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs struct {
+	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+	InterfaceIndex pulumi.IntPtrInput `pulumi:"interfaceIndex"`
+	// List of logical network interfaces within a logical interface.
+	LogicalNetworkInterfaces LogicalNetworkInterfaceArrayInput `pulumi:"logicalNetworkInterfaces"`
+	// Interface name. This is of syntax or and forms part of the network template name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBaremetalsolutionV2LogicalInterface)(nil)).Elem()
+}
+
+func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput {
+	return i.ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput)
+}
+
+// GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput is an input type that accepts GoogleCloudBaremetalsolutionV2LogicalInterfaceArray and GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput` via:
+//
+//          GoogleCloudBaremetalsolutionV2LogicalInterfaceArray{ GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{...} }
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput
+	ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutputWithContext(context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput
+}
+
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceArray []GoogleCloudBaremetalsolutionV2LogicalInterfaceInput
+
+func (GoogleCloudBaremetalsolutionV2LogicalInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudBaremetalsolutionV2LogicalInterface)(nil)).Elem()
+}
+
+func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArray) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput {
+	return i.ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArray) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput)
+}
+
+// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBaremetalsolutionV2LogicalInterface)(nil)).Elem()
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput {
+	return o
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput {
+	return o
+}
+
+// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) InterfaceIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterface) *int { return v.InterfaceIndex }).(pulumi.IntPtrOutput)
+}
+
+// List of logical network interfaces within a logical interface.
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) LogicalNetworkInterfaces() LogicalNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterface) []LogicalNetworkInterface {
+		return v.LogicalNetworkInterfaces
+	}).(LogicalNetworkInterfaceArrayOutput)
+}
+
+// Interface name. This is of syntax or and forms part of the network template name.
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudBaremetalsolutionV2LogicalInterface)(nil)).Elem()
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) Index(i pulumi.IntInput) GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudBaremetalsolutionV2LogicalInterface {
+		return vs[0].([]GoogleCloudBaremetalsolutionV2LogicalInterface)[vs[1].(int)]
+	}).(GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput)
+}
+
+// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse struct {
+	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+	InterfaceIndex int `pulumi:"interfaceIndex"`
+	// List of logical network interfaces within a logical interface.
+	LogicalNetworkInterfaces []LogicalNetworkInterfaceResponse `pulumi:"logicalNetworkInterfaces"`
+	// Interface name. This is of syntax or and forms part of the network template name.
+	Name string `pulumi:"name"`
+}
+
+// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput {
+	return o
+}
+
+// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) InterfaceIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse) int { return v.InterfaceIndex }).(pulumi.IntOutput)
+}
+
+// List of logical network interfaces within a logical interface.
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) LogicalNetworkInterfaces() LogicalNetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse) []LogicalNetworkInterfaceResponse {
+		return v.LogicalNetworkInterfaces
+	}).(LogicalNetworkInterfaceResponseArrayOutput)
+}
+
+// Interface name. This is of syntax or and forms part of the network template name.
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput() GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) ToGoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse {
+		return vs[0].([]GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse)[vs[1].(int)]
+	}).(GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput)
+}
+
 // Configuration parameters for a new instance.
 type InstanceConfig struct {
 	// If true networks can be from different projects of the same vendor account.
 	AccountNetworksEnabled *bool `pulumi:"accountNetworksEnabled"`
-	// Client network address.
+	// Client network address. Filled if InstanceConfig.multivlan_config is false.
 	ClientNetwork *NetworkAddress `pulumi:"clientNetwork"`
 	// Whether the instance should be provisioned with Hyperthreading enabled.
 	Hyperthreading *bool `pulumi:"hyperthreading"`
@@ -22,9 +204,15 @@ type InstanceConfig struct {
 	Id *string `pulumi:"id"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType *string `pulumi:"instanceType"`
+	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+	LogicalInterfaces []GoogleCloudBaremetalsolutionV2LogicalInterface `pulumi:"logicalInterfaces"`
+	// The type of network configuration on the instance.
+	NetworkConfig *InstanceConfigNetworkConfig `pulumi:"networkConfig"`
+	// Server network template name. Filled if InstanceConfig.multivlan_config is true.
+	NetworkTemplate *string `pulumi:"networkTemplate"`
 	// OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	OsImage *string `pulumi:"osImage"`
-	// Private network address, if any.
+	// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 	PrivateNetwork *NetworkAddress `pulumi:"privateNetwork"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote *string `pulumi:"userNote"`
@@ -45,7 +233,7 @@ type InstanceConfigInput interface {
 type InstanceConfigArgs struct {
 	// If true networks can be from different projects of the same vendor account.
 	AccountNetworksEnabled pulumi.BoolPtrInput `pulumi:"accountNetworksEnabled"`
-	// Client network address.
+	// Client network address. Filled if InstanceConfig.multivlan_config is false.
 	ClientNetwork NetworkAddressPtrInput `pulumi:"clientNetwork"`
 	// Whether the instance should be provisioned with Hyperthreading enabled.
 	Hyperthreading pulumi.BoolPtrInput `pulumi:"hyperthreading"`
@@ -53,9 +241,15 @@ type InstanceConfigArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+	LogicalInterfaces GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput `pulumi:"logicalInterfaces"`
+	// The type of network configuration on the instance.
+	NetworkConfig InstanceConfigNetworkConfigPtrInput `pulumi:"networkConfig"`
+	// Server network template name. Filled if InstanceConfig.multivlan_config is true.
+	NetworkTemplate pulumi.StringPtrInput `pulumi:"networkTemplate"`
 	// OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	OsImage pulumi.StringPtrInput `pulumi:"osImage"`
-	// Private network address, if any.
+	// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 	PrivateNetwork NetworkAddressPtrInput `pulumi:"privateNetwork"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote pulumi.StringPtrInput `pulumi:"userNote"`
@@ -118,7 +312,7 @@ func (o InstanceConfigOutput) AccountNetworksEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *bool { return v.AccountNetworksEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Client network address.
+// Client network address. Filled if InstanceConfig.multivlan_config is false.
 func (o InstanceConfigOutput) ClientNetwork() NetworkAddressPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *NetworkAddress { return v.ClientNetwork }).(NetworkAddressPtrOutput)
 }
@@ -138,12 +332,27 @@ func (o InstanceConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+func (o InstanceConfigOutput) LogicalInterfaces() GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput {
+	return o.ApplyT(func(v InstanceConfig) []GoogleCloudBaremetalsolutionV2LogicalInterface { return v.LogicalInterfaces }).(GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput)
+}
+
+// The type of network configuration on the instance.
+func (o InstanceConfigOutput) NetworkConfig() InstanceConfigNetworkConfigPtrOutput {
+	return o.ApplyT(func(v InstanceConfig) *InstanceConfigNetworkConfig { return v.NetworkConfig }).(InstanceConfigNetworkConfigPtrOutput)
+}
+
+// Server network template name. Filled if InstanceConfig.multivlan_config is true.
+func (o InstanceConfigOutput) NetworkTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfig) *string { return v.NetworkTemplate }).(pulumi.StringPtrOutput)
+}
+
 // OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 func (o InstanceConfigOutput) OsImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.OsImage }).(pulumi.StringPtrOutput)
 }
 
-// Private network address, if any.
+// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 func (o InstanceConfigOutput) PrivateNetwork() NetworkAddressPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *NetworkAddress { return v.PrivateNetwork }).(NetworkAddressPtrOutput)
 }
@@ -177,17 +386,23 @@ func (o InstanceConfigArrayOutput) Index(i pulumi.IntInput) InstanceConfigOutput
 type InstanceConfigResponse struct {
 	// If true networks can be from different projects of the same vendor account.
 	AccountNetworksEnabled bool `pulumi:"accountNetworksEnabled"`
-	// Client network address.
+	// Client network address. Filled if InstanceConfig.multivlan_config is false.
 	ClientNetwork NetworkAddressResponse `pulumi:"clientNetwork"`
 	// Whether the instance should be provisioned with Hyperthreading enabled.
 	Hyperthreading bool `pulumi:"hyperthreading"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType string `pulumi:"instanceType"`
+	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+	LogicalInterfaces []GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse `pulumi:"logicalInterfaces"`
 	// The name of the instance config.
 	Name string `pulumi:"name"`
+	// The type of network configuration on the instance.
+	NetworkConfig string `pulumi:"networkConfig"`
+	// Server network template name. Filled if InstanceConfig.multivlan_config is true.
+	NetworkTemplate string `pulumi:"networkTemplate"`
 	// OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	OsImage string `pulumi:"osImage"`
-	// Private network address, if any.
+	// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 	PrivateNetwork NetworkAddressResponse `pulumi:"privateNetwork"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote string `pulumi:"userNote"`
@@ -213,7 +428,7 @@ func (o InstanceConfigResponseOutput) AccountNetworksEnabled() pulumi.BoolOutput
 	return o.ApplyT(func(v InstanceConfigResponse) bool { return v.AccountNetworksEnabled }).(pulumi.BoolOutput)
 }
 
-// Client network address.
+// Client network address. Filled if InstanceConfig.multivlan_config is false.
 func (o InstanceConfigResponseOutput) ClientNetwork() NetworkAddressResponseOutput {
 	return o.ApplyT(func(v InstanceConfigResponse) NetworkAddressResponse { return v.ClientNetwork }).(NetworkAddressResponseOutput)
 }
@@ -228,9 +443,26 @@ func (o InstanceConfigResponseOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceConfigResponse) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+func (o InstanceConfigResponseOutput) LogicalInterfaces() GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v InstanceConfigResponse) []GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse {
+		return v.LogicalInterfaces
+	}).(GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput)
+}
+
 // The name of the instance config.
 func (o InstanceConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of network configuration on the instance.
+func (o InstanceConfigResponseOutput) NetworkConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceConfigResponse) string { return v.NetworkConfig }).(pulumi.StringOutput)
+}
+
+// Server network template name. Filled if InstanceConfig.multivlan_config is true.
+func (o InstanceConfigResponseOutput) NetworkTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceConfigResponse) string { return v.NetworkTemplate }).(pulumi.StringOutput)
 }
 
 // OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
@@ -238,7 +470,7 @@ func (o InstanceConfigResponseOutput) OsImage() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceConfigResponse) string { return v.OsImage }).(pulumi.StringOutput)
 }
 
-// Private network address, if any.
+// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
 func (o InstanceConfigResponseOutput) PrivateNetwork() NetworkAddressResponseOutput {
 	return o.ApplyT(func(v InstanceConfigResponse) NetworkAddressResponse { return v.PrivateNetwork }).(NetworkAddressResponseOutput)
 }
@@ -421,6 +653,209 @@ func (o IntakeVlanAttachmentResponseArrayOutput) Index(i pulumi.IntInput) Intake
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntakeVlanAttachmentResponse {
 		return vs[0].([]IntakeVlanAttachmentResponse)[vs[1].(int)]
 	}).(IntakeVlanAttachmentResponseOutput)
+}
+
+// Each logical network interface is effectively a network and IP pair.
+type LogicalNetworkInterface struct {
+	// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
+	DefaultGateway *bool `pulumi:"defaultGateway"`
+	// An identifier for the `Network`, generated by the backend.
+	Id *string `pulumi:"id"`
+	// IP address in the network
+	IpAddress *string `pulumi:"ipAddress"`
+	// Name of the network
+	Network *string `pulumi:"network"`
+	// Type of network.
+	NetworkType *LogicalNetworkInterfaceNetworkType `pulumi:"networkType"`
+}
+
+// LogicalNetworkInterfaceInput is an input type that accepts LogicalNetworkInterfaceArgs and LogicalNetworkInterfaceOutput values.
+// You can construct a concrete instance of `LogicalNetworkInterfaceInput` via:
+//
+//          LogicalNetworkInterfaceArgs{...}
+type LogicalNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToLogicalNetworkInterfaceOutput() LogicalNetworkInterfaceOutput
+	ToLogicalNetworkInterfaceOutputWithContext(context.Context) LogicalNetworkInterfaceOutput
+}
+
+// Each logical network interface is effectively a network and IP pair.
+type LogicalNetworkInterfaceArgs struct {
+	// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
+	DefaultGateway pulumi.BoolPtrInput `pulumi:"defaultGateway"`
+	// An identifier for the `Network`, generated by the backend.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// IP address in the network
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Name of the network
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Type of network.
+	NetworkType LogicalNetworkInterfaceNetworkTypePtrInput `pulumi:"networkType"`
+}
+
+func (LogicalNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkInterface)(nil)).Elem()
+}
+
+func (i LogicalNetworkInterfaceArgs) ToLogicalNetworkInterfaceOutput() LogicalNetworkInterfaceOutput {
+	return i.ToLogicalNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i LogicalNetworkInterfaceArgs) ToLogicalNetworkInterfaceOutputWithContext(ctx context.Context) LogicalNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkInterfaceOutput)
+}
+
+// LogicalNetworkInterfaceArrayInput is an input type that accepts LogicalNetworkInterfaceArray and LogicalNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `LogicalNetworkInterfaceArrayInput` via:
+//
+//          LogicalNetworkInterfaceArray{ LogicalNetworkInterfaceArgs{...} }
+type LogicalNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToLogicalNetworkInterfaceArrayOutput() LogicalNetworkInterfaceArrayOutput
+	ToLogicalNetworkInterfaceArrayOutputWithContext(context.Context) LogicalNetworkInterfaceArrayOutput
+}
+
+type LogicalNetworkInterfaceArray []LogicalNetworkInterfaceInput
+
+func (LogicalNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogicalNetworkInterface)(nil)).Elem()
+}
+
+func (i LogicalNetworkInterfaceArray) ToLogicalNetworkInterfaceArrayOutput() LogicalNetworkInterfaceArrayOutput {
+	return i.ToLogicalNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i LogicalNetworkInterfaceArray) ToLogicalNetworkInterfaceArrayOutputWithContext(ctx context.Context) LogicalNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkInterfaceArrayOutput)
+}
+
+// Each logical network interface is effectively a network and IP pair.
+type LogicalNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkInterface)(nil)).Elem()
+}
+
+func (o LogicalNetworkInterfaceOutput) ToLogicalNetworkInterfaceOutput() LogicalNetworkInterfaceOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceOutput) ToLogicalNetworkInterfaceOutputWithContext(ctx context.Context) LogicalNetworkInterfaceOutput {
+	return o
+}
+
+// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
+func (o LogicalNetworkInterfaceOutput) DefaultGateway() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkInterface) *bool { return v.DefaultGateway }).(pulumi.BoolPtrOutput)
+}
+
+// An identifier for the `Network`, generated by the backend.
+func (o LogicalNetworkInterfaceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// IP address in the network
+func (o LogicalNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Name of the network
+func (o LogicalNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Type of network.
+func (o LogicalNetworkInterfaceOutput) NetworkType() LogicalNetworkInterfaceNetworkTypePtrOutput {
+	return o.ApplyT(func(v LogicalNetworkInterface) *LogicalNetworkInterfaceNetworkType { return v.NetworkType }).(LogicalNetworkInterfaceNetworkTypePtrOutput)
+}
+
+type LogicalNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogicalNetworkInterface)(nil)).Elem()
+}
+
+func (o LogicalNetworkInterfaceArrayOutput) ToLogicalNetworkInterfaceArrayOutput() LogicalNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceArrayOutput) ToLogicalNetworkInterfaceArrayOutputWithContext(ctx context.Context) LogicalNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) LogicalNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogicalNetworkInterface {
+		return vs[0].([]LogicalNetworkInterface)[vs[1].(int)]
+	}).(LogicalNetworkInterfaceOutput)
+}
+
+// Each logical network interface is effectively a network and IP pair.
+type LogicalNetworkInterfaceResponse struct {
+	// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
+	DefaultGateway bool `pulumi:"defaultGateway"`
+	// IP address in the network
+	IpAddress string `pulumi:"ipAddress"`
+	// Name of the network
+	Network string `pulumi:"network"`
+	// Type of network.
+	NetworkType string `pulumi:"networkType"`
+}
+
+// Each logical network interface is effectively a network and IP pair.
+type LogicalNetworkInterfaceResponseOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkInterfaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkInterfaceResponse)(nil)).Elem()
+}
+
+func (o LogicalNetworkInterfaceResponseOutput) ToLogicalNetworkInterfaceResponseOutput() LogicalNetworkInterfaceResponseOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceResponseOutput) ToLogicalNetworkInterfaceResponseOutputWithContext(ctx context.Context) LogicalNetworkInterfaceResponseOutput {
+	return o
+}
+
+// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
+func (o LogicalNetworkInterfaceResponseOutput) DefaultGateway() pulumi.BoolOutput {
+	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) bool { return v.DefaultGateway }).(pulumi.BoolOutput)
+}
+
+// IP address in the network
+func (o LogicalNetworkInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Name of the network
+func (o LogicalNetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Type of network.
+func (o LogicalNetworkInterfaceResponseOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+type LogicalNetworkInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkInterfaceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogicalNetworkInterfaceResponse)(nil)).Elem()
+}
+
+func (o LogicalNetworkInterfaceResponseArrayOutput) ToLogicalNetworkInterfaceResponseArrayOutput() LogicalNetworkInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceResponseArrayOutput) ToLogicalNetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) LogicalNetworkInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o LogicalNetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) LogicalNetworkInterfaceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogicalNetworkInterfaceResponse {
+		return vs[0].([]LogicalNetworkInterfaceResponse)[vs[1].(int)]
+	}).(LogicalNetworkInterfaceResponseOutput)
 }
 
 // A LUN(Logical Unit Number) range.
@@ -817,7 +1252,7 @@ type NetworkConfig struct {
 	ServiceCidr *NetworkConfigServiceCidr `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
 	Type *NetworkConfigType `pulumi:"type"`
-	// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote *string `pulumi:"userNote"`
 	// List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
 	VlanAttachments []IntakeVlanAttachment `pulumi:"vlanAttachments"`
@@ -850,7 +1285,7 @@ type NetworkConfigArgs struct {
 	ServiceCidr NetworkConfigServiceCidrPtrInput `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
 	Type NetworkConfigTypePtrInput `pulumi:"type"`
-	// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote pulumi.StringPtrInput `pulumi:"userNote"`
 	// List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
 	VlanAttachments IntakeVlanAttachmentArrayInput `pulumi:"vlanAttachments"`
@@ -940,7 +1375,7 @@ func (o NetworkConfigOutput) Type() NetworkConfigTypePtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *NetworkConfigType { return v.Type }).(NetworkConfigTypePtrOutput)
 }
 
-// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+// User note field, it can be used by customers to add additional information for the BMS Ops team .
 func (o NetworkConfigOutput) UserNote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.UserNote }).(pulumi.StringPtrOutput)
 }
@@ -989,7 +1424,7 @@ type NetworkConfigResponse struct {
 	ServiceCidr string `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
 	Type string `pulumi:"type"`
-	// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote string `pulumi:"userNote"`
 	// List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
 	VlanAttachments []IntakeVlanAttachmentResponse `pulumi:"vlanAttachments"`
@@ -1042,7 +1477,7 @@ func (o NetworkConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+// User note field, it can be used by customers to add additional information for the BMS Ops team .
 func (o NetworkConfigResponseOutput) UserNote() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.UserNote }).(pulumi.StringOutput)
 }
@@ -1339,7 +1774,7 @@ type VolumeConfig struct {
 	SnapshotsEnabled *bool `pulumi:"snapshotsEnabled"`
 	// The type of this Volume.
 	Type *VolumeConfigType `pulumi:"type"`
-	// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote *string `pulumi:"userNote"`
 }
 
@@ -1374,7 +1809,7 @@ type VolumeConfigArgs struct {
 	SnapshotsEnabled pulumi.BoolPtrInput `pulumi:"snapshotsEnabled"`
 	// The type of this Volume.
 	Type VolumeConfigTypePtrInput `pulumi:"type"`
-	// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote pulumi.StringPtrInput `pulumi:"userNote"`
 }
 
@@ -1475,7 +1910,7 @@ func (o VolumeConfigOutput) Type() VolumeConfigTypePtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *VolumeConfigType { return v.Type }).(VolumeConfigTypePtrOutput)
 }
 
-// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+// User note field, it can be used by customers to add additional information for the BMS Ops team .
 func (o VolumeConfigOutput) UserNote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *string { return v.UserNote }).(pulumi.StringPtrOutput)
 }
@@ -1520,7 +1955,7 @@ type VolumeConfigResponse struct {
 	SnapshotsEnabled bool `pulumi:"snapshotsEnabled"`
 	// The type of this Volume.
 	Type string `pulumi:"type"`
-	// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote string `pulumi:"userNote"`
 }
 
@@ -1584,7 +2019,7 @@ func (o VolumeConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+// User note field, it can be used by customers to add additional information for the BMS Ops team .
 func (o VolumeConfigResponseOutput) UserNote() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) string { return v.UserNote }).(pulumi.StringOutput)
 }
@@ -1610,10 +2045,14 @@ func (o VolumeConfigResponseArrayOutput) Index(i pulumi.IntInput) VolumeConfigRe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBaremetalsolutionV2LogicalInterfaceInput)(nil)).Elem(), GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput)(nil)).Elem(), GoogleCloudBaremetalsolutionV2LogicalInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInput)(nil)).Elem(), InstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigArrayInput)(nil)).Elem(), InstanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntakeVlanAttachmentInput)(nil)).Elem(), IntakeVlanAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntakeVlanAttachmentArrayInput)(nil)).Elem(), IntakeVlanAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceInput)(nil)).Elem(), LogicalNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceArrayInput)(nil)).Elem(), LogicalNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LunRangeInput)(nil)).Elem(), LunRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LunRangeArrayInput)(nil)).Elem(), LunRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAddressInput)(nil)).Elem(), NetworkAddressArgs{})
@@ -1624,6 +2063,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportArrayInput)(nil)).Elem(), NfsExportArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigInput)(nil)).Elem(), VolumeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigArrayInput)(nil)).Elem(), VolumeConfigArray{})
+	pulumi.RegisterOutputType(GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigResponseOutput{})
@@ -1632,6 +2075,10 @@ func init() {
 	pulumi.RegisterOutputType(IntakeVlanAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(IntakeVlanAttachmentResponseOutput{})
 	pulumi.RegisterOutputType(IntakeVlanAttachmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkInterfaceResponseOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(LunRangeOutput{})
 	pulumi.RegisterOutputType(LunRangeArrayOutput{})
 	pulumi.RegisterOutputType(LunRangeResponseOutput{})

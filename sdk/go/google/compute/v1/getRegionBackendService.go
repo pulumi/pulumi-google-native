@@ -27,7 +27,7 @@ type LookupRegionBackendServiceArgs struct {
 }
 
 type LookupRegionBackendServiceResult struct {
-	// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	AffinityCookieTtlSec int `pulumi:"affinityCookieTtlSec"`
 	// The list of backends that serve this BackendService.
 	Backends []BackendResponse `pulumi:"backends"`
@@ -139,7 +139,7 @@ func (o LookupRegionBackendServiceResultOutput) ToLookupRegionBackendServiceResu
 	return o
 }
 
-// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o LookupRegionBackendServiceResultOutput) AffinityCookieTtlSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.AffinityCookieTtlSec }).(pulumi.IntOutput)
 }

@@ -15,35 +15,26 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 database_url: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InstanceState']] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] database_id: The globally unique identifier of the database instance.
-        :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-        :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
-        :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        :param pulumi.Input['InstanceType'] type: Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         :param pulumi.Input[str] validate_only: When set to true, the request will be validated but not submitted.
         """
         if database_id is not None:
             pulumi.set(__self__, "database_id", database_id)
-        if database_url is not None:
-            pulumi.set(__self__, "database_url", database_url)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if validate_only is not None:
@@ -60,18 +51,6 @@ class InstanceArgs:
     @database_id.setter
     def database_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_id", value)
-
-    @property
-    @pulumi.getter(name="databaseUrl")
-    def database_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. The globally unique hostname of the database.
-        """
-        return pulumi.get(self, "database_url")
-
-    @database_url.setter
-    def database_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "database_url", value)
 
     @property
     @pulumi.getter
@@ -97,9 +76,6 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -108,21 +84,9 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['InstanceState']]:
-        """
-        The database's lifecycle state. Read-only.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['InstanceState']]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> Optional[pulumi.Input['InstanceType']]:
         """
-        The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         return pulumi.get(self, "type")
 
@@ -149,11 +113,9 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 database_url: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InstanceState']] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -163,11 +125,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_id: The globally unique identifier of the database instance.
-        :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-        :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
-        :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        :param pulumi.Input['InstanceType'] type: Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         :param pulumi.Input[str] validate_only: When set to true, the request will be validated but not submitted.
         """
         ...
@@ -195,11 +154,9 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 database_url: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['InstanceState']] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -215,13 +172,13 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["database_id"] = database_id
-            __props__.__dict__["database_url"] = database_url
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            __props__.__dict__["state"] = state
             __props__.__dict__["type"] = type
             __props__.__dict__["validate_only"] = validate_only
+            __props__.__dict__["database_url"] = None
+            __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(
             'google-native:firebasedatabase/v1beta:Instance',
             resource_name,
@@ -255,7 +212,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="databaseUrl")
     def database_url(self) -> pulumi.Output[str]:
         """
-        Immutable. The globally unique hostname of the database.
+        Output Only. The globally unique hostname of the database.
         """
         return pulumi.get(self, "database_url")
 
@@ -287,7 +244,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         return pulumi.get(self, "type")
 

@@ -18,6 +18,10 @@ type AcceleratorConfig struct {
 	AcceleratorType *string `pulumi:"acceleratorType"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
+	// The configuration for GPU sharing options.
+	GpuSharingConfig *GPUSharingConfig `pulumi:"gpuSharingConfig"`
+	// The number of time-shared GPU resources to expose for each physical GPU.
+	MaxTimeSharedClientsPerGpu *string `pulumi:"maxTimeSharedClientsPerGpu"`
 }
 
 // AcceleratorConfigInput is an input type that accepts AcceleratorConfigArgs and AcceleratorConfigOutput values.
@@ -39,6 +43,10 @@ type AcceleratorConfigArgs struct {
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
+	// The configuration for GPU sharing options.
+	GpuSharingConfig GPUSharingConfigPtrInput `pulumi:"gpuSharingConfig"`
+	// The number of time-shared GPU resources to expose for each physical GPU.
+	MaxTimeSharedClientsPerGpu pulumi.StringPtrInput `pulumi:"maxTimeSharedClientsPerGpu"`
 }
 
 func (AcceleratorConfigArgs) ElementType() reflect.Type {
@@ -108,6 +116,16 @@ func (o AcceleratorConfigOutput) GpuPartitionSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AcceleratorConfig) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
+// The configuration for GPU sharing options.
+func (o AcceleratorConfigOutput) GpuSharingConfig() GPUSharingConfigPtrOutput {
+	return o.ApplyT(func(v AcceleratorConfig) *GPUSharingConfig { return v.GpuSharingConfig }).(GPUSharingConfigPtrOutput)
+}
+
+// The number of time-shared GPU resources to expose for each physical GPU.
+func (o AcceleratorConfigOutput) MaxTimeSharedClientsPerGpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorConfig) *string { return v.MaxTimeSharedClientsPerGpu }).(pulumi.StringPtrOutput)
+}
+
 type AcceleratorConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorConfigArrayOutput) ElementType() reflect.Type {
@@ -136,6 +154,10 @@ type AcceleratorConfigResponse struct {
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
+	// The configuration for GPU sharing options.
+	GpuSharingConfig GPUSharingConfigResponse `pulumi:"gpuSharingConfig"`
+	// The number of time-shared GPU resources to expose for each physical GPU.
+	MaxTimeSharedClientsPerGpu string `pulumi:"maxTimeSharedClientsPerGpu"`
 }
 
 // AcceleratorConfig represents a Hardware Accelerator request.
@@ -166,6 +188,16 @@ func (o AcceleratorConfigResponseOutput) AcceleratorType() pulumi.StringOutput {
 // Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 func (o AcceleratorConfigResponseOutput) GpuPartitionSize() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
+}
+
+// The configuration for GPU sharing options.
+func (o AcceleratorConfigResponseOutput) GpuSharingConfig() GPUSharingConfigResponseOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) GPUSharingConfigResponse { return v.GpuSharingConfig }).(GPUSharingConfigResponseOutput)
+}
+
+// The number of time-shared GPU resources to expose for each physical GPU.
+func (o AcceleratorConfigResponseOutput) MaxTimeSharedClientsPerGpu() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.MaxTimeSharedClientsPerGpu }).(pulumi.StringOutput)
 }
 
 type AcceleratorConfigResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4881,6 +4913,198 @@ func (o FilterResponseOutput) ToFilterResponseOutputWithContext(ctx context.Cont
 // Event types to allowlist.
 func (o FilterResponseOutput) EventType() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FilterResponse) []string { return v.EventType }).(pulumi.StringArrayOutput)
+}
+
+// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+type GPUSharingConfig struct {
+	// The type of GPU sharing strategy to enable on the GPU node.
+	GpuSharingStrategy *GPUSharingConfigGpuSharingStrategy `pulumi:"gpuSharingStrategy"`
+	// The max number of containers that can share a physical GPU.
+	MaxSharedClientsPerGpu *string `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// GPUSharingConfigInput is an input type that accepts GPUSharingConfigArgs and GPUSharingConfigOutput values.
+// You can construct a concrete instance of `GPUSharingConfigInput` via:
+//
+//          GPUSharingConfigArgs{...}
+type GPUSharingConfigInput interface {
+	pulumi.Input
+
+	ToGPUSharingConfigOutput() GPUSharingConfigOutput
+	ToGPUSharingConfigOutputWithContext(context.Context) GPUSharingConfigOutput
+}
+
+// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+type GPUSharingConfigArgs struct {
+	// The type of GPU sharing strategy to enable on the GPU node.
+	GpuSharingStrategy GPUSharingConfigGpuSharingStrategyPtrInput `pulumi:"gpuSharingStrategy"`
+	// The max number of containers that can share a physical GPU.
+	MaxSharedClientsPerGpu pulumi.StringPtrInput `pulumi:"maxSharedClientsPerGpu"`
+}
+
+func (GPUSharingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUSharingConfig)(nil)).Elem()
+}
+
+func (i GPUSharingConfigArgs) ToGPUSharingConfigOutput() GPUSharingConfigOutput {
+	return i.ToGPUSharingConfigOutputWithContext(context.Background())
+}
+
+func (i GPUSharingConfigArgs) ToGPUSharingConfigOutputWithContext(ctx context.Context) GPUSharingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GPUSharingConfigOutput)
+}
+
+func (i GPUSharingConfigArgs) ToGPUSharingConfigPtrOutput() GPUSharingConfigPtrOutput {
+	return i.ToGPUSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GPUSharingConfigArgs) ToGPUSharingConfigPtrOutputWithContext(ctx context.Context) GPUSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GPUSharingConfigOutput).ToGPUSharingConfigPtrOutputWithContext(ctx)
+}
+
+// GPUSharingConfigPtrInput is an input type that accepts GPUSharingConfigArgs, GPUSharingConfigPtr and GPUSharingConfigPtrOutput values.
+// You can construct a concrete instance of `GPUSharingConfigPtrInput` via:
+//
+//          GPUSharingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GPUSharingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGPUSharingConfigPtrOutput() GPUSharingConfigPtrOutput
+	ToGPUSharingConfigPtrOutputWithContext(context.Context) GPUSharingConfigPtrOutput
+}
+
+type gpusharingConfigPtrType GPUSharingConfigArgs
+
+func GPUSharingConfigPtr(v *GPUSharingConfigArgs) GPUSharingConfigPtrInput {
+	return (*gpusharingConfigPtrType)(v)
+}
+
+func (*gpusharingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GPUSharingConfig)(nil)).Elem()
+}
+
+func (i *gpusharingConfigPtrType) ToGPUSharingConfigPtrOutput() GPUSharingConfigPtrOutput {
+	return i.ToGPUSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gpusharingConfigPtrType) ToGPUSharingConfigPtrOutputWithContext(ctx context.Context) GPUSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GPUSharingConfigPtrOutput)
+}
+
+// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+type GPUSharingConfigOutput struct{ *pulumi.OutputState }
+
+func (GPUSharingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUSharingConfig)(nil)).Elem()
+}
+
+func (o GPUSharingConfigOutput) ToGPUSharingConfigOutput() GPUSharingConfigOutput {
+	return o
+}
+
+func (o GPUSharingConfigOutput) ToGPUSharingConfigOutputWithContext(ctx context.Context) GPUSharingConfigOutput {
+	return o
+}
+
+func (o GPUSharingConfigOutput) ToGPUSharingConfigPtrOutput() GPUSharingConfigPtrOutput {
+	return o.ToGPUSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GPUSharingConfigOutput) ToGPUSharingConfigPtrOutputWithContext(ctx context.Context) GPUSharingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GPUSharingConfig) *GPUSharingConfig {
+		return &v
+	}).(GPUSharingConfigPtrOutput)
+}
+
+// The type of GPU sharing strategy to enable on the GPU node.
+func (o GPUSharingConfigOutput) GpuSharingStrategy() GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return o.ApplyT(func(v GPUSharingConfig) *GPUSharingConfigGpuSharingStrategy { return v.GpuSharingStrategy }).(GPUSharingConfigGpuSharingStrategyPtrOutput)
+}
+
+// The max number of containers that can share a physical GPU.
+func (o GPUSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GPUSharingConfig) *string { return v.MaxSharedClientsPerGpu }).(pulumi.StringPtrOutput)
+}
+
+type GPUSharingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GPUSharingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GPUSharingConfig)(nil)).Elem()
+}
+
+func (o GPUSharingConfigPtrOutput) ToGPUSharingConfigPtrOutput() GPUSharingConfigPtrOutput {
+	return o
+}
+
+func (o GPUSharingConfigPtrOutput) ToGPUSharingConfigPtrOutputWithContext(ctx context.Context) GPUSharingConfigPtrOutput {
+	return o
+}
+
+func (o GPUSharingConfigPtrOutput) Elem() GPUSharingConfigOutput {
+	return o.ApplyT(func(v *GPUSharingConfig) GPUSharingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GPUSharingConfig
+		return ret
+	}).(GPUSharingConfigOutput)
+}
+
+// The type of GPU sharing strategy to enable on the GPU node.
+func (o GPUSharingConfigPtrOutput) GpuSharingStrategy() GPUSharingConfigGpuSharingStrategyPtrOutput {
+	return o.ApplyT(func(v *GPUSharingConfig) *GPUSharingConfigGpuSharingStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.GpuSharingStrategy
+	}).(GPUSharingConfigGpuSharingStrategyPtrOutput)
+}
+
+// The max number of containers that can share a physical GPU.
+func (o GPUSharingConfigPtrOutput) MaxSharedClientsPerGpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GPUSharingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSharedClientsPerGpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+type GPUSharingConfigResponse struct {
+	// The type of GPU sharing strategy to enable on the GPU node.
+	GpuSharingStrategy string `pulumi:"gpuSharingStrategy"`
+	// The max number of containers that can share a physical GPU.
+	MaxSharedClientsPerGpu string `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+type GPUSharingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GPUSharingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GPUSharingConfigResponse)(nil)).Elem()
+}
+
+func (o GPUSharingConfigResponseOutput) ToGPUSharingConfigResponseOutput() GPUSharingConfigResponseOutput {
+	return o
+}
+
+func (o GPUSharingConfigResponseOutput) ToGPUSharingConfigResponseOutputWithContext(ctx context.Context) GPUSharingConfigResponseOutput {
+	return o
+}
+
+// The type of GPU sharing strategy to enable on the GPU node.
+func (o GPUSharingConfigResponseOutput) GpuSharingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GPUSharingConfigResponse) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
+}
+
+// The max number of containers that can share a physical GPU.
+func (o GPUSharingConfigResponseOutput) MaxSharedClientsPerGpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GPUSharingConfigResponse) string { return v.MaxSharedClientsPerGpu }).(pulumi.StringOutput)
 }
 
 // Configuration for the Compute Engine PD CSI driver.
@@ -10923,7 +11147,7 @@ func (o NetworkTagsResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkTagsResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfig `pulumi:"accelerators"`
@@ -10994,7 +11218,7 @@ type NodeConfigInput interface {
 	ToNodeConfigOutputWithContext(context.Context) NodeConfigOutput
 }
 
-// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigArrayInput `pulumi:"accelerators"`
@@ -11107,7 +11331,7 @@ func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
 }
 
-// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigOutput) ElementType() reflect.Type {
@@ -11742,7 +11966,7 @@ func (o NodeConfigDefaultsResponseOutput) GcfsConfig() GcfsConfigResponseOutput 
 	return o.ApplyT(func(v NodeConfigDefaultsResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
 }
 
-// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigResponse struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfigResponse `pulumi:"accelerators"`
@@ -11802,7 +12026,7 @@ type NodeConfigResponse struct {
 	WorkloadMetadataConfig WorkloadMetadataConfigResponse `pulumi:"workloadMetadataConfig"`
 }
 
-// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigResponseOutput) ElementType() reflect.Type {
@@ -18899,6 +19123,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigPtrInput)(nil)).Elem(), EphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterPtrInput)(nil)).Elem(), FilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigInput)(nil)).Elem(), GPUSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigPtrInput)(nil)).Elem(), GPUSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigInput)(nil)).Elem(), GcfsConfigArgs{})
@@ -19109,6 +19335,9 @@ func init() {
 	pulumi.RegisterOutputType(FilterOutput{})
 	pulumi.RegisterOutputType(FilterPtrOutput{})
 	pulumi.RegisterOutputType(FilterResponseOutput{})
+	pulumi.RegisterOutputType(GPUSharingConfigOutput{})
+	pulumi.RegisterOutputType(GPUSharingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GPUSharingConfigResponseOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponseOutput{})

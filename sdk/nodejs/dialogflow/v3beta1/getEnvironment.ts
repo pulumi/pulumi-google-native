@@ -54,6 +54,10 @@ export interface GetEnvironmentResult {
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
     readonly versionConfigs: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse[];
+    /**
+     * The webhook configuration for this environment.
+     */
+    readonly webhookConfig: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse;
 }
 
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {

@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         public readonly Outputs.GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse FacetSpec;
         /// <summary>
-        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         /// </summary>
         public readonly string Name;
         /// <summary>

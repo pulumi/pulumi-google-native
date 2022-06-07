@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -59,6 +60,14 @@ export class TagKey extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
+     * Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+     */
+    public readonly purpose!: pulumi.Output<string>;
+    /**
+     * Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
+     */
+    public readonly purposeData!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
     public readonly shortName!: pulumi.Output<string>;
@@ -85,6 +94,8 @@ export class TagKey extends pulumi.CustomResource {
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["purposeData"] = args ? args.purposeData : undefined;
             resourceInputs["shortName"] = args ? args.shortName : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -97,6 +108,8 @@ export class TagKey extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namespacedName"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["purpose"] = undefined /*out*/;
+            resourceInputs["purposeData"] = undefined /*out*/;
             resourceInputs["shortName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -125,6 +138,14 @@ export interface TagKeyArgs {
      * Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
      */
     parent?: pulumi.Input<string>;
+    /**
+     * Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+     */
+    purpose?: pulumi.Input<enums.cloudresourcemanager.v3.TagKeyPurpose>;
+    /**
+     * Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
+     */
+    purposeData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */

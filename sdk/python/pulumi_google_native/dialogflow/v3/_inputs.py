@@ -21,6 +21,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs',
     'GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs',
     'GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs',
+    'GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs',
     'GoogleCloudDialogflowCxV3EventHandlerArgs',
     'GoogleCloudDialogflowCxV3EventInputArgs',
     'GoogleCloudDialogflowCxV3ExperimentDefinitionArgs',
@@ -67,6 +68,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3VersionVariantsArgs',
     'GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs',
     'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs',
+    'GoogleCloudDialogflowCxV3WebhookArgs',
     'GoogleRpcStatusArgs',
 ]
 
@@ -566,6 +568,30 @@ class GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs:
     @version.setter
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs:
+    def __init__(__self__, *,
+                 webhook_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3WebhookArgs']]]] = None):
+        """
+        Configuration for webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3WebhookArgs']]] webhook_overrides: The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+        """
+        if webhook_overrides is not None:
+            pulumi.set(__self__, "webhook_overrides", webhook_overrides)
+
+    @property
+    @pulumi.getter(name="webhookOverrides")
+    def webhook_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3WebhookArgs']]]]:
+        """
+        The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
+        """
+        return pulumi.get(self, "webhook_overrides")
+
+    @webhook_overrides.setter
+    def webhook_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3WebhookArgs']]]]):
+        pulumi.set(self, "webhook_overrides", value)
 
 
 @pulumi.input_type
@@ -3155,6 +3181,109 @@ class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs:
     @generic_web_service.setter
     def generic_web_service(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']]):
         pulumi.set(self, "generic_web_service", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3WebhookArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 service_directory: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs']] = None,
+                 timeout: Optional[pulumi.Input[str]] = None):
+        """
+        Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
+        :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
+        :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[str] name: The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs'] service_directory: Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        :param pulumi.Input[str] timeout: Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if generic_web_service is not None:
+            pulumi.set(__self__, "generic_web_service", generic_web_service)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_directory is not None:
+            pulumi.set(__self__, "service_directory", service_directory)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the webhook, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the webhook is disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']]:
+        """
+        Configuration for a generic web service.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @generic_web_service.setter
+    def generic_web_service(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']]):
+        pulumi.set(self, "generic_web_service", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectory")
+    def service_directory(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs']]:
+        """
+        Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        """
+        return pulumi.get(self, "service_directory")
+
+    @service_directory.setter
+    def service_directory(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timeout", value)
 
 
 @pulumi.input_type

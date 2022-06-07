@@ -35,7 +35,7 @@ type ProvisioningConfig struct {
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
 	// State of ProvisioningConfig.
 	State pulumi.StringOutput `pulumi:"state"`
-	// A generated buganizer id to track provisioning request.
+	// A generated ticket id to track provisioning request.
 	TicketId pulumi.StringOutput `pulumi:"ticketId"`
 	// Last update timestamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -95,7 +95,7 @@ type provisioningConfigArgs struct {
 	// Networks to be created.
 	Networks []NetworkConfig `pulumi:"networks"`
 	Project  *string         `pulumi:"project"`
-	// A generated buganizer id to track provisioning request.
+	// A generated ticket id to track provisioning request.
 	TicketId *string `pulumi:"ticketId"`
 	// Volumes to be created.
 	Volumes []VolumeConfig `pulumi:"volumes"`
@@ -116,7 +116,7 @@ type ProvisioningConfigArgs struct {
 	// Networks to be created.
 	Networks NetworkConfigArrayInput
 	Project  pulumi.StringPtrInput
-	// A generated buganizer id to track provisioning request.
+	// A generated ticket id to track provisioning request.
 	TicketId pulumi.StringPtrInput
 	// Volumes to be created.
 	Volumes VolumeConfigArrayInput
@@ -201,7 +201,7 @@ func (o ProvisioningConfigOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A generated buganizer id to track provisioning request.
+// A generated ticket id to track provisioning request.
 func (o ProvisioningConfigOutput) TicketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.TicketId }).(pulumi.StringOutput)
 }

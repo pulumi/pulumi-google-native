@@ -8,47 +8,6 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Dataproc.V1
 {
     /// <summary>
-    /// Authentication type for session execution.
-    /// </summary>
-    [EnumType]
-    public readonly struct AuthenticationConfigAuthenticationType : IEquatable<AuthenticationConfigAuthenticationType>
-    {
-        private readonly string _value;
-
-        private AuthenticationConfigAuthenticationType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// If AuthenticationType is unspecified, SERVICE_ACCOUNT is used
-        /// </summary>
-        public static AuthenticationConfigAuthenticationType AuthenticationTypeUnspecified { get; } = new AuthenticationConfigAuthenticationType("AUTHENTICATION_TYPE_UNSPECIFIED");
-        /// <summary>
-        /// Defaults to using service account credentials
-        /// </summary>
-        public static AuthenticationConfigAuthenticationType ServiceAccount { get; } = new AuthenticationConfigAuthenticationType("SERVICE_ACCOUNT");
-        /// <summary>
-        /// Injectable credentials authentication type
-        /// </summary>
-        public static AuthenticationConfigAuthenticationType InjectableCredentials { get; } = new AuthenticationConfigAuthenticationType("INJECTABLE_CREDENTIALS");
-
-        public static bool operator ==(AuthenticationConfigAuthenticationType left, AuthenticationConfigAuthenticationType right) => left.Equals(right);
-        public static bool operator !=(AuthenticationConfigAuthenticationType left, AuthenticationConfigAuthenticationType right) => !left.Equals(right);
-
-        public static explicit operator string(AuthenticationConfigAuthenticationType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is AuthenticationConfigAuthenticationType other && Equals(other);
-        public bool Equals(AuthenticationConfigAuthenticationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Optional. The type of IPv6 access for a cluster.
     /// </summary>
     [EnumType]

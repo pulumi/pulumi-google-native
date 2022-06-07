@@ -172,200 +172,6 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 	}).(AcceleratorConfigResponseOutput)
 }
 
-// Configuration for using injectable credentials or service account
-type AuthenticationConfig struct {
-	// Authentication type for session execution.
-	AuthenticationType *AuthenticationConfigAuthenticationType `pulumi:"authenticationType"`
-	// Configuration for using end user authentication
-	InjectableCredentialsConfig *InjectableCredentialsConfig `pulumi:"injectableCredentialsConfig"`
-}
-
-// AuthenticationConfigInput is an input type that accepts AuthenticationConfigArgs and AuthenticationConfigOutput values.
-// You can construct a concrete instance of `AuthenticationConfigInput` via:
-//
-//          AuthenticationConfigArgs{...}
-type AuthenticationConfigInput interface {
-	pulumi.Input
-
-	ToAuthenticationConfigOutput() AuthenticationConfigOutput
-	ToAuthenticationConfigOutputWithContext(context.Context) AuthenticationConfigOutput
-}
-
-// Configuration for using injectable credentials or service account
-type AuthenticationConfigArgs struct {
-	// Authentication type for session execution.
-	AuthenticationType AuthenticationConfigAuthenticationTypePtrInput `pulumi:"authenticationType"`
-	// Configuration for using end user authentication
-	InjectableCredentialsConfig InjectableCredentialsConfigPtrInput `pulumi:"injectableCredentialsConfig"`
-}
-
-func (AuthenticationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticationConfig)(nil)).Elem()
-}
-
-func (i AuthenticationConfigArgs) ToAuthenticationConfigOutput() AuthenticationConfigOutput {
-	return i.ToAuthenticationConfigOutputWithContext(context.Background())
-}
-
-func (i AuthenticationConfigArgs) ToAuthenticationConfigOutputWithContext(ctx context.Context) AuthenticationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationConfigOutput)
-}
-
-func (i AuthenticationConfigArgs) ToAuthenticationConfigPtrOutput() AuthenticationConfigPtrOutput {
-	return i.ToAuthenticationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i AuthenticationConfigArgs) ToAuthenticationConfigPtrOutputWithContext(ctx context.Context) AuthenticationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationConfigOutput).ToAuthenticationConfigPtrOutputWithContext(ctx)
-}
-
-// AuthenticationConfigPtrInput is an input type that accepts AuthenticationConfigArgs, AuthenticationConfigPtr and AuthenticationConfigPtrOutput values.
-// You can construct a concrete instance of `AuthenticationConfigPtrInput` via:
-//
-//          AuthenticationConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type AuthenticationConfigPtrInput interface {
-	pulumi.Input
-
-	ToAuthenticationConfigPtrOutput() AuthenticationConfigPtrOutput
-	ToAuthenticationConfigPtrOutputWithContext(context.Context) AuthenticationConfigPtrOutput
-}
-
-type authenticationConfigPtrType AuthenticationConfigArgs
-
-func AuthenticationConfigPtr(v *AuthenticationConfigArgs) AuthenticationConfigPtrInput {
-	return (*authenticationConfigPtrType)(v)
-}
-
-func (*authenticationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticationConfig)(nil)).Elem()
-}
-
-func (i *authenticationConfigPtrType) ToAuthenticationConfigPtrOutput() AuthenticationConfigPtrOutput {
-	return i.ToAuthenticationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *authenticationConfigPtrType) ToAuthenticationConfigPtrOutputWithContext(ctx context.Context) AuthenticationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationConfigPtrOutput)
-}
-
-// Configuration for using injectable credentials or service account
-type AuthenticationConfigOutput struct{ *pulumi.OutputState }
-
-func (AuthenticationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticationConfig)(nil)).Elem()
-}
-
-func (o AuthenticationConfigOutput) ToAuthenticationConfigOutput() AuthenticationConfigOutput {
-	return o
-}
-
-func (o AuthenticationConfigOutput) ToAuthenticationConfigOutputWithContext(ctx context.Context) AuthenticationConfigOutput {
-	return o
-}
-
-func (o AuthenticationConfigOutput) ToAuthenticationConfigPtrOutput() AuthenticationConfigPtrOutput {
-	return o.ToAuthenticationConfigPtrOutputWithContext(context.Background())
-}
-
-func (o AuthenticationConfigOutput) ToAuthenticationConfigPtrOutputWithContext(ctx context.Context) AuthenticationConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticationConfig) *AuthenticationConfig {
-		return &v
-	}).(AuthenticationConfigPtrOutput)
-}
-
-// Authentication type for session execution.
-func (o AuthenticationConfigOutput) AuthenticationType() AuthenticationConfigAuthenticationTypePtrOutput {
-	return o.ApplyT(func(v AuthenticationConfig) *AuthenticationConfigAuthenticationType { return v.AuthenticationType }).(AuthenticationConfigAuthenticationTypePtrOutput)
-}
-
-// Configuration for using end user authentication
-func (o AuthenticationConfigOutput) InjectableCredentialsConfig() InjectableCredentialsConfigPtrOutput {
-	return o.ApplyT(func(v AuthenticationConfig) *InjectableCredentialsConfig { return v.InjectableCredentialsConfig }).(InjectableCredentialsConfigPtrOutput)
-}
-
-type AuthenticationConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthenticationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticationConfig)(nil)).Elem()
-}
-
-func (o AuthenticationConfigPtrOutput) ToAuthenticationConfigPtrOutput() AuthenticationConfigPtrOutput {
-	return o
-}
-
-func (o AuthenticationConfigPtrOutput) ToAuthenticationConfigPtrOutputWithContext(ctx context.Context) AuthenticationConfigPtrOutput {
-	return o
-}
-
-func (o AuthenticationConfigPtrOutput) Elem() AuthenticationConfigOutput {
-	return o.ApplyT(func(v *AuthenticationConfig) AuthenticationConfig {
-		if v != nil {
-			return *v
-		}
-		var ret AuthenticationConfig
-		return ret
-	}).(AuthenticationConfigOutput)
-}
-
-// Authentication type for session execution.
-func (o AuthenticationConfigPtrOutput) AuthenticationType() AuthenticationConfigAuthenticationTypePtrOutput {
-	return o.ApplyT(func(v *AuthenticationConfig) *AuthenticationConfigAuthenticationType {
-		if v == nil {
-			return nil
-		}
-		return v.AuthenticationType
-	}).(AuthenticationConfigAuthenticationTypePtrOutput)
-}
-
-// Configuration for using end user authentication
-func (o AuthenticationConfigPtrOutput) InjectableCredentialsConfig() InjectableCredentialsConfigPtrOutput {
-	return o.ApplyT(func(v *AuthenticationConfig) *InjectableCredentialsConfig {
-		if v == nil {
-			return nil
-		}
-		return v.InjectableCredentialsConfig
-	}).(InjectableCredentialsConfigPtrOutput)
-}
-
-// Configuration for using injectable credentials or service account
-type AuthenticationConfigResponse struct {
-	// Authentication type for session execution.
-	AuthenticationType string `pulumi:"authenticationType"`
-	// Configuration for using end user authentication
-	InjectableCredentialsConfig InjectableCredentialsConfigResponse `pulumi:"injectableCredentialsConfig"`
-}
-
-// Configuration for using injectable credentials or service account
-type AuthenticationConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (AuthenticationConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticationConfigResponse)(nil)).Elem()
-}
-
-func (o AuthenticationConfigResponseOutput) ToAuthenticationConfigResponseOutput() AuthenticationConfigResponseOutput {
-	return o
-}
-
-func (o AuthenticationConfigResponseOutput) ToAuthenticationConfigResponseOutputWithContext(ctx context.Context) AuthenticationConfigResponseOutput {
-	return o
-}
-
-// Authentication type for session execution.
-func (o AuthenticationConfigResponseOutput) AuthenticationType() pulumi.StringOutput {
-	return o.ApplyT(func(v AuthenticationConfigResponse) string { return v.AuthenticationType }).(pulumi.StringOutput)
-}
-
-// Configuration for using end user authentication
-func (o AuthenticationConfigResponseOutput) InjectableCredentialsConfig() InjectableCredentialsConfigResponseOutput {
-	return o.ApplyT(func(v AuthenticationConfigResponse) InjectableCredentialsConfigResponse {
-		return v.InjectableCredentialsConfig
-	}).(InjectableCredentialsConfigResponseOutput)
-}
-
 // Autoscaling Policy config associated with the cluster.
 type AutoscalingConfig struct {
 	// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
@@ -6445,146 +6251,6 @@ func (o IdentityConfigResponseOutput) ToIdentityConfigResponseOutputWithContext(
 // Map of user to service account.
 func (o IdentityConfigResponseOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v IdentityConfigResponse) map[string]string { return v.UserServiceAccountMapping }).(pulumi.StringMapOutput)
-}
-
-// Specific injectable credentials authentication parameters
-type InjectableCredentialsConfig struct {
-}
-
-// InjectableCredentialsConfigInput is an input type that accepts InjectableCredentialsConfigArgs and InjectableCredentialsConfigOutput values.
-// You can construct a concrete instance of `InjectableCredentialsConfigInput` via:
-//
-//          InjectableCredentialsConfigArgs{...}
-type InjectableCredentialsConfigInput interface {
-	pulumi.Input
-
-	ToInjectableCredentialsConfigOutput() InjectableCredentialsConfigOutput
-	ToInjectableCredentialsConfigOutputWithContext(context.Context) InjectableCredentialsConfigOutput
-}
-
-// Specific injectable credentials authentication parameters
-type InjectableCredentialsConfigArgs struct {
-}
-
-func (InjectableCredentialsConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InjectableCredentialsConfig)(nil)).Elem()
-}
-
-func (i InjectableCredentialsConfigArgs) ToInjectableCredentialsConfigOutput() InjectableCredentialsConfigOutput {
-	return i.ToInjectableCredentialsConfigOutputWithContext(context.Background())
-}
-
-func (i InjectableCredentialsConfigArgs) ToInjectableCredentialsConfigOutputWithContext(ctx context.Context) InjectableCredentialsConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InjectableCredentialsConfigOutput)
-}
-
-func (i InjectableCredentialsConfigArgs) ToInjectableCredentialsConfigPtrOutput() InjectableCredentialsConfigPtrOutput {
-	return i.ToInjectableCredentialsConfigPtrOutputWithContext(context.Background())
-}
-
-func (i InjectableCredentialsConfigArgs) ToInjectableCredentialsConfigPtrOutputWithContext(ctx context.Context) InjectableCredentialsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InjectableCredentialsConfigOutput).ToInjectableCredentialsConfigPtrOutputWithContext(ctx)
-}
-
-// InjectableCredentialsConfigPtrInput is an input type that accepts InjectableCredentialsConfigArgs, InjectableCredentialsConfigPtr and InjectableCredentialsConfigPtrOutput values.
-// You can construct a concrete instance of `InjectableCredentialsConfigPtrInput` via:
-//
-//          InjectableCredentialsConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type InjectableCredentialsConfigPtrInput interface {
-	pulumi.Input
-
-	ToInjectableCredentialsConfigPtrOutput() InjectableCredentialsConfigPtrOutput
-	ToInjectableCredentialsConfigPtrOutputWithContext(context.Context) InjectableCredentialsConfigPtrOutput
-}
-
-type injectableCredentialsConfigPtrType InjectableCredentialsConfigArgs
-
-func InjectableCredentialsConfigPtr(v *InjectableCredentialsConfigArgs) InjectableCredentialsConfigPtrInput {
-	return (*injectableCredentialsConfigPtrType)(v)
-}
-
-func (*injectableCredentialsConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InjectableCredentialsConfig)(nil)).Elem()
-}
-
-func (i *injectableCredentialsConfigPtrType) ToInjectableCredentialsConfigPtrOutput() InjectableCredentialsConfigPtrOutput {
-	return i.ToInjectableCredentialsConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *injectableCredentialsConfigPtrType) ToInjectableCredentialsConfigPtrOutputWithContext(ctx context.Context) InjectableCredentialsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InjectableCredentialsConfigPtrOutput)
-}
-
-// Specific injectable credentials authentication parameters
-type InjectableCredentialsConfigOutput struct{ *pulumi.OutputState }
-
-func (InjectableCredentialsConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InjectableCredentialsConfig)(nil)).Elem()
-}
-
-func (o InjectableCredentialsConfigOutput) ToInjectableCredentialsConfigOutput() InjectableCredentialsConfigOutput {
-	return o
-}
-
-func (o InjectableCredentialsConfigOutput) ToInjectableCredentialsConfigOutputWithContext(ctx context.Context) InjectableCredentialsConfigOutput {
-	return o
-}
-
-func (o InjectableCredentialsConfigOutput) ToInjectableCredentialsConfigPtrOutput() InjectableCredentialsConfigPtrOutput {
-	return o.ToInjectableCredentialsConfigPtrOutputWithContext(context.Background())
-}
-
-func (o InjectableCredentialsConfigOutput) ToInjectableCredentialsConfigPtrOutputWithContext(ctx context.Context) InjectableCredentialsConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InjectableCredentialsConfig) *InjectableCredentialsConfig {
-		return &v
-	}).(InjectableCredentialsConfigPtrOutput)
-}
-
-type InjectableCredentialsConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (InjectableCredentialsConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InjectableCredentialsConfig)(nil)).Elem()
-}
-
-func (o InjectableCredentialsConfigPtrOutput) ToInjectableCredentialsConfigPtrOutput() InjectableCredentialsConfigPtrOutput {
-	return o
-}
-
-func (o InjectableCredentialsConfigPtrOutput) ToInjectableCredentialsConfigPtrOutputWithContext(ctx context.Context) InjectableCredentialsConfigPtrOutput {
-	return o
-}
-
-func (o InjectableCredentialsConfigPtrOutput) Elem() InjectableCredentialsConfigOutput {
-	return o.ApplyT(func(v *InjectableCredentialsConfig) InjectableCredentialsConfig {
-		if v != nil {
-			return *v
-		}
-		var ret InjectableCredentialsConfig
-		return ret
-	}).(InjectableCredentialsConfigOutput)
-}
-
-// Specific injectable credentials authentication parameters
-type InjectableCredentialsConfigResponse struct {
-}
-
-// Specific injectable credentials authentication parameters
-type InjectableCredentialsConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (InjectableCredentialsConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InjectableCredentialsConfigResponse)(nil)).Elem()
-}
-
-func (o InjectableCredentialsConfigResponseOutput) ToInjectableCredentialsConfigResponseOutput() InjectableCredentialsConfigResponseOutput {
-	return o
-}
-
-func (o InjectableCredentialsConfigResponseOutput) ToInjectableCredentialsConfigResponseOutputWithContext(ctx context.Context) InjectableCredentialsConfigResponseOutput {
-	return o
 }
 
 // Configuration for the size bounds of an instance group, including its proportional size to other groups.
@@ -12761,8 +12427,6 @@ type RuntimeConfig struct {
 	ContainerImage *string `pulumi:"containerImage"`
 	// Optional. A mapping of property names to values, which are used to configure workload execution.
 	Properties map[string]string `pulumi:"properties"`
-	// Optional. Authentication configuration for the session execution.
-	SessionAuthenticationConfig *AuthenticationConfig `pulumi:"sessionAuthenticationConfig"`
 	// Optional. Version of the batch runtime.
 	Version *string `pulumi:"version"`
 }
@@ -12784,8 +12448,6 @@ type RuntimeConfigArgs struct {
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// Optional. A mapping of property names to values, which are used to configure workload execution.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// Optional. Authentication configuration for the session execution.
-	SessionAuthenticationConfig AuthenticationConfigPtrInput `pulumi:"sessionAuthenticationConfig"`
 	// Optional. Version of the batch runtime.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -12878,11 +12540,6 @@ func (o RuntimeConfigOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// Optional. Authentication configuration for the session execution.
-func (o RuntimeConfigOutput) SessionAuthenticationConfig() AuthenticationConfigPtrOutput {
-	return o.ApplyT(func(v RuntimeConfig) *AuthenticationConfig { return v.SessionAuthenticationConfig }).(AuthenticationConfigPtrOutput)
-}
-
 // Optional. Version of the batch runtime.
 func (o RuntimeConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -12932,16 +12589,6 @@ func (o RuntimeConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Optional. Authentication configuration for the session execution.
-func (o RuntimeConfigPtrOutput) SessionAuthenticationConfig() AuthenticationConfigPtrOutput {
-	return o.ApplyT(func(v *RuntimeConfig) *AuthenticationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.SessionAuthenticationConfig
-	}).(AuthenticationConfigPtrOutput)
-}
-
 // Optional. Version of the batch runtime.
 func (o RuntimeConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeConfig) *string {
@@ -12958,8 +12605,6 @@ type RuntimeConfigResponse struct {
 	ContainerImage string `pulumi:"containerImage"`
 	// Optional. A mapping of property names to values, which are used to configure workload execution.
 	Properties map[string]string `pulumi:"properties"`
-	// Optional. Authentication configuration for the session execution.
-	SessionAuthenticationConfig AuthenticationConfigResponse `pulumi:"sessionAuthenticationConfig"`
 	// Optional. Version of the batch runtime.
 	Version string `pulumi:"version"`
 }
@@ -12987,11 +12632,6 @@ func (o RuntimeConfigResponseOutput) ContainerImage() pulumi.StringOutput {
 // Optional. A mapping of property names to values, which are used to configure workload execution.
 func (o RuntimeConfigResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeConfigResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Optional. Authentication configuration for the session execution.
-func (o RuntimeConfigResponseOutput) SessionAuthenticationConfig() AuthenticationConfigResponseOutput {
-	return o.ApplyT(func(v RuntimeConfigResponse) AuthenticationConfigResponse { return v.SessionAuthenticationConfig }).(AuthenticationConfigResponseOutput)
 }
 
 // Optional. Version of the batch runtime.
@@ -16606,8 +16246,6 @@ func (o YarnApplicationResponseArrayOutput) Index(i pulumi.IntInput) YarnApplica
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigInput)(nil)).Elem(), AcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigArrayInput)(nil)).Elem(), AcceleratorConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationConfigInput)(nil)).Elem(), AuthenticationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationConfigPtrInput)(nil)).Elem(), AuthenticationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigInput)(nil)).Elem(), AutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigPtrInput)(nil)).Elem(), AutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryServicesConfigInput)(nil)).Elem(), AuxiliaryServicesConfigArgs{})
@@ -16658,8 +16296,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveJobPtrInput)(nil)).Elem(), HiveJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityConfigInput)(nil)).Elem(), IdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityConfigPtrInput)(nil)).Elem(), IdentityConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InjectableCredentialsConfigInput)(nil)).Elem(), InjectableCredentialsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InjectableCredentialsConfigPtrInput)(nil)).Elem(), InjectableCredentialsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupAutoscalingPolicyConfigInput)(nil)).Elem(), InstanceGroupAutoscalingPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupAutoscalingPolicyConfigPtrInput)(nil)).Elem(), InstanceGroupAutoscalingPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigInput)(nil)).Elem(), InstanceGroupConfigArgs{})
@@ -16746,9 +16382,6 @@ func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(AuthenticationConfigOutput{})
-	pulumi.RegisterOutputType(AuthenticationConfigPtrOutput{})
-	pulumi.RegisterOutputType(AuthenticationConfigResponseOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigResponseOutput{})
@@ -16830,9 +16463,6 @@ func init() {
 	pulumi.RegisterOutputType(IdentityConfigOutput{})
 	pulumi.RegisterOutputType(IdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(IdentityConfigResponseOutput{})
-	pulumi.RegisterOutputType(InjectableCredentialsConfigOutput{})
-	pulumi.RegisterOutputType(InjectableCredentialsConfigPtrOutput{})
-	pulumi.RegisterOutputType(InjectableCredentialsConfigResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigResponseOutput{})

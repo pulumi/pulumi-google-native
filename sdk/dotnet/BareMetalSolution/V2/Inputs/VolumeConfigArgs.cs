@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<Pulumi.GoogleNative.BareMetalSolution.V2.VolumeConfigType>? Type { get; set; }
 
         /// <summary>
-        /// User note field, it can be used by customers to add additional information for the BMS Ops team (b/194021617).
+        /// User note field, it can be used by customers to add additional information for the BMS Ops team .
         /// </summary>
         [Input("userNote")]
         public Input<string>? UserNote { get; set; }

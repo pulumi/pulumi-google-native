@@ -16,14 +16,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     [OutputType]
     public sealed class SecurityPolicyAdaptiveProtectionConfigResponse
     {
+        public readonly Outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse AutoDeployConfig;
         /// <summary>
         /// If set to true, enables Cloud Armor Machine Learning.
         /// </summary>
         public readonly Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse Layer7DdosDefenseConfig;
 
         [OutputConstructor]
-        private SecurityPolicyAdaptiveProtectionConfigResponse(Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse layer7DdosDefenseConfig)
+        private SecurityPolicyAdaptiveProtectionConfigResponse(
+            Outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse autoDeployConfig,
+
+            Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse layer7DdosDefenseConfig)
         {
+            AutoDeployConfig = autoDeployConfig;
             Layer7DdosDefenseConfig = layer7DdosDefenseConfig;
         }
     }

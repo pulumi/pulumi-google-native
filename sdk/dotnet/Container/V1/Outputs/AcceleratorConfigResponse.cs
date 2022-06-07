@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         /// </summary>
         public readonly string GpuPartitionSize;
+        /// <summary>
+        /// The configuration for GPU sharing options.
+        /// </summary>
+        public readonly Outputs.GPUSharingConfigResponse GpuSharingConfig;
 
         [OutputConstructor]
         private AcceleratorConfigResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string acceleratorType,
 
-            string gpuPartitionSize)
+            string gpuPartitionSize,
+
+            Outputs.GPUSharingConfigResponse gpuSharingConfig)
         {
             AcceleratorCount = acceleratorCount;
             AcceleratorType = acceleratorType;
             GpuPartitionSize = gpuPartitionSize;
+            GpuSharingConfig = gpuSharingConfig;
         }
     }
 }

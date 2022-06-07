@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<bool>? AccountNetworksEnabled { get; set; }
 
         /// <summary>
-        /// Client network address.
+        /// Client network address. Filled if InstanceConfig.multivlan_config is false.
         /// </summary>
         [Input("clientNetwork")]
         public Input<Inputs.NetworkAddressArgs>? ClientNetwork { get; set; }
@@ -45,6 +45,30 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        [Input("logicalInterfaces")]
+        private InputList<Inputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs>? _logicalInterfaces;
+
+        /// <summary>
+        /// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs> LogicalInterfaces
+        {
+            get => _logicalInterfaces ?? (_logicalInterfaces = new InputList<Inputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs>());
+            set => _logicalInterfaces = value;
+        }
+
+        /// <summary>
+        /// The type of network configuration on the instance.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Pulumi.GoogleNative.BareMetalSolution.V2.InstanceConfigNetworkConfig>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// Server network template name. Filled if InstanceConfig.multivlan_config is true.
+        /// </summary>
+        [Input("networkTemplate")]
+        public Input<string>? NetworkTemplate { get; set; }
+
         /// <summary>
         /// OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         /// </summary>
@@ -52,7 +76,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<string>? OsImage { get; set; }
 
         /// <summary>
-        /// Private network address, if any.
+        /// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
         /// </summary>
         [Input("privateNetwork")]
         public Input<Inputs.NetworkAddressArgs>? PrivateNetwork { get; set; }

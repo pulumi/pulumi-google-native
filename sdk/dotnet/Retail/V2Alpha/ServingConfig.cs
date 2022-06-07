@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> ModelId { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Input<string>? ModelId { get; set; }
 
         /// <summary>
-        /// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/servingConfig/*
+        /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

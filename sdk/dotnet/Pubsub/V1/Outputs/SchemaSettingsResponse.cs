@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string Encoding;
         /// <summary>
+        /// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against last_revision or any revision created before.
+        /// </summary>
+        public readonly string FirstRevisionId;
+        /// <summary>
+        /// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against first_revision or any revision created after.
+        /// </summary>
+        public readonly string LastRevisionId;
+        /// <summary>
         /// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         /// </summary>
         public readonly string Schema;
@@ -29,9 +37,15 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         private SchemaSettingsResponse(
             string encoding,
 
+            string firstRevisionId,
+
+            string lastRevisionId,
+
             string schema)
         {
             Encoding = encoding;
+            FirstRevisionId = firstRevisionId;
+            LastRevisionId = lastRevisionId;
             Schema = schema;
         }
     }

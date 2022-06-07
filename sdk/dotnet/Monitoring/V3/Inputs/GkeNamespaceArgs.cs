@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
 {
 
     /// <summary>
-    /// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+    /// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
     /// </summary>
     public sealed class GkeNamespaceArgs : Pulumi.ResourceArgs
     {

@@ -5786,6 +5786,173 @@ func (in *backendServiceSessionAffinityPtr) ToBackendServiceSessionAffinityPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceSessionAffinityPtrOutput)
 }
 
+// The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+type BackendServiceVpcNetworkScope string
+
+const (
+	// The backend service can only have backends in global VPCs
+	BackendServiceVpcNetworkScopeGlobalVpcNetwork = BackendServiceVpcNetworkScope("GLOBAL_VPC_NETWORK")
+	// The backend service can only have backends in regional VPCs
+	BackendServiceVpcNetworkScopeRegionalVpcNetwork = BackendServiceVpcNetworkScope("REGIONAL_VPC_NETWORK")
+)
+
+func (BackendServiceVpcNetworkScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceVpcNetworkScope)(nil)).Elem()
+}
+
+func (e BackendServiceVpcNetworkScope) ToBackendServiceVpcNetworkScopeOutput() BackendServiceVpcNetworkScopeOutput {
+	return pulumi.ToOutput(e).(BackendServiceVpcNetworkScopeOutput)
+}
+
+func (e BackendServiceVpcNetworkScope) ToBackendServiceVpcNetworkScopeOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendServiceVpcNetworkScopeOutput)
+}
+
+func (e BackendServiceVpcNetworkScope) ToBackendServiceVpcNetworkScopePtrOutput() BackendServiceVpcNetworkScopePtrOutput {
+	return e.ToBackendServiceVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceVpcNetworkScope) ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopePtrOutput {
+	return BackendServiceVpcNetworkScope(e).ToBackendServiceVpcNetworkScopeOutputWithContext(ctx).ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx)
+}
+
+func (e BackendServiceVpcNetworkScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceVpcNetworkScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceVpcNetworkScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceVpcNetworkScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendServiceVpcNetworkScopeOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceVpcNetworkScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceVpcNetworkScope)(nil)).Elem()
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToBackendServiceVpcNetworkScopeOutput() BackendServiceVpcNetworkScopeOutput {
+	return o
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToBackendServiceVpcNetworkScopeOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopeOutput {
+	return o
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToBackendServiceVpcNetworkScopePtrOutput() BackendServiceVpcNetworkScopePtrOutput {
+	return o.ToBackendServiceVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceVpcNetworkScope) *BackendServiceVpcNetworkScope {
+		return &v
+	}).(BackendServiceVpcNetworkScopePtrOutput)
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceVpcNetworkScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceVpcNetworkScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceVpcNetworkScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceVpcNetworkScopePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceVpcNetworkScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceVpcNetworkScope)(nil)).Elem()
+}
+
+func (o BackendServiceVpcNetworkScopePtrOutput) ToBackendServiceVpcNetworkScopePtrOutput() BackendServiceVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o BackendServiceVpcNetworkScopePtrOutput) ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o BackendServiceVpcNetworkScopePtrOutput) Elem() BackendServiceVpcNetworkScopeOutput {
+	return o.ApplyT(func(v *BackendServiceVpcNetworkScope) BackendServiceVpcNetworkScope {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceVpcNetworkScope
+		return ret
+	}).(BackendServiceVpcNetworkScopeOutput)
+}
+
+func (o BackendServiceVpcNetworkScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceVpcNetworkScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendServiceVpcNetworkScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendServiceVpcNetworkScopeInput is an input type that accepts BackendServiceVpcNetworkScopeArgs and BackendServiceVpcNetworkScopeOutput values.
+// You can construct a concrete instance of `BackendServiceVpcNetworkScopeInput` via:
+//
+//          BackendServiceVpcNetworkScopeArgs{...}
+type BackendServiceVpcNetworkScopeInput interface {
+	pulumi.Input
+
+	ToBackendServiceVpcNetworkScopeOutput() BackendServiceVpcNetworkScopeOutput
+	ToBackendServiceVpcNetworkScopeOutputWithContext(context.Context) BackendServiceVpcNetworkScopeOutput
+}
+
+var backendServiceVpcNetworkScopePtrType = reflect.TypeOf((**BackendServiceVpcNetworkScope)(nil)).Elem()
+
+type BackendServiceVpcNetworkScopePtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceVpcNetworkScopePtrOutput() BackendServiceVpcNetworkScopePtrOutput
+	ToBackendServiceVpcNetworkScopePtrOutputWithContext(context.Context) BackendServiceVpcNetworkScopePtrOutput
+}
+
+type backendServiceVpcNetworkScopePtr string
+
+func BackendServiceVpcNetworkScopePtr(v string) BackendServiceVpcNetworkScopePtrInput {
+	return (*backendServiceVpcNetworkScopePtr)(&v)
+}
+
+func (*backendServiceVpcNetworkScopePtr) ElementType() reflect.Type {
+	return backendServiceVpcNetworkScopePtrType
+}
+
+func (in *backendServiceVpcNetworkScopePtr) ToBackendServiceVpcNetworkScopePtrOutput() BackendServiceVpcNetworkScopePtrOutput {
+	return pulumi.ToOutput(in).(BackendServiceVpcNetworkScopePtrOutput)
+}
+
+func (in *backendServiceVpcNetworkScopePtr) ToBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) BackendServiceVpcNetworkScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceVpcNetworkScopePtrOutput)
+}
+
 // The type of call credentials to use for GRPC requests to the SDS server. This field can be set to one of the following: - GCE_VM: The local GCE VM service account credentials are used to access the SDS server. - FROM_PLUGIN: Custom authenticator credentials are used to access the SDS server.
 type CallCredentialsCallCredentialType string
 
@@ -13750,7 +13917,7 @@ func (in *httpshealthCheckWeightReportModePtr) ToHTTPSHealthCheckWeightReportMod
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSHealthCheckWeightReportModePtrOutput)
 }
 
-// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
 type HealthCheckType string
 
 const (
@@ -22893,6 +23060,173 @@ func (in *regionBackendServiceSessionAffinityPtr) ToRegionBackendServiceSessionA
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceSessionAffinityPtrOutput)
 }
 
+// The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+type RegionBackendServiceVpcNetworkScope string
+
+const (
+	// The backend service can only have backends in global VPCs
+	RegionBackendServiceVpcNetworkScopeGlobalVpcNetwork = RegionBackendServiceVpcNetworkScope("GLOBAL_VPC_NETWORK")
+	// The backend service can only have backends in regional VPCs
+	RegionBackendServiceVpcNetworkScopeRegionalVpcNetwork = RegionBackendServiceVpcNetworkScope("REGIONAL_VPC_NETWORK")
+)
+
+func (RegionBackendServiceVpcNetworkScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceVpcNetworkScope)(nil)).Elem()
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToRegionBackendServiceVpcNetworkScopeOutput() RegionBackendServiceVpcNetworkScopeOutput {
+	return pulumi.ToOutput(e).(RegionBackendServiceVpcNetworkScopeOutput)
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToRegionBackendServiceVpcNetworkScopeOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionBackendServiceVpcNetworkScopeOutput)
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToRegionBackendServiceVpcNetworkScopePtrOutput() RegionBackendServiceVpcNetworkScopePtrOutput {
+	return e.ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopePtrOutput {
+	return RegionBackendServiceVpcNetworkScope(e).ToRegionBackendServiceVpcNetworkScopeOutputWithContext(ctx).ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx)
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionBackendServiceVpcNetworkScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionBackendServiceVpcNetworkScopeOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceVpcNetworkScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceVpcNetworkScope)(nil)).Elem()
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToRegionBackendServiceVpcNetworkScopeOutput() RegionBackendServiceVpcNetworkScopeOutput {
+	return o
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToRegionBackendServiceVpcNetworkScopeOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopeOutput {
+	return o
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToRegionBackendServiceVpcNetworkScopePtrOutput() RegionBackendServiceVpcNetworkScopePtrOutput {
+	return o.ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionBackendServiceVpcNetworkScope) *RegionBackendServiceVpcNetworkScope {
+		return &v
+	}).(RegionBackendServiceVpcNetworkScopePtrOutput)
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionBackendServiceVpcNetworkScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceVpcNetworkScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionBackendServiceVpcNetworkScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionBackendServiceVpcNetworkScopePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceVpcNetworkScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendServiceVpcNetworkScope)(nil)).Elem()
+}
+
+func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToRegionBackendServiceVpcNetworkScopePtrOutput() RegionBackendServiceVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopePtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceVpcNetworkScopePtrOutput) Elem() RegionBackendServiceVpcNetworkScopeOutput {
+	return o.ApplyT(func(v *RegionBackendServiceVpcNetworkScope) RegionBackendServiceVpcNetworkScope {
+		if v != nil {
+			return *v
+		}
+		var ret RegionBackendServiceVpcNetworkScope
+		return ret
+	}).(RegionBackendServiceVpcNetworkScopeOutput)
+}
+
+func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionBackendServiceVpcNetworkScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionBackendServiceVpcNetworkScopeInput is an input type that accepts RegionBackendServiceVpcNetworkScopeArgs and RegionBackendServiceVpcNetworkScopeOutput values.
+// You can construct a concrete instance of `RegionBackendServiceVpcNetworkScopeInput` via:
+//
+//          RegionBackendServiceVpcNetworkScopeArgs{...}
+type RegionBackendServiceVpcNetworkScopeInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceVpcNetworkScopeOutput() RegionBackendServiceVpcNetworkScopeOutput
+	ToRegionBackendServiceVpcNetworkScopeOutputWithContext(context.Context) RegionBackendServiceVpcNetworkScopeOutput
+}
+
+var regionBackendServiceVpcNetworkScopePtrType = reflect.TypeOf((**RegionBackendServiceVpcNetworkScope)(nil)).Elem()
+
+type RegionBackendServiceVpcNetworkScopePtrInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceVpcNetworkScopePtrOutput() RegionBackendServiceVpcNetworkScopePtrOutput
+	ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(context.Context) RegionBackendServiceVpcNetworkScopePtrOutput
+}
+
+type regionBackendServiceVpcNetworkScopePtr string
+
+func RegionBackendServiceVpcNetworkScopePtr(v string) RegionBackendServiceVpcNetworkScopePtrInput {
+	return (*regionBackendServiceVpcNetworkScopePtr)(&v)
+}
+
+func (*regionBackendServiceVpcNetworkScopePtr) ElementType() reflect.Type {
+	return regionBackendServiceVpcNetworkScopePtrType
+}
+
+func (in *regionBackendServiceVpcNetworkScopePtr) ToRegionBackendServiceVpcNetworkScopePtrOutput() RegionBackendServiceVpcNetworkScopePtrOutput {
+	return pulumi.ToOutput(in).(RegionBackendServiceVpcNetworkScopePtrOutput)
+}
+
+func (in *regionBackendServiceVpcNetworkScopePtr) ToRegionBackendServiceVpcNetworkScopePtrOutputWithContext(ctx context.Context) RegionBackendServiceVpcNetworkScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceVpcNetworkScopePtrOutput)
+}
+
 // The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 type RegionCommitmentCategory string
 
@@ -24233,7 +24567,7 @@ func (in *regionHealthCheckServiceHealthStatusAggregationStrategyPtr) ToRegionHe
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput)
 }
 
-// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
 type RegionHealthCheckType string
 
 const (
@@ -31624,7 +31958,7 @@ func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtr
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingNodeAffinityOperatorPtrOutput)
 }
 
-// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 type SchedulingOnHostMaintenance string
 
 const (
@@ -38232,6 +38566,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceProtocolPtrInput)(nil)).Elem(), BackendServiceProtocol("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSessionAffinityInput)(nil)).Elem(), BackendServiceSessionAffinity("CLIENT_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSessionAffinityPtrInput)(nil)).Elem(), BackendServiceSessionAffinity("CLIENT_IP"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceVpcNetworkScopeInput)(nil)).Elem(), BackendServiceVpcNetworkScope("GLOBAL_VPC_NETWORK"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceVpcNetworkScopePtrInput)(nil)).Elem(), BackendServiceVpcNetworkScope("GLOBAL_VPC_NETWORK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CallCredentialsCallCredentialTypeInput)(nil)).Elem(), CallCredentialsCallCredentialType("FROM_PLUGIN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CallCredentialsCallCredentialTypePtrInput)(nil)).Elem(), CallCredentialsCallCredentialType("FROM_PLUGIN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelCredentialsChannelCredentialTypeInput)(nil)).Elem(), ChannelCredentialsChannelCredentialType("CERTIFICATES"))
@@ -38434,6 +38770,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceProtocolPtrInput)(nil)).Elem(), RegionBackendServiceProtocol("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceSessionAffinityInput)(nil)).Elem(), RegionBackendServiceSessionAffinity("CLIENT_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceSessionAffinityPtrInput)(nil)).Elem(), RegionBackendServiceSessionAffinity("CLIENT_IP"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceVpcNetworkScopeInput)(nil)).Elem(), RegionBackendServiceVpcNetworkScope("GLOBAL_VPC_NETWORK"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceVpcNetworkScopePtrInput)(nil)).Elem(), RegionBackendServiceVpcNetworkScope("GLOBAL_VPC_NETWORK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentCategoryInput)(nil)).Elem(), RegionCommitmentCategory("CATEGORY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentCategoryPtrInput)(nil)).Elem(), RegionCommitmentCategory("CATEGORY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentPlanInput)(nil)).Elem(), RegionCommitmentPlan("INVALID"))
@@ -38686,6 +39024,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceProtocolPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceSessionAffinityOutput{})
 	pulumi.RegisterOutputType(BackendServiceSessionAffinityPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceVpcNetworkScopeOutput{})
+	pulumi.RegisterOutputType(BackendServiceVpcNetworkScopePtrOutput{})
 	pulumi.RegisterOutputType(CallCredentialsCallCredentialTypeOutput{})
 	pulumi.RegisterOutputType(CallCredentialsCallCredentialTypePtrOutput{})
 	pulumi.RegisterOutputType(ChannelCredentialsChannelCredentialTypeOutput{})
@@ -38888,6 +39228,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionBackendServiceProtocolPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceSessionAffinityOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceSessionAffinityPtrOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceVpcNetworkScopeOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceVpcNetworkScopePtrOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentCategoryOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentCategoryPtrOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentPlanOutput{})

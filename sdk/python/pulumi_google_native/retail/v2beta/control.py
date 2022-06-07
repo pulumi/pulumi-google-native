@@ -31,7 +31,7 @@ class ControlArgs:
         :param pulumi.Input[str] display_name: The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
         :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         :param pulumi.Input['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs'] facet_spec: A facet specification to perform faceted search.
-        :param pulumi.Input[str] name: Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        :param pulumi.Input[str] name: Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         :param pulumi.Input['GoogleCloudRetailV2betaRuleArgs'] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
@@ -119,7 +119,7 @@ class ControlArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         """
         return pulumi.get(self, "name")
 
@@ -173,7 +173,7 @@ class Control(pulumi.CustomResource):
         :param pulumi.Input[str] control_id: Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
         :param pulumi.Input[str] display_name: The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs']] facet_spec: A facet specification to perform faceted search.
-        :param pulumi.Input[str] name: Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        :param pulumi.Input[str] name: Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaRuleArgs']] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
         :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
@@ -299,7 +299,7 @@ class Control(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+        Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         """
         return pulumi.get(self, "name")
 

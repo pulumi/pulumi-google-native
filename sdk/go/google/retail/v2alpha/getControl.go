@@ -34,7 +34,7 @@ type LookupControlResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// A facet specification to perform faceted search.
 	FacetSpec GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse `pulumi:"facetSpec"`
-	// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
 	Name string `pulumi:"name"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2alphaRuleResponse `pulumi:"rule"`
@@ -95,7 +95,7 @@ func (o LookupControlResultOutput) FacetSpec() GoogleCloudRetailV2alphaSearchReq
 	return o.ApplyT(func(v LookupControlResult) GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse { return v.FacetSpec }).(GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput)
 }
 
-// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
 func (o LookupControlResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupControlResult) string { return v.Name }).(pulumi.StringOutput)
 }

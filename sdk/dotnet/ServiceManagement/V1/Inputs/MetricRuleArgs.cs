@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// </summary>
     public sealed class MetricRuleArgs : Pulumi.ResourceArgs
     {
+        [Input("dynamicMetricCosts")]
+        private InputMap<string>? _dynamicMetricCosts;
+
+        /// <summary>
+        /// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
+        /// </summary>
+        public InputMap<string> DynamicMetricCosts
+        {
+            get => _dynamicMetricCosts ?? (_dynamicMetricCosts = new InputMap<string>());
+            set => _dynamicMetricCosts = value;
+        }
+
         [Input("metricCosts")]
         private InputMap<string>? _metricCosts;
 

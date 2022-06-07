@@ -303,8 +303,8 @@ class GoogleCloudRetailV2PromotionArgs:
     def __init__(__self__, *,
                  promotion_id: Optional[pulumi.Input[str]] = None):
         """
-        Promotion information.
-        :param pulumi.Input[str] promotion_id: ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+        Promotion specification.
+        :param pulumi.Input[str] promotion_id: Promotion identifier, which is the final component of name. For example, this field is "free_gift", if name is `projects/*/locations/global/catalogs/default_catalog/promotions/free_gift`. The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Corresponds to Google Merchant Center property [promotion_id](https://support.google.com/merchants/answer/7050148).
         """
         if promotion_id is not None:
             pulumi.set(__self__, "promotion_id", promotion_id)
@@ -313,7 +313,7 @@ class GoogleCloudRetailV2PromotionArgs:
     @pulumi.getter(name="promotionId")
     def promotion_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the promotion. For example, "free gift". The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+        Promotion identifier, which is the final component of name. For example, this field is "free_gift", if name is `projects/*/locations/global/catalogs/default_catalog/promotions/free_gift`. The value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Corresponds to Google Merchant Center property [promotion_id](https://support.google.com/merchants/answer/7050148).
         """
         return pulumi.get(self, "promotion_id")
 

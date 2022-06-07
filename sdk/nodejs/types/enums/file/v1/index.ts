@@ -8,11 +8,11 @@ export const InstanceTier = {
      */
     TierUnspecified: "TIER_UNSPECIFIED",
     /**
-     * STANDARD tier.
+     * STANDARD tier. BASIC_HDD is the preferred term for this tier.
      */
     Standard: "STANDARD",
     /**
-     * PREMIUM tier.
+     * PREMIUM tier. BASIC_SSD is the preferred term for this tier.
      */
     Premium: "PREMIUM",
     /**

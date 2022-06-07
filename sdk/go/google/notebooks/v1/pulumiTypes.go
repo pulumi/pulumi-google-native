@@ -3674,6 +3674,8 @@ type RuntimeSoftwareConfig struct {
 	NotebookUpgradeSchedule *string `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript *string `pulumi:"postStartupScript"`
+	// Behavior for the post startup script.
+	PostStartupScriptBehavior *RuntimeSoftwareConfigPostStartupScriptBehavior `pulumi:"postStartupScriptBehavior"`
 }
 
 // RuntimeSoftwareConfigInput is an input type that accepts RuntimeSoftwareConfigArgs and RuntimeSoftwareConfigOutput values.
@@ -3705,6 +3707,8 @@ type RuntimeSoftwareConfigArgs struct {
 	NotebookUpgradeSchedule pulumi.StringPtrInput `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
+	// Behavior for the post startup script.
+	PostStartupScriptBehavior RuntimeSoftwareConfigPostStartupScriptBehaviorPtrInput `pulumi:"postStartupScriptBehavior"`
 }
 
 func (RuntimeSoftwareConfigArgs) ElementType() reflect.Type {
@@ -3825,6 +3829,13 @@ func (o RuntimeSoftwareConfigOutput) PostStartupScript() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScript }).(pulumi.StringPtrOutput)
 }
 
+// Behavior for the post startup script.
+func (o RuntimeSoftwareConfigOutput) PostStartupScriptBehavior() RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *RuntimeSoftwareConfigPostStartupScriptBehavior {
+		return v.PostStartupScriptBehavior
+	}).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
+}
+
 type RuntimeSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RuntimeSoftwareConfigPtrOutput) ElementType() reflect.Type {
@@ -3929,6 +3940,16 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Behavior for the post startup script.
+func (o RuntimeSoftwareConfigPtrOutput) PostStartupScriptBehavior() RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *RuntimeSoftwareConfigPostStartupScriptBehavior {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptBehavior
+	}).(RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput)
+}
+
 // Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 type RuntimeSoftwareConfigResponse struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -3947,6 +3968,8 @@ type RuntimeSoftwareConfigResponse struct {
 	NotebookUpgradeSchedule string `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript string `pulumi:"postStartupScript"`
+	// Behavior for the post startup script.
+	PostStartupScriptBehavior string `pulumi:"postStartupScriptBehavior"`
 	// Bool indicating whether an newer image is available in an image family.
 	Upgradeable bool `pulumi:"upgradeable"`
 }
@@ -4004,6 +4027,11 @@ func (o RuntimeSoftwareConfigResponseOutput) NotebookUpgradeSchedule() pulumi.St
 // Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 func (o RuntimeSoftwareConfigResponseOutput) PostStartupScript() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) string { return v.PostStartupScript }).(pulumi.StringOutput)
+}
+
+// Behavior for the post startup script.
+func (o RuntimeSoftwareConfigResponseOutput) PostStartupScriptBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) string { return v.PostStartupScriptBehavior }).(pulumi.StringOutput)
 }
 
 // Bool indicating whether an newer image is available in an image family.
@@ -5635,7 +5663,7 @@ type VmImage struct {
 	ImageFamily *string `pulumi:"imageFamily"`
 	// Use VM image name to find the image.
 	ImageName *string `pulumi:"imageName"`
-	// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
 	Project string `pulumi:"project"`
 }
 
@@ -5656,7 +5684,7 @@ type VmImageArgs struct {
 	ImageFamily pulumi.StringPtrInput `pulumi:"imageFamily"`
 	// Use VM image name to find the image.
 	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
-	// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -5748,7 +5776,7 @@ func (o VmImageOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmImage) *string { return v.ImageName }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
 func (o VmImageOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v VmImage) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -5797,7 +5825,7 @@ func (o VmImagePtrOutput) ImageName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
 func (o VmImagePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmImage) *string {
 		if v == nil {
@@ -5813,7 +5841,7 @@ type VmImageResponse struct {
 	ImageFamily string `pulumi:"imageFamily"`
 	// Use VM image name to find the image.
 	ImageName string `pulumi:"imageName"`
-	// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
 	Project string `pulumi:"project"`
 }
 
@@ -5842,7 +5870,7 @@ func (o VmImageResponseOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v VmImageResponse) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+// The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
 func (o VmImageResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v VmImageResponse) string { return v.Project }).(pulumi.StringOutput)
 }

@@ -34,12 +34,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         }
 
         /// <summary>
-        /// Optional. Authentication configuration for the session execution.
-        /// </summary>
-        [Input("sessionAuthenticationConfig")]
-        public Input<Inputs.AuthenticationConfigArgs>? SessionAuthenticationConfig { get; set; }
-
-        /// <summary>
         /// Optional. Version of the batch runtime.
         /// </summary>
         [Input("version")]

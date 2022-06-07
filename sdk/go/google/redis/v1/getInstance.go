@@ -39,6 +39,8 @@ type LookupInstanceResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
 	CurrentLocationId string `pulumi:"currentLocationId"`
+	// Optional. The KMS key reference that the customer provides when trying to create the instance.
+	CustomerManagedKey string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName string `pulumi:"displayName"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
@@ -51,8 +53,6 @@ type LookupInstanceResult struct {
 	MaintenancePolicy MaintenancePolicyResponse `pulumi:"maintenancePolicy"`
 	// Date and time of upcoming maintenance events which have been scheduled.
 	MaintenanceSchedule MaintenanceScheduleResponse `pulumi:"maintenanceSchedule"`
-	// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-	MaintenanceVersion string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
@@ -87,6 +87,8 @@ type LookupInstanceResult struct {
 	State string `pulumi:"state"`
 	// Additional information about the current status of this instance, if available.
 	StatusMessage string `pulumi:"statusMessage"`
+	// Optional. reasons that causes instance in "SUSPENDED" state.
+	SuspensionReasons []string `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
@@ -160,6 +162,11 @@ func (o LookupInstanceResultOutput) CurrentLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentLocationId }).(pulumi.StringOutput)
 }
 
+// Optional. The KMS key reference that the customer provides when trying to create the instance.
+func (o LookupInstanceResultOutput) CustomerManagedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CustomerManagedKey }).(pulumi.StringOutput)
+}
+
 // An arbitrary and optional user-provided name for the instance.
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -188,11 +195,6 @@ func (o LookupInstanceResultOutput) MaintenancePolicy() MaintenancePolicyRespons
 // Date and time of upcoming maintenance events which have been scheduled.
 func (o LookupInstanceResultOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) MaintenanceScheduleResponse { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
-}
-
-// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
-func (o LookupInstanceResultOutput) MaintenanceVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInstanceResult) string { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 // Redis memory size in GiB.
@@ -278,6 +280,11 @@ func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 // Additional information about the current status of this instance, if available.
 func (o LookupInstanceResultOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Optional. reasons that causes instance in "SUSPENDED" state.
+func (o LookupInstanceResultOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
 }
 
 // The service tier of the instance.

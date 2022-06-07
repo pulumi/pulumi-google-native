@@ -22,6 +22,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         public readonly string PredicateType;
         public readonly Outputs.InTotoProvenanceResponse Provenance;
         public readonly Outputs.SlsaProvenanceResponse SlsaProvenance;
+        public readonly Outputs.SlsaProvenanceZeroTwoResponse SlsaProvenanceZeroTwo;
         public readonly ImmutableArray<Outputs.SubjectResponse> Subject;
         /// <summary>
         /// Always `https://in-toto.io/Statement/v0.1`.
@@ -36,6 +37,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
             Outputs.SlsaProvenanceResponse slsaProvenance,
 
+            Outputs.SlsaProvenanceZeroTwoResponse slsaProvenanceZeroTwo,
+
             ImmutableArray<Outputs.SubjectResponse> subject,
 
             string type)
@@ -43,6 +46,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
             PredicateType = predicateType;
             Provenance = provenance;
             SlsaProvenance = slsaProvenance;
+            SlsaProvenanceZeroTwo = slsaProvenanceZeroTwo;
             Subject = subject;
             Type = type;
         }

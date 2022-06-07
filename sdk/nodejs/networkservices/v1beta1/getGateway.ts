@@ -40,7 +40,7 @@ export interface GetGatewayResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Name of the Gateway resource. It matches pattern `projects/*&#47;locations/global/gateways/`.
+     * Name of the Gateway resource. It matches pattern `projects/*&#47;locations/*&#47;gateways/`.
      */
     readonly name: string;
     /**

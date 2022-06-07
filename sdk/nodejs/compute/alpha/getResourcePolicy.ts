@@ -34,6 +34,10 @@ export interface GetResourcePolicyResult {
     readonly creationTimestamp: string;
     readonly description: string;
     /**
+     * Resource policy for disk consistency groups.
+     */
+    readonly diskConsistencyGroupPolicy: outputs.compute.alpha.ResourcePolicyDiskConsistencyGroupPolicyResponse;
+    /**
      * Resource policy for instances for placement configuration.
      */
     readonly groupPlacementPolicy: outputs.compute.alpha.ResourcePolicyGroupPlacementPolicyResponse;

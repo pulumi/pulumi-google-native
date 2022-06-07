@@ -174,7 +174,7 @@ class AppEngineArgs:
                  module_id: Optional[pulumi.Input[str]] = None):
         """
         App Engine service. Learn more at https://cloud.google.com/appengine.
-        :param pulumi.Input[str] module_id: The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+        :param pulumi.Input[str] module_id: The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
         """
         if module_id is not None:
             pulumi.set(__self__, "module_id", module_id)
@@ -183,7 +183,7 @@ class AppEngineArgs:
     @pulumi.getter(name="moduleId")
     def module_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+        The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
         """
         return pulumi.get(self, "module_id")
 
@@ -335,7 +335,7 @@ class CloudEndpointsArgs:
                  service: Optional[pulumi.Input[str]] = None):
         """
         Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
-        :param pulumi.Input[str] service: The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+        :param pulumi.Input[str] service: The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -344,7 +344,7 @@ class CloudEndpointsArgs:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+        The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api).
         """
         return pulumi.get(self, "service")
 
@@ -360,8 +360,8 @@ class CloudRunArgs:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Cloud Run service. Learn more at https://cloud.google.com/run.
-        :param pulumi.Input[str] location: The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
-        :param pulumi.Input[str] service_name: The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        :param pulumi.Input[str] location: The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
+        :param pulumi.Input[str] service_name: The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -372,7 +372,7 @@ class CloudRunArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         """
         return pulumi.get(self, "location")
 
@@ -384,7 +384,7 @@ class CloudRunArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
         """
         return pulumi.get(self, "service_name")
 
@@ -721,7 +721,7 @@ class GkeNamespaceArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  namespace_name: Optional[pulumi.Input[str]] = None):
         """
-        GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+        GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
         :param pulumi.Input[str] cluster_name: The name of the parent cluster.
         :param pulumi.Input[str] location: The location of the parent cluster. This may be a zone or region.
         :param pulumi.Input[str] namespace_name: The name of this namespace.
@@ -778,7 +778,7 @@ class GkeServiceArgs:
                  namespace_name: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
         """
-        GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+        GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
         :param pulumi.Input[str] cluster_name: The name of the parent cluster.
         :param pulumi.Input[str] location: The location of the parent cluster. This may be a zone or region.
         :param pulumi.Input[str] namespace_name: The name of the parent namespace.
@@ -851,12 +851,12 @@ class GkeWorkloadArgs:
                  top_level_controller_name: Optional[pulumi.Input[str]] = None,
                  top_level_controller_type: Optional[pulumi.Input[str]] = None):
         """
-        A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+        A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
         :param pulumi.Input[str] cluster_name: The name of the parent cluster.
         :param pulumi.Input[str] location: The location of the parent cluster. This may be a zone or region.
         :param pulumi.Input[str] namespace_name: The name of the parent namespace.
         :param pulumi.Input[str] top_level_controller_name: The name of this workload.
-        :param pulumi.Input[str] top_level_controller_type: The type of this workload (e.g. "Deployment" or "DaemonSet")
+        :param pulumi.Input[str] top_level_controller_type: The type of this workload (for example, "Deployment" or "DaemonSet")
         """
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
@@ -921,7 +921,7 @@ class GkeWorkloadArgs:
     @pulumi.getter(name="topLevelControllerType")
     def top_level_controller_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of this workload (e.g. "Deployment" or "DaemonSet")
+        The type of this workload (for example, "Deployment" or "DaemonSet")
         """
         return pulumi.get(self, "top_level_controller_type")
 

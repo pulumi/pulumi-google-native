@@ -710,6 +710,22 @@ export const BackendServiceSessionAffinity = {
  */
 export type BackendServiceSessionAffinity = (typeof BackendServiceSessionAffinity)[keyof typeof BackendServiceSessionAffinity];
 
+export const BackendServiceVpcNetworkScope = {
+    /**
+     * The backend service can only have backends in global VPCs
+     */
+    GlobalVpcNetwork: "GLOBAL_VPC_NETWORK",
+    /**
+     * The backend service can only have backends in regional VPCs
+     */
+    RegionalVpcNetwork: "REGIONAL_VPC_NETWORK",
+} as const;
+
+/**
+ * The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+ */
+export type BackendServiceVpcNetworkScope = (typeof BackendServiceVpcNetworkScope)[keyof typeof BackendServiceVpcNetworkScope];
+
 export const CallCredentialsCallCredentialType = {
     /**
      * Custom authenticator credentials are used to access the SDS server.
@@ -1627,7 +1643,7 @@ export const HealthCheckType = {
 } as const;
 
 /**
- * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+ * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
  */
 export type HealthCheckType = (typeof HealthCheckType)[keyof typeof HealthCheckType];
 
@@ -2674,6 +2690,22 @@ export const RegionBackendServiceSessionAffinity = {
  */
 export type RegionBackendServiceSessionAffinity = (typeof RegionBackendServiceSessionAffinity)[keyof typeof RegionBackendServiceSessionAffinity];
 
+export const RegionBackendServiceVpcNetworkScope = {
+    /**
+     * The backend service can only have backends in global VPCs
+     */
+    GlobalVpcNetwork: "GLOBAL_VPC_NETWORK",
+    /**
+     * The backend service can only have backends in regional VPCs
+     */
+    RegionalVpcNetwork: "REGIONAL_VPC_NETWORK",
+} as const;
+
+/**
+ * The network scope of the backends that can be added to the backend service. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A backend service with the VPC scope set to GLOBAL_VPC_NETWORK is only allowed to have backends in global VPC networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the backend service is only allowed to have backends in regional networks in the same scope as the backend service. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
+ */
+export type RegionBackendServiceVpcNetworkScope = (typeof RegionBackendServiceVpcNetworkScope)[keyof typeof RegionBackendServiceVpcNetworkScope];
+
 export const RegionCommitmentCategory = {
     CategoryUnspecified: "CATEGORY_UNSPECIFIED",
     License: "LICENSE",
@@ -2800,7 +2832,7 @@ export const RegionHealthCheckType = {
 } as const;
 
 /**
- * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+ * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
  */
 export type RegionHealthCheckType = (typeof RegionHealthCheckType)[keyof typeof RegionHealthCheckType];
 
@@ -3480,7 +3512,7 @@ export const SchedulingOnHostMaintenance = {
 } as const;
 
 /**
- * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM availability policies.
+ * Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
  */
 export type SchedulingOnHostMaintenance = (typeof SchedulingOnHostMaintenance)[keyof typeof SchedulingOnHostMaintenance];
 

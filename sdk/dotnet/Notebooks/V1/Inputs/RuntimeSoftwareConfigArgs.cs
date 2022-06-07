@@ -69,6 +69,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
 
+        /// <summary>
+        /// Behavior for the post startup script.
+        /// </summary>
+        [Input("postStartupScriptBehavior")]
+        public Input<Pulumi.GoogleNative.Notebooks.V1.RuntimeSoftwareConfigPostStartupScriptBehavior>? PostStartupScriptBehavior { get; set; }
+
         public RuntimeSoftwareConfigArgs()
         {
         }

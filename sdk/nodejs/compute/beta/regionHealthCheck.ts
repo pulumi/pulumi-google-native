@@ -82,7 +82,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly timeoutSec!: pulumi.Output<number>;
     /**
-     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -194,7 +194,7 @@ export interface RegionHealthCheckArgs {
      */
     timeoutSec?: pulumi.Input<number>;
     /**
-     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
      */
     type?: pulumi.Input<enums.compute.beta.RegionHealthCheckType>;
     /**

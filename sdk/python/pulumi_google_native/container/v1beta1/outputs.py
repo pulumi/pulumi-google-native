@@ -35,6 +35,7 @@ __all__ = [
     'DnsCacheConfigResponse',
     'EphemeralStorageConfigResponse',
     'FilterResponse',
+    'GPUSharingConfigResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
     'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
@@ -119,6 +120,10 @@ class AcceleratorConfigResponse(dict):
             suggest = "accelerator_type"
         elif key == "gpuPartitionSize":
             suggest = "gpu_partition_size"
+        elif key == "gpuSharingConfig":
+            suggest = "gpu_sharing_config"
+        elif key == "maxTimeSharedClientsPerGpu":
+            suggest = "max_time_shared_clients_per_gpu"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -134,16 +139,22 @@ class AcceleratorConfigResponse(dict):
     def __init__(__self__, *,
                  accelerator_count: str,
                  accelerator_type: str,
-                 gpu_partition_size: str):
+                 gpu_partition_size: str,
+                 gpu_sharing_config: 'outputs.GPUSharingConfigResponse',
+                 max_time_shared_clients_per_gpu: str):
         """
         AcceleratorConfig represents a Hardware Accelerator request.
         :param str accelerator_count: The number of the accelerator cards exposed to an instance.
         :param str accelerator_type: The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
         :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        :param 'GPUSharingConfigResponse' gpu_sharing_config: The configuration for GPU sharing options.
+        :param str max_time_shared_clients_per_gpu: The number of time-shared GPU resources to expose for each physical GPU.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        pulumi.set(__self__, "gpu_sharing_config", gpu_sharing_config)
+        pulumi.set(__self__, "max_time_shared_clients_per_gpu", max_time_shared_clients_per_gpu)
 
     @property
     @pulumi.getter(name="acceleratorCount")
@@ -168,6 +179,22 @@ class AcceleratorConfigResponse(dict):
         Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         return pulumi.get(self, "gpu_partition_size")
+
+    @property
+    @pulumi.getter(name="gpuSharingConfig")
+    def gpu_sharing_config(self) -> 'outputs.GPUSharingConfigResponse':
+        """
+        The configuration for GPU sharing options.
+        """
+        return pulumi.get(self, "gpu_sharing_config")
+
+    @property
+    @pulumi.getter(name="maxTimeSharedClientsPerGpu")
+    def max_time_shared_clients_per_gpu(self) -> str:
+        """
+        The number of time-shared GPU resources to expose for each physical GPU.
+        """
+        return pulumi.get(self, "max_time_shared_clients_per_gpu")
 
 
 @pulumi.output_type
@@ -1361,6 +1388,58 @@ class FilterResponse(dict):
         Event types to allowlist.
         """
         return pulumi.get(self, "event_type")
+
+
+@pulumi.output_type
+class GPUSharingConfigResponse(dict):
+    """
+    GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuSharingStrategy":
+            suggest = "gpu_sharing_strategy"
+        elif key == "maxSharedClientsPerGpu":
+            suggest = "max_shared_clients_per_gpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GPUSharingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GPUSharingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GPUSharingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_sharing_strategy: str,
+                 max_shared_clients_per_gpu: str):
+        """
+        GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+        :param str gpu_sharing_strategy: The type of GPU sharing strategy to enable on the GPU node.
+        :param str max_shared_clients_per_gpu: The max number of containers that can share a physical GPU.
+        """
+        pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
+        pulumi.set(__self__, "max_shared_clients_per_gpu", max_shared_clients_per_gpu)
+
+    @property
+    @pulumi.getter(name="gpuSharingStrategy")
+    def gpu_sharing_strategy(self) -> str:
+        """
+        The type of GPU sharing strategy to enable on the GPU node.
+        """
+        return pulumi.get(self, "gpu_sharing_strategy")
+
+    @property
+    @pulumi.getter(name="maxSharedClientsPerGpu")
+    def max_shared_clients_per_gpu(self) -> str:
+        """
+        The max number of containers that can share a physical GPU.
+        """
+        return pulumi.get(self, "max_shared_clients_per_gpu")
 
 
 @pulumi.output_type
@@ -2746,7 +2825,7 @@ class NodeConfigDefaultsResponse(dict):
 @pulumi.output_type
 class NodeConfigResponse(dict):
     """
-    Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+    Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2833,7 +2912,7 @@ class NodeConfigResponse(dict):
                  taints: Sequence['outputs.NodeTaintResponse'],
                  workload_metadata_config: 'outputs.WorkloadMetadataConfigResponse'):
         """
-        Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+        Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
         :param Sequence['AcceleratorConfigResponse'] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
         :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Advanced features for the Compute Engine VM.
         :param str boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption

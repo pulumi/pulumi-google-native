@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Output("versionConfigs")]
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>> VersionConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// The webhook configuration for this environment.
+        /// </summary>
+        [Output("webhookConfig")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse> WebhookConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Environment resource with the given unique name, arguments, and options.
@@ -140,6 +146,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
             get => _versionConfigs ?? (_versionConfigs = new InputList<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>());
             set => _versionConfigs = value;
         }
+
+        /// <summary>
+        /// The webhook configuration for this environment.
+        /// </summary>
+        [Input("webhookConfig")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigArgs>? WebhookConfig { get; set; }
 
         public EnvironmentArgs()
         {

@@ -41,6 +41,10 @@ export class ResourcePolicy extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string>;
     /**
+     * Resource policy for disk consistency groups.
+     */
+    public readonly diskConsistencyGroupPolicy!: pulumi.Output<outputs.compute.alpha.ResourcePolicyDiskConsistencyGroupPolicyResponse>;
+    /**
      * Resource policy for instances for placement configuration.
      */
     public readonly groupPlacementPolicy!: pulumi.Output<outputs.compute.alpha.ResourcePolicyGroupPlacementPolicyResponse>;
@@ -97,6 +101,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskConsistencyGroupPolicy"] = args ? args.diskConsistencyGroupPolicy : undefined;
             resourceInputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
             resourceInputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -114,6 +119,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["diskConsistencyGroupPolicy"] = undefined /*out*/;
             resourceInputs["groupPlacementPolicy"] = undefined /*out*/;
             resourceInputs["instanceSchedulePolicy"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export class ResourcePolicy extends pulumi.CustomResource {
  */
 export interface ResourcePolicyArgs {
     description?: pulumi.Input<string>;
+    /**
+     * Resource policy for disk consistency groups.
+     */
+    diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.alpha.ResourcePolicyDiskConsistencyGroupPolicyArgs>;
     /**
      * Resource policy for instances for placement configuration.
      */

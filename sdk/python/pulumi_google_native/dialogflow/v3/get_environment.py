@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvironmentResult:
-    def __init__(__self__, description=None, display_name=None, name=None, test_cases_config=None, update_time=None, version_configs=None):
+    def __init__(__self__, description=None, display_name=None, name=None, test_cases_config=None, update_time=None, version_configs=None, webhook_config=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -37,6 +37,9 @@ class GetEnvironmentResult:
         if version_configs and not isinstance(version_configs, list):
             raise TypeError("Expected argument 'version_configs' to be a list")
         pulumi.set(__self__, "version_configs", version_configs)
+        if webhook_config and not isinstance(webhook_config, dict):
+            raise TypeError("Expected argument 'webhook_config' to be a dict")
+        pulumi.set(__self__, "webhook_config", webhook_config)
 
     @property
     @pulumi.getter
@@ -86,6 +89,14 @@ class GetEnvironmentResult:
         """
         return pulumi.get(self, "version_configs")
 
+    @property
+    @pulumi.getter(name="webhookConfig")
+    def webhook_config(self) -> 'outputs.GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse':
+        """
+        The webhook configuration for this environment.
+        """
+        return pulumi.get(self, "webhook_config")
+
 
 class AwaitableGetEnvironmentResult(GetEnvironmentResult):
     # pylint: disable=using-constant-test
@@ -98,7 +109,8 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             name=self.name,
             test_cases_config=self.test_cases_config,
             update_time=self.update_time,
-            version_configs=self.version_configs)
+            version_configs=self.version_configs,
+            webhook_config=self.webhook_config)
 
 
 def get_environment(agent_id: Optional[str] = None,
@@ -126,7 +138,8 @@ def get_environment(agent_id: Optional[str] = None,
         name=__ret__.name,
         test_cases_config=__ret__.test_cases_config,
         update_time=__ret__.update_time,
-        version_configs=__ret__.version_configs)
+        version_configs=__ret__.version_configs,
+        webhook_config=__ret__.webhook_config)
 
 
 @_utilities.lift_output_func(get_environment)

@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         [Input("slsaProvenance")]
         public Input<Inputs.SlsaProvenanceArgs>? SlsaProvenance { get; set; }
 
+        [Input("slsaProvenanceZeroTwo")]
+        public Input<Inputs.SlsaProvenanceZeroTwoArgs>? SlsaProvenanceZeroTwo { get; set; }
+
         [Input("subject")]
         private InputList<Inputs.SubjectArgs>? _subject;
         public InputList<Inputs.SubjectArgs> Subject

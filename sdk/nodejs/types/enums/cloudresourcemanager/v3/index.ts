@@ -25,3 +25,19 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const TagKeyPurpose = {
+    /**
+     * Unspecified purpose.
+     */
+    PurposeUnspecified: "PURPOSE_UNSPECIFIED",
+    /**
+     * Purpose for Compute Engine firewalls. A corresponding purpose_data should be set for the network the tag is intended for. The key should be 'network' and the value should be in the format of the network url id string: http://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+     */
+    GceFirewall: "GCE_FIREWALL",
+} as const;
+
+/**
+ * Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
+ */
+export type TagKeyPurpose = (typeof TagKeyPurpose)[keyof typeof TagKeyPurpose];

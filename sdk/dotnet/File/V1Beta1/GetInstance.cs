@@ -62,6 +62,14 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public sealed class GetInstanceResult
     {
         /// <summary>
+        /// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
+        /// </summary>
+        public readonly string CapacityGb;
+        /// <summary>
+        /// The increase/decrease capacity step size.
+        /// </summary>
+        public readonly string CapacityStepSizeGb;
+        /// <summary>
         /// The time when the instance was created.
         /// </summary>
         public readonly string CreateTime;
@@ -85,6 +93,18 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// Resource labels to represent user provided metadata.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// The max capacity of the instance.
+        /// </summary>
+        public readonly string MaxCapacityGb;
+        /// <summary>
+        /// The max number of shares allowed.
+        /// </summary>
+        public readonly string MaxShareCount;
+        /// <summary>
+        /// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
+        /// </summary>
+        public readonly bool MultiShareEnabled;
         /// <summary>
         /// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
         /// </summary>
@@ -116,6 +136,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
         [OutputConstructor]
         private GetInstanceResult(
+            string capacityGb,
+
+            string capacityStepSizeGb,
+
             string createTime,
 
             string description,
@@ -127,6 +151,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             string kmsKeyName,
 
             ImmutableDictionary<string, string> labels,
+
+            string maxCapacityGb,
+
+            string maxShareCount,
+
+            bool multiShareEnabled,
 
             string name,
 
@@ -142,12 +172,17 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             string tier)
         {
+            CapacityGb = capacityGb;
+            CapacityStepSizeGb = capacityStepSizeGb;
             CreateTime = createTime;
             Description = description;
             Etag = etag;
             FileShares = fileShares;
             KmsKeyName = kmsKeyName;
             Labels = labels;
+            MaxCapacityGb = maxCapacityGb;
+            MaxShareCount = maxShareCount;
+            MultiShareEnabled = multiShareEnabled;
             Name = name;
             Networks = networks;
             SatisfiesPzs = satisfiesPzs;

@@ -59,6 +59,10 @@ export interface GetFhirStoreResult {
      */
     readonly notificationConfig: outputs.healthcare.v1beta1.NotificationConfigResponse;
     /**
+     * Specifies where and whether to send notifications upon changes to a Fhir store.
+     */
+    readonly notificationConfigs: outputs.healthcare.v1beta1.FhirNotificationConfigResponse[];
+    /**
      * Configuration for how FHIR resources can be searched.
      */
     readonly searchConfig: outputs.healthcare.v1beta1.SearchConfigResponse;

@@ -612,16 +612,44 @@ class EgressToResponse(dict):
     """
     Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalResources":
+            suggest = "external_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EgressToResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EgressToResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EgressToResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 external_resources: Sequence[str],
                  operations: Sequence['outputs.ApiOperationResponse'],
                  resources: Sequence[str]):
         """
         Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
+        :param Sequence[str] external_resources: A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
         :param Sequence['ApiOperationResponse'] operations: A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
         :param Sequence[str] resources: A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
         """
+        pulumi.set(__self__, "external_resources", external_resources)
         pulumi.set(__self__, "operations", operations)
         pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Sequence[str]:
+        """
+        A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
 
     @property
     @pulumi.getter

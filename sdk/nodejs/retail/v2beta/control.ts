@@ -49,7 +49,7 @@ export class Control extends pulumi.CustomResource {
      */
     public readonly facetSpec!: pulumi.Output<outputs.retail.v2beta.GoogleCloudRetailV2betaSearchRequestFacetSpecResponse>;
     /**
-     * Immutable. Fully qualified name projects/*&#47;locations/global/catalogs/*&#47;controls/*
+     * Immutable. Fully qualified name `projects/*&#47;locations/global/catalogs/*&#47;controls/*`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -126,7 +126,7 @@ export interface ControlArgs {
     facetSpec?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaSearchRequestFacetSpecArgs>;
     location?: pulumi.Input<string>;
     /**
-     * Immutable. Fully qualified name projects/*&#47;locations/global/catalogs/*&#47;controls/*
+     * Immutable. Fully qualified name `projects/*&#47;locations/global/catalogs/*&#47;controls/*`
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

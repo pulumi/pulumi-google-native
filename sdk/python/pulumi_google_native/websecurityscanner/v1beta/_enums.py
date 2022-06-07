@@ -244,6 +244,10 @@ class ScanConfigTargetPlatformsItem(str, Enum):
     """
     Google Cloud Run service.
     """
+    CLOUD_FUNCTIONS = "CLOUD_FUNCTIONS"
+    """
+    Google Cloud Function service.
+    """
 
 
 class ScanConfigUserAgent(str, Enum):

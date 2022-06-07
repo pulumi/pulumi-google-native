@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// </summary>
     public sealed class EgressToArgs : Pulumi.ResourceArgs
     {
+        [Input("externalResources")]
+        private InputList<string>? _externalResources;
+
+        /// <summary>
+        /// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+        /// </summary>
+        public InputList<string> ExternalResources
+        {
+            get => _externalResources ?? (_externalResources = new InputList<string>());
+            set => _externalResources = value;
+        }
+
         [Input("operations")]
         private InputList<Inputs.ApiOperationArgs>? _operations;
 

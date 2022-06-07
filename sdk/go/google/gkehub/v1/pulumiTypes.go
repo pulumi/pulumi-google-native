@@ -176,6 +176,172 @@ func (o AppDevExperienceFeatureStateResponseOutput) NetworkingInstallSucceeded()
 	return o.ApplyT(func(v AppDevExperienceFeatureStateResponse) StatusResponse { return v.NetworkingInstallSucceeded }).(StatusResponseOutput)
 }
 
+// ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+type ApplianceCluster struct {
+	// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+	ResourceLink *string `pulumi:"resourceLink"`
+}
+
+// ApplianceClusterInput is an input type that accepts ApplianceClusterArgs and ApplianceClusterOutput values.
+// You can construct a concrete instance of `ApplianceClusterInput` via:
+//
+//          ApplianceClusterArgs{...}
+type ApplianceClusterInput interface {
+	pulumi.Input
+
+	ToApplianceClusterOutput() ApplianceClusterOutput
+	ToApplianceClusterOutputWithContext(context.Context) ApplianceClusterOutput
+}
+
+// ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+type ApplianceClusterArgs struct {
+	// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
+}
+
+func (ApplianceClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplianceCluster)(nil)).Elem()
+}
+
+func (i ApplianceClusterArgs) ToApplianceClusterOutput() ApplianceClusterOutput {
+	return i.ToApplianceClusterOutputWithContext(context.Background())
+}
+
+func (i ApplianceClusterArgs) ToApplianceClusterOutputWithContext(ctx context.Context) ApplianceClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplianceClusterOutput)
+}
+
+func (i ApplianceClusterArgs) ToApplianceClusterPtrOutput() ApplianceClusterPtrOutput {
+	return i.ToApplianceClusterPtrOutputWithContext(context.Background())
+}
+
+func (i ApplianceClusterArgs) ToApplianceClusterPtrOutputWithContext(ctx context.Context) ApplianceClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplianceClusterOutput).ToApplianceClusterPtrOutputWithContext(ctx)
+}
+
+// ApplianceClusterPtrInput is an input type that accepts ApplianceClusterArgs, ApplianceClusterPtr and ApplianceClusterPtrOutput values.
+// You can construct a concrete instance of `ApplianceClusterPtrInput` via:
+//
+//          ApplianceClusterArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplianceClusterPtrInput interface {
+	pulumi.Input
+
+	ToApplianceClusterPtrOutput() ApplianceClusterPtrOutput
+	ToApplianceClusterPtrOutputWithContext(context.Context) ApplianceClusterPtrOutput
+}
+
+type applianceClusterPtrType ApplianceClusterArgs
+
+func ApplianceClusterPtr(v *ApplianceClusterArgs) ApplianceClusterPtrInput {
+	return (*applianceClusterPtrType)(v)
+}
+
+func (*applianceClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplianceCluster)(nil)).Elem()
+}
+
+func (i *applianceClusterPtrType) ToApplianceClusterPtrOutput() ApplianceClusterPtrOutput {
+	return i.ToApplianceClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *applianceClusterPtrType) ToApplianceClusterPtrOutputWithContext(ctx context.Context) ApplianceClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplianceClusterPtrOutput)
+}
+
+// ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+type ApplianceClusterOutput struct{ *pulumi.OutputState }
+
+func (ApplianceClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplianceCluster)(nil)).Elem()
+}
+
+func (o ApplianceClusterOutput) ToApplianceClusterOutput() ApplianceClusterOutput {
+	return o
+}
+
+func (o ApplianceClusterOutput) ToApplianceClusterOutputWithContext(ctx context.Context) ApplianceClusterOutput {
+	return o
+}
+
+func (o ApplianceClusterOutput) ToApplianceClusterPtrOutput() ApplianceClusterPtrOutput {
+	return o.ToApplianceClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ApplianceClusterOutput) ToApplianceClusterPtrOutputWithContext(ctx context.Context) ApplianceClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplianceCluster) *ApplianceCluster {
+		return &v
+	}).(ApplianceClusterPtrOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+func (o ApplianceClusterOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplianceCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
+}
+
+type ApplianceClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplianceClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplianceCluster)(nil)).Elem()
+}
+
+func (o ApplianceClusterPtrOutput) ToApplianceClusterPtrOutput() ApplianceClusterPtrOutput {
+	return o
+}
+
+func (o ApplianceClusterPtrOutput) ToApplianceClusterPtrOutputWithContext(ctx context.Context) ApplianceClusterPtrOutput {
+	return o
+}
+
+func (o ApplianceClusterPtrOutput) Elem() ApplianceClusterOutput {
+	return o.ApplyT(func(v *ApplianceCluster) ApplianceCluster {
+		if v != nil {
+			return *v
+		}
+		var ret ApplianceCluster
+		return ret
+	}).(ApplianceClusterOutput)
+}
+
+// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+func (o ApplianceClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplianceCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+type ApplianceClusterResponse struct {
+	// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+	ResourceLink string `pulumi:"resourceLink"`
+}
+
+// ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+type ApplianceClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplianceClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplianceClusterResponse)(nil)).Elem()
+}
+
+func (o ApplianceClusterResponseOutput) ToApplianceClusterResponseOutput() ApplianceClusterResponseOutput {
+	return o
+}
+
+func (o ApplianceClusterResponseOutput) ToApplianceClusterResponseOutputWithContext(ctx context.Context) ApplianceClusterResponseOutput {
+	return o
+}
+
+// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+func (o ApplianceClusterResponseOutput) ResourceLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplianceClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -2027,6 +2193,8 @@ func (o KubernetesResourceResponseOutput) ResourceOptions() ResourceOptionsRespo
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpoint struct {
+	// Optional. Specific information for a GDC Edge Appliance cluster.
+	ApplianceCluster *ApplianceCluster `pulumi:"applianceCluster"`
 	// Optional. Specific information for a Google Edge cluster.
 	EdgeCluster *EdgeCluster `pulumi:"edgeCluster"`
 	// Optional. Specific information for a GKE-on-GCP cluster.
@@ -2052,6 +2220,8 @@ type MembershipEndpointInput interface {
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointArgs struct {
+	// Optional. Specific information for a GDC Edge Appliance cluster.
+	ApplianceCluster ApplianceClusterPtrInput `pulumi:"applianceCluster"`
 	// Optional. Specific information for a Google Edge cluster.
 	EdgeCluster EdgeClusterPtrInput `pulumi:"edgeCluster"`
 	// Optional. Specific information for a GKE-on-GCP cluster.
@@ -2142,6 +2312,11 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx c
 	}).(MembershipEndpointPtrOutput)
 }
 
+// Optional. Specific information for a GDC Edge Appliance cluster.
+func (o MembershipEndpointOutput) ApplianceCluster() ApplianceClusterPtrOutput {
+	return o.ApplyT(func(v MembershipEndpoint) *ApplianceCluster { return v.ApplianceCluster }).(ApplianceClusterPtrOutput)
+}
+
 // Optional. Specific information for a Google Edge cluster.
 func (o MembershipEndpointOutput) EdgeCluster() EdgeClusterPtrOutput {
 	return o.ApplyT(func(v MembershipEndpoint) *EdgeCluster { return v.EdgeCluster }).(EdgeClusterPtrOutput)
@@ -2189,6 +2364,16 @@ func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
 		var ret MembershipEndpoint
 		return ret
 	}).(MembershipEndpointOutput)
+}
+
+// Optional. Specific information for a GDC Edge Appliance cluster.
+func (o MembershipEndpointPtrOutput) ApplianceCluster() ApplianceClusterPtrOutput {
+	return o.ApplyT(func(v *MembershipEndpoint) *ApplianceCluster {
+		if v == nil {
+			return nil
+		}
+		return v.ApplianceCluster
+	}).(ApplianceClusterPtrOutput)
 }
 
 // Optional. Specific information for a Google Edge cluster.
@@ -2243,6 +2428,8 @@ func (o MembershipEndpointPtrOutput) OnPremCluster() OnPremClusterPtrOutput {
 
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpointResponse struct {
+	// Optional. Specific information for a GDC Edge Appliance cluster.
+	ApplianceCluster ApplianceClusterResponse `pulumi:"applianceCluster"`
 	// Optional. Specific information for a Google Edge cluster.
 	EdgeCluster EdgeClusterResponse `pulumi:"edgeCluster"`
 	// Optional. Specific information for a GKE-on-GCP cluster.
@@ -2270,6 +2457,11 @@ func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponseOutput() M
 
 func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponseOutputWithContext(ctx context.Context) MembershipEndpointResponseOutput {
 	return o
+}
+
+// Optional. Specific information for a GDC Edge Appliance cluster.
+func (o MembershipEndpointResponseOutput) ApplianceCluster() ApplianceClusterResponseOutput {
+	return o.ApplyT(func(v MembershipEndpointResponse) ApplianceClusterResponse { return v.ApplianceCluster }).(ApplianceClusterResponseOutput)
 }
 
 // Optional. Specific information for a Google Edge cluster.
@@ -3173,6 +3365,8 @@ func (o StatusResponseOutput) Description() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecPtrInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplianceClusterInput)(nil)).Elem(), ApplianceClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplianceClusterPtrInput)(nil)).Elem(), ApplianceClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -3205,6 +3399,9 @@ func init() {
 	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(AppDevExperienceFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(ApplianceClusterOutput{})
+	pulumi.RegisterOutputType(ApplianceClusterPtrOutput{})
+	pulumi.RegisterOutputType(ApplianceClusterResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})

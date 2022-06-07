@@ -32,6 +32,7 @@ __all__ = [
     'DefaultSnatStatusArgs',
     'DnsCacheConfigArgs',
     'FilterArgs',
+    'GPUSharingConfigArgs',
     'GcePersistentDiskCsiDriverConfigArgs',
     'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
@@ -96,12 +97,14 @@ class AcceleratorConfigArgs:
     def __init__(__self__, *,
                  accelerator_count: Optional[pulumi.Input[str]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
-                 gpu_partition_size: Optional[pulumi.Input[str]] = None):
+                 gpu_partition_size: Optional[pulumi.Input[str]] = None,
+                 gpu_sharing_config: Optional[pulumi.Input['GPUSharingConfigArgs']] = None):
         """
         AcceleratorConfig represents a Hardware Accelerator request.
         :param pulumi.Input[str] accelerator_count: The number of the accelerator cards exposed to an instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
         :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        :param pulumi.Input['GPUSharingConfigArgs'] gpu_sharing_config: The configuration for GPU sharing options.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -109,6 +112,8 @@ class AcceleratorConfigArgs:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
         if gpu_partition_size is not None:
             pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        if gpu_sharing_config is not None:
+            pulumi.set(__self__, "gpu_sharing_config", gpu_sharing_config)
 
     @property
     @pulumi.getter(name="acceleratorCount")
@@ -145,6 +150,18 @@ class AcceleratorConfigArgs:
     @gpu_partition_size.setter
     def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gpu_partition_size", value)
+
+    @property
+    @pulumi.getter(name="gpuSharingConfig")
+    def gpu_sharing_config(self) -> Optional[pulumi.Input['GPUSharingConfigArgs']]:
+        """
+        The configuration for GPU sharing options.
+        """
+        return pulumi.get(self, "gpu_sharing_config")
+
+    @gpu_sharing_config.setter
+    def gpu_sharing_config(self, value: Optional[pulumi.Input['GPUSharingConfigArgs']]):
+        pulumi.set(self, "gpu_sharing_config", value)
 
 
 @pulumi.input_type
@@ -1085,6 +1102,46 @@ class FilterArgs:
     @event_type.setter
     def event_type(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FilterEventTypeItem']]]]):
         pulumi.set(self, "event_type", value)
+
+
+@pulumi.input_type
+class GPUSharingConfigArgs:
+    def __init__(__self__, *,
+                 gpu_sharing_strategy: Optional[pulumi.Input['GPUSharingConfigGpuSharingStrategy']] = None,
+                 max_shared_clients_per_gpu: Optional[pulumi.Input[str]] = None):
+        """
+        GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
+        :param pulumi.Input['GPUSharingConfigGpuSharingStrategy'] gpu_sharing_strategy: The type of GPU sharing strategy to enable on the GPU node.
+        :param pulumi.Input[str] max_shared_clients_per_gpu: The max number of containers that can share a physical GPU.
+        """
+        if gpu_sharing_strategy is not None:
+            pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
+        if max_shared_clients_per_gpu is not None:
+            pulumi.set(__self__, "max_shared_clients_per_gpu", max_shared_clients_per_gpu)
+
+    @property
+    @pulumi.getter(name="gpuSharingStrategy")
+    def gpu_sharing_strategy(self) -> Optional[pulumi.Input['GPUSharingConfigGpuSharingStrategy']]:
+        """
+        The type of GPU sharing strategy to enable on the GPU node.
+        """
+        return pulumi.get(self, "gpu_sharing_strategy")
+
+    @gpu_sharing_strategy.setter
+    def gpu_sharing_strategy(self, value: Optional[pulumi.Input['GPUSharingConfigGpuSharingStrategy']]):
+        pulumi.set(self, "gpu_sharing_strategy", value)
+
+    @property
+    @pulumi.getter(name="maxSharedClientsPerGpu")
+    def max_shared_clients_per_gpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        The max number of containers that can share a physical GPU.
+        """
+        return pulumi.get(self, "max_shared_clients_per_gpu")
+
+    @max_shared_clients_per_gpu.setter
+    def max_shared_clients_per_gpu(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_shared_clients_per_gpu", value)
 
 
 @pulumi.input_type
@@ -2190,6 +2247,7 @@ class NodeConfigArgs:
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
+                 confidential_nodes: Optional[pulumi.Input['ConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None,
@@ -2214,10 +2272,11 @@ class NodeConfigArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['WorkloadMetadataConfigArgs']] = None):
         """
-        Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
+        Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
         :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Advanced features for the Compute Engine VM.
         :param pulumi.Input[str] boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input['GcfsConfigArgs'] gcfs_config: Google Container File System (image streaming) configs.
@@ -2248,6 +2307,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -2330,6 +2391,18 @@ class NodeConfigArgs:
     @boot_disk_kms_key.setter
     def boot_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "boot_disk_kms_key", value)
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional[pulumi.Input['ConfidentialNodesArgs']]:
+        """
+        Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        """
+        return pulumi.get(self, "confidential_nodes")
+
+    @confidential_nodes.setter
+    def confidential_nodes(self, value: Optional[pulumi.Input['ConfidentialNodesArgs']]):
+        pulumi.set(self, "confidential_nodes", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")

@@ -43,7 +43,7 @@ export interface GetControlResult {
      */
     readonly facetSpec: outputs.retail.v2alpha.GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse;
     /**
-     * Immutable. Fully qualified name projects/*&#47;locations/global/catalogs/*&#47;controls/*
+     * Immutable. Fully qualified name `projects/*&#47;locations/global/catalogs/*&#47;controls/*`
      */
     readonly name: string;
     /**
