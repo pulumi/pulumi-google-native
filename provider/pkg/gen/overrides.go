@@ -55,8 +55,9 @@ var resourceNameByPathOverrides = map[string]string{
 	"apis/serving.knative.dev/v1/namespaces/{namespacesId}/services":        "",
 
 	// Apigee.
-	"v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments": "EnvgroupAttachment",
-	"v1/organizations/{organizationsId}/instances/{instancesId}/attachments": "InstanceAttachment",
+	"v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments":                                 "EnvgroupAttachment",
+	"v1/organizations/{organizationsId}/instances/{instancesId}/attachments":                                 "InstanceAttachment",
+	"v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries": "EnvironmentEntry",
 
 	// ApigeeRegistry
 	"v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/deployments/{deploymentsId}/artifacts": "DeploymentArtifact",
