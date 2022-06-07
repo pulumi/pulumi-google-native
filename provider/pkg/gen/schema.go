@@ -528,13 +528,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		// If the request type matches the pattern when it contains a property of the type equal to the response
 		// type of the GET endpoint, then we want to flatten that property, so that the resource inputs are a superset
 		// of the resource outputs. This also helps reconcile the shape of create and update operations.
-		var flatten string
+		flatten := codegen.NewStringSet()
 		createRequest := g.rest.Schemas[dd.createMethod.Request.Ref]
 		if dd.createMethod.Request.Ref != dd.getMethod.Response.Ref {
 			for _, name := range codegen.SortedKeys(createRequest.Properties) {
 				v := createRequest.Properties[name]
 				if v.Ref == dd.getMethod.Response.Ref {
-					flatten = name
+					flatten.Add(name)
 				}
 			}
 		}
@@ -569,13 +569,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		if dd.updateMethod != nil {
 			resourceMeta.Update.Verb = dd.updateMethod.HttpMethod
-			var updateFlatten string
+			updateFlatten := codegen.NewStringSet()
 			updateRequest := g.rest.Schemas[dd.updateMethod.Request.Ref]
 			if dd.updateMethod.Request.Ref != dd.getMethod.Response.Ref {
 				for _, name := range codegen.SortedKeys(updateRequest.Properties) {
 					v := updateRequest.Properties[name]
 					if v.Ref == dd.getMethod.Response.Ref {
-						updateFlatten = name
+						updateFlatten.Add(name)
 					}
 				}
 			}
@@ -611,7 +611,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	requiredProperties := codegen.NewStringSet()
 	if dd.getMethod.Response != nil {
 		response := g.rest.Schemas[dd.getMethod.Response.Ref]
-		responseBag, err := g.genProperties(typeName, &response, "", true, nil)
+		responseBag, err := g.genProperties(typeName, &response, nil, true, nil)
 		if err != nil {
 			return err
 		}
@@ -761,6 +761,12 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	requiredInputProperties.Delete("location")
 	requiredInputProperties.Delete("zone")
 
+	// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi
+	if _, exists := properties["id"]; exists {
+		delete(properties, "id")
+		requiredProperties.Delete("id")
+	}
+
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{
 			Description: description,
@@ -867,7 +873,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 	requiredProperties := codegen.NewStringSet()
 	if dd.getMethod.Response != nil {
 		response := g.rest.Schemas[dd.getMethod.Response.Ref]
-		responseBag, err := g.genProperties(typeName, &response, "", true, nil)
+		responseBag, err := g.genProperties(typeName, &response, nil, true, nil)
 		if err != nil {
 			return err
 		}
@@ -1009,7 +1015,7 @@ func (g *packageGenerator) schemaContainsProperty(schema *discovery.JsonSchema, 
 	return false
 }
 
-func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.JsonSchema, flatten string,
+func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.JsonSchema, flatten codegen.StringSet,
 	isOutput bool, patternParams codegen.StringSet) (*propertyBag, error) {
 	result := propertyBag{
 		specs:         map[string]schema.PropertySpec{},
@@ -1030,9 +1036,9 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 
 		prop := value
 
-		if name == flatten {
+		if flatten.Has(name) {
 			subtypeSchema := g.rest.Schemas[prop.Ref]
-			sub, err := g.genProperties(typeName, &subtypeSchema, "", isOutput, patternParams)
+			sub, err := g.genProperties(typeName, &subtypeSchema, nil, isOutput, patternParams)
 			if err != nil {
 				return nil, err
 			}
@@ -1140,7 +1146,7 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			return nil, errors.Errorf("properties type name %q conflicts with a schema type", tok)
 		}
 		referencedTypeName := fmt.Sprintf("#/types/%s", tok)
-		bag, err := g.genProperties(typePropName, prop, "", isOutput, nil)
+		bag, err := g.genProperties(typePropName, prop, nil, isOutput, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -1175,7 +1181,7 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			g.visitedTypes.Add(tok)
 
 			typeSchema := g.rest.Schemas[schemaName]
-			bag, err := g.genProperties(schemaName, &typeSchema, "", isOutput, nil)
+			bag, err := g.genProperties(schemaName, &typeSchema, nil, isOutput, nil)
 			if err != nil {
 				return nil, err
 			}
