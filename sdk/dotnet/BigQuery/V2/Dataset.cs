@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> CreationTime { get; private set; } = null!;
 
         /// <summary>
+        /// The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+        /// </summary>
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
+        /// <summary>
         /// [Required] A reference that identifies the dataset.
         /// </summary>
         [Output("datasetReference")]

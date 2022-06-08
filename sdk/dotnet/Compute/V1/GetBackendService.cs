@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.BackendServiceIAPResponse Iap;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of resource. Always compute#backendService for backend services.
         /// </summary>
         public readonly string Kind;
@@ -231,6 +235,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.BackendServiceIAPResponse iap,
 
+            string id,
+
             string kind,
 
             string loadBalancingScheme,
@@ -288,6 +294,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Fingerprint = fingerprint;
             HealthChecks = healthChecks;
             Iap = iap;
+            Id = id;
             Kind = kind;
             LoadBalancingScheme = loadBalancingScheme;
             LocalityLbPolicies = localityLbPolicies;

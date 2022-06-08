@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.CustomerEncryptionKeyResponse> ImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("imageId")]
+        public Output<string> ImageId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#image for images.
         /// </summary>
         [Output("kind")]

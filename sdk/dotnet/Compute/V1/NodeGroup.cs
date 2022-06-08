@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("nodeGroupId")]
+        public Output<string> NodeGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the node template to create the node group from.
         /// </summary>
         [Output("nodeTemplate")]

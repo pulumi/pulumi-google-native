@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ComponentTransformResponse> ComponentTransform;
         /// <summary>
+        /// Dataflow service generated id for this stage.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Input sources for this stage.
         /// </summary>
         public readonly ImmutableArray<Outputs.StageSourceResponse> InputSource;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             ImmutableArray<Outputs.ComponentTransformResponse> componentTransform,
 
+            string id,
+
             ImmutableArray<Outputs.StageSourceResponse> inputSource,
 
             string kind,
@@ -63,6 +69,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         {
             ComponentSource = componentSource;
             ComponentTransform = componentTransform;
+            Id = id;
             InputSource = inputSource;
             Kind = kind;
             Name = name;

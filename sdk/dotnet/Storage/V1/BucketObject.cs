@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the object, including the bucket name, object name, and generation number.
+        /// </summary>
+        [Output("bucketObjectId")]
+        public Output<string> BucketObjectId { get; private set; } = null!;
+
+        /// <summary>
         /// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
         /// </summary>
         [Output("cacheControl")]
@@ -265,6 +271,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the object, including the bucket name, object name, and generation number.
+        /// </summary>
+        [Input("bucketObjectId")]
+        public Input<string>? BucketObjectId { get; set; }
+
+        /// <summary>
         /// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
         /// </summary>
         [Input("cacheControl")]
@@ -335,12 +347,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }
-
-        /// <summary>
-        /// The ID of the object, including the bucket name, object name, and generation number.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.

@@ -118,6 +118,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.CustomerEncryptionKeyResponse> SnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("snapshotId")]
+        public Output<string> SnapshotId { get; private set; } = null!;
+
+        /// <summary>
         /// The source disk used to create this snapshot.
         /// </summary>
         [Output("sourceDisk")]

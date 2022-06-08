@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> InstanceGroup { get; private set; } = null!;
 
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        [Output("instanceGroupManagerId")]
+        public Output<string> InstanceGroupManagerId { get; private set; } = null!;
+
+        /// <summary>
         /// The repair policy for this managed instance group.
         /// </summary>
         [Output("instanceLifecyclePolicy")]

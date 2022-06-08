@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Opaque ID field of the job
+        /// </summary>
+        [Output("jobId")]
+        public Output<string> JobId { get; private set; } = null!;
+
+        /// <summary>
         /// [Optional] Reference describing the unique-per-user name of the job.
         /// </summary>
         [Output("jobReference")]

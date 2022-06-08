@@ -84,6 +84,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionCommitmentId")]
+        public Output<string> RegionCommitmentId { get; private set; } = null!;
+
+        /// <summary>
         /// List of reservations in this commitment.
         /// </summary>
         [Output("reservations")]

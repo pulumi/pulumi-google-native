@@ -208,6 +208,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("subnetworkId")]
+        public Output<string> SubnetworkId { get; private set; } = null!;
+
+        /// <summary>
         /// A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
         /// </summary>
         [Output("vlans")]

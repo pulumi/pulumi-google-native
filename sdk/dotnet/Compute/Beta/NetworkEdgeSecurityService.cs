@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("networkEdgeSecurityServiceId")]
+        public Output<string> NetworkEdgeSecurityServiceId { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the region where the resource resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]

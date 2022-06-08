@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string GcpService;
         /// <summary>
+        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
         /// </summary>
         public readonly ImmutableArray<Outputs.LunRangeResponse> LunRanges;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         private VolumeConfigResponse(
             string gcpService,
 
+            string id,
+
             ImmutableArray<Outputs.LunRangeResponse> lunRanges,
 
             ImmutableArray<string> machineIds,
@@ -80,6 +86,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             string userNote)
         {
             GcpService = gcpService;
+            Id = id;
             LunRanges = lunRanges;
             MachineIds = machineIds;
             Name = name;

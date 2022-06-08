@@ -112,6 +112,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        [Output("serviceAttachmentId")]
+        public Output<string> ServiceAttachmentId { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of a service serving the endpoint identified by this service attachment.
         /// </summary>
         [Output("targetService")]

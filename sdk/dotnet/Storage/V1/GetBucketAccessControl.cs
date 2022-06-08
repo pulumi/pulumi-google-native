@@ -97,6 +97,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
         /// </summary>
         public readonly string Kind;
@@ -127,6 +131,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string etag,
 
+            string id,
+
             string kind,
 
             Outputs.BucketAccessControlProjectTeamResponse projectTeam,
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             Entity = entity;
             EntityId = entityId;
             Etag = etag;
+            Id = id;
             Kind = kind;
             ProjectTeam = projectTeam;
             Role = role;

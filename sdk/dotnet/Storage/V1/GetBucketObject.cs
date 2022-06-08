@@ -154,6 +154,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly string Generation;
         /// <summary>
+        /// The ID of the object, including the bucket name, object name, and generation number.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The kind of item this is. For objects, this is always storage#object.
         /// </summary>
         public readonly string Kind;
@@ -252,6 +256,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string generation,
 
+            string id,
+
             string kind,
 
             string kmsKeyName,
@@ -300,6 +306,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             Etag = etag;
             EventBasedHold = eventBasedHold;
             Generation = generation;
+            Id = id;
             Kind = kind;
             KmsKeyName = kmsKeyName;
             Md5Hash = md5Hash;

@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Object { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        [Output("objectAccessControlId")]
+        public Output<string> ObjectAccessControlId { get; private set; } = null!;
+
+        /// <summary>
         /// The project team associated with the entity, if any.
         /// </summary>
         [Output("projectTeam")]
@@ -198,12 +204,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? Generation { get; set; }
 
         /// <summary>
-        /// The ID of the access-control entry.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         /// </summary>
         [Input("kind")]
@@ -214,6 +214,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("object", required: true)]
         public Input<string> Object { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        [Input("objectAccessControlId")]
+        public Input<string>? ObjectAccessControlId { get; set; }
 
         /// <summary>
         /// The project team associated with the entity, if any.

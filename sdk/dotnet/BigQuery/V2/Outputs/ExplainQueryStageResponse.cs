@@ -38,6 +38,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string EndMs;
         /// <summary>
+        /// Unique ID for stage within plan.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// IDs for stages that are inputs to this stage.
         /// </summary>
         public readonly ImmutableArray<string> InputStages;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string endMs,
 
+            string id,
+
             ImmutableArray<string> inputStages,
 
             string name,
@@ -196,6 +202,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ComputeRatioAvg = computeRatioAvg;
             ComputeRatioMax = computeRatioMax;
             EndMs = endMs;
+            Id = id;
             InputStages = inputStages;
             Name = name;
             ParallelInputs = parallelInputs;

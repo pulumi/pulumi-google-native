@@ -106,6 +106,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("routeId")]
+        public Output<string> RouteId { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The status of the route.
         /// </summary>
         [Output("routeStatus")]

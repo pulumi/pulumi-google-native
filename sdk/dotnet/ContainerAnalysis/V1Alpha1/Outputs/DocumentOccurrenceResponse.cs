@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExternalDocumentRefs;
         /// <summary>
+        /// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
         /// </summary>
         public readonly string LicenseListVersion;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             ImmutableArray<string> externalDocumentRefs,
 
+            string id,
+
             string licenseListVersion,
 
             string @namespace,
@@ -72,6 +78,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             Creators = creators;
             DocumentComment = documentComment;
             ExternalDocumentRefs = externalDocumentRefs;
+            Id = id;
             LicenseListVersion = licenseListVersion;
             Namespace = @namespace;
             Title = title;

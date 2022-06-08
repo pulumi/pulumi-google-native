@@ -85,6 +85,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#instance for instances.
         /// </summary>
         [Output("kind")]

@@ -59,6 +59,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>
         public readonly string Description;
+        public readonly string Id;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -89,6 +90,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         private GetCompositeTypeResult(
             string description,
 
+            string id,
+
             string insertTime,
 
             ImmutableArray<Outputs.CompositeTypeLabelEntryResponse> labels,
@@ -104,6 +107,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
             Outputs.TemplateContentsResponse templateContents)
         {
             Description = description;
+            Id = id;
             InsertTime = insertTime;
             Labels = labels;
             Name = name;

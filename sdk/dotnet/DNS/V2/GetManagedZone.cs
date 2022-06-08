@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.DNS.V2
         /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
         /// </summary>
         public readonly Outputs.ManagedZoneForwardingConfigResponse ForwardingConfig;
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only)
+        /// </summary>
+        public readonly string Id;
         public readonly string Kind;
         /// <summary>
         /// User labels.
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.DNS.V2
 
             Outputs.ManagedZoneForwardingConfigResponse forwardingConfig,
 
+            string id,
+
             string kind,
 
             ImmutableDictionary<string, string> labels,
@@ -166,6 +172,7 @@ namespace Pulumi.GoogleNative.DNS.V2
             DnsName = dnsName;
             DnssecConfig = dnssecConfig;
             ForwardingConfig = forwardingConfig;
+            Id = id;
             Kind = kind;
             Labels = labels;
             Name = name;

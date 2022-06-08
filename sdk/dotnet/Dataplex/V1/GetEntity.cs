@@ -120,6 +120,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1StorageFormatResponse Format;
         /// <summary>
+        /// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
         /// </summary>
         public readonly string Name;
@@ -162,6 +166,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1
 
             Outputs.GoogleCloudDataplexV1StorageFormatResponse format,
 
+            string id,
+
             string name,
 
             Outputs.GoogleCloudDataplexV1SchemaResponse schema,
@@ -182,6 +188,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
             DisplayName = displayName;
             Etag = etag;
             Format = format;
+            Id = id;
             Name = name;
             Schema = schema;
             System = system;

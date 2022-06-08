@@ -71,6 +71,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionNetworkFirewallPolicyId")]
+        public Output<string> RegionNetworkFirewallPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         /// </summary>
         [Output("ruleTupleCount")]

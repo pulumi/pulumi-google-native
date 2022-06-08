@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         public readonly string IpCidrRange;
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string fingerprint,
 
+            string id,
+
             string ipCidrRange,
 
             bool isLiveMigration,
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             Fingerprint = fingerprint;
+            Id = id;
             IpCidrRange = ipCidrRange;
             IsLiveMigration = isLiveMigration;
             Kind = kind;

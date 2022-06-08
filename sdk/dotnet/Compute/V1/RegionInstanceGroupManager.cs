@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        [Output("regionInstanceGroupManagerId")]
+        public Output<string> RegionInstanceGroupManagerId { get; private set; } = null!;
+
+        /// <summary>
         /// The URL for this managed instance group. The server defines this URL.
         /// </summary>
         [Output("selfLink")]

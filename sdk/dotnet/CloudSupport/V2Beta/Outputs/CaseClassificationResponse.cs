@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
         /// The display name of the classification.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
-        private CaseClassificationResponse(string displayName)
+        private CaseClassificationResponse(
+            string displayName,
+
+            string id)
         {
             DisplayName = displayName;
+            Id = id;
         }
     }
 }

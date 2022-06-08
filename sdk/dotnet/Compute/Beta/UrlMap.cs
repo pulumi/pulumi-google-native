@@ -99,6 +99,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("tests")]
         public Output<ImmutableArray<Outputs.UrlMapTestResponse>> Tests { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("urlMapId")]
+        public Output<string> UrlMapId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a UrlMap resource with the given unique name, arguments, and options.

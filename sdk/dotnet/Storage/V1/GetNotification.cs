@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly ImmutableArray<string> EventTypes;
         /// <summary>
+        /// The ID of the notification.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The kind of item this is. For notifications, this is always storage#notification.
         /// </summary>
         public readonly string Kind;
@@ -102,6 +106,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             ImmutableArray<string> eventTypes,
 
+            string id,
+
             string kind,
 
             string objectNamePrefix,
@@ -115,6 +121,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             CustomAttributes = customAttributes;
             Etag = etag;
             EventTypes = eventTypes;
+            Id = id;
             Kind = kind;
             ObjectNamePrefix = objectNamePrefix;
             PayloadFormat = payloadFormat;

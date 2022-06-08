@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly string HomePage;
         /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// package or alternative values, if the governing license cannot be determined
         /// </summary>
         public readonly Outputs.LicenseResponse LicenseConcluded;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 
             string homePage,
 
+            string id,
+
             Outputs.LicenseResponse licenseConcluded,
 
             string packageType,
@@ -76,6 +82,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
             Comment = comment;
             Filename = filename;
             HomePage = homePage;
+            Id = id;
             LicenseConcluded = licenseConcluded;
             PackageType = packageType;
             SourceInfo = sourceInfo;

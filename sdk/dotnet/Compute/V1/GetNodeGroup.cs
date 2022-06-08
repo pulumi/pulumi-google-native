@@ -75,6 +75,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public readonly string Description;
         public readonly string Fingerprint;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The type of the resource. Always compute#nodeGroup for node group.
         /// </summary>
         public readonly string Kind;
@@ -119,6 +123,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string fingerprint,
 
+            string id,
+
             string kind,
 
             string locationHint,
@@ -143,6 +149,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             Fingerprint = fingerprint;
+            Id = id;
             Kind = kind;
             LocationHint = locationHint;
             MaintenancePolicy = maintenancePolicy;

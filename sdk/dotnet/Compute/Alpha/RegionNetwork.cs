@@ -100,6 +100,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionNetworkId")]
+        public Output<string> RegionNetworkId { get; private set; } = null!;
+
+        /// <summary>
         /// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
         /// </summary>
         [Output("routingConfig")]

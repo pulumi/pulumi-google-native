@@ -75,6 +75,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
         /// </summary>
         public readonly string DagTimeout;
+        public readonly string Id;
         /// <summary>
         /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
@@ -110,6 +111,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
             string dagTimeout,
 
+            string id,
+
             ImmutableArray<Outputs.OrderedJobResponse> jobs,
 
             ImmutableDictionary<string, string> labels,
@@ -126,6 +129,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         {
             CreateTime = createTime;
             DagTimeout = dagTimeout;
+            Id = id;
             Jobs = jobs;
             Labels = labels;
             Name = name;

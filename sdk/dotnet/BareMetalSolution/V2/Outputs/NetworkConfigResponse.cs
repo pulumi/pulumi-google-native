@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string GcpService;
         /// <summary>
+        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The name of the network config.
         /// </summary>
         public readonly string Name;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string gcpService,
 
+            string id,
+
             string name,
 
             string serviceCidr,
@@ -76,6 +82,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             Bandwidth = bandwidth;
             Cidr = cidr;
             GcpService = gcpService;
+            Id = id;
             Name = name;
             ServiceCidr = serviceCidr;
             Type = type;

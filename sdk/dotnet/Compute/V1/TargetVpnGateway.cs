@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetVpnGatewayId")]
+        public Output<string> TargetVpnGatewayId { get; private set; } = null!;
+
+        /// <summary>
         /// A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
         /// </summary>
         [Output("tunnels")]

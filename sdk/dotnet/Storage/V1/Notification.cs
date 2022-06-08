@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the notification.
+        /// </summary>
+        [Output("notificationId")]
+        public Output<string> NotificationId { get; private set; } = null!;
+
+        /// <summary>
         /// If present, only apply this notification configuration to object names that begin with this prefix.
         /// </summary>
         [Output("objectNamePrefix")]
@@ -143,16 +149,16 @@ namespace Pulumi.GoogleNative.Storage.V1
         }
 
         /// <summary>
-        /// The ID of the notification.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// The kind of item this is. For notifications, this is always storage#notification.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
+
+        /// <summary>
+        /// The ID of the notification.
+        /// </summary>
+        [Input("notificationId")]
+        public Input<string>? NotificationId { get; set; }
 
         /// <summary>
         /// If present, only apply this notification configuration to object names that begin with this prefix.

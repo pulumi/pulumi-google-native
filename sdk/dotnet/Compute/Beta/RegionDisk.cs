@@ -142,6 +142,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionDiskId")]
+        public Output<string> RegionDiskId { get; private set; } = null!;
+
+        /// <summary>
         /// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         /// </summary>
         [Output("replicaZones")]

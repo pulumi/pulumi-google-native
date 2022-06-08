@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         /// </summary>
         public readonly string Kind;
@@ -146,6 +150,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string description,
 
+            string id,
+
             string kind,
 
             string name,
@@ -173,6 +179,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             DefaultPort = defaultPort;
             Description = description;
+            Id = id;
             Kind = kind;
             Name = name;
             Network = network;

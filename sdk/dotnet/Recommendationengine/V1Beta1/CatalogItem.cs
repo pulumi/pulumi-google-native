@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
     public partial class CatalogItem : Pulumi.CustomResource
     {
         /// <summary>
+        /// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        /// </summary>
+        [Output("catalogItemId")]
+        public Output<string> CatalogItemId { get; private set; } = null!;
+
+        /// <summary>
         /// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
         /// </summary>
         [Output("categoryHierarchies")]
@@ -112,6 +118,12 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
 
+        /// <summary>
+        /// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        /// </summary>
+        [Input("catalogItemId", required: true)]
+        public Input<string> CatalogItemId { get; set; } = null!;
+
         [Input("categoryHierarchies", required: true)]
         private InputList<Inputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs>? _categoryHierarchies;
 
@@ -129,12 +141,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.

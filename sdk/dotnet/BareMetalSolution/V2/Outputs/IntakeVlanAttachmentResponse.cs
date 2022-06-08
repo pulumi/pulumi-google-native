@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
     public sealed class IntakeVlanAttachmentResponse
     {
         /// <summary>
+        /// Identifier of the VLAN attachment.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Attachment pairing key.
         /// </summary>
         public readonly string PairingKey;
 
         [OutputConstructor]
-        private IntakeVlanAttachmentResponse(string pairingKey)
+        private IntakeVlanAttachmentResponse(
+            string id,
+
+            string pairingKey)
         {
+            Id = id;
             PairingKey = pairingKey;
         }
     }

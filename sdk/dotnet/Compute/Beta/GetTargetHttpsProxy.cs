@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> HttpFilters;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         /// </summary>
         public readonly string Kind;
@@ -146,6 +150,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<string> httpFilters,
 
+            string id,
+
             string kind,
 
             string name,
@@ -174,6 +180,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Description = description;
             Fingerprint = fingerprint;
             HttpFilters = httpFilters;
+            Id = id;
             Kind = kind;
             Name = name;
             ProxyBind = proxyBind;

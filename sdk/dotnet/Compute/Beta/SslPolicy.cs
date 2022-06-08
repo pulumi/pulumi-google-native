@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("sslPolicyId")]
+        public Output<string> SslPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         /// </summary>
         [Output("warnings")]

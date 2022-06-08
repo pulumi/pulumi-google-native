@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The URL of the Instance Group resource.
         /// </summary>
         public readonly string InstanceGroup;
@@ -202,6 +206,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string fingerprint,
 
+            string id,
+
             string instanceGroup,
 
             Outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse instanceLifecyclePolicy,
@@ -253,6 +259,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             DistributionPolicy = distributionPolicy;
             FailoverAction = failoverAction;
             Fingerprint = fingerprint;
+            Id = id;
             InstanceGroup = instanceGroup;
             InstanceLifecyclePolicy = instanceLifecyclePolicy;
             InstanceTemplate = instanceTemplate;

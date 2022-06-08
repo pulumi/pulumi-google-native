@@ -95,6 +95,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<ImmutableArray<Outputs.NetworkEndpointResponse>> NetworkEndpoints { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the TPU Node.
+        /// </summary>
+        [Output("nodeId")]
+        public Output<string> NodeId { get; private set; } = null!;
+
+        /// <summary>
         /// The runtime version running in the Node.
         /// </summary>
         [Output("runtimeVersion")]

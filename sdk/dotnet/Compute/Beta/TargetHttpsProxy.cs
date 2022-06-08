@@ -118,6 +118,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SslPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetHttpsProxyId")]
+        public Output<string> TargetHttpsProxyId { get; private set; } = null!;
+
+        /// <summary>
         /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map 
         /// </summary>
         [Output("urlMap")]

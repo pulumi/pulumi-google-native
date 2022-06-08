@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// </summary>
         public readonly Outputs.GatewayConfigResponse GatewayConfig;
         /// <summary>
+        /// The user-defined device identifier. The device ID must be unique within a device registry.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
         /// </summary>
         public readonly string LastConfigAckTime;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
 
             Outputs.GatewayConfigResponse gatewayConfig,
 
+            string id,
+
             string lastConfigAckTime,
 
             string lastConfigSendTime,
@@ -176,6 +182,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
             Config = config;
             Credentials = credentials;
             GatewayConfig = gatewayConfig;
+            Id = id;
             LastConfigAckTime = lastConfigAckTime;
             LastConfigSendTime = lastConfigSendTime;
             LastErrorStatus = lastErrorStatus;

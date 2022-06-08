@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string DestRange;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
         /// </summary>
         public readonly string IlbRouteBehaviorOnUnhealthy;
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string destRange,
 
+            string id,
+
             string ilbRouteBehaviorOnUnhealthy,
 
             string kind,
@@ -207,6 +213,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             Description = description;
             DestRange = destRange;
+            Id = id;
             IlbRouteBehaviorOnUnhealthy = ilbRouteBehaviorOnUnhealthy;
             Kind = kind;
             Name = name;

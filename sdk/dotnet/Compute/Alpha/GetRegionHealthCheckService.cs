@@ -86,6 +86,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string HealthStatusAggregationStrategy;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
         /// </summary>
         public readonly string Kind;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string healthStatusAggregationStrategy,
 
+            string id,
+
             string kind,
 
             string name,
@@ -148,6 +154,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             HealthChecks = healthChecks;
             HealthStatusAggregationPolicy = healthStatusAggregationPolicy;
             HealthStatusAggregationStrategy = healthStatusAggregationStrategy;
+            Id = id;
             Kind = kind;
             Name = name;
             NetworkEndpointGroups = networkEndpointGroups;

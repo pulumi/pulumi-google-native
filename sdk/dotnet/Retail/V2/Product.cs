@@ -142,6 +142,12 @@ namespace Pulumi.GoogleNative.Retail.V2
         public Output<string> PrimaryProductId { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
+        /// </summary>
+        [Output("productId")]
+        public Output<string> ProductId { get; private set; } = null!;
+
+        /// <summary>
         /// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
         /// </summary>
         [Output("promotions")]
@@ -378,12 +384,6 @@ namespace Pulumi.GoogleNative.Retail.V2
         [Input("gtin")]
         public Input<string>? Gtin { get; set; }
 
-        /// <summary>
-        /// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("images")]
         private InputList<Inputs.GoogleCloudRetailV2ImageArgs>? _images;
 
@@ -448,7 +448,7 @@ namespace Pulumi.GoogleNative.Retail.V2
         public Input<string>? PrimaryProductId { get; set; }
 
         /// <summary>
-        /// Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
         /// </summary>
         [Input("productId", required: true)]
         public Input<string> ProductId { get; set; } = null!;

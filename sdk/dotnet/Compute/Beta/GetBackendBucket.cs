@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool EnableCdn;
         /// <summary>
+        /// Unique identifier for the resource; defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource.
         /// </summary>
         public readonly string Kind;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             bool enableCdn,
 
+            string id,
+
             string kind,
 
             string name,
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Description = description;
             EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
+            Id = id;
             Kind = kind;
             Name = name;
             SelfLink = selfLink;

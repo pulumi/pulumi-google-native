@@ -97,6 +97,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionSecurityPolicyId")]
+        public Output<string> RegionSecurityPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         /// </summary>
         [Output("ruleTupleCount")]

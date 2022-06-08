@@ -69,6 +69,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetTcpProxyId")]
+        public Output<string> TargetTcpProxyId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TargetTcpProxy resource with the given unique name, arguments, and options.

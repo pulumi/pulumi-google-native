@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class Autoscaler : Pulumi.CustomResource
     {
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("autoscalerId")]
+        public Output<string> AutoscalerId { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         /// </summary>
         [Output("autoscalingPolicy")]

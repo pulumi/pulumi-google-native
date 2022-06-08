@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
         /// </summary>
         public readonly Outputs.GoogleCloudRecommendationengineV1beta1FeatureMapResponse ItemAttributes;
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
 
             string description,
 
+            string id,
+
             Outputs.GoogleCloudRecommendationengineV1beta1FeatureMapResponse itemAttributes,
 
             string itemGroupId,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         {
             CategoryHierarchies = categoryHierarchies;
             Description = description;
+            Id = id;
             ItemAttributes = itemAttributes;
             ItemGroupId = itemGroupId;
             LanguageCode = languageCode;

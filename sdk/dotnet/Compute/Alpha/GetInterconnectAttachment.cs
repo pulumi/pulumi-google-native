@@ -126,6 +126,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string GoogleReferenceId;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
         /// </summary>
         public readonly string Interconnect;
@@ -244,6 +248,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string googleReferenceId,
 
+            string id,
+
             string interconnect,
 
             ImmutableArray<string> ipsecInternalAddresses,
@@ -302,6 +308,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             EdgeAvailabilityDomain = edgeAvailabilityDomain;
             Encryption = encryption;
             GoogleReferenceId = googleReferenceId;
+            Id = id;
             Interconnect = interconnect;
             IpsecInternalAddresses = ipsecInternalAddresses;
             Kind = kind;

@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.NotificationEndpointGrpcSettingsResponse GrpcSettings;
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#notificationEndpoint for notification endpoints.
         /// </summary>
         public readonly string Kind;
@@ -98,6 +102,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             Outputs.NotificationEndpointGrpcSettingsResponse grpcSettings,
 
+            string id,
+
             string kind,
 
             string name,
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             CreationTimestamp = creationTimestamp;
             Description = description;
             GrpcSettings = grpcSettings;
+            Id = id;
             Kind = kind;
             Name = name;
             Region = region;

@@ -14,13 +14,21 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2.Outputs
     public sealed class MemcacheParametersResponse
     {
         /// <summary>
+        /// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// User defined set of parameters to use in the memcached process.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Params;
 
         [OutputConstructor]
-        private MemcacheParametersResponse(ImmutableDictionary<string, string> @params)
+        private MemcacheParametersResponse(
+            string id,
+
+            ImmutableDictionary<string, string> @params)
         {
+            Id = id;
             Params = @params;
         }
     }

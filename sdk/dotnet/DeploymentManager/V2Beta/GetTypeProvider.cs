@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         /// </summary>
         public readonly string DescriptorUrl;
         /// <summary>
+        /// Unique identifier for the resource defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string InsertTime;
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
 
             string descriptorUrl,
 
+            string id,
+
             string insertTime,
 
             ImmutableArray<Outputs.TypeProviderLabelEntryResponse> labels,
@@ -129,6 +135,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
             CustomCertificateAuthorityRoots = customCertificateAuthorityRoots;
             Description = description;
             DescriptorUrl = descriptorUrl;
+            Id = id;
             InsertTime = insertTime;
             Labels = labels;
             Name = name;

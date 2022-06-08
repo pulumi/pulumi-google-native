@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// </summary>
         public readonly ImmutableArray<Outputs.ResourceRecordSetResponse> Deletions;
         /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only).
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// If the DNS queries for the zone will be served.
         /// </summary>
         public readonly bool IsServing;
@@ -95,6 +99,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
             ImmutableArray<Outputs.ResourceRecordSetResponse> deletions,
 
+            string id,
+
             bool isServing,
 
             string kind,
@@ -105,6 +111,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         {
             Additions = additions;
             Deletions = deletions;
+            Id = id;
             IsServing = isServing;
             Kind = kind;
             StartTime = startTime;

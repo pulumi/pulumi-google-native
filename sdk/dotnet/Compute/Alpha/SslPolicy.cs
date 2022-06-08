@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("sslPolicyId")]
+        public Output<string> SslPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         /// </summary>
         [Output("tlsSettings")]

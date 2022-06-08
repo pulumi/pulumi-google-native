@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.PacketMirroringFilterResponse Filter;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#packetMirroring for packet mirrorings.
         /// </summary>
         public readonly string Kind;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.PacketMirroringFilterResponse filter,
 
+            string id,
+
             string kind,
 
             Outputs.PacketMirroringMirroredResourceInfoResponse mirroredResources,
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Description = description;
             Enable = enable;
             Filter = filter;
+            Id = id;
             Kind = kind;
             MirroredResources = mirroredResources;
             Name = name;

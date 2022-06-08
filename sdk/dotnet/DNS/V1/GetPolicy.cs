@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
         /// </summary>
         public readonly bool EnableLogging;
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only).
+        /// </summary>
+        public readonly string Id;
         public readonly string Kind;
         /// <summary>
         /// User-assigned name for this policy.
@@ -97,6 +101,8 @@ namespace Pulumi.GoogleNative.DNS.V1
 
             bool enableLogging,
 
+            string id,
+
             string kind,
 
             string name,
@@ -107,6 +113,7 @@ namespace Pulumi.GoogleNative.DNS.V1
             Description = description;
             EnableInboundForwarding = enableInboundForwarding;
             EnableLogging = enableLogging;
+            Id = id;
             Kind = kind;
             Name = name;
             Networks = networks;

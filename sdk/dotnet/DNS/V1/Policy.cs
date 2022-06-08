@@ -54,6 +54,12 @@ namespace Pulumi.GoogleNative.DNS.V1
         [Output("networks")]
         public Output<ImmutableArray<Outputs.PolicyNetworkResponse>> Networks { get; private set; } = null!;
 
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only).
+        /// </summary>
+        [Output("policyId")]
+        public Output<string> PolicyId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Policy resource with the given unique name, arguments, and options.

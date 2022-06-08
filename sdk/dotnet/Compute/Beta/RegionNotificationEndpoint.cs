@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        [Output("regionNotificationEndpointId")]
+        public Output<string> RegionNotificationEndpointId { get; private set; } = null!;
+
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]

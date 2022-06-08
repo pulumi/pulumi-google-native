@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> PdpScope { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        [Output("publicAdvertisedPrefixId")]
+        public Output<string> PublicAdvertisedPrefixId { get; private set; } = null!;
+
+        /// <summary>
         /// The list of public delegated prefixes that exist for this public advertised prefix.
         /// </summary>
         [Output("publicDelegatedPrefixs")]

@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> AddressValue { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("addressId")]
+        public Output<string> AddressId { get; private set; } = null!;
+
+        /// <summary>
         /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         /// </summary>
         [Output("addressType")]

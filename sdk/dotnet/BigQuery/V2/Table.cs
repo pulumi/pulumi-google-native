@@ -221,6 +221,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.StreamingbufferResponse> StreamingBuffer { get; private set; } = null!;
 
         /// <summary>
+        /// An opaque ID uniquely identifying the table.
+        /// </summary>
+        [Output("tableId")]
+        public Output<string> TableId { get; private set; } = null!;
+
+        /// <summary>
         /// [Required] Reference describing the ID of this table.
         /// </summary>
         [Output("tableReference")]

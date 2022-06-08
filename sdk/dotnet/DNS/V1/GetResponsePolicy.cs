@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// User-provided description for this Response Policy.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only).
+        /// </summary>
+        public readonly string Id;
         public readonly string Kind;
         /// <summary>
         /// List of network names specifying networks to which this policy is applied.
@@ -79,6 +83,8 @@ namespace Pulumi.GoogleNative.DNS.V1
         private GetResponsePolicyResult(
             string description,
 
+            string id,
+
             string kind,
 
             ImmutableArray<Outputs.ResponsePolicyNetworkResponse> networks,
@@ -86,6 +92,7 @@ namespace Pulumi.GoogleNative.DNS.V1
             string responsePolicyName)
         {
             Description = description;
+            Id = id;
             Kind = kind;
             Networks = networks;
             ResponsePolicyName = responsePolicyName;

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// A unique identifier for this future reservation. The server defines this identifier.
+        /// </summary>
+        [Output("futureReservationId")]
+        public Output<string> FutureReservationId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#futureReservation for future reservations.
         /// </summary>
         [Output("kind")]

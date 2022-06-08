@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool EnableLogging;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#firewall for firewall rules.
         /// </summary>
         public readonly string Kind;
@@ -154,6 +158,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             bool enableLogging,
 
+            string id,
+
             string kind,
 
             Outputs.FirewallLogConfigResponse logConfig,
@@ -186,6 +192,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Direction = direction;
             Disabled = disabled;
             EnableLogging = enableLogging;
+            Id = id;
             Kind = kind;
             LogConfig = logConfig;
             Name = name;

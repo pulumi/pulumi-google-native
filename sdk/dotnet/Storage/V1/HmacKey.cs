@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the HMAC key, including the Project ID and the Access ID.
+        /// </summary>
+        [Output("hmacKeyId")]
+        public Output<string> HmacKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
         /// </summary>
         [Output("kind")]

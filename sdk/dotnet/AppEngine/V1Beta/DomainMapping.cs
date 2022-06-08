@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     public partial class DomainMapping : Pulumi.CustomResource
     {
         /// <summary>
+        /// Relative name of the domain serving the application. Example: example.com.
+        /// </summary>
+        [Output("domainMappingId")]
+        public Output<string> DomainMappingId { get; private set; } = null!;
+
+        /// <summary>
         /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
         /// </summary>
         [Output("name")]
@@ -85,8 +91,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("domainMappingId")]
+        public Input<string>? DomainMappingId { get; set; }
 
         /// <summary>
         /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.

@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionHealthCheckServiceId")]
+        public Output<string> RegionHealthCheckServiceId { get; private set; } = null!;
+
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]

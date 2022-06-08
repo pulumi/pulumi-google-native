@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of resource. Always compute#license for licenses.
         /// </summary>
         public readonly string Kind;
@@ -97,6 +101,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string description,
 
+            string id,
+
             string kind,
 
             string licenseCode,
@@ -112,6 +118,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ChargesUseFee = chargesUseFee;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Kind = kind;
             LicenseCode = licenseCode;
             Name = name;

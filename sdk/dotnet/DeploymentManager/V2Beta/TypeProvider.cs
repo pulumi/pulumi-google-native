@@ -81,6 +81,12 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// Unique identifier for the resource defined by the server.
+        /// </summary>
+        [Output("typeProviderId")]
+        public Output<string> TypeProviderId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TypeProvider resource with the given unique name, arguments, and options.

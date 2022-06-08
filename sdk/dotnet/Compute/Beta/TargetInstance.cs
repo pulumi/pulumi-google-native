@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetInstanceId")]
+        public Output<string> TargetInstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("zone")]

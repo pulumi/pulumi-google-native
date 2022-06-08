@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionSecurityPolicyId")]
+        public Output<string> RegionSecurityPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         /// </summary>
         [Output("rules")]

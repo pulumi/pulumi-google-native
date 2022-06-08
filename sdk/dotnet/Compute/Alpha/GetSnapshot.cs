@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#snapshot for Snapshot resources.
         /// </summary>
         public readonly string Kind;
@@ -214,6 +218,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
+            string id,
+
             string kind,
 
             string labelFingerprint,
@@ -272,6 +278,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             DownloadBytes = downloadBytes;
             GuestFlush = guestFlush;
             GuestOsFeatures = guestOsFeatures;
+            Id = id;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

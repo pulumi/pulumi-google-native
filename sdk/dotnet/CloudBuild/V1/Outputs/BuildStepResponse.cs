@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Env;
         /// <summary>
+        /// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
         /// </summary>
         public readonly string Name;
@@ -79,6 +83,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             ImmutableArray<string> env,
 
+            string id,
+
             string name,
 
             Outputs.TimeSpanResponse pullTiming,
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             Dir = dir;
             Entrypoint = entrypoint;
             Env = env;
+            Id = id;
             Name = name;
             PullTiming = pullTiming;
             Script = script;

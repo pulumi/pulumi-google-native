@@ -150,6 +150,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
+        /// Unique id for the cluster.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Configuration for Identity Service component.
         /// </summary>
         public readonly Outputs.IdentityServiceConfigResponse IdentityServiceConfig;
@@ -354,6 +358,8 @@ namespace Pulumi.GoogleNative.Container.V1
 
             string expireTime,
 
+            string id,
+
             Outputs.IdentityServiceConfigResponse identityServiceConfig,
 
             string initialClusterVersion,
@@ -455,6 +461,7 @@ namespace Pulumi.GoogleNative.Container.V1
             EnableTpu = enableTpu;
             Endpoint = endpoint;
             ExpireTime = expireTime;
+            Id = id;
             IdentityServiceConfig = identityServiceConfig;
             InitialClusterVersion = initialClusterVersion;
             InitialNodeCount = initialNodeCount;

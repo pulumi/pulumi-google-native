@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
         /// URIs of GPG keys.
         /// </summary>
         public readonly ImmutableArray<string> GpgKeys;
+        /// <summary>
+        /// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private OSPolicyResourceRepositoryResourceZypperRepositoryResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 
             string displayName,
 
-            ImmutableArray<string> gpgKeys)
+            ImmutableArray<string> gpgKeys,
+
+            string id)
         {
             BaseUrl = baseUrl;
             DisplayName = displayName;
             GpgKeys = gpgKeys;
+            Id = id;
         }
     }
 }

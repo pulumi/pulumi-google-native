@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly Outputs.BucketIamConfigurationResponse IamConfiguration;
         /// <summary>
+        /// The ID of the bucket. For buckets, the id and name properties are the same.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The kind of item this is. For buckets, this is always storage#bucket.
         /// </summary>
         public readonly string Kind;
@@ -206,6 +210,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             Outputs.BucketIamConfigurationResponse iamConfiguration,
 
+            string id,
+
             string kind,
 
             ImmutableDictionary<string, string> labels,
@@ -253,6 +259,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             Encryption = encryption;
             Etag = etag;
             IamConfiguration = iamConfiguration;
+            Id = id;
             Kind = kind;
             Labels = labels;
             Lifecycle = lifecycle;

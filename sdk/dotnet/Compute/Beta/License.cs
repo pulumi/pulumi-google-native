@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> LicenseCode { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("licenseId")]
+        public Output<string> LicenseId { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
         /// </summary>
         [Output("name")]

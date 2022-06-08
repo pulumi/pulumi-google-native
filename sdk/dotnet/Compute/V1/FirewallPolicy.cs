@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("firewallPolicyId")]
+        public Output<string> FirewallPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
         /// </summary>
         [Output("kind")]

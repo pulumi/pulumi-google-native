@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:AutoscalingPolicy")]
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// </summary>
+        [Output("autoscalingPolicyId")]
+        public Output<string> AutoscalingPolicyId { get; private set; } = null!;
+
         [Output("basicAlgorithm")]
         public Output<Outputs.BasicAutoscalingAlgorithmResponse> BasicAlgorithm { get; private set; } = null!;
 
@@ -82,14 +88,14 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 
     public sealed class AutoscalingPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("basicAlgorithm")]
-        public Input<Inputs.BasicAutoscalingAlgorithmArgs>? BasicAlgorithm { get; set; }
-
         /// <summary>
         /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("autoscalingPolicyId", required: true)]
+        public Input<string> AutoscalingPolicyId { get; set; } = null!;
+
+        [Input("basicAlgorithm")]
+        public Input<Inputs.BasicAutoscalingAlgorithmArgs>? BasicAlgorithm { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

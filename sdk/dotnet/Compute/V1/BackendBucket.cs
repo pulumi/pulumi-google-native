@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.V1
     public partial class BackendBucket : Pulumi.CustomResource
     {
         /// <summary>
+        /// Unique identifier for the resource; defined by the server.
+        /// </summary>
+        [Output("backendBucketId")]
+        public Output<string> BackendBucketId { get; private set; } = null!;
+
+        /// <summary>
         /// Cloud Storage bucket name.
         /// </summary>
         [Output("bucketName")]

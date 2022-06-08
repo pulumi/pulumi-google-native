@@ -87,6 +87,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public readonly string GcrDomain;
         public readonly Outputs.IdentityAwareProxyResponse Iap;
         /// <summary>
+        /// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
         /// </summary>
         public readonly string Location;
@@ -125,6 +129,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 
             Outputs.IdentityAwareProxyResponse iap,
 
+            string id,
+
             string location,
 
             string name,
@@ -143,6 +149,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
             FeatureSettings = featureSettings;
             GcrDomain = gcrDomain;
             Iap = iap;
+            Id = id;
             Location = location;
             Name = name;
             ServiceAccount = serviceAccount;

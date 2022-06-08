@@ -93,6 +93,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string FriendlyName;
         /// <summary>
+        /// The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// [Optional] Indicates if table names are case insensitive in the dataset.
         /// </summary>
         public readonly bool IsCaseInsensitive;
@@ -151,6 +155,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string friendlyName,
 
+            string id,
+
             bool isCaseInsensitive,
 
             string kind,
@@ -179,6 +185,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Description = description;
             Etag = etag;
             FriendlyName = friendlyName;
+            Id = id;
             IsCaseInsensitive = isCaseInsensitive;
             Kind = kind;
             Labels = labels;

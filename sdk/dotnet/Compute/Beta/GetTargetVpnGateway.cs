@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> ForwardingRules;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of resource. Always compute#targetVpnGateway for target VPN gateways.
         /// </summary>
         public readonly string Kind;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<string> forwardingRules,
 
+            string id,
+
             string kind,
 
             string labelFingerprint,
@@ -139,6 +145,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             CreationTimestamp = creationTimestamp;
             Description = description;
             ForwardingRules = forwardingRules;
+            Id = id;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

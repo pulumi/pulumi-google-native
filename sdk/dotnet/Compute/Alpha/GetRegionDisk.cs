@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
         public readonly string Interface;
@@ -280,6 +284,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
+            string id,
+
             string @interface,
 
             string kind,
@@ -372,6 +378,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             DiskEncryptionKey = diskEncryptionKey;
             EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
+            Id = id;
             Interface = @interface;
             Kind = kind;
             LabelFingerprint = labelFingerprint;

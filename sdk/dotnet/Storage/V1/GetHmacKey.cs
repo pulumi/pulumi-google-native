@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// The ID of the HMAC key, including the Project ID and the Access ID.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
         /// </summary>
         public readonly string Kind;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string etag,
 
+            string id,
+
             string kind,
 
             string project,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         {
             AccessId = accessId;
             Etag = etag;
+            Id = id;
             Kind = kind;
             Project = project;
             SelfLink = selfLink;

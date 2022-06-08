@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableDictionary<string, string>> NodeAffinityLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("nodeTemplateId")]
+        public Output<string> NodeTemplateId { get; private set; } = null!;
+
+        /// <summary>
         /// The node type to use for nodes group that are created from this template.
         /// </summary>
         [Output("nodeType")]

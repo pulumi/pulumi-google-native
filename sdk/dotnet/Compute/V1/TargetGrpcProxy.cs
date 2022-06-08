@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        [Output("targetGrpcProxyId")]
+        public Output<string> TargetGrpcProxyId { get; private set; } = null!;
+
+        /// <summary>
         /// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
         /// </summary>
         [Output("urlMap")]

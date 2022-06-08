@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
         /// </summary>
         public readonly string Instance;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string description,
 
+            string id,
+
             string instance,
 
             string kind,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Instance = instance;
             Kind = kind;
             Name = name;

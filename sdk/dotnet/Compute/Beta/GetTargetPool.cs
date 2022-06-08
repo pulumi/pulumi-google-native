@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> HealthChecks;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
         /// </summary>
         public readonly ImmutableArray<string> Instances;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<string> healthChecks,
 
+            string id,
+
             ImmutableArray<string> instances,
 
             string kind,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Description = description;
             FailoverRatio = failoverRatio;
             HealthChecks = healthChecks;
+            Id = id;
             Instances = instances;
             Kind = kind;
             Name = name;

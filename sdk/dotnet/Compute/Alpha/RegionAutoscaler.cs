@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionAutoscalerId")]
+        public Output<string> RegionAutoscalerId { get; private set; } = null!;
+
+        /// <summary>
         /// Status information of existing scaling schedules.
         /// </summary>
         [Output("scalingScheduleStatus")]

@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionInstantSnapshotId")]
+        public Output<string> RegionInstantSnapshotId { get; private set; } = null!;
+
+        /// <summary>
         /// Status information for the instant snapshot resource.
         /// </summary>
         [Output("resourceStatus")]

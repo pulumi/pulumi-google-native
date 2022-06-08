@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#firewall for firewall rules.
         /// </summary>
         public readonly string Kind;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             bool disabled,
 
+            string id,
+
             string kind,
 
             Outputs.FirewallLogConfigResponse logConfig,
@@ -173,6 +179,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             DestinationRanges = destinationRanges;
             Direction = direction;
             Disabled = disabled;
+            Id = id;
             Kind = kind;
             LogConfig = logConfig;
             Name = name;

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// URI where any logs for this provenance were written.
         /// </summary>
         public readonly string LogsUri;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 
             string endTime,
 
+            string id,
+
             string logsUri,
 
             string project,
@@ -98,6 +104,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
             CreateTime = createTime;
             Creator = creator;
             EndTime = endTime;
+            Id = id;
             LogsUri = logsUri;
             Project = project;
             SourceProvenance = sourceProvenance;

@@ -196,6 +196,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionBackendServiceId")]
+        public Output<string> RegionBackendServiceId { get; private set; } = null!;
+
+        /// <summary>
         /// The resource URL for the security policy associated with this backend service.
         /// </summary>
         [Output("securityPolicy")]

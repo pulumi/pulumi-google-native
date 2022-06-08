@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
         /// </summary>
         public readonly int HttpErrorStatusCode;
         /// <summary>
+        /// The unique identifier for the operation. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The time that this operation was requested. This value is in RFC3339 text format.
         /// </summary>
         public readonly string InsertTime;
@@ -125,6 +129,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 
             int httpErrorStatusCode,
 
+            string id,
+
             string insertTime,
 
             string kind,
@@ -164,6 +170,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
             Error = error;
             HttpErrorMessage = httpErrorMessage;
             HttpErrorStatusCode = httpErrorStatusCode;
+            Id = id;
             InsertTime = insertTime;
             Kind = kind;
             Name = name;

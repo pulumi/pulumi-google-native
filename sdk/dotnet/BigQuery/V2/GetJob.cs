@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// Opaque ID field of the job
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// [Optional] Reference describing the unique-per-user name of the job.
         /// </summary>
         public readonly Outputs.JobReferenceResponse JobReference;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string etag,
 
+            string id,
+
             Outputs.JobReferenceResponse jobReference,
 
             string kind,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         {
             Configuration = configuration;
             Etag = etag;
+            Id = id;
             JobReference = jobReference;
             Kind = kind;
             SelfLink = selfLink;

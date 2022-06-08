@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.SslCertificateSelfManagedSslCertificateResponse> SelfManaged { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("sslCertificateId")]
+        public Output<string> SslCertificateId { get; private set; } = null!;
+
+        /// <summary>
         /// Domains associated with the certificate via Subject Alternative Name.
         /// </summary>
         [Output("subjectAlternativeNames")]

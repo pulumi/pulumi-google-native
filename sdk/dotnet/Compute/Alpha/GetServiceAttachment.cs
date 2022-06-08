@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#serviceAttachment for service attachments.
         /// </summary>
         public readonly string Kind;
@@ -150,6 +154,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string fingerprint,
 
+            string id,
+
             string kind,
 
             string name,
@@ -175,6 +181,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             DomainNames = domainNames;
             EnableProxyProtocol = enableProxyProtocol;
             Fingerprint = fingerprint;
+            Id = id;
             Kind = kind;
             Name = name;
             NatSubnets = natSubnets;

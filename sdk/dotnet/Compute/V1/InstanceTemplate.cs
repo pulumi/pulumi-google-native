@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// A unique identifier for this instance template. The server defines this identifier.
+        /// </summary>
+        [Output("instanceTemplateId")]
+        public Output<string> InstanceTemplateId { get; private set; } = null!;
+
+        /// <summary>
         /// The resource type, which is always compute#instanceTemplate for instance templates.
         /// </summary>
         [Output("kind")]

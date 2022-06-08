@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.DNS.V1
         public Output<ImmutableArray<Outputs.ResourceRecordSetResponse>> Additions { get; private set; } = null!;
 
         /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only).
+        /// </summary>
+        [Output("changeId")]
+        public Output<string> ChangeId { get; private set; } = null!;
+
+        /// <summary>
         /// Which ResourceRecordSets to remove? Must match existing data exactly.
         /// </summary>
         [Output("deletions")]

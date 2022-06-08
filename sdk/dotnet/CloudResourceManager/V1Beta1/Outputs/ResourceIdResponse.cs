@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1.Outputs
     public sealed class ResourceIdResponse
     {
         /// <summary>
+        /// Required field for the type-specific id. This should correspond to the id used in the type-specific API's.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization".
         /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
-        private ResourceIdResponse(string type)
+        private ResourceIdResponse(
+            string id,
+
+            string type)
         {
+            Id = id;
             Type = type;
         }
     }

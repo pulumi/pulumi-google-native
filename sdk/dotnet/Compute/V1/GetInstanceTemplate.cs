@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// A unique identifier for this instance template. The server defines this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The resource type, which is always compute#instanceTemplate for instance templates.
         /// </summary>
         public readonly string Kind;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string description,
 
+            string id,
+
             string kind,
 
             string name,
@@ -108,6 +114,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Kind = kind;
             Name = name;
             Properties = properties;

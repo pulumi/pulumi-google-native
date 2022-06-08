@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
         /// </summary>
         public readonly string Kind;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string fingerprint,
 
+            string id,
+
             string kind,
 
             string name,
@@ -115,6 +121,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             Fingerprint = fingerprint;
+            Id = id;
             Kind = kind;
             Name = name;
             SelfLink = selfLink;
