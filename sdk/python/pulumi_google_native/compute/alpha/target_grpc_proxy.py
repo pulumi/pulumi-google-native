@@ -186,6 +186,7 @@ class TargetGrpcProxy(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["target_grpc_proxy_id"] = None
         super(TargetGrpcProxy, __self__).__init__(
             'google-native:compute/alpha:TargetGrpcProxy',
             resource_name,
@@ -215,6 +216,7 @@ class TargetGrpcProxy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
+        __props__.__dict__["target_grpc_proxy_id"] = None
         __props__.__dict__["url_map"] = None
         __props__.__dict__["validate_for_proxyless"] = None
         return TargetGrpcProxy(resource_name, opts=opts, __props__=__props__)
@@ -274,6 +276,14 @@ class TargetGrpcProxy(pulumi.CustomResource):
         Server-defined URL with id for the resource.
         """
         return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="targetGrpcProxyId")
+    def target_grpc_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "target_grpc_proxy_id")
 
     @property
     @pulumi.getter(name="urlMap")

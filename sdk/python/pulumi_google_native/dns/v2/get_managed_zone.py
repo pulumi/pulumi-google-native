@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetManagedZoneResult:
-    def __init__(__self__, cloud_logging_config=None, creation_time=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, kind=None, labels=None, name=None, name_server_set=None, name_servers=None, peering_config=None, private_visibility_config=None, reverse_lookup_config=None, service_directory_config=None, visibility=None):
+    def __init__(__self__, cloud_logging_config=None, creation_time=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, id=None, kind=None, labels=None, name=None, name_server_set=None, name_servers=None, peering_config=None, private_visibility_config=None, reverse_lookup_config=None, service_directory_config=None, visibility=None):
         if cloud_logging_config and not isinstance(cloud_logging_config, dict):
             raise TypeError("Expected argument 'cloud_logging_config' to be a dict")
         pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
@@ -37,6 +37,9 @@ class GetManagedZoneResult:
         if forwarding_config and not isinstance(forwarding_config, dict):
             raise TypeError("Expected argument 'forwarding_config' to be a dict")
         pulumi.set(__self__, "forwarding_config", forwarding_config)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -112,6 +115,14 @@ class GetManagedZoneResult:
         The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
         """
         return pulumi.get(self, "forwarding_config")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for the resource; defined by the server (output only)
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -203,6 +214,7 @@ class AwaitableGetManagedZoneResult(GetManagedZoneResult):
             dns_name=self.dns_name,
             dnssec_config=self.dnssec_config,
             forwarding_config=self.forwarding_config,
+            id=self.id,
             kind=self.kind,
             labels=self.labels,
             name=self.name,
@@ -241,6 +253,7 @@ def get_managed_zone(client_operation_id: Optional[str] = None,
         dns_name=__ret__.dns_name,
         dnssec_config=__ret__.dnssec_config,
         forwarding_config=__ret__.forwarding_config,
+        id=__ret__.id,
         kind=__ret__.kind,
         labels=__ret__.labels,
         name=__ret__.name,

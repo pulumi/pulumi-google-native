@@ -293,6 +293,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["licenses"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["snapshot_id"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["storage_bytes"] = None
@@ -335,6 +336,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["snapshot_encryption_key"] = None
+        __props__.__dict__["snapshot_id"] = None
         __props__.__dict__["source_disk"] = None
         __props__.__dict__["source_disk_encryption_key"] = None
         __props__.__dict__["source_disk_id"] = None
@@ -471,6 +473,14 @@ class Snapshot(pulumi.CustomResource):
         Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
         """
         return pulumi.get(self, "snapshot_encryption_key")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="sourceDisk")

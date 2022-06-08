@@ -239,6 +239,7 @@ class Policy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
+            __props__.__dict__["policy_id"] = None
         super(Policy, __self__).__init__(
             'google-native:dns/v1:Policy',
             resource_name,
@@ -268,6 +269,7 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["policy_id"] = None
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -322,4 +324,12 @@ class Policy(pulumi.CustomResource):
         List of network names specifying networks to which this policy is applied.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "policy_id")
 

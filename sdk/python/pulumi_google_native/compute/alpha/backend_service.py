@@ -755,6 +755,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["vpc_network_scope"] = vpc_network_scope
+            __props__.__dict__["backend_service_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["fingerprint"] = None
@@ -786,6 +787,7 @@ class BackendService(pulumi.CustomResource):
         __props__ = BackendServiceArgs.__new__(BackendServiceArgs)
 
         __props__.__dict__["affinity_cookie_ttl_sec"] = None
+        __props__.__dict__["backend_service_id"] = None
         __props__.__dict__["backends"] = None
         __props__.__dict__["cdn_policy"] = None
         __props__.__dict__["circuit_breakers"] = None
@@ -835,6 +837,14 @@ class BackendService(pulumi.CustomResource):
         Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
+
+    @property
+    @pulumi.getter(name="backendServiceId")
+    def backend_service_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "backend_service_id")
 
     @property
     @pulumi.getter

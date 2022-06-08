@@ -394,6 +394,7 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["reverse_lookup_config"] = reverse_lookup_config
             __props__.__dict__["service_directory_config"] = service_directory_config
             __props__.__dict__["visibility"] = visibility
+            __props__.__dict__["managed_zone_id"] = None
             __props__.__dict__["name_servers"] = None
         super(ManagedZone, __self__).__init__(
             'google-native:dns/v1:ManagedZone',
@@ -425,6 +426,7 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["forwarding_config"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["managed_zone_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["name_server_set"] = None
         __props__.__dict__["name_servers"] = None
@@ -492,6 +494,14 @@ class ManagedZone(pulumi.CustomResource):
         User labels.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="managedZoneId")
+    def managed_zone_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the resource; defined by the server (output only)
+        """
+        return pulumi.get(self, "managed_zone_id")
 
     @property
     @pulumi.getter

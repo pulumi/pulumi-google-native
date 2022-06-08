@@ -581,6 +581,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["trigger_template"] = trigger_template
             __props__.__dict__["webhook_config"] = webhook_config
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["trigger_id"] = None
         super(Trigger, __self__).__init__(
             'google-native:cloudbuild/v1:Trigger',
             resource_name,
@@ -625,6 +626,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["source_to_build"] = None
         __props__.__dict__["substitutions"] = None
         __props__.__dict__["tags"] = None
+        __props__.__dict__["trigger_id"] = None
         __props__.__dict__["trigger_template"] = None
         __props__.__dict__["webhook_config"] = None
         return Trigger(resource_name, opts=opts, __props__=__props__)
@@ -804,6 +806,14 @@ class Trigger(pulumi.CustomResource):
         Tags for annotation of a `BuildTrigger`
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier of the trigger.
+        """
+        return pulumi.get(self, "trigger_id")
 
     @property
     @pulumi.getter(name="triggerTemplate")

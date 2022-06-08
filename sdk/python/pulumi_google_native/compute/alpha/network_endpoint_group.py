@@ -407,6 +407,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["network_endpoint_group_id"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -444,6 +445,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["load_balancer"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["network_endpoint_group_id"] = None
         __props__.__dict__["network_endpoint_type"] = None
         __props__.__dict__["psc_target_service"] = None
         __props__.__dict__["region"] = None
@@ -543,6 +545,14 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkEndpointGroupId")
+    def network_endpoint_group_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "network_endpoint_group_id")
 
     @property
     @pulumi.getter(name="networkEndpointType")

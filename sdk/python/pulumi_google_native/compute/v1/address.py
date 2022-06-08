@@ -318,6 +318,7 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["subnetwork"] = subnetwork
+            __props__.__dict__["address_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
@@ -346,6 +347,7 @@ class Address(pulumi.CustomResource):
         __props__ = AddressArgs.__new__(AddressArgs)
 
         __props__.__dict__["address"] = None
+        __props__.__dict__["address_id"] = None
         __props__.__dict__["address_type"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
@@ -370,6 +372,14 @@ class Address(pulumi.CustomResource):
         The static IP address represented by this resource.
         """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="addressId")
+    def address_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "address_id")
 
     @property
     @pulumi.getter(name="addressType")

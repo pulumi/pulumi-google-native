@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketAccessControlResult:
-    def __init__(__self__, bucket=None, domain=None, email=None, entity=None, entity_id=None, etag=None, kind=None, project_team=None, role=None, self_link=None):
+    def __init__(__self__, bucket=None, domain=None, email=None, entity=None, entity_id=None, etag=None, id=None, kind=None, project_team=None, role=None, self_link=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -37,6 +37,9 @@ class GetBucketAccessControlResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -111,6 +114,14 @@ class GetBucketAccessControlResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
@@ -154,6 +165,7 @@ class AwaitableGetBucketAccessControlResult(GetBucketAccessControlResult):
             entity=self.entity,
             entity_id=self.entity_id,
             etag=self.etag,
+            id=self.id,
             kind=self.kind,
             project_team=self.project_team,
             role=self.role,
@@ -184,6 +196,7 @@ def get_bucket_access_control(bucket: Optional[str] = None,
         entity=__ret__.entity,
         entity_id=__ret__.entity_id,
         etag=__ret__.etag,
+        id=__ret__.id,
         kind=__ret__.kind,
         project_team=__ret__.project_team,
         role=__ret__.role,

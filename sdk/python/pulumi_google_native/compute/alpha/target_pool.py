@@ -262,6 +262,7 @@ class TargetPool(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["target_pool_id"] = None
         super(TargetPool, __self__).__init__(
             'google-native:compute/alpha:TargetPool',
             resource_name,
@@ -296,6 +297,7 @@ class TargetPool(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["session_affinity"] = None
+        __props__.__dict__["target_pool_id"] = None
         return TargetPool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -393,4 +395,12 @@ class TargetPool(pulumi.CustomResource):
         Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
         """
         return pulumi.get(self, "session_affinity")
+
+    @property
+    @pulumi.getter(name="targetPoolId")
+    def target_pool_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_pool_id")
 

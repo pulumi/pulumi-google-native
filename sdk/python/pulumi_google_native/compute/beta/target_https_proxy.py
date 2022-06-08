@@ -379,6 +379,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["target_https_proxy_id"] = None
         super(TargetHttpsProxy, __self__).__init__(
             'google-native:compute/beta:TargetHttpsProxy',
             resource_name,
@@ -418,6 +419,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["server_tls_policy"] = None
         __props__.__dict__["ssl_certificates"] = None
         __props__.__dict__["ssl_policy"] = None
+        __props__.__dict__["target_https_proxy_id"] = None
         __props__.__dict__["url_map"] = None
         return TargetHttpsProxy(resource_name, opts=opts, __props__=__props__)
 
@@ -556,6 +558,14 @@ class TargetHttpsProxy(pulumi.CustomResource):
         URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
         """
         return pulumi.get(self, "ssl_policy")
+
+    @property
+    @pulumi.getter(name="targetHttpsProxyId")
+    def target_https_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_https_proxy_id")
 
     @property
     @pulumi.getter(name="urlMap")

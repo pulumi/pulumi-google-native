@@ -247,6 +247,7 @@ class TypeProvider(pulumi.CustomResource):
             __props__.__dict__["insert_time"] = None
             __props__.__dict__["operation"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["type_provider_id"] = None
         super(TypeProvider, __self__).__init__(
             'google-native:deploymentmanager/alpha:TypeProvider',
             resource_name,
@@ -280,6 +281,7 @@ class TypeProvider(pulumi.CustomResource):
         __props__.__dict__["operation"] = None
         __props__.__dict__["options"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["type_provider_id"] = None
         return TypeProvider(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -369,4 +371,12 @@ class TypeProvider(pulumi.CustomResource):
         Self link for the type provider.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="typeProviderId")
+    def type_provider_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the resource defined by the server.
+        """
+        return pulumi.get(self, "type_provider_id")
 

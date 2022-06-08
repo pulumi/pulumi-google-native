@@ -375,6 +375,7 @@ class HealthCheck(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["health_check_id"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
         super(HealthCheck, __self__).__init__(
@@ -403,6 +404,7 @@ class HealthCheck(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["grpc_health_check"] = None
+        __props__.__dict__["health_check_id"] = None
         __props__.__dict__["healthy_threshold"] = None
         __props__.__dict__["http2_health_check"] = None
         __props__.__dict__["http_health_check"] = None
@@ -447,6 +449,14 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> pulumi.Output['outputs.GRPCHealthCheckResponse']:
         return pulumi.get(self, "grpc_health_check")
+
+    @property
+    @pulumi.getter(name="healthCheckId")
+    def health_check_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "health_check_id")
 
     @property
     @pulumi.getter(name="healthyThreshold")

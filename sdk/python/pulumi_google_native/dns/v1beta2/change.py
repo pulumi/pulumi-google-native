@@ -200,6 +200,7 @@ class Change(pulumi.CustomResource):
                 raise TypeError("Missing required property 'managed_zone'")
             __props__.__dict__["managed_zone"] = managed_zone
             __props__.__dict__["project"] = project
+            __props__.__dict__["change_id"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["status"] = None
         super(Change, __self__).__init__(
@@ -225,6 +226,7 @@ class Change(pulumi.CustomResource):
         __props__ = ChangeArgs.__new__(ChangeArgs)
 
         __props__.__dict__["additions"] = None
+        __props__.__dict__["change_id"] = None
         __props__.__dict__["deletions"] = None
         __props__.__dict__["is_serving"] = None
         __props__.__dict__["kind"] = None
@@ -239,6 +241,14 @@ class Change(pulumi.CustomResource):
         Which ResourceRecordSets to add?
         """
         return pulumi.get(self, "additions")
+
+    @property
+    @pulumi.getter(name="changeId")
+    def change_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "change_id")
 
     @property
     @pulumi.getter

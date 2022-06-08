@@ -547,6 +547,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["customer_router_ipv6_address"] = None
             __props__.__dict__["dataplane_version"] = None
             __props__.__dict__["google_reference_id"] = None
+            __props__.__dict__["interconnect_attachment_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["operational_status"] = None
             __props__.__dict__["private_interconnect_info"] = None
@@ -592,6 +593,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["encryption"] = None
         __props__.__dict__["google_reference_id"] = None
         __props__.__dict__["interconnect"] = None
+        __props__.__dict__["interconnect_attachment_id"] = None
         __props__.__dict__["ipsec_internal_addresses"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["mtu"] = None
@@ -746,6 +748,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         URL of the underlying Interconnect object that this attachment's traffic will traverse through.
         """
         return pulumi.get(self, "interconnect")
+
+    @property
+    @pulumi.getter(name="interconnectAttachmentId")
+    def interconnect_attachment_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "interconnect_attachment_id")
 
     @property
     @pulumi.getter(name="ipsecInternalAddresses")

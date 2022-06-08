@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeResult:
-    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, runtime_version=None, scheduling_config=None, service_account=None, state=None, symptoms=None, tags=None):
+    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, id=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, runtime_version=None, scheduling_config=None, service_account=None, state=None, symptoms=None, tags=None):
         if accelerator_type and not isinstance(accelerator_type, str):
             raise TypeError("Expected argument 'accelerator_type' to be a str")
         pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -43,6 +43,9 @@ class GetNodeResult:
         if health_description and not isinstance(health_description, str):
             raise TypeError("Expected argument 'health_description' to be a str")
         pulumi.set(__self__, "health_description", health_description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -140,6 +143,14 @@ class GetNodeResult:
         If this field is populated, it contains a description of why the TPU Node is unhealthy.
         """
         return pulumi.get(self, "health_description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the TPU Node.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -244,6 +255,7 @@ class AwaitableGetNodeResult(GetNodeResult):
             description=self.description,
             health=self.health,
             health_description=self.health_description,
+            id=self.id,
             labels=self.labels,
             metadata=self.metadata,
             name=self.name,
@@ -283,6 +295,7 @@ def get_node(location: Optional[str] = None,
         description=__ret__.description,
         health=__ret__.health,
         health_description=__ret__.health_description,
+        id=__ret__.id,
         labels=__ret__.labels,
         metadata=__ret__.metadata,
         name=__ret__.name,

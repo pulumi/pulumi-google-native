@@ -207,6 +207,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["target_http_proxy_id"] = None
         super(TargetHttpProxy, __self__).__init__(
             'google-native:compute/alpha:TargetHttpProxy',
             resource_name,
@@ -239,6 +240,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
+        __props__.__dict__["target_http_proxy_id"] = None
         __props__.__dict__["url_map"] = None
         return TargetHttpProxy(resource_name, opts=opts, __props__=__props__)
 
@@ -321,6 +323,14 @@ class TargetHttpProxy(pulumi.CustomResource):
         Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="targetHttpProxyId")
+    def target_http_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_http_proxy_id")
 
     @property
     @pulumi.getter(name="urlMap")

@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkflowTemplateResult:
-    def __init__(__self__, create_time=None, dag_timeout=None, jobs=None, labels=None, name=None, parameters=None, placement=None, update_time=None, version=None):
+    def __init__(__self__, create_time=None, dag_timeout=None, id=None, jobs=None, labels=None, name=None, parameters=None, placement=None, update_time=None, version=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if dag_timeout and not isinstance(dag_timeout, str):
             raise TypeError("Expected argument 'dag_timeout' to be a str")
         pulumi.set(__self__, "dag_timeout", dag_timeout)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if jobs and not isinstance(jobs, list):
             raise TypeError("Expected argument 'jobs' to be a list")
         pulumi.set(__self__, "jobs", jobs)
@@ -62,6 +65,14 @@ class GetWorkflowTemplateResult:
         Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -128,6 +139,7 @@ class AwaitableGetWorkflowTemplateResult(GetWorkflowTemplateResult):
         return GetWorkflowTemplateResult(
             create_time=self.create_time,
             dag_timeout=self.dag_timeout,
+            id=self.id,
             jobs=self.jobs,
             labels=self.labels,
             name=self.name,
@@ -159,6 +171,7 @@ def get_workflow_template(location: Optional[str] = None,
     return AwaitableGetWorkflowTemplateResult(
         create_time=__ret__.create_time,
         dag_timeout=__ret__.dag_timeout,
+        id=__ret__.id,
         jobs=__ret__.jobs,
         labels=__ret__.labels,
         name=__ret__.name,

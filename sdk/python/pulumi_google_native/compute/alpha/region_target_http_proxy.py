@@ -220,6 +220,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_target_http_proxy_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         super(RegionTargetHttpProxy, __self__).__init__(
@@ -252,6 +253,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["proxy_bind"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_target_http_proxy_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["url_map"] = None
@@ -320,6 +322,14 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionTargetHttpProxyId")
+    def region_target_http_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_target_http_proxy_id")
 
     @property
     @pulumi.getter(name="selfLink")

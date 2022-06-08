@@ -307,6 +307,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["end_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_commitment_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["start_timestamp"] = None
             __props__.__dict__["status"] = None
@@ -343,6 +344,7 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["plan"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_commitment_id"] = None
         __props__.__dict__["reservations"] = None
         __props__.__dict__["resources"] = None
         __props__.__dict__["self_link"] = None
@@ -431,6 +433,14 @@ class RegionCommitment(pulumi.CustomResource):
         URL of the region where this commitment may be used.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionCommitmentId")
+    def region_commitment_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_commitment_id")
 
     @property
     @pulumi.getter

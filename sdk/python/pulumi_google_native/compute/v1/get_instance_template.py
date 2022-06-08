@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceTemplateResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, properties=None, self_link=None, source_instance=None, source_instance_params=None):
+    def __init__(__self__, creation_timestamp=None, description=None, id=None, kind=None, name=None, properties=None, self_link=None, source_instance=None, source_instance_params=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -59,6 +62,14 @@ class GetInstanceTemplateResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A unique identifier for this instance template. The server defines this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -117,6 +128,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
         return GetInstanceTemplateResult(
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             properties=self.properties,
@@ -143,6 +155,7 @@ def get_instance_template(instance_template: Optional[str] = None,
     return AwaitableGetInstanceTemplateResult(
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         properties=__ret__.properties,

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, id=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -73,6 +73,9 @@ class GetBackendServiceResult:
         if iap and not isinstance(iap, dict):
             raise TypeError("Expected argument 'iap' to be a dict")
         pulumi.set(__self__, "iap", iap)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -278,6 +281,14 @@ class GetBackendServiceResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         Type of resource. Always compute#backendService for backend services.
@@ -458,6 +469,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             fingerprint=self.fingerprint,
             health_checks=self.health_checks,
             iap=self.iap,
+            id=self.id,
             kind=self.kind,
             load_balancing_scheme=self.load_balancing_scheme,
             locality_lb_policies=self.locality_lb_policies,
@@ -514,6 +526,7 @@ def get_backend_service(backend_service: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         health_checks=__ret__.health_checks,
         iap=__ret__.iap,
+        id=__ret__.id,
         kind=__ret__.kind,
         load_balancing_scheme=__ret__.load_balancing_scheme,
         locality_lb_policies=__ret__.locality_lb_policies,

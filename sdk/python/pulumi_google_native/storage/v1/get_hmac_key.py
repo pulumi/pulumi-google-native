@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetHmacKeyResult:
-    def __init__(__self__, access_id=None, etag=None, kind=None, project=None, self_link=None, service_account_email=None, state=None, time_created=None, updated=None):
+    def __init__(__self__, access_id=None, etag=None, id=None, kind=None, project=None, self_link=None, service_account_email=None, state=None, time_created=None, updated=None):
         if access_id and not isinstance(access_id, str):
             raise TypeError("Expected argument 'access_id' to be a str")
         pulumi.set(__self__, "access_id", access_id)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -61,6 +64,14 @@ class GetHmacKeyResult:
         HTTP 1.1 Entity tag for the HMAC key.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the HMAC key, including the Project ID and the Access ID.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -127,6 +138,7 @@ class AwaitableGetHmacKeyResult(GetHmacKeyResult):
         return GetHmacKeyResult(
             access_id=self.access_id,
             etag=self.etag,
+            id=self.id,
             kind=self.kind,
             project=self.project,
             self_link=self.self_link,
@@ -156,6 +168,7 @@ def get_hmac_key(access_id: Optional[str] = None,
     return AwaitableGetHmacKeyResult(
         access_id=__ret__.access_id,
         etag=__ret__.etag,
+        id=__ret__.id,
         kind=__ret__.kind,
         project=__ret__.project,
         self_link=__ret__.self_link,

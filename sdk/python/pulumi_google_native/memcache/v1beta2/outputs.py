@@ -194,11 +194,22 @@ class MaintenanceScheduleResponse(dict):
 @pulumi.output_type
 class MemcacheParametersResponse(dict):
     def __init__(__self__, *,
+                 id: str,
                  params: Mapping[str, str]):
         """
+        :param str id: The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
         :param Mapping[str, str] params: User defined set of parameters to use in the memcached process.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "params", params)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

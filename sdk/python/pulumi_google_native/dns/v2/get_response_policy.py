@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetResponsePolicyResult:
-    def __init__(__self__, description=None, gke_clusters=None, kind=None, networks=None, response_policy_name=None):
+    def __init__(__self__, description=None, gke_clusters=None, id=None, kind=None, networks=None, response_policy_name=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
         if gke_clusters and not isinstance(gke_clusters, list):
             raise TypeError("Expected argument 'gke_clusters' to be a list")
         pulumi.set(__self__, "gke_clusters", gke_clusters)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -50,6 +53,14 @@ class GetResponsePolicyResult:
         The list of Google Kubernetes Engine clusters to which this response policy is applied.
         """
         return pulumi.get(self, "gke_clusters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -81,6 +92,7 @@ class AwaitableGetResponsePolicyResult(GetResponsePolicyResult):
         return GetResponsePolicyResult(
             description=self.description,
             gke_clusters=self.gke_clusters,
+            id=self.id,
             kind=self.kind,
             networks=self.networks,
             response_policy_name=self.response_policy_name)
@@ -108,6 +120,7 @@ def get_response_policy(client_operation_id: Optional[str] = None,
     return AwaitableGetResponsePolicyResult(
         description=__ret__.description,
         gke_clusters=__ret__.gke_clusters,
+        id=__ret__.id,
         kind=__ret__.kind,
         networks=__ret__.networks,
         response_policy_name=__ret__.response_policy_name)

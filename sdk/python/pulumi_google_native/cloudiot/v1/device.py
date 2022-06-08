@@ -20,8 +20,8 @@ class DeviceArgs:
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input['DeviceConfigArgs']] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input['GatewayConfigArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -32,8 +32,8 @@ class DeviceArgs:
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail. Can be used to temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs maintenance.
         :param pulumi.Input['DeviceConfigArgs'] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device. If not present on creation, the configuration will be initialized with an empty payload and version value of `1`. To update this field after creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]] credentials: The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
+        :param pulumi.Input[str] device_id: The user-defined device identifier. The device ID must be unique within a device registry.
         :param pulumi.Input['GatewayConfigArgs'] gateway_config: Gateway-related configuration and state.
-        :param pulumi.Input[str] id: The user-defined device identifier. The device ID must be unique within a device registry.
         :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
@@ -45,10 +45,10 @@ class DeviceArgs:
             pulumi.set(__self__, "config", config)
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
+        if device_id is not None:
+            pulumi.set(__self__, "device_id", device_id)
         if gateway_config is not None:
             pulumi.set(__self__, "gateway_config", gateway_config)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if log_level is not None:
@@ -106,6 +106,18 @@ class DeviceArgs:
         pulumi.set(self, "credentials", value)
 
     @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-defined device identifier. The device ID must be unique within a device registry.
+        """
+        return pulumi.get(self, "device_id")
+
+    @device_id.setter
+    def device_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_id", value)
+
+    @property
     @pulumi.getter(name="gatewayConfig")
     def gateway_config(self) -> Optional[pulumi.Input['GatewayConfigArgs']]:
         """
@@ -116,18 +128,6 @@ class DeviceArgs:
     @gateway_config.setter
     def gateway_config(self, value: Optional[pulumi.Input['GatewayConfigArgs']]):
         pulumi.set(self, "gateway_config", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user-defined device identifier. The device ID must be unique within a device registry.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -192,8 +192,8 @@ class Device(pulumi.CustomResource):
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -209,8 +209,8 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail. Can be used to temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs maintenance.
         :param pulumi.Input[pulumi.InputType['DeviceConfigArgs']] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device. If not present on creation, the configuration will be initialized with an empty payload and version value of `1`. To update this field after creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
+        :param pulumi.Input[str] device_id: The user-defined device identifier. The device ID must be unique within a device registry.
         :param pulumi.Input[pulumi.InputType['GatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
-        :param pulumi.Input[str] id: The user-defined device identifier. The device ID must be unique within a device registry.
         :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
@@ -242,8 +242,8 @@ class Device(pulumi.CustomResource):
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -265,8 +265,8 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["blocked"] = blocked
             __props__.__dict__["config"] = config
             __props__.__dict__["credentials"] = credentials
+            __props__.__dict__["device_id"] = device_id
             __props__.__dict__["gateway_config"] = gateway_config
-            __props__.__dict__["id"] = id
             __props__.__dict__["location"] = location
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["metadata"] = metadata
@@ -309,6 +309,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["blocked"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["credentials"] = None
+        __props__.__dict__["device_id"] = None
         __props__.__dict__["gateway_config"] = None
         __props__.__dict__["last_config_ack_time"] = None
         __props__.__dict__["last_config_send_time"] = None
@@ -347,6 +348,14 @@ class Device(pulumi.CustomResource):
         The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
         """
         return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> pulumi.Output[str]:
+        """
+        The user-defined device identifier. The device ID must be unique within a device registry.
+        """
+        return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter(name="gatewayConfig")

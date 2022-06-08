@@ -182,6 +182,7 @@ class License(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["license_code"] = None
+            __props__.__dict__["license_id"] = None
             __props__.__dict__["self_link"] = None
         super(License, __self__).__init__(
             'google-native:compute/beta:License',
@@ -210,6 +211,7 @@ class License(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["license_code"] = None
+        __props__.__dict__["license_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["resource_requirements"] = None
         __props__.__dict__["self_link"] = None
@@ -255,6 +257,14 @@ class License(pulumi.CustomResource):
         The unique code used to attach this license to images, snapshots, and disks.
         """
         return pulumi.get(self, "license_code")
+
+    @property
+    @pulumi.getter(name="licenseId")
+    def license_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "license_id")
 
     @property
     @pulumi.getter

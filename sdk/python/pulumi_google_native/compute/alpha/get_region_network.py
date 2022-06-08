@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionNetworkResult:
-    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, ipv4_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, region=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
+    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, id=None, internal_ipv6_range=None, ipv4_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, region=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if auto_create_subnetworks and not isinstance(auto_create_subnetworks, bool):
             raise TypeError("Expected argument 'auto_create_subnetworks' to be a bool")
         pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
@@ -37,6 +37,9 @@ class GetRegionNetworkResult:
         if gateway_i_pv4 and not isinstance(gateway_i_pv4, str):
             raise TypeError("Expected argument 'gateway_i_pv4' to be a str")
         pulumi.set(__self__, "gateway_i_pv4", gateway_i_pv4)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if internal_ipv6_range and not isinstance(internal_ipv6_range, str):
             raise TypeError("Expected argument 'internal_ipv6_range' to be a str")
         pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
@@ -125,6 +128,14 @@ class GetRegionNetworkResult:
         The gateway address for default routing out of the network, selected by GCP.
         """
         return pulumi.get(self, "gateway_i_pv4")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="internalIpv6Range")
@@ -235,6 +246,7 @@ class AwaitableGetRegionNetworkResult(GetRegionNetworkResult):
             enable_ula_internal_ipv6=self.enable_ula_internal_ipv6,
             firewall_policy=self.firewall_policy,
             gateway_i_pv4=self.gateway_i_pv4,
+            id=self.id,
             internal_ipv6_range=self.internal_ipv6_range,
             ipv4_range=self.ipv4_range,
             kind=self.kind,
@@ -273,6 +285,7 @@ def get_region_network(network: Optional[str] = None,
         enable_ula_internal_ipv6=__ret__.enable_ula_internal_ipv6,
         firewall_policy=__ret__.firewall_policy,
         gateway_i_pv4=__ret__.gateway_i_pv4,
+        id=__ret__.id,
         internal_ipv6_range=__ret__.internal_ipv6_range,
         ipv4_range=__ret__.ipv4_range,
         kind=__ret__.kind,

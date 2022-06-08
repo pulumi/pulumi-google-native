@@ -264,6 +264,7 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["backend_bucket_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["self_link"] = None
@@ -290,6 +291,7 @@ class BackendBucket(pulumi.CustomResource):
 
         __props__ = BackendBucketArgs.__new__(BackendBucketArgs)
 
+        __props__.__dict__["backend_bucket_id"] = None
         __props__.__dict__["bucket_name"] = None
         __props__.__dict__["cdn_policy"] = None
         __props__.__dict__["compression_mode"] = None
@@ -303,6 +305,14 @@ class BackendBucket(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         return BackendBucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backendBucketId")
+    def backend_bucket_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the resource; defined by the server.
+        """
+        return pulumi.get(self, "backend_bucket_id")
 
     @property
     @pulumi.getter(name="bucketName")

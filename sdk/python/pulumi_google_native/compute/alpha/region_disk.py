@@ -719,6 +719,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["last_attach_timestamp"] = None
             __props__.__dict__["last_detach_timestamp"] = None
             __props__.__dict__["locked"] = None
+            __props__.__dict__["region_disk_id"] = None
             __props__.__dict__["resource_status"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
@@ -778,6 +779,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["physical_block_size_bytes"] = None
         __props__.__dict__["provisioned_iops"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_disk_id"] = None
         __props__.__dict__["replica_zones"] = None
         __props__.__dict__["resource_policies"] = None
         __props__.__dict__["resource_status"] = None
@@ -997,6 +999,14 @@ class RegionDisk(pulumi.CustomResource):
         URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionDiskId")
+    def region_disk_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_disk_id")
 
     @property
     @pulumi.getter(name="replicaZones")

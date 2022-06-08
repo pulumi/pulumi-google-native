@@ -652,6 +652,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["user_licenses"] = user_licenses
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["disk_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_attach_timestamp"] = None
@@ -690,6 +691,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_encryption_key"] = None
+        __props__.__dict__["disk_id"] = None
         __props__.__dict__["erase_windows_vss_signature"] = None
         __props__.__dict__["guest_os_features"] = None
         __props__.__dict__["interface"] = None
@@ -753,6 +755,14 @@ class Disk(pulumi.CustomResource):
         Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "disk_id")
 
     @property
     @pulumi.getter(name="eraseWindowsVssSignature")

@@ -200,6 +200,7 @@ class ResponsePolicy(pulumi.CustomResource):
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
             __props__.__dict__["response_policy_name"] = response_policy_name
+            __props__.__dict__["response_policy_id"] = None
         super(ResponsePolicy, __self__).__init__(
             'google-native:dns/v1beta2:ResponsePolicy',
             resource_name,
@@ -226,6 +227,7 @@ class ResponsePolicy(pulumi.CustomResource):
         __props__.__dict__["gke_clusters"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["response_policy_id"] = None
         __props__.__dict__["response_policy_name"] = None
         return ResponsePolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -257,6 +259,14 @@ class ResponsePolicy(pulumi.CustomResource):
         List of network names specifying networks to which this policy is applied.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="responsePolicyId")
+    def response_policy_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "response_policy_id")
 
     @property
     @pulumi.getter(name="responsePolicyName")

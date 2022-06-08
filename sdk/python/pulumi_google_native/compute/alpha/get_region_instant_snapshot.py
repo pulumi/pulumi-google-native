@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstantSnapshotResult:
-    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_size_gb=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
+    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_size_gb=None, guest_flush=None, id=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -34,6 +34,9 @@ class GetRegionInstantSnapshotResult:
         if guest_flush and not isinstance(guest_flush, bool):
             raise TypeError("Expected argument 'guest_flush' to be a bool")
         pulumi.set(__self__, "guest_flush", guest_flush)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -113,6 +116,14 @@ class GetRegionInstantSnapshotResult:
         Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -230,6 +241,7 @@ class AwaitableGetRegionInstantSnapshotResult(GetRegionInstantSnapshotResult):
             description=self.description,
             disk_size_gb=self.disk_size_gb,
             guest_flush=self.guest_flush,
+            id=self.id,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -268,6 +280,7 @@ def get_region_instant_snapshot(instant_snapshot: Optional[str] = None,
         description=__ret__.description,
         disk_size_gb=__ret__.disk_size_gb,
         guest_flush=__ret__.guest_flush,
+        id=__ret__.id,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,
         labels=__ret__.labels,

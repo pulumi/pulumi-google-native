@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetGrpcProxyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, self_link=None, self_link_with_id=None, url_map=None, validate_for_proxyless=None):
+    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, id=None, kind=None, name=None, self_link=None, self_link_with_id=None, url_map=None, validate_for_proxyless=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -27,6 +27,9 @@ class GetTargetGrpcProxyResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -69,6 +72,14 @@ class GetTargetGrpcProxyResult:
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetGrpcProxy.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -128,6 +139,7 @@ class AwaitableGetTargetGrpcProxyResult(GetTargetGrpcProxyResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             self_link=self.self_link,
@@ -155,6 +167,7 @@ def get_target_grpc_proxy(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         self_link=__ret__.self_link,

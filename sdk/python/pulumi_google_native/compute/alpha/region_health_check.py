@@ -406,6 +406,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             __props__.__dict__["udp_health_check"] = udp_health_check
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["region_health_check_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         super(RegionHealthCheck, __self__).__init__(
@@ -442,6 +443,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         __props__.__dict__["log_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_health_check_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["ssl_health_check"] = None
@@ -535,6 +537,14 @@ class RegionHealthCheck(pulumi.CustomResource):
         Region where the health check resides. Not applicable to global health checks.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionHealthCheckId")
+    def region_health_check_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_health_check_id")
 
     @property
     @pulumi.getter(name="selfLink")

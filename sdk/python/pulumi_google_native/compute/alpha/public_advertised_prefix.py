@@ -226,6 +226,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["public_advertised_prefix_id"] = None
             __props__.__dict__["public_delegated_prefixs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -260,6 +261,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pdp_scope"] = None
+        __props__.__dict__["public_advertised_prefix_id"] = None
         __props__.__dict__["public_delegated_prefixs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -330,6 +332,14 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
         """
         return pulumi.get(self, "pdp_scope")
+
+    @property
+    @pulumi.getter(name="publicAdvertisedPrefixId")
+    def public_advertised_prefix_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "public_advertised_prefix_id")
 
     @property
     @pulumi.getter(name="publicDelegatedPrefixs")

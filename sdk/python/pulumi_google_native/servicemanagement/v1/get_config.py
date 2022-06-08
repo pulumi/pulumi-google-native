@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConfigResult:
-    def __init__(__self__, apis=None, authentication=None, backend=None, billing=None, config_version=None, context=None, control=None, custom_error=None, documentation=None, endpoints=None, enums=None, http=None, logging=None, logs=None, metrics=None, monitored_resources=None, monitoring=None, name=None, producer_project_id=None, quota=None, source_info=None, system_parameters=None, system_types=None, title=None, types=None, usage=None):
+    def __init__(__self__, apis=None, authentication=None, backend=None, billing=None, config_version=None, context=None, control=None, custom_error=None, documentation=None, endpoints=None, enums=None, http=None, id=None, logging=None, logs=None, metrics=None, monitored_resources=None, monitoring=None, name=None, producer_project_id=None, quota=None, source_info=None, system_parameters=None, system_types=None, title=None, types=None, usage=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -55,6 +55,9 @@ class GetConfigResult:
         if http and not isinstance(http, dict):
             raise TypeError("Expected argument 'http' to be a dict")
         pulumi.set(__self__, "http", http)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if logging and not isinstance(logging, dict):
             raise TypeError("Expected argument 'logging' to be a dict")
         pulumi.set(__self__, "logging", logging)
@@ -196,6 +199,14 @@ class GetConfigResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def logging(self) -> 'outputs.LoggingResponse':
         """
         Logging configuration.
@@ -325,6 +336,7 @@ class AwaitableGetConfigResult(GetConfigResult):
             endpoints=self.endpoints,
             enums=self.enums,
             http=self.http,
+            id=self.id,
             logging=self.logging,
             logs=self.logs,
             metrics=self.metrics,
@@ -371,6 +383,7 @@ def get_config(config_id: Optional[str] = None,
         endpoints=__ret__.endpoints,
         enums=__ret__.enums,
         http=__ret__.http,
+        id=__ret__.id,
         logging=__ret__.logging,
         logs=__ret__.logs,
         metrics=__ret__.metrics,

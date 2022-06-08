@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSslCertificateResult:
-    def __init__(__self__, certificate=None, creation_timestamp=None, description=None, expire_time=None, kind=None, managed=None, name=None, private_key=None, region=None, self_link=None, self_managed=None, subject_alternative_names=None, type=None):
+    def __init__(__self__, certificate=None, creation_timestamp=None, description=None, expire_time=None, id=None, kind=None, managed=None, name=None, private_key=None, region=None, self_link=None, self_managed=None, subject_alternative_names=None, type=None):
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
@@ -31,6 +31,9 @@ class GetSslCertificateResult:
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -90,6 +93,14 @@ class GetSslCertificateResult:
         Expire time of the certificate. RFC3339
         """
         return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -174,6 +185,7 @@ class AwaitableGetSslCertificateResult(GetSslCertificateResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             expire_time=self.expire_time,
+            id=self.id,
             kind=self.kind,
             managed=self.managed,
             name=self.name,
@@ -205,6 +217,7 @@ def get_ssl_certificate(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         expire_time=__ret__.expire_time,
+        id=__ret__.id,
         kind=__ret__.kind,
         managed=__ret__.managed,
         name=__ret__.name,

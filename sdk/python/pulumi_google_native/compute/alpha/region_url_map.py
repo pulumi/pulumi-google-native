@@ -303,6 +303,7 @@ class RegionUrlMap(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_url_map_id"] = None
             __props__.__dict__["self_link"] = None
         super(RegionUrlMap, __self__).__init__(
             'google-native:compute/alpha:RegionUrlMap',
@@ -338,6 +339,7 @@ class RegionUrlMap(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["path_matchers"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_url_map_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["tests"] = None
         return RegionUrlMap(resource_name, opts=opts, __props__=__props__)
@@ -437,6 +439,14 @@ class RegionUrlMap(pulumi.CustomResource):
         URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionUrlMapId")
+    def region_url_map_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_url_map_id")
 
     @property
     @pulumi.getter(name="selfLink")

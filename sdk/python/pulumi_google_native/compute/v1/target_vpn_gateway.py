@@ -182,6 +182,7 @@ class TargetVpnGateway(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["target_vpn_gateway_id"] = None
             __props__.__dict__["tunnels"] = None
         super(TargetVpnGateway, __self__).__init__(
             'google-native:compute/v1:TargetVpnGateway',
@@ -214,6 +215,7 @@ class TargetVpnGateway(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
+        __props__.__dict__["target_vpn_gateway_id"] = None
         __props__.__dict__["tunnels"] = None
         return TargetVpnGateway(resource_name, opts=opts, __props__=__props__)
 
@@ -288,6 +290,14 @@ class TargetVpnGateway(pulumi.CustomResource):
         The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="targetVpnGatewayId")
+    def target_vpn_gateway_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_vpn_gateway_id")
 
     @property
     @pulumi.getter

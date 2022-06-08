@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetResponsePolicyResult:
-    def __init__(__self__, description=None, kind=None, networks=None, response_policy_name=None):
+    def __init__(__self__, description=None, id=None, kind=None, networks=None, response_policy_name=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -39,6 +42,14 @@ class GetResponsePolicyResult:
         User-provided description for this Response Policy.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -69,6 +80,7 @@ class AwaitableGetResponsePolicyResult(GetResponsePolicyResult):
             yield self
         return GetResponsePolicyResult(
             description=self.description,
+            id=self.id,
             kind=self.kind,
             networks=self.networks,
             response_policy_name=self.response_policy_name)
@@ -93,6 +105,7 @@ def get_response_policy(client_operation_id: Optional[str] = None,
 
     return AwaitableGetResponsePolicyResult(
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         networks=__ret__.networks,
         response_policy_name=__ret__.response_policy_name)

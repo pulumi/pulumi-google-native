@@ -15,7 +15,7 @@ __all__ = ['AutoscalingPolicyArgs', 'AutoscalingPolicy']
 @pulumi.input_type
 class AutoscalingPolicyArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
+                 autoscaling_policy_id: pulumi.Input[str],
                  worker_config: pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'],
                  basic_algorithm: Optional[pulumi.Input['BasicAutoscalingAlgorithmArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -24,12 +24,12 @@ class AutoscalingPolicyArgs:
                  secondary_worker_config: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']] = None):
         """
         The set of arguments for constructing a AutoscalingPolicy resource.
-        :param pulumi.Input[str] id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        :param pulumi.Input[str] autoscaling_policy_id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         :param pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'] worker_config: Describes how the autoscaler will operate for primary workers.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
         :param pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "autoscaling_policy_id", autoscaling_policy_id)
         pulumi.set(__self__, "worker_config", worker_config)
         if basic_algorithm is not None:
             pulumi.set(__self__, "basic_algorithm", basic_algorithm)
@@ -43,16 +43,16 @@ class AutoscalingPolicyArgs:
             pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="autoscalingPolicyId")
+    def autoscaling_policy_id(self) -> pulumi.Input[str]:
         """
         The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "autoscaling_policy_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @autoscaling_policy_id.setter
+    def autoscaling_policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "autoscaling_policy_id", value)
 
     @property
     @pulumi.getter(name="workerConfig")
@@ -123,8 +123,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_policy_id: Optional[pulumi.Input[str]] = None,
                  basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        :param pulumi.Input[str] autoscaling_policy_id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
         :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
         :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] worker_config: Describes how the autoscaler will operate for primary workers.
@@ -167,8 +167,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_policy_id: Optional[pulumi.Input[str]] = None,
                  basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -186,10 +186,10 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoscalingPolicyArgs.__new__(AutoscalingPolicyArgs)
 
+            if autoscaling_policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'autoscaling_policy_id'")
+            __props__.__dict__["autoscaling_policy_id"] = autoscaling_policy_id
             __props__.__dict__["basic_algorithm"] = basic_algorithm
-            if id is None and not opts.urn:
-                raise TypeError("Missing required property 'id'")
-            __props__.__dict__["id"] = id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
@@ -220,12 +220,21 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         __props__ = AutoscalingPolicyArgs.__new__(AutoscalingPolicyArgs)
 
+        __props__.__dict__["autoscaling_policy_id"] = None
         __props__.__dict__["basic_algorithm"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["secondary_worker_config"] = None
         __props__.__dict__["worker_config"] = None
         return AutoscalingPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoscalingPolicyId")
+    def autoscaling_policy_id(self) -> pulumi.Output[str]:
+        """
+        The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        """
+        return pulumi.get(self, "autoscaling_policy_id")
 
     @property
     @pulumi.getter(name="basicAlgorithm")

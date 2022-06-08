@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetHttpHealthCheckResult:
-    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, healthy_threshold=None, host=None, kind=None, name=None, port=None, request_path=None, self_link=None, self_link_with_id=None, timeout_sec=None, unhealthy_threshold=None):
+    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, healthy_threshold=None, host=None, id=None, kind=None, name=None, port=None, request_path=None, self_link=None, self_link_with_id=None, timeout_sec=None, unhealthy_threshold=None):
         if check_interval_sec and not isinstance(check_interval_sec, int):
             raise TypeError("Expected argument 'check_interval_sec' to be a int")
         pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -33,6 +33,9 @@ class GetHttpHealthCheckResult:
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -97,6 +100,14 @@ class GetHttpHealthCheckResult:
         The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -174,6 +185,7 @@ class AwaitableGetHttpHealthCheckResult(GetHttpHealthCheckResult):
             description=self.description,
             healthy_threshold=self.healthy_threshold,
             host=self.host,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             port=self.port,
@@ -205,6 +217,7 @@ def get_http_health_check(http_health_check: Optional[str] = None,
         description=__ret__.description,
         healthy_threshold=__ret__.healthy_threshold,
         host=__ret__.host,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         port=__ret__.port,

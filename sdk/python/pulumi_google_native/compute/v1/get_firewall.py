@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallResult:
-    def __init__(__self__, allowed=None, creation_timestamp=None, denied=None, description=None, destination_ranges=None, direction=None, disabled=None, kind=None, log_config=None, name=None, network=None, priority=None, self_link=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
+    def __init__(__self__, allowed=None, creation_timestamp=None, denied=None, description=None, destination_ranges=None, direction=None, disabled=None, id=None, kind=None, log_config=None, name=None, network=None, priority=None, self_link=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
         if allowed and not isinstance(allowed, list):
             raise TypeError("Expected argument 'allowed' to be a list")
         pulumi.set(__self__, "allowed", allowed)
@@ -40,6 +40,9 @@ class GetFirewallResult:
         if disabled and not isinstance(disabled, bool):
             raise TypeError("Expected argument 'disabled' to be a bool")
         pulumi.set(__self__, "disabled", disabled)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -129,6 +132,14 @@ class GetFirewallResult:
         Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -232,6 +243,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             destination_ranges=self.destination_ranges,
             direction=self.direction,
             disabled=self.disabled,
+            id=self.id,
             kind=self.kind,
             log_config=self.log_config,
             name=self.name,
@@ -268,6 +280,7 @@ def get_firewall(firewall: Optional[str] = None,
         destination_ranges=__ret__.destination_ranges,
         direction=__ret__.direction,
         disabled=__ret__.disabled,
+        id=__ret__.id,
         kind=__ret__.kind,
         log_config=__ret__.log_config,
         name=__ret__.name,

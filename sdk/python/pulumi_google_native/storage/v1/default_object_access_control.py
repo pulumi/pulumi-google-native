@@ -16,13 +16,13 @@ __all__ = ['DefaultObjectAccessControlArgs', 'DefaultObjectAccessControl']
 class DefaultObjectAccessControlArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
+                 default_object_access_control_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  entity: Optional[pulumi.Input[str]] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']] = None,
@@ -32,6 +32,7 @@ class DefaultObjectAccessControlArgs:
         """
         The set of arguments for constructing a DefaultObjectAccessControl resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] default_object_access_control_id: The ID of the access-control entry.
         :param pulumi.Input[str] domain: The domain associated with the entity, if any.
         :param pulumi.Input[str] email: The email address associated with the entity, if any.
         :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: 
@@ -49,7 +50,6 @@ class DefaultObjectAccessControlArgs:
         :param pulumi.Input[str] entity_id: The ID for the entity, if any.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the access-control entry.
         :param pulumi.Input[str] generation: The content generation of the object, if applied to an object.
-        :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input['DefaultObjectAccessControlProjectTeamArgs'] project_team: The project team associated with the entity, if any.
@@ -58,6 +58,8 @@ class DefaultObjectAccessControlArgs:
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         pulumi.set(__self__, "bucket", bucket)
+        if default_object_access_control_id is not None:
+            pulumi.set(__self__, "default_object_access_control_id", default_object_access_control_id)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if email is not None:
@@ -70,8 +72,6 @@ class DefaultObjectAccessControlArgs:
             pulumi.set(__self__, "etag", etag)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if object is not None:
@@ -96,6 +96,18 @@ class DefaultObjectAccessControlArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="defaultObjectAccessControlId")
+    def default_object_access_control_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "default_object_access_control_id")
+
+    @default_object_access_control_id.setter
+    def default_object_access_control_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_object_access_control_id", value)
 
     @property
     @pulumi.getter
@@ -182,18 +194,6 @@ class DefaultObjectAccessControlArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the access-control entry.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
@@ -271,13 +271,13 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 default_object_access_control_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  entity: Optional[pulumi.Input[str]] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]] = None,
@@ -292,6 +292,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] default_object_access_control_id: The ID of the access-control entry.
         :param pulumi.Input[str] domain: The domain associated with the entity, if any.
         :param pulumi.Input[str] email: The email address associated with the entity, if any.
         :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: 
@@ -309,7 +310,6 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] entity_id: The ID for the entity, if any.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the access-control entry.
         :param pulumi.Input[str] generation: The content generation of the object, if applied to an object.
-        :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']] project_team: The project team associated with the entity, if any.
@@ -343,13 +343,13 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 default_object_access_control_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  entity: Optional[pulumi.Input[str]] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]] = None,
@@ -371,13 +371,13 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["default_object_access_control_id"] = default_object_access_control_id
             __props__.__dict__["domain"] = domain
             __props__.__dict__["email"] = email
             __props__.__dict__["entity"] = entity
             __props__.__dict__["entity_id"] = entity_id
             __props__.__dict__["etag"] = etag
             __props__.__dict__["generation"] = generation
-            __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["object"] = object
             __props__.__dict__["project_team"] = project_team
@@ -407,6 +407,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         __props__ = DefaultObjectAccessControlArgs.__new__(DefaultObjectAccessControlArgs)
 
         __props__.__dict__["bucket"] = None
+        __props__.__dict__["default_object_access_control_id"] = None
         __props__.__dict__["domain"] = None
         __props__.__dict__["email"] = None
         __props__.__dict__["entity"] = None
@@ -427,6 +428,14 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="defaultObjectAccessControlId")
+    def default_object_access_control_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "default_object_access_control_id")
 
     @property
     @pulumi.getter

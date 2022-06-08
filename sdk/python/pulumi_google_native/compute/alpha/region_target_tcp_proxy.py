@@ -220,6 +220,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             __props__.__dict__["service"] = service
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_target_tcp_proxy_id"] = None
             __props__.__dict__["self_link"] = None
         super(RegionTargetTcpProxy, __self__).__init__(
             'google-native:compute/alpha:RegionTargetTcpProxy',
@@ -250,6 +251,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         __props__.__dict__["proxy_bind"] = None
         __props__.__dict__["proxy_header"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_target_tcp_proxy_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service"] = None
         return RegionTargetTcpProxy(resource_name, opts=opts, __props__=__props__)
@@ -309,6 +311,14 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionTargetTcpProxyId")
+    def region_target_tcp_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_target_tcp_proxy_id")
 
     @property
     @pulumi.getter(name="selfLink")

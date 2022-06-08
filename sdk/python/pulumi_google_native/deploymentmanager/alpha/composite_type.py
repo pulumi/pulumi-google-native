@@ -16,8 +16,8 @@ __all__ = ['CompositeTypeArgs', 'CompositeType']
 @pulumi.input_type
 class CompositeTypeArgs:
     def __init__(__self__, *,
+                 composite_type_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['CompositeTypeLabelEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -29,10 +29,10 @@ class CompositeTypeArgs:
         :param pulumi.Input[str] name: Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
         :param pulumi.Input['TemplateContentsArgs'] template_contents: Files for the template type.
         """
+        if composite_type_id is not None:
+            pulumi.set(__self__, "composite_type_id", composite_type_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -41,6 +41,15 @@ class CompositeTypeArgs:
             pulumi.set(__self__, "project", project)
         if template_contents is not None:
             pulumi.set(__self__, "template_contents", template_contents)
+
+    @property
+    @pulumi.getter(name="compositeTypeId")
+    def composite_type_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "composite_type_id")
+
+    @composite_type_id.setter
+    def composite_type_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "composite_type_id", value)
 
     @property
     @pulumi.getter
@@ -53,15 +62,6 @@ class CompositeTypeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -114,8 +114,8 @@ class CompositeType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 composite_type_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -155,8 +155,8 @@ class CompositeType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 composite_type_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -173,8 +173,8 @@ class CompositeType(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CompositeTypeArgs.__new__(CompositeTypeArgs)
 
+            __props__.__dict__["composite_type_id"] = composite_type_id
             __props__.__dict__["description"] = description
-            __props__.__dict__["id"] = id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -205,6 +205,7 @@ class CompositeType(pulumi.CustomResource):
 
         __props__ = CompositeTypeArgs.__new__(CompositeTypeArgs)
 
+        __props__.__dict__["composite_type_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["insert_time"] = None
         __props__.__dict__["labels"] = None
@@ -214,6 +215,11 @@ class CompositeType(pulumi.CustomResource):
         __props__.__dict__["status"] = None
         __props__.__dict__["template_contents"] = None
         return CompositeType(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="compositeTypeId")
+    def composite_type_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "composite_type_id")
 
     @property
     @pulumi.getter

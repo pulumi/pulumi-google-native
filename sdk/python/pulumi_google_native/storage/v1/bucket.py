@@ -18,13 +18,13 @@ class BucketArgs:
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]]] = None,
                  autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
                  billing: Optional[pulumi.Input['BucketBillingArgs']] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_configuration: Optional[pulumi.Input['BucketIamConfigurationArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle: Optional[pulumi.Input['BucketLifecycleArgs']] = None,
@@ -54,13 +54,13 @@ class BucketArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]] acl: Access controls on the bucket.
         :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's Autoclass configuration.
         :param pulumi.Input['BucketBillingArgs'] billing: The bucket's billing configuration.
+        :param pulumi.Input[str] bucket_id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: Encryption configuration for a bucket.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the bucket.
         :param pulumi.Input['BucketIamConfigurationArgs'] iam_configuration: The bucket's IAM configuration.
-        :param pulumi.Input[str] id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[str] kind: The kind of item this is. For buckets, this is always storage#bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided labels, in key/value pairs.
         :param pulumi.Input['BucketLifecycleArgs'] lifecycle: The bucket's lifecycle configuration. See lifecycle management for more information.
@@ -92,6 +92,8 @@ class BucketArgs:
             pulumi.set(__self__, "autoclass", autoclass)
         if billing is not None:
             pulumi.set(__self__, "billing", billing)
+        if bucket_id is not None:
+            pulumi.set(__self__, "bucket_id", bucket_id)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
         if default_event_based_hold is not None:
@@ -104,8 +106,6 @@ class BucketArgs:
             pulumi.set(__self__, "etag", etag)
         if iam_configuration is not None:
             pulumi.set(__self__, "iam_configuration", iam_configuration)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if labels is not None:
@@ -192,6 +192,18 @@ class BucketArgs:
         pulumi.set(self, "billing", value)
 
     @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the bucket. For buckets, the id and name properties are the same.
+        """
+        return pulumi.get(self, "bucket_id")
+
+    @bucket_id.setter
+    def bucket_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_id", value)
+
+    @property
     @pulumi.getter
     def cors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]]:
         """
@@ -262,18 +274,6 @@ class BucketArgs:
     @iam_configuration.setter
     def iam_configuration(self, value: Optional[pulumi.Input['BucketIamConfigurationArgs']]):
         pulumi.set(self, "iam_configuration", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the bucket. For buckets, the id and name properties are the same.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -572,13 +572,13 @@ class Bucket(pulumi.CustomResource):
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
                  autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle: Optional[pulumi.Input[pulumi.InputType['BucketLifecycleArgs']]] = None,
@@ -612,13 +612,13 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]] acl: Access controls on the bucket.
         :param pulumi.Input[pulumi.InputType['BucketAutoclassArgs']] autoclass: The bucket's Autoclass configuration.
         :param pulumi.Input[pulumi.InputType['BucketBillingArgs']] billing: The bucket's billing configuration.
+        :param pulumi.Input[str] bucket_id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: Encryption configuration for a bucket.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the bucket.
         :param pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']] iam_configuration: The bucket's IAM configuration.
-        :param pulumi.Input[str] id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[str] kind: The kind of item this is. For buckets, this is always storage#bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided labels, in key/value pairs.
         :param pulumi.Input[pulumi.InputType['BucketLifecycleArgs']] lifecycle: The bucket's lifecycle configuration. See lifecycle management for more information.
@@ -671,13 +671,13 @@ class Bucket(pulumi.CustomResource):
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
                  autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle: Optional[pulumi.Input[pulumi.InputType['BucketLifecycleArgs']]] = None,
@@ -717,13 +717,13 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["acl"] = acl
             __props__.__dict__["autoclass"] = autoclass
             __props__.__dict__["billing"] = billing
+            __props__.__dict__["bucket_id"] = bucket_id
             __props__.__dict__["cors"] = cors
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
             __props__.__dict__["default_object_acl"] = default_object_acl
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["etag"] = etag
             __props__.__dict__["iam_configuration"] = iam_configuration
-            __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lifecycle"] = lifecycle
@@ -773,6 +773,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["acl"] = None
         __props__.__dict__["autoclass"] = None
         __props__.__dict__["billing"] = None
+        __props__.__dict__["bucket_id"] = None
         __props__.__dict__["cors"] = None
         __props__.__dict__["default_event_based_hold"] = None
         __props__.__dict__["default_object_acl"] = None
@@ -823,6 +824,14 @@ class Bucket(pulumi.CustomResource):
         The bucket's billing configuration.
         """
         return pulumi.get(self, "billing")
+
+    @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the bucket. For buckets, the id and name properties are the same.
+        """
+        return pulumi.get(self, "bucket_id")
 
     @property
     @pulumi.getter

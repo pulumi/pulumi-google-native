@@ -208,6 +208,7 @@ class SslPolicy(pulumi.CustomResource):
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["ssl_policy_id"] = None
             __props__.__dict__["warnings"] = None
         super(SslPolicy, __self__).__init__(
             'google-native:compute/v1:SslPolicy',
@@ -241,6 +242,7 @@ class SslPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["profile"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["ssl_policy_id"] = None
         __props__.__dict__["warnings"] = None
         return SslPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -323,6 +325,14 @@ class SslPolicy(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sslPolicyId")
+    def ssl_policy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "ssl_policy_id")
 
     @property
     @pulumi.getter

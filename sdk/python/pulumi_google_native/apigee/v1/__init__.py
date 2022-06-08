@@ -9,6 +9,7 @@ from ._enums import *
 from .alias import *
 from .api import *
 from .api_product import *
+from .apicategory import *
 from .app import *
 from .archive_deployment import *
 from .canary_evaluation import *

@@ -477,21 +477,32 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse(dict):
     ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
     """
     def __init__(__self__, *,
+                 id: str,
                  resource: Mapping[str, str],
                  status: str,
                  sub: Sequence['outputs.GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse'],
                  time: str):
         """
         ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
+        :param str id: Unique Id for the resource.
         :param Mapping[str, str] resource: Specific details for the resource. This is for internal use only.
         :param str status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param Sequence['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse'] sub: List of Info for the sub level resources.
         :param str time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "sub", sub)
         pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique Id for the resource.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -833,21 +844,32 @@ class ResourceInfoResponse(dict):
     ResourceInfo represents the information/status of the associated resource.
     """
     def __init__(__self__, *,
+                 id: str,
                  resource: Mapping[str, str],
                  status: str,
                  sub: Sequence['outputs.ResourceInfoResponse'],
                  time: str):
         """
         ResourceInfo represents the information/status of the associated resource.
+        :param str id: Unique Id for the resource.
         :param Mapping[str, str] resource: Specific details for the resource.
         :param str status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param Sequence['ResourceInfoResponse'] sub: List of Info for the sub level resources.
         :param str time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "sub", sub)
         pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique Id for the resource.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

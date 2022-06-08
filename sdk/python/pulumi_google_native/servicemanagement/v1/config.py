@@ -21,6 +21,7 @@ class ConfigArgs:
                  authentication: Optional[pulumi.Input['AuthenticationArgs']] = None,
                  backend: Optional[pulumi.Input['BackendArgs']] = None,
                  billing: Optional[pulumi.Input['BillingArgs']] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
                  context: Optional[pulumi.Input['ContextArgs']] = None,
                  control: Optional[pulumi.Input['ControlArgs']] = None,
@@ -29,7 +30,6 @@ class ConfigArgs:
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointArgs']]]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input['EnumArgs']]]] = None,
                  http: Optional[pulumi.Input['HttpArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input['LoggingArgs']] = None,
                  logs: Optional[pulumi.Input[Sequence[pulumi.Input['LogDescriptorArgs']]]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['MetricDescriptorArgs']]]] = None,
@@ -49,6 +49,7 @@ class ConfigArgs:
         :param pulumi.Input['AuthenticationArgs'] authentication: Auth configuration.
         :param pulumi.Input['BackendArgs'] backend: API backend configuration.
         :param pulumi.Input['BillingArgs'] billing: Billing configuration.
+        :param pulumi.Input[str] config_id: A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
         :param pulumi.Input[int] config_version: Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
         :param pulumi.Input['ContextArgs'] context: Context configuration.
         :param pulumi.Input['ControlArgs'] control: Configuration for the service control plane.
@@ -57,7 +58,6 @@ class ConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EndpointArgs']]] endpoints: Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
         :param pulumi.Input[Sequence[pulumi.Input['EnumArgs']]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         :param pulumi.Input['HttpArgs'] http: HTTP configuration.
-        :param pulumi.Input[str] id: A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
         :param pulumi.Input['LoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[Sequence[pulumi.Input['LogDescriptorArgs']]] logs: Defines the logs used by this service.
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorArgs']]] metrics: Defines the metrics used by this service.
@@ -81,6 +81,8 @@ class ConfigArgs:
             pulumi.set(__self__, "backend", backend)
         if billing is not None:
             pulumi.set(__self__, "billing", billing)
+        if config_id is not None:
+            pulumi.set(__self__, "config_id", config_id)
         if config_version is not None:
             pulumi.set(__self__, "config_version", config_version)
         if context is not None:
@@ -97,8 +99,6 @@ class ConfigArgs:
             pulumi.set(__self__, "enums", enums)
         if http is not None:
             pulumi.set(__self__, "http", http)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
         if logs is not None:
@@ -182,6 +182,18 @@ class ConfigArgs:
     @billing.setter
     def billing(self, value: Optional[pulumi.Input['BillingArgs']]):
         pulumi.set(self, "billing", value)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+        """
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_id", value)
 
     @property
     @pulumi.getter(name="configVersion")
@@ -278,18 +290,6 @@ class ConfigArgs:
     @http.setter
     def http(self, value: Optional[pulumi.Input['HttpArgs']]):
         pulumi.set(self, "http", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -457,6 +457,7 @@ class Config(pulumi.CustomResource):
                  authentication: Optional[pulumi.Input[pulumi.InputType['AuthenticationArgs']]] = None,
                  backend: Optional[pulumi.Input[pulumi.InputType['BackendArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BillingArgs']]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
                  context: Optional[pulumi.Input[pulumi.InputType['ContextArgs']]] = None,
                  control: Optional[pulumi.Input[pulumi.InputType['ControlArgs']]] = None,
@@ -465,7 +466,6 @@ class Config(pulumi.CustomResource):
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]]] = None,
                  http: Optional[pulumi.Input[pulumi.InputType['HttpArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['LoggingArgs']]] = None,
                  logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogDescriptorArgs']]]]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]]]] = None,
@@ -492,6 +492,7 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthenticationArgs']] authentication: Auth configuration.
         :param pulumi.Input[pulumi.InputType['BackendArgs']] backend: API backend configuration.
         :param pulumi.Input[pulumi.InputType['BillingArgs']] billing: Billing configuration.
+        :param pulumi.Input[str] config_id: A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
         :param pulumi.Input[int] config_version: Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
         :param pulumi.Input[pulumi.InputType['ContextArgs']] context: Context configuration.
         :param pulumi.Input[pulumi.InputType['ControlArgs']] control: Configuration for the service control plane.
@@ -500,7 +501,6 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]] endpoints: Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         :param pulumi.Input[pulumi.InputType['HttpArgs']] http: HTTP configuration.
-        :param pulumi.Input[str] id: A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
         :param pulumi.Input[pulumi.InputType['LoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogDescriptorArgs']]]] logs: Defines the logs used by this service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]]] metrics: Defines the metrics used by this service.
@@ -545,6 +545,7 @@ class Config(pulumi.CustomResource):
                  authentication: Optional[pulumi.Input[pulumi.InputType['AuthenticationArgs']]] = None,
                  backend: Optional[pulumi.Input[pulumi.InputType['BackendArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BillingArgs']]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
                  context: Optional[pulumi.Input[pulumi.InputType['ContextArgs']]] = None,
                  control: Optional[pulumi.Input[pulumi.InputType['ControlArgs']]] = None,
@@ -553,7 +554,6 @@ class Config(pulumi.CustomResource):
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]]] = None,
                  http: Optional[pulumi.Input[pulumi.InputType['HttpArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['LoggingArgs']]] = None,
                  logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogDescriptorArgs']]]]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]]]] = None,
@@ -584,6 +584,7 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["backend"] = backend
             __props__.__dict__["billing"] = billing
+            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["config_version"] = config_version
             __props__.__dict__["context"] = context
             __props__.__dict__["control"] = control
@@ -592,7 +593,6 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["endpoints"] = endpoints
             __props__.__dict__["enums"] = enums
             __props__.__dict__["http"] = http
-            __props__.__dict__["id"] = id
             __props__.__dict__["logging"] = logging
             __props__.__dict__["logs"] = logs
             __props__.__dict__["metrics"] = metrics
@@ -636,6 +636,7 @@ class Config(pulumi.CustomResource):
         __props__.__dict__["authentication"] = None
         __props__.__dict__["backend"] = None
         __props__.__dict__["billing"] = None
+        __props__.__dict__["config_id"] = None
         __props__.__dict__["config_version"] = None
         __props__.__dict__["context"] = None
         __props__.__dict__["control"] = None
@@ -691,6 +692,14 @@ class Config(pulumi.CustomResource):
         Billing configuration.
         """
         return pulumi.get(self, "billing")
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Output[str]:
+        """
+        A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+        """
+        return pulumi.get(self, "config_id")
 
     @property
     @pulumi.getter(name="configVersion")

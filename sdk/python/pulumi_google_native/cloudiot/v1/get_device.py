@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDeviceResult:
-    def __init__(__self__, blocked=None, config=None, credentials=None, gateway_config=None, last_config_ack_time=None, last_config_send_time=None, last_error_status=None, last_error_time=None, last_event_time=None, last_heartbeat_time=None, last_state_time=None, log_level=None, metadata=None, name=None, num_id=None, state=None):
+    def __init__(__self__, blocked=None, config=None, credentials=None, gateway_config=None, id=None, last_config_ack_time=None, last_config_send_time=None, last_error_status=None, last_error_time=None, last_event_time=None, last_heartbeat_time=None, last_state_time=None, log_level=None, metadata=None, name=None, num_id=None, state=None):
         if blocked and not isinstance(blocked, bool):
             raise TypeError("Expected argument 'blocked' to be a bool")
         pulumi.set(__self__, "blocked", blocked)
@@ -31,6 +31,9 @@ class GetDeviceResult:
         if gateway_config and not isinstance(gateway_config, dict):
             raise TypeError("Expected argument 'gateway_config' to be a dict")
         pulumi.set(__self__, "gateway_config", gateway_config)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if last_config_ack_time and not isinstance(last_config_ack_time, str):
             raise TypeError("Expected argument 'last_config_ack_time' to be a str")
         pulumi.set(__self__, "last_config_ack_time", last_config_ack_time)
@@ -99,6 +102,14 @@ class GetDeviceResult:
         Gateway-related configuration and state.
         """
         return pulumi.get(self, "gateway_config")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The user-defined device identifier. The device ID must be unique within a device registry.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="lastConfigAckTime")
@@ -207,6 +218,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             config=self.config,
             credentials=self.credentials,
             gateway_config=self.gateway_config,
+            id=self.id,
             last_config_ack_time=self.last_config_ack_time,
             last_config_send_time=self.last_config_send_time,
             last_error_status=self.last_error_status,
@@ -247,6 +259,7 @@ def get_device(device_id: Optional[str] = None,
         config=__ret__.config,
         credentials=__ret__.credentials,
         gateway_config=__ret__.gateway_config,
+        id=__ret__.id,
         last_config_ack_time=__ret__.last_config_ack_time,
         last_config_send_time=__ret__.last_config_send_time,
         last_error_status=__ret__.last_error_status,

@@ -206,6 +206,7 @@ class TargetTcpProxy(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["target_tcp_proxy_id"] = None
         super(TargetTcpProxy, __self__).__init__(
             'google-native:compute/alpha:TargetTcpProxy',
             resource_name,
@@ -237,6 +238,7 @@ class TargetTcpProxy(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service"] = None
+        __props__.__dict__["target_tcp_proxy_id"] = None
         return TargetTcpProxy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -310,4 +312,12 @@ class TargetTcpProxy(pulumi.CustomResource):
         URL to the BackendService resource.
         """
         return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="targetTcpProxyId")
+    def target_tcp_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_tcp_proxy_id")
 

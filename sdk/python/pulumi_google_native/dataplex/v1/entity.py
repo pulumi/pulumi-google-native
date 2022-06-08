@@ -18,8 +18,8 @@ class EntityArgs:
     def __init__(__self__, *,
                  asset: pulumi.Input[str],
                  data_path: pulumi.Input[str],
+                 entity_id: pulumi.Input[str],
                  format: pulumi.Input['GoogleCloudDataplexV1StorageFormatArgs'],
-                 id: pulumi.Input[str],
                  lake_id: pulumi.Input[str],
                  schema: pulumi.Input['GoogleCloudDataplexV1SchemaArgs'],
                  system: pulumi.Input['EntitySystem'],
@@ -36,8 +36,8 @@ class EntityArgs:
         The set of arguments for constructing a Entity resource.
         :param pulumi.Input[str] asset: Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
         :param pulumi.Input[str] data_path: Immutable. The storage path of the entity data. For Cloud Storage data, this is the fully-qualified path to the entity, such as gs://bucket/path/to/data. For BigQuery data, this is the name of the table resource, such as projects/project_id/datasets/dataset_id/tables/table_id.
+        :param pulumi.Input[str] entity_id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatArgs'] format: Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
-        :param pulumi.Input[str] id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         :param pulumi.Input['GoogleCloudDataplexV1SchemaArgs'] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
         :param pulumi.Input['EntitySystem'] system: Immutable. Identifies the storage system of the entity data.
         :param pulumi.Input['EntityType'] type: Immutable. The type of entity.
@@ -49,8 +49,8 @@ class EntityArgs:
         """
         pulumi.set(__self__, "asset", asset)
         pulumi.set(__self__, "data_path", data_path)
+        pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "format", format)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "lake_id", lake_id)
         pulumi.set(__self__, "schema", schema)
         pulumi.set(__self__, "system", system)
@@ -97,6 +97,18 @@ class EntityArgs:
         pulumi.set(self, "data_path", value)
 
     @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[str]:
+        """
+        A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_id", value)
+
+    @property
     @pulumi.getter
     def format(self) -> pulumi.Input['GoogleCloudDataplexV1StorageFormatArgs']:
         """
@@ -107,18 +119,6 @@ class EntityArgs:
     @format.setter
     def format(self, value: pulumi.Input['GoogleCloudDataplexV1StorageFormatArgs']):
         pulumi.set(self, "format", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="lakeId")
@@ -263,9 +263,9 @@ class Entity(pulumi.CustomResource):
                  data_path_pattern: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1StorageFormatArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -286,9 +286,9 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[str] data_path_pattern: Optional. The set of items within the data path constituting the data in the entity, represented as a glob path. Example: gs://bucket/path/to/data/**/*.csv.
         :param pulumi.Input[str] description: Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
         :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 256 characters.
+        :param pulumi.Input[str] entity_id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         :param pulumi.Input[str] etag: Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1StorageFormatArgs']] format: Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
-        :param pulumi.Input[str] id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
         :param pulumi.Input['EntitySystem'] system: Immutable. Identifies the storage system of the entity data.
         :param pulumi.Input['EntityType'] type: Immutable. The type of entity.
@@ -324,9 +324,9 @@ class Entity(pulumi.CustomResource):
                  data_path_pattern: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1StorageFormatArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -356,13 +356,13 @@ class Entity(pulumi.CustomResource):
             __props__.__dict__["data_path_pattern"] = data_path_pattern
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if entity_id is None and not opts.urn:
+                raise TypeError("Missing required property 'entity_id'")
+            __props__.__dict__["entity_id"] = entity_id
             __props__.__dict__["etag"] = etag
             if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
             __props__.__dict__["format"] = format
-            if id is None and not opts.urn:
-                raise TypeError("Missing required property 'id'")
-            __props__.__dict__["id"] = id
             if lake_id is None and not opts.urn:
                 raise TypeError("Missing required property 'lake_id'")
             __props__.__dict__["lake_id"] = lake_id
@@ -414,6 +414,7 @@ class Entity(pulumi.CustomResource):
         __props__.__dict__["data_path_pattern"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["entity_id"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["format"] = None
         __props__.__dict__["name"] = None
@@ -486,6 +487,14 @@ class Entity(pulumi.CustomResource):
         Optional. Display name must be shorter than or equal to 256 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Output[str]:
+        """
+        A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+        """
+        return pulumi.get(self, "entity_id")
 
     @property
     @pulumi.getter

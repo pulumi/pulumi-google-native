@@ -662,6 +662,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["cpu_platform"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["instance_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_start_timestamp"] = None
@@ -706,6 +707,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["guest_accelerators"] = None
         __props__.__dict__["hostname"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
@@ -829,6 +831,14 @@ class Instance(pulumi.CustomResource):
         Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter

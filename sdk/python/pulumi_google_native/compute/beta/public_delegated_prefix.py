@@ -242,6 +242,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["public_delegated_prefix_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
         super(PublicDelegatedPrefix, __self__).__init__(
@@ -274,6 +275,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent_prefix"] = None
+        __props__.__dict__["public_delegated_prefix_id"] = None
         __props__.__dict__["public_delegated_sub_prefixs"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
@@ -343,6 +345,14 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         """
         return pulumi.get(self, "parent_prefix")
+
+    @property
+    @pulumi.getter(name="publicDelegatedPrefixId")
+    def public_delegated_prefix_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "public_delegated_prefix_id")
 
     @property
     @pulumi.getter(name="publicDelegatedSubPrefixs")

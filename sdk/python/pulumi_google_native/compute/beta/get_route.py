@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouteResult:
-    def __init__(__self__, as_paths=None, creation_timestamp=None, description=None, dest_range=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, tags=None, warnings=None):
+    def __init__(__self__, as_paths=None, creation_timestamp=None, description=None, dest_range=None, id=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, tags=None, warnings=None):
         if as_paths and not isinstance(as_paths, list):
             raise TypeError("Expected argument 'as_paths' to be a list")
         pulumi.set(__self__, "as_paths", as_paths)
@@ -31,6 +31,9 @@ class GetRouteResult:
         if dest_range and not isinstance(dest_range, str):
             raise TypeError("Expected argument 'dest_range' to be a str")
         pulumi.set(__self__, "dest_range", dest_range)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -114,6 +117,14 @@ class GetRouteResult:
         The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
         """
         return pulumi.get(self, "dest_range")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -262,6 +273,7 @@ class AwaitableGetRouteResult(GetRouteResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             dest_range=self.dest_range,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             network=self.network,
@@ -301,6 +313,7 @@ def get_route(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         dest_range=__ret__.dest_range,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         network=__ret__.network,

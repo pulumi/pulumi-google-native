@@ -282,6 +282,7 @@ class PacketMirroring(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["packet_mirroring_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         super(PacketMirroring, __self__).__init__(
@@ -315,6 +316,7 @@ class PacketMirroring(pulumi.CustomResource):
         __props__.__dict__["mirrored_resources"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["packet_mirroring_id"] = None
         __props__.__dict__["priority"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
@@ -392,6 +394,14 @@ class PacketMirroring(pulumi.CustomResource):
         Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="packetMirroringId")
+    def packet_mirroring_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "packet_mirroring_id")
 
     @property
     @pulumi.getter

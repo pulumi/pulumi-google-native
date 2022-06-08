@@ -263,6 +263,7 @@ class RegionSslCertificate(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_ssl_certificate_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["subject_alternative_names"] = None
         super(RegionSslCertificate, __self__).__init__(
@@ -296,6 +297,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["private_key"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_ssl_certificate_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_managed"] = None
         __props__.__dict__["subject_alternative_names"] = None
@@ -373,6 +375,14 @@ class RegionSslCertificate(pulumi.CustomResource):
         URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionSslCertificateId")
+    def region_ssl_certificate_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_ssl_certificate_id")
 
     @property
     @pulumi.getter(name="selfLink")

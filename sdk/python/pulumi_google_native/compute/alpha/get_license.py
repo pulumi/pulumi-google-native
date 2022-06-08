@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetLicenseResult:
-    def __init__(__self__, charges_use_fee=None, creation_timestamp=None, description=None, kind=None, license_code=None, name=None, resource_requirements=None, self_link=None, self_link_with_id=None, transferable=None):
+    def __init__(__self__, charges_use_fee=None, creation_timestamp=None, description=None, id=None, kind=None, license_code=None, name=None, resource_requirements=None, self_link=None, self_link_with_id=None, transferable=None):
         if charges_use_fee and not isinstance(charges_use_fee, bool):
             raise TypeError("Expected argument 'charges_use_fee' to be a bool")
         if charges_use_fee is not None:
@@ -32,6 +32,9 @@ class GetLicenseResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -77,6 +80,14 @@ class GetLicenseResult:
         An optional textual description of the resource; provided by the client when the resource is created.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -141,6 +152,7 @@ class AwaitableGetLicenseResult(GetLicenseResult):
             charges_use_fee=self.charges_use_fee,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             license_code=self.license_code,
             name=self.name,
@@ -169,6 +181,7 @@ def get_license(license: Optional[str] = None,
         charges_use_fee=__ret__.charges_use_fee,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         license_code=__ret__.license_code,
         name=__ret__.name,

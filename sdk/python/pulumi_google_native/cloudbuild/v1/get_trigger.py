@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, approval_config=None, autodetect=None, bitbucket_server_trigger_config=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, include_build_logs=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+    def __init__(__self__, approval_config=None, autodetect=None, bitbucket_server_trigger_config=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, id=None, ignored_files=None, include_build_logs=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
         if approval_config and not isinstance(approval_config, dict):
             raise TypeError("Expected argument 'approval_config' to be a dict")
         pulumi.set(__self__, "approval_config", approval_config)
@@ -55,6 +55,9 @@ class GetTriggerResult:
         if github and not isinstance(github, dict):
             raise TypeError("Expected argument 'github' to be a dict")
         pulumi.set(__self__, "github", github)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if ignored_files and not isinstance(ignored_files, list):
             raise TypeError("Expected argument 'ignored_files' to be a list")
         pulumi.set(__self__, "ignored_files", ignored_files)
@@ -189,6 +192,14 @@ class GetTriggerResult:
         return pulumi.get(self, "github")
 
     @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the trigger.
+        """
+        return pulumi.get(self, "id")
+
+    @property
     @pulumi.getter(name="ignoredFiles")
     def ignored_files(self) -> Sequence[str]:
         """
@@ -303,6 +314,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             filter=self.filter,
             git_file_source=self.git_file_source,
             github=self.github,
+            id=self.id,
             ignored_files=self.ignored_files,
             include_build_logs=self.include_build_logs,
             included_files=self.included_files,
@@ -349,6 +361,7 @@ def get_trigger(location: Optional[str] = None,
         filter=__ret__.filter,
         git_file_source=__ret__.git_file_source,
         github=__ret__.github,
+        id=__ret__.id,
         ignored_files=__ret__.ignored_files,
         include_build_logs=__ret__.include_build_logs,
         included_files=__ret__.included_files,

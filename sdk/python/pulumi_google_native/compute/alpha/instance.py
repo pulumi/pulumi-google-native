@@ -822,6 +822,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["cpu_platform"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["instance_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_start_timestamp"] = None
@@ -871,6 +872,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["guest_accelerators"] = None
         __props__.__dict__["hostname"] = None
         __props__.__dict__["instance_encryption_key"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["key_revocation_action_type"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
@@ -1019,6 +1021,14 @@ class Instance(pulumi.CustomResource):
         Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
         """
         return pulumi.get(self, "instance_encryption_key")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="keyRevocationActionType")

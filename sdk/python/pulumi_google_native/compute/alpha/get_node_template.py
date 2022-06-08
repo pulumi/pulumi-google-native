@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeTemplateResult:
-    def __init__(__self__, accelerators=None, cpu_overcommit_type=None, creation_timestamp=None, description=None, disks=None, kind=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, region=None, self_link=None, self_link_with_id=None, server_binding=None, status=None, status_message=None):
+    def __init__(__self__, accelerators=None, cpu_overcommit_type=None, creation_timestamp=None, description=None, disks=None, id=None, kind=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, region=None, self_link=None, self_link_with_id=None, server_binding=None, status=None, status_message=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -34,6 +34,9 @@ class GetNodeTemplateResult:
         if disks and not isinstance(disks, list):
             raise TypeError("Expected argument 'disks' to be a list")
         pulumi.set(__self__, "disks", disks)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -101,6 +104,14 @@ class GetNodeTemplateResult:
     @pulumi.getter
     def disks(self) -> Sequence['outputs.LocalDiskResponse']:
         return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -202,6 +213,7 @@ class AwaitableGetNodeTemplateResult(GetNodeTemplateResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disks=self.disks,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             node_affinity_labels=self.node_affinity_labels,
@@ -238,6 +250,7 @@ def get_node_template(node_template: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disks=__ret__.disks,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         node_affinity_labels=__ret__.node_affinity_labels,

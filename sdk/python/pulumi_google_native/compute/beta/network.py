@@ -293,6 +293,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["gateway_i_pv4"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["network_id"] = None
             __props__.__dict__["peerings"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -330,6 +331,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["mtu"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_firewall_policy_enforcement_order"] = None
+        __props__.__dict__["network_id"] = None
         __props__.__dict__["peerings"] = None
         __props__.__dict__["routing_config"] = None
         __props__.__dict__["self_link"] = None
@@ -424,6 +426,14 @@ class Network(pulumi.CustomResource):
         The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
         """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter

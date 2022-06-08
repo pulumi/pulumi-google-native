@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetPacketMirroringResult:
-    def __init__(__self__, collector_ilb=None, creation_timestamp=None, description=None, enable=None, filter=None, kind=None, mirrored_resources=None, name=None, network=None, priority=None, region=None, self_link=None, self_link_with_id=None):
+    def __init__(__self__, collector_ilb=None, creation_timestamp=None, description=None, enable=None, filter=None, id=None, kind=None, mirrored_resources=None, name=None, network=None, priority=None, region=None, self_link=None, self_link_with_id=None):
         if collector_ilb and not isinstance(collector_ilb, dict):
             raise TypeError("Expected argument 'collector_ilb' to be a dict")
         pulumi.set(__self__, "collector_ilb", collector_ilb)
@@ -34,6 +34,9 @@ class GetPacketMirroringResult:
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -98,6 +101,14 @@ class GetPacketMirroringResult:
         Filter for mirrored traffic. If unspecified, all traffic is mirrored.
         """
         return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -175,6 +186,7 @@ class AwaitableGetPacketMirroringResult(GetPacketMirroringResult):
             description=self.description,
             enable=self.enable,
             filter=self.filter,
+            id=self.id,
             kind=self.kind,
             mirrored_resources=self.mirrored_resources,
             name=self.name,
@@ -208,6 +220,7 @@ def get_packet_mirroring(packet_mirroring: Optional[str] = None,
         description=__ret__.description,
         enable=__ret__.enable,
         filter=__ret__.filter,
+        id=__ret__.id,
         kind=__ret__.kind,
         mirrored_resources=__ret__.mirrored_resources,
         name=__ret__.name,

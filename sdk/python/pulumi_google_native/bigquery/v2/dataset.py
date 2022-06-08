@@ -322,6 +322,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["creation_time"] = None
+            __props__.__dict__["dataset_id"] = None
             __props__.__dict__["default_collation"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
@@ -352,6 +353,7 @@ class Dataset(pulumi.CustomResource):
 
         __props__.__dict__["access"] = None
         __props__.__dict__["creation_time"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["dataset_reference"] = None
         __props__.__dict__["default_collation"] = None
         __props__.__dict__["default_encryption_configuration"] = None
@@ -386,6 +388,14 @@ class Dataset(pulumi.CustomResource):
         The time when this dataset was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        """
+        The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+        """
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter(name="datasetReference")

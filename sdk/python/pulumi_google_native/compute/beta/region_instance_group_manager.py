@@ -425,6 +425,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["instance_group"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_instance_group_manager_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["zone"] = None
@@ -465,6 +466,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["named_ports"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_instance_group_manager_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["stateful_policy"] = None
@@ -595,6 +597,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         The URL of the region where the managed instance group resides (for regional resources).
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionInstanceGroupManagerId")
+    def region_instance_group_manager_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "region_instance_group_manager_id")
 
     @property
     @pulumi.getter(name="selfLink")

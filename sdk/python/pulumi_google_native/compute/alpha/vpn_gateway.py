@@ -244,6 +244,7 @@ class VpnGateway(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["vpn_gateway_id"] = None
         super(VpnGateway, __self__).__init__(
             'google-native:compute/alpha:VpnGateway',
             resource_name,
@@ -276,6 +277,7 @@ class VpnGateway(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["stack_type"] = None
+        __props__.__dict__["vpn_gateway_id"] = None
         __props__.__dict__["vpn_interfaces"] = None
         return VpnGateway(resource_name, opts=opts, __props__=__props__)
 
@@ -358,6 +360,14 @@ class VpnGateway(pulumi.CustomResource):
         The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
         """
         return pulumi.get(self, "stack_type")
+
+    @property
+    @pulumi.getter(name="vpnGatewayId")
+    def vpn_gateway_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "vpn_gateway_id")
 
     @property
     @pulumi.getter(name="vpnInterfaces")

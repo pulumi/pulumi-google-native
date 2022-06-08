@@ -220,6 +220,7 @@ class InstantSnapshot(pulumi.CustomResource):
             __props__.__dict__["architecture"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["disk_size_gb"] = None
+            __props__.__dict__["instant_snapshot_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["region"] = None
@@ -256,6 +257,7 @@ class InstantSnapshot(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
         __props__.__dict__["guest_flush"] = None
+        __props__.__dict__["instant_snapshot_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
@@ -310,6 +312,14 @@ class InstantSnapshot(pulumi.CustomResource):
         Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
+
+    @property
+    @pulumi.getter(name="instantSnapshotId")
+    def instant_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "instant_snapshot_id")
 
     @property
     @pulumi.getter

@@ -424,6 +424,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["network_endpoints"] = None
+        __props__.__dict__["node_id"] = None
         __props__.__dict__["runtime_version"] = None
         __props__.__dict__["scheduling_config"] = None
         __props__.__dict__["service_account"] = None
@@ -535,6 +536,14 @@ class Node(pulumi.CustomResource):
         The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
         """
         return pulumi.get(self, "network_endpoints")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the TPU Node.
+        """
+        return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter(name="runtimeVersion")

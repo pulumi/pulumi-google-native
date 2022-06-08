@@ -17,8 +17,8 @@ class NotificationArgs:
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 notification_id: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -29,8 +29,8 @@ class NotificationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for this subscription notification.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-        :param pulumi.Input[str] id: The ID of the notification.
         :param pulumi.Input[str] kind: The kind of item this is. For notifications, this is always storage#notification.
+        :param pulumi.Input[str] notification_id: The ID of the notification.
         :param pulumi.Input[str] object_name_prefix: If present, only apply this notification configuration to object names that begin with this prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload.
         :param pulumi.Input[str] self_link: The canonical URL of this notification.
@@ -44,10 +44,10 @@ class NotificationArgs:
             pulumi.set(__self__, "etag", etag)
         if event_types is not None:
             pulumi.set(__self__, "event_types", event_types)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if notification_id is not None:
+            pulumi.set(__self__, "notification_id", notification_id)
         if object_name_prefix is not None:
             pulumi.set(__self__, "object_name_prefix", object_name_prefix)
         if payload_format is not None:
@@ -106,18 +106,6 @@ class NotificationArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the notification.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The kind of item this is. For notifications, this is always storage#notification.
@@ -127,6 +115,18 @@ class NotificationArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="notificationId")
+    def notification_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the notification.
+        """
+        return pulumi.get(self, "notification_id")
+
+    @notification_id.setter
+    def notification_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notification_id", value)
 
     @property
     @pulumi.getter(name="objectNamePrefix")
@@ -198,8 +198,8 @@ class Notification(pulumi.CustomResource):
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 notification_id: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -215,8 +215,8 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for this subscription notification.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-        :param pulumi.Input[str] id: The ID of the notification.
         :param pulumi.Input[str] kind: The kind of item this is. For notifications, this is always storage#notification.
+        :param pulumi.Input[str] notification_id: The ID of the notification.
         :param pulumi.Input[str] object_name_prefix: If present, only apply this notification configuration to object names that begin with this prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload.
         :param pulumi.Input[str] self_link: The canonical URL of this notification.
@@ -252,8 +252,8 @@ class Notification(pulumi.CustomResource):
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 notification_id: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -277,8 +277,8 @@ class Notification(pulumi.CustomResource):
             __props__.__dict__["custom_attributes"] = custom_attributes
             __props__.__dict__["etag"] = etag
             __props__.__dict__["event_types"] = event_types
-            __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
+            __props__.__dict__["notification_id"] = notification_id
             __props__.__dict__["object_name_prefix"] = object_name_prefix
             __props__.__dict__["payload_format"] = payload_format
             __props__.__dict__["self_link"] = self_link
@@ -310,6 +310,7 @@ class Notification(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["event_types"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["notification_id"] = None
         __props__.__dict__["object_name_prefix"] = None
         __props__.__dict__["payload_format"] = None
         __props__.__dict__["self_link"] = None
@@ -347,6 +348,14 @@ class Notification(pulumi.CustomResource):
         The kind of item this is. For notifications, this is always storage#notification.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="notificationId")
+    def notification_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the notification.
+        """
+        return pulumi.get(self, "notification_id")
 
     @property
     @pulumi.getter(name="objectNamePrefix")

@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionTargetHttpProxyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, proxy_bind=None, region=None, self_link=None, url_map=None):
+    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, id=None, kind=None, name=None, proxy_bind=None, region=None, self_link=None, url_map=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -27,6 +27,9 @@ class GetRegionTargetHttpProxyResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -69,6 +72,14 @@ class GetRegionTargetHttpProxyResult:
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to patch/update the TargetHttpProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -128,6 +139,7 @@ class AwaitableGetRegionTargetHttpProxyResult(GetRegionTargetHttpProxyResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             proxy_bind=self.proxy_bind,
@@ -157,6 +169,7 @@ def get_region_target_http_proxy(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         proxy_bind=__ret__.proxy_bind,

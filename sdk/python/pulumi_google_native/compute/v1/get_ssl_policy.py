@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSslPolicyResult:
-    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, kind=None, min_tls_version=None, name=None, profile=None, self_link=None, warnings=None):
+    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, id=None, kind=None, min_tls_version=None, name=None, profile=None, self_link=None, warnings=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -34,6 +34,9 @@ class GetSslPolicyResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -95,6 +98,14 @@ class GetSslPolicyResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
@@ -153,6 +164,7 @@ class AwaitableGetSslPolicyResult(GetSslPolicyResult):
             description=self.description,
             enabled_features=self.enabled_features,
             fingerprint=self.fingerprint,
+            id=self.id,
             kind=self.kind,
             min_tls_version=self.min_tls_version,
             name=self.name,
@@ -182,6 +194,7 @@ def get_ssl_policy(project: Optional[str] = None,
         description=__ret__.description,
         enabled_features=__ret__.enabled_features,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         kind=__ret__.kind,
         min_tls_version=__ret__.min_tls_version,
         name=__ret__.name,

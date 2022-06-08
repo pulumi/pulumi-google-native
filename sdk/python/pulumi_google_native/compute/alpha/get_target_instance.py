@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetInstanceResult:
-    def __init__(__self__, creation_timestamp=None, description=None, instance=None, kind=None, name=None, nat_policy=None, network=None, self_link=None, self_link_with_id=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, id=None, instance=None, kind=None, name=None, nat_policy=None, network=None, self_link=None, self_link_with_id=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if instance and not isinstance(instance, str):
             raise TypeError("Expected argument 'instance' to be a str")
         pulumi.set(__self__, "instance", instance)
@@ -64,6 +67,14 @@ class GetTargetInstanceResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -138,6 +149,7 @@ class AwaitableGetTargetInstanceResult(GetTargetInstanceResult):
         return GetTargetInstanceResult(
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             instance=self.instance,
             kind=self.kind,
             name=self.name,
@@ -168,6 +180,7 @@ def get_target_instance(project: Optional[str] = None,
     return AwaitableGetTargetInstanceResult(
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         instance=__ret__.instance,
         kind=__ret__.kind,
         name=__ret__.name,

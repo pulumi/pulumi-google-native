@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAddressResult:
-    def __init__(__self__, address=None, address_type=None, creation_timestamp=None, description=None, ip_version=None, ipv6_endpoint_type=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, network_tier=None, prefix_length=None, purpose=None, region=None, self_link=None, self_link_with_id=None, status=None, subnetwork=None, users=None):
+    def __init__(__self__, address=None, address_type=None, creation_timestamp=None, description=None, id=None, ip_version=None, ipv6_endpoint_type=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, network_tier=None, prefix_length=None, purpose=None, region=None, self_link=None, self_link_with_id=None, status=None, subnetwork=None, users=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -30,6 +30,9 @@ class GetAddressResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if ip_version and not isinstance(ip_version, str):
             raise TypeError("Expected argument 'ip_version' to be a str")
         pulumi.set(__self__, "ip_version", ip_version)
@@ -110,6 +113,14 @@ class GetAddressResult:
         An optional description of this resource. Provide this field when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -250,6 +261,7 @@ class AwaitableGetAddressResult(GetAddressResult):
             address_type=self.address_type,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             ip_version=self.ip_version,
             ipv6_endpoint_type=self.ipv6_endpoint_type,
             kind=self.kind,
@@ -290,6 +302,7 @@ def get_address(address: Optional[str] = None,
         address_type=__ret__.address_type,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         ip_version=__ret__.ip_version,
         ipv6_endpoint_type=__ret__.ipv6_endpoint_type,
         kind=__ret__.kind,

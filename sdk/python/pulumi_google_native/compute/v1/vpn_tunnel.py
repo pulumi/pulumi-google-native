@@ -422,6 +422,7 @@ class VpnTunnel(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["vpn_tunnel_id"] = None
         super(VpnTunnel, __self__).__init__(
             'google-native:compute/v1:VpnTunnel',
             resource_name,
@@ -465,6 +466,7 @@ class VpnTunnel(pulumi.CustomResource):
         __props__.__dict__["target_vpn_gateway"] = None
         __props__.__dict__["vpn_gateway"] = None
         __props__.__dict__["vpn_gateway_interface"] = None
+        __props__.__dict__["vpn_tunnel_id"] = None
         return VpnTunnel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -634,4 +636,12 @@ class VpnTunnel(pulumi.CustomResource):
         The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
         return pulumi.get(self, "vpn_gateway_interface")
+
+    @property
+    @pulumi.getter(name="vpnTunnelId")
+    def vpn_tunnel_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "vpn_tunnel_id")
 

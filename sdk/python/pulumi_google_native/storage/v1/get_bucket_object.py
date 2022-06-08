@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketObjectResult:
-    def __init__(__self__, acl=None, bucket=None, cache_control=None, component_count=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, custom_time=None, customer_encryption=None, etag=None, event_based_hold=None, generation=None, kind=None, kms_key_name=None, md5_hash=None, media_link=None, metadata=None, metageneration=None, name=None, owner=None, retention_expiration_time=None, self_link=None, size=None, storage_class=None, temporary_hold=None, time_created=None, time_deleted=None, time_storage_class_updated=None, updated=None):
+    def __init__(__self__, acl=None, bucket=None, cache_control=None, component_count=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, custom_time=None, customer_encryption=None, etag=None, event_based_hold=None, generation=None, id=None, kind=None, kms_key_name=None, md5_hash=None, media_link=None, metadata=None, metageneration=None, name=None, owner=None, retention_expiration_time=None, self_link=None, size=None, storage_class=None, temporary_hold=None, time_created=None, time_deleted=None, time_storage_class_updated=None, updated=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
@@ -61,6 +61,9 @@ class GetBucketObjectResult:
         if generation and not isinstance(generation, str):
             raise TypeError("Expected argument 'generation' to be a str")
         pulumi.set(__self__, "generation", generation)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -227,6 +230,14 @@ class GetBucketObjectResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the object, including the bucket name, object name, and generation number.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         The kind of item this is. For objects, this is always storage#object.
@@ -382,6 +393,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             etag=self.etag,
             event_based_hold=self.event_based_hold,
             generation=self.generation,
+            id=self.id,
             kind=self.kind,
             kms_key_name=self.kms_key_name,
             md5_hash=self.md5_hash,
@@ -445,6 +457,7 @@ def get_bucket_object(bucket: Optional[str] = None,
         etag=__ret__.etag,
         event_based_hold=__ret__.event_based_hold,
         generation=__ret__.generation,
+        id=__ret__.id,
         kind=__ret__.kind,
         kms_key_name=__ret__.kms_key_name,
         md5_hash=__ret__.md5_hash,

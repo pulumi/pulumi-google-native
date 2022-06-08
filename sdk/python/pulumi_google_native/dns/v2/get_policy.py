@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetPolicyResult:
-    def __init__(__self__, alternative_name_server_config=None, description=None, enable_inbound_forwarding=None, enable_logging=None, kind=None, name=None, networks=None):
+    def __init__(__self__, alternative_name_server_config=None, description=None, enable_inbound_forwarding=None, enable_logging=None, id=None, kind=None, name=None, networks=None):
         if alternative_name_server_config and not isinstance(alternative_name_server_config, dict):
             raise TypeError("Expected argument 'alternative_name_server_config' to be a dict")
         pulumi.set(__self__, "alternative_name_server_config", alternative_name_server_config)
@@ -31,6 +31,9 @@ class GetPolicyResult:
         if enable_logging and not isinstance(enable_logging, bool):
             raise TypeError("Expected argument 'enable_logging' to be a bool")
         pulumi.set(__self__, "enable_logging", enable_logging)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -75,6 +78,14 @@ class GetPolicyResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         return pulumi.get(self, "kind")
 
@@ -105,6 +116,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
             description=self.description,
             enable_inbound_forwarding=self.enable_inbound_forwarding,
             enable_logging=self.enable_logging,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             networks=self.networks)
@@ -134,6 +146,7 @@ def get_policy(client_operation_id: Optional[str] = None,
         description=__ret__.description,
         enable_inbound_forwarding=__ret__.enable_inbound_forwarding,
         enable_logging=__ret__.enable_logging,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         networks=__ret__.networks)

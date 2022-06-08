@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNotificationResult:
-    def __init__(__self__, custom_attributes=None, etag=None, event_types=None, kind=None, object_name_prefix=None, payload_format=None, self_link=None, topic=None):
+    def __init__(__self__, custom_attributes=None, etag=None, event_types=None, id=None, kind=None, object_name_prefix=None, payload_format=None, self_link=None, topic=None):
         if custom_attributes and not isinstance(custom_attributes, dict):
             raise TypeError("Expected argument 'custom_attributes' to be a dict")
         pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -27,6 +27,9 @@ class GetNotificationResult:
         if event_types and not isinstance(event_types, list):
             raise TypeError("Expected argument 'event_types' to be a list")
         pulumi.set(__self__, "event_types", event_types)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -66,6 +69,14 @@ class GetNotificationResult:
         If present, only send notifications about listed event types. If empty, sent notifications for all event types.
         """
         return pulumi.get(self, "event_types")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the notification.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -117,6 +128,7 @@ class AwaitableGetNotificationResult(GetNotificationResult):
             custom_attributes=self.custom_attributes,
             etag=self.etag,
             event_types=self.event_types,
+            id=self.id,
             kind=self.kind,
             object_name_prefix=self.object_name_prefix,
             payload_format=self.payload_format,
@@ -145,6 +157,7 @@ def get_notification(bucket: Optional[str] = None,
         custom_attributes=__ret__.custom_attributes,
         etag=__ret__.etag,
         event_types=__ret__.event_types,
+        id=__ret__.id,
         kind=__ret__.kind,
         object_name_prefix=__ret__.object_name_prefix,
         payload_format=__ret__.payload_format,

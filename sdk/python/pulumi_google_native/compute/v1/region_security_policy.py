@@ -283,6 +283,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_security_policy_id"] = None
             __props__.__dict__["self_link"] = None
         super(RegionSecurityPolicy, __self__).__init__(
             'google-native:compute/v1:RegionSecurityPolicy',
@@ -316,6 +317,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["recaptcha_options_config"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_security_policy_id"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["type"] = None
@@ -388,6 +390,14 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         URL of the region where the regional security policy resides. This field is not applicable to global security policies.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionSecurityPolicyId")
+    def region_security_policy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_security_policy_id")
 
     @property
     @pulumi.getter

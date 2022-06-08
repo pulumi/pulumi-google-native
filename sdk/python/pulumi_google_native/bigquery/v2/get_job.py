@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, configuration=None, etag=None, job_reference=None, kind=None, self_link=None, statistics=None, status=None, user_email=None):
+    def __init__(__self__, configuration=None, etag=None, id=None, job_reference=None, kind=None, self_link=None, statistics=None, status=None, user_email=None):
         if configuration and not isinstance(configuration, dict):
             raise TypeError("Expected argument 'configuration' to be a dict")
         pulumi.set(__self__, "configuration", configuration)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if job_reference and not isinstance(job_reference, dict):
             raise TypeError("Expected argument 'job_reference' to be a dict")
         pulumi.set(__self__, "job_reference", job_reference)
@@ -59,6 +62,14 @@ class GetJobResult:
         A hash of this resource.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Opaque ID field of the job
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="jobReference")
@@ -117,6 +128,7 @@ class AwaitableGetJobResult(GetJobResult):
         return GetJobResult(
             configuration=self.configuration,
             etag=self.etag,
+            id=self.id,
             job_reference=self.job_reference,
             kind=self.kind,
             self_link=self.self_link,
@@ -145,6 +157,7 @@ def get_job(job_id: Optional[str] = None,
     return AwaitableGetJobResult(
         configuration=__ret__.configuration,
         etag=__ret__.etag,
+        id=__ret__.id,
         job_reference=__ret__.job_reference,
         kind=__ret__.kind,
         self_link=__ret__.self_link,

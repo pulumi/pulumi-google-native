@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketResult:
-    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
+    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, id=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
@@ -46,6 +46,9 @@ class GetBucketResult:
         if iam_configuration and not isinstance(iam_configuration, dict):
             raise TypeError("Expected argument 'iam_configuration' to be a dict")
         pulumi.set(__self__, "iam_configuration", iam_configuration)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -175,6 +178,14 @@ class GetBucketResult:
         The bucket's IAM configuration.
         """
         return pulumi.get(self, "iam_configuration")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the bucket. For buckets, the id and name properties are the same.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -344,6 +355,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             encryption=self.encryption,
             etag=self.etag,
             iam_configuration=self.iam_configuration,
+            id=self.id,
             kind=self.kind,
             labels=self.labels,
             lifecycle=self.lifecycle,
@@ -396,6 +408,7 @@ def get_bucket(bucket: Optional[str] = None,
         encryption=__ret__.encryption,
         etag=__ret__.etag,
         iam_configuration=__ret__.iam_configuration,
+        id=__ret__.id,
         kind=__ret__.kind,
         labels=__ret__.labels,
         lifecycle=__ret__.lifecycle,

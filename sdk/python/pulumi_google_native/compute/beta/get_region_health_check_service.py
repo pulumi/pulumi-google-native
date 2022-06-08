@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionHealthCheckServiceResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, health_checks=None, health_status_aggregation_policy=None, health_status_aggregation_strategy=None, kind=None, name=None, network_endpoint_groups=None, notification_endpoints=None, region=None, self_link=None):
+    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, health_checks=None, health_status_aggregation_policy=None, health_status_aggregation_strategy=None, id=None, kind=None, name=None, network_endpoint_groups=None, notification_endpoints=None, region=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -40,6 +40,9 @@ class GetRegionHealthCheckServiceResult:
             pulumi.log.warn("""health_status_aggregation_strategy is deprecated: This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .""")
 
         pulumi.set(__self__, "health_status_aggregation_strategy", health_status_aggregation_strategy)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -109,6 +112,14 @@ class GetRegionHealthCheckServiceResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
@@ -168,6 +179,7 @@ class AwaitableGetRegionHealthCheckServiceResult(GetRegionHealthCheckServiceResu
             health_checks=self.health_checks,
             health_status_aggregation_policy=self.health_status_aggregation_policy,
             health_status_aggregation_strategy=self.health_status_aggregation_strategy,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             network_endpoint_groups=self.network_endpoint_groups,
@@ -200,6 +212,7 @@ def get_region_health_check_service(health_check_service: Optional[str] = None,
         health_checks=__ret__.health_checks,
         health_status_aggregation_policy=__ret__.health_status_aggregation_policy,
         health_status_aggregation_strategy=__ret__.health_status_aggregation_strategy,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         network_endpoint_groups=__ret__.network_endpoint_groups,

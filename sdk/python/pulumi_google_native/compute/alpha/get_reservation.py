@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, resource_policies=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, id=None, kind=None, name=None, resource_policies=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
@@ -28,6 +28,9 @@ class GetReservationResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -85,6 +88,14 @@ class GetReservationResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -184,6 +195,7 @@ class AwaitableGetReservationResult(GetReservationResult):
             commitment=self.commitment,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             resource_policies=self.resource_policies,
@@ -218,6 +230,7 @@ def get_reservation(project: Optional[str] = None,
         commitment=__ret__.commitment,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         resource_policies=__ret__.resource_policies,

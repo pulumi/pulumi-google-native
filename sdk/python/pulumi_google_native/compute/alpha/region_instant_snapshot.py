@@ -223,6 +223,7 @@ class RegionInstantSnapshot(pulumi.CustomResource):
             __props__.__dict__["disk_size_gb"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["region_instant_snapshot_id"] = None
             __props__.__dict__["resource_status"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
@@ -262,6 +263,7 @@ class RegionInstantSnapshot(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_instant_snapshot_id"] = None
         __props__.__dict__["resource_status"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
@@ -351,6 +353,14 @@ class RegionInstantSnapshot(pulumi.CustomResource):
         URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionInstantSnapshotId")
+    def region_instant_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_instant_snapshot_id")
 
     @property
     @pulumi.getter(name="resourceStatus")

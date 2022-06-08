@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetExternalVpnGatewayResult:
-    def __init__(__self__, creation_timestamp=None, description=None, interfaces=None, kind=None, label_fingerprint=None, labels=None, name=None, redundancy_type=None, self_link=None):
+    def __init__(__self__, creation_timestamp=None, description=None, id=None, interfaces=None, kind=None, label_fingerprint=None, labels=None, name=None, redundancy_type=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if interfaces and not isinstance(interfaces, list):
             raise TypeError("Expected argument 'interfaces' to be a list")
         pulumi.set(__self__, "interfaces", interfaces)
@@ -62,6 +65,14 @@ class GetExternalVpnGatewayResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -128,6 +139,7 @@ class AwaitableGetExternalVpnGatewayResult(GetExternalVpnGatewayResult):
         return GetExternalVpnGatewayResult(
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             interfaces=self.interfaces,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
@@ -155,6 +167,7 @@ def get_external_vpn_gateway(external_vpn_gateway: Optional[str] = None,
     return AwaitableGetExternalVpnGatewayResult(
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         interfaces=__ret__.interfaces,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,

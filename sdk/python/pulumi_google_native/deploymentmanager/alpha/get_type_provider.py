@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTypeProviderResult:
-    def __init__(__self__, collection_overrides=None, credential=None, custom_certificate_authority_roots=None, description=None, descriptor_url=None, insert_time=None, labels=None, name=None, operation=None, options=None, self_link=None):
+    def __init__(__self__, collection_overrides=None, credential=None, custom_certificate_authority_roots=None, description=None, descriptor_url=None, id=None, insert_time=None, labels=None, name=None, operation=None, options=None, self_link=None):
         if collection_overrides and not isinstance(collection_overrides, list):
             raise TypeError("Expected argument 'collection_overrides' to be a list")
         pulumi.set(__self__, "collection_overrides", collection_overrides)
@@ -34,6 +34,9 @@ class GetTypeProviderResult:
         if descriptor_url and not isinstance(descriptor_url, str):
             raise TypeError("Expected argument 'descriptor_url' to be a str")
         pulumi.set(__self__, "descriptor_url", descriptor_url)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if insert_time and not isinstance(insert_time, str):
             raise TypeError("Expected argument 'insert_time' to be a str")
         pulumi.set(__self__, "insert_time", insert_time)
@@ -92,6 +95,14 @@ class GetTypeProviderResult:
         Descriptor Url for the this type provider.
         """
         return pulumi.get(self, "descriptor_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for the resource defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="insertTime")
@@ -153,6 +164,7 @@ class AwaitableGetTypeProviderResult(GetTypeProviderResult):
             custom_certificate_authority_roots=self.custom_certificate_authority_roots,
             description=self.description,
             descriptor_url=self.descriptor_url,
+            id=self.id,
             insert_time=self.insert_time,
             labels=self.labels,
             name=self.name,
@@ -182,6 +194,7 @@ def get_type_provider(project: Optional[str] = None,
         custom_certificate_authority_roots=__ret__.custom_certificate_authority_roots,
         description=__ret__.description,
         descriptor_url=__ret__.descriptor_url,
+        id=__ret__.id,
         insert_time=__ret__.insert_time,
         labels=__ret__.labels,
         name=__ret__.name,

@@ -244,6 +244,7 @@ class RegionSslPolicy(pulumi.CustomResource):
             __props__.__dict__["enabled_features"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_ssl_policy_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["warnings"] = None
@@ -279,6 +280,7 @@ class RegionSslPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["profile"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_ssl_policy_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["tls_settings"] = None
@@ -364,6 +366,14 @@ class RegionSslPolicy(pulumi.CustomResource):
         URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionSslPolicyId")
+    def region_ssl_policy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_ssl_policy_id")
 
     @property
     @pulumi.getter(name="selfLink")

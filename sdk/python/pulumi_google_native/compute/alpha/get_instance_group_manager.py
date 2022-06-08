@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceGroupManagerResult:
-    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
         if all_instances_config and not isinstance(all_instances_config, dict):
             raise TypeError("Expected argument 'all_instances_config' to be a dict")
         pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -46,6 +46,9 @@ class GetInstanceGroupManagerResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if instance_group and not isinstance(instance_group, str):
             raise TypeError("Expected argument 'instance_group' to be a str")
         pulumi.set(__self__, "instance_group", instance_group)
@@ -181,6 +184,14 @@ class GetInstanceGroupManagerResult:
         Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="instanceGroup")
@@ -366,6 +377,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             distribution_policy=self.distribution_policy,
             failover_action=self.failover_action,
             fingerprint=self.fingerprint,
+            id=self.id,
             instance_group=self.instance_group,
             instance_lifecycle_policy=self.instance_lifecycle_policy,
             instance_template=self.instance_template,
@@ -416,6 +428,7 @@ def get_instance_group_manager(instance_group_manager: Optional[str] = None,
         distribution_policy=__ret__.distribution_policy,
         failover_action=__ret__.failover_action,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         instance_group=__ret__.instance_group,
         instance_lifecycle_policy=__ret__.instance_lifecycle_policy,
         instance_template=__ret__.instance_template,

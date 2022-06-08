@@ -423,6 +423,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["snapshot_definition"] = None
             __props__.__dict__["streaming_buffer"] = None
+            __props__.__dict__["table_id"] = None
             __props__.__dict__["type"] = None
         super(Table, __self__).__init__(
             'google-native:bigquery/v2:Table',
@@ -480,6 +481,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["snapshot_definition"] = None
         __props__.__dict__["streaming_buffer"] = None
+        __props__.__dict__["table_id"] = None
         __props__.__dict__["table_reference"] = None
         __props__.__dict__["time_partitioning"] = None
         __props__.__dict__["type"] = None
@@ -757,6 +759,14 @@ class Table(pulumi.CustomResource):
         Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
         """
         return pulumi.get(self, "streaming_buffer")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> pulumi.Output[str]:
+        """
+        An opaque ID uniquely identifying the table.
+        """
+        return pulumi.get(self, "table_id")
 
     @property
     @pulumi.getter(name="tableReference")

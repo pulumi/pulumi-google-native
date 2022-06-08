@@ -523,6 +523,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["current_actions"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["instance_group"] = None
+            __props__.__dict__["instance_group_manager_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
@@ -560,6 +561,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["failover_action"] = None
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["instance_group"] = None
+        __props__.__dict__["instance_group_manager_id"] = None
         __props__.__dict__["instance_lifecycle_policy"] = None
         __props__.__dict__["instance_template"] = None
         __props__.__dict__["kind"] = None
@@ -661,6 +663,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         The URL of the Instance Group resource.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceGroupManagerId")
+    def instance_group_manager_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "instance_group_manager_id")
 
     @property
     @pulumi.getter(name="instanceLifecyclePolicy")

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionNetworkEndpointGroupResult:
-    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, name=None, network=None, network_endpoint_type=None, psc_target_service=None, region=None, self_link=None, size=None, subnetwork=None, zone=None):
+    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, id=None, kind=None, name=None, network=None, network_endpoint_type=None, psc_target_service=None, region=None, self_link=None, size=None, subnetwork=None, zone=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -40,6 +40,9 @@ class GetRegionNetworkEndpointGroupResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -126,6 +129,14 @@ class GetRegionNetworkEndpointGroupResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -221,6 +232,7 @@ class AwaitableGetRegionNetworkEndpointGroupResult(GetRegionNetworkEndpointGroup
             creation_timestamp=self.creation_timestamp,
             default_port=self.default_port,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             network=self.network,
@@ -258,6 +270,7 @@ def get_region_network_endpoint_group(network_endpoint_group: Optional[str] = No
         creation_timestamp=__ret__.creation_timestamp,
         default_port=__ret__.default_port,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         network=__ret__.network,

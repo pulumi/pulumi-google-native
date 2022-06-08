@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubnetworkResult:
-    def __init__(__self__, aggregation_interval=None, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, enable_l2=None, enable_private_v6_access=None, external_ipv6_prefix=None, fingerprint=None, flow_sampling=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, metadata=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, private_ipv6_google_access_service_accounts=None, purpose=None, region=None, reserved_internal_range=None, role=None, secondary_ip_ranges=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, vlans=None):
+    def __init__(__self__, aggregation_interval=None, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, enable_l2=None, enable_private_v6_access=None, external_ipv6_prefix=None, fingerprint=None, flow_sampling=None, gateway_address=None, id=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, metadata=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, private_ipv6_google_access_service_accounts=None, purpose=None, region=None, reserved_internal_range=None, role=None, secondary_ip_ranges=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, vlans=None):
         if aggregation_interval and not isinstance(aggregation_interval, str):
             raise TypeError("Expected argument 'aggregation_interval' to be a str")
         pulumi.set(__self__, "aggregation_interval", aggregation_interval)
@@ -56,6 +56,9 @@ class GetSubnetworkResult:
         if gateway_address and not isinstance(gateway_address, str):
             raise TypeError("Expected argument 'gateway_address' to be a str")
         pulumi.set(__self__, "gateway_address", gateway_address)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if internal_ipv6_prefix and not isinstance(internal_ipv6_prefix, str):
             raise TypeError("Expected argument 'internal_ipv6_prefix' to be a str")
         pulumi.set(__self__, "internal_ipv6_prefix", internal_ipv6_prefix)
@@ -214,6 +217,14 @@ class GetSubnetworkResult:
         The gateway address for default routes to reach destination addresses outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="internalIpv6Prefix")
@@ -409,6 +420,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             fingerprint=self.fingerprint,
             flow_sampling=self.flow_sampling,
             gateway_address=self.gateway_address,
+            id=self.id,
             internal_ipv6_prefix=self.internal_ipv6_prefix,
             ip_cidr_range=self.ip_cidr_range,
             ipv6_access_type=self.ipv6_access_type,
@@ -462,6 +474,7 @@ def get_subnetwork(project: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         flow_sampling=__ret__.flow_sampling,
         gateway_address=__ret__.gateway_address,
+        id=__ret__.id,
         internal_ipv6_prefix=__ret__.internal_ipv6_prefix,
         ip_cidr_range=__ret__.ip_cidr_range,
         ipv6_access_type=__ret__.ipv6_access_type,

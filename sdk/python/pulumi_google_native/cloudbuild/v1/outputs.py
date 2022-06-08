@@ -918,6 +918,7 @@ class BuildResponse(dict):
                  create_time: str,
                  failure_info: 'outputs.FailureInfoResponse',
                  finish_time: str,
+                 id: str,
                  images: Sequence[str],
                  log_url: str,
                  logs_bucket: str,
@@ -948,6 +949,7 @@ class BuildResponse(dict):
         :param str create_time: Time at which the request to create the build was received.
         :param 'FailureInfoResponse' failure_info: Contains information about the build when status=FAILURE.
         :param str finish_time: Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
+        :param str id: Unique identifier of the build.
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         :param str log_url: URL to logs for this build in Google Cloud Console.
         :param str logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
@@ -977,6 +979,7 @@ class BuildResponse(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "failure_info", failure_info)
         pulumi.set(__self__, "finish_time", finish_time)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "images", images)
         pulumi.set(__self__, "log_url", log_url)
         pulumi.set(__self__, "logs_bucket", logs_bucket)
@@ -1054,6 +1057,14 @@ class BuildResponse(dict):
         Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         """
         return pulumi.get(self, "finish_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the build.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -1255,6 +1266,7 @@ class BuildStepResponse(dict):
                  dir: str,
                  entrypoint: str,
                  env: Sequence[str],
+                 id: str,
                  name: str,
                  pull_timing: 'outputs.TimeSpanResponse',
                  script: str,
@@ -1270,6 +1282,7 @@ class BuildStepResponse(dict):
         :param str dir: Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         :param str entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
         :param Sequence[str] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param str id: Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
         :param str name: The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
         :param 'TimeSpanResponse' pull_timing: Stores timing information for pulling this build step's builder image only.
         :param str script: A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
@@ -1284,6 +1297,7 @@ class BuildStepResponse(dict):
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "entrypoint", entrypoint)
         pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pull_timing", pull_timing)
         pulumi.set(__self__, "script", script)
@@ -1325,6 +1339,14 @@ class BuildStepResponse(dict):
         A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         """
         return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

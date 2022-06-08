@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, api_config=None, app_engine_apis=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
+    def __init__(__self__, api_config=None, app_engine_apis=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, handlers=None, health_check=None, id=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
         if api_config and not isinstance(api_config, dict):
             raise TypeError("Expected argument 'api_config' to be a dict")
         pulumi.set(__self__, "api_config", api_config)
@@ -73,6 +73,9 @@ class GetVersionResult:
         if health_check and not isinstance(health_check, dict):
             raise TypeError("Expected argument 'health_check' to be a dict")
         pulumi.set(__self__, "health_check", health_check)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if inbound_services and not isinstance(inbound_services, list):
             raise TypeError("Expected argument 'inbound_services' to be a list")
         pulumi.set(__self__, "inbound_services", inbound_services)
@@ -286,6 +289,14 @@ class GetVersionResult:
         return pulumi.get(self, "health_check")
 
     @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+        """
+        return pulumi.get(self, "id")
+
+    @property
     @pulumi.getter(name="inboundServices")
     def inbound_services(self) -> Sequence[str]:
         """
@@ -478,6 +489,7 @@ class AwaitableGetVersionResult(GetVersionResult):
             error_handlers=self.error_handlers,
             handlers=self.handlers,
             health_check=self.health_check,
+            id=self.id,
             inbound_services=self.inbound_services,
             instance_class=self.instance_class,
             libraries=self.libraries,
@@ -539,6 +551,7 @@ def get_version(app_id: Optional[str] = None,
         error_handlers=__ret__.error_handlers,
         handlers=__ret__.handlers,
         health_check=__ret__.health_check,
+        id=__ret__.id,
         inbound_services=__ret__.inbound_services,
         instance_class=__ret__.instance_class,
         libraries=__ret__.libraries,

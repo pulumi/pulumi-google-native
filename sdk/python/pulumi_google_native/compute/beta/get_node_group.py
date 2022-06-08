@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeGroupResult:
-    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, location_hint=None, maintenance_policy=None, maintenance_window=None, name=None, node_template=None, self_link=None, share_settings=None, size=None, status=None, zone=None):
+    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, fingerprint=None, id=None, kind=None, location_hint=None, maintenance_policy=None, maintenance_window=None, name=None, node_template=None, self_link=None, share_settings=None, size=None, status=None, zone=None):
         if autoscaling_policy and not isinstance(autoscaling_policy, dict):
             raise TypeError("Expected argument 'autoscaling_policy' to be a dict")
         pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
@@ -31,6 +31,9 @@ class GetNodeGroupResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -93,6 +96,14 @@ class GetNodeGroupResult:
     @pulumi.getter
     def fingerprint(self) -> str:
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -187,6 +198,7 @@ class AwaitableGetNodeGroupResult(GetNodeGroupResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
+            id=self.id,
             kind=self.kind,
             location_hint=self.location_hint,
             maintenance_policy=self.maintenance_policy,
@@ -222,6 +234,7 @@ def get_node_group(node_group: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         kind=__ret__.kind,
         location_hint=__ret__.location_hint,
         maintenance_policy=__ret__.maintenance_policy,

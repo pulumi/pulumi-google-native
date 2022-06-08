@@ -16,20 +16,20 @@ __all__ = ['DomainMappingArgs', 'DomainMapping']
 class DomainMappingArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
-                 id: Optional[pulumi.Input[str]] = None,
+                 domain_mapping_id: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input['SslSettingsArgs']] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
-        :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
+        :param pulumi.Input[str] domain_mapping_id: Relative name of the domain serving the application. Example: example.com.
         :param pulumi.Input[str] no_managed_certificate: Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input['SslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
         pulumi.set(__self__, "app_id", app_id)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if domain_mapping_id is not None:
+            pulumi.set(__self__, "domain_mapping_id", domain_mapping_id)
         if no_managed_certificate is not None:
             pulumi.set(__self__, "no_managed_certificate", no_managed_certificate)
         if override_strategy is not None:
@@ -47,16 +47,16 @@ class DomainMappingArgs:
         pulumi.set(self, "app_id", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="domainMappingId")
+    def domain_mapping_id(self) -> Optional[pulumi.Input[str]]:
         """
         Relative name of the domain serving the application. Example: example.com.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "domain_mapping_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @domain_mapping_id.setter
+    def domain_mapping_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_mapping_id", value)
 
     @property
     @pulumi.getter(name="noManagedCertificate")
@@ -101,7 +101,7 @@ class DomainMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 domain_mapping_id: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
@@ -112,7 +112,7 @@ class DomainMapping(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
+        :param pulumi.Input[str] domain_mapping_id: Relative name of the domain serving the application. Example: example.com.
         :param pulumi.Input[str] no_managed_certificate: Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input[pulumi.InputType['SslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -143,7 +143,7 @@ class DomainMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 domain_mapping_id: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[str]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
@@ -162,7 +162,7 @@ class DomainMapping(pulumi.CustomResource):
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
-            __props__.__dict__["id"] = id
+            __props__.__dict__["domain_mapping_id"] = domain_mapping_id
             __props__.__dict__["no_managed_certificate"] = no_managed_certificate
             __props__.__dict__["override_strategy"] = override_strategy
             __props__.__dict__["ssl_settings"] = ssl_settings
@@ -190,10 +190,19 @@ class DomainMapping(pulumi.CustomResource):
 
         __props__ = DomainMappingArgs.__new__(DomainMappingArgs)
 
+        __props__.__dict__["domain_mapping_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["resource_records"] = None
         __props__.__dict__["ssl_settings"] = None
         return DomainMapping(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="domainMappingId")
+    def domain_mapping_id(self) -> pulumi.Output[str]:
+        """
+        Relative name of the domain serving the application. Example: example.com.
+        """
+        return pulumi.get(self, "domain_mapping_id")
 
     @property
     @pulumi.getter

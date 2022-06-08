@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetSslProxyResult:
-    def __init__(__self__, certificate_map=None, creation_timestamp=None, description=None, kind=None, name=None, proxy_header=None, self_link=None, service=None, ssl_certificates=None, ssl_policy=None):
+    def __init__(__self__, certificate_map=None, creation_timestamp=None, description=None, id=None, kind=None, name=None, proxy_header=None, self_link=None, service=None, ssl_certificates=None, ssl_policy=None):
         if certificate_map and not isinstance(certificate_map, str):
             raise TypeError("Expected argument 'certificate_map' to be a str")
         pulumi.set(__self__, "certificate_map", certificate_map)
@@ -27,6 +27,9 @@ class GetTargetSslProxyResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -72,6 +75,14 @@ class GetTargetSslProxyResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -139,6 +150,7 @@ class AwaitableGetTargetSslProxyResult(GetTargetSslProxyResult):
             certificate_map=self.certificate_map,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             proxy_header=self.proxy_header,
@@ -167,6 +179,7 @@ def get_target_ssl_proxy(project: Optional[str] = None,
         certificate_map=__ret__.certificate_map,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         proxy_header=__ret__.proxy_header,

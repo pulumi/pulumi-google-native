@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetHttpsProxyResult:
-    def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, id=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
         if authentication and not isinstance(authentication, str):
             raise TypeError("Expected argument 'authentication' to be a str")
         if authentication is not None:
@@ -50,6 +50,9 @@ class GetTargetHttpsProxyResult:
         if http_filters and not isinstance(http_filters, list):
             raise TypeError("Expected argument 'http_filters' to be a list")
         pulumi.set(__self__, "http_filters", http_filters)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -147,6 +150,14 @@ class GetTargetHttpsProxyResult:
         URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
         """
         return pulumi.get(self, "http_filters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -251,6 +262,7 @@ class AwaitableGetTargetHttpsProxyResult(GetTargetHttpsProxyResult):
             description=self.description,
             fingerprint=self.fingerprint,
             http_filters=self.http_filters,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             proxy_bind=self.proxy_bind,
@@ -288,6 +300,7 @@ def get_target_https_proxy(project: Optional[str] = None,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
         http_filters=__ret__.http_filters,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         proxy_bind=__ret__.proxy_bind,

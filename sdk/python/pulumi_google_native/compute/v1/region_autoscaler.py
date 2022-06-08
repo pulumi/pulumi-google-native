@@ -203,6 +203,7 @@ class RegionAutoscaler(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["recommended_size"] = None
+            __props__.__dict__["region_autoscaler_id"] = None
             __props__.__dict__["scaling_schedule_status"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
@@ -237,6 +238,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["recommended_size"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_autoscaler_id"] = None
         __props__.__dict__["scaling_schedule_status"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
@@ -300,6 +302,14 @@ class RegionAutoscaler(pulumi.CustomResource):
         URL of the region where the instance group resides (for autoscalers living in regional scope).
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionAutoscalerId")
+    def region_autoscaler_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_autoscaler_id")
 
     @property
     @pulumi.getter(name="scalingScheduleStatus")

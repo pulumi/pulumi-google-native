@@ -979,6 +979,7 @@ class OperationResponse(dict):
                  error: 'outputs.OperationErrorResponse',
                  http_error_message: str,
                  http_error_status_code: int,
+                 id: str,
                  insert_time: str,
                  kind: str,
                  name: str,
@@ -1004,6 +1005,7 @@ class OperationResponse(dict):
         :param 'OperationErrorResponse' error: If errors are generated during processing of the operation, this field will be populated.
         :param str http_error_message: If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         :param int http_error_status_code: If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
+        :param str id: The unique identifier for the operation. This identifier is defined by the server.
         :param str insert_time: The time that this operation was requested. This value is in RFC3339 text format.
         :param str kind: Type of the resource. Always `compute#operation` for Operation resources.
         :param str name: Name of the operation.
@@ -1028,6 +1030,7 @@ class OperationResponse(dict):
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "http_error_message", http_error_message)
         pulumi.set(__self__, "http_error_status_code", http_error_status_code)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "insert_time", insert_time)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
@@ -1100,6 +1103,14 @@ class OperationResponse(dict):
         If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
         """
         return pulumi.get(self, "http_error_status_code")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the operation. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="insertTime")

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectResult:
-    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, requested_link_count=None, satisfies_pzs=None, self_link=None, state=None):
+    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, id=None, interconnect_attachments=None, interconnect_type=None, kind=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, requested_link_count=None, satisfies_pzs=None, self_link=None, state=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -43,6 +43,9 @@ class GetInterconnectResult:
         if google_reference_id and not isinstance(google_reference_id, str):
             raise TypeError("Expected argument 'google_reference_id' to be a str")
         pulumi.set(__self__, "google_reference_id", google_reference_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if interconnect_attachments and not isinstance(interconnect_attachments, list):
             raise TypeError("Expected argument 'interconnect_attachments' to be a list")
         pulumi.set(__self__, "interconnect_attachments", interconnect_attachments)
@@ -149,6 +152,14 @@ class GetInterconnectResult:
         Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
         """
         return pulumi.get(self, "google_reference_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="interconnectAttachments")
@@ -277,6 +288,7 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             expected_outages=self.expected_outages,
             google_ip_address=self.google_ip_address,
             google_reference_id=self.google_reference_id,
+            id=self.id,
             interconnect_attachments=self.interconnect_attachments,
             interconnect_type=self.interconnect_type,
             kind=self.kind,
@@ -317,6 +329,7 @@ def get_interconnect(interconnect: Optional[str] = None,
         expected_outages=__ret__.expected_outages,
         google_ip_address=__ret__.google_ip_address,
         google_reference_id=__ret__.google_reference_id,
+        id=__ret__.id,
         interconnect_attachments=__ret__.interconnect_attachments,
         interconnect_type=__ret__.interconnect_type,
         kind=__ret__.kind,

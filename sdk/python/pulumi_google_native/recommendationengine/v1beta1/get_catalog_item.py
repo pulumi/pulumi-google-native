@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetCatalogItemResult:
-    def __init__(__self__, category_hierarchies=None, description=None, item_attributes=None, item_group_id=None, language_code=None, product_metadata=None, tags=None, title=None):
+    def __init__(__self__, category_hierarchies=None, description=None, id=None, item_attributes=None, item_group_id=None, language_code=None, product_metadata=None, tags=None, title=None):
         if category_hierarchies and not isinstance(category_hierarchies, list):
             raise TypeError("Expected argument 'category_hierarchies' to be a list")
         pulumi.set(__self__, "category_hierarchies", category_hierarchies)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if item_attributes and not isinstance(item_attributes, dict):
             raise TypeError("Expected argument 'item_attributes' to be a dict")
         pulumi.set(__self__, "item_attributes", item_attributes)
@@ -63,6 +66,14 @@ class GetCatalogItemResult:
         Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="itemAttributes")
@@ -121,6 +132,7 @@ class AwaitableGetCatalogItemResult(GetCatalogItemResult):
         return GetCatalogItemResult(
             category_hierarchies=self.category_hierarchies,
             description=self.description,
+            id=self.id,
             item_attributes=self.item_attributes,
             item_group_id=self.item_group_id,
             language_code=self.language_code,
@@ -151,6 +163,7 @@ def get_catalog_item(catalog_id: Optional[str] = None,
     return AwaitableGetCatalogItemResult(
         category_hierarchies=__ret__.category_hierarchies,
         description=__ret__.description,
+        id=__ret__.id,
         item_attributes=__ret__.item_attributes,
         item_group_id=__ret__.item_group_id,
         language_code=__ret__.language_code,

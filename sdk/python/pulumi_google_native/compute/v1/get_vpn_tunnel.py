@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVpnTunnelResult:
-    def __init__(__self__, creation_timestamp=None, description=None, detailed_status=None, ike_version=None, kind=None, local_traffic_selector=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, region=None, remote_traffic_selector=None, router=None, self_link=None, shared_secret=None, shared_secret_hash=None, status=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None):
+    def __init__(__self__, creation_timestamp=None, description=None, detailed_status=None, id=None, ike_version=None, kind=None, local_traffic_selector=None, name=None, peer_external_gateway=None, peer_external_gateway_interface=None, peer_gcp_gateway=None, peer_ip=None, region=None, remote_traffic_selector=None, router=None, self_link=None, shared_secret=None, shared_secret_hash=None, status=None, target_vpn_gateway=None, vpn_gateway=None, vpn_gateway_interface=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -27,6 +27,9 @@ class GetVpnTunnelResult:
         if detailed_status and not isinstance(detailed_status, str):
             raise TypeError("Expected argument 'detailed_status' to be a str")
         pulumi.set(__self__, "detailed_status", detailed_status)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if ike_version and not isinstance(ike_version, int):
             raise TypeError("Expected argument 'ike_version' to be a int")
         pulumi.set(__self__, "ike_version", ike_version)
@@ -105,6 +108,14 @@ class GetVpnTunnelResult:
         Detailed status message for the VPN tunnel.
         """
         return pulumi.get(self, "detailed_status")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ikeVersion")
@@ -260,6 +271,7 @@ class AwaitableGetVpnTunnelResult(GetVpnTunnelResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             detailed_status=self.detailed_status,
+            id=self.id,
             ike_version=self.ike_version,
             kind=self.kind,
             local_traffic_selector=self.local_traffic_selector,
@@ -301,6 +313,7 @@ def get_vpn_tunnel(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         detailed_status=__ret__.detailed_status,
+        id=__ret__.id,
         ike_version=__ret__.ike_version,
         kind=__ret__.kind,
         local_traffic_selector=__ret__.local_traffic_selector,

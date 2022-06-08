@@ -735,6 +735,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_backend_service_id"] = None
             __props__.__dict__["security_policy"] = None
             __props__.__dict__["self_link"] = None
         super(RegionBackendService, __self__).__init__(
@@ -790,6 +791,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["port_name"] = None
         __props__.__dict__["protocol"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_backend_service_id"] = None
         __props__.__dict__["security_policy"] = None
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["self_link"] = None
@@ -1040,6 +1042,14 @@ class RegionBackendService(pulumi.CustomResource):
         URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionBackendServiceId")
+    def region_backend_service_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_backend_service_id")
 
     @property
     @pulumi.getter(name="securityPolicy")

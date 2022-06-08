@@ -267,6 +267,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_health_check_service_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         super(RegionHealthCheckService, __self__).__init__(
@@ -302,6 +303,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
         __props__.__dict__["network_endpoint_groups"] = None
         __props__.__dict__["notification_endpoints"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_health_check_service_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         return RegionHealthCheckService(resource_name, opts=opts, __props__=__props__)
@@ -393,6 +395,14 @@ class RegionHealthCheckService(pulumi.CustomResource):
         URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionHealthCheckServiceId")
+    def region_health_check_service_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_health_check_service_id")
 
     @property
     @pulumi.getter(name="selfLink")

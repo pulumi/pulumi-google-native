@@ -220,6 +220,7 @@ class TargetInstance(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["target_instance_id"] = None
         super(TargetInstance, __self__).__init__(
             'google-native:compute/beta:TargetInstance',
             resource_name,
@@ -250,6 +251,7 @@ class TargetInstance(pulumi.CustomResource):
         __props__.__dict__["nat_policy"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["target_instance_id"] = None
         __props__.__dict__["zone"] = None
         return TargetInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -316,6 +318,14 @@ class TargetInstance(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="targetInstanceId")
+    def target_instance_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_instance_id")
 
     @property
     @pulumi.getter

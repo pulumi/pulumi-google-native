@@ -181,6 +181,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_notification_endpoint_id"] = None
             __props__.__dict__["self_link"] = None
         super(RegionNotificationEndpoint, __self__).__init__(
             'google-native:compute/v1:RegionNotificationEndpoint',
@@ -210,6 +211,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_notification_endpoint_id"] = None
         __props__.__dict__["self_link"] = None
         return RegionNotificationEndpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -260,6 +262,14 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
         URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionNotificationEndpointId")
+    def region_notification_endpoint_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "region_notification_endpoint_id")
 
     @property
     @pulumi.getter(name="selfLink")

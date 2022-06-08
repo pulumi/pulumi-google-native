@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionHealthCheckResult:
-    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_check=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, kind=None, log_config=None, name=None, region=None, self_link=None, self_link_with_id=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, udp_health_check=None, unhealthy_threshold=None):
+    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_check=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, id=None, kind=None, log_config=None, name=None, region=None, self_link=None, self_link_with_id=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, udp_health_check=None, unhealthy_threshold=None):
         if check_interval_sec and not isinstance(check_interval_sec, int):
             raise TypeError("Expected argument 'check_interval_sec' to be a int")
         pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -43,6 +43,9 @@ class GetRegionHealthCheckResult:
         if https_health_check and not isinstance(https_health_check, dict):
             raise TypeError("Expected argument 'https_health_check' to be a dict")
         pulumi.set(__self__, "https_health_check", https_health_check)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -131,6 +134,14 @@ class GetRegionHealthCheckResult:
     @pulumi.getter(name="httpsHealthCheck")
     def https_health_check(self) -> 'outputs.HTTPSHealthCheckResponse':
         return pulumi.get(self, "https_health_check")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -234,6 +245,7 @@ class AwaitableGetRegionHealthCheckResult(GetRegionHealthCheckResult):
             http2_health_check=self.http2_health_check,
             http_health_check=self.http_health_check,
             https_health_check=self.https_health_check,
+            id=self.id,
             kind=self.kind,
             log_config=self.log_config,
             name=self.name,
@@ -274,6 +286,7 @@ def get_region_health_check(health_check: Optional[str] = None,
         http2_health_check=__ret__.http2_health_check,
         http_health_check=__ret__.http_health_check,
         https_health_check=__ret__.https_health_check,
+        id=__ret__.id,
         kind=__ret__.kind,
         log_config=__ret__.log_config,
         name=__ret__.name,

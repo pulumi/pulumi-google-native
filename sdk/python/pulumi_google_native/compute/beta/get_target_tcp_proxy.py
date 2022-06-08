@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetTcpProxyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, proxy_bind=None, proxy_header=None, region=None, self_link=None, service=None):
+    def __init__(__self__, creation_timestamp=None, description=None, id=None, kind=None, name=None, proxy_bind=None, proxy_header=None, region=None, self_link=None, service=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -61,6 +64,14 @@ class GetTargetTcpProxyResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -127,6 +138,7 @@ class AwaitableGetTargetTcpProxyResult(GetTargetTcpProxyResult):
         return GetTargetTcpProxyResult(
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             proxy_bind=self.proxy_bind,
@@ -154,6 +166,7 @@ def get_target_tcp_proxy(project: Optional[str] = None,
     return AwaitableGetTargetTcpProxyResult(
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         proxy_bind=__ret__.proxy_bind,

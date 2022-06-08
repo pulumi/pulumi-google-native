@@ -388,6 +388,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_network_endpoint_group_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["size"] = None
             __props__.__dict__["zone"] = None
@@ -427,6 +428,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["network_endpoint_type"] = None
         __props__.__dict__["psc_target_service"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_network_endpoint_group_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["serverless_deployment"] = None
         __props__.__dict__["size"] = None
@@ -545,6 +547,14 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         The URL of the region where the network endpoint group is located.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionNetworkEndpointGroupId")
+    def region_network_endpoint_group_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_network_endpoint_group_id")
 
     @property
     @pulumi.getter(name="selfLink")

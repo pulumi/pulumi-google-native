@@ -23,7 +23,7 @@ class JobArgs:
                  current_state_time: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input['EnvironmentArgs']] = None,
                  execution_info: Optional[pulumi.Input['JobExecutionInfoArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input['JobMetadataArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -51,7 +51,7 @@ class JobArgs:
         :param pulumi.Input[str] current_state_time: The timestamp associated with the current state.
         :param pulumi.Input['EnvironmentArgs'] environment: The environment for the job.
         :param pulumi.Input['JobExecutionInfoArgs'] execution_info: Deprecated.
-        :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        :param pulumi.Input[str] job_id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
         :param pulumi.Input['JobMetadataArgs'] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
@@ -88,8 +88,8 @@ class JobArgs:
             pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
         if execution_info is not None:
             pulumi.set(__self__, "execution_info", execution_info)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
         if job_metadata is not None:
             pulumi.set(__self__, "job_metadata", job_metadata)
         if labels is not None:
@@ -212,16 +212,16 @@ class JobArgs:
         pulumi.set(self, "execution_info", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[str]]:
         """
         The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "job_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_id", value)
 
     @property
     @pulumi.getter(name="jobMetadata")
@@ -452,7 +452,7 @@ class Job(pulumi.CustomResource):
                  current_state_time: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
                  execution_info: Optional[pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -486,7 +486,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] current_state_time: The timestamp associated with the current state.
         :param pulumi.Input[pulumi.InputType['EnvironmentArgs']] environment: The environment for the job.
         :param pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']] execution_info: Deprecated.
-        :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        :param pulumi.Input[str] job_id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
         :param pulumi.Input[pulumi.InputType['JobMetadataArgs']] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
@@ -539,7 +539,7 @@ class Job(pulumi.CustomResource):
                  current_state_time: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
                  execution_info: Optional[pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -580,7 +580,7 @@ class Job(pulumi.CustomResource):
                 warnings.warn("""Deprecated.""", DeprecationWarning)
                 pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
             __props__.__dict__["execution_info"] = execution_info
-            __props__.__dict__["id"] = id
+            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_metadata"] = job_metadata
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -628,6 +628,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["current_state_time"] = None
         __props__.__dict__["environment"] = None
         __props__.__dict__["execution_info"] = None
+        __props__.__dict__["job_id"] = None
         __props__.__dict__["job_metadata"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
@@ -702,6 +703,14 @@ class Job(pulumi.CustomResource):
         Deprecated.
         """
         return pulumi.get(self, "execution_info")
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Output[str]:
+        """
+        The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        """
+        return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="jobMetadata")

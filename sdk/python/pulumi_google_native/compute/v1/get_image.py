@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetImageResult:
-    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None):
+    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, id=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None):
         if archive_size_bytes and not isinstance(archive_size_bytes, str):
             raise TypeError("Expected argument 'archive_size_bytes' to be a str")
         pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -40,6 +40,9 @@ class GetImageResult:
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if image_encryption_key and not isinstance(image_encryption_key, dict):
             raise TypeError("Expected argument 'image_encryption_key' to be a dict")
         pulumi.set(__self__, "image_encryption_key", image_encryption_key)
@@ -165,6 +168,14 @@ class GetImageResult:
         A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         """
         return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="imageEncryptionKey")
@@ -364,6 +375,7 @@ class AwaitableGetImageResult(GetImageResult):
             disk_size_gb=self.disk_size_gb,
             family=self.family,
             guest_os_features=self.guest_os_features,
+            id=self.id,
             image_encryption_key=self.image_encryption_key,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
@@ -412,6 +424,7 @@ def get_image(image: Optional[str] = None,
         disk_size_gb=__ret__.disk_size_gb,
         family=__ret__.family,
         guest_os_features=__ret__.guest_os_features,
+        id=__ret__.id,
         image_encryption_key=__ret__.image_encryption_key,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,

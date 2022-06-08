@@ -141,6 +141,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["source"] = source
             __props__.__dict__["etag"] = None
+            __props__.__dict__["job_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["statistics"] = None
@@ -170,6 +171,7 @@ class Job(pulumi.CustomResource):
 
         __props__.__dict__["configuration"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["job_id"] = None
         __props__.__dict__["job_reference"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["self_link"] = None
@@ -193,6 +195,14 @@ class Job(pulumi.CustomResource):
         A hash of this resource.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Output[str]:
+        """
+        Opaque ID field of the job
+        """
+        return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="jobReference")

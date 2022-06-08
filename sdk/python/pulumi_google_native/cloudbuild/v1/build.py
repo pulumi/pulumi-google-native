@@ -388,6 +388,7 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["approval"] = None
+            __props__.__dict__["build_id"] = None
             __props__.__dict__["build_trigger_id"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["failure_info"] = None
@@ -426,6 +427,7 @@ class Build(pulumi.CustomResource):
         __props__.__dict__["approval"] = None
         __props__.__dict__["artifacts"] = None
         __props__.__dict__["available_secrets"] = None
+        __props__.__dict__["build_id"] = None
         __props__.__dict__["build_trigger_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["failure_info"] = None
@@ -476,6 +478,14 @@ class Build(pulumi.CustomResource):
         Secrets and secret environment variables.
         """
         return pulumi.get(self, "available_secrets")
+
+    @property
+    @pulumi.getter(name="buildId")
+    def build_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier of the build.
+        """
+        return pulumi.get(self, "build_id")
 
     @property
     @pulumi.getter(name="buildTriggerId")

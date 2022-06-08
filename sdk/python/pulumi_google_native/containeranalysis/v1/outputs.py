@@ -135,13 +135,16 @@ class ArtifactResponse(dict):
     """
     def __init__(__self__, *,
                  checksum: str,
+                 id: str,
                  names: Sequence[str]):
         """
         Artifact describes a build product.
         :param str checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
+        :param str id: Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
         :param Sequence[str] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
         pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "names", names)
 
     @property
@@ -151,6 +154,14 @@ class ArtifactResponse(dict):
         Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         """
         return pulumi.get(self, "checksum")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -449,6 +460,7 @@ class BuildProvenanceResponse(dict):
                  create_time: str,
                  creator: str,
                  end_time: str,
+                 id: str,
                  logs_uri: str,
                  project: str,
                  source_provenance: 'outputs.SourceResponse',
@@ -463,6 +475,7 @@ class BuildProvenanceResponse(dict):
         :param str create_time: Time at which the build was created.
         :param str creator: E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
         :param str end_time: Time at which execution of the build was finished.
+        :param str id: Unique identifier of the build.
         :param str logs_uri: URI where any logs for this provenance were written.
         :param str project: ID of the project.
         :param 'SourceResponse' source_provenance: Details of the Source input to the build.
@@ -476,6 +489,7 @@ class BuildProvenanceResponse(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "logs_uri", logs_uri)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source_provenance", source_provenance)
@@ -539,6 +553,14 @@ class BuildProvenanceResponse(dict):
         return pulumi.get(self, "end_time")
 
     @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the build.
+        """
+        return pulumi.get(self, "id")
+
+    @property
     @pulumi.getter(name="logsUri")
     def logs_uri(self) -> str:
         """
@@ -581,8 +603,14 @@ class BuildProvenanceResponse(dict):
 
 @pulumi.output_type
 class BuilderConfigResponse(dict):
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 id: str):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -1037,6 +1065,7 @@ class CommandResponse(dict):
                  args: Sequence[str],
                  dir: str,
                  env: Sequence[str],
+                 id: str,
                  name: str,
                  wait_for: Sequence[str]):
         """
@@ -1044,12 +1073,14 @@ class CommandResponse(dict):
         :param Sequence[str] args: Command-line arguments used when executing this command.
         :param str dir: Working directory (relative to project source root) used when running this command.
         :param Sequence[str] env: Environment variables set before running this command.
+        :param str id: Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
         :param str name: Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         :param Sequence[str] wait_for: The ID(s) of the command(s) that this command depends on.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "wait_for", wait_for)
 
@@ -1076,6 +1107,14 @@ class CommandResponse(dict):
         Environment variables set before running this command.
         """
         return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -2429,11 +2468,17 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse(dict):
     """
     Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
     """
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 id: str):
         """
         Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
         """
-        pass
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -4059,8 +4104,14 @@ class SignatureResponse(dict):
 
 @pulumi.output_type
 class SlsaBuilderResponse(dict):
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 id: str):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
