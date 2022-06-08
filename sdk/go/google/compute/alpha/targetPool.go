@@ -39,6 +39,8 @@ type TargetPool struct {
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetPoolId pulumi.StringOutput `pulumi:"targetPoolId"`
 }
 
 // NewTargetPool registers a new resource with the given unique name, arguments, and options.
@@ -220,6 +222,11 @@ func (o TargetPoolOutput) SelfLinkWithId() pulumi.StringOutput {
 // Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
 func (o TargetPoolOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.SessionAffinity }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetPoolOutput) TargetPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.TargetPoolId }).(pulumi.StringOutput)
 }
 
 func init() {

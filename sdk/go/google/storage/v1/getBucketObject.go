@@ -61,6 +61,8 @@ type LookupBucketObjectResult struct {
 	EventBasedHold bool `pulumi:"eventBasedHold"`
 	// The content generation of this object. Used for object versioning.
 	Generation string `pulumi:"generation"`
+	// The ID of the object, including the bucket name, object name, and generation number.
+	Id string `pulumi:"id"`
 	// The kind of item this is. For objects, this is always storage#object.
 	Kind string `pulumi:"kind"`
 	// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
@@ -208,6 +210,11 @@ func (o LookupBucketObjectResultOutput) EventBasedHold() pulumi.BoolOutput {
 // The content generation of this object. Used for object versioning.
 func (o LookupBucketObjectResultOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The ID of the object, including the bucket name, object name, and generation number.
+func (o LookupBucketObjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For objects, this is always storage#object.

@@ -20,6 +20,8 @@ type Change struct {
 
 	// Which ResourceRecordSets to add?
 	Additions ResourceRecordSetResponseArrayOutput `pulumi:"additions"`
+	// Unique identifier for the resource; defined by the server (output only).
+	ChangeId pulumi.StringOutput `pulumi:"changeId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions ResourceRecordSetResponseArrayOutput `pulumi:"deletions"`
 	// If the DNS queries for the zone will be served.
@@ -141,6 +143,11 @@ func (o ChangeOutput) ToChangeOutputWithContext(ctx context.Context) ChangeOutpu
 // Which ResourceRecordSets to add?
 func (o ChangeOutput) Additions() ResourceRecordSetResponseArrayOutput {
 	return o.ApplyT(func(v *Change) ResourceRecordSetResponseArrayOutput { return v.Additions }).(ResourceRecordSetResponseArrayOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o ChangeOutput) ChangeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.ChangeId }).(pulumi.StringOutput)
 }
 
 // Which ResourceRecordSets to remove? Must match existing data exactly.

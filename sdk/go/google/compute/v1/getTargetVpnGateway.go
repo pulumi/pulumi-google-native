@@ -33,6 +33,8 @@ type LookupTargetVpnGatewayResult struct {
 	Description string `pulumi:"description"`
 	// A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
 	ForwardingRules []string `pulumi:"forwardingRules"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of resource. Always compute#targetVpnGateway for target VPN gateways.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -99,6 +101,11 @@ func (o LookupTargetVpnGatewayResultOutput) Description() pulumi.StringOutput {
 // A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
 func (o LookupTargetVpnGatewayResultOutput) ForwardingRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTargetVpnGatewayResult) []string { return v.ForwardingRules }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupTargetVpnGatewayResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetVpnGatewayResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of resource. Always compute#targetVpnGateway for target VPN gateways.

@@ -41,6 +41,8 @@ type LookupSubnetworkResult struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress string `pulumi:"gatewayAddress"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// The internal IPv6 address range that is assigned to this subnetwork.
 	InternalIpv6Prefix string `pulumi:"internalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
@@ -147,6 +149,11 @@ func (o LookupSubnetworkResultOutput) Fingerprint() pulumi.StringOutput {
 // The gateway address for default routes to reach destination addresses outside this subnetwork.
 func (o LookupSubnetworkResultOutput) GatewayAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.GatewayAddress }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupSubnetworkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The internal IPv6 address range that is assigned to this subnetwork.

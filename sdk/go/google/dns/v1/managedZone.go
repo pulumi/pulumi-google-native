@@ -28,6 +28,8 @@ type ManagedZone struct {
 	Kind             pulumi.StringOutput                       `pulumi:"kind"`
 	// User labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Unique identifier for the resource; defined by the server (output only)
+	ManagedZoneId pulumi.StringOutput `pulumi:"managedZoneId"`
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
@@ -226,6 +228,11 @@ func (o ManagedZoneOutput) Kind() pulumi.StringOutput {
 // User labels.
 func (o ManagedZoneOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only)
+func (o ManagedZoneOutput) ManagedZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.ManagedZoneId }).(pulumi.StringOutput)
 }
 
 // User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.

@@ -45,6 +45,8 @@ type SecurityPolicy struct {
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules SecurityPolicyRuleResponseArrayOutput `pulumi:"rules"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -274,6 +276,11 @@ func (o SecurityPolicyOutput) RuleTupleCount() pulumi.IntOutput {
 // A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 func (o SecurityPolicyOutput) Rules() SecurityPolicyRuleResponseArrayOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyRuleResponseArrayOutput { return v.Rules }).(SecurityPolicyRuleResponseArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o SecurityPolicyOutput) SecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

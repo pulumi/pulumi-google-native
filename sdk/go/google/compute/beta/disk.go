@@ -20,6 +20,8 @@ type Disk struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 	DiskEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"diskEncryptionKey"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
 	EraseWindowsVssSignature pulumi.BoolOutput `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
@@ -317,6 +319,11 @@ func (o DiskOutput) Description() pulumi.StringOutput {
 // Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 func (o DiskOutput) DiskEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *Disk) CustomerEncryptionKeyResponseOutput { return v.DiskEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o DiskOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
 }
 
 // Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.

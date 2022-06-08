@@ -33,6 +33,8 @@ type LookupNetworkEdgeSecurityServiceResult struct {
 	Description string `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService. An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a NetworkEdgeSecurityService.
 	Fingerprint string `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// [Output only] Type of the resource. Always compute#networkEdgeSecurityService for NetworkEdgeSecurityServices
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -97,6 +99,11 @@ func (o LookupNetworkEdgeSecurityServiceResultOutput) Description() pulumi.Strin
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService. An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a NetworkEdgeSecurityService.
 func (o LookupNetworkEdgeSecurityServiceResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkEdgeSecurityServiceResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupNetworkEdgeSecurityServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkEdgeSecurityServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // [Output only] Type of the resource. Always compute#networkEdgeSecurityService for NetworkEdgeSecurityServices

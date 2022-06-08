@@ -41,6 +41,8 @@ type LookupBackupRunResult struct {
 	EnqueuedTime string `pulumi:"enqueuedTime"`
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error OperationErrorResponse `pulumi:"error"`
+	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+	Id string `pulumi:"id"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
 	// This is always `sql#backupRun`.
@@ -131,6 +133,11 @@ func (o LookupBackupRunResultOutput) EnqueuedTime() pulumi.StringOutput {
 // Information about why the backup operation failed. This is only present if the run has the FAILED status.
 func (o LookupBackupRunResultOutput) Error() OperationErrorResponseOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) OperationErrorResponse { return v.Error }).(OperationErrorResponseOutput)
+}
+
+// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+func (o LookupBackupRunResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupRunResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the database instance.

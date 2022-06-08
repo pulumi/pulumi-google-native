@@ -24,6 +24,8 @@ type Cluster struct {
 	Autoscaling ClusterAutoscalingResponseOutput `pulumi:"autoscaling"`
 	// Configuration for Binary Authorization.
 	BinaryAuthorization BinaryAuthorizationResponseOutput `pulumi:"binaryAuthorization"`
+	// Unique id for the cluster.
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
 	ClusterIpv4Cidr pulumi.StringOutput `pulumi:"clusterIpv4Cidr"`
 	// Which conditions caused the current cluster state.
@@ -467,6 +469,11 @@ func (o ClusterOutput) Autoscaling() ClusterAutoscalingResponseOutput {
 // Configuration for Binary Authorization.
 func (o ClusterOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
 	return o.ApplyT(func(v *Cluster) BinaryAuthorizationResponseOutput { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
+}
+
+// Unique id for the cluster.
+func (o ClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
 // The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.

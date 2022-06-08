@@ -34,6 +34,8 @@ type LookupResourcePolicyResult struct {
 	DiskConsistencyGroupPolicy ResourcePolicyDiskConsistencyGroupPolicyResponse `pulumi:"diskConsistencyGroupPolicy"`
 	// Resource policy for instances for placement configuration.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyResponse `pulumi:"groupPlacementPolicy"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Resource policy for scheduling instance operations.
 	InstanceSchedulePolicy ResourcePolicyInstanceSchedulePolicyResponse `pulumi:"instanceSchedulePolicy"`
 	// Type of the resource. Always compute#resource_policies for resource policies.
@@ -113,6 +115,11 @@ func (o LookupResourcePolicyResultOutput) GroupPlacementPolicy() ResourcePolicyG
 	return o.ApplyT(func(v LookupResourcePolicyResult) ResourcePolicyGroupPlacementPolicyResponse {
 		return v.GroupPlacementPolicy
 	}).(ResourcePolicyGroupPlacementPolicyResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupResourcePolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Resource policy for scheduling instance operations.

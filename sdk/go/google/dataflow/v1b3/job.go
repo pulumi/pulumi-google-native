@@ -32,6 +32,8 @@ type Job struct {
 	//
 	// Deprecated: Deprecated.
 	ExecutionInfo JobExecutionInfoResponseOutput `pulumi:"executionInfo"`
+	// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+	JobId pulumi.StringOutput `pulumi:"jobId"`
 	// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
 	JobMetadata JobMetadataResponseOutput `pulumi:"jobMetadata"`
 	// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
@@ -124,7 +126,7 @@ type jobArgs struct {
 	// Deprecated: Deprecated.
 	ExecutionInfo *JobExecutionInfo `pulumi:"executionInfo"`
 	// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
-	Id *string `pulumi:"id"`
+	JobId *string `pulumi:"jobId"`
 	// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
 	JobMetadata *JobMetadata `pulumi:"jobMetadata"`
 	// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
@@ -182,7 +184,7 @@ type JobArgs struct {
 	// Deprecated: Deprecated.
 	ExecutionInfo JobExecutionInfoPtrInput
 	// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
-	Id pulumi.StringPtrInput
+	JobId pulumi.StringPtrInput
 	// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
 	JobMetadata JobMetadataPtrInput
 	// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
@@ -293,6 +295,11 @@ func (o JobOutput) Environment() EnvironmentResponseOutput {
 // Deprecated: Deprecated.
 func (o JobOutput) ExecutionInfo() JobExecutionInfoResponseOutput {
 	return o.ApplyT(func(v *Job) JobExecutionInfoResponseOutput { return v.ExecutionInfo }).(JobExecutionInfoResponseOutput)
+}
+
+// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+func (o JobOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
 }
 
 // This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.

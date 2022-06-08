@@ -86,6 +86,8 @@ type Version struct {
 	ServingStatus pulumi.StringOutput `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolOutput `pulumi:"threadsafe"`
+	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+	VersionId pulumi.StringOutput `pulumi:"versionId"`
 	// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
 	VersionUrl pulumi.StringOutput `pulumi:"versionUrl"`
 	// Whether to deploy this version in a container on a virtual machine.
@@ -174,8 +176,6 @@ type versionArgs struct {
 	Handlers []UrlMap `pulumi:"handlers"`
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
 	HealthCheck *HealthCheck `pulumi:"healthCheck"`
-	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-	Id *string `pulumi:"id"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []VersionInboundServicesItem `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
@@ -209,6 +209,8 @@ type versionArgs struct {
 	ServingStatus *VersionServingStatus `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
+	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+	VersionId *string `pulumi:"versionId"`
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm *bool `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
@@ -252,8 +254,6 @@ type VersionArgs struct {
 	Handlers UrlMapArrayInput
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
 	HealthCheck HealthCheckPtrInput
-	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-	Id pulumi.StringPtrInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices VersionInboundServicesItemArrayInput
 	// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
@@ -287,6 +287,8 @@ type VersionArgs struct {
 	ServingStatus VersionServingStatusPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
+	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+	VersionId pulumi.StringPtrInput
 	// Whether to deploy this version in a container on a virtual machine.
 	Vm pulumi.BoolPtrInput
 	// Enables VPC connectivity for standard apps.
@@ -507,6 +509,11 @@ func (o VersionOutput) ServingStatus() pulumi.StringOutput {
 // Whether multiple requests can be dispatched to this version at once.
 func (o VersionOutput) Threadsafe() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Version) pulumi.BoolOutput { return v.Threadsafe }).(pulumi.BoolOutput)
+}
+
+// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+func (o VersionOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }
 
 // Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"

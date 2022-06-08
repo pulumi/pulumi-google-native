@@ -57,6 +57,8 @@ type VpnTunnel struct {
 	VpnGateway pulumi.StringOutput `pulumi:"vpnGateway"`
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface pulumi.IntOutput `pulumi:"vpnGatewayInterface"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	VpnTunnelId pulumi.StringOutput `pulumi:"vpnTunnelId"`
 }
 
 // NewVpnTunnel registers a new resource with the given unique name, arguments, and options.
@@ -315,6 +317,11 @@ func (o VpnTunnelOutput) VpnGateway() pulumi.StringOutput {
 // The interface ID of the VPN gateway with which this VPN tunnel is associated.
 func (o VpnTunnelOutput) VpnGatewayInterface() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpnTunnel) pulumi.IntOutput { return v.VpnGatewayInterface }).(pulumi.IntOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o VpnTunnelOutput) VpnTunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpnTunnel) pulumi.StringOutput { return v.VpnTunnelId }).(pulumi.StringOutput)
 }
 
 func init() {

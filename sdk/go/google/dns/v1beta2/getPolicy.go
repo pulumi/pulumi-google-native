@@ -34,8 +34,10 @@ type LookupPolicyResult struct {
 	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
 	EnableInboundForwarding bool `pulumi:"enableInboundForwarding"`
 	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
-	EnableLogging bool   `pulumi:"enableLogging"`
-	Kind          string `pulumi:"kind"`
+	EnableLogging bool `pulumi:"enableLogging"`
+	// Unique identifier for the resource; defined by the server (output only).
+	Id   string `pulumi:"id"`
+	Kind string `pulumi:"kind"`
 	// User-assigned name for this policy.
 	Name string `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
@@ -99,6 +101,11 @@ func (o LookupPolicyResultOutput) EnableInboundForwarding() pulumi.BoolOutput {
 // Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
 func (o LookupPolicyResultOutput) EnableLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPolicyResult) bool { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupPolicyResultOutput) Kind() pulumi.StringOutput {

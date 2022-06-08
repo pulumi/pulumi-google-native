@@ -2066,6 +2066,8 @@ type BuildResponse struct {
 	FailureInfo FailureInfoResponse `pulumi:"failureInfo"`
 	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 	FinishTime string `pulumi:"finishTime"`
+	// Unique identifier of the build.
+	Id string `pulumi:"id"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images []string `pulumi:"images"`
 	// URL to logs for this build in Google Cloud Console.
@@ -2158,6 +2160,11 @@ func (o BuildResponseOutput) FailureInfo() FailureInfoResponseOutput {
 // Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 func (o BuildResponseOutput) FinishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.FinishTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the build.
+func (o BuildResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
@@ -2465,6 +2472,8 @@ type BuildStepResponse struct {
 	Entrypoint string `pulumi:"entrypoint"`
 	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env []string `pulumi:"env"`
+	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+	Id string `pulumi:"id"`
 	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name string `pulumi:"name"`
 	// Stores timing information for pulling this build step's builder image only.
@@ -2518,6 +2527,11 @@ func (o BuildStepResponseOutput) Entrypoint() pulumi.StringOutput {
 // A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 func (o BuildStepResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStepResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+func (o BuildStepResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.

@@ -38,6 +38,8 @@ type LookupHealthCheckResult struct {
 	Http2HealthCheck HTTP2HealthCheckResponse `pulumi:"http2HealthCheck"`
 	HttpHealthCheck  HTTPHealthCheckResponse  `pulumi:"httpHealthCheck"`
 	HttpsHealthCheck HTTPSHealthCheckResponse `pulumi:"httpsHealthCheck"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource.
 	Kind string `pulumi:"kind"`
 	// Configure logging on this health check.
@@ -131,6 +133,11 @@ func (o LookupHealthCheckResultOutput) HttpHealthCheck() HTTPHealthCheckResponse
 
 func (o LookupHealthCheckResultOutput) HttpsHealthCheck() HTTPSHealthCheckResponseOutput {
 	return o.ApplyT(func(v LookupHealthCheckResult) HTTPSHealthCheckResponse { return v.HttpsHealthCheck }).(HTTPSHealthCheckResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupHealthCheckResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHealthCheckResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource.

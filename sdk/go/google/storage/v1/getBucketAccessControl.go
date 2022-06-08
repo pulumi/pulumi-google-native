@@ -50,6 +50,8 @@ type LookupBucketAccessControlResult struct {
 	EntityId string `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag string `pulumi:"etag"`
+	// The ID of the access-control entry.
+	Id string `pulumi:"id"`
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
@@ -136,6 +138,11 @@ func (o LookupBucketAccessControlResultOutput) EntityId() pulumi.StringOutput {
 // HTTP 1.1 Entity tag for the access-control entry.
 func (o LookupBucketAccessControlResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketAccessControlResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o LookupBucketAccessControlResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketAccessControlResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.

@@ -37,6 +37,8 @@ type RegionCommitment struct {
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// URL of the region where this commitment may be used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionCommitmentId pulumi.StringOutput `pulumi:"regionCommitmentId"`
 	// List of reservations in this commitment.
 	Reservations ReservationResponseArrayOutput `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
@@ -230,6 +232,11 @@ func (o RegionCommitmentOutput) Plan() pulumi.StringOutput {
 // URL of the region where this commitment may be used.
 func (o RegionCommitmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionCommitmentOutput) RegionCommitmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.RegionCommitmentId }).(pulumi.StringOutput)
 }
 
 // List of reservations in this commitment.

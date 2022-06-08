@@ -6374,6 +6374,8 @@ type OSPolicyResourceRepositoryResourceYumRepositoryResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+	Id string `pulumi:"id"`
 }
 
 // Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
@@ -6404,6 +6406,11 @@ func (o OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput) DisplayNa
 // URIs of GPG keys.
 func (o OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput) GpgKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceYumRepositoryResponse) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
+// A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+func (o OSPolicyResourceRepositoryResourceYumRepositoryResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceYumRepositoryResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
@@ -6611,6 +6618,8 @@ type OSPolicyResourceRepositoryResourceZypperRepositoryResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	Id string `pulumi:"id"`
 }
 
 // Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
@@ -6643,12 +6652,19 @@ func (o OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput) GpgKey
 	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceZypperRepositoryResponse) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
+// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+func (o OSPolicyResourceRepositoryResourceZypperRepositoryResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceZypperRepositoryResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
 type OSPolicyResourceResponse struct {
 	// Exec resource
 	Exec OSPolicyResourceExecResourceResponse `pulumi:"exec"`
 	// File resource
 	File OSPolicyResourceFileResourceResponse `pulumi:"file"`
+	// The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+	Id string `pulumi:"id"`
 	// Package resource
 	Pkg OSPolicyResourcePackageResourceResponse `pulumi:"pkg"`
 	// Package repository resource
@@ -6678,6 +6694,11 @@ func (o OSPolicyResourceResponseOutput) Exec() OSPolicyResourceExecResourceRespo
 // File resource
 func (o OSPolicyResourceResponseOutput) File() OSPolicyResourceFileResourceResponseOutput {
 	return o.ApplyT(func(v OSPolicyResourceResponse) OSPolicyResourceFileResourceResponse { return v.File }).(OSPolicyResourceFileResourceResponseOutput)
+}
+
+// The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+func (o OSPolicyResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OSPolicyResourceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Package resource
@@ -6716,6 +6737,8 @@ type OSPolicyResponse struct {
 	AllowNoResourceGroupMatch bool `pulumi:"allowNoResourceGroupMatch"`
 	// Policy description. Length of the description is limited to 1024 characters.
 	Description string `pulumi:"description"`
+	// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+	Id string `pulumi:"id"`
 	// Policy mode
 	Mode string `pulumi:"mode"`
 	// List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
@@ -6745,6 +6768,11 @@ func (o OSPolicyResponseOutput) AllowNoResourceGroupMatch() pulumi.BoolOutput {
 // Policy description. Length of the description is limited to 1024 characters.
 func (o OSPolicyResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+func (o OSPolicyResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OSPolicyResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Policy mode
@@ -8101,6 +8129,8 @@ func (o TimeZoneOutput) Version() pulumi.StringPtrOutput {
 
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZoneResponse struct {
+	// IANA Time Zone Database time zone, e.g. "America/New_York".
+	Id string `pulumi:"id"`
 	// Optional. IANA Time Zone Database version number, e.g. "2019a".
 	Version string `pulumi:"version"`
 }
@@ -8118,6 +8148,11 @@ func (o TimeZoneResponseOutput) ToTimeZoneResponseOutput() TimeZoneResponseOutpu
 
 func (o TimeZoneResponseOutput) ToTimeZoneResponseOutputWithContext(ctx context.Context) TimeZoneResponseOutput {
 	return o
+}
+
+// IANA Time Zone Database time zone, e.g. "America/New_York".
+func (o TimeZoneResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeZoneResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Optional. IANA Time Zone Database version number, e.g. "2019a".

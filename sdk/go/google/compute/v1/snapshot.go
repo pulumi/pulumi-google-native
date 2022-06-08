@@ -46,6 +46,8 @@ type Snapshot struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 	SnapshotEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"snapshotEncryptionKey"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
 	// The source disk used to create this snapshot.
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
@@ -264,6 +266,11 @@ func (o SnapshotOutput) SelfLink() pulumi.StringOutput {
 // Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 func (o SnapshotOutput) SnapshotEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *Snapshot) CustomerEncryptionKeyResponseOutput { return v.SnapshotEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o SnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 // The source disk used to create this snapshot.

@@ -147,6 +147,8 @@ func (o ArtifactArrayOutput) Index(i pulumi.IntInput) ArtifactOutput {
 type ArtifactResponse struct {
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum string `pulumi:"checksum"`
+	// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
+	Id string `pulumi:"id"`
 	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
 	//
 	// Deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
@@ -173,6 +175,11 @@ func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
+func (o ArtifactResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
@@ -1703,6 +1710,8 @@ type BuildProvenanceResponse struct {
 	Creator string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	FinishTime string `pulumi:"finishTime"`
+	// Unique identifier of the build.
+	Id string `pulumi:"id"`
 	// Google Cloud Storage bucket where logs were written.
 	LogsBucket string `pulumi:"logsBucket"`
 	// ID of the project.
@@ -1763,6 +1772,11 @@ func (o BuildProvenanceResponseOutput) Creator() pulumi.StringOutput {
 // Time at which execution of the build was finished.
 func (o BuildProvenanceResponseOutput) FinishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.FinishTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the build.
+func (o BuildProvenanceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Google Cloud Storage bucket where logs were written.
@@ -2360,6 +2374,7 @@ func (o BuilderConfigPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 type BuilderConfigResponse struct {
+	Id string `pulumi:"id"`
 }
 
 type BuilderConfigResponseOutput struct{ *pulumi.OutputState }
@@ -2374,6 +2389,10 @@ func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutput() BuilderConf
 
 func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutputWithContext(ctx context.Context) BuilderConfigResponseOutput {
 	return o
+}
+
+func (o BuilderConfigResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuilderConfigResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
@@ -3161,6 +3180,8 @@ type CommandResponse struct {
 	Dir string `pulumi:"dir"`
 	// Environment variables set before running this Command.
 	Env []string `pulumi:"env"`
+	// Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
+	Id string `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the Command(s) that this Command depends on.
@@ -3195,6 +3216,11 @@ func (o CommandResponseOutput) Dir() pulumi.StringOutput {
 // Environment variables set before running this Command.
 func (o CommandResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
+func (o CommandResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
@@ -6977,6 +7003,8 @@ type DocumentOccurrenceResponse struct {
 	DocumentComment string `pulumi:"documentComment"`
 	// Identify any external SPDX documents referenced within this SPDX document
 	ExternalDocumentRefs []string `pulumi:"externalDocumentRefs"`
+	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+	Id string `pulumi:"id"`
 	// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
 	LicenseListVersion string `pulumi:"licenseListVersion"`
 	// Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
@@ -7023,6 +7051,11 @@ func (o DocumentOccurrenceResponseOutput) DocumentComment() pulumi.StringOutput 
 // Identify any external SPDX documents referenced within this SPDX document
 func (o DocumentOccurrenceResponseOutput) ExternalDocumentRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DocumentOccurrenceResponse) []string { return v.ExternalDocumentRefs }).(pulumi.StringArrayOutput)
+}
+
+// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+func (o DocumentOccurrenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
@@ -8507,6 +8540,8 @@ type FileOccurrenceResponse struct {
 	Copyright string `pulumi:"copyright"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id string `pulumi:"id"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
 	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -8551,6 +8586,11 @@ func (o FileOccurrenceResponseOutput) Copyright() pulumi.StringOutput {
 // This field contains the license information actually found in the file, if any
 func (o FileOccurrenceResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileOccurrenceResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o FileOccurrenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
@@ -10156,6 +10196,8 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderP
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
 type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse struct {
+	// URI indicating the builder’s identity.
+	Id string `pulumi:"id"`
 }
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
@@ -10171,6 +10213,13 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderR
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
 	return o
+}
+
+// URI indicating the builder’s identity.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse) string {
+		return v.Id
+	}).(pulumi.StringOutput)
 }
 
 // Indicates that the builder claims certain fields in this message to be complete.
@@ -14944,6 +14993,8 @@ type PackageInfoOccurrenceResponse struct {
 	Filename string `pulumi:"filename"`
 	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
 	HomePage string `pulumi:"homePage"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id string `pulumi:"id"`
 	// package or alternative values, if the governing license cannot be determined
 	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
 	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
@@ -14986,6 +15037,11 @@ func (o PackageInfoOccurrenceResponseOutput) Filename() pulumi.StringOutput {
 // Provide a place for the SPDX file creator to record a web site that serves as the package's home page
 func (o PackageInfoOccurrenceResponseOutput) HomePage() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.HomePage }).(pulumi.StringOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // package or alternative values, if the governing license cannot be determined
@@ -16981,6 +17037,8 @@ func (o SlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
 
 // SlsaBuilder encapsulates the identity of the builder of this provenance.
 type SlsaBuilderResponse struct {
+	// id is the id of the slsa provenance builder
+	Id string `pulumi:"id"`
 }
 
 // SlsaBuilder encapsulates the identity of the builder of this provenance.
@@ -16996,6 +17054,11 @@ func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutput() SlsaBuilderResp
 
 func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutputWithContext(ctx context.Context) SlsaBuilderResponseOutput {
 	return o
+}
+
+// id is the id of the slsa provenance builder
+func (o SlsaBuilderResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaBuilderResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates that the builder claims certain fields in this message to be complete.

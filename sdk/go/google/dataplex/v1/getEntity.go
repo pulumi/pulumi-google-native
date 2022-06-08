@@ -50,6 +50,8 @@ type LookupEntityResult struct {
 	Etag string `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 	Format GoogleCloudDataplexV1StorageFormatResponse `pulumi:"format"`
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+	Id string `pulumi:"id"`
 	// The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
 	Name string `pulumi:"name"`
 	// The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
@@ -152,6 +154,11 @@ func (o LookupEntityResultOutput) Etag() pulumi.StringOutput {
 // Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 func (o LookupEntityResultOutput) Format() GoogleCloudDataplexV1StorageFormatResponseOutput {
 	return o.ApplyT(func(v LookupEntityResult) GoogleCloudDataplexV1StorageFormatResponse { return v.Format }).(GoogleCloudDataplexV1StorageFormatResponseOutput)
+}
+
+// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+func (o LookupEntityResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.

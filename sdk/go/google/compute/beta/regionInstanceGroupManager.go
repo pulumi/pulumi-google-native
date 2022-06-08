@@ -45,6 +45,8 @@ type RegionInstanceGroupManager struct {
 	NamedPorts NamedPortResponseArrayOutput `pulumi:"namedPorts"`
 	// The URL of the region where the managed instance group resides (for regional resources).
 	Region pulumi.StringOutput `pulumi:"region"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	RegionInstanceGroupManagerId pulumi.StringOutput `pulumi:"regionInstanceGroupManagerId"`
 	// The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -297,6 +299,11 @@ func (o RegionInstanceGroupManagerOutput) NamedPorts() NamedPortResponseArrayOut
 // The URL of the region where the managed instance group resides (for regional resources).
 func (o RegionInstanceGroupManagerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o RegionInstanceGroupManagerOutput) RegionInstanceGroupManagerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.RegionInstanceGroupManagerId }).(pulumi.StringOutput)
 }
 
 // The URL for this managed instance group. The server defines this URL.

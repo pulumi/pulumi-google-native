@@ -31,6 +31,8 @@ type NetworkFirewallPolicy struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NetworkFirewallPolicyId pulumi.StringOutput `pulumi:"networkFirewallPolicyId"`
 	// The parent of the firewall policy.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -200,6 +202,11 @@ func (o NetworkFirewallPolicyOutput) Kind() pulumi.StringOutput {
 // Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 func (o NetworkFirewallPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o NetworkFirewallPolicyOutput) NetworkFirewallPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFirewallPolicy) pulumi.StringOutput { return v.NetworkFirewallPolicyId }).(pulumi.StringOutput)
 }
 
 // The parent of the firewall policy.

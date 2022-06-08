@@ -29,7 +29,9 @@ type GetResponsePolicyArgs struct {
 type GetResponsePolicyResult struct {
 	// User-provided description for this Response Policy.
 	Description string `pulumi:"description"`
-	Kind        string `pulumi:"kind"`
+	// Unique identifier for the resource; defined by the server (output only).
+	Id   string `pulumi:"id"`
+	Kind string `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []ResponsePolicyNetworkResponse `pulumi:"networks"`
 	// User assigned name for this Response Policy.
@@ -76,6 +78,11 @@ func (o GetResponsePolicyResultOutput) ToGetResponsePolicyResultOutputWithContex
 // User-provided description for this Response Policy.
 func (o GetResponsePolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResponsePolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o GetResponsePolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResponsePolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetResponsePolicyResultOutput) Kind() pulumi.StringOutput {

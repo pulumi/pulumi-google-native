@@ -21,6 +21,8 @@ type Device struct {
 	Config DeviceConfigResponseOutput `pulumi:"config"`
 	// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 	Credentials DeviceCredentialResponseArrayOutput `pulumi:"credentials"`
+	// The user-defined device identifier. The device ID must be unique within a device registry.
+	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// Gateway-related configuration and state.
 	GatewayConfig GatewayConfigResponseOutput `pulumi:"gatewayConfig"`
 	// [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
@@ -97,11 +99,11 @@ type deviceArgs struct {
 	Config *DeviceConfig `pulumi:"config"`
 	// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 	Credentials []DeviceCredential `pulumi:"credentials"`
+	// The user-defined device identifier. The device ID must be unique within a device registry.
+	DeviceId *string `pulumi:"deviceId"`
 	// Gateway-related configuration and state.
 	GatewayConfig *GatewayConfig `pulumi:"gatewayConfig"`
-	// The user-defined device identifier. The device ID must be unique within a device registry.
-	Id       *string `pulumi:"id"`
-	Location *string `pulumi:"location"`
+	Location      *string        `pulumi:"location"`
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel *DeviceLogLevel `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
@@ -120,11 +122,11 @@ type DeviceArgs struct {
 	Config DeviceConfigPtrInput
 	// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 	Credentials DeviceCredentialArrayInput
+	// The user-defined device identifier. The device ID must be unique within a device registry.
+	DeviceId pulumi.StringPtrInput
 	// Gateway-related configuration and state.
 	GatewayConfig GatewayConfigPtrInput
-	// The user-defined device identifier. The device ID must be unique within a device registry.
-	Id       pulumi.StringPtrInput
-	Location pulumi.StringPtrInput
+	Location      pulumi.StringPtrInput
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel DeviceLogLevelPtrInput
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
@@ -185,6 +187,11 @@ func (o DeviceOutput) Config() DeviceConfigResponseOutput {
 // The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
 func (o DeviceOutput) Credentials() DeviceCredentialResponseArrayOutput {
 	return o.ApplyT(func(v *Device) DeviceCredentialResponseArrayOutput { return v.Credentials }).(DeviceCredentialResponseArrayOutput)
+}
+
+// The user-defined device identifier. The device ID must be unique within a device registry.
+func (o DeviceOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
 // Gateway-related configuration and state.

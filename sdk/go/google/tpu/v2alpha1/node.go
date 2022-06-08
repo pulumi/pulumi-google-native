@@ -42,6 +42,8 @@ type Node struct {
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints NetworkEndpointResponseArrayOutput `pulumi:"networkEndpoints"`
+	// The unique identifier for the TPU Node.
+	NodeId pulumi.StringOutput `pulumi:"nodeId"`
 	// The runtime version running in the Node.
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
@@ -264,6 +266,11 @@ func (o NodeOutput) NetworkConfig() NetworkConfigResponseOutput {
 // The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 func (o NodeOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
 	return o.ApplyT(func(v *Node) NetworkEndpointResponseArrayOutput { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
+}
+
+// The unique identifier for the TPU Node.
+func (o NodeOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.NodeId }).(pulumi.StringOutput)
 }
 
 // The runtime version running in the Node.

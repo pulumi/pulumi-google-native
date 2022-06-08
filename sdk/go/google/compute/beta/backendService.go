@@ -16,6 +16,8 @@ type BackendService struct {
 
 	// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	AffinityCookieTtlSec pulumi.IntOutput `pulumi:"affinityCookieTtlSec"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	BackendServiceId pulumi.StringOutput `pulumi:"backendServiceId"`
 	// The list of backends that serve this BackendService.
 	Backends BackendResponseArrayOutput `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
@@ -304,6 +306,11 @@ func (o BackendServiceOutput) ToBackendServiceOutputWithContext(ctx context.Cont
 // Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o BackendServiceOutput) AffinityCookieTtlSec() pulumi.IntOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.IntOutput { return v.AffinityCookieTtlSec }).(pulumi.IntOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o BackendServiceOutput) BackendServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.BackendServiceId }).(pulumi.StringOutput)
 }
 
 // The list of backends that serve this BackendService.

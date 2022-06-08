@@ -26,6 +26,8 @@ type LookupDomainMappingArgs struct {
 }
 
 type LookupDomainMappingResult struct {
+	// Relative name of the domain serving the application. Example: example.com.
+	Id string `pulumi:"id"`
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name string `pulumi:"name"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
@@ -68,6 +70,11 @@ func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutput() Loo
 
 func (o LookupDomainMappingResultOutput) ToLookupDomainMappingResultOutputWithContext(ctx context.Context) LookupDomainMappingResultOutput {
 	return o
+}
+
+// Relative name of the domain serving the application. Example: example.com.
+func (o LookupDomainMappingResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.

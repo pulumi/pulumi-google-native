@@ -20,6 +20,8 @@ type GlobalPublicDelegatedPrefix struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// The unique identifier for the resource type. The server generates this identifier.
+	GlobalPublicDelegatedPrefixId pulumi.StringOutput `pulumi:"globalPublicDelegatedPrefixId"`
 	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
@@ -165,6 +167,11 @@ func (o GlobalPublicDelegatedPrefixOutput) Description() pulumi.StringOutput {
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
 func (o GlobalPublicDelegatedPrefixOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalPublicDelegatedPrefix) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource type. The server generates this identifier.
+func (o GlobalPublicDelegatedPrefixOutput) GlobalPublicDelegatedPrefixId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalPublicDelegatedPrefix) pulumi.StringOutput { return v.GlobalPublicDelegatedPrefixId }).(pulumi.StringOutput)
 }
 
 // The IPv4 address range, in CIDR format, represented by this public delegated prefix.

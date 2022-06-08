@@ -20,6 +20,8 @@ type Bucket struct {
 	Autoclass BucketAutoclassResponseOutput `pulumi:"autoclass"`
 	// The bucket's billing configuration.
 	Billing BucketBillingResponseOutput `pulumi:"billing"`
+	// The ID of the bucket. For buckets, the id and name properties are the same.
+	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors BucketCorsItemResponseArrayOutput `pulumi:"cors"`
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -117,6 +119,8 @@ type bucketArgs struct {
 	Autoclass *BucketAutoclass `pulumi:"autoclass"`
 	// The bucket's billing configuration.
 	Billing *BucketBilling `pulumi:"billing"`
+	// The ID of the bucket. For buckets, the id and name properties are the same.
+	BucketId *string `pulumi:"bucketId"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors []BucketCorsItem `pulumi:"cors"`
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -129,8 +133,6 @@ type bucketArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The bucket's IAM configuration.
 	IamConfiguration *BucketIamConfiguration `pulumi:"iamConfiguration"`
-	// The ID of the bucket. For buckets, the id and name properties are the same.
-	Id *string `pulumi:"id"`
 	// The kind of item this is. For buckets, this is always storage#bucket.
 	Kind *string `pulumi:"kind"`
 	// User-provided labels, in key/value pairs.
@@ -189,6 +191,8 @@ type BucketArgs struct {
 	Autoclass BucketAutoclassPtrInput
 	// The bucket's billing configuration.
 	Billing BucketBillingPtrInput
+	// The ID of the bucket. For buckets, the id and name properties are the same.
+	BucketId pulumi.StringPtrInput
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors BucketCorsItemArrayInput
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -201,8 +205,6 @@ type BucketArgs struct {
 	Etag pulumi.StringPtrInput
 	// The bucket's IAM configuration.
 	IamConfiguration BucketIamConfigurationPtrInput
-	// The ID of the bucket. For buckets, the id and name properties are the same.
-	Id pulumi.StringPtrInput
 	// The kind of item this is. For buckets, this is always storage#bucket.
 	Kind pulumi.StringPtrInput
 	// User-provided labels, in key/value pairs.
@@ -303,6 +305,11 @@ func (o BucketOutput) Autoclass() BucketAutoclassResponseOutput {
 // The bucket's billing configuration.
 func (o BucketOutput) Billing() BucketBillingResponseOutput {
 	return o.ApplyT(func(v *Bucket) BucketBillingResponseOutput { return v.Billing }).(BucketBillingResponseOutput)
+}
+
+// The ID of the bucket. For buckets, the id and name properties are the same.
+func (o BucketOutput) BucketId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
 // The bucket's Cross-Origin Resource Sharing (CORS) configuration.

@@ -29,6 +29,8 @@ type RegionAutoscaler struct {
 	RecommendedSize pulumi.IntOutput `pulumi:"recommendedSize"`
 	// URL of the region where the instance group resides (for autoscalers living in regional scope).
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionAutoscalerId pulumi.StringOutput `pulumi:"regionAutoscalerId"`
 	// Status information of existing scaling schedules.
 	ScalingScheduleStatus pulumi.StringMapOutput `pulumi:"scalingScheduleStatus"`
 	// Server-defined URL for the resource.
@@ -187,6 +189,11 @@ func (o RegionAutoscalerOutput) RecommendedSize() pulumi.IntOutput {
 // URL of the region where the instance group resides (for autoscalers living in regional scope).
 func (o RegionAutoscalerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionAutoscalerOutput) RegionAutoscalerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.RegionAutoscalerId }).(pulumi.StringOutput)
 }
 
 // Status information of existing scaling schedules.

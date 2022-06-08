@@ -41,6 +41,8 @@ type LookupNetworkEndpointGroupResult struct {
 	DefaultPort int `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 	Kind string `pulumi:"kind"`
 	// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
@@ -141,6 +143,11 @@ func (o LookupNetworkEndpointGroupResultOutput) DefaultPort() pulumi.IntOutput {
 // An optional description of this resource. Provide this property when you create the resource.
 func (o LookupNetworkEndpointGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupNetworkEndpointGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkEndpointGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#networkEndpointGroup for network endpoint group.

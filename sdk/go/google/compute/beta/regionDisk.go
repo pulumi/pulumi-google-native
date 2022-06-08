@@ -59,6 +59,8 @@ type RegionDisk struct {
 	ProvisionedIops pulumi.StringOutput `pulumi:"provisionedIops"`
 	// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionDiskId pulumi.StringOutput `pulumi:"regionDiskId"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
 	// Resource policies applied to this disk for automatic snapshot creations.
@@ -413,6 +415,11 @@ func (o RegionDiskOutput) ProvisionedIops() pulumi.StringOutput {
 // URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o RegionDiskOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionDiskOutput) RegionDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.RegionDiskId }).(pulumi.StringOutput)
 }
 
 // URLs of the zones where the disk should be replicated to. Only applicable for regional resources.

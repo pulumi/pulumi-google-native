@@ -18,6 +18,8 @@ type BackupRun struct {
 
 	// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
 	BackupKind pulumi.StringOutput `pulumi:"backupKind"`
+	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+	BackupRunId pulumi.StringOutput `pulumi:"backupRunId"`
 	// The description of this run, only applicable to on-demand backups.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Encryption configuration specific to a backup.
@@ -92,6 +94,8 @@ func (BackupRunState) ElementType() reflect.Type {
 type backupRunArgs struct {
 	// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
 	BackupKind *BackupRunBackupKind `pulumi:"backupKind"`
+	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+	BackupRunId *string `pulumi:"backupRunId"`
 	// The description of this run, only applicable to on-demand backups.
 	Description *string `pulumi:"description"`
 	// Encryption configuration specific to a backup.
@@ -104,8 +108,6 @@ type backupRunArgs struct {
 	EnqueuedTime *string `pulumi:"enqueuedTime"`
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error *OperationError `pulumi:"error"`
-	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-	Id *string `pulumi:"id"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
 	// This is always `sql#backupRun`.
@@ -127,6 +129,8 @@ type backupRunArgs struct {
 type BackupRunArgs struct {
 	// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
 	BackupKind BackupRunBackupKindPtrInput
+	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+	BackupRunId pulumi.StringPtrInput
 	// The description of this run, only applicable to on-demand backups.
 	Description pulumi.StringPtrInput
 	// Encryption configuration specific to a backup.
@@ -139,8 +143,6 @@ type BackupRunArgs struct {
 	EnqueuedTime pulumi.StringPtrInput
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error OperationErrorPtrInput
-	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-	Id pulumi.StringPtrInput
 	// Name of the database instance.
 	Instance pulumi.StringInput
 	// This is always `sql#backupRun`.
@@ -198,6 +200,11 @@ func (o BackupRunOutput) ToBackupRunOutputWithContext(ctx context.Context) Backu
 // Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
 func (o BackupRunOutput) BackupKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.BackupKind }).(pulumi.StringOutput)
+}
+
+// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+func (o BackupRunOutput) BackupRunId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.BackupRunId }).(pulumi.StringOutput)
 }
 
 // The description of this run, only applicable to on-demand backups.

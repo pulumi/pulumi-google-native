@@ -33,7 +33,8 @@ type WorkflowTemplate struct {
 	// The time template was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version pulumi.IntOutput `pulumi:"version"`
+	Version            pulumi.IntOutput    `pulumi:"version"`
+	WorkflowTemplateId pulumi.StringOutput `pulumi:"workflowTemplateId"`
 }
 
 // NewWorkflowTemplate registers a new resource with the given unique name, arguments, and options.
@@ -83,7 +84,6 @@ func (WorkflowTemplateState) ElementType() reflect.Type {
 type workflowTemplateArgs struct {
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`
-	Id         *string `pulumi:"id"`
 	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs []OrderedJob `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
@@ -95,14 +95,14 @@ type workflowTemplateArgs struct {
 	Placement WorkflowTemplatePlacement `pulumi:"placement"`
 	Project   *string                   `pulumi:"project"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version *int `pulumi:"version"`
+	Version            *int    `pulumi:"version"`
+	WorkflowTemplateId *string `pulumi:"workflowTemplateId"`
 }
 
 // The set of arguments for constructing a WorkflowTemplate resource.
 type WorkflowTemplateArgs struct {
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout pulumi.StringPtrInput
-	Id         pulumi.StringPtrInput
 	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs OrderedJobArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
@@ -114,7 +114,8 @@ type WorkflowTemplateArgs struct {
 	Placement WorkflowTemplatePlacementInput
 	Project   pulumi.StringPtrInput
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version pulumi.IntPtrInput
+	Version            pulumi.IntPtrInput
+	WorkflowTemplateId pulumi.StringPtrInput
 }
 
 func (WorkflowTemplateArgs) ElementType() reflect.Type {
@@ -197,6 +198,10 @@ func (o WorkflowTemplateOutput) UpdateTime() pulumi.StringOutput {
 // Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
 func (o WorkflowTemplateOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
+func (o WorkflowTemplateOutput) WorkflowTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.WorkflowTemplateId }).(pulumi.StringOutput)
 }
 
 func init() {

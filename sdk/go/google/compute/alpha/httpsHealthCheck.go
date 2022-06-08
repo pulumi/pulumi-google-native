@@ -24,6 +24,8 @@ type HttpsHealthCheck struct {
 	HealthyThreshold pulumi.IntOutput `pulumi:"healthyThreshold"`
 	// The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
 	Host pulumi.StringOutput `pulumi:"host"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	HttpsHealthCheckId pulumi.StringOutput `pulumi:"httpsHealthCheckId"`
 	// Type of the resource.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -193,6 +195,11 @@ func (o HttpsHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
 // The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
 func (o HttpsHealthCheckOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o HttpsHealthCheckOutput) HttpsHealthCheckId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.HttpsHealthCheckId }).(pulumi.StringOutput)
 }
 
 // Type of the resource.

@@ -6467,6 +6467,8 @@ func (o TestDetailsResponseOutput) ProgressMessages() pulumi.StringArrayOutput {
 type TestExecutionResponse struct {
 	// How the host machine(s) are configured.
 	Environment EnvironmentResponse `pulumi:"environment"`
+	// Unique id set by the service.
+	Id string `pulumi:"id"`
 	// Id of the containing TestMatrix.
 	MatrixId string `pulumi:"matrixId"`
 	// The cloud project that owns the test execution.
@@ -6503,6 +6505,11 @@ func (o TestExecutionResponseOutput) ToTestExecutionResponseOutputWithContext(ct
 // How the host machine(s) are configured.
 func (o TestExecutionResponseOutput) Environment() EnvironmentResponseOutput {
 	return o.ApplyT(func(v TestExecutionResponse) EnvironmentResponse { return v.Environment }).(EnvironmentResponseOutput)
+}
+
+// Unique id set by the service.
+func (o TestExecutionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TestExecutionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Id of the containing TestMatrix.

@@ -36,6 +36,8 @@ type SslCertificate struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged SslCertificateSelfManagedSslCertificateResponseOutput `pulumi:"selfManaged"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	SslCertificateId pulumi.StringOutput `pulumi:"sslCertificateId"`
 	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayOutput `pulumi:"subjectAlternativeNames"`
 	// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -211,6 +213,11 @@ func (o SslCertificateOutput) SelfLink() pulumi.StringOutput {
 // Configuration and status of a self-managed SSL certificate.
 func (o SslCertificateOutput) SelfManaged() SslCertificateSelfManagedSslCertificateResponseOutput {
 	return o.ApplyT(func(v *SslCertificate) SslCertificateSelfManagedSslCertificateResponseOutput { return v.SelfManaged }).(SslCertificateSelfManagedSslCertificateResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o SslCertificateOutput) SslCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCertificate) pulumi.StringOutput { return v.SslCertificateId }).(pulumi.StringOutput)
 }
 
 // Domains associated with the certificate via Subject Alternative Name.

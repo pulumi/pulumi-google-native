@@ -29,6 +29,8 @@ type RegionTargetTcpProxy struct {
 	ProxyHeader pulumi.StringOutput `pulumi:"proxyHeader"`
 	// URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionTargetTcpProxyId pulumi.StringOutput `pulumi:"regionTargetTcpProxyId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// URL to the BackendService resource.
@@ -181,6 +183,11 @@ func (o RegionTargetTcpProxyOutput) ProxyHeader() pulumi.StringOutput {
 // URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
 func (o RegionTargetTcpProxyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionTargetTcpProxyOutput) RegionTargetTcpProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.RegionTargetTcpProxyId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

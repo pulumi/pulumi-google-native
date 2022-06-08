@@ -17,6 +17,8 @@ import (
 type App struct {
 	pulumi.CustomResourceState
 
+	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+	AppId pulumi.StringOutput `pulumi:"appId"`
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain pulumi.StringOutput `pulumi:"authDomain"`
 	// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
@@ -85,6 +87,8 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
+	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+	AppId *string `pulumi:"appId"`
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain *string `pulumi:"authDomain"`
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
@@ -98,8 +102,6 @@ type appArgs struct {
 	// The Google Container Registry domain used for storing managed build docker images for this application.
 	GcrDomain *string             `pulumi:"gcrDomain"`
 	Iap       *IdentityAwareProxy `pulumi:"iap"`
-	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
-	Id *string `pulumi:"id"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location *string `pulumi:"location"`
 	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
@@ -110,6 +112,8 @@ type appArgs struct {
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
+	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+	AppId pulumi.StringPtrInput
 	// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
 	AuthDomain pulumi.StringPtrInput
 	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
@@ -123,8 +127,6 @@ type AppArgs struct {
 	// The Google Container Registry domain used for storing managed build docker images for this application.
 	GcrDomain pulumi.StringPtrInput
 	Iap       IdentityAwareProxyPtrInput
-	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
-	Id pulumi.StringPtrInput
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location pulumi.StringPtrInput
 	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
@@ -168,6 +170,11 @@ func (o AppOutput) ToAppOutput() AppOutput {
 
 func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
+}
+
+// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+func (o AppOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
 
 // Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.

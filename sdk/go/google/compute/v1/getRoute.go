@@ -34,6 +34,8 @@ type LookupRouteResult struct {
 	Description string `pulumi:"description"`
 	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
 	DestRange string `pulumi:"destRange"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of this resource. Always compute#routes for Route resources.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
@@ -122,6 +124,11 @@ func (o LookupRouteResultOutput) Description() pulumi.StringOutput {
 // The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
 func (o LookupRouteResultOutput) DestRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRouteResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of this resource. Always compute#routes for Route resources.

@@ -35,6 +35,8 @@ type RegionTargetHttpsProxy struct {
 	QuicOverride pulumi.StringOutput `pulumi:"quicOverride"`
 	// URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionTargetHttpsProxyId pulumi.StringOutput `pulumi:"regionTargetHttpsProxyId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
@@ -228,6 +230,11 @@ func (o RegionTargetHttpsProxyOutput) QuicOverride() pulumi.StringOutput {
 // URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
 func (o RegionTargetHttpsProxyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionTargetHttpsProxyOutput) RegionTargetHttpsProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.RegionTargetHttpsProxyId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

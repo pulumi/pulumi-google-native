@@ -49,6 +49,8 @@ type RegionInstanceGroupManager struct {
 	NamedPorts NamedPortResponseArrayOutput `pulumi:"namedPorts"`
 	// The URL of the region where the managed instance group resides (for regional resources).
 	Region pulumi.StringOutput `pulumi:"region"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	RegionInstanceGroupManagerId pulumi.StringOutput `pulumi:"regionInstanceGroupManagerId"`
 	// The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -341,6 +343,11 @@ func (o RegionInstanceGroupManagerOutput) NamedPorts() NamedPortResponseArrayOut
 // The URL of the region where the managed instance group resides (for regional resources).
 func (o RegionInstanceGroupManagerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o RegionInstanceGroupManagerOutput) RegionInstanceGroupManagerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.RegionInstanceGroupManagerId }).(pulumi.StringOutput)
 }
 
 // The URL for this managed instance group. The server defines this URL.

@@ -39,6 +39,8 @@ type Instance struct {
 	GuestAccelerators AcceleratorConfigResponseArrayOutput `pulumi:"guestAccelerators"`
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType pulumi.StringOutput `pulumi:"keyRevocationActionType"`
 	// Type of the resource. Always compute#instance for instances.
@@ -380,6 +382,11 @@ func (o InstanceOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput
 // Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 func (o InstanceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o InstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.

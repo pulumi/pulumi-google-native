@@ -32,6 +32,8 @@ type TargetInstance struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetInstanceId pulumi.StringOutput `pulumi:"targetInstanceId"`
 	// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -189,6 +191,11 @@ func (o TargetInstanceOutput) SelfLink() pulumi.StringOutput {
 // Server-defined URL for this resource with the resource id.
 func (o TargetInstanceOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetInstanceOutput) TargetInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.TargetInstanceId }).(pulumi.StringOutput)
 }
 
 // URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

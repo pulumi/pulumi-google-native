@@ -33,6 +33,8 @@ type PacketMirroring struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 	Network PacketMirroringNetworkInfoResponseOutput `pulumi:"network"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	PacketMirroringId pulumi.StringOutput `pulumi:"packetMirroringId"`
 	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// URI of the region where the packetMirroring resides.
@@ -211,6 +213,11 @@ func (o PacketMirroringOutput) Name() pulumi.StringOutput {
 // Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 func (o PacketMirroringOutput) Network() PacketMirroringNetworkInfoResponseOutput {
 	return o.ApplyT(func(v *PacketMirroring) PacketMirroringNetworkInfoResponseOutput { return v.Network }).(PacketMirroringNetworkInfoResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o PacketMirroringOutput) PacketMirroringId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PacketMirroring) pulumi.StringOutput { return v.PacketMirroringId }).(pulumi.StringOutput)
 }
 
 // The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.

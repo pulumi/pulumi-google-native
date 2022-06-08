@@ -38,6 +38,8 @@ type SslPolicy struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	SslPolicyId pulumi.StringOutput `pulumi:"sslPolicyId"`
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings ServerTlsSettingsResponseOutput `pulumi:"tlsSettings"`
 	// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
@@ -214,6 +216,11 @@ func (o SslPolicyOutput) SelfLink() pulumi.StringOutput {
 // Server-defined URL for this resource with the resource id.
 func (o SslPolicyOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SslPolicy) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o SslPolicyOutput) SslPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslPolicy) pulumi.StringOutput { return v.SslPolicyId }).(pulumi.StringOutput)
 }
 
 // Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.

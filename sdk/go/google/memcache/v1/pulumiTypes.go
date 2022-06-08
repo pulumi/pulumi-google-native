@@ -555,6 +555,8 @@ func (o MemcacheParametersPtrOutput) Params() pulumi.StringMapOutput {
 }
 
 type MemcacheParametersResponse struct {
+	// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
+	Id string `pulumi:"id"`
 	// User defined set of parameters to use in the memcached process.
 	Params map[string]string `pulumi:"params"`
 }
@@ -571,6 +573,11 @@ func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponseOutput() M
 
 func (o MemcacheParametersResponseOutput) ToMemcacheParametersResponseOutputWithContext(ctx context.Context) MemcacheParametersResponseOutput {
 	return o
+}
+
+// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
+func (o MemcacheParametersResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v MemcacheParametersResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // User defined set of parameters to use in the memcached process.

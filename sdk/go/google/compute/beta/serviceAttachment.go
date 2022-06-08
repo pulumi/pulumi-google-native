@@ -47,6 +47,8 @@ type ServiceAttachment struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The unique identifier for the resource type. The server generates this identifier.
+	ServiceAttachmentId pulumi.StringOutput `pulumi:"serviceAttachmentId"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringOutput `pulumi:"targetService"`
 }
@@ -266,6 +268,11 @@ func (o ServiceAttachmentOutput) Region() pulumi.StringOutput {
 // Server-defined URL for the resource.
 func (o ServiceAttachmentOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource type. The server generates this identifier.
+func (o ServiceAttachmentOutput) ServiceAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.ServiceAttachmentId }).(pulumi.StringOutput)
 }
 
 // The URL of a service serving the endpoint identified by this service attachment.

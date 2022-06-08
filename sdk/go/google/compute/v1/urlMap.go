@@ -42,6 +42,8 @@ type UrlMap struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Tests UrlMapTestResponseArrayOutput `pulumi:"tests"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	UrlMapId pulumi.StringOutput `pulumi:"urlMapId"`
 }
 
 // NewUrlMap registers a new resource with the given unique name, arguments, and options.
@@ -236,6 +238,11 @@ func (o UrlMapOutput) SelfLink() pulumi.StringOutput {
 // The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o UrlMapOutput) Tests() UrlMapTestResponseArrayOutput {
 	return o.ApplyT(func(v *UrlMap) UrlMapTestResponseArrayOutput { return v.Tests }).(UrlMapTestResponseArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o UrlMapOutput) UrlMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.UrlMapId }).(pulumi.StringOutput)
 }
 
 func init() {

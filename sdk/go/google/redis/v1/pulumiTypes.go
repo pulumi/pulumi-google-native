@@ -265,6 +265,8 @@ func (o MaintenanceScheduleResponseOutput) StartTime() pulumi.StringOutput {
 
 // Node specific properties.
 type NodeInfoResponse struct {
+	// Node identifying string. e.g. 'node-0', 'node-1'
+	Id string `pulumi:"id"`
 	// Location of the node.
 	Zone string `pulumi:"zone"`
 }
@@ -282,6 +284,11 @@ func (o NodeInfoResponseOutput) ToNodeInfoResponseOutput() NodeInfoResponseOutpu
 
 func (o NodeInfoResponseOutput) ToNodeInfoResponseOutputWithContext(ctx context.Context) NodeInfoResponseOutput {
 	return o
+}
+
+// Node identifying string. e.g. 'node-0', 'node-1'
+func (o NodeInfoResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeInfoResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Location of the node.

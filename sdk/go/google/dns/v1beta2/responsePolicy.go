@@ -22,6 +22,8 @@ type ResponsePolicy struct {
 	Kind        pulumi.StringOutput                         `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkResponseArrayOutput `pulumi:"networks"`
+	// Unique identifier for the resource; defined by the server (output only).
+	ResponsePolicyId pulumi.StringOutput `pulumi:"responsePolicyId"`
 	// User assigned name for this Response Policy.
 	ResponsePolicyName pulumi.StringOutput `pulumi:"responsePolicyName"`
 }
@@ -149,6 +151,11 @@ func (o ResponsePolicyOutput) Kind() pulumi.StringOutput {
 // List of network names specifying networks to which this policy is applied.
 func (o ResponsePolicyOutput) Networks() ResponsePolicyNetworkResponseArrayOutput {
 	return o.ApplyT(func(v *ResponsePolicy) ResponsePolicyNetworkResponseArrayOutput { return v.Networks }).(ResponsePolicyNetworkResponseArrayOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o ResponsePolicyOutput) ResponsePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.ResponsePolicyId }).(pulumi.StringOutput)
 }
 
 // User assigned name for this Response Policy.

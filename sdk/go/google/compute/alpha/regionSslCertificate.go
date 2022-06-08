@@ -33,6 +33,8 @@ type RegionSslCertificate struct {
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
 	// URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionSslCertificateId pulumi.StringOutput `pulumi:"regionSslCertificateId"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -209,6 +211,11 @@ func (o RegionSslCertificateOutput) PrivateKey() pulumi.StringOutput {
 // URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
 func (o RegionSslCertificateOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionSslCertificateOutput) RegionSslCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.RegionSslCertificateId }).(pulumi.StringOutput)
 }
 
 // [Output only] Server-defined URL for the resource.

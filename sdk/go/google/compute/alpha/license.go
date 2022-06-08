@@ -26,6 +26,8 @@ type License struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The unique code used to attach this license to images, snapshots, and disks.
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	LicenseId pulumi.StringOutput `pulumi:"licenseId"`
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
 	Name                 pulumi.StringOutput                       `pulumi:"name"`
 	ResourceRequirements LicenseResourceRequirementsResponseOutput `pulumi:"resourceRequirements"`
@@ -164,6 +166,11 @@ func (o LicenseOutput) Kind() pulumi.StringOutput {
 // The unique code used to attach this license to images, snapshots, and disks.
 func (o LicenseOutput) LicenseCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.LicenseCode }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LicenseOutput) LicenseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.LicenseId }).(pulumi.StringOutput)
 }
 
 // Name of the resource. The name must be 1-63 characters long and comply with RFC1035.

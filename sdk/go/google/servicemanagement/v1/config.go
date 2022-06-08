@@ -25,6 +25,8 @@ type Config struct {
 	Backend BackendResponseOutput `pulumi:"backend"`
 	// Billing configuration.
 	Billing BillingResponseOutput `pulumi:"billing"`
+	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
 	ConfigVersion pulumi.IntOutput `pulumi:"configVersion"`
 	// Context configuration.
@@ -121,6 +123,8 @@ type configArgs struct {
 	Backend *Backend `pulumi:"backend"`
 	// Billing configuration.
 	Billing *Billing `pulumi:"billing"`
+	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+	ConfigId *string `pulumi:"configId"`
 	// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
 	ConfigVersion *int `pulumi:"configVersion"`
 	// Context configuration.
@@ -137,8 +141,6 @@ type configArgs struct {
 	Enums []Enum `pulumi:"enums"`
 	// HTTP configuration.
 	Http *Http `pulumi:"http"`
-	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-	Id *string `pulumi:"id"`
 	// Logging configuration.
 	Logging *Logging `pulumi:"logging"`
 	// Defines the logs used by this service.
@@ -178,6 +180,8 @@ type ConfigArgs struct {
 	Backend BackendPtrInput
 	// Billing configuration.
 	Billing BillingPtrInput
+	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+	ConfigId pulumi.StringPtrInput
 	// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
 	ConfigVersion pulumi.IntPtrInput
 	// Context configuration.
@@ -194,8 +198,6 @@ type ConfigArgs struct {
 	Enums EnumArrayInput
 	// HTTP configuration.
 	Http HttpPtrInput
-	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-	Id pulumi.StringPtrInput
 	// Logging configuration.
 	Logging LoggingPtrInput
 	// Defines the logs used by this service.
@@ -280,6 +282,11 @@ func (o ConfigOutput) Backend() BackendResponseOutput {
 // Billing configuration.
 func (o ConfigOutput) Billing() BillingResponseOutput {
 	return o.ApplyT(func(v *Config) BillingResponseOutput { return v.Billing }).(BillingResponseOutput)
+}
+
+// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+func (o ConfigOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
 }
 
 // Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.

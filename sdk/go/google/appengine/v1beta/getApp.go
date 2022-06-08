@@ -44,6 +44,8 @@ type LookupAppResult struct {
 	// The Google Container Registry domain used for storing managed build docker images for this application.
 	GcrDomain string                     `pulumi:"gcrDomain"`
 	Iap       IdentityAwareProxyResponse `pulumi:"iap"`
+	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+	Id string `pulumi:"id"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location string `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.
@@ -136,6 +138,11 @@ func (o LookupAppResultOutput) GcrDomain() pulumi.StringOutput {
 
 func (o LookupAppResultOutput) Iap() IdentityAwareProxyResponseOutput {
 	return o.ApplyT(func(v LookupAppResult) IdentityAwareProxyResponse { return v.Iap }).(IdentityAwareProxyResponseOutput)
+}
+
+// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+func (o LookupAppResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).

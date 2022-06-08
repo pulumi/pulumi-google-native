@@ -45,6 +45,8 @@ type RegionTargetHttpsProxy struct {
 	QuicOverride pulumi.StringOutput `pulumi:"quicOverride"`
 	// URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionTargetHttpsProxyId pulumi.StringOutput `pulumi:"regionTargetHttpsProxyId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -279,6 +281,11 @@ func (o RegionTargetHttpsProxyOutput) QuicOverride() pulumi.StringOutput {
 // URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
 func (o RegionTargetHttpsProxyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionTargetHttpsProxyOutput) RegionTargetHttpsProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.RegionTargetHttpsProxyId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

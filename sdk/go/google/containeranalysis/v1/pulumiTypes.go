@@ -324,6 +324,8 @@ func (o ArtifactArrayOutput) Index(i pulumi.IntInput) ArtifactOutput {
 type ArtifactResponse struct {
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum string `pulumi:"checksum"`
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	Id string `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -346,6 +348,11 @@ func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+func (o ArtifactResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -1741,6 +1748,8 @@ type BuildProvenanceResponse struct {
 	Creator string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime string `pulumi:"endTime"`
+	// Unique identifier of the build.
+	Id string `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri string `pulumi:"logsUri"`
 	// ID of the project.
@@ -1801,6 +1810,11 @@ func (o BuildProvenanceResponseOutput) Creator() pulumi.StringOutput {
 // Time at which execution of the build was finished.
 func (o BuildProvenanceResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the build.
+func (o BuildProvenanceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // URI where any logs for this provenance were written.
@@ -1962,6 +1976,7 @@ func (o BuilderConfigPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 type BuilderConfigResponse struct {
+	Id string `pulumi:"id"`
 }
 
 type BuilderConfigResponseOutput struct{ *pulumi.OutputState }
@@ -1976,6 +1991,10 @@ func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutput() BuilderConf
 
 func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutputWithContext(ctx context.Context) BuilderConfigResponseOutput {
 	return o
+}
+
+func (o BuilderConfigResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuilderConfigResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
@@ -3455,6 +3474,8 @@ type CommandResponse struct {
 	Dir string `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env []string `pulumi:"env"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	Id string `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3489,6 +3510,11 @@ func (o CommandResponseOutput) Dir() pulumi.StringOutput {
 // Environment variables set before running this command.
 func (o CommandResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+func (o CommandResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
@@ -8085,6 +8111,7 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) Id() pulumi.StringPt
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
 type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse struct {
+	Id string `pulumi:"id"`
 }
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
@@ -8100,6 +8127,10 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGrafeasV1Slsa
 
 func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutputWithContext(ctx context.Context) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput {
 	return o
+}
+
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates that the builder claims certain fields in this message to be complete.
@@ -13857,6 +13888,7 @@ func (o SlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 type SlsaBuilderResponse struct {
+	Id string `pulumi:"id"`
 }
 
 type SlsaBuilderResponseOutput struct{ *pulumi.OutputState }
@@ -13871,6 +13903,10 @@ func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutput() SlsaBuilderResp
 
 func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutputWithContext(ctx context.Context) SlsaBuilderResponseOutput {
 	return o
+}
+
+func (o SlsaBuilderResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaBuilderResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates that the builder claims certain fields in this message to be complete.

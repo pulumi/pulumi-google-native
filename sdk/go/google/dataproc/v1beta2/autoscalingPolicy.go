@@ -16,7 +16,9 @@ import (
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 
-	BasicAlgorithm BasicAutoscalingAlgorithmResponseOutput `pulumi:"basicAlgorithm"`
+	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	AutoscalingPolicyId pulumi.StringOutput                     `pulumi:"autoscalingPolicyId"`
+	BasicAlgorithm      BasicAutoscalingAlgorithmResponseOutput `pulumi:"basicAlgorithm"`
 	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
@@ -32,8 +34,8 @@ func NewAutoscalingPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Id == nil {
-		return nil, errors.New("invalid value for required argument 'Id'")
+	if args.AutoscalingPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'AutoscalingPolicyId'")
 	}
 	if args.WorkerConfig == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerConfig'")
@@ -70,11 +72,11 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 }
 
 type autoscalingPolicyArgs struct {
-	BasicAlgorithm *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
 	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id       string  `pulumi:"id"`
-	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	AutoscalingPolicyId string                     `pulumi:"autoscalingPolicyId"`
+	BasicAlgorithm      *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
+	Location            *string                    `pulumi:"location"`
+	Project             *string                    `pulumi:"project"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig *InstanceGroupAutoscalingPolicyConfig `pulumi:"secondaryWorkerConfig"`
 	// Describes how the autoscaler will operate for primary workers.
@@ -83,11 +85,11 @@ type autoscalingPolicyArgs struct {
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
-	BasicAlgorithm BasicAutoscalingAlgorithmPtrInput
 	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id       pulumi.StringInput
-	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	AutoscalingPolicyId pulumi.StringInput
+	BasicAlgorithm      BasicAutoscalingAlgorithmPtrInput
+	Location            pulumi.StringPtrInput
+	Project             pulumi.StringPtrInput
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigPtrInput
 	// Describes how the autoscaler will operate for primary workers.
@@ -129,6 +131,11 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutput() AutoscalingPolicyOu
 
 func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyOutput {
 	return o
+}
+
+// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+func (o AutoscalingPolicyOutput) AutoscalingPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.AutoscalingPolicyId }).(pulumi.StringOutput)
 }
 
 func (o AutoscalingPolicyOutput) BasicAlgorithm() BasicAutoscalingAlgorithmResponseOutput {

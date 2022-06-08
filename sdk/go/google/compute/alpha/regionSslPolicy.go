@@ -35,6 +35,8 @@ type RegionSslPolicy struct {
 	Profile pulumi.StringOutput `pulumi:"profile"`
 	// URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionSslPolicyId pulumi.StringOutput `pulumi:"regionSslPolicyId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -210,6 +212,11 @@ func (o RegionSslPolicyOutput) Profile() pulumi.StringOutput {
 // URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
 func (o RegionSslPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionSslPolicyOutput) RegionSslPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringOutput { return v.RegionSslPolicyId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

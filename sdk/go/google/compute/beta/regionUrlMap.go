@@ -39,6 +39,8 @@ type RegionUrlMap struct {
 	PathMatchers PathMatcherResponseArrayOutput `pulumi:"pathMatchers"`
 	// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionUrlMapId pulumi.StringOutput `pulumi:"regionUrlMapId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -232,6 +234,11 @@ func (o RegionUrlMapOutput) PathMatchers() PathMatcherResponseArrayOutput {
 // URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o RegionUrlMapOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionUrlMapOutput) RegionUrlMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.RegionUrlMapId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

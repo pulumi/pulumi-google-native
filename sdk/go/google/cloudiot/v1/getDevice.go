@@ -37,6 +37,8 @@ type LookupDeviceResult struct {
 	Credentials []DeviceCredentialResponse `pulumi:"credentials"`
 	// Gateway-related configuration and state.
 	GatewayConfig GatewayConfigResponse `pulumi:"gatewayConfig"`
+	// The user-defined device identifier. The device ID must be unique within a device registry.
+	Id string `pulumi:"id"`
 	// [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
 	LastConfigAckTime string `pulumi:"lastConfigAckTime"`
 	// [Output only] The last time a cloud-to-device config version was sent to the device.
@@ -120,6 +122,11 @@ func (o LookupDeviceResultOutput) Credentials() DeviceCredentialResponseArrayOut
 // Gateway-related configuration and state.
 func (o LookupDeviceResultOutput) GatewayConfig() GatewayConfigResponseOutput {
 	return o.ApplyT(func(v LookupDeviceResult) GatewayConfigResponse { return v.GatewayConfig }).(GatewayConfigResponseOutput)
+}
+
+// The user-defined device identifier. The device ID must be unique within a device registry.
+func (o LookupDeviceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.

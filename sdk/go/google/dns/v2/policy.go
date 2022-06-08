@@ -27,6 +27,8 @@ type Policy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks PolicyNetworkResponseArrayOutput `pulumi:"networks"`
+	// Unique identifier for the resource; defined by the server (output only).
+	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -177,6 +179,11 @@ func (o PolicyOutput) Name() pulumi.StringOutput {
 // List of network names specifying networks to which this policy is applied.
 func (o PolicyOutput) Networks() PolicyNetworkResponseArrayOutput {
 	return o.ApplyT(func(v *Policy) PolicyNetworkResponseArrayOutput { return v.Networks }).(PolicyNetworkResponseArrayOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o PolicyOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
 func init() {

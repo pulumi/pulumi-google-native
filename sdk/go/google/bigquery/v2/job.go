@@ -19,6 +19,8 @@ type Job struct {
 	Configuration JobConfigurationResponseOutput `pulumi:"configuration"`
 	// A hash of this resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Opaque ID field of the job
+	JobId pulumi.StringOutput `pulumi:"jobId"`
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferenceResponseOutput `pulumi:"jobReference"`
 	// The type of the resource.
@@ -135,6 +137,11 @@ func (o JobOutput) Configuration() JobConfigurationResponseOutput {
 // A hash of this resource.
 func (o JobOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Opaque ID field of the job
+func (o JobOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
 }
 
 // [Optional] Reference describing the unique-per-user name of the job.

@@ -34,6 +34,8 @@ type LookupLicenseResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of resource. Always compute#license for licenses.
 	Kind string `pulumi:"kind"`
 	// The unique code used to attach this license to images, snapshots, and disks.
@@ -100,6 +102,11 @@ func (o LookupLicenseResultOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional textual description of the resource; provided by the client when the resource is created.
 func (o LookupLicenseResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupLicenseResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLicenseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of resource. Always compute#license for licenses.

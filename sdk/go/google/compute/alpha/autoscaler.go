@@ -14,6 +14,8 @@ import (
 type Autoscaler struct {
 	pulumi.CustomResourceState
 
+	// The unique identifier for the resource. This identifier is defined by the server.
+	AutoscalerId pulumi.StringOutput `pulumi:"autoscalerId"`
 	// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
 	AutoscalingPolicy AutoscalingPolicyResponseOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
@@ -148,6 +150,11 @@ func (o AutoscalerOutput) ToAutoscalerOutput() AutoscalerOutput {
 
 func (o AutoscalerOutput) ToAutoscalerOutputWithContext(ctx context.Context) AutoscalerOutput {
 	return o
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o AutoscalerOutput) AutoscalerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.AutoscalerId }).(pulumi.StringOutput)
 }
 
 // The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.

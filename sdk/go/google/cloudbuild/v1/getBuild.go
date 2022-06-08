@@ -43,6 +43,8 @@ type LookupBuildResult struct {
 	FailureInfo FailureInfoResponse `pulumi:"failureInfo"`
 	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 	FinishTime string `pulumi:"finishTime"`
+	// Unique identifier of the build.
+	Id string `pulumi:"id"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images []string `pulumi:"images"`
 	// URL to logs for this build in Google Cloud Console.
@@ -159,6 +161,11 @@ func (o LookupBuildResultOutput) FailureInfo() FailureInfoResponseOutput {
 // Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 func (o LookupBuildResultOutput) FinishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildResult) string { return v.FinishTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the build.
+func (o LookupBuildResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBuildResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.

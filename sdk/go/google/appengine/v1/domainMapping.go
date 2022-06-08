@@ -16,6 +16,8 @@ import (
 type DomainMapping struct {
 	pulumi.CustomResourceState
 
+	// Relative name of the domain serving the application. Example: example.com.
+	DomainMappingId pulumi.StringOutput `pulumi:"domainMappingId"`
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
@@ -68,7 +70,7 @@ func (DomainMappingState) ElementType() reflect.Type {
 type domainMappingArgs struct {
 	AppId string `pulumi:"appId"`
 	// Relative name of the domain serving the application. Example: example.com.
-	Id *string `pulumi:"id"`
+	DomainMappingId *string `pulumi:"domainMappingId"`
 	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -79,7 +81,7 @@ type domainMappingArgs struct {
 type DomainMappingArgs struct {
 	AppId pulumi.StringInput
 	// Relative name of the domain serving the application. Example: example.com.
-	Id pulumi.StringPtrInput
+	DomainMappingId pulumi.StringPtrInput
 	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy pulumi.StringPtrInput
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -121,6 +123,11 @@ func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
 
 func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
 	return o
+}
+
+// Relative name of the domain serving the application. Example: example.com.
+func (o DomainMappingOutput) DomainMappingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.DomainMappingId }).(pulumi.StringOutput)
 }
 
 // Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.

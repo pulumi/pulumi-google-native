@@ -32,6 +32,8 @@ type LookupMachineImageResult struct {
 	Description string `pulumi:"description"`
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
 	GuestFlush bool `pulumi:"guestFlush"`
+	// A unique identifier for this machine image. The server defines this identifier.
+	Id string `pulumi:"id"`
 	// Properties of source instance
 	InstanceProperties InstancePropertiesResponse `pulumi:"instanceProperties"`
 	// The resource type, which is always compute#machineImage for machine image.
@@ -109,6 +111,11 @@ func (o LookupMachineImageResultOutput) Description() pulumi.StringOutput {
 // [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
 func (o LookupMachineImageResultOutput) GuestFlush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+// A unique identifier for this machine image. The server defines this identifier.
+func (o LookupMachineImageResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Properties of source instance

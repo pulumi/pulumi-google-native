@@ -38,7 +38,9 @@ type LookupManagedZoneResult struct {
 	DnssecConfig ManagedZoneDnsSecConfigResponse `pulumi:"dnssecConfig"`
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
 	ForwardingConfig ManagedZoneForwardingConfigResponse `pulumi:"forwardingConfig"`
-	Kind             string                              `pulumi:"kind"`
+	// Unique identifier for the resource; defined by the server (output only)
+	Id   string `pulumi:"id"`
+	Kind string `pulumi:"kind"`
 	// User labels.
 	Labels map[string]string `pulumi:"labels"`
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
@@ -123,6 +125,11 @@ func (o LookupManagedZoneResultOutput) DnssecConfig() ManagedZoneDnsSecConfigRes
 // The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
 func (o LookupManagedZoneResultOutput) ForwardingConfig() ManagedZoneForwardingConfigResponseOutput {
 	return o.ApplyT(func(v LookupManagedZoneResult) ManagedZoneForwardingConfigResponse { return v.ForwardingConfig }).(ManagedZoneForwardingConfigResponseOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only)
+func (o LookupManagedZoneResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupManagedZoneResultOutput) Kind() pulumi.StringOutput {

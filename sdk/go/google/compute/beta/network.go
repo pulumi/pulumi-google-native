@@ -38,6 +38,8 @@ type Network struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// A list of network peerings for the resource.
 	Peerings NetworkPeeringResponseArrayOutput `pulumi:"peerings"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
@@ -233,6 +235,11 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 // The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
 func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o NetworkOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
 // A list of network peerings for the resource.

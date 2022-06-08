@@ -33,6 +33,8 @@ type LookupVpnTunnelResult struct {
 	Description string `pulumi:"description"`
 	// Detailed status message for the VPN tunnel.
 	DetailedStatus string `pulumi:"detailedStatus"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
 	IkeVersion int `pulumi:"ikeVersion"`
 	// Type of resource. Always compute#vpnTunnel for VPN tunnels.
@@ -121,6 +123,11 @@ func (o LookupVpnTunnelResultOutput) Description() pulumi.StringOutput {
 // Detailed status message for the VPN tunnel.
 func (o LookupVpnTunnelResultOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpnTunnelResult) string { return v.DetailedStatus }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupVpnTunnelResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpnTunnelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.

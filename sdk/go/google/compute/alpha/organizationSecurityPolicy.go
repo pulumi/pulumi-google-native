@@ -36,6 +36,8 @@ type OrganizationSecurityPolicy struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	OrganizationSecurityPolicyId pulumi.StringOutput `pulumi:"organizationSecurityPolicyId"`
 	// The parent of the security policy.
 	Parent                 pulumi.StringOutput                                `pulumi:"parent"`
 	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigResponseOutput `pulumi:"recaptchaOptionsConfig"`
@@ -250,6 +252,11 @@ func (o OrganizationSecurityPolicyOutput) Labels() pulumi.StringMapOutput {
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o OrganizationSecurityPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o OrganizationSecurityPolicyOutput) OrganizationSecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.OrganizationSecurityPolicyId }).(pulumi.StringOutput)
 }
 
 // The parent of the security policy.

@@ -64,6 +64,8 @@ type LookupVersionResult struct {
 	Handlers []UrlMapResponse `pulumi:"handlers"`
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
 	HealthCheck HealthCheckResponse `pulumi:"healthCheck"`
+	// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+	Id string `pulumi:"id"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
@@ -236,6 +238,11 @@ func (o LookupVersionResultOutput) Handlers() UrlMapResponseArrayOutput {
 // Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
 func (o LookupVersionResultOutput) HealthCheck() HealthCheckResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) HealthCheckResponse { return v.HealthCheck }).(HealthCheckResponseOutput)
+}
+
+// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+func (o LookupVersionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Before an application can receive email or XMPP messages, the application must be configured to enable the service.

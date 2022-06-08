@@ -37,6 +37,8 @@ type Router struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RouterId pulumi.StringOutput `pulumi:"routerId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
@@ -219,6 +221,11 @@ func (o RouterOutput) Network() pulumi.StringOutput {
 // URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o RouterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RouterOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

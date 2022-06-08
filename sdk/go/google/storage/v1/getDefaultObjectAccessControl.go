@@ -52,6 +52,8 @@ type LookupDefaultObjectAccessControlResult struct {
 	Etag string `pulumi:"etag"`
 	// The content generation of the object, if applied to an object.
 	Generation string `pulumi:"generation"`
+	// The ID of the access-control entry.
+	Id string `pulumi:"id"`
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind string `pulumi:"kind"`
 	// The name of the object, if applied to an object.
@@ -145,6 +147,11 @@ func (o LookupDefaultObjectAccessControlResultOutput) Etag() pulumi.StringOutput
 // The content generation of the object, if applied to an object.
 func (o LookupDefaultObjectAccessControlResultOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefaultObjectAccessControlResult) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o LookupDefaultObjectAccessControlResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDefaultObjectAccessControlResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For object access control entries, this is always storage#objectAccessControl.

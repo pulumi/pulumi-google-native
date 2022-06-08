@@ -39,6 +39,8 @@ type RegionHealthCheckService struct {
 	NotificationEndpoints pulumi.StringArrayOutput `pulumi:"notificationEndpoints"`
 	// URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionHealthCheckServiceId pulumi.StringOutput `pulumi:"regionHealthCheckServiceId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL with id for the resource.
@@ -225,6 +227,11 @@ func (o RegionHealthCheckServiceOutput) NotificationEndpoints() pulumi.StringArr
 // URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o RegionHealthCheckServiceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionHealthCheckService) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionHealthCheckServiceOutput) RegionHealthCheckServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheckService) pulumi.StringOutput { return v.RegionHealthCheckServiceId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

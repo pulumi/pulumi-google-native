@@ -34,6 +34,8 @@ type InstanceGroupManager struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	InstanceGroupManagerId pulumi.StringOutput `pulumi:"instanceGroupManagerId"`
 	// The repair policy for this managed instance group.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyResponseOutput `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -300,6 +302,11 @@ func (o InstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 // The URL of the Instance Group resource.
 func (o InstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o InstanceGroupManagerOutput) InstanceGroupManagerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.InstanceGroupManagerId }).(pulumi.StringOutput)
 }
 
 // The repair policy for this managed instance group.

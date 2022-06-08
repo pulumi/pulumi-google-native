@@ -45,6 +45,8 @@ type RegionNetworkEndpointGroup struct {
 	PscTargetService pulumi.StringOutput `pulumi:"pscTargetService"`
 	// The URL of the region where the network endpoint group is located.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionNetworkEndpointGroupId pulumi.StringOutput `pulumi:"regionNetworkEndpointGroupId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -288,6 +290,11 @@ func (o RegionNetworkEndpointGroupOutput) PscTargetService() pulumi.StringOutput
 // The URL of the region where the network endpoint group is located.
 func (o RegionNetworkEndpointGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionNetworkEndpointGroupOutput) RegionNetworkEndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.RegionNetworkEndpointGroupId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

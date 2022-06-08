@@ -28,6 +28,8 @@ type GlobalNetworkEndpointGroup struct {
 	DefaultPort pulumi.IntOutput `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GlobalNetworkEndpointGroupId pulumi.StringOutput `pulumi:"globalNetworkEndpointGroupId"`
 	// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
@@ -235,6 +237,11 @@ func (o GlobalNetworkEndpointGroupOutput) DefaultPort() pulumi.IntOutput {
 // An optional description of this resource. Provide this property when you create the resource.
 func (o GlobalNetworkEndpointGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o GlobalNetworkEndpointGroupOutput) GlobalNetworkEndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.GlobalNetworkEndpointGroupId }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#networkEndpointGroup for network endpoint group.

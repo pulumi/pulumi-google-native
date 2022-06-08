@@ -11,8 +11,8 @@ import (
 )
 
 // Gets a category on the portal.
-func GetApicategory(ctx *pulumi.Context, args *GetApicategoryArgs, opts ...pulumi.InvokeOption) (*GetApicategoryResult, error) {
-	var rv GetApicategoryResult
+func LookupApicategory(ctx *pulumi.Context, args *LookupApicategoryArgs, opts ...pulumi.InvokeOption) (*LookupApicategoryResult, error) {
+	var rv LookupApicategoryResult
 	err := ctx.Invoke("google-native:apigee/v1:getApicategory", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -20,13 +20,13 @@ func GetApicategory(ctx *pulumi.Context, args *GetApicategoryArgs, opts ...pulum
 	return &rv, nil
 }
 
-type GetApicategoryArgs struct {
+type LookupApicategoryArgs struct {
 	ApicategoryId  string `pulumi:"apicategoryId"`
 	OrganizationId string `pulumi:"organizationId"`
 	SiteId         string `pulumi:"siteId"`
 }
 
-type GetApicategoryResult struct {
+type LookupApicategoryResult struct {
 	// Details of category.
 	Data GoogleCloudApigeeV1ApiCategoryDataResponse `pulumi:"data"`
 	// ID that can be used to find errors in the log files.
@@ -39,68 +39,68 @@ type GetApicategoryResult struct {
 	Status string `pulumi:"status"`
 }
 
-func GetApicategoryOutput(ctx *pulumi.Context, args GetApicategoryOutputArgs, opts ...pulumi.InvokeOption) GetApicategoryResultOutput {
+func LookupApicategoryOutput(ctx *pulumi.Context, args LookupApicategoryOutputArgs, opts ...pulumi.InvokeOption) LookupApicategoryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetApicategoryResult, error) {
-			args := v.(GetApicategoryArgs)
-			r, err := GetApicategory(ctx, &args, opts...)
-			var s GetApicategoryResult
+		ApplyT(func(v interface{}) (LookupApicategoryResult, error) {
+			args := v.(LookupApicategoryArgs)
+			r, err := LookupApicategory(ctx, &args, opts...)
+			var s LookupApicategoryResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetApicategoryResultOutput)
+		}).(LookupApicategoryResultOutput)
 }
 
-type GetApicategoryOutputArgs struct {
+type LookupApicategoryOutputArgs struct {
 	ApicategoryId  pulumi.StringInput `pulumi:"apicategoryId"`
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
 	SiteId         pulumi.StringInput `pulumi:"siteId"`
 }
 
-func (GetApicategoryOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApicategoryArgs)(nil)).Elem()
+func (LookupApicategoryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApicategoryArgs)(nil)).Elem()
 }
 
-type GetApicategoryResultOutput struct{ *pulumi.OutputState }
+type LookupApicategoryResultOutput struct{ *pulumi.OutputState }
 
-func (GetApicategoryResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApicategoryResult)(nil)).Elem()
+func (LookupApicategoryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApicategoryResult)(nil)).Elem()
 }
 
-func (o GetApicategoryResultOutput) ToGetApicategoryResultOutput() GetApicategoryResultOutput {
+func (o LookupApicategoryResultOutput) ToLookupApicategoryResultOutput() LookupApicategoryResultOutput {
 	return o
 }
 
-func (o GetApicategoryResultOutput) ToGetApicategoryResultOutputWithContext(ctx context.Context) GetApicategoryResultOutput {
+func (o LookupApicategoryResultOutput) ToLookupApicategoryResultOutputWithContext(ctx context.Context) LookupApicategoryResultOutput {
 	return o
 }
 
 // Details of category.
-func (o GetApicategoryResultOutput) Data() GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
-	return o.ApplyT(func(v GetApicategoryResult) GoogleCloudApigeeV1ApiCategoryDataResponse { return v.Data }).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput)
+func (o LookupApicategoryResultOutput) Data() GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
+	return o.ApplyT(func(v LookupApicategoryResult) GoogleCloudApigeeV1ApiCategoryDataResponse { return v.Data }).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput)
 }
 
 // ID that can be used to find errors in the log files.
-func (o GetApicategoryResultOutput) ErrorCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApicategoryResult) string { return v.ErrorCode }).(pulumi.StringOutput)
+func (o LookupApicategoryResultOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApicategoryResult) string { return v.ErrorCode }).(pulumi.StringOutput)
 }
 
 // Description of the operation.
-func (o GetApicategoryResultOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApicategoryResult) string { return v.Message }).(pulumi.StringOutput)
+func (o LookupApicategoryResultOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApicategoryResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
 // ID that can be used to find request details in the log files.
-func (o GetApicategoryResultOutput) RequestId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApicategoryResult) string { return v.RequestId }).(pulumi.StringOutput)
+func (o LookupApicategoryResultOutput) RequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApicategoryResult) string { return v.RequestId }).(pulumi.StringOutput)
 }
 
 // Status of the operation.
-func (o GetApicategoryResultOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApicategoryResult) string { return v.Status }).(pulumi.StringOutput)
+func (o LookupApicategoryResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApicategoryResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetApicategoryResultOutput{})
+	pulumi.RegisterOutputType(LookupApicategoryResultOutput{})
 }

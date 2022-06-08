@@ -37,6 +37,8 @@ type LookupPacketMirroringResult struct {
 	Enable string `pulumi:"enable"`
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter PacketMirroringFilterResponse `pulumi:"filter"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#packetMirroring for packet mirrorings.
 	Kind string `pulumi:"kind"`
 	// PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
@@ -113,6 +115,11 @@ func (o LookupPacketMirroringResultOutput) Enable() pulumi.StringOutput {
 // Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 func (o LookupPacketMirroringResultOutput) Filter() PacketMirroringFilterResponseOutput {
 	return o.ApplyT(func(v LookupPacketMirroringResult) PacketMirroringFilterResponse { return v.Filter }).(PacketMirroringFilterResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupPacketMirroringResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPacketMirroringResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#packetMirroring for packet mirrorings.

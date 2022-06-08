@@ -77,6 +77,8 @@ type RegionBackendService struct {
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionBackendServiceId pulumi.StringOutput `pulumi:"regionBackendServiceId"`
 	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
 	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -480,6 +482,11 @@ func (o RegionBackendServiceOutput) Protocol() pulumi.StringOutput {
 // URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o RegionBackendServiceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionBackendServiceOutput) RegionBackendServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.RegionBackendServiceId }).(pulumi.StringOutput)
 }
 
 // The resource URL for the security policy associated with this backend service.

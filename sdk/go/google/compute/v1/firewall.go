@@ -28,6 +28,8 @@ type Firewall struct {
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	FirewallId pulumi.StringOutput `pulumi:"firewallId"`
 	// Type of the resource. Always compute#firewall for firewall rules.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -233,6 +235,11 @@ func (o FirewallOutput) Direction() pulumi.StringOutput {
 // Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 func (o FirewallOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o FirewallOutput) FirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.FirewallId }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#firewall for firewall rules.

@@ -37,6 +37,8 @@ type LookupRegionHealthCheckServiceResult struct {
 	HealthChecks []string `pulumi:"healthChecks"`
 	// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
 	HealthStatusAggregationPolicy string `pulumi:"healthStatusAggregationPolicy"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -111,6 +113,11 @@ func (o LookupRegionHealthCheckServiceResultOutput) HealthChecks() pulumi.String
 // Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
 func (o LookupRegionHealthCheckServiceResultOutput) HealthStatusAggregationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionHealthCheckServiceResult) string { return v.HealthStatusAggregationPolicy }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRegionHealthCheckServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionHealthCheckServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.

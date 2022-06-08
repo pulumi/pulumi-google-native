@@ -35,6 +35,8 @@ type LookupRegionSslCertificateResult struct {
 	Description string `pulumi:"description"`
 	// Expire time of the certificate. RFC3339
 	ExpireTime string `pulumi:"expireTime"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#sslCertificate for SSL certificates.
 	Kind string `pulumi:"kind"`
 	// Configuration and status of a managed SSL certificate.
@@ -112,6 +114,11 @@ func (o LookupRegionSslCertificateResultOutput) Description() pulumi.StringOutpu
 // Expire time of the certificate. RFC3339
 func (o LookupRegionSslCertificateResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionSslCertificateResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRegionSslCertificateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionSslCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#sslCertificate for SSL certificates.

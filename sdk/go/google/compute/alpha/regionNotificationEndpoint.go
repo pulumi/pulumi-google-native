@@ -27,6 +27,8 @@ type RegionNotificationEndpoint struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	RegionNotificationEndpointId pulumi.StringOutput `pulumi:"regionNotificationEndpointId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
@@ -166,6 +168,11 @@ func (o RegionNotificationEndpointOutput) Name() pulumi.StringOutput {
 // URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o RegionNotificationEndpointOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNotificationEndpoint) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o RegionNotificationEndpointOutput) RegionNotificationEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionNotificationEndpoint) pulumi.StringOutput { return v.RegionNotificationEndpointId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

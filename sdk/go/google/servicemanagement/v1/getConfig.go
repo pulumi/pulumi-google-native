@@ -51,6 +51,8 @@ type LookupConfigResult struct {
 	Enums []EnumResponse `pulumi:"enums"`
 	// HTTP configuration.
 	Http HttpResponse `pulumi:"http"`
+	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+	Id string `pulumi:"id"`
 	// Logging configuration.
 	Logging LoggingResponse `pulumi:"logging"`
 	// Defines the logs used by this service.
@@ -176,6 +178,11 @@ func (o LookupConfigResultOutput) Enums() EnumResponseArrayOutput {
 // HTTP configuration.
 func (o LookupConfigResultOutput) Http() HttpResponseOutput {
 	return o.ApplyT(func(v LookupConfigResult) HttpResponse { return v.Http }).(HttpResponseOutput)
+}
+
+// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+func (o LookupConfigResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Logging configuration.

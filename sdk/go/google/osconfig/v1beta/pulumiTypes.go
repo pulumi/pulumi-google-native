@@ -4431,6 +4431,8 @@ type SoftwareRecipeArtifactResponse struct {
 	AllowInsecure bool `pulumi:"allowInsecure"`
 	// A Google Cloud Storage artifact.
 	Gcs SoftwareRecipeArtifactGcsResponse `pulumi:"gcs"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+	Id string `pulumi:"id"`
 	// A generic remote artifact.
 	Remote SoftwareRecipeArtifactRemoteResponse `pulumi:"remote"`
 }
@@ -4458,6 +4460,11 @@ func (o SoftwareRecipeArtifactResponseOutput) AllowInsecure() pulumi.BoolOutput 
 // A Google Cloud Storage artifact.
 func (o SoftwareRecipeArtifactResponseOutput) Gcs() SoftwareRecipeArtifactGcsResponseOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) SoftwareRecipeArtifactGcsResponse { return v.Gcs }).(SoftwareRecipeArtifactGcsResponseOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+func (o SoftwareRecipeArtifactResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A generic remote artifact.
@@ -6479,6 +6486,8 @@ func (o TimeZoneOutput) Version() pulumi.StringPtrOutput {
 
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZoneResponse struct {
+	// IANA Time Zone Database time zone, e.g. "America/New_York".
+	Id string `pulumi:"id"`
 	// Optional. IANA Time Zone Database version number, e.g. "2019a".
 	Version string `pulumi:"version"`
 }
@@ -6496,6 +6505,11 @@ func (o TimeZoneResponseOutput) ToTimeZoneResponseOutput() TimeZoneResponseOutpu
 
 func (o TimeZoneResponseOutput) ToTimeZoneResponseOutputWithContext(ctx context.Context) TimeZoneResponseOutput {
 	return o
+}
+
+// IANA Time Zone Database time zone, e.g. "America/New_York".
+func (o TimeZoneResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeZoneResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Optional. IANA Time Zone Database version number, e.g. "2019a".
@@ -7120,6 +7134,8 @@ type YumRepositoryResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+	Id string `pulumi:"id"`
 }
 
 // Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
@@ -7150,6 +7166,11 @@ func (o YumRepositoryResponseOutput) DisplayName() pulumi.StringOutput {
 // URIs of GPG keys.
 func (o YumRepositoryResponseOutput) GpgKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v YumRepositoryResponse) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
+// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+func (o YumRepositoryResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v YumRepositoryResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
@@ -7601,6 +7622,8 @@ type ZypperRepositoryResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+	Id string `pulumi:"id"`
 }
 
 // Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
@@ -7631,6 +7654,11 @@ func (o ZypperRepositoryResponseOutput) DisplayName() pulumi.StringOutput {
 // URIs of GPG keys.
 func (o ZypperRepositoryResponseOutput) GpgKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZypperRepositoryResponse) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
+// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+func (o ZypperRepositoryResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ZypperRepositoryResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.

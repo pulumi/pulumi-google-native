@@ -29,6 +29,8 @@ type NodeTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in instance scheduling.
 	NodeAffinityLabels pulumi.StringMapOutput `pulumi:"nodeAffinityLabels"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NodeTemplateId pulumi.StringOutput `pulumi:"nodeTemplateId"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
@@ -206,6 +208,11 @@ func (o NodeTemplateOutput) Name() pulumi.StringOutput {
 // Labels to use for node affinity, which will be used in instance scheduling.
 func (o NodeTemplateOutput) NodeAffinityLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.StringMapOutput { return v.NodeAffinityLabels }).(pulumi.StringMapOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o NodeTemplateOutput) NodeTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.NodeTemplateId }).(pulumi.StringOutput)
 }
 
 // The node type to use for nodes group that are created from this template.

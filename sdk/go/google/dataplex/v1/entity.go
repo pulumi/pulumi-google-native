@@ -32,6 +32,8 @@ type Entity struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Display name must be shorter than or equal to 256 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+	EntityId pulumi.StringOutput `pulumi:"entityId"`
 	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
@@ -61,11 +63,11 @@ func NewEntity(ctx *pulumi.Context,
 	if args.DataPath == nil {
 		return nil, errors.New("invalid value for required argument 'DataPath'")
 	}
+	if args.EntityId == nil {
+		return nil, errors.New("invalid value for required argument 'EntityId'")
+	}
 	if args.Format == nil {
 		return nil, errors.New("invalid value for required argument 'Format'")
-	}
-	if args.Id == nil {
-		return nil, errors.New("invalid value for required argument 'Id'")
 	}
 	if args.LakeId == nil {
 		return nil, errors.New("invalid value for required argument 'LakeId'")
@@ -121,15 +123,15 @@ type entityArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Display name must be shorter than or equal to 256 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+	EntityId string `pulumi:"entityId"`
 	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag *string `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
-	Format GoogleCloudDataplexV1StorageFormat `pulumi:"format"`
-	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
-	Id       string  `pulumi:"id"`
-	LakeId   string  `pulumi:"lakeId"`
-	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Format   GoogleCloudDataplexV1StorageFormat `pulumi:"format"`
+	LakeId   string                             `pulumi:"lakeId"`
+	Location *string                            `pulumi:"location"`
+	Project  *string                            `pulumi:"project"`
 	// The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
 	Schema GoogleCloudDataplexV1Schema `pulumi:"schema"`
 	// Immutable. Identifies the storage system of the entity data.
@@ -153,12 +155,12 @@ type EntityArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Display name must be shorter than or equal to 256 characters.
 	DisplayName pulumi.StringPtrInput
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+	EntityId pulumi.StringInput
 	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag pulumi.StringPtrInput
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
-	Format GoogleCloudDataplexV1StorageFormatInput
-	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
-	Id       pulumi.StringInput
+	Format   GoogleCloudDataplexV1StorageFormatInput
 	LakeId   pulumi.StringInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
@@ -248,6 +250,11 @@ func (o EntityOutput) Description() pulumi.StringOutput {
 // Optional. Display name must be shorter than or equal to 256 characters.
 func (o EntityOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+func (o EntityOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
 }
 
 // Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.

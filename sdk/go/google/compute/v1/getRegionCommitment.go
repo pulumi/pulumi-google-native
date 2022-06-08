@@ -37,6 +37,8 @@ type LookupRegionCommitmentResult struct {
 	Description string `pulumi:"description"`
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp string `pulumi:"endTimestamp"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#commitment for commitments.
 	Kind string `pulumi:"kind"`
 	// The license specification required as part of a license commitment.
@@ -123,6 +125,11 @@ func (o LookupRegionCommitmentResultOutput) Description() pulumi.StringOutput {
 // Commitment end time in RFC3339 text format.
 func (o LookupRegionCommitmentResultOutput) EndTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.EndTimestamp }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRegionCommitmentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#commitment for commitments.

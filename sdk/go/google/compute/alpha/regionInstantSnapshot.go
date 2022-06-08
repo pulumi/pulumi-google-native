@@ -35,6 +35,8 @@ type RegionInstantSnapshot struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionInstantSnapshotId pulumi.StringOutput `pulumi:"regionInstantSnapshotId"`
 	// Status information for the instant snapshot resource.
 	ResourceStatus InstantSnapshotResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
@@ -214,6 +216,11 @@ func (o RegionInstantSnapshotOutput) Name() pulumi.StringOutput {
 // URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o RegionInstantSnapshotOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstantSnapshot) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionInstantSnapshotOutput) RegionInstantSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionInstantSnapshot) pulumi.StringOutput { return v.RegionInstantSnapshotId }).(pulumi.StringOutput)
 }
 
 // Status information for the instant snapshot resource.

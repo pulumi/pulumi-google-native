@@ -54,6 +54,8 @@ type TargetHttpsProxy struct {
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
 	SslPolicy pulumi.StringOutput `pulumi:"sslPolicy"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetHttpsProxyId pulumi.StringOutput `pulumi:"targetHttpsProxyId"`
 	// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map
 	UrlMap pulumi.StringOutput `pulumi:"urlMap"`
 }
@@ -298,6 +300,11 @@ func (o TargetHttpsProxyOutput) SslCertificates() pulumi.StringArrayOutput {
 // URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
 func (o TargetHttpsProxyOutput) SslPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringOutput { return v.SslPolicy }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetHttpsProxyOutput) TargetHttpsProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringOutput { return v.TargetHttpsProxyId }).(pulumi.StringOutput)
 }
 
 // A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map

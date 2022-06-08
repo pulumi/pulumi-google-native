@@ -20,6 +20,8 @@ type HmacKey struct {
 	AccessId pulumi.StringOutput `pulumi:"accessId"`
 	// HTTP 1.1 Entity tag for the HMAC key.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The ID of the HMAC key, including the Project ID and the Access ID.
+	HmacKeyId pulumi.StringOutput `pulumi:"hmacKeyId"`
 	// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Project ID owning the service account to which the key authenticates.
@@ -139,6 +141,11 @@ func (o HmacKeyOutput) AccessId() pulumi.StringOutput {
 // HTTP 1.1 Entity tag for the HMAC key.
 func (o HmacKeyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The ID of the HMAC key, including the Project ID and the Access ID.
+func (o HmacKeyOutput) HmacKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.HmacKeyId }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.

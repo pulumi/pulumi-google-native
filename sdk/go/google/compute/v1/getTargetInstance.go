@@ -31,6 +31,8 @@ type LookupTargetInstanceResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
 	Instance string `pulumi:"instance"`
 	// The type of the resource. Always compute#targetInstance for target instances.
@@ -92,6 +94,11 @@ func (o LookupTargetInstanceResultOutput) CreationTimestamp() pulumi.StringOutpu
 // An optional description of this resource. Provide this property when you create the resource.
 func (o LookupTargetInstanceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupTargetInstanceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance

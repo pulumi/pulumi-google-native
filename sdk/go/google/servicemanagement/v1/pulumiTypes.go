@@ -727,6 +727,8 @@ type AuthProviderResponse struct {
 	Audiences string `pulumi:"audiences"`
 	// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
 	AuthorizationUrl string `pulumi:"authorizationUrl"`
+	// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+	Id string `pulumi:"id"`
 	// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
 	Issuer string `pulumi:"issuer"`
 	// URL of the provider's public key set to validate signature of the JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
@@ -758,6 +760,11 @@ func (o AuthProviderResponseOutput) Audiences() pulumi.StringOutput {
 // Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
 func (o AuthProviderResponseOutput) AuthorizationUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthProviderResponse) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+func (o AuthProviderResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com

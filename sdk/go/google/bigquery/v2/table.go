@@ -84,6 +84,8 @@ type Table struct {
 	SnapshotDefinition SnapshotDefinitionResponseOutput `pulumi:"snapshotDefinition"`
 	// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer StreamingbufferResponseOutput `pulumi:"streamingBuffer"`
+	// An opaque ID uniquely identifying the table.
+	TableId pulumi.StringOutput `pulumi:"tableId"`
 	// [Required] Reference describing the ID of this table.
 	TableReference TableReferenceResponseOutput `pulumi:"tableReference"`
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -411,6 +413,11 @@ func (o TableOutput) SnapshotDefinition() SnapshotDefinitionResponseOutput {
 // Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 func (o TableOutput) StreamingBuffer() StreamingbufferResponseOutput {
 	return o.ApplyT(func(v *Table) StreamingbufferResponseOutput { return v.StreamingBuffer }).(StreamingbufferResponseOutput)
+}
+
+// An opaque ID uniquely identifying the table.
+func (o TableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.TableId }).(pulumi.StringOutput)
 }
 
 // [Required] Reference describing the ID of this table.

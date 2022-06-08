@@ -33,6 +33,8 @@ type GetChangeResult struct {
 	Additions []ResourceRecordSetResponse `pulumi:"additions"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions []ResourceRecordSetResponse `pulumi:"deletions"`
+	// Unique identifier for the resource; defined by the server (output only).
+	Id string `pulumi:"id"`
 	// If the DNS queries for the zone will be served.
 	IsServing bool   `pulumi:"isServing"`
 	Kind      string `pulumi:"kind"`
@@ -89,6 +91,11 @@ func (o GetChangeResultOutput) Additions() ResourceRecordSetResponseArrayOutput 
 // Which ResourceRecordSets to remove? Must match existing data exactly.
 func (o GetChangeResultOutput) Deletions() ResourceRecordSetResponseArrayOutput {
 	return o.ApplyT(func(v GetChangeResult) []ResourceRecordSetResponse { return v.Deletions }).(ResourceRecordSetResponseArrayOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o GetChangeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChangeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // If the DNS queries for the zone will be served.

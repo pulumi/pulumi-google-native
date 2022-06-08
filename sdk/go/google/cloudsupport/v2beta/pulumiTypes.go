@@ -372,6 +372,8 @@ func (o CaseClassificationPtrOutput) Id() pulumi.StringPtrOutput {
 type CaseClassificationResponse struct {
 	// The display name of the classification.
 	DisplayName string `pulumi:"displayName"`
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+	Id string `pulumi:"id"`
 }
 
 // A classification object with a product type and value.
@@ -392,6 +394,11 @@ func (o CaseClassificationResponseOutput) ToCaseClassificationResponseOutputWith
 // The display name of the classification.
 func (o CaseClassificationResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v CaseClassificationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+func (o CaseClassificationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CaseClassificationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

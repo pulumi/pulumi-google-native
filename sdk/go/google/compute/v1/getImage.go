@@ -40,6 +40,8 @@ type LookupImageResult struct {
 	Family string `pulumi:"family"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
 	ImageEncryptionKey CustomerEncryptionKeyResponse `pulumi:"imageEncryptionKey"`
 	// Type of the resource. Always compute#image for images.
@@ -157,6 +159,11 @@ func (o LookupImageResultOutput) Family() pulumi.StringOutput {
 // A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 func (o LookupImageResultOutput) GuestOsFeatures() GuestOsFeatureResponseArrayOutput {
 	return o.ApplyT(func(v LookupImageResult) []GuestOsFeatureResponse { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupImageResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.

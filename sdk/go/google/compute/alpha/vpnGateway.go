@@ -35,6 +35,8 @@ type VpnGateway struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringOutput `pulumi:"stackType"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	VpnGatewayId pulumi.StringOutput `pulumi:"vpnGatewayId"`
 	// The list of VPN interfaces associated with this VPN gateway.
 	VpnInterfaces VpnGatewayVpnGatewayInterfaceResponseArrayOutput `pulumi:"vpnInterfaces"`
 }
@@ -204,6 +206,11 @@ func (o VpnGatewayOutput) SelfLink() pulumi.StringOutput {
 // The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
 func (o VpnGatewayOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.StackType }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o VpnGatewayOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.VpnGatewayId }).(pulumi.StringOutput)
 }
 
 // The list of VPN interfaces associated with this VPN gateway.

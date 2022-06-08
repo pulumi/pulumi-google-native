@@ -14,6 +14,8 @@ import (
 type BackendBucket struct {
 	pulumi.CustomResourceState
 
+	// Unique identifier for the resource; defined by the server.
+	BackendBucketId pulumi.StringOutput `pulumi:"backendBucketId"`
 	// Cloud Storage bucket name.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
@@ -150,6 +152,11 @@ func (o BackendBucketOutput) ToBackendBucketOutput() BackendBucketOutput {
 
 func (o BackendBucketOutput) ToBackendBucketOutputWithContext(ctx context.Context) BackendBucketOutput {
 	return o
+}
+
+// Unique identifier for the resource; defined by the server.
+func (o BackendBucketOutput) BackendBucketId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendBucket) pulumi.StringOutput { return v.BackendBucketId }).(pulumi.StringOutput)
 }
 
 // Cloud Storage bucket name.

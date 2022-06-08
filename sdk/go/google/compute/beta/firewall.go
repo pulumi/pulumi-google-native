@@ -32,6 +32,8 @@ type Firewall struct {
 	//
 	// Deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
 	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	FirewallId pulumi.StringOutput `pulumi:"firewallId"`
 	// Type of the resource. Always compute#firewall for firewall rules.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -252,6 +254,11 @@ func (o FirewallOutput) Disabled() pulumi.BoolOutput {
 // Deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
 func (o FirewallOutput) EnableLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolOutput { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o FirewallOutput) FirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.FirewallId }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#firewall for firewall rules.

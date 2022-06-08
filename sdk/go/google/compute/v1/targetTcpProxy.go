@@ -30,6 +30,8 @@ type TargetTcpProxy struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// URL to the BackendService resource.
 	Service pulumi.StringOutput `pulumi:"service"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetTcpProxyId pulumi.StringOutput `pulumi:"targetTcpProxyId"`
 }
 
 // NewTargetTcpProxy registers a new resource with the given unique name, arguments, and options.
@@ -178,6 +180,11 @@ func (o TargetTcpProxyOutput) SelfLink() pulumi.StringOutput {
 // URL to the BackendService resource.
 func (o TargetTcpProxyOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetTcpProxy) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetTcpProxyOutput) TargetTcpProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetTcpProxy) pulumi.StringOutput { return v.TargetTcpProxyId }).(pulumi.StringOutput)
 }
 
 func init() {

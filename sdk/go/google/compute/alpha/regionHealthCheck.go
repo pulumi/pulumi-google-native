@@ -35,6 +35,8 @@ type RegionHealthCheck struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Region where the health check resides. Not applicable to global health checks.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionHealthCheckId pulumi.StringOutput `pulumi:"regionHealthCheckId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -247,6 +249,11 @@ func (o RegionHealthCheckOutput) Name() pulumi.StringOutput {
 // Region where the health check resides. Not applicable to global health checks.
 func (o RegionHealthCheckOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionHealthCheckOutput) RegionHealthCheckId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.RegionHealthCheckId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

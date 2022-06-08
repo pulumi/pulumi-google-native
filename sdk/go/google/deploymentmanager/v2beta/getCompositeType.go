@@ -28,6 +28,7 @@ type LookupCompositeTypeArgs struct {
 type LookupCompositeTypeResult struct {
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description string `pulumi:"description"`
+	Id          string `pulumi:"id"`
 	// Creation timestamp in RFC3339 text format.
 	InsertTime string `pulumi:"insertTime"`
 	// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
@@ -82,6 +83,10 @@ func (o LookupCompositeTypeResultOutput) ToLookupCompositeTypeResultOutputWithCo
 // An optional textual description of the resource; provided by the client when the resource is created.
 func (o LookupCompositeTypeResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCompositeTypeResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupCompositeTypeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCompositeTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

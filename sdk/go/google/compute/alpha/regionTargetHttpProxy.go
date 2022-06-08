@@ -31,6 +31,8 @@ type RegionTargetHttpProxy struct {
 	ProxyBind pulumi.BoolOutput `pulumi:"proxyBind"`
 	// URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionTargetHttpProxyId pulumi.StringOutput `pulumi:"regionTargetHttpProxyId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -190,6 +192,11 @@ func (o RegionTargetHttpProxyOutput) ProxyBind() pulumi.BoolOutput {
 // URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
 func (o RegionTargetHttpProxyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpProxy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionTargetHttpProxyOutput) RegionTargetHttpProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetHttpProxy) pulumi.StringOutput { return v.RegionTargetHttpProxyId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

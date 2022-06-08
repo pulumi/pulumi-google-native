@@ -34,6 +34,8 @@ type TargetSslProxy struct {
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringOutput `pulumi:"sslPolicy"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetSslProxyId pulumi.StringOutput `pulumi:"targetSslProxyId"`
 }
 
 // NewTargetSslProxy registers a new resource with the given unique name, arguments, and options.
@@ -200,6 +202,11 @@ func (o TargetSslProxyOutput) SslCertificates() pulumi.StringArrayOutput {
 // URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 func (o TargetSslProxyOutput) SslPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringOutput { return v.SslPolicy }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetSslProxyOutput) TargetSslProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringOutput { return v.TargetSslProxyId }).(pulumi.StringOutput)
 }
 
 func init() {

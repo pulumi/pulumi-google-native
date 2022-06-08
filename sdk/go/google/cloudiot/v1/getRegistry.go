@@ -33,6 +33,8 @@ type LookupRegistryResult struct {
 	EventNotificationConfigs []EventNotificationConfigResponse `pulumi:"eventNotificationConfigs"`
 	// The DeviceService (HTTP) configuration for this device registry.
 	HttpConfig HttpConfigResponse `pulumi:"httpConfig"`
+	// The identifier of this device registry. For example, `myRegistry`.
+	Id string `pulumi:"id"`
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel string `pulumi:"logLevel"`
 	// The MQTT configuration for this device registry.
@@ -93,6 +95,11 @@ func (o LookupRegistryResultOutput) EventNotificationConfigs() EventNotification
 // The DeviceService (HTTP) configuration for this device registry.
 func (o LookupRegistryResultOutput) HttpConfig() HttpConfigResponseOutput {
 	return o.ApplyT(func(v LookupRegistryResult) HttpConfigResponse { return v.HttpConfig }).(HttpConfigResponseOutput)
+}
+
+// The identifier of this device registry. For example, `myRegistry`.
+func (o LookupRegistryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.

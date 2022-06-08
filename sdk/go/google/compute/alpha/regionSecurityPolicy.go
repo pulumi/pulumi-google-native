@@ -42,6 +42,8 @@ type RegionSecurityPolicy struct {
 	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigResponseOutput `pulumi:"recaptchaOptionsConfig"`
 	// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionSecurityPolicyId pulumi.StringOutput `pulumi:"regionSecurityPolicyId"`
 	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
@@ -270,6 +272,11 @@ func (o RegionSecurityPolicyOutput) RecaptchaOptionsConfig() SecurityPolicyRecap
 // URL of the region where the regional security policy resides. This field is not applicable to global security policies.
 func (o RegionSecurityPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionSecurityPolicyOutput) RegionSecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicy) pulumi.StringOutput { return v.RegionSecurityPolicyId }).(pulumi.StringOutput)
 }
 
 // Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.

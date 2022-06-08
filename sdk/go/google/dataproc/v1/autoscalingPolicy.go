@@ -16,7 +16,9 @@ import (
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 
-	BasicAlgorithm BasicAutoscalingAlgorithmResponseOutput `pulumi:"basicAlgorithm"`
+	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	AutoscalingPolicyId pulumi.StringOutput                     `pulumi:"autoscalingPolicyId"`
+	BasicAlgorithm      BasicAutoscalingAlgorithmResponseOutput `pulumi:"basicAlgorithm"`
 	// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
@@ -34,8 +36,8 @@ func NewAutoscalingPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Id == nil {
-		return nil, errors.New("invalid value for required argument 'Id'")
+	if args.AutoscalingPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'AutoscalingPolicyId'")
 	}
 	if args.WorkerConfig == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerConfig'")
@@ -72,9 +74,9 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 }
 
 type autoscalingPolicyArgs struct {
-	BasicAlgorithm *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
 	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id string `pulumi:"id"`
+	AutoscalingPolicyId string                     `pulumi:"autoscalingPolicyId"`
+	BasicAlgorithm      *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
 	// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -87,9 +89,9 @@ type autoscalingPolicyArgs struct {
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
-	BasicAlgorithm BasicAutoscalingAlgorithmPtrInput
 	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id pulumi.StringInput
+	AutoscalingPolicyId pulumi.StringInput
+	BasicAlgorithm      BasicAutoscalingAlgorithmPtrInput
 	// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -135,6 +137,11 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutput() AutoscalingPolicyOu
 
 func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyOutput {
 	return o
+}
+
+// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+func (o AutoscalingPolicyOutput) AutoscalingPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.AutoscalingPolicyId }).(pulumi.StringOutput)
 }
 
 func (o AutoscalingPolicyOutput) BasicAlgorithm() BasicAutoscalingAlgorithmResponseOutput {

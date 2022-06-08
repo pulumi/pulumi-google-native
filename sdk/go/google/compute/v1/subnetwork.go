@@ -61,6 +61,8 @@ type Subnetwork struct {
 	StackType pulumi.StringOutput `pulumi:"stackType"`
 	// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 	State pulumi.StringOutput `pulumi:"state"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	SubnetworkId pulumi.StringOutput `pulumi:"subnetworkId"`
 }
 
 // NewSubnetwork registers a new resource with the given unique name, arguments, and options.
@@ -323,6 +325,11 @@ func (o SubnetworkOutput) StackType() pulumi.StringOutput {
 // The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 func (o SubnetworkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o SubnetworkOutput) SubnetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.SubnetworkId }).(pulumi.StringOutput)
 }
 
 func init() {
