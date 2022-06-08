@@ -59,6 +59,10 @@ export interface GetBackendBucketResult {
      */
     readonly enableCdn: boolean;
     /**
+     * Unique identifier for the resource; defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource.
      */
     readonly kind: string;

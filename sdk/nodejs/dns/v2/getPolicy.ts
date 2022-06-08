@@ -46,6 +46,10 @@ export interface GetPolicyResult {
      * Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
      */
     readonly enableLogging: boolean;
+    /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    readonly id: string;
     readonly kind: string;
     /**
      * User-assigned name for this policy.

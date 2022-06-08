@@ -96,6 +96,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly regionInstanceGroupManagerId!: pulumi.Output<string>;
+    /**
      * The URL for this managed instance group. The server defines this URL.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -169,6 +173,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionInstanceGroupManagerId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
@@ -188,6 +193,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namedPorts"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionInstanceGroupManagerId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["statefulPolicy"] = undefined /*out*/;

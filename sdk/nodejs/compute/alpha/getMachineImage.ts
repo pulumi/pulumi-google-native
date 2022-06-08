@@ -39,6 +39,10 @@ export interface GetMachineImageResult {
      */
     readonly guestFlush: boolean;
     /**
+     * A unique identifier for this machine image. The server defines this identifier.
+     */
+    readonly id: string;
+    /**
      * Properties of source instance
      */
     readonly instanceProperties: outputs.compute.alpha.InstancePropertiesResponse;

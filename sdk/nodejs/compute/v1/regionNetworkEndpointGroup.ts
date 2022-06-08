@@ -88,6 +88,10 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionNetworkEndpointGroupId!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -134,6 +138,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionNetworkEndpointGroupId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
@@ -151,6 +156,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["networkEndpointType"] = undefined /*out*/;
             resourceInputs["pscTargetService"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionNetworkEndpointGroupId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["subnetwork"] = undefined /*out*/;

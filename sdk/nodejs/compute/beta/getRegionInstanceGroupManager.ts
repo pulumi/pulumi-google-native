@@ -65,6 +65,10 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly fingerprint: string;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    readonly id: string;
+    /**
      * The URL of the Instance Group resource.
      */
     readonly instanceGroup: string;

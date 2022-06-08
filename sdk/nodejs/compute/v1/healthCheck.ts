@@ -49,6 +49,10 @@ export class HealthCheck extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.v1.GRPCHealthCheckResponse>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly healthCheckId!: pulumi.Output<string>;
+    /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */
     public readonly healthyThreshold!: pulumi.Output<number>;
@@ -119,6 +123,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["healthCheckId"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
@@ -126,6 +131,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["grpcHealthCheck"] = undefined /*out*/;
+            resourceInputs["healthCheckId"] = undefined /*out*/;
             resourceInputs["healthyThreshold"] = undefined /*out*/;
             resourceInputs["http2HealthCheck"] = undefined /*out*/;
             resourceInputs["httpHealthCheck"] = undefined /*out*/;

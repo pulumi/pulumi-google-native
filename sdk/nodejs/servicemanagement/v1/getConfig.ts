@@ -77,6 +77,10 @@ export interface GetConfigResult {
      */
     readonly http: outputs.servicemanagement.v1.HttpResponse;
     /**
+     * A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+     */
+    readonly id: string;
+    /**
      * Logging configuration.
      */
     readonly logging: outputs.servicemanagement.v1.LoggingResponse;

@@ -58,6 +58,10 @@ export class License extends pulumi.CustomResource {
      */
     public /*out*/ readonly licenseCode!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly licenseId!: pulumi.Output<string>;
+    /**
      * Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
      */
     public readonly name!: pulumi.Output<string>;
@@ -92,6 +96,7 @@ export class License extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["licenseCode"] = undefined /*out*/;
+            resourceInputs["licenseId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["chargesUseFee"] = undefined /*out*/;
@@ -99,6 +104,7 @@ export class License extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["licenseCode"] = undefined /*out*/;
+            resourceInputs["licenseId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceRequirements"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

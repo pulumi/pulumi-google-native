@@ -55,6 +55,10 @@ export interface GetGlobalNetworkEndpointGroupResult {
      */
     readonly description: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
      */
     readonly kind: string;

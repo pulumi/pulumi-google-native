@@ -51,6 +51,10 @@ export interface GetRegionNetworkFirewallPolicyResult {
      */
     readonly fingerprint: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
      */
     readonly kind: string;

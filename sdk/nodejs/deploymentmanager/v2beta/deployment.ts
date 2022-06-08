@@ -35,6 +35,7 @@ export class Deployment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Deployment.__pulumiType;
     }
 
+    public readonly deploymentId!: pulumi.Output<string>;
     /**
      * An optional user-provided description of the deployment.
      */
@@ -92,8 +93,8 @@ export class Deployment extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["createPolicy"] = args ? args.createPolicy : undefined;
+            resourceInputs["deploymentId"] = args ? args.deploymentId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["preview"] = args ? args.preview : undefined;
@@ -107,6 +108,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["update"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["insertTime"] = undefined /*out*/;
@@ -132,11 +134,11 @@ export interface DeploymentArgs {
      * Sets the policy to use for creating new resources.
      */
     createPolicy?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string>;
     /**
      * An optional user-provided description of the deployment.
      */
     description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
     /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */

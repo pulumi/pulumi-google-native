@@ -44,6 +44,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * A unique identifier for this instance template. The server defines this identifier.
+     */
+    public /*out*/ readonly instanceTemplateId!: pulumi.Output<string>;
+    /**
      * The resource type, which is always compute#instanceTemplate for instance templates.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -91,12 +95,14 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             resourceInputs["sourceInstanceParams"] = args ? args.sourceInstanceParams : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["instanceTemplateId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["instanceTemplateId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;

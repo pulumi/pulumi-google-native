@@ -97,6 +97,10 @@ export interface GetBucketObjectResult {
      */
     readonly generation: string;
     /**
+     * The ID of the object, including the bucket name, object name, and generation number.
+     */
+    readonly id: string;
+    /**
      * The kind of item this is. For objects, this is always storage#object.
      */
     readonly kind: string;

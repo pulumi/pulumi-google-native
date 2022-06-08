@@ -67,6 +67,10 @@ export class TargetTcpProxy extends pulumi.CustomResource {
      * URL to the BackendService resource.
      */
     public readonly service!: pulumi.Output<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly targetTcpProxyId!: pulumi.Output<string>;
 
     /**
      * Create a TargetTcpProxy resource with the given unique name, arguments, and options.
@@ -89,6 +93,7 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["targetTcpProxyId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -98,6 +103,7 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["proxyHeader"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["service"] = undefined /*out*/;
+            resourceInputs["targetTcpProxyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TargetTcpProxy.__pulumiType, name, resourceInputs, opts);

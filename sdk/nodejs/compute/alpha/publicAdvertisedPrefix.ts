@@ -68,6 +68,10 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public readonly pdpScope!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly publicAdvertisedPrefixId!: pulumi.Output<string>;
+    /**
      * The list of public delegated prefixes that exist for this public advertised prefix.
      */
     public /*out*/ readonly publicDelegatedPrefixs!: pulumi.Output<outputs.compute.alpha.PublicAdvertisedPrefixPublicDelegatedPrefixResponse[]>;
@@ -110,6 +114,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["publicAdvertisedPrefixId"] = undefined /*out*/;
             resourceInputs["publicDelegatedPrefixs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -123,6 +128,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pdpScope"] = undefined /*out*/;
+            resourceInputs["publicAdvertisedPrefixId"] = undefined /*out*/;
             resourceInputs["publicDelegatedPrefixs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

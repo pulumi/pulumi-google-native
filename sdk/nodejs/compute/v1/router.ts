@@ -80,6 +80,10 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly routerId!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -111,6 +115,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["routerId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["bgp"] = undefined /*out*/;
@@ -124,6 +129,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["nats"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["routerId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -48,6 +48,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly billing!: pulumi.Output<outputs.storage.v1.BucketBillingResponse>;
     /**
+     * The ID of the bucket. For buckets, the id and name properties are the same.
+     */
+    public readonly bucketId!: pulumi.Output<string>;
+    /**
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
     public readonly cors!: pulumi.Output<outputs.storage.v1.BucketCorsItemResponse[]>;
@@ -162,13 +166,13 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["acl"] = args ? args.acl : undefined;
             resourceInputs["autoclass"] = args ? args.autoclass : undefined;
             resourceInputs["billing"] = args ? args.billing : undefined;
+            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
             resourceInputs["cors"] = args ? args.cors : undefined;
             resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             resourceInputs["defaultObjectAcl"] = args ? args.defaultObjectAcl : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["iamConfiguration"] = args ? args.iamConfiguration : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["lifecycle"] = args ? args.lifecycle : undefined;
@@ -197,6 +201,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["acl"] = undefined /*out*/;
             resourceInputs["autoclass"] = undefined /*out*/;
             resourceInputs["billing"] = undefined /*out*/;
+            resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["cors"] = undefined /*out*/;
             resourceInputs["defaultEventBasedHold"] = undefined /*out*/;
             resourceInputs["defaultObjectAcl"] = undefined /*out*/;
@@ -245,6 +250,10 @@ export interface BucketArgs {
      */
     billing?: pulumi.Input<inputs.storage.v1.BucketBillingArgs>;
     /**
+     * The ID of the bucket. For buckets, the id and name properties are the same.
+     */
+    bucketId?: pulumi.Input<string>;
+    /**
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.v1.BucketCorsItemArgs>[]>;
@@ -268,10 +277,6 @@ export interface BucketArgs {
      * The bucket's IAM configuration.
      */
     iamConfiguration?: pulumi.Input<inputs.storage.v1.BucketIamConfigurationArgs>;
-    /**
-     * The ID of the bucket. For buckets, the id and name properties are the same.
-     */
-    id?: pulumi.Input<string>;
     /**
      * The kind of item this is. For buckets, this is always storage#bucket.
      */

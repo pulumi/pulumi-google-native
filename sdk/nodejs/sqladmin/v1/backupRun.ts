@@ -41,6 +41,10 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public readonly backupKind!: pulumi.Output<string>;
     /**
+     * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+     */
+    public readonly backupRunId!: pulumi.Output<string>;
+    /**
      * The description of this run, only applicable to on-demand backups.
      */
     public readonly description!: pulumi.Output<string>;
@@ -112,13 +116,13 @@ export class BackupRun extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instance'");
             }
             resourceInputs["backupKind"] = args ? args.backupKind : undefined;
+            resourceInputs["backupRunId"] = args ? args.backupRunId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionConfiguration"] = args ? args.diskEncryptionConfiguration : undefined;
             resourceInputs["diskEncryptionStatus"] = args ? args.diskEncryptionStatus : undefined;
             resourceInputs["endTime"] = args ? args.endTime : undefined;
             resourceInputs["enqueuedTime"] = args ? args.enqueuedTime : undefined;
             resourceInputs["error"] = args ? args.error : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -130,6 +134,7 @@ export class BackupRun extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["backupKind"] = undefined /*out*/;
+            resourceInputs["backupRunId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionConfiguration"] = undefined /*out*/;
             resourceInputs["diskEncryptionStatus"] = undefined /*out*/;
@@ -159,6 +164,10 @@ export interface BackupRunArgs {
      */
     backupKind?: pulumi.Input<enums.sqladmin.v1.BackupRunBackupKind>;
     /**
+     * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+     */
+    backupRunId?: pulumi.Input<string>;
+    /**
      * The description of this run, only applicable to on-demand backups.
      */
     description?: pulumi.Input<string>;
@@ -182,10 +191,6 @@ export interface BackupRunArgs {
      * Information about why the backup operation failed. This is only present if the run has the FAILED status.
      */
     error?: pulumi.Input<inputs.sqladmin.v1.OperationErrorArgs>;
-    /**
-     * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-     */
-    id?: pulumi.Input<string>;
     /**
      * Name of the database instance.
      */

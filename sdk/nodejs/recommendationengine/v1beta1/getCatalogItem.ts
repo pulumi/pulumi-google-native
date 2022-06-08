@@ -39,6 +39,10 @@ export interface GetCatalogItemResult {
      */
     readonly description: string;
     /**
+     * Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+     */
+    readonly id: string;
+    /**
      * Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
      */
     readonly itemAttributes: outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1FeatureMapResponse;

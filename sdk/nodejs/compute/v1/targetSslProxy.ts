@@ -75,6 +75,10 @@ export class TargetSslProxy extends pulumi.CustomResource {
      * URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
      */
     public readonly sslPolicy!: pulumi.Output<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly targetSslProxyId!: pulumi.Output<string>;
 
     /**
      * Create a TargetSslProxy resource with the given unique name, arguments, and options.
@@ -99,6 +103,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["targetSslProxyId"] = undefined /*out*/;
         } else {
             resourceInputs["certificateMap"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -110,6 +115,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
             resourceInputs["service"] = undefined /*out*/;
             resourceInputs["sslCertificates"] = undefined /*out*/;
             resourceInputs["sslPolicy"] = undefined /*out*/;
+            resourceInputs["targetSslProxyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TargetSslProxy.__pulumiType, name, resourceInputs, opts);

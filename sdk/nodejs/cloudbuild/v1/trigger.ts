@@ -124,6 +124,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
+     * Unique identifier of the trigger.
+     */
+    public /*out*/ readonly triggerId!: pulumi.Output<string>;
+    /**
      * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
      */
     public readonly triggerTemplate!: pulumi.Output<outputs.cloudbuild.v1.RepoSourceResponse>;
@@ -173,6 +177,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
             resourceInputs["webhookConfig"] = args ? args.webhookConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["triggerId"] = undefined /*out*/;
         } else {
             resourceInputs["approvalConfig"] = undefined /*out*/;
             resourceInputs["autodetect"] = undefined /*out*/;
@@ -196,6 +201,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["sourceToBuild"] = undefined /*out*/;
             resourceInputs["substitutions"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["triggerId"] = undefined /*out*/;
             resourceInputs["triggerTemplate"] = undefined /*out*/;
             resourceInputs["webhookConfig"] = undefined /*out*/;
         }

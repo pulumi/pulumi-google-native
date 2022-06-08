@@ -27,6 +27,10 @@ export interface GetDomainMappingArgs {
 
 export interface GetDomainMappingResult {
     /**
+     * Relative name of the domain serving the application. Example: example.com.
+     */
+    readonly id: string;
+    /**
      * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
      */
     readonly name: string;

@@ -94,6 +94,10 @@ export class RegionNetwork extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionNetworkId!: pulumi.Output<string>;
+    /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */
     public readonly routingConfig!: pulumi.Output<outputs.compute.alpha.NetworkRoutingConfigResponse>;
@@ -141,6 +145,7 @@ export class RegionNetwork extends pulumi.CustomResource {
             resourceInputs["gatewayIPv4"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
+            resourceInputs["regionNetworkId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["subnetworks"] = undefined /*out*/;
@@ -159,6 +164,7 @@ export class RegionNetwork extends pulumi.CustomResource {
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionNetworkId"] = undefined /*out*/;
             resourceInputs["routingConfig"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

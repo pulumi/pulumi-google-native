@@ -44,6 +44,10 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly externalVpnGatewayId!: pulumi.Output<string>;
+    /**
      * A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
      */
     public readonly interfaces!: pulumi.Output<outputs.compute.beta.ExternalVpnGatewayInterfaceResponse[]>;
@@ -91,12 +95,14 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["externalVpnGatewayId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["externalVpnGatewayId"] = undefined /*out*/;
             resourceInputs["interfaces"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;

@@ -55,6 +55,10 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly networkEdgeSecurityServiceId!: pulumi.Output<string>;
+    /**
      * URL of the region where the resource resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
@@ -95,6 +99,7 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["networkEdgeSecurityServiceId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
@@ -103,6 +108,7 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkEdgeSecurityServiceId"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["securityPolicy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

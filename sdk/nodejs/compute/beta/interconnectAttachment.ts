@@ -106,6 +106,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly interconnect!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly interconnectAttachmentId!: pulumi.Output<string>;
+    /**
      * A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly. 
      */
     public readonly ipsecInternalAddresses!: pulumi.Output<string[]>;
@@ -228,6 +232,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["customerRouterIpv6Address"] = undefined /*out*/;
             resourceInputs["dataplaneVersion"] = undefined /*out*/;
             resourceInputs["googleReferenceId"] = undefined /*out*/;
+            resourceInputs["interconnectAttachmentId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
@@ -253,6 +258,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["encryption"] = undefined /*out*/;
             resourceInputs["googleReferenceId"] = undefined /*out*/;
             resourceInputs["interconnect"] = undefined /*out*/;
+            resourceInputs["interconnectAttachmentId"] = undefined /*out*/;
             resourceInputs["ipsecInternalAddresses"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;

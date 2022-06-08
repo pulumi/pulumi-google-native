@@ -36,6 +36,10 @@ export interface GetTargetInstanceResult {
      */
     readonly description: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance 
      */
     readonly instance: string;

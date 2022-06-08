@@ -72,6 +72,10 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<outputs.compute.v1.PacketMirroringNetworkInfoResponse>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly packetMirroringId!: pulumi.Output<string>;
+    /**
      * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
      */
     public readonly priority!: pulumi.Output<number>;
@@ -111,6 +115,7 @@ export class PacketMirroring extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["packetMirroringId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["collectorIlb"] = undefined /*out*/;
@@ -122,6 +127,7 @@ export class PacketMirroring extends pulumi.CustomResource {
             resourceInputs["mirroredResources"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["packetMirroringId"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

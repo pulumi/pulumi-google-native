@@ -36,6 +36,10 @@ export class BackendBucket extends pulumi.CustomResource {
     }
 
     /**
+     * Unique identifier for the resource; defined by the server.
+     */
+    public /*out*/ readonly backendBucketId!: pulumi.Output<string>;
+    /**
      * Cloud Storage bucket name.
      */
     public readonly bucketName!: pulumi.Output<string>;
@@ -96,10 +100,12 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["backendBucketId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
+            resourceInputs["backendBucketId"] = undefined /*out*/;
             resourceInputs["bucketName"] = undefined /*out*/;
             resourceInputs["cdnPolicy"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;

@@ -40,6 +40,10 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly address!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly addressId!: pulumi.Output<string>;
+    /**
      * The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
      */
     public readonly addressType!: pulumi.Output<string>;
@@ -145,6 +149,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["addressId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -154,6 +159,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["users"] = undefined /*out*/;
         } else {
             resourceInputs["address"] = undefined /*out*/;
+            resourceInputs["addressId"] = undefined /*out*/;
             resourceInputs["addressType"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

@@ -79,6 +79,10 @@ export class TypeProvider extends pulumi.CustomResource {
      * Self link for the type provider.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Unique identifier for the resource defined by the server.
+     */
+    public /*out*/ readonly typeProviderId!: pulumi.Output<string>;
 
     /**
      * Create a TypeProvider resource with the given unique name, arguments, and options.
@@ -103,6 +107,7 @@ export class TypeProvider extends pulumi.CustomResource {
             resourceInputs["insertTime"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["typeProviderId"] = undefined /*out*/;
         } else {
             resourceInputs["collectionOverrides"] = undefined /*out*/;
             resourceInputs["credential"] = undefined /*out*/;
@@ -115,6 +120,7 @@ export class TypeProvider extends pulumi.CustomResource {
             resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["options"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["typeProviderId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TypeProvider.__pulumiType, name, resourceInputs, opts);

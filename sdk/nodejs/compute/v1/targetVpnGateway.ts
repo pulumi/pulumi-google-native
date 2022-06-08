@@ -71,6 +71,10 @@ export class TargetVpnGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly targetVpnGatewayId!: pulumi.Output<string>;
+    /**
      * A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
      */
     public /*out*/ readonly tunnels!: pulumi.Output<string[]>;
@@ -100,6 +104,7 @@ export class TargetVpnGateway extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["targetVpnGatewayId"] = undefined /*out*/;
             resourceInputs["tunnels"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -111,6 +116,7 @@ export class TargetVpnGateway extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["targetVpnGatewayId"] = undefined /*out*/;
             resourceInputs["tunnels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

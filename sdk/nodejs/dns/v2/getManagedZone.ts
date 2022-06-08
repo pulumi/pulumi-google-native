@@ -51,6 +51,10 @@ export interface GetManagedZoneResult {
      * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
      */
     readonly forwardingConfig: outputs.dns.v2.ManagedZoneForwardingConfigResponse;
+    /**
+     * Unique identifier for the resource; defined by the server (output only)
+     */
+    readonly id: string;
     readonly kind: string;
     /**
      * User labels.

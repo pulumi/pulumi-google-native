@@ -38,6 +38,10 @@ export interface GetTargetSslProxyResult {
      */
     readonly description: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#targetSslProxy for target SSL proxies.
      */
     readonly kind: string;

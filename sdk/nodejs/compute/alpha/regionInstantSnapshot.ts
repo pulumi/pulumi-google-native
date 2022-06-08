@@ -76,6 +76,10 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionInstantSnapshotId!: pulumi.Output<string>;
+    /**
      * Status information for the instant snapshot resource.
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.alpha.InstantSnapshotResourceStatusResponse>;
@@ -135,6 +139,7 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["regionInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -153,6 +158,7 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

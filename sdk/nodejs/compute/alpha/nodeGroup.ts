@@ -66,6 +66,10 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly nodeGroupId!: pulumi.Output<string>;
+    /**
      * URL of the node template to create the node group from.
      */
     public readonly nodeTemplate!: pulumi.Output<string>;
@@ -120,6 +124,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["nodeGroupId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
@@ -134,6 +139,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["maintenancePolicy"] = undefined /*out*/;
             resourceInputs["maintenanceWindow"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodeGroupId"] = undefined /*out*/;
             resourceInputs["nodeTemplate"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

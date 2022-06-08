@@ -64,6 +64,10 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionSecurityPolicyId!: pulumi.Output<string>;
+    /**
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */
     public readonly rules!: pulumi.Output<outputs.compute.v1.SecurityPolicyRuleResponse[]>;
@@ -105,6 +109,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionSecurityPolicyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["adaptiveProtectionConfig"] = undefined /*out*/;
@@ -117,6 +122,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["recaptchaOptionsConfig"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionSecurityPolicyId"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

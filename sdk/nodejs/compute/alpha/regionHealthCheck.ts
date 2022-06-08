@@ -72,6 +72,10 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionHealthCheckId!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["udpHealthCheck"] = args ? args.udpHealthCheck : undefined;
             resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["regionHealthCheckId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
@@ -144,6 +149,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["logConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionHealthCheckId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["sslHealthCheck"] = undefined /*out*/;

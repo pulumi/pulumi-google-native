@@ -48,6 +48,10 @@ export interface GetTargetPoolResult {
      */
     readonly healthChecks: string[];
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
      */
     readonly instances: string[];

@@ -45,6 +45,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
+     * The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+     */
+    public /*out*/ readonly datasetId!: pulumi.Output<string>;
+    /**
      * [Required] A reference that identifies the dataset.
      */
     public readonly datasetReference!: pulumi.Output<outputs.bigquery.v2.DatasetReferenceResponse>;
@@ -135,6 +139,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -144,6 +149,7 @@ export class Dataset extends pulumi.CustomResource {
         } else {
             resourceInputs["access"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["datasetReference"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
             resourceInputs["defaultEncryptionConfiguration"] = undefined /*out*/;

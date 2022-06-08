@@ -59,6 +59,10 @@ export interface GetImageResult {
      */
     readonly guestOsFeatures: outputs.compute.alpha.GuestOsFeatureResponse[];
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
      */
     readonly imageEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;

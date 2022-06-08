@@ -64,6 +64,10 @@ export class RegionAutoscaler extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionAutoscalerId!: pulumi.Output<string>;
+    /**
      * Status information of existing scaling schedules.
      */
     public /*out*/ readonly scalingScheduleStatus!: pulumi.Output<{[key: string]: string}>;
@@ -116,6 +120,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["recommendedSize"] = undefined /*out*/;
+            resourceInputs["regionAutoscalerId"] = undefined /*out*/;
             resourceInputs["scalingScheduleStatus"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -130,6 +135,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["recommendedSize"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionAutoscalerId"] = undefined /*out*/;
             resourceInputs["scalingScheduleStatus"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

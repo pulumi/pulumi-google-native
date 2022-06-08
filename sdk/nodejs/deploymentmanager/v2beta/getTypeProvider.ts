@@ -47,6 +47,10 @@ export interface GetTypeProviderResult {
      */
     readonly descriptorUrl: string;
     /**
+     * Unique identifier for the resource defined by the server.
+     */
+    readonly id: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly insertTime: string;

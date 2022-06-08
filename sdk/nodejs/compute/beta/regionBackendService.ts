@@ -156,6 +156,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionBackendServiceId!: pulumi.Output<string>;
+    /**
      * The resource URL for the security policy associated with this backend service.
      */
     public /*out*/ readonly securityPolicy!: pulumi.Output<string>;
@@ -233,6 +237,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionBackendServiceId"] = undefined /*out*/;
             resourceInputs["securityPolicy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
@@ -267,6 +272,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["portName"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionBackendServiceId"] = undefined /*out*/;
             resourceInputs["securityPolicy"] = undefined /*out*/;
             resourceInputs["securitySettings"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

@@ -36,6 +36,10 @@ export class Autoscaler extends pulumi.CustomResource {
     }
 
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly autoscalerId!: pulumi.Output<string>;
+    /**
      * The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.v1.AutoscalingPolicyResponse>;
@@ -106,6 +110,7 @@ export class Autoscaler extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["autoscalerId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["recommendedSize"] = undefined /*out*/;
@@ -115,6 +120,7 @@ export class Autoscaler extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusDetails"] = undefined /*out*/;
         } else {
+            resourceInputs["autoscalerId"] = undefined /*out*/;
             resourceInputs["autoscalingPolicy"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

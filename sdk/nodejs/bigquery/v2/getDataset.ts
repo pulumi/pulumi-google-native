@@ -64,6 +64,10 @@ export interface GetDatasetResult {
      */
     readonly friendlyName: string;
     /**
+     * The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+     */
+    readonly id: string;
+    /**
      * [Optional] Indicates if table names are case insensitive in the dataset.
      */
     readonly isCaseInsensitive: boolean;

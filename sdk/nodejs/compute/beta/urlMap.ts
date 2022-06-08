@@ -91,6 +91,10 @@ export class UrlMap extends pulumi.CustomResource {
      * The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
      */
     public readonly tests!: pulumi.Output<outputs.compute.beta.UrlMapTestResponse[]>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly urlMapId!: pulumi.Output<string>;
 
     /**
      * Create a UrlMap resource with the given unique name, arguments, and options.
@@ -119,6 +123,7 @@ export class UrlMap extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["urlMapId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["defaultRouteAction"] = undefined /*out*/;
@@ -134,6 +139,7 @@ export class UrlMap extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tests"] = undefined /*out*/;
+            resourceInputs["urlMapId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UrlMap.__pulumiType, name, resourceInputs, opts);

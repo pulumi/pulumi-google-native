@@ -120,6 +120,10 @@ export class Product extends pulumi.CustomResource {
      */
     public readonly primaryProductId!: pulumi.Output<string>;
     /**
+     * Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
+     */
+    public readonly productId!: pulumi.Output<string>;
+    /**
      * The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
      */
     public readonly promotions!: pulumi.Output<outputs.retail.v2.GoogleCloudRetailV2PromotionResponse[]>;
@@ -203,7 +207,6 @@ export class Product extends pulumi.CustomResource {
             resourceInputs["expireTime"] = args ? args.expireTime : undefined;
             resourceInputs["fulfillmentInfo"] = args ? args.fulfillmentInfo : undefined;
             resourceInputs["gtin"] = args ? args.gtin : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -247,6 +250,7 @@ export class Product extends pulumi.CustomResource {
             resourceInputs["patterns"] = undefined /*out*/;
             resourceInputs["priceInfo"] = undefined /*out*/;
             resourceInputs["primaryProductId"] = undefined /*out*/;
+            resourceInputs["productId"] = undefined /*out*/;
             resourceInputs["promotions"] = undefined /*out*/;
             resourceInputs["publishTime"] = undefined /*out*/;
             resourceInputs["rating"] = undefined /*out*/;
@@ -327,10 +331,6 @@ export interface ProductArgs {
      */
     gtin?: pulumi.Input<string>;
     /**
-     * Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
-     */
-    id?: pulumi.Input<string>;
-    /**
      * Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
      */
     images?: pulumi.Input<pulumi.Input<inputs.retail.v2.GoogleCloudRetailV2ImageArgs>[]>;
@@ -360,7 +360,7 @@ export interface ProductArgs {
      */
     primaryProductId?: pulumi.Input<string>;
     /**
-     * Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+     * Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
      */
     productId: pulumi.Input<string>;
     project?: pulumi.Input<string>;

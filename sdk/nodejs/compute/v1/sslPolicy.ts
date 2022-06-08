@@ -76,6 +76,10 @@ export class SslPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly sslPolicyId!: pulumi.Output<string>;
+    /**
      * If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */
     public /*out*/ readonly warnings!: pulumi.Output<outputs.compute.v1.SslPolicyWarningsItemResponse[]>;
@@ -103,6 +107,7 @@ export class SslPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sslPolicyId"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -115,6 +120,7 @@ export class SslPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["profile"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sslPolicyId"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

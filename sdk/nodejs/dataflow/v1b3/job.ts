@@ -68,6 +68,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly executionInfo!: pulumi.Output<outputs.dataflow.v1b3.JobExecutionInfoResponse>;
     /**
+     * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+     */
+    public readonly jobId!: pulumi.Output<string>;
+    /**
      * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
      */
     public readonly jobMetadata!: pulumi.Output<outputs.dataflow.v1b3.JobMetadataResponse>;
@@ -154,7 +158,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["currentStateTime"] = args ? args.currentStateTime : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["executionInfo"] = args ? args.executionInfo : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["jobId"] = args ? args.jobId : undefined;
             resourceInputs["jobMetadata"] = args ? args.jobMetadata : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -181,6 +185,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["currentStateTime"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["executionInfo"] = undefined /*out*/;
+            resourceInputs["jobId"] = undefined /*out*/;
             resourceInputs["jobMetadata"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -241,7 +246,7 @@ export interface JobArgs {
     /**
      * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
      */
-    id?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string>;
     /**
      * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
      */

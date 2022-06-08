@@ -61,6 +61,10 @@ export interface GetDiskResult {
      */
     readonly guestOsFeatures: outputs.compute.alpha.GuestOsFeatureResponse[];
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * @deprecated [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.

@@ -47,6 +47,10 @@ export interface GetHealthCheckResult {
     readonly httpHealthCheck: outputs.compute.alpha.HTTPHealthCheckResponse;
     readonly httpsHealthCheck: outputs.compute.alpha.HTTPSHealthCheckResponse;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource.
      */
     readonly kind: string;

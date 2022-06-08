@@ -30,6 +30,10 @@ export interface GetAutoscalingPolicyArgs {
 export interface GetAutoscalingPolicyResult {
     readonly basicAlgorithm: outputs.dataproc.v1beta2.BasicAutoscalingAlgorithmResponse;
     /**
+     * The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+     */
+    readonly id: string;
+    /**
      * The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
      */
     readonly name: string;

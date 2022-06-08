@@ -173,6 +173,10 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly streamingBuffer!: pulumi.Output<outputs.bigquery.v2.StreamingbufferResponse>;
     /**
+     * An opaque ID uniquely identifying the table.
+     */
+    public /*out*/ readonly tableId!: pulumi.Output<string>;
+    /**
      * [Required] Reference describing the ID of this table.
      */
     public readonly tableReference!: pulumi.Output<outputs.bigquery.v2.TableReferenceResponse>;
@@ -242,6 +246,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotDefinition"] = undefined /*out*/;
             resourceInputs["streamingBuffer"] = undefined /*out*/;
+            resourceInputs["tableId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["cloneDefinition"] = undefined /*out*/;
@@ -278,6 +283,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotDefinition"] = undefined /*out*/;
             resourceInputs["streamingBuffer"] = undefined /*out*/;
+            resourceInputs["tableId"] = undefined /*out*/;
             resourceInputs["tableReference"] = undefined /*out*/;
             resourceInputs["timePartitioning"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

@@ -58,6 +58,10 @@ export class ResourcePolicy extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly resourcePolicyId!: pulumi.Output<string>;
+    /**
      * The system status of the resource policy.
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.beta.ResourcePolicyResourceStatusResponse>;
@@ -98,6 +102,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             resourceInputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["resourcePolicyId"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -109,6 +114,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["resourcePolicyId"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotSchedulePolicy"] = undefined /*out*/;

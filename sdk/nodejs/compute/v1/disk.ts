@@ -48,6 +48,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.v1.CustomerEncryptionKeyResponse>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly diskId!: pulumi.Output<string>;
+    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.v1.GuestOsFeatureResponse[]>;
@@ -212,6 +216,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["diskId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
@@ -228,6 +233,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
+            resourceInputs["diskId"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;

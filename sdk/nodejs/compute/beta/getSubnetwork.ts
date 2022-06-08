@@ -57,6 +57,10 @@ export interface GetSubnetworkResult {
      */
     readonly gatewayAddress: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * The internal IPv6 address range that is assigned to this subnetwork.
      */
     readonly internalIpv6Prefix: string;

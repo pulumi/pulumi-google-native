@@ -43,6 +43,10 @@ export class Change extends pulumi.CustomResource {
      */
     public readonly additions!: pulumi.Output<outputs.dns.v1.ResourceRecordSetResponse[]>;
     /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    public /*out*/ readonly changeId!: pulumi.Output<string>;
+    /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.
      */
     public readonly deletions!: pulumi.Output<outputs.dns.v1.ResourceRecordSetResponse[]>;
@@ -81,10 +85,12 @@ export class Change extends pulumi.CustomResource {
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["managedZone"] = args ? args.managedZone : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["changeId"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["additions"] = undefined /*out*/;
+            resourceInputs["changeId"] = undefined /*out*/;
             resourceInputs["deletions"] = undefined /*out*/;
             resourceInputs["isServing"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

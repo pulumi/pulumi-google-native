@@ -72,6 +72,10 @@ export class RegionSslCertificate extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionSslCertificateId!: pulumi.Output<string>;
+    /**
      * [Output only] Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -115,6 +119,7 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionSslCertificateId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         } else {
@@ -127,6 +132,7 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateKey"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionSslCertificateId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfManaged"] = undefined /*out*/;
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;

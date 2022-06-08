@@ -41,6 +41,10 @@ export class BucketAccessControl extends pulumi.CustomResource {
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
+     * The ID of the access-control entry.
+     */
+    public readonly bucketAccessControlId!: pulumi.Output<string>;
+    /**
      * The domain associated with the entity, if any.
      */
     public readonly domain!: pulumi.Output<string>;
@@ -103,12 +107,12 @@ export class BucketAccessControl extends pulumi.CustomResource {
                 throw new Error("Missing required property 'bucket'");
             }
             resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["bucketAccessControlId"] = args ? args.bucketAccessControlId : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["entity"] = args ? args.entity : undefined;
             resourceInputs["entityId"] = args ? args.entityId : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["projectTeam"] = args ? args.projectTeam : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
@@ -116,6 +120,7 @@ export class BucketAccessControl extends pulumi.CustomResource {
             resourceInputs["userProject"] = args ? args.userProject : undefined;
         } else {
             resourceInputs["bucket"] = undefined /*out*/;
+            resourceInputs["bucketAccessControlId"] = undefined /*out*/;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["entity"] = undefined /*out*/;
@@ -139,6 +144,10 @@ export interface BucketAccessControlArgs {
      * The name of the bucket.
      */
     bucket: pulumi.Input<string>;
+    /**
+     * The ID of the access-control entry.
+     */
+    bucketAccessControlId?: pulumi.Input<string>;
     /**
      * The domain associated with the entity, if any.
      */
@@ -170,10 +179,6 @@ export interface BucketAccessControlArgs {
      * HTTP 1.1 Entity tag for the access-control entry.
      */
     etag?: pulumi.Input<string>;
-    /**
-     * The ID of the access-control entry.
-     */
-    id?: pulumi.Input<string>;
     /**
      * The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
      */

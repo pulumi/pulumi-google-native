@@ -39,6 +39,10 @@ export interface GetGlobalPublicDelegatedPrefixResult {
      */
     readonly fingerprint: string;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    readonly id: string;
+    /**
      * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
      */
     readonly ipCidrRange: string;

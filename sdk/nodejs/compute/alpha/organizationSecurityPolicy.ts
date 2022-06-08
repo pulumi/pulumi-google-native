@@ -76,6 +76,10 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly organizationSecurityPolicyId!: pulumi.Output<string>;
+    /**
      * The parent of the security policy.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
@@ -134,6 +138,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["organizationSecurityPolicyId"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
@@ -153,6 +158,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationSecurityPolicyId"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["recaptchaOptionsConfig"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;

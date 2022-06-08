@@ -64,6 +64,10 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionTargetTcpProxyId!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -96,6 +100,7 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionTargetTcpProxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -105,6 +110,7 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["proxyBind"] = undefined /*out*/;
             resourceInputs["proxyHeader"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionTargetTcpProxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["service"] = undefined /*out*/;
         }

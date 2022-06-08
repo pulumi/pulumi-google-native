@@ -40,6 +40,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly affinityCookieTtlSec!: pulumi.Output<number>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly backendServiceId!: pulumi.Output<string>;
+    /**
      * The list of backends that serve this BackendService.
      */
     public readonly backends!: pulumi.Output<outputs.compute.alpha.BackendResponse[]>;
@@ -239,6 +243,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["subsetting"] = args ? args.subsetting : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["vpcNetworkScope"] = args ? args.vpcNetworkScope : undefined;
+            resourceInputs["backendServiceId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -249,6 +254,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
             resourceInputs["affinityCookieTtlSec"] = undefined /*out*/;
+            resourceInputs["backendServiceId"] = undefined /*out*/;
             resourceInputs["backends"] = undefined /*out*/;
             resourceInputs["cdnPolicy"] = undefined /*out*/;
             resourceInputs["circuitBreakers"] = undefined /*out*/;

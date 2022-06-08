@@ -56,6 +56,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly binaryAuthorization!: pulumi.Output<outputs.container.v1beta1.BinaryAuthorizationResponse>;
     /**
+     * Unique id for the cluster.
+     */
+    public /*out*/ readonly clusterId!: pulumi.Output<string>;
+    /**
      * The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
      */
     public readonly clusterIpv4Cidr!: pulumi.Output<string>;
@@ -399,6 +403,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["workloadCertificates"] = args ? args.workloadCertificates : undefined;
             resourceInputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentMasterVersion"] = undefined /*out*/;
             resourceInputs["currentNodeCount"] = undefined /*out*/;
@@ -418,6 +423,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["autopilot"] = undefined /*out*/;
             resourceInputs["autoscaling"] = undefined /*out*/;
             resourceInputs["binaryAuthorization"] = undefined /*out*/;
+            resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["clusterIpv4Cidr"] = undefined /*out*/;
             resourceInputs["clusterTelemetry"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;

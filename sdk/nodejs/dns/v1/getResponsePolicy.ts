@@ -32,6 +32,10 @@ export interface GetResponsePolicyResult {
      * User-provided description for this Response Policy.
      */
     readonly description: string;
+    /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    readonly id: string;
     readonly kind: string;
     /**
      * List of network names specifying networks to which this policy is applied.

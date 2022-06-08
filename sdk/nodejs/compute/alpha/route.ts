@@ -108,6 +108,10 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly routeId!: pulumi.Output<string>;
+    /**
      * [Output only] The status of the route.
      */
     public /*out*/ readonly routeStatus!: pulumi.Output<string>;
@@ -164,6 +168,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["nextHopInterconnectAttachment"] = undefined /*out*/;
             resourceInputs["nextHopPeering"] = undefined /*out*/;
+            resourceInputs["routeId"] = undefined /*out*/;
             resourceInputs["routeStatus"] = undefined /*out*/;
             resourceInputs["routeType"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -188,6 +193,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["nextHopPeering"] = undefined /*out*/;
             resourceInputs["nextHopVpnTunnel"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["routeId"] = undefined /*out*/;
             resourceInputs["routeStatus"] = undefined /*out*/;
             resourceInputs["routeType"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

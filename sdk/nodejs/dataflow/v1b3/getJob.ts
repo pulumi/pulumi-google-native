@@ -61,6 +61,10 @@ export interface GetJobResult {
      */
     readonly executionInfo: outputs.dataflow.v1b3.JobExecutionInfoResponse;
     /**
+     * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+     */
+    readonly id: string;
+    /**
      * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
      */
     readonly jobMetadata: outputs.dataflow.v1b3.JobMetadataResponse;

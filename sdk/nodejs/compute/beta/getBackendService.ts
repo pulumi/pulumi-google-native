@@ -93,6 +93,10 @@ export interface GetBackendServiceResult {
      */
     readonly iap: outputs.compute.beta.BackendServiceIAPResponse;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of resource. Always compute#backendService for backend services.
      */
     readonly kind: string;

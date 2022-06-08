@@ -37,6 +37,10 @@ export interface GetVpnGatewayResult {
      */
     readonly description: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of resource. Always compute#vpnGateway for VPN gateways.
      */
     readonly kind: string;

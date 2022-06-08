@@ -37,6 +37,10 @@ export class DomainMapping extends pulumi.CustomResource {
     }
 
     /**
+     * Relative name of the domain serving the application. Example: example.com.
+     */
+    public readonly domainMappingId!: pulumi.Output<string>;
+    /**
      * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -64,13 +68,14 @@ export class DomainMapping extends pulumi.CustomResource {
                 throw new Error("Missing required property 'appId'");
             }
             resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["domainMappingId"] = args ? args.domainMappingId : undefined;
             resourceInputs["noManagedCertificate"] = args ? args.noManagedCertificate : undefined;
             resourceInputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
             resourceInputs["sslSettings"] = args ? args.sslSettings : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceRecords"] = undefined /*out*/;
         } else {
+            resourceInputs["domainMappingId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceRecords"] = undefined /*out*/;
             resourceInputs["sslSettings"] = undefined /*out*/;
@@ -88,7 +93,7 @@ export interface DomainMappingArgs {
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */
-    id?: pulumi.Input<string>;
+    domainMappingId?: pulumi.Input<string>;
     /**
      * Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
      */

@@ -89,6 +89,10 @@ export class Node extends pulumi.CustomResource {
      */
     public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.v2alpha1.NetworkEndpointResponse[]>;
     /**
+     * The unique identifier for the TPU Node.
+     */
+    public readonly nodeId!: pulumi.Output<string>;
+    /**
      * The runtime version running in the Node.
      */
     public readonly runtimeVersion!: pulumi.Output<string>;
@@ -164,6 +168,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["nodeId"] = undefined /*out*/;
             resourceInputs["runtimeVersion"] = undefined /*out*/;
             resourceInputs["schedulingConfig"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;

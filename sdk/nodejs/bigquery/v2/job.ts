@@ -45,6 +45,10 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * Opaque ID field of the job
+     */
+    public /*out*/ readonly jobId!: pulumi.Output<string>;
+    /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
     public readonly jobReference!: pulumi.Output<outputs.bigquery.v2.JobReferenceResponse>;
@@ -85,6 +89,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["jobId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["statistics"] = undefined /*out*/;
@@ -93,6 +98,7 @@ export class Job extends pulumi.CustomResource {
         } else {
             resourceInputs["configuration"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["jobId"] = undefined /*out*/;
             resourceInputs["jobReference"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

@@ -84,6 +84,10 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionSecurityPolicyId!: pulumi.Output<string>;
+    /**
      * Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */
     public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
@@ -138,6 +142,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["regionSecurityPolicyId"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -157,6 +162,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["recaptchaOptionsConfig"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionSecurityPolicyId"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

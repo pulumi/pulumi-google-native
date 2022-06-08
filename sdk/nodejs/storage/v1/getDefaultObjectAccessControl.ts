@@ -68,6 +68,10 @@ export interface GetDefaultObjectAccessControlResult {
      */
     readonly generation: string;
     /**
+     * The ID of the access-control entry.
+     */
+    readonly id: string;
+    /**
      * The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
      */
     readonly kind: string;

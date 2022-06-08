@@ -39,6 +39,7 @@ export class Deployment extends pulumi.CustomResource {
      * User provided default credential for the deployment.
      */
     public readonly credential!: pulumi.Output<outputs.deploymentmanager.alpha.CredentialResponse>;
+    public readonly deploymentId!: pulumi.Output<string>;
     /**
      * An optional user-provided description of the deployment.
      */
@@ -101,8 +102,8 @@ export class Deployment extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["createPolicy"] = args ? args.createPolicy : undefined;
             resourceInputs["credential"] = args ? args.credential : undefined;
+            resourceInputs["deploymentId"] = args ? args.deploymentId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["preview"] = args ? args.preview : undefined;
@@ -118,6 +119,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["credential"] = undefined /*out*/;
+            resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["insertTime"] = undefined /*out*/;
@@ -148,11 +150,11 @@ export interface DeploymentArgs {
      * User provided default credential for the deployment.
      */
     credential?: pulumi.Input<inputs.deploymentmanager.alpha.CredentialArgs>;
+    deploymentId?: pulumi.Input<string>;
     /**
      * An optional user-provided description of the deployment.
      */
     description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
     /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */

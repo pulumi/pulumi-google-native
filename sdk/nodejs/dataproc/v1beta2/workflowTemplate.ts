@@ -72,6 +72,10 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      * Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
      */
     public readonly version!: pulumi.Output<number>;
+    /**
+     * The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+     */
+    public readonly workflowTemplateId!: pulumi.Output<string>;
 
     /**
      * Create a WorkflowTemplate resource with the given unique name, arguments, and options.
@@ -84,17 +88,16 @@ export class WorkflowTemplate extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.id === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'id'");
-            }
             if ((!args || args.jobs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobs'");
             }
             if ((!args || args.placement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
+            if ((!args || args.workflowTemplateId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workflowTemplateId'");
+            }
             resourceInputs["dagTimeout"] = args ? args.dagTimeout : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["jobs"] = args ? args.jobs : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -102,6 +105,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["placement"] = args ? args.placement : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["workflowTemplateId"] = args ? args.workflowTemplateId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -115,6 +119,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["placement"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
+            resourceInputs["workflowTemplateId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkflowTemplate.__pulumiType, name, resourceInputs, opts);
@@ -129,10 +134,6 @@ export interface WorkflowTemplateArgs {
      * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
      */
     dagTimeout?: pulumi.Input<string>;
-    /**
-     * The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
-     */
-    id: pulumi.Input<string>;
     /**
      * The Directed Acyclic Graph of Jobs to submit.
      */
@@ -155,4 +156,8 @@ export interface WorkflowTemplateArgs {
      * Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
      */
     version?: pulumi.Input<number>;
+    /**
+     * The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+     */
+    workflowTemplateId: pulumi.Input<string>;
 }

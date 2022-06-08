@@ -82,6 +82,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly networkEndpointGroupId!: pulumi.Output<string>;
+    /**
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
@@ -152,6 +156,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["networkEndpointGroupId"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -168,6 +173,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["loadBalancer"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkEndpointGroupId"] = undefined /*out*/;
             resourceInputs["networkEndpointType"] = undefined /*out*/;
             resourceInputs["pscTargetService"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;

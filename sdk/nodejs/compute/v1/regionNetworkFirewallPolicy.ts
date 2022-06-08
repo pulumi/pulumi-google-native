@@ -75,6 +75,10 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionNetworkFirewallPolicyId!: pulumi.Output<string>;
+    /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
     public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
@@ -122,6 +126,7 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["regionNetworkFirewallPolicyId"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -135,6 +140,7 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionNetworkFirewallPolicyId"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

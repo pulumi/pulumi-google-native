@@ -41,6 +41,10 @@ export interface GetRegistryResult {
      */
     readonly httpConfig: outputs.cloudiot.v1.HttpConfigResponse;
     /**
+     * The identifier of this device registry. For example, `myRegistry`.
+     */
+    readonly id: string;
+    /**
      * **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
      */
     readonly logLevel: string;

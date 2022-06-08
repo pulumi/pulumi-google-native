@@ -84,6 +84,10 @@ export class SslCertificate extends pulumi.CustomResource {
      */
     public readonly selfManaged!: pulumi.Output<outputs.compute.alpha.SslCertificateSelfManagedSslCertificateResponse>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly sslCertificateId!: pulumi.Output<string>;
+    /**
      * Domains associated with the certificate via Subject Alternative Name.
      */
     public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
@@ -118,6 +122,7 @@ export class SslCertificate extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sslCertificateId"] = undefined /*out*/;
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         } else {
             resourceInputs["certificate"] = undefined /*out*/;
@@ -132,6 +137,7 @@ export class SslCertificate extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["selfManaged"] = undefined /*out*/;
+            resourceInputs["sslCertificateId"] = undefined /*out*/;
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

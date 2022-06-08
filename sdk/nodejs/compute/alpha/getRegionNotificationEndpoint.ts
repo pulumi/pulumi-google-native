@@ -41,6 +41,10 @@ export interface GetRegionNotificationEndpointResult {
      */
     readonly grpcSettings: outputs.compute.alpha.NotificationEndpointGrpcSettingsResponse;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#notificationEndpoint for notification endpoints.
      */
     readonly kind: string;

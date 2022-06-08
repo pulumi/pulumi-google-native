@@ -84,6 +84,10 @@ export class ObjectAccessControl extends pulumi.CustomResource {
      */
     public readonly object!: pulumi.Output<string>;
     /**
+     * The ID of the access-control entry.
+     */
+    public readonly objectAccessControlId!: pulumi.Output<string>;
+    /**
      * The project team associated with the entity, if any.
      */
     public readonly projectTeam!: pulumi.Output<outputs.storage.v1.ObjectAccessControlProjectTeamResponse>;
@@ -120,9 +124,9 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             resourceInputs["entityId"] = args ? args.entityId : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["generation"] = args ? args.generation : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["object"] = args ? args.object : undefined;
+            resourceInputs["objectAccessControlId"] = args ? args.objectAccessControlId : undefined;
             resourceInputs["projectTeam"] = args ? args.projectTeam : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
@@ -137,6 +141,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             resourceInputs["generation"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["object"] = undefined /*out*/;
+            resourceInputs["objectAccessControlId"] = undefined /*out*/;
             resourceInputs["projectTeam"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -190,10 +195,6 @@ export interface ObjectAccessControlArgs {
      */
     generation?: pulumi.Input<string>;
     /**
-     * The ID of the access-control entry.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
      */
     kind?: pulumi.Input<string>;
@@ -201,6 +202,10 @@ export interface ObjectAccessControlArgs {
      * The name of the object, if applied to an object.
      */
     object: pulumi.Input<string>;
+    /**
+     * The ID of the access-control entry.
+     */
+    objectAccessControlId?: pulumi.Input<string>;
     /**
      * The project team associated with the entity, if any.
      */

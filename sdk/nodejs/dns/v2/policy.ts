@@ -60,6 +60,10 @@ export class Policy extends pulumi.CustomResource {
      * List of network names specifying networks to which this policy is applied.
      */
     public readonly networks!: pulumi.Output<outputs.dns.v2.PolicyNetworkResponse[]>;
+    /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    public /*out*/ readonly policyId!: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -82,6 +86,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["policyId"] = undefined /*out*/;
         } else {
             resourceInputs["alternativeNameServerConfig"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -90,6 +95,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["policyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

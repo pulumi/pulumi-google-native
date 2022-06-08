@@ -30,6 +30,10 @@ export interface GetAutoscalingPolicyArgs {
 export interface GetAutoscalingPolicyResult {
     readonly basicAlgorithm: outputs.dataproc.v1.BasicAutoscalingAlgorithmResponse;
     /**
+     * The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+     */
+    readonly id: string;
+    /**
      * Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
      */
     readonly labels: {[key: string]: string};

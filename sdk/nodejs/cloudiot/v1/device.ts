@@ -48,6 +48,10 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.cloudiot.v1.DeviceCredentialResponse[]>;
     /**
+     * The user-defined device identifier. The device ID must be unique within a device registry.
+     */
+    public readonly deviceId!: pulumi.Output<string>;
+    /**
      * Gateway-related configuration and state.
      */
     public readonly gatewayConfig!: pulumi.Output<outputs.cloudiot.v1.GatewayConfigResponse>;
@@ -117,8 +121,8 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["blocked"] = args ? args.blocked : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["credentials"] = args ? args.credentials : undefined;
+            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
             resourceInputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["logLevel"] = args ? args.logLevel : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
@@ -138,6 +142,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["blocked"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["credentials"] = undefined /*out*/;
+            resourceInputs["deviceId"] = undefined /*out*/;
             resourceInputs["gatewayConfig"] = undefined /*out*/;
             resourceInputs["lastConfigAckTime"] = undefined /*out*/;
             resourceInputs["lastConfigSendTime"] = undefined /*out*/;
@@ -174,13 +179,13 @@ export interface DeviceArgs {
      */
     credentials?: pulumi.Input<pulumi.Input<inputs.cloudiot.v1.DeviceCredentialArgs>[]>;
     /**
+     * The user-defined device identifier. The device ID must be unique within a device registry.
+     */
+    deviceId?: pulumi.Input<string>;
+    /**
      * Gateway-related configuration and state.
      */
     gatewayConfig?: pulumi.Input<inputs.cloudiot.v1.GatewayConfigArgs>;
-    /**
-     * The user-defined device identifier. The device ID must be unique within a device registry.
-     */
-    id?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
      * **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.

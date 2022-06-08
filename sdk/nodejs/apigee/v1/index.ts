@@ -8,6 +8,7 @@ import * as utilities from "../../utilities";
 export * from "./alias";
 export * from "./api";
 export * from "./apiProduct";
+export * from "./apicategory";
 export * from "./app";
 export * from "./archiveDeployment";
 export * from "./canaryEvaluation";
@@ -81,6 +82,7 @@ export * from "../../types/enums/apigee/v1";
 import { Alias } from "./alias";
 import { Api } from "./api";
 import { ApiProduct } from "./apiProduct";
+import { Apicategory } from "./apicategory";
 import { App } from "./app";
 import { ArchiveDeployment } from "./archiveDeployment";
 import { CanaryEvaluation } from "./canaryEvaluation";
@@ -122,6 +124,8 @@ const _module = {
                 return new Api(name, <any>undefined, { urn })
             case "google-native:apigee/v1:ApiProduct":
                 return new ApiProduct(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Apicategory":
+                return new Apicategory(name, <any>undefined, { urn })
             case "google-native:apigee/v1:App":
                 return new App(name, <any>undefined, { urn })
             case "google-native:apigee/v1:ArchiveDeployment":

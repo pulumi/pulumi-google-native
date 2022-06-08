@@ -62,6 +62,10 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Unique identifier for the resource; defined by the server (output only)
+     */
+    public /*out*/ readonly managedZoneId!: pulumi.Output<string>;
+    /**
      * User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
      */
     public readonly name!: pulumi.Output<string>;
@@ -122,6 +126,7 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["reverseLookupConfig"] = args ? args.reverseLookupConfig : undefined;
             resourceInputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["managedZoneId"] = undefined /*out*/;
             resourceInputs["nameServers"] = undefined /*out*/;
         } else {
             resourceInputs["cloudLoggingConfig"] = undefined /*out*/;
@@ -132,6 +137,7 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["forwardingConfig"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["managedZoneId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nameServerSet"] = undefined /*out*/;
             resourceInputs["nameServers"] = undefined /*out*/;

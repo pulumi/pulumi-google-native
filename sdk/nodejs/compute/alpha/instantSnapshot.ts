@@ -56,6 +56,10 @@ export class InstantSnapshot extends pulumi.CustomResource {
      */
     public readonly guestFlush!: pulumi.Output<boolean>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly instantSnapshotId!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
             resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
+            resourceInputs["instantSnapshotId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -145,6 +150,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["guestFlush"] = undefined /*out*/;
+            resourceInputs["instantSnapshotId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;

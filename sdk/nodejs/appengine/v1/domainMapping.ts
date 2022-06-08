@@ -37,6 +37,10 @@ export class DomainMapping extends pulumi.CustomResource {
     }
 
     /**
+     * Relative name of the domain serving the application. Example: example.com.
+     */
+    public readonly domainMappingId!: pulumi.Output<string>;
+    /**
      * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -64,12 +68,13 @@ export class DomainMapping extends pulumi.CustomResource {
                 throw new Error("Missing required property 'appId'");
             }
             resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["domainMappingId"] = args ? args.domainMappingId : undefined;
             resourceInputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
             resourceInputs["sslSettings"] = args ? args.sslSettings : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceRecords"] = undefined /*out*/;
         } else {
+            resourceInputs["domainMappingId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceRecords"] = undefined /*out*/;
             resourceInputs["sslSettings"] = undefined /*out*/;
@@ -87,7 +92,7 @@ export interface DomainMappingArgs {
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */
-    id?: pulumi.Input<string>;
+    domainMappingId?: pulumi.Input<string>;
     /**
      * Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
      */

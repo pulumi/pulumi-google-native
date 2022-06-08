@@ -49,6 +49,10 @@ export interface GetRouterResult {
      */
     readonly encryptedInterconnectRouter: boolean;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
      */
     readonly interfaces: outputs.compute.beta.RouterInterfaceResponse[];

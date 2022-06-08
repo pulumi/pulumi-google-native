@@ -55,6 +55,10 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly httpsHealthCheckId!: pulumi.Output<string>;
+    /**
      * Type of the resource.
      */
     public readonly kind!: pulumi.Output<string>;
@@ -111,6 +115,7 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["httpsHealthCheckId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
@@ -119,6 +124,7 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["healthyThreshold"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["httpsHealthCheckId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;

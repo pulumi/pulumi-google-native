@@ -41,6 +41,10 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
+     * The ID of the access-control entry.
+     */
+    public readonly defaultObjectAccessControlId!: pulumi.Output<string>;
+    /**
      * The domain associated with the entity, if any.
      */
     public readonly domain!: pulumi.Output<string>;
@@ -111,13 +115,13 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
                 throw new Error("Missing required property 'bucket'");
             }
             resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["defaultObjectAccessControlId"] = args ? args.defaultObjectAccessControlId : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["entity"] = args ? args.entity : undefined;
             resourceInputs["entityId"] = args ? args.entityId : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["generation"] = args ? args.generation : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["object"] = args ? args.object : undefined;
             resourceInputs["projectTeam"] = args ? args.projectTeam : undefined;
@@ -126,6 +130,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             resourceInputs["userProject"] = args ? args.userProject : undefined;
         } else {
             resourceInputs["bucket"] = undefined /*out*/;
+            resourceInputs["defaultObjectAccessControlId"] = undefined /*out*/;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["entity"] = undefined /*out*/;
@@ -151,6 +156,10 @@ export interface DefaultObjectAccessControlArgs {
      * The name of the bucket.
      */
     bucket: pulumi.Input<string>;
+    /**
+     * The ID of the access-control entry.
+     */
+    defaultObjectAccessControlId?: pulumi.Input<string>;
     /**
      * The domain associated with the entity, if any.
      */
@@ -186,10 +195,6 @@ export interface DefaultObjectAccessControlArgs {
      * The content generation of the object, if applied to an object.
      */
     generation?: pulumi.Input<string>;
-    /**
-     * The ID of the access-control entry.
-     */
-    id?: pulumi.Input<string>;
     /**
      * The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
      */

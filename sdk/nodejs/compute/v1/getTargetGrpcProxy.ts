@@ -38,6 +38,10 @@ export interface GetTargetGrpcProxyResult {
      */
     readonly fingerprint: string;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
      */
     readonly kind: string;

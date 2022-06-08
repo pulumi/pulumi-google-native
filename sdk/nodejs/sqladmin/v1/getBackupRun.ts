@@ -57,6 +57,10 @@ export interface GetBackupRunResult {
      */
     readonly error: outputs.sqladmin.v1.OperationErrorResponse;
     /**
+     * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+     */
+    readonly id: string;
+    /**
      * Name of the database instance.
      */
     readonly instance: string;

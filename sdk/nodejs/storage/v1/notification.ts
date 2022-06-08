@@ -52,6 +52,10 @@ export class Notification extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
+     * The ID of the notification.
+     */
+    public readonly notificationId!: pulumi.Output<string>;
+    /**
      * If present, only apply this notification configuration to object names that begin with this prefix.
      */
     public readonly objectNamePrefix!: pulumi.Output<string>;
@@ -86,8 +90,8 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["eventTypes"] = args ? args.eventTypes : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["notificationId"] = args ? args.notificationId : undefined;
             resourceInputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
             resourceInputs["payloadFormat"] = args ? args.payloadFormat : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
@@ -98,6 +102,7 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["eventTypes"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["notificationId"] = undefined /*out*/;
             resourceInputs["objectNamePrefix"] = undefined /*out*/;
             resourceInputs["payloadFormat"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -126,13 +131,13 @@ export interface NotificationArgs {
      */
     eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the notification.
-     */
-    id?: pulumi.Input<string>;
-    /**
      * The kind of item this is. For notifications, this is always storage#notification.
      */
     kind?: pulumi.Input<string>;
+    /**
+     * The ID of the notification.
+     */
+    notificationId?: pulumi.Input<string>;
     /**
      * If present, only apply this notification configuration to object names that begin with this prefix.
      */

@@ -43,6 +43,10 @@ export interface GetNodeTemplateResult {
     readonly description: string;
     readonly disks: outputs.compute.beta.LocalDiskResponse[];
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * The type of the resource. Always compute#nodeTemplate for node templates.
      */
     readonly kind: string;

@@ -104,6 +104,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly snapshotEncryptionKey!: pulumi.Output<outputs.compute.beta.CustomerEncryptionKeyResponse>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly snapshotId!: pulumi.Output<string>;
+    /**
      * The source disk used to create this snapshot.
      */
     public readonly sourceDisk!: pulumi.Output<string>;
@@ -177,6 +181,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["licenses"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["snapshotId"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotSchedulePolicy"] = undefined /*out*/;
             resourceInputs["sourceSnapshotSchedulePolicyId"] = undefined /*out*/;
@@ -202,6 +207,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotEncryptionKey"] = undefined /*out*/;
+            resourceInputs["snapshotId"] = undefined /*out*/;
             resourceInputs["sourceDisk"] = undefined /*out*/;
             resourceInputs["sourceDiskEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;

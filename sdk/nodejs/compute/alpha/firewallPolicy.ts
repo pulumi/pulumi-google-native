@@ -59,6 +59,10 @@ export class FirewallPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly firewallPolicyId!: pulumi.Output<string>;
+    /**
      * [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -120,6 +124,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
             resourceInputs["vpcNetworkScope"] = args ? args.vpcNetworkScope : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["firewallPolicyId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
@@ -133,6 +138,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["firewallPolicyId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;

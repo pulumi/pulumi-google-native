@@ -82,6 +82,10 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionCommitmentId!: pulumi.Output<string>;
+    /**
      * List of reservations in this commitment.
      */
     public readonly reservations!: pulumi.Output<outputs.compute.alpha.ReservationResponse[]>;
@@ -149,6 +153,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["endTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionCommitmentId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["startTimestamp"] = undefined /*out*/;
@@ -166,6 +171,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["plan"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionCommitmentId"] = undefined /*out*/;
             resourceInputs["reservations"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

@@ -30,6 +30,7 @@ export interface GetCompositeTypeResult {
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
     readonly description: string;
+    readonly id: string;
     /**
      * Creation timestamp in RFC3339 text format.
      */

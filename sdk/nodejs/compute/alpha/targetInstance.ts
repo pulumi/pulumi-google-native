@@ -72,6 +72,10 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly targetInstanceId!: pulumi.Output<string>;
+    /**
      * URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["targetInstanceId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -109,6 +114,7 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["targetInstanceId"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

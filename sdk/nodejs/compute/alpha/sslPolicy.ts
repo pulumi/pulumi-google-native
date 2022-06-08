@@ -84,6 +84,10 @@ export class SslPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly sslPolicyId!: pulumi.Output<string>;
+    /**
      * Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
     public readonly tlsSettings!: pulumi.Output<outputs.compute.alpha.ServerTlsSettingsResponse>;
@@ -118,6 +122,7 @@ export class SslPolicy extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sslPolicyId"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -132,6 +137,7 @@ export class SslPolicy extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sslPolicyId"] = undefined /*out*/;
             resourceInputs["tlsSettings"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
         }

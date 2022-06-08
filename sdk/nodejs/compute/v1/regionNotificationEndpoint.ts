@@ -60,6 +60,10 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly regionNotificationEndpointId!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -86,6 +90,7 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionNotificationEndpointId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -94,6 +99,7 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionNotificationEndpointId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
