@@ -543,6 +543,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if err != nil {
 			return err
 		}
+		// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi.
+		g.dedupeId(typeName, bodyBag)
 
 		isOutput := func(desc string) bool {
 			lowerDesc := strings.ToLower(desc)
@@ -561,6 +563,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		for name := range bodyBag.requiredSpecs {
 			requiredInputProperties.Add(name)
 		}
+
 		resourceMeta.Create.SDKProperties = bodyBag.properties
 
 		if op, ok := ops[dd.createMethod.Response.Ref]; ok {
@@ -585,6 +588,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			if err != nil {
 				return err
 			}
+			// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi.
+			g.dedupeId(typeName, updateBag)
 
 			for name, param := range dd.updateMethod.Parameters {
 				if param.Format == "google-fieldmask" && isRequired(param) {
@@ -594,7 +599,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			}
 
 			for name, value := range updateBag.properties {
-				if _, has := bodyBag.properties[name]; has {
+				if _, has := resourceMeta.Create.SDKProperties[name]; has {
 					resourceMeta.Update.SDKProperties[name] = value
 				} else {
 					if value.Format == "google-fieldmask" && value.Required {
@@ -615,6 +620,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if err != nil {
 			return err
 		}
+		// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi.
+		g.dedupeId(typeName, responseBag)
+
 		properties = responseBag.specs
 		requiredProperties = responseBag.requiredSpecs
 		g.escapeCSharpNames(typeName, properties)
@@ -761,12 +769,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	requiredInputProperties.Delete("location")
 	requiredInputProperties.Delete("zone")
 
-	// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi
-	if _, exists := properties["id"]; exists {
-		delete(properties, "id")
-		requiredProperties.Delete("id")
-	}
-
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{
 			Description: description,
@@ -787,6 +789,37 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
+}
+
+func (g *packageGenerator) dedupeId(typeName string, resourcePropBag *propertyBag) {
+	newId := apiPropNameToSdkName(typeName, typeName+"Id")
+
+	// First check if an existing property with the name id exists in the resource properties (at the top level).
+	// Replace with the newId if so.
+	props, exists := resourcePropBag.specs["id"]
+	if !exists {
+		return
+	}
+
+	if _, exists = resourcePropBag.specs[newId]; exists {
+		contract.Failf("Conflicting existing ID field: %q in %q", newId, g.genToken(typeName))
+	}
+
+	delete(resourcePropBag.specs, "id")
+	resourcePropBag.specs[newId] = props
+	if resourcePropBag.requiredSpecs.Has("id") {
+		resourcePropBag.requiredSpecs.Delete("id")
+		resourcePropBag.requiredSpecs.Add(newId)
+	}
+
+	// Next update the metadata to map the id field to newId as the SDK name.
+	metadata := resourcePropBag.properties
+	propMetadata, exists := metadata[newId]
+	if exists {
+		contract.Failf("Conflicting existing ID field: %q in %q", newId, g.genToken(typeName))
+	}
+	propMetadata.SdkName = newId
+	metadata["id"] = propMetadata
 }
 
 func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation,
@@ -1028,9 +1061,6 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 
 		readOnly := value.ReadOnly || isReadOnly(value.Description)
 		if !isOutput && readOnly {
-			continue
-		}
-		if isOutput && name == "id" {
 			continue
 		}
 
