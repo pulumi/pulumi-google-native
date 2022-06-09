@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 - Retain `id` fields in output types and resource properties [#521](https://github.com/pulumi/pulumi-google-native/pull/521)
+- Handle network timeouts as retryable [#524](https://github.com/pulumi/pulumi-google-native/pull/524)
 
 ## 0.20.0 (2022-06-06)
 - Multiple bug fixes in [#453](https://github.com/pulumi/pulumi-google-native/pull/453)

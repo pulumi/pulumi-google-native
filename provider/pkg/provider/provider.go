@@ -21,6 +21,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"runtime/debug"
@@ -967,6 +968,10 @@ func retryRequest(client *googleclient.GoogleClient, method string, rawurl strin
 					if gerr.Code == 400 && strings.Contains(gerr.Body, "Please wait and try again once it is done") {
 						continue
 					}
+				}
+				// Ignore network timeouts.
+				if nerr, ok := err.(net.Error); ok && nerr.Timeout() {
+					continue
 				}
 
 				// Non-retryable error
