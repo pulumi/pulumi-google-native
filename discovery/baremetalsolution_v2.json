@@ -908,7 +908,7 @@
                       "type": "string"
                     },
                     "updateMask": {
-                      "description": "The list of fields to update. The only currently supported fields are: `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'requested_size_gib' 'snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'",
+                      "description": "The list of fields to update. The only currently supported fields are: `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'",
                       "format": "google-fieldmask",
                       "location": "query",
                       "type": "string"
@@ -917,6 +917,34 @@
                   "path": "v2/{+name}",
                   "request": {
                     "$ref": "Volume"
+                  },
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "resize": {
+                  "description": "Emergency Volume resize.",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/volumes/{volumesId}:resize",
+                  "httpMethod": "POST",
+                  "id": "baremetalsolution.projects.locations.volumes.resize",
+                  "parameterOrder": [
+                    "volume"
+                  ],
+                  "parameters": {
+                    "volume": {
+                      "description": "Required. Volume to resize.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/volumes/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v2/{+volume}:resize",
+                  "request": {
+                    "$ref": "ResizeVolumeRequest"
                   },
                   "response": {
                     "$ref": "Operation"
@@ -999,7 +1027,7 @@
       }
     }
   },
-  "revision": "20220524",
+  "revision": "20220615",
   "rootUrl": "https://baremetalsolution.googleapis.com/",
   "schemas": {
     "AllowedClient": {
@@ -1077,7 +1105,7 @@
       "id": "GoogleCloudBaremetalsolutionV2LogicalInterface",
       "properties": {
         "interfaceIndex": {
-          "description": "The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.",
+          "description": "The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.",
           "format": "int32",
           "type": "integer"
         },
@@ -1830,6 +1858,10 @@
           "description": "A transient unique identifier to identify a volume within an ProvisioningConfig request.",
           "type": "string"
         },
+        "jumboFramesEnabled": {
+          "description": "The JumboFramesEnabled option for customer to set.",
+          "type": "boolean"
+        },
         "name": {
           "description": "Output only. The name of the network config.",
           "readOnly": true,
@@ -1976,6 +2008,11 @@
           "readOnly": true,
           "type": "string"
         },
+        "requestedSizeGib": {
+          "description": "The requested size, in GiB.",
+          "format": "int64",
+          "type": "string"
+        },
         "state": {
           "description": "The state of the NFS share.",
           "enum": [
@@ -2064,6 +2101,50 @@
       },
       "type": "object"
     },
+    "OperationMetadata": {
+      "description": "Represents the metadata from a long-running operation.",
+      "id": "OperationMetadata",
+      "properties": {
+        "apiVersion": {
+          "description": "Output only. API version used with the operation.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Output only. The time the operation was created.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "endTime": {
+          "description": "Output only. The time the operation finished running.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "requestedCancellation": {
+          "description": "Output only. Identifies whether the user requested the cancellation of the operation. Operations that have been successfully cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "statusMessage": {
+          "description": "Output only. Human-readable status of the operation, if any.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "target": {
+          "description": "Output only. Server-defined resource path for the target of the operation.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "verb": {
+          "description": "Output only. Name of the action executed by the operation.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ProvisioningConfig": {
       "description": "A provisioning configuration.",
       "id": "ProvisioningConfig",
@@ -2113,7 +2194,8 @@
             "PROVISIONING",
             "PROVISIONED",
             "VALIDATED",
-            "CANCELLED"
+            "CANCELLED",
+            "FAILED"
           ],
           "enumDescriptions": [
             "State wasn't specified.",
@@ -2122,9 +2204,14 @@
             "ProvisioningConfig was in the provisioning state. Initially this state comes from the work order table in big query when SNOW is used. Later this field can be set by the work order API.",
             "ProvisioningConfig was provisioned, meaning the resources exist.",
             "ProvisioningConfig was validated. A validation tool will be run to set this state.",
-            "ProvisioningConfig was canceled."
+            "ProvisioningConfig was canceled.",
+            "The request is submitted for provisioning, with error return."
           ],
           "readOnly": true,
+          "type": "string"
+        },
+        "statusMessage": {
+          "description": "Optional status messages associated with the FAILED state.",
           "type": "string"
         },
         "ticketId": {
@@ -2143,6 +2230,10 @@
             "$ref": "VolumeConfig"
           },
           "type": "array"
+        },
+        "vpcScEnabled": {
+          "description": "If true, VPC SC is enabled for the cluster.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -2223,6 +2314,18 @@
       "description": "Message requesting to reset a server.",
       "id": "ResetInstanceRequest",
       "properties": {},
+      "type": "object"
+    },
+    "ResizeVolumeRequest": {
+      "description": "Request for emergency resize Volume.",
+      "id": "ResizeVolumeRequest",
+      "properties": {
+        "sizeGib": {
+          "description": "New Volume size, in GiB.",
+          "format": "int64",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "ServerNetworkTemplate": {
@@ -2429,9 +2532,19 @@
           "description": "Labels as key value pairs.",
           "type": "object"
         },
+        "maxSizeGib": {
+          "description": "Maximum size volume can be expanded to in case of evergency, in GiB.",
+          "format": "int64",
+          "type": "string"
+        },
         "name": {
           "description": "Output only. The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`",
           "readOnly": true,
+          "type": "string"
+        },
+        "originallyRequestedSizeGib": {
+          "description": "Originally requested size, in GiB.",
+          "format": "int64",
           "type": "string"
         },
         "pod": {
