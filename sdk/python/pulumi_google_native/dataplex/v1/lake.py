@@ -259,13 +259,17 @@ class Lake(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["lake_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metastore"] = None
         __props__.__dict__["metastore_status"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Lake(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -309,6 +313,19 @@ class Lake(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="lakeId")
+    def lake_id(self) -> pulumi.Output[str]:
+        """
+        Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+        """
+        return pulumi.get(self, "lake_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def metastore(self) -> pulumi.Output['outputs.GoogleCloudDataplexV1LakeMetastoreResponse']:
         """
@@ -331,6 +348,11 @@ class Lake(pulumi.CustomResource):
         The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -363,4 +385,12 @@ class Lake(pulumi.CustomResource):
         The time when the lake was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
 

@@ -195,6 +195,7 @@ class OrganizationExclusion(pulumi.CustomResource):
         __props__.__dict__["disabled"] = None
         __props__.__dict__["filter"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["update_time"] = None
         return OrganizationExclusion(resource_name, opts=opts, __props__=__props__)
 
@@ -237,6 +238,11 @@ class OrganizationExclusion(pulumi.CustomResource):
         A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="updateTime")

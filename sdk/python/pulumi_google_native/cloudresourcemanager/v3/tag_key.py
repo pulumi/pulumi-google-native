@@ -266,6 +266,7 @@ class TagKey(pulumi.CustomResource):
         __props__.__dict__["purpose_data"] = None
         __props__.__dict__["short_name"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return TagKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -347,4 +348,12 @@ class TagKey(pulumi.CustomResource):
         Update time.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
+        """
+        return pulumi.get(self, "validate_only")
 

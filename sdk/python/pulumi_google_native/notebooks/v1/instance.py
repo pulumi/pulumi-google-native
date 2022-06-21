@@ -748,9 +748,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["disk_encryption"] = None
         __props__.__dict__["disks"] = None
         __props__.__dict__["install_gpu_driver"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["instance_owners"] = None
         __props__.__dict__["kms_key"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["machine_type"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
@@ -760,6 +762,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["no_public_ip"] = None
         __props__.__dict__["no_remove_data_disk"] = None
         __props__.__dict__["post_startup_script"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["proxy_uri"] = None
         __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["service_account"] = None
@@ -878,6 +881,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "install_gpu_driver")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        Required. User-defined unique ID of this instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter(name="instanceOwners")
     def instance_owners(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -900,6 +911,11 @@ class Instance(pulumi.CustomResource):
         Labels to apply to this instance. These can be later modified by the setLabels method.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="machineType")
@@ -972,6 +988,11 @@ class Instance(pulumi.CustomResource):
         Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
         return pulumi.get(self, "post_startup_script")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="proxyUri")

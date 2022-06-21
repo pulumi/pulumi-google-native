@@ -265,12 +265,24 @@ class AppProfile(pulumi.CustomResource):
 
         __props__ = AppProfileArgs.__new__(AppProfileArgs)
 
+        __props__.__dict__["app_profile_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["ignore_warnings"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["multi_cluster_routing_use_any"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["single_cluster_routing"] = None
         return AppProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appProfileId")
+    def app_profile_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+        """
+        return pulumi.get(self, "app_profile_id")
 
     @property
     @pulumi.getter
@@ -289,6 +301,19 @@ class AppProfile(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="ignoreWarnings")
+    def ignore_warnings(self) -> pulumi.Output[Optional[str]]:
+        """
+        If true, ignore safety checks when creating the app profile.
+        """
+        return pulumi.get(self, "ignore_warnings")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter(name="multiClusterRoutingUseAny")
     def multi_cluster_routing_use_any(self) -> pulumi.Output['outputs.MultiClusterRoutingUseAnyResponse']:
         """
@@ -303,6 +328,11 @@ class AppProfile(pulumi.CustomResource):
         The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="singleClusterRouting")

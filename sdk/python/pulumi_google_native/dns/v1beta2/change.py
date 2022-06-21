@@ -228,9 +228,12 @@ class Change(pulumi.CustomResource):
         __props__ = ChangeArgs.__new__(ChangeArgs)
 
         __props__.__dict__["additions"] = None
+        __props__.__dict__["client_operation_id"] = None
         __props__.__dict__["deletions"] = None
         __props__.__dict__["is_serving"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["managed_zone"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["status"] = None
         return Change(resource_name, opts=opts, __props__=__props__)
@@ -242,6 +245,14 @@ class Change(pulumi.CustomResource):
         Which ResourceRecordSets to add?
         """
         return pulumi.get(self, "additions")
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
+        return pulumi.get(self, "client_operation_id")
 
     @property
     @pulumi.getter
@@ -263,6 +274,16 @@ class Change(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="managedZone")
+    def managed_zone(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "managed_zone")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="startTime")

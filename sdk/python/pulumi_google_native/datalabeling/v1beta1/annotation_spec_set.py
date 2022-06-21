@@ -179,6 +179,7 @@ class AnnotationSpecSet(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return AnnotationSpecSet(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -220,4 +221,9 @@ class AnnotationSpecSet(pulumi.CustomResource):
         The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

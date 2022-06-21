@@ -229,15 +229,32 @@ class Backup(pulumi.CustomResource):
 
         __props__ = BackupArgs.__new__(BackupArgs)
 
+        __props__.__dict__["backup_id"] = None
+        __props__.__dict__["cluster_id"] = None
         __props__.__dict__["encryption_info"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["expire_time"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["size_bytes"] = None
         __props__.__dict__["source_table"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
         return Backup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[str]:
+        """
+        Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="encryptionInfo")
@@ -264,12 +281,22 @@ class Backup(pulumi.CustomResource):
         return pulumi.get(self, "expire_time")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sizeBytes")

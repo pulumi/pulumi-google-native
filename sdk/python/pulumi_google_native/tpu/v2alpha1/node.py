@@ -423,10 +423,14 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["health"] = None
         __props__.__dict__["health_description"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["network_endpoints"] = None
+        __props__.__dict__["node_id"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["runtime_version"] = None
         __props__.__dict__["scheduling_config"] = None
         __props__.__dict__["service_account"] = None
@@ -509,6 +513,11 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
@@ -538,6 +547,27 @@ class Node(pulumi.CustomResource):
         The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
         """
         return pulumi.get(self, "network_endpoints")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The unqualified resource name.
+        """
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Idempotent request UUID.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="runtimeVersion")

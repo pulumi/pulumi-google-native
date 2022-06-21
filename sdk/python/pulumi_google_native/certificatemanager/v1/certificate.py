@@ -270,18 +270,29 @@ class Certificate(pulumi.CustomResource):
 
         __props__ = CertificateArgs.__new__(CertificateArgs)
 
+        __props__.__dict__["certificate_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["managed"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pem_certificate"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["san_dnsnames"] = None
         __props__.__dict__["scope"] = None
         __props__.__dict__["self_managed"] = None
         __props__.__dict__["update_time"] = None
         return Certificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> pulumi.Output[str]:
+        """
+        Required. A user-provided name of the certificate.
+        """
+        return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -317,6 +328,11 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def managed(self) -> pulumi.Output['outputs.ManagedCertificateResponse']:
         """
         If set, contains configuration and state of a managed certificate.
@@ -338,6 +354,11 @@ class Certificate(pulumi.CustomResource):
         The PEM-encoded certificate chain.
         """
         return pulumi.get(self, "pem_certificate")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sanDnsnames")

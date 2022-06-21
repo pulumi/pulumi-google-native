@@ -237,11 +237,21 @@ class Partition(pulumi.CustomResource):
 
         __props__ = PartitionArgs.__new__(PartitionArgs)
 
+        __props__.__dict__["entity_id"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["lake_id"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["validate_only"] = None
         __props__.__dict__["values"] = None
+        __props__.__dict__["zone"] = None
         return Partition(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "entity_id")
 
     @property
     @pulumi.getter
@@ -252,11 +262,13 @@ class Partition(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="lakeId")
+    def lake_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "lake_id")
+
+    @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
-        """
-        Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-        """
         return pulumi.get(self, "location")
 
     @property
@@ -269,9 +281,27 @@ class Partition(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
+
+    @property
+    @pulumi.getter
     def values(self) -> pulumi.Output[Sequence[str]]:
         """
         Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
         """
         return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone")
 

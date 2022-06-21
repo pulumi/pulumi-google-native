@@ -195,6 +195,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["api_version"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["metadata"] = None
+        __props__.__dict__["namespace_id"] = None
         __props__.__dict__["spec"] = None
         __props__.__dict__["status"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
@@ -222,6 +223,11 @@ class Job(pulumi.CustomResource):
         Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "namespace_id")
 
     @property
     @pulumi.getter

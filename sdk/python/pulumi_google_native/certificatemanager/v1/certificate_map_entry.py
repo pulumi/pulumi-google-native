@@ -282,16 +282,33 @@ class CertificateMapEntry(pulumi.CustomResource):
 
         __props__ = CertificateMapEntryArgs.__new__(CertificateMapEntryArgs)
 
+        __props__.__dict__["certificate_map_entry_id"] = None
+        __props__.__dict__["certificate_map_id"] = None
         __props__.__dict__["certificates"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["hostname"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["matcher"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return CertificateMapEntry(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateMapEntryId")
+    def certificate_map_entry_id(self) -> pulumi.Output[str]:
+        """
+        Required. A user-provided name of the certificate map entry.
+        """
+        return pulumi.get(self, "certificate_map_entry_id")
+
+    @property
+    @pulumi.getter(name="certificateMapId")
+    def certificate_map_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "certificate_map_id")
 
     @property
     @pulumi.getter
@@ -335,6 +352,11 @@ class CertificateMapEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def matcher(self) -> pulumi.Output[str]:
         """
         A predefined matcher for particular cases, other than SNI selection.
@@ -348,6 +370,11 @@ class CertificateMapEntry(pulumi.CustomResource):
         A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

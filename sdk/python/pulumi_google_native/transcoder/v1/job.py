@@ -254,8 +254,10 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["input_uri"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["output_uri"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["template_id"] = None
@@ -304,6 +306,11 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -317,6 +324,11 @@ class Job(pulumi.CustomResource):
         Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         return pulumi.get(self, "output_uri")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="startTime")

@@ -198,6 +198,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["logging_enabled"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -232,6 +233,11 @@ class Instance(pulumi.CustomResource):
         Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

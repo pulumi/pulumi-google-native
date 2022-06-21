@@ -228,8 +228,11 @@ class ServiceBinding(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service"] = None
+        __props__.__dict__["service_binding_id"] = None
         __props__.__dict__["update_time"] = None
         return ServiceBinding(resource_name, opts=opts, __props__=__props__)
 
@@ -259,6 +262,11 @@ class ServiceBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
@@ -267,11 +275,24 @@ class ServiceBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def service(self) -> pulumi.Output[str]:
         """
         The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
         """
         return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceBindingId")
+    def service_binding_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the ServiceBinding resource to be created.
+        """
+        return pulumi.get(self, "service_binding_id")
 
     @property
     @pulumi.getter(name="updateTime")

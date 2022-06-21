@@ -294,8 +294,10 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["job_count"] = None
         __props__.__dict__["last_update_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pipeline_sources"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["schedule_info"] = None
         __props__.__dict__["scheduler_service_account_email"] = None
         __props__.__dict__["state"] = None
@@ -337,6 +339,11 @@ class Pipeline(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location.
@@ -350,6 +357,11 @@ class Pipeline(pulumi.CustomResource):
         Immutable. The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
         """
         return pulumi.get(self, "pipeline_sources")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="scheduleInfo")

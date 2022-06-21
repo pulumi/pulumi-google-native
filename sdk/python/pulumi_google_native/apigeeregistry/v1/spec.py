@@ -341,19 +341,24 @@ class Spec(pulumi.CustomResource):
         __props__ = SpecArgs.__new__(SpecArgs)
 
         __props__.__dict__["annotations"] = None
+        __props__.__dict__["api_id"] = None
+        __props__.__dict__["api_spec_id"] = None
         __props__.__dict__["contents"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["filename"] = None
         __props__.__dict__["hash"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["mime_type"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["revision_create_time"] = None
         __props__.__dict__["revision_id"] = None
         __props__.__dict__["revision_update_time"] = None
         __props__.__dict__["size_bytes"] = None
         __props__.__dict__["source_uri"] = None
+        __props__.__dict__["version_id"] = None
         return Spec(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -363,6 +368,19 @@ class Spec(pulumi.CustomResource):
         Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
+
+    @property
+    @pulumi.getter(name="apiSpecId")
+    def api_spec_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        """
+        return pulumi.get(self, "api_spec_id")
 
     @property
     @pulumi.getter
@@ -413,6 +431,11 @@ class Spec(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> pulumi.Output[str]:
         """
@@ -427,6 +450,11 @@ class Spec(pulumi.CustomResource):
         Resource name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="revisionCreateTime")
@@ -467,4 +495,9 @@ class Spec(pulumi.CustomResource):
         The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved.
         """
         return pulumi.get(self, "source_uri")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "version_id")
 

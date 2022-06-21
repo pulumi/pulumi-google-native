@@ -252,13 +252,16 @@ class Backup(pulumi.CustomResource):
 
         __props__ = BackupArgs.__new__(BackupArgs)
 
+        __props__.__dict__["backup_id"] = None
         __props__.__dict__["capacity_gb"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["download_bytes"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["source_file_share"] = None
         __props__.__dict__["source_instance"] = None
@@ -266,6 +269,14 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["storage_bytes"] = None
         return Backup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        """
+        return pulumi.get(self, "backup_id")
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -317,11 +328,21 @@ class Backup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

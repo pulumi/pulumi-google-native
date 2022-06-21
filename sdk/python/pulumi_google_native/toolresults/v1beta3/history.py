@@ -214,6 +214,8 @@ class History(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["history_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["test_platform"] = None
         return History(resource_name, opts=opts, __props__=__props__)
 
@@ -240,6 +242,19 @@ class History(pulumi.CustomResource):
         A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="testPlatform")

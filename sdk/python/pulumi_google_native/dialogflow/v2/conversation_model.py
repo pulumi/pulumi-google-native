@@ -253,7 +253,9 @@ class ConversationModel(pulumi.CustomResource):
         __props__.__dict__["datasets"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["language_code"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["smart_reply_model_metadata"] = None
         __props__.__dict__["state"] = None
         return ConversationModel(resource_name, opts=opts, __props__=__props__)
@@ -300,11 +302,21 @@ class ConversationModel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         ConversationModel resource name. Format: `projects//conversationModels/`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="smartReplyModelMetadata")

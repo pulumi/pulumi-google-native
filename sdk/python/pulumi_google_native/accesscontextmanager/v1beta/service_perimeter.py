@@ -190,12 +190,18 @@ class ServicePerimeter(pulumi.CustomResource):
 
         __props__ = ServicePerimeterArgs.__new__(ServicePerimeterArgs)
 
+        __props__.__dict__["access_policy_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["perimeter_type"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["title"] = None
         return ServicePerimeter(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter

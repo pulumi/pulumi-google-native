@@ -307,6 +307,13 @@ class Alias(pulumi.CustomResource):
 
         __props__.__dict__["alias"] = None
         __props__.__dict__["certs_info"] = None
+        __props__.__dict__["environment_id"] = None
+        __props__.__dict__["format"] = None
+        __props__.__dict__["ignore_expiry_validation"] = None
+        __props__.__dict__["ignore_newline_validation"] = None
+        __props__.__dict__["keystore_id"] = None
+        __props__.__dict__["organization_id"] = None
+        __props__.__dict__["password"] = None
         __props__.__dict__["type"] = None
         return Alias(resource_name, opts=opts, __props__=__props__)
 
@@ -314,7 +321,7 @@ class Alias(pulumi.CustomResource):
     @pulumi.getter
     def alias(self) -> pulumi.Output[str]:
         """
-        Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+        Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
         """
         return pulumi.get(self, "alias")
 
@@ -325,6 +332,53 @@ class Alias(pulumi.CustomResource):
         Chain of certificates under this alias.
         """
         return pulumi.get(self, "certs_info")
+
+    @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Output[str]:
+        """
+        Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="ignoreExpiryValidation")
+    def ignore_expiry_validation(self) -> pulumi.Output[Optional[str]]:
+        """
+        Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+        """
+        return pulumi.get(self, "ignore_expiry_validation")
+
+    @property
+    @pulumi.getter(name="ignoreNewlineValidation")
+    def ignore_newline_validation(self) -> pulumi.Output[Optional[str]]:
+        """
+        Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+        """
+        return pulumi.get(self, "ignore_newline_validation")
+
+    @property
+    @pulumi.getter(name="keystoreId")
+    def keystore_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "keystore_id")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter

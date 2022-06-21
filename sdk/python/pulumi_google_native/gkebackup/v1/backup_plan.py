@@ -294,6 +294,7 @@ class BackupPlan(pulumi.CustomResource):
         __props__ = BackupPlanArgs.__new__(BackupPlanArgs)
 
         __props__.__dict__["backup_config"] = None
+        __props__.__dict__["backup_plan_id"] = None
         __props__.__dict__["backup_schedule"] = None
         __props__.__dict__["cluster"] = None
         __props__.__dict__["create_time"] = None
@@ -301,7 +302,9 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["protected_pod_count"] = None
         __props__.__dict__["retention_policy"] = None
         __props__.__dict__["uid"] = None
@@ -315,6 +318,14 @@ class BackupPlan(pulumi.CustomResource):
         Defines the configuration of Backups created via this BackupPlan.
         """
         return pulumi.get(self, "backup_config")
+
+    @property
+    @pulumi.getter(name="backupPlanId")
+    def backup_plan_id(self) -> pulumi.Output[str]:
+        """
+        Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
+        """
+        return pulumi.get(self, "backup_plan_id")
 
     @property
     @pulumi.getter(name="backupSchedule")
@@ -374,11 +385,21 @@ class BackupPlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="protectedPodCount")

@@ -438,10 +438,12 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["message_retention_duration"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["push_config"] = None
         __props__.__dict__["retain_acked_messages"] = None
         __props__.__dict__["retry_policy"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["subscription_id"] = None
         __props__.__dict__["topic"] = None
         __props__.__dict__["topic_message_retention_duration"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
@@ -535,6 +537,11 @@ class Subscription(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> pulumi.Output['outputs.PushConfigResponse']:
         """
@@ -565,6 +572,11 @@ class Subscription(pulumi.CustomResource):
         An output-only field indicating whether or not the subscription can receive messages.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "subscription_id")
 
     @property
     @pulumi.getter

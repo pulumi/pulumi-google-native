@@ -163,6 +163,7 @@ class ChannelPartnerLink(pulumi.CustomResource):
 
         __props__ = ChannelPartnerLinkArgs.__new__(ChannelPartnerLinkArgs)
 
+        __props__.__dict__["account_id"] = None
         __props__.__dict__["channel_partner_cloud_identity_info"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["invite_link_uri"] = None
@@ -172,6 +173,11 @@ class ChannelPartnerLink(pulumi.CustomResource):
         __props__.__dict__["reseller_cloud_identity_id"] = None
         __props__.__dict__["update_time"] = None
         return ChannelPartnerLink(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="channelPartnerCloudIdentityInfo")

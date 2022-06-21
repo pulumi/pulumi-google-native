@@ -325,10 +325,15 @@ class MigratingVm(pulumi.CustomResource):
         __props__.__dict__["group"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["last_sync"] = None
+        __props__.__dict__["location"] = None
+        __props__.__dict__["migrating_vm_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["policy"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["recent_clone_jobs"] = None
         __props__.__dict__["recent_cutover_jobs"] = None
+        __props__.__dict__["request_id"] = None
+        __props__.__dict__["source_id"] = None
         __props__.__dict__["source_vm_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_time"] = None
@@ -417,6 +422,19 @@ class MigratingVm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="migratingVmId")
+    def migrating_vm_id(self) -> pulumi.Output[str]:
+        """
+        Required. The migratingVm identifier.
+        """
+        return pulumi.get(self, "migrating_vm_id")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The identifier of the MigratingVm.
@@ -430,6 +448,11 @@ class MigratingVm(pulumi.CustomResource):
         The replication schedule policy.
         """
         return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="recentCloneJobs")
@@ -446,6 +469,19 @@ class MigratingVm(pulumi.CustomResource):
         The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
         """
         return pulumi.get(self, "recent_cutover_jobs")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "source_id")
 
     @property
     @pulumi.getter(name="sourceVmId")

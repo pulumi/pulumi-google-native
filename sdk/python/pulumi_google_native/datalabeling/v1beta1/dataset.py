@@ -183,6 +183,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["input_configs"] = None
         __props__.__dict__["last_migrate_time"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -248,4 +249,9 @@ class Dataset(pulumi.CustomResource):
         Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

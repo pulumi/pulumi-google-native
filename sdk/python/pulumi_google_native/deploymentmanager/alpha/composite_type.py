@@ -213,6 +213,7 @@ class CompositeType(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["template_contents"] = None
@@ -257,6 +258,11 @@ class CompositeType(pulumi.CustomResource):
         The Operation that most recently ran, or is currently running, on this composite type.
         """
         return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

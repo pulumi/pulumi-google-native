@@ -265,9 +265,6 @@ class Rollout(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The name of the service associated with this Rollout.
-        """
         return pulumi.get(self, "service_name")
 
     @property

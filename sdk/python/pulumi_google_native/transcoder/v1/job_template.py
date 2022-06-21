@@ -186,7 +186,10 @@ class JobTemplate(pulumi.CustomResource):
         __props__ = JobTemplateArgs.__new__(JobTemplateArgs)
 
         __props__.__dict__["config"] = None
+        __props__.__dict__["job_template_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return JobTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -198,10 +201,28 @@ class JobTemplate(pulumi.CustomResource):
         return pulumi.get(self, "config")
 
     @property
+    @pulumi.getter(name="jobTemplateId")
+    def job_template_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+        """
+        return pulumi.get(self, "job_template_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

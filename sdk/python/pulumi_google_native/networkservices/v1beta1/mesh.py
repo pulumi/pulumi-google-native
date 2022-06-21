@@ -229,7 +229,10 @@ class Mesh(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["interception_port"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
+        __props__.__dict__["mesh_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["update_time"] = None
         return Mesh(resource_name, opts=opts, __props__=__props__)
@@ -268,11 +271,29 @@ class Mesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="meshId")
+    def mesh_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the Mesh resource to be created.
+        """
+        return pulumi.get(self, "mesh_id")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

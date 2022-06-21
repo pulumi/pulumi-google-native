@@ -151,6 +151,7 @@ class Release(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["ruleset_name"] = None
         __props__.__dict__["update_time"] = None
         return Release(resource_name, opts=opts, __props__=__props__)
@@ -170,6 +171,11 @@ class Release(pulumi.CustomResource):
         Format: `projects/{project_id}/releases/{release_id}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="rulesetName")

@@ -240,11 +240,28 @@ class DicomStore(pulumi.CustomResource):
 
         __props__ = DicomStoreArgs.__new__(DicomStoreArgs)
 
+        __props__.__dict__["dataset_id"] = None
+        __props__.__dict__["dicom_store_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["stream_configs"] = None
         return DicomStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="dicomStoreId")
+    def dicom_store_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        """
+        return pulumi.get(self, "dicom_store_id")
 
     @property
     @pulumi.getter
@@ -253,6 +270,11 @@ class DicomStore(pulumi.CustomResource):
         User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -269,6 +291,11 @@ class DicomStore(pulumi.CustomResource):
         Notification destination for new DICOM instances. Supplied by the client.
         """
         return pulumi.get(self, "notification_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="streamConfigs")

@@ -264,6 +264,8 @@ class Backup(pulumi.CustomResource):
         __props__ = BackupArgs.__new__(BackupArgs)
 
         __props__.__dict__["all_namespaces"] = None
+        __props__.__dict__["backup_id"] = None
+        __props__.__dict__["backup_plan_id"] = None
         __props__.__dict__["cluster_metadata"] = None
         __props__.__dict__["complete_time"] = None
         __props__.__dict__["config_backup_size_bytes"] = None
@@ -276,9 +278,11 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["encryption_key"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["manual"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pod_count"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["resource_count"] = None
         __props__.__dict__["retain_days"] = None
         __props__.__dict__["retain_expire_time"] = None
@@ -299,6 +303,19 @@ class Backup(pulumi.CustomResource):
         If True, all namespaces were included in the Backup.
         """
         return pulumi.get(self, "all_namespaces")
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+        """
+        return pulumi.get(self, "backup_id")
+
+    @property
+    @pulumi.getter(name="backupPlanId")
+    def backup_plan_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "backup_plan_id")
 
     @property
     @pulumi.getter(name="clusterMetadata")
@@ -398,6 +415,11 @@ class Backup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def manual(self) -> pulumi.Output[bool]:
         """
         This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
@@ -419,6 +441,11 @@ class Backup(pulumi.CustomResource):
         The total number of Kubernetes Pods contained in the Backup.
         """
         return pulumi.get(self, "pod_count")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="resourceCount")

@@ -243,8 +243,10 @@ class CanaryEvaluation(pulumi.CustomResource):
         __props__.__dict__["control"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["end_time"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["metric_labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["treatment"] = None
@@ -276,6 +278,11 @@ class CanaryEvaluation(pulumi.CustomResource):
         return pulumi.get(self, "end_time")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter(name="metricLabels")
     def metric_labels(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse']:
         """
@@ -290,6 +297,11 @@ class CanaryEvaluation(pulumi.CustomResource):
         Name of the canary evalution.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="startTime")

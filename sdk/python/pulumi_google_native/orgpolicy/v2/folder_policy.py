@@ -178,6 +178,7 @@ class FolderPolicy(pulumi.CustomResource):
         __props__ = FolderPolicyArgs.__new__(FolderPolicyArgs)
 
         __props__.__dict__["alternate"] = None
+        __props__.__dict__["folder_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["spec"] = None
         return FolderPolicy(resource_name, opts=opts, __props__=__props__)
@@ -189,6 +190,11 @@ class FolderPolicy(pulumi.CustomResource):
         Deprecated.
         """
         return pulumi.get(self, "alternate")
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "folder_id")
 
     @property
     @pulumi.getter

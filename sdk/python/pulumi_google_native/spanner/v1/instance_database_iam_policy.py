@@ -205,7 +205,10 @@ class InstanceDatabaseIamPolicy(pulumi.CustomResource):
         __props__ = InstanceDatabaseIamPolicyArgs.__new__(InstanceDatabaseIamPolicyArgs)
 
         __props__.__dict__["bindings"] = None
+        __props__.__dict__["database_id"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["instance_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["version"] = None
         return InstanceDatabaseIamPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -218,12 +221,27 @@ class InstanceDatabaseIamPolicy(pulumi.CustomResource):
         return pulumi.get(self, "bindings")
 
     @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "database_id")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
         `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -291,8 +291,11 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["environment"] = None
         __props__.__dict__["event_trigger"] = None
+        __props__.__dict__["function_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service_config"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_messages"] = None
@@ -332,6 +335,14 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "event_trigger")
 
     @property
+    @pulumi.getter(name="functionId")
+    def function_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        """
+        return pulumi.get(self, "function_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -341,11 +352,21 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceConfig")

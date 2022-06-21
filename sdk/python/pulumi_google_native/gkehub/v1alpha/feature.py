@@ -235,10 +235,14 @@ class Feature(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
+        __props__.__dict__["feature_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["membership_specs"] = None
         __props__.__dict__["membership_states"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["resource_state"] = None
         __props__.__dict__["spec"] = None
         __props__.__dict__["state"] = None
@@ -262,12 +266,25 @@ class Feature(pulumi.CustomResource):
         return pulumi.get(self, "delete_time")
 
     @property
+    @pulumi.getter(name="featureId")
+    def feature_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the feature to create.
+        """
+        return pulumi.get(self, "feature_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         GCP labels for this Feature.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="membershipSpecs")
@@ -292,6 +309,19 @@ class Feature(pulumi.CustomResource):
         The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="resourceState")

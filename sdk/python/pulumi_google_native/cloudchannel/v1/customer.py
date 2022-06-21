@@ -275,8 +275,10 @@ class Customer(pulumi.CustomResource):
 
         __props__ = CustomerArgs.__new__(CustomerArgs)
 
+        __props__.__dict__["account_id"] = None
         __props__.__dict__["alternate_email"] = None
         __props__.__dict__["channel_partner_id"] = None
+        __props__.__dict__["channel_partner_link_id"] = None
         __props__.__dict__["cloud_identity_id"] = None
         __props__.__dict__["cloud_identity_info"] = None
         __props__.__dict__["create_time"] = None
@@ -288,6 +290,11 @@ class Customer(pulumi.CustomResource):
         __props__.__dict__["primary_contact_info"] = None
         __props__.__dict__["update_time"] = None
         return Customer(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="alternateEmail")
@@ -304,6 +311,11 @@ class Customer(pulumi.CustomResource):
         Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
         """
         return pulumi.get(self, "channel_partner_id")
+
+    @property
+    @pulumi.getter(name="channelPartnerLinkId")
+    def channel_partner_link_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "channel_partner_link_id")
 
     @property
     @pulumi.getter(name="cloudIdentityId")

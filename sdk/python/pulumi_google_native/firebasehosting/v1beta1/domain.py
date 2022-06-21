@@ -194,8 +194,10 @@ class Domain(pulumi.CustomResource):
 
         __props__.__dict__["domain_name"] = None
         __props__.__dict__["domain_redirect"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["provisioning"] = None
         __props__.__dict__["site"] = None
+        __props__.__dict__["site_id"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["update_time"] = None
         return Domain(resource_name, opts=opts, __props__=__props__)
@@ -218,6 +220,11 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def provisioning(self) -> pulumi.Output['outputs.DomainProvisioningResponse']:
         """
         Information about the provisioning of certificates and the health of the DNS resolution for the domain.
@@ -231,6 +238,11 @@ class Domain(pulumi.CustomResource):
         The site name of the association.
         """
         return pulumi.get(self, "site")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "site_id")
 
     @property
     @pulumi.getter

@@ -231,6 +231,7 @@ class Instruction(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pdf_instruction"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         return Instruction(resource_name, opts=opts, __props__=__props__)
 
@@ -297,6 +298,11 @@ class Instruction(pulumi.CustomResource):
         Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
         """
         return pulumi.get(self, "pdf_instruction")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -174,9 +174,12 @@ class Study(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["inactive_reason"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["study_config"] = None
+        __props__.__dict__["study_id"] = None
         return Study(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -197,11 +200,21 @@ class Study(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of a study.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -218,4 +231,12 @@ class Study(pulumi.CustomResource):
         Configuration of the study.
         """
         return pulumi.get(self, "study_config")
+
+    @property
+    @pulumi.getter(name="studyId")
+    def study_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the study, which will become the final component of the study's resource name.
+        """
+        return pulumi.get(self, "study_id")
 

@@ -180,9 +180,22 @@ class Entry(pulumi.CustomResource):
 
         __props__ = EntryArgs.__new__(EntryArgs)
 
+        __props__.__dict__["api_id"] = None
+        __props__.__dict__["keyvaluemap_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["value"] = None
         return Entry(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
+
+    @property
+    @pulumi.getter(name="keyvaluemapId")
+    def keyvaluemap_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "keyvaluemap_id")
 
     @property
     @pulumi.getter
@@ -191,6 +204,11 @@ class Entry(pulumi.CustomResource):
         Resource URI that can be used to identify the scope of the key value map entries.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

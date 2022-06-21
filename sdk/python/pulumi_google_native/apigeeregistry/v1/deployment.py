@@ -364,6 +364,8 @@ class Deployment(pulumi.CustomResource):
 
         __props__.__dict__["access_guidance"] = None
         __props__.__dict__["annotations"] = None
+        __props__.__dict__["api_deployment_id"] = None
+        __props__.__dict__["api_id"] = None
         __props__.__dict__["api_spec_revision"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
@@ -372,7 +374,9 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["external_channel_uri"] = None
         __props__.__dict__["intended_audience"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["revision_create_time"] = None
         __props__.__dict__["revision_id"] = None
         __props__.__dict__["revision_update_time"] = None
@@ -393,6 +397,19 @@ class Deployment(pulumi.CustomResource):
         Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="apiDeploymentId")
+    def api_deployment_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        """
+        return pulumi.get(self, "api_deployment_id")
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter(name="apiSpecRevision")
@@ -460,11 +477,21 @@ class Deployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="revisionCreateTime")

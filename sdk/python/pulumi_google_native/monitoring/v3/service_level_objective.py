@@ -309,8 +309,12 @@ class ServiceLevelObjective(pulumi.CustomResource):
         __props__.__dict__["goal"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["rolling_period"] = None
+        __props__.__dict__["service_id"] = None
         __props__.__dict__["service_level_indicator"] = None
+        __props__.__dict__["service_level_objective_id"] = None
         __props__.__dict__["user_labels"] = None
+        __props__.__dict__["v3_id"] = None
+        __props__.__dict__["v3_id1"] = None
         return ServiceLevelObjective(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -354,6 +358,11 @@ class ServiceLevelObjective(pulumi.CustomResource):
         return pulumi.get(self, "rolling_period")
 
     @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "service_id")
+
+    @property
     @pulumi.getter(name="serviceLevelIndicator")
     def service_level_indicator(self) -> pulumi.Output['outputs.ServiceLevelIndicatorResponse']:
         """
@@ -362,10 +371,28 @@ class ServiceLevelObjective(pulumi.CustomResource):
         return pulumi.get(self, "service_level_indicator")
 
     @property
+    @pulumi.getter(name="serviceLevelObjectiveId")
+    def service_level_objective_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        """
+        return pulumi.get(self, "service_level_objective_id")
+
+    @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         return pulumi.get(self, "user_labels")
+
+    @property
+    @pulumi.getter(name="v3Id")
+    def v3_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v3_id")
+
+    @property
+    @pulumi.getter(name="v3Id1")
+    def v3_id1(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v3_id1")
 

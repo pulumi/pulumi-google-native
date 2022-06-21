@@ -260,12 +260,29 @@ class Hl7V2Store(pulumi.CustomResource):
 
         __props__ = Hl7V2StoreArgs.__new__(Hl7V2StoreArgs)
 
+        __props__.__dict__["dataset_id"] = None
+        __props__.__dict__["hl7_v2_store_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_configs"] = None
         __props__.__dict__["parser_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reject_duplicate_message"] = None
         return Hl7V2Store(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="hl7V2StoreId")
+    def hl7_v2_store_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        """
+        return pulumi.get(self, "hl7_v2_store_id")
 
     @property
     @pulumi.getter
@@ -274,6 +291,11 @@ class Hl7V2Store(pulumi.CustomResource):
         User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -298,6 +320,11 @@ class Hl7V2Store(pulumi.CustomResource):
         The configuration for the parser. It determines how the server parses the messages.
         """
         return pulumi.get(self, "parser_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="rejectDuplicateMessage")

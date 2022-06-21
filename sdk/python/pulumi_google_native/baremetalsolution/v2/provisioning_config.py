@@ -272,6 +272,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["ticket_id"] = None
         __props__.__dict__["update_time"] = None
@@ -290,7 +291,7 @@ class ProvisioningConfig(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
         """
-        Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
+        Optional. Email provided to send a confirmation with provisioning config to.
         """
         return pulumi.get(self, "email")
 
@@ -313,9 +314,6 @@ class ProvisioningConfig(pulumi.CustomResource):
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
-        """
-        Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
-        """
         return pulumi.get(self, "location")
 
     @property
@@ -333,6 +331,11 @@ class ProvisioningConfig(pulumi.CustomResource):
         Networks to be created.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

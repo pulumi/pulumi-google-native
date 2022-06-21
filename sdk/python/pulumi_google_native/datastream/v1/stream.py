@@ -381,11 +381,17 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["destination_config"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["errors"] = None
+        __props__.__dict__["force"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["source_config"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["stream_id"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Stream(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -446,6 +452,14 @@ class Stream(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Create the stream without validating it.
+        """
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels.
@@ -454,11 +468,29 @@ class Stream(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The stream's name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="sourceConfig")
@@ -477,10 +509,26 @@ class Stream(pulumi.CustomResource):
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="streamId")
+    def stream_id(self) -> pulumi.Output[str]:
+        """
+        Required. The stream identifier.
+        """
+        return pulumi.get(self, "stream_id")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
         The last update time of the stream.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Only validate the stream, but don't create any resources. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
 

@@ -218,7 +218,9 @@ class MuteConfig(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["filter"] = None
         __props__.__dict__["most_recent_editor"] = None
+        __props__.__dict__["mute_config_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         return MuteConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -263,12 +265,25 @@ class MuteConfig(pulumi.CustomResource):
         return pulumi.get(self, "most_recent_editor")
 
     @property
+    @pulumi.getter(name="muteConfigId")
+    def mute_config_id(self) -> pulumi.Output[str]:
+        """
+        Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        """
+        return pulumi.get(self, "mute_config_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -259,6 +259,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -294,6 +295,11 @@ class Instance(pulumi.CustomResource):
         The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

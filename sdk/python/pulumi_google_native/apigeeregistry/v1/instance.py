@@ -193,7 +193,10 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["config"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["instance_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
         __props__.__dict__["update_time"] = None
@@ -216,12 +219,30 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

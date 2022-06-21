@@ -330,7 +330,9 @@ class NodeTemplate(pulumi.CustomResource):
         __props__.__dict__["node_affinity_labels"] = None
         __props__.__dict__["node_type"] = None
         __props__.__dict__["node_type_flexibility"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["server_binding"] = None
         __props__.__dict__["status"] = None
@@ -413,11 +415,21 @@ class NodeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The name of the region where the node template resides, such as us-central1.
-        """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="selfLink")

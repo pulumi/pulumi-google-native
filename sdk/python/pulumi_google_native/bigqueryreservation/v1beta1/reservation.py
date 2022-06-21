@@ -246,8 +246,11 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["concurrency"] = None
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["ignore_idle_slots"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["multi_region_auxiliary"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["reservation_id"] = None
         __props__.__dict__["slot_capacity"] = None
         __props__.__dict__["update_time"] = None
         return Reservation(resource_name, opts=opts, __props__=__props__)
@@ -277,6 +280,11 @@ class Reservation(pulumi.CustomResource):
         return pulumi.get(self, "ignore_idle_slots")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="multiRegionAuxiliary")
     def multi_region_auxiliary(self) -> pulumi.Output[bool]:
         """
@@ -291,6 +299,19 @@ class Reservation(pulumi.CustomResource):
         The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+        """
+        return pulumi.get(self, "reservation_id")
 
     @property
     @pulumi.getter(name="slotCapacity")

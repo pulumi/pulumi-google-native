@@ -236,8 +236,12 @@ class Runtime(pulumi.CustomResource):
         __props__.__dict__["access_config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["health_state"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metrics"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
+        __props__.__dict__["runtime_id"] = None
         __props__.__dict__["software_config"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
@@ -270,6 +274,11 @@ class Runtime(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def metrics(self) -> pulumi.Output['outputs.RuntimeMetricsResponse']:
         """
         Contains Runtime daemon metrics such as Service status and JupyterLab stats.
@@ -283,6 +292,27 @@ class Runtime(pulumi.CustomResource):
         The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Idempotent request UUID.
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="runtimeId")
+    def runtime_id(self) -> pulumi.Output[str]:
+        """
+        Required. User-defined unique ID of this Runtime.
+        """
+        return pulumi.get(self, "runtime_id")
 
     @property
     @pulumi.getter(name="softwareConfig")

@@ -261,8 +261,11 @@ class RestorePlan(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["restore_config"] = None
+        __props__.__dict__["restore_plan_id"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return RestorePlan(resource_name, opts=opts, __props__=__props__)
@@ -317,11 +320,21 @@ class RestorePlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="restoreConfig")
@@ -330,6 +343,14 @@ class RestorePlan(pulumi.CustomResource):
         Configuration of Restores created via this RestorePlan.
         """
         return pulumi.get(self, "restore_config")
+
+    @property
+    @pulumi.getter(name="restorePlanId")
+    def restore_plan_id(self) -> pulumi.Output[str]:
+        """
+        Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+        """
+        return pulumi.get(self, "restore_plan_id")
 
     @property
     @pulumi.getter

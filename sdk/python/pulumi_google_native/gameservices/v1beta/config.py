@@ -262,14 +262,26 @@ class Config(pulumi.CustomResource):
 
         __props__ = ConfigArgs.__new__(ConfigArgs)
 
+        __props__.__dict__["config_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fleet_configs"] = None
+        __props__.__dict__["game_server_deployment_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["scaling_configs"] = None
         __props__.__dict__["update_time"] = None
         return Config(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the game server config resource to create.
+        """
+        return pulumi.get(self, "config_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -296,6 +308,11 @@ class Config(pulumi.CustomResource):
         return pulumi.get(self, "fleet_configs")
 
     @property
+    @pulumi.getter(name="gameServerDeploymentId")
+    def game_server_deployment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "game_server_deployment_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -305,11 +322,21 @@ class Config(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="scalingConfigs")

@@ -191,12 +191,22 @@ class EndpointAttachment(pulumi.CustomResource):
 
         __props__ = EndpointAttachmentArgs.__new__(EndpointAttachmentArgs)
 
+        __props__.__dict__["endpoint_attachment_id"] = None
         __props__.__dict__["host"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["service_attachment"] = None
         __props__.__dict__["state"] = None
         return EndpointAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="endpointAttachmentId")
+    def endpoint_attachment_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        """
+        return pulumi.get(self, "endpoint_attachment_id")
 
     @property
     @pulumi.getter
@@ -221,6 +231,11 @@ class EndpointAttachment(pulumi.CustomResource):
         Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="serviceAttachment")

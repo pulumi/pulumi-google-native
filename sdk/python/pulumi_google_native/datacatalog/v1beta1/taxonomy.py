@@ -192,8 +192,10 @@ class Taxonomy(pulumi.CustomResource):
         __props__.__dict__["activated_policy_types"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["policy_tag_count"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["taxonomy_timestamps"] = None
         return Taxonomy(resource_name, opts=opts, __props__=__props__)
 
@@ -223,6 +225,11 @@ class Taxonomy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
@@ -236,6 +243,11 @@ class Taxonomy(pulumi.CustomResource):
         Number of policy tags contained in this taxonomy.
         """
         return pulumi.get(self, "policy_tag_count")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="taxonomyTimestamps")

@@ -434,11 +434,13 @@ class Build(pulumi.CustomResource):
         __props__.__dict__["failure_info"] = None
         __props__.__dict__["finish_time"] = None
         __props__.__dict__["images"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["log_url"] = None
         __props__.__dict__["logs_bucket"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["options"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["project_id"] = None
         __props__.__dict__["queue_ttl"] = None
         __props__.__dict__["results"] = None
         __props__.__dict__["secrets"] = None
@@ -521,6 +523,11 @@ class Build(pulumi.CustomResource):
         return pulumi.get(self, "images")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="logUrl")
     def log_url(self) -> pulumi.Output[str]:
         """
@@ -555,10 +562,15 @@ class Build(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        ID of the project.
-        """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Required. ID of the project.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="queueTtl")

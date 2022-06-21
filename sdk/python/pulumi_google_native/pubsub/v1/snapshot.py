@@ -171,6 +171,8 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["snapshot_id"] = None
         __props__.__dict__["topic"] = None
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
@@ -197,6 +199,16 @@ class Snapshot(pulumi.CustomResource):
         The name of the snapshot.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter

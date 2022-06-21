@@ -232,6 +232,7 @@ class FolderContact(pulumi.CustomResource):
         __props__ = FolderContactArgs.__new__(FolderContactArgs)
 
         __props__.__dict__["email"] = None
+        __props__.__dict__["folder_id"] = None
         __props__.__dict__["language_tag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_category_subscriptions"] = None
@@ -246,6 +247,11 @@ class FolderContact(pulumi.CustomResource):
         The email address to send notifications to. This does not need to be a Google account.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "folder_id")
 
     @property
     @pulumi.getter(name="languageTag")

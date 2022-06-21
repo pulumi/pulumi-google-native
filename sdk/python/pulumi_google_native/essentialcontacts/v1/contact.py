@@ -234,6 +234,7 @@ class Contact(pulumi.CustomResource):
         __props__.__dict__["language_tag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_category_subscriptions"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["validate_time"] = None
         __props__.__dict__["validation_state"] = None
         return Contact(resource_name, opts=opts, __props__=__props__)
@@ -269,6 +270,11 @@ class Contact(pulumi.CustomResource):
         The categories of notifications that the contact will receive communications for.
         """
         return pulumi.get(self, "notification_category_subscriptions")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="validateTime")

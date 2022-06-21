@@ -232,11 +232,14 @@ class Trial(pulumi.CustomResource):
         __props__.__dict__["end_time"] = None
         __props__.__dict__["final_measurement"] = None
         __props__.__dict__["infeasible_reason"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["measurements"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parameters"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["study_id"] = None
         __props__.__dict__["trial_infeasible"] = None
         return Trial(resource_name, opts=opts, __props__=__props__)
 
@@ -274,6 +277,11 @@ class Trial(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def measurements(self) -> pulumi.Output[Sequence['outputs.GoogleCloudMlV1__MeasurementResponse']]:
         """
         A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
@@ -297,6 +305,11 @@ class Trial(pulumi.CustomResource):
         return pulumi.get(self, "parameters")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[str]:
         """
@@ -311,6 +324,11 @@ class Trial(pulumi.CustomResource):
         The detailed state of a trial.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="studyId")
+    def study_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "study_id")
 
     @property
     @pulumi.getter(name="trialInfeasible")

@@ -181,8 +181,10 @@ class StoredInfoType(pulumi.CustomResource):
         __props__ = StoredInfoTypeArgs.__new__(StoredInfoTypeArgs)
 
         __props__.__dict__["current_version"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pending_versions"] = None
+        __props__.__dict__["project"] = None
         return StoredInfoType(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -192,6 +194,11 @@ class StoredInfoType(pulumi.CustomResource):
         Current version of the stored info type.
         """
         return pulumi.get(self, "current_version")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -208,4 +215,9 @@ class StoredInfoType(pulumi.CustomResource):
         Pending versions of the stored info type. Empty if no versions are pending.
         """
         return pulumi.get(self, "pending_versions")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

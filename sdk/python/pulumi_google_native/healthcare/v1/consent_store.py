@@ -238,11 +238,28 @@ class ConsentStore(pulumi.CustomResource):
 
         __props__ = ConsentStoreArgs.__new__(ConsentStoreArgs)
 
+        __props__.__dict__["consent_store_id"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["default_consent_ttl"] = None
         __props__.__dict__["enable_consent_create_on_update"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return ConsentStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
+        """
+        return pulumi.get(self, "consent_store_id")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter(name="defaultConsentTtl")
@@ -270,9 +287,19 @@ class ConsentStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

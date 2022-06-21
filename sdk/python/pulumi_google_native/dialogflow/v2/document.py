@@ -307,11 +307,14 @@ class Document(pulumi.CustomResource):
         __props__.__dict__["content_uri"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_auto_reload"] = None
+        __props__.__dict__["knowledge_base_id"] = None
         __props__.__dict__["knowledge_types"] = None
         __props__.__dict__["latest_reload_status"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["mime_type"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["raw_content"] = None
         __props__.__dict__["state"] = None
         return Document(resource_name, opts=opts, __props__=__props__)
@@ -341,6 +344,11 @@ class Document(pulumi.CustomResource):
         return pulumi.get(self, "enable_auto_reload")
 
     @property
+    @pulumi.getter(name="knowledgeBaseId")
+    def knowledge_base_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "knowledge_base_id")
+
+    @property
     @pulumi.getter(name="knowledgeTypes")
     def knowledge_types(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -355,6 +363,11 @@ class Document(pulumi.CustomResource):
         The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
         """
         return pulumi.get(self, "latest_reload_status")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -379,6 +392,11 @@ class Document(pulumi.CustomResource):
         Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="rawContent")

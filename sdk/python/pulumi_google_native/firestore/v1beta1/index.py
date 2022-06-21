@@ -206,8 +206,10 @@ class Index(pulumi.CustomResource):
         __props__ = IndexArgs.__new__(IndexArgs)
 
         __props__.__dict__["collection_id"] = None
+        __props__.__dict__["database_id"] = None
         __props__.__dict__["fields"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         return Index(resource_name, opts=opts, __props__=__props__)
 
@@ -218,6 +220,11 @@ class Index(pulumi.CustomResource):
         The collection ID to which this index applies. Required.
         """
         return pulumi.get(self, "collection_id")
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "database_id")
 
     @property
     @pulumi.getter
@@ -234,6 +241,11 @@ class Index(pulumi.CustomResource):
         The resource name of the index. Output only.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

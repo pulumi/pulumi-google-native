@@ -458,6 +458,7 @@ class RatePlan(pulumi.CustomResource):
         __props__ = RatePlanArgs.__new__(RatePlanArgs)
 
         __props__.__dict__["apiproduct"] = None
+        __props__.__dict__["apiproduct_id"] = None
         __props__.__dict__["billing_period"] = None
         __props__.__dict__["consumption_pricing_rates"] = None
         __props__.__dict__["consumption_pricing_type"] = None
@@ -470,6 +471,7 @@ class RatePlan(pulumi.CustomResource):
         __props__.__dict__["fixed_recurring_fee"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["payment_funding_model"] = None
         __props__.__dict__["revenue_share_rates"] = None
         __props__.__dict__["revenue_share_type"] = None
@@ -485,6 +487,11 @@ class RatePlan(pulumi.CustomResource):
         Name of the API product that the rate plan is associated with.
         """
         return pulumi.get(self, "apiproduct")
+
+    @property
+    @pulumi.getter(name="apiproductId")
+    def apiproduct_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "apiproduct_id")
 
     @property
     @pulumi.getter(name="billingPeriod")
@@ -581,6 +588,11 @@ class RatePlan(pulumi.CustomResource):
         Name of the rate plan.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="paymentFundingModel")

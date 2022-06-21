@@ -330,7 +330,9 @@ class SecuritySetting(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["insights_export_settings"] = None
         __props__.__dict__["inspect_template"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["purge_data_types"] = None
         __props__.__dict__["redaction_scope"] = None
         __props__.__dict__["redaction_strategy"] = None
@@ -379,11 +381,21 @@ class SecuritySetting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="purgeDataTypes")

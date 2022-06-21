@@ -280,8 +280,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["instance_filter"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["os_policies"] = None
+        __props__.__dict__["os_policy_assignment_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["revision_create_time"] = None
         __props__.__dict__["revision_id"] = None
@@ -332,6 +335,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
@@ -345,6 +353,19 @@ class OsPolicyAssignment(pulumi.CustomResource):
         List of OS policies to be applied to the VMs.
         """
         return pulumi.get(self, "os_policies")
+
+    @property
+    @pulumi.getter(name="osPolicyAssignmentId")
+    def os_policy_assignment_id(self) -> pulumi.Output[str]:
+        """
+        Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        """
+        return pulumi.get(self, "os_policy_assignment_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

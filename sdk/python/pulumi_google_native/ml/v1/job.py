@@ -271,6 +271,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["prediction_input"] = None
         __props__.__dict__["prediction_output"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["training_input"] = None
@@ -348,6 +349,11 @@ class Job(pulumi.CustomResource):
         The current prediction job result.
         """
         return pulumi.get(self, "prediction_output")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="startTime")

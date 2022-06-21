@@ -171,14 +171,25 @@ class Backup(pulumi.CustomResource):
 
         __props__ = BackupArgs.__new__(BackupArgs)
 
+        __props__.__dict__["backup_id"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["domain_id"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["update_time"] = None
         return Backup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[str]:
+        """
+        Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
+        """
+        return pulumi.get(self, "backup_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -187,6 +198,11 @@ class Backup(pulumi.CustomResource):
         The time the backups was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter
@@ -203,6 +219,11 @@ class Backup(pulumi.CustomResource):
         The unique name of the Backup in the form of `projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

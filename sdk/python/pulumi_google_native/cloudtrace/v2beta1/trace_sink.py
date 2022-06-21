@@ -152,6 +152,7 @@ class TraceSink(pulumi.CustomResource):
 
         __props__.__dict__["name"] = None
         __props__.__dict__["output_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["writer_identity"] = None
         return TraceSink(resource_name, opts=opts, __props__=__props__)
 
@@ -170,6 +171,11 @@ class TraceSink(pulumi.CustomResource):
         The export destination.
         """
         return pulumi.get(self, "output_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="writerIdentity")

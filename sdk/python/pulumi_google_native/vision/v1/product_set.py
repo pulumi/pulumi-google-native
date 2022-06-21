@@ -187,7 +187,10 @@ class ProductSet(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["index_error"] = None
         __props__.__dict__["index_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["product_set_id"] = None
+        __props__.__dict__["project"] = None
         return ProductSet(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -216,9 +219,27 @@ class ProductSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="productSetId")
+    def product_set_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        """
+        return pulumi.get(self, "product_set_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

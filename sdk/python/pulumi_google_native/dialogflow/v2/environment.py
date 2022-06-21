@@ -232,8 +232,11 @@ class Environment(pulumi.CustomResource):
 
         __props__.__dict__["agent_version"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["fulfillment"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["text_to_speech_settings"] = None
         __props__.__dict__["update_time"] = None
@@ -256,6 +259,14 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        """
+        Required. The unique id of the new environment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def fulfillment(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2FulfillmentResponse']:
         """
@@ -265,11 +276,21 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

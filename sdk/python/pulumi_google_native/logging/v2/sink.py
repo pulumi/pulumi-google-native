@@ -329,6 +329,8 @@ class Sink(pulumi.CustomResource):
         __props__.__dict__["include_children"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["output_version_format"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["unique_writer_identity"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["writer_identity"] = None
         return Sink(resource_name, opts=opts, __props__=__props__)
@@ -412,6 +414,19 @@ class Sink(pulumi.CustomResource):
         Deprecated. This field is unused.
         """
         return pulumi.get(self, "output_version_format")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="uniqueWriterIdentity")
+    def unique_writer_identity(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+        """
+        return pulumi.get(self, "unique_writer_identity")
 
     @property
     @pulumi.getter(name="updateTime")

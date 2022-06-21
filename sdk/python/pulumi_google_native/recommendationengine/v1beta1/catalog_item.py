@@ -331,15 +331,23 @@ class CatalogItem(pulumi.CustomResource):
 
         __props__ = CatalogItemArgs.__new__(CatalogItemArgs)
 
+        __props__.__dict__["catalog_id"] = None
         __props__.__dict__["category_hierarchies"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["item_attributes"] = None
         __props__.__dict__["item_group_id"] = None
         __props__.__dict__["language_code"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["product_metadata"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["title"] = None
         return CatalogItem(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="catalogId")
+    def catalog_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "catalog_id")
 
     @property
     @pulumi.getter(name="categoryHierarchies")
@@ -382,12 +390,22 @@ class CatalogItem(pulumi.CustomResource):
         return pulumi.get(self, "language_code")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="productMetadata")
     def product_metadata(self) -> pulumi.Output['outputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse']:
         """
         Optional. Metadata specific to retail products.
         """
         return pulumi.get(self, "product_metadata")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

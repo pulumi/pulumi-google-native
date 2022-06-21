@@ -349,6 +349,7 @@ class HostQuery(pulumi.CustomResource):
         __props__.__dict__["error"] = None
         __props__.__dict__["execution_time"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["query_params"] = None
         __props__.__dict__["report_definition_id"] = None
         __props__.__dict__["result"] = None
@@ -398,6 +399,11 @@ class HostQuery(pulumi.CustomResource):
         Asynchronous Query Name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="queryParams")

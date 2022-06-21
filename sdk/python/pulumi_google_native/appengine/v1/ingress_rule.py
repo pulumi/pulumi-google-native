@@ -191,6 +191,7 @@ class IngressRule(pulumi.CustomResource):
         __props__ = IngressRuleArgs.__new__(IngressRuleArgs)
 
         __props__.__dict__["action"] = None
+        __props__.__dict__["app_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["priority"] = None
         __props__.__dict__["source_range"] = None
@@ -203,6 +204,11 @@ class IngressRule(pulumi.CustomResource):
         The action to take on matched requests.
         """
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter

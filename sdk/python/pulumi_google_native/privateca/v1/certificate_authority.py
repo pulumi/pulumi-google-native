@@ -339,6 +339,8 @@ class CertificateAuthority(pulumi.CustomResource):
 
         __props__.__dict__["access_urls"] = None
         __props__.__dict__["ca_certificate_descriptions"] = None
+        __props__.__dict__["ca_pool_id"] = None
+        __props__.__dict__["certificate_authority_id"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
@@ -347,8 +349,11 @@ class CertificateAuthority(pulumi.CustomResource):
         __props__.__dict__["key_spec"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["lifetime"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pem_ca_certificates"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["subordinate_config"] = None
         __props__.__dict__["tier"] = None
@@ -371,6 +376,19 @@ class CertificateAuthority(pulumi.CustomResource):
         A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
         """
         return pulumi.get(self, "ca_certificate_descriptions")
+
+    @property
+    @pulumi.getter(name="caPoolId")
+    def ca_pool_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "ca_pool_id")
+
+    @property
+    @pulumi.getter(name="certificateAuthorityId")
+    def certificate_authority_id(self) -> pulumi.Output[str]:
+        """
+        Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
+        return pulumi.get(self, "certificate_authority_id")
 
     @property
     @pulumi.getter
@@ -438,6 +456,11 @@ class CertificateAuthority(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name for this CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
@@ -451,6 +474,19 @@ class CertificateAuthority(pulumi.CustomResource):
         This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
         """
         return pulumi.get(self, "pem_ca_certificates")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter

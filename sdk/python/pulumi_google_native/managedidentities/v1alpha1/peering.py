@@ -201,6 +201,8 @@ class Peering(pulumi.CustomResource):
         __props__.__dict__["domain_resource"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["peering_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
         __props__.__dict__["update_time"] = None
@@ -245,6 +247,19 @@ class Peering(pulumi.CustomResource):
         Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="peeringId")
+    def peering_id(self) -> pulumi.Output[str]:
+        """
+        Required. Peering Id, unique name to identify peering.
+        """
+        return pulumi.get(self, "peering_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

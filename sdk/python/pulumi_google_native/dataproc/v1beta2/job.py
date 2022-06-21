@@ -405,8 +405,10 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["pig_job"] = None
         __props__.__dict__["placement"] = None
         __props__.__dict__["presto_job"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["pyspark_job"] = None
         __props__.__dict__["reference"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["scheduling"] = None
         __props__.__dict__["spark_job"] = None
         __props__.__dict__["spark_r_job"] = None
@@ -498,6 +500,11 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "presto_job")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="pysparkJob")
     def pyspark_job(self) -> pulumi.Output['outputs.PySparkJobResponse']:
         """
@@ -512,6 +519,11 @@ class Job(pulumi.CustomResource):
         Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
         """
         return pulumi.get(self, "reference")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter

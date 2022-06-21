@@ -289,9 +289,6 @@ class ServiceAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project that owns the service account.
-        """
         return pulumi.get(self, "project")
 
     @property

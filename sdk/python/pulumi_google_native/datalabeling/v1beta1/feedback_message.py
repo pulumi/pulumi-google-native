@@ -266,13 +266,22 @@ class FeedbackMessage(pulumi.CustomResource):
 
         __props__ = FeedbackMessageArgs.__new__(FeedbackMessageArgs)
 
+        __props__.__dict__["annotated_dataset_id"] = None
         __props__.__dict__["body"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["dataset_id"] = None
+        __props__.__dict__["feedback_thread_id"] = None
         __props__.__dict__["image"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operator_feedback_metadata"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["requester_feedback_metadata"] = None
         return FeedbackMessage(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="annotatedDatasetId")
+    def annotated_dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "annotated_dataset_id")
 
     @property
     @pulumi.getter
@@ -289,6 +298,16 @@ class FeedbackMessage(pulumi.CustomResource):
         Create time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="feedbackThreadId")
+    def feedback_thread_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "feedback_thread_id")
 
     @property
     @pulumi.getter
@@ -310,6 +329,11 @@ class FeedbackMessage(pulumi.CustomResource):
     @pulumi.getter(name="operatorFeedbackMetadata")
     def operator_feedback_metadata(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse']:
         return pulumi.get(self, "operator_feedback_metadata")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="requesterFeedbackMetadata")

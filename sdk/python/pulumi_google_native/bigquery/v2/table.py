@@ -452,6 +452,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["clone_definition"] = None
         __props__.__dict__["clustering"] = None
         __props__.__dict__["creation_time"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["default_collation"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["encryption_configuration"] = None
@@ -477,6 +478,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["num_time_travel_physical_bytes"] = None
         __props__.__dict__["num_total_logical_bytes"] = None
         __props__.__dict__["num_total_physical_bytes"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["range_partitioning"] = None
         __props__.__dict__["require_partition_filter"] = None
         __props__.__dict__["schema"] = None
@@ -512,6 +514,11 @@ class Table(pulumi.CustomResource):
         The time when this table was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter(name="defaultCollation")
@@ -712,6 +719,11 @@ class Table(pulumi.CustomResource):
         The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
         """
         return pulumi.get(self, "num_total_physical_bytes")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="rangePartitioning")

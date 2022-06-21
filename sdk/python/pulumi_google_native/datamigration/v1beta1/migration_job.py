@@ -443,8 +443,12 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
+        __props__.__dict__["migration_job_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["phase"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["reverse_ssh_connectivity"] = None
         __props__.__dict__["source"] = None
         __props__.__dict__["source_database"] = None
@@ -529,6 +533,19 @@ class MigrationJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="migrationJobId")
+    def migration_job_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the instance to create.
+        """
+        return pulumi.get(self, "migration_job_id")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
@@ -542,6 +559,19 @@ class MigrationJob(pulumi.CustomResource):
         The current migration job phase.
         """
         return pulumi.get(self, "phase")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="reverseSshConnectivity")

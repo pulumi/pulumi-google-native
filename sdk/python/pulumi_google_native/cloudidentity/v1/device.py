@@ -246,6 +246,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["build_number"] = None
         __props__.__dict__["compromised_state"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["customer"] = None
         __props__.__dict__["device_id"] = None
         __props__.__dict__["device_type"] = None
         __props__.__dict__["enabled_developer_options"] = None
@@ -332,6 +333,14 @@ class Device(pulumi.CustomResource):
         When the Company-Owned device was imported. This field is empty for BYOD devices.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def customer(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
+        """
+        return pulumi.get(self, "customer")
 
     @property
     @pulumi.getter(name="deviceId")

@@ -212,7 +212,9 @@ class Glossary(pulumi.CustomResource):
         __props__.__dict__["input_config"] = None
         __props__.__dict__["language_codes_set"] = None
         __props__.__dict__["language_pair"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["submit_time"] = None
         return Glossary(resource_name, opts=opts, __props__=__props__)
 
@@ -258,11 +260,21 @@ class Glossary(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="submitTime")

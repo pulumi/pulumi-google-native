@@ -213,6 +213,7 @@ class ProjectBigQueryExport(pulumi.CustomResource):
 
         __props__ = ProjectBigQueryExportArgs.__new__(ProjectBigQueryExportArgs)
 
+        __props__.__dict__["big_query_export_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["dataset"] = None
         __props__.__dict__["description"] = None
@@ -220,8 +221,17 @@ class ProjectBigQueryExport(pulumi.CustomResource):
         __props__.__dict__["most_recent_editor"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["principal"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         return ProjectBigQueryExport(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bigQueryExportId")
+    def big_query_export_id(self) -> pulumi.Output[str]:
+        """
+        Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        """
+        return pulumi.get(self, "big_query_export_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -278,6 +288,11 @@ class ProjectBigQueryExport(pulumi.CustomResource):
         The service account that needs permission to create table, upload data to the big query dataset.
         """
         return pulumi.get(self, "principal")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

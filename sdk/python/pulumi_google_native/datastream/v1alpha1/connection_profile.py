@@ -350,19 +350,31 @@ class ConnectionProfile(pulumi.CustomResource):
 
         __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
+        __props__.__dict__["connection_profile_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["forward_ssh_connectivity"] = None
         __props__.__dict__["gcs_profile"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["mysql_profile"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["no_connectivity"] = None
         __props__.__dict__["oracle_profile"] = None
         __props__.__dict__["private_connectivity"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["static_service_ip_connectivity"] = None
         __props__.__dict__["update_time"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> pulumi.Output[str]:
+        """
+        Required. The connection profile identifier.
+        """
+        return pulumi.get(self, "connection_profile_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -405,6 +417,11 @@ class ConnectionProfile(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="mysqlProfile")
     def mysql_profile(self) -> pulumi.Output['outputs.MysqlProfileResponse']:
         """
@@ -443,6 +460,19 @@ class ConnectionProfile(pulumi.CustomResource):
         Private connectivity.
         """
         return pulumi.get(self, "private_connectivity")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="staticServiceIpConnectivity")

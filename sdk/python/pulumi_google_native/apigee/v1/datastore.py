@@ -181,6 +181,7 @@ class Datastore(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["last_update_time"] = None
         __props__.__dict__["org"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["self"] = None
         __props__.__dict__["target_type"] = None
         return Datastore(resource_name, opts=opts, __props__=__props__)
@@ -224,6 +225,11 @@ class Datastore(pulumi.CustomResource):
         Organization that the datastore belongs to
         """
         return pulumi.get(self, "org")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

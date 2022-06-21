@@ -621,7 +621,10 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["ignored_files"] = None
         __props__.__dict__["include_build_logs"] = None
         __props__.__dict__["included_files"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["project_id"] = None
         __props__.__dict__["pubsub_config"] = None
         __props__.__dict__["resource_name"] = None
         __props__.__dict__["service_account"] = None
@@ -754,11 +757,29 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Required. ID of the project for which to configure automatic builds.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="pubsubConfig")

@@ -410,6 +410,7 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["note_name"] = None
         __props__.__dict__["package"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["remediation"] = None
         __props__.__dict__["resource_uri"] = None
         __props__.__dict__["update_time"] = None
@@ -520,6 +521,11 @@ class Occurrence(pulumi.CustomResource):
         Describes the installation of a package on the linked resource.
         """
         return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

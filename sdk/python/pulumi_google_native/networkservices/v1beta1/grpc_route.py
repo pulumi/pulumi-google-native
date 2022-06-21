@@ -293,10 +293,13 @@ class GrpcRoute(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["gateways"] = None
+        __props__.__dict__["grpc_route_id"] = None
         __props__.__dict__["hostnames"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["meshes"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["update_time"] = None
@@ -327,6 +330,14 @@ class GrpcRoute(pulumi.CustomResource):
         return pulumi.get(self, "gateways")
 
     @property
+    @pulumi.getter(name="grpcRouteId")
+    def grpc_route_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the GrpcRoute resource to be created.
+        """
+        return pulumi.get(self, "grpc_route_id")
+
+    @property
     @pulumi.getter
     def hostnames(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -344,6 +355,11 @@ class GrpcRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def meshes(self) -> pulumi.Output[Sequence[str]]:
         """
         Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/`
@@ -357,6 +373,11 @@ class GrpcRoute(pulumi.CustomResource):
         Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

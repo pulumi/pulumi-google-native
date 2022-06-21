@@ -449,6 +449,7 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["note_name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["remediation"] = None
         __props__.__dict__["resource"] = None
         __props__.__dict__["sbom"] = None
@@ -554,6 +555,11 @@ class Occurrence(pulumi.CustomResource):
         Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "note_name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

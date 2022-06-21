@@ -229,10 +229,13 @@ class DnsAuthorization(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["dns_authorization_id"] = None
         __props__.__dict__["dns_resource_record"] = None
         __props__.__dict__["domain"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         return DnsAuthorization(resource_name, opts=opts, __props__=__props__)
 
@@ -251,6 +254,14 @@ class DnsAuthorization(pulumi.CustomResource):
         One or more paragraphs of text description of a DnsAuthorization.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsAuthorizationId")
+    def dns_authorization_id(self) -> pulumi.Output[str]:
+        """
+        Required. A user-provided name of the dns authorization.
+        """
+        return pulumi.get(self, "dns_authorization_id")
 
     @property
     @pulumi.getter(name="dnsResourceRecord")
@@ -278,11 +289,21 @@ class DnsAuthorization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

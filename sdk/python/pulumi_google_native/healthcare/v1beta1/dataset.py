@@ -181,9 +181,25 @@ class Dataset(pulumi.CustomResource):
 
         __props__ = DatasetArgs.__new__(DatasetArgs)
 
+        __props__.__dict__["dataset_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["time_zone"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -192,6 +208,11 @@ class Dataset(pulumi.CustomResource):
         Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="timeZone")

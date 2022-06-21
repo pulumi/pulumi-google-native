@@ -791,7 +791,11 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["metageneration"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["owner"] = None
+        __props__.__dict__["predefined_acl"] = None
+        __props__.__dict__["predefined_default_object_acl"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["project_number"] = None
+        __props__.__dict__["projection"] = None
         __props__.__dict__["retention_policy"] = None
         __props__.__dict__["rpo"] = None
         __props__.__dict__["satisfies_pzs"] = None
@@ -799,6 +803,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["storage_class"] = None
         __props__.__dict__["time_created"] = None
         __props__.__dict__["updated"] = None
+        __props__.__dict__["user_project"] = None
         __props__.__dict__["versioning"] = None
         __props__.__dict__["website"] = None
         return Bucket(resource_name, opts=opts, __props__=__props__)
@@ -948,12 +953,44 @@ class Bucket(pulumi.CustomResource):
         return pulumi.get(self, "owner")
 
     @property
+    @pulumi.getter(name="predefinedAcl")
+    def predefined_acl(self) -> pulumi.Output[Optional[str]]:
+        """
+        Apply a predefined set of access controls to this bucket.
+        """
+        return pulumi.get(self, "predefined_acl")
+
+    @property
+    @pulumi.getter(name="predefinedDefaultObjectAcl")
+    def predefined_default_object_acl(self) -> pulumi.Output[Optional[str]]:
+        """
+        Apply a predefined set of default object access controls to this bucket.
+        """
+        return pulumi.get(self, "predefined_default_object_acl")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        """
+        A valid API project identifier.
+        """
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> pulumi.Output[str]:
         """
         The project number of the project the bucket belongs to.
         """
         return pulumi.get(self, "project_number")
+
+    @property
+    @pulumi.getter
+    def projection(self) -> pulumi.Output[Optional[str]]:
+        """
+        Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+        """
+        return pulumi.get(self, "projection")
 
     @property
     @pulumi.getter(name="retentionPolicy")
@@ -1010,6 +1047,14 @@ class Bucket(pulumi.CustomResource):
         The modification time of the bucket in RFC 3339 format.
         """
         return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to be billed for this request.
+        """
+        return pulumi.get(self, "user_project")
 
     @property
     @pulumi.getter

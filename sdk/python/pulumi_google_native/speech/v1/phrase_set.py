@@ -205,8 +205,10 @@ class PhraseSet(pulumi.CustomResource):
         __props__ = PhraseSetArgs.__new__(PhraseSetArgs)
 
         __props__.__dict__["boost"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["phrases"] = None
+        __props__.__dict__["project"] = None
         return PhraseSet(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -216,6 +218,11 @@ class PhraseSet(pulumi.CustomResource):
         Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
         """
         return pulumi.get(self, "boost")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -232,4 +239,9 @@ class PhraseSet(pulumi.CustomResource):
         A list of word and phrases.
         """
         return pulumi.get(self, "phrases")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

@@ -250,6 +250,7 @@ class Deployment(pulumi.CustomResource):
 
         __props__ = DeploymentArgs.__new__(DeploymentArgs)
 
+        __props__.__dict__["create_policy"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["insert_time"] = None
@@ -257,11 +258,21 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["manifest"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation"] = None
+        __props__.__dict__["preview"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["target"] = None
         __props__.__dict__["update"] = None
         __props__.__dict__["update_time"] = None
         return Deployment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createPolicy")
+    def create_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Sets the policy to use for creating new resources.
+        """
+        return pulumi.get(self, "create_policy")
 
     @property
     @pulumi.getter
@@ -318,6 +329,19 @@ class Deployment(pulumi.CustomResource):
         The Operation that most recently ran, or is currently running, on this deployment.
         """
         return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter
+    def preview(self) -> pulumi.Output[Optional[str]]:
+        """
+        If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
+        """
+        return pulumi.get(self, "preview")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

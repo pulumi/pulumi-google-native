@@ -363,10 +363,13 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_sovereign_controls"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["external_id"] = None
         __props__.__dict__["kaj_enrollment_state"] = None
         __props__.__dict__["kms_settings"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["provisioned_resources_parent"] = None
         __props__.__dict__["resource_settings"] = None
         __props__.__dict__["resources"] = None
@@ -422,6 +425,14 @@ class Workload(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
     @pulumi.getter(name="kajEnrollmentState")
     def kaj_enrollment_state(self) -> pulumi.Output[str]:
         """
@@ -447,11 +458,21 @@ class Workload(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="provisionedResourcesParent")

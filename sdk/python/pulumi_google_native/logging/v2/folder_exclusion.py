@@ -194,6 +194,7 @@ class FolderExclusion(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
         __props__.__dict__["filter"] = None
+        __props__.__dict__["folder_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["update_time"] = None
         return FolderExclusion(resource_name, opts=opts, __props__=__props__)
@@ -229,6 +230,11 @@ class FolderExclusion(pulumi.CustomResource):
         An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
         """
         return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "folder_id")
 
     @property
     @pulumi.getter

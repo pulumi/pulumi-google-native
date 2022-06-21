@@ -297,10 +297,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["file_shares"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
@@ -341,6 +344,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "file_shares")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        Required. The name of the instance to create. The name must be unique for the specified project and location.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[str]:
         """
@@ -358,6 +369,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
@@ -371,6 +387,11 @@ class Instance(pulumi.CustomResource):
         VPC networks to which the instance is connected. For this version, only a single network is supported.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

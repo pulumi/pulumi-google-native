@@ -373,10 +373,12 @@ class ConversationProfile(pulumi.CustomResource):
         __props__.__dict__["human_agent_assistant_config"] = None
         __props__.__dict__["human_agent_handoff_config"] = None
         __props__.__dict__["language_code"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["logging_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["new_message_event_notification_config"] = None
         __props__.__dict__["notification_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["stt_config"] = None
         __props__.__dict__["time_zone"] = None
@@ -432,6 +434,11 @@ class ConversationProfile(pulumi.CustomResource):
         return pulumi.get(self, "language_code")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2LoggingConfigResponse']:
         """
@@ -462,6 +469,11 @@ class ConversationProfile(pulumi.CustomResource):
         Configuration for publishing conversation lifecycle events.
         """
         return pulumi.get(self, "notification_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="securitySettings")

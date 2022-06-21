@@ -245,9 +245,12 @@ class Product(pulumi.CustomResource):
 
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["product_category"] = None
+        __props__.__dict__["product_id"] = None
         __props__.__dict__["product_labels"] = None
+        __props__.__dict__["project"] = None
         return Product(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -268,6 +271,11 @@ class Product(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
@@ -283,10 +291,23 @@ class Product(pulumi.CustomResource):
         return pulumi.get(self, "product_category")
 
     @property
+    @pulumi.getter(name="productId")
+    def product_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        """
+        return pulumi.get(self, "product_id")
+
+    @property
     @pulumi.getter(name="productLabels")
     def product_labels(self) -> pulumi.Output[Sequence['outputs.KeyValueResponse']]:
         """
         Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
         """
         return pulumi.get(self, "product_labels")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

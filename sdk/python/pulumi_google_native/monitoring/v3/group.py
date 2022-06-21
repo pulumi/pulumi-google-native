@@ -214,6 +214,8 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["is_cluster"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent_name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["validate_only"] = None
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -255,4 +257,17 @@ class Group(pulumi.CustomResource):
         The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
         """
         return pulumi.get(self, "parent_name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        If true, validate this request but do not create the group.
+        """
+        return pulumi.get(self, "validate_only")
 

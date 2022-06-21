@@ -316,6 +316,7 @@ class NotificationChannel(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["mutation_records"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["user_labels"] = None
         __props__.__dict__["verification_status"] = None
@@ -376,6 +377,11 @@ class NotificationChannel(pulumi.CustomResource):
         The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

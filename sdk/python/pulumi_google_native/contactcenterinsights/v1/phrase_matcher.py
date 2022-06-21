@@ -272,8 +272,10 @@ class PhraseMatcher(pulumi.CustomResource):
         __props__.__dict__["activation_update_time"] = None
         __props__.__dict__["active"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["phrase_match_rule_groups"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["revision_create_time"] = None
         __props__.__dict__["revision_id"] = None
         __props__.__dict__["role_match"] = None
@@ -308,6 +310,11 @@ class PhraseMatcher(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
@@ -321,6 +328,11 @@ class PhraseMatcher(pulumi.CustomResource):
         A list of phase match rule groups that are included in this matcher.
         """
         return pulumi.get(self, "phrase_match_rule_groups")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="revisionCreateTime")

@@ -268,10 +268,13 @@ class Cluster(pulumi.CustomResource):
         __props__ = ClusterArgs.__new__(ClusterArgs)
 
         __props__.__dict__["cluster_config"] = None
+        __props__.__dict__["cluster_id"] = None
         __props__.__dict__["default_storage_type"] = None
         __props__.__dict__["encryption_config"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["serve_nodes"] = None
         __props__.__dict__["state"] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -283,6 +286,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for this cluster.
         """
         return pulumi.get(self, "cluster_config")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+        """
+        return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="defaultStorageType")
@@ -301,6 +312,11 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "encryption_config")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
@@ -315,6 +331,11 @@ class Cluster(pulumi.CustomResource):
         The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serveNodes")

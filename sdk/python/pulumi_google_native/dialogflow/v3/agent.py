@@ -413,8 +413,10 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_spell_correction"] = None
         __props__.__dict__["enable_stackdriver_logging"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["locked"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["speech_to_text_settings"] = None
         __props__.__dict__["start_flow"] = None
@@ -480,6 +482,11 @@ class Agent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def locked(self) -> pulumi.Output[bool]:
         """
         Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
@@ -493,6 +500,11 @@ class Agent(pulumi.CustomResource):
         The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="securitySettings")

@@ -281,11 +281,15 @@ class Version(pulumi.CustomResource):
         __props__ = VersionArgs.__new__(VersionArgs)
 
         __props__.__dict__["annotations"] = None
+        __props__.__dict__["api_id"] = None
+        __props__.__dict__["api_version_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return Version(resource_name, opts=opts, __props__=__props__)
@@ -297,6 +301,19 @@ class Version(pulumi.CustomResource):
         Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
+
+    @property
+    @pulumi.getter(name="apiVersionId")
+    def api_version_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the version, which will become the final component of the version's resource name. This value should be 1-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        """
+        return pulumi.get(self, "api_version_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -332,11 +349,21 @@ class Version(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

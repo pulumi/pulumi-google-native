@@ -270,9 +270,13 @@ class ObjectIamPolicy(pulumi.CustomResource):
         __props__ = ObjectIamPolicyArgs.__new__(ObjectIamPolicyArgs)
 
         __props__.__dict__["bindings"] = None
+        __props__.__dict__["bucket"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["generation"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["object"] = None
         __props__.__dict__["resource_id"] = None
+        __props__.__dict__["user_project"] = None
         __props__.__dict__["version"] = None
         return ObjectIamPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -286,11 +290,24 @@ class ObjectIamPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def bucket(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
         HTTP 1.1  Entity tag for the policy.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> pulumi.Output[Optional[str]]:
+        """
+        If present, selects a specific revision of this object (as opposed to the latest version, the default).
+        """
+        return pulumi.get(self, "generation")
 
     @property
     @pulumi.getter
@@ -301,12 +318,25 @@ class ObjectIamPolicy(pulumi.CustomResource):
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter
+    def object(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "object")
+
+    @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[str]:
         """
         The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         """
         return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
+        return pulumi.get(self, "user_project")
 
     @property
     @pulumi.getter

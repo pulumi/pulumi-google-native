@@ -307,19 +307,36 @@ class Config(pulumi.CustomResource):
 
         __props__ = ConfigArgs.__new__(ConfigArgs)
 
+        __props__.__dict__["api_config_id"] = None
+        __props__.__dict__["api_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["gateway_config"] = None
         __props__.__dict__["gateway_service_account"] = None
         __props__.__dict__["grpc_services"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["managed_service_configs"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["openapi_documents"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service_config_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return Config(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiConfigId")
+    def api_config_id(self) -> pulumi.Output[str]:
+        """
+        Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+        """
+        return pulumi.get(self, "api_config_id")
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -370,6 +387,11 @@ class Config(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="managedServiceConfigs")
     def managed_service_configs(self) -> pulumi.Output[Sequence['outputs.ApigatewayApiConfigFileResponse']]:
         """
@@ -392,6 +414,11 @@ class Config(pulumi.CustomResource):
         Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
         """
         return pulumi.get(self, "openapi_documents")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceConfigId")

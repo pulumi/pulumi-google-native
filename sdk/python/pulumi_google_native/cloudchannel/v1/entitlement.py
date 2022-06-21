@@ -260,9 +260,11 @@ class Entitlement(pulumi.CustomResource):
 
         __props__ = EntitlementArgs.__new__(EntitlementArgs)
 
+        __props__.__dict__["account_id"] = None
         __props__.__dict__["association_info"] = None
         __props__.__dict__["commitment_settings"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["customer_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["offer"] = None
         __props__.__dict__["parameters"] = None
@@ -273,6 +275,11 @@ class Entitlement(pulumi.CustomResource):
         __props__.__dict__["trial_settings"] = None
         __props__.__dict__["update_time"] = None
         return Entitlement(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="associationInfo")
@@ -297,6 +304,11 @@ class Entitlement(pulumi.CustomResource):
         The time at which the entitlement is created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customerId")
+    def customer_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "customer_id")
 
     @property
     @pulumi.getter

@@ -362,9 +362,11 @@ class Query(pulumi.CustomResource):
 
         __props__.__dict__["created"] = None
         __props__.__dict__["envgroup_hostname"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["execution_time"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["query_params"] = None
         __props__.__dict__["report_definition_id"] = None
         __props__.__dict__["result"] = None
@@ -392,6 +394,11 @@ class Query(pulumi.CustomResource):
         return pulumi.get(self, "envgroup_hostname")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def error(self) -> pulumi.Output[str]:
         """
@@ -414,6 +421,11 @@ class Query(pulumi.CustomResource):
         Asynchronous Query Name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="queryParams")

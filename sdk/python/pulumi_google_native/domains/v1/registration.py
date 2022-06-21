@@ -323,9 +323,11 @@ class Registration(pulumi.CustomResource):
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["issues"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["management_settings"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pending_contact_settings"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["supported_privacy"] = None
         return Registration(resource_name, opts=opts, __props__=__props__)
@@ -387,6 +389,11 @@ class Registration(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="managementSettings")
     def management_settings(self) -> pulumi.Output['outputs.ManagementSettingsResponse']:
         """
@@ -409,6 +416,11 @@ class Registration(pulumi.CustomResource):
         Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
         """
         return pulumi.get(self, "pending_contact_settings")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

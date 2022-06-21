@@ -205,12 +205,20 @@ class Evaluation(pulumi.CustomResource):
 
         __props__ = EvaluationArgs.__new__(EvaluationArgs)
 
+        __props__.__dict__["conversation_model_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["evaluation_config"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["smart_reply_metrics"] = None
         return Evaluation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="conversationModelId")
+    def conversation_model_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "conversation_model_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -238,11 +246,21 @@ class Evaluation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="smartReplyMetrics")

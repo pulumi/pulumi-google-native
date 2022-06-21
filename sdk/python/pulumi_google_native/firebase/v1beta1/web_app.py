@@ -244,9 +244,6 @@ class WebApp(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-        """
         return pulumi.get(self, "project")
 
     @property

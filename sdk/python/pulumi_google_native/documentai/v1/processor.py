@@ -230,8 +230,10 @@ class Processor(pulumi.CustomResource):
         __props__.__dict__["default_processor_version"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["kms_key_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["process_endpoint"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
         return Processor(resource_name, opts=opts, __props__=__props__)
@@ -270,6 +272,11 @@ class Processor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
@@ -283,6 +290,11 @@ class Processor(pulumi.CustomResource):
         Immutable. The http endpoint that can be called to invoke processing.
         """
         return pulumi.get(self, "process_endpoint")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

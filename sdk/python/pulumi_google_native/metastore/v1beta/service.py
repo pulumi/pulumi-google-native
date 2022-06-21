@@ -420,6 +420,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["endpoint_uri"] = None
         __props__.__dict__["hive_metastore_config"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["maintenance_window"] = None
         __props__.__dict__["metadata_integration"] = None
         __props__.__dict__["metadata_management_activity"] = None
@@ -427,7 +428,10 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["port"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["release_channel"] = None
+        __props__.__dict__["request_id"] = None
+        __props__.__dict__["service_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
         __props__.__dict__["tier"] = None
@@ -492,6 +496,11 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> pulumi.Output['outputs.MaintenanceWindowResponse']:
         """
@@ -548,12 +557,33 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> pulumi.Output[str]:
         """
         Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         """
         return pulumi.get(self, "release_channel")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+        """
+        return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter

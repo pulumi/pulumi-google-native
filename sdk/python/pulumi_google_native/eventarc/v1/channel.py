@@ -210,13 +210,17 @@ class Channel(pulumi.CustomResource):
         __props__ = ChannelArgs.__new__(ChannelArgs)
 
         __props__.__dict__["activation_token"] = None
+        __props__.__dict__["channel_id"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["provider"] = None
         __props__.__dict__["pubsub_topic"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Channel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -228,6 +232,14 @@ class Channel(pulumi.CustomResource):
         return pulumi.get(self, "activation_token")
 
     @property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> pulumi.Output[str]:
+        """
+        Required. The user-provided ID to be assigned to the channel.
+        """
+        return pulumi.get(self, "channel_id")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
@@ -237,11 +249,21 @@ class Channel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -282,4 +304,12 @@ class Channel(pulumi.CustomResource):
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[str]:
+        """
+        Required. If set, validate the request and preview the review, but do not post it.
+        """
+        return pulumi.get(self, "validate_only")
 

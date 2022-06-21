@@ -309,11 +309,14 @@ class BitbucketServerConfig(pulumi.CustomResource):
         __props__ = BitbucketServerConfigArgs.__new__(BitbucketServerConfigArgs)
 
         __props__.__dict__["api_key"] = None
+        __props__.__dict__["bitbucket_server_config_id"] = None
         __props__.__dict__["connected_repositories"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["host_uri"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["peered_network"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["secrets"] = None
         __props__.__dict__["ssl_ca"] = None
         __props__.__dict__["username"] = None
@@ -327,6 +330,14 @@ class BitbucketServerConfig(pulumi.CustomResource):
         Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
         """
         return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfigId")
+    def bitbucket_server_config_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+        """
+        return pulumi.get(self, "bitbucket_server_config_id")
 
     @property
     @pulumi.getter(name="connectedRepositories")
@@ -354,6 +365,11 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name for the config.
@@ -367,6 +383,11 @@ class BitbucketServerConfig(pulumi.CustomResource):
         Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         """
         return pulumi.get(self, "peered_network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -330,6 +330,7 @@ class Developer(pulumi.CustomResource):
         __props__.__dict__["first_name"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["last_name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["organization_name"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["user_name"] = None
@@ -422,6 +423,11 @@ class Developer(pulumi.CustomResource):
         Last name of the developer.
         """
         return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="organizationName")

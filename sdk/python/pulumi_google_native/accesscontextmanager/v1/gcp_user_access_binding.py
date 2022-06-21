@@ -172,6 +172,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         __props__.__dict__["access_levels"] = None
         __props__.__dict__["group_key"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         return GcpUserAccessBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -197,4 +198,9 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 

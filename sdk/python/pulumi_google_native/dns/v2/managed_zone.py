@@ -435,6 +435,7 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
+        __props__.__dict__["client_operation_id"] = None
         __props__.__dict__["cloud_logging_config"] = None
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["description"] = None
@@ -443,15 +444,25 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["forwarding_config"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["name_server_set"] = None
         __props__.__dict__["name_servers"] = None
         __props__.__dict__["peering_config"] = None
         __props__.__dict__["private_visibility_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reverse_lookup_config"] = None
         __props__.__dict__["service_directory_config"] = None
         __props__.__dict__["visibility"] = None
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
+        return pulumi.get(self, "client_operation_id")
 
     @property
     @pulumi.getter(name="cloudLoggingConfig")
@@ -513,6 +524,11 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
@@ -550,6 +566,11 @@ class ManagedZone(pulumi.CustomResource):
         For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         """
         return pulumi.get(self, "private_visibility_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="reverseLookupConfig")

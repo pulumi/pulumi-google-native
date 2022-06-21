@@ -274,18 +274,28 @@ class Certificate(pulumi.CustomResource):
 
         __props__ = CertificateArgs.__new__(CertificateArgs)
 
+        __props__.__dict__["certificate_authority_id"] = None
         __props__.__dict__["certificate_description"] = None
+        __props__.__dict__["certificate_id"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["lifetime"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pem_certificate"] = None
         __props__.__dict__["pem_certificate_chain"] = None
         __props__.__dict__["pem_csr"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["revocation_details"] = None
         __props__.__dict__["update_time"] = None
         return Certificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityId")
+    def certificate_authority_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "certificate_authority_id")
 
     @property
     @pulumi.getter(name="certificateDescription")
@@ -294,6 +304,14 @@ class Certificate(pulumi.CustomResource):
         A structured description of the issued X.509 certificate.
         """
         return pulumi.get(self, "certificate_description")
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+        """
+        return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter
@@ -329,6 +347,11 @@ class Certificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
@@ -358,6 +381,19 @@ class Certificate(pulumi.CustomResource):
         Immutable. A pem-encoded X.509 certificate signing request (CSR).
         """
         return pulumi.get(self, "pem_csr")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="revocationDetails")

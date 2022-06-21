@@ -254,14 +254,33 @@ class Artifact(pulumi.CustomResource):
 
         __props__ = ArtifactArgs.__new__(ArtifactArgs)
 
+        __props__.__dict__["api_id"] = None
+        __props__.__dict__["artifact_id"] = None
         __props__.__dict__["contents"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["hash"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["mime_type"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["size_bytes"] = None
+        __props__.__dict__["spec_id"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["version_id"] = None
         return Artifact(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        """
+        return pulumi.get(self, "artifact_id")
 
     @property
     @pulumi.getter
@@ -288,6 +307,11 @@ class Artifact(pulumi.CustomResource):
         return pulumi.get(self, "hash")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> pulumi.Output[str]:
         """
@@ -304,6 +328,11 @@ class Artifact(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> pulumi.Output[int]:
         """
@@ -312,10 +341,20 @@ class Artifact(pulumi.CustomResource):
         return pulumi.get(self, "size_bytes")
 
     @property
+    @pulumi.getter(name="specId")
+    def spec_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "spec_id")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
         Last update timestamp.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "version_id")
 

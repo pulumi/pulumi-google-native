@@ -234,14 +234,25 @@ class Api(pulumi.CustomResource):
 
         __props__ = ApiArgs.__new__(ApiArgs)
 
+        __props__.__dict__["action"] = None
         __props__.__dict__["api_proxy_type"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["latest_revision_id"] = None
         __props__.__dict__["meta_data"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["read_only"] = None
         __props__.__dict__["revision"] = None
+        __props__.__dict__["validate"] = None
         return Api(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Output[Optional[str]]:
+        """
+        Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
+        """
+        return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="apiProxyType")
@@ -279,9 +290,14 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the API proxy.
+        Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="readOnly")
@@ -298,4 +314,12 @@ class Api(pulumi.CustomResource):
         List of revisions defined for the API proxy.
         """
         return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter
+    def validate(self) -> pulumi.Output[Optional[str]]:
+        """
+        Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+        """
+        return pulumi.get(self, "validate")
 

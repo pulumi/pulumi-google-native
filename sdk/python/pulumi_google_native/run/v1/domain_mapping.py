@@ -228,8 +228,11 @@ class DomainMapping(pulumi.CustomResource):
         __props__ = DomainMappingArgs.__new__(DomainMappingArgs)
 
         __props__.__dict__["api_version"] = None
+        __props__.__dict__["dry_run"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["spec"] = None
         __props__.__dict__["status"] = None
         return DomainMapping(resource_name, opts=opts, __props__=__props__)
@@ -243,6 +246,14 @@ class DomainMapping(pulumi.CustomResource):
         return pulumi.get(self, "api_version")
 
     @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+        """
+        return pulumi.get(self, "dry_run")
+
+    @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
@@ -252,11 +263,21 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def metadata(self) -> pulumi.Output['outputs.ObjectMetaResponse']:
         """
         Metadata associated with this BuildTemplate.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

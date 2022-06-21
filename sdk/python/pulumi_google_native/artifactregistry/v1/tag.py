@@ -213,9 +213,19 @@ class Tag(pulumi.CustomResource):
 
         __props__ = TagArgs.__new__(TagArgs)
 
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["package_id"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["repository_id"] = None
+        __props__.__dict__["tag_id"] = None
         __props__.__dict__["version"] = None
         return Tag(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -224,6 +234,29 @@ class Tag(pulumi.CustomResource):
         The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageId")
+    def package_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "package_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="repositoryId")
+    def repository_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "repository_id")
+
+    @property
+    @pulumi.getter(name="tagId")
+    def tag_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The tag id to use for this repository.
+        """
+        return pulumi.get(self, "tag_id")
 
     @property
     @pulumi.getter

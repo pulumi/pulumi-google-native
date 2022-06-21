@@ -378,6 +378,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__.__dict__["monitored_resource"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["period"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["resource_group"] = None
         __props__.__dict__["selected_regions"] = None
         __props__.__dict__["tcp_check"] = None
@@ -455,6 +456,11 @@ class UptimeCheckConfig(pulumi.CustomResource):
         How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="resourceGroup")

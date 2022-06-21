@@ -269,10 +269,14 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["capacity_gb"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["mount_name"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nfs_export_options"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["share_id"] = None
         __props__.__dict__["state"] = None
         return Share(resource_name, opts=opts, __props__=__props__)
 
@@ -301,12 +305,22 @@ class Share(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Resource labels to represent user provided metadata.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="mountName")
@@ -331,6 +345,19 @@ class Share(pulumi.CustomResource):
         Nfs Export Options. There is a limit of 10 export options per file share.
         """
         return pulumi.get(self, "nfs_export_options")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        """
+        return pulumi.get(self, "share_id")
 
     @property
     @pulumi.getter

@@ -186,7 +186,9 @@ class CustomClass(pulumi.CustomResource):
 
         __props__.__dict__["custom_class_id"] = None
         __props__.__dict__["items"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return CustomClass(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -207,9 +209,19 @@ class CustomClass(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the custom class.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

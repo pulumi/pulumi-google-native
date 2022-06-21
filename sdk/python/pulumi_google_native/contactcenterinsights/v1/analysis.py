@@ -162,8 +162,11 @@ class Analysis(pulumi.CustomResource):
         __props__ = AnalysisArgs.__new__(AnalysisArgs)
 
         __props__.__dict__["analysis_result"] = None
+        __props__.__dict__["conversation_id"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["request_time"] = None
         return Analysis(resource_name, opts=opts, __props__=__props__)
 
@@ -176,6 +179,11 @@ class Analysis(pulumi.CustomResource):
         return pulumi.get(self, "analysis_result")
 
     @property
+    @pulumi.getter(name="conversationId")
+    def conversation_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "conversation_id")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
@@ -185,11 +193,21 @@ class Analysis(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="requestTime")

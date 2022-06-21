@@ -276,9 +276,13 @@ class Annotation(pulumi.CustomResource):
         __props__ = AnnotationArgs.__new__(AnnotationArgs)
 
         __props__.__dict__["annotation_source"] = None
+        __props__.__dict__["annotation_store_id"] = None
         __props__.__dict__["custom_data"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["image_annotation"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["resource_annotation"] = None
         __props__.__dict__["text_annotation"] = None
         return Annotation(resource_name, opts=opts, __props__=__props__)
@@ -292,12 +296,22 @@ class Annotation(pulumi.CustomResource):
         return pulumi.get(self, "annotation_source")
 
     @property
+    @pulumi.getter(name="annotationStoreId")
+    def annotation_store_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "annotation_store_id")
+
+    @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Additional information for this annotation record, such as annotator and verifier information or study campaign.
         """
         return pulumi.get(self, "custom_data")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter(name="imageAnnotation")
@@ -309,11 +323,21 @@ class Annotation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="resourceAnnotation")

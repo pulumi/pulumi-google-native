@@ -209,8 +209,11 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["workload_identity_pool_id"] = None
         return WorkloadIdentityPool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -239,6 +242,11 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the pool.
@@ -247,9 +255,22 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
         The state of the pool.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="workloadIdentityPoolId")
+    def workload_identity_pool_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+        """
+        return pulumi.get(self, "workload_identity_pool_id")
 

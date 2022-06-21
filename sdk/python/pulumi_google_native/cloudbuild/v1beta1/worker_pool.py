@@ -238,12 +238,15 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["worker_config"] = None
+        __props__.__dict__["worker_pool_id"] = None
         return WorkerPool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -288,6 +291,11 @@ class WorkerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
@@ -301,6 +309,11 @@ class WorkerPool(pulumi.CustomResource):
         Network configuration for the `WorkerPool`.
         """
         return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -333,4 +346,12 @@ class WorkerPool(pulumi.CustomResource):
         Worker configuration for the `WorkerPool`.
         """
         return pulumi.get(self, "worker_config")
+
+    @property
+    @pulumi.getter(name="workerPoolId")
+    def worker_pool_id(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+        """
+        return pulumi.get(self, "worker_pool_id")
 

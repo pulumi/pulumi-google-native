@@ -259,9 +259,11 @@ class Export(pulumi.CustomResource):
         __props__.__dict__["created"] = None
         __props__.__dict__["datastore_name"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["execution_time"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["self"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["updated"] = None
@@ -292,6 +294,11 @@ class Export(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def error(self) -> pulumi.Output[str]:
         """
@@ -314,6 +321,11 @@ class Export(pulumi.CustomResource):
         Display name of the export job.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

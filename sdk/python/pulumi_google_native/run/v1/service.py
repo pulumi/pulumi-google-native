@@ -227,8 +227,11 @@ class Service(pulumi.CustomResource):
         __props__ = ServiceArgs.__new__(ServiceArgs)
 
         __props__.__dict__["api_version"] = None
+        __props__.__dict__["dry_run"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["spec"] = None
         __props__.__dict__["status"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
@@ -242,6 +245,14 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "api_version")
 
     @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+        """
+        return pulumi.get(self, "dry_run")
+
+    @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
@@ -251,11 +262,21 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def metadata(self) -> pulumi.Output['outputs.ObjectMetaResponse']:
         """
         Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

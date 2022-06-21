@@ -298,6 +298,8 @@ class Feed(pulumi.CustomResource):
         __props__.__dict__["feed_output_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["relationship_types"] = None
+        __props__.__dict__["v1_id"] = None
+        __props__.__dict__["v1_id1"] = None
         return Feed(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -355,4 +357,14 @@ class Feed(pulumi.CustomResource):
         A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
         """
         return pulumi.get(self, "relationship_types")
+
+    @property
+    @pulumi.getter(name="v1Id")
+    def v1_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v1_id")
+
+    @property
+    @pulumi.getter(name="v1Id1")
+    def v1_id1(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v1_id1")
 

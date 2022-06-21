@@ -255,6 +255,7 @@ class Model(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["online_prediction_console_logging"] = None
         __props__.__dict__["online_prediction_logging"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["regions"] = None
         return Model(resource_name, opts=opts, __props__=__props__)
 
@@ -313,6 +314,11 @@ class Model(pulumi.CustomResource):
         Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
         """
         return pulumi.get(self, "online_prediction_logging")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

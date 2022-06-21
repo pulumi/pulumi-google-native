@@ -222,11 +222,19 @@ class Participant(pulumi.CustomResource):
 
         __props__ = ParticipantArgs.__new__(ParticipantArgs)
 
+        __props__.__dict__["conversation_id"] = None
         __props__.__dict__["documents_metadata_filters"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["role"] = None
         __props__.__dict__["sip_recording_media_label"] = None
         return Participant(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="conversationId")
+    def conversation_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "conversation_id")
 
     @property
     @pulumi.getter(name="documentsMetadataFilters")
@@ -238,11 +246,21 @@ class Participant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -374,6 +374,7 @@ class Conversation(pulumi.CustomResource):
 
         __props__.__dict__["agent_id"] = None
         __props__.__dict__["call_metadata"] = None
+        __props__.__dict__["conversation_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["data_source"] = None
         __props__.__dict__["dialogflow_intents"] = None
@@ -382,9 +383,11 @@ class Conversation(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["language_code"] = None
         __props__.__dict__["latest_analysis"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["medium"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["obfuscated_user_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["runtime_annotations"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["transcript"] = None
@@ -408,6 +411,14 @@ class Conversation(pulumi.CustomResource):
         Call-specific metadata.
         """
         return pulumi.get(self, "call_metadata")
+
+    @property
+    @pulumi.getter(name="conversationId")
+    def conversation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        """
+        return pulumi.get(self, "conversation_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -475,6 +486,11 @@ class Conversation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def medium(self) -> pulumi.Output[str]:
         """
         Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
@@ -496,6 +512,11 @@ class Conversation(pulumi.CustomResource):
         Obfuscated user ID which the customer sent to us.
         """
         return pulumi.get(self, "obfuscated_user_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="runtimeAnnotations")

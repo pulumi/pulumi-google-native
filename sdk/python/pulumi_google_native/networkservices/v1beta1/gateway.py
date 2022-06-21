@@ -290,9 +290,12 @@ class Gateway(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["gateway_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["ports"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["scope"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["server_tls_policy"] = None
@@ -317,12 +320,25 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the Gateway resource to be created.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Optional. Set of label tags associated with the Gateway resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -339,6 +355,11 @@ class Gateway(pulumi.CustomResource):
         One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
         """
         return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -215,6 +215,7 @@ class BillingAccountIamPolicy(pulumi.CustomResource):
         __props__ = BillingAccountIamPolicyArgs.__new__(BillingAccountIamPolicyArgs)
 
         __props__.__dict__["audit_configs"] = None
+        __props__.__dict__["billing_account_id"] = None
         __props__.__dict__["bindings"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["version"] = None
@@ -227,6 +228,11 @@ class BillingAccountIamPolicy(pulumi.CustomResource):
         Specifies cloud audit logging configuration for this policy.
         """
         return pulumi.get(self, "audit_configs")
+
+    @property
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "billing_account_id")
 
     @property
     @pulumi.getter

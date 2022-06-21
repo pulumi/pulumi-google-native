@@ -824,7 +824,9 @@ class Product(pulumi.CustomResource):
         __props__.__dict__["availability"] = None
         __props__.__dict__["available_quantity"] = None
         __props__.__dict__["available_time"] = None
+        __props__.__dict__["branch_id"] = None
         __props__.__dict__["brands"] = None
+        __props__.__dict__["catalog_id"] = None
         __props__.__dict__["categories"] = None
         __props__.__dict__["collection_member_ids"] = None
         __props__.__dict__["color_info"] = None
@@ -835,11 +837,14 @@ class Product(pulumi.CustomResource):
         __props__.__dict__["gtin"] = None
         __props__.__dict__["images"] = None
         __props__.__dict__["language_code"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["materials"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["patterns"] = None
         __props__.__dict__["price_info"] = None
         __props__.__dict__["primary_product_id"] = None
+        __props__.__dict__["product_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["promotions"] = None
         __props__.__dict__["publish_time"] = None
         __props__.__dict__["rating"] = None
@@ -894,12 +899,22 @@ class Product(pulumi.CustomResource):
         return pulumi.get(self, "available_time")
 
     @property
+    @pulumi.getter(name="branchId")
+    def branch_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "branch_id")
+
+    @property
     @pulumi.getter
     def brands(self) -> pulumi.Output[Sequence[str]]:
         """
         The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
         """
         return pulumi.get(self, "brands")
+
+    @property
+    @pulumi.getter(name="catalogId")
+    def catalog_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "catalog_id")
 
     @property
     @pulumi.getter
@@ -983,6 +998,11 @@ class Product(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def materials(self) -> pulumi.Output[Sequence[str]]:
         """
         The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
@@ -1020,6 +1040,19 @@ class Product(pulumi.CustomResource):
         Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
         """
         return pulumi.get(self, "primary_product_id")
+
+    @property
+    @pulumi.getter(name="productId")
+    def product_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "product_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

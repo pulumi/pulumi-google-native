@@ -212,11 +212,21 @@ class Sharedflow(pulumi.CustomResource):
 
         __props__ = SharedflowArgs.__new__(SharedflowArgs)
 
+        __props__.__dict__["action"] = None
         __props__.__dict__["latest_revision_id"] = None
         __props__.__dict__["meta_data"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["revision"] = None
         return Sharedflow(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Output[str]:
+        """
+        Required. Must be set to either `import` or `validate`.
+        """
+        return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="latestRevisionId")
@@ -238,9 +248,14 @@ class Sharedflow(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The ID of the shared flow.
+        Required. The name to give the shared flow
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

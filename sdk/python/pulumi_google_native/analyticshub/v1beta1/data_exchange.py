@@ -247,14 +247,25 @@ class DataExchange(pulumi.CustomResource):
 
         __props__ = DataExchangeArgs.__new__(DataExchangeArgs)
 
+        __props__.__dict__["data_exchange_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["documentation"] = None
         __props__.__dict__["icon"] = None
         __props__.__dict__["listing_count"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["primary_contact"] = None
+        __props__.__dict__["project"] = None
         return DataExchange(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="dataExchangeId")
+    def data_exchange_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+        """
+        return pulumi.get(self, "data_exchange_id")
 
     @property
     @pulumi.getter
@@ -298,6 +309,11 @@ class DataExchange(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
@@ -311,4 +327,9 @@ class DataExchange(pulumi.CustomResource):
         Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
         """
         return pulumi.get(self, "primary_contact")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

@@ -223,12 +223,21 @@ class OrganizationBucketView(pulumi.CustomResource):
 
         __props__ = OrganizationBucketViewArgs.__new__(OrganizationBucketViewArgs)
 
+        __props__.__dict__["bucket_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["filter"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["view_id"] = None
         return OrganizationBucketView(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "bucket_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -256,11 +265,21 @@ class OrganizationBucketView(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -269,4 +288,12 @@ class OrganizationBucketView(pulumi.CustomResource):
         The last update timestamp of the view.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="viewId")
+    def view_id(self) -> pulumi.Output[str]:
+        """
+        Required. The id to use for this view.
+        """
+        return pulumi.get(self, "view_id")
 

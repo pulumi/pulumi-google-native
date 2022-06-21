@@ -185,11 +185,24 @@ class Index(pulumi.CustomResource):
 
         __props__ = IndexArgs.__new__(IndexArgs)
 
+        __props__.__dict__["collection_group_id"] = None
+        __props__.__dict__["database_id"] = None
         __props__.__dict__["fields"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["query_scope"] = None
         __props__.__dict__["state"] = None
         return Index(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="collectionGroupId")
+    def collection_group_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "collection_group_id")
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "database_id")
 
     @property
     @pulumi.getter
@@ -206,6 +219,11 @@ class Index(pulumi.CustomResource):
         A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="queryScope")

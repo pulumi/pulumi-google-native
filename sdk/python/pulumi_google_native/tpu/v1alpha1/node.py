@@ -367,10 +367,14 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["health_description"] = None
         __props__.__dict__["ip_address"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["network_endpoints"] = None
+        __props__.__dict__["node_id"] = None
         __props__.__dict__["port"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["scheduling_config"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["state"] = None
@@ -453,6 +457,11 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The name of the TPU
@@ -476,12 +485,33 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "network_endpoints")
 
     @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The unqualified resource name.
+        """
+        return pulumi.get(self, "node_id")
+
+    @property
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
         DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Idempotent request UUID.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="schedulingConfig")

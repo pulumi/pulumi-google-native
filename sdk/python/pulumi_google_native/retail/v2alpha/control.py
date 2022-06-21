@@ -267,9 +267,13 @@ class Control(pulumi.CustomResource):
         __props__ = ControlArgs.__new__(ControlArgs)
 
         __props__.__dict__["associated_serving_config_ids"] = None
+        __props__.__dict__["catalog_id"] = None
+        __props__.__dict__["control_id"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["facet_spec"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["rule"] = None
         __props__.__dict__["solution_types"] = None
         return Control(resource_name, opts=opts, __props__=__props__)
@@ -281,6 +285,19 @@ class Control(pulumi.CustomResource):
         List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
         """
         return pulumi.get(self, "associated_serving_config_ids")
+
+    @property
+    @pulumi.getter(name="catalogId")
+    def catalog_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "catalog_id")
+
+    @property
+    @pulumi.getter(name="controlId")
+    def control_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+        """
+        return pulumi.get(self, "control_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -300,11 +317,21 @@ class Control(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

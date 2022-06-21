@@ -334,8 +334,11 @@ class EndpointPolicy(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["endpoint_matcher"] = None
+        __props__.__dict__["endpoint_policy_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["server_tls_policy"] = None
         __props__.__dict__["traffic_port_selector"] = None
         __props__.__dict__["type"] = None
@@ -383,6 +386,14 @@ class EndpointPolicy(pulumi.CustomResource):
         return pulumi.get(self, "endpoint_matcher")
 
     @property
+    @pulumi.getter(name="endpointPolicyId")
+    def endpoint_policy_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+        """
+        return pulumi.get(self, "endpoint_policy_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -392,11 +403,21 @@ class EndpointPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Name of the EndpointPolicy resource. It matches pattern `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serverTlsPolicy")

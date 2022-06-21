@@ -315,7 +315,10 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["dimension_definitions"] = None
         __props__.__dict__["execution_id"] = None
+        __props__.__dict__["history_id"] = None
         __props__.__dict__["outcome"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["specification"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["test_execution_matrix_id"] = None
@@ -354,12 +357,30 @@ class Execution(pulumi.CustomResource):
         return pulumi.get(self, "execution_id")
 
     @property
+    @pulumi.getter(name="historyId")
+    def history_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "history_id")
+
+    @property
     @pulumi.getter
     def outcome(self) -> pulumi.Output['outputs.OutcomeResponse']:
         """
         Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         """
         return pulumi.get(self, "outcome")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter

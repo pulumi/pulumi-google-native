@@ -249,10 +249,13 @@ class AuthorizationPolicy(pulumi.CustomResource):
         __props__ = AuthorizationPolicyArgs.__new__(AuthorizationPolicyArgs)
 
         __props__.__dict__["action"] = None
+        __props__.__dict__["authorization_policy_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["update_time"] = None
         return AuthorizationPolicy(resource_name, opts=opts, __props__=__props__)
@@ -264,6 +267,14 @@ class AuthorizationPolicy(pulumi.CustomResource):
         The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
         """
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="authorizationPolicyId")
+    def authorization_policy_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+        """
+        return pulumi.get(self, "authorization_policy_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -291,11 +302,21 @@ class AuthorizationPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -373,6 +373,8 @@ class Case(pulumi.CustomResource):
         __props__.__dict__["test_case"] = None
         __props__.__dict__["time_zone"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["v2beta_id1"] = None
+        __props__.__dict__["v2betum_id"] = None
         return Case(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -486,4 +488,14 @@ class Case(pulumi.CustomResource):
         The time this case was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="v2betaId1")
+    def v2beta_id1(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v2beta_id1")
+
+    @property
+    @pulumi.getter(name="v2betumId")
+    def v2betum_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v2betum_id")
 

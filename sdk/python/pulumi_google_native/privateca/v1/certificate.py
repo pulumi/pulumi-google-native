@@ -355,21 +355,33 @@ class Certificate(pulumi.CustomResource):
 
         __props__ = CertificateArgs.__new__(CertificateArgs)
 
+        __props__.__dict__["ca_pool_id"] = None
         __props__.__dict__["certificate_description"] = None
+        __props__.__dict__["certificate_id"] = None
         __props__.__dict__["certificate_template"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["issuer_certificate_authority"] = None
+        __props__.__dict__["issuing_certificate_authority_id"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["lifetime"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pem_certificate"] = None
         __props__.__dict__["pem_certificate_chain"] = None
         __props__.__dict__["pem_csr"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["revocation_details"] = None
         __props__.__dict__["subject_mode"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Certificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="caPoolId")
+    def ca_pool_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "ca_pool_id")
 
     @property
     @pulumi.getter(name="certificateDescription")
@@ -378,6 +390,14 @@ class Certificate(pulumi.CustomResource):
         A structured description of the issued X.509 certificate.
         """
         return pulumi.get(self, "certificate_description")
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+        """
+        return pulumi.get(self, "certificate_id")
 
     @property
     @pulumi.getter(name="certificateTemplate")
@@ -412,6 +432,14 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "issuer_certificate_authority")
 
     @property
+    @pulumi.getter(name="issuingCertificateAuthorityId")
+    def issuing_certificate_authority_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The resource ID of the CertificateAuthority that should issue the certificate. This optional field will ignore the load-balancing scheme of the Pool and directly issue the certificate from the CA with the specified ID, contained in the same CaPool referenced by `parent`. Per-CA quota rules apply. If left empty, a CertificateAuthority will be chosen from the CaPool by the service. For example, to issue a Certificate from a Certificate Authority with resource name "projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca", you can set the parent to "projects/my-project/locations/us-central1/caPools/my-pool" and the issuing_certificate_authority_id to "my-ca".
+        """
+        return pulumi.get(self, "issuing_certificate_authority_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -426,6 +454,11 @@ class Certificate(pulumi.CustomResource):
         Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
         """
         return pulumi.get(self, "lifetime")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -460,6 +493,19 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "pem_csr")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
     @pulumi.getter(name="revocationDetails")
     def revocation_details(self) -> pulumi.Output['outputs.RevocationDetailsResponse']:
         """
@@ -482,4 +528,12 @@ class Certificate(pulumi.CustomResource):
         The time at which this Certificate was updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
+        """
+        return pulumi.get(self, "validate_only")
 

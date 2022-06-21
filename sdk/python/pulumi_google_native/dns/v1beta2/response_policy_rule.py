@@ -243,9 +243,12 @@ class ResponsePolicyRule(pulumi.CustomResource):
         __props__ = ResponsePolicyRuleArgs.__new__(ResponsePolicyRuleArgs)
 
         __props__.__dict__["behavior"] = None
+        __props__.__dict__["client_operation_id"] = None
         __props__.__dict__["dns_name"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["local_data"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["response_policy"] = None
         __props__.__dict__["rule_name"] = None
         return ResponsePolicyRule(resource_name, opts=opts, __props__=__props__)
 
@@ -256,6 +259,14 @@ class ResponsePolicyRule(pulumi.CustomResource):
         Answer this query with a behavior rather than DNS data.
         """
         return pulumi.get(self, "behavior")
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
+        return pulumi.get(self, "client_operation_id")
 
     @property
     @pulumi.getter(name="dnsName")
@@ -277,6 +288,16 @@ class ResponsePolicyRule(pulumi.CustomResource):
         Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
         """
         return pulumi.get(self, "local_data")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="responsePolicy")
+    def response_policy(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "response_policy")
 
     @property
     @pulumi.getter(name="ruleName")

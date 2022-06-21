@@ -222,7 +222,9 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["earliest_version_time"] = None
         __props__.__dict__["encryption_config"] = None
         __props__.__dict__["encryption_info"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["restore_info"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["version_retention_period"] = None
@@ -277,12 +279,22 @@ class Database(pulumi.CustomResource):
         return pulumi.get(self, "encryption_info")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="restoreInfo")

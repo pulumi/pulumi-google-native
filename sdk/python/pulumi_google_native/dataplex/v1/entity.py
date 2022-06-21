@@ -419,11 +419,16 @@ class Entity(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["format"] = None
+        __props__.__dict__["lake_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["schema"] = None
         __props__.__dict__["system"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
+        __props__.__dict__["zone"] = None
         return Entity(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -507,12 +512,27 @@ class Entity(pulumi.CustomResource):
         return pulumi.get(self, "format")
 
     @property
+    @pulumi.getter(name="lakeId")
+    def lake_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "lake_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -545,4 +565,17 @@ class Entity(pulumi.CustomResource):
         The time when the entity was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone")
 

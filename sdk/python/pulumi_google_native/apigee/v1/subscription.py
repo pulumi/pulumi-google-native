@@ -194,9 +194,11 @@ class Subscription(pulumi.CustomResource):
 
         __props__.__dict__["apiproduct"] = None
         __props__.__dict__["created_at"] = None
+        __props__.__dict__["developer_id"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["start_time"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
@@ -215,6 +217,11 @@ class Subscription(pulumi.CustomResource):
         Time when the API product subscription was created in milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="developerId")
+    def developer_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "developer_id")
 
     @property
     @pulumi.getter(name="endTime")
@@ -239,6 +246,11 @@ class Subscription(pulumi.CustomResource):
         Name of the API product subscription.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="startTime")

@@ -270,9 +270,12 @@ class ServerTlsPolicy(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["mtls_policy"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["server_certificate"] = None
+        __props__.__dict__["server_tls_policy_id"] = None
         __props__.__dict__["update_time"] = None
         return ServerTlsPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -309,6 +312,11 @@ class ServerTlsPolicy(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="mtlsPolicy")
     def mtls_policy(self) -> pulumi.Output['outputs.MTLSPolicyResponse']:
         """
@@ -325,12 +333,25 @@ class ServerTlsPolicy(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> pulumi.Output['outputs.GoogleCloudNetworksecurityV1beta1CertificateProviderResponse']:
         """
          Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         """
         return pulumi.get(self, "server_certificate")
+
+    @property
+    @pulumi.getter(name="serverTlsPolicyId")
+    def server_tls_policy_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
+        """
+        return pulumi.get(self, "server_tls_policy_id")
 
     @property
     @pulumi.getter(name="updateTime")

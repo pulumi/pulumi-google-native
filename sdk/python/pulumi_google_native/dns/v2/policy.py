@@ -280,12 +280,15 @@ class Policy(pulumi.CustomResource):
         __props__ = PolicyArgs.__new__(PolicyArgs)
 
         __props__.__dict__["alternative_name_server_config"] = None
+        __props__.__dict__["client_operation_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["enable_inbound_forwarding"] = None
         __props__.__dict__["enable_logging"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["project"] = None
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -295,6 +298,14 @@ class Policy(pulumi.CustomResource):
         Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
         """
         return pulumi.get(self, "alternative_name_server_config")
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
+        return pulumi.get(self, "client_operation_id")
 
     @property
     @pulumi.getter
@@ -327,6 +338,11 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         User-assigned name for this policy.
@@ -340,4 +356,9 @@ class Policy(pulumi.CustomResource):
         List of network names specifying networks to which this policy is applied.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

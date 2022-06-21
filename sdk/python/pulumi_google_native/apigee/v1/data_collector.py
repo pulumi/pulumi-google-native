@@ -191,9 +191,11 @@ class DataCollector(pulumi.CustomResource):
         __props__ = DataCollectorArgs.__new__(DataCollectorArgs)
 
         __props__.__dict__["created_at"] = None
+        __props__.__dict__["data_collector_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["type"] = None
         return DataCollector(resource_name, opts=opts, __props__=__props__)
 
@@ -204,6 +206,14 @@ class DataCollector(pulumi.CustomResource):
         The time at which the data collector was created in milliseconds since the epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="dataCollectorId")
+    def data_collector_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+        """
+        return pulumi.get(self, "data_collector_id")
 
     @property
     @pulumi.getter
@@ -228,6 +238,11 @@ class DataCollector(pulumi.CustomResource):
         ID of the data collector. Must begin with `dc_`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

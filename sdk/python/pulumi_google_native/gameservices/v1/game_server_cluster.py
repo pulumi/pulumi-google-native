@@ -268,8 +268,12 @@ class GameServerCluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["game_server_cluster_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["realm_id"] = None
         __props__.__dict__["update_time"] = None
         return GameServerCluster(resource_name, opts=opts, __props__=__props__)
 
@@ -314,6 +318,14 @@ class GameServerCluster(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="gameServerClusterId")
+    def game_server_cluster_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the game server cluster resource to create.
+        """
+        return pulumi.get(self, "game_server_cluster_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -323,11 +335,26 @@ class GameServerCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="realmId")
+    def realm_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "realm_id")
 
     @property
     @pulumi.getter(name="updateTime")

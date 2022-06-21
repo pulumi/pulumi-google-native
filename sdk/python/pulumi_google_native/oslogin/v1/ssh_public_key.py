@@ -155,6 +155,7 @@ class SshPublicKey(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["key"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["user_id"] = None
         return SshPublicKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -188,4 +189,9 @@ class SshPublicKey(pulumi.CustomResource):
         The canonical resource name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "user_id")
 

@@ -186,8 +186,11 @@ class Session(pulumi.CustomResource):
         __props__.__dict__["approximate_last_use_time"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["creator_role"] = None
+        __props__.__dict__["database_id"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return Session(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -215,6 +218,16 @@ class Session(pulumi.CustomResource):
         return pulumi.get(self, "creator_role")
 
     @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "database_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -229,4 +242,9 @@ class Session(pulumi.CustomResource):
         The name of the session. This is always system-assigned.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
