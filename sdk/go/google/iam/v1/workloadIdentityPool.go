@@ -22,10 +22,14 @@ type WorkloadIdentityPool struct {
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the pool.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The state of the pool.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+	WorkloadIdentityPoolId pulumi.StringOutput `pulumi:"workloadIdentityPoolId"`
 }
 
 // NewWorkloadIdentityPool registers a new resource with the given unique name, arguments, and options.
@@ -148,14 +152,27 @@ func (o WorkloadIdentityPoolOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o WorkloadIdentityPoolOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the pool.
 func (o WorkloadIdentityPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o WorkloadIdentityPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The state of the pool.
 func (o WorkloadIdentityPoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+func (o WorkloadIdentityPoolOutput) WorkloadIdentityPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.WorkloadIdentityPoolId }).(pulumi.StringOutput)
 }
 
 func init() {

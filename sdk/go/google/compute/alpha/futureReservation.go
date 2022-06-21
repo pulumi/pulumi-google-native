@@ -24,6 +24,9 @@ type FutureReservation struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
+	Project    pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -36,8 +39,7 @@ type FutureReservation struct {
 	Status FutureReservationStatusResponseOutput `pulumi:"status"`
 	// Time window for this Future Reservation.
 	TimeWindow FutureReservationTimeWindowResponseOutput `pulumi:"timeWindow"`
-	// URL of the Zone where this future reservation resides.
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone       pulumi.StringOutput                       `pulumi:"zone"`
 }
 
 // NewFutureReservation registers a new resource with the given unique name, arguments, and options.
@@ -179,6 +181,15 @@ func (o FutureReservationOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }
 
+func (o FutureReservationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o FutureReservationOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // Server-defined fully-qualified URL for this resource.
 func (o FutureReservationOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -211,7 +222,6 @@ func (o FutureReservationOutput) TimeWindow() FutureReservationTimeWindowRespons
 	return o.ApplyT(func(v *FutureReservation) FutureReservationTimeWindowResponseOutput { return v.TimeWindow }).(FutureReservationTimeWindowResponseOutput)
 }
 
-// URL of the Zone where this future reservation resides.
 func (o FutureReservationOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

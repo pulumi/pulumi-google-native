@@ -21,7 +21,9 @@ type Snapshot struct {
 	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the snapshot.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name       pulumi.StringOutput `pulumi:"name"`
+	Project    pulumi.StringOutput `pulumi:"project"`
+	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
 	// The name of the topic from which this snapshot is retaining messages.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
@@ -139,6 +141,14 @@ func (o SnapshotOutput) Labels() pulumi.StringMapOutput {
 // The name of the snapshot.
 func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SnapshotOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o SnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 // The name of the topic from which this snapshot is retaining messages.

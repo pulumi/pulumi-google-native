@@ -16,14 +16,19 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+	BackupId  pulumi.StringOutput `pulumi:"backupId"`
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The encryption information for the backup.
 	EncryptionInfo EncryptionInfoResponseOutput `pulumi:"encryptionInfo"`
 	// `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Size of the backup in bytes.
 	SizeBytes pulumi.StringOutput `pulumi:"sizeBytes"`
 	// Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
@@ -153,6 +158,15 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+func (o BackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
+}
+
+func (o BackupOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
 // The encryption information for the backup.
 func (o BackupOutput) EncryptionInfo() EncryptionInfoResponseOutput {
 	return o.ApplyT(func(v *Backup) EncryptionInfoResponseOutput { return v.EncryptionInfo }).(EncryptionInfoResponseOutput)
@@ -168,9 +182,17 @@ func (o BackupOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
+func (o BackupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BackupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Size of the backup in bytes.

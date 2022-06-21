@@ -15,6 +15,7 @@ import (
 type Experiment struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// Creation time of this experiment.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The definition of the experiment.
@@ -24,13 +25,16 @@ type Experiment struct {
 	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// End time of this experiment.
-	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	EndTime       pulumi.StringOutput `pulumi:"endTime"`
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength pulumi.StringOutput `pulumi:"experimentLength"`
 	// Last update time of this experiment.
 	LastUpdateTime pulumi.StringOutput `pulumi:"lastUpdateTime"`
+	Location       pulumi.StringOutput `pulumi:"location"`
 	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Inference result of the experiment.
 	Result GoogleCloudDialogflowCxV3beta1ExperimentResultResponseOutput `pulumi:"result"`
 	// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
@@ -206,6 +210,10 @@ func (o ExperimentOutput) ToExperimentOutputWithContext(ctx context.Context) Exp
 	return o
 }
 
+func (o ExperimentOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // Creation time of this experiment.
 func (o ExperimentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -233,6 +241,10 @@ func (o ExperimentOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
+func (o ExperimentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 func (o ExperimentOutput) ExperimentLength() pulumi.StringOutput {
 	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.ExperimentLength }).(pulumi.StringOutput)
@@ -243,9 +255,17 @@ func (o ExperimentOutput) LastUpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.LastUpdateTime }).(pulumi.StringOutput)
 }
 
+func (o ExperimentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the experiment. Format: projects//locations//agents//environments//experiments/..
 func (o ExperimentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ExperimentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Inference result of the experiment.

@@ -16,11 +16,13 @@ type PhraseSet struct {
 	pulumi.CustomResourceState
 
 	// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
-	Boost pulumi.Float64Output `pulumi:"boost"`
+	Boost    pulumi.Float64Output `pulumi:"boost"`
+	Location pulumi.StringOutput  `pulumi:"location"`
 	// The resource name of the phrase set.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of word and phrases.
 	Phrases PhraseResponseArrayOutput `pulumi:"phrases"`
+	Project pulumi.StringOutput       `pulumi:"project"`
 }
 
 // NewPhraseSet registers a new resource with the given unique name, arguments, and options.
@@ -133,6 +135,10 @@ func (o PhraseSetOutput) Boost() pulumi.Float64Output {
 	return o.ApplyT(func(v *PhraseSet) pulumi.Float64Output { return v.Boost }).(pulumi.Float64Output)
 }
 
+func (o PhraseSetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the phrase set.
 func (o PhraseSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -141,6 +147,10 @@ func (o PhraseSetOutput) Name() pulumi.StringOutput {
 // A list of word and phrases.
 func (o PhraseSetOutput) Phrases() PhraseResponseArrayOutput {
 	return o.ApplyT(func(v *PhraseSet) PhraseResponseArrayOutput { return v.Phrases }).(PhraseResponseArrayOutput)
+}
+
+func (o PhraseSetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -56,12 +56,14 @@ type ForwardingRule struct {
 	// This field can be used only if: - Load balancing scheme is one of EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or SCTP. Packets addressed to ports in the specified range will be forwarded to target or backend_service. You can only use one of ports, port_range, or allPorts. The three are mutually exclusive. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding target have constraints on the acceptable ports. For more information, see [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
 	PortRange pulumi.StringOutput `pulumi:"portRange"`
 	// The ports field is only supported when the forwarding rule references a backend_service directly. Only packets addressed to the [specified list of ports](<(https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)>) are forwarded to backends. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. You can specify a list of up to five ports, which can be non-contiguous. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. @pattern: \\d+(?:-\\d+)?
-	Ports pulumi.StringArrayOutput `pulumi:"ports"`
+	Ports   pulumi.StringArrayOutput `pulumi:"ports"`
+	Project pulumi.StringOutput      `pulumi:"project"`
 	// The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId     pulumi.StringOutput `pulumi:"pscConnectionId"`
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
-	// URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region              pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
@@ -363,6 +365,10 @@ func (o ForwardingRuleOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringArrayOutput { return v.Ports }).(pulumi.StringArrayOutput)
 }
 
+func (o ForwardingRuleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The PSC connection id of the PSC Forwarding Rule.
 func (o ForwardingRuleOutput) PscConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PscConnectionId }).(pulumi.StringOutput)
@@ -372,9 +378,13 @@ func (o ForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
 
-// URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o ForwardingRuleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o ForwardingRuleOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Server-defined URL for the resource.

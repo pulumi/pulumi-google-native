@@ -35,9 +35,12 @@ type Entity struct {
 	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
-	Format GoogleCloudDataplexV1StorageFormatResponseOutput `pulumi:"format"`
+	Format   GoogleCloudDataplexV1StorageFormatResponseOutput `pulumi:"format"`
+	LakeId   pulumi.StringOutput                              `pulumi:"lakeId"`
+	Location pulumi.StringOutput                              `pulumi:"location"`
 	// The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
 	Schema GoogleCloudDataplexV1SchemaResponseOutput `pulumi:"schema"`
 	// Immutable. Identifies the storage system of the entity data.
@@ -46,6 +49,9 @@ type Entity struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time when the entity was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	Zone         pulumi.StringOutput    `pulumi:"zone"`
 }
 
 // NewEntity registers a new resource with the given unique name, arguments, and options.
@@ -260,9 +266,21 @@ func (o EntityOutput) Format() GoogleCloudDataplexV1StorageFormatResponseOutput 
 	return o.ApplyT(func(v *Entity) GoogleCloudDataplexV1StorageFormatResponseOutput { return v.Format }).(GoogleCloudDataplexV1StorageFormatResponseOutput)
 }
 
+func (o EntityOutput) LakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.LakeId }).(pulumi.StringOutput)
+}
+
+func (o EntityOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
 func (o EntityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EntityOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
@@ -283,6 +301,15 @@ func (o EntityOutput) Type() pulumi.StringOutput {
 // The time when the entity was last updated.
 func (o EntityOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o EntityOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+}
+
+func (o EntityOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 func init() {

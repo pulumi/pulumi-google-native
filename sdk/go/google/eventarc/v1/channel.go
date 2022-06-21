@@ -17,10 +17,14 @@ type Channel struct {
 
 	// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 	ActivationToken pulumi.StringOutput `pulumi:"activationToken"`
+	// Required. The user-provided ID to be assigned to the channel.
+	ChannelId pulumi.StringOutput `pulumi:"channelId"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	Provider pulumi.StringOutput `pulumi:"provider"`
 	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
@@ -31,6 +35,8 @@ type Channel struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Required. If set, validate the request and preview the review, but do not post it.
+	ValidateOnly pulumi.StringOutput `pulumi:"validateOnly"`
 }
 
 // NewChannel registers a new resource with the given unique name, arguments, and options.
@@ -146,14 +152,27 @@ func (o ChannelOutput) ActivationToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ActivationToken }).(pulumi.StringOutput)
 }
 
+// Required. The user-provided ID to be assigned to the channel.
+func (o ChannelOutput) ChannelId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ChannelId }).(pulumi.StringOutput)
+}
+
 // The creation time.
 func (o ChannelOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+func (o ChannelOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
 func (o ChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ChannelOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
@@ -179,6 +198,11 @@ func (o ChannelOutput) Uid() pulumi.StringOutput {
 // The last-modified time.
 func (o ChannelOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Required. If set, validate the request and preview the review, but do not post it.
+func (o ChannelOutput) ValidateOnly() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ValidateOnly }).(pulumi.StringOutput)
 }
 
 func init() {

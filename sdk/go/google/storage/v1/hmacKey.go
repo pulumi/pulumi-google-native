@@ -21,12 +21,11 @@ type HmacKey struct {
 	// HTTP 1.1 Entity tag for the HMAC key.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
-	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Project ID owning the service account to which the key authenticates.
+	Kind    pulumi.StringOutput `pulumi:"kind"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The link to this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The email address of the key's associated service account.
+	// Email address of the service account.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -34,6 +33,8 @@ type HmacKey struct {
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
 	// The last modification time of the HMAC key metadata in RFC 3339 format.
 	Updated pulumi.StringOutput `pulumi:"updated"`
+	// The project to be billed for this request.
+	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
 }
 
 // NewHmacKey registers a new resource with the given unique name, arguments, and options.
@@ -146,7 +147,6 @@ func (o HmacKeyOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Project ID owning the service account to which the key authenticates.
 func (o HmacKeyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -156,7 +156,7 @@ func (o HmacKeyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The email address of the key's associated service account.
+// Email address of the service account.
 func (o HmacKeyOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
@@ -174,6 +174,11 @@ func (o HmacKeyOutput) TimeCreated() pulumi.StringOutput {
 // The last modification time of the HMAC key metadata in RFC 3339 format.
 func (o HmacKeyOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The project to be billed for this request.
+func (o HmacKeyOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringPtrOutput { return v.UserProject }).(pulumi.StringPtrOutput)
 }
 
 func init() {

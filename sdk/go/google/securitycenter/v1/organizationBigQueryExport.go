@@ -15,6 +15,8 @@ import (
 type OrganizationBigQueryExport struct {
 	pulumi.CustomResourceState
 
+	// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+	BigQueryExportId pulumi.StringOutput `pulumi:"bigQueryExportId"`
 	// The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The dataset to write findings' updates to. Its format is "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
@@ -26,7 +28,8 @@ type OrganizationBigQueryExport struct {
 	// Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
 	MostRecentEditor pulumi.StringOutput `pulumi:"mostRecentEditor"`
 	// The relative resource name of this export. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format: "organizations/{organization_id}/bigQueryExports/{export_id}" Example format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format: "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when provided in create requests.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The service account that needs permission to create table, upload data to the big query dataset.
 	Principal pulumi.StringOutput `pulumi:"principal"`
 	// The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
@@ -143,6 +146,11 @@ func (o OrganizationBigQueryExportOutput) ToOrganizationBigQueryExportOutputWith
 	return o
 }
 
+// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+func (o OrganizationBigQueryExportOutput) BigQueryExportId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBigQueryExport) pulumi.StringOutput { return v.BigQueryExportId }).(pulumi.StringOutput)
+}
+
 // The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
 func (o OrganizationBigQueryExportOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBigQueryExport) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -171,6 +179,10 @@ func (o OrganizationBigQueryExportOutput) MostRecentEditor() pulumi.StringOutput
 // The relative resource name of this export. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format: "organizations/{organization_id}/bigQueryExports/{export_id}" Example format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format: "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when provided in create requests.
 func (o OrganizationBigQueryExportOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBigQueryExport) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o OrganizationBigQueryExportOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBigQueryExport) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // The service account that needs permission to create table, upload data to the big query dataset.

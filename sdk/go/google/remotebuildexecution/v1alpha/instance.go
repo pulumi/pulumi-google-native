@@ -22,7 +22,8 @@ type Instance struct {
 	// Whether stack driver logging is enabled for the instance.
 	LoggingEnabled pulumi.BoolOutput `pulumi:"loggingEnabled"`
 	// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// State of the instance.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -147,6 +148,10 @@ func (o InstanceOutput) LoggingEnabled() pulumi.BoolOutput {
 // Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State of the instance.

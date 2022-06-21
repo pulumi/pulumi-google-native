@@ -50,8 +50,16 @@ type Bucket struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owner of the bucket. This is always the project team's owner group.
 	Owner BucketOwnerResponseOutput `pulumi:"owner"`
+	// Apply a predefined set of access controls to this bucket.
+	PredefinedAcl pulumi.StringPtrOutput `pulumi:"predefinedAcl"`
+	// Apply a predefined set of default object access controls to this bucket.
+	PredefinedDefaultObjectAcl pulumi.StringPtrOutput `pulumi:"predefinedDefaultObjectAcl"`
+	// A valid API project identifier.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The project number of the project the bucket belongs to.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
+	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+	Projection pulumi.StringPtrOutput `pulumi:"projection"`
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy BucketRetentionPolicyResponseOutput `pulumi:"retentionPolicy"`
 	// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
@@ -66,6 +74,8 @@ type Bucket struct {
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
 	// The modification time of the bucket in RFC 3339 format.
 	Updated pulumi.StringOutput `pulumi:"updated"`
+	// The project to be billed for this request.
+	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
 	// The bucket's versioning configuration.
 	Versioning BucketVersioningResponseOutput `pulumi:"versioning"`
 	// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
@@ -380,9 +390,29 @@ func (o BucketOutput) Owner() BucketOwnerResponseOutput {
 	return o.ApplyT(func(v *Bucket) BucketOwnerResponseOutput { return v.Owner }).(BucketOwnerResponseOutput)
 }
 
+// Apply a predefined set of access controls to this bucket.
+func (o BucketOutput) PredefinedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.PredefinedAcl }).(pulumi.StringPtrOutput)
+}
+
+// Apply a predefined set of default object access controls to this bucket.
+func (o BucketOutput) PredefinedDefaultObjectAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.PredefinedDefaultObjectAcl }).(pulumi.StringPtrOutput)
+}
+
+// A valid API project identifier.
+func (o BucketOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The project number of the project the bucket belongs to.
 func (o BucketOutput) ProjectNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+func (o BucketOutput) Projection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.Projection }).(pulumi.StringPtrOutput)
 }
 
 // The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
@@ -418,6 +448,11 @@ func (o BucketOutput) TimeCreated() pulumi.StringOutput {
 // The modification time of the bucket in RFC 3339 format.
 func (o BucketOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The project to be billed for this request.
+func (o BucketOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.UserProject }).(pulumi.StringPtrOutput)
 }
 
 // The bucket's versioning configuration.

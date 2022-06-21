@@ -33,7 +33,8 @@ type Node struct {
 	// If this field is populated, it contains a description of why the TPU Node is unhealthy.
 	HealthDescription pulumi.StringOutput `pulumi:"healthDescription"`
 	// Resource labels to represent user-provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Immutable. The name of the TPU.
@@ -42,6 +43,11 @@ type Node struct {
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints NetworkEndpointResponseArrayOutput `pulumi:"networkEndpoints"`
+	// The unqualified resource name.
+	NodeId  pulumi.StringPtrOutput `pulumi:"nodeId"`
+	Project pulumi.StringOutput    `pulumi:"project"`
+	// Idempotent request UUID.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The runtime version running in the Node.
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
@@ -246,6 +252,10 @@ func (o NodeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o NodeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
 func (o NodeOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
@@ -264,6 +274,20 @@ func (o NodeOutput) NetworkConfig() NetworkConfigResponseOutput {
 // The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 func (o NodeOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
 	return o.ApplyT(func(v *Node) NetworkEndpointResponseArrayOutput { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
+}
+
+// The unqualified resource name.
+func (o NodeOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+func (o NodeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Idempotent request UUID.
+func (o NodeOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The runtime version running in the Node.

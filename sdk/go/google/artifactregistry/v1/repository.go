@@ -23,11 +23,15 @@ type Repository struct {
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigResponseOutput `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The repository id to use for this repository.
+	RepositoryId pulumi.StringPtrOutput `pulumi:"repositoryId"`
 	// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
 	SizeBytes pulumi.StringOutput `pulumi:"sizeBytes"`
 	// The time when the repository was last updated.
@@ -181,6 +185,10 @@ func (o RepositoryOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o RepositoryOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Maven repository config contains repository level configuration for the repositories of maven type.
 func (o RepositoryOutput) MavenConfig() MavenRepositoryConfigResponseOutput {
 	return o.ApplyT(func(v *Repository) MavenRepositoryConfigResponseOutput { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
@@ -189,6 +197,15 @@ func (o RepositoryOutput) MavenConfig() MavenRepositoryConfigResponseOutput {
 // The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RepositoryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The repository id to use for this repository.
+func (o RepositoryOutput) RepositoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.RepositoryId }).(pulumi.StringPtrOutput)
 }
 
 // The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.

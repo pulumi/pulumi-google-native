@@ -22,10 +22,13 @@ type Session struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The database role which created this session.
 	CreatorRole pulumi.StringOutput `pulumi:"creatorRole"`
+	DatabaseId  pulumi.StringOutput `pulumi:"databaseId"`
+	InstanceId  pulumi.StringOutput `pulumi:"instanceId"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the session. This is always system-assigned.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewSession registers a new resource with the given unique name, arguments, and options.
@@ -145,6 +148,14 @@ func (o SessionOutput) CreatorRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.CreatorRole }).(pulumi.StringOutput)
 }
 
+func (o SessionOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+func (o SessionOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 func (o SessionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Session) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -153,6 +164,10 @@ func (o SessionOutput) Labels() pulumi.StringMapOutput {
 // The name of the session. This is always system-assigned.
 func (o SessionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SessionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -15,6 +15,7 @@ import (
 type BillingAccountExclusion struct {
 	pulumi.CustomResourceState
 
+	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
 	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A description of this exclusion.
@@ -133,6 +134,10 @@ func (o BillingAccountExclusionOutput) ToBillingAccountExclusionOutput() Billing
 
 func (o BillingAccountExclusionOutput) ToBillingAccountExclusionOutputWithContext(ctx context.Context) BillingAccountExclusionOutput {
 	return o
+}
+
+func (o BillingAccountExclusionOutput) BillingAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingAccountExclusion) pulumi.StringOutput { return v.BillingAccountId }).(pulumi.StringOutput)
 }
 
 // The creation timestamp of the exclusion.This field may not be present for older exclusions.

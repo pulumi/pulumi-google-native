@@ -27,8 +27,10 @@ type JobTrigger struct {
 	InspectJob GooglePrivacyDlpV2InspectJobConfigResponseOutput `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// A status for this trigger.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
@@ -190,9 +192,17 @@ func (o JobTriggerOutput) LastRunTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.LastRunTime }).(pulumi.StringOutput)
 }
 
+func (o JobTriggerOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 func (o JobTriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o JobTriggerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A status for this trigger.

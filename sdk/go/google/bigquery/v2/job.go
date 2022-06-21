@@ -22,7 +22,8 @@ type Job struct {
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferenceResponseOutput `pulumi:"jobReference"`
 	// The type of the resource.
-	Kind pulumi.StringOutput `pulumi:"kind"`
+	Kind    pulumi.StringOutput `pulumi:"kind"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// A URL that can be used to access this resource again.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Information about the job, including starting time and ending time of the job.
@@ -145,6 +146,10 @@ func (o JobOutput) JobReference() JobReferenceResponseOutput {
 // The type of the resource.
 func (o JobOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o JobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A URL that can be used to access this resource again.

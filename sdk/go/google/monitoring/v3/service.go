@@ -40,10 +40,14 @@ type Service struct {
 	MeshIstio MeshIstioResponseOutput `pulumi:"meshIstio"`
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+	ServiceId pulumi.StringPtrOutput `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryResponseOutput `pulumi:"telemetry"`
 	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
+	V3Id       pulumi.StringOutput    `pulumi:"v3Id"`
+	V3Id1      pulumi.StringOutput    `pulumi:"v3Id1"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -258,6 +262,11 @@ func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+func (o ServiceOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
 // Configuration for how to query telemetry on a Service.
 func (o ServiceOutput) Telemetry() TelemetryResponseOutput {
 	return o.ApplyT(func(v *Service) TelemetryResponseOutput { return v.Telemetry }).(TelemetryResponseOutput)
@@ -266,6 +275,14 @@ func (o ServiceOutput) Telemetry() TelemetryResponseOutput {
 // Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
 func (o ServiceOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
+func (o ServiceOutput) V3Id() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.V3Id }).(pulumi.StringOutput)
+}
+
+func (o ServiceOutput) V3Id1() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.V3Id1 }).(pulumi.StringOutput)
 }
 
 func init() {

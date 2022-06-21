@@ -25,8 +25,11 @@ type OrganizationMuteConfig struct {
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// Email address of the user who last edited the mute config. This field is set by the server and will be ignored if provided on config creation or update.
 	MostRecentEditor pulumi.StringOutput `pulumi:"mostRecentEditor"`
+	// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+	MuteConfigId pulumi.StringOutput `pulumi:"muteConfigId"`
 	// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -169,9 +172,18 @@ func (o OrganizationMuteConfigOutput) MostRecentEditor() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.MostRecentEditor }).(pulumi.StringOutput)
 }
 
+// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+func (o OrganizationMuteConfigOutput) MuteConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.MuteConfigId }).(pulumi.StringOutput)
+}
+
 // This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
 func (o OrganizationMuteConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o OrganizationMuteConfigOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.

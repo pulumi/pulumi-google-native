@@ -15,20 +15,26 @@ import (
 type VersionArtifact struct {
 	pulumi.CustomResourceState
 
+	ApiId pulumi.StringOutput `pulumi:"apiId"`
+	// Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+	ArtifactId pulumi.StringOutput `pulumi:"artifactId"`
 	// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
 	Contents pulumi.StringOutput `pulumi:"contents"`
 	// Creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
-	Hash pulumi.StringOutput `pulumi:"hash"`
+	Hash     pulumi.StringOutput `pulumi:"hash"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 	MimeType pulumi.StringOutput `pulumi:"mimeType"`
 	// Resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact.
 	SizeBytes pulumi.IntOutput `pulumi:"sizeBytes"`
 	// Last update timestamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	VersionId  pulumi.StringOutput `pulumi:"versionId"`
 }
 
 // NewVersionArtifact registers a new resource with the given unique name, arguments, and options.
@@ -146,6 +152,15 @@ func (o VersionArtifactOutput) ToVersionArtifactOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o VersionArtifactOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+func (o VersionArtifactOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
 // Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
 func (o VersionArtifactOutput) Contents() pulumi.StringOutput {
 	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.Contents }).(pulumi.StringOutput)
@@ -161,6 +176,10 @@ func (o VersionArtifactOutput) Hash() pulumi.StringOutput {
 	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.Hash }).(pulumi.StringOutput)
 }
 
+func (o VersionArtifactOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 func (o VersionArtifactOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.MimeType }).(pulumi.StringOutput)
@@ -171,6 +190,10 @@ func (o VersionArtifactOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o VersionArtifactOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact.
 func (o VersionArtifactOutput) SizeBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *VersionArtifact) pulumi.IntOutput { return v.SizeBytes }).(pulumi.IntOutput)
@@ -179,6 +202,10 @@ func (o VersionArtifactOutput) SizeBytes() pulumi.IntOutput {
 // Last update timestamp.
 func (o VersionArtifactOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o VersionArtifactOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VersionArtifact) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }
 
 func init() {

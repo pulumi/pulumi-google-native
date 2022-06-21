@@ -18,10 +18,14 @@ type EkmConnection struct {
 
 	// The time at which the EkmConnection was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+	EkmConnectionId pulumi.StringOutput `pulumi:"ekmConnectionId"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag     pulumi.StringOutput `pulumi:"etag"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
 	ServiceResolvers ServiceResolverResponseArrayOutput `pulumi:"serviceResolvers"`
 }
@@ -129,14 +133,27 @@ func (o EkmConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+func (o EkmConnectionOutput) EkmConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.EkmConnectionId }).(pulumi.StringOutput)
+}
+
 // Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 func (o EkmConnectionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+func (o EkmConnectionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
 func (o EkmConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EkmConnectionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.

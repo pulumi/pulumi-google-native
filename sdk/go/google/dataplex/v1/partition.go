@@ -16,14 +16,19 @@ import (
 type Partition struct {
 	pulumi.CustomResourceState
 
+	EntityId pulumi.StringOutput `pulumi:"entityId"`
 	// Optional. The etag for this partition.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
+	Etag     pulumi.StringOutput `pulumi:"etag"`
+	LakeId   pulumi.StringOutput `pulumi:"lakeId"`
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values pulumi.StringArrayOutput `pulumi:"values"`
+	Zone   pulumi.StringOutput      `pulumi:"zone"`
 }
 
 // NewPartition registers a new resource with the given unique name, arguments, and options.
@@ -141,12 +146,19 @@ func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) Parti
 	return o
 }
 
+func (o PartitionOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
+}
+
 // Optional. The etag for this partition.
 func (o PartitionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
+func (o PartitionOutput) LakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.LakeId }).(pulumi.StringOutput)
+}
+
 func (o PartitionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -156,9 +168,22 @@ func (o PartitionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o PartitionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o PartitionOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+}
+
 // Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 func (o PartitionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Partition) pulumi.StringArrayOutput { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+func (o PartitionOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 func init() {

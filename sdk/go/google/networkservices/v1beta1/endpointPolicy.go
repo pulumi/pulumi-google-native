@@ -25,10 +25,14 @@ type EndpointPolicy struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A matcher that selects endpoints to which the policies should be applied.
 	EndpointMatcher EndpointMatcherResponseOutput `pulumi:"endpointMatcher"`
+	// Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+	EndpointPolicyId pulumi.StringOutput `pulumi:"endpointPolicyId"`
 	// Optional. Set of label tags associated with the EndpointPolicy resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Name of the EndpointPolicy resource. It matches pattern `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends. If this field is not set, authentication is disabled(open) for this endpoint.
 	ServerTlsPolicy pulumi.StringOutput `pulumi:"serverTlsPolicy"`
 	// Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
@@ -199,14 +203,27 @@ func (o EndpointPolicyOutput) EndpointMatcher() EndpointMatcherResponseOutput {
 	return o.ApplyT(func(v *EndpointPolicy) EndpointMatcherResponseOutput { return v.EndpointMatcher }).(EndpointMatcherResponseOutput)
 }
 
+// Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+func (o EndpointPolicyOutput) EndpointPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringOutput { return v.EndpointPolicyId }).(pulumi.StringOutput)
+}
+
 // Optional. Set of label tags associated with the EndpointPolicy resource.
 func (o EndpointPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o EndpointPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Name of the EndpointPolicy resource. It matches pattern `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
 func (o EndpointPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EndpointPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends. If this field is not set, authentication is disabled(open) for this endpoint.

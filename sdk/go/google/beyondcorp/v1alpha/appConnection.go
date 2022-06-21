@@ -15,6 +15,8 @@ import (
 type AppConnection struct {
 	pulumi.CustomResourceState
 
+	// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	AppConnectionId pulumi.StringPtrOutput `pulumi:"appConnectionId"`
 	// Address of the remote application endpoint for the BeyondCorp AppConnection.
 	ApplicationEndpoint GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponseOutput `pulumi:"applicationEndpoint"`
 	// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this AppConnection.
@@ -26,9 +28,13 @@ type AppConnection struct {
 	// Optional. Gateway used by the AppConnection.
 	Gateway GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponseOutput `pulumi:"gateway"`
 	// Optional. Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Unique resource name of the AppConnection. The name is ignored when creating a AppConnection.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The current state of the AppConnection.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of network connectivity used by the AppConnection.
@@ -37,6 +43,8 @@ type AppConnection struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewAppConnection registers a new resource with the given unique name, arguments, and options.
@@ -171,6 +179,11 @@ func (o AppConnectionOutput) ToAppConnectionOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+func (o AppConnectionOutput) AppConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.AppConnectionId }).(pulumi.StringPtrOutput)
+}
+
 // Address of the remote application endpoint for the BeyondCorp AppConnection.
 func (o AppConnectionOutput) ApplicationEndpoint() GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponseOutput {
 	return o.ApplyT(func(v *AppConnection) GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponseOutput {
@@ -205,9 +218,22 @@ func (o AppConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o AppConnectionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Unique resource name of the AppConnection. The name is ignored when creating a AppConnection.
 func (o AppConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppConnectionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o AppConnectionOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The current state of the AppConnection.
@@ -228,6 +254,11 @@ func (o AppConnectionOutput) Uid() pulumi.StringOutput {
 // Timestamp when the resource was last modified.
 func (o AppConnectionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+func (o AppConnectionOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

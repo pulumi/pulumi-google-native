@@ -46,6 +46,7 @@ type Dataset struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// [Optional] Number of hours for the max time travel for all tables in the dataset.
 	MaxTimeTravelHours pulumi.StringOutput `pulumi:"maxTimeTravelHours"`
+	Project            pulumi.StringOutput `pulumi:"project"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
@@ -261,6 +262,10 @@ func (o DatasetOutput) Location() pulumi.StringOutput {
 // [Optional] Number of hours for the max time travel for all tables in the dataset.
 func (o DatasetOutput) MaxTimeTravelHours() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.MaxTimeTravelHours }).(pulumi.StringOutput)
+}
+
+func (o DatasetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.

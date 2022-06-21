@@ -25,8 +25,10 @@ type DlpJob struct {
 	InspectDetails GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput `pulumi:"inspectDetails"`
 	// If created by a job trigger, the resource name of the trigger that instantiated the job.
 	JobTriggerName pulumi.StringOutput `pulumi:"jobTriggerName"`
+	Location       pulumi.StringOutput `pulumi:"location"`
 	// The server-assigned name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Results from analyzing risk of a data source.
 	RiskDetails GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput `pulumi:"riskDetails"`
 	// Time when the job started.
@@ -166,9 +168,17 @@ func (o DlpJobOutput) JobTriggerName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.JobTriggerName }).(pulumi.StringOutput)
 }
 
+func (o DlpJobOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The server-assigned name.
 func (o DlpJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DlpJobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Results from analyzing risk of a data source.

@@ -60,12 +60,15 @@ type Disk struct {
 	Options pulumi.StringOutput `pulumi:"options"`
 	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
 	PhysicalBlockSizeBytes pulumi.StringOutput `pulumi:"physicalBlockSizeBytes"`
+	Project                pulumi.StringOutput `pulumi:"project"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringOutput `pulumi:"provisionedIops"`
 	// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies pulumi.StringArrayOutput `pulumi:"resourcePolicies"`
 	// Status information for the disk resource.
@@ -86,7 +89,7 @@ type Disk struct {
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
-	// The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family
+	// Source image to restore onto a disk. This field is optional.
 	SourceImage pulumi.StringOutput `pulumi:"sourceImage"`
 	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
 	SourceImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceImageEncryptionKey"`
@@ -116,8 +119,7 @@ type Disk struct {
 	UserLicenses pulumi.StringArrayOutput `pulumi:"userLicenses"`
 	// Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
 	Users pulumi.StringArrayOutput `pulumi:"users"`
-	// URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone  pulumi.StringOutput      `pulumi:"zone"`
 }
 
 // NewDisk registers a new resource with the given unique name, arguments, and options.
@@ -446,6 +448,10 @@ func (o DiskOutput) PhysicalBlockSizeBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.PhysicalBlockSizeBytes }).(pulumi.StringOutput)
 }
 
+func (o DiskOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o DiskOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.ProvisionedIops }).(pulumi.StringOutput)
@@ -459,6 +465,11 @@ func (o DiskOutput) Region() pulumi.StringOutput {
 // URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 func (o DiskOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringArrayOutput { return v.ReplicaZones }).(pulumi.StringArrayOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o DiskOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Resource policies applied to this disk for automatic snapshot creations.
@@ -511,7 +522,7 @@ func (o DiskOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceDiskId }).(pulumi.StringOutput)
 }
 
-// The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family
+// Source image to restore onto a disk. This field is optional.
 func (o DiskOutput) SourceImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceImage }).(pulumi.StringOutput)
 }
@@ -583,7 +594,6 @@ func (o DiskOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }
 
-// URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o DiskOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

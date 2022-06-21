@@ -23,7 +23,8 @@ type SshPublicKey struct {
 	// Public key text in SSH format, defined by RFC4253 section 6.6.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The canonical resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name   pulumi.StringOutput `pulumi:"name"`
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewSshPublicKey registers a new resource with the given unique name, arguments, and options.
@@ -139,6 +140,10 @@ func (o SshPublicKeyOutput) Key() pulumi.StringOutput {
 // The canonical resource name.
 func (o SshPublicKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SshPublicKeyOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
 func init() {

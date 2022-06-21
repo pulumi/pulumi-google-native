@@ -15,16 +15,22 @@ import (
 type Page struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3FulfillmentResponseOutput `pulumi:"entryFulfillment"`
 	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput `pulumi:"eventHandlers"`
+	FlowId        pulumi.StringOutput                                      `pulumi:"flowId"`
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form GoogleCloudDialogflowCxV3FormResponseOutput `pulumi:"form"`
+	// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput    `pulumi:"location"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups pulumi.StringArrayOutput `pulumi:"transitionRouteGroups"`
 	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
@@ -162,6 +168,10 @@ func (o PageOutput) ToPageOutputWithContext(ctx context.Context) PageOutput {
 	return o
 }
 
+func (o PageOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // The human-readable name of the page, unique within the flow.
 func (o PageOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -177,14 +187,31 @@ func (o PageOutput) EventHandlers() GoogleCloudDialogflowCxV3EventHandlerRespons
 	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput { return v.EventHandlers }).(GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput)
 }
 
+func (o PageOutput) FlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.FlowId }).(pulumi.StringOutput)
+}
+
 // The form associated with the page, used for collecting parameters relevant to the page.
 func (o PageOutput) Form() GoogleCloudDialogflowCxV3FormResponseOutput {
 	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3FormResponseOutput { return v.Form }).(GoogleCloudDialogflowCxV3FormResponseOutput)
 }
 
+// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+func (o PageOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+func (o PageOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 func (o PageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o PageOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.

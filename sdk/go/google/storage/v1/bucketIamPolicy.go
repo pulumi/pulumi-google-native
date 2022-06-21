@@ -19,12 +19,15 @@ type BucketIamPolicy struct {
 
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
 	Bindings BucketIamPolicyBindingsItemResponseArrayOutput `pulumi:"bindings"`
+	Bucket   pulumi.StringOutput                            `pulumi:"bucket"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
+	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
 	// The IAM policy format version.
 	Version pulumi.IntOutput `pulumi:"version"`
 }
@@ -145,6 +148,10 @@ func (o BucketIamPolicyOutput) Bindings() BucketIamPolicyBindingsItemResponseArr
 	return o.ApplyT(func(v *BucketIamPolicy) BucketIamPolicyBindingsItemResponseArrayOutput { return v.Bindings }).(BucketIamPolicyBindingsItemResponseArrayOutput)
 }
 
+func (o BucketIamPolicyOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
 // HTTP 1.1  Entity tag for the policy.
 func (o BucketIamPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -158,6 +165,11 @@ func (o BucketIamPolicyOutput) Kind() pulumi.StringOutput {
 // The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 func (o BucketIamPolicyOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The project to be billed for this request. Required for Requester Pays buckets.
+func (o BucketIamPolicyOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringPtrOutput { return v.UserProject }).(pulumi.StringPtrOutput)
 }
 
 // The IAM policy format version.

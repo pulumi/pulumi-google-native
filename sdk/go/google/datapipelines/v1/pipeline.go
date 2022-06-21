@@ -23,10 +23,12 @@ type Pipeline struct {
 	JobCount pulumi.IntOutput `pulumi:"jobCount"`
 	// Immutable. The timestamp when the pipeline was last modified. Set by the Data Pipelines service.
 	LastUpdateTime pulumi.StringOutput `pulumi:"lastUpdateTime"`
+	Location       pulumi.StringOutput `pulumi:"location"`
 	// The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
 	PipelineSources pulumi.StringMapOutput `pulumi:"pipelineSources"`
+	Project         pulumi.StringOutput    `pulumi:"project"`
 	// Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
 	ScheduleInfo GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput `pulumi:"scheduleInfo"`
 	// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
@@ -186,6 +188,10 @@ func (o PipelineOutput) LastUpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.LastUpdateTime }).(pulumi.StringOutput)
 }
 
+func (o PipelineOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location.
 func (o PipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -194,6 +200,10 @@ func (o PipelineOutput) Name() pulumi.StringOutput {
 // Immutable. The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
 func (o PipelineOutput) PipelineSources() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.PipelineSources }).(pulumi.StringMapOutput)
+}
+
+func (o PipelineOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.

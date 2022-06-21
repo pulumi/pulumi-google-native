@@ -21,14 +21,18 @@ type TlsRoute struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
+	Location pulumi.StringOutput      `pulumi:"location"`
 	// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name>`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
 	Rules TlsRouteRouteRuleResponseArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+	TlsRouteId pulumi.StringOutput `pulumi:"tlsRouteId"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -164,6 +168,10 @@ func (o TlsRouteOutput) Gateways() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
 }
 
+func (o TlsRouteOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
 func (o TlsRouteOutput) Meshes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
@@ -174,6 +182,10 @@ func (o TlsRouteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o TlsRouteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
 func (o TlsRouteOutput) Rules() TlsRouteRouteRuleResponseArrayOutput {
 	return o.ApplyT(func(v *TlsRoute) TlsRouteRouteRuleResponseArrayOutput { return v.Rules }).(TlsRouteRouteRuleResponseArrayOutput)
@@ -182,6 +194,11 @@ func (o TlsRouteOutput) Rules() TlsRouteRouteRuleResponseArrayOutput {
 // Server-defined URL of this resource
 func (o TlsRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+func (o TlsRouteOutput) TlsRouteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.TlsRouteId }).(pulumi.StringOutput)
 }
 
 // The timestamp when the resource was updated.

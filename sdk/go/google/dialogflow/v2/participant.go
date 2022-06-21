@@ -17,10 +17,13 @@ import (
 type Participant struct {
 	pulumi.CustomResourceState
 
+	ConversationId pulumi.StringOutput `pulumi:"conversationId"`
 	// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
 	DocumentsMetadataFilters pulumi.StringMapOutput `pulumi:"documentsMetadataFilters"`
+	Location                 pulumi.StringOutput    `pulumi:"location"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
@@ -134,14 +137,26 @@ func (o ParticipantOutput) ToParticipantOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ParticipantOutput) ConversationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Participant) pulumi.StringOutput { return v.ConversationId }).(pulumi.StringOutput)
+}
+
 // Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
 func (o ParticipantOutput) DocumentsMetadataFilters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Participant) pulumi.StringMapOutput { return v.DocumentsMetadataFilters }).(pulumi.StringMapOutput)
 }
 
+func (o ParticipantOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Participant) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 func (o ParticipantOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Participant) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ParticipantOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Participant) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.

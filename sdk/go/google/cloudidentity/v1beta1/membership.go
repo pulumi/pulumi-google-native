@@ -18,6 +18,7 @@ type Membership struct {
 
 	// The time when the `Membership` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	GroupId    pulumi.StringOutput `pulumi:"groupId"`
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	MemberKey EntityKeyResponseOutput `pulumi:"memberKey"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
@@ -137,6 +138,10 @@ func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) Mem
 // The time when the `Membership` was created.
 func (o MembershipOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o MembershipOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.

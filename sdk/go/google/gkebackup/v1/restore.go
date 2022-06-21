@@ -29,9 +29,11 @@ type Restore struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A set of custom labels supplied by user.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Number of resources excluded during the restore execution.
 	ResourcesExcludedCount pulumi.IntOutput `pulumi:"resourcesExcludedCount"`
 	// Number of resources that failed to be restored during the restore execution.
@@ -40,6 +42,9 @@ type Restore struct {
 	ResourcesRestoredCount pulumi.IntOutput `pulumi:"resourcesRestoredCount"`
 	// Configuration of the Restore. Inherited from parent RestorePlan's restore_config.
 	RestoreConfig RestoreConfigResponseOutput `pulumi:"restoreConfig"`
+	// Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
+	RestoreId     pulumi.StringOutput `pulumi:"restoreId"`
+	RestorePlanId pulumi.StringOutput `pulumi:"restorePlanId"`
 	// The current state of the Restore.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Human-readable description of why the Restore is in its current state.
@@ -200,9 +205,17 @@ func (o RestoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Restore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o RestoreOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
 func (o RestoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RestoreOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Number of resources excluded during the restore execution.
@@ -223,6 +236,15 @@ func (o RestoreOutput) ResourcesRestoredCount() pulumi.IntOutput {
 // Configuration of the Restore. Inherited from parent RestorePlan's restore_config.
 func (o RestoreOutput) RestoreConfig() RestoreConfigResponseOutput {
 	return o.ApplyT(func(v *Restore) RestoreConfigResponseOutput { return v.RestoreConfig }).(RestoreConfigResponseOutput)
+}
+
+// Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
+func (o RestoreOutput) RestoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.RestoreId }).(pulumi.StringOutput)
+}
+
+func (o RestoreOutput) RestorePlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.RestorePlanId }).(pulumi.StringOutput)
 }
 
 // The current state of the Restore.

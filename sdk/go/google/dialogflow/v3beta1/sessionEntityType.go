@@ -15,12 +15,17 @@ import (
 type SessionEntityType struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// The collection of entities to override or supplement the custom entity type.
 	Entities GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArrayOutput `pulumi:"entities"`
 	// Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode pulumi.StringOutput `pulumi:"entityOverrideMode"`
+	EnvironmentId      pulumi.StringOutput `pulumi:"environmentId"`
+	Location           pulumi.StringOutput `pulumi:"location"`
 	// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name      pulumi.StringOutput `pulumi:"name"`
+	Project   pulumi.StringOutput `pulumi:"project"`
+	SessionId pulumi.StringOutput `pulumi:"sessionId"`
 }
 
 // NewSessionEntityType registers a new resource with the given unique name, arguments, and options.
@@ -142,6 +147,10 @@ func (o SessionEntityTypeOutput) ToSessionEntityTypeOutputWithContext(ctx contex
 	return o
 }
 
+func (o SessionEntityTypeOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // The collection of entities to override or supplement the custom entity type.
 func (o SessionEntityTypeOutput) Entities() GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArrayOutput {
 	return o.ApplyT(func(v *SessionEntityType) GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArrayOutput {
@@ -154,9 +163,25 @@ func (o SessionEntityTypeOutput) EntityOverrideMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.EntityOverrideMode }).(pulumi.StringOutput)
 }
 
+func (o SessionEntityTypeOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
 func (o SessionEntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeOutput) SessionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.SessionId }).(pulumi.StringOutput)
 }
 
 func init() {

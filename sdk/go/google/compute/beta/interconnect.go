@@ -52,8 +52,11 @@ type Interconnect struct {
 	OperationalStatus pulumi.StringOutput `pulumi:"operationalStatus"`
 	// IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
 	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
+	Project       pulumi.StringOutput `pulumi:"project"`
 	// Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount pulumi.IntOutput `pulumi:"provisionedLinkCount"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntOutput `pulumi:"requestedLinkCount"`
 	// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
@@ -287,9 +290,18 @@ func (o InterconnectOutput) PeerIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.PeerIpAddress }).(pulumi.StringOutput)
 }
 
+func (o InterconnectOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Number of links actually provisioned in this interconnect.
 func (o InterconnectOutput) ProvisionedLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.IntOutput { return v.ProvisionedLinkCount }).(pulumi.IntOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o InterconnectOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Target number of physical links in the link bundle, as requested by the customer.

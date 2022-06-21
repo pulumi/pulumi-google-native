@@ -20,16 +20,12 @@ type PerfSampleSeries struct {
 
 	// Basic series represented by a line chart
 	BasicPerfSampleSeries BasicPerfSampleSeriesResponseOutput `pulumi:"basicPerfSampleSeries"`
-	// A tool results execution ID.
-	ExecutionId pulumi.StringOutput `pulumi:"executionId"`
-	// A tool results history ID.
-	HistoryId pulumi.StringOutput `pulumi:"historyId"`
-	// The cloud project
-	Project pulumi.StringOutput `pulumi:"project"`
+	ExecutionId           pulumi.StringOutput                 `pulumi:"executionId"`
+	HistoryId             pulumi.StringOutput                 `pulumi:"historyId"`
+	Project               pulumi.StringOutput                 `pulumi:"project"`
 	// A sample series id
 	SampleSeriesId pulumi.StringOutput `pulumi:"sampleSeriesId"`
-	// A tool results step ID.
-	StepId pulumi.StringOutput `pulumi:"stepId"`
+	StepId         pulumi.StringOutput `pulumi:"stepId"`
 }
 
 // NewPerfSampleSeries registers a new resource with the given unique name, arguments, and options.
@@ -140,17 +136,14 @@ func (o PerfSampleSeriesOutput) BasicPerfSampleSeries() BasicPerfSampleSeriesRes
 	return o.ApplyT(func(v *PerfSampleSeries) BasicPerfSampleSeriesResponseOutput { return v.BasicPerfSampleSeries }).(BasicPerfSampleSeriesResponseOutput)
 }
 
-// A tool results execution ID.
 func (o PerfSampleSeriesOutput) ExecutionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.ExecutionId }).(pulumi.StringOutput)
 }
 
-// A tool results history ID.
 func (o PerfSampleSeriesOutput) HistoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.HistoryId }).(pulumi.StringOutput)
 }
 
-// The cloud project
 func (o PerfSampleSeriesOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -160,7 +153,6 @@ func (o PerfSampleSeriesOutput) SampleSeriesId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.SampleSeriesId }).(pulumi.StringOutput)
 }
 
-// A tool results step ID.
 func (o PerfSampleSeriesOutput) StepId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.StepId }).(pulumi.StringOutput)
 }

@@ -31,7 +31,8 @@ type EvaluationJob struct {
 	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
 	ModelVersion pulumi.StringOutput `pulumi:"modelVersion"`
 	// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// Describes the current state of the job.
@@ -204,6 +205,10 @@ func (o EvaluationJobOutput) ModelVersion() pulumi.StringOutput {
 // After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
 func (o EvaluationJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EvaluationJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EvaluationJobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *EvaluationJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.

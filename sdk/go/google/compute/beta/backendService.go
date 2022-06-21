@@ -72,10 +72,13 @@ type BackendService struct {
 	Port pulumi.IntOutput `pulumi:"port"`
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
 	PortName pulumi.StringOutput `pulumi:"portName"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The resource URL for the security policy associated with this backend service.
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
 	// This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -450,6 +453,10 @@ func (o BackendServiceOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.PortName }).(pulumi.StringOutput)
 }
 
+func (o BackendServiceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 func (o BackendServiceOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
@@ -458,6 +465,11 @@ func (o BackendServiceOutput) Protocol() pulumi.StringOutput {
 // URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o BackendServiceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o BackendServiceOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The resource URL for the security policy associated with this backend service.

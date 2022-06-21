@@ -18,10 +18,12 @@ type StoredInfoType struct {
 
 	// Current version of the stored info type.
 	CurrentVersion GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput `pulumi:"currentVersion"`
+	Location       pulumi.StringOutput                                   `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Pending versions of the stored info type. Empty if no versions are pending.
 	PendingVersions GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput `pulumi:"pendingVersions"`
+	Project         pulumi.StringOutput                                        `pulumi:"project"`
 }
 
 // NewStoredInfoType registers a new resource with the given unique name, arguments, and options.
@@ -132,6 +134,10 @@ func (o StoredInfoTypeOutput) CurrentVersion() GooglePrivacyDlpV2StoredInfoTypeV
 	return o.ApplyT(func(v *StoredInfoType) GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput { return v.CurrentVersion }).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput)
 }
 
+func (o StoredInfoTypeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoredInfoType) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name.
 func (o StoredInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoredInfoType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -142,6 +148,10 @@ func (o StoredInfoTypeOutput) PendingVersions() GooglePrivacyDlpV2StoredInfoType
 	return o.ApplyT(func(v *StoredInfoType) GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput {
 		return v.PendingVersions
 	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput)
+}
+
+func (o StoredInfoTypeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoredInfoType) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

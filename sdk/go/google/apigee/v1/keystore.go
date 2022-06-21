@@ -16,9 +16,11 @@ type Keystore struct {
 	pulumi.CustomResourceState
 
 	// Aliases in this keystore.
-	Aliases pulumi.StringArrayOutput `pulumi:"aliases"`
-	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Aliases       pulumi.StringArrayOutput `pulumi:"aliases"`
+	EnvironmentId pulumi.StringOutput      `pulumi:"environmentId"`
+	// Optional. Name of the keystore. Overrides the value in Keystore.
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 }
 
 // NewKeystore registers a new resource with the given unique name, arguments, and options.
@@ -122,9 +124,17 @@ func (o KeystoreOutput) Aliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Keystore) pulumi.StringArrayOutput { return v.Aliases }).(pulumi.StringArrayOutput)
 }
 
-// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+func (o KeystoreOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keystore) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// Optional. Name of the keystore. Overrides the value in Keystore.
 func (o KeystoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Keystore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o KeystoreOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keystore) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 func init() {

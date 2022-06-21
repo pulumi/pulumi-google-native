@@ -22,6 +22,8 @@ type CertificateAuthority struct {
 	AccessUrls AccessUrlsResponseOutput `pulumi:"accessUrls"`
 	// A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
 	CaCertificateDescriptions CertificateDescriptionResponseArrayOutput `pulumi:"caCertificateDescriptions"`
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	CertificateAuthorityId pulumi.StringOutput `pulumi:"certificateAuthorityId"`
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy CertificateAuthorityPolicyResponseOutput `pulumi:"certificatePolicy"`
 	// Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -40,10 +42,14 @@ type CertificateAuthority struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
 	PemCaCertificates pulumi.StringArrayOutput `pulumi:"pemCaCertificates"`
+	Project           pulumi.StringOutput      `pulumi:"project"`
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The State for this CertificateAuthority.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
@@ -220,6 +226,11 @@ func (o CertificateAuthorityOutput) CaCertificateDescriptions() CertificateDescr
 	}).(CertificateDescriptionResponseArrayOutput)
 }
 
+// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+func (o CertificateAuthorityOutput) CertificateAuthorityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.CertificateAuthorityId }).(pulumi.StringOutput)
+}
+
 // Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 func (o CertificateAuthorityOutput) CertificatePolicy() CertificateAuthorityPolicyResponseOutput {
 	return o.ApplyT(func(v *CertificateAuthority) CertificateAuthorityPolicyResponseOutput { return v.CertificatePolicy }).(CertificateAuthorityPolicyResponseOutput)
@@ -265,6 +276,10 @@ func (o CertificateAuthorityOutput) Lifetime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Lifetime }).(pulumi.StringOutput)
 }
 
+func (o CertificateAuthorityOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o CertificateAuthorityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -273,6 +288,15 @@ func (o CertificateAuthorityOutput) Name() pulumi.StringOutput {
 // This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
 func (o CertificateAuthorityOutput) PemCaCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringArrayOutput { return v.PemCaCertificates }).(pulumi.StringArrayOutput)
+}
+
+func (o CertificateAuthorityOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o CertificateAuthorityOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The State for this CertificateAuthority.

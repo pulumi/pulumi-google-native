@@ -20,8 +20,13 @@ type SessionEntityType struct {
 	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayOutput `pulumi:"entities"`
 	// Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode pulumi.StringOutput `pulumi:"entityOverrideMode"`
+	EnvironmentId      pulumi.StringOutput `pulumi:"environmentId"`
+	Location           pulumi.StringOutput `pulumi:"location"`
 	// The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name      pulumi.StringOutput `pulumi:"name"`
+	Project   pulumi.StringOutput `pulumi:"project"`
+	SessionId pulumi.StringOutput `pulumi:"sessionId"`
+	UserId    pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewSessionEntityType registers a new resource with the given unique name, arguments, and options.
@@ -158,9 +163,29 @@ func (o SessionEntityTypeOutput) EntityOverrideMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.EntityOverrideMode }).(pulumi.StringOutput)
 }
 
+func (o SessionEntityTypeOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 func (o SessionEntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeOutput) SessionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.SessionId }).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
 func init() {

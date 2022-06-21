@@ -17,16 +17,20 @@ type BitbucketServerConfig struct {
 
 	// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
 	ApiKey pulumi.StringOutput `pulumi:"apiKey"`
+	// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+	BitbucketServerConfigId pulumi.StringPtrOutput `pulumi:"bitbucketServerConfigId"`
 	// Connected Bitbucket Server repositories for this config.
 	ConnectedRepositories BitbucketServerRepositoryIdResponseArrayOutput `pulumi:"connectedRepositories"`
 	// Time when the config was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
-	HostUri pulumi.StringOutput `pulumi:"hostUri"`
+	HostUri  pulumi.StringOutput `pulumi:"hostUri"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the config.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork pulumi.StringOutput `pulumi:"peeredNetwork"`
+	Project       pulumi.StringOutput `pulumi:"project"`
 	// Secret Manager secrets needed by the config.
 	Secrets BitbucketServerSecretsResponseOutput `pulumi:"secrets"`
 	// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
@@ -173,6 +177,11 @@ func (o BitbucketServerConfigOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.ApiKey }).(pulumi.StringOutput)
 }
 
+// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+func (o BitbucketServerConfigOutput) BitbucketServerConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringPtrOutput { return v.BitbucketServerConfigId }).(pulumi.StringPtrOutput)
+}
+
 // Connected Bitbucket Server repositories for this config.
 func (o BitbucketServerConfigOutput) ConnectedRepositories() BitbucketServerRepositoryIdResponseArrayOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) BitbucketServerRepositoryIdResponseArrayOutput {
@@ -190,6 +199,10 @@ func (o BitbucketServerConfigOutput) HostUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.HostUri }).(pulumi.StringOutput)
 }
 
+func (o BitbucketServerConfigOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for the config.
 func (o BitbucketServerConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -198,6 +211,10 @@ func (o BitbucketServerConfigOutput) Name() pulumi.StringOutput {
 // Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 func (o BitbucketServerConfigOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+func (o BitbucketServerConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Secret Manager secrets needed by the config.

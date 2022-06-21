@@ -20,12 +20,14 @@ type Registry struct {
 	EventNotificationConfigs EventNotificationConfigResponseArrayOutput `pulumi:"eventNotificationConfigs"`
 	// The DeviceService (HTTP) configuration for this device registry.
 	HttpConfig HttpConfigResponseOutput `pulumi:"httpConfig"`
+	Location   pulumi.StringOutput      `pulumi:"location"`
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel pulumi.StringOutput `pulumi:"logLevel"`
 	// The MQTT configuration for this device registry.
 	MqttConfig MqttConfigResponseOutput `pulumi:"mqttConfig"`
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig StateNotificationConfigResponseOutput `pulumi:"stateNotificationConfig"`
 }
@@ -163,6 +165,10 @@ func (o RegistryOutput) HttpConfig() HttpConfigResponseOutput {
 	return o.ApplyT(func(v *Registry) HttpConfigResponseOutput { return v.HttpConfig }).(HttpConfigResponseOutput)
 }
 
+func (o RegistryOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 func (o RegistryOutput) LogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.LogLevel }).(pulumi.StringOutput)
@@ -176,6 +182,10 @@ func (o RegistryOutput) MqttConfig() MqttConfigResponseOutput {
 // The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
 func (o RegistryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RegistryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.

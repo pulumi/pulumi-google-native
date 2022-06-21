@@ -18,8 +18,11 @@ import (
 type Certificate struct {
 	pulumi.CustomResourceState
 
+	CertificateAuthorityId pulumi.StringOutput `pulumi:"certificateAuthorityId"`
 	// A structured description of the issued X.509 certificate.
 	CertificateDescription CertificateDescriptionResponseOutput `pulumi:"certificateDescription"`
+	// Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config CertificateConfigResponseOutput `pulumi:"config"`
 	// The time at which this Certificate was created.
@@ -28,6 +31,7 @@ type Certificate struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
 	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The pem-encoded, signed X.509 certificate.
@@ -35,7 +39,10 @@ type Certificate struct {
 	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 	PemCertificateChain pulumi.StringArrayOutput `pulumi:"pemCertificateChain"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-	PemCsr pulumi.StringOutput `pulumi:"pemCsr"`
+	PemCsr  pulumi.StringOutput `pulumi:"pemCsr"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
 	RevocationDetails RevocationDetailsResponseOutput `pulumi:"revocationDetails"`
 	// The time at which this Certificate was updated.
@@ -160,9 +167,18 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
+func (o CertificateOutput) CertificateAuthorityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertificateAuthorityId }).(pulumi.StringOutput)
+}
+
 // A structured description of the issued X.509 certificate.
 func (o CertificateOutput) CertificateDescription() CertificateDescriptionResponseOutput {
 	return o.ApplyT(func(v *Certificate) CertificateDescriptionResponseOutput { return v.CertificateDescription }).(CertificateDescriptionResponseOutput)
+}
+
+// Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+func (o CertificateOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 // Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
@@ -185,6 +201,10 @@ func (o CertificateOutput) Lifetime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Lifetime }).(pulumi.StringOutput)
 }
 
+func (o CertificateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
 func (o CertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -203,6 +223,15 @@ func (o CertificateOutput) PemCertificateChain() pulumi.StringArrayOutput {
 // Immutable. A pem-encoded X.509 certificate signing request (CSR).
 func (o CertificateOutput) PemCsr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.PemCsr }).(pulumi.StringOutput)
+}
+
+func (o CertificateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o CertificateOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.

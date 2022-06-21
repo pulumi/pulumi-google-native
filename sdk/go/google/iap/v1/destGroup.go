@@ -18,9 +18,13 @@ type DestGroup struct {
 	// null List of CIDRs that this group applies to.
 	Cidrs pulumi.StringArrayOutput `pulumi:"cidrs"`
 	// null List of FQDNs that this group applies to.
-	Fqdns pulumi.StringArrayOutput `pulumi:"fqdns"`
+	Fqdns    pulumi.StringArrayOutput `pulumi:"fqdns"`
+	Location pulumi.StringOutput      `pulumi:"location"`
 	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+	TunnelDestGroupId pulumi.StringOutput `pulumi:"tunnelDestGroupId"`
 }
 
 // NewDestGroup registers a new resource with the given unique name, arguments, and options.
@@ -138,9 +142,22 @@ func (o DestGroupOutput) Fqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringArrayOutput { return v.Fqdns }).(pulumi.StringArrayOutput)
 }
 
+func (o DestGroupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
 func (o DestGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DestGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+func (o DestGroupOutput) TunnelDestGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.TunnelDestGroupId }).(pulumi.StringOutput)
 }
 
 func init() {

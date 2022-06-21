@@ -22,7 +22,8 @@ type CryptoKeyVersion struct {
 	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
 	Attestation KeyOperationAttestationResponseOutput `pulumi:"attestation"`
 	// The time at which this CryptoKeyVersion was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime  pulumi.StringOutput `pulumi:"createTime"`
+	CryptoKeyId pulumi.StringOutput `pulumi:"cryptoKeyId"`
 	// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
 	DestroyEventTime pulumi.StringOutput `pulumi:"destroyEventTime"`
 	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
@@ -37,8 +38,11 @@ type CryptoKeyVersion struct {
 	ImportJob pulumi.StringOutput `pulumi:"importJob"`
 	// The time at which this CryptoKeyVersion's key material was most recently imported.
 	ImportTime pulumi.StringOutput `pulumi:"importTime"`
+	KeyRingId  pulumi.StringOutput `pulumi:"keyRingId"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
 	// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
@@ -163,6 +167,10 @@ func (o CryptoKeyVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+func (o CryptoKeyVersionOutput) CryptoKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.CryptoKeyId }).(pulumi.StringOutput)
+}
+
 // The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
 func (o CryptoKeyVersionOutput) DestroyEventTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.DestroyEventTime }).(pulumi.StringOutput)
@@ -200,9 +208,21 @@ func (o CryptoKeyVersionOutput) ImportTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.ImportTime }).(pulumi.StringOutput)
 }
 
+func (o CryptoKeyVersionOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
+}
+
+func (o CryptoKeyVersionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
 func (o CryptoKeyVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CryptoKeyVersionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.

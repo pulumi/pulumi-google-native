@@ -31,7 +31,8 @@ type Dataset struct {
 	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
 	LastMigrateTime pulumi.StringOutput `pulumi:"lastMigrateTime"`
 	// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewDataset registers a new resource with the given unique name, arguments, and options.
@@ -171,6 +172,10 @@ func (o DatasetOutput) LastMigrateTime() pulumi.StringOutput {
 // Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
 func (o DatasetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DatasetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

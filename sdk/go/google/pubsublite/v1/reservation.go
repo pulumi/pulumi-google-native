@@ -15,8 +15,12 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+	ReservationId pulumi.StringOutput `pulumi:"reservationId"`
 	// The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
 	ThroughputCapacity pulumi.StringOutput `pulumi:"throughputCapacity"`
 }
@@ -122,9 +126,22 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
+func (o ReservationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
 func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReservationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+func (o ReservationOutput) ReservationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.ReservationId }).(pulumi.StringOutput)
 }
 
 // The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.

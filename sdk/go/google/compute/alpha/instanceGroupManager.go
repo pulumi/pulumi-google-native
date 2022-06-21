@@ -46,8 +46,11 @@ type InstanceGroupManager struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortResponseArrayOutput `pulumi:"namedPorts"`
+	Project    pulumi.StringOutput          `pulumi:"project"`
 	// The URL of the region where the managed instance group resides (for regional resources).
 	Region pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -72,8 +75,7 @@ type InstanceGroupManager struct {
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponseOutput `pulumi:"updatePolicy"`
 	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionResponseArrayOutput `pulumi:"versions"`
-	// The URL of a zone where the managed instance group is located (for zonal resources).
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone     pulumi.StringOutput                            `pulumi:"zone"`
 }
 
 // NewInstanceGroupManager registers a new resource with the given unique name, arguments, and options.
@@ -334,9 +336,18 @@ func (o InstanceGroupManagerOutput) NamedPorts() NamedPortResponseArrayOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) NamedPortResponseArrayOutput { return v.NamedPorts }).(NamedPortResponseArrayOutput)
 }
 
+func (o InstanceGroupManagerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The URL of the region where the managed instance group resides (for regional resources).
 func (o InstanceGroupManagerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o InstanceGroupManagerOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The URL for this managed instance group. The server defines this URL.
@@ -399,7 +410,6 @@ func (o InstanceGroupManagerOutput) Versions() InstanceGroupManagerVersionRespon
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerVersionResponseArrayOutput { return v.Versions }).(InstanceGroupManagerVersionResponseArrayOutput)
 }
 
-// The URL of a zone where the managed instance group is located (for zonal resources).
 func (o InstanceGroupManagerOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

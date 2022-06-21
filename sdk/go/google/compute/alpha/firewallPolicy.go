@@ -33,8 +33,12 @@ type FirewallPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the firewall policy.
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
 	// URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
@@ -209,9 +213,19 @@ func (o FirewallPolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
+// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+func (o FirewallPolicyOutput) ParentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
+}
+
 // URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o FirewallPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o FirewallPolicyOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.

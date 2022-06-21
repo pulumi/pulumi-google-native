@@ -19,9 +19,15 @@ type Resourcefile struct {
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
-	Data pulumi.StringOutput `pulumi:"data"`
+	Data          pulumi.StringOutput `pulumi:"data"`
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions pulumi.StringMapArrayOutput `pulumi:"extensions"`
+	// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	// Required. Resource file type. {{ resource_file_type }}
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewResourcefile registers a new resource with the given unique name, arguments, and options.
@@ -152,9 +158,27 @@ func (o ResourcefileOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v *Resourcefile) pulumi.StringOutput { return v.Data }).(pulumi.StringOutput)
 }
 
+func (o ResourcefileOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // Application specific response metadata. Must be set in the first response for streaming APIs.
 func (o ResourcefileOutput) Extensions() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *Resourcefile) pulumi.StringMapArrayOutput { return v.Extensions }).(pulumi.StringMapArrayOutput)
+}
+
+// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+func (o ResourcefileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourcefileOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// Required. Resource file type. {{ resource_file_type }}
+func (o ResourcefileOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

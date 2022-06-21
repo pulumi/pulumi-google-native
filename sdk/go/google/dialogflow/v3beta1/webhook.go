@@ -15,14 +15,17 @@ import (
 type Webhook struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput `pulumi:"genericWebService"`
+	Location          pulumi.StringOutput                                                  `pulumi:"location"`
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
 	ServiceDirectory GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput `pulumi:"serviceDirectory"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
@@ -147,6 +150,10 @@ func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOu
 	return o
 }
 
+func (o WebhookOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // Indicates whether the webhook is disabled.
 func (o WebhookOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
@@ -164,9 +171,17 @@ func (o WebhookOutput) GenericWebService() GoogleCloudDialogflowCxV3beta1Webhook
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput)
 }
 
+func (o WebhookOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 func (o WebhookOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WebhookOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.

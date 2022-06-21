@@ -19,8 +19,10 @@ type KnowledgeBase struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewKnowledgeBase registers a new resource with the given unique name, arguments, and options.
@@ -134,9 +136,17 @@ func (o KnowledgeBaseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *KnowledgeBase) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
+func (o KnowledgeBaseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *KnowledgeBase) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
 func (o KnowledgeBaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KnowledgeBase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o KnowledgeBaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *KnowledgeBase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

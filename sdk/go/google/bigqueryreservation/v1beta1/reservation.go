@@ -19,11 +19,15 @@ type Reservation struct {
 	// Creation time of the reservation.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
-	IgnoreIdleSlots pulumi.BoolOutput `pulumi:"ignoreIdleSlots"`
+	IgnoreIdleSlots pulumi.BoolOutput   `pulumi:"ignoreIdleSlots"`
+	Location        pulumi.StringOutput `pulumi:"location"`
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary pulumi.BoolOutput `pulumi:"multiRegionAuxiliary"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+	ReservationId pulumi.StringPtrOutput `pulumi:"reservationId"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceeds the project's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions, slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.
 	SlotCapacity pulumi.StringOutput `pulumi:"slotCapacity"`
 	// Last update time of the reservation.
@@ -155,6 +159,10 @@ func (o ReservationOutput) IgnoreIdleSlots() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolOutput { return v.IgnoreIdleSlots }).(pulumi.BoolOutput)
 }
 
+func (o ReservationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 func (o ReservationOutput) MultiRegionAuxiliary() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolOutput { return v.MultiRegionAuxiliary }).(pulumi.BoolOutput)
@@ -163,6 +171,15 @@ func (o ReservationOutput) MultiRegionAuxiliary() pulumi.BoolOutput {
 // The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReservationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+func (o ReservationOutput) ReservationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.ReservationId }).(pulumi.StringPtrOutput)
 }
 
 // Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceeds the project's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions, slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.

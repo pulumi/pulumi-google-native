@@ -16,6 +16,8 @@ import (
 type Asset struct {
 	pulumi.CustomResourceState
 
+	// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
+	AssetId pulumi.StringOutput `pulumi:"assetId"`
 	// The time when the asset was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the asset.
@@ -27,9 +29,12 @@ type Asset struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. User defined labels for the asset.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	LakeId   pulumi.StringOutput    `pulumi:"lakeId"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The relative resource name of the asset, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Specification of the resource that is referenced by this asset.
 	ResourceSpec GoogleCloudDataplexV1AssetResourceSpecResponseOutput `pulumi:"resourceSpec"`
 	// Status of the resource referenced by this asset.
@@ -42,6 +47,9 @@ type Asset struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the asset was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	Zone         pulumi.StringOutput    `pulumi:"zone"`
 }
 
 // NewAsset registers a new resource with the given unique name, arguments, and options.
@@ -171,6 +179,11 @@ func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
 }
 
+// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
+func (o AssetOutput) AssetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.AssetId }).(pulumi.StringOutput)
+}
+
 // The time when the asset was created.
 func (o AssetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -201,9 +214,21 @@ func (o AssetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o AssetOutput) LakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.LakeId }).(pulumi.StringOutput)
+}
+
+func (o AssetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The relative resource name of the asset, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
 func (o AssetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AssetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Specification of the resource that is referenced by this asset.
@@ -234,6 +259,15 @@ func (o AssetOutput) Uid() pulumi.StringOutput {
 // The time when the asset was last updated.
 func (o AssetOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o AssetOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 func init() {

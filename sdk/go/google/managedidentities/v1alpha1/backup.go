@@ -16,14 +16,18 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
+	BackupId pulumi.StringOutput `pulumi:"backupId"`
 	// The time the backups was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A short description of the backup.
 	Description pulumi.StringOutput `pulumi:"description"`
+	DomainId    pulumi.StringOutput `pulumi:"domainId"`
 	// Optional. Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The current state of the backup.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current status of this backup, if available.
@@ -138,6 +142,11 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
+func (o BackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
+}
+
 // The time the backups was created.
 func (o BackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -148,6 +157,10 @@ func (o BackupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o BackupOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
 // Optional. Resource labels to represent user provided metadata.
 func (o BackupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -156,6 +169,10 @@ func (o BackupOutput) Labels() pulumi.StringMapOutput {
 // The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BackupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The current state of the backup.

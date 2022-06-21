@@ -16,16 +16,15 @@ type BucketObject struct {
 	pulumi.CustomResourceState
 
 	// Access controls on the object.
-	Acl ObjectAccessControlResponseArrayOutput `pulumi:"acl"`
-	// The name of the bucket containing this object.
-	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	Acl    ObjectAccessControlResponseArrayOutput `pulumi:"acl"`
+	Bucket pulumi.StringOutput                    `pulumi:"bucket"`
 	// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
 	CacheControl pulumi.StringOutput `pulumi:"cacheControl"`
 	// Number of underlying components that make up this object. Components are accumulated by compose operations.
 	ComponentCount pulumi.IntOutput `pulumi:"componentCount"`
 	// Content-Disposition of the object data.
 	ContentDisposition pulumi.StringOutput `pulumi:"contentDisposition"`
-	// Content-Encoding of the object data.
+	// If set, sets the contentEncoding property of the final object to this value. Setting this parameter is equivalent to setting the contentEncoding metadata property. This can be useful when uploading an object with uploadType=media to indicate the encoding of the content being uploaded.
 	ContentEncoding pulumi.StringOutput `pulumi:"contentEncoding"`
 	// Content-Language of the object data.
 	ContentLanguage pulumi.StringOutput `pulumi:"contentLanguage"`
@@ -43,9 +42,17 @@ type BucketObject struct {
 	EventBasedHold pulumi.BoolOutput `pulumi:"eventBasedHold"`
 	// The content generation of this object. Used for object versioning.
 	Generation pulumi.StringOutput `pulumi:"generation"`
+	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+	IfGenerationMatch pulumi.StringPtrOutput `pulumi:"ifGenerationMatch"`
+	// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+	IfGenerationNotMatch pulumi.StringPtrOutput `pulumi:"ifGenerationNotMatch"`
+	// Makes the operation conditional on whether the object's current metageneration matches the given value.
+	IfMetagenerationMatch pulumi.StringPtrOutput `pulumi:"ifMetagenerationMatch"`
+	// Makes the operation conditional on whether the object's current metageneration does not match the given value.
+	IfMetagenerationNotMatch pulumi.StringPtrOutput `pulumi:"ifMetagenerationNotMatch"`
 	// The kind of item this is. For objects, this is always storage#object.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+	// Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
 	Md5Hash pulumi.StringOutput `pulumi:"md5Hash"`
@@ -55,10 +62,14 @@ type BucketObject struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
 	Metageneration pulumi.StringOutput `pulumi:"metageneration"`
-	// The name of the object. Required if not specified by URL parameter.
+	// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owner of the object. This will always be the uploader of the object.
 	Owner BucketObjectOwnerResponseOutput `pulumi:"owner"`
+	// Apply a predefined set of access controls to this object.
+	PredefinedAcl pulumi.StringPtrOutput `pulumi:"predefinedAcl"`
+	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+	Projection pulumi.StringPtrOutput `pulumi:"projection"`
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime pulumi.StringOutput `pulumi:"retentionExpirationTime"`
 	// The link to this object.
@@ -77,6 +88,8 @@ type BucketObject struct {
 	TimeStorageClassUpdated pulumi.StringOutput `pulumi:"timeStorageClassUpdated"`
 	// The modification time of the object metadata in RFC 3339 format.
 	Updated pulumi.StringOutput `pulumi:"updated"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
+	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
 }
 
 // NewBucketObject registers a new resource with the given unique name, arguments, and options.
@@ -327,7 +340,6 @@ func (o BucketObjectOutput) Acl() ObjectAccessControlResponseArrayOutput {
 	return o.ApplyT(func(v *BucketObject) ObjectAccessControlResponseArrayOutput { return v.Acl }).(ObjectAccessControlResponseArrayOutput)
 }
 
-// The name of the bucket containing this object.
 func (o BucketObjectOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -347,7 +359,7 @@ func (o BucketObjectOutput) ContentDisposition() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentDisposition }).(pulumi.StringOutput)
 }
 
-// Content-Encoding of the object data.
+// If set, sets the contentEncoding property of the final object to this value. Setting this parameter is equivalent to setting the contentEncoding metadata property. This can be useful when uploading an object with uploadType=media to indicate the encoding of the content being uploaded.
 func (o BucketObjectOutput) ContentEncoding() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentEncoding }).(pulumi.StringOutput)
 }
@@ -392,12 +404,32 @@ func (o BucketObjectOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
 
+// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+func (o BucketObjectOutput) IfGenerationMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.IfGenerationMatch }).(pulumi.StringPtrOutput)
+}
+
+// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+func (o BucketObjectOutput) IfGenerationNotMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.IfGenerationNotMatch }).(pulumi.StringPtrOutput)
+}
+
+// Makes the operation conditional on whether the object's current metageneration matches the given value.
+func (o BucketObjectOutput) IfMetagenerationMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.IfMetagenerationMatch }).(pulumi.StringPtrOutput)
+}
+
+// Makes the operation conditional on whether the object's current metageneration does not match the given value.
+func (o BucketObjectOutput) IfMetagenerationNotMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.IfMetagenerationNotMatch }).(pulumi.StringPtrOutput)
+}
+
 // The kind of item this is. For objects, this is always storage#object.
 func (o BucketObjectOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+// Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
 func (o BucketObjectOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -422,7 +454,7 @@ func (o BucketObjectOutput) Metageneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Metageneration }).(pulumi.StringOutput)
 }
 
-// The name of the object. Required if not specified by URL parameter.
+// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
 func (o BucketObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -430,6 +462,16 @@ func (o BucketObjectOutput) Name() pulumi.StringOutput {
 // The owner of the object. This will always be the uploader of the object.
 func (o BucketObjectOutput) Owner() BucketObjectOwnerResponseOutput {
 	return o.ApplyT(func(v *BucketObject) BucketObjectOwnerResponseOutput { return v.Owner }).(BucketObjectOwnerResponseOutput)
+}
+
+// Apply a predefined set of access controls to this object.
+func (o BucketObjectOutput) PredefinedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.PredefinedAcl }).(pulumi.StringPtrOutput)
+}
+
+// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+func (o BucketObjectOutput) Projection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Projection }).(pulumi.StringPtrOutput)
 }
 
 // A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
@@ -475,6 +517,11 @@ func (o BucketObjectOutput) TimeStorageClassUpdated() pulumi.StringOutput {
 // The modification time of the object metadata in RFC 3339 format.
 func (o BucketObjectOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The project to be billed for this request. Required for Requester Pays buckets.
+func (o BucketObjectOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.UserProject }).(pulumi.StringPtrOutput)
 }
 
 func init() {

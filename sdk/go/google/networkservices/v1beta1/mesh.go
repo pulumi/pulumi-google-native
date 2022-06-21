@@ -22,9 +22,13 @@ type Mesh struct {
 	// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This will is applicable only for sidecar proxy deployments.
 	InterceptionPort pulumi.IntOutput `pulumi:"interceptionPort"`
 	// Optional. Set of label tags associated with the Mesh resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
+	// Required. Short name of the Mesh resource to be created.
+	MeshId pulumi.StringOutput `pulumi:"meshId"`
 	// Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Server-defined URL of this resource
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The timestamp when the resource was updated.
@@ -160,9 +164,22 @@ func (o MeshOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o MeshOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Required. Short name of the Mesh resource to be created.
+func (o MeshOutput) MeshId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.MeshId }).(pulumi.StringOutput)
+}
+
 // Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
 func (o MeshOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o MeshOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Server-defined URL of this resource

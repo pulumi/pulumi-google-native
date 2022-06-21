@@ -14,6 +14,8 @@ import (
 type Deployment struct {
 	pulumi.CustomResourceState
 
+	// Sets the policy to use for creating new resources.
+	CreatePolicy pulumi.StringPtrOutput `pulumi:"createPolicy"`
 	// User provided default credential for the deployment.
 	Credential CredentialResponseOutput `pulumi:"credential"`
 	// An optional user-provided description of the deployment.
@@ -32,6 +34,9 @@ type Deployment struct {
 	Operation OperationResponseOutput `pulumi:"operation"`
 	// List of outputs from the last manifest that deployed successfully.
 	Outputs DeploymentOutputEntryResponseArrayOutput `pulumi:"outputs"`
+	// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
+	Preview pulumi.StringPtrOutput `pulumi:"preview"`
+	Project pulumi.StringOutput    `pulumi:"project"`
 	// Server defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
@@ -156,6 +161,11 @@ func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) Dep
 	return o
 }
 
+// Sets the policy to use for creating new resources.
+func (o DeploymentOutput) CreatePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringPtrOutput { return v.CreatePolicy }).(pulumi.StringPtrOutput)
+}
+
 // User provided default credential for the deployment.
 func (o DeploymentOutput) Credential() CredentialResponseOutput {
 	return o.ApplyT(func(v *Deployment) CredentialResponseOutput { return v.Credential }).(CredentialResponseOutput)
@@ -199,6 +209,15 @@ func (o DeploymentOutput) Operation() OperationResponseOutput {
 // List of outputs from the last manifest that deployed successfully.
 func (o DeploymentOutput) Outputs() DeploymentOutputEntryResponseArrayOutput {
 	return o.ApplyT(func(v *Deployment) DeploymentOutputEntryResponseArrayOutput { return v.Outputs }).(DeploymentOutputEntryResponseArrayOutput)
+}
+
+// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
+func (o DeploymentOutput) Preview() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringPtrOutput { return v.Preview }).(pulumi.StringPtrOutput)
+}
+
+func (o DeploymentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Server defined URL for the resource.

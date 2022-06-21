@@ -20,6 +20,7 @@ type Routine struct {
 	Arguments ArgumentResponseArrayOutput `pulumi:"arguments"`
 	// The time when this routine was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	DatasetId    pulumi.StringOutput `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
 	DefinitionBody pulumi.StringOutput `pulumi:"definitionBody"`
 	// Optional. The description of the routine, if defined.
@@ -34,6 +35,7 @@ type Routine struct {
 	Language pulumi.StringOutput `pulumi:"language"`
 	// The time when this routine was last modified, in milliseconds since the epoch.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
+	Project          pulumi.StringOutput `pulumi:"project"`
 	// Optional. Remote function specific options.
 	RemoteFunctionOptions RemoteFunctionOptionsResponseOutput `pulumi:"remoteFunctionOptions"`
 	// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
@@ -204,6 +206,10 @@ func (o RoutineOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+func (o RoutineOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
 // The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
 func (o RoutineOutput) DefinitionBody() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.DefinitionBody }).(pulumi.StringOutput)
@@ -237,6 +243,10 @@ func (o RoutineOutput) Language() pulumi.StringOutput {
 // The time when this routine was last modified, in milliseconds since the epoch.
 func (o RoutineOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+func (o RoutineOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Remote function specific options.

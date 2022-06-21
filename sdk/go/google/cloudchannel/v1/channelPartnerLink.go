@@ -18,6 +18,7 @@ import (
 type ChannelPartnerLink struct {
 	pulumi.CustomResourceState
 
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Cloud Identity info of the channel partner (IR).
 	ChannelPartnerCloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponseOutput `pulumi:"channelPartnerCloudIdentityInfo"`
 	// Timestamp of when the channel partner link is created.
@@ -135,6 +136,10 @@ func (o ChannelPartnerLinkOutput) ToChannelPartnerLinkOutput() ChannelPartnerLin
 
 func (o ChannelPartnerLinkOutput) ToChannelPartnerLinkOutputWithContext(ctx context.Context) ChannelPartnerLinkOutput {
 	return o
+}
+
+func (o ChannelPartnerLinkOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Cloud Identity info of the channel partner (IR).

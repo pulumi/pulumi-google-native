@@ -19,8 +19,7 @@ type WorkerPool struct {
 	// Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// User-defined name of the `WorkerPool`.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The project ID of the GCP project for which the `WorkerPool` is created.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
@@ -153,7 +152,6 @@ func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project ID of the GCP project for which the `WorkerPool` is created.
 func (o WorkerPoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

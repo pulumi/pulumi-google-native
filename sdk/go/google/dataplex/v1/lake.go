@@ -26,12 +26,16 @@ type Lake struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. User-defined labels for the lake.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+	LakeId   pulumi.StringOutput `pulumi:"lakeId"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Optional. Settings to manage lake and Dataproc Metastore service instance association.
 	Metastore GoogleCloudDataplexV1LakeMetastoreResponseOutput `pulumi:"metastore"`
 	// Metastore status of the lake.
 	MetastoreStatus GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput `pulumi:"metastoreStatus"`
 	// The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Current state of the lake.
@@ -40,6 +44,8 @@ type Lake struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the lake was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewLake registers a new resource with the given unique name, arguments, and options.
@@ -180,6 +186,15 @@ func (o LakeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+func (o LakeOutput) LakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.LakeId }).(pulumi.StringOutput)
+}
+
+func (o LakeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Settings to manage lake and Dataproc Metastore service instance association.
 func (o LakeOutput) Metastore() GoogleCloudDataplexV1LakeMetastoreResponseOutput {
 	return o.ApplyT(func(v *Lake) GoogleCloudDataplexV1LakeMetastoreResponseOutput { return v.Metastore }).(GoogleCloudDataplexV1LakeMetastoreResponseOutput)
@@ -193,6 +208,10 @@ func (o LakeOutput) MetastoreStatus() GoogleCloudDataplexV1LakeMetastoreStatusRe
 // The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
 func (o LakeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LakeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
@@ -213,6 +232,11 @@ func (o LakeOutput) Uid() pulumi.StringOutput {
 // The time when the lake was last updated.
 func (o LakeOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o LakeOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

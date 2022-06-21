@@ -32,8 +32,7 @@ type ServiceAccount struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The OAuth 2.0 client ID for the service account.
 	Oauth2ClientId pulumi.StringOutput `pulumi:"oauth2ClientId"`
-	// The ID of the project that owns the service account.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 	// The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
 }
@@ -186,7 +185,6 @@ func (o ServiceAccountOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
-// The ID of the project that owns the service account.
 func (o ServiceAccountOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -15,14 +15,20 @@ import (
 type AppProfile struct {
 	pulumi.CustomResourceState
 
+	// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+	AppProfileId pulumi.StringOutput `pulumi:"appProfileId"`
 	// Long form description of the use case for this AppProfile.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// If true, ignore safety checks when creating the app profile.
+	IgnoreWarnings pulumi.StringPtrOutput `pulumi:"ignoreWarnings"`
+	InstanceId     pulumi.StringOutput    `pulumi:"instanceId"`
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyResponseOutput `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Use a single-cluster routing policy.
 	SingleClusterRouting SingleClusterRoutingResponseOutput `pulumi:"singleClusterRouting"`
 }
@@ -147,6 +153,11 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 	return o
 }
 
+// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+func (o AppProfileOutput) AppProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.AppProfileId }).(pulumi.StringOutput)
+}
+
 // Long form description of the use case for this AppProfile.
 func (o AppProfileOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -157,6 +168,15 @@ func (o AppProfileOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// If true, ignore safety checks when creating the app profile.
+func (o AppProfileOutput) IgnoreWarnings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringPtrOutput { return v.IgnoreWarnings }).(pulumi.StringPtrOutput)
+}
+
+func (o AppProfileOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // Use a multi-cluster routing policy.
 func (o AppProfileOutput) MultiClusterRoutingUseAny() MultiClusterRoutingUseAnyResponseOutput {
 	return o.ApplyT(func(v *AppProfile) MultiClusterRoutingUseAnyResponseOutput { return v.MultiClusterRoutingUseAny }).(MultiClusterRoutingUseAnyResponseOutput)
@@ -165,6 +185,10 @@ func (o AppProfileOutput) MultiClusterRoutingUseAny() MultiClusterRoutingUseAnyR
 // The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
 func (o AppProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppProfileOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Use a single-cluster routing policy.

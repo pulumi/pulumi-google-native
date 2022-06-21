@@ -30,16 +30,26 @@ type Stream struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Errors on the Stream.
 	Errors ErrorResponseArrayOutput `pulumi:"errors"`
+	// Optional. Create the stream without validating it.
+	Force pulumi.StringPtrOutput `pulumi:"force"`
 	// Labels.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The stream's name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Source connection profile configuration.
 	SourceConfig SourceConfigResponseOutput `pulumi:"sourceConfig"`
 	// The state of the stream.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Required. The stream identifier.
+	StreamId pulumi.StringOutput `pulumi:"streamId"`
 	// The last update time of the stream.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the stream, but do not create any resources. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewStream registers a new resource with the given unique name, arguments, and options.
@@ -223,14 +233,32 @@ func (o StreamOutput) Errors() ErrorResponseArrayOutput {
 	return o.ApplyT(func(v *Stream) ErrorResponseArrayOutput { return v.Errors }).(ErrorResponseArrayOutput)
 }
 
+// Optional. Create the stream without validating it.
+func (o StreamOutput) Force() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
+}
+
 // Labels.
 func (o StreamOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o StreamOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The stream's name.
 func (o StreamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StreamOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o StreamOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Source connection profile configuration.
@@ -243,9 +271,19 @@ func (o StreamOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+// Required. The stream identifier.
+func (o StreamOutput) StreamId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
+}
+
 // The last update time of the stream.
 func (o StreamOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the stream, but do not create any resources. The default is false.
+func (o StreamOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

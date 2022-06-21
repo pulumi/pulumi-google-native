@@ -22,7 +22,8 @@ type Source struct {
 	// The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 }
 
 // NewSource registers a new resource with the given unique name, arguments, and options.
@@ -137,6 +138,10 @@ func (o SourceOutput) DisplayName() pulumi.StringOutput {
 // The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
 func (o SourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SourceOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 func init() {

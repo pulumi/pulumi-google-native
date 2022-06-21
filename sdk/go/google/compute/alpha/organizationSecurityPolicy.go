@@ -37,10 +37,14 @@ type OrganizationSecurityPolicy struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the security policy.
-	Parent                 pulumi.StringOutput                                `pulumi:"parent"`
+	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+	ParentId               pulumi.StringPtrOutput                             `pulumi:"parentId"`
 	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigResponseOutput `pulumi:"recaptchaOptionsConfig"`
 	// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
@@ -257,6 +261,11 @@ func (o OrganizationSecurityPolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
+// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+func (o OrganizationSecurityPolicyOutput) ParentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
+}
+
 func (o OrganizationSecurityPolicyOutput) RecaptchaOptionsConfig() SecurityPolicyRecaptchaOptionsConfigResponseOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) SecurityPolicyRecaptchaOptionsConfigResponseOutput {
 		return v.RecaptchaOptionsConfig
@@ -266,6 +275,11 @@ func (o OrganizationSecurityPolicyOutput) RecaptchaOptionsConfig() SecurityPolic
 // URL of the region where the regional security policy resides. This field is not applicable to global security policies.
 func (o OrganizationSecurityPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o OrganizationSecurityPolicyOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.

@@ -15,6 +15,7 @@ import (
 type EntityType struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode pulumi.StringOutput `pulumi:"autoExpansionMode"`
 	// The human-readable name of the entity type, unique within the agent.
@@ -27,8 +28,12 @@ type EntityType struct {
 	ExcludedPhrases GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArrayOutput `pulumi:"excludedPhrases"`
 	// Indicates the kind of entity type.
 	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput    `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
 	Redact pulumi.BoolOutput `pulumi:"redact"`
 }
@@ -166,6 +171,10 @@ func (o EntityTypeOutput) ToEntityTypeOutputWithContext(ctx context.Context) Ent
 	return o
 }
 
+func (o EntityTypeOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // Indicates whether the entity type can be automatically expanded.
 func (o EntityTypeOutput) AutoExpansionMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.AutoExpansionMode }).(pulumi.StringOutput)
@@ -200,9 +209,22 @@ func (o EntityTypeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+func (o EntityTypeOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+func (o EntityTypeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 func (o EntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EntityTypeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.

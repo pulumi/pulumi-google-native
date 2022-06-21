@@ -20,11 +20,15 @@ type ServiceBinding struct {
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Set of label tags associated with the ServiceBinding resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
 	Service pulumi.StringOutput `pulumi:"service"`
+	// Required. Short name of the ServiceBinding resource to be created.
+	ServiceBindingId pulumi.StringOutput `pulumi:"serviceBindingId"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -156,14 +160,27 @@ func (o ServiceBindingOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ServiceBindingOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
 func (o ServiceBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ServiceBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
 func (o ServiceBindingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// Required. Short name of the ServiceBinding resource to be created.
+func (o ServiceBindingOutput) ServiceBindingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.ServiceBindingId }).(pulumi.StringOutput)
 }
 
 // The timestamp when the resource was updated.

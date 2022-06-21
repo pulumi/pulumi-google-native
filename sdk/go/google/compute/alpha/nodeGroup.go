@@ -22,6 +22,8 @@ type NodeGroup struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// Initial count of nodes in the node group.
+	InitialNodeCount pulumi.StringOutput `pulumi:"initialNodeCount"`
 	// The type of the resource. Always compute#nodeGroup for node group.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
@@ -33,6 +35,9 @@ type NodeGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// URL of the node template to create the node group from.
 	NodeTemplate pulumi.StringOutput `pulumi:"nodeTemplate"`
+	Project      pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -42,8 +47,7 @@ type NodeGroup struct {
 	// The total number of nodes in the node group.
 	Size   pulumi.IntOutput    `pulumi:"size"`
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The name of the zone where the node group resides, such as us-central1-a.
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone   pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewNodeGroup registers a new resource with the given unique name, arguments, and options.
@@ -192,6 +196,11 @@ func (o NodeGroupOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
+// Initial count of nodes in the node group.
+func (o NodeGroupOutput) InitialNodeCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.InitialNodeCount }).(pulumi.StringOutput)
+}
+
 // The type of the resource. Always compute#nodeGroup for node group.
 func (o NodeGroupOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
@@ -221,6 +230,15 @@ func (o NodeGroupOutput) NodeTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.NodeTemplate }).(pulumi.StringOutput)
 }
 
+func (o NodeGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o NodeGroupOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // Server-defined URL for the resource.
 func (o NodeGroupOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -245,7 +263,6 @@ func (o NodeGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The name of the zone where the node group resides, such as us-central1-a.
 func (o NodeGroupOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

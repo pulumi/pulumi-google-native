@@ -15,6 +15,8 @@ import (
 type ClientConnectorService struct {
 	pulumi.CustomResourceState
 
+	// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+	ClientConnectorServiceId pulumi.StringPtrOutput `pulumi:"clientConnectorServiceId"`
 	// [Output only] Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. User-provided name. The display name should follow certain format. * Must be 6 to 30 characters in length. * Can only contain lowercase letters, numbers, and hyphens. * Must start with a letter.
@@ -22,13 +24,19 @@ type ClientConnectorService struct {
 	// The details of the egress settings.
 	Egress EgressResponseOutput `pulumi:"egress"`
 	// The details of the ingress settings.
-	Ingress IngressResponseOutput `pulumi:"ingress"`
+	Ingress  IngressResponseOutput `pulumi:"ingress"`
+	Location pulumi.StringOutput   `pulumi:"location"`
 	// Name of resource. The name is ignored during creation.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The operational state of the ClientConnectorService.
 	State pulumi.StringOutput `pulumi:"state"`
 	// [Output only] Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewClientConnectorService registers a new resource with the given unique name, arguments, and options.
@@ -151,6 +159,11 @@ func (o ClientConnectorServiceOutput) ToClientConnectorServiceOutputWithContext(
 	return o
 }
 
+// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+func (o ClientConnectorServiceOutput) ClientConnectorServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringPtrOutput { return v.ClientConnectorServiceId }).(pulumi.StringPtrOutput)
+}
+
 // [Output only] Create time stamp.
 func (o ClientConnectorServiceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -171,9 +184,22 @@ func (o ClientConnectorServiceOutput) Ingress() IngressResponseOutput {
 	return o.ApplyT(func(v *ClientConnectorService) IngressResponseOutput { return v.Ingress }).(IngressResponseOutput)
 }
 
+func (o ClientConnectorServiceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Name of resource. The name is ignored during creation.
 func (o ClientConnectorServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClientConnectorServiceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o ClientConnectorServiceOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The operational state of the ClientConnectorService.
@@ -184,6 +210,11 @@ func (o ClientConnectorServiceOutput) State() pulumi.StringOutput {
 // [Output only] Update time stamp.
 func (o ClientConnectorServiceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+func (o ClientConnectorServiceOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

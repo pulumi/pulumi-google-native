@@ -24,11 +24,13 @@ type RegionAutoscaler struct {
 	// Type of the resource. Always compute#autoscaler for autoscalers.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
-	RecommendedSize pulumi.IntOutput `pulumi:"recommendedSize"`
-	// URL of the region where the instance group resides (for autoscalers living in regional scope).
-	Region pulumi.StringOutput `pulumi:"region"`
+	RecommendedSize pulumi.IntOutput    `pulumi:"recommendedSize"`
+	Region          pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Status information of existing scaling schedules.
 	ScalingScheduleStatus pulumi.StringMapOutput `pulumi:"scalingScheduleStatus"`
 	// Server-defined URL for the resource.
@@ -179,14 +181,22 @@ func (o RegionAutoscalerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o RegionAutoscalerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
 func (o RegionAutoscalerOutput) RecommendedSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionAutoscaler) pulumi.IntOutput { return v.RecommendedSize }).(pulumi.IntOutput)
 }
 
-// URL of the region where the instance group resides (for autoscalers living in regional scope).
 func (o RegionAutoscalerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o RegionAutoscalerOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Status information of existing scaling schedules.

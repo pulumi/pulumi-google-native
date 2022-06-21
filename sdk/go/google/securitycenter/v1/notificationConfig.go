@@ -15,10 +15,13 @@ import (
 type NotificationConfig struct {
 	pulumi.CustomResourceState
 
+	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
 	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
@@ -137,6 +140,11 @@ func (o NotificationConfigOutput) ToNotificationConfigOutputWithContext(ctx cont
 	return o
 }
 
+// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+func (o NotificationConfigOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
 // The description of the notification config (max of 1024 characters).
 func (o NotificationConfigOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -145,6 +153,10 @@ func (o NotificationConfigOutput) Description() pulumi.StringOutput {
 // The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
 func (o NotificationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NotificationConfigOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".

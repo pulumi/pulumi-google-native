@@ -25,10 +25,14 @@ type OsPolicyAssignment struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Filter to select VMs.
 	InstanceFilter OSPolicyAssignmentInstanceFilterResponseOutput `pulumi:"instanceFilter"`
+	Location       pulumi.StringOutput                            `pulumi:"location"`
 	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of OS policies to be applied to the VMs.
 	OsPolicies OSPolicyResponseArrayOutput `pulumi:"osPolicies"`
+	// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+	OsPolicyAssignmentId pulumi.StringOutput `pulumi:"osPolicyAssignmentId"`
+	Project              pulumi.StringOutput `pulumi:"project"`
 	// Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The timestamp that the revision was created.
@@ -194,6 +198,10 @@ func (o OsPolicyAssignmentOutput) InstanceFilter() OSPolicyAssignmentInstanceFil
 	return o.ApplyT(func(v *OsPolicyAssignment) OSPolicyAssignmentInstanceFilterResponseOutput { return v.InstanceFilter }).(OSPolicyAssignmentInstanceFilterResponseOutput)
 }
 
+func (o OsPolicyAssignmentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
 func (o OsPolicyAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -202,6 +210,15 @@ func (o OsPolicyAssignmentOutput) Name() pulumi.StringOutput {
 // List of OS policies to be applied to the VMs.
 func (o OsPolicyAssignmentOutput) OsPolicies() OSPolicyResponseArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) OSPolicyResponseArrayOutput { return v.OsPolicies }).(OSPolicyResponseArrayOutput)
+}
+
+// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+func (o OsPolicyAssignmentOutput) OsPolicyAssignmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.OsPolicyAssignmentId }).(pulumi.StringOutput)
+}
+
+func (o OsPolicyAssignmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING

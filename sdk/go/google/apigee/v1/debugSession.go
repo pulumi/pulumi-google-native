@@ -17,15 +17,19 @@ import (
 type DebugSession struct {
 	pulumi.CustomResourceState
 
+	ApiId pulumi.StringOutput `pulumi:"apiId"`
 	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
 	Count pulumi.IntOutput `pulumi:"count"`
 	// The first transaction creation timestamp, recorded by UAP.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime    pulumi.StringOutput `pulumi:"createTime"`
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// A unique ID for this DebugSession.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	RevisionId     pulumi.StringOutput `pulumi:"revisionId"`
+	// Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value.
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
 	Tracesize pulumi.IntOutput `pulumi:"tracesize"`
@@ -159,6 +163,10 @@ func (o DebugSessionOutput) ToDebugSessionOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o DebugSessionOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
 // Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
 func (o DebugSessionOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v *DebugSession) pulumi.IntOutput { return v.Count }).(pulumi.IntOutput)
@@ -167,6 +175,10 @@ func (o DebugSessionOutput) Count() pulumi.IntOutput {
 // The first transaction creation timestamp, recorded by UAP.
 func (o DebugSessionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o DebugSessionOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
 }
 
 // Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
@@ -179,7 +191,15 @@ func (o DebugSessionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+func (o DebugSessionOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+func (o DebugSessionOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value.
 func (o DebugSessionOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
 }

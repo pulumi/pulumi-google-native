@@ -27,7 +27,8 @@ type NotificationChannel struct {
 	// Records of the modification of this channel.
 	MutationRecords MutationRecordResponseArrayOutput `pulumi:"mutationRecords"`
 	// The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -193,6 +194,10 @@ func (o NotificationChannelOutput) MutationRecords() MutationRecordResponseArray
 // The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
 func (o NotificationChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NotificationChannelOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationChannel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.

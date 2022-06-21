@@ -34,11 +34,17 @@ type MigrationJob struct {
 	// The error details in case of state FAILED.
 	Error StatusResponseOutput `pulumi:"error"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
+	// Required. The ID of the instance to create.
+	MigrationJobId pulumi.StringOutput `pulumi:"migrationJobId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current migration job phase.
-	Phase pulumi.StringOutput `pulumi:"phase"`
+	Phase   pulumi.StringOutput `pulumi:"phase"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityResponseOutput `pulumi:"reverseSshConnectivity"`
 	// The resource name (URI) of the source connection profile.
@@ -269,6 +275,15 @@ func (o MigrationJobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o MigrationJobOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Required. The ID of the instance to create.
+func (o MigrationJobOutput) MigrationJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.MigrationJobId }).(pulumi.StringOutput)
+}
+
 // The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 func (o MigrationJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -277,6 +292,15 @@ func (o MigrationJobOutput) Name() pulumi.StringOutput {
 // The current migration job phase.
 func (o MigrationJobOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
+}
+
+func (o MigrationJobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+func (o MigrationJobOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The details needed to communicate to the source over Reverse SSH tunnel connectivity.

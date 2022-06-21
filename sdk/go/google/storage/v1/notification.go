@@ -16,6 +16,7 @@ import (
 type Notification struct {
 	pulumi.CustomResourceState
 
+	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// HTTP 1.1 Entity tag for this subscription notification.
@@ -32,6 +33,8 @@ type Notification struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
 	Topic pulumi.StringOutput `pulumi:"topic"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
+	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
 }
 
 // NewNotification registers a new resource with the given unique name, arguments, and options.
@@ -161,6 +164,10 @@ func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o NotificationOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
 // An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
 func (o NotificationOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
@@ -199,6 +206,11 @@ func (o NotificationOutput) SelfLink() pulumi.StringOutput {
 // The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
 func (o NotificationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
+}
+
+// The project to be billed for this request. Required for Requester Pays buckets.
+func (o NotificationOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringPtrOutput { return v.UserProject }).(pulumi.StringPtrOutput)
 }
 
 func init() {

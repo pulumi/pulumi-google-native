@@ -14,16 +14,20 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The globally unique identifier of the database instance.
+	DatabaseId pulumi.StringPtrOutput `pulumi:"databaseId"`
 	// Output Only. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringOutput `pulumi:"databaseUrl"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The database's lifecycle state. Read-only.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// When set to true, the request will be validated but not submitted.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -128,9 +132,18 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The globally unique identifier of the database instance.
+func (o InstanceOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DatabaseId }).(pulumi.StringPtrOutput)
+}
+
 // Output Only. The globally unique hostname of the database.
 func (o InstanceOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DatabaseUrl }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
@@ -138,7 +151,6 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -151,6 +163,11 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 // Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 func (o InstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// When set to true, the request will be validated but not submitted.
+func (o InstanceOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

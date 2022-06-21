@@ -16,10 +16,21 @@ import (
 type Alias struct {
 	pulumi.CustomResourceState
 
-	// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+	// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
 	Alias pulumi.StringOutput `pulumi:"alias"`
 	// Chain of certificates under this alias.
-	CertsInfo GoogleCloudApigeeV1CertificateResponseOutput `pulumi:"certsInfo"`
+	CertsInfo     GoogleCloudApigeeV1CertificateResponseOutput `pulumi:"certsInfo"`
+	EnvironmentId pulumi.StringOutput                          `pulumi:"environmentId"`
+	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+	Format pulumi.StringOutput `pulumi:"format"`
+	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+	IgnoreExpiryValidation pulumi.StringPtrOutput `pulumi:"ignoreExpiryValidation"`
+	// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+	IgnoreNewlineValidation pulumi.StringPtrOutput `pulumi:"ignoreNewlineValidation"`
+	KeystoreId              pulumi.StringOutput    `pulumi:"keystoreId"`
+	OrganizationId          pulumi.StringOutput    `pulumi:"organizationId"`
+	// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Type of alias.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -156,7 +167,7 @@ func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
 }
 
-// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
 func (o AliasOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.Alias }).(pulumi.StringOutput)
 }
@@ -164,6 +175,38 @@ func (o AliasOutput) Alias() pulumi.StringOutput {
 // Chain of certificates under this alias.
 func (o AliasOutput) CertsInfo() GoogleCloudApigeeV1CertificateResponseOutput {
 	return o.ApplyT(func(v *Alias) GoogleCloudApigeeV1CertificateResponseOutput { return v.CertsInfo }).(GoogleCloudApigeeV1CertificateResponseOutput)
+}
+
+func (o AliasOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+func (o AliasOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
+}
+
+// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+func (o AliasOutput) IgnoreExpiryValidation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringPtrOutput { return v.IgnoreExpiryValidation }).(pulumi.StringPtrOutput)
+}
+
+// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+func (o AliasOutput) IgnoreNewlineValidation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringPtrOutput { return v.IgnoreNewlineValidation }).(pulumi.StringPtrOutput)
+}
+
+func (o AliasOutput) KeystoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.KeystoreId }).(pulumi.StringOutput)
+}
+
+func (o AliasOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+func (o AliasOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Type of alias.

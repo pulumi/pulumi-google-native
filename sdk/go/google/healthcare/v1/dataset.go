@@ -14,8 +14,12 @@ import (
 type Dataset struct {
 	pulumi.CustomResourceState
 
+	// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	DatasetId pulumi.StringPtrOutput `pulumi:"datasetId"`
+	Location  pulumi.StringOutput    `pulumi:"location"`
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
@@ -118,9 +122,22 @@ func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOu
 	return o
 }
 
+// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+func (o DatasetOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.DatasetId }).(pulumi.StringPtrOutput)
+}
+
+func (o DatasetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
 func (o DatasetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DatasetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.

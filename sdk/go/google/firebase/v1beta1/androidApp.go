@@ -26,8 +26,7 @@ type AndroidApp struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringOutput `pulumi:"packageName"`
-	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project     pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewAndroidApp registers a new resource with the given unique name, arguments, and options.
@@ -161,7 +160,6 @@ func (o AndroidAppOutput) PackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.PackageName }).(pulumi.StringOutput)
 }
 
-// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
 func (o AndroidAppOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

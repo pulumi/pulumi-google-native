@@ -28,8 +28,14 @@ type Spoke struct {
 	LinkedRouterApplianceInstances RouterApplianceInstanceResponseArrayOutput `pulumi:"linkedRouterApplianceInstances"`
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels pulumi.StringArrayOutput `pulumi:"linkedVpnTunnels"`
+	Location         pulumi.StringOutput      `pulumi:"location"`
 	// Immutable. The name of a Spoke resource.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Optional. Unique id for the Spoke to create.
+	SpokeId pulumi.StringPtrOutput `pulumi:"spokeId"`
 	// The current lifecycle state of this Hub.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
@@ -203,9 +209,27 @@ func (o SpokeOutput) LinkedVpnTunnels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringArrayOutput { return v.LinkedVpnTunnels }).(pulumi.StringArrayOutput)
 }
 
+func (o SpokeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The name of a Spoke resource.
 func (o SpokeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SpokeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o SpokeOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Unique id for the Spoke to create.
+func (o SpokeOutput) SpokeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringPtrOutput { return v.SpokeId }).(pulumi.StringPtrOutput)
 }
 
 // The current lifecycle state of this Hub.

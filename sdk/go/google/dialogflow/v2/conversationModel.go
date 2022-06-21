@@ -25,8 +25,10 @@ type ConversationModel struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Language code for the conversation model. If not specified, the language is en-US. Language at ConversationModel should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// ConversationModel resource name. Format: `projects//conversationModels/`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Metadata for smart reply models.
 	SmartReplyModelMetadata GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput `pulumi:"smartReplyModelMetadata"`
 	// State of the model. A model can only serve prediction requests after it gets deployed.
@@ -176,9 +178,17 @@ func (o ConversationModelOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
+func (o ConversationModelOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // ConversationModel resource name. Format: `projects//conversationModels/`
 func (o ConversationModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConversationModelOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Metadata for smart reply models.

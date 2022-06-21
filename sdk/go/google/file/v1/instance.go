@@ -24,14 +24,18 @@ type Instance struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares FileShareConfigResponseArrayOutput `pulumi:"fileShares"`
+	// Required. The name of the instance to create. The name must be unique for the specified project and location.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
+	Project  pulumi.StringOutput              `pulumi:"project"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The instance state.
@@ -185,6 +189,11 @@ func (o InstanceOutput) FileShares() FileShareConfigResponseArrayOutput {
 	return o.ApplyT(func(v *Instance) FileShareConfigResponseArrayOutput { return v.FileShares }).(FileShareConfigResponseArrayOutput)
 }
 
+// Required. The name of the instance to create. The name must be unique for the specified project and location.
+func (o InstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // KMS key name used for data encryption.
 func (o InstanceOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -195,6 +204,10 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o InstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -203,6 +216,10 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 // VPC networks to which the instance is connected. For this version, only a single network is supported.
 func (o InstanceOutput) Networks() NetworkConfigResponseArrayOutput {
 	return o.ApplyT(func(v *Instance) NetworkConfigResponseArrayOutput { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.

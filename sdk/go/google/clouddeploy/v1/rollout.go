@@ -25,7 +25,8 @@ type Rollout struct {
 	// Time at which the `Rollout` was approved.
 	ApproveTime pulumi.StringOutput `pulumi:"approveTime"`
 	// Time at which the `Rollout` was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput `pulumi:"createTime"`
+	DeliveryPipelineId pulumi.StringOutput `pulumi:"deliveryPipelineId"`
 	// Time at which the `Rollout` finished deploying.
 	DeployEndTime pulumi.StringOutput `pulumi:"deployEndTime"`
 	// The reason this deploy failed. This will always be unspecified while the deploy in progress.
@@ -43,15 +44,24 @@ type Rollout struct {
 	// Reason the build failed. Empty if the build succeeded.
 	FailureReason pulumi.StringOutput `pulumi:"failureReason"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name      pulumi.StringOutput `pulumi:"name"`
+	Project   pulumi.StringOutput `pulumi:"project"`
+	ReleaseId pulumi.StringOutput `pulumi:"releaseId"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Required. ID of the `Rollout`.
+	RolloutId pulumi.StringOutput `pulumi:"rolloutId"`
 	// Current state of the `Rollout`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The ID of Target to which this `Rollout` is deploying.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 	// Unique identifier of the `Rollout`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewRollout registers a new resource with the given unique name, arguments, and options.
@@ -212,6 +222,10 @@ func (o RolloutOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+func (o RolloutOutput) DeliveryPipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.DeliveryPipelineId }).(pulumi.StringOutput)
+}
+
 // Time at which the `Rollout` finished deploying.
 func (o RolloutOutput) DeployEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.DeployEndTime }).(pulumi.StringOutput)
@@ -257,9 +271,31 @@ func (o RolloutOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o RolloutOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
 func (o RolloutOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RolloutOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o RolloutOutput) ReleaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.ReleaseId }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o RolloutOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Required. ID of the `Rollout`.
+func (o RolloutOutput) RolloutId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.RolloutId }).(pulumi.StringOutput)
 }
 
 // Current state of the `Rollout`.
@@ -275,6 +311,11 @@ func (o RolloutOutput) TargetId() pulumi.StringOutput {
 // Unique identifier of the `Rollout`.
 func (o RolloutOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+func (o RolloutOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -17,8 +17,11 @@ type Connector struct {
 
 	// List of projects using the connector.
 	ConnectedProjects pulumi.StringArrayOutput `pulumi:"connectedProjects"`
+	// Required. The ID to use for this connector.
+	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// Machine type of VM Instance underlying connector. Default is e2-micro
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
@@ -33,6 +36,7 @@ type Connector struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of a VPC network.
 	Network pulumi.StringOutput `pulumi:"network"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// State of the VPC access connector.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The subnet in which to house the VPC Access Connector.
@@ -173,9 +177,18 @@ func (o ConnectorOutput) ConnectedProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringArrayOutput { return v.ConnectedProjects }).(pulumi.StringArrayOutput)
 }
 
+// Required. The ID to use for this connector.
+func (o ConnectorOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
 // The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 func (o ConnectorOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+func (o ConnectorOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Machine type of VM Instance underlying connector. Default is e2-micro
@@ -211,6 +224,10 @@ func (o ConnectorOutput) Name() pulumi.StringOutput {
 // Name of a VPC network.
 func (o ConnectorOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o ConnectorOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State of the VPC access connector.

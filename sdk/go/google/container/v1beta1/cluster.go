@@ -76,8 +76,7 @@ type Cluster struct {
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac LegacyAbacResponseOutput `pulumi:"legacyAbac"`
-	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-	Location pulumi.StringOutput `pulumi:"location"`
+	Location   pulumi.StringOutput      `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayOutput `pulumi:"locations"`
 	// Logging configuration for the cluster.
@@ -132,6 +131,7 @@ type Cluster struct {
 	PrivateCluster pulumi.BoolOutput `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponseOutput `pulumi:"privateClusterConfig"`
+	Project              pulumi.StringOutput                `pulumi:"project"`
 	// Enable/Disable Protect API features for the cluster.
 	ProtectConfig ProtectConfigResponseOutput `pulumi:"protectConfig"`
 	// Release channel configuration.
@@ -659,7 +659,6 @@ func (o ClusterOutput) LegacyAbac() LegacyAbacResponseOutput {
 	return o.ApplyT(func(v *Cluster) LegacyAbacResponseOutput { return v.LegacyAbac }).(LegacyAbacResponseOutput)
 }
 
-// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -788,6 +787,10 @@ func (o ClusterOutput) PrivateCluster() pulumi.BoolOutput {
 // Configuration for private cluster.
 func (o ClusterOutput) PrivateClusterConfig() PrivateClusterConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) PrivateClusterConfigResponseOutput { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
+}
+
+func (o ClusterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Enable/Disable Protect API features for the cluster.

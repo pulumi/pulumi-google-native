@@ -30,8 +30,9 @@ type TestMatrix struct {
 	InvalidMatrixDetails pulumi.StringOutput `pulumi:"invalidMatrixDetails"`
 	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
 	OutcomeSummary pulumi.StringOutput `pulumi:"outcomeSummary"`
-	// The cloud project that owns the test matrix.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project        pulumi.StringOutput `pulumi:"project"`
+	// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Where the results for the matrix are written.
 	ResultStorage ResultStorageResponseOutput `pulumi:"resultStorage"`
 	// Indicates the current progress of the test matrix.
@@ -199,9 +200,13 @@ func (o TestMatrixOutput) OutcomeSummary() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.OutcomeSummary }).(pulumi.StringOutput)
 }
 
-// The cloud project that owns the test matrix.
 func (o TestMatrixOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+func (o TestMatrixOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Where the results for the matrix are written.

@@ -16,6 +16,9 @@ import (
 type Config struct {
 	pulumi.CustomResourceState
 
+	// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+	ApiConfigId pulumi.StringOutput `pulumi:"apiConfigId"`
+	ApiId       pulumi.StringOutput `pulumi:"apiId"`
 	// Created time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Display name.
@@ -25,13 +28,15 @@ type Config struct {
 	// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
 	GrpcServices ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput `pulumi:"grpcServices"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	ManagedServiceConfigs ApigatewayApiConfigFileResponseArrayOutput `pulumi:"managedServiceConfigs"`
 	// Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 	OpenapiDocuments ApigatewayApiConfigOpenApiDocumentResponseArrayOutput `pulumi:"openapiDocuments"`
+	Project          pulumi.StringOutput                                   `pulumi:"project"`
 	// The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
 	ServiceConfigId pulumi.StringOutput `pulumi:"serviceConfigId"`
 	// State of the API Config.
@@ -162,6 +167,15 @@ func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutpu
 	return o
 }
 
+// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+func (o ConfigOutput) ApiConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.ApiConfigId }).(pulumi.StringOutput)
+}
+
+func (o ConfigOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
 // Created time.
 func (o ConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -187,6 +201,10 @@ func (o ConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ConfigOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 func (o ConfigOutput) ManagedServiceConfigs() ApigatewayApiConfigFileResponseArrayOutput {
 	return o.ApplyT(func(v *Config) ApigatewayApiConfigFileResponseArrayOutput { return v.ManagedServiceConfigs }).(ApigatewayApiConfigFileResponseArrayOutput)
@@ -200,6 +218,10 @@ func (o ConfigOutput) Name() pulumi.StringOutput {
 // Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 func (o ConfigOutput) OpenapiDocuments() ApigatewayApiConfigOpenApiDocumentResponseArrayOutput {
 	return o.ApplyT(func(v *Config) ApigatewayApiConfigOpenApiDocumentResponseArrayOutput { return v.OpenapiDocuments }).(ApigatewayApiConfigOpenApiDocumentResponseArrayOutput)
+}
+
+func (o ConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).

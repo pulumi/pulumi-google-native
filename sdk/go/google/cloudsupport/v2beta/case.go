@@ -47,6 +47,8 @@ type Case struct {
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// The time this case was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	V2betaId1  pulumi.StringOutput `pulumi:"v2betaId1"`
+	V2betumId  pulumi.StringOutput `pulumi:"v2betumId"`
 }
 
 // NewCase registers a new resource with the given unique name, arguments, and options.
@@ -259,6 +261,14 @@ func (o CaseOutput) TimeZone() pulumi.StringOutput {
 // The time this case was last updated.
 func (o CaseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o CaseOutput) V2betaId1() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.V2betaId1 }).(pulumi.StringOutput)
+}
+
+func (o CaseOutput) V2betumId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.V2betumId }).(pulumi.StringOutput)
 }
 
 func init() {

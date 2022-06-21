@@ -17,6 +17,7 @@ type NodePool struct {
 
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingResponseOutput `pulumi:"autoscaling"`
+	ClusterId   pulumi.StringOutput               `pulumi:"clusterId"`
 	// Which conditions caused the current node pool state.
 	Conditions StatusConditionResponseArrayOutput `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -25,6 +26,7 @@ type NodePool struct {
 	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
 	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
+	Location          pulumi.StringOutput      `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayOutput `pulumi:"locations"`
 	// NodeManagement configuration for this NodePool.
@@ -36,7 +38,8 @@ type NodePool struct {
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize pulumi.IntOutput `pulumi:"podIpv4CidrSize"`
+	PodIpv4CidrSize pulumi.IntOutput    `pulumi:"podIpv4CidrSize"`
+	Project         pulumi.StringOutput `pulumi:"project"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
@@ -215,6 +218,10 @@ func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingResponseOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolAutoscalingResponseOutput { return v.Autoscaling }).(NodePoolAutoscalingResponseOutput)
 }
 
+func (o NodePoolOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
 // Which conditions caused the current node pool state.
 func (o NodePoolOutput) Conditions() StatusConditionResponseArrayOutput {
 	return o.ApplyT(func(v *NodePool) StatusConditionResponseArrayOutput { return v.Conditions }).(StatusConditionResponseArrayOutput)
@@ -233,6 +240,10 @@ func (o NodePoolOutput) InitialNodeCount() pulumi.IntOutput {
 // [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
 func (o NodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o NodePoolOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
@@ -263,6 +274,10 @@ func (o NodePoolOutput) NetworkConfig() NodeNetworkConfigResponseOutput {
 // [Output only] The pod CIDR block size per node in this node pool.
 func (o NodePoolOutput) PodIpv4CidrSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.PodIpv4CidrSize }).(pulumi.IntOutput)
+}
+
+func (o NodePoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // [Output only] Server-defined URL for the resource.

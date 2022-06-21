@@ -16,7 +16,6 @@ import (
 type BucketAccessControl struct {
 	pulumi.CustomResourceState
 
-	// The name of the bucket.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The domain associated with the entity, if any.
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -47,6 +46,8 @@ type BucketAccessControl struct {
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The link to this access-control entry.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
+	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
 }
 
 // NewBucketAccessControl registers a new resource with the given unique name, arguments, and options.
@@ -204,7 +205,6 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx co
 	return o
 }
 
-// The name of the bucket.
 func (o BucketAccessControlOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -263,6 +263,11 @@ func (o BucketAccessControlOutput) Role() pulumi.StringOutput {
 // The link to this access-control entry.
 func (o BucketAccessControlOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The project to be billed for this request. Required for Requester Pays buckets.
+func (o BucketAccessControlOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringPtrOutput { return v.UserProject }).(pulumi.StringPtrOutput)
 }
 
 func init() {

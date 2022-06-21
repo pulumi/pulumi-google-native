@@ -16,9 +16,11 @@ type Reference struct {
 	pulumi.CustomResourceState
 
 	// Optional. A human-readable description of this reference.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description   pulumi.StringOutput `pulumi:"description"`
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers pulumi.StringOutput `pulumi:"refers"`
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
@@ -141,9 +143,17 @@ func (o ReferenceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reference) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o ReferenceOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reference) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
 func (o ReferenceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reference) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReferenceOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reference) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.

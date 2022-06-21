@@ -27,6 +27,8 @@ type Workload struct {
 	EnableSovereignControls pulumi.BoolOutput `pulumi:"enableSovereignControls"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
+	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	// Represents the KAJ enrollment state of the given workload.
 	KajEnrollmentState pulumi.StringOutput `pulumi:"kajEnrollmentState"`
 	// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
@@ -34,9 +36,11 @@ type Workload struct {
 	// Deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringOutput `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
@@ -220,6 +224,11 @@ func (o WorkloadOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
+func (o WorkloadOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
 // Represents the KAJ enrollment state of the given workload.
 func (o WorkloadOutput) KajEnrollmentState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.KajEnrollmentState }).(pulumi.StringOutput)
@@ -237,9 +246,17 @@ func (o WorkloadOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o WorkloadOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
 func (o WorkloadOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WorkloadOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}

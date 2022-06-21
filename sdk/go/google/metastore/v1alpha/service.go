@@ -28,7 +28,8 @@ type Service struct {
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	HiveMetastoreConfig HiveMetastoreConfigResponseOutput `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 	MaintenanceWindow MaintenanceWindowResponseOutput `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
@@ -42,9 +43,14 @@ type Service struct {
 	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
-	Port pulumi.IntOutput `pulumi:"port"`
+	Port    pulumi.IntOutput    `pulumi:"port"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel pulumi.StringOutput `pulumi:"releaseChannel"`
+	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The current state of the metastore service.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
@@ -237,6 +243,10 @@ func (o ServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ServiceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
 func (o ServiceOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
 	return o.ApplyT(func(v *Service) MaintenanceWindowResponseOutput { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
@@ -272,9 +282,23 @@ func (o ServiceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *Service) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
+func (o ServiceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 func (o ServiceOutput) ReleaseChannel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+func (o ServiceOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+func (o ServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The current state of the metastore service.

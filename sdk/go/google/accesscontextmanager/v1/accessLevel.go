@@ -15,6 +15,7 @@ import (
 type AccessLevel struct {
 	pulumi.CustomResourceState
 
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// A `BasicLevel` composed of `Conditions`.
 	Basic BasicLevelResponseOutput `pulumi:"basic"`
 	// A `CustomLevel` written in the Common Expression Language.
@@ -132,6 +133,10 @@ func (o AccessLevelOutput) ToAccessLevelOutput() AccessLevelOutput {
 
 func (o AccessLevelOutput) ToAccessLevelOutputWithContext(ctx context.Context) AccessLevelOutput {
 	return o
+}
+
+func (o AccessLevelOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevel) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // A `BasicLevel` composed of `Conditions`.

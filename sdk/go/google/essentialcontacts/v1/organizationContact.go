@@ -24,6 +24,7 @@ type OrganizationContact struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions pulumi.StringArrayOutput `pulumi:"notificationCategorySubscriptions"`
+	OrganizationId                    pulumi.StringOutput      `pulumi:"organizationId"`
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
 	ValidateTime pulumi.StringOutput `pulumi:"validateTime"`
 	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
@@ -162,6 +163,10 @@ func (o OrganizationContactOutput) Name() pulumi.StringOutput {
 // The categories of notifications that the contact will receive communications for.
 func (o OrganizationContactOutput) NotificationCategorySubscriptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationContact) pulumi.StringArrayOutput { return v.NotificationCategorySubscriptions }).(pulumi.StringArrayOutput)
+}
+
+func (o OrganizationContactOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationContact) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.

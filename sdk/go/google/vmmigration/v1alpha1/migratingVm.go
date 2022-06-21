@@ -40,14 +40,21 @@ type MigratingVm struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The most updated snapshot created time in the source that finished replication.
 	LastSync ReplicationSyncResponseOutput `pulumi:"lastSync"`
+	Location pulumi.StringOutput           `pulumi:"location"`
+	// Required. The migratingVm identifier.
+	MigratingVmId pulumi.StringOutput `pulumi:"migratingVmId"`
 	// The identifier of the MigratingVm.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The replication schedule policy.
-	Policy SchedulePolicyResponseOutput `pulumi:"policy"`
+	Policy  SchedulePolicyResponseOutput `pulumi:"policy"`
+	Project pulumi.StringOutput          `pulumi:"project"`
 	// The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
 	RecentCloneJobs CloneJobResponseArrayOutput `pulumi:"recentCloneJobs"`
 	// The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
 	RecentCutoverJobs CutoverJobResponseArrayOutput `pulumi:"recentCutoverJobs"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	SourceId  pulumi.StringOutput    `pulumi:"sourceId"`
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
 	SourceVmId pulumi.StringOutput `pulumi:"sourceVmId"`
 	// State of the MigratingVm.
@@ -261,6 +268,15 @@ func (o MigratingVmOutput) LastSync() ReplicationSyncResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) ReplicationSyncResponseOutput { return v.LastSync }).(ReplicationSyncResponseOutput)
 }
 
+func (o MigratingVmOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Required. The migratingVm identifier.
+func (o MigratingVmOutput) MigratingVmId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.MigratingVmId }).(pulumi.StringOutput)
+}
+
 // The identifier of the MigratingVm.
 func (o MigratingVmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -271,6 +287,10 @@ func (o MigratingVmOutput) Policy() SchedulePolicyResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) SchedulePolicyResponseOutput { return v.Policy }).(SchedulePolicyResponseOutput)
 }
 
+func (o MigratingVmOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
 func (o MigratingVmOutput) RecentCloneJobs() CloneJobResponseArrayOutput {
 	return o.ApplyT(func(v *MigratingVm) CloneJobResponseArrayOutput { return v.RecentCloneJobs }).(CloneJobResponseArrayOutput)
@@ -279,6 +299,15 @@ func (o MigratingVmOutput) RecentCloneJobs() CloneJobResponseArrayOutput {
 // The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
 func (o MigratingVmOutput) RecentCutoverJobs() CutoverJobResponseArrayOutput {
 	return o.ApplyT(func(v *MigratingVm) CutoverJobResponseArrayOutput { return v.RecentCutoverJobs }).(CutoverJobResponseArrayOutput)
+}
+
+// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o MigratingVmOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+func (o MigratingVmOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
 }
 
 // The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.

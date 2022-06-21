@@ -23,7 +23,8 @@ type Role struct {
 	// The names of the permissions this role grants when bound in an IAM policy.
 	IncludedPermissions pulumi.StringArrayOutput `pulumi:"includedPermissions"`
 	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
 	Stage pulumi.StringOutput `pulumi:"stage"`
 	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
@@ -169,6 +170,10 @@ func (o RoleOutput) IncludedPermissions() pulumi.StringArrayOutput {
 // The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
 func (o RoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RoleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.

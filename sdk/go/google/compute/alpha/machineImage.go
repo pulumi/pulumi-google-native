@@ -28,7 +28,10 @@ type MachineImage struct {
 	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// An array of Machine Image specific properties for disks attached to the source instance
@@ -39,7 +42,7 @@ type MachineImage struct {
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyResponseArrayOutput `pulumi:"sourceDiskEncryptionKeys"`
-	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
+	// Required. Source instance that is used to create the machine image from.
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
 	// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
 	SourceInstanceProperties SourceInstancePropertiesResponseOutput `pulumi:"sourceInstanceProperties"`
@@ -209,6 +212,15 @@ func (o MachineImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o MachineImageOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o MachineImageOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // Reserved for future use.
 func (o MachineImageOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MachineImage) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -234,7 +246,7 @@ func (o MachineImageOutput) SourceDiskEncryptionKeys() SourceDiskEncryptionKeyRe
 	return o.ApplyT(func(v *MachineImage) SourceDiskEncryptionKeyResponseArrayOutput { return v.SourceDiskEncryptionKeys }).(SourceDiskEncryptionKeyResponseArrayOutput)
 }
 
-// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
+// Required. Source instance that is used to create the machine image from.
 func (o MachineImageOutput) SourceInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.SourceInstance }).(pulumi.StringOutput)
 }

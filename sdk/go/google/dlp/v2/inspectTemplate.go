@@ -23,8 +23,10 @@ type InspectTemplate struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The core content of the template. Configuration of the scanning process.
 	InspectConfig GooglePrivacyDlpV2InspectConfigResponseOutput `pulumi:"inspectConfig"`
+	Location      pulumi.StringOutput                           `pulumi:"location"`
 	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The last update timestamp of an inspectTemplate.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -157,9 +159,17 @@ func (o InspectTemplateOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigRe
 	return o.ApplyT(func(v *InspectTemplate) GooglePrivacyDlpV2InspectConfigResponseOutput { return v.InspectConfig }).(GooglePrivacyDlpV2InspectConfigResponseOutput)
 }
 
+func (o InspectTemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
 func (o InspectTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o InspectTemplateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of an inspectTemplate.

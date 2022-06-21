@@ -36,7 +36,8 @@ type Subscription struct {
 	// How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringOutput `pulumi:"messageRetentionDuration"`
 	// The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
 	PushConfig PushConfigResponseOutput `pulumi:"pushConfig"`
 	// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
@@ -44,7 +45,8 @@ type Subscription struct {
 	// A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
 	RetryPolicy RetryPolicyResponseOutput `pulumi:"retryPolicy"`
 	// An output-only field indicating whether or not the subscription can receive messages.
-	State pulumi.StringOutput `pulumi:"state"`
+	State          pulumi.StringOutput `pulumi:"state"`
+	SubscriptionId pulumi.StringOutput `pulumi:"subscriptionId"`
 	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 	// Indicates the minimum duration for which a message is retained after it is published to the subscription's topic. If this field is set, messages published to the subscription's topic in the last `topic_message_retention_duration` are always available to subscribers. See the `message_retention_duration` field in `Topic`. This field is set only in responses from the server; it is ignored if it is set in any requests.
@@ -258,6 +260,10 @@ func (o SubscriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o SubscriptionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
 func (o SubscriptionOutput) PushConfig() PushConfigResponseOutput {
 	return o.ApplyT(func(v *Subscription) PushConfigResponseOutput { return v.PushConfig }).(PushConfigResponseOutput)
@@ -276,6 +282,10 @@ func (o SubscriptionOutput) RetryPolicy() RetryPolicyResponseOutput {
 // An output-only field indicating whether or not the subscription can receive messages.
 func (o SubscriptionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o SubscriptionOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
 // The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.

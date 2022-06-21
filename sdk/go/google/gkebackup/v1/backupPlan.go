@@ -18,6 +18,8 @@ type BackupPlan struct {
 
 	// Defines the configuration of Backups created via this BackupPlan.
 	BackupConfig BackupConfigResponseOutput `pulumi:"backupConfig"`
+	// Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
+	BackupPlanId pulumi.StringOutput `pulumi:"backupPlanId"`
 	// Defines a schedule for automatic Backup creation via this BackupPlan.
 	BackupSchedule ScheduleResponseOutput `pulumi:"backupSchedule"`
 	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
@@ -31,9 +33,11 @@ type BackupPlan struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A set of custom labels supplied by user.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount pulumi.IntOutput `pulumi:"protectedPodCount"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
@@ -173,6 +177,11 @@ func (o BackupPlanOutput) BackupConfig() BackupConfigResponseOutput {
 	return o.ApplyT(func(v *BackupPlan) BackupConfigResponseOutput { return v.BackupConfig }).(BackupConfigResponseOutput)
 }
 
+// Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
+func (o BackupPlanOutput) BackupPlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.BackupPlanId }).(pulumi.StringOutput)
+}
+
 // Defines a schedule for automatic Backup creation via this BackupPlan.
 func (o BackupPlanOutput) BackupSchedule() ScheduleResponseOutput {
 	return o.ApplyT(func(v *BackupPlan) ScheduleResponseOutput { return v.BackupSchedule }).(ScheduleResponseOutput)
@@ -208,9 +217,17 @@ func (o BackupPlanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o BackupPlanOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
 func (o BackupPlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BackupPlanOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.

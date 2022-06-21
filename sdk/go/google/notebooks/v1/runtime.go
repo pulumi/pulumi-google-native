@@ -22,10 +22,16 @@ type Runtime struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Runtime health_state.
 	HealthState pulumi.StringOutput `pulumi:"healthState"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
 	Metrics RuntimeMetricsResponseOutput `pulumi:"metrics"`
 	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Idempotent request UUID.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Required. User-defined unique ID of this Runtime.
+	RuntimeId pulumi.StringOutput `pulumi:"runtimeId"`
 	// The config settings for software inside the runtime.
 	SoftwareConfig RuntimeSoftwareConfigResponseOutput `pulumi:"softwareConfig"`
 	// Runtime state.
@@ -160,6 +166,10 @@ func (o RuntimeOutput) HealthState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.HealthState }).(pulumi.StringOutput)
 }
 
+func (o RuntimeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Contains Runtime daemon metrics such as Service status and JupyterLab stats.
 func (o RuntimeOutput) Metrics() RuntimeMetricsResponseOutput {
 	return o.ApplyT(func(v *Runtime) RuntimeMetricsResponseOutput { return v.Metrics }).(RuntimeMetricsResponseOutput)
@@ -168,6 +178,20 @@ func (o RuntimeOutput) Metrics() RuntimeMetricsResponseOutput {
 // The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
 func (o RuntimeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RuntimeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Idempotent request UUID.
+func (o RuntimeOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Required. User-defined unique ID of this Runtime.
+func (o RuntimeOutput) RuntimeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.RuntimeId }).(pulumi.StringOutput)
 }
 
 // The config settings for software inside the runtime.

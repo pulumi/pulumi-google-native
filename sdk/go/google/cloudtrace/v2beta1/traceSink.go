@@ -19,6 +19,7 @@ type TraceSink struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The export destination.
 	OutputConfig OutputConfigResponseOutput `pulumi:"outputConfig"`
+	Project      pulumi.StringOutput        `pulumi:"project"`
 	// A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and to write data, this account needs the `dataEditor` role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com"
 	WriterIdentity pulumi.StringOutput `pulumi:"writerIdentity"`
 }
@@ -126,6 +127,10 @@ func (o TraceSinkOutput) Name() pulumi.StringOutput {
 // The export destination.
 func (o TraceSinkOutput) OutputConfig() OutputConfigResponseOutput {
 	return o.ApplyT(func(v *TraceSink) OutputConfigResponseOutput { return v.OutputConfig }).(OutputConfigResponseOutput)
+}
+
+func (o TraceSinkOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TraceSink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and to write data, this account needs the `dataEditor` role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com"

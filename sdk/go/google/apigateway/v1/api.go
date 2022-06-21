@@ -16,16 +16,20 @@ import (
 type Api struct {
 	pulumi.CustomResourceState
 
+	// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+	ApiId pulumi.StringOutput `pulumi:"apiId"`
 	// Created time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringOutput `pulumi:"managedService"`
 	// Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// State of the API.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Updated time.
@@ -137,6 +141,11 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
 }
 
+// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+func (o ApiOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
 // Created time.
 func (o ApiOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -152,6 +161,10 @@ func (o ApiOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ApiOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
 func (o ApiOutput) ManagedService() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ManagedService }).(pulumi.StringOutput)
@@ -160,6 +173,10 @@ func (o ApiOutput) ManagedService() pulumi.StringOutput {
 // Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
 func (o ApiOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ApiOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State of the API.

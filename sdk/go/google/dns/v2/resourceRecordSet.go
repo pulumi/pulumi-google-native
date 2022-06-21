@@ -15,9 +15,14 @@ import (
 type ResourceRecordSet struct {
 	pulumi.CustomResourceState
 
-	Kind pulumi.StringOutput `pulumi:"kind"`
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+	ClientOperationId pulumi.StringPtrOutput `pulumi:"clientOperationId"`
+	Kind              pulumi.StringOutput    `pulumi:"kind"`
+	Location          pulumi.StringOutput    `pulumi:"location"`
+	ManagedZone       pulumi.StringOutput    `pulumi:"managedZone"`
 	// For example, www.example.com.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
 	RoutingPolicy RRSetRoutingPolicyResponseOutput `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
@@ -151,13 +156,30 @@ func (o ResourceRecordSetOutput) ToResourceRecordSetOutputWithContext(ctx contex
 	return o
 }
 
+// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+func (o ResourceRecordSetOutput) ClientOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringPtrOutput { return v.ClientOperationId }).(pulumi.StringPtrOutput)
+}
+
 func (o ResourceRecordSetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o ResourceRecordSetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o ResourceRecordSetOutput) ManagedZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.ManagedZone }).(pulumi.StringOutput)
 }
 
 // For example, www.example.com.
 func (o ResourceRecordSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceRecordSetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.

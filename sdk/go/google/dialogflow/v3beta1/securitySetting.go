@@ -25,8 +25,10 @@ type SecuritySetting struct {
 	InsightsExportSettings GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponseOutput `pulumi:"insightsExportSettings"`
 	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. The `DLP Inspect Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
 	InspectTemplate pulumi.StringOutput `pulumi:"inspectTemplate"`
+	Location        pulumi.StringOutput `pulumi:"location"`
 	// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes pulumi.StringArrayOutput `pulumi:"purgeDataTypes"`
 	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
@@ -195,9 +197,17 @@ func (o SecuritySettingOutput) InspectTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.InspectTemplate }).(pulumi.StringOutput)
 }
 
+func (o SecuritySettingOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
 func (o SecuritySettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SecuritySettingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // List of types of data to remove when retention settings triggers purge.

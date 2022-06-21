@@ -35,16 +35,14 @@ type Job struct {
 	// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
 	JobMetadata JobMetadataResponseOutput `pulumi:"jobMetadata"`
 	// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-	Location pulumi.StringOutput `pulumi:"location"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription PipelineDescriptionResponseOutput `pulumi:"pipelineDescription"`
-	// The ID of the Cloud Platform project that the job belongs to.
-	Project pulumi.StringOutput `pulumi:"project"`
-	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
+	Project             pulumi.StringOutput               `pulumi:"project"`
+	// Deprecated. This field is now in the Job message.
 	ReplaceJobId pulumi.StringOutput `pulumi:"replaceJobId"`
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
 	ReplacedByJobId pulumi.StringOutput `pulumi:"replacedByJobId"`
@@ -66,6 +64,8 @@ type Job struct {
 	TransformNameMapping pulumi.StringMapOutput `pulumi:"transformNameMapping"`
 	// The type of Cloud Dataflow job.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The level of information requested in response.
+	View pulumi.StringPtrOutput `pulumi:"view"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -305,7 +305,6 @@ func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
 func (o JobOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -320,12 +319,11 @@ func (o JobOutput) PipelineDescription() PipelineDescriptionResponseOutput {
 	return o.ApplyT(func(v *Job) PipelineDescriptionResponseOutput { return v.PipelineDescription }).(PipelineDescriptionResponseOutput)
 }
 
-// The ID of the Cloud Platform project that the job belongs to.
 func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
+// Deprecated. This field is now in the Job message.
 func (o JobOutput) ReplaceJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ReplaceJobId }).(pulumi.StringOutput)
 }
@@ -378,6 +376,11 @@ func (o JobOutput) TransformNameMapping() pulumi.StringMapOutput {
 // The type of Cloud Dataflow job.
 func (o JobOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The level of information requested in response.
+func (o JobOutput) View() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.View }).(pulumi.StringPtrOutput)
 }
 
 func init() {

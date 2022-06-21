@@ -32,7 +32,8 @@ type Instance struct {
 	// The number of nodes allocated to this instance. At most one of either node_count or processing_units should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
-	ProcessingUnits pulumi.IntOutput `pulumi:"processingUnits"`
+	ProcessingUnits pulumi.IntOutput    `pulumi:"processingUnits"`
+	Project         pulumi.StringOutput `pulumi:"project"`
 	// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time at which the instance was most recently updated.
@@ -208,6 +209,10 @@ func (o InstanceOutput) NodeCount() pulumi.IntOutput {
 // The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
 func (o InstanceOutput) ProcessingUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ProcessingUnits }).(pulumi.IntOutput)
+}
+
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.

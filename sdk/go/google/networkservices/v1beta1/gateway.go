@@ -19,12 +19,16 @@ type Gateway struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. Short name of the Gateway resource to be created.
+	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// Optional. Set of label tags associated with the Gateway resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
-	Ports pulumi.IntArrayOutput `pulumi:"ports"`
+	Ports   pulumi.IntArrayOutput `pulumi:"ports"`
+	Project pulumi.StringOutput   `pulumi:"project"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// Server-defined URL of this resource
@@ -174,9 +178,18 @@ func (o GatewayOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Required. Short name of the Gateway resource to be created.
+func (o GatewayOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
 // Optional. Set of label tags associated with the Gateway resource.
 func (o GatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GatewayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
@@ -187,6 +200,10 @@ func (o GatewayOutput) Name() pulumi.StringOutput {
 // One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
 func (o GatewayOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntArrayOutput { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+func (o GatewayOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.

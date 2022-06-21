@@ -16,6 +16,8 @@ type Policy struct {
 
 	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigResponseOutput `pulumi:"alternativeNameServerConfig"`
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+	ClientOperationId pulumi.StringPtrOutput `pulumi:"clientOperationId"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
@@ -23,10 +25,12 @@ type Policy struct {
 	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
 	EnableLogging pulumi.BoolOutput   `pulumi:"enableLogging"`
 	Kind          pulumi.StringOutput `pulumi:"kind"`
+	Location      pulumi.StringOutput `pulumi:"location"`
 	// User-assigned name for this policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks PolicyNetworkResponseArrayOutput `pulumi:"networks"`
+	Project  pulumi.StringOutput              `pulumi:"project"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -150,6 +154,11 @@ func (o PolicyOutput) AlternativeNameServerConfig() PolicyAlternativeNameServerC
 	return o.ApplyT(func(v *Policy) PolicyAlternativeNameServerConfigResponseOutput { return v.AlternativeNameServerConfig }).(PolicyAlternativeNameServerConfigResponseOutput)
 }
 
+// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+func (o PolicyOutput) ClientOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.ClientOperationId }).(pulumi.StringPtrOutput)
+}
+
 // A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 func (o PolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -169,6 +178,10 @@ func (o PolicyOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+func (o PolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // User-assigned name for this policy.
 func (o PolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -177,6 +190,10 @@ func (o PolicyOutput) Name() pulumi.StringOutput {
 // List of network names specifying networks to which this policy is applied.
 func (o PolicyOutput) Networks() PolicyNetworkResponseArrayOutput {
 	return o.ApplyT(func(v *Policy) PolicyNetworkResponseArrayOutput { return v.Networks }).(PolicyNetworkResponseArrayOutput)
+}
+
+func (o PolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -25,10 +25,15 @@ type GameServerCluster struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Required. The ID of the game server cluster resource to create.
+	GameServerClusterId pulumi.StringOutput `pulumi:"gameServerClusterId"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	RealmId pulumi.StringOutput `pulumi:"realmId"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -176,14 +181,31 @@ func (o GameServerClusterOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Required. The ID of the game server cluster resource to create.
+func (o GameServerClusterOutput) GameServerClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.GameServerClusterId }).(pulumi.StringOutput)
+}
+
 // The labels associated with this game server cluster. Each label is a key-value pair.
 func (o GameServerClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GameServerCluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o GameServerClusterOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
 func (o GameServerClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GameServerClusterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GameServerClusterOutput) RealmId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.RealmId }).(pulumi.StringOutput)
 }
 
 // The last-modified time.

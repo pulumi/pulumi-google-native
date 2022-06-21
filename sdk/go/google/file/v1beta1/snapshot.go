@@ -22,10 +22,15 @@ type Snapshot struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The amount of bytes needed to allocate a full copy of the snapshot content
 	FilesystemUsedBytes pulumi.StringOutput `pulumi:"filesystemUsedBytes"`
+	InstanceId          pulumi.StringOutput `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
 	// The snapshot state.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -151,14 +156,31 @@ func (o SnapshotOutput) FilesystemUsedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.FilesystemUsedBytes }).(pulumi.StringOutput)
 }
 
+func (o SnapshotOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // Resource labels to represent user provided metadata.
 func (o SnapshotOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o SnapshotOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
 func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SnapshotOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+func (o SnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 // The snapshot state.

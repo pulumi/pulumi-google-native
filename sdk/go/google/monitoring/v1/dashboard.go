@@ -30,9 +30,12 @@ type Dashboard struct {
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutResponseOutput `pulumi:"mosaicLayout"`
 	// Immutable. The resource name of the dashboard.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout RowLayoutResponseOutput `pulumi:"rowLayout"`
+	// If set, validate the request and preview the review, but do not actually save it.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDashboard registers a new resource with the given unique name, arguments, and options.
@@ -202,9 +205,18 @@ func (o DashboardOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o DashboardOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The content is divided into equally spaced rows and the widgets are arranged horizontally.
 func (o DashboardOutput) RowLayout() RowLayoutResponseOutput {
 	return o.ApplyT(func(v *Dashboard) RowLayoutResponseOutput { return v.RowLayout }).(RowLayoutResponseOutput)
+}
+
+// If set, validate the request and preview the review, but do not actually save it.
+func (o DashboardOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

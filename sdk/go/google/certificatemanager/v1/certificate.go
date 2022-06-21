@@ -15,6 +15,8 @@ import (
 type Certificate struct {
 	pulumi.CustomResourceState
 
+	// Required. A user-provided name of the certificate.
+	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// The creation timestamp of a Certificate.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a certificate.
@@ -22,13 +24,15 @@ type Certificate struct {
 	// The expiry timestamp of a Certificate.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Set of labels associated with a Certificate.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// If set, contains configuration and state of a managed certificate.
 	Managed ManagedCertificateResponseOutput `pulumi:"managed"`
 	// A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The PEM-encoded certificate chain.
 	PemCertificate pulumi.StringOutput `pulumi:"pemCertificate"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.
 	SanDnsnames pulumi.StringArrayOutput `pulumi:"sanDnsnames"`
 	// Immutable. The scope of the certificate.
@@ -156,6 +160,11 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// Required. A user-provided name of the certificate.
+func (o CertificateOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
+}
+
 // The creation timestamp of a Certificate.
 func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -176,6 +185,10 @@ func (o CertificateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o CertificateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // If set, contains configuration and state of a managed certificate.
 func (o CertificateOutput) Managed() ManagedCertificateResponseOutput {
 	return o.ApplyT(func(v *Certificate) ManagedCertificateResponseOutput { return v.Managed }).(ManagedCertificateResponseOutput)
@@ -189,6 +202,10 @@ func (o CertificateOutput) Name() pulumi.StringOutput {
 // The PEM-encoded certificate chain.
 func (o CertificateOutput) PemCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+func (o CertificateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.

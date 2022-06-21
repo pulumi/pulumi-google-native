@@ -51,12 +51,16 @@ type Service struct {
 	LatestReadyRevision pulumi.StringOutput `pulumi:"latestReadyRevision"`
 	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
 	ObservedGeneration pulumi.StringOutput `pulumi:"observedGeneration"`
+	Project            pulumi.StringOutput `pulumi:"project"`
 	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunV2RevisionTemplateResponseOutput `pulumi:"template"`
 	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
@@ -71,6 +75,8 @@ type Service struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The main URI in which this Service is serving traffic.
 	Uri pulumi.StringOutput `pulumi:"uri"`
+	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -307,6 +313,10 @@ func (o ServiceOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)
 }
 
+func (o ServiceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -317,9 +327,18 @@ func (o ServiceOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ObservedGeneration }).(pulumi.StringOutput)
 }
 
+func (o ServiceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 func (o ServiceOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+func (o ServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The template used to create revisions for this Service.
@@ -355,6 +374,11 @@ func (o ServiceOutput) UpdateTime() pulumi.StringOutput {
 // The main URI in which this Service is serving traffic.
 func (o ServiceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+func (o ServiceOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

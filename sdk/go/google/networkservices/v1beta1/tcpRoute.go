@@ -22,15 +22,19 @@ type TcpRoute struct {
 	// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
 	// Optional. Set of label tags associated with the TcpRoute resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
 	Rules TcpRouteRouteRuleResponseArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+	TcpRouteId pulumi.StringOutput `pulumi:"tcpRouteId"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -175,6 +179,10 @@ func (o TcpRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o TcpRouteOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
 func (o TcpRouteOutput) Meshes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
@@ -185,6 +193,10 @@ func (o TcpRouteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o TcpRouteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
 func (o TcpRouteOutput) Rules() TcpRouteRouteRuleResponseArrayOutput {
 	return o.ApplyT(func(v *TcpRoute) TcpRouteRouteRuleResponseArrayOutput { return v.Rules }).(TcpRouteRouteRuleResponseArrayOutput)
@@ -193,6 +205,11 @@ func (o TcpRouteOutput) Rules() TcpRouteRouteRuleResponseArrayOutput {
 // Server-defined URL of this resource
 func (o TcpRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+func (o TcpRouteOutput) TcpRouteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.TcpRouteId }).(pulumi.StringOutput)
 }
 
 // The timestamp when the resource was updated.

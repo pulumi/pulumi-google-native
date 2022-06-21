@@ -42,6 +42,7 @@ type Occurrence struct {
 	NoteName pulumi.StringOutput `pulumi:"noteName"`
 	// Describes the installation of a package on the linked resource.
 	Package PackageOccurrenceResponseOutput `pulumi:"package"`
+	Project pulumi.StringOutput             `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringOutput `pulumi:"remediation"`
 	// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
@@ -263,6 +264,10 @@ func (o OccurrenceOutput) NoteName() pulumi.StringOutput {
 // Describes the installation of a package on the linked resource.
 func (o OccurrenceOutput) Package() PackageOccurrenceResponseOutput {
 	return o.ApplyT(func(v *Occurrence) PackageOccurrenceResponseOutput { return v.Package }).(PackageOccurrenceResponseOutput)
+}
+
+func (o OccurrenceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A description of actions that can be taken to remedy the note.

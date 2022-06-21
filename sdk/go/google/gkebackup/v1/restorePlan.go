@@ -27,11 +27,15 @@ type RestorePlan struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A set of custom labels supplied by user.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Configuration of Restores created via this RestorePlan.
 	RestoreConfig RestoreConfigResponseOutput `pulumi:"restoreConfig"`
+	// Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+	RestorePlanId pulumi.StringOutput `pulumi:"restorePlanId"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The timestamp when this RestorePlan resource was last updated.
@@ -190,14 +194,27 @@ func (o RestorePlanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o RestorePlanOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
 func (o RestorePlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o RestorePlanOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Configuration of Restores created via this RestorePlan.
 func (o RestorePlanOutput) RestoreConfig() RestoreConfigResponseOutput {
 	return o.ApplyT(func(v *RestorePlan) RestoreConfigResponseOutput { return v.RestoreConfig }).(RestoreConfigResponseOutput)
+}
+
+// Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+func (o RestorePlanOutput) RestorePlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.RestorePlanId }).(pulumi.StringOutput)
 }
 
 // Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.

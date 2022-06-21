@@ -15,8 +15,14 @@ import (
 type Tag struct {
 	pulumi.CustomResourceState
 
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name         pulumi.StringOutput `pulumi:"name"`
+	PackageId    pulumi.StringOutput `pulumi:"packageId"`
+	Project      pulumi.StringOutput `pulumi:"project"`
+	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
+	// The tag id to use for this repository.
+	TagId pulumi.StringPtrOutput `pulumi:"tagId"`
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -129,9 +135,30 @@ func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
 	return o
 }
 
+func (o TagOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
 func (o TagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TagOutput) PackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.PackageId }).(pulumi.StringOutput)
+}
+
+func (o TagOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o TagOutput) RepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+// The tag id to use for this repository.
+func (o TagOutput) TagId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringPtrOutput { return v.TagId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.

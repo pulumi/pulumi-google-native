@@ -42,12 +42,15 @@ type Instance struct {
 	Disks DiskResponseArrayOutput `pulumi:"disks"`
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolOutput `pulumi:"installGpuDriver"`
+	// Required. User-defined unique ID of this instance.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners pulumi.StringArrayOutput `pulumi:"instanceOwners"`
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
 	KmsKey pulumi.StringOutput `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
@@ -66,6 +69,7 @@ type Instance struct {
 	NoRemoveDataDisk pulumi.BoolOutput `pulumi:"noRemoveDataDisk"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript pulumi.StringOutput `pulumi:"postStartupScript"`
+	Project           pulumi.StringOutput `pulumi:"project"`
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
 	// Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
@@ -367,6 +371,11 @@ func (o InstanceOutput) InstallGpuDriver() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.InstallGpuDriver }).(pulumi.BoolOutput)
 }
 
+// Required. User-defined unique ID of this instance.
+func (o InstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 func (o InstanceOutput) InstanceOwners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.InstanceOwners }).(pulumi.StringArrayOutput)
@@ -380,6 +389,10 @@ func (o InstanceOutput) KmsKey() pulumi.StringOutput {
 // Labels to apply to this instance. These can be later modified by the setLabels method.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o InstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
@@ -425,6 +438,10 @@ func (o InstanceOutput) NoRemoveDataDisk() pulumi.BoolOutput {
 // Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 func (o InstanceOutput) PostStartupScript() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PostStartupScript }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The proxy endpoint that is used to access the Jupyter notebook.

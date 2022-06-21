@@ -22,14 +22,19 @@ type Share struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
+	InstanceId  pulumi.StringOutput `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters, numbers, and underscores.
 	MountName pulumi.StringOutput `pulumi:"mountName"`
 	// The resource name of the share, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/shares/{share_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions NfsExportOptionsResponseArrayOutput `pulumi:"nfsExportOptions"`
+	Project          pulumi.StringOutput                 `pulumi:"project"`
+	// Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+	ShareId pulumi.StringOutput `pulumi:"shareId"`
 	// The share state.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -167,9 +172,17 @@ func (o ShareOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o ShareOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // Resource labels to represent user provided metadata.
 func (o ShareOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o ShareOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters, numbers, and underscores.
@@ -185,6 +198,15 @@ func (o ShareOutput) Name() pulumi.StringOutput {
 // Nfs Export Options. There is a limit of 10 export options per file share.
 func (o ShareOutput) NfsExportOptions() NfsExportOptionsResponseArrayOutput {
 	return o.ApplyT(func(v *Share) NfsExportOptionsResponseArrayOutput { return v.NfsExportOptions }).(NfsExportOptionsResponseArrayOutput)
+}
+
+func (o ShareOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+func (o ShareOutput) ShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ShareId }).(pulumi.StringOutput)
 }
 
 // The share state.

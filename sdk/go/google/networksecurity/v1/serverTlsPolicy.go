@@ -22,13 +22,17 @@ type ServerTlsPolicy struct {
 	// Free-text description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Set of label tags associated with the resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	//  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
 	MtlsPolicy MTLSPolicyResponseOutput `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	//  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate GoogleCloudNetworksecurityV1CertificateProviderResponseOutput `pulumi:"serverCertificate"`
+	// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
+	ServerTlsPolicyId pulumi.StringOutput `pulumi:"serverTlsPolicyId"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -170,6 +174,10 @@ func (o ServerTlsPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ServerTlsPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 //  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
 func (o ServerTlsPolicyOutput) MtlsPolicy() MTLSPolicyResponseOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) MTLSPolicyResponseOutput { return v.MtlsPolicy }).(MTLSPolicyResponseOutput)
@@ -180,11 +188,20 @@ func (o ServerTlsPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ServerTlsPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 //  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 func (o ServerTlsPolicyOutput) ServerCertificate() GoogleCloudNetworksecurityV1CertificateProviderResponseOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) GoogleCloudNetworksecurityV1CertificateProviderResponseOutput {
 		return v.ServerCertificate
 	}).(GoogleCloudNetworksecurityV1CertificateProviderResponseOutput)
+}
+
+// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
+func (o ServerTlsPolicyOutput) ServerTlsPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.ServerTlsPolicyId }).(pulumi.StringOutput)
 }
 
 // The timestamp when the resource was updated.

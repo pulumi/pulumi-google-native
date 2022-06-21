@@ -21,8 +21,7 @@ type Index struct {
 	// The resource ID of the index.
 	IndexId pulumi.StringOutput `pulumi:"indexId"`
 	// The entity kind to which this index applies.
-	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Project ID.
+	Kind    pulumi.StringOutput `pulumi:"kind"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput `pulumi:"properties"`
@@ -150,7 +149,6 @@ func (o IndexOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Project ID.
 func (o IndexOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

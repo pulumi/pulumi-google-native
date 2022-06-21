@@ -17,8 +17,10 @@ type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 
 	BasicAlgorithm BasicAutoscalingAlgorithmResponseOutput `pulumi:"basicAlgorithm"`
+	Location       pulumi.StringOutput                     `pulumi:"location"`
 	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponseOutput `pulumi:"secondaryWorkerConfig"`
 	// Describes how the autoscaler will operate for primary workers.
@@ -135,9 +137,17 @@ func (o AutoscalingPolicyOutput) BasicAlgorithm() BasicAutoscalingAlgorithmRespo
 	return o.ApplyT(func(v *AutoscalingPolicy) BasicAutoscalingAlgorithmResponseOutput { return v.BasicAlgorithm }).(BasicAutoscalingAlgorithmResponseOutput)
 }
 
+func (o AutoscalingPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
 func (o AutoscalingPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AutoscalingPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Describes how the autoscaler will operate for secondary workers.

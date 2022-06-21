@@ -31,6 +31,8 @@ type TagValue struct {
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 	// Update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewTagValue registers a new resource with the given unique name, arguments, and options.
@@ -180,6 +182,11 @@ func (o TagValueOutput) ShortName() pulumi.StringOutput {
 // Update time.
 func (o TagValueOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
+func (o TagValueOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagValue) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

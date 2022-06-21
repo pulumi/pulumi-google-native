@@ -17,14 +17,18 @@ type ClientTlsPolicy struct {
 
 	// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 	ClientCertificate GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput `pulumi:"clientCertificate"`
+	// Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+	ClientTlsPolicyId pulumi.StringOutput `pulumi:"clientTlsPolicyId"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Free-text description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Set of label tags associated with the resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
 	ServerValidationCa ValidationCAResponseArrayOutput `pulumi:"serverValidationCa"`
 	// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
@@ -157,6 +161,11 @@ func (o ClientTlsPolicyOutput) ClientCertificate() GoogleCloudNetworksecurityV1b
 	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput)
 }
 
+// Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+func (o ClientTlsPolicyOutput) ClientTlsPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.ClientTlsPolicyId }).(pulumi.StringOutput)
+}
+
 // The timestamp when the resource was created.
 func (o ClientTlsPolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -172,9 +181,17 @@ func (o ClientTlsPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ClientTlsPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
 func (o ClientTlsPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClientTlsPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.

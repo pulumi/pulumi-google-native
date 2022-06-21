@@ -16,10 +16,12 @@ import (
 type IdentityAwareProxyClient struct {
 	pulumi.CustomResourceState
 
+	BrandId pulumi.StringOutput `pulumi:"brandId"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Unique identifier of the OAuth client.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Client secret of the OAuth client.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 }
@@ -117,6 +119,10 @@ func (o IdentityAwareProxyClientOutput) ToIdentityAwareProxyClientOutputWithCont
 	return o
 }
 
+func (o IdentityAwareProxyClientOutput) BrandId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyClient) pulumi.StringOutput { return v.BrandId }).(pulumi.StringOutput)
+}
+
 // Human-friendly name given to the OAuth client.
 func (o IdentityAwareProxyClientOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityAwareProxyClient) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -125,6 +131,10 @@ func (o IdentityAwareProxyClientOutput) DisplayName() pulumi.StringOutput {
 // Unique identifier of the OAuth client.
 func (o IdentityAwareProxyClientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IdentityAwareProxyClient) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o IdentityAwareProxyClientOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyClient) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Client secret of the OAuth client.

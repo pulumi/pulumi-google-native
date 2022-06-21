@@ -16,16 +16,21 @@ import (
 type OrganizationBucketView struct {
 	pulumi.CustomResourceState
 
+	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The creation timestamp of the view.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Describes this view.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-	Filter pulumi.StringOutput `pulumi:"filter"`
+	Filter   pulumi.StringOutput `pulumi:"filter"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The last update timestamp of the view.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Required. The id to use for this view.
+	ViewId pulumi.StringOutput `pulumi:"viewId"`
 }
 
 // NewOrganizationBucketView registers a new resource with the given unique name, arguments, and options.
@@ -141,6 +146,10 @@ func (o OrganizationBucketViewOutput) ToOrganizationBucketViewOutputWithContext(
 	return o
 }
 
+func (o OrganizationBucketViewOutput) BucketId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
+}
+
 // The creation timestamp of the view.
 func (o OrganizationBucketViewOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -156,14 +165,27 @@ func (o OrganizationBucketViewOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
 
+func (o OrganizationBucketViewOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 func (o OrganizationBucketViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o OrganizationBucketViewOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
 // The last update timestamp of the view.
 func (o OrganizationBucketViewOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Required. The id to use for this view.
+func (o OrganizationBucketViewOutput) ViewId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.ViewId }).(pulumi.StringOutput)
 }
 
 func init() {

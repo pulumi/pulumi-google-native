@@ -22,13 +22,15 @@ type Export struct {
 	// Name of the datastore that is the destination of the export job [datastore]
 	DatastoreName pulumi.StringOutput `pulumi:"datastoreName"`
 	// Description of the export job.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description   pulumi.StringOutput `pulumi:"description"`
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Error is set when export fails
 	Error pulumi.StringOutput `pulumi:"error"`
 	// Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
 	ExecutionTime pulumi.StringOutput `pulumi:"executionTime"`
 	// Display name of the export job.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
 	Self pulumi.StringOutput `pulumi:"self"`
 	// Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
@@ -174,6 +176,10 @@ func (o ExportOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o ExportOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // Error is set when export fails
 func (o ExportOutput) Error() pulumi.StringOutput {
 	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Error }).(pulumi.StringOutput)
@@ -187,6 +193,10 @@ func (o ExportOutput) ExecutionTime() pulumi.StringOutput {
 // Display name of the export job.
 func (o ExportOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ExportOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`

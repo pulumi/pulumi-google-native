@@ -19,9 +19,11 @@ type OrganizationReplay struct {
 	pulumi.CustomResourceState
 
 	// The configuration used for the `Replay`.
-	Config GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput `pulumi:"config"`
+	Config   GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput `pulumi:"config"`
+	Location pulumi.StringOutput                                    `pulumi:"location"`
 	// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Summary statistics about the replayed log entries.
 	ResultsSummary GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput `pulumi:"resultsSummary"`
 	// The current state of the `Replay`.
@@ -129,9 +131,17 @@ func (o OrganizationReplayOutput) Config() GoogleCloudPolicysimulatorV1ReplayCon
 	return o.ApplyT(func(v *OrganizationReplay) GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput { return v.Config }).(GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput)
 }
 
+func (o OrganizationReplayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationReplay) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
 func (o OrganizationReplayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationReplay) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o OrganizationReplayOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationReplay) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Summary statistics about the replayed log entries.

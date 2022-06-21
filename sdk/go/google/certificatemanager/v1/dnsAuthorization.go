@@ -19,14 +19,18 @@ type DnsAuthorization struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a DnsAuthorization.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. A user-provided name of the dns authorization.
+	DnsAuthorizationId pulumi.StringOutput `pulumi:"dnsAuthorizationId"`
 	// DNS Resource Record that needs to be added to DNS configuration.
 	DnsResourceRecord DnsResourceRecordResponseOutput `pulumi:"dnsResourceRecord"`
 	// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Set of labels associated with a DnsAuthorization.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The last update timestamp of a DnsAuthorization.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -153,6 +157,11 @@ func (o DnsAuthorizationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Required. A user-provided name of the dns authorization.
+func (o DnsAuthorizationOutput) DnsAuthorizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.DnsAuthorizationId }).(pulumi.StringOutput)
+}
+
 // DNS Resource Record that needs to be added to DNS configuration.
 func (o DnsAuthorizationOutput) DnsResourceRecord() DnsResourceRecordResponseOutput {
 	return o.ApplyT(func(v *DnsAuthorization) DnsResourceRecordResponseOutput { return v.DnsResourceRecord }).(DnsResourceRecordResponseOutput)
@@ -168,9 +177,17 @@ func (o DnsAuthorizationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o DnsAuthorizationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
 func (o DnsAuthorizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DnsAuthorizationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of a DnsAuthorization.

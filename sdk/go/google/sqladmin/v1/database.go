@@ -22,14 +22,12 @@ type Database struct {
 	// This field is deprecated and will be removed from a future version of the API.
 	//
 	// Deprecated: This field is deprecated and will be removed from a future version of the API.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The name of the Cloud SQL instance. This does not include the project ID.
+	Etag     pulumi.StringOutput `pulumi:"etag"`
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// This is always `sql#database`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of this resource.
 	SelfLink                 pulumi.StringOutput                    `pulumi:"selfLink"`
@@ -176,7 +174,6 @@ func (o DatabaseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The name of the Cloud SQL instance. This does not include the project ID.
 func (o DatabaseOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
@@ -191,7 +188,6 @@ func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
 func (o DatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

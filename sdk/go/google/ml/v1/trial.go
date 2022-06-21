@@ -24,16 +24,19 @@ type Trial struct {
 	FinalMeasurement GoogleCloudMlV1__MeasurementResponseOutput `pulumi:"finalMeasurement"`
 	// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
 	InfeasibleReason pulumi.StringOutput `pulumi:"infeasibleReason"`
+	Location         pulumi.StringOutput `pulumi:"location"`
 	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 	Measurements GoogleCloudMlV1__MeasurementResponseArrayOutput `pulumi:"measurements"`
 	// Name of the trial assigned by the service.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parameters of the trial.
 	Parameters GoogleCloudMlV1_Trial_ParameterResponseArrayOutput `pulumi:"parameters"`
+	Project    pulumi.StringOutput                                `pulumi:"project"`
 	// Time at which the trial was started.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The detailed state of a trial.
-	State pulumi.StringOutput `pulumi:"state"`
+	State   pulumi.StringOutput `pulumi:"state"`
+	StudyId pulumi.StringOutput `pulumi:"studyId"`
 	// If true, the parameters in this trial are not attempted again.
 	TrialInfeasible pulumi.BoolOutput `pulumi:"trialInfeasible"`
 }
@@ -165,6 +168,10 @@ func (o TrialOutput) InfeasibleReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.InfeasibleReason }).(pulumi.StringOutput)
 }
 
+func (o TrialOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 func (o TrialOutput) Measurements() GoogleCloudMlV1__MeasurementResponseArrayOutput {
 	return o.ApplyT(func(v *Trial) GoogleCloudMlV1__MeasurementResponseArrayOutput { return v.Measurements }).(GoogleCloudMlV1__MeasurementResponseArrayOutput)
@@ -180,6 +187,10 @@ func (o TrialOutput) Parameters() GoogleCloudMlV1_Trial_ParameterResponseArrayOu
 	return o.ApplyT(func(v *Trial) GoogleCloudMlV1_Trial_ParameterResponseArrayOutput { return v.Parameters }).(GoogleCloudMlV1_Trial_ParameterResponseArrayOutput)
 }
 
+func (o TrialOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Time at which the trial was started.
 func (o TrialOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
@@ -188,6 +199,10 @@ func (o TrialOutput) StartTime() pulumi.StringOutput {
 // The detailed state of a trial.
 func (o TrialOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o TrialOutput) StudyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.StudyId }).(pulumi.StringOutput)
 }
 
 // If true, the parameters in this trial are not attempted again.

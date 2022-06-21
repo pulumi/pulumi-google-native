@@ -19,6 +19,9 @@ type Deployment struct {
 	AccessGuidance pulumi.StringOutput `pulumi:"accessGuidance"`
 	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+	ApiDeploymentId pulumi.StringOutput `pulumi:"apiDeploymentId"`
+	ApiId           pulumi.StringOutput `pulumi:"apiId"`
 	// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
 	ApiSpecRevision pulumi.StringOutput `pulumi:"apiSpecRevision"`
 	// Creation timestamp; when the deployment resource was created.
@@ -34,9 +37,11 @@ type Deployment struct {
 	// Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
 	IntendedAudience pulumi.StringOutput `pulumi:"intendedAudience"`
 	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Revision creation timestamp; when the represented revision was created.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string.
@@ -193,6 +198,15 @@ func (o DeploymentOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+func (o DeploymentOutput) ApiDeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ApiDeploymentId }).(pulumi.StringOutput)
+}
+
+func (o DeploymentOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
 // The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
 func (o DeploymentOutput) ApiSpecRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ApiSpecRevision }).(pulumi.StringOutput)
@@ -233,9 +247,17 @@ func (o DeploymentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o DeploymentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name.
 func (o DeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DeploymentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Revision creation timestamp; when the represented revision was created.

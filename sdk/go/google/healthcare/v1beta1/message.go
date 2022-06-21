@@ -18,9 +18,12 @@ type Message struct {
 	// The datetime when the message was created. Set by the server.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Raw message bytes.
-	Data pulumi.StringOutput `pulumi:"data"`
+	Data         pulumi.StringOutput `pulumi:"data"`
+	DatasetId    pulumi.StringOutput `pulumi:"datasetId"`
+	Hl7V2StoreId pulumi.StringOutput `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The message type for this message. MSH-9.1.
 	MessageType pulumi.StringOutput `pulumi:"messageType"`
 	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
@@ -29,6 +32,7 @@ type Message struct {
 	ParsedData ParsedDataResponseOutput `pulumi:"parsedData"`
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds PatientIdResponseArrayOutput `pulumi:"patientIds"`
+	Project    pulumi.StringOutput          `pulumi:"project"`
 	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
 	SchematizedData SchematizedDataResponseOutput `pulumi:"schematizedData"`
 	// The hospital that this message came from. MSH-4.
@@ -175,9 +179,21 @@ func (o MessageOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.Data }).(pulumi.StringOutput)
 }
 
+func (o MessageOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+func (o MessageOutput) Hl7V2StoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.Hl7V2StoreId }).(pulumi.StringOutput)
+}
+
 // User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 func (o MessageOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Message) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o MessageOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The message type for this message. MSH-9.1.
@@ -198,6 +214,10 @@ func (o MessageOutput) ParsedData() ParsedDataResponseOutput {
 // All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 func (o MessageOutput) PatientIds() PatientIdResponseArrayOutput {
 	return o.ApplyT(func(v *Message) PatientIdResponseArrayOutput { return v.PatientIds }).(PatientIdResponseArrayOutput)
+}
+
+func (o MessageOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The parsed version of the raw message data schematized according to this store's schemas and type definitions.

@@ -16,6 +16,8 @@ import (
 type CustomerRepricingConfig struct {
 	pulumi.CustomResourceState
 
+	AccountId  pulumi.StringOutput `pulumi:"accountId"`
+	CustomerId pulumi.StringOutput `pulumi:"customerId"`
 	// Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The configuration for bill modifications made by a reseller before sending it to customers.
@@ -121,6 +123,14 @@ func (o CustomerRepricingConfigOutput) ToCustomerRepricingConfigOutput() Custome
 
 func (o CustomerRepricingConfigOutput) ToCustomerRepricingConfigOutputWithContext(ctx context.Context) CustomerRepricingConfigOutput {
 	return o
+}
+
+func (o CustomerRepricingConfigOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomerRepricingConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o CustomerRepricingConfigOutput) CustomerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomerRepricingConfig) pulumi.StringOutput { return v.CustomerId }).(pulumi.StringOutput)
 }
 
 // Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.

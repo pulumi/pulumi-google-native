@@ -18,11 +18,15 @@ type UserDataMapping struct {
 	// Indicates the time when this mapping was archived.
 	ArchiveTime pulumi.StringOutput `pulumi:"archiveTime"`
 	// Indicates whether this mapping is archived.
-	Archived pulumi.BoolOutput `pulumi:"archived"`
+	Archived       pulumi.BoolOutput   `pulumi:"archived"`
+	ConsentStoreId pulumi.StringOutput `pulumi:"consentStoreId"`
 	// A unique identifier for the mapped resource.
-	DataId pulumi.StringOutput `pulumi:"dataId"`
+	DataId    pulumi.StringOutput `pulumi:"dataId"`
+	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
+	Location  pulumi.StringOutput `pulumi:"location"`
 	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
 	ResourceAttributes AttributeResponseArrayOutput `pulumi:"resourceAttributes"`
 	// User's UUID provided by the client.
@@ -157,14 +161,30 @@ func (o UserDataMappingOutput) Archived() pulumi.BoolOutput {
 	return o.ApplyT(func(v *UserDataMapping) pulumi.BoolOutput { return v.Archived }).(pulumi.BoolOutput)
 }
 
+func (o UserDataMappingOutput) ConsentStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.ConsentStoreId }).(pulumi.StringOutput)
+}
+
 // A unique identifier for the mapped resource.
 func (o UserDataMappingOutput) DataId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.DataId }).(pulumi.StringOutput)
 }
 
+func (o UserDataMappingOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+func (o UserDataMappingOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
 func (o UserDataMappingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o UserDataMappingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.

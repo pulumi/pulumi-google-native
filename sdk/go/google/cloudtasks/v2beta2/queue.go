@@ -16,8 +16,10 @@ type Queue struct {
 
 	// App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
 	AppEngineHttpTarget AppEngineHttpTargetResponseOutput `pulumi:"appEngineHttpTarget"`
+	Location            pulumi.StringOutput               `pulumi:"location"`
 	// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Pull target. A pull queue is a queue that has a PullTarget.
 	PullTarget PullTargetResponseOutput `pulumi:"pullTarget"`
 	// The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
@@ -155,9 +157,17 @@ func (o QueueOutput) AppEngineHttpTarget() AppEngineHttpTargetResponseOutput {
 	return o.ApplyT(func(v *Queue) AppEngineHttpTargetResponseOutput { return v.AppEngineHttpTarget }).(AppEngineHttpTargetResponseOutput)
 }
 
+func (o QueueOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
 func (o QueueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o QueueOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Pull target. A pull queue is a queue that has a PullTarget.

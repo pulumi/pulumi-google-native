@@ -17,6 +17,8 @@ type Connection struct {
 
 	// Address of the remote application endpoint for the BeyondCorp Connection.
 	ApplicationEndpoint ApplicationEndpointResponseOutput `pulumi:"applicationEndpoint"`
+	// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	ConnectionId pulumi.StringPtrOutput `pulumi:"connectionId"`
 	// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
 	Connectors pulumi.StringArrayOutput `pulumi:"connectors"`
 	// Timestamp when the resource was created.
@@ -26,9 +28,13 @@ type Connection struct {
 	// Optional. Gateway used by the connection.
 	Gateway GatewayResponseOutput `pulumi:"gateway"`
 	// Optional. Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Unique resource name of the connection. The name is ignored when creating a connection.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The current state of the connection.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of network connectivity used by the connection.
@@ -37,6 +43,8 @@ type Connection struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -176,6 +184,11 @@ func (o ConnectionOutput) ApplicationEndpoint() ApplicationEndpointResponseOutpu
 	return o.ApplyT(func(v *Connection) ApplicationEndpointResponseOutput { return v.ApplicationEndpoint }).(ApplicationEndpointResponseOutput)
 }
 
+// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+func (o ConnectionOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
 // Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
 func (o ConnectionOutput) Connectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.Connectors }).(pulumi.StringArrayOutput)
@@ -201,9 +214,22 @@ func (o ConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ConnectionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Unique resource name of the connection. The name is ignored when creating a connection.
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConnectionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o ConnectionOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The current state of the connection.
@@ -224,6 +250,11 @@ func (o ConnectionOutput) Uid() pulumi.StringOutput {
 // Timestamp when the resource was last modified.
 func (o ConnectionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+func (o ConnectionOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

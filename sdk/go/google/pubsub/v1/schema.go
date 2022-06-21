@@ -17,11 +17,14 @@ type Schema struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringOutput `pulumi:"definition"`
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The timestamp that the revision was created.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// Immutable. The revision ID of the schema.
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
+	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+	SchemaId pulumi.StringPtrOutput `pulumi:"schemaId"`
 	// The type of the schema definition.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -136,6 +139,10 @@ func (o SchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o SchemaOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The timestamp that the revision was created.
 func (o SchemaOutput) RevisionCreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.RevisionCreateTime }).(pulumi.StringOutput)
@@ -144,6 +151,11 @@ func (o SchemaOutput) RevisionCreateTime() pulumi.StringOutput {
 // Immutable. The revision ID of the schema.
 func (o SchemaOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+func (o SchemaOutput) SchemaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.SchemaId }).(pulumi.StringPtrOutput)
 }
 
 // The type of the schema definition.

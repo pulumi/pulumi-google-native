@@ -16,6 +16,7 @@ import (
 type AuthorizedCertificate struct {
 	pulumi.CustomResourceState
 
+	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
 	CertificateRawData CertificateRawDataResponseOutput `pulumi:"certificateRawData"`
 	// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
@@ -127,6 +128,10 @@ func (o AuthorizedCertificateOutput) ToAuthorizedCertificateOutput() AuthorizedC
 
 func (o AuthorizedCertificateOutput) ToAuthorizedCertificateOutputWithContext(ctx context.Context) AuthorizedCertificateOutput {
 	return o
+}
+
+func (o AuthorizedCertificateOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
 
 // The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.

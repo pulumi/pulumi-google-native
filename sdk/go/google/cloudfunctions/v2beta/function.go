@@ -22,10 +22,14 @@ type Function struct {
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger EventTriggerResponseOutput `pulumi:"eventTrigger"`
+	// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	FunctionId pulumi.StringPtrOutput `pulumi:"functionId"`
 	// Labels associated with this Cloud Function.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
 	ServiceConfig ServiceConfigResponseOutput `pulumi:"serviceConfig"`
 	// State of the function.
@@ -174,14 +178,27 @@ func (o FunctionOutput) EventTrigger() EventTriggerResponseOutput {
 	return o.ApplyT(func(v *Function) EventTriggerResponseOutput { return v.EventTrigger }).(EventTriggerResponseOutput)
 }
 
+// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+func (o FunctionOutput) FunctionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.FunctionId }).(pulumi.StringPtrOutput)
+}
+
 // Labels associated with this Cloud Function.
 func (o FunctionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o FunctionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FunctionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).

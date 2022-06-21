@@ -18,6 +18,9 @@ type Backup struct {
 
 	// If True, all namespaces were included in the Backup.
 	AllNamespaces pulumi.BoolOutput `pulumi:"allNamespaces"`
+	// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+	BackupId     pulumi.StringPtrOutput `pulumi:"backupId"`
+	BackupPlanId pulumi.StringOutput    `pulumi:"backupPlanId"`
 	// Information about the GKE cluster from which this Backup was created.
 	ClusterMetadata ClusterMetadataResponseOutput `pulumi:"clusterMetadata"`
 	// Completion time of the Backup
@@ -41,13 +44,15 @@ type Backup struct {
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A set of custom labels supplied by user.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
 	Manual pulumi.BoolOutput `pulumi:"manual"`
 	// The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The total number of Kubernetes Pods contained in the Backup.
-	PodCount pulumi.IntOutput `pulumi:"podCount"`
+	PodCount pulumi.IntOutput    `pulumi:"podCount"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// The total number of Kubernetes resources included in the Backup.
 	ResourceCount pulumi.IntOutput `pulumi:"resourceCount"`
 	// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
@@ -188,6 +193,15 @@ func (o BackupOutput) AllNamespaces() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.AllNamespaces }).(pulumi.BoolOutput)
 }
 
+// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+func (o BackupOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.BackupId }).(pulumi.StringPtrOutput)
+}
+
+func (o BackupOutput) BackupPlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupPlanId }).(pulumi.StringOutput)
+}
+
 // Information about the GKE cluster from which this Backup was created.
 func (o BackupOutput) ClusterMetadata() ClusterMetadataResponseOutput {
 	return o.ApplyT(func(v *Backup) ClusterMetadataResponseOutput { return v.ClusterMetadata }).(ClusterMetadataResponseOutput)
@@ -248,6 +262,10 @@ func (o BackupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o BackupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
 func (o BackupOutput) Manual() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.Manual }).(pulumi.BoolOutput)
@@ -261,6 +279,10 @@ func (o BackupOutput) Name() pulumi.StringOutput {
 // The total number of Kubernetes Pods contained in the Backup.
 func (o BackupOutput) PodCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.PodCount }).(pulumi.IntOutput)
+}
+
+func (o BackupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The total number of Kubernetes resources included in the Backup.

@@ -23,12 +23,15 @@ type GuestPolicy struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+	GuestPolicyId pulumi.StringOutput `pulumi:"guestPolicyId"`
 	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories PackageRepositoryResponseArrayOutput `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
 	Packages PackageResponseArrayOutput `pulumi:"packages"`
+	Project  pulumi.StringOutput        `pulumi:"project"`
 	// A list of Recipes to install on the VM instance.
 	Recipes SoftwareRecipeResponseArrayOutput `pulumi:"recipes"`
 	// Last time this guest policy was updated.
@@ -177,6 +180,11 @@ func (o GuestPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+func (o GuestPolicyOutput) GuestPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.GuestPolicyId }).(pulumi.StringOutput)
+}
+
 // Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 func (o GuestPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -190,6 +198,10 @@ func (o GuestPolicyOutput) PackageRepositories() PackageRepositoryResponseArrayO
 // The software packages to be managed by this policy.
 func (o GuestPolicyOutput) Packages() PackageResponseArrayOutput {
 	return o.ApplyT(func(v *GuestPolicy) PackageResponseArrayOutput { return v.Packages }).(PackageResponseArrayOutput)
+}
+
+func (o GuestPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A list of Recipes to install on the VM instance.

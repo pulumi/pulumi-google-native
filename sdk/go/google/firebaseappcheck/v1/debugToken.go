@@ -15,10 +15,12 @@ import (
 type DebugToken struct {
 	pulumi.CustomResourceState
 
+	AppId pulumi.StringOutput `pulumi:"appId"`
 	// A human readable display name used to identify this debug token.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
 	Token pulumi.StringOutput `pulumi:"token"`
 }
@@ -130,6 +132,10 @@ func (o DebugTokenOutput) ToDebugTokenOutputWithContext(ctx context.Context) Deb
 	return o
 }
 
+func (o DebugTokenOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugToken) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
 // A human readable display name used to identify this debug token.
 func (o DebugTokenOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DebugToken) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -138,6 +144,10 @@ func (o DebugTokenOutput) DisplayName() pulumi.StringOutput {
 // The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
 func (o DebugTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DebugToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DebugTokenOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugToken) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.

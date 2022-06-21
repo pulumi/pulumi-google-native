@@ -24,10 +24,14 @@ type Environment struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Display name of this environment for the UI.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
+	Location      pulumi.StringOutput `pulumi:"location"`
 	// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript pulumi.StringOutput `pulumi:"postStartupScript"`
+	Project           pulumi.StringOutput `pulumi:"project"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	VmImage VmImageResponseOutput `pulumi:"vmImage"`
 }
@@ -165,6 +169,15 @@ func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
+func (o EnvironmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -173,6 +186,10 @@ func (o EnvironmentOutput) Name() pulumi.StringOutput {
 // Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 func (o EnvironmentOutput) PostStartupScript() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.PostStartupScript }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Use a Compute Engine VM image to start the notebook instance.

@@ -16,9 +16,11 @@ type Override struct {
 	pulumi.CustomResourceState
 
 	// ID of the API proxy that will have its trace configuration overridden.
-	ApiProxy pulumi.StringOutput `pulumi:"apiProxy"`
+	ApiProxy      pulumi.StringOutput `pulumi:"apiProxy"`
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// ID of the trace configuration override specified as a system-generated UUID.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Trace configuration to override.
 	SamplingConfig GoogleCloudApigeeV1TraceSamplingConfigResponseOutput `pulumi:"samplingConfig"`
 }
@@ -132,9 +134,17 @@ func (o OverrideOutput) ApiProxy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Override) pulumi.StringOutput { return v.ApiProxy }).(pulumi.StringOutput)
 }
 
+func (o OverrideOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Override) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // ID of the trace configuration override specified as a system-generated UUID.
 func (o OverrideOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Override) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o OverrideOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Override) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Trace configuration to override.

@@ -20,10 +20,15 @@ type Hub struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of the hub.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. A unique identifier for the hub.
+	HubId pulumi.StringOutput `pulumi:"hubId"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs RoutingVPCResponseArrayOutput `pulumi:"routingVpcs"`
 	// The current lifecycle state of this hub.
@@ -155,6 +160,11 @@ func (o HubOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Required. A unique identifier for the hub.
+func (o HubOutput) HubId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.HubId }).(pulumi.StringOutput)
+}
+
 // Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 func (o HubOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -163,6 +173,15 @@ func (o HubOutput) Labels() pulumi.StringMapOutput {
 // Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
 func (o HubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o HubOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o HubOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.

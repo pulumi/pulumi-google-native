@@ -29,8 +29,10 @@ type VpnGateway struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// URL of the region where the VPN gateway resides.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	Region  pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
@@ -191,9 +193,17 @@ func (o VpnGatewayOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
-// URL of the region where the VPN gateway resides.
+func (o VpnGatewayOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 func (o VpnGatewayOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o VpnGatewayOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnGateway) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Server-defined URL for the resource.

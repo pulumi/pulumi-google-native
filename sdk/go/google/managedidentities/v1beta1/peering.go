@@ -26,6 +26,9 @@ type Peering struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. Peering Id, unique name to identify peering.
+	PeeringId pulumi.StringOutput `pulumi:"peeringId"`
+	Project   pulumi.StringOutput `pulumi:"project"`
 	// The current state of this Peering.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current status of this peering, if available.
@@ -166,6 +169,15 @@ func (o PeeringOutput) Labels() pulumi.StringMapOutput {
 // Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`.
 func (o PeeringOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. Peering Id, unique name to identify peering.
+func (o PeeringOutput) PeeringId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.PeeringId }).(pulumi.StringOutput)
+}
+
+func (o PeeringOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The current state of this Peering.

@@ -25,7 +25,8 @@ type AnnotationSpecSet struct {
 	// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewAnnotationSpecSet registers a new resource with the given unique name, arguments, and options.
@@ -155,6 +156,10 @@ func (o AnnotationSpecSetOutput) DisplayName() pulumi.StringOutput {
 // The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
 func (o AnnotationSpecSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnnotationSpecSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AnnotationSpecSetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnnotationSpecSet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

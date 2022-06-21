@@ -16,7 +16,9 @@ type Topic struct {
 	pulumi.CustomResourceState
 
 	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	TopicId pulumi.StringOutput `pulumi:"topicId"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +117,14 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
 func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TopicOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o TopicOutput) TopicId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.TopicId }).(pulumi.StringOutput)
 }
 
 func init() {

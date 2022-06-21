@@ -20,12 +20,16 @@ type Study struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
 	InactiveReason pulumi.StringOutput `pulumi:"inactiveReason"`
+	Location       pulumi.StringOutput `pulumi:"location"`
 	// The name of a study.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The detailed state of a study.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigResponseOutput `pulumi:"studyConfig"`
+	// Required. The ID to use for the study, which will become the final component of the study's resource name.
+	StudyId pulumi.StringOutput `pulumi:"studyId"`
 }
 
 // NewStudy registers a new resource with the given unique name, arguments, and options.
@@ -138,9 +142,17 @@ func (o StudyOutput) InactiveReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.InactiveReason }).(pulumi.StringOutput)
 }
 
+func (o StudyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of a study.
 func (o StudyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StudyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The detailed state of a study.
@@ -151,6 +163,11 @@ func (o StudyOutput) State() pulumi.StringOutput {
 // Configuration of the study.
 func (o StudyOutput) StudyConfig() GoogleCloudMlV1__StudyConfigResponseOutput {
 	return o.ApplyT(func(v *Study) GoogleCloudMlV1__StudyConfigResponseOutput { return v.StudyConfig }).(GoogleCloudMlV1__StudyConfigResponseOutput)
+}
+
+// Required. The ID to use for the study, which will become the final component of the study's resource name.
+func (o StudyOutput) StudyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.StudyId }).(pulumi.StringOutput)
 }
 
 func init() {

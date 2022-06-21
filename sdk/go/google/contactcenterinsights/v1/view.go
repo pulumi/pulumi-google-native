@@ -18,8 +18,10 @@ type View struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The human-readable display name of the view.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The most recent time at which the view was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// String with specific view properties.
@@ -134,9 +136,17 @@ func (o ViewOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o ViewOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
 func (o ViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ViewOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The most recent time at which the view was updated.

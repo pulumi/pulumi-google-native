@@ -18,10 +18,15 @@ type Hub struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Short description of the hub resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Unique id for the Hub to create.
+	HubId pulumi.StringPtrOutput `pulumi:"hubId"`
 	// User-defined labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The name of a Hub resource.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
 	//
 	// Deprecated: Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
@@ -156,6 +161,11 @@ func (o HubOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. Unique id for the Hub to create.
+func (o HubOutput) HubId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringPtrOutput { return v.HubId }).(pulumi.StringPtrOutput)
+}
+
 // User-defined labels.
 func (o HubOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -164,6 +174,15 @@ func (o HubOutput) Labels() pulumi.StringMapOutput {
 // Immutable. The name of a Hub resource.
 func (o HubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o HubOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o HubOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.

@@ -15,12 +15,17 @@ import (
 type DicomStore struct {
 	pulumi.CustomResourceState
 
+	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
+	// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+	DicomStoreId pulumi.StringPtrOutput `pulumi:"dicomStoreId"`
 	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
+	Project            pulumi.StringOutput              `pulumi:"project"`
 }
 
 // NewDicomStore registers a new resource with the given unique name, arguments, and options.
@@ -130,9 +135,22 @@ func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) Dic
 	return o
 }
 
+func (o DicomStoreOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+func (o DicomStoreOutput) DicomStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DicomStore) pulumi.StringPtrOutput { return v.DicomStoreId }).(pulumi.StringPtrOutput)
+}
+
 // User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 func (o DicomStoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o DicomStoreOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
@@ -143,6 +161,10 @@ func (o DicomStoreOutput) Name() pulumi.StringOutput {
 // Notification destination for new DICOM instances. Supplied by the client.
 func (o DicomStoreOutput) NotificationConfig() NotificationConfigResponseOutput {
 	return o.ApplyT(func(v *DicomStore) NotificationConfigResponseOutput { return v.NotificationConfig }).(NotificationConfigResponseOutput)
+}
+
+func (o DicomStoreOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

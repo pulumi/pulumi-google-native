@@ -36,10 +36,12 @@ type Job struct {
 	Placement JobPlacementResponseOutput `pulumi:"placement"`
 	// Optional. Job is a Presto job.
 	PrestoJob PrestoJobResponseOutput `pulumi:"prestoJob"`
+	Project   pulumi.StringOutput     `pulumi:"project"`
 	// Optional. Job is a PySpark job.
 	PysparkJob PySparkJobResponseOutput `pulumi:"pysparkJob"`
 	// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
 	Reference JobReferenceResponseOutput `pulumi:"reference"`
+	Region    pulumi.StringOutput        `pulumi:"region"`
 	// Optional. Job scheduling configuration.
 	Scheduling JobSchedulingResponseOutput `pulumi:"scheduling"`
 	// Optional. Job is a Spark job.
@@ -250,6 +252,10 @@ func (o JobOutput) PrestoJob() PrestoJobResponseOutput {
 	return o.ApplyT(func(v *Job) PrestoJobResponseOutput { return v.PrestoJob }).(PrestoJobResponseOutput)
 }
 
+func (o JobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Optional. Job is a PySpark job.
 func (o JobOutput) PysparkJob() PySparkJobResponseOutput {
 	return o.ApplyT(func(v *Job) PySparkJobResponseOutput { return v.PysparkJob }).(PySparkJobResponseOutput)
@@ -258,6 +264,10 @@ func (o JobOutput) PysparkJob() PySparkJobResponseOutput {
 // Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
 func (o JobOutput) Reference() JobReferenceResponseOutput {
 	return o.ApplyT(func(v *Job) JobReferenceResponseOutput { return v.Reference }).(JobReferenceResponseOutput)
+}
+
+func (o JobOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Optional. Job scheduling configuration.

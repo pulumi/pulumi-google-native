@@ -17,10 +17,14 @@ type Service struct {
 
 	// The API version for this call such as "serving.knative.dev/v1".
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
+	// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+	DryRun pulumi.StringPtrOutput `pulumi:"dryRun"`
 	// The kind of resource, in this case "Service".
-	Kind pulumi.StringOutput `pulumi:"kind"`
+	Kind     pulumi.StringOutput `pulumi:"kind"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
 	Metadata ObjectMetaResponseOutput `pulumi:"metadata"`
+	Project  pulumi.StringOutput      `pulumi:"project"`
 	// Spec holds the desired state of the Service (from the client).
 	Spec ServiceSpecResponseOutput `pulumi:"spec"`
 	// Status communicates the observed state of the Service (from the controller).
@@ -138,14 +142,27 @@ func (o ServiceOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
 }
 
+// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+func (o ServiceOutput) DryRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.DryRun }).(pulumi.StringPtrOutput)
+}
+
 // The kind of resource, in this case "Service".
 func (o ServiceOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+func (o ServiceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
 func (o ServiceOutput) Metadata() ObjectMetaResponseOutput {
 	return o.ApplyT(func(v *Service) ObjectMetaResponseOutput { return v.Metadata }).(ObjectMetaResponseOutput)
+}
+
+func (o ServiceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Spec holds the desired state of the Service (from the client).

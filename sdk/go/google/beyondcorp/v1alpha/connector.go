@@ -15,16 +15,22 @@ import (
 type Connector struct {
 	pulumi.CustomResourceState
 
+	// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	ConnectorId pulumi.StringPtrOutput `pulumi:"connectorId"`
 	// Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. An arbitrary user-provided name for the connector. Cannot exceed 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Unique resource name of the connector. The name is ignored when creating a connector.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Principal information about the Identity of the connector.
 	PrincipalInfo PrincipalInfoResponseOutput `pulumi:"principalInfo"`
+	Project       pulumi.StringOutput         `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Resource info of the connector.
 	ResourceInfo ResourceInfoResponseOutput `pulumi:"resourceInfo"`
 	// The current state of the connector.
@@ -33,6 +39,8 @@ type Connector struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewConnector registers a new resource with the given unique name, arguments, and options.
@@ -156,6 +164,11 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 	return o
 }
 
+// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+func (o ConnectorOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.ConnectorId }).(pulumi.StringPtrOutput)
+}
+
 // Timestamp when the resource was created.
 func (o ConnectorOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -171,6 +184,10 @@ func (o ConnectorOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ConnectorOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Unique resource name of the connector. The name is ignored when creating a connector.
 func (o ConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -179,6 +196,15 @@ func (o ConnectorOutput) Name() pulumi.StringOutput {
 // Principal information about the Identity of the connector.
 func (o ConnectorOutput) PrincipalInfo() PrincipalInfoResponseOutput {
 	return o.ApplyT(func(v *Connector) PrincipalInfoResponseOutput { return v.PrincipalInfo }).(PrincipalInfoResponseOutput)
+}
+
+func (o ConnectorOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o ConnectorOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Resource info of the connector.
@@ -199,6 +225,11 @@ func (o ConnectorOutput) Uid() pulumi.StringOutput {
 // Timestamp when the resource was last modified.
 func (o ConnectorOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+func (o ConnectorOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

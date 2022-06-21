@@ -63,6 +63,7 @@ type Job struct {
 	PostingUpdateTime pulumi.StringOutput `pulumi:"postingUpdateTime"`
 	// Optional. Options for job processing.
 	ProcessingOptions ProcessingOptionsResponseOutput `pulumi:"processingOptions"`
+	Project           pulumi.StringOutput             `pulumi:"project"`
 	// Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
 	PromotionValue pulumi.IntOutput `pulumi:"promotionValue"`
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
@@ -404,6 +405,10 @@ func (o JobOutput) PostingUpdateTime() pulumi.StringOutput {
 // Optional. Options for job processing.
 func (o JobOutput) ProcessingOptions() ProcessingOptionsResponseOutput {
 	return o.ApplyT(func(v *Job) ProcessingOptionsResponseOutput { return v.ProcessingOptions }).(ProcessingOptionsResponseOutput)
+}
+
+func (o JobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.

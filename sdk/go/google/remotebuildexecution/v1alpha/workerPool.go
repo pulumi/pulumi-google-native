@@ -18,9 +18,11 @@ type WorkerPool struct {
 	// The autoscale policy to apply on a pool.
 	Autoscale GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput `pulumi:"autoscale"`
 	// Channel specifies the release channel of the pool.
-	Channel pulumi.StringOutput `pulumi:"channel"`
+	Channel    pulumi.StringOutput `pulumi:"channel"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// State of the worker pool.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
@@ -158,9 +160,17 @@ func (o WorkerPoolOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Channel }).(pulumi.StringOutput)
 }
 
+func (o WorkerPoolOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
 func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WorkerPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State of the worker pool.

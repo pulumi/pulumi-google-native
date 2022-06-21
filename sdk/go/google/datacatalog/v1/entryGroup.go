@@ -21,8 +21,12 @@ type EntryGroup struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewEntryGroup registers a new resource with the given unique name, arguments, and options.
@@ -147,9 +151,22 @@ func (o EntryGroupOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+func (o EntryGroupOutput) EntryGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.EntryGroupId }).(pulumi.StringOutput)
+}
+
+func (o EntryGroupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
 func (o EntryGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EntryGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

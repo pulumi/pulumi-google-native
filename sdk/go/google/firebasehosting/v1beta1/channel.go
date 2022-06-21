@@ -15,6 +15,8 @@ import (
 type Channel struct {
 	pulumi.CustomResourceState
 
+	// Required. Immutable. A unique ID within the site that identifies the channel.
+	ChannelId pulumi.StringOutput `pulumi:"channelId"`
 	// The time at which the channel was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
@@ -22,11 +24,13 @@ type Channel struct {
 	// Text labels used for extra metadata and/or filtering.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The current release for the channel, if any.
 	Release ReleaseResponseOutput `pulumi:"release"`
 	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
-	RetainedReleaseCount pulumi.IntOutput `pulumi:"retainedReleaseCount"`
+	RetainedReleaseCount pulumi.IntOutput    `pulumi:"retainedReleaseCount"`
+	SiteId               pulumi.StringOutput `pulumi:"siteId"`
 	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
 	Ttl pulumi.StringOutput `pulumi:"ttl"`
 	// The time at which the channel was last updated.
@@ -151,6 +155,11 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
+// Required. Immutable. A unique ID within the site that identifies the channel.
+func (o ChannelOutput) ChannelId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ChannelId }).(pulumi.StringOutput)
+}
+
 // The time at which the channel was created.
 func (o ChannelOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -171,6 +180,10 @@ func (o ChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ChannelOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The current release for the channel, if any.
 func (o ChannelOutput) Release() ReleaseResponseOutput {
 	return o.ApplyT(func(v *Channel) ReleaseResponseOutput { return v.Release }).(ReleaseResponseOutput)
@@ -179,6 +192,10 @@ func (o ChannelOutput) Release() ReleaseResponseOutput {
 // The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 func (o ChannelOutput) RetainedReleaseCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Channel) pulumi.IntOutput { return v.RetainedReleaseCount }).(pulumi.IntOutput)
+}
+
+func (o ChannelOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.

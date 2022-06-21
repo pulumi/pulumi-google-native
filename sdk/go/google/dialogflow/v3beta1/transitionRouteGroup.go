@@ -15,10 +15,16 @@ import (
 type TransitionRouteGroup struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	FlowId      pulumi.StringOutput `pulumi:"flowId"`
+	// The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput    `pulumi:"location"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput `pulumi:"transitionRoutes"`
 }
@@ -138,14 +144,35 @@ func (o TransitionRouteGroupOutput) ToTransitionRouteGroupOutputWithContext(ctx 
 	return o
 }
 
+func (o TransitionRouteGroupOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
 func (o TransitionRouteGroupOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o TransitionRouteGroupOutput) FlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.FlowId }).(pulumi.StringOutput)
+}
+
+// The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+func (o TransitionRouteGroupOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+func (o TransitionRouteGroupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 func (o TransitionRouteGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TransitionRouteGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Transition routes associated with the TransitionRouteGroup.

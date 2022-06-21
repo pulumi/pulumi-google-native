@@ -37,8 +37,10 @@ type RegionUrlMap struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers PathMatcherResponseArrayOutput `pulumi:"pathMatchers"`
-	// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Project      pulumi.StringOutput            `pulumi:"project"`
+	Region       pulumi.StringOutput            `pulumi:"region"`
+	// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -229,9 +231,17 @@ func (o RegionUrlMapOutput) PathMatchers() PathMatcherResponseArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMap) PathMatcherResponseArrayOutput { return v.PathMatchers }).(PathMatcherResponseArrayOutput)
 }
 
-// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o RegionUrlMapOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 func (o RegionUrlMapOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+func (o RegionUrlMapOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Server-defined URL for the resource.

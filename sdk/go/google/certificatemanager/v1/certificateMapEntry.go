@@ -15,6 +15,9 @@ import (
 type CertificateMapEntry struct {
 	pulumi.CustomResourceState
 
+	// Required. A user-provided name of the certificate map entry.
+	CertificateMapEntryId pulumi.StringOutput `pulumi:"certificateMapEntryId"`
+	CertificateMapId      pulumi.StringOutput `pulumi:"certificateMapId"`
 	// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 	Certificates pulumi.StringArrayOutput `pulumi:"certificates"`
 	// The creation timestamp of a Certificate Map Entry.
@@ -24,11 +27,13 @@ type CertificateMapEntry struct {
 	// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Set of labels associated with a Certificate Map Entry.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// A predefined matcher for particular cases, other than SNI selection.
 	Matcher pulumi.StringOutput `pulumi:"matcher"`
 	// A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// A serving state of this Certificate Map Entry.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The update timestamp of a Certificate Map Entry.
@@ -157,6 +162,15 @@ func (o CertificateMapEntryOutput) ToCertificateMapEntryOutputWithContext(ctx co
 	return o
 }
 
+// Required. A user-provided name of the certificate map entry.
+func (o CertificateMapEntryOutput) CertificateMapEntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.CertificateMapEntryId }).(pulumi.StringOutput)
+}
+
+func (o CertificateMapEntryOutput) CertificateMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.CertificateMapId }).(pulumi.StringOutput)
+}
+
 // A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 func (o CertificateMapEntryOutput) Certificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringArrayOutput { return v.Certificates }).(pulumi.StringArrayOutput)
@@ -182,6 +196,10 @@ func (o CertificateMapEntryOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o CertificateMapEntryOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // A predefined matcher for particular cases, other than SNI selection.
 func (o CertificateMapEntryOutput) Matcher() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Matcher }).(pulumi.StringOutput)
@@ -190,6 +208,10 @@ func (o CertificateMapEntryOutput) Matcher() pulumi.StringOutput {
 // A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
 func (o CertificateMapEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CertificateMapEntryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A serving state of this Certificate Map Entry.

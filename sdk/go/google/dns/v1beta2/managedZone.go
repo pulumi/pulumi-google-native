@@ -14,6 +14,8 @@ import (
 type ManagedZone struct {
 	pulumi.CustomResourceState
 
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+	ClientOperationId  pulumi.StringPtrOutput                      `pulumi:"clientOperationId"`
 	CloudLoggingConfig ManagedZoneCloudLoggingConfigResponseOutput `pulumi:"cloudLoggingConfig"`
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
@@ -38,6 +40,7 @@ type ManagedZone struct {
 	PeeringConfig ManagedZonePeeringConfigResponseOutput `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigResponseOutput `pulumi:"privateVisibilityConfig"`
+	Project                 pulumi.StringOutput                              `pulumi:"project"`
 	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
 	ReverseLookupConfig ManagedZoneReverseLookupConfigResponseOutput `pulumi:"reverseLookupConfig"`
 	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
@@ -190,6 +193,11 @@ func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+func (o ManagedZoneOutput) ClientOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringPtrOutput { return v.ClientOperationId }).(pulumi.StringPtrOutput)
+}
+
 func (o ManagedZoneOutput) CloudLoggingConfig() ManagedZoneCloudLoggingConfigResponseOutput {
 	return o.ApplyT(func(v *ManagedZone) ManagedZoneCloudLoggingConfigResponseOutput { return v.CloudLoggingConfig }).(ManagedZoneCloudLoggingConfigResponseOutput)
 }
@@ -253,6 +261,10 @@ func (o ManagedZoneOutput) PrivateVisibilityConfig() ManagedZonePrivateVisibilit
 	return o.ApplyT(func(v *ManagedZone) ManagedZonePrivateVisibilityConfigResponseOutput {
 		return v.PrivateVisibilityConfig
 	}).(ManagedZonePrivateVisibilityConfigResponseOutput)
+}
+
+func (o ManagedZoneOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.

@@ -25,9 +25,11 @@ type Job struct {
 	// The time the last job attempt started.
 	LastAttemptTime pulumi.StringOutput `pulumi:"lastAttemptTime"`
 	// Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
-	LegacyAppEngineCron pulumi.BoolOutput `pulumi:"legacyAppEngineCron"`
+	LegacyAppEngineCron pulumi.BoolOutput   `pulumi:"legacyAppEngineCron"`
+	Location            pulumi.StringOutput `pulumi:"location"`
 	// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Pub/Sub target.
 	PubsubTarget PubsubTargetResponseOutput `pulumi:"pubsubTarget"`
 	// Settings that determine the retry behavior.
@@ -202,9 +204,17 @@ func (o JobOutput) LegacyAppEngineCron() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.LegacyAppEngineCron }).(pulumi.BoolOutput)
 }
 
+func (o JobOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o JobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Pub/Sub target.

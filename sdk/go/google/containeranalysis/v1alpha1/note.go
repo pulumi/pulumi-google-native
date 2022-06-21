@@ -36,10 +36,13 @@ type Note struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// A detailed description of this `Note`.
 	LongDescription pulumi.StringOutput `pulumi:"longDescription"`
-	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+	// The name of the project. Should be of the form "providers/{provider_id}". @Deprecated
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID to use for this note.
+	NoteId pulumi.StringPtrOutput `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
 	Package PackageResponseOutput `pulumi:"package"`
+	Project pulumi.StringOutput   `pulumi:"project"`
 	// URLs associated with this note
 	RelatedUrl RelatedUrlResponseArrayOutput `pulumi:"relatedUrl"`
 	// A note describing a software bill of materials.
@@ -279,14 +282,23 @@ func (o NoteOutput) LongDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.LongDescription }).(pulumi.StringOutput)
 }
 
-// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+// The name of the project. Should be of the form "providers/{provider_id}". @Deprecated
 func (o NoteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID to use for this note.
+func (o NoteOutput) NoteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringPtrOutput { return v.NoteId }).(pulumi.StringPtrOutput)
 }
 
 // A note describing a package hosted by various package managers.
 func (o NoteOutput) Package() PackageResponseOutput {
 	return o.ApplyT(func(v *Note) PackageResponseOutput { return v.Package }).(PackageResponseOutput)
+}
+
+func (o NoteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // URLs associated with this note

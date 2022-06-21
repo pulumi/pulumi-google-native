@@ -31,7 +31,10 @@ type Entry struct {
 	// Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName  pulumi.StringOutput `pulumi:"displayName"`
+	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
+	// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+	EntryId pulumi.StringOutput `pulumi:"entryId"`
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec GoogleCloudDatacatalogV1FilesetSpecResponseOutput `pulumi:"filesetSpec"`
 	// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
@@ -44,10 +47,12 @@ type Entry struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
 	LinkedResource pulumi.StringOutput `pulumi:"linkedResource"`
+	Location       pulumi.StringOutput `pulumi:"location"`
 	// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Additional information related to the entry. Private to the current user.
 	PersonalDetails GoogleCloudDatacatalogV1PersonalDetailsResponseOutput `pulumi:"personalDetails"`
+	Project         pulumi.StringOutput                                   `pulumi:"project"`
 	// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecResponseOutput `pulumi:"routineSpec"`
 	// Schema of the entry. An entry might not have any schema attached to it.
@@ -278,6 +283,15 @@ func (o EntryOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o EntryOutput) EntryGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryGroupId }).(pulumi.StringOutput)
+}
+
+// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+func (o EntryOutput) EntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryId }).(pulumi.StringOutput)
+}
+
 // Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 func (o EntryOutput) FilesetSpec() GoogleCloudDatacatalogV1FilesetSpecResponseOutput {
 	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1FilesetSpecResponseOutput { return v.FilesetSpec }).(GoogleCloudDatacatalogV1FilesetSpecResponseOutput)
@@ -308,6 +322,10 @@ func (o EntryOutput) LinkedResource() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.LinkedResource }).(pulumi.StringOutput)
 }
 
+func (o EntryOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 func (o EntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -316,6 +334,10 @@ func (o EntryOutput) Name() pulumi.StringOutput {
 // Additional information related to the entry. Private to the current user.
 func (o EntryOutput) PersonalDetails() GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
 	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1PersonalDetailsResponseOutput { return v.PersonalDetails }).(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput)
+}
+
+func (o EntryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.

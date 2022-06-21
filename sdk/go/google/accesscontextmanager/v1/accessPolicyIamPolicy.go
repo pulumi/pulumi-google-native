@@ -17,6 +17,7 @@ import (
 type AccessPolicyIamPolicy struct {
 	pulumi.CustomResourceState
 
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs AuditConfigResponseArrayOutput `pulumi:"auditConfigs"`
 	// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
@@ -132,6 +133,10 @@ func (o AccessPolicyIamPolicyOutput) ToAccessPolicyIamPolicyOutput() AccessPolic
 
 func (o AccessPolicyIamPolicyOutput) ToAccessPolicyIamPolicyOutputWithContext(ctx context.Context) AccessPolicyIamPolicyOutput {
 	return o
+}
+
+func (o AccessPolicyIamPolicyOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPolicyIamPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.

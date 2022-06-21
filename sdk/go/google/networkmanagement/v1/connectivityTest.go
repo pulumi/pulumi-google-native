@@ -27,7 +27,8 @@ type ConnectivityTest struct {
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
@@ -36,6 +37,8 @@ type ConnectivityTest struct {
 	RelatedProjects pulumi.StringArrayOutput `pulumi:"relatedProjects"`
 	// Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
 	Source EndpointResponseOutput `pulumi:"source"`
+	// Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
+	TestId pulumi.StringOutput `pulumi:"testId"`
 	// The time the test's configuration was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -198,6 +201,10 @@ func (o ConnectivityTestOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ConnectivityTestOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // IP Protocol of the test. When not provided, "TCP" is assumed.
 func (o ConnectivityTestOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
@@ -216,6 +223,11 @@ func (o ConnectivityTestOutput) RelatedProjects() pulumi.StringArrayOutput {
 // Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
 func (o ConnectivityTestOutput) Source() EndpointResponseOutput {
 	return o.ApplyT(func(v *ConnectivityTest) EndpointResponseOutput { return v.Source }).(EndpointResponseOutput)
+}
+
+// Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
+func (o ConnectivityTestOutput) TestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.TestId }).(pulumi.StringOutput)
 }
 
 // The time the test's configuration was updated.

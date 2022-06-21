@@ -20,10 +20,12 @@ type Domain struct {
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectResponseOutput `pulumi:"domainRedirect"`
+	Project        pulumi.StringOutput          `pulumi:"project"`
 	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning DomainProvisioningResponseOutput `pulumi:"provisioning"`
 	// The site name of the association.
-	Site pulumi.StringOutput `pulumi:"site"`
+	Site   pulumi.StringOutput `pulumi:"site"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Additional status of the domain association.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The time at which the domain was last updated.
@@ -147,6 +149,10 @@ func (o DomainOutput) DomainRedirect() DomainRedirectResponseOutput {
 	return o.ApplyT(func(v *Domain) DomainRedirectResponseOutput { return v.DomainRedirect }).(DomainRedirectResponseOutput)
 }
 
+func (o DomainOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 func (o DomainOutput) Provisioning() DomainProvisioningResponseOutput {
 	return o.ApplyT(func(v *Domain) DomainProvisioningResponseOutput { return v.Provisioning }).(DomainProvisioningResponseOutput)
@@ -155,6 +161,10 @@ func (o DomainOutput) Provisioning() DomainProvisioningResponseOutput {
 // The site name of the association.
 func (o DomainOutput) Site() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Site }).(pulumi.StringOutput)
+}
+
+func (o DomainOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Additional status of the domain association.

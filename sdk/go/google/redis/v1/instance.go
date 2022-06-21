@@ -33,10 +33,11 @@ type Instance struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
 	Host pulumi.StringOutput `pulumi:"host"`
+	// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
-	Location pulumi.StringOutput `pulumi:"location"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy MaintenancePolicyResponseOutput `pulumi:"maintenancePolicy"`
 	// Date and time of upcoming maintenance events which have been scheduled.
@@ -52,7 +53,8 @@ type Instance struct {
 	// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
 	PersistenceIamIdentity pulumi.StringOutput `pulumi:"persistenceIamIdentity"`
 	// The port number of the exposed Redis endpoint.
-	Port pulumi.IntOutput `pulumi:"port"`
+	Port    pulumi.IntOutput    `pulumi:"port"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.
 	ReadEndpoint pulumi.StringOutput `pulumi:"readEndpoint"`
 	// The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'.
@@ -309,12 +311,16 @@ func (o InstanceOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
+// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+func (o InstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // Resource labels to represent user provided metadata
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
 func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -357,6 +363,10 @@ func (o InstanceOutput) PersistenceIamIdentity() pulumi.StringOutput {
 // The port number of the exposed Redis endpoint.
 func (o InstanceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.

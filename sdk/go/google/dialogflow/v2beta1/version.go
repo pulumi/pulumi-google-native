@@ -19,8 +19,10 @@ type Version struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. The developer-provided description of this version.
 	Description pulumi.StringOutput `pulumi:"description"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The status of this version. This field is read-only and cannot be set by create and update methods.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
@@ -127,9 +129,17 @@ func (o VersionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o VersionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 func (o VersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o VersionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The status of this version. This field is read-only and cannot be set by create and update methods.

@@ -15,12 +15,15 @@ import (
 type Attestor struct {
 	pulumi.CustomResourceState
 
+	// Required. The attestors ID.
+	AttestorId pulumi.StringOutput `pulumi:"attestorId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Time when the attestor was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
@@ -134,6 +137,11 @@ func (o AttestorOutput) ToAttestorOutputWithContext(ctx context.Context) Attesto
 	return o
 }
 
+// Required. The attestors ID.
+func (o AttestorOutput) AttestorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.AttestorId }).(pulumi.StringOutput)
+}
+
 // Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 func (o AttestorOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -147,6 +155,10 @@ func (o AttestorOutput) Etag() pulumi.StringOutput {
 // The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 func (o AttestorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AttestorOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Time when the attestor was last updated.

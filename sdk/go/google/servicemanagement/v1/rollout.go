@@ -25,8 +25,7 @@ type Rollout struct {
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyResponseOutput `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
-	RolloutId pulumi.StringOutput `pulumi:"rolloutId"`
-	// The name of the service associated with this Rollout.
+	RolloutId   pulumi.StringOutput `pulumi:"rolloutId"`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -163,7 +162,6 @@ func (o RolloutOutput) RolloutId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.RolloutId }).(pulumi.StringOutput)
 }
 
-// The name of the service associated with this Rollout.
 func (o RolloutOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

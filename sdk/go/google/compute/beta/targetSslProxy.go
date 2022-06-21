@@ -23,9 +23,12 @@ type TargetSslProxy struct {
 	// Type of the resource. Always compute#targetSslProxy for target SSL proxies.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader pulumi.StringOutput `pulumi:"proxyHeader"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// URL to the BackendService resource.
@@ -177,9 +180,18 @@ func (o TargetSslProxyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o TargetSslProxyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 func (o TargetSslProxyOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringOutput { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o TargetSslProxyOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Server-defined URL for the resource.

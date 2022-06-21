@@ -29,14 +29,14 @@ type App struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
 	Credentials GoogleCloudApigeeV1CredentialResponseArrayOutput `pulumi:"credentials"`
-	// ID of the developer.
-	DeveloperId pulumi.StringOutput `pulumi:"developerId"`
+	DeveloperId pulumi.StringOutput                              `pulumi:"developerId"`
 	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
 	KeyExpiresIn pulumi.StringOutput `pulumi:"keyExpiresIn"`
 	// Time the developer app was modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the developer app.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Status of the credential. Valid values include `approved` or `revoked`.
@@ -208,7 +208,6 @@ func (o AppOutput) Credentials() GoogleCloudApigeeV1CredentialResponseArrayOutpu
 	return o.ApplyT(func(v *App) GoogleCloudApigeeV1CredentialResponseArrayOutput { return v.Credentials }).(GoogleCloudApigeeV1CredentialResponseArrayOutput)
 }
 
-// ID of the developer.
 func (o AppOutput) DeveloperId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DeveloperId }).(pulumi.StringOutput)
 }
@@ -226,6 +225,10 @@ func (o AppOutput) LastModifiedAt() pulumi.StringOutput {
 // Name of the developer app.
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.

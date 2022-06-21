@@ -18,12 +18,16 @@ type Product struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
 	ProductCategory pulumi.StringOutput `pulumi:"productCategory"`
+	// A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+	ProductId pulumi.StringPtrOutput `pulumi:"productId"`
 	// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
 	ProductLabels KeyValueResponseArrayOutput `pulumi:"productLabels"`
+	Project       pulumi.StringOutput         `pulumi:"project"`
 }
 
 // NewProduct registers a new resource with the given unique name, arguments, and options.
@@ -146,6 +150,10 @@ func (o ProductOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o ProductOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
 func (o ProductOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -156,9 +164,18 @@ func (o ProductOutput) ProductCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.ProductCategory }).(pulumi.StringOutput)
 }
 
+// A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+func (o ProductOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringPtrOutput { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
 // Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
 func (o ProductOutput) ProductLabels() KeyValueResponseArrayOutput {
 	return o.ApplyT(func(v *Product) KeyValueResponseArrayOutput { return v.ProductLabels }).(KeyValueResponseArrayOutput)
+}
+
+func (o ProductOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

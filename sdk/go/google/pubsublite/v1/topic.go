@@ -15,14 +15,18 @@ import (
 type Topic struct {
 	pulumi.CustomResourceState
 
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The settings for this topic's partitions.
 	PartitionConfig PartitionConfigResponseOutput `pulumi:"partitionConfig"`
+	Project         pulumi.StringOutput           `pulumi:"project"`
 	// The settings for this topic's Reservation usage.
 	ReservationConfig ReservationConfigResponseOutput `pulumi:"reservationConfig"`
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigResponseOutput `pulumi:"retentionConfig"`
+	// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+	TopicId pulumi.StringOutput `pulumi:"topicId"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -134,6 +138,10 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+func (o TopicOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -144,6 +152,10 @@ func (o TopicOutput) PartitionConfig() PartitionConfigResponseOutput {
 	return o.ApplyT(func(v *Topic) PartitionConfigResponseOutput { return v.PartitionConfig }).(PartitionConfigResponseOutput)
 }
 
+func (o TopicOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The settings for this topic's Reservation usage.
 func (o TopicOutput) ReservationConfig() ReservationConfigResponseOutput {
 	return o.ApplyT(func(v *Topic) ReservationConfigResponseOutput { return v.ReservationConfig }).(ReservationConfigResponseOutput)
@@ -152,6 +164,11 @@ func (o TopicOutput) ReservationConfig() ReservationConfigResponseOutput {
 // The settings for this topic's message retention.
 func (o TopicOutput) RetentionConfig() RetentionConfigResponseOutput {
 	return o.ApplyT(func(v *Topic) RetentionConfigResponseOutput { return v.RetentionConfig }).(RetentionConfigResponseOutput)
+}
+
+// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+func (o TopicOutput) TopicId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.TopicId }).(pulumi.StringOutput)
 }
 
 func init() {

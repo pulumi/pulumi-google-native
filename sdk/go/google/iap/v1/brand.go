@@ -22,7 +22,8 @@ type Brand struct {
 	// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the brand is only intended for usage inside the G Suite organization only.
-	OrgInternalOnly pulumi.BoolOutput `pulumi:"orgInternalOnly"`
+	OrgInternalOnly pulumi.BoolOutput   `pulumi:"orgInternalOnly"`
+	Project         pulumi.StringOutput `pulumi:"project"`
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail pulumi.StringOutput `pulumi:"supportEmail"`
 }
@@ -132,6 +133,10 @@ func (o BrandOutput) Name() pulumi.StringOutput {
 // Whether the brand is only intended for usage inside the G Suite organization only.
 func (o BrandOutput) OrgInternalOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Brand) pulumi.BoolOutput { return v.OrgInternalOnly }).(pulumi.BoolOutput)
+}
+
+func (o BrandOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Brand) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Support email displayed on the OAuth consent screen.

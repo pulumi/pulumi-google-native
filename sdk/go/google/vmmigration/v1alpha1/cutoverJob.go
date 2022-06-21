@@ -26,14 +26,22 @@ type CutoverJob struct {
 	ComputeEngineVmDetails TargetVMDetailsResponseOutput `pulumi:"computeEngineVmDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. The cutover job identifier.
+	CutoverJobId pulumi.StringOutput `pulumi:"cutoverJobId"`
 	// Provides details for the errors that led to the Cutover Job's state.
-	Error StatusResponseOutput `pulumi:"error"`
+	Error         StatusResponseOutput `pulumi:"error"`
+	Location      pulumi.StringOutput  `pulumi:"location"`
+	MigratingVmId pulumi.StringOutput  `pulumi:"migratingVmId"`
 	// The name of the cutover job.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current progress in percentage of the cutover job.
 	Progress pulumi.IntOutput `pulumi:"progress"`
 	// The current progress in percentage of the cutover job.
-	ProgressPercent pulumi.IntOutput `pulumi:"progressPercent"`
+	ProgressPercent pulumi.IntOutput    `pulumi:"progressPercent"`
+	Project         pulumi.StringOutput `pulumi:"project"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	SourceId  pulumi.StringOutput    `pulumi:"sourceId"`
 	// State of the cutover job.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A message providing possible extra details about the current state.
@@ -170,9 +178,22 @@ func (o CutoverJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Required. The cutover job identifier.
+func (o CutoverJobOutput) CutoverJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.CutoverJobId }).(pulumi.StringOutput)
+}
+
 // Provides details for the errors that led to the Cutover Job's state.
 func (o CutoverJobOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v *CutoverJob) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+func (o CutoverJobOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o CutoverJobOutput) MigratingVmId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.MigratingVmId }).(pulumi.StringOutput)
 }
 
 // The name of the cutover job.
@@ -188,6 +209,19 @@ func (o CutoverJobOutput) Progress() pulumi.IntOutput {
 // The current progress in percentage of the cutover job.
 func (o CutoverJobOutput) ProgressPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v *CutoverJob) pulumi.IntOutput { return v.ProgressPercent }).(pulumi.IntOutput)
+}
+
+func (o CutoverJobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o CutoverJobOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+func (o CutoverJobOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
 }
 
 // State of the cutover job.

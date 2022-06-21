@@ -20,9 +20,11 @@ type Workflow struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The timestamp that the latest revision of the workflow was created.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
@@ -35,6 +37,8 @@ type Workflow struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The last update timestamp of the workflow.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+	WorkflowId pulumi.StringOutput `pulumi:"workflowId"`
 }
 
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
@@ -165,9 +169,17 @@ func (o WorkflowOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o WorkflowOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 func (o WorkflowOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WorkflowOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The timestamp that the latest revision of the workflow was created.
@@ -198,6 +210,11 @@ func (o WorkflowOutput) State() pulumi.StringOutput {
 // The last update timestamp of the workflow.
 func (o WorkflowOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+func (o WorkflowOutput) WorkflowId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.WorkflowId }).(pulumi.StringOutput)
 }
 
 func init() {

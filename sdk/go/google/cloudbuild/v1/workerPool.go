@@ -25,17 +25,23 @@ type WorkerPool struct {
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag     pulumi.StringOutput `pulumi:"etag"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Legacy Private Pool configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigResponseOutput `pulumi:"privatePoolV1Config"`
+	Project             pulumi.StringOutput               `pulumi:"project"`
 	// `WorkerPool` state.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A unique identifier for the `WorkerPool`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// If set, validate the request and preview the response, but do not actually post it.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+	WorkerPoolId pulumi.StringOutput `pulumi:"workerPoolId"`
 }
 
 // NewWorkerPool registers a new resource with the given unique name, arguments, and options.
@@ -172,6 +178,10 @@ func (o WorkerPoolOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+func (o WorkerPoolOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -180,6 +190,10 @@ func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 // Legacy Private Pool configuration.
 func (o WorkerPoolOutput) PrivatePoolV1Config() PrivatePoolV1ConfigResponseOutput {
 	return o.ApplyT(func(v *WorkerPool) PrivatePoolV1ConfigResponseOutput { return v.PrivatePoolV1Config }).(PrivatePoolV1ConfigResponseOutput)
+}
+
+func (o WorkerPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // `WorkerPool` state.
@@ -195,6 +209,16 @@ func (o WorkerPoolOutput) Uid() pulumi.StringOutput {
 // Time at which the request to update the `WorkerPool` was received.
 func (o WorkerPoolOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// If set, validate the request and preview the response, but do not actually post it.
+func (o WorkerPoolOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+}
+
+// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+func (o WorkerPoolOutput) WorkerPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.WorkerPoolId }).(pulumi.StringOutput)
 }
 
 func init() {
