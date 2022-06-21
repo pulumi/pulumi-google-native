@@ -56,13 +56,20 @@ export class GameServerCluster extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
+     * Required. The ID of the game server cluster resource to create.
+     */
+    public readonly gameServerClusterId!: pulumi.Output<string>;
+    /**
      * The labels associated with this game server cluster. Each label is a key-value pair.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly realmId!: pulumi.Output<string>;
     /**
      * The last-modified time.
      */
@@ -103,8 +110,12 @@ export class GameServerCluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["gameServerClusterId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["realmId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

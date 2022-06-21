@@ -68,6 +68,11 @@ export class Entry extends pulumi.CustomResource {
      * Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly entryGroupId!: pulumi.Output<string>;
+    /**
+     * Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+     */
+    public readonly entryId!: pulumi.Output<string>;
     /**
      * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
      */
@@ -92,6 +97,7 @@ export class Entry extends pulumi.CustomResource {
      * The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
      */
     public readonly linkedResource!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
@@ -100,6 +106,7 @@ export class Entry extends pulumi.CustomResource {
      * Additional information related to the entry. Private to the current user.
      */
     public /*out*/ readonly personalDetails!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1PersonalDetailsResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
      */
@@ -182,14 +189,18 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["databaseTableSpec"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["entryGroupId"] = undefined /*out*/;
+            resourceInputs["entryId"] = undefined /*out*/;
             resourceInputs["filesetSpec"] = undefined /*out*/;
             resourceInputs["fullyQualifiedName"] = undefined /*out*/;
             resourceInputs["gcsFilesetSpec"] = undefined /*out*/;
             resourceInputs["integratedSystem"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["linkedResource"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["personalDetails"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["routineSpec"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["sourceSystemTimestamps"] = undefined /*out*/;

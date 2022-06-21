@@ -36,6 +36,11 @@ export class CertificateMapEntry extends pulumi.CustomResource {
     }
 
     /**
+     * Required. A user-provided name of the certificate map entry.
+     */
+    public readonly certificateMapEntryId!: pulumi.Output<string>;
+    public readonly certificateMapId!: pulumi.Output<string>;
+    /**
      * A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*&#47;locations/*&#47;certificates/*`.
      */
     public readonly certificates!: pulumi.Output<string[]>;
@@ -55,6 +60,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      * Set of labels associated with a Certificate Map Entry.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A predefined matcher for particular cases, other than SNI selection.
      */
@@ -63,6 +69,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      * A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A serving state of this Certificate Map Entry.
      */
@@ -103,13 +110,17 @@ export class CertificateMapEntry extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["certificateMapEntryId"] = undefined /*out*/;
+            resourceInputs["certificateMapId"] = undefined /*out*/;
             resourceInputs["certificates"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["matcher"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

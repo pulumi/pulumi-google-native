@@ -47,14 +47,20 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      * A display name for the pool. Cannot exceed 32 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the pool.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The state of the pool.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+     */
+    public readonly workloadIdentityPoolId!: pulumi.Output<string>;
 
     /**
      * Create a WorkloadIdentityPool resource with the given unique name, arguments, and options.
@@ -82,8 +88,11 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["workloadIdentityPoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkloadIdentityPool.__pulumiType, name, resourceInputs, opts);

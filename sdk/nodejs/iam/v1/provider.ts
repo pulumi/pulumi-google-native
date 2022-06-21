@@ -60,6 +60,7 @@ export class Provider extends pulumi.CustomResource {
      * A display name for the provider. Cannot exceed 32 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the provider.
      */
@@ -68,6 +69,7 @@ export class Provider extends pulumi.CustomResource {
      * An OpenId Connect 1.0 identity provider.
      */
     public readonly oidc!: pulumi.Output<outputs.iam.v1.OidcResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * An SAML 2.0 identity provider.
      */
@@ -76,6 +78,11 @@ export class Provider extends pulumi.CustomResource {
      * The state of the provider.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    public readonly workloadIdentityPoolId!: pulumi.Output<string>;
+    /**
+     * Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+     */
+    public readonly workloadIdentityPoolProviderId!: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -115,10 +122,14 @@ export class Provider extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["oidc"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["saml"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["workloadIdentityPoolId"] = undefined /*out*/;
+            resourceInputs["workloadIdentityPoolProviderId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

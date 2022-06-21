@@ -52,7 +52,7 @@ export class Folder extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+     * Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
      */
     public readonly parent!: pulumi.Output<string>;
 

@@ -35,6 +35,7 @@ export class EntityType extends pulumi.CustomResource {
         return obj['__pulumiType'] === EntityType.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * Indicates whether the entity type can be automatically expanded.
      */
@@ -60,9 +61,15 @@ export class EntityType extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
+     * The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     */
+    public readonly languageCode!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
      */
@@ -101,13 +108,17 @@ export class EntityType extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redact"] = args ? args.redact : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["autoExpansionMode"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableFuzzyExtraction"] = undefined /*out*/;
             resourceInputs["entities"] = undefined /*out*/;
             resourceInputs["excludedPhrases"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["redact"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

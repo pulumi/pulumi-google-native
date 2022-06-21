@@ -38,6 +38,11 @@ export class Spec extends pulumi.CustomResource {
      * Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    public readonly apiId!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+     */
+    public readonly apiSpecId!: pulumi.Output<string>;
     /**
      * Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents.
      */
@@ -62,6 +67,7 @@ export class Spec extends pulumi.CustomResource {
      * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A style (format) descriptor for this spec that is specified as a Media Type (https://en.wikipedia.org/wiki/Media_type). Possible values include "application/vnd.apigee.proto", "application/vnd.apigee.openapi", and "application/vnd.apigee.graphql", with possible suffixes representing compression types. These hypothetical names are defined in the vendor tree defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
      */
@@ -70,6 +76,7 @@ export class Spec extends pulumi.CustomResource {
      * Resource name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Revision creation timestamp; when the represented revision was created.
      */
@@ -90,6 +97,7 @@ export class Spec extends pulumi.CustomResource {
      * The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved.
      */
     public readonly sourceUri!: pulumi.Output<string>;
+    public readonly versionId!: pulumi.Output<string>;
 
     /**
      * Create a Spec resource with the given unique name, arguments, and options.
@@ -132,19 +140,24 @@ export class Spec extends pulumi.CustomResource {
             resourceInputs["sizeBytes"] = undefined /*out*/;
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["apiId"] = undefined /*out*/;
+            resourceInputs["apiSpecId"] = undefined /*out*/;
             resourceInputs["contents"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["filename"] = undefined /*out*/;
             resourceInputs["hash"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mimeType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["revisionUpdateTime"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["sourceUri"] = undefined /*out*/;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Spec.__pulumiType, name, resourceInputs, opts);

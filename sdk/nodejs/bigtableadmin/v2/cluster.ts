@@ -40,6 +40,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterConfig!: pulumi.Output<outputs.bigtableadmin.v2.ClusterConfigResponse>;
     /**
+     * Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+     */
+    public readonly clusterId!: pulumi.Output<string>;
+    /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
      */
     public readonly defaultStorageType!: pulumi.Output<string>;
@@ -47,6 +51,7 @@ export class Cluster extends pulumi.CustomResource {
      * Immutable. The encryption configuration for CMEK-protected clusters.
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.bigtableadmin.v2.EncryptionConfigResponse>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
      */
@@ -55,6 +60,7 @@ export class Cluster extends pulumi.CustomResource {
      * The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */
@@ -93,10 +99,13 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["clusterConfig"] = undefined /*out*/;
+            resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["defaultStorageType"] = undefined /*out*/;
             resourceInputs["encryptionConfig"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serveNodes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

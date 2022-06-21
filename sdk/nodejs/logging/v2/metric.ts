@@ -67,6 +67,7 @@ export class Metric extends pulumi.CustomResource {
      * The client-assigned metric identifier. Examples: "error_count", "nginx/requests".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.This field is the [METRIC_ID] part of a metric resource name in the format "projects/PROJECT_ID/metrics/METRIC_ID". Example: If the resource name of a metric is "projects/my-project/metrics/nginx%2Frequests", this field's value is "nginx/requests".
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The last update timestamp of the metric.This field may not be present for older metrics.
      */
@@ -117,6 +118,7 @@ export class Metric extends pulumi.CustomResource {
             resourceInputs["labelExtractors"] = undefined /*out*/;
             resourceInputs["metricDescriptor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["valueExtractor"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;

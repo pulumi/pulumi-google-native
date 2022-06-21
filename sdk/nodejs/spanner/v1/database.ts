@@ -60,10 +60,12 @@ export class Database extends pulumi.CustomResource {
      * For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
      */
     public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.spanner.v1.EncryptionInfoResponse[]>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Applicable only for restored databases. Contains information about the restore source.
      */
@@ -115,7 +117,9 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["earliestVersionTime"] = undefined /*out*/;
             resourceInputs["encryptionConfig"] = undefined /*out*/;
             resourceInputs["encryptionInfo"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["restoreInfo"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["versionRetentionPeriod"] = undefined /*out*/;

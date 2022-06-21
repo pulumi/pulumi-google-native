@@ -49,6 +49,7 @@ export class Export extends pulumi.CustomResource {
      * Description of the export job.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * Error is set when export fails
      */
@@ -61,6 +62,7 @@ export class Export extends pulumi.CustomResource {
      * Display name of the export job.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
      */
@@ -115,9 +117,11 @@ export class Export extends pulumi.CustomResource {
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["datastoreName"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["executionTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["self"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;

@@ -40,6 +40,10 @@ export class AttributeDefinition extends pulumi.CustomResource {
      */
     public readonly allowedValues!: pulumi.Output<string[]>;
     /**
+     * Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
+     */
+    public readonly attributeDefinitionId!: pulumi.Output<string>;
+    /**
      * The category of the attribute. The value of this field cannot be changed after creation.
      */
     public readonly category!: pulumi.Output<string>;
@@ -47,18 +51,22 @@ export class AttributeDefinition extends pulumi.CustomResource {
      * Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
      */
     public readonly consentDefaultValues!: pulumi.Output<string[]>;
+    public readonly consentStoreId!: pulumi.Output<string>;
     /**
      * Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
      */
     public readonly dataMappingDefaultValue!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * Optional. A description of the attribute.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a AttributeDefinition resource with the given unique name, arguments, and options.
@@ -99,11 +107,16 @@ export class AttributeDefinition extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
             resourceInputs["allowedValues"] = undefined /*out*/;
+            resourceInputs["attributeDefinitionId"] = undefined /*out*/;
             resourceInputs["category"] = undefined /*out*/;
             resourceInputs["consentDefaultValues"] = undefined /*out*/;
+            resourceInputs["consentStoreId"] = undefined /*out*/;
             resourceInputs["dataMappingDefaultValue"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AttributeDefinition.__pulumiType, name, resourceInputs, opts);

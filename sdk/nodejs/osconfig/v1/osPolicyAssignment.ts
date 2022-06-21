@@ -55,6 +55,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      * Filter to select VMs.
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.v1.OSPolicyAssignmentInstanceFilterResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
      */
@@ -63,6 +64,11 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      * List of OS policies to be applied to the VMs.
      */
     public readonly osPolicies!: pulumi.Output<outputs.osconfig.v1.OSPolicyResponse[]>;
+    /**
+     * Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     */
+    public readonly osPolicyAssignmentId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
      */
@@ -133,8 +139,11 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["instanceFilter"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["osPolicies"] = undefined /*out*/;
+            resourceInputs["osPolicyAssignmentId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;

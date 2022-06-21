@@ -80,13 +80,14 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+     * The name of the project. Should be of the form "projects/{project_id}". @Deprecated
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
     public readonly noteName!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A description of actions that can be taken to remedy the `Note`
      */
@@ -177,6 +178,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["noteName"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["remediation"] = undefined /*out*/;
             resourceInputs["resource"] = undefined /*out*/;
             resourceInputs["resourceUrl"] = undefined /*out*/;

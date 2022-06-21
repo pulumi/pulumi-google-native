@@ -55,6 +55,7 @@ export class Topic extends pulumi.CustomResource {
      * The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */
@@ -63,6 +64,7 @@ export class Topic extends pulumi.CustomResource {
      * Settings for validating messages published against a schema.
      */
     public readonly schemaSettings!: pulumi.Output<outputs.pubsub.v1.SchemaSettingsResponse>;
+    public readonly topicId!: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -93,8 +95,10 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["messageRetentionDuration"] = undefined /*out*/;
             resourceInputs["messageStoragePolicy"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["schemaSettings"] = undefined /*out*/;
+            resourceInputs["topicId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);

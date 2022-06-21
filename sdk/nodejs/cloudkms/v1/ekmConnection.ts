@@ -42,13 +42,19 @@ export class EkmConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+     */
+    public readonly ekmConnectionId!: pulumi.Output<string>;
+    /**
      * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for the EkmConnection in the format `projects/*&#47;locations/*&#47;ekmConnections/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
      */
@@ -74,8 +80,11 @@ export class EkmConnection extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["ekmConnectionId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceResolvers"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

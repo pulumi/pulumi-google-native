@@ -50,6 +50,7 @@ export class FolderExclusion extends pulumi.CustomResource {
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
      */
     public readonly filter!: pulumi.Output<string>;
+    public readonly folderId!: pulumi.Output<string>;
     /**
      * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
@@ -88,6 +89,7 @@ export class FolderExclusion extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["folderId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

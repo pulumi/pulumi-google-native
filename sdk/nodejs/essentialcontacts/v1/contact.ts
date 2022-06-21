@@ -52,6 +52,7 @@ export class Contact extends pulumi.CustomResource {
      * The categories of notifications that the contact will receive communications for.
      */
     public readonly notificationCategorySubscriptions!: pulumi.Output<string[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
      */
@@ -87,6 +88,7 @@ export class Contact extends pulumi.CustomResource {
             resourceInputs["languageTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationCategorySubscriptions"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["validateTime"] = undefined /*out*/;
             resourceInputs["validationState"] = undefined /*out*/;
         }

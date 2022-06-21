@@ -62,10 +62,11 @@ export class TestMatrix extends pulumi.CustomResource {
      * Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
      */
     public /*out*/ readonly outcomeSummary!: pulumi.Output<string>;
-    /**
-     * The cloud project that owns the test matrix.
-     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Where the results for the matrix are written.
      */
@@ -133,6 +134,7 @@ export class TestMatrix extends pulumi.CustomResource {
             resourceInputs["invalidMatrixDetails"] = undefined /*out*/;
             resourceInputs["outcomeSummary"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resultStorage"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["testExecutions"] = undefined /*out*/;

@@ -84,6 +84,7 @@ export class Occurrence extends pulumi.CustomResource {
      * Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
     public readonly noteName!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
@@ -168,6 +169,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["noteName"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["remediation"] = undefined /*out*/;
             resourceInputs["resource"] = undefined /*out*/;
             resourceInputs["sbom"] = undefined /*out*/;

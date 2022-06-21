@@ -34,6 +34,7 @@ export class DebugToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === DebugToken.__pulumiType;
     }
 
+    public readonly appId!: pulumi.Output<string>;
     /**
      * A human readable display name used to identify this debug token.
      */
@@ -42,6 +43,7 @@ export class DebugToken extends pulumi.CustomResource {
      * The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
      */
@@ -73,8 +75,10 @@ export class DebugToken extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
         } else {
+            resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

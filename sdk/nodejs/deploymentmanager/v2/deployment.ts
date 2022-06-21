@@ -36,6 +36,10 @@ export class Deployment extends pulumi.CustomResource {
     }
 
     /**
+     * Sets the policy to use for creating new resources.
+     */
+    public readonly createPolicy!: pulumi.Output<string | undefined>;
+    /**
      * An optional user-provided description of the deployment.
      */
     public readonly description!: pulumi.Output<string>;
@@ -63,6 +67,11 @@ export class Deployment extends pulumi.CustomResource {
      * The Operation that most recently ran, or is currently running, on this deployment.
      */
     public /*out*/ readonly operation!: pulumi.Output<outputs.deploymentmanager.v2.OperationResponse>;
+    /**
+     * If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
+     */
+    public readonly preview!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Server defined URL for the resource.
      */
@@ -107,6 +116,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["update"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["createPolicy"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["insertTime"] = undefined /*out*/;
@@ -114,6 +124,8 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["manifest"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["preview"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["target"] = undefined /*out*/;
             resourceInputs["update"] = undefined /*out*/;

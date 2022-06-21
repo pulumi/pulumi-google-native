@@ -63,6 +63,7 @@ export class Agent extends pulumi.CustomResource {
      * Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
      */
@@ -71,6 +72,7 @@ export class Agent extends pulumi.CustomResource {
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
      */
@@ -136,8 +138,10 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableSpellCorrection"] = undefined /*out*/;
             resourceInputs["enableStackdriverLogging"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["securitySettings"] = undefined /*out*/;
             resourceInputs["speechToTextSettings"] = undefined /*out*/;
             resourceInputs["startFlow"] = undefined /*out*/;

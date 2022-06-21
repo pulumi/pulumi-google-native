@@ -43,10 +43,12 @@ export class CustomClass extends pulumi.CustomResource {
      * A collection of class items.
      */
     public readonly items!: pulumi.Output<outputs.speech.v1.ClassItemResponse[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the custom class.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a CustomClass resource with the given unique name, arguments, and options.
@@ -70,7 +72,9 @@ export class CustomClass extends pulumi.CustomResource {
         } else {
             resourceInputs["customClassId"] = undefined /*out*/;
             resourceInputs["items"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomClass.__pulumiType, name, resourceInputs, opts);

@@ -35,10 +35,16 @@ export class Hl7V2Store extends pulumi.CustomResource {
         return obj['__pulumiType'] === Hl7V2Store.__pulumiType;
     }
 
+    public readonly datasetId!: pulumi.Output<string>;
+    /**
+     * The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     */
+    public readonly hl7V2StoreId!: pulumi.Output<string | undefined>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
      */
@@ -55,6 +61,7 @@ export class Hl7V2Store extends pulumi.CustomResource {
      * The configuration for the parser. It determines how the server parses the messages.
      */
     public readonly parserConfig!: pulumi.Output<outputs.healthcare.v1beta1.ParserConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
      */
@@ -85,11 +92,15 @@ export class Hl7V2Store extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rejectDuplicateMessage"] = args ? args.rejectDuplicateMessage : undefined;
         } else {
+            resourceInputs["datasetId"] = undefined /*out*/;
+            resourceInputs["hl7V2StoreId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
             resourceInputs["notificationConfigs"] = undefined /*out*/;
             resourceInputs["parserConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rejectDuplicateMessage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

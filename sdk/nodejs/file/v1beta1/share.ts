@@ -48,10 +48,12 @@ export class Share extends pulumi.CustomResource {
      * A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters, numbers, and underscores.
      */
@@ -64,6 +66,11 @@ export class Share extends pulumi.CustomResource {
      * Nfs Export Options. There is a limit of 10 export options per file share.
      */
     public readonly nfsExportOptions!: pulumi.Output<outputs.file.v1beta1.NfsExportOptionsResponse[]>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+     */
+    public readonly shareId!: pulumi.Output<string>;
     /**
      * The share state.
      */
@@ -102,10 +109,14 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["capacityGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mountName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nfsExportOptions"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["shareId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

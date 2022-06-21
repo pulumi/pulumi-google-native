@@ -55,6 +55,7 @@ export class CompositeType extends pulumi.CustomResource {
      * The Operation that most recently ran, or is currently running, on this composite type.
      */
     public /*out*/ readonly operation!: pulumi.Output<outputs.deploymentmanager.alpha.OperationResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Server defined URL for the resource.
      */
@@ -92,6 +93,7 @@ export class CompositeType extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["templateContents"] = undefined /*out*/;

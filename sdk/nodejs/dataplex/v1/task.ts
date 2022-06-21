@@ -60,10 +60,13 @@ export class Task extends pulumi.CustomResource {
      * Optional. User-defined labels for the task.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly lakeId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Config related to running custom Spark tasks.
      */
@@ -72,6 +75,10 @@ export class Task extends pulumi.CustomResource {
      * Current state of the task.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Required. Task identifier.
+     */
+    public readonly taskId!: pulumi.Output<string>;
     /**
      * Spec related to how often and when a task should be triggered.
      */
@@ -84,6 +91,10 @@ export class Task extends pulumi.CustomResource {
      * The time when the task was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Task resource with the given unique name, arguments, and options.
@@ -132,12 +143,17 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["executionSpec"] = undefined /*out*/;
             resourceInputs["executionStatus"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lakeId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["spark"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["taskId"] = undefined /*out*/;
             resourceInputs["triggerSpec"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Task.__pulumiType, name, resourceInputs, opts);

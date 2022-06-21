@@ -36,6 +36,10 @@ export class Backup extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+     */
+    public readonly backupId!: pulumi.Output<string>;
+    /**
      * The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -48,6 +52,14 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly databaseDialect!: pulumi.Output<string>;
     /**
+     * Required. The encryption type of the backup.
+     */
+    public readonly encryptionConfigEncryptionType!: pulumi.Output<string>;
+    /**
+     * Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+     */
+    public readonly encryptionConfigKmsKeyName!: pulumi.Output<string | undefined>;
+    /**
      * The encryption information for the backup.
      */
     public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.spanner.v1.EncryptionInfoResponse>;
@@ -55,6 +67,7 @@ export class Backup extends pulumi.CustomResource {
      * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
      */
     public readonly expireTime!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
      */
@@ -63,6 +76,7 @@ export class Backup extends pulumi.CustomResource {
      * Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.
      */
@@ -122,13 +136,18 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["backupId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["database"] = undefined /*out*/;
             resourceInputs["databaseDialect"] = undefined /*out*/;
+            resourceInputs["encryptionConfigEncryptionType"] = undefined /*out*/;
+            resourceInputs["encryptionConfigKmsKeyName"] = undefined /*out*/;
             resourceInputs["encryptionInfo"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["maxExpireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["referencingBackups"] = undefined /*out*/;
             resourceInputs["referencingDatabases"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;

@@ -52,10 +52,12 @@ export class InspectTemplate extends pulumi.CustomResource {
      * The core content of the template. Configuration of the scanning process.
      */
     public readonly inspectConfig!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2InspectConfigResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The last update timestamp of an inspectTemplate.
      */
@@ -86,7 +88,9 @@ export class InspectTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["inspectConfig"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

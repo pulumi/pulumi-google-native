@@ -40,6 +40,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly applicationEndpoint!: pulumi.Output<outputs.beyondcorp.v1alpha.ApplicationEndpointResponse>;
     /**
+     * Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     */
+    public readonly connectionId!: pulumi.Output<string | undefined>;
+    /**
      * Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
      */
     public readonly connectors!: pulumi.Output<string[]>;
@@ -59,10 +63,16 @@ export class Connection extends pulumi.CustomResource {
      * Optional. Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Unique resource name of the connection. The name is ignored when creating a connection.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The current state of the connection.
      */
@@ -79,6 +89,10 @@ export class Connection extends pulumi.CustomResource {
      * Timestamp when the resource was last modified.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -115,16 +129,21 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["applicationEndpoint"] = undefined /*out*/;
+            resourceInputs["connectionId"] = undefined /*out*/;
             resourceInputs["connectors"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["gateway"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Connection.__pulumiType, name, resourceInputs, opts);

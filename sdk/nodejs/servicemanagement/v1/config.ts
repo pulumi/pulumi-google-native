@@ -117,6 +117,7 @@ export class Config extends pulumi.CustomResource {
      * Quota configuration.
      */
     public readonly quota!: pulumi.Output<outputs.servicemanagement.v1.QuotaResponse>;
+    public readonly serviceName!: pulumi.Output<string>;
     /**
      * The source information for this configuration if available.
      */
@@ -205,6 +206,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["producerProjectId"] = undefined /*out*/;
             resourceInputs["quota"] = undefined /*out*/;
+            resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["sourceInfo"] = undefined /*out*/;
             resourceInputs["systemParameters"] = undefined /*out*/;
             resourceInputs["systemTypes"] = undefined /*out*/;

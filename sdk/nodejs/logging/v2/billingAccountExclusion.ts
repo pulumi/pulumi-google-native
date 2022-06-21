@@ -34,6 +34,7 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
         return obj['__pulumiType'] === BillingAccountExclusion.__pulumiType;
     }
 
+    public readonly billingAccountId!: pulumi.Output<string>;
     /**
      * The creation timestamp of the exclusion.This field may not be present for older exclusions.
      */
@@ -84,6 +85,7 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["billingAccountId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;

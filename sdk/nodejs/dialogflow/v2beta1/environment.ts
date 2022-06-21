@@ -45,13 +45,19 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Required. The unique id of the new environment.
+     */
+    public readonly environmentId!: pulumi.Output<string>;
+    /**
      * Optional. The fulfillment settings to use for this environment.
      */
     public readonly fulfillment!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
      */
@@ -92,8 +98,11 @@ export class Environment extends pulumi.CustomResource {
         } else {
             resourceInputs["agentVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["fulfillment"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["textToSpeechSettings"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

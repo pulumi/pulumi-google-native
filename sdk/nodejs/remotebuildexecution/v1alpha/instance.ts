@@ -52,6 +52,7 @@ export class Instance extends pulumi.CustomResource {
      * Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * State of the instance.
      */
@@ -81,6 +82,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["loggingEnabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

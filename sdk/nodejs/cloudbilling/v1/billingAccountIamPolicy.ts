@@ -41,6 +41,7 @@ export class BillingAccountIamPolicy extends pulumi.CustomResource {
      * Specifies cloud audit logging configuration for this policy.
      */
     public readonly auditConfigs!: pulumi.Output<outputs.cloudbilling.v1.AuditConfigResponse[]>;
+    public readonly billingAccountId!: pulumi.Output<string>;
     /**
      * Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
      */
@@ -76,6 +77,7 @@ export class BillingAccountIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
         } else {
             resourceInputs["auditConfigs"] = undefined /*out*/;
+            resourceInputs["billingAccountId"] = undefined /*out*/;
             resourceInputs["bindings"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;

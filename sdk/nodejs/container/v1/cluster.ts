@@ -145,9 +145,6 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration for the legacy ABAC authorization mode.
      */
     public readonly legacyAbac!: pulumi.Output<outputs.container.v1.LegacyAbacResponse>;
-    /**
-     * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-     */
     public readonly location!: pulumi.Output<string>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
@@ -231,6 +228,7 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration for private cluster.
      */
     public readonly privateClusterConfig!: pulumi.Output<outputs.container.v1.PrivateClusterConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Release channel configuration.
      */
@@ -409,6 +407,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodePools"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
             resourceInputs["privateClusterConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["releaseChannel"] = undefined /*out*/;
             resourceInputs["resourceLabels"] = undefined /*out*/;
             resourceInputs["resourceUsageExportConfig"] = undefined /*out*/;

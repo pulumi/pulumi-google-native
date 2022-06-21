@@ -55,10 +55,12 @@ export class ConversationModel extends pulumi.CustomResource {
      * Language code for the conversation model. If not specified, the language is en-US. Language at ConversationModel should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
      */
     public readonly languageCode!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * ConversationModel resource name. Format: `projects//conversationModels/`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Metadata for smart reply models.
      */
@@ -101,7 +103,9 @@ export class ConversationModel extends pulumi.CustomResource {
             resourceInputs["datasets"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["smartReplyModelMetadata"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

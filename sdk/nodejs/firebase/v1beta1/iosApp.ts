@@ -60,9 +60,6 @@ export class IosApp extends pulumi.CustomResource {
      * The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The Apple Developer Team ID associated with the App in the App Store.

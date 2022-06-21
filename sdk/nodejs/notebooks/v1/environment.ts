@@ -53,6 +53,11 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
+     */
+    public readonly environmentId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -60,6 +65,7 @@ export class Environment extends pulumi.CustomResource {
      * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
      */
     public readonly postStartupScript!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      */
@@ -94,8 +100,11 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["postStartupScript"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["vmImage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

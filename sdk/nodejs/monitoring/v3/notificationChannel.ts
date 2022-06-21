@@ -63,6 +63,7 @@ export class NotificationChannel extends pulumi.CustomResource {
      * The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
      */
@@ -106,6 +107,7 @@ export class NotificationChannel extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["mutationRecords"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userLabels"] = undefined /*out*/;
             resourceInputs["verificationStatus"] = undefined /*out*/;

@@ -107,6 +107,7 @@ export class Service extends pulumi.CustomResource {
      * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
      */
     public readonly launchStage!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
      */
@@ -115,10 +116,15 @@ export class Service extends pulumi.CustomResource {
      * The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
      */
     public /*out*/ readonly observedGeneration!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    /**
+     * Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+     */
+    public readonly serviceId!: pulumi.Output<string>;
     /**
      * The template used to create revisions for this Service.
      */
@@ -147,6 +153,10 @@ export class Service extends pulumi.CustomResource {
      * The main URI in which this Service is serving traffic.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
+    /**
+     * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -216,9 +226,12 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["latestCreatedRevision"] = undefined /*out*/;
             resourceInputs["latestReadyRevision"] = undefined /*out*/;
             resourceInputs["launchStage"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["observedGeneration"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["template"] = undefined /*out*/;
             resourceInputs["terminalCondition"] = undefined /*out*/;
             resourceInputs["traffic"] = undefined /*out*/;
@@ -226,6 +239,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);

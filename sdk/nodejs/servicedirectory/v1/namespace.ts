@@ -38,10 +38,16 @@ export class Namespace extends pulumi.CustomResource {
      * Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The resource name for the namespace in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly namespaceId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -64,7 +70,10 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namespaceId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

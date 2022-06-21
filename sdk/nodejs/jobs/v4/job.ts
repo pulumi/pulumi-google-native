@@ -131,6 +131,7 @@ export class Job extends pulumi.CustomResource {
      * Options for job processing.
      */
     public readonly processingOptions!: pulumi.Output<outputs.jobs.v4.ProcessingOptionsResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
      */
@@ -147,6 +148,7 @@ export class Job extends pulumi.CustomResource {
      * A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
      */
     public readonly responsibilities!: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
      */
@@ -241,10 +243,12 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["postingRegion"] = undefined /*out*/;
             resourceInputs["postingUpdateTime"] = undefined /*out*/;
             resourceInputs["processingOptions"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["promotionValue"] = undefined /*out*/;
             resourceInputs["qualifications"] = undefined /*out*/;
             resourceInputs["requisitionId"] = undefined /*out*/;
             resourceInputs["responsibilities"] = undefined /*out*/;
+            resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
             resourceInputs["visibility"] = undefined /*out*/;
         }

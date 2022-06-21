@@ -43,6 +43,11 @@ export class Deployment extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+     */
+    public readonly apiDeploymentId!: pulumi.Output<string>;
+    public readonly apiId!: pulumi.Output<string>;
+    /**
      * The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
      */
     public readonly apiSpecRevision!: pulumi.Output<string>;
@@ -74,10 +79,12 @@ export class Deployment extends pulumi.CustomResource {
      * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Revision creation timestamp; when the represented revision was created.
      */
@@ -129,6 +136,8 @@ export class Deployment extends pulumi.CustomResource {
         } else {
             resourceInputs["accessGuidance"] = undefined /*out*/;
             resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["apiDeploymentId"] = undefined /*out*/;
+            resourceInputs["apiId"] = undefined /*out*/;
             resourceInputs["apiSpecRevision"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -137,7 +146,9 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["externalChannelUri"] = undefined /*out*/;
             resourceInputs["intendedAudience"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["revisionUpdateTime"] = undefined /*out*/;

@@ -47,6 +47,8 @@ export class Snapshot extends pulumi.CustomResource {
      * The name of the snapshot.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly snapshotId!: pulumi.Output<string>;
     /**
      * The name of the topic from which this snapshot is retaining messages.
      */
@@ -80,6 +82,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["snapshotId"] = undefined /*out*/;
             resourceInputs["topic"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

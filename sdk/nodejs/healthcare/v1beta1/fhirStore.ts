@@ -36,6 +36,7 @@ export class FhirStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === FhirStore.__pulumiType;
     }
 
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
      */
@@ -53,9 +54,14 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly enableUpdateCreate!: pulumi.Output<boolean>;
     /**
+     * The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     */
+    public readonly fhirStoreId!: pulumi.Output<string | undefined>;
+    /**
      * User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
      */
@@ -68,6 +74,7 @@ export class FhirStore extends pulumi.CustomResource {
      * Specifies where and whether to send notifications upon changes to a Fhir store.
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.v1beta1.FhirNotificationConfigResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Configuration for how FHIR resources can be searched.
      */
@@ -116,14 +123,18 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["defaultSearchHandlingStrict"] = undefined /*out*/;
             resourceInputs["disableReferentialIntegrity"] = undefined /*out*/;
             resourceInputs["disableResourceVersioning"] = undefined /*out*/;
             resourceInputs["enableUpdateCreate"] = undefined /*out*/;
+            resourceInputs["fhirStoreId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
             resourceInputs["notificationConfigs"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["searchConfig"] = undefined /*out*/;
             resourceInputs["streamConfigs"] = undefined /*out*/;
             resourceInputs["validationConfig"] = undefined /*out*/;

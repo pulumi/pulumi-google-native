@@ -43,10 +43,12 @@ export class Subscription extends pulumi.CustomResource {
      * The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
      */
     public readonly pushConfig!: pulumi.Output<outputs.pubsub.v1beta2.PushConfigResponse>;
+    public readonly subscriptionId!: pulumi.Output<string>;
     /**
      * The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted.
      */
@@ -75,7 +77,9 @@ export class Subscription extends pulumi.CustomResource {
         } else {
             resourceInputs["ackDeadlineSeconds"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pushConfig"] = undefined /*out*/;
+            resourceInputs["subscriptionId"] = undefined /*out*/;
             resourceInputs["topic"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

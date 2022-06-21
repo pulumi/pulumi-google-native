@@ -68,6 +68,7 @@ export class Instance extends pulumi.CustomResource {
      * The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
      */
     public readonly processingUnits!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
      */
@@ -118,6 +119,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeCount"] = undefined /*out*/;
             resourceInputs["processingUnits"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

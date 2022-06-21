@@ -56,13 +56,19 @@ export class EndpointPolicy extends pulumi.CustomResource {
      */
     public readonly endpointMatcher!: pulumi.Output<outputs.networkservices.v1beta1.EndpointMatcherResponse>;
     /**
+     * Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+     */
+    public readonly endpointPolicyId!: pulumi.Output<string>;
+    /**
      * Optional. Set of label tags associated with the EndpointPolicy resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the EndpointPolicy resource. It matches pattern `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends. If this field is not set, authentication is disabled(open) for this endpoint.
      */
@@ -120,8 +126,11 @@ export class EndpointPolicy extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["endpointMatcher"] = undefined /*out*/;
+            resourceInputs["endpointPolicyId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serverTlsPolicy"] = undefined /*out*/;
             resourceInputs["trafficPortSelector"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

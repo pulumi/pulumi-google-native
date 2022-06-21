@@ -35,6 +35,7 @@ export class Waiter extends pulumi.CustomResource {
         return obj['__pulumiType'] === Waiter.__pulumiType;
     }
 
+    public readonly configId!: pulumi.Output<string>;
     /**
      * The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
      */
@@ -55,6 +56,11 @@ export class Waiter extends pulumi.CustomResource {
      * The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
      */
@@ -89,11 +95,14 @@ export class Waiter extends pulumi.CustomResource {
             resourceInputs["done"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
         } else {
+            resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["done"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["failure"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["success"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;
         }

@@ -36,6 +36,10 @@ export class EndpointAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+     */
+    public readonly endpointAttachmentId!: pulumi.Output<string | undefined>;
+    /**
      * Host that can be used in either the HTTP target endpoint directly or as the host in target server.
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
@@ -47,6 +51,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
      * Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      */
@@ -78,9 +83,11 @@ export class EndpointAttachment extends pulumi.CustomResource {
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["endpointAttachmentId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["serviceAttachment"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

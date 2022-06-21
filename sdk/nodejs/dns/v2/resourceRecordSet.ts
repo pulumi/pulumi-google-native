@@ -35,11 +35,18 @@ export class ResourceRecordSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceRecordSet.__pulumiType;
     }
 
+    /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
+    public readonly clientOperationId!: pulumi.Output<string | undefined>;
     public readonly kind!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    public readonly managedZone!: pulumi.Output<string>;
     /**
      * For example, www.example.com.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
      */
@@ -87,8 +94,12 @@ export class ResourceRecordSet extends pulumi.CustomResource {
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         } else {
+            resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["managedZone"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["routingPolicy"] = undefined /*out*/;
             resourceInputs["rrdatas"] = undefined /*out*/;
             resourceInputs["signatureRrdatas"] = undefined /*out*/;

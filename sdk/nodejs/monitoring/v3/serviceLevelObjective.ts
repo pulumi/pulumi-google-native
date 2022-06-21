@@ -56,14 +56,21 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
      * A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
      */
     public readonly rollingPeriod!: pulumi.Output<string>;
+    public readonly serviceId!: pulumi.Output<string>;
     /**
      * The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
      */
     public readonly serviceLevelIndicator!: pulumi.Output<outputs.monitoring.v3.ServiceLevelIndicatorResponse>;
     /**
+     * Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+     */
+    public readonly serviceLevelObjectiveId!: pulumi.Output<string | undefined>;
+    /**
      * Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
      */
     public readonly userLabels!: pulumi.Output<{[key: string]: string}>;
+    public readonly v3Id!: pulumi.Output<string>;
+    public readonly v3Id1!: pulumi.Output<string>;
 
     /**
      * Create a ServiceLevelObjective resource with the given unique name, arguments, and options.
@@ -102,8 +109,12 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
             resourceInputs["goal"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["rollingPeriod"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["serviceLevelIndicator"] = undefined /*out*/;
+            resourceInputs["serviceLevelObjectiveId"] = undefined /*out*/;
             resourceInputs["userLabels"] = undefined /*out*/;
+            resourceInputs["v3Id"] = undefined /*out*/;
+            resourceInputs["v3Id1"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceLevelObjective.__pulumiType, name, resourceInputs, opts);

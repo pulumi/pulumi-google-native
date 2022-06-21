@@ -40,6 +40,7 @@ export class IngressRule extends pulumi.CustomResource {
      * The action to take on matched requests.
      */
     public readonly action!: pulumi.Output<string>;
+    public readonly appId!: pulumi.Output<string>;
     /**
      * An optional string description of this rule. This field has a maximum length of 400 characters.
      */
@@ -74,6 +75,7 @@ export class IngressRule extends pulumi.CustomResource {
             resourceInputs["sourceRange"] = args ? args.sourceRange : undefined;
         } else {
             resourceInputs["action"] = undefined /*out*/;
+            resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["sourceRange"] = undefined /*out*/;

@@ -40,6 +40,10 @@ export class AppGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly allocatedConnections!: pulumi.Output<outputs.beyondcorp.v1alpha.AllocatedConnectionResponse[]>;
     /**
+     * Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     */
+    public readonly appGatewayId!: pulumi.Output<string | undefined>;
+    /**
      * Timestamp when the resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -55,10 +59,16 @@ export class AppGateway extends pulumi.CustomResource {
      * Optional. Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Unique resource name of the AppGateway. The name is ignored when creating an AppGateway.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The current state of the AppGateway.
      */
@@ -79,6 +89,10 @@ export class AppGateway extends pulumi.CustomResource {
      * Server-defined URI for this resource.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
+    /**
+     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AppGateway resource with the given unique name, arguments, and options.
@@ -115,16 +129,21 @@ export class AppGateway extends pulumi.CustomResource {
             resourceInputs["uri"] = undefined /*out*/;
         } else {
             resourceInputs["allocatedConnections"] = undefined /*out*/;
+            resourceInputs["appGatewayId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["hostType"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AppGateway.__pulumiType, name, resourceInputs, opts);

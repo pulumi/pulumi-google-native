@@ -37,6 +37,7 @@ export class TestCase extends pulumi.CustomResource {
         return obj['__pulumiType'] === TestCase.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * When the test was created.
      */
@@ -49,6 +50,7 @@ export class TestCase extends pulumi.CustomResource {
      * The latest test result.
      */
     public readonly lastTestResult!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3TestCaseResultResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
      */
@@ -57,6 +59,7 @@ export class TestCase extends pulumi.CustomResource {
      * Additional freeform notes about the test case. Limit of 400 characters.
      */
     public readonly notes!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
      */
@@ -99,11 +102,14 @@ export class TestCase extends pulumi.CustomResource {
             resourceInputs["testConfig"] = args ? args.testConfig : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["lastTestResult"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notes"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["testCaseConversationTurns"] = undefined /*out*/;
             resourceInputs["testConfig"] = undefined /*out*/;

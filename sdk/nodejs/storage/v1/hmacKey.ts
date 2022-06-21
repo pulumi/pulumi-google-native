@@ -47,16 +47,13 @@ export class HmacKey extends pulumi.CustomResource {
      * The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
-    /**
-     * Project ID owning the service account to which the key authenticates.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The link to this resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The email address of the key's associated service account.
+     * Email address of the service account.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
     /**
@@ -71,6 +68,10 @@ export class HmacKey extends pulumi.CustomResource {
      * The last modification time of the HMAC key metadata in RFC 3339 format.
      */
     public /*out*/ readonly updated!: pulumi.Output<string>;
+    /**
+     * The project to be billed for this request.
+     */
+    public readonly userProject!: pulumi.Output<string | undefined>;
 
     /**
      * Create a HmacKey resource with the given unique name, arguments, and options.
@@ -106,6 +107,7 @@ export class HmacKey extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HmacKey.__pulumiType, name, resourceInputs, opts);

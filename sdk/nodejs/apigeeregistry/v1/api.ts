@@ -39,6 +39,10 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+     */
+    public readonly apiId!: pulumi.Output<string>;
+    /**
      * A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
      */
     public readonly availability!: pulumi.Output<string>;
@@ -58,10 +62,12 @@ export class Api extends pulumi.CustomResource {
      * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
      */
@@ -104,12 +110,15 @@ export class Api extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["apiId"] = undefined /*out*/;
             resourceInputs["availability"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["recommendedDeployment"] = undefined /*out*/;
             resourceInputs["recommendedVersion"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

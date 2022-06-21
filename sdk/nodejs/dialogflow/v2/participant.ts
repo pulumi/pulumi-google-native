@@ -37,14 +37,17 @@ export class Participant extends pulumi.CustomResource {
         return obj['__pulumiType'] === Participant.__pulumiType;
     }
 
+    public readonly conversationId!: pulumi.Output<string>;
     /**
      * Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
      */
     public readonly documentsMetadataFilters!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
      */
@@ -76,8 +79,11 @@ export class Participant extends pulumi.CustomResource {
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["sipRecordingMediaLabel"] = args ? args.sipRecordingMediaLabel : undefined;
         } else {
+            resourceInputs["conversationId"] = undefined /*out*/;
             resourceInputs["documentsMetadataFilters"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["sipRecordingMediaLabel"] = undefined /*out*/;
         }

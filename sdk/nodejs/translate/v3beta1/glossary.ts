@@ -55,10 +55,12 @@ export class Glossary extends pulumi.CustomResource {
      * Used with unidirectional glossaries.
      */
     public readonly languagePair!: pulumi.Output<outputs.translate.v3beta1.LanguageCodePairResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * When CreateGlossary was called.
      */
@@ -93,7 +95,9 @@ export class Glossary extends pulumi.CustomResource {
             resourceInputs["inputConfig"] = undefined /*out*/;
             resourceInputs["languageCodesSet"] = undefined /*out*/;
             resourceInputs["languagePair"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["submitTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

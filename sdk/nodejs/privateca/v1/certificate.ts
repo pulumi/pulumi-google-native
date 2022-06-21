@@ -38,10 +38,15 @@ export class Certificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === Certificate.__pulumiType;
     }
 
+    public readonly caPoolId!: pulumi.Output<string>;
     /**
      * A structured description of the issued X.509 certificate.
      */
     public /*out*/ readonly certificateDescription!: pulumi.Output<outputs.privateca.v1.CertificateDescriptionResponse>;
+    /**
+     * Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+     */
+    public readonly certificateId!: pulumi.Output<string | undefined>;
     /**
      * Immutable. The resource name for a CertificateTemplate used to issue this certificate, in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified, the caller must have the necessary permission to use this template. If this is omitted, no template will be used. This template must be in the same location as the Certificate.
      */
@@ -59,6 +64,10 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly issuerCertificateAuthority!: pulumi.Output<string>;
     /**
+     * Optional. The resource ID of the CertificateAuthority that should issue the certificate. This optional field will ignore the load-balancing scheme of the Pool and directly issue the certificate from the CA with the specified ID, contained in the same CaPool referenced by `parent`. Per-CA quota rules apply. If left empty, a CertificateAuthority will be chosen from the CaPool by the service. For example, to issue a Certificate from a Certificate Authority with resource name "projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca", you can set the parent to "projects/my-project/locations/us-central1/caPools/my-pool" and the issuing_certificate_authority_id to "my-ca".
+     */
+    public readonly issuingCertificateAuthorityId!: pulumi.Output<string | undefined>;
+    /**
      * Optional. Labels with user-defined metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -66,6 +75,7 @@ export class Certificate extends pulumi.CustomResource {
      * Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
      */
     public readonly lifetime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for this Certificate in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificates/*`.
      */
@@ -82,6 +92,11 @@ export class Certificate extends pulumi.CustomResource {
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     public readonly pemCsr!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
      */
@@ -94,6 +109,10 @@ export class Certificate extends pulumi.CustomResource {
      * The time at which this Certificate was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -134,20 +153,27 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["revocationDetails"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["caPoolId"] = undefined /*out*/;
             resourceInputs["certificateDescription"] = undefined /*out*/;
+            resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["certificateTemplate"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["issuerCertificateAuthority"] = undefined /*out*/;
+            resourceInputs["issuingCertificateAuthorityId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["lifetime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pemCertificate"] = undefined /*out*/;
             resourceInputs["pemCertificateChain"] = undefined /*out*/;
             resourceInputs["pemCsr"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["revocationDetails"] = undefined /*out*/;
             resourceInputs["subjectMode"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);

@@ -40,6 +40,10 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
      */
     public readonly action!: pulumi.Output<string>;
     /**
+     * Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+     */
+    public readonly authorizationPolicyId!: pulumi.Output<string>;
+    /**
      * The timestamp when the resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -51,10 +55,12 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
      * Optional. Set of label tags associated with the AuthorizationPolicy resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
      */
@@ -93,10 +99,13 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["action"] = undefined /*out*/;
+            resourceInputs["authorizationPolicyId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

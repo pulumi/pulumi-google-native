@@ -103,6 +103,7 @@ export class Version extends pulumi.CustomResource {
      * Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
      */
     public readonly manualScaling!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__ManualScalingResponse>;
+    public readonly modelId!: pulumi.Output<string>;
     /**
      * The name specified for the version when it was created. The version name must be unique within the model it is created in.
      */
@@ -115,6 +116,7 @@ export class Version extends pulumi.CustomResource {
      * Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): """Interface for constructing custom predictors.""" def predict(self, instances, **kwargs): """Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. """ raise NotImplementedError() @classmethod def from_path(cls, model_dir): """Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. """ raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
      */
     public readonly predictionClass!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
      */
@@ -206,9 +208,11 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["lastUseTime"] = undefined /*out*/;
             resourceInputs["machineType"] = undefined /*out*/;
             resourceInputs["manualScaling"] = undefined /*out*/;
+            resourceInputs["modelId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["packageUris"] = undefined /*out*/;
             resourceInputs["predictionClass"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pythonVersion"] = undefined /*out*/;
             resourceInputs["requestLoggingConfig"] = undefined /*out*/;
             resourceInputs["routes"] = undefined /*out*/;

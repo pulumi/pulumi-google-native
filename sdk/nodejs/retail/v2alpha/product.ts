@@ -55,10 +55,12 @@ export class Product extends pulumi.CustomResource {
      * The timestamp when this Product becomes available for SearchService.Search.
      */
     public readonly availableTime!: pulumi.Output<string>;
+    public readonly branchId!: pulumi.Output<string>;
     /**
      * The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
      */
     public readonly brands!: pulumi.Output<string[]>;
+    public readonly catalogId!: pulumi.Output<string>;
     /**
      * Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
      */
@@ -99,6 +101,7 @@ export class Product extends pulumi.CustomResource {
      * Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
      */
     public readonly languageCode!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
      */
@@ -119,6 +122,11 @@ export class Product extends pulumi.CustomResource {
      * Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
      */
     public readonly primaryProductId!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+     */
+    public readonly productId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
      */
@@ -231,7 +239,9 @@ export class Product extends pulumi.CustomResource {
             resourceInputs["availability"] = undefined /*out*/;
             resourceInputs["availableQuantity"] = undefined /*out*/;
             resourceInputs["availableTime"] = undefined /*out*/;
+            resourceInputs["branchId"] = undefined /*out*/;
             resourceInputs["brands"] = undefined /*out*/;
+            resourceInputs["catalogId"] = undefined /*out*/;
             resourceInputs["categories"] = undefined /*out*/;
             resourceInputs["collectionMemberIds"] = undefined /*out*/;
             resourceInputs["colorInfo"] = undefined /*out*/;
@@ -242,11 +252,14 @@ export class Product extends pulumi.CustomResource {
             resourceInputs["gtin"] = undefined /*out*/;
             resourceInputs["images"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["materials"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["patterns"] = undefined /*out*/;
             resourceInputs["priceInfo"] = undefined /*out*/;
             resourceInputs["primaryProductId"] = undefined /*out*/;
+            resourceInputs["productId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["promotions"] = undefined /*out*/;
             resourceInputs["publishTime"] = undefined /*out*/;
             resourceInputs["rating"] = undefined /*out*/;

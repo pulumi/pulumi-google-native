@@ -52,13 +52,19 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly eventTrigger!: pulumi.Output<outputs.cloudfunctions.v2alpha.EventTriggerResponse>;
     /**
+     * The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+     */
+    public readonly functionId!: pulumi.Output<string | undefined>;
+    /**
      * Labels associated with this Cloud Function.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A user-defined name of the function. Function names must be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
      */
@@ -105,8 +111,11 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["eventTrigger"] = undefined /*out*/;
+            resourceInputs["functionId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessages"] = undefined /*out*/;

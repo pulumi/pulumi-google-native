@@ -59,6 +59,7 @@ export class ConversationProfile extends pulumi.CustomResource {
      * Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
      */
     public readonly languageCode!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Configuration for logging conversation lifecycle events.
      */
@@ -75,6 +76,7 @@ export class ConversationProfile extends pulumi.CustomResource {
      * Configuration for publishing conversation lifecycle events.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
      */
@@ -129,10 +131,12 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["humanAgentAssistantConfig"] = undefined /*out*/;
             resourceInputs["humanAgentHandoffConfig"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["loggingConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["newMessageEventNotificationConfig"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["securitySettings"] = undefined /*out*/;
             resourceInputs["sttConfig"] = undefined /*out*/;
             resourceInputs["timeZone"] = undefined /*out*/;

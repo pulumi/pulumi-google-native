@@ -60,9 +60,10 @@ export class Environment extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
     /**
-     * Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+     * Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Optional. Key-value pairs that may be used for customizing the environment.
      */
@@ -104,6 +105,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

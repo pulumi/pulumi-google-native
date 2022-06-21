@@ -38,6 +38,7 @@ export class Entitlement extends pulumi.CustomResource {
         return obj['__pulumiType'] === Entitlement.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * Association information to other entitlements.
      */
@@ -50,6 +51,7 @@ export class Entitlement extends pulumi.CustomResource {
      * The time at which the entitlement is created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly customerId!: pulumi.Output<string>;
     /**
      * Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
      */
@@ -123,9 +125,11 @@ export class Entitlement extends pulumi.CustomResource {
             resourceInputs["trialSettings"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["associationInfo"] = undefined /*out*/;
             resourceInputs["commitmentSettings"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["customerId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["offer"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;

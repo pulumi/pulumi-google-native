@@ -131,6 +131,7 @@ export class Job extends pulumi.CustomResource {
      * Optional. Options for job processing.
      */
     public readonly processingOptions!: pulumi.Output<outputs.jobs.v3.ProcessingOptionsResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
      */
@@ -240,6 +241,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["postingRegion"] = undefined /*out*/;
             resourceInputs["postingUpdateTime"] = undefined /*out*/;
             resourceInputs["processingOptions"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["promotionValue"] = undefined /*out*/;
             resourceInputs["qualifications"] = undefined /*out*/;
             resourceInputs["requisitionId"] = undefined /*out*/;

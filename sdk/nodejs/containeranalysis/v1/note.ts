@@ -85,9 +85,14 @@ export class Note extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Required. The ID to use for this note.
+     */
+    public readonly noteId!: pulumi.Output<string>;
+    /**
      * A note describing a package hosted by various package managers.
      */
     public readonly package!: pulumi.Output<outputs.containeranalysis.v1.PackageNoteResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Other notes related to this note.
      */
@@ -161,7 +166,9 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["longDescription"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["noteId"] = undefined /*out*/;
             resourceInputs["package"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["relatedNoteNames"] = undefined /*out*/;
             resourceInputs["relatedUrl"] = undefined /*out*/;
             resourceInputs["shortDescription"] = undefined /*out*/;

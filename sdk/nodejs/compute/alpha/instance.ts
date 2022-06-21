@@ -153,6 +153,11 @@ export class Instance extends pulumi.CustomResource {
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */
     public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
@@ -200,7 +205,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly shieldedVmIntegrityPolicy!: pulumi.Output<outputs.compute.alpha.ShieldedVmIntegrityPolicyResponse>;
     /**
-     * Source machine image
+     * Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
+     */
+    public readonly sourceInstanceTemplate!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies the machine image to use to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to a machine image: - https://www.googleapis.com/compute/v1/projects/project/global/global /machineImages/machineImage - projects/project/global/global/machineImages/machineImage - global/machineImages/machineImage 
      */
     public readonly sourceMachineImage!: pulumi.Output<string>;
     /**
@@ -227,9 +236,6 @@ export class Instance extends pulumi.CustomResource {
      * Specifies upcoming maintenance for the instance.
      */
     public /*out*/ readonly upcomingMaintenance!: pulumi.Output<outputs.compute.alpha.UpcomingMaintenanceResponse>;
-    /**
-     * URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -330,6 +336,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["postKeyRevocationActionType"] = undefined /*out*/;
             resourceInputs["preservedStateSizeGb"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
@@ -343,6 +351,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceIntegrityPolicy"] = undefined /*out*/;
             resourceInputs["shieldedVmConfig"] = undefined /*out*/;
             resourceInputs["shieldedVmIntegrityPolicy"] = undefined /*out*/;
+            resourceInputs["sourceInstanceTemplate"] = undefined /*out*/;
             resourceInputs["sourceMachineImage"] = undefined /*out*/;
             resourceInputs["sourceMachineImageEncryptionKey"] = undefined /*out*/;
             resourceInputs["startRestricted"] = undefined /*out*/;

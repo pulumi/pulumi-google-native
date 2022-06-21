@@ -52,6 +52,11 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly enableAutoReload!: pulumi.Output<boolean>;
     /**
+     * Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
+     */
+    public readonly importGcsCustomMetadata!: pulumi.Output<string | undefined>;
+    public readonly knowledgeBaseId!: pulumi.Output<string>;
+    /**
      * The knowledge type of document content.
      */
     public readonly knowledgeTypes!: pulumi.Output<string[]>;
@@ -59,6 +64,7 @@ export class Document extends pulumi.CustomResource {
      * The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
      */
     public /*out*/ readonly latestReloadStatus!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
      */
@@ -71,6 +77,7 @@ export class Document extends pulumi.CustomResource {
      * Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
      */
@@ -123,11 +130,15 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["contentUri"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableAutoReload"] = undefined /*out*/;
+            resourceInputs["importGcsCustomMetadata"] = undefined /*out*/;
+            resourceInputs["knowledgeBaseId"] = undefined /*out*/;
             resourceInputs["knowledgeTypes"] = undefined /*out*/;
             resourceInputs["latestReloadStatus"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["mimeType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rawContent"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

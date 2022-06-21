@@ -38,6 +38,7 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === ChannelPartnerLink.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * Cloud Identity info of the channel partner (IR).
      */
@@ -101,6 +102,7 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
             resourceInputs["publicId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["inviteLinkUri"] = undefined /*out*/;

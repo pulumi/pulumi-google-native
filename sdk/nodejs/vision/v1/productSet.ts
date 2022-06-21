@@ -47,10 +47,16 @@ export class ProductSet extends pulumi.CustomResource {
      * The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
      */
     public /*out*/ readonly indexTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+     */
+    public readonly productSetId!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a ProductSet resource with the given unique name, arguments, and options.
@@ -74,7 +80,10 @@ export class ProductSet extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["indexError"] = undefined /*out*/;
             resourceInputs["indexTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["productSetId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProductSet.__pulumiType, name, resourceInputs, opts);

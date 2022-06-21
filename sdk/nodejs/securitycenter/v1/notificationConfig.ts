@@ -36,6 +36,10 @@ export class NotificationConfig extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+     */
+    public readonly configId!: pulumi.Output<string>;
+    /**
      * The description of the notification config (max of 1024 characters).
      */
     public readonly description!: pulumi.Output<string>;
@@ -43,6 +47,7 @@ export class NotificationConfig extends pulumi.CustomResource {
      * The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
      */
@@ -81,8 +86,10 @@ export class NotificationConfig extends pulumi.CustomResource {
             resourceInputs["streamingConfig"] = args ? args.streamingConfig : undefined;
             resourceInputs["serviceAccount"] = undefined /*out*/;
         } else {
+            resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["pubsubTopic"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["streamingConfig"] = undefined /*out*/;

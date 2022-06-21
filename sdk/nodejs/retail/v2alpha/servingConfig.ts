@@ -40,6 +40,7 @@ export class ServingConfig extends pulumi.CustomResource {
      * Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
      */
     public readonly boostControlIds!: pulumi.Output<string[]>;
+    public readonly catalogId!: pulumi.Output<string>;
     /**
      * The human readable serving config display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
      */
@@ -72,6 +73,7 @@ export class ServingConfig extends pulumi.CustomResource {
      * Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
      */
     public readonly ignoreControlIds!: pulumi.Output<string[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
@@ -88,6 +90,7 @@ export class ServingConfig extends pulumi.CustomResource {
      * How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     public readonly priceRerankingLevel!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
      */
@@ -96,6 +99,10 @@ export class ServingConfig extends pulumi.CustomResource {
      * Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
      */
     public readonly replacementControlIds!: pulumi.Output<string[]>;
+    /**
+     * Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+     */
+    public readonly servingConfigId!: pulumi.Output<string>;
     /**
      * Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
      */
@@ -151,6 +158,7 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["twowaySynonymsControlIds"] = args ? args.twowaySynonymsControlIds : undefined;
         } else {
             resourceInputs["boostControlIds"] = undefined /*out*/;
+            resourceInputs["catalogId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["diversityLevel"] = undefined /*out*/;
             resourceInputs["doNotAssociateControlIds"] = undefined /*out*/;
@@ -159,12 +167,15 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["facetControlIds"] = undefined /*out*/;
             resourceInputs["filterControlIds"] = undefined /*out*/;
             resourceInputs["ignoreControlIds"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["modelId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["onewaySynonymsControlIds"] = undefined /*out*/;
             resourceInputs["priceRerankingLevel"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["redirectControlIds"] = undefined /*out*/;
             resourceInputs["replacementControlIds"] = undefined /*out*/;
+            resourceInputs["servingConfigId"] = undefined /*out*/;
             resourceInputs["solutionTypes"] = undefined /*out*/;
             resourceInputs["twowaySynonymsControlIds"] = undefined /*out*/;
         }

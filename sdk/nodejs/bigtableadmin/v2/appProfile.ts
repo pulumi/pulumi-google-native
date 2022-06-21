@@ -36,6 +36,10 @@ export class AppProfile extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+     */
+    public readonly appProfileId!: pulumi.Output<string>;
+    /**
      * Long form description of the use case for this AppProfile.
      */
     public readonly description!: pulumi.Output<string>;
@@ -44,6 +48,11 @@ export class AppProfile extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
+     * If true, ignore safety checks when creating the app profile.
+     */
+    public readonly ignoreWarnings!: pulumi.Output<string | undefined>;
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * Use a multi-cluster routing policy.
      */
     public readonly multiClusterRoutingUseAny!: pulumi.Output<outputs.bigtableadmin.v2.MultiClusterRoutingUseAnyResponse>;
@@ -51,6 +60,7 @@ export class AppProfile extends pulumi.CustomResource {
      * The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Use a single-cluster routing policy.
      */
@@ -83,10 +93,14 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
         } else {
+            resourceInputs["appProfileId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["ignoreWarnings"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["multiClusterRoutingUseAny"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["singleClusterRouting"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

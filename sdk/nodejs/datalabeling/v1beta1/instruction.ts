@@ -70,6 +70,7 @@ export class Instruction extends pulumi.CustomResource {
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
     public readonly pdfInstruction!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Last update time of instruction.
      */
@@ -111,6 +112,7 @@ export class Instruction extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pdfInstruction"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

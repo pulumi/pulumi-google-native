@@ -123,6 +123,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * The ports field is only supported when the forwarding rule references a backend_service directly. Only packets addressed to the [specified list of ports]((https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)) are forwarded to backends. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. You can specify a list of up to five ports, which can be non-contiguous. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. @pattern: \\d+(?:-\\d+)?
      */
     public readonly ports!: pulumi.Output<string[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The PSC connection id of the PSC Forwarding Rule.
      */
@@ -132,6 +133,10 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
@@ -231,9 +236,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["noAutomateDnsZone"] = undefined /*out*/;
             resourceInputs["portRange"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pscConnectionId"] = undefined /*out*/;
             resourceInputs["pscConnectionStatus"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["serviceDirectoryRegistrations"] = undefined /*out*/;

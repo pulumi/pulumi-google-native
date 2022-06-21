@@ -43,10 +43,12 @@ export class WorkerPool extends pulumi.CustomResource {
      * Channel specifies the release channel of the pool.
      */
     public readonly channel!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * State of the worker pool.
      */
@@ -87,7 +89,9 @@ export class WorkerPool extends pulumi.CustomResource {
         } else {
             resourceInputs["autoscale"] = undefined /*out*/;
             resourceInputs["channel"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["workerConfig"] = undefined /*out*/;
             resourceInputs["workerCount"] = undefined /*out*/;

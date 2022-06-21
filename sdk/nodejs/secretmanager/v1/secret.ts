@@ -56,6 +56,7 @@ export class Secret extends pulumi.CustomResource {
      * The resource name of the Secret in the format `projects/*&#47;secrets/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
@@ -64,6 +65,10 @@ export class Secret extends pulumi.CustomResource {
      * Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
      */
     public readonly rotation!: pulumi.Output<outputs.secretmanager.v1.RotationResponse>;
+    /**
+     * Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+     */
+    public readonly secretId!: pulumi.Output<string>;
     /**
      * Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      */
@@ -107,8 +112,10 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["replication"] = undefined /*out*/;
             resourceInputs["rotation"] = undefined /*out*/;
+            resourceInputs["secretId"] = undefined /*out*/;
             resourceInputs["topics"] = undefined /*out*/;
             resourceInputs["ttl"] = undefined /*out*/;
         }

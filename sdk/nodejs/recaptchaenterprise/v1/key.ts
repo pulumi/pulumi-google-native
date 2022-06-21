@@ -59,6 +59,7 @@ export class Key extends pulumi.CustomResource {
      * The resource name for the Key in the format "projects/{project}/keys/{key}".
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Options for user acceptance testing.
      */
@@ -100,6 +101,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["iosSettings"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["testingOptions"] = undefined /*out*/;
             resourceInputs["wafSettings"] = undefined /*out*/;
             resourceInputs["webSettings"] = undefined /*out*/;

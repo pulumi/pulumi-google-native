@@ -36,6 +36,8 @@ export class ChannelPartnerRepricingConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === ChannelPartnerRepricingConfig.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
+    public readonly channelPartnerLinkId!: pulumi.Output<string>;
     /**
      * Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
      */
@@ -75,6 +77,8 @@ export class ChannelPartnerRepricingConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["channelPartnerLinkId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["repricingConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

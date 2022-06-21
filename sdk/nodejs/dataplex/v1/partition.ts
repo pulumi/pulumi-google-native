@@ -35,22 +35,27 @@ export class Partition extends pulumi.CustomResource {
         return obj['__pulumiType'] === Partition.__pulumiType;
     }
 
+    public readonly entityId!: pulumi.Output<string>;
     /**
      * Optional. The etag for this partition.
      */
     public readonly etag!: pulumi.Output<string>;
-    /**
-     * Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-     */
+    public readonly lakeId!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
     /**
      * Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
      */
     public readonly values!: pulumi.Output<string[]>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Partition resource with the given unique name, arguments, and options.
@@ -82,10 +87,15 @@ export class Partition extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["entityId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["lakeId"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["values"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Partition.__pulumiType, name, resourceInputs, opts);

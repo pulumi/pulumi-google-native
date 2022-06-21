@@ -45,9 +45,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * Format: `projects/*&#47;locations/*&#47;instance`. Currently only locations/global is supported.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The current state of the Instance.
      */
@@ -90,7 +96,10 @@ export class Instance extends pulumi.CustomResource {
         } else {
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

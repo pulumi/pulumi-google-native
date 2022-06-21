@@ -54,10 +54,12 @@ export class Execution extends pulumi.CustomResource {
      * The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.workflowexecutions.v1.ErrorResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
      */
@@ -70,6 +72,7 @@ export class Execution extends pulumi.CustomResource {
      * Current state of the execution.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    public readonly workflowId!: pulumi.Output<string>;
     /**
      * Revision of the workflow this execution is using.
      */
@@ -106,10 +109,13 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["callLogLevel"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["result"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["workflowId"] = undefined /*out*/;
             resourceInputs["workflowRevisionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

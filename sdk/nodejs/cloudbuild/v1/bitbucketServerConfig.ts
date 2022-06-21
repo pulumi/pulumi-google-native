@@ -40,6 +40,10 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
      */
     public readonly apiKey!: pulumi.Output<string>;
     /**
+     * Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+     */
+    public readonly bitbucketServerConfigId!: pulumi.Output<string | undefined>;
+    /**
      * Connected Bitbucket Server repositories for this config.
      */
     public /*out*/ readonly connectedRepositories!: pulumi.Output<outputs.cloudbuild.v1.BitbucketServerRepositoryIdResponse[]>;
@@ -51,6 +55,7 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
      */
     public readonly hostUri!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for the config.
      */
@@ -59,6 +64,7 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
      * Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      */
     public readonly peeredNetwork!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Secret Manager secrets needed by the config.
      */
@@ -111,11 +117,14 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
             resourceInputs["webhookKey"] = undefined /*out*/;
         } else {
             resourceInputs["apiKey"] = undefined /*out*/;
+            resourceInputs["bitbucketServerConfigId"] = undefined /*out*/;
             resourceInputs["connectedRepositories"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["hostUri"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["peeredNetwork"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["secrets"] = undefined /*out*/;
             resourceInputs["sslCa"] = undefined /*out*/;
             resourceInputs["username"] = undefined /*out*/;

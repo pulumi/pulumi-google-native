@@ -35,6 +35,7 @@ export class Notification extends pulumi.CustomResource {
         return obj['__pulumiType'] === Notification.__pulumiType;
     }
 
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
      */
@@ -67,6 +68,10 @@ export class Notification extends pulumi.CustomResource {
      * The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
      */
     public readonly topic!: pulumi.Output<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
+    public readonly userProject!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Notification resource with the given unique name, arguments, and options.
@@ -94,6 +99,7 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["topic"] = args ? args.topic : undefined;
             resourceInputs["userProject"] = args ? args.userProject : undefined;
         } else {
+            resourceInputs["bucket"] = undefined /*out*/;
             resourceInputs["customAttributes"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["eventTypes"] = undefined /*out*/;
@@ -102,6 +108,7 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["payloadFormat"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["topic"] = undefined /*out*/;
+            resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Notification.__pulumiType, name, resourceInputs, opts);

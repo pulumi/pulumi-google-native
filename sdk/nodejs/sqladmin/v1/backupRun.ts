@@ -64,9 +64,6 @@ export class BackupRun extends pulumi.CustomResource {
      * Information about why the backup operation failed. This is only present if the run has the FAILED status.
      */
     public readonly error!: pulumi.Output<outputs.sqladmin.v1.OperationErrorResponse>;
-    /**
-     * Name of the database instance.
-     */
     public readonly instance!: pulumi.Output<string>;
     /**
      * This is always `sql#backupRun`.
@@ -76,6 +73,7 @@ export class BackupRun extends pulumi.CustomResource {
      * Location of the backups.
      */
     public readonly location!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of this resource.
      */
@@ -139,6 +137,7 @@ export class BackupRun extends pulumi.CustomResource {
             resourceInputs["instance"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

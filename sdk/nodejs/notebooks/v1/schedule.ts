@@ -56,14 +56,20 @@ export class Schedule extends pulumi.CustomResource {
      * Notebook Execution Template corresponding to this schedule.
      */
     public readonly executionTemplate!: pulumi.Output<outputs.notebooks.v1.ExecutionTemplateResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The most recent execution names triggered from this schedule and their corresponding states.
      */
     public /*out*/ readonly recentExecutions!: pulumi.Output<outputs.notebooks.v1.ExecutionResponse[]>;
+    /**
+     * Required. User-defined unique ID of this schedule.
+     */
+    public readonly scheduleId!: pulumi.Output<string>;
     public readonly state!: pulumi.Output<string>;
     /**
      * Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
@@ -107,8 +113,11 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["executionTemplate"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["recentExecutions"] = undefined /*out*/;
+            resourceInputs["scheduleId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["timeZone"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

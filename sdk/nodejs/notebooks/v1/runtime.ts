@@ -48,6 +48,7 @@ export class Runtime extends pulumi.CustomResource {
      * Runtime health_state.
      */
     public /*out*/ readonly healthState!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Contains Runtime daemon metrics such as Service status and JupyterLab stats.
      */
@@ -56,6 +57,15 @@ export class Runtime extends pulumi.CustomResource {
      * The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Idempotent request UUID.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Required. User-defined unique ID of this Runtime.
+     */
+    public readonly runtimeId!: pulumi.Output<string>;
     /**
      * The config settings for software inside the runtime.
      */
@@ -104,8 +114,12 @@ export class Runtime extends pulumi.CustomResource {
             resourceInputs["accessConfig"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["healthState"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["runtimeId"] = undefined /*out*/;
             resourceInputs["softwareConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

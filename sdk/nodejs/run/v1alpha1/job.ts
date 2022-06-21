@@ -48,6 +48,7 @@ export class Job extends pulumi.CustomResource {
      * Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
      */
     public readonly metadata!: pulumi.Output<outputs.run.v1alpha1.ObjectMetaResponse>;
+    public readonly namespaceId!: pulumi.Output<string>;
     /**
      * Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
      */
@@ -81,6 +82,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["namespaceId"] = undefined /*out*/;
             resourceInputs["spec"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

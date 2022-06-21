@@ -41,9 +41,15 @@ export class KeyRing extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
+    public readonly keyRingId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The resource name for the KeyRing in the format `projects/*&#47;locations/*&#47;keyRings/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a KeyRing resource with the given unique name, arguments, and options.
@@ -63,7 +69,10 @@ export class KeyRing extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["keyRingId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KeyRing.__pulumiType, name, resourceInputs, opts);

@@ -43,10 +43,17 @@ export class Service extends pulumi.CustomResource {
      * Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
      */
     public /*out*/ readonly endpoints!: pulumi.Output<outputs.servicedirectory.v1.EndpointResponse[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The resource name for the service in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly namespaceId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly serviceId!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -75,7 +82,11 @@ export class Service extends pulumi.CustomResource {
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namespaceId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);

@@ -56,10 +56,12 @@ export class Cluster extends pulumi.CustomResource {
      * Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
      */
     public /*out*/ readonly metrics!: pulumi.Output<outputs.dataproc.v1beta2.ClusterMetricsResponse>;
-    /**
-     * The Google Cloud Platform project ID that the cluster belongs to.
-     */
     public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * Optional. A unique id used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Cluster status.
      */
@@ -106,6 +108,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusHistory"] = undefined /*out*/;
         }

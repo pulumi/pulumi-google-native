@@ -43,6 +43,10 @@ export class Change extends pulumi.CustomResource {
      */
     public readonly additions!: pulumi.Output<outputs.dns.v1beta2.ResourceRecordSetResponse[]>;
     /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
+    public readonly clientOperationId!: pulumi.Output<string | undefined>;
+    /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.
      */
     public readonly deletions!: pulumi.Output<outputs.dns.v1beta2.ResourceRecordSetResponse[]>;
@@ -51,6 +55,8 @@ export class Change extends pulumi.CustomResource {
      */
     public readonly isServing!: pulumi.Output<boolean>;
     public readonly kind!: pulumi.Output<string>;
+    public readonly managedZone!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The time that this operation was started by the server (output only). This is in RFC3339 text format.
      */
@@ -85,9 +91,12 @@ export class Change extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["additions"] = undefined /*out*/;
+            resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["deletions"] = undefined /*out*/;
             resourceInputs["isServing"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["managedZone"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

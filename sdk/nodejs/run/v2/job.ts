@@ -84,6 +84,10 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly generation!: pulumi.Output<string>;
     /**
+     * Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+     */
+    public readonly jobId!: pulumi.Output<string>;
+    /**
      * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -99,6 +103,7 @@ export class Job extends pulumi.CustomResource {
      * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
      */
     public readonly launchStage!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
      */
@@ -107,6 +112,7 @@ export class Job extends pulumi.CustomResource {
      * The generation of this Job. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
      */
     public /*out*/ readonly observedGeneration!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
      */
@@ -127,6 +133,10 @@ export class Job extends pulumi.CustomResource {
      * The last-modified time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -185,17 +195,21 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["executionCount"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["generation"] = undefined /*out*/;
+            resourceInputs["jobId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["lastModifier"] = undefined /*out*/;
             resourceInputs["latestCreatedExecution"] = undefined /*out*/;
             resourceInputs["launchStage"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["observedGeneration"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["template"] = undefined /*out*/;
             resourceInputs["terminalCondition"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);

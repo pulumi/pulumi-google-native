@@ -37,6 +37,11 @@ export class Config extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+     */
+    public readonly apiConfigId!: pulumi.Output<string>;
+    public readonly apiId!: pulumi.Output<string>;
+    /**
      * Created time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -60,6 +65,7 @@ export class Config extends pulumi.CustomResource {
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      */
@@ -72,6 +78,7 @@ export class Config extends pulumi.CustomResource {
      * Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
      */
     public readonly openapiDocuments!: pulumi.Output<outputs.apigateway.v1beta.ApigatewayApiConfigOpenApiDocumentResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
      */
@@ -119,15 +126,19 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["apiConfigId"] = undefined /*out*/;
+            resourceInputs["apiId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["gatewayConfig"] = undefined /*out*/;
             resourceInputs["gatewayServiceAccount"] = undefined /*out*/;
             resourceInputs["grpcServices"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["managedServiceConfigs"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["openapiDocuments"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceConfigId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

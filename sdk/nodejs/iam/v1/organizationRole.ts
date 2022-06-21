@@ -55,6 +55,7 @@ export class OrganizationRole extends pulumi.CustomResource {
      * The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
      */
@@ -93,6 +94,7 @@ export class OrganizationRole extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["includedPermissions"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["stage"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
         }

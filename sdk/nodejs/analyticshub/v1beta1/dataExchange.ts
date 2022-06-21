@@ -36,6 +36,10 @@ export class DataExchange extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+     */
+    public readonly dataExchangeId!: pulumi.Output<string>;
+    /**
      * Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
      */
     public readonly description!: pulumi.Output<string>;
@@ -55,6 +59,7 @@ export class DataExchange extends pulumi.CustomResource {
      * Number of listings contained in the data exchange.
      */
     public /*out*/ readonly listingCount!: pulumi.Output<number>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
      */
@@ -63,6 +68,7 @@ export class DataExchange extends pulumi.CustomResource {
      * Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
      */
     public readonly primaryContact!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a DataExchange resource with the given unique name, arguments, and options.
@@ -92,13 +98,16 @@ export class DataExchange extends pulumi.CustomResource {
             resourceInputs["listingCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["dataExchangeId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["documentation"] = undefined /*out*/;
             resourceInputs["icon"] = undefined /*out*/;
             resourceInputs["listingCount"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["primaryContact"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DataExchange.__pulumiType, name, resourceInputs, opts);

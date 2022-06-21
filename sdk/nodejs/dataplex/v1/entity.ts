@@ -76,10 +76,13 @@ export class Entity extends pulumi.CustomResource {
      * Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
      */
     public readonly format!: pulumi.Output<outputs.dataplex.v1.GoogleCloudDataplexV1StorageFormatResponse>;
+    public readonly lakeId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
      */
@@ -96,6 +99,11 @@ export class Entity extends pulumi.CustomResource {
      * The time when the entity was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Entity resource with the given unique name, arguments, and options.
@@ -164,11 +172,16 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;
+            resourceInputs["lakeId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["system"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Entity.__pulumiType, name, resourceInputs, opts);

@@ -36,6 +36,10 @@ export class Backup extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+     */
+    public readonly backupId!: pulumi.Output<string>;
+    /**
      * Capacity of the source file share when the backup was created.
      */
     public /*out*/ readonly capacityGb!: pulumi.Output<string>;
@@ -55,10 +59,12 @@ export class Backup extends pulumi.CustomResource {
      * Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Reserved for future use.
      */
@@ -114,12 +120,15 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["storageBytes"] = undefined /*out*/;
         } else {
+            resourceInputs["backupId"] = undefined /*out*/;
             resourceInputs["capacityGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sourceFileShare"] = undefined /*out*/;
             resourceInputs["sourceInstance"] = undefined /*out*/;

@@ -56,9 +56,6 @@ export class AndroidApp extends pulumi.CustomResource {
      * Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
      */
     public readonly packageName!: pulumi.Output<string>;
-    /**
-     * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-     */
     public readonly project!: pulumi.Output<string>;
 
     /**

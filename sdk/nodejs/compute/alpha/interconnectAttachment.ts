@@ -149,10 +149,12 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
      */
     public /*out*/ readonly privateInterconnectInfo!: pulumi.Output<outputs.compute.alpha.InterconnectAttachmentPrivateInfoResponse>;
-    /**
-     * URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
+    public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
      */
@@ -181,6 +183,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * If true, the request will not be committed.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
      */
@@ -269,7 +275,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["partnerAsn"] = undefined /*out*/;
             resourceInputs["partnerMetadata"] = undefined /*out*/;
             resourceInputs["privateInterconnectInfo"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["router"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -277,6 +285,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["stackType"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["vlanTag8021q"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

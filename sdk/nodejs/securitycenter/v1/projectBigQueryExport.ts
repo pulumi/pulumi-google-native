@@ -36,6 +36,10 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+     */
+    public readonly bigQueryExportId!: pulumi.Output<string>;
+    /**
      * The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -63,6 +67,7 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
      * The service account that needs permission to create table, upload data to the big query dataset.
      */
     public /*out*/ readonly principal!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
      */
@@ -93,6 +98,7 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
             resourceInputs["principal"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bigQueryExportId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataset"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -100,6 +106,7 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
             resourceInputs["mostRecentEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["principal"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

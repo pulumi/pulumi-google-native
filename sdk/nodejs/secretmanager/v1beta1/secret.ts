@@ -48,10 +48,15 @@ export class Secret extends pulumi.CustomResource {
      * The resource name of the Secret in the format `projects/*&#47;secrets/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     public readonly replication!: pulumi.Output<outputs.secretmanager.v1beta1.ReplicationResponse>;
+    /**
+     * Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+     */
+    public readonly secretId!: pulumi.Output<string>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -80,7 +85,9 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["replication"] = undefined /*out*/;
+            resourceInputs["secretId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Secret.__pulumiType, name, resourceInputs, opts);

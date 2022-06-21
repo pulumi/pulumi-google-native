@@ -42,10 +42,12 @@ export class KnowledgeBase extends pulumi.CustomResource {
      * Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
      */
     public readonly languageCode!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a KnowledgeBase resource with the given unique name, arguments, and options.
@@ -69,7 +71,9 @@ export class KnowledgeBase extends pulumi.CustomResource {
         } else {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KnowledgeBase.__pulumiType, name, resourceInputs, opts);

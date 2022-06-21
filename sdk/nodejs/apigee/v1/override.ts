@@ -39,10 +39,12 @@ export class Override extends pulumi.CustomResource {
      * ID of the API proxy that will have its trace configuration overridden.
      */
     public readonly apiProxy!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * ID of the trace configuration override specified as a system-generated UUID.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Trace configuration to override.
      */
@@ -72,7 +74,9 @@ export class Override extends pulumi.CustomResource {
             resourceInputs["samplingConfig"] = args ? args.samplingConfig : undefined;
         } else {
             resourceInputs["apiProxy"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["samplingConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

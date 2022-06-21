@@ -44,6 +44,7 @@ export class Domain extends pulumi.CustomResource {
      * If set, the domain should redirect with the provided parameters.
      */
     public readonly domainRedirect!: pulumi.Output<outputs.firebasehosting.v1beta1.DomainRedirectResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
      */
@@ -52,6 +53,7 @@ export class Domain extends pulumi.CustomResource {
      * The site name of the association.
      */
     public readonly site!: pulumi.Output<string>;
+    public readonly siteId!: pulumi.Output<string>;
     /**
      * Additional status of the domain association.
      */
@@ -92,8 +94,10 @@ export class Domain extends pulumi.CustomResource {
         } else {
             resourceInputs["domainName"] = undefined /*out*/;
             resourceInputs["domainRedirect"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisioning"] = undefined /*out*/;
             resourceInputs["site"] = undefined /*out*/;
+            resourceInputs["siteId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

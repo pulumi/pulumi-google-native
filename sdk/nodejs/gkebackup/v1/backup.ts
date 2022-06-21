@@ -41,6 +41,11 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly allNamespaces!: pulumi.Output<boolean>;
     /**
+     * The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+     */
+    public readonly backupId!: pulumi.Output<string | undefined>;
+    public readonly backupPlanId!: pulumi.Output<string>;
+    /**
      * Information about the GKE cluster from which this Backup was created.
      */
     public /*out*/ readonly clusterMetadata!: pulumi.Output<outputs.gkebackup.v1.ClusterMetadataResponse>;
@@ -88,6 +93,7 @@ export class Backup extends pulumi.CustomResource {
      * A set of custom labels supplied by user.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
      */
@@ -100,6 +106,7 @@ export class Backup extends pulumi.CustomResource {
      * The total number of Kubernetes Pods contained in the Backup.
      */
     public /*out*/ readonly podCount!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The total number of Kubernetes resources included in the Backup.
      */
@@ -192,6 +199,8 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["volumeCount"] = undefined /*out*/;
         } else {
             resourceInputs["allNamespaces"] = undefined /*out*/;
+            resourceInputs["backupId"] = undefined /*out*/;
+            resourceInputs["backupPlanId"] = undefined /*out*/;
             resourceInputs["clusterMetadata"] = undefined /*out*/;
             resourceInputs["completeTime"] = undefined /*out*/;
             resourceInputs["configBackupSizeBytes"] = undefined /*out*/;
@@ -204,9 +213,11 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["manual"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["podCount"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resourceCount"] = undefined /*out*/;
             resourceInputs["retainDays"] = undefined /*out*/;
             resourceInputs["retainExpireTime"] = undefined /*out*/;

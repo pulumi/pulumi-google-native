@@ -35,6 +35,7 @@ export class Page extends pulumi.CustomResource {
         return obj['__pulumiType'] === Page.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * The human-readable name of the page, unique within the flow.
      */
@@ -47,14 +48,21 @@ export class Page extends pulumi.CustomResource {
      * Handlers associated with the page to handle events such as webhook errors, no match or no input.
      */
     public readonly eventHandlers!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EventHandlerResponse[]>;
+    public readonly flowId!: pulumi.Output<string>;
     /**
      * The form associated with the page, used for collecting parameters relevant to the page.
      */
     public readonly form!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FormResponse>;
     /**
+     * The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     */
+    public readonly languageCode!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
      */
@@ -97,11 +105,16 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["entryFulfillment"] = undefined /*out*/;
             resourceInputs["eventHandlers"] = undefined /*out*/;
+            resourceInputs["flowId"] = undefined /*out*/;
             resourceInputs["form"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["transitionRouteGroups"] = undefined /*out*/;
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }

@@ -44,6 +44,7 @@ export class Version extends pulumi.CustomResource {
      * Allows App Engine second generation runtimes to access the legacy bundled services.
      */
     public readonly appEngineApis!: pulumi.Output<boolean>;
+    public readonly appId!: pulumi.Output<string>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
      */
@@ -168,6 +169,7 @@ export class Version extends pulumi.CustomResource {
      * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
+    public readonly serviceId!: pulumi.Output<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
      */
@@ -257,6 +259,7 @@ export class Version extends pulumi.CustomResource {
         } else {
             resourceInputs["apiConfig"] = undefined /*out*/;
             resourceInputs["appEngineApis"] = undefined /*out*/;
+            resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["automaticScaling"] = undefined /*out*/;
             resourceInputs["basicScaling"] = undefined /*out*/;
             resourceInputs["betaSettings"] = undefined /*out*/;
@@ -288,6 +291,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["runtimeChannel"] = undefined /*out*/;
             resourceInputs["runtimeMainExecutablePath"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["servingStatus"] = undefined /*out*/;
             resourceInputs["threadsafe"] = undefined /*out*/;
             resourceInputs["versionUrl"] = undefined /*out*/;

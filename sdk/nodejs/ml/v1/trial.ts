@@ -52,6 +52,7 @@ export class Trial extends pulumi.CustomResource {
      * A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
      */
     public /*out*/ readonly infeasibleReason!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
      */
@@ -64,6 +65,7 @@ export class Trial extends pulumi.CustomResource {
      * The parameters of the trial.
      */
     public readonly parameters!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1_Trial_ParameterResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Time at which the trial was started.
      */
@@ -72,6 +74,7 @@ export class Trial extends pulumi.CustomResource {
      * The detailed state of a trial.
      */
     public readonly state!: pulumi.Output<string>;
+    public readonly studyId!: pulumi.Output<string>;
     /**
      * If true, the parameters in this trial are not attempted again.
      */
@@ -109,11 +112,14 @@ export class Trial extends pulumi.CustomResource {
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["finalMeasurement"] = undefined /*out*/;
             resourceInputs["infeasibleReason"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["measurements"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["studyId"] = undefined /*out*/;
             resourceInputs["trialInfeasible"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

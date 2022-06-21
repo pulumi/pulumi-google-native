@@ -51,6 +51,7 @@ export class Processor extends pulumi.CustomResource {
      * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
      */
@@ -59,6 +60,7 @@ export class Processor extends pulumi.CustomResource {
      * Immutable. The http endpoint that can be called to invoke processing.
      */
     public /*out*/ readonly processEndpoint!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The state of the processor.
      */
@@ -94,8 +96,10 @@ export class Processor extends pulumi.CustomResource {
             resourceInputs["defaultProcessorVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["processEndpoint"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

@@ -37,6 +37,7 @@ export class AccessPolicyIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicyIamPolicy.__pulumiType;
     }
 
+    public readonly accessPolicyId!: pulumi.Output<string>;
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
@@ -75,6 +76,7 @@ export class AccessPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["updateMask"] = args ? args.updateMask : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
         } else {
+            resourceInputs["accessPolicyId"] = undefined /*out*/;
             resourceInputs["auditConfigs"] = undefined /*out*/;
             resourceInputs["bindings"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

@@ -40,6 +40,7 @@ export class RatePlan extends pulumi.CustomResource {
      * Name of the API product that the rate plan is associated with.
      */
     public readonly apiproduct!: pulumi.Output<string>;
+    public readonly apiproductId!: pulumi.Output<string>;
     /**
      * Frequency at which the customer will be billed.
      */
@@ -88,6 +89,7 @@ export class RatePlan extends pulumi.CustomResource {
      * Name of the rate plan.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
      *
@@ -155,6 +157,7 @@ export class RatePlan extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["apiproduct"] = undefined /*out*/;
+            resourceInputs["apiproductId"] = undefined /*out*/;
             resourceInputs["billingPeriod"] = undefined /*out*/;
             resourceInputs["consumptionPricingRates"] = undefined /*out*/;
             resourceInputs["consumptionPricingType"] = undefined /*out*/;
@@ -167,6 +170,7 @@ export class RatePlan extends pulumi.CustomResource {
             resourceInputs["fixedRecurringFee"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["paymentFundingModel"] = undefined /*out*/;
             resourceInputs["revenueShareRates"] = undefined /*out*/;
             resourceInputs["revenueShareType"] = undefined /*out*/;

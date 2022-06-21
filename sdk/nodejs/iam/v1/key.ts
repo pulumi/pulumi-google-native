@@ -64,10 +64,12 @@ export class Key extends pulumi.CustomResource {
      * The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private keys, and never retains user-managed private keys.
      */
     public readonly privateKeyType!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The public key data. Only provided in `GetServiceAccountKey` responses.
      */
     public /*out*/ readonly publicKeyData!: pulumi.Output<string>;
+    public readonly serviceAccountId!: pulumi.Output<string>;
     /**
      * The key can be used after this timestamp.
      */
@@ -111,7 +113,9 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateKeyData"] = undefined /*out*/;
             resourceInputs["privateKeyType"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["publicKeyData"] = undefined /*out*/;
+            resourceInputs["serviceAccountId"] = undefined /*out*/;
             resourceInputs["validAfterTime"] = undefined /*out*/;
             resourceInputs["validBeforeTime"] = undefined /*out*/;
         }

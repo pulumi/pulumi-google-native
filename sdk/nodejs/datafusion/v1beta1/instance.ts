@@ -89,9 +89,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly gcsBucket!: pulumi.Output<string>;
     /**
+     * Required. The name of the instance to create.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of this instance is in the form of projects/{project}/locations/{location}/instances/{instance}.
      */
@@ -112,6 +117,7 @@ export class Instance extends pulumi.CustomResource {
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */
     public readonly privateInstance!: pulumi.Output<boolean>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Deprecated. Use tenant_project_id instead to extract the tenant project ID.
      *
@@ -213,12 +219,15 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableStackdriverLogging"] = undefined /*out*/;
             resourceInputs["enableStackdriverMonitoring"] = undefined /*out*/;
             resourceInputs["gcsBucket"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["options"] = undefined /*out*/;
             resourceInputs["p4ServiceAccount"] = undefined /*out*/;
             resourceInputs["privateInstance"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceEndpoint"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

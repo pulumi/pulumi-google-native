@@ -49,6 +49,10 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Required. ID of the `DeliveryPipeline`.
+     */
+    public readonly deliveryPipelineId!: pulumi.Output<string>;
+    /**
      * Description of the `DeliveryPipeline`. Max length is 255 characters.
      */
     public readonly description!: pulumi.Output<string>;
@@ -60,10 +64,16 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
      */
@@ -76,6 +86,10 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      * Most recent time at which the pipeline was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DeliveryPipeline resource with the given unique name, arguments, and options.
@@ -110,13 +124,18 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliveryPipelineId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["serialPipeline"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeliveryPipeline.__pulumiType, name, resourceInputs, opts);

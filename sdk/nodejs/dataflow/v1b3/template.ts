@@ -38,10 +38,12 @@ export class Template extends pulumi.CustomResource {
         return obj['__pulumiType'] === Template.__pulumiType;
     }
 
+    public readonly location!: pulumi.Output<string>;
     /**
      * The template metadata describing the template name, available parameters, etc.
      */
     public /*out*/ readonly metadata!: pulumi.Output<outputs.dataflow.v1b3.TemplateMetadataResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Describes the runtime metadata with SDKInfo and available parameters.
      */
@@ -83,7 +85,9 @@ export class Template extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["templateType"] = undefined /*out*/;
         } else {
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["runtimeMetadata"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["templateType"] = undefined /*out*/;

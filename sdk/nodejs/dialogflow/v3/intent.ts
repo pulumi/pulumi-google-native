@@ -35,6 +35,7 @@ export class Intent extends pulumi.CustomResource {
         return obj['__pulumiType'] === Intent.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
      */
@@ -52,6 +53,11 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     */
+    public readonly languageCode!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
      */
     public readonly name!: pulumi.Output<string>;
@@ -63,6 +69,7 @@ export class Intent extends pulumi.CustomResource {
      * The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     public readonly priority!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The collection of training phrases the agent is trained on to identify the intent.
      */
@@ -98,13 +105,17 @@ export class Intent extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["isFallback"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["trainingPhrases"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

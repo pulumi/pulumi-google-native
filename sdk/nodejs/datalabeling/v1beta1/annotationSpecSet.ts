@@ -56,6 +56,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
      * The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a AnnotationSpecSet resource with the given unique name, arguments, and options.
@@ -86,6 +87,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AnnotationSpecSet.__pulumiType, name, resourceInputs, opts);

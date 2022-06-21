@@ -76,6 +76,7 @@ export class Job extends pulumi.CustomResource {
      * Optional. Job is a Presto job.
      */
     public readonly prestoJob!: pulumi.Output<outputs.dataproc.v1.PrestoJobResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Job is a PySpark job.
      */
@@ -84,6 +85,7 @@ export class Job extends pulumi.CustomResource {
      * Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
      */
     public readonly reference!: pulumi.Output<outputs.dataproc.v1.JobReferenceResponse>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Optional. Job scheduling configuration.
      */
@@ -163,8 +165,10 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["pigJob"] = undefined /*out*/;
             resourceInputs["placement"] = undefined /*out*/;
             resourceInputs["prestoJob"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pysparkJob"] = undefined /*out*/;
             resourceInputs["reference"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["scheduling"] = undefined /*out*/;
             resourceInputs["sparkJob"] = undefined /*out*/;
             resourceInputs["sparkRJob"] = undefined /*out*/;

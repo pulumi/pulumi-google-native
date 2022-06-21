@@ -43,9 +43,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly cloudConsoleUri!: pulumi.Output<string>;
     /**
-     * Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
-     *
-     * @deprecated Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
+     * Optional. Email provided to send a confirmation with provisioning config to.
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -56,9 +54,6 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      * Instances to be created.
      */
     public readonly instances!: pulumi.Output<outputs.baremetalsolution.v2.InstanceConfigResponse[]>;
-    /**
-     * Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
-     */
     public readonly location!: pulumi.Output<string>;
     /**
      * The name of the provisioning config.
@@ -68,6 +63,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      * Networks to be created.
      */
     public readonly networks!: pulumi.Output<outputs.baremetalsolution.v2.NetworkConfigResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * State of ProvisioningConfig.
      */
@@ -116,6 +112,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["ticketId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

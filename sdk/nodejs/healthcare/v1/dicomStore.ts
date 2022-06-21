@@ -35,10 +35,16 @@ export class DicomStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === DicomStore.__pulumiType;
     }
 
+    public readonly datasetId!: pulumi.Output<string>;
+    /**
+     * The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+     */
+    public readonly dicomStoreId!: pulumi.Output<string | undefined>;
     /**
      * User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
      */
@@ -47,6 +53,7 @@ export class DicomStore extends pulumi.CustomResource {
      * Notification destination for new DICOM instances. Supplied by the client.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1.NotificationConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a DicomStore resource with the given unique name, arguments, and options.
@@ -70,9 +77,13 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
+            resourceInputs["datasetId"] = undefined /*out*/;
+            resourceInputs["dicomStoreId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DicomStore.__pulumiType, name, resourceInputs, opts);

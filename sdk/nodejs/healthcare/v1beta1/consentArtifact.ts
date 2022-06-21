@@ -43,10 +43,13 @@ export class ConsentArtifact extends pulumi.CustomResource {
      * Optional. An string indicating the version of the consent information shown to the user.
      */
     public readonly consentContentVersion!: pulumi.Output<string>;
+    public readonly consentStoreId!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * Optional. A signature from a guardian.
      */
     public readonly guardianSignature!: pulumi.Output<outputs.healthcare.v1beta1.SignatureResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
      */
@@ -55,6 +58,7 @@ export class ConsentArtifact extends pulumi.CustomResource {
      * Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * User's UUID provided by the client.
      */
@@ -103,9 +107,13 @@ export class ConsentArtifact extends pulumi.CustomResource {
         } else {
             resourceInputs["consentContentScreenshots"] = undefined /*out*/;
             resourceInputs["consentContentVersion"] = undefined /*out*/;
+            resourceInputs["consentStoreId"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["guardianSignature"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
             resourceInputs["userSignature"] = undefined /*out*/;
             resourceInputs["witnessSignature"] = undefined /*out*/;

@@ -34,10 +34,13 @@ export class Entry extends pulumi.CustomResource {
         return obj['__pulumiType'] === Entry.__pulumiType;
     }
 
+    public readonly apiId!: pulumi.Output<string>;
+    public readonly keyvaluemapId!: pulumi.Output<string>;
     /**
      * Resource URI that can be used to identify the scope of the key value map entries.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Data or payload that is being retrieved and associated with the unique key.
      */
@@ -72,7 +75,10 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
         } else {
+            resourceInputs["apiId"] = undefined /*out*/;
+            resourceInputs["keyvaluemapId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -40,6 +40,10 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
      */
     public readonly clientCertificate!: pulumi.Output<outputs.networksecurity.v1.GoogleCloudNetworksecurityV1CertificateProviderResponse>;
     /**
+     * Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+     */
+    public readonly clientTlsPolicyId!: pulumi.Output<string>;
+    /**
      * The timestamp when the resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -51,10 +55,12 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
      * Optional. Set of label tags associated with the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the ClientTlsPolicy resource. It matches the pattern `projects/*&#47;locations/{location}/clientTlsPolicies/{client_tls_policy}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
      */
@@ -95,10 +101,13 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["clientCertificate"] = undefined /*out*/;
+            resourceInputs["clientTlsPolicyId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serverValidationCa"] = undefined /*out*/;
             resourceInputs["sni"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

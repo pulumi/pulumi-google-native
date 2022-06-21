@@ -35,6 +35,7 @@ export class Environment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Environment.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -43,10 +44,12 @@ export class Environment extends pulumi.CustomResource {
      * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the environment. Format: `projects//locations//agents//environments/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The test cases config for continuous tests of this environment.
      */
@@ -95,9 +98,12 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["webhookConfig"] = args ? args.webhookConfig : undefined;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["testCasesConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["versionConfigs"] = undefined /*out*/;

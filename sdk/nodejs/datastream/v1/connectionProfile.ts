@@ -37,6 +37,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The connection profile identifier.
+     */
+    public readonly connectionProfileId!: pulumi.Output<string>;
+    /**
      * The create time of the resource.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -44,6 +48,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * Display name.
      */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Create the connection profile without validating it.
+     */
+    public readonly force!: pulumi.Output<string | undefined>;
     /**
      * Forward SSH tunnel connectivity.
      */
@@ -56,6 +64,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * Labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * MySQL ConnectionProfile configuration.
      */
@@ -72,6 +81,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * Private connectivity.
      */
     public readonly privateConnectivity!: pulumi.Output<outputs.datastream.v1.PrivateConnectivityResponse>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Static Service IP connectivity.
      */
@@ -80,6 +94,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * The update time of the resource.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the connection profile, but don't create any resources. The default is false.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -116,17 +134,23 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["connectionProfileId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["force"] = undefined /*out*/;
             resourceInputs["forwardSshConnectivity"] = undefined /*out*/;
             resourceInputs["gcsProfile"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mysqlProfile"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["oracleProfile"] = undefined /*out*/;
             resourceInputs["privateConnectivity"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["staticServiceIpConnectivity"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);

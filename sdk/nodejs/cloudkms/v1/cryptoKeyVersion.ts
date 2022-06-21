@@ -49,6 +49,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      * The time at which this CryptoKeyVersion was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly cryptoKeyId!: pulumi.Output<string>;
     /**
      * The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
      */
@@ -77,10 +78,13 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      * The time at which this CryptoKeyVersion's key material was most recently imported.
      */
     public /*out*/ readonly importTime!: pulumi.Output<string>;
+    public readonly keyRingId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for this CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
      */
@@ -130,6 +134,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             resourceInputs["algorithm"] = undefined /*out*/;
             resourceInputs["attestation"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["cryptoKeyId"] = undefined /*out*/;
             resourceInputs["destroyEventTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
             resourceInputs["externalProtectionLevelOptions"] = undefined /*out*/;
@@ -137,7 +142,10 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             resourceInputs["importFailureReason"] = undefined /*out*/;
             resourceInputs["importJob"] = undefined /*out*/;
             resourceInputs["importTime"] = undefined /*out*/;
+            resourceInputs["keyRingId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["protectionLevel"] = undefined /*out*/;
             resourceInputs["reimportEligible"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

@@ -57,10 +57,12 @@ export class Step extends pulumi.CustomResource {
      * If the execution containing this step has any dimension_definition set, then this field allows the child to specify the values of the dimensions. The keys must exactly match the dimension_definition of the execution. For example, if the execution has `dimension_definition = ['attempt', 'device']` then a step must define values for those dimensions, eg. `dimension_value = ['attempt': '1', 'device': 'Nexus 6']` If a step does not participate in one dimension of the matrix, the value for that dimension should be empty string. For example, if one of the tests is executed by a runner which does not support retries, the step could have `dimension_value = ['attempt': '', 'device': 'Nexus 6']` If the step does not participate in any dimensions of the matrix, it may leave dimension_value unset. A PRECONDITION_FAILED will be returned if any of the keys do not exist in the dimension_definition of the execution. A PRECONDITION_FAILED will be returned if another step in this execution already has the same name and dimension_value, but differs on other data fields, for example, step field is different. A PRECONDITION_FAILED will be returned if dimension_value is set, and there is a dimension_definition in the execution which is not specified as one of the keys. - In response: present if set by create - In create request: optional - In update request: never set
      */
     public readonly dimensionValue!: pulumi.Output<outputs.toolresults.v1beta3.StepDimensionValueEntryResponse[]>;
+    public readonly executionId!: pulumi.Output<string>;
     /**
      * Whether any of the outputs of this step are images whose thumbnails can be fetched with ListThumbnails. - In response: always set - In create/update request: never set
      */
     public readonly hasImages!: pulumi.Output<boolean>;
+    public readonly historyId!: pulumi.Output<string>;
     /**
      * Arbitrary user-supplied key/value pairs that are associated with the step. Users are responsible for managing the key namespace such that keys don't accidentally collide. An INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or if the length of any of the keys or values exceeds 100 characters. - In response: always set - In create request: optional - In update request: optional; any new key/value pair will be added to the map, and any new value for an existing key will update that key's value
      */
@@ -77,6 +79,11 @@ export class Step extends pulumi.CustomResource {
      * Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
      */
     public readonly outcome!: pulumi.Output<outputs.toolresults.v1beta3.OutcomeResponse>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
      */
@@ -140,11 +147,15 @@ export class Step extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["deviceUsageDuration"] = undefined /*out*/;
             resourceInputs["dimensionValue"] = undefined /*out*/;
+            resourceInputs["executionId"] = undefined /*out*/;
             resourceInputs["hasImages"] = undefined /*out*/;
+            resourceInputs["historyId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["multiStep"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outcome"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["runDuration"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stepId"] = undefined /*out*/;

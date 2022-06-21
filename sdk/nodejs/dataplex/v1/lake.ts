@@ -57,6 +57,11 @@ export class Lake extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+     */
+    public readonly lakeId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * Optional. Settings to manage lake and Dataproc Metastore service instance association.
      */
     public readonly metastore!: pulumi.Output<outputs.dataplex.v1.GoogleCloudDataplexV1LakeMetastoreResponse>;
@@ -68,6 +73,7 @@ export class Lake extends pulumi.CustomResource {
      * The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      */
@@ -84,6 +90,10 @@ export class Lake extends pulumi.CustomResource {
      * The time when the lake was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Lake resource with the given unique name, arguments, and options.
@@ -121,13 +131,17 @@ export class Lake extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lakeId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metastore"] = undefined /*out*/;
             resourceInputs["metastoreStatus"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Lake.__pulumiType, name, resourceInputs, opts);

@@ -43,6 +43,7 @@ export class Schema extends pulumi.CustomResource {
      * Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The timestamp that the revision was created.
      */
@@ -51,6 +52,10 @@ export class Schema extends pulumi.CustomResource {
      * Immutable. The revision ID of the schema.
      */
     public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    /**
+     * The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+     */
+    public readonly schemaId!: pulumi.Output<string | undefined>;
     /**
      * The type of the schema definition.
      */
@@ -77,8 +82,10 @@ export class Schema extends pulumi.CustomResource {
         } else {
             resourceInputs["definition"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["schemaId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -60,6 +60,10 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly family!: pulumi.Output<string>;
     /**
+     * Force image creation if true.
+     */
+    public readonly forceCreate!: pulumi.Output<string | undefined>;
+    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.v1.GuestOsFeatureResponse[]>;
@@ -91,10 +95,15 @@ export class Image extends pulumi.CustomResource {
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The parameters of the raw disk image.
      */
     public readonly rawDisk!: pulumi.Output<outputs.compute.v1.ImageRawDiskResponse>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Reserved for future use.
      */
@@ -207,6 +216,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["family"] = undefined /*out*/;
+            resourceInputs["forceCreate"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["imageEncryptionKey"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -215,7 +225,9 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["licenseCodes"] = undefined /*out*/;
             resourceInputs["licenses"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rawDisk"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["shieldedInstanceInitialState"] = undefined /*out*/;

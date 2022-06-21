@@ -55,10 +55,12 @@ export class SecuritySetting extends pulumi.CustomResource {
      * [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. The `DLP Inspect Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
      */
     public readonly inspectTemplate!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * List of types of data to remove when retention settings triggers purge.
      */
@@ -108,7 +110,9 @@ export class SecuritySetting extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["insightsExportSettings"] = undefined /*out*/;
             resourceInputs["inspectTemplate"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["purgeDataTypes"] = undefined /*out*/;
             resourceInputs["redactionScope"] = undefined /*out*/;
             resourceInputs["redactionStrategy"] = undefined /*out*/;

@@ -49,6 +49,11 @@ export class History extends pulumi.CustomResource {
      * A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
      */
@@ -75,6 +80,8 @@ export class History extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["historyId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["testPlatform"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

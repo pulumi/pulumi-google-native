@@ -38,6 +38,7 @@ export class ArchiveDeployment extends pulumi.CustomResource {
      * The time at which the Archive Deployment was created in milliseconds since the epoch.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * Input only. The Google Cloud Storage signed URL returned from GenerateUploadUrl and used to upload the Archive zip file.
      */
@@ -54,6 +55,7 @@ export class ArchiveDeployment extends pulumi.CustomResource {
      * A reference to the LRO that created this Archive Deployment in the following format: `organizations/{org}/operations/{id}`
      */
     public /*out*/ readonly operation!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * The time at which the Archive Deployment was updated in milliseconds since the epoch.
      */
@@ -86,10 +88,12 @@ export class ArchiveDeployment extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         } else {
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["gcsUri"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

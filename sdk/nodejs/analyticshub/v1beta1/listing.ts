@@ -44,6 +44,7 @@ export class Listing extends pulumi.CustomResource {
      * Optional. Categories of the listing. Up to two categories are allowed.
      */
     public readonly categories!: pulumi.Output<string[]>;
+    public readonly dataExchangeId!: pulumi.Output<string>;
     /**
      * Optional. Details of the data provider who owns the source data.
      */
@@ -65,6 +66,11 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly icon!: pulumi.Output<string>;
     /**
+     * Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+     */
+    public readonly listingId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The resource name of the listing. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -72,6 +78,7 @@ export class Listing extends pulumi.CustomResource {
      * Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
      */
     public readonly primaryContact!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Details of the publisher who owns the listing and who can share the source data.
      */
@@ -127,13 +134,17 @@ export class Listing extends pulumi.CustomResource {
         } else {
             resourceInputs["bigqueryDataset"] = undefined /*out*/;
             resourceInputs["categories"] = undefined /*out*/;
+            resourceInputs["dataExchangeId"] = undefined /*out*/;
             resourceInputs["dataProvider"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["documentation"] = undefined /*out*/;
             resourceInputs["icon"] = undefined /*out*/;
+            resourceInputs["listingId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["primaryContact"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["publisher"] = undefined /*out*/;
             resourceInputs["requestAccess"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

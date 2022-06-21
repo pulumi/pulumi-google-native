@@ -46,6 +46,7 @@ export class Reservation extends pulumi.CustomResource {
      * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */
     public readonly ignoreIdleSlots!: pulumi.Output<boolean>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
      */
@@ -54,6 +55,11 @@ export class Reservation extends pulumi.CustomResource {
      * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+     */
+    public readonly reservationId!: pulumi.Output<string | undefined>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions, slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.
      */
@@ -88,8 +94,11 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["concurrency"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["ignoreIdleSlots"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["multiRegionAuxiliary"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["reservationId"] = undefined /*out*/;
             resourceInputs["slotCapacity"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

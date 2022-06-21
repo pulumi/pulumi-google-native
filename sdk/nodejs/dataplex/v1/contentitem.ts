@@ -52,6 +52,8 @@ export class Contentitem extends pulumi.CustomResource {
      * Optional. User defined labels for the content.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly lakeId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
      */
@@ -64,6 +66,7 @@ export class Contentitem extends pulumi.CustomResource {
      * The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
      */
     public readonly path!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Sql Script related configurations.
      */
@@ -76,6 +79,10 @@ export class Contentitem extends pulumi.CustomResource {
      * The time when the content was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Contentitem resource with the given unique name, arguments, and options.
@@ -116,12 +123,16 @@ export class Contentitem extends pulumi.CustomResource {
             resourceInputs["dataText"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lakeId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notebook"] = undefined /*out*/;
             resourceInputs["path"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["sqlScript"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Contentitem.__pulumiType, name, resourceInputs, opts);

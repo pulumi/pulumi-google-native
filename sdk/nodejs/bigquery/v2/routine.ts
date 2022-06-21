@@ -44,6 +44,7 @@ export class Routine extends pulumi.CustomResource {
      * The time when this routine was created, in milliseconds since the epoch.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
      */
@@ -72,6 +73,7 @@ export class Routine extends pulumi.CustomResource {
      * The time when this routine was last modified, in milliseconds since the epoch.
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Remote function specific options.
      */
@@ -140,6 +142,7 @@ export class Routine extends pulumi.CustomResource {
         } else {
             resourceInputs["arguments"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["definitionBody"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["determinismLevel"] = undefined /*out*/;
@@ -147,6 +150,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["importedLibraries"] = undefined /*out*/;
             resourceInputs["language"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["remoteFunctionOptions"] = undefined /*out*/;
             resourceInputs["returnTableType"] = undefined /*out*/;
             resourceInputs["returnType"] = undefined /*out*/;

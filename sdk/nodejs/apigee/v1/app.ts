@@ -63,9 +63,6 @@ export class App extends pulumi.CustomResource {
      * Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
      */
     public /*out*/ readonly credentials!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1CredentialResponse[]>;
-    /**
-     * ID of the developer.
-     */
     public readonly developerId!: pulumi.Output<string>;
     /**
      * Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
@@ -79,6 +76,7 @@ export class App extends pulumi.CustomResource {
      * Name of the developer app.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
      */
@@ -131,6 +129,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["keyExpiresIn"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["scopes"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

@@ -39,6 +39,7 @@ export class Index extends pulumi.CustomResource {
      * The collection ID to which this index applies. Required.
      */
     public readonly collectionId!: pulumi.Output<string>;
+    public readonly databaseId!: pulumi.Output<string>;
     /**
      * The fields to index.
      */
@@ -47,6 +48,7 @@ export class Index extends pulumi.CustomResource {
      * The resource name of the index. Output only.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The state of the index. Output only.
      */
@@ -74,8 +76,10 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["state"] = args ? args.state : undefined;
         } else {
             resourceInputs["collectionId"] = undefined /*out*/;
+            resourceInputs["databaseId"] = undefined /*out*/;
             resourceInputs["fields"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

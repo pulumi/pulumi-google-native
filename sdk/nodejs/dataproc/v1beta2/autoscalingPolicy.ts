@@ -37,10 +37,12 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
     }
 
     public readonly basicAlgorithm!: pulumi.Output<outputs.dataproc.v1beta2.BasicAutoscalingAlgorithmResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Describes how the autoscaler will operate for secondary workers.
      */
@@ -76,7 +78,9 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["basicAlgorithm"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["secondaryWorkerConfig"] = undefined /*out*/;
             resourceInputs["workerConfig"] = undefined /*out*/;
         }

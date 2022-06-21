@@ -55,6 +55,11 @@ export class FutureReservation extends pulumi.CustomResource {
      * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     public readonly namePrefix!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined fully-qualified URL for this resource.
      */
@@ -79,9 +84,6 @@ export class FutureReservation extends pulumi.CustomResource {
      * Time window for this Future Reservation.
      */
     public readonly timeWindow!: pulumi.Output<outputs.compute.alpha.FutureReservationTimeWindowResponse>;
-    /**
-     * URL of the Zone where this future reservation resides.
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -115,6 +117,8 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namePrefix"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["shareSettings"] = undefined /*out*/;

@@ -37,6 +37,10 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Failure action when primary worker creation fails.
+     */
+    public readonly actionOnFailedPrimaryWorkers!: pulumi.Output<string | undefined>;
+    /**
      * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
      */
     public readonly clusterName!: pulumi.Output<string>;
@@ -56,10 +60,12 @@ export class Cluster extends pulumi.CustomResource {
      * Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
      */
     public /*out*/ readonly metrics!: pulumi.Output<outputs.dataproc.v1.ClusterMetricsResponse>;
-    /**
-     * The Google Cloud Platform project ID that the cluster belongs to.
-     */
     public readonly project!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Cluster status.
      */
@@ -103,12 +109,15 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusHistory"] = undefined /*out*/;
         } else {
+            resourceInputs["actionOnFailedPrimaryWorkers"] = undefined /*out*/;
             resourceInputs["clusterName"] = undefined /*out*/;
             resourceInputs["clusterUuid"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusHistory"] = undefined /*out*/;
             resourceInputs["virtualClusterConfig"] = undefined /*out*/;

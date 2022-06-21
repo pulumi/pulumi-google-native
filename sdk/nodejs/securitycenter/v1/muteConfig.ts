@@ -56,9 +56,14 @@ export class MuteConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly mostRecentEditor!: pulumi.Output<string>;
     /**
+     * Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+     */
+    public readonly muteConfigId!: pulumi.Output<string>;
+    /**
      * This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
      */
@@ -96,7 +101,9 @@ export class MuteConfig extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["mostRecentEditor"] = undefined /*out*/;
+            resourceInputs["muteConfigId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

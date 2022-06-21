@@ -44,6 +44,7 @@ export class Budget extends pulumi.CustomResource {
      * Budgeted amount.
      */
     public readonly amount!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>;
+    public readonly billingAccountId!: pulumi.Output<string>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
      */
@@ -93,6 +94,7 @@ export class Budget extends pulumi.CustomResource {
         } else {
             resourceInputs["allUpdatesRule"] = undefined /*out*/;
             resourceInputs["amount"] = undefined /*out*/;
+            resourceInputs["billingAccountId"] = undefined /*out*/;
             resourceInputs["budgetFilter"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

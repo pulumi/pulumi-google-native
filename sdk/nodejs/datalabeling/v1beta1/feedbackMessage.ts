@@ -35,6 +35,7 @@ export class FeedbackMessage extends pulumi.CustomResource {
         return obj['__pulumiType'] === FeedbackMessage.__pulumiType;
     }
 
+    public readonly annotatedDatasetId!: pulumi.Output<string>;
     /**
      * String content of the feedback. Maximum of 10000 characters.
      */
@@ -43,6 +44,8 @@ export class FeedbackMessage extends pulumi.CustomResource {
      * Create time.
      */
     public readonly createTime!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
+    public readonly feedbackThreadId!: pulumi.Output<string>;
     /**
      * The image storing this feedback if the feedback is an image representing operator's comments.
      */
@@ -52,6 +55,7 @@ export class FeedbackMessage extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly operatorFeedbackMetadata!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse>;
+    public readonly project!: pulumi.Output<string>;
     public readonly requesterFeedbackMetadata!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse>;
 
     /**
@@ -85,11 +89,15 @@ export class FeedbackMessage extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requesterFeedbackMetadata"] = args ? args.requesterFeedbackMetadata : undefined;
         } else {
+            resourceInputs["annotatedDatasetId"] = undefined /*out*/;
             resourceInputs["body"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
+            resourceInputs["feedbackThreadId"] = undefined /*out*/;
             resourceInputs["image"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operatorFeedbackMetadata"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requesterFeedbackMetadata"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

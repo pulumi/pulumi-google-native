@@ -56,6 +56,11 @@ export class Peering extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Required. Peering Id, unique name to identify peering.
+     */
+    public readonly peeringId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
      * The current state of this Peering.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -104,6 +109,8 @@ export class Peering extends pulumi.CustomResource {
             resourceInputs["domainResource"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["peeringId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

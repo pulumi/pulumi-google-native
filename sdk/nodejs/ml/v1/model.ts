@@ -63,6 +63,7 @@ export class Model extends pulumi.CustomResource {
      * Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
      */
     public readonly onlinePredictionLogging!: pulumi.Output<boolean>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field.
      */
@@ -96,6 +97,7 @@ export class Model extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["onlinePredictionConsoleLogging"] = undefined /*out*/;
             resourceInputs["onlinePredictionLogging"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["regions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

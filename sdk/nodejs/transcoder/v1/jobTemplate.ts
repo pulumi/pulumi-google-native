@@ -40,9 +40,15 @@ export class JobTemplate extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.transcoder.v1.JobConfigResponse>;
     /**
+     * Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+     */
+    public readonly jobTemplateId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a JobTemplate resource with the given unique name, arguments, and options.
@@ -65,7 +71,10 @@ export class JobTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
             resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["jobTemplateId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(JobTemplate.__pulumiType, name, resourceInputs, opts);

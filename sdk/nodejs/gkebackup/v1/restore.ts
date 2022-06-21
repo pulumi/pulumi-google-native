@@ -64,10 +64,12 @@ export class Restore extends pulumi.CustomResource {
      * A set of custom labels supplied by user.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The full name of the Restore resource. Format: projects/*&#47;locations/*&#47;restorePlans/*&#47;restores/*
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Number of resources excluded during the restore execution.
      */
@@ -84,6 +86,11 @@ export class Restore extends pulumi.CustomResource {
      * Configuration of the Restore. Inherited from parent RestorePlan's restore_config.
      */
     public /*out*/ readonly restoreConfig!: pulumi.Output<outputs.gkebackup.v1.RestoreConfigResponse>;
+    /**
+     * Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
+     */
+    public readonly restoreId!: pulumi.Output<string>;
+    public readonly restorePlanId!: pulumi.Output<string>;
     /**
      * The current state of the Restore.
      */
@@ -154,11 +161,15 @@ export class Restore extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resourcesExcludedCount"] = undefined /*out*/;
             resourceInputs["resourcesFailedCount"] = undefined /*out*/;
             resourceInputs["resourcesRestoredCount"] = undefined /*out*/;
             resourceInputs["restoreConfig"] = undefined /*out*/;
+            resourceInputs["restoreId"] = undefined /*out*/;
+            resourceInputs["restorePlanId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateReason"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;

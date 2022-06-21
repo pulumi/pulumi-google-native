@@ -39,6 +39,10 @@ export class GameServerDeployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Required. The ID of the game server deployment resource to create.
+     */
+    public readonly deploymentId!: pulumi.Output<string>;
+    /**
      * Human readable description of the game server deployment.
      */
     public readonly description!: pulumi.Output<string>;
@@ -50,10 +54,12 @@ export class GameServerDeployment extends pulumi.CustomResource {
      * The labels associated with this game server deployment. Each label is a key-value pair.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The last-modified time.
      */
@@ -84,10 +90,13 @@ export class GameServerDeployment extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

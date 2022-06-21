@@ -59,10 +59,12 @@ export class Job extends pulumi.CustomResource {
      * Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
      */
     public readonly legacyAppEngineCron!: pulumi.Output<boolean>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Pub/Sub target.
      */
@@ -131,7 +133,9 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["httpTarget"] = undefined /*out*/;
             resourceInputs["lastAttemptTime"] = undefined /*out*/;
             resourceInputs["legacyAppEngineCron"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pubsubTarget"] = undefined /*out*/;
             resourceInputs["retryConfig"] = undefined /*out*/;
             resourceInputs["schedule"] = undefined /*out*/;

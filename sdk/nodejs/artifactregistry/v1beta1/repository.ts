@@ -55,10 +55,16 @@ export class Repository extends pulumi.CustomResource {
      * Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * The repository id to use for this repository.
+     */
+    public readonly repositoryId!: pulumi.Output<string | undefined>;
     /**
      * The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
      */
@@ -96,7 +102,10 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["format"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["repositoryId"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

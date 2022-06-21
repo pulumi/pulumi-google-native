@@ -64,6 +64,7 @@ export class Registration extends pulumi.CustomResource {
      * Set of labels associated with the `Registration`.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
      */
@@ -76,6 +77,7 @@ export class Registration extends pulumi.CustomResource {
      * Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
      */
     public /*out*/ readonly pendingContactSettings!: pulumi.Output<outputs.domains.v1.ContactSettingsResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The state of the `Registration`
      */
@@ -131,9 +133,11 @@ export class Registration extends pulumi.CustomResource {
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["issues"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["managementSettings"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingContactSettings"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["supportedPrivacy"] = undefined /*out*/;
         }

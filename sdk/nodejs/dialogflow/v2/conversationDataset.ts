@@ -60,10 +60,12 @@ export class ConversationDataset extends pulumi.CustomResource {
      * Input configurations set during conversation data import.
      */
     public /*out*/ readonly inputConfig!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2InputConfigResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a ConversationDataset resource with the given unique name, arguments, and options.
@@ -95,7 +97,9 @@ export class ConversationDataset extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["inputConfig"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConversationDataset.__pulumiType, name, resourceInputs, opts);

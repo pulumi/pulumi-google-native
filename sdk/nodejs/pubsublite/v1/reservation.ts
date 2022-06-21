@@ -34,10 +34,16 @@ export class Reservation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Reservation.__pulumiType;
     }
 
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+     */
+    public readonly reservationId!: pulumi.Output<string>;
     /**
      * The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
      */
@@ -63,7 +69,10 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["reservationId"] = args ? args.reservationId : undefined;
             resourceInputs["throughputCapacity"] = args ? args.throughputCapacity : undefined;
         } else {
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["reservationId"] = undefined /*out*/;
             resourceInputs["throughputCapacity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

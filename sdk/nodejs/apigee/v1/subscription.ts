@@ -45,6 +45,7 @@ export class Subscription extends pulumi.CustomResource {
      * Time when the API product subscription was created in milliseconds since epoch.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly developerId!: pulumi.Output<string>;
     /**
      * Time when the API product subscription ends in milliseconds since epoch.
      */
@@ -57,6 +58,7 @@ export class Subscription extends pulumi.CustomResource {
      * Name of the API product subscription.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Time when the API product subscription starts in milliseconds since epoch.
      */
@@ -90,9 +92,11 @@ export class Subscription extends pulumi.CustomResource {
         } else {
             resourceInputs["apiproduct"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["developerId"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

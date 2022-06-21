@@ -43,10 +43,12 @@ export class Version extends pulumi.CustomResource {
      * Optional. The developer-provided description of this version.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The status of this version. This field is read-only and cannot be set by create and update methods.
      */
@@ -77,7 +79,9 @@ export class Version extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["versionNumber"] = undefined /*out*/;
         }

@@ -60,6 +60,10 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
+     * Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
+     */
+    public readonly externalId!: pulumi.Output<string | undefined>;
+    /**
      * Represents the KAJ enrollment state of the given workload.
      */
     public /*out*/ readonly kajEnrollmentState!: pulumi.Output<string>;
@@ -73,10 +77,12 @@ export class Workload extends pulumi.CustomResource {
      * Optional. Labels applied to the workload.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
@@ -138,10 +144,13 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableSovereignControls"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["externalId"] = undefined /*out*/;
             resourceInputs["kajEnrollmentState"] = undefined /*out*/;
             resourceInputs["kmsSettings"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
             resourceInputs["resourceSettings"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;

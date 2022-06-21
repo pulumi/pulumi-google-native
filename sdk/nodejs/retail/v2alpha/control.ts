@@ -40,6 +40,11 @@ export class Control extends pulumi.CustomResource {
      * List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
      */
     public /*out*/ readonly associatedServingConfigIds!: pulumi.Output<string[]>;
+    public readonly catalogId!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+     */
+    public readonly controlId!: pulumi.Output<string>;
     /**
      * The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
      */
@@ -48,10 +53,12 @@ export class Control extends pulumi.CustomResource {
      * A facet specification to perform faceted search.
      */
     public readonly facetSpec!: pulumi.Output<outputs.retail.v2alpha.GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. Fully qualified name `projects/*&#47;locations/global/catalogs/*&#47;controls/*`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
      */
@@ -96,9 +103,13 @@ export class Control extends pulumi.CustomResource {
             resourceInputs["associatedServingConfigIds"] = undefined /*out*/;
         } else {
             resourceInputs["associatedServingConfigIds"] = undefined /*out*/;
+            resourceInputs["catalogId"] = undefined /*out*/;
+            resourceInputs["controlId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["facetSpec"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rule"] = undefined /*out*/;
             resourceInputs["solutionTypes"] = undefined /*out*/;
         }

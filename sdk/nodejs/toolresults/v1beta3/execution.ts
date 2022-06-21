@@ -54,10 +54,16 @@ export class Execution extends pulumi.CustomResource {
      * A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
      */
     public readonly executionId!: pulumi.Output<string>;
+    public readonly historyId!: pulumi.Output<string>;
     /**
      * Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
      */
     public readonly outcome!: pulumi.Output<outputs.toolresults.v1beta3.OutcomeResponse>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
      */
@@ -101,7 +107,10 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["dimensionDefinitions"] = undefined /*out*/;
             resourceInputs["executionId"] = undefined /*out*/;
+            resourceInputs["historyId"] = undefined /*out*/;
             resourceInputs["outcome"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["specification"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["testExecutionMatrixId"] = undefined /*out*/;

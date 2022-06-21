@@ -36,6 +36,10 @@ export class Backup extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
+     */
+    public readonly backupId!: pulumi.Output<string>;
+    /**
      * The time the backups was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -43,6 +47,7 @@ export class Backup extends pulumi.CustomResource {
      * Optional. A short description of the backup.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly domainId!: pulumi.Output<string>;
     /**
      * Optional. Resource labels to represent user provided metadata.
      */
@@ -51,6 +56,7 @@ export class Backup extends pulumi.CustomResource {
      * The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The current state of the backup.
      */
@@ -97,10 +103,13 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["backupId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["domainId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

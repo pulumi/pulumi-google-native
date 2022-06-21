@@ -35,6 +35,7 @@ export class Webhook extends pulumi.CustomResource {
         return obj['__pulumiType'] === Webhook.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * Indicates whether the webhook is disabled.
      */
@@ -47,10 +48,12 @@ export class Webhook extends pulumi.CustomResource {
      * Configuration for a generic web service.
      */
     public readonly genericWebService!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
      */
@@ -87,10 +90,13 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["serviceDirectory"] = args ? args.serviceDirectory : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["genericWebService"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceDirectory"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;
         }

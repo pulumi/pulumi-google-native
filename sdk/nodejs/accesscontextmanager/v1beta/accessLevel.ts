@@ -35,6 +35,7 @@ export class AccessLevel extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessLevel.__pulumiType;
     }
 
+    public readonly accessPolicyId!: pulumi.Output<string>;
     /**
      * A `BasicLevel` composed of `Conditions`.
      */
@@ -77,6 +78,7 @@ export class AccessLevel extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
         } else {
+            resourceInputs["accessPolicyId"] = undefined /*out*/;
             resourceInputs["basic"] = undefined /*out*/;
             resourceInputs["custom"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

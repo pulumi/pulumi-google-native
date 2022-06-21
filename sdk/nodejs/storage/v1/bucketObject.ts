@@ -39,9 +39,6 @@ export class BucketObject extends pulumi.CustomResource {
      * Access controls on the object.
      */
     public readonly acl!: pulumi.Output<outputs.storage.v1.ObjectAccessControlResponse[]>;
-    /**
-     * The name of the bucket containing this object.
-     */
     public readonly bucket!: pulumi.Output<string>;
     /**
      * Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
@@ -56,7 +53,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly contentDisposition!: pulumi.Output<string>;
     /**
-     * Content-Encoding of the object data.
+     * If set, sets the contentEncoding property of the final object to this value. Setting this parameter is equivalent to setting the contentEncoding metadata property. This can be useful when uploading an object with uploadType=media to indicate the encoding of the content being uploaded.
      */
     public readonly contentEncoding!: pulumi.Output<string>;
     /**
@@ -92,11 +89,27 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly generation!: pulumi.Output<string>;
     /**
+     * Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+     */
+    public readonly ifGenerationMatch!: pulumi.Output<string | undefined>;
+    /**
+     * Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+     */
+    public readonly ifGenerationNotMatch!: pulumi.Output<string | undefined>;
+    /**
+     * Makes the operation conditional on whether the object's current metageneration matches the given value.
+     */
+    public readonly ifMetagenerationMatch!: pulumi.Output<string | undefined>;
+    /**
+     * Makes the operation conditional on whether the object's current metageneration does not match the given value.
+     */
+    public readonly ifMetagenerationNotMatch!: pulumi.Output<string | undefined>;
+    /**
      * The kind of item this is. For objects, this is always storage#object.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+     * Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
     /**
@@ -116,13 +129,21 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly metageneration!: pulumi.Output<string>;
     /**
-     * The name of the object. Required if not specified by URL parameter.
+     * Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * The owner of the object. This will always be the uploader of the object.
      */
     public readonly owner!: pulumi.Output<outputs.storage.v1.BucketObjectOwnerResponse>;
+    /**
+     * Apply a predefined set of access controls to this object.
+     */
+    public readonly predefinedAcl!: pulumi.Output<string | undefined>;
+    /**
+     * Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+     */
+    public readonly projection!: pulumi.Output<string | undefined>;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
@@ -159,6 +180,10 @@ export class BucketObject extends pulumi.CustomResource {
      * The modification time of the object metadata in RFC 3339 format.
      */
     public readonly updated!: pulumi.Output<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
+    public readonly userProject!: pulumi.Output<string | undefined>;
 
     /**
      * Create a BucketObject resource with the given unique name, arguments, and options.
@@ -229,6 +254,10 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["eventBasedHold"] = undefined /*out*/;
             resourceInputs["generation"] = undefined /*out*/;
+            resourceInputs["ifGenerationMatch"] = undefined /*out*/;
+            resourceInputs["ifGenerationNotMatch"] = undefined /*out*/;
+            resourceInputs["ifMetagenerationMatch"] = undefined /*out*/;
+            resourceInputs["ifMetagenerationNotMatch"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["md5Hash"] = undefined /*out*/;
@@ -237,6 +266,8 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["metageneration"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
+            resourceInputs["predefinedAcl"] = undefined /*out*/;
+            resourceInputs["projection"] = undefined /*out*/;
             resourceInputs["retentionExpirationTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
@@ -246,6 +277,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["timeDeleted"] = undefined /*out*/;
             resourceInputs["timeStorageClassUpdated"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketObject.__pulumiType, name, resourceInputs, opts);

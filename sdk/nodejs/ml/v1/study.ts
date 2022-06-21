@@ -44,10 +44,12 @@ export class Study extends pulumi.CustomResource {
      * A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
      */
     public /*out*/ readonly inactiveReason!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of a study.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The detailed state of a study.
      */
@@ -56,6 +58,10 @@ export class Study extends pulumi.CustomResource {
      * Configuration of the study.
      */
     public readonly studyConfig!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__StudyConfigResponse>;
+    /**
+     * Required. The ID to use for the study, which will become the final component of the study's resource name.
+     */
+    public readonly studyId!: pulumi.Output<string>;
 
     /**
      * Create a Study resource with the given unique name, arguments, and options.
@@ -85,9 +91,12 @@ export class Study extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["inactiveReason"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["studyConfig"] = undefined /*out*/;
+            resourceInputs["studyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Study.__pulumiType, name, resourceInputs, opts);

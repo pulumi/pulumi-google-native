@@ -36,6 +36,7 @@ export class Customer extends pulumi.CustomResource {
         return obj['__pulumiType'] === Customer.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
      */
@@ -44,6 +45,7 @@ export class Customer extends pulumi.CustomResource {
      * Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
      */
     public readonly channelPartnerId!: pulumi.Output<string>;
+    public readonly channelPartnerLinkId!: pulumi.Output<string>;
     /**
      * The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
      */
@@ -126,8 +128,10 @@ export class Customer extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["alternateEmail"] = undefined /*out*/;
             resourceInputs["channelPartnerId"] = undefined /*out*/;
+            resourceInputs["channelPartnerLinkId"] = undefined /*out*/;
             resourceInputs["cloudIdentityId"] = undefined /*out*/;
             resourceInputs["cloudIdentityInfo"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

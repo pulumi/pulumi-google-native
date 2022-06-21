@@ -65,9 +65,6 @@ export class ServiceAccount extends pulumi.CustomResource {
      * The OAuth 2.0 client ID for the service account.
      */
     public /*out*/ readonly oauth2ClientId!: pulumi.Output<string>;
-    /**
-     * The ID of the project that owns the service account.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.

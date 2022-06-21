@@ -45,6 +45,7 @@ export class Query extends pulumi.CustomResource {
      * Hostname is available only when query is executed at host level.
      */
     public readonly envgroupHostname!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * Error is set when query fails.
      */
@@ -57,6 +58,7 @@ export class Query extends pulumi.CustomResource {
      * Asynchronous Query Name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Contains information like metrics, dimenstions etc of the AsyncQuery.
      */
@@ -136,9 +138,11 @@ export class Query extends pulumi.CustomResource {
         } else {
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["envgroupHostname"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["executionTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["queryParams"] = undefined /*out*/;
             resourceInputs["reportDefinitionId"] = undefined /*out*/;
             resourceInputs["result"] = undefined /*out*/;

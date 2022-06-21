@@ -38,10 +38,12 @@ export class Keystore extends pulumi.CustomResource {
      * Aliases in this keystore.
      */
     public /*out*/ readonly aliases!: pulumi.Output<string[]>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
-     * Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+     * Optional. Name of the keystore. Overrides the value in Keystore.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
 
     /**
      * Create a Keystore resource with the given unique name, arguments, and options.
@@ -66,7 +68,9 @@ export class Keystore extends pulumi.CustomResource {
             resourceInputs["aliases"] = undefined /*out*/;
         } else {
             resourceInputs["aliases"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Keystore.__pulumiType, name, resourceInputs, opts);

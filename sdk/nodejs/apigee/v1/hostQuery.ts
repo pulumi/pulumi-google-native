@@ -57,6 +57,7 @@ export class HostQuery extends pulumi.CustomResource {
      * Asynchronous Query Name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Contains information like metrics, dimenstions etc of the AsyncQuery.
      */
@@ -135,6 +136,7 @@ export class HostQuery extends pulumi.CustomResource {
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["executionTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["queryParams"] = undefined /*out*/;
             resourceInputs["reportDefinitionId"] = undefined /*out*/;
             resourceInputs["result"] = undefined /*out*/;

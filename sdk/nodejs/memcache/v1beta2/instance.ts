@@ -52,6 +52,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * List of messages that describe the current state of the Memcached instance.
      */
     public readonly instanceMessages!: pulumi.Output<outputs.memcache.v1beta2.InstanceMessageResponse[]>;
@@ -59,6 +63,7 @@ export class Instance extends pulumi.CustomResource {
      * Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
      */
@@ -95,6 +100,7 @@ export class Instance extends pulumi.CustomResource {
      * User defined parameters to apply to the memcached process on each node.
      */
     public readonly parameters!: pulumi.Output<outputs.memcache.v1beta2.MemcacheParametersResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The state of this Memcached instance.
      */
@@ -159,8 +165,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoint"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["instanceMessages"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maintenancePolicy"] = undefined /*out*/;
             resourceInputs["maintenanceSchedule"] = undefined /*out*/;
             resourceInputs["memcacheFullVersion"] = undefined /*out*/;
@@ -170,6 +178,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeConfig"] = undefined /*out*/;
             resourceInputs["nodeCount"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateAvailable"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

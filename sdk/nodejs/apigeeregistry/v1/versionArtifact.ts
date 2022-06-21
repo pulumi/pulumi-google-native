@@ -34,6 +34,11 @@ export class VersionArtifact extends pulumi.CustomResource {
         return obj['__pulumiType'] === VersionArtifact.__pulumiType;
     }
 
+    public readonly apiId!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+     */
+    public readonly artifactId!: pulumi.Output<string>;
     /**
      * Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
      */
@@ -46,6 +51,7 @@ export class VersionArtifact extends pulumi.CustomResource {
      * A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
      */
     public /*out*/ readonly hash!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
      */
@@ -54,6 +60,7 @@ export class VersionArtifact extends pulumi.CustomResource {
      * Resource name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact.
      */
@@ -62,6 +69,7 @@ export class VersionArtifact extends pulumi.CustomResource {
      * Last update timestamp.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    public readonly versionId!: pulumi.Output<string>;
 
     /**
      * Create a VersionArtifact resource with the given unique name, arguments, and options.
@@ -96,13 +104,18 @@ export class VersionArtifact extends pulumi.CustomResource {
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["apiId"] = undefined /*out*/;
+            resourceInputs["artifactId"] = undefined /*out*/;
             resourceInputs["contents"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["hash"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mimeType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VersionArtifact.__pulumiType, name, resourceInputs, opts);

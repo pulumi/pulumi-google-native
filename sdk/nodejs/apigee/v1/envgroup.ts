@@ -47,9 +47,10 @@ export class Envgroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
     /**
-     * ID of the environment group.
+     * ID of the environment group. Overrides any ID in the environment_group resource.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * State of the environment group. Values other than ACTIVE means the resource is not ready to use.
      */
@@ -83,6 +84,7 @@ export class Envgroup extends pulumi.CustomResource {
             resourceInputs["hostnames"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

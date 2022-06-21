@@ -46,10 +46,16 @@ export class TagTemplate extends pulumi.CustomResource {
      * Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
      */
     public readonly isPubliclyReadable!: pulumi.Output<boolean>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+     */
+    public readonly tagTemplateId!: pulumi.Output<string>;
 
     /**
      * Create a TagTemplate resource with the given unique name, arguments, and options.
@@ -79,7 +85,10 @@ export class TagTemplate extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["fields"] = undefined /*out*/;
             resourceInputs["isPubliclyReadable"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["tagTemplateId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TagTemplate.__pulumiType, name, resourceInputs, opts);

@@ -45,6 +45,10 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Required. A unique identifier for the hub.
+     */
+    public readonly hubId!: pulumi.Output<string>;
+    /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -52,6 +56,11 @@ export class Hub extends pulumi.CustomResource {
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      */
@@ -97,8 +106,11 @@ export class Hub extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["hubId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["routingVpcs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;

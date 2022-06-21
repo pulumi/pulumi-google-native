@@ -36,9 +36,6 @@ export class ObjectAccessControl extends pulumi.CustomResource {
         return obj['__pulumiType'] === ObjectAccessControl.__pulumiType;
     }
 
-    /**
-     * The name of the bucket.
-     */
     public readonly bucket!: pulumi.Output<string>;
     /**
      * The domain associated with the entity, if any.
@@ -72,16 +69,13 @@ export class ObjectAccessControl extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
-     * The content generation of the object, if applied to an object.
+     * If present, selects a specific revision of this object (as opposed to the latest version, the default).
      */
     public readonly generation!: pulumi.Output<string>;
     /**
      * The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
      */
     public readonly kind!: pulumi.Output<string>;
-    /**
-     * The name of the object, if applied to an object.
-     */
     public readonly object!: pulumi.Output<string>;
     /**
      * The project team associated with the entity, if any.
@@ -95,6 +89,10 @@ export class ObjectAccessControl extends pulumi.CustomResource {
      * The link to this access-control entry.
      */
     public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
+    public readonly userProject!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ObjectAccessControl resource with the given unique name, arguments, and options.
@@ -140,6 +138,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             resourceInputs["projectTeam"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObjectAccessControl.__pulumiType, name, resourceInputs, opts);

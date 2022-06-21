@@ -34,6 +34,7 @@ export class NatAddress extends pulumi.CustomResource {
         return obj['__pulumiType'] === NatAddress.__pulumiType;
     }
 
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The static IPV4 address.
      */
@@ -42,6 +43,7 @@ export class NatAddress extends pulumi.CustomResource {
      * Resource ID of the NAT address.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * State of the nat address.
      */
@@ -70,8 +72,10 @@ export class NatAddress extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

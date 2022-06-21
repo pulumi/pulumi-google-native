@@ -35,6 +35,10 @@ export class OrganizationBigQueryExport extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+     */
+    public readonly bigQueryExportId!: pulumi.Output<string>;
+    /**
      * The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -58,6 +62,7 @@ export class OrganizationBigQueryExport extends pulumi.CustomResource {
      * The relative resource name of this export. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format: "organizations/{organization_id}/bigQueryExports/{export_id}" Example format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format: "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when provided in create requests.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * The service account that needs permission to create table, upload data to the big query dataset.
      */
@@ -95,12 +100,14 @@ export class OrganizationBigQueryExport extends pulumi.CustomResource {
             resourceInputs["principal"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bigQueryExportId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataset"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["mostRecentEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["principal"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

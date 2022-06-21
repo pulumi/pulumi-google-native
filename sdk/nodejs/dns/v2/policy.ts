@@ -40,6 +40,10 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly alternativeNameServerConfig!: pulumi.Output<outputs.dns.v2.PolicyAlternativeNameServerConfigResponse>;
     /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
+    public readonly clientOperationId!: pulumi.Output<string | undefined>;
+    /**
      * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
      */
     public readonly description!: pulumi.Output<string>;
@@ -52,6 +56,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly enableLogging!: pulumi.Output<boolean>;
     public readonly kind!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * User-assigned name for this policy.
      */
@@ -60,6 +65,7 @@ export class Policy extends pulumi.CustomResource {
      * List of network names specifying networks to which this policy is applied.
      */
     public readonly networks!: pulumi.Output<outputs.dns.v2.PolicyNetworkResponse[]>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -84,12 +90,15 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
             resourceInputs["alternativeNameServerConfig"] = undefined /*out*/;
+            resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["enableInboundForwarding"] = undefined /*out*/;
             resourceInputs["enableLogging"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

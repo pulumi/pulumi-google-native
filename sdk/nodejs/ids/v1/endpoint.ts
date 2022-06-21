@@ -49,6 +49,10 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpointForwardingRule!: pulumi.Output<string>;
     /**
+     * Required. The endpoint identifier. This will be part of the endpoint's resource name. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+     */
+    public readonly endpointId!: pulumi.Output<string>;
+    /**
      * The IP address of the IDS Endpoint's ILB.
      */
     public /*out*/ readonly endpointIp!: pulumi.Output<string>;
@@ -56,6 +60,7 @@ export class Endpoint extends pulumi.CustomResource {
      * The labels of the endpoint.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the endpoint.
      */
@@ -64,6 +69,11 @@ export class Endpoint extends pulumi.CustomResource {
      * The fully qualified URL of the network to which the IDS Endpoint is attached.
      */
     public readonly network!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Lowest threat severity that this endpoint will alert on.
      */
@@ -120,10 +130,14 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["endpointForwardingRule"] = undefined /*out*/;
+            resourceInputs["endpointId"] = undefined /*out*/;
             resourceInputs["endpointIp"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["severity"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["trafficLogs"] = undefined /*out*/;

@@ -42,10 +42,12 @@ export class Replay extends pulumi.CustomResource {
      * The configuration used for the `Replay`.
      */
     public readonly config!: pulumi.Output<outputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Summary statistics about the replayed log entries.
      */
@@ -77,7 +79,9 @@ export class Replay extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resultsSummary"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
