@@ -57,6 +57,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
         /// <summary>
         /// Reserved for future use.
         /// </summary>
@@ -82,7 +91,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<ImmutableArray<Outputs.SourceDiskEncryptionKeyResponse>> SourceDiskEncryptionKeys { get; private set; } = null!;
 
         /// <summary>
-        /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
+        /// Required. Source instance that is used to create the machine image from.
         /// </summary>
         [Output("sourceInstance")]
         public Output<string> SourceInstance { get; private set; } = null!;

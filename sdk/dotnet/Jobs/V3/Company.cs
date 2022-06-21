@@ -75,6 +75,9 @@ namespace Pulumi.GoogleNative.Jobs.V3
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Optional. The employer's company size.
         /// </summary>

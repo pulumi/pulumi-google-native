@@ -22,6 +22,15 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [Output("associatedServingConfigIds")]
         public Output<ImmutableArray<string>> AssociatedServingConfigIds { get; private set; } = null!;
 
+        [Output("catalogId")]
+        public Output<string> CatalogId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+        /// </summary>
+        [Output("controlId")]
+        public Output<string> ControlId { get; private set; } = null!;
+
         /// <summary>
         /// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
         /// </summary>
@@ -34,11 +43,17 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [Output("facetSpec")]
         public Output<Outputs.GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse> FacetSpec { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".

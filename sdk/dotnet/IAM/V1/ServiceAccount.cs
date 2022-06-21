@@ -58,9 +58,6 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Output("oauth2ClientId")]
         public Output<string> Oauth2ClientId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project that owns the service account.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

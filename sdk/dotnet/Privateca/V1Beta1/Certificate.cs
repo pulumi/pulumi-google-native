@@ -18,11 +18,20 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
     [GoogleNativeResourceType("google-native:privateca/v1beta1:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
+        [Output("certificateAuthorityId")]
+        public Output<string> CertificateAuthorityId { get; private set; } = null!;
+
         /// <summary>
         /// A structured description of the issued X.509 certificate.
         /// </summary>
         [Output("certificateDescription")]
         public Output<Outputs.CertificateDescriptionResponse> CertificateDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+        /// </summary>
+        [Output("certificateId")]
+        public Output<string?> CertificateId { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
@@ -48,6 +57,9 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         [Output("lifetime")]
         public Output<string> Lifetime { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
         /// </summary>
@@ -71,6 +83,15 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         [Output("pemCsr")]
         public Output<string> PemCsr { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.

@@ -15,11 +15,23 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:DicomStore")]
     public partial class DicomStore : Pulumi.CustomResource
     {
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        /// </summary>
+        [Output("dicomStoreId")]
+        public Output<string?> DicomStoreId { get; private set; } = null!;
+
         /// <summary>
         /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
@@ -32,6 +44,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.

@@ -75,6 +75,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Output("notificationChannels")]
         public Output<ImmutableArray<string>> NotificationChannels { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         /// </summary>

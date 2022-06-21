@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// List of messages that describe the current state of the Memcached instance.
         /// </summary>
         [Output("instanceMessages")]
@@ -50,6 +56,9 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
@@ -104,6 +113,9 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         /// </summary>
         [Output("parameters")]
         public Output<Outputs.MemcacheParametersResponse> Parameters { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The state of this Memcached instance.

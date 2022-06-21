@@ -18,6 +18,9 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     [GoogleNativeResourceType("google-native:cloudchannel/v1:ChannelPartnerLink")]
     public partial class ChannelPartnerLink : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// Cloud Identity info of the channel partner (IR).
         /// </summary>

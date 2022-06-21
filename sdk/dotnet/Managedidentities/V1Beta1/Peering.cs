@@ -47,6 +47,15 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Peering Id, unique name to identify peering.
+        /// </summary>
+        [Output("peeringId")]
+        public Output<string> PeeringId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of this Peering.
         /// </summary>
         [Output("state")]

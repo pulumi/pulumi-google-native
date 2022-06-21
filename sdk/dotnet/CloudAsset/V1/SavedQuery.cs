@@ -64,6 +64,18 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+        /// </summary>
+        [Output("savedQueryId")]
+        public Output<string> SavedQueryId { get; private set; } = null!;
+
+        [Output("v1Id")]
+        public Output<string> V1Id { get; private set; } = null!;
+
+        [Output("v1Id1")]
+        public Output<string> V1Id1 { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SavedQuery resource with the given unique name, arguments, and options.

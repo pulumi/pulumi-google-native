@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     public partial class Batch : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+        /// </summary>
+        [Output("batchId")]
+        public Output<string?> BatchId { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the batch was created.
         /// </summary>
         [Output("createTime")]
@@ -40,6 +46,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the batch.
         /// </summary>
@@ -52,11 +61,20 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Output("operation")]
         public Output<string> Operation { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Optional. PySpark batch config.
         /// </summary>
         [Output("pysparkBatch")]
         public Output<Outputs.PySparkBatchResponse> PysparkBatch { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Runtime configuration for the batch execution.

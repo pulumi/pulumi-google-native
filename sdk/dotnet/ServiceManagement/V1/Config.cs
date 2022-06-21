@@ -137,6 +137,9 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         [Output("quota")]
         public Output<Outputs.QuotaResponse> Quota { get; private set; } = null!;
 
+        [Output("serviceName")]
+        public Output<string> ServiceName { get; private set; } = null!;
+
         /// <summary>
         /// The source information for this configuration if available.
         /// </summary>

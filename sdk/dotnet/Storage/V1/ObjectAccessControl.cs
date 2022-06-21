@@ -16,9 +16,6 @@ namespace Pulumi.GoogleNative.Storage.V1
     [GoogleNativeResourceType("google-native:storage/v1:ObjectAccessControl")]
     public partial class ObjectAccessControl : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the bucket.
-        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
@@ -64,7 +61,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The content generation of the object, if applied to an object.
+        /// If present, selects a specific revision of this object (as opposed to the latest version, the default).
         /// </summary>
         [Output("generation")]
         public Output<string> Generation { get; private set; } = null!;
@@ -75,9 +72,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the object, if applied to an object.
-        /// </summary>
         [Output("object")]
         public Output<string> Object { get; private set; } = null!;
 
@@ -98,6 +92,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
 
         /// <summary>

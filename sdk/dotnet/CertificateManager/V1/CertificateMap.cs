@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     public partial class CertificateMap : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. A user-provided name of the certificate map.
+        /// </summary>
+        [Output("certificateMapId")]
+        public Output<string> CertificateMapId { get; private set; } = null!;
+
+        /// <summary>
         /// The creation timestamp of a Certificate Map.
         /// </summary>
         [Output("createTime")]
@@ -39,11 +45,17 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The update timestamp of a Certificate Map.

@@ -81,11 +81,17 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("pathMatchers")]
         public Output<ImmutableArray<Outputs.PathMatcherResponse>> PathMatchers { get; private set; } = null!;
 
-        /// <summary>
-        /// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined URL for the resource.

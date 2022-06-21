@@ -40,6 +40,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         [Output("networkConfig")]
         public Output<Outputs.NetworkConfigResponse> NetworkConfig { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         /// </summary>
@@ -63,6 +66,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         /// </summary>
         [Output("workerConfig")]
         public Output<Outputs.WorkerConfigResponse> WorkerConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+        /// </summary>
+        [Output("workerPoolId")]
+        public Output<string> WorkerPoolId { get; private set; } = null!;
 
 
         /// <summary>

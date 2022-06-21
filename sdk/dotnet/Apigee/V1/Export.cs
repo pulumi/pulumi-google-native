@@ -35,6 +35,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// Error is set when export fails
         /// </summary>
@@ -52,6 +55,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`

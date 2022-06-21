@@ -82,6 +82,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("lastName")]
         public Output<string> LastName { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
         /// <summary>
         /// Name of the Apigee organization in which the developer resides.
         /// </summary>

@@ -28,10 +28,22 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("endpointId")]
+        public Output<string> EndpointId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("namespaceId")]
+        public Output<string> NamespaceId { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
@@ -44,6 +56,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("serviceId")]
+        public Output<string> ServiceId { get; private set; } = null!;
 
 
         /// <summary>

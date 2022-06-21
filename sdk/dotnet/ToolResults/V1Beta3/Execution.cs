@@ -42,11 +42,23 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Output("executionId")]
         public Output<string> ExecutionId { get; private set; } = null!;
 
+        [Output("historyId")]
+        public Output<string> HistoryId { get; private set; } = null!;
+
         /// <summary>
         /// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         /// </summary>
         [Output("outcome")]
         public Output<Outputs.OutcomeResponse> Outcome { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional

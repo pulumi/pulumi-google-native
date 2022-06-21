@@ -52,17 +52,29 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Configuration of Restores created via this RestorePlan.
         /// </summary>
         [Output("restoreConfig")]
         public Output<Outputs.RestoreConfigResponse> RestoreConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+        /// </summary>
+        [Output("restorePlanId")]
+        public Output<string> RestorePlanId { get; private set; } = null!;
 
         /// <summary>
         /// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.

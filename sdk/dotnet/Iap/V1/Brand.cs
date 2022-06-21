@@ -36,6 +36,9 @@ namespace Pulumi.GoogleNative.Iap.V1
         [Output("orgInternalOnly")]
         public Output<bool> OrgInternalOnly { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Support email displayed on the OAuth consent screen.
         /// </summary>

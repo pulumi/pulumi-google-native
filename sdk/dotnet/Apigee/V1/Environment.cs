@@ -52,10 +52,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> LastModifiedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        /// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Key-value pairs that may be used for customizing the environment.

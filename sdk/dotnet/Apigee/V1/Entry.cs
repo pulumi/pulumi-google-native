@@ -15,11 +15,20 @@ namespace Pulumi.GoogleNative.Apigee.V1
     [GoogleNativeResourceType("google-native:apigee/v1:Entry")]
     public partial class Entry : Pulumi.CustomResource
     {
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        [Output("keyvaluemapId")]
+        public Output<string> KeyvaluemapId { get; private set; } = null!;
+
         /// <summary>
         /// Resource URI that can be used to identify the scope of the key value map entries.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Data or payload that is being retrieved and associated with the unique key.

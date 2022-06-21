@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     [GoogleNativeResourceType("google-native:healthcare/v1:FhirStore")]
     public partial class FhirStore : Pulumi.CustomResource
     {
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
         /// <summary>
         /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         /// </summary>
@@ -41,10 +44,19 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<bool> EnableUpdateCreate { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// </summary>
+        [Output("fhirStoreId")]
+        public Output<string?> FhirStoreId { get; private set; } = null!;
+
+        /// <summary>
         /// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
@@ -57,6 +69,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.

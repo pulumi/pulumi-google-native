@@ -39,11 +39,23 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Short name of the Mesh resource to be created.
+        /// </summary>
+        [Output("meshId")]
+        public Output<string> MeshId { get; private set; } = null!;
+
         /// <summary>
         /// Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined URL of this resource

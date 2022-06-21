@@ -33,9 +33,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The project ID of the GCP project for which the `WorkerPool` is created.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

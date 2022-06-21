@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public Output<string> Behavior { get; private set; } = null!;
 
         /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
+        [Output("clientOperationId")]
+        public Output<string?> ClientOperationId { get; private set; } = null!;
+
+        /// <summary>
         /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         /// </summary>
         [Output("dnsName")]
@@ -36,6 +42,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// </summary>
         [Output("localData")]
         public Output<Outputs.ResponsePolicyRuleLocalDataResponse> LocalData { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("responsePolicy")]
+        public Output<string> ResponsePolicy { get; private set; } = null!;
 
         /// <summary>
         /// An identifier for this rule. Must be unique with the ResponsePolicy.

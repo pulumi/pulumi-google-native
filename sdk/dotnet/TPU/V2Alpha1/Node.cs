@@ -70,6 +70,9 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
         /// </summary>
@@ -93,6 +96,21 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         [Output("networkEndpoints")]
         public Output<ImmutableArray<Outputs.NetworkEndpointResponse>> NetworkEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// The unqualified resource name.
+        /// </summary>
+        [Output("nodeId")]
+        public Output<string?> NodeId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Idempotent request UUID.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// The runtime version running in the Node.

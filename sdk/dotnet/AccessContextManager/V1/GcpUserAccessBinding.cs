@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GcpUserAccessBinding resource with the given unique name, arguments, and options.

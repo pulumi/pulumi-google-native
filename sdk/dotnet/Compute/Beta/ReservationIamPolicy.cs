@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("resource")]
+        public Output<string> Resource { get; private set; } = null!;
+
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
         /// </summary>
@@ -46,6 +52,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
+
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>

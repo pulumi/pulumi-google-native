@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
 
+        [Output("folderId")]
+        public Output<string> FolderId { get; private set; } = null!;
+
         /// <summary>
         /// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>

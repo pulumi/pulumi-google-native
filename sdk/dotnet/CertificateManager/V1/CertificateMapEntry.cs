@@ -16,6 +16,15 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     public partial class CertificateMapEntry : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. A user-provided name of the certificate map entry.
+        /// </summary>
+        [Output("certificateMapEntryId")]
+        public Output<string> CertificateMapEntryId { get; private set; } = null!;
+
+        [Output("certificateMapId")]
+        public Output<string> CertificateMapId { get; private set; } = null!;
+
+        /// <summary>
         /// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
         /// </summary>
         [Output("certificates")]
@@ -45,6 +54,9 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// A predefined matcher for particular cases, other than SNI selection.
         /// </summary>
@@ -56,6 +68,9 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A serving state of this Certificate Map Entry.

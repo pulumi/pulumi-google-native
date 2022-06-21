@@ -22,6 +22,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("groupId")]
+        public Output<string> GroupId { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         /// </summary>

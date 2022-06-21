@@ -30,6 +30,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        [Output("developerId")]
+        public Output<string> DeveloperId { get; private set; } = null!;
+
         /// <summary>
         /// Time when the API product subscription ends in milliseconds since epoch.
         /// </summary>
@@ -47,6 +50,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Time when the API product subscription starts in milliseconds since epoch.

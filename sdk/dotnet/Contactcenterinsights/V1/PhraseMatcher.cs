@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
         /// </summary>
@@ -44,6 +47,9 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         [Output("phraseMatchRuleGroups")]
         public Output<ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>> PhraseMatchRuleGroups { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of when the revision was created. It is also the create time when a new matcher is added.

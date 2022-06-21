@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         [Output("relationshipTypes")]
         public Output<ImmutableArray<string>> RelationshipTypes { get; private set; } = null!;
 
+        [Output("v1Id")]
+        public Output<string> V1Id { get; private set; } = null!;
+
+        [Output("v1Id1")]
+        public Output<string> V1Id1 { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Feed resource with the given unique name, arguments, and options.

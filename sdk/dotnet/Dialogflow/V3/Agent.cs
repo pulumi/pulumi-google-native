@@ -57,6 +57,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Output("enableStackdriverLogging")]
         public Output<bool> EnableStackdriverLogging { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         /// </summary>
@@ -68,6 +71,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.

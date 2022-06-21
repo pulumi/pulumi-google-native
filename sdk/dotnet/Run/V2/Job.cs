@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<string> Generation { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+        /// </summary>
+        [Output("jobId")]
+        public Output<string> JobId { get; private set; } = null!;
+
+        /// <summary>
         /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         /// </summary>
         [Output("labels")]
@@ -111,6 +117,9 @@ namespace Pulumi.GoogleNative.Run.V2
         [Output("launchStage")]
         public Output<string> LaunchStage { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
         /// </summary>
@@ -122,6 +131,9 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         [Output("observedGeneration")]
         public Output<string> ObservedGeneration { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
@@ -152,6 +164,12 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

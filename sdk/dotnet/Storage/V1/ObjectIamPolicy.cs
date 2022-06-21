@@ -23,6 +23,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Output("bindings")]
         public Output<ImmutableArray<Outputs.ObjectIamPolicyBindingsItemResponse>> Bindings { get; private set; } = null!;
 
+        [Output("bucket")]
+        public Output<string> Bucket { get; private set; } = null!;
+
         /// <summary>
         /// HTTP 1.1  Entity tag for the policy.
         /// </summary>
@@ -30,16 +33,31 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// If present, selects a specific revision of this object (as opposed to the latest version, the default).
+        /// </summary>
+        [Output("generation")]
+        public Output<string?> Generation { get; private set; } = null!;
+
+        /// <summary>
         /// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        [Output("object")]
+        public Output<string> Object { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
         /// <summary>
         /// The IAM policy format version.

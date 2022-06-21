@@ -17,6 +17,15 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class Backup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+        /// </summary>
+        [Output("backupId")]
+        public Output<string> BackupId { get; private set; } = null!;
+
+        [Output("clusterId")]
+        public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// The encryption information for the backup.
         /// </summary>
         [Output("encryptionInfo")]
@@ -34,11 +43,17 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
 
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
         /// <summary>
         /// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Size of the backup in bytes.

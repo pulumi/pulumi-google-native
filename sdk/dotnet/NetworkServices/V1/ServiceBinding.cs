@@ -33,17 +33,29 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name&gt;`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Short name of the ServiceBinding resource to be created.
+        /// </summary>
+        [Output("serviceBindingId")]
+        public Output<string> ServiceBindingId { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was updated.

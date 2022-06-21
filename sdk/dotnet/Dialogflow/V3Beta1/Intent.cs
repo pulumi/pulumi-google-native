@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Intent")]
     public partial class Intent : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         /// </summary>
@@ -40,6 +43,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string?> LanguageCode { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
         /// </summary>
         [Output("name")]
@@ -56,6 +68,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The collection of training phrases the agent is trained on to identify the intent.

@@ -22,6 +22,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
         /// <summary>
         /// An optional string description of this rule. This field has a maximum length of 400 characters.
         /// </summary>

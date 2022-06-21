@@ -34,6 +34,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
 
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
         /// <summary>
         /// The default collation of the table.
         /// </summary>
@@ -183,6 +186,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Output("numTotalPhysicalBytes")]
         public Output<string> NumTotalPhysicalBytes { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

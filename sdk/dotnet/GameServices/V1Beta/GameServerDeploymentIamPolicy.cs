@@ -35,6 +35,15 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        [Output("gameServerDeploymentId")]
+        public Output<string> GameServerDeploymentId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
         /// </summary>

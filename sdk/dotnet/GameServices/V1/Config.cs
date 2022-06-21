@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.GameServices.V1
     public partial class Config : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The ID of the game server config resource to create.
+        /// </summary>
+        [Output("configId")]
+        public Output<string> ConfigId { get; private set; } = null!;
+
+        /// <summary>
         /// The creation time.
         /// </summary>
         [Output("createTime")]
@@ -33,17 +39,26 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Output("fleetConfigs")]
         public Output<ImmutableArray<Outputs.FleetConfigResponse>> FleetConfigs { get; private set; } = null!;
 
+        [Output("gameServerDeploymentId")]
+        public Output<string> GameServerDeploymentId { get; private set; } = null!;
+
         /// <summary>
         /// The labels associated with this game server config. Each label is a key-value pair.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The autoscaling settings.

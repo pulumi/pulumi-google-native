@@ -165,6 +165,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("privateIpv6GoogleAccess")]
         public Output<string> PrivateIpv6GoogleAccess { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
         /// </summary>
@@ -208,7 +217,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.ShieldedInstanceIntegrityPolicyResponse> ShieldedInstanceIntegrityPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Source machine image
+        /// Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
+        /// </summary>
+        [Output("sourceInstanceTemplate")]
+        public Output<string?> SourceInstanceTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the machine image to use to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to a machine image: - https://www.googleapis.com/compute/v1/projects/project/global/global /machineImages/machineImage - projects/project/global/global/machineImages/machineImage - global/machineImages/machineImage 
         /// </summary>
         [Output("sourceMachineImage")]
         public Output<string> SourceMachineImage { get; private set; } = null!;
@@ -243,9 +258,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("tags")]
         public Output<Outputs.TagsResponse> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 

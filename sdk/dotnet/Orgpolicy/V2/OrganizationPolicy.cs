@@ -28,6 +28,9 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
         /// <summary>
         /// Basic information about the Organization Policy.
         /// </summary>

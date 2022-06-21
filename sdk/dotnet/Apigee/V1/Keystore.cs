@@ -21,11 +21,17 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("aliases")]
         public Output<ImmutableArray<string>> Aliases { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
-        /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        /// Optional. Name of the keystore. Overrides the value in Keystore.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
 
         /// <summary>

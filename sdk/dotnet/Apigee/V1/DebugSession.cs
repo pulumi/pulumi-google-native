@@ -17,6 +17,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
     [GoogleNativeResourceType("google-native:apigee/v1:DebugSession")]
     public partial class DebugSession : Pulumi.CustomResource
     {
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
         /// </summary>
@@ -28,6 +31,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
 
         /// <summary>
         /// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
@@ -41,8 +47,14 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
+        [Output("revisionId")]
+        public Output<string> RevisionId { get; private set; } = null!;
+
         /// <summary>
-        /// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+        /// Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value.
         /// </summary>
         [Output("timeout")]
         public Output<string> Timeout { get; private set; } = null!;

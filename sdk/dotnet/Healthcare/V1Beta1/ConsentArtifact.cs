@@ -27,11 +27,20 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Output("consentContentVersion")]
         public Output<string> ConsentContentVersion { get; private set; } = null!;
 
+        [Output("consentStoreId")]
+        public Output<string> ConsentStoreId { get; private set; } = null!;
+
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. A signature from a guardian.
         /// </summary>
         [Output("guardianSignature")]
         public Output<Outputs.SignatureResponse> GuardianSignature { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
@@ -44,6 +53,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// User's UUID provided by the client.

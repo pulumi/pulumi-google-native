@@ -35,6 +35,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("cryptoKeyId")]
+        public Output<string> CryptoKeyId { get; private set; } = null!;
+
         /// <summary>
         /// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
         /// </summary>
@@ -77,11 +80,20 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Output("importTime")]
         public Output<string> ImportTime { get; private set; } = null!;
 
+        [Output("keyRingId")]
+        public Output<string> KeyRingId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.

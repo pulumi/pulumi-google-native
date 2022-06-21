@@ -18,6 +18,9 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     [GoogleNativeResourceType("google-native:cloudchannel/v1:Entitlement")]
     public partial class Entitlement : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// Association information to other entitlements.
         /// </summary>
@@ -35,6 +38,9 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("customerId")]
+        public Output<string> CustomerId { get; private set; } = null!;
 
         /// <summary>
         /// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.

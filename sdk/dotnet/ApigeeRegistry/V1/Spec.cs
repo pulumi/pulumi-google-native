@@ -21,6 +21,15 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        /// </summary>
+        [Output("apiSpecId")]
+        public Output<string> ApiSpecId { get; private set; } = null!;
+
         /// <summary>
         /// Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents.
         /// </summary>
@@ -57,6 +66,9 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// A style (format) descriptor for this spec that is specified as a Media Type (https://en.wikipedia.org/wiki/Media_type). Possible values include "application/vnd.apigee.proto", "application/vnd.apigee.openapi", and "application/vnd.apigee.graphql", with possible suffixes representing compression types. These hypothetical names are defined in the vendor tree defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
         /// </summary>
@@ -68,6 +80,9 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Revision creation timestamp; when the represented revision was created.
@@ -98,6 +113,9 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         [Output("sourceUri")]
         public Output<string> SourceUri { get; private set; } = null!;
+
+        [Output("versionId")]
+        public Output<string> VersionId { get; private set; } = null!;
 
 
         /// <summary>

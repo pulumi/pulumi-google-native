@@ -45,11 +45,17 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         [Output("languagePair")]
         public Output<Outputs.LanguageCodePairResponse> LanguagePair { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// When CreateGlossary was called.

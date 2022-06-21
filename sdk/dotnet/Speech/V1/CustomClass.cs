@@ -27,11 +27,17 @@ namespace Pulumi.GoogleNative.Speech.V1
         [Output("items")]
         public Output<ImmutableArray<Outputs.ClassItemResponse>> Items { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the custom class.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

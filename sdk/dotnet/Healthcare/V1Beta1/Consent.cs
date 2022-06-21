@@ -21,11 +21,20 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Output("consentArtifact")]
         public Output<string> ConsentArtifact { get; private set; } = null!;
 
+        [Output("consentStoreId")]
+        public Output<string> ConsentStoreId { get; private set; } = null!;
+
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
         /// <summary>
         /// Timestamp in UTC of when this Consent is considered expired.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
@@ -44,6 +53,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<Outputs.GoogleCloudHealthcareV1beta1ConsentPolicyResponse>> Policies { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp that the revision was created.

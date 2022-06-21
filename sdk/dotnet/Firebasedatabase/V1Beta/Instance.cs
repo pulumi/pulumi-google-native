@@ -16,10 +16,19 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The globally unique identifier of the database instance.
+        /// </summary>
+        [Output("databaseId")]
+        public Output<string?> DatabaseId { get; private set; } = null!;
+
+        /// <summary>
         /// Output Only. The globally unique hostname of the database.
         /// </summary>
         [Output("databaseUrl")]
         public Output<string> DatabaseUrl { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
@@ -27,9 +36,6 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -44,6 +50,12 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// When set to true, the request will be validated but not submitted.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

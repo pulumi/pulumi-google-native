@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Logging.V2
     public partial class OrganizationBucket : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+        /// </summary>
+        [Output("bucketId")]
+        public Output<string> BucketId { get; private set; } = null!;
+
+        /// <summary>
         /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         /// </summary>
         [Output("cmekSettings")]
@@ -46,6 +52,9 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         /// </summary>
@@ -57,6 +66,9 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)

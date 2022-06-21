@@ -75,6 +75,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Output("options")]
         public Output<Outputs.OptionsResponse> Options { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Self link for the type provider.
         /// </summary>

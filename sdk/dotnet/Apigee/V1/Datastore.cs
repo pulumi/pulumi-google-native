@@ -46,6 +46,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("org")]
         public Output<string> Org { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
         /// <summary>
         /// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
         /// </summary>

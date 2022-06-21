@@ -72,6 +72,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Output("predictionOutput")]
         public Output<Outputs.GoogleCloudMlV1__PredictionOutputResponse> PredictionOutput { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// When the job processing was started.
         /// </summary>

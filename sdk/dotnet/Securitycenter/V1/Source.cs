@@ -41,6 +41,9 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Source resource with the given unique name, arguments, and options.

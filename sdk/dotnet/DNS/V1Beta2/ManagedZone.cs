@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     [GoogleNativeResourceType("google-native:dns/v1beta2:ManagedZone")]
     public partial class ManagedZone : Pulumi.CustomResource
     {
+        /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
+        [Output("clientOperationId")]
+        public Output<string?> ClientOperationId { get; private set; } = null!;
+
         [Output("cloudLoggingConfig")]
         public Output<Outputs.ManagedZoneCloudLoggingConfigResponse> CloudLoggingConfig { get; private set; } = null!;
 
@@ -86,6 +92,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// </summary>
         [Output("privateVisibilityConfig")]
         public Output<Outputs.ManagedZonePrivateVisibilityConfigResponse> PrivateVisibilityConfig { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.

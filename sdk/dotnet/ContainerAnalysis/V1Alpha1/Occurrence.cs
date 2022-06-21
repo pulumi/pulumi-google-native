@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+        /// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -92,6 +92,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Output("noteName")]
         public Output<string> NoteName { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A description of actions that can be taken to remedy the `Note`

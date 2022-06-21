@@ -21,11 +21,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Output("annotationSource")]
         public Output<Outputs.AnnotationSourceResponse> AnnotationSource { get; private set; } = null!;
 
+        [Output("annotationStoreId")]
+        public Output<string> AnnotationStoreId { get; private set; } = null!;
+
         /// <summary>
         /// Additional information for this annotation record, such as annotator and verifier information or study campaign.
         /// </summary>
         [Output("customData")]
         public Output<ImmutableDictionary<string, string>> CustomData { get; private set; } = null!;
+
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
         /// Annotations for images. For example, bounding polygons.
@@ -33,11 +39,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Output("imageAnnotation")]
         public Output<Outputs.ImageAnnotationResponse> ImageAnnotation { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Annotations for resource. For example, classification tags.

@@ -18,11 +18,20 @@ namespace Pulumi.GoogleNative.Privateca.V1
     [GoogleNativeResourceType("google-native:privateca/v1:Certificate")]
     public partial class Certificate : Pulumi.CustomResource
     {
+        [Output("caPoolId")]
+        public Output<string> CaPoolId { get; private set; } = null!;
+
         /// <summary>
         /// A structured description of the issued X.509 certificate.
         /// </summary>
         [Output("certificateDescription")]
         public Output<Outputs.CertificateDescriptionResponse> CertificateDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+        /// </summary>
+        [Output("certificateId")]
+        public Output<string?> CertificateId { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The resource name for a CertificateTemplate used to issue this certificate, in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified, the caller must have the necessary permission to use this template. If this is omitted, no template will be used. This template must be in the same location as the Certificate.
@@ -49,6 +58,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public Output<string> IssuerCertificateAuthority { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The resource ID of the CertificateAuthority that should issue the certificate. This optional field will ignore the load-balancing scheme of the Pool and directly issue the certificate from the CA with the specified ID, contained in the same CaPool referenced by `parent`. Per-CA quota rules apply. If left empty, a CertificateAuthority will be chosen from the CaPool by the service. For example, to issue a Certificate from a Certificate Authority with resource name "projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca", you can set the parent to "projects/my-project/locations/us-central1/caPools/my-pool" and the issuing_certificate_authority_id to "my-ca".
+        /// </summary>
+        [Output("issuingCertificateAuthorityId")]
+        public Output<string?> IssuingCertificateAuthorityId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Labels with user-defined metadata.
         /// </summary>
         [Output("labels")]
@@ -59,6 +74,9 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         [Output("lifetime")]
         public Output<string> Lifetime { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name for this Certificate in the format `projects/*/locations/*/caPools/*/certificates/*`.
@@ -84,6 +102,15 @@ namespace Pulumi.GoogleNative.Privateca.V1
         [Output("pemCsr")]
         public Output<string> PemCsr { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
         /// <summary>
         /// Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
         /// </summary>
@@ -101,6 +128,12 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

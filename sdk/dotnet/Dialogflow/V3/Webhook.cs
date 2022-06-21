@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     [GoogleNativeResourceType("google-native:dialogflow/v3:Webhook")]
     public partial class Webhook : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether the webhook is disabled.
         /// </summary>
@@ -33,11 +36,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Output("genericWebService")]
         public Output<Outputs.GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse> GenericWebService { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.

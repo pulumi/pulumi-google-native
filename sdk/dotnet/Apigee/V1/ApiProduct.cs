@@ -78,6 +78,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("operationGroup")]
         public Output<Outputs.GoogleCloudApigeeV1OperationGroupResponse> OperationGroup { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
         /// <summary>
         /// Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
         /// </summary>

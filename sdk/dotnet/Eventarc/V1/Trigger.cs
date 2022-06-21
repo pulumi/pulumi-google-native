@@ -51,11 +51,17 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have the `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. To create Audit Log triggers, the service account should also have the `roles/eventarc.eventReceiver` IAM role.
@@ -70,6 +76,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<Outputs.TransportResponse> Transport { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The user-provided ID to be assigned to the trigger.
+        /// </summary>
+        [Output("triggerId")]
+        public Output<string> TriggerId { get; private set; } = null!;
+
+        /// <summary>
         /// Server-assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
         [Output("uid")]
@@ -80,6 +92,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. If set, validate the request and preview the review, but do not post it.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

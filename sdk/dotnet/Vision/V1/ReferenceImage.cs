@@ -21,11 +21,26 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Output("boundingPolys")]
         public Output<ImmutableArray<Outputs.BoundingPolyResponse>> BoundingPolys { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("productId")]
+        public Output<string> ProductId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        /// </summary>
+        [Output("referenceImageId")]
+        public Output<string?> ReferenceImageId { get; private set; } = null!;
 
         /// <summary>
         /// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.

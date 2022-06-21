@@ -34,6 +34,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
         /// </summary>
@@ -45,6 +48,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         [Output("parentPolicyTag")]
         public Output<string> ParentPolicyTag { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("taxonomyId")]
+        public Output<string> TaxonomyId { get; private set; } = null!;
 
 
         /// <summary>

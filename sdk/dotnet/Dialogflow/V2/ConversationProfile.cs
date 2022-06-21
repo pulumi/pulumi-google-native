@@ -51,6 +51,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Output("languageCode")]
         public Output<string> LanguageCode { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Configuration for logging conversation lifecycle events.
         /// </summary>
@@ -74,6 +77,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.GoogleCloudDialogflowV2NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.

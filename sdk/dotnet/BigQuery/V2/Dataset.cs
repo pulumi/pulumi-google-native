@@ -109,6 +109,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("maxTimeTravelHours")]
         public Output<string> MaxTimeTravelHours { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Reserved for future use.
         /// </summary>

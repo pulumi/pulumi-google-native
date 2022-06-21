@@ -16,11 +16,26 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
     [GoogleNativeResourceType("google-native:appengine/v1alpha:DomainMapping")]
     public partial class DomainMapping : Pulumi.CustomResource
     {
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
         /// <summary>
         /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+        /// </summary>
+        [Output("noManagedCertificate")]
+        public Output<string?> NoManagedCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        /// </summary>
+        [Output("overrideStrategy")]
+        public Output<string?> OverrideStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.

@@ -35,6 +35,15 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
         /// <summary>
         /// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         /// </summary>

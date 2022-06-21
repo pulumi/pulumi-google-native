@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public partial class Backup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        /// </summary>
+        [Output("backupId")]
+        public Output<string> BackupId { get; private set; } = null!;
+
+        /// <summary>
         /// Capacity of the source file share when the backup was created.
         /// </summary>
         [Output("capacityGb")]
@@ -52,11 +58,17 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.

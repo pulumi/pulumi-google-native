@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.File.V1
         public Output<ImmutableArray<Outputs.FileShareConfigResponse>> FileShares { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The name of the instance to create. The name must be unique for the specified project and location.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// KMS key name used for data encryption.
         /// </summary>
         [Output("kmsKeyName")]
@@ -51,6 +57,9 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
@@ -63,6 +72,9 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.NetworkConfigResponse>> Networks { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.

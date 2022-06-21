@@ -71,9 +71,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -89,14 +86,11 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         [Output("pipelineDescription")]
         public Output<Outputs.PipelineDescriptionResponse> PipelineDescription { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the Cloud Platform project that the job belongs to.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
+        /// Deprecated. This field is now in the Job message.
         /// </summary>
         [Output("replaceJobId")]
         public Output<string> ReplaceJobId { get; private set; } = null!;
@@ -160,6 +154,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The level of information requested in response.
+        /// </summary>
+        [Output("view")]
+        public Output<string?> View { get; private set; } = null!;
 
 
         /// <summary>

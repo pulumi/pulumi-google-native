@@ -57,9 +57,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("credentials")]
         public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1CredentialResponse>> Credentials { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the developer.
-        /// </summary>
         [Output("developerId")]
         public Output<string> DeveloperId { get; private set; } = null!;
 
@@ -80,6 +77,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.

@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        /// Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;

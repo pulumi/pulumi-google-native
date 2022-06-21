@@ -94,6 +94,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         [Output("package")]
         public Output<Outputs.PackageOccurrenceResponse> Package { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// A description of actions that can be taken to remedy the note.
         /// </summary>

@@ -28,6 +28,9 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         [Output("categories")]
         public Output<ImmutableArray<string>> Categories { get; private set; } = null!;
 
+        [Output("dataExchangeId")]
+        public Output<string> DataExchangeId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Details of the data provider who owns the source data.
         /// </summary>
@@ -59,6 +62,15 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public Output<string> Icon { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+        /// </summary>
+        [Output("listingId")]
+        public Output<string> ListingId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the listing. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
         /// </summary>
         [Output("name")]
@@ -69,6 +81,9 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// </summary>
         [Output("primaryContact")]
         public Output<string> PrimaryContact { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Details of the publisher who owns the listing and who can share the source data.

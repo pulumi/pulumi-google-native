@@ -22,16 +22,28 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> ActivationToken { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The user-provided ID to be assigned to the channel.
+        /// </summary>
+        [Output("channelId")]
+        public Output<string> ChannelId { get; private set; } = null!;
+
+        /// <summary>
         /// The creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
@@ -62,6 +74,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. If set, validate the request and preview the review, but do not post it.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

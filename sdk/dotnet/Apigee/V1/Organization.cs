@@ -107,6 +107,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the Portals settings.
         /// </summary>
         [Output("portalDisabled")]

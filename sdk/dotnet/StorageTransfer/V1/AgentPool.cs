@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     public partial class AgentPool : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
+        /// </summary>
+        [Output("agentPoolId")]
+        public Output<string> AgentPoolId { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
         /// </summary>
         [Output("bandwidthLimit")]
@@ -32,6 +38,9 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the state of the AgentPool.

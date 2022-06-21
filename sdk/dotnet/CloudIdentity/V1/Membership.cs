@@ -22,6 +22,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("groupId")]
+        public Output<string> GroupId { get; private set; } = null!;
+
         /// <summary>
         /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
         /// </summary>

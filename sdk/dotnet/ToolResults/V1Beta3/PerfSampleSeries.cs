@@ -24,21 +24,12 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Output("basicPerfSampleSeries")]
         public Output<Outputs.BasicPerfSampleSeriesResponse> BasicPerfSampleSeries { get; private set; } = null!;
 
-        /// <summary>
-        /// A tool results execution ID. 
-        /// </summary>
         [Output("executionId")]
         public Output<string> ExecutionId { get; private set; } = null!;
 
-        /// <summary>
-        /// A tool results history ID. 
-        /// </summary>
         [Output("historyId")]
         public Output<string> HistoryId { get; private set; } = null!;
 
-        /// <summary>
-        /// The cloud project 
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -48,9 +39,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Output("sampleSeriesId")]
         public Output<string> SampleSeriesId { get; private set; } = null!;
 
-        /// <summary>
-        /// A tool results step ID. 
-        /// </summary>
         [Output("stepId")]
         public Output<string> StepId { get; private set; } = null!;
 

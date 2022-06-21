@@ -28,6 +28,15 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        /// </summary>
+        [Output("apiDeploymentId")]
+        public Output<string> ApiDeploymentId { get; private set; } = null!;
+
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        /// <summary>
         /// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
         /// </summary>
         [Output("apiSpecRevision")]
@@ -75,11 +84,17 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Revision creation timestamp; when the represented revision was created.

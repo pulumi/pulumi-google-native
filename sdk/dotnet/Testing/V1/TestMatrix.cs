@@ -54,11 +54,14 @@ namespace Pulumi.GoogleNative.Testing.V1
         [Output("outcomeSummary")]
         public Output<string> OutcomeSummary { get; private set; } = null!;
 
-        /// <summary>
-        /// The cloud project that owns the test matrix.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// Where the results for the matrix are written.

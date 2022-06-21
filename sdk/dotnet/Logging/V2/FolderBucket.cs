@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Logging.V2
     public partial class FolderBucket : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+        /// </summary>
+        [Output("bucketId")]
+        public Output<string> BucketId { get; private set; } = null!;
+
+        /// <summary>
         /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         /// </summary>
         [Output("cmekSettings")]
@@ -34,6 +40,9 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("folderId")]
+        public Output<string> FolderId { get; private set; } = null!;
+
         /// <summary>
         /// A list of indexed fields and related configuration data.
         /// </summary>
@@ -45,6 +54,9 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.

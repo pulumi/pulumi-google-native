@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:FeedbackMessage")]
     public partial class FeedbackMessage : Pulumi.CustomResource
     {
+        [Output("annotatedDatasetId")]
+        public Output<string> AnnotatedDatasetId { get; private set; } = null!;
+
         /// <summary>
         /// String content of the feedback. Maximum of 10000 characters.
         /// </summary>
@@ -26,6 +29,12 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
+        [Output("feedbackThreadId")]
+        public Output<string> FeedbackThreadId { get; private set; } = null!;
 
         /// <summary>
         /// The image storing this feedback if the feedback is an image representing operator's comments.
@@ -41,6 +50,9 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
         [Output("operatorFeedbackMetadata")]
         public Output<Outputs.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse> OperatorFeedbackMetadata { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         [Output("requesterFeedbackMetadata")]
         public Output<Outputs.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse> RequesterFeedbackMetadata { get; private set; } = null!;

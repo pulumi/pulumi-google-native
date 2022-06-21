@@ -64,6 +64,9 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Dataset resource with the given unique name, arguments, and options.

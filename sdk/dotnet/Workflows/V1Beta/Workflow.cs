@@ -33,11 +33,17 @@ namespace Pulumi.GoogleNative.Workflows.V1Beta
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp that the latest revision of the workflow was created.
@@ -74,6 +80,12 @@ namespace Pulumi.GoogleNative.Workflows.V1Beta
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+        /// </summary>
+        [Output("workflowId")]
+        public Output<string> WorkflowId { get; private set; } = null!;
 
 
         /// <summary>

@@ -17,17 +17,26 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     [GoogleNativeResourceType("google-native:dialogflow/v2:Participant")]
     public partial class Participant : Pulumi.CustomResource
     {
+        [Output("conversationId")]
+        public Output<string> ConversationId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
         /// </summary>
         [Output("documentsMetadataFilters")]
         public Output<ImmutableDictionary<string, string>> DocumentsMetadataFilters { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.

@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
     [GoogleNativeResourceType("google-native:runtimeconfig/v1beta1:Waiter")]
     public partial class Waiter : Pulumi.CustomResource
     {
+        [Output("configId")]
+        public Output<string> ConfigId { get; private set; } = null!;
+
         /// <summary>
         /// The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
         /// </summary>
@@ -44,6 +47,15 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.

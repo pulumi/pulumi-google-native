@@ -22,6 +22,9 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [Output("boostControlIds")]
         public Output<ImmutableArray<string>> BoostControlIds { get; private set; } = null!;
 
+        [Output("catalogId")]
+        public Output<string> CatalogId { get; private set; } = null!;
+
         /// <summary>
         /// The human readable serving config display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
@@ -70,6 +73,9 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [Output("ignoreControlIds")]
         public Output<ImmutableArray<string>> IgnoreControlIds { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
         /// </summary>
@@ -94,6 +100,9 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [Output("priceRerankingLevel")]
         public Output<string> PriceRerankingLevel { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         /// </summary>
@@ -105,6 +114,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         [Output("replacementControlIds")]
         public Output<ImmutableArray<string>> ReplacementControlIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+        /// </summary>
+        [Output("servingConfigId")]
+        public Output<string> ServingConfigId { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.

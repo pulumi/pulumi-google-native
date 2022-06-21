@@ -33,9 +33,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Cloud SQL instance. This does not include the project ID.
-        /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
 
@@ -51,9 +48,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

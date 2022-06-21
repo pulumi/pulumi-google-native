@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     public partial class Certificate : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. A user-provided name of the certificate.
+        /// </summary>
+        [Output("certificateId")]
+        public Output<string> CertificateId { get; private set; } = null!;
+
+        /// <summary>
         /// The creation timestamp of a Certificate.
         /// </summary>
         [Output("createTime")]
@@ -39,6 +45,9 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// If set, contains configuration and state of a managed certificate.
         /// </summary>
@@ -56,6 +65,9 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// </summary>
         [Output("pemCertificate")]
         public Output<string> PemCertificate { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.

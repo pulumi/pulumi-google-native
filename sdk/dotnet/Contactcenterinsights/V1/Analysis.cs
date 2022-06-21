@@ -21,17 +21,26 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("analysisResult")]
         public Output<Outputs.GoogleCloudContactcenterinsightsV1AnalysisResultResponse> AnalysisResult { get; private set; } = null!;
 
+        [Output("conversationId")]
+        public Output<string> ConversationId { get; private set; } = null!;
+
         /// <summary>
         /// The time at which the analysis was created, which occurs when the long-running operation completes.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The time at which the analysis was requested.

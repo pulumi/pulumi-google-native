@@ -51,6 +51,9 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// State common to all model types. Includes publishing and validation information.
         /// </summary>

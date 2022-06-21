@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> ApiKey { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+        /// </summary>
+        [Output("bitbucketServerConfigId")]
+        public Output<string?> BitbucketServerConfigId { get; private set; } = null!;
+
+        /// <summary>
         /// Connected Bitbucket Server repositories for this config.
         /// </summary>
         [Output("connectedRepositories")]
@@ -39,6 +45,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Output("hostUri")]
         public Output<string> HostUri { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name for the config.
         /// </summary>
@@ -50,6 +59,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         [Output("peeredNetwork")]
         public Output<string> PeeredNetwork { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Secret Manager secrets needed by the config.

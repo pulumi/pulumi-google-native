@@ -30,6 +30,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> CryptoKeyBackend { get; private set; } = null!;
 
         /// <summary>
+        /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        /// </summary>
+        [Output("cryptoKeyId")]
+        public Output<string> CryptoKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
         /// </summary>
         [Output("destroyScheduledDuration")]
@@ -41,11 +47,17 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Output("importOnly")]
         public Output<bool> ImportOnly { get; private set; } = null!;
 
+        [Output("keyRingId")]
+        public Output<string> KeyRingId { get; private set; } = null!;
+
         /// <summary>
         /// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -65,6 +77,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Output("primary")]
         public Output<Outputs.CryptoKeyVersionResponse> Primary { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The immutable purpose of this CryptoKey.
         /// </summary>
@@ -76,6 +91,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         [Output("rotationPeriod")]
         public Output<string> RotationPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+        /// </summary>
+        [Output("skipInitialVersionCreation")]
+        public Output<string?> SkipInitialVersionCreation { get; private set; } = null!;
 
         /// <summary>
         /// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.

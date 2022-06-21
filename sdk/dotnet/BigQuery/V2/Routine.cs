@@ -28,6 +28,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
 
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
         /// <summary>
         /// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         /// </summary>
@@ -69,6 +72,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Output("lastModifiedTime")]
         public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Remote function specific options.

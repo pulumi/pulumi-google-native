@@ -40,6 +40,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// A URL that can be used to access this resource again.
         /// </summary>

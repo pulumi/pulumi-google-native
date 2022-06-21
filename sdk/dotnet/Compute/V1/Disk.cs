@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("physicalBlockSizeBytes")]
         public Output<string> PhysicalBlockSizeBytes { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         /// </summary>
@@ -122,6 +125,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("replicaZones")]
         public Output<ImmutableArray<string>> ReplicaZones { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// Resource policies applied to this disk for automatic snapshot creations.
@@ -160,7 +169,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SourceDiskId { get; private set; } = null!;
 
         /// <summary>
-        /// The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
+        /// Source image to restore onto a disk. This field is optional.
         /// </summary>
         [Output("sourceImage")]
         public Output<string> SourceImage { get; private set; } = null!;
@@ -219,9 +228,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
 
-        /// <summary>
-        /// URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 

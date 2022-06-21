@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         /// </summary>
@@ -50,6 +53,9 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
@@ -64,10 +70,22 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public Output<Outputs.TransportResponse> Transport { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The user-provided ID to be assigned to the trigger.
+        /// </summary>
+        [Output("triggerId")]
+        public Output<string> TriggerId { get; private set; } = null!;
+
+        /// <summary>
         /// The last-modified time.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. If set, validate the request and preview the review, but do not actually post it.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

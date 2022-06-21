@@ -82,16 +82,25 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<string> LongDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+        /// The name of the project. Should be of the form "providers/{provider_id}". @Deprecated
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID to use for this note.
+        /// </summary>
+        [Output("noteId")]
+        public Output<string?> NoteId { get; private set; } = null!;
 
         /// <summary>
         /// A note describing a package hosted by various package managers.
         /// </summary>
         [Output("package")]
         public Output<Outputs.PackageResponse> Package { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// URLs associated with this note

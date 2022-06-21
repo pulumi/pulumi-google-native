@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Output<Outputs.GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse> CallMetadata { get; private set; } = null!;
 
         /// <summary>
+        /// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        /// </summary>
+        [Output("conversationId")]
+        public Output<string?> ConversationId { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which the conversation was created.
         /// </summary>
         [Output("createTime")]
@@ -75,6 +81,9 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("latestAnalysis")]
         public Output<Outputs.GoogleCloudContactcenterinsightsV1AnalysisResponse> LatestAnalysis { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         /// </summary>
@@ -92,6 +101,9 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         [Output("obfuscatedUserId")]
         public Output<string> ObfuscatedUserId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The annotations that were generated during the customer and agent interaction.

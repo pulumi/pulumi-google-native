@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
     [GoogleNativeResourceType("google-native:apigee/v1:NatAddress")]
     public partial class NatAddress : Pulumi.CustomResource
     {
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
         /// <summary>
         /// The static IPV4 address.
         /// </summary>
@@ -26,6 +29,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// State of the nat address.

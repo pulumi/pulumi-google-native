@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<ImmutableArray<string>> AllowedValues { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
+        /// </summary>
+        [Output("attributeDefinitionId")]
+        public Output<string> AttributeDefinitionId { get; private set; } = null!;
+
+        /// <summary>
         /// The category of the attribute. The value of this field cannot be changed after creation.
         /// </summary>
         [Output("category")]
@@ -33,11 +39,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Output("consentDefaultValues")]
         public Output<ImmutableArray<string>> ConsentDefaultValues { get; private set; } = null!;
 
+        [Output("consentStoreId")]
+        public Output<string> ConsentStoreId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         /// </summary>
         [Output("dataMappingDefaultValue")]
         public Output<string> DataMappingDefaultValue { get; private set; } = null!;
+
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
         /// Optional. A description of the attribute.
@@ -45,11 +57,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

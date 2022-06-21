@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        [Output("envgroupId")]
+        public Output<string> EnvgroupId { get; private set; } = null!;
+
         /// <summary>
         /// ID of the attached environment.
         /// </summary>
@@ -38,6 +41,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
 
         /// <summary>

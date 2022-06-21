@@ -21,11 +21,17 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("apiProxy")]
         public Output<string> ApiProxy { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// ID of the trace configuration override specified as a system-generated UUID.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Trace configuration to override.

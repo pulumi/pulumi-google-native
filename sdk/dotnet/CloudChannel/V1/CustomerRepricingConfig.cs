@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     [GoogleNativeResourceType("google-native:cloudchannel/v1:CustomerRepricingConfig")]
     public partial class CustomerRepricingConfig : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
+        [Output("customerId")]
+        public Output<string> CustomerId { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
         /// </summary>

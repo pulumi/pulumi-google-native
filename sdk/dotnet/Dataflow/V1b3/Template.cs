@@ -18,11 +18,17 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     [GoogleNativeResourceType("google-native:dataflow/v1b3:Template")]
     public partial class Template : Pulumi.CustomResource
     {
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The template metadata describing the template name, available parameters, etc.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.TemplateMetadataResponse> Metadata { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Describes the runtime metadata with SDKInfo and available parameters.

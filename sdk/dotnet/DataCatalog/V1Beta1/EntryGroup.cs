@@ -34,10 +34,22 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.
+        /// </summary>
+        [Output("entryGroupId")]
+        public Output<string> EntryGroupId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

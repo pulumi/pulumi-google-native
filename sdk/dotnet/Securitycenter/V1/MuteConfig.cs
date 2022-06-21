@@ -47,10 +47,19 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public Output<string> MostRecentEditor { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        /// </summary>
+        [Output("muteConfigId")]
+        public Output<string> MuteConfigId { get; private set; } = null!;
+
+        /// <summary>
         /// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.

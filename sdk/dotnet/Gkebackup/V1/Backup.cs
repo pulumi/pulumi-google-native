@@ -23,6 +23,15 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<bool> AllNamespaces { get; private set; } = null!;
 
         /// <summary>
+        /// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
+        /// </summary>
+        [Output("backupId")]
+        public Output<string?> BackupId { get; private set; } = null!;
+
+        [Output("backupPlanId")]
+        public Output<string> BackupPlanId { get; private set; } = null!;
+
+        /// <summary>
         /// Information about the GKE cluster from which this Backup was created.
         /// </summary>
         [Output("clusterMetadata")]
@@ -94,6 +103,9 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
         /// </summary>
@@ -111,6 +123,9 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         [Output("podCount")]
         public Output<int> PodCount { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The total number of Kubernetes resources included in the Backup.

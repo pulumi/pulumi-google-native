@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public Output<ImmutableArray<Outputs.ResourceRecordSetResponse>> Additions { get; private set; } = null!;
 
         /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
+        [Output("clientOperationId")]
+        public Output<string?> ClientOperationId { get; private set; } = null!;
+
+        /// <summary>
         /// Which ResourceRecordSets to remove? Must match existing data exactly.
         /// </summary>
         [Output("deletions")]
@@ -38,6 +44,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        [Output("managedZone")]
+        public Output<string> ManagedZone { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The time that this operation was started by the server (output only). This is in RFC3339 text format.

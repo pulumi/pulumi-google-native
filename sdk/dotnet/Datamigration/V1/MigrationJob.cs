@@ -75,6 +75,15 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID of the instance to create.
+        /// </summary>
+        [Output("migrationJobId")]
+        public Output<string> MigrationJobId { get; private set; } = null!;
+
         /// <summary>
         /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         /// </summary>
@@ -86,6 +95,15 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         [Output("phase")]
         public Output<string> Phase { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// The details needed to communicate to the source over Reverse SSH tunnel connectivity.

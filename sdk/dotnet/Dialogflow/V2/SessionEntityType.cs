@@ -28,11 +28,26 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Output("entityOverrideMode")]
         public Output<string> EntityOverrideMode { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("sessionId")]
+        public Output<string> SessionId { get; private set; } = null!;
+
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
 
 
         /// <summary>

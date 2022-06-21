@@ -22,6 +22,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("apiproduct")]
         public Output<string> Apiproduct { get; private set; } = null!;
 
+        [Output("apiproductId")]
+        public Output<string> ApiproductId { get; private set; } = null!;
+
         /// <summary>
         /// Frequency at which the customer will be billed.
         /// </summary>
@@ -93,6 +96,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.

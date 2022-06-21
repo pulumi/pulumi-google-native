@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.APIGateway.V1
     public partial class Api : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+        /// </summary>
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        /// <summary>
         /// Created time.
         /// </summary>
         [Output("createTime")]
@@ -34,6 +40,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
         /// </summary>
@@ -45,6 +54,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// State of the API.

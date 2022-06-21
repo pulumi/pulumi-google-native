@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<Outputs.GoogleCloudDataplexV1EnvironmentEndpointsResponse> Endpoints { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+        /// </summary>
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
+        /// <summary>
         /// Infrastructure specification for the Environment.
         /// </summary>
         [Output("infrastructureSpec")]
@@ -52,11 +58,20 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("lakeId")]
+        public Output<string> LakeId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Configuration for sessions created for this environment.
@@ -87,6 +102,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

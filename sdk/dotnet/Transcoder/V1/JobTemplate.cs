@@ -22,10 +22,22 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public Output<Outputs.JobConfigResponse> Config { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+        /// </summary>
+        [Output("jobTemplateId")]
+        public Output<string> JobTemplateId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

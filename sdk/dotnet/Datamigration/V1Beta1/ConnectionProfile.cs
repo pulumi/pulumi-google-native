@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Output<Outputs.CloudSqlConnectionProfileResponse> Cloudsql { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The connection profile identifier.
+        /// </summary>
+        [Output("connectionProfileId")]
+        public Output<string> ConnectionProfileId { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
@@ -45,6 +51,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// A MySQL database connection profile.
         /// </summary>
@@ -57,11 +66,20 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The database provider.
         /// </summary>
         [Output("provider")]
         public Output<string> Provider { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).

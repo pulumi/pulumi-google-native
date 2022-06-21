@@ -177,9 +177,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Output("legacyAbac")]
         public Output<Outputs.LegacyAbacResponse> LegacyAbac { get; private set; } = null!;
 
-        /// <summary>
-        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -326,6 +323,9 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("privateClusterConfig")]
         public Output<Outputs.PrivateClusterConfigResponse> PrivateClusterConfig { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Enable/Disable Protect API features for the cluster.

@@ -34,9 +34,6 @@ namespace Pulumi.GoogleNative.Datastore.V1
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
-        /// <summary>
-        /// Project ID.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

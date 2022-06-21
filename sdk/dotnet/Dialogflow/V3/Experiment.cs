@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     [GoogleNativeResourceType("google-native:dialogflow/v3:Experiment")]
     public partial class Experiment : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// Creation time of this experiment.
         /// </summary>
@@ -45,6 +48,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         /// </summary>
@@ -57,11 +63,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Output("lastUpdateTime")]
         public Output<string> LastUpdateTime { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Inference result of the experiment.

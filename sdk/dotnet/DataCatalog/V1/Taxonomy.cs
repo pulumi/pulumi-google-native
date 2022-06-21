@@ -34,6 +34,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
         /// </summary>
@@ -45,6 +48,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         [Output("policyTagCount")]
         public Output<int> PolicyTagCount { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Creation and modification timestamps of this taxonomy.

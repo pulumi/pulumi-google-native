@@ -40,16 +40,28 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha
         public Output<Outputs.EventTriggerResponse> EventTrigger { get; private set; } = null!;
 
         /// <summary>
+        /// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        /// </summary>
+        [Output("functionId")]
+        public Output<string?> FunctionId { get; private set; } = null!;
+
+        /// <summary>
         /// Labels associated with this Cloud Function.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).

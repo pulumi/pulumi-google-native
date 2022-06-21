@@ -15,11 +15,23 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
     [GoogleNativeResourceType("google-native:pubsublite/v1:Reservation")]
     public partial class Reservation : Pulumi.CustomResource
     {
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+        /// </summary>
+        [Output("reservationId")]
+        public Output<string> ReservationId { get; private set; } = null!;
 
         /// <summary>
         /// The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.

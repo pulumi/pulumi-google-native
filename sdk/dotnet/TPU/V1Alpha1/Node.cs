@@ -70,6 +70,9 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The name of the TPU
         /// </summary>
@@ -89,10 +92,25 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         public Output<ImmutableArray<Outputs.NetworkEndpointResponse>> NetworkEndpoints { get; private set; } = null!;
 
         /// <summary>
+        /// The unqualified resource name.
+        /// </summary>
+        [Output("nodeId")]
+        public Output<string?> NodeId { get; private set; } = null!;
+
+        /// <summary>
         /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Idempotent request UUID.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// The scheduling options for this node.

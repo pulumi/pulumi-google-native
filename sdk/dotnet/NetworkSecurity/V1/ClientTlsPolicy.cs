@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public Output<Outputs.GoogleCloudNetworksecurityV1CertificateProviderResponse> ClientCertificate { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+        /// </summary>
+        [Output("clientTlsPolicyId")]
+        public Output<string> ClientTlsPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the resource was created.
         /// </summary>
         [Output("createTime")]
@@ -39,11 +45,17 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.

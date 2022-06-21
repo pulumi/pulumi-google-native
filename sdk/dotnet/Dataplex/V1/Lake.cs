@@ -47,6 +47,15 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+        /// </summary>
+        [Output("lakeId")]
+        public Output<string> LakeId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Settings to manage lake and Dataproc Metastore service instance association.
         /// </summary>
         [Output("metastore")]
@@ -63,6 +72,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
@@ -87,6 +99,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

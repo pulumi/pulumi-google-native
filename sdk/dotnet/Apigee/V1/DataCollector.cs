@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+        /// </summary>
+        [Output("dataCollectorId")]
+        public Output<string?> DataCollectorId { get; private set; } = null!;
+
+        /// <summary>
         /// A description of the data collector.
         /// </summary>
         [Output("description")]
@@ -38,6 +44,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The type of data this data collector will collect.

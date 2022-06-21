@@ -29,10 +29,22 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The current state of the Instance.

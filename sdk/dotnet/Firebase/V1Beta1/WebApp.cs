@@ -47,9 +47,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

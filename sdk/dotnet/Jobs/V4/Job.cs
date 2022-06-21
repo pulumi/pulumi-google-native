@@ -159,6 +159,9 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Output("processingOptions")]
         public Output<Outputs.ProcessingOptionsResponse> ProcessingOptions { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue &gt;0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
         /// </summary>
@@ -182,6 +185,9 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         [Output("responsibilities")]
         public Output<string> Responsibilities { get; private set; } = null!;
+
+        [Output("tenantId")]
+        public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
         /// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.

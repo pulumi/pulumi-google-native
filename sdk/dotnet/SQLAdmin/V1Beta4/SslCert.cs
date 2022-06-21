@@ -46,9 +46,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Output("expirationTime")]
         public Output<string> ExpirationTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the database instance.
-        /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
 
@@ -57,6 +54,9 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The URI of this resource.

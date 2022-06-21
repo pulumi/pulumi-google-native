@@ -123,6 +123,9 @@ namespace Pulumi.GoogleNative.Run.V2
         [Output("launchStage")]
         public Output<string> LaunchStage { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
         /// </summary>
@@ -135,11 +138,20 @@ namespace Pulumi.GoogleNative.Run.V2
         [Output("observedGeneration")]
         public Output<string> ObservedGeneration { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        /// </summary>
+        [Output("serviceId")]
+        public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
         /// The template used to create revisions for this Service.
@@ -182,6 +194,12 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

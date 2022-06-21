@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class Sharedflow : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Must be set to either `import` or `validate`.
+        /// </summary>
+        [Output("action")]
+        public Output<string> Action { get; private set; } = null!;
+
+        /// <summary>
         /// The id of the most recently created revision for this shared flow.
         /// </summary>
         [Output("latestRevisionId")]
@@ -28,10 +34,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1EntityMetadataResponse> MetaData { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the shared flow.
+        /// Required. The name to give the shared flow
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// A list of revisions of this shared flow.

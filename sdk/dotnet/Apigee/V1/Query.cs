@@ -29,6 +29,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("envgroupHostname")]
         public Output<string> EnvgroupHostname { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// Error is set when query fails.
         /// </summary>
@@ -46,6 +49,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Contains information like metrics, dimenstions etc of the AsyncQuery.

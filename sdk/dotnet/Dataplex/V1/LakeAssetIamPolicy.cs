@@ -17,6 +17,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     [GoogleNativeResourceType("google-native:dataplex/v1:LakeAssetIamPolicy")]
     public partial class LakeAssetIamPolicy : Pulumi.CustomResource
     {
+        [Output("assetId")]
+        public Output<string> AssetId { get; private set; } = null!;
+
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
         /// </summary>
@@ -35,11 +38,23 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        [Output("lakeId")]
+        public Output<string> LakeId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations: Getting a policy that includes a conditional role binding Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
+
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>

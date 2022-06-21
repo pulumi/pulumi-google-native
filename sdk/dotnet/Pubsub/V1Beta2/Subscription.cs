@@ -27,11 +27,17 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Output("pushConfig")]
         public Output<Outputs.PushConfigResponse> PushConfig { get; private set; } = null!;
+
+        [Output("subscriptionId")]
+        public Output<string> SubscriptionId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted.

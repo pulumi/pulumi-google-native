@@ -63,6 +63,9 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The risk level selected for the scan
         /// </summary>

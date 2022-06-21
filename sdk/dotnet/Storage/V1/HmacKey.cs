@@ -34,9 +34,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
-        /// <summary>
-        /// Project ID owning the service account to which the key authenticates.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -47,7 +44,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The email address of the key's associated service account.
+        /// Email address of the service account.
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
@@ -69,6 +66,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
 
         /// <summary>

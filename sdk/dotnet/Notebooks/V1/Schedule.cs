@@ -46,17 +46,29 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Output("executionTemplate")]
         public Output<Outputs.ExecutionTemplateResponse> ExecutionTemplate { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The most recent execution names triggered from this schedule and their corresponding states.
         /// </summary>
         [Output("recentExecutions")]
         public Output<ImmutableArray<Outputs.ExecutionResponse>> RecentExecutions { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. User-defined unique ID of this schedule.
+        /// </summary>
+        [Output("scheduleId")]
+        public Output<string> ScheduleId { get; private set; } = null!;
 
         [Output("state")]
         public Output<string> State { get; private set; } = null!;

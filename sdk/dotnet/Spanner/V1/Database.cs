@@ -52,11 +52,17 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Output("encryptionInfo")]
         public Output<ImmutableArray<Outputs.EncryptionInfoResponse>> EncryptionInfo { get; private set; } = null!;
 
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
         /// <summary>
         /// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Applicable only for restored databases. Contains information about the restore source.

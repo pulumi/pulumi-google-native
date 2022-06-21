@@ -33,11 +33,23 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Output("isPubliclyReadable")]
         public Output<bool> IsPubliclyReadable { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+        /// </summary>
+        [Output("tagTemplateId")]
+        public Output<string> TagTemplateId { get; private set; } = null!;
 
 
         /// <summary>

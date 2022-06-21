@@ -40,11 +40,26 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         [Output("frameEndTime")]
         public Output<string> FrameEndTime { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The report unique name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
+        [Output("sourceId")]
+        public Output<string> SourceId { get; private set; } = null!;
 
         /// <summary>
         /// Current state of the report.
@@ -63,6 +78,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// </summary>
         [Output("timeFrame")]
         public Output<string> TimeFrame { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
+        /// </summary>
+        [Output("utilizationReportId")]
+        public Output<string> UtilizationReportId { get; private set; } = null!;
 
         /// <summary>
         /// Total number of VMs included in the report.

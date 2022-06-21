@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         public Output<Outputs.CloudSqlPropertiesResponse> CloudSql { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Connection id that should be assigned to the created connection.
+        /// </summary>
+        [Output("connectionId")]
+        public Output<string?> ConnectionId { get; private set; } = null!;
+
+        /// <summary>
         /// The creation timestamp of the connection.
         /// </summary>
         [Output("creationTime")]
@@ -51,11 +57,17 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         [Output("lastModifiedTime")]
         public Output<string> LastModifiedTime { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

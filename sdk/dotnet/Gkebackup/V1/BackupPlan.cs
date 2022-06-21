@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<Outputs.BackupConfigResponse> BackupConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
+        /// </summary>
+        [Output("backupPlanId")]
+        public Output<string> BackupPlanId { get; private set; } = null!;
+
+        /// <summary>
         /// Defines a schedule for automatic Backup creation via this BackupPlan.
         /// </summary>
         [Output("backupSchedule")]
@@ -64,11 +70,17 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.

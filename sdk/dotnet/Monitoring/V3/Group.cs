@@ -46,6 +46,15 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Output("parentName")]
         public Output<string> ParentName { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, validate this request but do not create the group.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Group resource with the given unique name, arguments, and options.

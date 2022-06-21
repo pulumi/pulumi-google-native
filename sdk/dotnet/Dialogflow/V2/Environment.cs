@@ -29,16 +29,28 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The unique id of the new environment.
+        /// </summary>
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The fulfillment settings to use for this environment.
         /// </summary>
         [Output("fulfillment")]
         public Output<Outputs.GoogleCloudDialogflowV2FulfillmentResponse> Fulfillment { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.

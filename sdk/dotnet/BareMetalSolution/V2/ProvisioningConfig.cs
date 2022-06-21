@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public Output<string> CloudConsoleUri { get; private set; } = null!;
 
         /// <summary>
-        /// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
+        /// Optional. Email provided to send a confirmation with provisioning config to.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -42,9 +42,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [Output("instances")]
         public Output<ImmutableArray<Outputs.InstanceConfigResponse>> Instances { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
-        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -59,6 +56,9 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.NetworkConfigResponse>> Networks { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// State of ProvisioningConfig.

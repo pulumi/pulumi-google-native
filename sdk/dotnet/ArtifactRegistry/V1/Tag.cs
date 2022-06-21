@@ -15,11 +15,29 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     [GoogleNativeResourceType("google-native:artifactregistry/v1:Tag")]
     public partial class Tag : Pulumi.CustomResource
     {
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("packageId")]
+        public Output<string> PackageId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("repositoryId")]
+        public Output<string> RepositoryId { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag id to use for this repository.
+        /// </summary>
+        [Output("tagId")]
+        public Output<string?> TagId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.

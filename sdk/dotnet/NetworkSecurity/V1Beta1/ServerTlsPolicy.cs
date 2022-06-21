@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
@@ -51,11 +54,20 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Output("serverCertificate")]
         public Output<Outputs.GoogleCloudNetworksecurityV1beta1CertificateProviderResponse> ServerCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
+        /// </summary>
+        [Output("serverTlsPolicyId")]
+        public Output<string> ServerTlsPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was updated.
