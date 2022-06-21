@@ -398,6 +398,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	ops map[string]*operation) error {
 	resourceTok := g.genToken(typeName)
 
+	properties := map[string]schema.PropertySpec{}
+	requiredProperties := codegen.NewStringSet()
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
 
@@ -498,7 +500,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 		if isRequired(param) {
 			requiredInputProperties.Add(sdkName)
+			requiredProperties.Add(sdkName)
 		}
+		properties[sdkName] = inputProperties[sdkName]
 	}
 
 	subMatches := pathRegex.FindAllStringSubmatch(createPath, -1)
@@ -512,6 +516,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
+		properties[sdkName] = inputProperties[sdkName]
 		p := resources.CloudAPIResourceParam{
 			Name: name,
 			Kind: "path",
@@ -522,6 +527,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		resourceMeta.Create.Endpoint.Values = append(resourceMeta.Create.Endpoint.Values, p)
 		patternParams.Add(sdkName)
 		requiredInputProperties.Add(sdkName)
+		requiredProperties.Add(sdkName)
 	}
 
 	if dd.createMethod.Request != nil {
@@ -607,16 +613,19 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
-	properties := map[string]schema.PropertySpec{}
-	requiredProperties := codegen.NewStringSet()
 	if dd.getMethod.Response != nil {
 		response := g.rest.Schemas[dd.getMethod.Response.Ref]
 		responseBag, err := g.genProperties(typeName, &response, "", true, nil)
 		if err != nil {
 			return err
 		}
-		properties = responseBag.specs
-		requiredProperties = responseBag.requiredSpecs
+
+		if err = mergo.Merge(&properties, responseBag.specs); err != nil {
+			return err
+		}
+		if err = mergo.Merge(&requiredProperties, responseBag.requiredSpecs); err != nil {
+			return err
+		}
 		g.escapeCSharpNames(typeName, properties)
 
 		// Decide how the provider will determine the ID of a created resource.
