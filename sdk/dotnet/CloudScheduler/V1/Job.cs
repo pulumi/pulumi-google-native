@@ -45,11 +45,17 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         [Output("lastAttemptTime")]
         public Output<string> LastAttemptTime { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Pub/Sub target.

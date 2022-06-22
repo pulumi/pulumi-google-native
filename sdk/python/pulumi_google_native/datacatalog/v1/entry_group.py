@@ -207,7 +207,10 @@ class EntryGroup(pulumi.CustomResource):
         __props__.__dict__["data_catalog_timestamps"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["entry_group_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return EntryGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -235,10 +238,28 @@ class EntryGroup(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="entryGroupId")
+    def entry_group_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+        """
+        return pulumi.get(self, "entry_group_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

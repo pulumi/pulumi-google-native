@@ -15,15 +15,19 @@ import (
 type FeedbackMessage struct {
 	pulumi.CustomResourceState
 
+	AnnotatedDatasetId pulumi.StringOutput `pulumi:"annotatedDatasetId"`
 	// String content of the feedback. Maximum of 10000 characters.
 	Body pulumi.StringOutput `pulumi:"body"`
 	// Create time.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime       pulumi.StringOutput `pulumi:"createTime"`
+	DatasetId        pulumi.StringOutput `pulumi:"datasetId"`
+	FeedbackThreadId pulumi.StringOutput `pulumi:"feedbackThreadId"`
 	// The image storing this feedback if the feedback is an image representing operator's comments.
 	Image pulumi.StringOutput `pulumi:"image"`
 	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
 	Name                      pulumi.StringOutput                                                   `pulumi:"name"`
 	OperatorFeedbackMetadata  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput  `pulumi:"operatorFeedbackMetadata"`
+	Project                   pulumi.StringOutput                                                   `pulumi:"project"`
 	RequesterFeedbackMetadata GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput `pulumi:"requesterFeedbackMetadata"`
 }
 
@@ -146,6 +150,10 @@ func (o FeedbackMessageOutput) ToFeedbackMessageOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o FeedbackMessageOutput) AnnotatedDatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.AnnotatedDatasetId }).(pulumi.StringOutput)
+}
+
 // String content of the feedback. Maximum of 10000 characters.
 func (o FeedbackMessageOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
@@ -154,6 +162,14 @@ func (o FeedbackMessageOutput) Body() pulumi.StringOutput {
 // Create time.
 func (o FeedbackMessageOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o FeedbackMessageOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+func (o FeedbackMessageOutput) FeedbackThreadId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.FeedbackThreadId }).(pulumi.StringOutput)
 }
 
 // The image storing this feedback if the feedback is an image representing operator's comments.
@@ -170,6 +186,10 @@ func (o FeedbackMessageOutput) OperatorFeedbackMetadata() GoogleCloudDatalabelin
 	return o.ApplyT(func(v *FeedbackMessage) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
 		return v.OperatorFeedbackMetadata
 	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput)
+}
+
+func (o FeedbackMessageOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func (o FeedbackMessageOutput) RequesterFeedbackMetadata() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {

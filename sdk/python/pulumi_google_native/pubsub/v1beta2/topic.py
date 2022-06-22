@@ -143,6 +143,8 @@ class Topic(pulumi.CustomResource):
         __props__ = TopicArgs.__new__(TopicArgs)
 
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["topic_id"] = None
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -152,4 +154,14 @@ class Topic(pulumi.CustomResource):
         The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="topicId")
+    def topic_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "topic_id")
 

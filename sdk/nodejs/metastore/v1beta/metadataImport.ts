@@ -53,10 +53,21 @@ export class MetadataImport extends pulumi.CustomResource {
      * The time when the metadata import finished.
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+     */
+    public readonly metadataImportId!: pulumi.Output<string>;
     /**
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
+    public readonly serviceId!: pulumi.Output<string>;
     /**
      * The current state of the metadata import.
      */
@@ -100,7 +111,12 @@ export class MetadataImport extends pulumi.CustomResource {
             resourceInputs["databaseDump"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["metadataImportId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

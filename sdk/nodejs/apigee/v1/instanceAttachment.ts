@@ -43,10 +43,12 @@ export class InstanceAttachment extends pulumi.CustomResource {
      * ID of the attached environment.
      */
     public readonly environment!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * ID of the attachment.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
 
     /**
      * Create a InstanceAttachment resource with the given unique name, arguments, and options.
@@ -73,7 +75,9 @@ export class InstanceAttachment extends pulumi.CustomResource {
         } else {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceAttachment.__pulumiType, name, resourceInputs, opts);

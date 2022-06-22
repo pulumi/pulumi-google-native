@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public partial class ProjectBigQueryExport : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        /// </summary>
+        [Output("bigQueryExportId")]
+        public Output<string> BigQueryExportId { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
         /// </summary>
         [Output("createTime")]
@@ -57,6 +63,9 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// </summary>
         [Output("principal")]
         public Output<string> Principal { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.

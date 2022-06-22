@@ -18,8 +18,10 @@ import (
 type Template struct {
 	pulumi.CustomResourceState
 
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The template metadata describing the template name, available parameters, etc.
 	Metadata TemplateMetadataResponseOutput `pulumi:"metadata"`
+	Project  pulumi.StringOutput            `pulumi:"project"`
 	// Describes the runtime metadata with SDKInfo and available parameters.
 	RuntimeMetadata RuntimeMetadataResponseOutput `pulumi:"runtimeMetadata"`
 	// The status of the get template request. Any problems with the request will be indicated in the error_details.
@@ -138,9 +140,17 @@ func (o TemplateOutput) ToTemplateOutputWithContext(ctx context.Context) Templat
 	return o
 }
 
+func (o TemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The template metadata describing the template name, available parameters, etc.
 func (o TemplateOutput) Metadata() TemplateMetadataResponseOutput {
 	return o.ApplyT(func(v *Template) TemplateMetadataResponseOutput { return v.Metadata }).(TemplateMetadataResponseOutput)
+}
+
+func (o TemplateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Describes the runtime metadata with SDKInfo and available parameters.

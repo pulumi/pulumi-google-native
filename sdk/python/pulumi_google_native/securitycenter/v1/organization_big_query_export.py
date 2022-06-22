@@ -212,15 +212,25 @@ class OrganizationBigQueryExport(pulumi.CustomResource):
 
         __props__ = OrganizationBigQueryExportArgs.__new__(OrganizationBigQueryExportArgs)
 
+        __props__.__dict__["big_query_export_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["dataset"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["filter"] = None
         __props__.__dict__["most_recent_editor"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["principal"] = None
         __props__.__dict__["update_time"] = None
         return OrganizationBigQueryExport(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bigQueryExportId")
+    def big_query_export_id(self) -> pulumi.Output[str]:
+        """
+        Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        """
+        return pulumi.get(self, "big_query_export_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -269,6 +279,11 @@ class OrganizationBigQueryExport(pulumi.CustomResource):
         The relative resource name of this export. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format: "organizations/{organization_id}/bigQueryExports/{export_id}" Example format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format: "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when provided in create requests.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

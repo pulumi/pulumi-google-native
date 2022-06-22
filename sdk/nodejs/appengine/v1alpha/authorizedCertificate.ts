@@ -36,6 +36,7 @@ export class AuthorizedCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthorizedCertificate.__pulumiType;
     }
 
+    public readonly appId!: pulumi.Output<string>;
     /**
      * The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
      */
@@ -93,6 +94,7 @@ export class AuthorizedCertificate extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["visibleDomainMappings"] = undefined /*out*/;
         } else {
+            resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["certificateRawData"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["domainMappingsCount"] = undefined /*out*/;

@@ -57,9 +57,15 @@ export class EntityType extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
+     * Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+     */
+    public readonly languageCode!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a EntityType resource with the given unique name, arguments, and options.
@@ -93,7 +99,10 @@ export class EntityType extends pulumi.CustomResource {
             resourceInputs["enableFuzzyExtraction"] = undefined /*out*/;
             resourceInputs["entities"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EntityType.__pulumiType, name, resourceInputs, opts);

@@ -225,7 +225,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         __props__.__dict__["basic_algorithm"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["secondary_worker_config"] = None
         __props__.__dict__["worker_config"] = None
         return AutoscalingPolicy(resource_name, opts=opts, __props__=__props__)
@@ -245,11 +247,21 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="secondaryWorkerConfig")

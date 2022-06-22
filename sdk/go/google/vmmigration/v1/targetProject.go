@@ -20,10 +20,14 @@ type TargetProject struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The target project's description.
 	Description pulumi.StringOutput `pulumi:"description"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The name of the target project.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The target project ID (number) or project name.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Required. The target_project identifier.
+	TargetProjectId pulumi.StringOutput `pulumi:"targetProjectId"`
 	// The last time the target project resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -141,14 +145,27 @@ func (o TargetProjectOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o TargetProjectOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the target project.
 func (o TargetProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The target project ID (number) or project name.
 func (o TargetProjectOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o TargetProjectOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Required. The target_project identifier.
+func (o TargetProjectOutput) TargetProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.TargetProjectId }).(pulumi.StringOutput)
 }
 
 // The last time the target project resource was updated.

@@ -16,6 +16,8 @@ import (
 type ConnectionProfile struct {
 	pulumi.CustomResourceState
 
+	// Required. The connection profile identifier.
+	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
 	// The create time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Display name.
@@ -25,7 +27,8 @@ type ConnectionProfile struct {
 	// Cloud Storage ConnectionProfile configuration.
 	GcsProfile GcsProfileResponseOutput `pulumi:"gcsProfile"`
 	// Labels.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// MySQL ConnectionProfile configuration.
 	MysqlProfile MysqlProfileResponseOutput `pulumi:"mysqlProfile"`
 	// The resource's name.
@@ -36,6 +39,9 @@ type ConnectionProfile struct {
 	OracleProfile OracleProfileResponseOutput `pulumi:"oracleProfile"`
 	// Private connectivity.
 	PrivateConnectivity PrivateConnectivityResponseOutput `pulumi:"privateConnectivity"`
+	Project             pulumi.StringOutput               `pulumi:"project"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity StaticServiceIpConnectivityResponseOutput `pulumi:"staticServiceIpConnectivity"`
 	// The update time of the resource.
@@ -178,6 +184,11 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx contex
 	return o
 }
 
+// Required. The connection profile identifier.
+func (o ConnectionProfileOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
 // The create time of the resource.
 func (o ConnectionProfileOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -203,6 +214,10 @@ func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ConnectionProfileOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // MySQL ConnectionProfile configuration.
 func (o ConnectionProfileOutput) MysqlProfile() MysqlProfileResponseOutput {
 	return o.ApplyT(func(v *ConnectionProfile) MysqlProfileResponseOutput { return v.MysqlProfile }).(MysqlProfileResponseOutput)
@@ -226,6 +241,15 @@ func (o ConnectionProfileOutput) OracleProfile() OracleProfileResponseOutput {
 // Private connectivity.
 func (o ConnectionProfileOutput) PrivateConnectivity() PrivateConnectivityResponseOutput {
 	return o.ApplyT(func(v *ConnectionProfile) PrivateConnectivityResponseOutput { return v.PrivateConnectivity }).(PrivateConnectivityResponseOutput)
+}
+
+func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o ConnectionProfileOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Static Service IP connectivity.

@@ -40,11 +40,17 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The last update timestamp of an inspectTemplate.

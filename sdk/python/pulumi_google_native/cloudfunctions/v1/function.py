@@ -704,10 +704,12 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["ingress_settings"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["max_instances"] = None
         __props__.__dict__["min_instances"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["runtime"] = None
         __props__.__dict__["secret_environment_variables"] = None
         __props__.__dict__["secret_volumes"] = None
@@ -845,6 +847,11 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="maxInstances")
     def max_instances(self) -> pulumi.Output[int]:
         """
@@ -875,6 +882,11 @@ class Function(pulumi.CustomResource):
         The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

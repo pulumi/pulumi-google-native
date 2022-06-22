@@ -50,10 +50,16 @@ export class Realm extends pulumi.CustomResource {
      * The labels associated with this realm. Each label is a key-value pair.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. The ID of the realm resource to create.
+     */
+    public readonly realmId!: pulumi.Output<string>;
     /**
      * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
      */
@@ -95,7 +101,10 @@ export class Realm extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["realmId"] = undefined /*out*/;
             resourceInputs["timeZone"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

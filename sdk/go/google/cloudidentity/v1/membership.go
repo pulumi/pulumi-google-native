@@ -18,6 +18,7 @@ type Membership struct {
 
 	// The time when the `Membership` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	GroupId    pulumi.StringOutput `pulumi:"groupId"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The `EntityKey` of the member.
@@ -131,6 +132,10 @@ func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) Mem
 // The time when the `Membership` was created.
 func (o MembershipOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o MembershipOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.

@@ -24,6 +24,7 @@ type WorkerPool struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
+	Project       pulumi.StringOutput         `pulumi:"project"`
 	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// WorkerPool state.
@@ -32,6 +33,8 @@ type WorkerPool struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig WorkerConfigResponseOutput `pulumi:"workerConfig"`
+	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+	WorkerPoolId pulumi.StringOutput `pulumi:"workerPoolId"`
 }
 
 // NewWorkerPool registers a new resource with the given unique name, arguments, and options.
@@ -160,6 +163,10 @@ func (o WorkerPoolOutput) NetworkConfig() NetworkConfigResponseOutput {
 	return o.ApplyT(func(v *WorkerPool) NetworkConfigResponseOutput { return v.NetworkConfig }).(NetworkConfigResponseOutput)
 }
 
+func (o WorkerPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 func (o WorkerPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
@@ -178,6 +185,11 @@ func (o WorkerPoolOutput) UpdateTime() pulumi.StringOutput {
 // Worker configuration for the `WorkerPool`.
 func (o WorkerPoolOutput) WorkerConfig() WorkerConfigResponseOutput {
 	return o.ApplyT(func(v *WorkerPool) WorkerConfigResponseOutput { return v.WorkerConfig }).(WorkerConfigResponseOutput)
+}
+
+// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+func (o WorkerPoolOutput) WorkerPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.WorkerPoolId }).(pulumi.StringOutput)
 }
 
 func init() {

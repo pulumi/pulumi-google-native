@@ -147,9 +147,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Output("outOfDiskReport")]
         public Output<Outputs.SqlOutOfDiskReportResponse> OutOfDiskReport { get; private set; } = null!;
 
-        /// <summary>
-        /// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

@@ -328,9 +328,13 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
         __props__.__dict__["app_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["ghe_config_id"] = None
         __props__.__dict__["host_url"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["peered_network"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["project_id"] = None
         __props__.__dict__["secrets"] = None
         __props__.__dict__["ssl_ca"] = None
         __props__.__dict__["webhook_key"] = None
@@ -361,12 +365,25 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="gheConfigId")
+    def ghe_config_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
+        """
+        return pulumi.get(self, "ghe_config_id")
+
+    @property
     @pulumi.getter(name="hostUrl")
     def host_url(self) -> pulumi.Output[str]:
         """
         The URL of the github enterprise host the configuration is for.
         """
         return pulumi.get(self, "host_url")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -383,6 +400,19 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
         Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         """
         return pulumi.get(self, "peered_network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of the project.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter

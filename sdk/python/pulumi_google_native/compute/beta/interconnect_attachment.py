@@ -627,13 +627,16 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["partner_asn"] = None
         __props__.__dict__["partner_metadata"] = None
         __props__.__dict__["private_interconnect_info"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["router"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["stack_type"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["validate_only"] = None
         __props__.__dict__["vlan_tag8021q"] = None
         return InterconnectAttachment(resource_name, opts=opts, __props__=__props__)
 
@@ -863,11 +866,21 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter
@@ -916,6 +929,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        If true, the request will not be committed.
+        """
+        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter(name="vlanTag8021q")

@@ -267,10 +267,13 @@ class ClientTlsPolicy(pulumi.CustomResource):
         __props__ = ClientTlsPolicyArgs.__new__(ClientTlsPolicyArgs)
 
         __props__.__dict__["client_certificate"] = None
+        __props__.__dict__["client_tls_policy_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["server_validation_ca"] = None
         __props__.__dict__["sni"] = None
         __props__.__dict__["update_time"] = None
@@ -283,6 +286,14 @@ class ClientTlsPolicy(pulumi.CustomResource):
         Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
         """
         return pulumi.get(self, "client_certificate")
+
+    @property
+    @pulumi.getter(name="clientTlsPolicyId")
+    def client_tls_policy_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+        """
+        return pulumi.get(self, "client_tls_policy_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -310,11 +321,21 @@ class ClientTlsPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serverValidationCa")

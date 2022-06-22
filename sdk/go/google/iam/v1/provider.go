@@ -28,14 +28,19 @@ type Provider struct {
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the provider.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An OpenId Connect 1.0 identity provider.
-	Oidc OidcResponseOutput `pulumi:"oidc"`
+	Oidc    OidcResponseOutput  `pulumi:"oidc"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// An SAML 2.0 identity provider.
 	Saml SamlResponseOutput `pulumi:"saml"`
 	// The state of the provider.
-	State pulumi.StringOutput `pulumi:"state"`
+	State                  pulumi.StringOutput `pulumi:"state"`
+	WorkloadIdentityPoolId pulumi.StringOutput `pulumi:"workloadIdentityPoolId"`
+	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+	WorkloadIdentityPoolProviderId pulumi.StringOutput `pulumi:"workloadIdentityPoolProviderId"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -198,6 +203,10 @@ func (o ProviderOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o ProviderOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the provider.
 func (o ProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -208,6 +217,10 @@ func (o ProviderOutput) Oidc() OidcResponseOutput {
 	return o.ApplyT(func(v *Provider) OidcResponseOutput { return v.Oidc }).(OidcResponseOutput)
 }
 
+func (o ProviderOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // An SAML 2.0 identity provider.
 func (o ProviderOutput) Saml() SamlResponseOutput {
 	return o.ApplyT(func(v *Provider) SamlResponseOutput { return v.Saml }).(SamlResponseOutput)
@@ -216,6 +229,15 @@ func (o ProviderOutput) Saml() SamlResponseOutput {
 // The state of the provider.
 func (o ProviderOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o ProviderOutput) WorkloadIdentityPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.WorkloadIdentityPoolId }).(pulumi.StringOutput)
+}
+
+// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+func (o ProviderOutput) WorkloadIdentityPoolProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.WorkloadIdentityPoolProviderId }).(pulumi.StringOutput)
 }
 
 func init() {

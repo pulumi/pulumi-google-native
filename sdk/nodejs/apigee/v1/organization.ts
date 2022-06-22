@@ -99,6 +99,10 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+     */
+    public readonly parent!: pulumi.Output<string>;
+    /**
      * Configuration for the Portals settings.
      */
     public readonly portalDisabled!: pulumi.Output<boolean>;
@@ -193,6 +197,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["expiresAt"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["portalDisabled"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;

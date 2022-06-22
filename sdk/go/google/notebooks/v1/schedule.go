@@ -26,11 +26,15 @@ type Schedule struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplateResponseOutput `pulumi:"executionTemplate"`
+	Location          pulumi.StringOutput             `pulumi:"location"`
 	// The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The most recent execution names triggered from this schedule and their corresponding states.
 	RecentExecutions ExecutionResponseArrayOutput `pulumi:"recentExecutions"`
-	State            pulumi.StringOutput          `pulumi:"state"`
+	// Required. User-defined unique ID of this schedule.
+	ScheduleId pulumi.StringOutput `pulumi:"scheduleId"`
+	State      pulumi.StringOutput `pulumi:"state"`
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// Time the schedule was last updated.
@@ -173,14 +177,27 @@ func (o ScheduleOutput) ExecutionTemplate() ExecutionTemplateResponseOutput {
 	return o.ApplyT(func(v *Schedule) ExecutionTemplateResponseOutput { return v.ExecutionTemplate }).(ExecutionTemplateResponseOutput)
 }
 
+func (o ScheduleOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
 func (o ScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ScheduleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The most recent execution names triggered from this schedule and their corresponding states.
 func (o ScheduleOutput) RecentExecutions() ExecutionResponseArrayOutput {
 	return o.ApplyT(func(v *Schedule) ExecutionResponseArrayOutput { return v.RecentExecutions }).(ExecutionResponseArrayOutput)
+}
+
+// Required. User-defined unique ID of this schedule.
+func (o ScheduleOutput) ScheduleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.ScheduleId }).(pulumi.StringOutput)
 }
 
 func (o ScheduleOutput) State() pulumi.StringOutput {

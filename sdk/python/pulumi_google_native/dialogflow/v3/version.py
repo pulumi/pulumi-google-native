@@ -218,13 +218,22 @@ class Version(pulumi.CustomResource):
 
         __props__ = VersionArgs.__new__(VersionArgs)
 
+        __props__.__dict__["agent_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["flow_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nlu_settings"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         return Version(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -251,6 +260,16 @@ class Version(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="flowId")
+    def flow_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "flow_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -265,6 +284,11 @@ class Version(pulumi.CustomResource):
         The NLU settings of the flow at version creation.
         """
         return pulumi.get(self, "nlu_settings")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

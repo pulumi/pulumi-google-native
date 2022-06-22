@@ -97,6 +97,7 @@ export class Dataset extends pulumi.CustomResource {
      * [Optional] Number of hours for the max time travel for all tables in the dataset.
      */
     public readonly maxTimeTravelHours!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Reserved for future use.
      */
@@ -158,6 +159,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maxTimeTravelHours"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;

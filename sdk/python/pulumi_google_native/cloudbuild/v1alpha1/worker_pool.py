@@ -238,9 +238,6 @@ class WorkerPool(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The project ID of the GCP project for which the `WorkerPool` is created.
-        """
         return pulumi.get(self, "project")
 
     @property

@@ -37,6 +37,10 @@ export class OrganizationBucket extends pulumi.CustomResource {
     }
 
     /**
+     * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+     */
+    public readonly bucketId!: pulumi.Output<string>;
+    /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     public readonly cmekSettings!: pulumi.Output<outputs.logging.v2.CmekSettingsResponse>;
@@ -56,6 +60,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
      * The bucket lifecycle state.
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
@@ -64,6 +69,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
      * The resource name of the bucket.For example:projects/my-project/locations/global/buckets/my-bucketFor a list of supported locations, see Supported Regions (https://cloud.google.com/logging/docs/region-support)For the location of global it is unspecified where log entries are actually stored.After a bucket has been created, the location cannot be changed.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
      */
@@ -108,13 +114,16 @@ export class OrganizationBucket extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["cmekSettings"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["indexConfigs"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["restrictedFields"] = undefined /*out*/;
             resourceInputs["retentionDays"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

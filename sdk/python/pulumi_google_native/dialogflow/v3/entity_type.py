@@ -322,15 +322,24 @@ class EntityType(pulumi.CustomResource):
 
         __props__ = EntityTypeArgs.__new__(EntityTypeArgs)
 
+        __props__.__dict__["agent_id"] = None
         __props__.__dict__["auto_expansion_mode"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_fuzzy_extraction"] = None
         __props__.__dict__["entities"] = None
         __props__.__dict__["excluded_phrases"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["language_code"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["redact"] = None
         return EntityType(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter(name="autoExpansionMode")
@@ -381,12 +390,30 @@ class EntityType(pulumi.CustomResource):
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[Optional[str]]:
+        """
+        The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

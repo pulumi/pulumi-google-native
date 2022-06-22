@@ -369,13 +369,17 @@ class Listing(pulumi.CustomResource):
 
         __props__.__dict__["bigquery_dataset"] = None
         __props__.__dict__["categories"] = None
+        __props__.__dict__["data_exchange_id"] = None
         __props__.__dict__["data_provider"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["documentation"] = None
         __props__.__dict__["icon"] = None
+        __props__.__dict__["listing_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["primary_contact"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["publisher"] = None
         __props__.__dict__["request_access"] = None
         __props__.__dict__["state"] = None
@@ -396,6 +400,11 @@ class Listing(pulumi.CustomResource):
         Optional. Categories of the listing. Up to two categories are allowed.
         """
         return pulumi.get(self, "categories")
+
+    @property
+    @pulumi.getter(name="dataExchangeId")
+    def data_exchange_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "data_exchange_id")
 
     @property
     @pulumi.getter(name="dataProvider")
@@ -438,6 +447,19 @@ class Listing(pulumi.CustomResource):
         return pulumi.get(self, "icon")
 
     @property
+    @pulumi.getter(name="listingId")
+    def listing_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+        """
+        return pulumi.get(self, "listing_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -452,6 +474,11 @@ class Listing(pulumi.CustomResource):
         Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
         """
         return pulumi.get(self, "primary_contact")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

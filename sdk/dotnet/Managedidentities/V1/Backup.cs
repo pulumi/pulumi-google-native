@@ -17,10 +17,19 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
     public partial class Backup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
+        /// </summary>
+        [Output("backupId")]
+        public Output<string> BackupId { get; private set; } = null!;
+
+        /// <summary>
         /// The time the backups was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("domainId")]
+        public Output<string> DomainId { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Resource labels to represent user provided metadata.
@@ -33,6 +42,9 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The current state of the backup.

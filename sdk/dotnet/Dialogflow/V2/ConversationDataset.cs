@@ -52,11 +52,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Output("inputConfig")]
         public Output<Outputs.GoogleCloudDialogflowV2InputConfigResponse> InputConfig { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

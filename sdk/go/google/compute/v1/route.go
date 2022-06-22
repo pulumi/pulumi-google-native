@@ -43,7 +43,10 @@ type Route struct {
 	// The URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringOutput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
-	Priority pulumi.IntOutput `pulumi:"priority"`
+	Priority pulumi.IntOutput    `pulumi:"priority"`
+	Project  pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// [Output only] The status of the route.
 	RouteStatus pulumi.StringOutput `pulumi:"routeStatus"`
 	// The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
@@ -265,6 +268,15 @@ func (o RouteOutput) NextHopVpnTunnel() pulumi.StringOutput {
 // The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
 func (o RouteOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *Route) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+func (o RouteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o RouteOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // [Output only] The status of the route.

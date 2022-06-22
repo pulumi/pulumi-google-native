@@ -180,7 +180,7 @@ class Folder(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
         """
         return pulumi.get(self, "parent")
 

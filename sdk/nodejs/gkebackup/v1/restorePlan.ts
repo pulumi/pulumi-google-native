@@ -60,14 +60,20 @@ export class RestorePlan extends pulumi.CustomResource {
      * A set of custom labels supplied by user.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The full name of the RestorePlan resource. Format: projects/*&#47;locations/*&#47;restorePlans/*.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Configuration of Restores created via this RestorePlan.
      */
     public readonly restoreConfig!: pulumi.Output<outputs.gkebackup.v1.RestoreConfigResponse>;
+    /**
+     * Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+     */
+    public readonly restorePlanId!: pulumi.Output<string>;
     /**
      * Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
      */
@@ -120,8 +126,11 @@ export class RestorePlan extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["restoreConfig"] = undefined /*out*/;
+            resourceInputs["restorePlanId"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

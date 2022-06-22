@@ -180,7 +180,9 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["private_key_data"] = None
         __props__.__dict__["private_key_type"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["public_key_data"] = None
+        __props__.__dict__["service_account_id"] = None
         __props__.__dict__["valid_after_time"] = None
         __props__.__dict__["valid_before_time"] = None
         return Key(resource_name, opts=opts, __props__=__props__)
@@ -242,12 +244,22 @@ class Key(pulumi.CustomResource):
         return pulumi.get(self, "private_key_type")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="publicKeyData")
     def public_key_data(self) -> pulumi.Output[str]:
         """
         The public key data. Only provided in `GetServiceAccountKey` responses.
         """
         return pulumi.get(self, "public_key_data")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "service_account_id")
 
     @property
     @pulumi.getter(name="validAfterTime")

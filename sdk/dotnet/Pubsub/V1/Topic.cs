@@ -45,6 +45,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         /// </summary>
@@ -56,6 +59,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         [Output("schemaSettings")]
         public Output<Outputs.SchemaSettingsResponse> SchemaSettings { get; private set; } = null!;
+
+        [Output("topicId")]
+        public Output<string> TopicId { get; private set; } = null!;
 
 
         /// <summary>

@@ -47,6 +47,7 @@ export class Registry extends pulumi.CustomResource {
      * The DeviceService (HTTP) configuration for this device registry.
      */
     public readonly httpConfig!: pulumi.Output<outputs.cloudiot.v1.HttpConfigResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
      */
@@ -59,6 +60,7 @@ export class Registry extends pulumi.CustomResource {
      * The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
      */
@@ -89,9 +91,11 @@ export class Registry extends pulumi.CustomResource {
             resourceInputs["credentials"] = undefined /*out*/;
             resourceInputs["eventNotificationConfigs"] = undefined /*out*/;
             resourceInputs["httpConfig"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["logLevel"] = undefined /*out*/;
             resourceInputs["mqttConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["stateNotificationConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

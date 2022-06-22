@@ -18,9 +18,11 @@ type CustomClass struct {
 	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
 	CustomClassId pulumi.StringOutput `pulumi:"customClassId"`
 	// A collection of class items.
-	Items ClassItemResponseArrayOutput `pulumi:"items"`
+	Items    ClassItemResponseArrayOutput `pulumi:"items"`
+	Location pulumi.StringOutput          `pulumi:"location"`
 	// The resource name of the custom class.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewCustomClass registers a new resource with the given unique name, arguments, and options.
@@ -134,9 +136,17 @@ func (o CustomClassOutput) Items() ClassItemResponseArrayOutput {
 	return o.ApplyT(func(v *CustomClass) ClassItemResponseArrayOutput { return v.Items }).(ClassItemResponseArrayOutput)
 }
 
+func (o CustomClassOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomClass) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the custom class.
 func (o CustomClassOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomClass) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CustomClassOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomClass) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

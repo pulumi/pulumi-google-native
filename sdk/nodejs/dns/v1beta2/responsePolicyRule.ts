@@ -41,6 +41,10 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
      */
     public readonly behavior!: pulumi.Output<string>;
     /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
+    public readonly clientOperationId!: pulumi.Output<string | undefined>;
+    /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
     public readonly dnsName!: pulumi.Output<string>;
@@ -49,6 +53,8 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
      * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      */
     public readonly localData!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyRuleLocalDataResponse>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly responsePolicy!: pulumi.Output<string>;
     /**
      * An identifier for this rule. Must be unique with the ResponsePolicy.
      */
@@ -78,9 +84,12 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             resourceInputs["ruleName"] = args ? args.ruleName : undefined;
         } else {
             resourceInputs["behavior"] = undefined /*out*/;
+            resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["localData"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["responsePolicy"] = undefined /*out*/;
             resourceInputs["ruleName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

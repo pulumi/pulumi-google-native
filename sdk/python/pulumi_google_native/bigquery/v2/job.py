@@ -175,6 +175,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["job_reference"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["statistics"] = None
         __props__.__dict__["status"] = None
@@ -212,6 +213,11 @@ class Job(pulumi.CustomResource):
         The type of the resource.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

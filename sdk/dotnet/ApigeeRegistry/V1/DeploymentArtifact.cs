@@ -15,6 +15,15 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:DeploymentArtifact")]
     public partial class DeploymentArtifact : Pulumi.CustomResource
     {
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        /// </summary>
+        [Output("artifactId")]
+        public Output<string> ArtifactId { get; private set; } = null!;
+
         /// <summary>
         /// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
         /// </summary>
@@ -27,11 +36,17 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("deploymentId")]
+        public Output<string> DeploymentId { get; private set; } = null!;
+
         /// <summary>
         /// A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
         /// </summary>
         [Output("hash")]
         public Output<string> Hash { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
@@ -44,6 +59,9 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact.

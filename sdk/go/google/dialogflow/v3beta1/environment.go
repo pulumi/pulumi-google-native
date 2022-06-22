@@ -15,12 +15,15 @@ import (
 type Environment struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The test cases config for continuous tests of this environment.
 	TestCasesConfig GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput `pulumi:"testCasesConfig"`
 	// Update time of this environment.
@@ -152,6 +155,10 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
+func (o EnvironmentOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 func (o EnvironmentOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -162,9 +169,17 @@ func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o EnvironmentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the environment. Format: `projects//locations//agents//environments/`.
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The test cases config for continuous tests of this environment.

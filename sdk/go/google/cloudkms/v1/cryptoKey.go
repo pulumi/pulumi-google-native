@@ -21,22 +21,29 @@ type CryptoKey struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
 	CryptoKeyBackend pulumi.StringOutput `pulumi:"cryptoKeyBackend"`
+	// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	CryptoKeyId pulumi.StringOutput `pulumi:"cryptoKeyId"`
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
 	// Immutable. Whether this key may contain imported versions only.
-	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
+	ImportOnly pulumi.BoolOutput   `pulumi:"importOnly"`
+	KeyRingId  pulumi.StringOutput `pulumi:"keyRingId"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime pulumi.StringOutput `pulumi:"nextRotationTime"`
 	// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
 	Primary CryptoKeyVersionResponseOutput `pulumi:"primary"`
+	Project pulumi.StringOutput            `pulumi:"project"`
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	RotationPeriod pulumi.StringOutput `pulumi:"rotationPeriod"`
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+	SkipInitialVersionCreation pulumi.StringPtrOutput `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate CryptoKeyVersionTemplateResponseOutput `pulumi:"versionTemplate"`
 }
@@ -182,6 +189,11 @@ func (o CryptoKeyOutput) CryptoKeyBackend() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.CryptoKeyBackend }).(pulumi.StringOutput)
 }
 
+// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+func (o CryptoKeyOutput) CryptoKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.CryptoKeyId }).(pulumi.StringOutput)
+}
+
 // Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 func (o CryptoKeyOutput) DestroyScheduledDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
@@ -192,9 +204,17 @@ func (o CryptoKeyOutput) ImportOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolOutput { return v.ImportOnly }).(pulumi.BoolOutput)
 }
 
+func (o CryptoKeyOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
+}
+
 // Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 func (o CryptoKeyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o CryptoKeyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -212,6 +232,10 @@ func (o CryptoKeyOutput) Primary() CryptoKeyVersionResponseOutput {
 	return o.ApplyT(func(v *CryptoKey) CryptoKeyVersionResponseOutput { return v.Primary }).(CryptoKeyVersionResponseOutput)
 }
 
+func (o CryptoKeyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Immutable. The immutable purpose of this CryptoKey.
 func (o CryptoKeyOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
@@ -220,6 +244,11 @@ func (o CryptoKeyOutput) Purpose() pulumi.StringOutput {
 // next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 func (o CryptoKeyOutput) RotationPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+func (o CryptoKeyOutput) SkipInitialVersionCreation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringPtrOutput { return v.SkipInitialVersionCreation }).(pulumi.StringPtrOutput)
 }
 
 // A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.

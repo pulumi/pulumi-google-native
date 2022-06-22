@@ -15,14 +15,26 @@ namespace Pulumi.GoogleNative.DNS.V1
     [GoogleNativeResourceType("google-native:dns/v1:ResourceRecordSet")]
     public partial class ResourceRecordSet : Pulumi.CustomResource
     {
+        /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
+        [Output("clientOperationId")]
+        public Output<string?> ClientOperationId { get; private set; } = null!;
+
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        [Output("managedZone")]
+        public Output<string> ManagedZone { get; private set; } = null!;
 
         /// <summary>
         /// For example, www.example.com.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.

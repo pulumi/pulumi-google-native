@@ -525,6 +525,7 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["note_name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["remediation"] = None
         __props__.__dict__["resource"] = None
         __props__.__dict__["resource_url"] = None
@@ -629,7 +630,7 @@ class Occurrence(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+        The name of the project. Should be of the form "projects/{project_id}". @Deprecated
         """
         return pulumi.get(self, "name")
 
@@ -640,6 +641,11 @@ class Occurrence(pulumi.CustomResource):
         An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "note_name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

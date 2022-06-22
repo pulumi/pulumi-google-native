@@ -288,7 +288,10 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["format"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["repository_id"] = None
         __props__.__dict__["size_bytes"] = None
         __props__.__dict__["update_time"] = None
         return Repository(resource_name, opts=opts, __props__=__props__)
@@ -335,11 +338,29 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="repositoryId")
+    def repository_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The repository id to use for this repository.
+        """
+        return pulumi.get(self, "repository_id")
 
     @property
     @pulumi.getter(name="sizeBytes")

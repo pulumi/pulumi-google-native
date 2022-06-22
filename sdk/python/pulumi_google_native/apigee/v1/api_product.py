@@ -435,6 +435,7 @@ class ApiProduct(pulumi.CustomResource):
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation_group"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["proxies"] = None
         __props__.__dict__["quota"] = None
         __props__.__dict__["quota_interval"] = None
@@ -526,6 +527,11 @@ class ApiProduct(pulumi.CustomResource):
         Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
         """
         return pulumi.get(self, "operation_group")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

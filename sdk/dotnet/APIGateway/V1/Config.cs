@@ -17,6 +17,15 @@ namespace Pulumi.GoogleNative.APIGateway.V1
     public partial class Config : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+        /// </summary>
+        [Output("apiConfigId")]
+        public Output<string> ApiConfigId { get; private set; } = null!;
+
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        /// <summary>
         /// Created time.
         /// </summary>
         [Output("createTime")]
@@ -46,6 +55,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         /// </summary>
@@ -63,6 +75,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         /// </summary>
         [Output("openapiDocuments")]
         public Output<ImmutableArray<Outputs.ApigatewayApiConfigOpenApiDocumentResponse>> OpenapiDocuments { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).

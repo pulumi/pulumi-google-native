@@ -31,6 +31,9 @@ type PatchDeployment struct {
 	OneTimeSchedule OneTimeScheduleResponseOutput `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
 	PatchConfig PatchConfigResponseOutput `pulumi:"patchConfig"`
+	// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+	PatchDeploymentId pulumi.StringOutput `pulumi:"patchDeploymentId"`
+	Project           pulumi.StringOutput `pulumi:"project"`
 	// Schedule recurring executions.
 	RecurringSchedule RecurringScheduleResponseOutput `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
@@ -211,6 +214,15 @@ func (o PatchDeploymentOutput) OneTimeSchedule() OneTimeScheduleResponseOutput {
 // Optional. Patch configuration that is applied.
 func (o PatchDeploymentOutput) PatchConfig() PatchConfigResponseOutput {
 	return o.ApplyT(func(v *PatchDeployment) PatchConfigResponseOutput { return v.PatchConfig }).(PatchConfigResponseOutput)
+}
+
+// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+func (o PatchDeploymentOutput) PatchDeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.PatchDeploymentId }).(pulumi.StringOutput)
+}
+
+func (o PatchDeploymentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Schedule recurring executions.

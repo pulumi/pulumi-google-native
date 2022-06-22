@@ -58,13 +58,20 @@ export class ImportJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly generateTime!: pulumi.Output<string>;
     /**
+     * Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
+    public readonly importJobId!: pulumi.Output<string>;
+    /**
      * Immutable. The wrapping method to be used for incoming key material.
      */
     public readonly importMethod!: pulumi.Output<string>;
+    public readonly keyRingId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for this ImportJob in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */
@@ -118,8 +125,12 @@ export class ImportJob extends pulumi.CustomResource {
             resourceInputs["expireEventTime"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["generateTime"] = undefined /*out*/;
+            resourceInputs["importJobId"] = undefined /*out*/;
             resourceInputs["importMethod"] = undefined /*out*/;
+            resourceInputs["keyRingId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["protectionLevel"] = undefined /*out*/;
             resourceInputs["publicKey"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

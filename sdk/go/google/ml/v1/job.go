@@ -36,6 +36,7 @@ type Job struct {
 	PredictionInput GoogleCloudMlV1__PredictionInputResponseOutput `pulumi:"predictionInput"`
 	// The current prediction job result.
 	PredictionOutput GoogleCloudMlV1__PredictionOutputResponseOutput `pulumi:"predictionOutput"`
+	Project          pulumi.StringOutput                             `pulumi:"project"`
 	// When the job processing was started.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The detailed state of a job.
@@ -204,6 +205,10 @@ func (o JobOutput) PredictionInput() GoogleCloudMlV1__PredictionInputResponseOut
 // The current prediction job result.
 func (o JobOutput) PredictionOutput() GoogleCloudMlV1__PredictionOutputResponseOutput {
 	return o.ApplyT(func(v *Job) GoogleCloudMlV1__PredictionOutputResponseOutput { return v.PredictionOutput }).(GoogleCloudMlV1__PredictionOutputResponseOutput)
+}
+
+func (o JobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // When the job processing was started.

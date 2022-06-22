@@ -39,18 +39,22 @@ export class Annotation extends pulumi.CustomResource {
      * Details of the source.
      */
     public readonly annotationSource!: pulumi.Output<outputs.healthcare.v1beta1.AnnotationSourceResponse>;
+    public readonly annotationStoreId!: pulumi.Output<string>;
     /**
      * Additional information for this annotation record, such as annotator and verifier information or study campaign.
      */
     public readonly customData!: pulumi.Output<{[key: string]: string}>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * Annotations for images. For example, bounding polygons.
      */
     public readonly imageAnnotation!: pulumi.Output<outputs.healthcare.v1beta1.ImageAnnotationResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Annotations for resource. For example, classification tags.
      */
@@ -89,9 +93,13 @@ export class Annotation extends pulumi.CustomResource {
             resourceInputs["textAnnotation"] = args ? args.textAnnotation : undefined;
         } else {
             resourceInputs["annotationSource"] = undefined /*out*/;
+            resourceInputs["annotationStoreId"] = undefined /*out*/;
             resourceInputs["customData"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["imageAnnotation"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resourceAnnotation"] = undefined /*out*/;
             resourceInputs["textAnnotation"] = undefined /*out*/;
         }

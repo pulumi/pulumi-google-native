@@ -103,10 +103,15 @@ export class Interconnect extends pulumi.CustomResource {
      * IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
      */
     public /*out*/ readonly peerIpAddress!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Number of links actually provisioned in this interconnect.
      */
     public /*out*/ readonly provisionedLinkCount!: pulumi.Output<number>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */
@@ -177,7 +182,9 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["nocContactEmail"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
             resourceInputs["peerIpAddress"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisionedLinkCount"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["requestedLinkCount"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

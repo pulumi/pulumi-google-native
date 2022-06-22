@@ -29,13 +29,13 @@ type BackupRun struct {
 	// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	EnqueuedTime pulumi.StringOutput `pulumi:"enqueuedTime"`
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
-	Error OperationErrorResponseOutput `pulumi:"error"`
-	// Name of the database instance.
-	Instance pulumi.StringOutput `pulumi:"instance"`
+	Error    OperationErrorResponseOutput `pulumi:"error"`
+	Instance pulumi.StringOutput          `pulumi:"instance"`
 	// This is always `sql#backupRun`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Location of the backups.
 	Location pulumi.StringOutput `pulumi:"location"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// The URI of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
@@ -230,7 +230,6 @@ func (o BackupRunOutput) Error() OperationErrorResponseOutput {
 	return o.ApplyT(func(v *BackupRun) OperationErrorResponseOutput { return v.Error }).(OperationErrorResponseOutput)
 }
 
-// Name of the database instance.
 func (o BackupRunOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
@@ -243,6 +242,10 @@ func (o BackupRunOutput) Kind() pulumi.StringOutput {
 // Location of the backups.
 func (o BackupRunOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o BackupRunOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The URI of this resource.

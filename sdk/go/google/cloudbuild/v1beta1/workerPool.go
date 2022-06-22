@@ -25,11 +25,13 @@ type WorkerPool struct {
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag     pulumi.StringOutput `pulumi:"etag"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
+	Project       pulumi.StringOutput         `pulumi:"project"`
 	// `WorkerPool` state.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A unique identifier for the `WorkerPool`.
@@ -38,6 +40,8 @@ type WorkerPool struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig WorkerConfigResponseOutput `pulumi:"workerConfig"`
+	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+	WorkerPoolId pulumi.StringOutput `pulumi:"workerPoolId"`
 }
 
 // NewWorkerPool registers a new resource with the given unique name, arguments, and options.
@@ -174,6 +178,10 @@ func (o WorkerPoolOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+func (o WorkerPoolOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -182,6 +190,10 @@ func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 // Network configuration for the `WorkerPool`.
 func (o WorkerPoolOutput) NetworkConfig() NetworkConfigResponseOutput {
 	return o.ApplyT(func(v *WorkerPool) NetworkConfigResponseOutput { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+func (o WorkerPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // `WorkerPool` state.
@@ -202,6 +214,11 @@ func (o WorkerPoolOutput) UpdateTime() pulumi.StringOutput {
 // Worker configuration for the `WorkerPool`.
 func (o WorkerPoolOutput) WorkerConfig() WorkerConfigResponseOutput {
 	return o.ApplyT(func(v *WorkerPool) WorkerConfigResponseOutput { return v.WorkerConfig }).(WorkerConfigResponseOutput)
+}
+
+// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+func (o WorkerPoolOutput) WorkerPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.WorkerPoolId }).(pulumi.StringOutput)
 }
 
 func init() {

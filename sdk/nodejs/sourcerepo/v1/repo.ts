@@ -43,6 +43,7 @@ export class Repo extends pulumi.CustomResource {
      * Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
@@ -76,6 +77,7 @@ export class Repo extends pulumi.CustomResource {
         } else {
             resourceInputs["mirrorConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pubsubConfigs"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;

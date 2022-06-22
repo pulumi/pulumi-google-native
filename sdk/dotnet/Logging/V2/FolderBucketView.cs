@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Logging.V2
     [GoogleNativeResourceType("google-native:logging/v2:FolderBucketView")]
     public partial class FolderBucketView : Pulumi.CustomResource
     {
+        [Output("bucketId")]
+        public Output<string> BucketId { get; private set; } = null!;
+
         /// <summary>
         /// The creation timestamp of the view.
         /// </summary>
@@ -34,6 +37,12 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
 
+        [Output("folderId")]
+        public Output<string> FolderId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
         /// </summary>
@@ -45,6 +54,12 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The id to use for this view.
+        /// </summary>
+        [Output("viewId")]
+        public Output<string> ViewId { get; private set; } = null!;
 
 
         /// <summary>

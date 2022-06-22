@@ -149,7 +149,9 @@ class InstanceAttachment(pulumi.CustomResource):
 
         __props__.__dict__["created_at"] = None
         __props__.__dict__["environment"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         return InstanceAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -169,10 +171,20 @@ class InstanceAttachment(pulumi.CustomResource):
         return pulumi.get(self, "environment")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         ID of the attachment.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 

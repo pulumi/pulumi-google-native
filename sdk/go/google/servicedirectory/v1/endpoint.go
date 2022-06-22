@@ -19,12 +19,18 @@ type Endpoint struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/) Annotations that fails to meet these requirements are rejected. Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name        pulumi.StringOutput `pulumi:"name"`
+	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
-	Port pulumi.IntOutput `pulumi:"port"`
+	Port      pulumi.IntOutput    `pulumi:"port"`
+	Project   pulumi.StringOutput `pulumi:"project"`
+	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 }
 
 // NewEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -160,9 +166,22 @@ func (o EndpointOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o EndpointOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 func (o EndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
 }
 
 // Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
@@ -173,6 +192,14 @@ func (o EndpointOutput) Network() pulumi.StringOutput {
 // Optional. Service Directory rejects values outside of `[0, 65535]`.
 func (o EndpointOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o EndpointOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -45,6 +45,9 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         [Output("inputUri")]
         public Output<string> InputUri { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         /// </summary>
@@ -56,6 +59,9 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         [Output("outputUri")]
         public Output<string> OutputUri { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The time the transcoding started.

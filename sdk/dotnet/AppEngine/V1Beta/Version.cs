@@ -28,6 +28,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Output("appEngineApis")]
         public Output<bool> AppEngineApis { get; private set; } = null!;
 
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         /// </summary>
@@ -213,6 +216,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
+
+        [Output("serviceId")]
+        public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.

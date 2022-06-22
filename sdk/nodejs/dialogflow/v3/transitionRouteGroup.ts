@@ -35,14 +35,22 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === TransitionRouteGroup.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly flowId!: pulumi.Output<string>;
+    /**
+     * The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     */
+    public readonly languageCode!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Transition routes associated with the TransitionRouteGroup.
      */
@@ -77,8 +85,13 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["flowId"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

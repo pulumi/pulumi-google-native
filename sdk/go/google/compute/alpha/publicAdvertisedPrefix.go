@@ -30,8 +30,11 @@ type PublicAdvertisedPrefix struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
 	PdpScope pulumi.StringOutput `pulumi:"pdpScope"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput `pulumi:"publicDelegatedPrefixs"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL with id for the resource.
@@ -194,11 +197,20 @@ func (o PublicAdvertisedPrefixOutput) PdpScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.PdpScope }).(pulumi.StringOutput)
 }
 
+func (o PublicAdvertisedPrefixOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The list of public delegated prefixes that exist for this public advertised prefix.
 func (o PublicAdvertisedPrefixOutput) PublicDelegatedPrefixs() PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput {
 		return v.PublicDelegatedPrefixs
 	}).(PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o PublicAdvertisedPrefixOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Server-defined URL for the resource.

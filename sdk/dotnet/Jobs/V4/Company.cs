@@ -75,6 +75,9 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The employer's company size.
         /// </summary>
@@ -86,6 +89,9 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         [Output("suspended")]
         public Output<bool> Suspended { get; private set; } = null!;
+
+        [Output("tenantId")]
+        public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
         /// The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.

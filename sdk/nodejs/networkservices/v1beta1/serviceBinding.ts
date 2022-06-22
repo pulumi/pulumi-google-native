@@ -46,14 +46,20 @@ export class ServiceBinding extends pulumi.CustomResource {
      * Optional. Set of label tags associated with the ServiceBinding resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the ServiceBinding resource. It matches pattern `projects/*&#47;locations/global/serviceBindings/service_binding_name>`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The full service directory service name of the format /projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      */
     public readonly service!: pulumi.Output<string>;
+    /**
+     * Required. Short name of the ServiceBinding resource to be created.
+     */
+    public readonly serviceBindingId!: pulumi.Output<string>;
     /**
      * The timestamp when the resource was updated.
      */
@@ -89,8 +95,11 @@ export class ServiceBinding extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["service"] = undefined /*out*/;
+            resourceInputs["serviceBindingId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

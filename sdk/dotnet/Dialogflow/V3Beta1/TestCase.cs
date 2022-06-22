@@ -17,6 +17,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:TestCase")]
     public partial class TestCase : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// When the test was created.
         /// </summary>
@@ -35,6 +38,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Output("lastTestResult")]
         public Output<Outputs.GoogleCloudDialogflowCxV3beta1TestCaseResultResponse> LastTestResult { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
         /// </summary>
@@ -46,6 +52,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Output("notes")]
         public Output<string> Notes { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.

@@ -17,6 +17,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     [GoogleNativeResourceType("google-native:dialogflow/v2:Evaluation")]
     public partial class Evaluation : Pulumi.CustomResource
     {
+        [Output("conversationModelId")]
+        public Output<string> ConversationModelId { get; private set; } = null!;
+
         /// <summary>
         /// Creation time of this model.
         /// </summary>
@@ -35,11 +38,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Output("evaluationConfig")]
         public Output<Outputs.GoogleCloudDialogflowV2EvaluationConfigResponse> EvaluationConfig { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Only available when model is for smart reply.

@@ -891,6 +891,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["post_key_revocation_action_type"] = None
         __props__.__dict__["preserved_state_size_gb"] = None
         __props__.__dict__["private_ipv6_google_access"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["resource_policies"] = None
         __props__.__dict__["resource_status"] = None
@@ -904,6 +906,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["shielded_instance_integrity_policy"] = None
         __props__.__dict__["shielded_vm_config"] = None
         __props__.__dict__["shielded_vm_integrity_policy"] = None
+        __props__.__dict__["source_instance_template"] = None
         __props__.__dict__["source_machine_image"] = None
         __props__.__dict__["source_machine_image_encryption_key"] = None
         __props__.__dict__["start_restricted"] = None
@@ -1157,6 +1160,19 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "private_ipv6_google_access")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> pulumi.Output['outputs.ReservationAffinityResponse']:
         """
@@ -1255,10 +1271,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "shielded_vm_integrity_policy")
 
     @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
+        """
+        return pulumi.get(self, "source_instance_template")
+
+    @property
     @pulumi.getter(name="sourceMachineImage")
     def source_machine_image(self) -> pulumi.Output[str]:
         """
-        Source machine image
+        Specifies the machine image to use to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to a machine image: - https://www.googleapis.com/compute/v1/projects/project/global/global /machineImages/machineImage - projects/project/global/global/machineImages/machineImage - global/machineImages/machineImage 
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -1313,8 +1337,5 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
-        """
-        URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "zone")
 

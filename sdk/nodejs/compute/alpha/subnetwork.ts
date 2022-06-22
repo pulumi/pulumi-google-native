@@ -131,14 +131,16 @@ export class Subnetwork extends pulumi.CustomResource {
      * @deprecated Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
      */
     public readonly privateIpv6GoogleAccessServiceAccounts!: pulumi.Output<string[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
      */
     public readonly purpose!: pulumi.Output<string>;
-    /**
-     * URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
-     */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The URL of the reserved internal range.
      */
@@ -245,8 +247,10 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["privateIpGoogleAccess"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccessServiceAccounts"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["purpose"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["reservedInternalRange"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["secondaryIpRanges"] = undefined /*out*/;

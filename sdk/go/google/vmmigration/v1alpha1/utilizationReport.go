@@ -24,14 +24,21 @@ type UtilizationReport struct {
 	Error StatusResponseOutput `pulumi:"error"`
 	// The point in time when the time frame ends. Notice that the time frame is counted backwards. For instance if the "frame_end_time" value is 2021/01/20 and the time frame is WEEK then the report covers the week between 2021/01/20 and 2021/01/14.
 	FrameEndTime pulumi.StringOutput `pulumi:"frameEndTime"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// The report unique name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	SourceId  pulumi.StringOutput    `pulumi:"sourceId"`
 	// Current state of the report.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time the state was last set.
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
 	// Time frame of the report.
 	TimeFrame pulumi.StringOutput `pulumi:"timeFrame"`
+	// Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
+	UtilizationReportId pulumi.StringOutput `pulumi:"utilizationReportId"`
 	// Total number of VMs included in the report.
 	VmCount pulumi.IntOutput `pulumi:"vmCount"`
 	// List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
@@ -174,9 +181,26 @@ func (o UtilizationReportOutput) FrameEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.FrameEndTime }).(pulumi.StringOutput)
 }
 
+func (o UtilizationReportOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The report unique name.
 func (o UtilizationReportOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o UtilizationReportOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o UtilizationReportOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+func (o UtilizationReportOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
 }
 
 // Current state of the report.
@@ -192,6 +216,11 @@ func (o UtilizationReportOutput) StateTime() pulumi.StringOutput {
 // Time frame of the report.
 func (o UtilizationReportOutput) TimeFrame() pulumi.StringOutput {
 	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.TimeFrame }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
+func (o UtilizationReportOutput) UtilizationReportId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.UtilizationReportId }).(pulumi.StringOutput)
 }
 
 // Total number of VMs included in the report.

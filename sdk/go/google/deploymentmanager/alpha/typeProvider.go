@@ -34,6 +34,7 @@ type TypeProvider struct {
 	Operation OperationResponseOutput `pulumi:"operation"`
 	// Options to apply when handling any resources in this service.
 	Options OptionsResponseOutput `pulumi:"options"`
+	Project pulumi.StringOutput   `pulumi:"project"`
 	// Self link for the type provider.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
@@ -202,6 +203,10 @@ func (o TypeProviderOutput) Operation() OperationResponseOutput {
 // Options to apply when handling any resources in this service.
 func (o TypeProviderOutput) Options() OptionsResponseOutput {
 	return o.ApplyT(func(v *TypeProvider) OptionsResponseOutput { return v.Options }).(OptionsResponseOutput)
+}
+
+func (o TypeProviderOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Self link for the type provider.

@@ -27,6 +27,7 @@ type ConversationProfile struct {
 	HumanAgentHandoffConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput `pulumi:"humanAgentHandoffConfig"`
 	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// Configuration for logging conversation lifecycle events.
 	LoggingConfig GoogleCloudDialogflowV2LoggingConfigResponseOutput `pulumi:"loggingConfig"`
 	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
@@ -35,6 +36,7 @@ type ConversationProfile struct {
 	NewMessageEventNotificationConfig GoogleCloudDialogflowV2NotificationConfigResponseOutput `pulumi:"newMessageEventNotificationConfig"`
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig GoogleCloudDialogflowV2NotificationConfigResponseOutput `pulumi:"notificationConfig"`
+	Project            pulumi.StringOutput                                     `pulumi:"project"`
 	// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings pulumi.StringOutput `pulumi:"securitySettings"`
 	// Settings for speech transcription.
@@ -218,6 +220,10 @@ func (o ConversationProfileOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
+func (o ConversationProfileOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Configuration for logging conversation lifecycle events.
 func (o ConversationProfileOutput) LoggingConfig() GoogleCloudDialogflowV2LoggingConfigResponseOutput {
 	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2LoggingConfigResponseOutput {
@@ -242,6 +248,10 @@ func (o ConversationProfileOutput) NotificationConfig() GoogleCloudDialogflowV2N
 	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2NotificationConfigResponseOutput {
 		return v.NotificationConfig
 	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
+}
+
+func (o ConversationProfileOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.

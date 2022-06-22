@@ -16,11 +16,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:Context")]
     public partial class Context : Pulumi.CustomResource
     {
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
         /// </summary>
         [Output("lifespanCount")]
         public Output<int> LifespanCount { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
@@ -33,6 +39,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableDictionary<string, string>> Parameters { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("sessionId")]
+        public Output<string> SessionId { get; private set; } = null!;
+
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
 
 
         /// <summary>

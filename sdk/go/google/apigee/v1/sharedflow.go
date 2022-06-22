@@ -15,12 +15,15 @@ import (
 type Sharedflow struct {
 	pulumi.CustomResourceState
 
+	// Required. Must be set to either `import` or `validate`.
+	Action pulumi.StringOutput `pulumi:"action"`
 	// The id of the most recently created revision for this shared flow.
 	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
 	// Metadata describing the shared flow.
 	MetaData GoogleCloudApigeeV1EntityMetadataResponseOutput `pulumi:"metaData"`
-	// The ID of the shared flow.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The name to give the shared flow
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// A list of revisions of this shared flow.
 	Revision pulumi.StringArrayOutput `pulumi:"revision"`
 }
@@ -135,6 +138,11 @@ func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) Sha
 	return o
 }
 
+// Required. Must be set to either `import` or `validate`.
+func (o SharedflowOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
 // The id of the most recently created revision for this shared flow.
 func (o SharedflowOutput) LatestRevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.LatestRevisionId }).(pulumi.StringOutput)
@@ -145,9 +153,13 @@ func (o SharedflowOutput) MetaData() GoogleCloudApigeeV1EntityMetadataResponseOu
 	return o.ApplyT(func(v *Sharedflow) GoogleCloudApigeeV1EntityMetadataResponseOutput { return v.MetaData }).(GoogleCloudApigeeV1EntityMetadataResponseOutput)
 }
 
-// The ID of the shared flow.
+// Required. The name to give the shared flow
 func (o SharedflowOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SharedflowOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // A list of revisions of this shared flow.

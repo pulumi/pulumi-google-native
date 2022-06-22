@@ -23,10 +23,13 @@ type Instance struct {
 	DiscoveryEndpoint pulumi.StringOutput `pulumi:"discoveryEndpoint"`
 	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// List of messages that describe the current state of the Memcached instance.
 	InstanceMessages InstanceMessageResponseArrayOutput `pulumi:"instanceMessages"`
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
 	MaintenancePolicy GoogleCloudMemcacheV1MaintenancePolicyResponseOutput `pulumi:"maintenancePolicy"`
 	// Published maintenance schedule.
@@ -45,6 +48,7 @@ type Instance struct {
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersResponseOutput `pulumi:"parameters"`
+	Project    pulumi.StringOutput              `pulumi:"project"`
 	// The state of this Memcached instance.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time the instance was updated.
@@ -216,6 +220,11 @@ func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+func (o InstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // List of messages that describe the current state of the Memcached instance.
 func (o InstanceOutput) InstanceMessages() InstanceMessageResponseArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceMessageResponseArrayOutput { return v.InstanceMessages }).(InstanceMessageResponseArrayOutput)
@@ -224,6 +233,10 @@ func (o InstanceOutput) InstanceMessages() InstanceMessageResponseArrayOutput {
 // Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o InstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
@@ -269,6 +282,10 @@ func (o InstanceOutput) NodeCount() pulumi.IntOutput {
 // User defined parameters to apply to the memcached process on each node.
 func (o InstanceOutput) Parameters() MemcacheParametersResponseOutput {
 	return o.ApplyT(func(v *Instance) MemcacheParametersResponseOutput { return v.Parameters }).(MemcacheParametersResponseOutput)
+}
+
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The state of this Memcached instance.

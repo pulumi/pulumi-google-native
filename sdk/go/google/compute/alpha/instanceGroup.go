@@ -28,8 +28,11 @@ type InstanceGroup struct {
 	NamedPorts NamedPortResponseArrayOutput `pulumi:"namedPorts"`
 	// The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network pulumi.StringOutput `pulumi:"network"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL of the region where the instance group is located (for regional resources).
 	Region pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The URL for this instance group. The server generates this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -38,8 +41,7 @@ type InstanceGroup struct {
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
-	// The URL of the zone where the instance group is located (for zonal resources).
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone       pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewInstanceGroup registers a new resource with the given unique name, arguments, and options.
@@ -179,9 +181,18 @@ func (o InstanceGroupOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
+func (o InstanceGroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The URL of the region where the instance group is located (for regional resources).
 func (o InstanceGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o InstanceGroupOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The URL for this instance group. The server generates this URL.
@@ -204,7 +215,6 @@ func (o InstanceGroupOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-// The URL of the zone where the instance group is located (for zonal resources).
 func (o InstanceGroupOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

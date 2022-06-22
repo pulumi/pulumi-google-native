@@ -272,17 +272,28 @@ class OrganizationBucket(pulumi.CustomResource):
 
         __props__ = OrganizationBucketArgs.__new__(OrganizationBucketArgs)
 
+        __props__.__dict__["bucket_id"] = None
         __props__.__dict__["cmek_settings"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["index_configs"] = None
         __props__.__dict__["lifecycle_state"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["locked"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["restricted_fields"] = None
         __props__.__dict__["retention_days"] = None
         __props__.__dict__["update_time"] = None
         return OrganizationBucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Output[str]:
+        """
+        Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+        """
+        return pulumi.get(self, "bucket_id")
 
     @property
     @pulumi.getter(name="cmekSettings")
@@ -326,6 +337,11 @@ class OrganizationBucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def locked(self) -> pulumi.Output[bool]:
         """
         Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
@@ -339,6 +355,11 @@ class OrganizationBucket(pulumi.CustomResource):
         The resource name of the bucket.For example:projects/my-project/locations/global/buckets/my-bucketFor a list of supported locations, see Supported Regions (https://cloud.google.com/logging/docs/region-support)For the location of global it is unspecified where log entries are actually stored.After a bucket has been created, the location cannot be changed.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="restrictedFields")

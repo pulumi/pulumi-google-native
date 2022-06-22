@@ -683,10 +683,12 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["posting_region"] = None
         __props__.__dict__["posting_update_time"] = None
         __props__.__dict__["processing_options"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["promotion_value"] = None
         __props__.__dict__["qualifications"] = None
         __props__.__dict__["requisition_id"] = None
         __props__.__dict__["responsibilities"] = None
+        __props__.__dict__["tenant_id"] = None
         __props__.__dict__["title"] = None
         __props__.__dict__["visibility"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
@@ -884,6 +886,11 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "processing_options")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="promotionValue")
     def promotion_value(self) -> pulumi.Output[int]:
         """
@@ -914,6 +921,11 @@ class Job(pulumi.CustomResource):
         A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
         """
         return pulumi.get(self, "responsibilities")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter

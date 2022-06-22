@@ -22,6 +22,7 @@ type Table struct {
 	Clustering ClusteringResponseOutput `pulumi:"clustering"`
 	// The time when this table was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	DatasetId    pulumi.StringOutput `pulumi:"datasetId"`
 	// The default collation of the table.
 	DefaultCollation pulumi.StringOutput `pulumi:"defaultCollation"`
 	// [Optional] A user-friendly description of this table.
@@ -72,6 +73,7 @@ type Table struct {
 	NumTotalLogicalBytes pulumi.StringOutput `pulumi:"numTotalLogicalBytes"`
 	// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
 	NumTotalPhysicalBytes pulumi.StringOutput `pulumi:"numTotalPhysicalBytes"`
+	Project               pulumi.StringOutput `pulumi:"project"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningResponseOutput `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
@@ -258,6 +260,10 @@ func (o TableOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+func (o TableOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
 // The default collation of the table.
 func (o TableOutput) DefaultCollation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DefaultCollation }).(pulumi.StringOutput)
@@ -381,6 +387,10 @@ func (o TableOutput) NumTotalLogicalBytes() pulumi.StringOutput {
 // The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
 func (o TableOutput) NumTotalPhysicalBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.NumTotalPhysicalBytes }).(pulumi.StringOutput)
+}
+
+func (o TableOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

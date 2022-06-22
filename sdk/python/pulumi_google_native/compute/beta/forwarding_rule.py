@@ -623,9 +623,11 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["no_automate_dns_zone"] = None
         __props__.__dict__["port_range"] = None
         __props__.__dict__["ports"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["psc_connection_id"] = None
         __props__.__dict__["psc_connection_status"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service_directory_registrations"] = None
         __props__.__dict__["service_label"] = None
@@ -804,6 +806,11 @@ class ForwardingRule(pulumi.CustomResource):
         return pulumi.get(self, "ports")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="pscConnectionId")
     def psc_connection_id(self) -> pulumi.Output[str]:
         """
@@ -819,10 +826,15 @@ class ForwardingRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="selfLink")

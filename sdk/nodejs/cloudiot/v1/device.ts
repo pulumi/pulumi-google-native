@@ -79,6 +79,7 @@ export class Device extends pulumi.CustomResource {
      * [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
      */
     public /*out*/ readonly lastStateTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
      */
@@ -95,6 +96,8 @@ export class Device extends pulumi.CustomResource {
      * [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
      */
     public /*out*/ readonly numId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly registryId!: pulumi.Output<string>;
     /**
      * [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
      */
@@ -146,10 +149,13 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["lastEventTime"] = undefined /*out*/;
             resourceInputs["lastHeartbeatTime"] = undefined /*out*/;
             resourceInputs["lastStateTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["logLevel"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["numId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["registryId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

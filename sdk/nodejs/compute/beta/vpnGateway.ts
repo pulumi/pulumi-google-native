@@ -63,10 +63,12 @@ export class VpnGateway extends pulumi.CustomResource {
      * URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
      */
     public readonly network!: pulumi.Output<string>;
-    /**
-     * URL of the region where the VPN gateway resides.
-     */
+    public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
@@ -115,7 +117,9 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["stackType"] = undefined /*out*/;
             resourceInputs["vpnInterfaces"] = undefined /*out*/;

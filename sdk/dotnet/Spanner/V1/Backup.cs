@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
     public partial class Backup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+        /// </summary>
+        [Output("backupId")]
+        public Output<string> BackupId { get; private set; } = null!;
+
+        /// <summary>
         /// The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
         /// </summary>
         [Output("createTime")]
@@ -34,6 +40,18 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string> DatabaseDialect { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The encryption type of the backup.
+        /// </summary>
+        [Output("encryptionConfigEncryptionType")]
+        public Output<string> EncryptionConfigEncryptionType { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        /// </summary>
+        [Output("encryptionConfigKmsKeyName")]
+        public Output<string?> EncryptionConfigKmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// The encryption information for the backup.
         /// </summary>
         [Output("encryptionInfo")]
@@ -44,6 +62,9 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
+
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
         /// The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
@@ -56,6 +77,9 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.

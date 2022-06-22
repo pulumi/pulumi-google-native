@@ -18,6 +18,8 @@ import (
 type CloneJob struct {
 	pulumi.CustomResourceState
 
+	// Required. The clone job identifier.
+	CloneJobId pulumi.StringOutput `pulumi:"cloneJobId"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseOutput `pulumi:"computeEngineTargetDetails"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
@@ -27,9 +29,15 @@ type CloneJob struct {
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Provides details for the errors that led to the Clone Job's state.
-	Error StatusResponseOutput `pulumi:"error"`
+	Error         StatusResponseOutput `pulumi:"error"`
+	Location      pulumi.StringOutput  `pulumi:"location"`
+	MigratingVmId pulumi.StringOutput  `pulumi:"migratingVmId"`
 	// The name of the clone.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	SourceId  pulumi.StringOutput    `pulumi:"sourceId"`
 	// State of the clone job.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time the state was last updated.
@@ -147,6 +155,11 @@ func (o CloneJobOutput) ToCloneJobOutputWithContext(ctx context.Context) CloneJo
 	return o
 }
 
+// Required. The clone job identifier.
+func (o CloneJobOutput) CloneJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.CloneJobId }).(pulumi.StringOutput)
+}
+
 // Details of the target VM in Compute Engine.
 func (o CloneJobOutput) ComputeEngineTargetDetails() ComputeEngineTargetDetailsResponseOutput {
 	return o.ApplyT(func(v *CloneJob) ComputeEngineTargetDetailsResponseOutput { return v.ComputeEngineTargetDetails }).(ComputeEngineTargetDetailsResponseOutput)
@@ -169,9 +182,30 @@ func (o CloneJobOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v *CloneJob) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
 }
 
+func (o CloneJobOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o CloneJobOutput) MigratingVmId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.MigratingVmId }).(pulumi.StringOutput)
+}
+
 // The name of the clone.
 func (o CloneJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CloneJobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o CloneJobOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+func (o CloneJobOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
 }
 
 // State of the clone job.

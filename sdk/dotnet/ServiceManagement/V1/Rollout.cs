@@ -42,9 +42,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         [Output("rolloutId")]
         public Output<string> RolloutId { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the service associated with this Rollout.
-        /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 

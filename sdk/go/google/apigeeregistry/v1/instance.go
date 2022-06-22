@@ -20,8 +20,12 @@ type Instance struct {
 	Config ConfigResponseOutput `pulumi:"config"`
 	// Creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The current state of the Instance.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Extra information of Instance.State if the state is `FAILED`.
@@ -144,9 +148,22 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
+func (o InstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The current state of the Instance.

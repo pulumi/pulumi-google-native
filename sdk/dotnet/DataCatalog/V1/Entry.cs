@@ -64,6 +64,15 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("entryGroupId")]
+        public Output<string> EntryGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+        /// </summary>
+        [Output("entryId")]
+        public Output<string> EntryId { get; private set; } = null!;
+
         /// <summary>
         /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         /// </summary>
@@ -100,6 +109,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Output("linkedResource")]
         public Output<string> LinkedResource { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
@@ -111,6 +123,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         [Output("personalDetails")]
         public Output<Outputs.GoogleCloudDatacatalogV1PersonalDetailsResponse> PersonalDetails { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.

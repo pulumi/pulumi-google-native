@@ -16,9 +16,13 @@ type Namespace struct {
 	pulumi.CustomResourceState
 
 	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
+	Project     pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
@@ -127,9 +131,22 @@ func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o NamespaceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+func (o NamespaceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -23,7 +23,8 @@ type Release struct {
 	// List of artifacts to pass through to Skaffold command.
 	BuildArtifacts BuildArtifactResponseArrayOutput `pulumi:"buildArtifacts"`
 	// Time at which the `Release` was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput `pulumi:"createTime"`
+	DeliveryPipelineId pulumi.StringOutput `pulumi:"deliveryPipelineId"`
 	// Snapshot of the parent pipeline taken at release creation time.
 	DeliveryPipelineSnapshot DeliveryPipelineResponseOutput `pulumi:"deliveryPipelineSnapshot"`
 	// Description of the `Release`. Max length is 255 characters.
@@ -31,15 +32,21 @@ type Release struct {
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. ID of the `Release`.
+	ReleaseId pulumi.StringOutput `pulumi:"releaseId"`
 	// Time at which the render completed.
 	RenderEndTime pulumi.StringOutput `pulumi:"renderEndTime"`
 	// Time at which the render began.
 	RenderStartTime pulumi.StringOutput `pulumi:"renderStartTime"`
 	// Current state of the render operation.
 	RenderState pulumi.StringOutput `pulumi:"renderState"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Filepath of the Skaffold config inside of the config URI.
 	SkaffoldConfigPath pulumi.StringOutput `pulumi:"skaffoldConfigPath"`
 	// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
@@ -54,6 +61,8 @@ type Release struct {
 	TargetSnapshots TargetResponseArrayOutput `pulumi:"targetSnapshots"`
 	// Unique identifier of the `Release`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewRelease registers a new resource with the given unique name, arguments, and options.
@@ -213,6 +222,10 @@ func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+func (o ReleaseOutput) DeliveryPipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.DeliveryPipelineId }).(pulumi.StringOutput)
+}
+
 // Snapshot of the parent pipeline taken at release creation time.
 func (o ReleaseOutput) DeliveryPipelineSnapshot() DeliveryPipelineResponseOutput {
 	return o.ApplyT(func(v *Release) DeliveryPipelineResponseOutput { return v.DeliveryPipelineSnapshot }).(DeliveryPipelineResponseOutput)
@@ -233,9 +246,22 @@ func (o ReleaseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ReleaseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
 func (o ReleaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. ID of the `Release`.
+func (o ReleaseOutput) ReleaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.ReleaseId }).(pulumi.StringOutput)
 }
 
 // Time at which the render completed.
@@ -251,6 +277,11 @@ func (o ReleaseOutput) RenderStartTime() pulumi.StringOutput {
 // Current state of the render operation.
 func (o ReleaseOutput) RenderState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RenderState }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o ReleaseOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Filepath of the Skaffold config inside of the config URI.
@@ -286,6 +317,11 @@ func (o ReleaseOutput) TargetSnapshots() TargetResponseArrayOutput {
 // Unique identifier of the `Release`.
 func (o ReleaseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+func (o ReleaseOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

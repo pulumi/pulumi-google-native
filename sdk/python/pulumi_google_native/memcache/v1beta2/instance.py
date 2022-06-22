@@ -379,8 +379,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["discovery_endpoint"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["instance_messages"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["maintenance_policy"] = None
         __props__.__dict__["maintenance_schedule"] = None
         __props__.__dict__["memcache_full_version"] = None
@@ -390,6 +392,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["node_config"] = None
         __props__.__dict__["node_count"] = None
         __props__.__dict__["parameters"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_available"] = None
         __props__.__dict__["update_time"] = None
@@ -429,6 +432,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter(name="instanceMessages")
     def instance_messages(self) -> pulumi.Output[Sequence['outputs.InstanceMessageResponse']]:
         """
@@ -443,6 +454,11 @@ class Instance(pulumi.CustomResource):
         Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -515,6 +531,11 @@ class Instance(pulumi.CustomResource):
         User defined parameters to apply to the memcached process on each node.
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

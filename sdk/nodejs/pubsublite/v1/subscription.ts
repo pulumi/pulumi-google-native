@@ -39,10 +39,20 @@ export class Subscription extends pulumi.CustomResource {
      * The settings for this subscription's message delivery.
      */
     public readonly deliveryConfig!: pulumi.Output<outputs.pubsublite.v1.DeliveryConfigResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+     */
+    public readonly skipBacklog!: pulumi.Output<string | undefined>;
+    /**
+     * Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
+     */
+    public readonly subscriptionId!: pulumi.Output<string>;
     /**
      * The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
      */
@@ -71,7 +81,11 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["topic"] = args ? args.topic : undefined;
         } else {
             resourceInputs["deliveryConfig"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["skipBacklog"] = undefined /*out*/;
+            resourceInputs["subscriptionId"] = undefined /*out*/;
             resourceInputs["topic"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

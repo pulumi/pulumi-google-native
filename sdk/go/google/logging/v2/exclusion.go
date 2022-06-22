@@ -24,7 +24,8 @@ type Exclusion struct {
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -155,6 +156,10 @@ func (o ExclusionOutput) Filter() pulumi.StringOutput {
 // A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 func (o ExclusionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Exclusion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ExclusionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Exclusion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of the exclusion.This field may not be present for older exclusions.

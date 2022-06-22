@@ -273,19 +273,32 @@ class Backup(pulumi.CustomResource):
 
         __props__ = BackupArgs.__new__(BackupArgs)
 
+        __props__.__dict__["backup_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database"] = None
         __props__.__dict__["database_dialect"] = None
+        __props__.__dict__["encryption_config_encryption_type"] = None
+        __props__.__dict__["encryption_config_kms_key_name"] = None
         __props__.__dict__["encryption_info"] = None
         __props__.__dict__["expire_time"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["max_expire_time"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["referencing_backups"] = None
         __props__.__dict__["referencing_databases"] = None
         __props__.__dict__["size_bytes"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["version_time"] = None
         return Backup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[str]:
+        """
+        Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+        """
+        return pulumi.get(self, "backup_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -312,6 +325,22 @@ class Backup(pulumi.CustomResource):
         return pulumi.get(self, "database_dialect")
 
     @property
+    @pulumi.getter(name="encryptionConfigEncryptionType")
+    def encryption_config_encryption_type(self) -> pulumi.Output[str]:
+        """
+        Required. The encryption type of the backup.
+        """
+        return pulumi.get(self, "encryption_config_encryption_type")
+
+    @property
+    @pulumi.getter(name="encryptionConfigKmsKeyName")
+    def encryption_config_kms_key_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        """
+        return pulumi.get(self, "encryption_config_kms_key_name")
+
+    @property
     @pulumi.getter(name="encryptionInfo")
     def encryption_info(self) -> pulumi.Output['outputs.EncryptionInfoResponse']:
         """
@@ -328,6 +357,11 @@ class Backup(pulumi.CustomResource):
         return pulumi.get(self, "expire_time")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter(name="maxExpireTime")
     def max_expire_time(self) -> pulumi.Output[str]:
         """
@@ -342,6 +376,11 @@ class Backup(pulumi.CustomResource):
         Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="referencingBackups")

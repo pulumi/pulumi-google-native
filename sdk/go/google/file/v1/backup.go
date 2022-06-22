@@ -16,6 +16,8 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+	BackupId pulumi.StringOutput `pulumi:"backupId"`
 	// Capacity of the source file share when the backup was created.
 	CapacityGb pulumi.StringOutput `pulumi:"capacityGb"`
 	// The time when the backup was created.
@@ -25,9 +27,11 @@ type Backup struct {
 	// Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
 	// Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
@@ -151,6 +155,11 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+func (o BackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
+}
+
 // Capacity of the source file share when the backup was created.
 func (o BackupOutput) CapacityGb() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CapacityGb }).(pulumi.StringOutput)
@@ -176,9 +185,17 @@ func (o BackupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o BackupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BackupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.

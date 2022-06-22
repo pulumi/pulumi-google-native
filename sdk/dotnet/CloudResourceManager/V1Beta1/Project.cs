@@ -57,6 +57,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         [Output("projectNumber")]
         public Output<string> ProjectNumber { get; private set; } = null!;
 
+        /// <summary>
+        /// A now unused experiment opt-out option.
+        /// </summary>
+        [Output("useLegacyStack")]
+        public Output<string?> UseLegacyStack { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Project resource with the given unique name, arguments, and options.

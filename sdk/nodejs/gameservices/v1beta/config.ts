@@ -36,6 +36,10 @@ export class Config extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The ID of the game server config resource to create.
+     */
+    public readonly configId!: pulumi.Output<string>;
+    /**
      * The creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -47,14 +51,17 @@ export class Config extends pulumi.CustomResource {
      * FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
      */
     public readonly fleetConfigs!: pulumi.Output<outputs.gameservices.v1beta.FleetConfigResponse[]>;
+    public readonly gameServerDeploymentId!: pulumi.Output<string>;
     /**
      * The labels associated with this game server config. Each label is a key-value pair.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The autoscaling settings.
      */
@@ -93,11 +100,15 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fleetConfigs"] = undefined /*out*/;
+            resourceInputs["gameServerDeploymentId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["scalingConfigs"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

@@ -88,6 +88,7 @@ export class Occurrence extends pulumi.CustomResource {
      * Describes the installation of a package on the linked resource.
      */
     public readonly package!: pulumi.Output<outputs.containeranalysis.v1.PackageOccurrenceResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
@@ -159,6 +160,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["noteName"] = undefined /*out*/;
             resourceInputs["package"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["remediation"] = undefined /*out*/;
             resourceInputs["resourceUri"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

@@ -40,6 +40,9 @@ namespace Pulumi.GoogleNative.OSLogin.V1Alpha
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SshPublicKey resource with the given unique name, arguments, and options.

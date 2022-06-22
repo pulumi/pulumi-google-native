@@ -584,6 +584,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
         __props__.__dict__["family"] = None
+        __props__.__dict__["force_create"] = None
         __props__.__dict__["guest_os_features"] = None
         __props__.__dict__["image_encryption_key"] = None
         __props__.__dict__["kind"] = None
@@ -592,7 +593,9 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["license_codes"] = None
         __props__.__dict__["licenses"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["raw_disk"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["shielded_instance_initial_state"] = None
@@ -659,6 +662,14 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "family")
 
     @property
+    @pulumi.getter(name="forceCreate")
+    def force_create(self) -> pulumi.Output[Optional[str]]:
+        """
+        Force image creation if true.
+        """
+        return pulumi.get(self, "force_create")
+
+    @property
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> pulumi.Output[Sequence['outputs.GuestOsFeatureResponse']]:
         """
@@ -723,12 +734,25 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="rawDisk")
     def raw_disk(self) -> pulumi.Output['outputs.ImageRawDiskResponse']:
         """
         The parameters of the raw disk image.
         """
         return pulumi.get(self, "raw_disk")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

@@ -17,7 +17,8 @@ type RatePlan struct {
 	pulumi.CustomResourceState
 
 	// Name of the API product that the rate plan is associated with.
-	Apiproduct pulumi.StringOutput `pulumi:"apiproduct"`
+	Apiproduct   pulumi.StringOutput `pulumi:"apiproduct"`
+	ApiproductId pulumi.StringOutput `pulumi:"apiproductId"`
 	// Frequency at which the customer will be billed.
 	BillingPeriod pulumi.StringOutput `pulumi:"billingPeriod"`
 	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
@@ -41,7 +42,8 @@ type RatePlan struct {
 	// Time the rate plan was last modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the rate plan.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
 	//
 	// Deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
@@ -223,6 +225,10 @@ func (o RatePlanOutput) Apiproduct() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.Apiproduct }).(pulumi.StringOutput)
 }
 
+func (o RatePlanOutput) ApiproductId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.ApiproductId }).(pulumi.StringOutput)
+}
+
 // Frequency at which the customer will be billed.
 func (o RatePlanOutput) BillingPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.BillingPeriod }).(pulumi.StringOutput)
@@ -281,6 +287,10 @@ func (o RatePlanOutput) LastModifiedAt() pulumi.StringOutput {
 // Name of the rate plan.
 func (o RatePlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RatePlanOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.

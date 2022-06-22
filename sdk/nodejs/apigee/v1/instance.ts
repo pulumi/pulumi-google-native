@@ -75,6 +75,7 @@ export class Instance extends pulumi.CustomResource {
      * Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
      */
@@ -137,6 +138,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["peeringCidrRange"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["runtimeVersion"] = undefined /*out*/;

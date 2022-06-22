@@ -28,11 +28,13 @@ type Agent struct {
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolOutput `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
-	EnableStackdriverLogging pulumi.BoolOutput `pulumi:"enableStackdriverLogging"`
+	EnableStackdriverLogging pulumi.BoolOutput   `pulumi:"enableStackdriverLogging"`
+	Location                 pulumi.StringOutput `pulumi:"location"`
 	// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings pulumi.StringOutput `pulumi:"securitySettings"`
 	// Speech recognition related settings.
@@ -231,6 +233,10 @@ func (o AgentOutput) EnableStackdriverLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Agent) pulumi.BoolOutput { return v.EnableStackdriverLogging }).(pulumi.BoolOutput)
 }
 
+func (o AgentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 func (o AgentOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Agent) pulumi.BoolOutput { return v.Locked }).(pulumi.BoolOutput)
@@ -239,6 +245,10 @@ func (o AgentOutput) Locked() pulumi.BoolOutput {
 // The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 func (o AgentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AgentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.

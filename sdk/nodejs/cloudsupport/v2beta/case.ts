@@ -95,6 +95,8 @@ export class Case extends pulumi.CustomResource {
      * The time this case was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    public readonly v2betaId1!: pulumi.Output<string>;
+    public readonly v2betumId!: pulumi.Output<string>;
 
     /**
      * Create a Case resource with the given unique name, arguments, and options.
@@ -144,6 +146,8 @@ export class Case extends pulumi.CustomResource {
             resourceInputs["testCase"] = undefined /*out*/;
             resourceInputs["timeZone"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["v2betaId1"] = undefined /*out*/;
+            resourceInputs["v2betumId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Case.__pulumiType, name, resourceInputs, opts);

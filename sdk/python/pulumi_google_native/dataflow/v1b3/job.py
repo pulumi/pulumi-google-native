@@ -648,6 +648,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["temp_files"] = None
         __props__.__dict__["transform_name_mapping"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["view"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -725,9 +726,6 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
-        """
-        The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-        """
         return pulumi.get(self, "location")
 
     @property
@@ -749,16 +747,13 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the Cloud Platform project that the job belongs to.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="replaceJobId")
     def replace_job_id(self) -> pulumi.Output[str]:
         """
-        If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
+        Deprecated. This field is now in the Job message.
         """
         return pulumi.get(self, "replace_job_id")
 
@@ -841,4 +836,12 @@ class Job(pulumi.CustomResource):
         The type of Cloud Dataflow job.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def view(self) -> pulumi.Output[Optional[str]]:
+        """
+        The level of information requested in response.
+        """
+        return pulumi.get(self, "view")
 

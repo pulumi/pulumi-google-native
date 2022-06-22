@@ -21,8 +21,10 @@ type Table struct {
 	ColumnFamilies pulumi.StringMapOutput `pulumi:"columnFamilies"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 	Granularity pulumi.StringOutput `pulumi:"granularity"`
+	InstanceId  pulumi.StringOutput `pulumi:"instanceId"`
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
 	RestoreInfo RestoreInfoResponseOutput `pulumi:"restoreInfo"`
 }
@@ -154,9 +156,17 @@ func (o TableOutput) Granularity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Granularity }).(pulumi.StringOutput)
 }
 
+func (o TableOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
 func (o TableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TableOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.

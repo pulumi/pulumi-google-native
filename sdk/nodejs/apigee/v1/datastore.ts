@@ -56,6 +56,7 @@ export class Datastore extends pulumi.CustomResource {
      * Organization that the datastore belongs to
      */
     public /*out*/ readonly org!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
      */
@@ -96,6 +97,7 @@ export class Datastore extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["lastUpdateTime"] = undefined /*out*/;
             resourceInputs["org"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["self"] = undefined /*out*/;
             resourceInputs["targetType"] = undefined /*out*/;
         }

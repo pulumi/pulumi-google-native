@@ -37,6 +37,11 @@ export class Backup extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+     */
+    public readonly backupId!: pulumi.Output<string>;
+    public readonly clusterId!: pulumi.Output<string>;
+    /**
      * The encryption information for the backup.
      */
     public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.bigtableadmin.v2.EncryptionInfoResponse>;
@@ -48,10 +53,12 @@ export class Backup extends pulumi.CustomResource {
      * The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
      */
     public readonly expireTime!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Size of the backup in bytes.
      */
@@ -108,10 +115,14 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["backupId"] = undefined /*out*/;
+            resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["encryptionInfo"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["sourceTable"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;

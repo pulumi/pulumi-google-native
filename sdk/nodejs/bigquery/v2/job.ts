@@ -52,6 +52,7 @@ export class Job extends pulumi.CustomResource {
      * The type of the resource.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A URL that can be used to access this resource again.
      */
@@ -95,6 +96,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["jobReference"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["statistics"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

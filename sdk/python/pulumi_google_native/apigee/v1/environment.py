@@ -240,6 +240,7 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["properties"] = None
         __props__.__dict__["state"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
@@ -296,9 +297,14 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

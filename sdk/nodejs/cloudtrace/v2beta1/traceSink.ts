@@ -43,6 +43,7 @@ export class TraceSink extends pulumi.CustomResource {
      * The export destination.
      */
     public readonly outputConfig!: pulumi.Output<outputs.cloudtrace.v2beta1.OutputConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and to write data, this account needs the `dataEditor` role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com"
      */
@@ -69,6 +70,7 @@ export class TraceSink extends pulumi.CustomResource {
         } else {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outputConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

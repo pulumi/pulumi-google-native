@@ -174,10 +174,17 @@ class DomainMapping(pulumi.CustomResource):
 
         __props__ = DomainMappingArgs.__new__(DomainMappingArgs)
 
+        __props__.__dict__["app_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["override_strategy"] = None
         __props__.__dict__["resource_records"] = None
         __props__.__dict__["ssl_settings"] = None
         return DomainMapping(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter
@@ -186,6 +193,14 @@ class DomainMapping(pulumi.CustomResource):
         Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="overrideStrategy")
+    def override_strategy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        """
+        return pulumi.get(self, "override_strategy")
 
     @property
     @pulumi.getter(name="resourceRecords")

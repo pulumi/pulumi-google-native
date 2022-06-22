@@ -48,9 +48,6 @@ export class Index extends pulumi.CustomResource {
      * The entity kind to which this index applies.
      */
     public readonly kind!: pulumi.Output<string>;
-    /**
-     * Project ID.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * An ordered sequence of property names and their index attributes.

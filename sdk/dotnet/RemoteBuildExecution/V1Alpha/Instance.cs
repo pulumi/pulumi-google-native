@@ -40,6 +40,9 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// State of the instance.
         /// </summary>

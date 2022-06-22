@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID of the game server deployment resource to create.
+        /// </summary>
+        [Output("deploymentId")]
+        public Output<string> DeploymentId { get; private set; } = null!;
+
+        /// <summary>
         /// Human readable description of the game server deployment.
         /// </summary>
         [Output("description")]
@@ -39,11 +45,17 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The last-modified time.

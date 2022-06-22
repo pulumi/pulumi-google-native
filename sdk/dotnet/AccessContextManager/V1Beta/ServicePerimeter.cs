@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1beta:ServicePerimeter")]
     public partial class ServicePerimeter : Pulumi.CustomResource
     {
+        [Output("accessPolicyId")]
+        public Output<string> AccessPolicyId { get; private set; } = null!;
+
         /// <summary>
         /// Description of the `ServicePerimeter` and its use. Does not affect behavior.
         /// </summary>

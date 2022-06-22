@@ -16,13 +16,15 @@ type EnvgroupAttachment struct {
 	pulumi.CustomResourceState
 
 	// The time at which the environment group attachment was created as milliseconds since epoch.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
+	EnvgroupId pulumi.StringOutput `pulumi:"envgroupId"`
 	// ID of the attached environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// ID of the environment group.
 	EnvironmentGroupId pulumi.StringOutput `pulumi:"environmentGroupId"`
 	// ID of the environment group attachment.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 }
 
 // NewEnvgroupAttachment registers a new resource with the given unique name, arguments, and options.
@@ -133,6 +135,10 @@ func (o EnvgroupAttachmentOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+func (o EnvgroupAttachmentOutput) EnvgroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.EnvgroupId }).(pulumi.StringOutput)
+}
+
 // ID of the attached environment.
 func (o EnvgroupAttachmentOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
@@ -146,6 +152,10 @@ func (o EnvgroupAttachmentOutput) EnvironmentGroupId() pulumi.StringOutput {
 // ID of the environment group attachment.
 func (o EnvgroupAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvgroupAttachmentOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 func init() {

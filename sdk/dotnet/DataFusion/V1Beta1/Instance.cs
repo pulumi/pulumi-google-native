@@ -95,10 +95,19 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<string> GcsBucket { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The name of the instance to create.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The name of this instance is in the form of projects/{project}/locations/{location}/instances/{instance}.
@@ -129,6 +138,9 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         [Output("privateInstance")]
         public Output<bool> PrivateInstance { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Deprecated. Use tenant_project_id instead to extract the tenant project ID.

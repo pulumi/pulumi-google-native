@@ -37,6 +37,10 @@ export class CaPool extends pulumi.CustomResource {
     }
 
     /**
+     * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
+    public readonly caPoolId!: pulumi.Output<string>;
+    /**
      * Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
      */
     public readonly issuancePolicy!: pulumi.Output<outputs.privateca.v1.IssuancePolicyResponse>;
@@ -44,14 +48,20 @@ export class CaPool extends pulumi.CustomResource {
      * Optional. Labels with user-defined metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for this CaPool in the format `projects/*&#47;locations/*&#47;caPools/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
      */
     public readonly publishingOptions!: pulumi.Output<outputs.privateca.v1.PublishingOptionsResponse>;
+    /**
+     * Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Immutable. The Tier of this CaPool.
      */
@@ -84,10 +94,14 @@ export class CaPool extends pulumi.CustomResource {
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["caPoolId"] = undefined /*out*/;
             resourceInputs["issuancePolicy"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["publishingOptions"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["tier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -28,8 +28,10 @@ type ConversationDataset struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Input configurations set during conversation data import.
 	InputConfig GoogleCloudDialogflowV2InputConfigResponseOutput `pulumi:"inputConfig"`
+	Location    pulumi.StringOutput                              `pulumi:"location"`
 	// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewConversationDataset registers a new resource with the given unique name, arguments, and options.
@@ -161,9 +163,17 @@ func (o ConversationDatasetOutput) InputConfig() GoogleCloudDialogflowV2InputCon
 	return o.ApplyT(func(v *ConversationDataset) GoogleCloudDialogflowV2InputConfigResponseOutput { return v.InputConfig }).(GoogleCloudDialogflowV2InputConfigResponseOutput)
 }
 
+func (o ConversationDatasetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
 func (o ConversationDatasetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConversationDatasetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

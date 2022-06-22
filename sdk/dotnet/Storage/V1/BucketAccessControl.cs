@@ -16,9 +16,6 @@ namespace Pulumi.GoogleNative.Storage.V1
     [GoogleNativeResourceType("google-native:storage/v1:BucketAccessControl")]
     public partial class BucketAccessControl : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the bucket.
-        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
@@ -86,6 +83,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
 
         /// <summary>

@@ -190,11 +190,21 @@ class AgentPool(pulumi.CustomResource):
 
         __props__ = AgentPoolArgs.__new__(AgentPoolArgs)
 
+        __props__.__dict__["agent_pool_id"] = None
         __props__.__dict__["bandwidth_limit"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         return AgentPool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentPoolId")
+    def agent_pool_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "agent_pool_id")
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -219,6 +229,11 @@ class AgentPool(pulumi.CustomResource):
         Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Page")]
     public partial class Page : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// The human-readable name of the page, unique within the flow.
         /// </summary>
@@ -33,6 +36,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Output("eventHandlers")]
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EventHandlerResponse>> EventHandlers { get; private set; } = null!;
 
+        [Output("flowId")]
+        public Output<string> FlowId { get; private set; } = null!;
+
         /// <summary>
         /// The form associated with the page, used for collecting parameters relevant to the page.
         /// </summary>
@@ -40,10 +46,22 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<Outputs.GoogleCloudDialogflowCxV3beta1FormResponse> Form { get; private set; } = null!;
 
         /// <summary>
+        /// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string?> LanguageCode { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.

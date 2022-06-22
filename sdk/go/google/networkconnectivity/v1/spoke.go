@@ -29,8 +29,14 @@ type Spoke struct {
 	LinkedRouterApplianceInstances LinkedRouterApplianceInstancesResponseOutput `pulumi:"linkedRouterApplianceInstances"`
 	// VPN tunnels that are associated with the spoke.
 	LinkedVpnTunnels LinkedVpnTunnelsResponseOutput `pulumi:"linkedVpnTunnels"`
+	Location         pulumi.StringOutput            `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Required. Unique id for the spoke to create.
+	SpokeId pulumi.StringOutput `pulumi:"spokeId"`
 	// The current lifecycle state of this spoke.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
@@ -199,9 +205,27 @@ func (o SpokeOutput) LinkedVpnTunnels() LinkedVpnTunnelsResponseOutput {
 	return o.ApplyT(func(v *Spoke) LinkedVpnTunnelsResponseOutput { return v.LinkedVpnTunnels }).(LinkedVpnTunnelsResponseOutput)
 }
 
+func (o SpokeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
 func (o SpokeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SpokeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o SpokeOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Required. Unique id for the spoke to create.
+func (o SpokeOutput) SpokeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.SpokeId }).(pulumi.StringOutput)
 }
 
 // The current lifecycle state of this spoke.

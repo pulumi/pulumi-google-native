@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("snapshotId")]
+        public Output<string> SnapshotId { get; private set; } = null!;
+
         /// <summary>
         /// The name of the topic from which this snapshot is retaining messages.
         /// </summary>

@@ -66,6 +66,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Output("images")]
         public Output<ImmutableArray<string>> Images { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// URL to logs for this build in Google Cloud Console.
         /// </summary>
@@ -90,11 +93,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Output("options")]
         public Output<Outputs.BuildOptionsResponse> Options { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the project.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. ID of the project.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

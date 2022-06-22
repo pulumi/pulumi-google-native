@@ -22,14 +22,20 @@ type Endpoint struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The fully qualified URL of the endpoint's ILB Forwarding Rule.
 	EndpointForwardingRule pulumi.StringOutput `pulumi:"endpointForwardingRule"`
+	// Required. The endpoint identifier. This will be part of the endpoint's resource name. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// The IP address of the IDS Endpoint's ILB.
 	EndpointIp pulumi.StringOutput `pulumi:"endpointIp"`
 	// The labels of the endpoint.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The name of the endpoint.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The fully qualified URL of the network to which the IDS Endpoint is attached.
 	Network pulumi.StringOutput `pulumi:"network"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Lowest threat severity that this endpoint will alert on.
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// Current state of the endpoint.
@@ -178,6 +184,11 @@ func (o EndpointOutput) EndpointForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointForwardingRule }).(pulumi.StringOutput)
 }
 
+// Required. The endpoint identifier. This will be part of the endpoint's resource name. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+func (o EndpointOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
+}
+
 // The IP address of the IDS Endpoint's ILB.
 func (o EndpointOutput) EndpointIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointIp }).(pulumi.StringOutput)
@@ -188,6 +199,10 @@ func (o EndpointOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o EndpointOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The name of the endpoint.
 func (o EndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -196,6 +211,15 @@ func (o EndpointOutput) Name() pulumi.StringOutput {
 // The fully qualified URL of the network to which the IDS Endpoint is attached.
 func (o EndpointOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o EndpointOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Lowest threat severity that this endpoint will alert on.

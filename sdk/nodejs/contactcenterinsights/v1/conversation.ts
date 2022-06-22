@@ -44,6 +44,10 @@ export class Conversation extends pulumi.CustomResource {
      */
     public readonly callMetadata!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse>;
     /**
+     * A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+     */
+    public readonly conversationId!: pulumi.Output<string | undefined>;
+    /**
      * The time at which the conversation was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -75,6 +79,7 @@ export class Conversation extends pulumi.CustomResource {
      * The conversation's latest analysis, if one exists.
      */
     public /*out*/ readonly latestAnalysis!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
      */
@@ -87,6 +92,7 @@ export class Conversation extends pulumi.CustomResource {
      * Obfuscated user ID which the customer sent to us.
      */
     public readonly obfuscatedUserId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The annotations that were generated during the customer and agent interaction.
      */
@@ -148,6 +154,7 @@ export class Conversation extends pulumi.CustomResource {
         } else {
             resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["callMetadata"] = undefined /*out*/;
+            resourceInputs["conversationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["dialogflowIntents"] = undefined /*out*/;
@@ -156,9 +163,11 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["latestAnalysis"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["medium"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["obfuscatedUserId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["runtimeAnnotations"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["transcript"] = undefined /*out*/;

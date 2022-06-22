@@ -309,6 +309,7 @@ class Notification(pulumi.CustomResource):
 
         __props__ = NotificationArgs.__new__(NotificationArgs)
 
+        __props__.__dict__["bucket"] = None
         __props__.__dict__["custom_attributes"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["event_types"] = None
@@ -317,7 +318,13 @@ class Notification(pulumi.CustomResource):
         __props__.__dict__["payload_format"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["topic"] = None
+        __props__.__dict__["user_project"] = None
         return Notification(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -382,4 +389,12 @@ class Notification(pulumi.CustomResource):
         The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
         """
         return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
+        return pulumi.get(self, "user_project")
 

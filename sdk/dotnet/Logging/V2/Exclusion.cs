@@ -45,6 +45,9 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The last update timestamp of the exclusion.This field may not be present for older exclusions.
         /// </summary>

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("lakeId")]
+        public Output<string> LakeId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
         /// </summary>
@@ -58,6 +64,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Sql Script related configurations.
         /// </summary>
@@ -75,6 +84,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

@@ -25,8 +25,10 @@ type Glossary struct {
 	LanguageCodesSet LanguageCodesSetResponseOutput `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairResponseOutput `pulumi:"languagePair"`
+	Location     pulumi.StringOutput            `pulumi:"location"`
 	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// When CreateGlossary was called.
 	SubmitTime pulumi.StringOutput `pulumi:"submitTime"`
 }
@@ -161,9 +163,17 @@ func (o GlossaryOutput) LanguagePair() LanguageCodePairResponseOutput {
 	return o.ApplyT(func(v *Glossary) LanguageCodePairResponseOutput { return v.LanguagePair }).(LanguageCodePairResponseOutput)
 }
 
+func (o GlossaryOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 func (o GlossaryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GlossaryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // When CreateGlossary was called.

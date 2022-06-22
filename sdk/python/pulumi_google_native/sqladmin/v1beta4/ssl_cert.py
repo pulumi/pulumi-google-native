@@ -158,6 +158,7 @@ class SslCert(pulumi.CustomResource):
         __props__.__dict__["expiration_time"] = None
         __props__.__dict__["instance"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["sha1_fingerprint"] = None
         return SslCert(resource_name, opts=opts, __props__=__props__)
@@ -205,9 +206,6 @@ class SslCert(pulumi.CustomResource):
     @property
     @pulumi.getter
     def instance(self) -> pulumi.Output[str]:
-        """
-        Name of the database instance.
-        """
         return pulumi.get(self, "instance")
 
     @property
@@ -217,6 +215,11 @@ class SslCert(pulumi.CustomResource):
         This is always `sql#sslCert`.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

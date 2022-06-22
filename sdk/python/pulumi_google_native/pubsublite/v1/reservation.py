@@ -182,9 +182,17 @@ class Reservation(pulumi.CustomResource):
 
         __props__ = ReservationArgs.__new__(ReservationArgs)
 
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["reservation_id"] = None
         __props__.__dict__["throughput_capacity"] = None
         return Reservation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -193,6 +201,19 @@ class Reservation(pulumi.CustomResource):
         The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+        """
+        return pulumi.get(self, "reservation_id")
 
     @property
     @pulumi.getter(name="throughputCapacity")

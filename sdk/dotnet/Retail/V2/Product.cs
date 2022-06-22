@@ -45,11 +45,17 @@ namespace Pulumi.GoogleNative.Retail.V2
         [Output("availableTime")]
         public Output<string> AvailableTime { get; private set; } = null!;
 
+        [Output("branchId")]
+        public Output<string> BranchId { get; private set; } = null!;
+
         /// <summary>
         /// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
         /// </summary>
         [Output("brands")]
         public Output<ImmutableArray<string>> Brands { get; private set; } = null!;
+
+        [Output("catalogId")]
+        public Output<string> CatalogId { get; private set; } = null!;
 
         /// <summary>
         /// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '&gt;' sign to separate different hierarchies. If '&gt;' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp; Accessories &gt; Shoes", "Sports &amp; Fitness &gt; Athletic Clothing &gt; Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
@@ -111,6 +117,9 @@ namespace Pulumi.GoogleNative.Retail.V2
         [Output("languageCode")]
         public Output<string> LanguageCode { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
         /// </summary>
@@ -140,6 +149,15 @@ namespace Pulumi.GoogleNative.Retail.V2
         /// </summary>
         [Output("primaryProductId")]
         public Output<string> PrimaryProductId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Output("productId")]
+        public Output<string> ProductId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.

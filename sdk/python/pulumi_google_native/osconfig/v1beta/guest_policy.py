@@ -277,9 +277,11 @@ class GuestPolicy(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["guest_policy_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["package_repositories"] = None
         __props__.__dict__["packages"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["recipes"] = None
         __props__.__dict__["update_time"] = None
         return GuestPolicy(resource_name, opts=opts, __props__=__props__)
@@ -317,6 +319,14 @@ class GuestPolicy(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="guestPolicyId")
+    def guest_policy_id(self) -> pulumi.Output[str]:
+        """
+        Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        """
+        return pulumi.get(self, "guest_policy_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -339,6 +349,11 @@ class GuestPolicy(pulumi.CustomResource):
         The software packages to be managed by this policy.
         """
         return pulumi.get(self, "packages")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

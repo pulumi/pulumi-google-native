@@ -20,11 +20,15 @@ type Change struct {
 
 	// Which ResourceRecordSets to add?
 	Additions ResourceRecordSetResponseArrayOutput `pulumi:"additions"`
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+	ClientOperationId pulumi.StringPtrOutput `pulumi:"clientOperationId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions ResourceRecordSetResponseArrayOutput `pulumi:"deletions"`
 	// If the DNS queries for the zone will be served.
-	IsServing pulumi.BoolOutput   `pulumi:"isServing"`
-	Kind      pulumi.StringOutput `pulumi:"kind"`
+	IsServing   pulumi.BoolOutput   `pulumi:"isServing"`
+	Kind        pulumi.StringOutput `pulumi:"kind"`
+	ManagedZone pulumi.StringOutput `pulumi:"managedZone"`
+	Project     pulumi.StringOutput `pulumi:"project"`
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
@@ -143,6 +147,11 @@ func (o ChangeOutput) Additions() ResourceRecordSetResponseArrayOutput {
 	return o.ApplyT(func(v *Change) ResourceRecordSetResponseArrayOutput { return v.Additions }).(ResourceRecordSetResponseArrayOutput)
 }
 
+// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+func (o ChangeOutput) ClientOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringPtrOutput { return v.ClientOperationId }).(pulumi.StringPtrOutput)
+}
+
 // Which ResourceRecordSets to remove? Must match existing data exactly.
 func (o ChangeOutput) Deletions() ResourceRecordSetResponseArrayOutput {
 	return o.ApplyT(func(v *Change) ResourceRecordSetResponseArrayOutput { return v.Deletions }).(ResourceRecordSetResponseArrayOutput)
@@ -155,6 +164,14 @@ func (o ChangeOutput) IsServing() pulumi.BoolOutput {
 
 func (o ChangeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o ChangeOutput) ManagedZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.ManagedZone }).(pulumi.StringOutput)
+}
+
+func (o ChangeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The time that this operation was started by the server (output only). This is in RFC3339 text format.

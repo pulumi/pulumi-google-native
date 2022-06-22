@@ -37,6 +37,10 @@ export class ResponsePolicy extends pulumi.CustomResource {
     }
 
     /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
+    public readonly clientOperationId!: pulumi.Output<string | undefined>;
+    /**
      * User-provided description for this Response Policy.
      */
     public readonly description!: pulumi.Output<string>;
@@ -49,6 +53,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
      * List of network names specifying networks to which this policy is applied.
      */
     public readonly networks!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyNetworkResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * User assigned name for this Response Policy.
      */
@@ -73,10 +78,12 @@ export class ResponsePolicy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
         } else {
+            resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["gkeClusters"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["responsePolicyName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

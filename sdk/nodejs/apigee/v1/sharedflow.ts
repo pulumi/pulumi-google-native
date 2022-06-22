@@ -36,6 +36,10 @@ export class Sharedflow extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Must be set to either `import` or `validate`.
+     */
+    public readonly action!: pulumi.Output<string>;
+    /**
      * The id of the most recently created revision for this shared flow.
      */
     public /*out*/ readonly latestRevisionId!: pulumi.Output<string>;
@@ -44,9 +48,10 @@ export class Sharedflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly metaData!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1EntityMetadataResponse>;
     /**
-     * The ID of the shared flow.
+     * Required. The name to give the shared flow
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * A list of revisions of this shared flow.
      */
@@ -79,9 +84,11 @@ export class Sharedflow extends pulumi.CustomResource {
             resourceInputs["metaData"] = undefined /*out*/;
             resourceInputs["revision"] = undefined /*out*/;
         } else {
+            resourceInputs["action"] = undefined /*out*/;
             resourceInputs["latestRevisionId"] = undefined /*out*/;
             resourceInputs["metaData"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["revision"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

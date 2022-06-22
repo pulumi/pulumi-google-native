@@ -668,6 +668,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["posting_region"] = None
         __props__.__dict__["posting_update_time"] = None
         __props__.__dict__["processing_options"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["promotion_value"] = None
         __props__.__dict__["qualifications"] = None
         __props__.__dict__["requisition_id"] = None
@@ -867,6 +868,11 @@ class Job(pulumi.CustomResource):
         Optional. Options for job processing.
         """
         return pulumi.get(self, "processing_options")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="promotionValue")

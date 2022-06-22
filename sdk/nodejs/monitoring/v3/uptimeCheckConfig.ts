@@ -71,6 +71,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
      */
     public readonly period!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The group resource associated with the configuration.
      */
@@ -123,6 +124,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["monitoredResource"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["period"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resourceGroup"] = undefined /*out*/;
             resourceInputs["selectedRegions"] = undefined /*out*/;
             resourceInputs["tcpCheck"] = undefined /*out*/;

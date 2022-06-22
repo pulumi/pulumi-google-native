@@ -210,6 +210,7 @@ class Repo(pulumi.CustomResource):
 
         __props__.__dict__["mirror_config"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["pubsub_configs"] = None
         __props__.__dict__["size"] = None
         __props__.__dict__["url"] = None
@@ -230,6 +231,11 @@ class Repo(pulumi.CustomResource):
         Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="pubsubConfigs")

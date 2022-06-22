@@ -72,12 +72,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
     /**
+     * Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * Resource labels to represent user provided metadata
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
-     */
     public readonly location!: pulumi.Output<string>;
     /**
      * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
@@ -111,6 +112,7 @@ export class Instance extends pulumi.CustomResource {
      * The port number of the exposed Redis endpoint.
      */
     public /*out*/ readonly port!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.
      */
@@ -233,6 +235,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["customerManagedKey"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maintenancePolicy"] = undefined /*out*/;
@@ -243,6 +246,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["persistenceConfig"] = undefined /*out*/;
             resourceInputs["persistenceIamIdentity"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["readEndpoint"] = undefined /*out*/;
             resourceInputs["readEndpointPort"] = undefined /*out*/;
             resourceInputs["readReplicasMode"] = undefined /*out*/;

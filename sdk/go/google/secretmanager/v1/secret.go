@@ -25,11 +25,14 @@ type Secret struct {
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Secret in the format `projects/*/secrets/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationResponseOutput `pulumi:"replication"`
 	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
 	Rotation RotationResponseOutput `pulumi:"rotation"`
+	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+	SecretId pulumi.StringOutput `pulumi:"secretId"`
 	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	Topics TopicResponseArrayOutput `pulumi:"topics"`
 	// Input only. The TTL for the Secret.
@@ -183,6 +186,10 @@ func (o SecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o SecretOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 func (o SecretOutput) Replication() ReplicationResponseOutput {
 	return o.ApplyT(func(v *Secret) ReplicationResponseOutput { return v.Replication }).(ReplicationResponseOutput)
@@ -191,6 +198,11 @@ func (o SecretOutput) Replication() ReplicationResponseOutput {
 // Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
 func (o SecretOutput) Rotation() RotationResponseOutput {
 	return o.ApplyT(func(v *Secret) RotationResponseOutput { return v.Rotation }).(RotationResponseOutput)
+}
+
+// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+func (o SecretOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretId }).(pulumi.StringOutput)
 }
 
 // Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.

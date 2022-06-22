@@ -26,10 +26,15 @@ type ServiceLevelObjective struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
 	RollingPeriod pulumi.StringOutput `pulumi:"rollingPeriod"`
+	ServiceId     pulumi.StringOutput `pulumi:"serviceId"`
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator ServiceLevelIndicatorResponseOutput `pulumi:"serviceLevelIndicator"`
+	// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+	ServiceLevelObjectiveId pulumi.StringPtrOutput `pulumi:"serviceLevelObjectiveId"`
 	// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
+	V3Id       pulumi.StringOutput    `pulumi:"v3Id"`
+	V3Id1      pulumi.StringOutput    `pulumi:"v3Id1"`
 }
 
 // NewServiceLevelObjective registers a new resource with the given unique name, arguments, and options.
@@ -186,14 +191,31 @@ func (o ServiceLevelObjectiveOutput) RollingPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.RollingPeriod }).(pulumi.StringOutput)
 }
 
+func (o ServiceLevelObjectiveOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
 // The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 func (o ServiceLevelObjectiveOutput) ServiceLevelIndicator() ServiceLevelIndicatorResponseOutput {
 	return o.ApplyT(func(v *ServiceLevelObjective) ServiceLevelIndicatorResponseOutput { return v.ServiceLevelIndicator }).(ServiceLevelIndicatorResponseOutput)
 }
 
+// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+func (o ServiceLevelObjectiveOutput) ServiceLevelObjectiveId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringPtrOutput { return v.ServiceLevelObjectiveId }).(pulumi.StringPtrOutput)
+}
+
 // Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
 func (o ServiceLevelObjectiveOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
+func (o ServiceLevelObjectiveOutput) V3Id() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.V3Id }).(pulumi.StringOutput)
+}
+
+func (o ServiceLevelObjectiveOutput) V3Id1() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.V3Id1 }).(pulumi.StringOutput)
 }
 
 func init() {

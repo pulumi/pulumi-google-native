@@ -248,16 +248,27 @@ class Channel(pulumi.CustomResource):
 
         __props__ = ChannelArgs.__new__(ChannelArgs)
 
+        __props__.__dict__["channel_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["release"] = None
         __props__.__dict__["retained_release_count"] = None
+        __props__.__dict__["site_id"] = None
         __props__.__dict__["ttl"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["url"] = None
         return Channel(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. A unique ID within the site that identifies the channel.
+        """
+        return pulumi.get(self, "channel_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -293,6 +304,11 @@ class Channel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def release(self) -> pulumi.Output['outputs.ReleaseResponse']:
         """
         The current release for the channel, if any.
@@ -306,6 +322,11 @@ class Channel(pulumi.CustomResource):
         The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         """
         return pulumi.get(self, "retained_release_count")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "site_id")
 
     @property
     @pulumi.getter

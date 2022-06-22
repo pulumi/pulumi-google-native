@@ -17,16 +17,22 @@ type AttributeDefinition struct {
 
 	// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues pulumi.StringArrayOutput `pulumi:"allowedValues"`
+	// Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
+	AttributeDefinitionId pulumi.StringOutput `pulumi:"attributeDefinitionId"`
 	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category pulumi.StringOutput `pulumi:"category"`
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues pulumi.StringArrayOutput `pulumi:"consentDefaultValues"`
+	ConsentStoreId       pulumi.StringOutput      `pulumi:"consentStoreId"`
 	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
 	DataMappingDefaultValue pulumi.StringOutput `pulumi:"dataMappingDefaultValue"`
+	DatasetId               pulumi.StringOutput `pulumi:"datasetId"`
 	// Optional. A description of the attribute.
 	Description pulumi.StringOutput `pulumi:"description"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewAttributeDefinition registers a new resource with the given unique name, arguments, and options.
@@ -167,6 +173,11 @@ func (o AttributeDefinitionOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringArrayOutput { return v.AllowedValues }).(pulumi.StringArrayOutput)
 }
 
+// Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
+func (o AttributeDefinitionOutput) AttributeDefinitionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.AttributeDefinitionId }).(pulumi.StringOutput)
+}
+
 // The category of the attribute. The value of this field cannot be changed after creation.
 func (o AttributeDefinitionOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
@@ -177,9 +188,17 @@ func (o AttributeDefinitionOutput) ConsentDefaultValues() pulumi.StringArrayOutp
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringArrayOutput { return v.ConsentDefaultValues }).(pulumi.StringArrayOutput)
 }
 
+func (o AttributeDefinitionOutput) ConsentStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.ConsentStoreId }).(pulumi.StringOutput)
+}
+
 // Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
 func (o AttributeDefinitionOutput) DataMappingDefaultValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.DataMappingDefaultValue }).(pulumi.StringOutput)
+}
+
+func (o AttributeDefinitionOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
 
 // Optional. A description of the attribute.
@@ -187,9 +206,17 @@ func (o AttributeDefinitionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o AttributeDefinitionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 func (o AttributeDefinitionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AttributeDefinitionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttributeDefinition) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

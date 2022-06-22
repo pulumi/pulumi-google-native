@@ -20,8 +20,12 @@ type ProductSet struct {
 	IndexError StatusResponseOutput `pulumi:"indexError"`
 	// The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
 	IndexTime pulumi.StringOutput `pulumi:"indexTime"`
+	Location  pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+	ProductSetId pulumi.StringPtrOutput `pulumi:"productSetId"`
+	Project      pulumi.StringOutput    `pulumi:"project"`
 }
 
 // NewProductSet registers a new resource with the given unique name, arguments, and options.
@@ -137,9 +141,22 @@ func (o ProductSetOutput) IndexTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProductSet) pulumi.StringOutput { return v.IndexTime }).(pulumi.StringOutput)
 }
 
+func (o ProductSetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProductSet) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 func (o ProductSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProductSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+func (o ProductSetOutput) ProductSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProductSet) pulumi.StringPtrOutput { return v.ProductSetId }).(pulumi.StringPtrOutput)
+}
+
+func (o ProductSetOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProductSet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

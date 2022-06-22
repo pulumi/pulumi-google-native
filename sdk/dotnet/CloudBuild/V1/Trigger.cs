@@ -105,11 +105,23 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Output("includedFiles")]
         public Output<ImmutableArray<string>> IncludedFiles { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. ID of the project for which to configure automatic builds.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.

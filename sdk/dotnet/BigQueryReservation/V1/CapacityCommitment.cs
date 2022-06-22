@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public partial class CapacityCommitment : Pulumi.CustomResource
     {
         /// <summary>
+        /// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        /// </summary>
+        [Output("capacityCommitmentId")]
+        public Output<string?> CapacityCommitmentId { get; private set; } = null!;
+
+        /// <summary>
         /// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         /// </summary>
         [Output("commitmentEndTime")]
@@ -29,10 +35,19 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Output<string> CommitmentStartTime { get; private set; } = null!;
 
         /// <summary>
+        /// If true, fail the request if another project in the organization has a capacity commitment.
+        /// </summary>
+        [Output("enforceSingleAdminProjectPerOrg")]
+        public Output<string?> EnforceSingleAdminProjectPerOrg { get; private set; } = null!;
+
+        /// <summary>
         /// For FAILED commitment plan, provides the reason of failure.
         /// </summary>
         [Output("failureStatus")]
         public Output<Outputs.StatusResponse> FailureStatus { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
@@ -51,6 +66,9 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.

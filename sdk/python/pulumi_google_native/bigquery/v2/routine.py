@@ -375,6 +375,7 @@ class Routine(pulumi.CustomResource):
 
         __props__.__dict__["arguments"] = None
         __props__.__dict__["creation_time"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["definition_body"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["determinism_level"] = None
@@ -382,6 +383,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["imported_libraries"] = None
         __props__.__dict__["language"] = None
         __props__.__dict__["last_modified_time"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["remote_function_options"] = None
         __props__.__dict__["return_table_type"] = None
         __props__.__dict__["return_type"] = None
@@ -405,6 +407,11 @@ class Routine(pulumi.CustomResource):
         The time when this routine was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter(name="definitionBody")
@@ -461,6 +468,11 @@ class Routine(pulumi.CustomResource):
         The time when this routine was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="remoteFunctionOptions")

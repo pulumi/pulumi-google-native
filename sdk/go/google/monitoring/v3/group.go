@@ -25,6 +25,9 @@ type Group struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 	ParentName pulumi.StringOutput `pulumi:"parentName"`
+	Project    pulumi.StringOutput `pulumi:"project"`
+	// If true, validate this request but do not create the group.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -154,6 +157,15 @@ func (o GroupOutput) Name() pulumi.StringOutput {
 // The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 func (o GroupOutput) ParentName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.ParentName }).(pulumi.StringOutput)
+}
+
+func (o GroupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// If true, validate this request but do not create the group.
+func (o GroupOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

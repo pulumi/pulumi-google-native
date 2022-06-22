@@ -15,10 +15,12 @@ import (
 type NatAddress struct {
 	pulumi.CustomResourceState
 
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The static IPV4 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// Resource ID of the NAT address.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// State of the nat address.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -119,6 +121,10 @@ func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) Nat
 	return o
 }
 
+func (o NatAddressOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // The static IPV4 address.
 func (o NatAddressOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
@@ -127,6 +133,10 @@ func (o NatAddressOutput) IpAddress() pulumi.StringOutput {
 // Resource ID of the NAT address.
 func (o NatAddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NatAddressOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // State of the nat address.

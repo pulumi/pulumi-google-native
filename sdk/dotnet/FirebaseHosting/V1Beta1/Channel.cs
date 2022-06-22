@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     public partial class Channel : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Immutable. A unique ID within the site that identifies the channel.
+        /// </summary>
+        [Output("channelId")]
+        public Output<string> ChannelId { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which the channel was created.
         /// </summary>
         [Output("createTime")]
@@ -39,6 +45,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The current release for the channel, if any.
         /// </summary>
@@ -50,6 +59,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// </summary>
         [Output("retainedReleaseCount")]
         public Output<int> RetainedReleaseCount { get; private set; } = null!;
+
+        [Output("siteId")]
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.

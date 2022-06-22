@@ -155,6 +155,7 @@ class Envgroup(pulumi.CustomResource):
         __props__.__dict__["hostnames"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["state"] = None
         return Envgroup(resource_name, opts=opts, __props__=__props__)
 
@@ -186,9 +187,14 @@ class Envgroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        ID of the environment group.
+        ID of the environment group. Overrides any ID in the environment_group resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

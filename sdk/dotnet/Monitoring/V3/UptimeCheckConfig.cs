@@ -69,6 +69,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Output("period")]
         public Output<string> Period { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The group resource associated with the configuration.
         /// </summary>

@@ -36,6 +36,7 @@ export class DebugSession extends pulumi.CustomResource {
         return obj['__pulumiType'] === DebugSession.__pulumiType;
     }
 
+    public readonly apiId!: pulumi.Output<string>;
     /**
      * Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
      */
@@ -44,6 +45,7 @@ export class DebugSession extends pulumi.CustomResource {
      * The first transaction creation timestamp, recorded by UAP.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
      */
@@ -52,8 +54,10 @@ export class DebugSession extends pulumi.CustomResource {
      * A unique ID for this DebugSession.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
+    public readonly revisionId!: pulumi.Output<string>;
     /**
-     * Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+     * Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value.
      */
     public readonly timeout!: pulumi.Output<string>;
     /**
@@ -100,10 +104,14 @@ export class DebugSession extends pulumi.CustomResource {
             resourceInputs["validity"] = args ? args.validity : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
         } else {
+            resourceInputs["apiId"] = undefined /*out*/;
             resourceInputs["count"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;
             resourceInputs["tracesize"] = undefined /*out*/;
             resourceInputs["validity"] = undefined /*out*/;

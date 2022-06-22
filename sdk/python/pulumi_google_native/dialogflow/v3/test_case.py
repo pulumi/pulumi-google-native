@@ -286,15 +286,23 @@ class TestCase(pulumi.CustomResource):
 
         __props__ = TestCaseArgs.__new__(TestCaseArgs)
 
+        __props__.__dict__["agent_id"] = None
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["last_test_result"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notes"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["test_case_conversation_turns"] = None
         __props__.__dict__["test_config"] = None
         return TestCase(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -322,6 +330,11 @@ class TestCase(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
@@ -335,6 +348,11 @@ class TestCase(pulumi.CustomResource):
         Additional freeform notes about the test case. Limit of 400 characters.
         """
         return pulumi.get(self, "notes")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

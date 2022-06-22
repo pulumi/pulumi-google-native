@@ -52,6 +52,7 @@ export class WorkerPool extends pulumi.CustomResource {
      * Network configuration for the `WorkerPool`.
      */
     public readonly networkConfig!: pulumi.Output<outputs.cloudbuild.v1alpha2.NetworkConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
      */
@@ -68,6 +69,10 @@ export class WorkerPool extends pulumi.CustomResource {
      * Worker configuration for the `WorkerPool`.
      */
     public readonly workerConfig!: pulumi.Output<outputs.cloudbuild.v1alpha2.WorkerConfigResponse>;
+    /**
+     * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+     */
+    public readonly workerPoolId!: pulumi.Output<string>;
 
     /**
      * Create a WorkerPool resource with the given unique name, arguments, and options.
@@ -101,10 +106,12 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["workerConfig"] = undefined /*out*/;
+            resourceInputs["workerPoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkerPool.__pulumiType, name, resourceInputs, opts);

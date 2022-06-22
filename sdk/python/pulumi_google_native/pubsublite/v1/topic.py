@@ -224,11 +224,19 @@ class Topic(pulumi.CustomResource):
 
         __props__ = TopicArgs.__new__(TopicArgs)
 
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["partition_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reservation_config"] = None
         __props__.__dict__["retention_config"] = None
+        __props__.__dict__["topic_id"] = None
         return Topic(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -247,6 +255,11 @@ class Topic(pulumi.CustomResource):
         return pulumi.get(self, "partition_config")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="reservationConfig")
     def reservation_config(self) -> pulumi.Output['outputs.ReservationConfigResponse']:
         """
@@ -261,4 +274,12 @@ class Topic(pulumi.CustomResource):
         The settings for this topic's message retention.
         """
         return pulumi.get(self, "retention_config")
+
+    @property
+    @pulumi.getter(name="topicId")
+    def topic_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+        """
+        return pulumi.get(self, "topic_id")
 

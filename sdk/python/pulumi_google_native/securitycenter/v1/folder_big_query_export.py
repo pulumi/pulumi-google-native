@@ -214,15 +214,25 @@ class FolderBigQueryExport(pulumi.CustomResource):
 
         __props__ = FolderBigQueryExportArgs.__new__(FolderBigQueryExportArgs)
 
+        __props__.__dict__["big_query_export_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["dataset"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["filter"] = None
+        __props__.__dict__["folder_id"] = None
         __props__.__dict__["most_recent_editor"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["principal"] = None
         __props__.__dict__["update_time"] = None
         return FolderBigQueryExport(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bigQueryExportId")
+    def big_query_export_id(self) -> pulumi.Output[str]:
+        """
+        Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        """
+        return pulumi.get(self, "big_query_export_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -255,6 +265,11 @@ class FolderBigQueryExport(pulumi.CustomResource):
         Expression that defines the filter to apply across create/update events of findings. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
         """
         return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "folder_id")
 
     @property
     @pulumi.getter(name="mostRecentEditor")

@@ -286,6 +286,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["node_count"] = None
         __props__.__dict__["processing_units"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -353,6 +354,11 @@ class Instance(pulumi.CustomResource):
         The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
         """
         return pulumi.get(self, "processing_units")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

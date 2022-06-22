@@ -40,6 +40,15 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("entryGroupId")]
+        public Output<string> EntryGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The id of the entry to create.
+        /// </summary>
+        [Output("entryId")]
+        public Output<string> EntryId { get; private set; } = null!;
+
         /// <summary>
         /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         /// </summary>
@@ -58,11 +67,17 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Output("linkedResource")]
         public Output<string> LinkedResource { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Schema of the entry. An entry might not have any schema attached to it.

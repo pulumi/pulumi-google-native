@@ -47,6 +47,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
         /// <summary>
         /// Contains information like metrics, dimenstions etc of the AsyncQuery.
         /// </summary>

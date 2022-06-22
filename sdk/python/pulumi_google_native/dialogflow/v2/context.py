@@ -232,10 +232,20 @@ class Context(pulumi.CustomResource):
 
         __props__ = ContextArgs.__new__(ContextArgs)
 
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["lifespan_count"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parameters"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["session_id"] = None
+        __props__.__dict__["user_id"] = None
         return Context(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
 
     @property
     @pulumi.getter(name="lifespanCount")
@@ -244,6 +254,11 @@ class Context(pulumi.CustomResource):
         Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
         """
         return pulumi.get(self, "lifespan_count")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -260,4 +275,19 @@ class Context(pulumi.CustomResource):
         Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sessionId")
+    def session_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "session_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "user_id")
 

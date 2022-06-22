@@ -251,8 +251,11 @@ class Hub(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["hub_id"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["spokes"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["unique_id"] = None
@@ -276,6 +279,14 @@ class Hub(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="hubId")
+    def hub_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Unique id for the Hub to create.
+        """
+        return pulumi.get(self, "hub_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -290,6 +301,19 @@ class Hub(pulumi.CustomResource):
         Immutable. The name of a Hub resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter

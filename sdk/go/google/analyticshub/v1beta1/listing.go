@@ -19,7 +19,8 @@ type Listing struct {
 	// Shared dataset i.e. BigQuery dataset source.
 	BigqueryDataset BigQueryDatasetSourceResponseOutput `pulumi:"bigqueryDataset"`
 	// Optional. Categories of the listing. Up to two categories are allowed.
-	Categories pulumi.StringArrayOutput `pulumi:"categories"`
+	Categories     pulumi.StringArrayOutput `pulumi:"categories"`
+	DataExchangeId pulumi.StringOutput      `pulumi:"dataExchangeId"`
 	// Optional. Details of the data provider who owns the source data.
 	DataProvider DataProviderResponseOutput `pulumi:"dataProvider"`
 	// Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
@@ -30,10 +31,14 @@ type Listing struct {
 	Documentation pulumi.StringOutput `pulumi:"documentation"`
 	// Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
 	Icon pulumi.StringOutput `pulumi:"icon"`
+	// Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+	ListingId pulumi.StringOutput `pulumi:"listingId"`
+	Location  pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the listing. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
 	PrimaryContact pulumi.StringOutput `pulumi:"primaryContact"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 	// Optional. Details of the publisher who owns the listing and who can share the source data.
 	Publisher PublisherResponseOutput `pulumi:"publisher"`
 	// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
@@ -196,6 +201,10 @@ func (o ListingOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringArrayOutput { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
+func (o ListingOutput) DataExchangeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.DataExchangeId }).(pulumi.StringOutput)
+}
+
 // Optional. Details of the data provider who owns the source data.
 func (o ListingOutput) DataProvider() DataProviderResponseOutput {
 	return o.ApplyT(func(v *Listing) DataProviderResponseOutput { return v.DataProvider }).(DataProviderResponseOutput)
@@ -221,6 +230,15 @@ func (o ListingOutput) Icon() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Icon }).(pulumi.StringOutput)
 }
 
+// Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+func (o ListingOutput) ListingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.ListingId }).(pulumi.StringOutput)
+}
+
+func (o ListingOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the listing. e.g. `projects/myproject/locations/US/dataExchanges/123/listings/456`
 func (o ListingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -229,6 +247,10 @@ func (o ListingOutput) Name() pulumi.StringOutput {
 // Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
 func (o ListingOutput) PrimaryContact() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.PrimaryContact }).(pulumi.StringOutput)
+}
+
+func (o ListingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Details of the publisher who owns the listing and who can share the source data.

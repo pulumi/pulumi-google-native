@@ -204,7 +204,10 @@ class DestGroup(pulumi.CustomResource):
 
         __props__.__dict__["cidrs"] = None
         __props__.__dict__["fqdns"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["tunnel_dest_group_id"] = None
         return DestGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -225,9 +228,27 @@ class DestGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="tunnelDestGroupId")
+    def tunnel_dest_group_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+        """
+        return pulumi.get(self, "tunnel_dest_group_id")
 

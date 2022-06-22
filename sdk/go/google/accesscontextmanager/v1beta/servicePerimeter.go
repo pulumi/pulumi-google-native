@@ -15,6 +15,7 @@ import (
 type ServicePerimeter struct {
 	pulumi.CustomResourceState
 
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
@@ -128,6 +129,10 @@ func (o ServicePerimeterOutput) ToServicePerimeterOutput() ServicePerimeterOutpu
 
 func (o ServicePerimeterOutput) ToServicePerimeterOutputWithContext(ctx context.Context) ServicePerimeterOutput {
 	return o
+}
+
+func (o ServicePerimeterOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // Description of the `ServicePerimeter` and its use. Does not affect behavior.

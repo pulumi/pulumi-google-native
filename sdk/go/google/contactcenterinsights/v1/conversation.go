@@ -18,6 +18,8 @@ type Conversation struct {
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// Call-specific metadata.
 	CallMetadata GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput `pulumi:"callMetadata"`
+	// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+	ConversationId pulumi.StringPtrOutput `pulumi:"conversationId"`
 	// The time at which the conversation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The source of the audio and transcription for the conversation.
@@ -34,12 +36,14 @@ type Conversation struct {
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// The conversation's latest analysis, if one exists.
 	LatestAnalysis GoogleCloudContactcenterinsightsV1AnalysisResponseOutput `pulumi:"latestAnalysis"`
+	Location       pulumi.StringOutput                                      `pulumi:"location"`
 	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium pulumi.StringOutput `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Obfuscated user ID which the customer sent to us.
 	ObfuscatedUserId pulumi.StringOutput `pulumi:"obfuscatedUserId"`
+	Project          pulumi.StringOutput `pulumi:"project"`
 	// The annotations that were generated during the customer and agent interaction.
 	RuntimeAnnotations GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput `pulumi:"runtimeAnnotations"`
 	// The time at which the conversation started.
@@ -200,6 +204,11 @@ func (o ConversationOutput) CallMetadata() GoogleCloudContactcenterinsightsV1Con
 	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput)
 }
 
+// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+func (o ConversationOutput) ConversationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringPtrOutput { return v.ConversationId }).(pulumi.StringPtrOutput)
+}
+
 // The time at which the conversation was created.
 func (o ConversationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -244,6 +253,10 @@ func (o ConversationOutput) LatestAnalysis() GoogleCloudContactcenterinsightsV1A
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput)
 }
 
+func (o ConversationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 func (o ConversationOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Medium }).(pulumi.StringOutput)
@@ -257,6 +270,10 @@ func (o ConversationOutput) Name() pulumi.StringOutput {
 // Obfuscated user ID which the customer sent to us.
 func (o ConversationOutput) ObfuscatedUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.ObfuscatedUserId }).(pulumi.StringOutput)
+}
+
+func (o ConversationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The annotations that were generated during the customer and agent interaction.

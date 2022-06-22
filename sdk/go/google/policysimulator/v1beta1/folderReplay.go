@@ -19,7 +19,9 @@ type FolderReplay struct {
 	pulumi.CustomResourceState
 
 	// The configuration used for the `Replay`.
-	Config GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput `pulumi:"config"`
+	Config   GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput `pulumi:"config"`
+	FolderId pulumi.StringOutput                                         `pulumi:"folderId"`
+	Location pulumi.StringOutput                                         `pulumi:"location"`
 	// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Summary statistics about the replayed log entries.
@@ -127,6 +129,14 @@ func (o FolderReplayOutput) ToFolderReplayOutputWithContext(ctx context.Context)
 // The configuration used for the `Replay`.
 func (o FolderReplayOutput) Config() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
 	return o.ApplyT(func(v *FolderReplay) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput { return v.Config }).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput)
+}
+
+func (o FolderReplayOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderReplay) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
+}
+
+func (o FolderReplayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderReplay) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`

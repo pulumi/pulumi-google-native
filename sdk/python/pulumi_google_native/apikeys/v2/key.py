@@ -217,8 +217,11 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["key_id"] = None
         __props__.__dict__["key_string"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["restrictions"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
@@ -265,6 +268,14 @@ class Key(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+        """
+        return pulumi.get(self, "key_id")
+
+    @property
     @pulumi.getter(name="keyString")
     def key_string(self) -> pulumi.Output[str]:
         """
@@ -274,11 +285,21 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -26,10 +26,10 @@ type SslCert struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
-	// Name of the database instance.
-	Instance pulumi.StringOutput `pulumi:"instance"`
+	Instance       pulumi.StringOutput `pulumi:"instance"`
 	// This is always `sql#sslCert`.
-	Kind pulumi.StringOutput `pulumi:"kind"`
+	Kind    pulumi.StringOutput `pulumi:"kind"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Sha1 Fingerprint.
@@ -154,7 +154,6 @@ func (o SslCertOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
-// Name of the database instance.
 func (o SslCertOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
@@ -162,6 +161,10 @@ func (o SslCertOutput) Instance() pulumi.StringOutput {
 // This is always `sql#sslCert`.
 func (o SslCertOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o SslCertOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The URI of this resource.

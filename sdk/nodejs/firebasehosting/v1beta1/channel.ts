@@ -36,6 +36,10 @@ export class Channel extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Immutable. A unique ID within the site that identifies the channel.
+     */
+    public readonly channelId!: pulumi.Output<string>;
+    /**
      * The time at which the channel was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -51,6 +55,7 @@ export class Channel extends pulumi.CustomResource {
      * The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The current release for the channel, if any.
      */
@@ -59,6 +64,7 @@ export class Channel extends pulumi.CustomResource {
      * The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
     public readonly retainedReleaseCount!: pulumi.Output<number>;
+    public readonly siteId!: pulumi.Output<string>;
     /**
      * Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
      */
@@ -102,12 +108,15 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         } else {
+            resourceInputs["channelId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["release"] = undefined /*out*/;
             resourceInputs["retainedReleaseCount"] = undefined /*out*/;
+            resourceInputs["siteId"] = undefined /*out*/;
             resourceInputs["ttl"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;

@@ -95,6 +95,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<bool> InstallGpuDriver { get; private set; } = null!;
 
         /// <summary>
+        /// Required. User-defined unique ID of this instance.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         /// </summary>
         [Output("instanceOwners")]
@@ -111,6 +117,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
@@ -165,6 +174,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Output("postStartupScript")]
         public Output<string> PostStartupScript { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The proxy endpoint that is used to access the Jupyter notebook.

@@ -23,11 +23,13 @@ type CanaryEvaluation struct {
 	// Create time of the canary evaluation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// End time for the evaluation's analysis.
-	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	EndTime    pulumi.StringOutput `pulumi:"endTime"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Labels used to filter the metrics used for a canary evaluation.
 	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput `pulumi:"metricLabels"`
 	// Name of the canary evalution.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Start time for the canary evaluation's analysis.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The current state of the canary evaluation.
@@ -180,6 +182,10 @@ func (o CanaryEvaluationOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
+func (o CanaryEvaluationOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // Labels used to filter the metrics used for a canary evaluation.
 func (o CanaryEvaluationOutput) MetricLabels() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
 	return o.ApplyT(func(v *CanaryEvaluation) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
@@ -190,6 +196,10 @@ func (o CanaryEvaluationOutput) MetricLabels() GoogleCloudApigeeV1CanaryEvaluati
 // Name of the canary evalution.
 func (o CanaryEvaluationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CanaryEvaluationOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Start time for the canary evaluation's analysis.

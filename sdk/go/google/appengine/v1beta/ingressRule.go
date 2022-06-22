@@ -18,6 +18,7 @@ type IngressRule struct {
 
 	// The action to take on matched requests.
 	Action pulumi.StringOutput `pulumi:"action"`
+	AppId  pulumi.StringOutput `pulumi:"appId"`
 	// An optional string description of this rule. This field has a maximum length of 400 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user.
@@ -132,6 +133,10 @@ func (o IngressRuleOutput) ToIngressRuleOutputWithContext(ctx context.Context) I
 // The action to take on matched requests.
 func (o IngressRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *IngressRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o IngressRuleOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngressRule) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
 
 // An optional string description of this rule. This field has a maximum length of 400 characters.

@@ -15,20 +15,28 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+	BackupId pulumi.StringOutput `pulumi:"backupId"`
 	// The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
 	Database pulumi.StringOutput `pulumi:"database"`
 	// The database dialect information for the backup.
 	DatabaseDialect pulumi.StringOutput `pulumi:"databaseDialect"`
+	// Required. The encryption type of the backup.
+	EncryptionConfigEncryptionType pulumi.StringOutput `pulumi:"encryptionConfigEncryptionType"`
+	// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+	EncryptionConfigKmsKeyName pulumi.StringPtrOutput `pulumi:"encryptionConfigKmsKeyName"`
 	// The encryption information for the backup.
 	EncryptionInfo EncryptionInfoResponseOutput `pulumi:"encryptionInfo"`
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
 	MaxExpireTime pulumi.StringOutput `pulumi:"maxExpireTime"`
 	// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.
 	ReferencingBackups pulumi.StringArrayOutput `pulumi:"referencingBackups"`
 	// The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
@@ -164,6 +172,11 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+func (o BackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
+}
+
 // The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
 func (o BackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -179,6 +192,16 @@ func (o BackupOutput) DatabaseDialect() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DatabaseDialect }).(pulumi.StringOutput)
 }
 
+// Required. The encryption type of the backup.
+func (o BackupOutput) EncryptionConfigEncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.EncryptionConfigEncryptionType }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+func (o BackupOutput) EncryptionConfigKmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.EncryptionConfigKmsKeyName }).(pulumi.StringPtrOutput)
+}
+
 // The encryption information for the backup.
 func (o BackupOutput) EncryptionInfo() EncryptionInfoResponseOutput {
 	return o.ApplyT(func(v *Backup) EncryptionInfoResponseOutput { return v.EncryptionInfo }).(EncryptionInfoResponseOutput)
@@ -189,6 +212,10 @@ func (o BackupOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
+func (o BackupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
 func (o BackupOutput) MaxExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.MaxExpireTime }).(pulumi.StringOutput)
@@ -197,6 +224,10 @@ func (o BackupOutput) MaxExpireTime() pulumi.StringOutput {
 // Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BackupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.

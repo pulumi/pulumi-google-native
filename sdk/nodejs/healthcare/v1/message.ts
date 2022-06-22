@@ -43,10 +43,13 @@ export class Message extends pulumi.CustomResource {
      * Raw message bytes.
      */
     public readonly data!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
+    public readonly hl7V2StoreId!: pulumi.Output<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The message type for this message. MSH-9.1.
      */
@@ -63,6 +66,7 @@ export class Message extends pulumi.CustomResource {
      * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
      */
     public readonly patientIds!: pulumi.Output<outputs.healthcare.v1.PatientIdResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
      */
@@ -110,11 +114,15 @@ export class Message extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["data"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
+            resourceInputs["hl7V2StoreId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["messageType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parsedData"] = undefined /*out*/;
             resourceInputs["patientIds"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["schematizedData"] = undefined /*out*/;
             resourceInputs["sendFacility"] = undefined /*out*/;
             resourceInputs["sendTime"] = undefined /*out*/;

@@ -34,11 +34,17 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
         /// <summary>
         /// Resource labels to represent user provided metadata.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters, numbers, and underscores.
@@ -57,6 +63,15 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         [Output("nfsExportOptions")]
         public Output<ImmutableArray<Outputs.NfsExportOptionsResponse>> NfsExportOptions { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        /// </summary>
+        [Output("shareId")]
+        public Output<string> ShareId { get; private set; } = null!;
 
         /// <summary>
         /// The share state.

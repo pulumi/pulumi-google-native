@@ -172,7 +172,9 @@ class Fleet(pulumi.CustomResource):
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["fleet_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return Fleet(resource_name, opts=opts, __props__=__props__)
@@ -211,11 +213,21 @@ class Fleet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

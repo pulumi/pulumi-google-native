@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class Alias : Pulumi.CustomResource
     {
         /// <summary>
-        /// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+        /// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
         /// </summary>
         [Output("alias")]
         public Output<string> AliasValue { get; private set; } = null!;
@@ -27,6 +27,39 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("certsInfo")]
         public Output<Outputs.GoogleCloudApigeeV1CertificateResponse> CertsInfo { get; private set; } = null!;
+
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+        /// </summary>
+        [Output("format")]
+        public Output<string> Format { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+        /// </summary>
+        [Output("ignoreExpiryValidation")]
+        public Output<string?> IgnoreExpiryValidation { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+        /// </summary>
+        [Output("ignoreNewlineValidation")]
+        public Output<string?> IgnoreNewlineValidation { get; private set; } = null!;
+
+        [Output("keystoreId")]
+        public Output<string> KeystoreId { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
+        /// <summary>
+        /// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
         /// Type of alias.

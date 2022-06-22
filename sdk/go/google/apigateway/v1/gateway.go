@@ -24,10 +24,14 @@ type Gateway struct {
 	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
 	// Optional. Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The current state of the Gateway.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Updated time.
@@ -162,14 +166,27 @@ func (o GatewayOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+func (o GatewayOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
 // Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 func (o GatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o GatewayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GatewayOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The current state of the Gateway.

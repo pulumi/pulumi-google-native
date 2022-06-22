@@ -44,7 +44,8 @@ type Report struct {
 	// Legacy field: not used. This field contains the offset for the data
 	Offset pulumi.StringOutput `pulumi:"offset"`
 	// Organization name
-	Organization pulumi.StringOutput `pulumi:"organization"`
+	Organization   pulumi.StringOutput `pulumi:"organization"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// This field contains report properties such as ui metadata etc.
 	Properties GoogleCloudApigeeV1ReportPropertyResponseArrayOutput `pulumi:"properties"`
 	// Legacy field: not used much. Contains the list of sort by columns
@@ -292,6 +293,10 @@ func (o ReportOutput) Offset() pulumi.StringOutput {
 // Organization name
 func (o ReportOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
+}
+
+func (o ReportOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // This field contains report properties such as ui metadata etc.

@@ -64,6 +64,9 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Output("pdfInstruction")]
         public Output<Outputs.GoogleCloudDatalabelingV1beta1PdfInstructionResponse> PdfInstruction { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Last update time of instruction.
         /// </summary>

@@ -185,7 +185,9 @@ class View(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["value"] = None
         return View(resource_name, opts=opts, __props__=__props__)
@@ -208,11 +210,21 @@ class View(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

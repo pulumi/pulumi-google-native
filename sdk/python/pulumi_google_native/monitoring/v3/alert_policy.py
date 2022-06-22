@@ -359,6 +359,7 @@ class AlertPolicy(pulumi.CustomResource):
         __props__.__dict__["mutation_record"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_channels"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["user_labels"] = None
         __props__.__dict__["validity"] = None
         return AlertPolicy(resource_name, opts=opts, __props__=__props__)
@@ -442,6 +443,11 @@ class AlertPolicy(pulumi.CustomResource):
         Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
         """
         return pulumi.get(self, "notification_channels")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="userLabels")

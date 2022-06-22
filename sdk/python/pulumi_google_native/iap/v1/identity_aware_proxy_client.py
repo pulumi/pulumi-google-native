@@ -146,10 +146,17 @@ class IdentityAwareProxyClient(pulumi.CustomResource):
 
         __props__ = IdentityAwareProxyClientArgs.__new__(IdentityAwareProxyClientArgs)
 
+        __props__.__dict__["brand_id"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["secret"] = None
         return IdentityAwareProxyClient(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="brandId")
+    def brand_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "brand_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -166,6 +173,11 @@ class IdentityAwareProxyClient(pulumi.CustomResource):
         Unique identifier of the OAuth client.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

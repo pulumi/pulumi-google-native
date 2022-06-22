@@ -47,6 +47,7 @@ export class PhraseMatcher extends pulumi.CustomResource {
      * The human-readable name of the phrase matcher.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
      */
@@ -55,6 +56,7 @@ export class PhraseMatcher extends pulumi.CustomResource {
      * A list of phase match rule groups that are included in this matcher.
      */
     public readonly phraseMatchRuleGroups!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The timestamp of when the revision was created. It is also the create time when a new matcher is added.
      */
@@ -111,8 +113,10 @@ export class PhraseMatcher extends pulumi.CustomResource {
             resourceInputs["activationUpdateTime"] = undefined /*out*/;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["phraseMatchRuleGroups"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["roleMatch"] = undefined /*out*/;

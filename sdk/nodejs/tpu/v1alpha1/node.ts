@@ -74,6 +74,7 @@ export class Node extends pulumi.CustomResource {
      * Resource labels to represent user-provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The name of the TPU
      */
@@ -87,11 +88,20 @@ export class Node extends pulumi.CustomResource {
      */
     public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.v1alpha1.NetworkEndpointResponse[]>;
     /**
+     * The unqualified resource name.
+     */
+    public readonly nodeId!: pulumi.Output<string | undefined>;
+    /**
      * DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
      *
      * @deprecated Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Idempotent request UUID.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The scheduling options for this node.
      */
@@ -167,10 +177,14 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["healthDescription"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["nodeId"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["schedulingConfig"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

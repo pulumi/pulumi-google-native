@@ -41,6 +41,10 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly backupConfig!: pulumi.Output<outputs.gkebackup.v1.BackupConfigResponse>;
     /**
+     * Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
+     */
+    public readonly backupPlanId!: pulumi.Output<string>;
+    /**
      * Defines a schedule for automatic Backup creation via this BackupPlan.
      */
     public readonly backupSchedule!: pulumi.Output<outputs.gkebackup.v1.ScheduleResponse>;
@@ -68,10 +72,12 @@ export class BackupPlan extends pulumi.CustomResource {
      * A set of custom labels supplied by user.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The full name of the BackupPlan resource. Format: projects/*&#47;locations/*&#47;backupPlans/*
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      */
@@ -124,6 +130,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["backupConfig"] = undefined /*out*/;
+            resourceInputs["backupPlanId"] = undefined /*out*/;
             resourceInputs["backupSchedule"] = undefined /*out*/;
             resourceInputs["cluster"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -131,7 +138,9 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;
             resourceInputs["retentionPolicy"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;

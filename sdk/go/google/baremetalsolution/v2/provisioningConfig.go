@@ -19,20 +19,18 @@ type ProvisioningConfig struct {
 
 	// URI to Cloud Console UI view of this provisioning config.
 	CloudConsoleUri pulumi.StringOutput `pulumi:"cloudConsoleUri"`
-	// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
-	//
-	// Deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
+	// Optional. Email provided to send a confirmation with provisioning config to.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// A service account to enable customers to access instance credentials upon handover.
 	HandoverServiceAccount pulumi.StringOutput `pulumi:"handoverServiceAccount"`
 	// Instances to be created.
 	Instances InstanceConfigResponseArrayOutput `pulumi:"instances"`
-	// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
-	Location pulumi.StringOutput `pulumi:"location"`
+	Location  pulumi.StringOutput               `pulumi:"location"`
 	// The name of the provisioning config.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Networks to be created.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
+	Project  pulumi.StringOutput              `pulumi:"project"`
 	// State of ProvisioningConfig.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A generated ticket id to track provisioning request.
@@ -164,9 +162,7 @@ func (o ProvisioningConfigOutput) CloudConsoleUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.CloudConsoleUri }).(pulumi.StringOutput)
 }
 
-// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
-//
-// Deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
+// Optional. Email provided to send a confirmation with provisioning config to.
 func (o ProvisioningConfigOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
@@ -181,7 +177,6 @@ func (o ProvisioningConfigOutput) Instances() InstanceConfigResponseArrayOutput 
 	return o.ApplyT(func(v *ProvisioningConfig) InstanceConfigResponseArrayOutput { return v.Instances }).(InstanceConfigResponseArrayOutput)
 }
 
-// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
 func (o ProvisioningConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -194,6 +189,10 @@ func (o ProvisioningConfigOutput) Name() pulumi.StringOutput {
 // Networks to be created.
 func (o ProvisioningConfigOutput) Networks() NetworkConfigResponseArrayOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) NetworkConfigResponseArrayOutput { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+func (o ProvisioningConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State of ProvisioningConfig.

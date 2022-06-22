@@ -35,6 +35,7 @@ export class Topic extends pulumi.CustomResource {
         return obj['__pulumiType'] === Topic.__pulumiType;
     }
 
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
      */
@@ -43,6 +44,7 @@ export class Topic extends pulumi.CustomResource {
      * The settings for this topic's partitions.
      */
     public readonly partitionConfig!: pulumi.Output<outputs.pubsublite.v1.PartitionConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The settings for this topic's Reservation usage.
      */
@@ -51,6 +53,10 @@ export class Topic extends pulumi.CustomResource {
      * The settings for this topic's message retention.
      */
     public readonly retentionConfig!: pulumi.Output<outputs.pubsublite.v1.RetentionConfigResponse>;
+    /**
+     * Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+     */
+    public readonly topicId!: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -74,10 +80,13 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["retentionConfig"] = args ? args.retentionConfig : undefined;
             resourceInputs["topicId"] = args ? args.topicId : undefined;
         } else {
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["partitionConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reservationConfig"] = undefined /*out*/;
             resourceInputs["retentionConfig"] = undefined /*out*/;
+            resourceInputs["topicId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);

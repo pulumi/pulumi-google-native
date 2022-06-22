@@ -41,18 +41,28 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
     public readonly bindings!: pulumi.Output<outputs.storage.v1.ObjectIamPolicyBindingsItemResponse[]>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * HTTP 1.1  Entity tag for the policy.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
+     * If present, selects a specific revision of this object (as opposed to the latest version, the default).
+     */
+    public readonly generation!: pulumi.Output<string | undefined>;
+    /**
      * The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
      */
     public readonly kind!: pulumi.Output<string>;
+    public readonly object!: pulumi.Output<string>;
     /**
      * The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
      */
     public readonly resourceId!: pulumi.Output<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
+    public readonly userProject!: pulumi.Output<string | undefined>;
     /**
      * The IAM policy format version.
      */
@@ -86,9 +96,13 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
         } else {
             resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["bucket"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["generation"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["object"] = undefined /*out*/;
             resourceInputs["resourceId"] = undefined /*out*/;
+            resourceInputs["userProject"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

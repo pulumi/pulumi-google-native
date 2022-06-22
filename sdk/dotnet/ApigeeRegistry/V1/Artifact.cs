@@ -15,6 +15,15 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:Artifact")]
     public partial class Artifact : Pulumi.CustomResource
     {
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        /// </summary>
+        [Output("artifactId")]
+        public Output<string> ArtifactId { get; private set; } = null!;
+
         /// <summary>
         /// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
         /// </summary>
@@ -33,6 +42,9 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("hash")]
         public Output<string> Hash { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
         /// </summary>
@@ -45,17 +57,26 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact.
         /// </summary>
         [Output("sizeBytes")]
         public Output<int> SizeBytes { get; private set; } = null!;
 
+        [Output("specId")]
+        public Output<string> SpecId { get; private set; } = null!;
+
         /// <summary>
         /// Last update timestamp.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        [Output("versionId")]
+        public Output<string> VersionId { get; private set; } = null!;
 
 
         /// <summary>

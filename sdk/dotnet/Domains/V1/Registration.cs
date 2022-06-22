@@ -58,6 +58,9 @@ namespace Pulumi.GoogleNative.Domains.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         /// </summary>
@@ -75,6 +78,9 @@ namespace Pulumi.GoogleNative.Domains.V1
         /// </summary>
         [Output("pendingContactSettings")]
         public Output<Outputs.ContactSettingsResponse> PendingContactSettings { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The state of the `Registration`

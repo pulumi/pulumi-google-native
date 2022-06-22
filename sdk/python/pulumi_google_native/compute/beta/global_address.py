@@ -366,8 +366,10 @@ class GlobalAddress(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["network_tier"] = None
         __props__.__dict__["prefix_length"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["purpose"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["subnetwork"] = None
@@ -472,6 +474,11 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
         The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
@@ -485,6 +492,14 @@ class GlobalAddress(pulumi.CustomResource):
         The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. *This field is not applicable to global addresses.*
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="selfLink")

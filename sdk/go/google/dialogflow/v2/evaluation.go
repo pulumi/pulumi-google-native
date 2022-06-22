@@ -17,14 +17,17 @@ import (
 type Evaluation struct {
 	pulumi.CustomResourceState
 
+	ConversationModelId pulumi.StringOutput `pulumi:"conversationModelId"`
 	// Creation time of this model.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. The display name of the model evaluation. At most 64 bytes long.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. The configuration of the evaluation task.
 	EvaluationConfig GoogleCloudDialogflowV2EvaluationConfigResponseOutput `pulumi:"evaluationConfig"`
+	Location         pulumi.StringOutput                                   `pulumi:"location"`
 	// The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Only available when model is for smart reply.
 	SmartReplyMetrics GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput `pulumi:"smartReplyMetrics"`
 }
@@ -132,6 +135,10 @@ func (o EvaluationOutput) ToEvaluationOutputWithContext(ctx context.Context) Eva
 	return o
 }
 
+func (o EvaluationOutput) ConversationModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.ConversationModelId }).(pulumi.StringOutput)
+}
+
 // Creation time of this model.
 func (o EvaluationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -147,9 +154,17 @@ func (o EvaluationOutput) EvaluationConfig() GoogleCloudDialogflowV2EvaluationCo
 	return o.ApplyT(func(v *Evaluation) GoogleCloudDialogflowV2EvaluationConfigResponseOutput { return v.EvaluationConfig }).(GoogleCloudDialogflowV2EvaluationConfigResponseOutput)
 }
 
+func (o EvaluationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
 func (o EvaluationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EvaluationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Only available when model is for smart reply.

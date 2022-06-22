@@ -36,10 +36,15 @@ export class DomainMapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === DomainMapping.__pulumiType;
     }
 
+    public readonly appId!: pulumi.Output<string>;
     /**
      * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+     */
+    public readonly overrideStrategy!: pulumi.Output<string | undefined>;
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
      */
@@ -70,7 +75,9 @@ export class DomainMapping extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceRecords"] = undefined /*out*/;
         } else {
+            resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["overrideStrategy"] = undefined /*out*/;
             resourceInputs["resourceRecords"] = undefined /*out*/;
             resourceInputs["sslSettings"] = undefined /*out*/;
         }

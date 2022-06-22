@@ -49,9 +49,6 @@ export class Database extends pulumi.CustomResource {
      * @deprecated This field is deprecated and will be removed from a future version of the API.
      */
     public readonly etag!: pulumi.Output<string>;
-    /**
-     * The name of the Cloud SQL instance. This does not include the project ID.
-     */
     public readonly instance!: pulumi.Output<string>;
     /**
      * This is always `sql#database`.
@@ -61,9 +58,6 @@ export class Database extends pulumi.CustomResource {
      * The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The URI of this resource.

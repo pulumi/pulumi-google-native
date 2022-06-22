@@ -383,19 +383,28 @@ class FhirStore(pulumi.CustomResource):
 
         __props__ = FhirStoreArgs.__new__(FhirStoreArgs)
 
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["default_search_handling_strict"] = None
         __props__.__dict__["disable_referential_integrity"] = None
         __props__.__dict__["disable_resource_versioning"] = None
         __props__.__dict__["enable_update_create"] = None
+        __props__.__dict__["fhir_store_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_config"] = None
         __props__.__dict__["notification_configs"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["search_config"] = None
         __props__.__dict__["stream_configs"] = None
         __props__.__dict__["validation_config"] = None
         __props__.__dict__["version"] = None
         return FhirStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -430,12 +439,25 @@ class FhirStore(pulumi.CustomResource):
         return pulumi.get(self, "enable_update_create")
 
     @property
+    @pulumi.getter(name="fhirStoreId")
+    def fhir_store_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        """
+        return pulumi.get(self, "fhir_store_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -460,6 +482,11 @@ class FhirStore(pulumi.CustomResource):
         Specifies where and whether to send notifications upon changes to a Fhir store.
         """
         return pulumi.get(self, "notification_configs")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="searchConfig")

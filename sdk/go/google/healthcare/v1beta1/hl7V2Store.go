@@ -15,8 +15,12 @@ import (
 type Hl7V2Store struct {
 	pulumi.CustomResourceState
 
+	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
+	// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	Hl7V2StoreId pulumi.StringPtrOutput `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The notification destination all messages (both Ingest & Create) are published on. Only the message name is sent as part of the notification. If this is unset, no notifications are sent. Supplied by the client.
@@ -25,6 +29,7 @@ type Hl7V2Store struct {
 	NotificationConfigs Hl7V2NotificationConfigResponseArrayOutput `pulumi:"notificationConfigs"`
 	// The configuration for the parser. It determines how the server parses the messages.
 	ParserConfig ParserConfigResponseOutput `pulumi:"parserConfig"`
+	Project      pulumi.StringOutput        `pulumi:"project"`
 	// Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
 	RejectDuplicateMessage pulumi.BoolOutput `pulumi:"rejectDuplicateMessage"`
 }
@@ -148,9 +153,22 @@ func (o Hl7V2StoreOutput) ToHl7V2StoreOutputWithContext(ctx context.Context) Hl7
 	return o
 }
 
+func (o Hl7V2StoreOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+func (o Hl7V2StoreOutput) Hl7V2StoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringPtrOutput { return v.Hl7V2StoreId }).(pulumi.StringPtrOutput)
+}
+
 // User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 func (o Hl7V2StoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o Hl7V2StoreOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
@@ -171,6 +189,10 @@ func (o Hl7V2StoreOutput) NotificationConfigs() Hl7V2NotificationConfigResponseA
 // The configuration for the parser. It determines how the server parses the messages.
 func (o Hl7V2StoreOutput) ParserConfig() ParserConfigResponseOutput {
 	return o.ApplyT(func(v *Hl7V2Store) ParserConfigResponseOutput { return v.ParserConfig }).(ParserConfigResponseOutput)
+}
+
+func (o Hl7V2StoreOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.

@@ -42,10 +42,16 @@ export class DestGroup extends pulumi.CustomResource {
      * null List of FQDNs that this group applies to.
      */
     public readonly fqdns!: pulumi.Output<string[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+     */
+    public readonly tunnelDestGroupId!: pulumi.Output<string>;
 
     /**
      * Create a DestGroup resource with the given unique name, arguments, and options.
@@ -70,7 +76,10 @@ export class DestGroup extends pulumi.CustomResource {
         } else {
             resourceInputs["cidrs"] = undefined /*out*/;
             resourceInputs["fqdns"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["tunnelDestGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DestGroup.__pulumiType, name, resourceInputs, opts);

@@ -46,6 +46,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         /// </summary>
@@ -57,6 +60,12 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         /// </summary>
         [Output("rotation")]
         public Output<Outputs.RotationResponse> Rotation { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+        /// </summary>
+        [Output("secretId")]
+        public Output<string> SecretId { get; private set; } = null!;
 
         /// <summary>
         /// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.

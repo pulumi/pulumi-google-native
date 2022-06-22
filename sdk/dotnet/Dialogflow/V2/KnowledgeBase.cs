@@ -27,11 +27,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Output("languageCode")]
         public Output<string> LanguageCode { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

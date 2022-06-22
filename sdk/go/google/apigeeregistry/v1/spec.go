@@ -17,6 +17,9 @@ type Spec struct {
 
 	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	ApiId       pulumi.StringOutput    `pulumi:"apiId"`
+	// Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+	ApiSpecId pulumi.StringOutput `pulumi:"apiSpecId"`
 	// Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents.
 	Contents pulumi.StringOutput `pulumi:"contents"`
 	// Creation timestamp; when the spec resource was created.
@@ -28,11 +31,13 @@ type Spec struct {
 	// A SHA-256 hash of the spec's contents. If the spec is gzipped, this is the hash of the uncompressed spec.
 	Hash pulumi.StringOutput `pulumi:"hash"`
 	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// A style (format) descriptor for this spec that is specified as a Media Type (https://en.wikipedia.org/wiki/Media_type). Possible values include "application/vnd.apigee.proto", "application/vnd.apigee.openapi", and "application/vnd.apigee.graphql", with possible suffixes representing compression types. These hypothetical names are defined in the vendor tree defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 	MimeType pulumi.StringOutput `pulumi:"mimeType"`
 	// Resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Revision creation timestamp; when the represented revision was created.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// Immutable. The revision ID of the spec. A new revision is committed whenever the spec contents are changed. The format is an 8-character hexadecimal string.
@@ -43,6 +48,7 @@ type Spec struct {
 	SizeBytes pulumi.IntOutput `pulumi:"sizeBytes"`
 	// The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved.
 	SourceUri pulumi.StringOutput `pulumi:"sourceUri"`
+	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
 // NewSpec registers a new resource with the given unique name, arguments, and options.
@@ -185,6 +191,15 @@ func (o SpecOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spec) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+func (o SpecOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+func (o SpecOutput) ApiSpecId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.ApiSpecId }).(pulumi.StringOutput)
+}
+
 // Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents.
 func (o SpecOutput) Contents() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.Contents }).(pulumi.StringOutput)
@@ -215,6 +230,10 @@ func (o SpecOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spec) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o SpecOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // A style (format) descriptor for this spec that is specified as a Media Type (https://en.wikipedia.org/wiki/Media_type). Possible values include "application/vnd.apigee.proto", "application/vnd.apigee.openapi", and "application/vnd.apigee.graphql", with possible suffixes representing compression types. These hypothetical names are defined in the vendor tree defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 func (o SpecOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.MimeType }).(pulumi.StringOutput)
@@ -223,6 +242,10 @@ func (o SpecOutput) MimeType() pulumi.StringOutput {
 // Resource name.
 func (o SpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SpecOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Revision creation timestamp; when the represented revision was created.
@@ -248,6 +271,10 @@ func (o SpecOutput) SizeBytes() pulumi.IntOutput {
 // The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved.
 func (o SpecOutput) SourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.SourceUri }).(pulumi.StringOutput)
+}
+
+func (o SpecOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spec) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }
 
 func init() {

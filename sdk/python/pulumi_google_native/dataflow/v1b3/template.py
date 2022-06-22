@@ -221,11 +221,18 @@ class Template(pulumi.CustomResource):
 
         __props__ = TemplateArgs.__new__(TemplateArgs)
 
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["runtime_metadata"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["template_type"] = None
         return Template(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -234,6 +241,11 @@ class Template(pulumi.CustomResource):
         The template metadata describing the template name, available parameters, etc.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="runtimeMetadata")

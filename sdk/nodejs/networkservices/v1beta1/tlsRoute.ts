@@ -47,6 +47,7 @@ export class TlsRoute extends pulumi.CustomResource {
      * Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*&#47;locations/global/gateways/`
      */
     public readonly gateways!: pulumi.Output<string[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*&#47;locations/global/meshes/` The attached Mesh should be of a type SIDECAR
      */
@@ -55,6 +56,7 @@ export class TlsRoute extends pulumi.CustomResource {
      * Name of the TlsRoute resource. It matches pattern `projects/*&#47;locations/global/tlsRoutes/tls_route_name>`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
      */
@@ -63,6 +65,10 @@ export class TlsRoute extends pulumi.CustomResource {
      * Server-defined URL of this resource
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
+     */
+    public readonly tlsRouteId!: pulumi.Output<string>;
     /**
      * The timestamp when the resource was updated.
      */
@@ -100,10 +106,13 @@ export class TlsRoute extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["gateways"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["meshes"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["tlsRouteId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

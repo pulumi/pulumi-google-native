@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
@@ -27,11 +30,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of the environment. Format: `projects//locations//agents//environments/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The test cases config for continuous tests of this environment.

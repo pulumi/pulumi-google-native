@@ -42,25 +42,13 @@ export class PerfSampleSeries extends pulumi.CustomResource {
      * Basic series represented by a line chart
      */
     public readonly basicPerfSampleSeries!: pulumi.Output<outputs.toolresults.v1beta3.BasicPerfSampleSeriesResponse>;
-    /**
-     * A tool results execution ID. 
-     */
     public readonly executionId!: pulumi.Output<string>;
-    /**
-     * A tool results history ID. 
-     */
     public readonly historyId!: pulumi.Output<string>;
-    /**
-     * The cloud project 
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * A sample series id 
      */
     public /*out*/ readonly sampleSeriesId!: pulumi.Output<string>;
-    /**
-     * A tool results step ID. 
-     */
     public readonly stepId!: pulumi.Output<string>;
 
     /**

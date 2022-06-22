@@ -298,11 +298,16 @@ class AttributeDefinition(pulumi.CustomResource):
         __props__ = AttributeDefinitionArgs.__new__(AttributeDefinitionArgs)
 
         __props__.__dict__["allowed_values"] = None
+        __props__.__dict__["attribute_definition_id"] = None
         __props__.__dict__["category"] = None
         __props__.__dict__["consent_default_values"] = None
+        __props__.__dict__["consent_store_id"] = None
         __props__.__dict__["data_mapping_default_value"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return AttributeDefinition(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -312,6 +317,14 @@ class AttributeDefinition(pulumi.CustomResource):
         Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
         """
         return pulumi.get(self, "allowed_values")
+
+    @property
+    @pulumi.getter(name="attributeDefinitionId")
+    def attribute_definition_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
+        """
+        return pulumi.get(self, "attribute_definition_id")
 
     @property
     @pulumi.getter
@@ -330,12 +343,22 @@ class AttributeDefinition(pulumi.CustomResource):
         return pulumi.get(self, "consent_default_values")
 
     @property
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "consent_store_id")
+
+    @property
     @pulumi.getter(name="dataMappingDefaultValue")
     def data_mapping_default_value(self) -> pulumi.Output[str]:
         """
         Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         """
         return pulumi.get(self, "data_mapping_default_value")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter
@@ -347,9 +370,19 @@ class AttributeDefinition(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

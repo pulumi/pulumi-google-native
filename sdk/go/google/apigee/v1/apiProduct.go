@@ -36,6 +36,7 @@ type ApiProduct struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
 	OperationGroup GoogleCloudApigeeV1OperationGroupResponseOutput `pulumi:"operationGroup"`
+	OrganizationId pulumi.StringOutput                             `pulumi:"organizationId"`
 	// Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
 	Proxies pulumi.StringArrayOutput `pulumi:"proxies"`
 	// Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
@@ -251,6 +252,10 @@ func (o ApiProductOutput) Name() pulumi.StringOutput {
 // Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
 func (o ApiProductOutput) OperationGroup() GoogleCloudApigeeV1OperationGroupResponseOutput {
 	return o.ApplyT(func(v *ApiProduct) GoogleCloudApigeeV1OperationGroupResponseOutput { return v.OperationGroup }).(GoogleCloudApigeeV1OperationGroupResponseOutput)
+}
+
+func (o ApiProductOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiProduct) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.

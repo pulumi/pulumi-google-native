@@ -65,13 +65,22 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly inputContextNames!: pulumi.Output<string[]>;
     /**
+     * Optional. The resource view to apply to the returned intent.
+     */
+    public readonly intentView!: pulumi.Output<string | undefined>;
+    /**
      * Optional. Indicates whether this is a fallback intent.
      */
     public readonly isFallback!: pulumi.Output<boolean>;
     /**
+     * Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+     */
+    public readonly languageCode!: pulumi.Output<string | undefined>;
+    /**
      * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
      */
     public readonly liveAgentHandoff!: pulumi.Output<boolean>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
      */
@@ -100,6 +109,7 @@ export class Intent extends pulumi.CustomResource {
      * Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     public readonly priority!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
      */
@@ -163,8 +173,11 @@ export class Intent extends pulumi.CustomResource {
             resourceInputs["events"] = undefined /*out*/;
             resourceInputs["followupIntentInfo"] = undefined /*out*/;
             resourceInputs["inputContextNames"] = undefined /*out*/;
+            resourceInputs["intentView"] = undefined /*out*/;
             resourceInputs["isFallback"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["liveAgentHandoff"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["messages"] = undefined /*out*/;
             resourceInputs["mlDisabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -172,6 +185,7 @@ export class Intent extends pulumi.CustomResource {
             resourceInputs["parameters"] = undefined /*out*/;
             resourceInputs["parentFollowupIntentName"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resetContexts"] = undefined /*out*/;
             resourceInputs["rootFollowupIntentName"] = undefined /*out*/;
             resourceInputs["trainingPhrases"] = undefined /*out*/;

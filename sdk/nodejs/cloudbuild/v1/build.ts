@@ -70,6 +70,7 @@ export class Build extends pulumi.CustomResource {
      * A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
      */
     public readonly images!: pulumi.Output<string[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * URL to logs for this build in Google Cloud Console.
      */
@@ -86,10 +87,11 @@ export class Build extends pulumi.CustomResource {
      * Special options for this build.
      */
     public readonly options!: pulumi.Output<outputs.cloudbuild.v1.BuildOptionsResponse>;
-    /**
-     * ID of the project.
-     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. ID of the project.
+     */
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */
@@ -207,11 +209,13 @@ export class Build extends pulumi.CustomResource {
             resourceInputs["failureInfo"] = undefined /*out*/;
             resourceInputs["finishTime"] = undefined /*out*/;
             resourceInputs["images"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["logUrl"] = undefined /*out*/;
             resourceInputs["logsBucket"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["options"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["queueTtl"] = undefined /*out*/;
             resourceInputs["results"] = undefined /*out*/;
             resourceInputs["secrets"] = undefined /*out*/;

@@ -187,7 +187,9 @@ class Override(pulumi.CustomResource):
         __props__ = OverrideArgs.__new__(OverrideArgs)
 
         __props__.__dict__["api_proxy"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["sampling_config"] = None
         return Override(resource_name, opts=opts, __props__=__props__)
 
@@ -200,12 +202,22 @@ class Override(pulumi.CustomResource):
         return pulumi.get(self, "api_proxy")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         ID of the trace configuration override specified as a system-generated UUID.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="samplingConfig")

@@ -23,16 +23,28 @@ namespace Pulumi.GoogleNative.Run.V1
         public Output<string> ApiVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+        /// </summary>
+        [Output("dryRun")]
+        public Output<string?> DryRun { get; private set; } = null!;
+
+        /// <summary>
         /// The kind of resource, in this case "DomainMapping".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Metadata associated with this BuildTemplate.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.ObjectMetaResponse> Metadata { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The spec for this DomainMapping.

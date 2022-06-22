@@ -28,11 +28,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The status of this version. This field is read-only and cannot be set by create and update methods.

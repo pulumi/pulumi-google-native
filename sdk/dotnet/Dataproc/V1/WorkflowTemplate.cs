@@ -40,6 +40,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
         /// </summary>
@@ -57,6 +60,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Output("placement")]
         public Output<Outputs.WorkflowTemplatePlacementResponse> Placement { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The time template was last updated.

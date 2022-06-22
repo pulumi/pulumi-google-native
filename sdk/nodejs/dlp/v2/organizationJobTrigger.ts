@@ -60,10 +60,12 @@ export class OrganizationJobTrigger extends pulumi.CustomResource {
      * The timestamp of the last time this trigger executed.
      */
     public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * A status for this trigger.
      */
@@ -114,7 +116,9 @@ export class OrganizationJobTrigger extends pulumi.CustomResource {
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["inspectJob"] = undefined /*out*/;
             resourceInputs["lastRunTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["triggers"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

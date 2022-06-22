@@ -237,8 +237,11 @@ class Hub(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["hub_id"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["routing_vpcs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["unique_id"] = None
@@ -262,6 +265,14 @@ class Hub(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="hubId")
+    def hub_id(self) -> pulumi.Output[str]:
+        """
+        Required. A unique identifier for the hub.
+        """
+        return pulumi.get(self, "hub_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -276,6 +287,19 @@ class Hub(pulumi.CustomResource):
         Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="routingVpcs")

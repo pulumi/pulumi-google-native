@@ -40,6 +40,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly cloudSql!: pulumi.Output<outputs.bigqueryconnection.v1beta1.CloudSqlPropertiesResponse>;
     /**
+     * Optional. Connection id that should be assigned to the created connection.
+     */
+    public readonly connectionId!: pulumi.Output<string | undefined>;
+    /**
      * The creation timestamp of the connection.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
@@ -59,10 +63,12 @@ export class Connection extends pulumi.CustomResource {
      * The last update timestamp of the connection.
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -87,12 +93,15 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         } else {
             resourceInputs["cloudSql"] = undefined /*out*/;
+            resourceInputs["connectionId"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["friendlyName"] = undefined /*out*/;
             resourceInputs["hasCredential"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Connection.__pulumiType, name, resourceInputs, opts);

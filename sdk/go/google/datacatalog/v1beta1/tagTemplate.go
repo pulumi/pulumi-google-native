@@ -18,9 +18,13 @@ type TagTemplate struct {
 	// The display name for this template. Defaults to an empty string.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields pulumi.StringMapOutput `pulumi:"fields"`
+	Fields   pulumi.StringMapOutput `pulumi:"fields"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. The id of the tag template to create.
+	TagTemplateId pulumi.StringOutput `pulumi:"tagTemplateId"`
 }
 
 // NewTagTemplate registers a new resource with the given unique name, arguments, and options.
@@ -141,9 +145,22 @@ func (o TagTemplateOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
 }
 
+func (o TagTemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 func (o TagTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TagTemplateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The id of the tag template to create.
+func (o TagTemplateOutput) TagTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.TagTemplateId }).(pulumi.StringOutput)
 }
 
 func init() {

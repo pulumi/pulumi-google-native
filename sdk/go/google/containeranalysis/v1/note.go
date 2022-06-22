@@ -40,8 +40,11 @@ type Note struct {
 	LongDescription pulumi.StringOutput `pulumi:"longDescription"`
 	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The ID to use for this note.
+	NoteId pulumi.StringOutput `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
 	Package PackageNoteResponseOutput `pulumi:"package"`
+	Project pulumi.StringOutput       `pulumi:"project"`
 	// Other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayOutput `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
@@ -267,9 +270,18 @@ func (o NoteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Required. The ID to use for this note.
+func (o NoteOutput) NoteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.NoteId }).(pulumi.StringOutput)
+}
+
 // A note describing a package hosted by various package managers.
 func (o NoteOutput) Package() PackageNoteResponseOutput {
 	return o.ApplyT(func(v *Note) PackageNoteResponseOutput { return v.Package }).(PackageNoteResponseOutput)
+}
+
+func (o NoteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Other notes related to this note.

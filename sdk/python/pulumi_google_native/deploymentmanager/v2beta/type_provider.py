@@ -282,6 +282,7 @@ class TypeProvider(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["operation"] = None
         __props__.__dict__["options"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         return TypeProvider(resource_name, opts=opts, __props__=__props__)
 
@@ -364,6 +365,11 @@ class TypeProvider(pulumi.CustomResource):
         Options to apply when handling any resources in this service.
         """
         return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

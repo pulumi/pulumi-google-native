@@ -20,10 +20,14 @@ type Environment struct {
 	AgentVersion pulumi.StringOutput `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. The unique id of the new environment.
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment GoogleCloudDialogflowV2beta1FulfillmentResponseOutput `pulumi:"fulfillment"`
+	Location    pulumi.StringOutput                                   `pulumi:"location"`
 	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Optional. Text to speech settings for this environment.
@@ -151,14 +155,27 @@ func (o EnvironmentOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Required. The unique id of the new environment.
+func (o EnvironmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // Optional. The fulfillment settings to use for this environment.
 func (o EnvironmentOutput) Fulfillment() GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
 	return o.ApplyT(func(v *Environment) GoogleCloudDialogflowV2beta1FulfillmentResponseOutput { return v.Fulfillment }).(GoogleCloudDialogflowV2beta1FulfillmentResponseOutput)
 }
 
+func (o EnvironmentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.

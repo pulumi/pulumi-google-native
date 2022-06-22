@@ -903,6 +903,10 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["event_based_hold"] = None
         __props__.__dict__["generation"] = None
+        __props__.__dict__["if_generation_match"] = None
+        __props__.__dict__["if_generation_not_match"] = None
+        __props__.__dict__["if_metageneration_match"] = None
+        __props__.__dict__["if_metageneration_not_match"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["md5_hash"] = None
@@ -911,6 +915,8 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["metageneration"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["owner"] = None
+        __props__.__dict__["predefined_acl"] = None
+        __props__.__dict__["projection"] = None
         __props__.__dict__["retention_expiration_time"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["size"] = None
@@ -920,6 +926,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["time_deleted"] = None
         __props__.__dict__["time_storage_class_updated"] = None
         __props__.__dict__["updated"] = None
+        __props__.__dict__["user_project"] = None
         return BucketObject(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -933,9 +940,6 @@ class BucketObject(pulumi.CustomResource):
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        The name of the bucket containing this object.
-        """
         return pulumi.get(self, "bucket")
 
     @property
@@ -966,7 +970,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="contentEncoding")
     def content_encoding(self) -> pulumi.Output[str]:
         """
-        Content-Encoding of the object data.
+        If set, sets the contentEncoding property of the final object to this value. Setting this parameter is equivalent to setting the contentEncoding metadata property. This can be useful when uploading an object with uploadType=media to indicate the encoding of the content being uploaded.
         """
         return pulumi.get(self, "content_encoding")
 
@@ -1035,6 +1039,38 @@ class BucketObject(pulumi.CustomResource):
         return pulumi.get(self, "generation")
 
     @property
+    @pulumi.getter(name="ifGenerationMatch")
+    def if_generation_match(self) -> pulumi.Output[Optional[str]]:
+        """
+        Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+        """
+        return pulumi.get(self, "if_generation_match")
+
+    @property
+    @pulumi.getter(name="ifGenerationNotMatch")
+    def if_generation_not_match(self) -> pulumi.Output[Optional[str]]:
+        """
+        Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+        """
+        return pulumi.get(self, "if_generation_not_match")
+
+    @property
+    @pulumi.getter(name="ifMetagenerationMatch")
+    def if_metageneration_match(self) -> pulumi.Output[Optional[str]]:
+        """
+        Makes the operation conditional on whether the object's current metageneration matches the given value.
+        """
+        return pulumi.get(self, "if_metageneration_match")
+
+    @property
+    @pulumi.getter(name="ifMetagenerationNotMatch")
+    def if_metageneration_not_match(self) -> pulumi.Output[Optional[str]]:
+        """
+        Makes the operation conditional on whether the object's current metageneration does not match the given value.
+        """
+        return pulumi.get(self, "if_metageneration_not_match")
+
+    @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
@@ -1046,7 +1082,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[str]:
         """
-        Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+        Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -1086,7 +1122,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the object. Required if not specified by URL parameter.
+        Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
         """
         return pulumi.get(self, "name")
 
@@ -1097,6 +1133,22 @@ class BucketObject(pulumi.CustomResource):
         The owner of the object. This will always be the uploader of the object.
         """
         return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="predefinedAcl")
+    def predefined_acl(self) -> pulumi.Output[Optional[str]]:
+        """
+        Apply a predefined set of access controls to this object.
+        """
+        return pulumi.get(self, "predefined_acl")
+
+    @property
+    @pulumi.getter
+    def projection(self) -> pulumi.Output[Optional[str]]:
+        """
+        Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        """
+        return pulumi.get(self, "projection")
 
     @property
     @pulumi.getter(name="retentionExpirationTime")
@@ -1169,4 +1221,12 @@ class BucketObject(pulumi.CustomResource):
         The modification time of the object metadata in RFC 3339 format.
         """
         return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
+        return pulumi.get(self, "user_project")
 

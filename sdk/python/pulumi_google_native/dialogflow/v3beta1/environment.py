@@ -262,14 +262,22 @@ class Environment(pulumi.CustomResource):
 
         __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
+        __props__.__dict__["agent_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["test_cases_config"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["version_configs"] = None
         __props__.__dict__["webhook_config"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter
@@ -289,11 +297,21 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the environment. Format: `projects//locations//agents//environments/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="testCasesConfig")

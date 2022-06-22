@@ -17,12 +17,15 @@ type DataCollector struct {
 
 	// The time at which the data collector was created in milliseconds since the epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+	DataCollectorId pulumi.StringPtrOutput `pulumi:"dataCollectorId"`
 	// A description of the data collector.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The time at which the Data Collector was last updated in milliseconds since the epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// ID of the data collector. Must begin with `dc_`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Immutable. The type of data this data collector will collect.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -135,6 +138,11 @@ func (o DataCollectorOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+func (o DataCollectorOutput) DataCollectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataCollector) pulumi.StringPtrOutput { return v.DataCollectorId }).(pulumi.StringPtrOutput)
+}
+
 // A description of the data collector.
 func (o DataCollectorOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -148,6 +156,10 @@ func (o DataCollectorOutput) LastModifiedAt() pulumi.StringOutput {
 // ID of the data collector. Must begin with `dc_`.
 func (o DataCollectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DataCollectorOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Immutable. The type of data this data collector will collect.

@@ -148,7 +148,10 @@ class KeyRing(pulumi.CustomResource):
         __props__ = KeyRingArgs.__new__(KeyRingArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["key_ring_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return KeyRing(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -160,10 +163,28 @@ class KeyRing(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Output[str]:
+        """
+        Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
+        return pulumi.get(self, "key_ring_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

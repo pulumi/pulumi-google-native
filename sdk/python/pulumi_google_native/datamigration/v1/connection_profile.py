@@ -329,14 +329,18 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
         __props__.__dict__["cloudsql"] = None
+        __props__.__dict__["connection_profile_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["mysql"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["postgresql"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["provider"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
@@ -348,6 +352,14 @@ class ConnectionProfile(pulumi.CustomResource):
         A CloudSQL database connection profile.
         """
         return pulumi.get(self, "cloudsql")
+
+    @property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> pulumi.Output[str]:
+        """
+        Required. The connection profile identifier.
+        """
+        return pulumi.get(self, "connection_profile_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -383,6 +395,11 @@ class ConnectionProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def mysql(self) -> pulumi.Output['outputs.MySqlConnectionProfileResponse']:
         """
         A MySQL database connection profile.
@@ -407,11 +424,24 @@ class ConnectionProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def provider(self) -> pulumi.Output[str]:
         """
         The database provider.
         """
         return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter

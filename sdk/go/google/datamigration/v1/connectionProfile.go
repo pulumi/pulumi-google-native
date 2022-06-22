@@ -17,6 +17,8 @@ type ConnectionProfile struct {
 
 	// A CloudSQL database connection profile.
 	Cloudsql CloudSqlConnectionProfileResponseOutput `pulumi:"cloudsql"`
+	// Required. The connection profile identifier.
+	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
 	// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The connection profile display name.
@@ -24,15 +26,19 @@ type ConnectionProfile struct {
 	// The error details in case of state FAILED.
 	Error StatusResponseOutput `pulumi:"error"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfileResponseOutput `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfileResponseOutput `pulumi:"postgresql"`
+	Project    pulumi.StringOutput                       `pulumi:"project"`
 	// The database provider.
 	Provider pulumi.StringOutput `pulumi:"provider"`
+	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -173,6 +179,11 @@ func (o ConnectionProfileOutput) Cloudsql() CloudSqlConnectionProfileResponseOut
 	return o.ApplyT(func(v *ConnectionProfile) CloudSqlConnectionProfileResponseOutput { return v.Cloudsql }).(CloudSqlConnectionProfileResponseOutput)
 }
 
+// Required. The connection profile identifier.
+func (o ConnectionProfileOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
 // The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o ConnectionProfileOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -193,6 +204,10 @@ func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ConnectionProfileOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // A MySQL database connection profile.
 func (o ConnectionProfileOutput) Mysql() MySqlConnectionProfileResponseOutput {
 	return o.ApplyT(func(v *ConnectionProfile) MySqlConnectionProfileResponseOutput { return v.Mysql }).(MySqlConnectionProfileResponseOutput)
@@ -208,9 +223,18 @@ func (o ConnectionProfileOutput) Postgresql() PostgreSqlConnectionProfileRespons
 	return o.ApplyT(func(v *ConnectionProfile) PostgreSqlConnectionProfileResponseOutput { return v.Postgresql }).(PostgreSqlConnectionProfileResponseOutput)
 }
 
+func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The database provider.
 func (o ConnectionProfileOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Provider }).(pulumi.StringOutput)
+}
+
+// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+func (o ConnectionProfileOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).

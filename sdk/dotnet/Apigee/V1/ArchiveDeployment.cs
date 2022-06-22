@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// Input only. The Google Cloud Storage signed URL returned from GenerateUploadUrl and used to upload the Archive zip file.
         /// </summary>
@@ -44,6 +47,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("operation")]
         public Output<string> Operation { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// The time at which the Archive Deployment was updated in milliseconds since the epoch.

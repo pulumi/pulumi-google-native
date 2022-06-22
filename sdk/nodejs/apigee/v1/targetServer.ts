@@ -39,6 +39,7 @@ export class TargetServer extends pulumi.CustomResource {
      * Optional. A human-readable description of this TargetServer.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      */
@@ -48,9 +49,10 @@ export class TargetServer extends pulumi.CustomResource {
      */
     public readonly isEnabled!: pulumi.Output<boolean>;
     /**
-     * The resource id of this target server. Values must match the regular expression 
+     * Optional. The ID to give the TargetServer. This will overwrite the value in TargetServer.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
@@ -98,9 +100,11 @@ export class TargetServer extends pulumi.CustomResource {
             resourceInputs["sSLInfo"] = args ? args.sSLInfo : undefined;
         } else {
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["isEnabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["sSLInfo"] = undefined /*out*/;

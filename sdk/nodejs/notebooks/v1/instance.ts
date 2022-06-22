@@ -89,6 +89,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly installGpuDriver!: pulumi.Output<boolean>;
     /**
+     * Required. User-defined unique ID of this instance.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
      */
     public readonly instanceOwners!: pulumi.Output<string[]>;
@@ -100,6 +104,7 @@ export class Instance extends pulumi.CustomResource {
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
      */
@@ -136,6 +141,7 @@ export class Instance extends pulumi.CustomResource {
      * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
      */
     public readonly postStartupScript!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The proxy endpoint that is used to access the Jupyter notebook.
      */
@@ -251,9 +257,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["diskEncryption"] = undefined /*out*/;
             resourceInputs["disks"] = undefined /*out*/;
             resourceInputs["installGpuDriver"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["instanceOwners"] = undefined /*out*/;
             resourceInputs["kmsKey"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["machineType"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -263,6 +271,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["noPublicIp"] = undefined /*out*/;
             resourceInputs["noRemoveDataDisk"] = undefined /*out*/;
             resourceInputs["postStartupScript"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
             resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;

@@ -22,10 +22,12 @@ type Taxonomy struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of policy tags in this taxonomy.
-	PolicyTagCount pulumi.IntOutput `pulumi:"policyTagCount"`
+	PolicyTagCount pulumi.IntOutput    `pulumi:"policyTagCount"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 	// Creation and modification timestamps of this taxonomy.
 	TaxonomyTimestamps GoogleCloudDatacatalogV1SystemTimestampsResponseOutput `pulumi:"taxonomyTimestamps"`
 }
@@ -146,6 +148,10 @@ func (o TaxonomyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o TaxonomyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
 func (o TaxonomyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -154,6 +160,10 @@ func (o TaxonomyOutput) Name() pulumi.StringOutput {
 // Number of policy tags in this taxonomy.
 func (o TaxonomyOutput) PolicyTagCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.IntOutput { return v.PolicyTagCount }).(pulumi.IntOutput)
+}
+
+func (o TaxonomyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Creation and modification timestamps of this taxonomy.

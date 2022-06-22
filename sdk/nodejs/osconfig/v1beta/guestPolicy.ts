@@ -52,6 +52,10 @@ export class GuestPolicy extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
+     * Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     */
+    public readonly guestPolicyId!: pulumi.Output<string>;
+    /**
      * Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
      */
     public readonly name!: pulumi.Output<string>;
@@ -63,6 +67,7 @@ export class GuestPolicy extends pulumi.CustomResource {
      * The software packages to be managed by this policy.
      */
     public readonly packages!: pulumi.Output<outputs.osconfig.v1beta.PackageResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A list of Recipes to install on the VM instance.
      */
@@ -105,9 +110,11 @@ export class GuestPolicy extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["guestPolicyId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["packageRepositories"] = undefined /*out*/;
             resourceInputs["packages"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["recipes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

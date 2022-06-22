@@ -45,6 +45,9 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         [Output("instanceFilter")]
         public Output<Outputs.OSPolicyAssignmentInstanceFilterResponse> InstanceFilter { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
         /// </summary>
@@ -56,6 +59,15 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         /// </summary>
         [Output("osPolicies")]
         public Output<ImmutableArray<Outputs.OSPolicyResponse>> OsPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        /// </summary>
+        [Output("osPolicyAssignmentId")]
+        public Output<string> OsPolicyAssignmentId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING

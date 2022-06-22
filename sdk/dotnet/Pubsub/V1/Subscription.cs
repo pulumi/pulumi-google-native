@@ -81,6 +81,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
         /// </summary>
@@ -104,6 +107,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("subscriptionId")]
+        public Output<string> SubscriptionId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.

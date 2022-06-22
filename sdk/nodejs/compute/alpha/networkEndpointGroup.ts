@@ -85,6 +85,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */
@@ -93,6 +94,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * The URL of the region where the network endpoint group is located.
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
@@ -117,9 +122,6 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
      */
     public readonly type!: pulumi.Output<string>;
-    /**
-     * The URL of the zone where the network endpoint group is located.
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -169,8 +171,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkEndpointType"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pscTargetService"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["serverlessDeployment"] = undefined /*out*/;

@@ -35,6 +35,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServicePerimeter.__pulumiType;
     }
 
+    public readonly accessPolicyId!: pulumi.Output<string>;
     /**
      * Description of the `ServicePerimeter` and its use. Does not affect behavior.
      */
@@ -87,6 +88,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["useExplicitDryRunSpec"] = args ? args.useExplicitDryRunSpec : undefined;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["accessPolicyId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["perimeterType"] = undefined /*out*/;

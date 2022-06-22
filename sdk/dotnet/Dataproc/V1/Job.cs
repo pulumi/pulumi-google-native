@@ -76,6 +76,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Output("prestoJob")]
         public Output<Outputs.PrestoJobResponse> PrestoJob { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Job is a PySpark job.
         /// </summary>
@@ -87,6 +90,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Output("reference")]
         public Output<Outputs.JobReferenceResponse> Reference { get; private set; } = null!;
+
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Job scheduling configuration.

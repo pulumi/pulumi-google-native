@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.DNS.V2
         public Output<Outputs.PolicyAlternativeNameServerConfigResponse> AlternativeNameServerConfig { get; private set; } = null!;
 
         /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
+        [Output("clientOperationId")]
+        public Output<string?> ClientOperationId { get; private set; } = null!;
+
+        /// <summary>
         /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         /// </summary>
         [Output("description")]
@@ -42,6 +48,9 @@ namespace Pulumi.GoogleNative.DNS.V2
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// User-assigned name for this policy.
         /// </summary>
@@ -53,6 +62,9 @@ namespace Pulumi.GoogleNative.DNS.V2
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.PolicyNetworkResponse>> Networks { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

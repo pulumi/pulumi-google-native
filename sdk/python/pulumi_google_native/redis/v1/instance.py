@@ -573,6 +573,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["customer_managed_key"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["host"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["maintenance_policy"] = None
@@ -583,6 +584,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["persistence_config"] = None
         __props__.__dict__["persistence_iam_identity"] = None
         __props__.__dict__["port"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["read_endpoint"] = None
         __props__.__dict__["read_endpoint_port"] = None
         __props__.__dict__["read_replicas_mode"] = None
@@ -672,6 +674,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "host")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -682,9 +692,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
-        """
-        Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
-        """
         return pulumi.get(self, "location")
 
     @property
@@ -750,6 +757,11 @@ class Instance(pulumi.CustomResource):
         The port number of the exposed Redis endpoint.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="readEndpoint")

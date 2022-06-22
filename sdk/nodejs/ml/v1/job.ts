@@ -74,6 +74,7 @@ export class Job extends pulumi.CustomResource {
      * The current prediction job result.
      */
     public readonly predictionOutput!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__PredictionOutputResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * When the job processing was started.
      */
@@ -129,6 +130,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["predictionInput"] = undefined /*out*/;
             resourceInputs["predictionOutput"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["trainingInput"] = undefined /*out*/;

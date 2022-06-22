@@ -21,9 +21,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Output("acl")]
         public Output<ImmutableArray<Outputs.ObjectAccessControlResponse>> Acl { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the bucket containing this object.
-        /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
@@ -46,7 +43,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> ContentDisposition { get; private set; } = null!;
 
         /// <summary>
-        /// Content-Encoding of the object data.
+        /// If set, sets the contentEncoding property of the final object to this value. Setting this parameter is equivalent to setting the contentEncoding metadata property. This can be useful when uploading an object with uploadType=media to indicate the encoding of the content being uploaded.
         /// </summary>
         [Output("contentEncoding")]
         public Output<string> ContentEncoding { get; private set; } = null!;
@@ -100,13 +97,37 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Generation { get; private set; } = null!;
 
         /// <summary>
+        /// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+        /// </summary>
+        [Output("ifGenerationMatch")]
+        public Output<string?> IfGenerationMatch { get; private set; } = null!;
+
+        /// <summary>
+        /// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+        /// </summary>
+        [Output("ifGenerationNotMatch")]
+        public Output<string?> IfGenerationNotMatch { get; private set; } = null!;
+
+        /// <summary>
+        /// Makes the operation conditional on whether the object's current metageneration matches the given value.
+        /// </summary>
+        [Output("ifMetagenerationMatch")]
+        public Output<string?> IfMetagenerationMatch { get; private set; } = null!;
+
+        /// <summary>
+        /// Makes the operation conditional on whether the object's current metageneration does not match the given value.
+        /// </summary>
+        [Output("ifMetagenerationNotMatch")]
+        public Output<string?> IfMetagenerationNotMatch { get; private set; } = null!;
+
+        /// <summary>
         /// The kind of item this is. For objects, this is always storage#object.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+        /// Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string> KmsKeyName { get; private set; } = null!;
@@ -136,7 +157,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Metageneration { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the object. Required if not specified by URL parameter.
+        /// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -146,6 +167,18 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("owner")]
         public Output<Outputs.BucketObjectOwnerResponse> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Apply a predefined set of access controls to this object.
+        /// </summary>
+        [Output("predefinedAcl")]
+        public Output<string?> PredefinedAcl { get; private set; } = null!;
+
+        /// <summary>
+        /// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        /// </summary>
+        [Output("projection")]
+        public Output<string?> Projection { get; private set; } = null!;
 
         /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
@@ -200,6 +233,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
 
         /// <summary>

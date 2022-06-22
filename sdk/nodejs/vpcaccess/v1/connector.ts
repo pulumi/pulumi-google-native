@@ -40,9 +40,14 @@ export class Connector extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectedProjects!: pulumi.Output<string[]>;
     /**
+     * Required. The ID to use for this connector.
+     */
+    public readonly connectorId!: pulumi.Output<string>;
+    /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
@@ -71,6 +76,7 @@ export class Connector extends pulumi.CustomResource {
      * Name of a VPC network.
      */
     public readonly network!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * State of the VPC access connector.
      */
@@ -110,7 +116,9 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["connectedProjects"] = undefined /*out*/;
+            resourceInputs["connectorId"] = undefined /*out*/;
             resourceInputs["ipCidrRange"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["machineType"] = undefined /*out*/;
             resourceInputs["maxInstances"] = undefined /*out*/;
             resourceInputs["maxThroughput"] = undefined /*out*/;
@@ -118,6 +126,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["minThroughput"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["subnet"] = undefined /*out*/;
         }

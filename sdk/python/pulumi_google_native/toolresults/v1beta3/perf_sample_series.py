@@ -203,25 +203,16 @@ class PerfSampleSeries(pulumi.CustomResource):
     @property
     @pulumi.getter(name="executionId")
     def execution_id(self) -> pulumi.Output[str]:
-        """
-        A tool results execution ID. 
-        """
         return pulumi.get(self, "execution_id")
 
     @property
     @pulumi.getter(name="historyId")
     def history_id(self) -> pulumi.Output[str]:
-        """
-        A tool results history ID. 
-        """
         return pulumi.get(self, "history_id")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The cloud project 
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -235,8 +226,5 @@ class PerfSampleSeries(pulumi.CustomResource):
     @property
     @pulumi.getter(name="stepId")
     def step_id(self) -> pulumi.Output[str]:
-        """
-        A tool results step ID. 
-        """
         return pulumi.get(self, "step_id")
 

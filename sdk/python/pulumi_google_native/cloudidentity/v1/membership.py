@@ -157,6 +157,7 @@ class Membership(pulumi.CustomResource):
         __props__ = MembershipArgs.__new__(MembershipArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["group_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["preferred_member_key"] = None
         __props__.__dict__["roles"] = None
@@ -171,6 +172,11 @@ class Membership(pulumi.CustomResource):
         The time when the `Membership` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter

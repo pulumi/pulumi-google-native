@@ -190,8 +190,11 @@ class EkmConnection(pulumi.CustomResource):
         __props__ = EkmConnectionArgs.__new__(EkmConnectionArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["ekm_connection_id"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service_resolvers"] = None
         return EkmConnection(resource_name, opts=opts, __props__=__props__)
 
@@ -204,6 +207,14 @@ class EkmConnection(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="ekmConnectionId")
+    def ekm_connection_id(self) -> pulumi.Output[str]:
+        """
+        Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+        """
+        return pulumi.get(self, "ekm_connection_id")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -213,11 +224,21 @@ class EkmConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceResolvers")

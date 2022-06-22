@@ -42,6 +42,7 @@ export class Release extends pulumi.CustomResource {
      * Format: `projects/{project_id}/releases/{release_id}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
      */
@@ -73,6 +74,7 @@ export class Release extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rulesetName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

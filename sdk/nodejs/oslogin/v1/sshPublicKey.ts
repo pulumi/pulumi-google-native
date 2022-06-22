@@ -51,6 +51,7 @@ export class SshPublicKey extends pulumi.CustomResource {
      * The canonical resource name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a SshPublicKey resource with the given unique name, arguments, and options.
@@ -76,6 +77,7 @@ export class SshPublicKey extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["key"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SshPublicKey.__pulumiType, name, resourceInputs, opts);

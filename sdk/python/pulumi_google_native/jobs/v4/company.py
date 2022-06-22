@@ -358,8 +358,10 @@ class Company(pulumi.CustomResource):
         __props__.__dict__["image_uri"] = None
         __props__.__dict__["keyword_searchable_job_custom_attributes"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["size"] = None
         __props__.__dict__["suspended"] = None
+        __props__.__dict__["tenant_id"] = None
         __props__.__dict__["website_uri"] = None
         return Company(resource_name, opts=opts, __props__=__props__)
 
@@ -445,6 +447,11 @@ class Company(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def size(self) -> pulumi.Output[str]:
         """
         The employer's company size.
@@ -458,6 +465,11 @@ class Company(pulumi.CustomResource):
         Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
         """
         return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="websiteUri")

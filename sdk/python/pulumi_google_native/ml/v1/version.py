@@ -531,9 +531,11 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["last_use_time"] = None
         __props__.__dict__["machine_type"] = None
         __props__.__dict__["manual_scaling"] = None
+        __props__.__dict__["model_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["package_uris"] = None
         __props__.__dict__["prediction_class"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["python_version"] = None
         __props__.__dict__["request_logging_config"] = None
         __props__.__dict__["routes"] = None
@@ -679,6 +681,11 @@ class Version(pulumi.CustomResource):
         return pulumi.get(self, "manual_scaling")
 
     @property
+    @pulumi.getter(name="modelId")
+    def model_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "model_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -701,6 +708,11 @@ class Version(pulumi.CustomResource):
         Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): \"\"\"Interface for constructing custom predictors.\"\"\" def predict(self, instances, **kwargs): \"\"\"Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. \"\"\" raise NotImplementedError() @classmethod def from_path(cls, model_dir): \"\"\"Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. \"\"\" raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
         """
         return pulumi.get(self, "prediction_class")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="pythonVersion")

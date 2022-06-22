@@ -52,6 +52,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
      */
@@ -64,6 +65,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      * WorkflowTemplate scheduling information.
      */
     public readonly placement!: pulumi.Output<outputs.dataproc.v1beta2.WorkflowTemplatePlacementResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The time template was last updated.
      */
@@ -110,9 +112,11 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             resourceInputs["dagTimeout"] = undefined /*out*/;
             resourceInputs["jobs"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;
             resourceInputs["placement"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }

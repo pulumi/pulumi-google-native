@@ -208,14 +208,25 @@ class Api(pulumi.CustomResource):
 
         __props__ = ApiArgs.__new__(ApiArgs)
 
+        __props__.__dict__["api_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["managed_service"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return Api(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        """
+        Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+        """
+        return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -242,6 +253,11 @@ class Api(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="managedService")
     def managed_service(self) -> pulumi.Output[str]:
         """
@@ -256,6 +272,11 @@ class Api(pulumi.CustomResource):
         Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

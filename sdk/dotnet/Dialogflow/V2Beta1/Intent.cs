@@ -59,16 +59,31 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<ImmutableArray<string>> InputContextNames { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The resource view to apply to the returned intent.
+        /// </summary>
+        [Output("intentView")]
+        public Output<string?> IntentView { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Indicates whether this is a fallback intent.
         /// </summary>
         [Output("isFallback")]
         public Output<bool> IsFallback { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string?> LanguageCode { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
         /// </summary>
         [Output("liveAgentHandoff")]
         public Output<bool> LiveAgentHandoff { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
@@ -117,6 +132,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.

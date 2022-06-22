@@ -36,9 +36,6 @@ export class BucketAccessControl extends pulumi.CustomResource {
         return obj['__pulumiType'] === BucketAccessControl.__pulumiType;
     }
 
-    /**
-     * The name of the bucket.
-     */
     public readonly bucket!: pulumi.Output<string>;
     /**
      * The domain associated with the entity, if any.
@@ -87,6 +84,10 @@ export class BucketAccessControl extends pulumi.CustomResource {
      * The link to this access-control entry.
      */
     public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
+    public readonly userProject!: pulumi.Output<string | undefined>;
 
     /**
      * Create a BucketAccessControl resource with the given unique name, arguments, and options.
@@ -125,6 +126,7 @@ export class BucketAccessControl extends pulumi.CustomResource {
             resourceInputs["projectTeam"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketAccessControl.__pulumiType, name, resourceInputs, opts);

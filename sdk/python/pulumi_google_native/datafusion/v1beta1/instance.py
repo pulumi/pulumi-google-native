@@ -493,12 +493,15 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["enable_stackdriver_logging"] = None
         __props__.__dict__["enable_stackdriver_monitoring"] = None
         __props__.__dict__["gcs_bucket"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["options"] = None
         __props__.__dict__["p4_service_account"] = None
         __props__.__dict__["private_instance"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["service_endpoint"] = None
         __props__.__dict__["state"] = None
@@ -615,12 +618,25 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "gcs_bucket")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        Required. The name of the instance to create.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -661,6 +677,11 @@ class Instance(pulumi.CustomResource):
         Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
         """
         return pulumi.get(self, "private_instance")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceAccount")

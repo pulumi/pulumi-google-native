@@ -25,7 +25,8 @@ type Datastore struct {
 	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
 	LastUpdateTime pulumi.StringOutput `pulumi:"lastUpdateTime"`
 	// Organization that the datastore belongs to
-	Org pulumi.StringOutput `pulumi:"org"`
+	Org            pulumi.StringOutput `pulumi:"org"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
 	Self pulumi.StringOutput `pulumi:"self"`
 	// Destination storage type. Supported types `gcs` or `bigquery`.
@@ -157,6 +158,10 @@ func (o DatastoreOutput) LastUpdateTime() pulumi.StringOutput {
 // Organization that the datastore belongs to
 func (o DatastoreOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Org }).(pulumi.StringOutput)
+}
+
+func (o DatastoreOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`

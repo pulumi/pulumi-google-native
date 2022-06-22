@@ -35,6 +35,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        [Output("resource")]
+        public Output<string> Resource { get; private set; } = null!;
+
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
         /// </summary>

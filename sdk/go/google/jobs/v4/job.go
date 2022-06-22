@@ -63,6 +63,7 @@ type Job struct {
 	PostingUpdateTime pulumi.StringOutput `pulumi:"postingUpdateTime"`
 	// Options for job processing.
 	ProcessingOptions ProcessingOptionsResponseOutput `pulumi:"processingOptions"`
+	Project           pulumi.StringOutput             `pulumi:"project"`
 	// A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
 	PromotionValue pulumi.IntOutput `pulumi:"promotionValue"`
 	// A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
@@ -71,6 +72,7 @@ type Job struct {
 	RequisitionId pulumi.StringOutput `pulumi:"requisitionId"`
 	// A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Responsibilities pulumi.StringOutput `pulumi:"responsibilities"`
+	TenantId         pulumi.StringOutput `pulumi:"tenantId"`
 	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
@@ -408,6 +410,10 @@ func (o JobOutput) ProcessingOptions() ProcessingOptionsResponseOutput {
 	return o.ApplyT(func(v *Job) ProcessingOptionsResponseOutput { return v.ProcessingOptions }).(ProcessingOptionsResponseOutput)
 }
 
+func (o JobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
 func (o JobOutput) PromotionValue() pulumi.IntOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.PromotionValue }).(pulumi.IntOutput)
@@ -426,6 +432,10 @@ func (o JobOutput) RequisitionId() pulumi.StringOutput {
 // A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 func (o JobOutput) Responsibilities() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Responsibilities }).(pulumi.StringOutput)
+}
+
+func (o JobOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.

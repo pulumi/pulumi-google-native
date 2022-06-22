@@ -43,6 +43,7 @@ export class Product extends pulumi.CustomResource {
      * The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
      */
@@ -52,9 +53,14 @@ export class Product extends pulumi.CustomResource {
      */
     public readonly productCategory!: pulumi.Output<string>;
     /**
+     * A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+     */
+    public readonly productId!: pulumi.Output<string | undefined>;
+    /**
      * Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
      */
     public readonly productLabels!: pulumi.Output<outputs.vision.v1.KeyValueResponse[]>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Product resource with the given unique name, arguments, and options.
@@ -78,9 +84,12 @@ export class Product extends pulumi.CustomResource {
         } else {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["productCategory"] = undefined /*out*/;
+            resourceInputs["productId"] = undefined /*out*/;
             resourceInputs["productLabels"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Product.__pulumiType, name, resourceInputs, opts);

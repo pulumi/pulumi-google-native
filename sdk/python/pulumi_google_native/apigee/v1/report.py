@@ -470,6 +470,7 @@ class Report(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["offset"] = None
         __props__.__dict__["organization"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["properties"] = None
         __props__.__dict__["sort_by_cols"] = None
         __props__.__dict__["sort_order"] = None
@@ -598,6 +599,11 @@ class Report(pulumi.CustomResource):
         Organization name
         """
         return pulumi.get(self, "organization")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

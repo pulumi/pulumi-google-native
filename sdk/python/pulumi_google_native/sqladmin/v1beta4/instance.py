@@ -1005,9 +1005,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
-        """
         return pulumi.get(self, "project")
 
     @property

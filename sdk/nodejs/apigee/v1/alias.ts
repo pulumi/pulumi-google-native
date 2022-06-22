@@ -37,13 +37,32 @@ export class Alias extends pulumi.CustomResource {
     }
 
     /**
-     * Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+     * Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
      */
     public readonly alias!: pulumi.Output<string>;
     /**
      * Chain of certificates under this alias.
      */
     public /*out*/ readonly certsInfo!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1CertificateResponse>;
+    public readonly environmentId!: pulumi.Output<string>;
+    /**
+     * Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+     */
+    public readonly format!: pulumi.Output<string>;
+    /**
+     * Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+     */
+    public readonly ignoreExpiryValidation!: pulumi.Output<string | undefined>;
+    /**
+     * Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+     */
+    public readonly ignoreNewlineValidation!: pulumi.Output<string | undefined>;
+    public readonly keystoreId!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
+    /**
+     * DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * Type of alias.
      */
@@ -88,6 +107,13 @@ export class Alias extends pulumi.CustomResource {
         } else {
             resourceInputs["alias"] = undefined /*out*/;
             resourceInputs["certsInfo"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
+            resourceInputs["format"] = undefined /*out*/;
+            resourceInputs["ignoreExpiryValidation"] = undefined /*out*/;
+            resourceInputs["ignoreNewlineValidation"] = undefined /*out*/;
+            resourceInputs["keystoreId"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
+            resourceInputs["password"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

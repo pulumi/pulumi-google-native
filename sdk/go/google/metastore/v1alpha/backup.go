@@ -15,16 +15,23 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+	BackupId pulumi.StringOutput `pulumi:"backupId"`
 	// The time when the backup was started.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the backup.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The time when the backup finished creating.
-	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	EndTime  pulumi.StringOutput `pulumi:"endTime"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Services that are restoring from the backup.
 	RestoringServices pulumi.StringArrayOutput `pulumi:"restoringServices"`
+	ServiceId         pulumi.StringOutput      `pulumi:"serviceId"`
 	// The revision of the service at the time of backup.
 	ServiceRevision ServiceResponseOutput `pulumi:"serviceRevision"`
 	// The current state of the backup.
@@ -141,6 +148,11 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+func (o BackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
+}
+
 // The time when the backup was started.
 func (o BackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -156,14 +168,31 @@ func (o BackupOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
+func (o BackupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o BackupOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+func (o BackupOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // Services that are restoring from the backup.
 func (o BackupOutput) RestoringServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringArrayOutput { return v.RestoringServices }).(pulumi.StringArrayOutput)
+}
+
+func (o BackupOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The revision of the service at the time of backup.

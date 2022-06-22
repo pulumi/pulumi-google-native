@@ -410,6 +410,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["expires_at"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["parent"] = None
         __props__.__dict__["portal_disabled"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["properties"] = None
@@ -539,6 +540,14 @@ class Organization(pulumi.CustomResource):
         Name of the Apigee organization.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[str]:
+        """
+        Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+        """
+        return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter(name="portalDisabled")

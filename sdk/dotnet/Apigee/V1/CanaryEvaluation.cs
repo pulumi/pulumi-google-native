@@ -36,6 +36,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
         /// <summary>
         /// Labels used to filter the metrics used for a canary evaluation.
         /// </summary>
@@ -47,6 +50,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Start time for the canary evaluation's analysis.

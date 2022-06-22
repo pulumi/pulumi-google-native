@@ -46,6 +46,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
 
     /**
      * Create a GcpUserAccessBinding resource with the given unique name, arguments, and options.
@@ -75,6 +76,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["accessLevels"] = undefined /*out*/;
             resourceInputs["groupKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GcpUserAccessBinding.__pulumiType, name, resourceInputs, opts);

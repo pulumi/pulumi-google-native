@@ -31,10 +31,12 @@ type PublicDelegatedPrefix struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
 	ParentPrefix pulumi.StringOutput `pulumi:"parentPrefix"`
+	Project      pulumi.StringOutput `pulumi:"project"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput `pulumi:"publicDelegatedSubPrefixs"`
-	// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region                    pulumi.StringOutput                                              `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is active. - `DELETING` The public delegated prefix is being deprovsioned.
@@ -198,6 +200,10 @@ func (o PublicDelegatedPrefixOutput) ParentPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.ParentPrefix }).(pulumi.StringOutput)
 }
 
+func (o PublicDelegatedPrefixOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The list of sub public delegated prefixes that exist for this public delegated prefix.
 func (o PublicDelegatedPrefixOutput) PublicDelegatedSubPrefixs() PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput {
@@ -205,9 +211,13 @@ func (o PublicDelegatedPrefixOutput) PublicDelegatedSubPrefixs() PublicDelegated
 	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput)
 }
 
-// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o PublicDelegatedPrefixOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o PublicDelegatedPrefixOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Server-defined URL for the resource.

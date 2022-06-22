@@ -205,8 +205,11 @@ class PolicyTag(pulumi.CustomResource):
         __props__.__dict__["child_policy_tags"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent_policy_tag"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["taxonomy_id"] = None
         return PolicyTag(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -235,6 +238,11 @@ class PolicyTag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
@@ -248,4 +256,14 @@ class PolicyTag(pulumi.CustomResource):
         Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
         """
         return pulumi.get(self, "parent_policy_tag")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="taxonomyId")
+    def taxonomy_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "taxonomy_id")
 

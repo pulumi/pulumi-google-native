@@ -75,6 +75,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TagKey resource with the given unique name, arguments, and options.

@@ -17,6 +17,9 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicyIamPolicy")]
     public partial class AccessPolicyIamPolicy : Pulumi.CustomResource
     {
+        [Output("accessPolicyId")]
+        public Output<string> AccessPolicyId { get; private set; } = null!;
+
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
         /// </summary>

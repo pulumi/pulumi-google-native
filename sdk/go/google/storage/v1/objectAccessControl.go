@@ -16,7 +16,6 @@ import (
 type ObjectAccessControl struct {
 	pulumi.CustomResourceState
 
-	// The name of the bucket.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The domain associated with the entity, if any.
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -39,11 +38,10 @@ type ObjectAccessControl struct {
 	EntityId pulumi.StringOutput `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The content generation of the object, if applied to an object.
+	// If present, selects a specific revision of this object (as opposed to the latest version, the default).
 	Generation pulumi.StringOutput `pulumi:"generation"`
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
-	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The name of the object, if applied to an object.
+	Kind   pulumi.StringOutput `pulumi:"kind"`
 	Object pulumi.StringOutput `pulumi:"object"`
 	// The project team associated with the entity, if any.
 	ProjectTeam ObjectAccessControlProjectTeamResponseOutput `pulumi:"projectTeam"`
@@ -51,6 +49,8 @@ type ObjectAccessControl struct {
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The link to this access-control entry.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
+	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
 }
 
 // NewObjectAccessControl registers a new resource with the given unique name, arguments, and options.
@@ -219,7 +219,6 @@ func (o ObjectAccessControlOutput) ToObjectAccessControlOutputWithContext(ctx co
 	return o
 }
 
-// The name of the bucket.
 func (o ObjectAccessControlOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -260,7 +259,7 @@ func (o ObjectAccessControlOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The content generation of the object, if applied to an object.
+// If present, selects a specific revision of this object (as opposed to the latest version, the default).
 func (o ObjectAccessControlOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
@@ -270,7 +269,6 @@ func (o ObjectAccessControlOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the object, if applied to an object.
 func (o ObjectAccessControlOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringOutput { return v.Object }).(pulumi.StringOutput)
 }
@@ -288,6 +286,11 @@ func (o ObjectAccessControlOutput) Role() pulumi.StringOutput {
 // The link to this access-control entry.
 func (o ObjectAccessControlOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The project to be billed for this request. Required for Requester Pays buckets.
+func (o ObjectAccessControlOutput) UserProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringPtrOutput { return v.UserProject }).(pulumi.StringPtrOutput)
 }
 
 func init() {

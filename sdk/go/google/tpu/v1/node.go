@@ -35,17 +35,21 @@ type Node struct {
 	// Deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// Resource labels to represent user-provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Immutable. The name of the TPU
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints NetworkEndpointResponseArrayOutput `pulumi:"networkEndpoints"`
+	// The unqualified resource name.
+	NodeId pulumi.StringPtrOutput `pulumi:"nodeId"`
 	// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
 	//
 	// Deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
-	Port pulumi.StringOutput `pulumi:"port"`
+	Port    pulumi.StringOutput `pulumi:"port"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The scheduling options for this node.
 	SchedulingConfig SchedulingConfigResponseOutput `pulumi:"schedulingConfig"`
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -239,6 +243,10 @@ func (o NodeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o NodeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The name of the TPU
 func (o NodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -254,11 +262,20 @@ func (o NodeOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
 	return o.ApplyT(func(v *Node) NetworkEndpointResponseArrayOutput { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
 }
 
+// The unqualified resource name.
+func (o NodeOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
 // DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
 //
 // Deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
 func (o NodeOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+func (o NodeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The scheduling options for this node.

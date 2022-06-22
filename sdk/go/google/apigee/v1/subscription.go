@@ -21,13 +21,15 @@ type Subscription struct {
 	// Name of the API product for which the developer is purchasing a subscription.
 	Apiproduct pulumi.StringOutput `pulumi:"apiproduct"`
 	// Time when the API product subscription was created in milliseconds since epoch.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	DeveloperId pulumi.StringOutput `pulumi:"developerId"`
 	// Time when the API product subscription ends in milliseconds since epoch.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Time when the API product subscription was last modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the API product subscription.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Time when the API product subscription starts in milliseconds since epoch.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 }
@@ -146,6 +148,10 @@ func (o SubscriptionOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+func (o SubscriptionOutput) DeveloperId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.DeveloperId }).(pulumi.StringOutput)
+}
+
 // Time when the API product subscription ends in milliseconds since epoch.
 func (o SubscriptionOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
@@ -159,6 +165,10 @@ func (o SubscriptionOutput) LastModifiedAt() pulumi.StringOutput {
 // Name of the API product subscription.
 func (o SubscriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SubscriptionOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Time when the API product subscription starts in milliseconds since epoch.

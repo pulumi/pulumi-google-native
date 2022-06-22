@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     [GoogleNativeResourceType("google-native:cloudchannel/v1:ChannelPartnerRepricingConfig")]
     public partial class ChannelPartnerRepricingConfig : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
+        [Output("channelPartnerLinkId")]
+        public Output<string> ChannelPartnerLinkId { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
         /// </summary>

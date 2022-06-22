@@ -44,10 +44,15 @@ export class SessionEntityType extends pulumi.CustomResource {
      * Indicates whether the additional data should override or supplement the custom entity type definition.
      */
     public readonly entityOverrideMode!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly sessionId!: pulumi.Output<string>;
+    public readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a SessionEntityType resource with the given unique name, arguments, and options.
@@ -89,7 +94,12 @@ export class SessionEntityType extends pulumi.CustomResource {
         } else {
             resourceInputs["entities"] = undefined /*out*/;
             resourceInputs["entityOverrideMode"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["sessionId"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SessionEntityType.__pulumiType, name, resourceInputs, opts);

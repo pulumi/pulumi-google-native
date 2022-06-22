@@ -25,7 +25,8 @@ type Key struct {
 	// See Creating and managing labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the Key in the format "projects/{project}/keys/{key}".
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput `pulumi:"testingOptions"`
 	// Settings for WAF
@@ -184,6 +185,10 @@ func (o KeyOutput) Labels() pulumi.StringMapOutput {
 // The resource name for the Key in the format "projects/{project}/keys/{key}".
 func (o KeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o KeyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Options for user acceptance testing.

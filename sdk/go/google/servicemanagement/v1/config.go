@@ -56,7 +56,8 @@ type Config struct {
 	// The Google project that owns this service.
 	ProducerProjectId pulumi.StringOutput `pulumi:"producerProjectId"`
 	// Quota configuration.
-	Quota QuotaResponseOutput `pulumi:"quota"`
+	Quota       QuotaResponseOutput `pulumi:"quota"`
+	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The source information for this configuration if available.
 	SourceInfo SourceInfoResponseOutput `pulumi:"sourceInfo"`
 	// System parameter configuration.
@@ -360,6 +361,10 @@ func (o ConfigOutput) ProducerProjectId() pulumi.StringOutput {
 // Quota configuration.
 func (o ConfigOutput) Quota() QuotaResponseOutput {
 	return o.ApplyT(func(v *Config) QuotaResponseOutput { return v.Quota }).(QuotaResponseOutput)
+}
+
+func (o ConfigOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // The source information for this configuration if available.

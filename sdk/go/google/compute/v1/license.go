@@ -27,7 +27,10 @@ type License struct {
 	// The unique code used to attach this license to images, snapshots, and disks.
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
-	Name                 pulumi.StringOutput                       `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId            pulumi.StringPtrOutput                    `pulumi:"requestId"`
 	ResourceRequirements LicenseResourceRequirementsResponseOutput `pulumi:"resourceRequirements"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -167,6 +170,15 @@ func (o LicenseOutput) LicenseCode() pulumi.StringOutput {
 // Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
 func (o LicenseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LicenseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o LicenseOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 func (o LicenseOutput) ResourceRequirements() LicenseResourceRequirementsResponseOutput {

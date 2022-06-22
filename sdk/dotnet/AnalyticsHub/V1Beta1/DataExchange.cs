@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
     public partial class DataExchange : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+        /// </summary>
+        [Output("dataExchangeId")]
+        public Output<string> DataExchangeId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
         /// </summary>
         [Output("description")]
@@ -46,6 +52,9 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         [Output("listingCount")]
         public Output<int> ListingCount { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
         /// </summary>
@@ -57,6 +66,9 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// </summary>
         [Output("primaryContact")]
         public Output<string> PrimaryContact { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

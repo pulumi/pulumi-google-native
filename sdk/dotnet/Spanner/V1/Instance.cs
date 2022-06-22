@@ -63,6 +63,9 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Output("processingUnits")]
         public Output<int> ProcessingUnits { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
         /// </summary>

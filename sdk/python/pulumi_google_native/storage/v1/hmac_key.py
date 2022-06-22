@@ -165,6 +165,7 @@ class HmacKey(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["time_created"] = None
         __props__.__dict__["updated"] = None
+        __props__.__dict__["user_project"] = None
         return HmacKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -194,9 +195,6 @@ class HmacKey(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        Project ID owning the service account to which the key authenticates.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -211,7 +209,7 @@ class HmacKey(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> pulumi.Output[str]:
         """
-        The email address of the key's associated service account.
+        Email address of the service account.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -238,4 +236,12 @@ class HmacKey(pulumi.CustomResource):
         The last modification time of the HMAC key metadata in RFC 3339 format.
         """
         return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to be billed for this request.
+        """
+        return pulumi.get(self, "user_project")
 

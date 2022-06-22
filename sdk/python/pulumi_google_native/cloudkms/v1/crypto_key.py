@@ -349,14 +349,19 @@ class CryptoKey(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["crypto_key_backend"] = None
+        __props__.__dict__["crypto_key_id"] = None
         __props__.__dict__["destroy_scheduled_duration"] = None
         __props__.__dict__["import_only"] = None
+        __props__.__dict__["key_ring_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["next_rotation_time"] = None
         __props__.__dict__["primary"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["purpose"] = None
         __props__.__dict__["rotation_period"] = None
+        __props__.__dict__["skip_initial_version_creation"] = None
         __props__.__dict__["version_template"] = None
         return CryptoKey(resource_name, opts=opts, __props__=__props__)
 
@@ -377,6 +382,14 @@ class CryptoKey(pulumi.CustomResource):
         return pulumi.get(self, "crypto_key_backend")
 
     @property
+    @pulumi.getter(name="cryptoKeyId")
+    def crypto_key_id(self) -> pulumi.Output[str]:
+        """
+        Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
+        return pulumi.get(self, "crypto_key_id")
+
+    @property
     @pulumi.getter(name="destroyScheduledDuration")
     def destroy_scheduled_duration(self) -> pulumi.Output[str]:
         """
@@ -393,12 +406,22 @@ class CryptoKey(pulumi.CustomResource):
         return pulumi.get(self, "import_only")
 
     @property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "key_ring_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -426,6 +449,11 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
         Immutable. The immutable purpose of this CryptoKey.
@@ -439,6 +467,14 @@ class CryptoKey(pulumi.CustomResource):
         next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         """
         return pulumi.get(self, "rotation_period")
+
+    @property
+    @pulumi.getter(name="skipInitialVersionCreation")
+    def skip_initial_version_creation(self) -> pulumi.Output[Optional[str]]:
+        """
+        If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+        """
+        return pulumi.get(self, "skip_initial_version_creation")
 
     @property
     @pulumi.getter(name="versionTemplate")

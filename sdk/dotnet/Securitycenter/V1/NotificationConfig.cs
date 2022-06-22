@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public partial class NotificationConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+        /// </summary>
+        [Output("configId")]
+        public Output<string> ConfigId { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the notification config (max of 1024 characters).
         /// </summary>
         [Output("description")]
@@ -26,6 +32,9 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".

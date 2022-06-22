@@ -47,6 +47,8 @@ export class Session extends pulumi.CustomResource {
      * The database role which created this session.
      */
     public readonly creatorRole!: pulumi.Output<string>;
+    public readonly databaseId!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
      */
@@ -55,6 +57,7 @@ export class Session extends pulumi.CustomResource {
      * The name of the session. This is always system-assigned.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Session resource with the given unique name, arguments, and options.
@@ -85,8 +88,11 @@ export class Session extends pulumi.CustomResource {
             resourceInputs["approximateLastUseTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creatorRole"] = undefined /*out*/;
+            resourceInputs["databaseId"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Session.__pulumiType, name, resourceInputs, opts);

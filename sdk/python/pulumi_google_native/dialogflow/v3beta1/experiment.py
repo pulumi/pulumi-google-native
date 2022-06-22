@@ -457,14 +457,18 @@ class Experiment(pulumi.CustomResource):
 
         __props__ = ExperimentArgs.__new__(ExperimentArgs)
 
+        __props__.__dict__["agent_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["definition"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["end_time"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["experiment_length"] = None
         __props__.__dict__["last_update_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["result"] = None
         __props__.__dict__["rollout_config"] = None
         __props__.__dict__["rollout_failure_reason"] = None
@@ -473,6 +477,11 @@ class Experiment(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["variants_history"] = None
         return Experiment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -515,6 +524,11 @@ class Experiment(pulumi.CustomResource):
         return pulumi.get(self, "end_time")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter(name="experimentLength")
     def experiment_length(self) -> pulumi.Output[str]:
         """
@@ -532,11 +546,21 @@ class Experiment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

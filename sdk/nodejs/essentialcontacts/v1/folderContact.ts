@@ -40,6 +40,7 @@ export class FolderContact extends pulumi.CustomResource {
      * The email address to send notifications to. This does not need to be a Google account.
      */
     public readonly email!: pulumi.Output<string>;
+    public readonly folderId!: pulumi.Output<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
      */
@@ -87,6 +88,7 @@ export class FolderContact extends pulumi.CustomResource {
             resourceInputs["validationState"] = args ? args.validationState : undefined;
         } else {
             resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["folderId"] = undefined /*out*/;
             resourceInputs["languageTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationCategorySubscriptions"] = undefined /*out*/;

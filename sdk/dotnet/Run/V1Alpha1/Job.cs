@@ -34,6 +34,9 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         [Output("metadata")]
         public Output<Outputs.ObjectMetaResponse> Metadata { get; private set; } = null!;
 
+        [Output("namespaceId")]
+        public Output<string> NamespaceId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         /// </summary>

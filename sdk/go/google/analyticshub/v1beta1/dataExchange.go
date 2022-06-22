@@ -16,6 +16,8 @@ import (
 type DataExchange struct {
 	pulumi.CustomResourceState
 
+	// Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
@@ -25,11 +27,13 @@ type DataExchange struct {
 	// Optional. Base64 encoded image representing the data exchange. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the content of the fields are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
 	Icon pulumi.StringOutput `pulumi:"icon"`
 	// Number of listings contained in the data exchange.
-	ListingCount pulumi.IntOutput `pulumi:"listingCount"`
+	ListingCount pulumi.IntOutput    `pulumi:"listingCount"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
 	PrimaryContact pulumi.StringOutput `pulumi:"primaryContact"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewDataExchange registers a new resource with the given unique name, arguments, and options.
@@ -148,6 +152,11 @@ func (o DataExchangeOutput) ToDataExchangeOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
+func (o DataExchangeOutput) DataExchangeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.DataExchangeId }).(pulumi.StringOutput)
+}
+
 // Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 func (o DataExchangeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -173,6 +182,10 @@ func (o DataExchangeOutput) ListingCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.IntOutput { return v.ListingCount }).(pulumi.IntOutput)
 }
 
+func (o DataExchangeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
 func (o DataExchangeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -181,6 +194,10 @@ func (o DataExchangeOutput) Name() pulumi.StringOutput {
 // Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
 func (o DataExchangeOutput) PrimaryContact() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.PrimaryContact }).(pulumi.StringOutput)
+}
+
+func (o DataExchangeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

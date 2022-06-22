@@ -40,6 +40,7 @@ type Occurrence struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName pulumi.StringOutput `pulumi:"noteName"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringOutput `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
@@ -270,6 +271,10 @@ func (o OccurrenceOutput) Name() pulumi.StringOutput {
 // Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 func (o OccurrenceOutput) NoteName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.NoteName }).(pulumi.StringOutput)
+}
+
+func (o OccurrenceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A description of actions that can be taken to remedy the note.

@@ -15,6 +15,8 @@ import (
 type ResponsePolicy struct {
 	pulumi.CustomResourceState
 
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+	ClientOperationId pulumi.StringPtrOutput `pulumi:"clientOperationId"`
 	// User-provided description for this Response Policy.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
@@ -22,6 +24,7 @@ type ResponsePolicy struct {
 	Kind        pulumi.StringOutput                         `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkResponseArrayOutput `pulumi:"networks"`
+	Project  pulumi.StringOutput                      `pulumi:"project"`
 	// User assigned name for this Response Policy.
 	ResponsePolicyName pulumi.StringOutput `pulumi:"responsePolicyName"`
 }
@@ -132,6 +135,11 @@ func (o ResponsePolicyOutput) ToResponsePolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+func (o ResponsePolicyOutput) ClientOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringPtrOutput { return v.ClientOperationId }).(pulumi.StringPtrOutput)
+}
+
 // User-provided description for this Response Policy.
 func (o ResponsePolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -149,6 +157,10 @@ func (o ResponsePolicyOutput) Kind() pulumi.StringOutput {
 // List of network names specifying networks to which this policy is applied.
 func (o ResponsePolicyOutput) Networks() ResponsePolicyNetworkResponseArrayOutput {
 	return o.ApplyT(func(v *ResponsePolicy) ResponsePolicyNetworkResponseArrayOutput { return v.Networks }).(ResponsePolicyNetworkResponseArrayOutput)
+}
+
+func (o ResponsePolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // User assigned name for this Response Policy.

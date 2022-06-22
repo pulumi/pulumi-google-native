@@ -28,12 +28,14 @@ type TargetInstance struct {
 	NatPolicy pulumi.StringOutput `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringOutput `pulumi:"network"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone           pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewTargetInstance registers a new resource with the given unique name, arguments, and options.
@@ -181,6 +183,15 @@ func (o TargetInstanceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
+func (o TargetInstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o TargetInstanceOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // Server-defined URL for the resource.
 func (o TargetInstanceOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
@@ -191,7 +202,6 @@ func (o TargetInstanceOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o TargetInstanceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

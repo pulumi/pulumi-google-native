@@ -68,6 +68,11 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly patchConfig!: pulumi.Output<outputs.osconfig.v1beta.PatchConfigResponse>;
     /**
+     * Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     */
+    public readonly patchDeploymentId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
      * Schedule recurring executions.
      */
     public readonly recurringSchedule!: pulumi.Output<outputs.osconfig.v1beta.RecurringScheduleResponse>;
@@ -130,6 +135,8 @@ export class PatchDeployment extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["oneTimeSchedule"] = undefined /*out*/;
             resourceInputs["patchConfig"] = undefined /*out*/;
+            resourceInputs["patchDeploymentId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["recurringSchedule"] = undefined /*out*/;
             resourceInputs["rollout"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

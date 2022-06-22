@@ -51,6 +51,7 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
      * Set of label tags associated with the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      *  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
      */
@@ -59,10 +60,15 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
      * Name of the ServerTlsPolicy resource. It matches the pattern `projects/*&#47;locations/{location}/serverTlsPolicies/{server_tls_policy}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      *  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
      */
     public readonly serverCertificate!: pulumi.Output<outputs.networksecurity.v1beta1.GoogleCloudNetworksecurityV1beta1CertificateProviderResponse>;
+    /**
+     * Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
+     */
+    public readonly serverTlsPolicyId!: pulumi.Output<string>;
     /**
      * The timestamp when the resource was updated.
      */
@@ -98,9 +104,12 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mtlsPolicy"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serverCertificate"] = undefined /*out*/;
+            resourceInputs["serverTlsPolicyId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

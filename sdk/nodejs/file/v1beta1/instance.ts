@@ -61,6 +61,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fileShares!: pulumi.Output<outputs.file.v1beta1.FileShareConfigResponse[]>;
     /**
+     * Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * KMS key name used for data encryption.
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
@@ -68,6 +72,7 @@ export class Instance extends pulumi.CustomResource {
      * Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The max capacity of the instance.
      */
@@ -88,6 +93,7 @@ export class Instance extends pulumi.CustomResource {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     public readonly networks!: pulumi.Output<outputs.file.v1beta1.NetworkConfigResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Reserved for future use.
      */
@@ -151,13 +157,16 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fileShares"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maxCapacityGb"] = undefined /*out*/;
             resourceInputs["maxShareCount"] = undefined /*out*/;
             resourceInputs["multiShareEnabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;

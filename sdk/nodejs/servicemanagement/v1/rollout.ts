@@ -54,9 +54,6 @@ export class Rollout extends pulumi.CustomResource {
      * Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
      */
     public readonly rolloutId!: pulumi.Output<string>;
-    /**
-     * The name of the service associated with this Rollout.
-     */
     public readonly serviceName!: pulumi.Output<string>;
     /**
      * The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.

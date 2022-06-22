@@ -235,6 +235,7 @@ class Budget(pulumi.CustomResource):
         __props__ = BudgetArgs.__new__(BudgetArgs)
 
         __props__.__dict__["amount"] = None
+        __props__.__dict__["billing_account_id"] = None
         __props__.__dict__["budget_filter"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
@@ -250,6 +251,11 @@ class Budget(pulumi.CustomResource):
         Budgeted amount.
         """
         return pulumi.get(self, "amount")
+
+    @property
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "billing_account_id")
 
     @property
     @pulumi.getter(name="budgetFilter")

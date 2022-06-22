@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     [GoogleNativeResourceType("google-native:dialogflow/v3:Flow")]
     public partial class Flow : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
@@ -34,6 +37,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EventHandlerResponse>> EventHandlers { get; private set; } = null!;
 
         /// <summary>
+        /// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string?> LanguageCode { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
         /// </summary>
         [Output("name")]
@@ -44,6 +56,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         [Output("nluSettings")]
         public Output<Outputs.GoogleCloudDialogflowCxV3NluSettingsResponse> NluSettings { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.

@@ -17,7 +17,8 @@ type Budget struct {
 	pulumi.CustomResourceState
 
 	// Budgeted amount.
-	Amount GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput `pulumi:"amount"`
+	Amount           GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput `pulumi:"amount"`
+	BillingAccountId pulumi.StringOutput                                   `pulumi:"billingAccountId"`
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterResponseOutput `pulumi:"budgetFilter"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
@@ -149,6 +150,10 @@ func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutpu
 // Budgeted amount.
 func (o BudgetOutput) Amount() GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput {
 	return o.ApplyT(func(v *Budget) GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput { return v.Amount }).(GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput)
+}
+
+func (o BudgetOutput) BillingAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.BillingAccountId }).(pulumi.StringOutput)
 }
 
 // Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.

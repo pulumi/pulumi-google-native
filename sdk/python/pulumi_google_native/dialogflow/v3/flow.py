@@ -301,14 +301,23 @@ class Flow(pulumi.CustomResource):
 
         __props__ = FlowArgs.__new__(FlowArgs)
 
+        __props__.__dict__["agent_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["event_handlers"] = None
+        __props__.__dict__["language_code"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nlu_settings"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["transition_route_groups"] = None
         __props__.__dict__["transition_routes"] = None
         return Flow(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter
@@ -335,6 +344,19 @@ class Flow(pulumi.CustomResource):
         return pulumi.get(self, "event_handlers")
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[Optional[str]]:
+        """
+        The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -349,6 +371,11 @@ class Flow(pulumi.CustomResource):
         NLU related settings of the flow.
         """
         return pulumi.get(self, "nlu_settings")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="transitionRouteGroups")

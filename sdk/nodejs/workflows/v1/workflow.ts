@@ -46,10 +46,12 @@ export class Workflow extends pulumi.CustomResource {
      * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The timestamp that the latest revision of the workflow was created.
      */
@@ -74,6 +76,10 @@ export class Workflow extends pulumi.CustomResource {
      * The last update timestamp of the workflow.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+     */
+    public readonly workflowId!: pulumi.Output<string>;
 
     /**
      * Create a Workflow resource with the given unique name, arguments, and options.
@@ -106,13 +112,16 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["sourceContents"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["workflowId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Workflow.__pulumiType, name, resourceInputs, opts);

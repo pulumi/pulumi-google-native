@@ -29,10 +29,13 @@ type Task struct {
 	HttpRequest HttpRequestResponseOutput `pulumi:"httpRequest"`
 	// The status of the task's last attempt.
 	LastAttempt AttemptResponseOutput `pulumi:"lastAttempt"`
+	Location    pulumi.StringOutput   `pulumi:"location"`
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
 	PullMessage PullMessageResponseOutput `pulumi:"pullMessage"`
+	QueueId     pulumi.StringOutput       `pulumi:"queueId"`
 	// The number of attempts which have received a response.
 	ResponseCount pulumi.IntOutput `pulumi:"responseCount"`
 	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
@@ -195,14 +198,26 @@ func (o TaskOutput) LastAttempt() AttemptResponseOutput {
 	return o.ApplyT(func(v *Task) AttemptResponseOutput { return v.LastAttempt }).(AttemptResponseOutput)
 }
 
+func (o TaskOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 func (o TaskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o TaskOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
 func (o TaskOutput) PullMessage() PullMessageResponseOutput {
 	return o.ApplyT(func(v *Task) PullMessageResponseOutput { return v.PullMessage }).(PullMessageResponseOutput)
+}
+
+func (o TaskOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.QueueId }).(pulumi.StringOutput)
 }
 
 // The number of attempts which have received a response.

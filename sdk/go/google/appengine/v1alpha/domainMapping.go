@@ -16,8 +16,13 @@ import (
 type DomainMapping struct {
 	pulumi.CustomResourceState
 
+	AppId pulumi.StringOutput `pulumi:"appId"`
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+	NoManagedCertificate pulumi.StringPtrOutput `pulumi:"noManagedCertificate"`
+	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+	OverrideStrategy pulumi.StringPtrOutput `pulumi:"overrideStrategy"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords ResourceRecordResponseArrayOutput `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -127,9 +132,23 @@ func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o DomainMappingOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
 // Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 func (o DomainMappingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+func (o DomainMappingOutput) NoManagedCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringPtrOutput { return v.NoManagedCertificate }).(pulumi.StringPtrOutput)
+}
+
+// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+func (o DomainMappingOutput) OverrideStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringPtrOutput { return v.OverrideStrategy }).(pulumi.StringPtrOutput)
 }
 
 // The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.

@@ -261,6 +261,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["parent"] = None
         __props__.__dict__["project_id"] = None
         __props__.__dict__["project_number"] = None
+        __props__.__dict__["use_legacy_stack"] = None
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -318,4 +319,12 @@ class Project(pulumi.CustomResource):
         The number uniquely identifying the project. Example: `415104041262` Read-only.
         """
         return pulumi.get(self, "project_number")
+
+    @property
+    @pulumi.getter(name="useLegacyStack")
+    def use_legacy_stack(self) -> pulumi.Output[Optional[str]]:
+        """
+        A now unused experiment opt-out option.
+        """
+        return pulumi.get(self, "use_legacy_stack")
 

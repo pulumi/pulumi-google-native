@@ -89,6 +89,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        /// </summary>
+        [Output("serviceId")]
+        public Output<string?> ServiceId { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for how to query telemetry on a Service.
         /// </summary>
         [Output("telemetry")]
@@ -99,6 +105,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         [Output("userLabels")]
         public Output<ImmutableDictionary<string, string>> UserLabels { get; private set; } = null!;
+
+        [Output("v3Id")]
+        public Output<string> V3Id { get; private set; } = null!;
+
+        [Output("v3Id1")]
+        public Output<string> V3Id1 { get; private set; } = null!;
 
 
         /// <summary>

@@ -51,6 +51,7 @@ export class Instance extends pulumi.CustomResource {
      * The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The current state of the instance.
      */
@@ -104,6 +105,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

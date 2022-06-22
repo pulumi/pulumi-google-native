@@ -43,14 +43,18 @@ export class UserDataMapping extends pulumi.CustomResource {
      * Indicates whether this mapping is archived.
      */
     public /*out*/ readonly archived!: pulumi.Output<boolean>;
+    public readonly consentStoreId!: pulumi.Output<string>;
     /**
      * A unique identifier for the mapped resource.
      */
     public readonly dataId!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
      */
@@ -96,8 +100,12 @@ export class UserDataMapping extends pulumi.CustomResource {
         } else {
             resourceInputs["archiveTime"] = undefined /*out*/;
             resourceInputs["archived"] = undefined /*out*/;
+            resourceInputs["consentStoreId"] = undefined /*out*/;
             resourceInputs["dataId"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resourceAttributes"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
         }

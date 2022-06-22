@@ -318,7 +318,9 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["mosaic_layout"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["row_layout"] = None
+        __props__.__dict__["validate_only"] = None
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -386,10 +388,23 @@ class Dashboard(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="rowLayout")
     def row_layout(self) -> pulumi.Output['outputs.RowLayoutResponse']:
         """
         The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
         return pulumi.get(self, "row_layout")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        If set, validate the request and preview the review, but do not actually save it.
+        """
+        return pulumi.get(self, "validate_only")
 

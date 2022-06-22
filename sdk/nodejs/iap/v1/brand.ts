@@ -49,6 +49,7 @@ export class Brand extends pulumi.CustomResource {
      * Whether the brand is only intended for usage inside the G Suite organization only.
      */
     public /*out*/ readonly orgInternalOnly!: pulumi.Output<boolean>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Support email displayed on the OAuth consent screen.
      */
@@ -74,6 +75,7 @@ export class Brand extends pulumi.CustomResource {
             resourceInputs["applicationTitle"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["orgInternalOnly"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["supportEmail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

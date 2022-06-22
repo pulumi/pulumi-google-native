@@ -221,7 +221,11 @@ class ReferenceImage(pulumi.CustomResource):
         __props__ = ReferenceImageArgs.__new__(ReferenceImageArgs)
 
         __props__.__dict__["bounding_polys"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["product_id"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["reference_image_id"] = None
         __props__.__dict__["uri"] = None
         return ReferenceImage(resource_name, opts=opts, __props__=__props__)
 
@@ -235,11 +239,34 @@ class ReferenceImage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="productId")
+    def product_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "product_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="referenceImageId")
+    def reference_image_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        """
+        return pulumi.get(self, "reference_image_id")
 
     @property
     @pulumi.getter

@@ -211,12 +211,22 @@ class Attestor(pulumi.CustomResource):
 
         __props__ = AttestorArgs.__new__(AttestorArgs)
 
+        __props__.__dict__["attestor_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["user_owned_grafeas_note"] = None
         return Attestor(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="attestorId")
+    def attestor_id(self) -> pulumi.Output[str]:
+        """
+        Required. The attestors ID.
+        """
+        return pulumi.get(self, "attestor_id")
 
     @property
     @pulumi.getter
@@ -241,6 +251,11 @@ class Attestor(pulumi.CustomResource):
         The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -32,6 +32,10 @@ type SavedQuery struct {
 	LastUpdater pulumi.StringOutput `pulumi:"lastUpdater"`
 	// The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+	SavedQueryId pulumi.StringOutput `pulumi:"savedQueryId"`
+	V1Id         pulumi.StringOutput `pulumi:"v1Id"`
+	V1Id1        pulumi.StringOutput `pulumi:"v1Id1"`
 }
 
 // NewSavedQuery registers a new resource with the given unique name, arguments, and options.
@@ -187,6 +191,19 @@ func (o SavedQueryOutput) LastUpdater() pulumi.StringOutput {
 // The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
 func (o SavedQueryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+func (o SavedQueryOutput) SavedQueryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.SavedQueryId }).(pulumi.StringOutput)
+}
+
+func (o SavedQueryOutput) V1Id() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.V1Id }).(pulumi.StringOutput)
+}
+
+func (o SavedQueryOutput) V1Id1() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.V1Id1 }).(pulumi.StringOutput)
 }
 
 func init() {

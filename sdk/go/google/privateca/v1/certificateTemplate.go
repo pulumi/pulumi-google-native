@@ -16,6 +16,8 @@ import (
 type CertificateTemplate struct {
 	pulumi.CustomResourceState
 
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	CertificateTemplateId pulumi.StringOutput `pulumi:"certificateTemplateId"`
 	// The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A human-readable description of scenarios this template is intended for.
@@ -23,13 +25,17 @@ type CertificateTemplate struct {
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateIdentityConstraintsResponseOutput `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 	PassthroughExtensions CertificateExtensionConstraintsResponseOutput `pulumi:"passthroughExtensions"`
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
 	PredefinedValues X509ParametersResponseOutput `pulumi:"predefinedValues"`
+	Project          pulumi.StringOutput          `pulumi:"project"`
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -151,6 +157,11 @@ func (o CertificateTemplateOutput) ToCertificateTemplateOutputWithContext(ctx co
 	return o
 }
 
+// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+func (o CertificateTemplateOutput) CertificateTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.CertificateTemplateId }).(pulumi.StringOutput)
+}
+
 // The time at which this CertificateTemplate was created.
 func (o CertificateTemplateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -173,6 +184,10 @@ func (o CertificateTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o CertificateTemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 func (o CertificateTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -188,6 +203,15 @@ func (o CertificateTemplateOutput) PassthroughExtensions() CertificateExtensionC
 // Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
 func (o CertificateTemplateOutput) PredefinedValues() X509ParametersResponseOutput {
 	return o.ApplyT(func(v *CertificateTemplate) X509ParametersResponseOutput { return v.PredefinedValues }).(X509ParametersResponseOutput)
+}
+
+func (o CertificateTemplateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o CertificateTemplateOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The time at which this CertificateTemplate was updated.

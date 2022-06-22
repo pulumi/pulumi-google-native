@@ -421,9 +421,12 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["latest_created_revision"] = None
         __props__.__dict__["latest_ready_revision"] = None
         __props__.__dict__["launch_stage"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["observed_generation"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reconciling"] = None
+        __props__.__dict__["service_id"] = None
         __props__.__dict__["template"] = None
         __props__.__dict__["terminal_condition"] = None
         __props__.__dict__["traffic"] = None
@@ -431,6 +434,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["uri"] = None
+        __props__.__dict__["validate_only"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -579,6 +583,11 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
@@ -595,11 +604,24 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
         Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Output[str]:
+        """
+        Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        """
+        return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter
@@ -656,4 +678,12 @@ class Service(pulumi.CustomResource):
         The main URI in which this Service is serving traffic.
         """
         return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+        """
+        return pulumi.get(self, "validate_only")
 

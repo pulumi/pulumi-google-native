@@ -26,7 +26,8 @@ type HostQuery struct {
 	// ExecutionTime is available only after the query is completed.
 	ExecutionTime pulumi.StringOutput `pulumi:"executionTime"`
 	// Asynchronous Query Name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Contains information like metrics, dimenstions etc of the AsyncQuery.
 	QueryParams GoogleCloudApigeeV1QueryMetadataResponseOutput `pulumi:"queryParams"`
 	// Asynchronous Report ID.
@@ -202,6 +203,10 @@ func (o HostQueryOutput) ExecutionTime() pulumi.StringOutput {
 // Asynchronous Query Name.
 func (o HostQueryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostQuery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o HostQueryOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostQuery) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Contains information like metrics, dimenstions etc of the AsyncQuery.

@@ -317,12 +317,17 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["execution_spec"] = None
         __props__.__dict__["execution_status"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["lake_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["spark"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["task_id"] = None
         __props__.__dict__["trigger_spec"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Task(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -374,12 +379,27 @@ class Task(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="lakeId")
+    def lake_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "lake_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -396,6 +416,14 @@ class Task(pulumi.CustomResource):
         Current state of the task.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="taskId")
+    def task_id(self) -> pulumi.Output[str]:
+        """
+        Required. Task identifier.
+        """
+        return pulumi.get(self, "task_id")
 
     @property
     @pulumi.getter(name="triggerSpec")
@@ -420,4 +448,12 @@ class Task(pulumi.CustomResource):
         The time when the task was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
 

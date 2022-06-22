@@ -250,16 +250,28 @@ class CapacityCommitment(pulumi.CustomResource):
 
         __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
 
+        __props__.__dict__["capacity_commitment_id"] = None
         __props__.__dict__["commitment_end_time"] = None
         __props__.__dict__["commitment_start_time"] = None
+        __props__.__dict__["enforce_single_admin_project_per_org"] = None
         __props__.__dict__["failure_status"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["multi_region_auxiliary"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["plan"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["renewal_plan"] = None
         __props__.__dict__["slot_count"] = None
         __props__.__dict__["state"] = None
         return CapacityCommitment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="capacityCommitmentId")
+    def capacity_commitment_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        """
+        return pulumi.get(self, "capacity_commitment_id")
 
     @property
     @pulumi.getter(name="commitmentEndTime")
@@ -278,12 +290,25 @@ class CapacityCommitment(pulumi.CustomResource):
         return pulumi.get(self, "commitment_start_time")
 
     @property
+    @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
+    def enforce_single_admin_project_per_org(self) -> pulumi.Output[Optional[str]]:
+        """
+        If true, fail the request if another project in the organization has a capacity commitment.
+        """
+        return pulumi.get(self, "enforce_single_admin_project_per_org")
+
+    @property
     @pulumi.getter(name="failureStatus")
     def failure_status(self) -> pulumi.Output['outputs.StatusResponse']:
         """
         For FAILED commitment plan, provides the reason of failure.
         """
         return pulumi.get(self, "failure_status")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="multiRegionAuxiliary")
@@ -308,6 +333,11 @@ class CapacityCommitment(pulumi.CustomResource):
         Capacity commitment commitment plan.
         """
         return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="renewalPlan")

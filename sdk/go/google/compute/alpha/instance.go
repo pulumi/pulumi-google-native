@@ -74,6 +74,9 @@ type Instance struct {
 	PreservedStateSizeGb pulumi.StringOutput `pulumi:"preservedStateSizeGb"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringOutput `pulumi:"privateIpv6GoogleAccess"`
+	Project                 pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity ReservationAffinityResponseOutput `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
@@ -98,7 +101,9 @@ type Instance struct {
 	ShieldedVmConfig ShieldedVmConfigResponseOutput `pulumi:"shieldedVmConfig"`
 	// Deprecating, please use shielded_instance_integrity_policy.
 	ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicyResponseOutput `pulumi:"shieldedVmIntegrityPolicy"`
-	// Source machine image
+	// Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+	SourceInstanceTemplate pulumi.StringPtrOutput `pulumi:"sourceInstanceTemplate"`
+	// Specifies the machine image to use to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to a machine image: - https://www.googleapis.com/compute/v1/projects/project/global/global /machineImages/machineImage - projects/project/global/global/machineImages/machineImage - global/machineImages/machineImage
 	SourceMachineImage pulumi.StringOutput `pulumi:"sourceMachineImage"`
 	// Source machine image encryption key when creating an instance from a machine image.
 	SourceMachineImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceMachineImageEncryptionKey"`
@@ -112,8 +117,7 @@ type Instance struct {
 	Tags TagsResponseOutput `pulumi:"tags"`
 	// Specifies upcoming maintenance for the instance.
 	UpcomingMaintenance UpcomingMaintenanceResponseOutput `pulumi:"upcomingMaintenance"`
-	// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone                pulumi.StringOutput               `pulumi:"zone"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -495,6 +499,15 @@ func (o InstanceOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
 }
 
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o InstanceOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // Specifies the reservations that this instance can consume from.
 func (o InstanceOutput) ReservationAffinity() ReservationAffinityResponseOutput {
 	return o.ApplyT(func(v *Instance) ReservationAffinityResponseOutput { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
@@ -560,7 +573,12 @@ func (o InstanceOutput) ShieldedVmIntegrityPolicy() ShieldedVmIntegrityPolicyRes
 	return o.ApplyT(func(v *Instance) ShieldedVmIntegrityPolicyResponseOutput { return v.ShieldedVmIntegrityPolicy }).(ShieldedVmIntegrityPolicyResponseOutput)
 }
 
-// Source machine image
+// Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+func (o InstanceOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SourceInstanceTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the machine image to use to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to a machine image: - https://www.googleapis.com/compute/v1/projects/project/global/global /machineImages/machineImage - projects/project/global/global/machineImages/machineImage - global/machineImages/machineImage
 func (o InstanceOutput) SourceMachineImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SourceMachineImage }).(pulumi.StringOutput)
 }
@@ -595,7 +613,6 @@ func (o InstanceOutput) UpcomingMaintenance() UpcomingMaintenanceResponseOutput 
 	return o.ApplyT(func(v *Instance) UpcomingMaintenanceResponseOutput { return v.UpcomingMaintenance }).(UpcomingMaintenanceResponseOutput)
 }
 
-// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o InstanceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

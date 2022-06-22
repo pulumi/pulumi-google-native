@@ -369,6 +369,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["last_modified_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["max_time_travel_hours"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["tags"] = None
@@ -498,6 +499,11 @@ class Dataset(pulumi.CustomResource):
         [Optional] Number of hours for the max time travel for all tables in the dataset.
         """
         return pulumi.get(self, "max_time_travel_hours")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

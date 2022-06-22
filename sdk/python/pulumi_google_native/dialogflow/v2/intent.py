@@ -536,8 +536,11 @@ class Intent(pulumi.CustomResource):
         __props__.__dict__["events"] = None
         __props__.__dict__["followup_intent_info"] = None
         __props__.__dict__["input_context_names"] = None
+        __props__.__dict__["intent_view"] = None
         __props__.__dict__["is_fallback"] = None
+        __props__.__dict__["language_code"] = None
         __props__.__dict__["live_agent_handoff"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["messages"] = None
         __props__.__dict__["ml_disabled"] = None
         __props__.__dict__["name"] = None
@@ -545,6 +548,7 @@ class Intent(pulumi.CustomResource):
         __props__.__dict__["parameters"] = None
         __props__.__dict__["parent_followup_intent_name"] = None
         __props__.__dict__["priority"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reset_contexts"] = None
         __props__.__dict__["root_followup_intent_name"] = None
         __props__.__dict__["training_phrases"] = None
@@ -608,6 +612,14 @@ class Intent(pulumi.CustomResource):
         return pulumi.get(self, "input_context_names")
 
     @property
+    @pulumi.getter(name="intentView")
+    def intent_view(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The resource view to apply to the returned intent.
+        """
+        return pulumi.get(self, "intent_view")
+
+    @property
     @pulumi.getter(name="isFallback")
     def is_fallback(self) -> pulumi.Output[bool]:
         """
@@ -616,12 +628,25 @@ class Intent(pulumi.CustomResource):
         return pulumi.get(self, "is_fallback")
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
     @pulumi.getter(name="liveAgentHandoff")
     def live_agent_handoff(self) -> pulumi.Output[bool]:
         """
         Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
         """
         return pulumi.get(self, "live_agent_handoff")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -678,6 +703,11 @@ class Intent(pulumi.CustomResource):
         Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="resetContexts")

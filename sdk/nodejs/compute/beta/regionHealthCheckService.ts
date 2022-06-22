@@ -77,10 +77,12 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
      * A list of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
      */
     public readonly notificationEndpoints!: pulumi.Output<string[]>;
-    /**
-     * URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
+    public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
@@ -125,7 +127,9 @@ export class RegionHealthCheckService extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkEndpointGroups"] = undefined /*out*/;
             resourceInputs["notificationEndpoints"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

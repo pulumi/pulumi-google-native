@@ -249,6 +249,7 @@ class EvaluationJob(pulumi.CustomResource):
         __props__.__dict__["label_missing_ground_truth"] = None
         __props__.__dict__["model_version"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["schedule"] = None
         __props__.__dict__["state"] = None
         return EvaluationJob(resource_name, opts=opts, __props__=__props__)
@@ -316,6 +317,11 @@ class EvaluationJob(pulumi.CustomResource):
         After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

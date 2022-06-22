@@ -318,6 +318,7 @@ class Connection(pulumi.CustomResource):
 
         __props__.__dict__["auth_config"] = None
         __props__.__dict__["config_variables"] = None
+        __props__.__dict__["connection_id"] = None
         __props__.__dict__["connector_version"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
@@ -325,8 +326,10 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["envoy_image_location"] = None
         __props__.__dict__["image_location"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["lock_config"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["service_directory"] = None
         __props__.__dict__["status"] = None
@@ -349,6 +352,14 @@ class Connection(pulumi.CustomResource):
         Optional. Configuration for configuring the connection with an external system.
         """
         return pulumi.get(self, "config_variables")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> pulumi.Output[str]:
+        """
+        Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+        """
+        return pulumi.get(self, "connection_id")
 
     @property
     @pulumi.getter(name="connectorVersion")
@@ -407,6 +418,11 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="lockConfig")
     def lock_config(self) -> pulumi.Output['outputs.LockConfigResponse']:
         """
@@ -421,6 +437,11 @@ class Connection(pulumi.CustomResource):
         Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceAccount")

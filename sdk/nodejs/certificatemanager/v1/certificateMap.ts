@@ -36,6 +36,10 @@ export class CertificateMap extends pulumi.CustomResource {
     }
 
     /**
+     * Required. A user-provided name of the certificate map.
+     */
+    public readonly certificateMapId!: pulumi.Output<string>;
+    /**
      * The creation timestamp of a Certificate Map.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -51,10 +55,12 @@ export class CertificateMap extends pulumi.CustomResource {
      * Set of labels associated with a Certificate Map.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The update timestamp of a Certificate Map.
      */
@@ -84,11 +90,14 @@ export class CertificateMap extends pulumi.CustomResource {
             resourceInputs["gclbTargets"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["certificateMapId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["gclbTargets"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

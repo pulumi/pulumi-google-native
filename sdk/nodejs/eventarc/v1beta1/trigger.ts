@@ -51,6 +51,7 @@ export class Trigger extends pulumi.CustomResource {
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
@@ -59,6 +60,7 @@ export class Trigger extends pulumi.CustomResource {
      * The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
      */
@@ -68,9 +70,17 @@ export class Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly transport!: pulumi.Output<outputs.eventarc.v1beta1.TransportResponse>;
     /**
+     * Required. The user-provided ID to be assigned to the trigger.
+     */
+    public readonly triggerId!: pulumi.Output<string>;
+    /**
      * The last-modified time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Required. If set, validate the request and preview the review, but do not actually post it.
+     */
+    public readonly validateOnly!: pulumi.Output<string>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -113,11 +123,15 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["matchingCriteria"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["transport"] = undefined /*out*/;
+            resourceInputs["triggerId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Trigger.__pulumiType, name, resourceInputs, opts);

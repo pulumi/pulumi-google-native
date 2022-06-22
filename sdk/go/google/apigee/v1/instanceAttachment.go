@@ -20,8 +20,10 @@ type InstanceAttachment struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// ID of the attached environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
+	InstanceId  pulumi.StringOutput `pulumi:"instanceId"`
 	// ID of the attachment.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 }
 
 // NewInstanceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -130,9 +132,17 @@ func (o InstanceAttachmentOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }
 
+func (o InstanceAttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // ID of the attachment.
 func (o InstanceAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o InstanceAttachmentOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 func init() {

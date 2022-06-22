@@ -43,6 +43,10 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. Unique id for the Hub to create.
+     */
+    public readonly hubId!: pulumi.Output<string | undefined>;
+    /**
      * User-defined labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -50,6 +54,11 @@ export class Hub extends pulumi.CustomResource {
      * Immutable. The name of a Hub resource.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
      *
@@ -94,8 +103,11 @@ export class Hub extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["hubId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["spokes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;

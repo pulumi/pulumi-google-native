@@ -26,8 +26,10 @@ type Cluster struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	Metrics ClusterMetricsResponseOutput `pulumi:"metrics"`
-	// The Google Cloud Platform project ID that the cluster belongs to.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput          `pulumi:"project"`
+	Region  pulumi.StringOutput          `pulumi:"region"`
+	// Optional. A unique id used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Cluster status.
 	Status ClusterStatusResponseOutput `pulumi:"status"`
 	// The previous cluster status.
@@ -172,9 +174,17 @@ func (o ClusterOutput) Metrics() ClusterMetricsResponseOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMetricsResponseOutput { return v.Metrics }).(ClusterMetricsResponseOutput)
 }
 
-// The Google Cloud Platform project ID that the cluster belongs to.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Optional. A unique id used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+func (o ClusterOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Cluster status.

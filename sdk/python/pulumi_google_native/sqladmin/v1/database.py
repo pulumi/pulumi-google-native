@@ -313,9 +313,6 @@ class Database(pulumi.CustomResource):
     @property
     @pulumi.getter
     def instance(self) -> pulumi.Output[str]:
-        """
-        The name of the Cloud SQL instance. This does not include the project ID.
-        """
         return pulumi.get(self, "instance")
 
     @property
@@ -337,9 +334,6 @@ class Database(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-        """
         return pulumi.get(self, "project")
 
     @property

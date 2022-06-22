@@ -47,6 +47,7 @@ export class Document extends pulumi.CustomResource {
      * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
      */
     public readonly enableAutoReload!: pulumi.Output<boolean>;
+    public readonly knowledgeBaseId!: pulumi.Output<string>;
     /**
      * The knowledge type of document content.
      */
@@ -55,6 +56,7 @@ export class Document extends pulumi.CustomResource {
      * The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
      */
     public /*out*/ readonly latestReloadStatus!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2DocumentReloadStatusResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
      */
@@ -67,6 +69,7 @@ export class Document extends pulumi.CustomResource {
      * Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
      */
@@ -116,11 +119,14 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["contentUri"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableAutoReload"] = undefined /*out*/;
+            resourceInputs["knowledgeBaseId"] = undefined /*out*/;
             resourceInputs["knowledgeTypes"] = undefined /*out*/;
             resourceInputs["latestReloadStatus"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["mimeType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rawContent"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

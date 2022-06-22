@@ -16,10 +16,12 @@ import (
 type Customer struct {
 	pulumi.CustomResourceState
 
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
 	AlternateEmail pulumi.StringOutput `pulumi:"alternateEmail"`
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
-	ChannelPartnerId pulumi.StringOutput `pulumi:"channelPartnerId"`
+	ChannelPartnerId     pulumi.StringOutput `pulumi:"channelPartnerId"`
+	ChannelPartnerLinkId pulumi.StringOutput `pulumi:"channelPartnerLinkId"`
 	// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
 	CloudIdentityId pulumi.StringOutput `pulumi:"cloudIdentityId"`
 	// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
@@ -171,6 +173,10 @@ func (o CustomerOutput) ToCustomerOutputWithContext(ctx context.Context) Custome
 	return o
 }
 
+func (o CustomerOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
 // Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
 func (o CustomerOutput) AlternateEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.AlternateEmail }).(pulumi.StringOutput)
@@ -179,6 +185,10 @@ func (o CustomerOutput) AlternateEmail() pulumi.StringOutput {
 // Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 func (o CustomerOutput) ChannelPartnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.ChannelPartnerId }).(pulumi.StringOutput)
+}
+
+func (o CustomerOutput) ChannelPartnerLinkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.ChannelPartnerLinkId }).(pulumi.StringOutput)
 }
 
 // The customer's Cloud Identity ID if the customer has a Cloud Identity resource.

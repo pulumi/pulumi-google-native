@@ -48,9 +48,15 @@ export class EntryGroup extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.
+     */
+    public readonly entryGroupId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a EntryGroup resource with the given unique name, arguments, and options.
@@ -77,7 +83,10 @@ export class EntryGroup extends pulumi.CustomResource {
             resourceInputs["dataCatalogTimestamps"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["entryGroupId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EntryGroup.__pulumiType, name, resourceInputs, opts);

@@ -23,9 +23,15 @@ type PrivateConnection struct {
 	// In case of error, the details of the error in a user-friendly format.
 	Error ErrorResponseOutput `pulumi:"error"`
 	// Labels.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource's name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The private connectivity identifier.
+	PrivateConnectionId pulumi.StringOutput `pulumi:"privateConnectionId"`
+	Project             pulumi.StringOutput `pulumi:"project"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The state of the Private Connection.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The update time of the resource.
@@ -166,9 +172,27 @@ func (o PrivateConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o PrivateConnectionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource's name.
 func (o PrivateConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. The private connectivity identifier.
+func (o PrivateConnectionOutput) PrivateConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.PrivateConnectionId }).(pulumi.StringOutput)
+}
+
+func (o PrivateConnectionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o PrivateConnectionOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The state of the Private Connection.

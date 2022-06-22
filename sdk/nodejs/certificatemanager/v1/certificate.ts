@@ -36,6 +36,10 @@ export class Certificate extends pulumi.CustomResource {
     }
 
     /**
+     * Required. A user-provided name of the certificate.
+     */
+    public readonly certificateId!: pulumi.Output<string>;
+    /**
      * The creation timestamp of a Certificate.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -51,6 +55,7 @@ export class Certificate extends pulumi.CustomResource {
      * Set of labels associated with a Certificate.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * If set, contains configuration and state of a managed certificate.
      */
@@ -63,6 +68,7 @@ export class Certificate extends pulumi.CustomResource {
      * The PEM-encoded certificate chain.
      */
     public /*out*/ readonly pemCertificate!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.
      */
@@ -109,13 +115,16 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["sanDnsnames"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["managed"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pemCertificate"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["sanDnsnames"] = undefined /*out*/;
             resourceInputs["scope"] = undefined /*out*/;
             resourceInputs["selfManaged"] = undefined /*out*/;

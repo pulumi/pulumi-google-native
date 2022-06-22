@@ -257,16 +257,27 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = ClusterArgs.__new__(ClusterArgs)
 
+        __props__.__dict__["action_on_failed_primary_workers"] = None
         __props__.__dict__["cluster_name"] = None
         __props__.__dict__["cluster_uuid"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["metrics"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["region"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_history"] = None
         __props__.__dict__["virtual_cluster_config"] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="actionOnFailedPrimaryWorkers")
+    def action_on_failed_primary_workers(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Failure action when primary worker creation fails.
+        """
+        return pulumi.get(self, "action_on_failed_primary_workers")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -311,10 +322,20 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The Google Cloud Platform project ID that the cluster belongs to.
-        """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter

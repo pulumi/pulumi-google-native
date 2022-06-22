@@ -45,6 +45,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Output("operation")]
         public Output<Outputs.OperationResponse> Operation { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Server defined URL for the resource.
         /// </summary>

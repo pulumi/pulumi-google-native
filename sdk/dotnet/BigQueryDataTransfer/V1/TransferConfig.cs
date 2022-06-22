@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
     public partial class TransferConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&amp;scope=data_source_scopes &amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        /// </summary>
+        [Output("authorizationCode")]
+        public Output<string?> AuthorizationCode { get; private set; } = null!;
+
+        /// <summary>
         /// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
         /// </summary>
         [Output("dataRefreshWindowDays")]
@@ -57,6 +63,9 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Output("emailPreferences")]
         public Output<Outputs.EmailPreferencesResponse> EmailPreferences { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         /// </summary>
@@ -87,6 +96,9 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Output("params")]
         public Output<ImmutableDictionary<string, string>> Params { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
         /// </summary>
@@ -98,6 +110,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         [Output("scheduleOptions")]
         public Output<Outputs.ScheduleOptionsResponse> ScheduleOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+        /// </summary>
+        [Output("serviceAccountName")]
+        public Output<string?> ServiceAccountName { get; private set; } = null!;
 
         /// <summary>
         /// State of the most recently updated transfer run.
@@ -116,6 +134,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional version info. This is required only if `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&amp;scope=data_source_scopes &amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=version_info * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        /// </summary>
+        [Output("versionInfo")]
+        public Output<string?> VersionInfo { get; private set; } = null!;
 
 
         /// <summary>

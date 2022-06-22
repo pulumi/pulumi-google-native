@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     [GoogleNativeResourceType("google-native:cloudchannel/v1:Customer")]
     public partial class Customer : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         /// </summary>
@@ -27,6 +30,9 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         [Output("channelPartnerId")]
         public Output<string> ChannelPartnerId { get; private set; } = null!;
+
+        [Output("channelPartnerLinkId")]
+        public Output<string> ChannelPartnerLinkId { get; private set; } = null!;
 
         /// <summary>
         /// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.

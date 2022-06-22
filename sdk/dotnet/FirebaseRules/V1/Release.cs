@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
         /// </summary>

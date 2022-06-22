@@ -40,6 +40,15 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
+        /// </summary>
+        [Output("siteId")]
+        public Output<string> SiteId { get; private set; } = null!;
+
         /// <summary>
         /// The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
         /// </summary>

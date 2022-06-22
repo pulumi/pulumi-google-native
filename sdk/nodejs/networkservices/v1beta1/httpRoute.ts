@@ -52,9 +52,14 @@ export class HttpRoute extends pulumi.CustomResource {
      */
     public readonly hostnames!: pulumi.Output<string[]>;
     /**
+     * Required. Short name of the HttpRoute resource to be created.
+     */
+    public readonly httpRouteId!: pulumi.Output<string>;
+    /**
      * Optional. Set of label tags associated with the HttpRoute resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*&#47;locations/global/meshes/` The attached Mesh should be of a type SIDECAR
      */
@@ -63,6 +68,7 @@ export class HttpRoute extends pulumi.CustomResource {
      * Name of the HttpRoute resource. It matches pattern `projects/*&#47;locations/global/httpRoutes/http_route_name>`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Rules that define how traffic is routed and handled. Rules will be matched sequentially based on the RouteMatch specified for the rule.
      */
@@ -114,9 +120,12 @@ export class HttpRoute extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["gateways"] = undefined /*out*/;
             resourceInputs["hostnames"] = undefined /*out*/;
+            resourceInputs["httpRouteId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["meshes"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

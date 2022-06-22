@@ -23,6 +23,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Output("bindings")]
         public Output<ImmutableArray<Outputs.BucketIamPolicyBindingsItemResponse>> Bindings { get; private set; } = null!;
 
+        [Output("bucket")]
+        public Output<string> Bucket { get; private set; } = null!;
+
         /// <summary>
         /// HTTP 1.1  Entity tag for the policy.
         /// </summary>
@@ -40,6 +43,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
         /// <summary>
         /// The IAM policy format version.

@@ -39,14 +39,17 @@ export class Analysis extends pulumi.CustomResource {
      * The result of the analysis, which is populated when the analysis finishes.
      */
     public /*out*/ readonly analysisResult!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResultResponse>;
+    public readonly conversationId!: pulumi.Output<string>;
     /**
      * The time at which the analysis was created, which occurs when the long-running operation completes.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The time at which the analysis was requested.
      */
@@ -75,8 +78,11 @@ export class Analysis extends pulumi.CustomResource {
             resourceInputs["requestTime"] = undefined /*out*/;
         } else {
             resourceInputs["analysisResult"] = undefined /*out*/;
+            resourceInputs["conversationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

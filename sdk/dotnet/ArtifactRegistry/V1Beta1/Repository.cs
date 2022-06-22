@@ -45,11 +45,23 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The repository id to use for this repository.
+        /// </summary>
+        [Output("repositoryId")]
+        public Output<string?> RepositoryId { get; private set; } = null!;
 
         /// <summary>
         /// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.

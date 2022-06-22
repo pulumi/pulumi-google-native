@@ -434,6 +434,7 @@ class TransferConfig(pulumi.CustomResource):
 
         __props__ = TransferConfigArgs.__new__(TransferConfigArgs)
 
+        __props__.__dict__["authorization_code"] = None
         __props__.__dict__["data_refresh_window_days"] = None
         __props__.__dict__["data_source_id"] = None
         __props__.__dict__["dataset_region"] = None
@@ -441,17 +442,29 @@ class TransferConfig(pulumi.CustomResource):
         __props__.__dict__["disabled"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["email_preferences"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["next_run_time"] = None
         __props__.__dict__["notification_pubsub_topic"] = None
         __props__.__dict__["owner_info"] = None
         __props__.__dict__["params"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["schedule"] = None
         __props__.__dict__["schedule_options"] = None
+        __props__.__dict__["service_account_name"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["user_id"] = None
+        __props__.__dict__["version_info"] = None
         return TransferConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="authorizationCode")
+    def authorization_code(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        """
+        return pulumi.get(self, "authorization_code")
 
     @property
     @pulumi.getter(name="dataRefreshWindowDays")
@@ -511,6 +524,11 @@ class TransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
@@ -551,6 +569,11 @@ class TransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
         """
         Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
@@ -564,6 +587,14 @@ class TransferConfig(pulumi.CustomResource):
         Options customizing the data transfer schedule.
         """
         return pulumi.get(self, "schedule_options")
+
+    @property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+        """
+        return pulumi.get(self, "service_account_name")
 
     @property
     @pulumi.getter
@@ -588,4 +619,12 @@ class TransferConfig(pulumi.CustomResource):
         Deprecated. Unique ID of the user on whose behalf transfer is done.
         """
         return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="versionInfo")
+    def version_info(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional version info. This is required only if `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        """
+        return pulumi.get(self, "version_info")
 

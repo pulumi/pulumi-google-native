@@ -47,10 +47,12 @@ export class Table extends pulumi.CustomResource {
      * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
      */
     public readonly granularity!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
      */
@@ -86,7 +88,9 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["clusterStates"] = undefined /*out*/;
             resourceInputs["columnFamilies"] = undefined /*out*/;
             resourceInputs["granularity"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["restoreInfo"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

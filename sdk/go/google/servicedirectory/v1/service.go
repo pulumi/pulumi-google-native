@@ -19,8 +19,13 @@ type Service struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
 	Endpoints EndpointResponseArrayOutput `pulumi:"endpoints"`
+	Location  pulumi.StringOutput         `pulumi:"location"`
 	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name        pulumi.StringOutput `pulumi:"name"`
+	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
+	Project     pulumi.StringOutput `pulumi:"project"`
+	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -139,9 +144,26 @@ func (o ServiceOutput) Endpoints() EndpointResponseArrayOutput {
 	return o.ApplyT(func(v *Service) EndpointResponseArrayOutput { return v.Endpoints }).(EndpointResponseArrayOutput)
 }
 
+func (o ServiceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ServiceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+func (o ServiceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o ServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 func init() {

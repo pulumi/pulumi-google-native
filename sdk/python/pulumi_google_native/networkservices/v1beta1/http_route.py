@@ -294,9 +294,12 @@ class HttpRoute(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["gateways"] = None
         __props__.__dict__["hostnames"] = None
+        __props__.__dict__["http_route_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["meshes"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["update_time"] = None
@@ -335,12 +338,25 @@ class HttpRoute(pulumi.CustomResource):
         return pulumi.get(self, "hostnames")
 
     @property
+    @pulumi.getter(name="httpRouteId")
+    def http_route_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the HttpRoute resource to be created.
+        """
+        return pulumi.get(self, "http_route_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Optional. Set of label tags associated with the HttpRoute resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -357,6 +373,11 @@ class HttpRoute(pulumi.CustomResource):
         Name of the HttpRoute resource. It matches pattern `projects/*/locations/global/httpRoutes/http_route_name>`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

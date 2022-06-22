@@ -17,14 +17,18 @@ type Cluster struct {
 
 	// Configuration for this cluster.
 	ClusterConfig ClusterConfigResponseOutput `pulumi:"clusterConfig"`
+	// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType pulumi.StringOutput `pulumi:"defaultStorageType"`
 	// Immutable. The encryption configuration for CMEK-protected clusters.
 	EncryptionConfig EncryptionConfigResponseOutput `pulumi:"encryptionConfig"`
+	InstanceId       pulumi.StringOutput            `pulumi:"instanceId"`
 	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes pulumi.IntOutput `pulumi:"serveNodes"`
 	// The current state of the cluster.
@@ -156,6 +160,11 @@ func (o ClusterOutput) ClusterConfig() ClusterConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) ClusterConfigResponseOutput { return v.ClusterConfig }).(ClusterConfigResponseOutput)
 }
 
+// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+func (o ClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
 // Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 func (o ClusterOutput) DefaultStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultStorageType }).(pulumi.StringOutput)
@@ -166,6 +175,10 @@ func (o ClusterOutput) EncryptionConfig() EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) EncryptionConfigResponseOutput { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
 }
 
+func (o ClusterOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -174,6 +187,10 @@ func (o ClusterOutput) Location() pulumi.StringOutput {
 // The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.

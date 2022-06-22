@@ -39,13 +39,19 @@ export class Channel extends pulumi.CustomResource {
      */
     public /*out*/ readonly activationToken!: pulumi.Output<string>;
     /**
+     * Required. The user-provided ID to be assigned to the channel.
+     */
+    public readonly channelId!: pulumi.Output<string>;
+    /**
      * The creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
      */
@@ -66,6 +72,10 @@ export class Channel extends pulumi.CustomResource {
      * The last-modified time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Required. If set, validate the request and preview the review, but do not post it.
+     */
+    public readonly validateOnly!: pulumi.Output<string>;
 
     /**
      * Create a Channel resource with the given unique name, arguments, and options.
@@ -98,13 +108,17 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["activationToken"] = undefined /*out*/;
+            resourceInputs["channelId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provider"] = undefined /*out*/;
             resourceInputs["pubsubTopic"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Channel.__pulumiType, name, resourceInputs, opts);

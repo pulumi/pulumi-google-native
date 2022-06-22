@@ -16,6 +16,8 @@ import (
 type ProjectBigQueryExport struct {
 	pulumi.CustomResourceState
 
+	// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+	BigQueryExportId pulumi.StringOutput `pulumi:"bigQueryExportId"`
 	// The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The dataset to write findings' updates to. Its format is "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
@@ -30,6 +32,7 @@ type ProjectBigQueryExport struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service account that needs permission to create table, upload data to the big query dataset.
 	Principal pulumi.StringOutput `pulumi:"principal"`
+	Project   pulumi.StringOutput `pulumi:"project"`
 	// The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -141,6 +144,11 @@ func (o ProjectBigQueryExportOutput) ToProjectBigQueryExportOutputWithContext(ct
 	return o
 }
 
+// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+func (o ProjectBigQueryExportOutput) BigQueryExportId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBigQueryExport) pulumi.StringOutput { return v.BigQueryExportId }).(pulumi.StringOutput)
+}
+
 // The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
 func (o ProjectBigQueryExportOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBigQueryExport) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -174,6 +182,10 @@ func (o ProjectBigQueryExportOutput) Name() pulumi.StringOutput {
 // The service account that needs permission to create table, upload data to the big query dataset.
 func (o ProjectBigQueryExportOutput) Principal() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBigQueryExport) pulumi.StringOutput { return v.Principal }).(pulumi.StringOutput)
+}
+
+func (o ProjectBigQueryExportOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectBigQueryExport) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.

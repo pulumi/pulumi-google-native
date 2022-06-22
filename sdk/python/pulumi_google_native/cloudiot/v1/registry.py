@@ -287,9 +287,11 @@ class Registry(pulumi.CustomResource):
         __props__.__dict__["credentials"] = None
         __props__.__dict__["event_notification_configs"] = None
         __props__.__dict__["http_config"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["log_level"] = None
         __props__.__dict__["mqtt_config"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state_notification_config"] = None
         return Registry(resource_name, opts=opts, __props__=__props__)
 
@@ -318,6 +320,11 @@ class Registry(pulumi.CustomResource):
         return pulumi.get(self, "http_config")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="logLevel")
     def log_level(self) -> pulumi.Output[str]:
         """
@@ -340,6 +347,11 @@ class Registry(pulumi.CustomResource):
         The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="stateNotificationConfig")

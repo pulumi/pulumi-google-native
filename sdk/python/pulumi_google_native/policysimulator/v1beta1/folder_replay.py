@@ -156,6 +156,8 @@ class FolderReplay(pulumi.CustomResource):
         __props__ = FolderReplayArgs.__new__(FolderReplayArgs)
 
         __props__.__dict__["config"] = None
+        __props__.__dict__["folder_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["results_summary"] = None
         __props__.__dict__["state"] = None
@@ -168,6 +170,16 @@ class FolderReplay(pulumi.CustomResource):
         The configuration used for the `Replay`.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "folder_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

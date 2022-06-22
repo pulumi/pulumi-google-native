@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.Speech.V1
         [Output("boost")]
         public Output<double> Boost { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the phrase set.
         /// </summary>
@@ -32,6 +35,9 @@ namespace Pulumi.GoogleNative.Speech.V1
         /// </summary>
         [Output("phrases")]
         public Output<ImmutableArray<Outputs.PhraseResponse>> Phrases { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

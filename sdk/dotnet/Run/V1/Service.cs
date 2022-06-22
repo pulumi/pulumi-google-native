@@ -23,16 +23,28 @@ namespace Pulumi.GoogleNative.Run.V1
         public Output<string> ApiVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+        /// </summary>
+        [Output("dryRun")]
+        public Output<string?> DryRun { get; private set; } = null!;
+
+        /// <summary>
         /// The kind of resource, in this case "Service".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.ObjectMetaResponse> Metadata { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Spec holds the desired state of the Service (from the client).

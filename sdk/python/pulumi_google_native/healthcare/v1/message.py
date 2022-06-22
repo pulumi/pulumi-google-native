@@ -319,11 +319,15 @@ class Message(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["data"] = None
+        __props__.__dict__["dataset_id"] = None
+        __props__.__dict__["hl7_v2_store_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["message_type"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parsed_data"] = None
         __props__.__dict__["patient_ids"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["schematized_data"] = None
         __props__.__dict__["send_facility"] = None
         __props__.__dict__["send_time"] = None
@@ -346,12 +350,27 @@ class Message(pulumi.CustomResource):
         return pulumi.get(self, "data")
 
     @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="hl7V2StoreId")
+    def hl7_v2_store_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "hl7_v2_store_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="messageType")
@@ -384,6 +403,11 @@ class Message(pulumi.CustomResource):
         All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
         """
         return pulumi.get(self, "patient_ids")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="schematizedData")

@@ -238,14 +238,32 @@ class DeploymentArtifact(pulumi.CustomResource):
 
         __props__ = DeploymentArtifactArgs.__new__(DeploymentArtifactArgs)
 
+        __props__.__dict__["api_id"] = None
+        __props__.__dict__["artifact_id"] = None
         __props__.__dict__["contents"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["deployment_id"] = None
         __props__.__dict__["hash"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["mime_type"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["size_bytes"] = None
         __props__.__dict__["update_time"] = None
         return DeploymentArtifact(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        """
+        return pulumi.get(self, "artifact_id")
 
     @property
     @pulumi.getter
@@ -264,12 +282,22 @@ class DeploymentArtifact(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @property
     @pulumi.getter
     def hash(self) -> pulumi.Output[str]:
         """
         A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
         """
         return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="mimeType")
@@ -286,6 +314,11 @@ class DeploymentArtifact(pulumi.CustomResource):
         Resource name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sizeBytes")

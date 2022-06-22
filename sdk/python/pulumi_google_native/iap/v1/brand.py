@@ -157,6 +157,7 @@ class Brand(pulumi.CustomResource):
         __props__.__dict__["application_title"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["org_internal_only"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["support_email"] = None
         return Brand(resource_name, opts=opts, __props__=__props__)
 
@@ -183,6 +184,11 @@ class Brand(pulumi.CustomResource):
         Whether the brand is only intended for usage inside the G Suite organization only.
         """
         return pulumi.get(self, "org_internal_only")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="supportEmail")

@@ -145,7 +145,9 @@ class Keystore(pulumi.CustomResource):
         __props__ = KeystoreArgs.__new__(KeystoreArgs)
 
         __props__.__dict__["aliases"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         return Keystore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -157,10 +159,20 @@ class Keystore(pulumi.CustomResource):
         return pulumi.get(self, "aliases")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        Optional. Name of the keystore. Overrides the value in Keystore.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 

@@ -226,7 +226,11 @@ class Subscription(pulumi.CustomResource):
         __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
         __props__.__dict__["delivery_config"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["skip_backlog"] = None
+        __props__.__dict__["subscription_id"] = None
         __props__.__dict__["topic"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
@@ -240,11 +244,37 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="skipBacklog")
+    def skip_backlog(self) -> pulumi.Output[Optional[str]]:
+        """
+        If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+        """
+        return pulumi.get(self, "skip_backlog")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
+        """
+        return pulumi.get(self, "subscription_id")
 
     @property
     @pulumi.getter

@@ -65,6 +65,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
+        /// </summary>
+        [Output("customer")]
+        public Output<string?> Customer { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier for the device.
         /// </summary>
         [Output("deviceId")]

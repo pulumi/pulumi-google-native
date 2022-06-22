@@ -35,6 +35,7 @@ export class Flow extends pulumi.CustomResource {
         return obj['__pulumiType'] === Flow.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -48,6 +49,11 @@ export class Flow extends pulumi.CustomResource {
      */
     public readonly eventHandlers!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerResponse[]>;
     /**
+     * The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     */
+    public readonly languageCode!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
      */
     public readonly name!: pulumi.Output<string>;
@@ -55,6 +61,7 @@ export class Flow extends pulumi.CustomResource {
      * NLU related settings of the flow.
      */
     public readonly nluSettings!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3NluSettingsResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
      */
@@ -93,11 +100,15 @@ export class Flow extends pulumi.CustomResource {
             resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["eventHandlers"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nluSettings"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["transitionRouteGroups"] = undefined /*out*/;
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }

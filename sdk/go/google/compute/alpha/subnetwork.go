@@ -65,10 +65,12 @@ type Subnetwork struct {
 	//
 	// Deprecated: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
 	PrivateIpv6GoogleAccessServiceAccounts pulumi.StringArrayOutput `pulumi:"privateIpv6GoogleAccessServiceAccounts"`
+	Project                                pulumi.StringOutput      `pulumi:"project"`
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
-	// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region  pulumi.StringOutput `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The URL of the reserved internal range.
 	ReservedInternalRange pulumi.StringOutput `pulumi:"reservedInternalRange"`
 	// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
@@ -397,14 +399,22 @@ func (o SubnetworkOutput) PrivateIpv6GoogleAccessServiceAccounts() pulumi.String
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringArrayOutput { return v.PrivateIpv6GoogleAccessServiceAccounts }).(pulumi.StringArrayOutput)
 }
 
+func (o SubnetworkOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 func (o SubnetworkOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
 }
 
-// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
 func (o SubnetworkOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o SubnetworkOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The URL of the reserved internal range.

@@ -28,11 +28,29 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("data")]
         public Output<string> Data { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// Application specific response metadata. Must be set in the first response for streaming APIs.
         /// </summary>
         [Output("extensions")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> Extensions { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&amp;{}\[\]()+\-=,.~'` ]{1,255}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource file type. {{ resource_file_type }}
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>

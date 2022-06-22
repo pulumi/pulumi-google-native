@@ -342,13 +342,16 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["file_shares"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["max_capacity_gb"] = None
         __props__.__dict__["max_share_count"] = None
         __props__.__dict__["multi_share_enabled"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
@@ -405,6 +408,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "file_shares")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[str]:
         """
@@ -419,6 +430,11 @@ class Instance(pulumi.CustomResource):
         Resource labels to represent user provided metadata.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="maxCapacityGb")
@@ -459,6 +475,11 @@ class Instance(pulumi.CustomResource):
         VPC networks to which the instance is connected. For this version, only a single network is supported.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

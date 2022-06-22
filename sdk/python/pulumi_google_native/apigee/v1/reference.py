@@ -205,7 +205,9 @@ class Reference(pulumi.CustomResource):
         __props__ = ReferenceArgs.__new__(ReferenceArgs)
 
         __props__.__dict__["description"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["refers"] = None
         __props__.__dict__["resource_type"] = None
         return Reference(resource_name, opts=opts, __props__=__props__)
@@ -219,12 +221,22 @@ class Reference(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

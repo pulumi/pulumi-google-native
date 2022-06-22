@@ -28,6 +28,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Output("domainRedirect")]
         public Output<Outputs.DomainRedirectResponse> DomainRedirect { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
         /// </summary>
@@ -39,6 +42,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// </summary>
         [Output("site")]
         public Output<string> Site { get; private set; } = null!;
+
+        [Output("siteId")]
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// Additional status of the domain association.

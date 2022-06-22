@@ -63,6 +63,10 @@ export class Project extends pulumi.CustomResource {
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
     public readonly projectNumber!: pulumi.Output<string>;
+    /**
+     * A now unused experiment opt-out option.
+     */
+    public readonly useLegacyStack!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -91,6 +95,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["projectNumber"] = undefined /*out*/;
+            resourceInputs["useLegacyStack"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);

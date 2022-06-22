@@ -39,10 +39,13 @@ export class Consent extends pulumi.CustomResource {
      * The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
      */
     public readonly consentArtifact!: pulumi.Output<string>;
+    public readonly consentStoreId!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * Timestamp in UTC of when this Consent is considered expired.
      */
     public readonly expireTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
      */
@@ -55,6 +58,7 @@ export class Consent extends pulumi.CustomResource {
      * Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
      */
     public readonly policies!: pulumi.Output<outputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicyResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The timestamp that the revision was created.
      */
@@ -118,10 +122,14 @@ export class Consent extends pulumi.CustomResource {
             resourceInputs["revisionId"] = undefined /*out*/;
         } else {
             resourceInputs["consentArtifact"] = undefined /*out*/;
+            resourceInputs["consentStoreId"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["policies"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

@@ -289,7 +289,9 @@ class OrganizationJobTrigger(pulumi.CustomResource):
         __props__.__dict__["errors"] = None
         __props__.__dict__["inspect_job"] = None
         __props__.__dict__["last_run_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["triggers"] = None
         __props__.__dict__["update_time"] = None
@@ -345,11 +347,21 @@ class OrganizationJobTrigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

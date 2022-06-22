@@ -306,6 +306,7 @@ class Metric(pulumi.CustomResource):
         __props__.__dict__["label_extractors"] = None
         __props__.__dict__["metric_descriptor"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["value_extractor"] = None
         __props__.__dict__["version"] = None
@@ -374,6 +375,11 @@ class Metric(pulumi.CustomResource):
         The client-assigned metric identifier. Examples: "error_count", "nginx/requests".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.This field is the [METRIC_ID] part of a metric resource name in the format "projects/PROJECT_ID/metrics/METRIC_ID". Example: If the resource name of a metric is "projects/my-project/metrics/nginx%2Frequests", this field's value is "nginx/requests".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

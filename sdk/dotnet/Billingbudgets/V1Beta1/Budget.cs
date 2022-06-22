@@ -28,6 +28,9 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         [Output("amount")]
         public Output<Outputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse> Amount { get; private set; } = null!;
 
+        [Output("billingAccountId")]
+        public Output<string> BillingAccountId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         /// </summary>

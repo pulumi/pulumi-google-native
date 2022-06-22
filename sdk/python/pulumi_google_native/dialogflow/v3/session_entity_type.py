@@ -234,10 +234,20 @@ class SessionEntityType(pulumi.CustomResource):
 
         __props__ = SessionEntityTypeArgs.__new__(SessionEntityTypeArgs)
 
+        __props__.__dict__["agent_id"] = None
         __props__.__dict__["entities"] = None
         __props__.__dict__["entity_override_mode"] = None
+        __props__.__dict__["environment_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["session_id"] = None
         return SessionEntityType(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter
@@ -256,10 +266,30 @@ class SessionEntityType(pulumi.CustomResource):
         return pulumi.get(self, "entity_override_mode")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sessionId")
+    def session_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "session_id")
 

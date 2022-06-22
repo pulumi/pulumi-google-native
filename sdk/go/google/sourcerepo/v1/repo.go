@@ -17,7 +17,8 @@ type Repo struct {
 	// How this repository mirrors a repository managed by another service. Read-only field.
 	MirrorConfig MirrorConfigResponseOutput `pulumi:"mirrorConfig"`
 	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
 	PubsubConfigs pulumi.StringMapOutput `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
@@ -138,6 +139,10 @@ func (o RepoOutput) MirrorConfig() MirrorConfigResponseOutput {
 // Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
 func (o RepoOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RepoOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.

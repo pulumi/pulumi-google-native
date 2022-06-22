@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
     public partial class Deployment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Sets the policy to use for creating new resources.
+        /// </summary>
+        [Output("createPolicy")]
+        public Output<string?> CreatePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// User provided default credential for the deployment.
         /// </summary>
         [Output("credential")]
@@ -68,6 +74,15 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// </summary>
         [Output("outputs")]
         public Output<ImmutableArray<Outputs.DeploymentOutputEntryResponse>> Outputs { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
+        /// </summary>
+        [Output("preview")]
+        public Output<string?> Preview { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Server defined URL for the resource.

@@ -46,16 +46,28 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<Outputs.EndpointMatcherResponse> EndpointMatcher { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+        /// </summary>
+        [Output("endpointPolicyId")]
+        public Output<string> EndpointPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Set of label tags associated with the EndpointPolicy resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Name of the EndpointPolicy resource. It matches pattern `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends. If this field is not set, authentication is disabled(open) for this endpoint.

@@ -458,8 +458,10 @@ class VpnTunnel(pulumi.CustomResource):
         __props__.__dict__["peer_external_gateway_interface"] = None
         __props__.__dict__["peer_gcp_gateway"] = None
         __props__.__dict__["peer_ip"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["remote_traffic_selector"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["router"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["shared_secret"] = None
@@ -560,10 +562,12 @@ class VpnTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
 
     @property
@@ -573,6 +577,14 @@ class VpnTunnel(pulumi.CustomResource):
         Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
         """
         return pulumi.get(self, "remote_traffic_selector")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter

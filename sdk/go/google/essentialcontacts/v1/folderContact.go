@@ -17,7 +17,8 @@ type FolderContact struct {
 	pulumi.CustomResourceState
 
 	// The email address to send notifications to. This does not need to be a Google account.
-	Email pulumi.StringOutput `pulumi:"email"`
+	Email    pulumi.StringOutput `pulumi:"email"`
+	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag pulumi.StringOutput `pulumi:"languageTag"`
 	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
@@ -147,6 +148,10 @@ func (o FolderContactOutput) ToFolderContactOutputWithContext(ctx context.Contex
 // The email address to send notifications to. This does not need to be a Google account.
 func (o FolderContactOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderContact) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+func (o FolderContactOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderContact) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
 
 // The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.

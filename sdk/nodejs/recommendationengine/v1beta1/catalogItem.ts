@@ -36,6 +36,7 @@ export class CatalogItem extends pulumi.CustomResource {
         return obj['__pulumiType'] === CatalogItem.__pulumiType;
     }
 
+    public readonly catalogId!: pulumi.Output<string>;
     /**
      * Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
      */
@@ -58,10 +59,12 @@ export class CatalogItem extends pulumi.CustomResource {
      * @deprecated Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
      */
     public readonly languageCode!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Metadata specific to retail products.
      */
     public readonly productMetadata!: pulumi.Output<outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
      */
@@ -107,12 +110,15 @@ export class CatalogItem extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
         } else {
+            resourceInputs["catalogId"] = undefined /*out*/;
             resourceInputs["categoryHierarchies"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["itemAttributes"] = undefined /*out*/;
             resourceInputs["itemGroupId"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["productMetadata"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
         }

@@ -317,11 +317,15 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["event_filters"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["transport"] = None
+        __props__.__dict__["trigger_id"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -374,11 +378,21 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -397,6 +411,14 @@ class Trigger(pulumi.CustomResource):
         return pulumi.get(self, "transport")
 
     @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> pulumi.Output[str]:
+        """
+        Required. The user-provided ID to be assigned to the trigger.
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @property
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
@@ -411,4 +433,12 @@ class Trigger(pulumi.CustomResource):
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[str]:
+        """
+        Required. If set, validate the request and preview the review, but do not post it.
+        """
+        return pulumi.get(self, "validate_only")
 

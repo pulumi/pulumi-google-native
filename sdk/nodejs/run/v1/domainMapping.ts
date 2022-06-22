@@ -41,13 +41,19 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     public readonly apiVersion!: pulumi.Output<string>;
     /**
+     * Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+     */
+    public readonly dryRun!: pulumi.Output<string | undefined>;
+    /**
      * The kind of resource, in this case "DomainMapping".
      */
     public readonly kind!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Metadata associated with this BuildTemplate.
      */
     public readonly metadata!: pulumi.Output<outputs.run.v1.ObjectMetaResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The spec for this DomainMapping.
      */
@@ -78,8 +84,11 @@ export class DomainMapping extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["dryRun"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["spec"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

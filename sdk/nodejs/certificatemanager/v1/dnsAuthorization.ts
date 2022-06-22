@@ -44,6 +44,10 @@ export class DnsAuthorization extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Required. A user-provided name of the dns authorization.
+     */
+    public readonly dnsAuthorizationId!: pulumi.Output<string>;
+    /**
      * DNS Resource Record that needs to be added to DNS configuration.
      */
     public /*out*/ readonly dnsResourceRecord!: pulumi.Output<outputs.certificatemanager.v1.DnsResourceRecordResponse>;
@@ -55,10 +59,12 @@ export class DnsAuthorization extends pulumi.CustomResource {
      * Set of labels associated with a DnsAuthorization.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*&#47;locations/*&#47;dnsAuthorizations/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The last update timestamp of a DnsAuthorization.
      */
@@ -94,10 +100,13 @@ export class DnsAuthorization extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["dnsAuthorizationId"] = undefined /*out*/;
             resourceInputs["dnsResourceRecord"] = undefined /*out*/;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

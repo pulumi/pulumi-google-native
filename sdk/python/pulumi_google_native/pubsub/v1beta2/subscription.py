@@ -206,7 +206,9 @@ class Subscription(pulumi.CustomResource):
 
         __props__.__dict__["ack_deadline_seconds"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["push_config"] = None
+        __props__.__dict__["subscription_id"] = None
         __props__.__dict__["topic"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
@@ -227,12 +229,22 @@ class Subscription(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> pulumi.Output['outputs.PushConfigResponse']:
         """
         If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
         """
         return pulumi.get(self, "push_config")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "subscription_id")
 
     @property
     @pulumi.getter

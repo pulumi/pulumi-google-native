@@ -214,11 +214,17 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
 
         __props__ = AccessPolicyIamPolicyArgs.__new__(AccessPolicyIamPolicyArgs)
 
+        __props__.__dict__["access_policy_id"] = None
         __props__.__dict__["audit_configs"] = None
         __props__.__dict__["bindings"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["version"] = None
         return AccessPolicyIamPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter(name="auditConfigs")

@@ -31,7 +31,8 @@ type UptimeCheckConfig struct {
 	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
-	Period pulumi.StringOutput `pulumi:"period"`
+	Period  pulumi.StringOutput `pulumi:"period"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The group resource associated with the configuration.
 	ResourceGroup ResourceGroupResponseOutput `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
@@ -221,6 +222,10 @@ func (o UptimeCheckConfigOutput) Name() pulumi.StringOutput {
 // How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
 func (o UptimeCheckConfigOutput) Period() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Period }).(pulumi.StringOutput)
+}
+
+func (o UptimeCheckConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The group resource associated with the configuration.

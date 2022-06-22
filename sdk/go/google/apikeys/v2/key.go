@@ -25,10 +25,14 @@ type Key struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+	KeyId pulumi.StringPtrOutput `pulumi:"keyId"`
 	// An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
 	KeyString pulumi.StringOutput `pulumi:"keyString"`
+	Location  pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Key restrictions.
 	Restrictions V2RestrictionsResponseOutput `pulumi:"restrictions"`
 	// Unique id in UUID4 format.
@@ -164,14 +168,27 @@ func (o KeyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+func (o KeyOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
 // An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
 func (o KeyOutput) KeyString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.KeyString }).(pulumi.StringOutput)
 }
 
+func (o KeyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
 func (o KeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o KeyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Key restrictions.

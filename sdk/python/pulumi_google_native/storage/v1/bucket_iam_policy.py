@@ -234,9 +234,11 @@ class BucketIamPolicy(pulumi.CustomResource):
         __props__ = BucketIamPolicyArgs.__new__(BucketIamPolicyArgs)
 
         __props__.__dict__["bindings"] = None
+        __props__.__dict__["bucket"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["resource_id"] = None
+        __props__.__dict__["user_project"] = None
         __props__.__dict__["version"] = None
         return BucketIamPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -247,6 +249,11 @@ class BucketIamPolicy(pulumi.CustomResource):
         An association between a role, which comes with a set of permissions, and members who may assume that role.
         """
         return pulumi.get(self, "bindings")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter
@@ -271,6 +278,14 @@ class BucketIamPolicy(pulumi.CustomResource):
         The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         """
         return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
+        return pulumi.get(self, "user_project")
 
     @property
     @pulumi.getter

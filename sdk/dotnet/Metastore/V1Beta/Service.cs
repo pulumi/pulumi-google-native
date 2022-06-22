@@ -57,6 +57,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
         /// </summary>
@@ -99,11 +102,26 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         /// </summary>
         [Output("releaseChannel")]
         public Output<string> ReleaseChannel { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+        /// </summary>
+        [Output("serviceId")]
+        public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
         /// The current state of the metastore service.

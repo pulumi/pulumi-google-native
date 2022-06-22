@@ -26,8 +26,12 @@ type EntityType struct {
 	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayOutput `pulumi:"entities"`
 	// Indicates the kind of entity type.
 	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput    `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewEntityType registers a new resource with the given unique name, arguments, and options.
@@ -175,9 +179,22 @@ func (o EntityTypeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+func (o EntityTypeOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+func (o EntityTypeOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
 func (o EntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EntityTypeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

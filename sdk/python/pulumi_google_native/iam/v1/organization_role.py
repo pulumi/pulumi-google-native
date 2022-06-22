@@ -273,6 +273,7 @@ class OrganizationRole(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["included_permissions"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["stage"] = None
         __props__.__dict__["title"] = None
         return OrganizationRole(resource_name, opts=opts, __props__=__props__)
@@ -316,6 +317,11 @@ class OrganizationRole(pulumi.CustomResource):
         The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

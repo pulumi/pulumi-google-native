@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+        /// </summary>
+        [Output("authorizationPolicyId")]
+        public Output<string> AuthorizationPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the resource was created.
         /// </summary>
         [Output("createTime")]
@@ -39,11 +45,17 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.

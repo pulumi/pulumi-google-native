@@ -18,8 +18,12 @@ type KeyRing struct {
 
 	// The time at which this KeyRing was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	KeyRingId pulumi.StringOutput `pulumi:"keyRingId"`
+	Location  pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewKeyRing registers a new resource with the given unique name, arguments, and options.
@@ -117,9 +121,22 @@ func (o KeyRingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+func (o KeyRingOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
+}
+
+func (o KeyRingOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
 func (o KeyRingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o KeyRingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

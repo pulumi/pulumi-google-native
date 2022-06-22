@@ -30,8 +30,10 @@ type Key struct {
 	PrivateKeyData pulumi.StringOutput `pulumi:"privateKeyData"`
 	// The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private keys, and never retains user-managed private keys.
 	PrivateKeyType pulumi.StringOutput `pulumi:"privateKeyType"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 	// The public key data. Only provided in `GetServiceAccountKey` responses.
-	PublicKeyData pulumi.StringOutput `pulumi:"publicKeyData"`
+	PublicKeyData    pulumi.StringOutput `pulumi:"publicKeyData"`
+	ServiceAccountId pulumi.StringOutput `pulumi:"serviceAccountId"`
 	// The key can be used after this timestamp.
 	ValidAfterTime pulumi.StringOutput `pulumi:"validAfterTime"`
 	// The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for the private key signing operation. The public key could still be used for verification for a few hours after this time.
@@ -170,9 +172,17 @@ func (o KeyOutput) PrivateKeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.PrivateKeyType }).(pulumi.StringOutput)
 }
 
+func (o KeyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // The public key data. Only provided in `GetServiceAccountKey` responses.
 func (o KeyOutput) PublicKeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.PublicKeyData }).(pulumi.StringOutput)
+}
+
+func (o KeyOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.ServiceAccountId }).(pulumi.StringOutput)
 }
 
 // The key can be used after this timestamp.

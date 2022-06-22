@@ -278,10 +278,15 @@ class Endpoint(pulumi.CustomResource):
 
         __props__.__dict__["address"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["endpoint_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["namespace_id"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["port"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["service_id"] = None
         __props__.__dict__["update_time"] = None
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -302,6 +307,19 @@ class Endpoint(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Output[str]:
+        """
+        Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -318,6 +336,11 @@ class Endpoint(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "namespace_id")
+
+    @property
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
@@ -332,6 +355,16 @@ class Endpoint(pulumi.CustomResource):
         Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter(name="updateTime")

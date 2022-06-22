@@ -24,6 +24,8 @@ type Domain struct {
 	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
 	// The time the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// Optional. Resource labels that can contain user-provided metadata.
@@ -31,7 +33,8 @@ type Domain struct {
 	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayOutput `pulumi:"locations"`
 	// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringOutput `pulumi:"reservedIpRange"`
 	// The current state of this domain.
@@ -185,6 +188,11 @@ func (o DomainOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+func (o DomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
 // The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
 func (o DomainOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Fqdn }).(pulumi.StringOutput)
@@ -203,6 +211,10 @@ func (o DomainOutput) Locations() pulumi.StringArrayOutput {
 // The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DomainOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].

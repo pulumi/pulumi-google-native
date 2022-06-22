@@ -34,6 +34,7 @@ type Instruction struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput `pulumi:"pdfInstruction"`
+	Project        pulumi.StringOutput                                        `pulumi:"project"`
 	// Last update time of instruction.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -196,6 +197,10 @@ func (o InstructionOutput) PdfInstruction() GoogleCloudDatalabelingV1beta1PdfIns
 	return o.ApplyT(func(v *Instruction) GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
 		return v.PdfInstruction
 	}).(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput)
+}
+
+func (o InstructionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Last update time of instruction.

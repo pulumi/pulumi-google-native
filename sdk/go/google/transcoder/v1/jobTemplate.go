@@ -17,8 +17,12 @@ type JobTemplate struct {
 
 	// The configuration for this template.
 	Config JobConfigResponseOutput `pulumi:"config"`
+	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+	JobTemplateId pulumi.StringOutput `pulumi:"jobTemplateId"`
+	Location      pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewJobTemplate registers a new resource with the given unique name, arguments, and options.
@@ -127,9 +131,22 @@ func (o JobTemplateOutput) Config() JobConfigResponseOutput {
 	return o.ApplyT(func(v *JobTemplate) JobConfigResponseOutput { return v.Config }).(JobConfigResponseOutput)
 }
 
+// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+func (o JobTemplateOutput) JobTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.JobTemplateId }).(pulumi.StringOutput)
+}
+
+func (o JobTemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
 func (o JobTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o JobTemplateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

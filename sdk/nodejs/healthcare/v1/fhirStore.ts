@@ -36,6 +36,7 @@ export class FhirStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === FhirStore.__pulumiType;
     }
 
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
      */
@@ -53,9 +54,14 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly enableUpdateCreate!: pulumi.Output<boolean>;
     /**
+     * The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     */
+    public readonly fhirStoreId!: pulumi.Output<string | undefined>;
+    /**
      * User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
      */
@@ -64,6 +70,7 @@ export class FhirStore extends pulumi.CustomResource {
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1.NotificationConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
      */
@@ -106,13 +113,17 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["defaultSearchHandlingStrict"] = undefined /*out*/;
             resourceInputs["disableReferentialIntegrity"] = undefined /*out*/;
             resourceInputs["disableResourceVersioning"] = undefined /*out*/;
             resourceInputs["enableUpdateCreate"] = undefined /*out*/;
+            resourceInputs["fhirStoreId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["streamConfigs"] = undefined /*out*/;
             resourceInputs["validationConfig"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;

@@ -196,10 +196,13 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["call_log_level"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["result"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["workflow_id"] = None
         __props__.__dict__["workflow_revision_id"] = None
         return Execution(resource_name, opts=opts, __props__=__props__)
 
@@ -237,11 +240,21 @@ class Execution(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -266,6 +279,11 @@ class Execution(pulumi.CustomResource):
         Current state of the execution.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="workflowId")
+    def workflow_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "workflow_id")
 
     @property
     @pulumi.getter(name="workflowRevisionId")

@@ -34,7 +34,8 @@ type Instance struct {
 	// Compute Engine location where the instance resides.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange pulumi.StringOutput `pulumi:"peeringCidrRange"`
 	// Port number of the exposed Apigee endpoint.
@@ -214,6 +215,10 @@ func (o InstanceOutput) Location() pulumi.StringOutput {
 // Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o InstanceOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.

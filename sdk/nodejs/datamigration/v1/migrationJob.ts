@@ -75,6 +75,11 @@ export class MigrationJob extends pulumi.CustomResource {
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * Required. The ID of the instance to create.
+     */
+    public readonly migrationJobId!: pulumi.Output<string>;
     /**
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
@@ -83,6 +88,11 @@ export class MigrationJob extends pulumi.CustomResource {
      * The current migration job phase.
      */
     public /*out*/ readonly phase!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.
      */
@@ -174,8 +184,12 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["migrationJobId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["phase"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["reverseSshConnectivity"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
             resourceInputs["sourceDatabase"] = undefined /*out*/;

@@ -27,17 +27,29 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Output("archived")]
         public Output<bool> Archived { get; private set; } = null!;
 
+        [Output("consentStoreId")]
+        public Output<string> ConsentStoreId { get; private set; } = null!;
+
         /// <summary>
         /// A unique identifier for the mapped resource.
         /// </summary>
         [Output("dataId")]
         public Output<string> DataId { get; private set; } = null!;
 
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.

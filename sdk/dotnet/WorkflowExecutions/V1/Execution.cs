@@ -42,11 +42,17 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         [Output("error")]
         public Output<Outputs.ErrorResponse> Error { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
@@ -65,6 +71,9 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("workflowId")]
+        public Output<string> WorkflowId { get; private set; } = null!;
 
         /// <summary>
         /// Revision of the workflow this execution is using.

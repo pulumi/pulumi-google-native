@@ -63,10 +63,20 @@ export class Spoke extends pulumi.CustomResource {
      * VPN tunnels that are associated with the spoke.
      */
     public readonly linkedVpnTunnels!: pulumi.Output<outputs.networkconnectivity.v1.LinkedVpnTunnelsResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Required. Unique id for the spoke to create.
+     */
+    public readonly spokeId!: pulumi.Output<string>;
     /**
      * The current lifecycle state of this spoke.
      */
@@ -117,7 +127,11 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["linkedInterconnectAttachments"] = undefined /*out*/;
             resourceInputs["linkedRouterApplianceInstances"] = undefined /*out*/;
             resourceInputs["linkedVpnTunnels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["spokeId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

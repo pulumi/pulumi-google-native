@@ -214,8 +214,11 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["default_hostname"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["gateway_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return Gateway(resource_name, opts=opts, __props__=__props__)
@@ -253,6 +256,14 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> pulumi.Output[str]:
+        """
+        Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -262,11 +273,21 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

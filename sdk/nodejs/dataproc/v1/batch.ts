@@ -37,6 +37,10 @@ export class Batch extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+     */
+    public readonly batchId!: pulumi.Output<string | undefined>;
+    /**
      * The time when the batch was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -52,6 +56,7 @@ export class Batch extends pulumi.CustomResource {
      * Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the batch.
      */
@@ -60,10 +65,15 @@ export class Batch extends pulumi.CustomResource {
      * The resource name of the operation associated with this batch.
      */
     public /*out*/ readonly operation!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. PySpark batch config.
      */
     public readonly pysparkBatch!: pulumi.Output<outputs.dataproc.v1.PySparkBatchResponse>;
+    /**
+     * Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Optional. Runtime configuration for the batch execution.
      */
@@ -138,13 +148,17 @@ export class Batch extends pulumi.CustomResource {
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         } else {
+            resourceInputs["batchId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["environmentConfig"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pysparkBatch"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["runtimeConfig"] = undefined /*out*/;
             resourceInputs["runtimeInfo"] = undefined /*out*/;
             resourceInputs["sparkBatch"] = undefined /*out*/;

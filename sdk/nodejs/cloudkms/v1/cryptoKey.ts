@@ -46,6 +46,10 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly cryptoKeyBackend!: pulumi.Output<string>;
     /**
+     * Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
+    public readonly cryptoKeyId!: pulumi.Output<string>;
+    /**
      * Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
      */
     public readonly destroyScheduledDuration!: pulumi.Output<string>;
@@ -53,10 +57,12 @@ export class CryptoKey extends pulumi.CustomResource {
      * Immutable. Whether this key may contain imported versions only.
      */
     public readonly importOnly!: pulumi.Output<boolean>;
+    public readonly keyRingId!: pulumi.Output<string>;
     /**
      * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for this CryptoKey in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
@@ -69,6 +75,7 @@ export class CryptoKey extends pulumi.CustomResource {
      * A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
      */
     public /*out*/ readonly primary!: pulumi.Output<outputs.cloudkms.v1.CryptoKeyVersionResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. The immutable purpose of this CryptoKey.
      */
@@ -77,6 +84,10 @@ export class CryptoKey extends pulumi.CustomResource {
      * next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
     public readonly rotationPeriod!: pulumi.Output<string>;
+    /**
+     * If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+     */
+    public readonly skipInitialVersionCreation!: pulumi.Output<string | undefined>;
     /**
      * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
      */
@@ -115,14 +126,19 @@ export class CryptoKey extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["cryptoKeyBackend"] = undefined /*out*/;
+            resourceInputs["cryptoKeyId"] = undefined /*out*/;
             resourceInputs["destroyScheduledDuration"] = undefined /*out*/;
             resourceInputs["importOnly"] = undefined /*out*/;
+            resourceInputs["keyRingId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nextRotationTime"] = undefined /*out*/;
             resourceInputs["primary"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["purpose"] = undefined /*out*/;
             resourceInputs["rotationPeriod"] = undefined /*out*/;
+            resourceInputs["skipInitialVersionCreation"] = undefined /*out*/;
             resourceInputs["versionTemplate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

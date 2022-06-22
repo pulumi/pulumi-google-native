@@ -36,6 +36,10 @@ export class TransferConfig extends pulumi.CustomResource {
     }
 
     /**
+     * Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+     */
+    public readonly authorizationCode!: pulumi.Output<string | undefined>;
+    /**
      * The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
      */
     public readonly dataRefreshWindowDays!: pulumi.Output<number>;
@@ -63,6 +67,7 @@ export class TransferConfig extends pulumi.CustomResource {
      * Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
      */
     public readonly emailPreferences!: pulumi.Output<outputs.bigquerydatatransfer.v1.EmailPreferencesResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
@@ -83,6 +88,7 @@ export class TransferConfig extends pulumi.CustomResource {
      * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     public readonly params!: pulumi.Output<{[key: string]: string}>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
      */
@@ -91,6 +97,10 @@ export class TransferConfig extends pulumi.CustomResource {
      * Options customizing the data transfer schedule.
      */
     public readonly scheduleOptions!: pulumi.Output<outputs.bigquerydatatransfer.v1.ScheduleOptionsResponse>;
+    /**
+     * Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+     */
+    public readonly serviceAccountName!: pulumi.Output<string | undefined>;
     /**
      * State of the most recently updated transfer run.
      */
@@ -105,6 +115,10 @@ export class TransferConfig extends pulumi.CustomResource {
      * @deprecated Deprecated. Unique ID of the user on whose behalf transfer is done.
      */
     public readonly userId!: pulumi.Output<string>;
+    /**
+     * Optional version info. This is required only if `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+     */
+    public readonly versionInfo!: pulumi.Output<string | undefined>;
 
     /**
      * Create a TransferConfig resource with the given unique name, arguments, and options.
@@ -140,6 +154,7 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["authorizationCode"] = undefined /*out*/;
             resourceInputs["dataRefreshWindowDays"] = undefined /*out*/;
             resourceInputs["dataSourceId"] = undefined /*out*/;
             resourceInputs["datasetRegion"] = undefined /*out*/;
@@ -147,16 +162,20 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["emailPreferences"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nextRunTime"] = undefined /*out*/;
             resourceInputs["notificationPubsubTopic"] = undefined /*out*/;
             resourceInputs["ownerInfo"] = undefined /*out*/;
             resourceInputs["params"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["schedule"] = undefined /*out*/;
             resourceInputs["scheduleOptions"] = undefined /*out*/;
+            resourceInputs["serviceAccountName"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
+            resourceInputs["versionInfo"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TransferConfig.__pulumiType, name, resourceInputs, opts);

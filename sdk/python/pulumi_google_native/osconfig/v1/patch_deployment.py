@@ -305,6 +305,8 @@ class PatchDeployment(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["one_time_schedule"] = None
         __props__.__dict__["patch_config"] = None
+        __props__.__dict__["patch_deployment_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["recurring_schedule"] = None
         __props__.__dict__["rollout"] = None
         __props__.__dict__["state"] = None
@@ -374,6 +376,19 @@ class PatchDeployment(pulumi.CustomResource):
         Optional. Patch configuration that is applied.
         """
         return pulumi.get(self, "patch_config")
+
+    @property
+    @pulumi.getter(name="patchDeploymentId")
+    def patch_deployment_id(self) -> pulumi.Output[str]:
+        """
+        Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        """
+        return pulumi.get(self, "patch_deployment_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="recurringSchedule")

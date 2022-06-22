@@ -250,13 +250,16 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["revision_create_time"] = None
         __props__.__dict__["revision_id"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["source_contents"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["workflow_id"] = None
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -285,11 +288,21 @@ class Workflow(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="revisionCreateTime")
@@ -338,4 +351,12 @@ class Workflow(pulumi.CustomResource):
         The last update timestamp of the workflow.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="workflowId")
+    def workflow_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+        """
+        return pulumi.get(self, "workflow_id")
 

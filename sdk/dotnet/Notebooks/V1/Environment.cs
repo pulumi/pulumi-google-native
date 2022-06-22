@@ -41,6 +41,15 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
+        /// </summary>
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
         /// </summary>
         [Output("name")]
@@ -51,6 +60,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Output("postStartupScript")]
         public Output<string> PostStartupScript { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Use a Compute Engine VM image to start the notebook instance.

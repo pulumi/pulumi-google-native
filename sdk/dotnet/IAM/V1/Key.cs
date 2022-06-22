@@ -58,11 +58,17 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Output("privateKeyType")]
         public Output<string> PrivateKeyType { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The public key data. Only provided in `GetServiceAccountKey` responses.
         /// </summary>
         [Output("publicKeyData")]
         public Output<string> PublicKeyData { get; private set; } = null!;
+
+        [Output("serviceAccountId")]
+        public Output<string> ServiceAccountId { get; private set; } = null!;
 
         /// <summary>
         /// The key can be used after this timestamp.

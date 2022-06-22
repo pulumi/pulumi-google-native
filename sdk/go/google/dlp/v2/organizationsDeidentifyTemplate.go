@@ -24,8 +24,10 @@ type OrganizationsDeidentifyTemplate struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Display name (max 256 chars).
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The last update timestamp of an inspectTemplate.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -163,9 +165,17 @@ func (o OrganizationsDeidentifyTemplateOutput) DisplayName() pulumi.StringOutput
 	return o.ApplyT(func(v *OrganizationsDeidentifyTemplate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o OrganizationsDeidentifyTemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationsDeidentifyTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
 func (o OrganizationsDeidentifyTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationsDeidentifyTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o OrganizationsDeidentifyTemplateOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationsDeidentifyTemplate) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of an inspectTemplate.

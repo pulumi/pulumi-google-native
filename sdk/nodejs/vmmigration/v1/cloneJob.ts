@@ -39,6 +39,10 @@ export class CloneJob extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The clone job identifier.
+     */
+    public readonly cloneJobId!: pulumi.Output<string>;
+    /**
      * Details of the target VM in Compute Engine.
      */
     public /*out*/ readonly computeEngineTargetDetails!: pulumi.Output<outputs.vmmigration.v1.ComputeEngineTargetDetailsResponse>;
@@ -54,10 +58,18 @@ export class CloneJob extends pulumi.CustomResource {
      * Provides details for the errors that led to the Clone Job's state.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.vmmigration.v1.StatusResponse>;
+    public readonly location!: pulumi.Output<string>;
+    public readonly migratingVmId!: pulumi.Output<string>;
     /**
      * The name of the clone.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
+    public readonly sourceId!: pulumi.Output<string>;
     /**
      * State of the clone job.
      */
@@ -101,11 +113,17 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["cloneJobId"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["migratingVmId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["sourceId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
         }

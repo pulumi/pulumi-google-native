@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     public partial class ResponsePolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
+        [Output("clientOperationId")]
+        public Output<string?> ClientOperationId { get; private set; } = null!;
+
+        /// <summary>
         /// User-provided description for this Response Policy.
         /// </summary>
         [Output("description")]
@@ -36,6 +42,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.ResponsePolicyNetworkResponse>> Networks { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// User assigned name for this Response Policy.

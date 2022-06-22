@@ -204,12 +204,23 @@ class Instance(pulumi.CustomResource):
 
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
+        __props__.__dict__["database_id"] = None
         __props__.__dict__["database_url"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["validate_only"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The globally unique identifier of the database instance.
+        """
+        return pulumi.get(self, "database_id")
 
     @property
     @pulumi.getter(name="databaseUrl")
@@ -218,6 +229,11 @@ class Instance(pulumi.CustomResource):
         Output Only. The globally unique hostname of the database.
         """
         return pulumi.get(self, "database_url")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -230,9 +246,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -250,4 +263,12 @@ class Instance(pulumi.CustomResource):
         Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        When set to true, the request will be validated but not submitted.
+        """
+        return pulumi.get(self, "validate_only")
 

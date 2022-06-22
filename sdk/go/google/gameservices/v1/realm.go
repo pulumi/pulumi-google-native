@@ -22,9 +22,13 @@ type Realm struct {
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The labels associated with this realm. Each label is a key-value pair.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. The ID of the realm resource to create.
+	RealmId pulumi.StringOutput `pulumi:"realmId"`
 	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// The last-modified time.
@@ -167,9 +171,22 @@ func (o RealmOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Realm) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o RealmOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 func (o RealmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RealmOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The ID of the realm resource to create.
+func (o RealmOutput) RealmId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.RealmId }).(pulumi.StringOutput)
 }
 
 // Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).

@@ -55,6 +55,11 @@ export class Group extends pulumi.CustomResource {
      * The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
      */
     public readonly parentName!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * If true, validate this request but do not create the group.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -80,6 +85,8 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["isCluster"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parentName"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);

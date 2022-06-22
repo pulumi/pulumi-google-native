@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        [Output("v2betaId1")]
+        public Output<string> V2betaId1 { get; private set; } = null!;
+
+        [Output("v2betumId")]
+        public Output<string> V2betumId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Case resource with the given unique name, arguments, and options.

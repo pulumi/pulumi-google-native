@@ -227,14 +227,22 @@ class Waiter(pulumi.CustomResource):
 
         __props__ = WaiterArgs.__new__(WaiterArgs)
 
+        __props__.__dict__["config_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["done"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["failure"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["success"] = None
         __props__.__dict__["timeout"] = None
         return Waiter(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "config_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -275,6 +283,19 @@ class Waiter(pulumi.CustomResource):
         The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter

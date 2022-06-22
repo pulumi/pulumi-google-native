@@ -252,8 +252,11 @@ class Schedule(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["execution_template"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["recent_executions"] = None
+        __props__.__dict__["schedule_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["time_zone"] = None
         __props__.__dict__["update_time"] = None
@@ -301,11 +304,21 @@ class Schedule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="recentExecutions")
@@ -314,6 +327,14 @@ class Schedule(pulumi.CustomResource):
         The most recent execution names triggered from this schedule and their corresponding states.
         """
         return pulumi.get(self, "recent_executions")
+
+    @property
+    @pulumi.getter(name="scheduleId")
+    def schedule_id(self) -> pulumi.Output[str]:
+        """
+        Required. User-defined unique ID of this schedule.
+        """
+        return pulumi.get(self, "schedule_id")
 
     @property
     @pulumi.getter

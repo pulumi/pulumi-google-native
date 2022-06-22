@@ -16,6 +16,8 @@ type Connection struct {
 
 	// Cloud SQL properties.
 	CloudSql CloudSqlPropertiesResponseOutput `pulumi:"cloudSql"`
+	// Optional. Connection id that should be assigned to the created connection.
+	ConnectionId pulumi.StringPtrOutput `pulumi:"connectionId"`
 	// The creation timestamp of the connection.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// User provided description.
@@ -26,8 +28,10 @@ type Connection struct {
 	HasCredential pulumi.BoolOutput `pulumi:"hasCredential"`
 	// The last update timestamp of the connection.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
+	Location         pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -141,6 +145,11 @@ func (o ConnectionOutput) CloudSql() CloudSqlPropertiesResponseOutput {
 	return o.ApplyT(func(v *Connection) CloudSqlPropertiesResponseOutput { return v.CloudSql }).(CloudSqlPropertiesResponseOutput)
 }
 
+// Optional. Connection id that should be assigned to the created connection.
+func (o ConnectionOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
 // The creation timestamp of the connection.
 func (o ConnectionOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
@@ -166,9 +175,17 @@ func (o ConnectionOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
+func (o ConnectionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConnectionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -75,6 +75,7 @@ export class TypeProvider extends pulumi.CustomResource {
      * Options to apply when handling any resources in this service.
      */
     public readonly options!: pulumi.Output<outputs.deploymentmanager.v2beta.OptionsResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Self link for the type provider.
      */
@@ -114,6 +115,7 @@ export class TypeProvider extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["options"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

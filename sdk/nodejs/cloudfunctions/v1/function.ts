@@ -95,6 +95,7 @@ export class Function extends pulumi.CustomResource {
      * Labels associated with this Cloud Function.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
      */
@@ -111,6 +112,7 @@ export class Function extends pulumi.CustomResource {
      * The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
      */
     public readonly network!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
      */
@@ -230,10 +232,12 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["ingressSettings"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maxInstances"] = undefined /*out*/;
             resourceInputs["minInstances"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["runtime"] = undefined /*out*/;
             resourceInputs["secretEnvironmentVariables"] = undefined /*out*/;
             resourceInputs["secretVolumes"] = undefined /*out*/;

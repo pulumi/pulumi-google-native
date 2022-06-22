@@ -47,16 +47,28 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+        /// </summary>
+        [Output("keyId")]
+        public Output<string?> KeyId { get; private set; } = null!;
+
+        /// <summary>
         /// An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         /// </summary>
         [Output("keyString")]
         public Output<string> KeyString { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Key restrictions.

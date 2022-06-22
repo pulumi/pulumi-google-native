@@ -206,13 +206,24 @@ class CertificateMap(pulumi.CustomResource):
 
         __props__ = CertificateMapArgs.__new__(CertificateMapArgs)
 
+        __props__.__dict__["certificate_map_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["gclb_targets"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         return CertificateMap(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateMapId")
+    def certificate_map_id(self) -> pulumi.Output[str]:
+        """
+        Required. A user-provided name of the certificate map.
+        """
+        return pulumi.get(self, "certificate_map_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -248,11 +259,21 @@ class CertificateMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

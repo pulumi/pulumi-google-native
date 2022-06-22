@@ -14,6 +14,8 @@ import (
 type TransferConfig struct {
 	pulumi.CustomResourceState
 
+	// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+	AuthorizationCode pulumi.StringPtrOutput `pulumi:"authorizationCode"`
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntOutput `pulumi:"dataRefreshWindowDays"`
 	// Data source id. Cannot be changed once data transfer is created.
@@ -28,6 +30,7 @@ type TransferConfig struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences EmailPreferencesResponseOutput `pulumi:"emailPreferences"`
+	Location         pulumi.StringOutput            `pulumi:"location"`
 	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Next time when data transfer will run.
@@ -37,11 +40,14 @@ type TransferConfig struct {
 	// Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
 	OwnerInfo UserInfoResponseOutput `pulumi:"ownerInfo"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
-	Params pulumi.StringMapOutput `pulumi:"params"`
+	Params  pulumi.StringMapOutput `pulumi:"params"`
+	Project pulumi.StringOutput    `pulumi:"project"`
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	ScheduleOptions ScheduleOptionsResponseOutput `pulumi:"scheduleOptions"`
+	// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+	ServiceAccountName pulumi.StringPtrOutput `pulumi:"serviceAccountName"`
 	// State of the most recently updated transfer run.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Data transfer modification time. Ignored by server on input.
@@ -50,6 +56,8 @@ type TransferConfig struct {
 	//
 	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
 	UserId pulumi.StringOutput `pulumi:"userId"`
+	// Optional version info. This is required only if `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+	VersionInfo pulumi.StringPtrOutput `pulumi:"versionInfo"`
 }
 
 // NewTransferConfig registers a new resource with the given unique name, arguments, and options.
@@ -202,6 +210,11 @@ func (o TransferConfigOutput) ToTransferConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+func (o TransferConfigOutput) AuthorizationCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringPtrOutput { return v.AuthorizationCode }).(pulumi.StringPtrOutput)
+}
+
 // The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 func (o TransferConfigOutput) DataRefreshWindowDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.IntOutput { return v.DataRefreshWindowDays }).(pulumi.IntOutput)
@@ -237,6 +250,10 @@ func (o TransferConfigOutput) EmailPreferences() EmailPreferencesResponseOutput 
 	return o.ApplyT(func(v *TransferConfig) EmailPreferencesResponseOutput { return v.EmailPreferences }).(EmailPreferencesResponseOutput)
 }
 
+func (o TransferConfigOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 func (o TransferConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -262,6 +279,10 @@ func (o TransferConfigOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringMapOutput { return v.Params }).(pulumi.StringMapOutput)
 }
 
+func (o TransferConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
 func (o TransferConfigOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
@@ -270,6 +291,11 @@ func (o TransferConfigOutput) Schedule() pulumi.StringOutput {
 // Options customizing the data transfer schedule.
 func (o TransferConfigOutput) ScheduleOptions() ScheduleOptionsResponseOutput {
 	return o.ApplyT(func(v *TransferConfig) ScheduleOptionsResponseOutput { return v.ScheduleOptions }).(ScheduleOptionsResponseOutput)
+}
+
+// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+func (o TransferConfigOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringPtrOutput { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
 }
 
 // State of the most recently updated transfer run.
@@ -287,6 +313,11 @@ func (o TransferConfigOutput) UpdateTime() pulumi.StringOutput {
 // Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
 func (o TransferConfigOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Optional version info. This is required only if `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+func (o TransferConfigOutput) VersionInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringPtrOutput { return v.VersionInfo }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -320,10 +320,13 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["last_event_time"] = None
         __props__.__dict__["last_heartbeat_time"] = None
         __props__.__dict__["last_state_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["log_level"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["num_id"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["registry_id"] = None
         __props__.__dict__["state"] = None
         return Device(resource_name, opts=opts, __props__=__props__)
 
@@ -416,6 +419,11 @@ class Device(pulumi.CustomResource):
         return pulumi.get(self, "last_state_time")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="logLevel")
     def log_level(self) -> pulumi.Output[str]:
         """
@@ -446,6 +454,16 @@ class Device(pulumi.CustomResource):
         [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
         """
         return pulumi.get(self, "num_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="registryId")
+    def registry_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "registry_id")
 
     @property
     @pulumi.getter

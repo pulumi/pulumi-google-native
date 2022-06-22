@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
     [GoogleNativeResourceType("google-native:pubsublite/v1:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         /// </summary>
@@ -27,6 +30,9 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Output("partitionConfig")]
         public Output<Outputs.PartitionConfigResponse> PartitionConfig { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The settings for this topic's Reservation usage.
         /// </summary>
@@ -38,6 +44,12 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         /// </summary>
         [Output("retentionConfig")]
         public Output<Outputs.RetentionConfigResponse> RetentionConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+        /// </summary>
+        [Output("topicId")]
+        public Output<string> TopicId { get; private set; } = null!;
 
 
         /// <summary>

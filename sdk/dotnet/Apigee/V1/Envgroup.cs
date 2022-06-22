@@ -34,10 +34,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> LastModifiedAt { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the environment group.
+        /// ID of the environment group. Overrides any ID in the environment_group resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// State of the environment group. Values other than ACTIVE means the resource is not ready to use.

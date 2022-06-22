@@ -279,8 +279,11 @@ class ResourceRecordSet(pulumi.CustomResource):
 
         __props__ = ResourceRecordSetInitArgs.__new__(ResourceRecordSetInitArgs)
 
+        __props__.__dict__["client_operation_id"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["managed_zone"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["routing_policy"] = None
         __props__.__dict__["rrdatas"] = None
         __props__.__dict__["signature_rrdatas"] = None
@@ -289,9 +292,22 @@ class ResourceRecordSet(pulumi.CustomResource):
         return ResourceRecordSet(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
+        return pulumi.get(self, "client_operation_id")
+
+    @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="managedZone")
+    def managed_zone(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "managed_zone")
 
     @property
     @pulumi.getter
@@ -300,6 +316,11 @@ class ResourceRecordSet(pulumi.CustomResource):
         For example, www.example.com.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="routingPolicy")

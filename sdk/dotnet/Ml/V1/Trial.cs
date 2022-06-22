@@ -40,6 +40,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Output("infeasibleReason")]
         public Output<string> InfeasibleReason { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
         /// </summary>
@@ -58,6 +61,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.GoogleCloudMlV1_Trial_ParameterResponse>> Parameters { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Time at which the trial was started.
         /// </summary>
@@ -69,6 +75,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("studyId")]
+        public Output<string> StudyId { get; private set; } = null!;
 
         /// <summary>
         /// If true, the parameters in this trial are not attempted again.

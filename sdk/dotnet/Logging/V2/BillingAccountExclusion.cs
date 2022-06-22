@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Logging.V2
     [GoogleNativeResourceType("google-native:logging/v2:BillingAccountExclusion")]
     public partial class BillingAccountExclusion : Pulumi.CustomResource
     {
+        [Output("billingAccountId")]
+        public Output<string> BillingAccountId { get; private set; } = null!;
+
         /// <summary>
         /// The creation timestamp of the exclusion.This field may not be present for older exclusions.
         /// </summary>

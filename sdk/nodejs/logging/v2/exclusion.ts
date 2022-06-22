@@ -54,6 +54,7 @@ export class Exclusion extends pulumi.CustomResource {
      * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The last update timestamp of the exclusion.This field may not be present for older exclusions.
      */
@@ -86,6 +87,7 @@ export class Exclusion extends pulumi.CustomResource {
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

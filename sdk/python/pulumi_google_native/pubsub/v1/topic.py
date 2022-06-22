@@ -270,8 +270,10 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["message_retention_duration"] = None
         __props__.__dict__["message_storage_policy"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["schema_settings"] = None
+        __props__.__dict__["topic_id"] = None
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -315,6 +317,11 @@ class Topic(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
@@ -329,4 +336,9 @@ class Topic(pulumi.CustomResource):
         Settings for validating messages published against a schema.
         """
         return pulumi.get(self, "schema_settings")
+
+    @property
+    @pulumi.getter(name="topicId")
+    def topic_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "topic_id")
 

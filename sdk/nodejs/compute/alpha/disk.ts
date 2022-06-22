@@ -125,6 +125,7 @@ export class Disk extends pulumi.CustomResource {
      * Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
      */
     public readonly physicalBlockSizeBytes!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
      */
@@ -137,6 +138,10 @@ export class Disk extends pulumi.CustomResource {
      * URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
      */
     public readonly replicaZones!: pulumi.Output<string[]>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      */
@@ -178,7 +183,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceDiskId!: pulumi.Output<string>;
     /**
-     * The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
+     * Source image to restore onto a disk. This field is optional.
      */
     public readonly sourceImage!: pulumi.Output<string>;
     /**
@@ -235,9 +240,6 @@ export class Disk extends pulumi.CustomResource {
      * Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
      */
     public /*out*/ readonly users!: pulumi.Output<string[]>;
-    /**
-     * URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -326,9 +328,11 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["options"] = undefined /*out*/;
             resourceInputs["physicalBlockSizeBytes"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisionedIops"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["replicaZones"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;

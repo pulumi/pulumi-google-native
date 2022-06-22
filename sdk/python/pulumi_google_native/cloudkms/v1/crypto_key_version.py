@@ -214,6 +214,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         __props__.__dict__["algorithm"] = None
         __props__.__dict__["attestation"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["crypto_key_id"] = None
         __props__.__dict__["destroy_event_time"] = None
         __props__.__dict__["destroy_time"] = None
         __props__.__dict__["external_protection_level_options"] = None
@@ -221,7 +222,10 @@ class CryptoKeyVersion(pulumi.CustomResource):
         __props__.__dict__["import_failure_reason"] = None
         __props__.__dict__["import_job"] = None
         __props__.__dict__["import_time"] = None
+        __props__.__dict__["key_ring_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["protection_level"] = None
         __props__.__dict__["reimport_eligible"] = None
         __props__.__dict__["state"] = None
@@ -250,6 +254,11 @@ class CryptoKeyVersion(pulumi.CustomResource):
         The time at which this CryptoKeyVersion was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyId")
+    def crypto_key_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "crypto_key_id")
 
     @property
     @pulumi.getter(name="destroyEventTime")
@@ -308,12 +317,27 @@ class CryptoKeyVersion(pulumi.CustomResource):
         return pulumi.get(self, "import_time")
 
     @property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "key_ring_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="protectionLevel")

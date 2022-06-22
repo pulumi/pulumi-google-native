@@ -272,10 +272,13 @@ class TcpRoute(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["gateways"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["meshes"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["tcp_route_id"] = None
         __props__.__dict__["update_time"] = None
         return TcpRoute(resource_name, opts=opts, __props__=__props__)
 
@@ -313,6 +316,11 @@ class TcpRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def meshes(self) -> pulumi.Output[Sequence[str]]:
         """
         Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
@@ -329,6 +337,11 @@ class TcpRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.TcpRouteRouteRuleResponse']]:
         """
         Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
@@ -342,6 +355,14 @@ class TcpRoute(pulumi.CustomResource):
         Server-defined URL of this resource
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="tcpRouteId")
+    def tcp_route_id(self) -> pulumi.Output[str]:
+        """
+        Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        """
+        return pulumi.get(self, "tcp_route_id")
 
     @property
     @pulumi.getter(name="updateTime")

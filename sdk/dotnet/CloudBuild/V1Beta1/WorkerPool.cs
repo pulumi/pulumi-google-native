@@ -46,6 +46,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
         /// </summary>
@@ -57,6 +60,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         /// </summary>
         [Output("networkConfig")]
         public Output<Outputs.NetworkConfigResponse> NetworkConfig { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// `WorkerPool` state.
@@ -81,6 +87,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         /// </summary>
         [Output("workerConfig")]
         public Output<Outputs.WorkerConfigResponse> WorkerConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+        /// </summary>
+        [Output("workerPoolId")]
+        public Output<string> WorkerPoolId { get; private set; } = null!;
 
 
         /// <summary>

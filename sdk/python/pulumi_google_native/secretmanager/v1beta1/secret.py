@@ -177,7 +177,9 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["replication"] = None
+        __props__.__dict__["secret_id"] = None
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -206,9 +208,22 @@ class Secret(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def replication(self) -> pulumi.Output['outputs.ReplicationResponse']:
         """
         Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         """
         return pulumi.get(self, "replication")
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> pulumi.Output[str]:
+        """
+        Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+        """
+        return pulumi.get(self, "secret_id")
 

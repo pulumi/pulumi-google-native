@@ -78,11 +78,16 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * The parent of the security policy.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     public readonly recaptchaOptionsConfig!: pulumi.Output<outputs.compute.beta.SecurityPolicyRecaptchaOptionsConfigResponse>;
     /**
      * URL of the region where the regional security policy resides. This field is not applicable to global security policies.
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */
@@ -103,6 +108,10 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * If true, the request will not be committed.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -152,13 +161,16 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["recaptchaOptionsConfig"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityPolicy.__pulumiType, name, resourceInputs, opts);

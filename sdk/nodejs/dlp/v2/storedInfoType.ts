@@ -40,6 +40,7 @@ export class StoredInfoType extends pulumi.CustomResource {
      * Current version of the stored info type.
      */
     public /*out*/ readonly currentVersion!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeVersionResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name.
      */
@@ -48,6 +49,7 @@ export class StoredInfoType extends pulumi.CustomResource {
      * Pending versions of the stored info type. Empty if no versions are pending.
      */
     public /*out*/ readonly pendingVersions!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeVersionResponse[]>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a StoredInfoType resource with the given unique name, arguments, and options.
@@ -72,8 +74,10 @@ export class StoredInfoType extends pulumi.CustomResource {
             resourceInputs["pendingVersions"] = undefined /*out*/;
         } else {
             resourceInputs["currentVersion"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingVersions"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StoredInfoType.__pulumiType, name, resourceInputs, opts);

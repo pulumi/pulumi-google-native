@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<ImmutableArray<Outputs.ConfigVariableResponse>> ConfigVariables { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+        /// </summary>
+        [Output("connectionId")]
+        public Output<string> ConnectionId { get; private set; } = null!;
+
+        /// <summary>
         /// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
         /// </summary>
         [Output("connectorVersion")]
@@ -70,6 +76,9 @@ namespace Pulumi.GoogleNative.Connectors.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Configuration that indicates whether or not the Connection can be edited.
         /// </summary>
@@ -81,6 +90,9 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Service account needed for runtime plane to access GCP resources.

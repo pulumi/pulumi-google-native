@@ -40,6 +40,9 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         [Output("notificationCategorySubscriptions")]
         public Output<ImmutableArray<string>> NotificationCategorySubscriptions { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
         /// </summary>

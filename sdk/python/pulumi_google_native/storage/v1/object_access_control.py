@@ -422,14 +422,12 @@ class ObjectAccessControl(pulumi.CustomResource):
         __props__.__dict__["project_team"] = None
         __props__.__dict__["role"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["user_project"] = None
         return ObjectAccessControl(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
-        """
-        The name of the bucket.
-        """
         return pulumi.get(self, "bucket")
 
     @property
@@ -487,7 +485,7 @@ class ObjectAccessControl(pulumi.CustomResource):
     @pulumi.getter
     def generation(self) -> pulumi.Output[str]:
         """
-        The content generation of the object, if applied to an object.
+        If present, selects a specific revision of this object (as opposed to the latest version, the default).
         """
         return pulumi.get(self, "generation")
 
@@ -502,9 +500,6 @@ class ObjectAccessControl(pulumi.CustomResource):
     @property
     @pulumi.getter
     def object(self) -> pulumi.Output[str]:
-        """
-        The name of the object, if applied to an object.
-        """
         return pulumi.get(self, "object")
 
     @property
@@ -530,4 +525,12 @@ class ObjectAccessControl(pulumi.CustomResource):
         The link to this access-control entry.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
+        return pulumi.get(self, "user_project")
 

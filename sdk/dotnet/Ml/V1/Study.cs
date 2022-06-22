@@ -28,11 +28,17 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Output("inactiveReason")]
         public Output<string> InactiveReason { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The name of a study.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The detailed state of a study.
@@ -45,6 +51,12 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         [Output("studyConfig")]
         public Output<Outputs.GoogleCloudMlV1__StudyConfigResponse> StudyConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the study, which will become the final component of the study's resource name.
+        /// </summary>
+        [Output("studyId")]
+        public Output<string> StudyId { get; private set; } = null!;
 
 
         /// <summary>

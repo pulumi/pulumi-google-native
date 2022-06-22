@@ -27,10 +27,15 @@ type ImportJob struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The time this ImportJob's key material was generated.
 	GenerateTime pulumi.StringOutput `pulumi:"generateTime"`
+	// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	ImportJobId pulumi.StringOutput `pulumi:"importJobId"`
 	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod pulumi.StringOutput `pulumi:"importMethod"`
+	KeyRingId    pulumi.StringOutput `pulumi:"keyRingId"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
 	// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
@@ -173,14 +178,31 @@ func (o ImportJobOutput) GenerateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.GenerateTime }).(pulumi.StringOutput)
 }
 
+// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+func (o ImportJobOutput) ImportJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.ImportJobId }).(pulumi.StringOutput)
+}
+
 // Immutable. The wrapping method to be used for incoming key material.
 func (o ImportJobOutput) ImportMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.ImportMethod }).(pulumi.StringOutput)
 }
 
+func (o ImportJobOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
+}
+
+func (o ImportJobOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
 func (o ImportJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ImportJobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.

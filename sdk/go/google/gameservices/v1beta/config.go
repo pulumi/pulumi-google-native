@@ -15,16 +15,21 @@ import (
 type Config struct {
 	pulumi.CustomResourceState
 
+	// Required. The ID of the game server config resource to create.
+	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the game server config.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
-	FleetConfigs FleetConfigResponseArrayOutput `pulumi:"fleetConfigs"`
+	FleetConfigs           FleetConfigResponseArrayOutput `pulumi:"fleetConfigs"`
+	GameServerDeploymentId pulumi.StringOutput            `pulumi:"gameServerDeploymentId"`
 	// The labels associated with this game server config. Each label is a key-value pair.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The autoscaling settings.
 	ScalingConfigs ScalingConfigResponseArrayOutput `pulumi:"scalingConfigs"`
 	// The last-modified time.
@@ -149,6 +154,11 @@ func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutpu
 	return o
 }
 
+// Required. The ID of the game server config resource to create.
+func (o ConfigOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
 // The creation time.
 func (o ConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -164,14 +174,26 @@ func (o ConfigOutput) FleetConfigs() FleetConfigResponseArrayOutput {
 	return o.ApplyT(func(v *Config) FleetConfigResponseArrayOutput { return v.FleetConfigs }).(FleetConfigResponseArrayOutput)
 }
 
+func (o ConfigOutput) GameServerDeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.GameServerDeploymentId }).(pulumi.StringOutput)
+}
+
 // The labels associated with this game server config. Each label is a key-value pair.
 func (o ConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ConfigOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 func (o ConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The autoscaling settings.

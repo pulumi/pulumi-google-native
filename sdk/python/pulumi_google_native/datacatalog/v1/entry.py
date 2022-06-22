@@ -536,14 +536,18 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["database_table_spec"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["entry_group_id"] = None
+        __props__.__dict__["entry_id"] = None
         __props__.__dict__["fileset_spec"] = None
         __props__.__dict__["fully_qualified_name"] = None
         __props__.__dict__["gcs_fileset_spec"] = None
         __props__.__dict__["integrated_system"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["linked_resource"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["personal_details"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["routine_spec"] = None
         __props__.__dict__["schema"] = None
         __props__.__dict__["source_system_timestamps"] = None
@@ -618,6 +622,19 @@ class Entry(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="entryGroupId")
+    def entry_group_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "entry_group_id")
+
+    @property
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+        """
+        return pulumi.get(self, "entry_id")
+
+    @property
     @pulumi.getter(name="filesetSpec")
     def fileset_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1FilesetSpecResponse']:
         """
@@ -667,6 +684,11 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
@@ -680,6 +702,11 @@ class Entry(pulumi.CustomResource):
         Additional information related to the entry. Private to the current user.
         """
         return pulumi.get(self, "personal_details")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="routineSpec")

@@ -80,6 +80,7 @@ export class Developer extends pulumi.CustomResource {
      * Last name of the developer.
      */
     public readonly lastName!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Name of the Apigee organization in which the developer resides.
      */
@@ -146,6 +147,7 @@ export class Developer extends pulumi.CustomResource {
             resourceInputs["firstName"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["lastName"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["organizationName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["userName"] = undefined /*out*/;

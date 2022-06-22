@@ -55,14 +55,12 @@ export class SslCert extends pulumi.CustomResource {
      * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     public /*out*/ readonly expirationTime!: pulumi.Output<string>;
-    /**
-     * Name of the database instance.
-     */
     public readonly instance!: pulumi.Output<string>;
     /**
      * This is always `sql#sslCert`.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The URI of this resource.
      */
@@ -104,6 +102,7 @@ export class SslCert extends pulumi.CustomResource {
             resourceInputs["expirationTime"] = undefined /*out*/;
             resourceInputs["instance"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sha1Fingerprint"] = undefined /*out*/;
         }

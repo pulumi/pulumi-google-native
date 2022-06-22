@@ -28,11 +28,17 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("environment")]
         public Output<string> Environment { get; private set; } = null!;
 
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
         /// <summary>
         /// ID of the attachment.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
 
         /// <summary>

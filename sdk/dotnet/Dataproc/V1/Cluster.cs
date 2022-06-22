@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Failure action when primary worker creation fails.
+        /// </summary>
+        [Output("actionOnFailedPrimaryWorkers")]
+        public Output<string?> ActionOnFailedPrimaryWorkers { get; private set; } = null!;
+
+        /// <summary>
         /// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         /// </summary>
         [Output("clusterName")]
@@ -46,11 +52,17 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Output("metrics")]
         public Output<Outputs.ClusterMetricsResponse> Metrics { get; private set; } = null!;
 
-        /// <summary>
-        /// The Google Cloud Platform project ID that the cluster belongs to.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// Cluster status.

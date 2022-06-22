@@ -26,17 +26,23 @@ type Trigger struct {
 	// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters EventFilterResponseArrayOutput `pulumi:"eventFilters"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have the `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. To create Audit Log triggers, the service account should also have the `roles/eventarc.eventReceiver` IAM role.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transport TransportResponseOutput `pulumi:"transport"`
+	// Required. The user-provided ID to be assigned to the trigger.
+	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 	// Server-assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Required. If set, validate the request and preview the review, but do not post it.
+	ValidateOnly pulumi.StringOutput `pulumi:"validateOnly"`
 }
 
 // NewTrigger registers a new resource with the given unique name, arguments, and options.
@@ -203,9 +209,17 @@ func (o TriggerOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o TriggerOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 func (o TriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TriggerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have the `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. To create Audit Log triggers, the service account should also have the `roles/eventarc.eventReceiver` IAM role.
@@ -218,6 +232,11 @@ func (o TriggerOutput) Transport() TransportResponseOutput {
 	return o.ApplyT(func(v *Trigger) TransportResponseOutput { return v.Transport }).(TransportResponseOutput)
 }
 
+// Required. The user-provided ID to be assigned to the trigger.
+func (o TriggerOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
+}
+
 // Server-assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o TriggerOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
@@ -226,6 +245,11 @@ func (o TriggerOutput) Uid() pulumi.StringOutput {
 // The last-modified time.
 func (o TriggerOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Required. If set, validate the request and preview the review, but do not post it.
+func (o TriggerOutput) ValidateOnly() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.ValidateOnly }).(pulumi.StringOutput)
 }
 
 func init() {

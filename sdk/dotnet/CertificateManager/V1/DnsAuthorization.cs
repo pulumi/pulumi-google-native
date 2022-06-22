@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Required. A user-provided name of the dns authorization.
+        /// </summary>
+        [Output("dnsAuthorizationId")]
+        public Output<string> DnsAuthorizationId { get; private set; } = null!;
+
+        /// <summary>
         /// DNS Resource Record that needs to be added to DNS configuration.
         /// </summary>
         [Output("dnsResourceRecord")]
@@ -45,11 +51,17 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The last update timestamp of a DnsAuthorization.

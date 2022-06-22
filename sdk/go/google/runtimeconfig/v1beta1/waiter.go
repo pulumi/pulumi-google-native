@@ -15,6 +15,7 @@ import (
 type Waiter struct {
 	pulumi.CustomResourceState
 
+	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
@@ -24,7 +25,10 @@ type Waiter struct {
 	// [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
 	Failure EndConditionResponseOutput `pulumi:"failure"`
 	// The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
 	Success EndConditionResponseOutput `pulumi:"success"`
 	// [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
@@ -140,6 +144,10 @@ func (o WaiterOutput) ToWaiterOutputWithContext(ctx context.Context) WaiterOutpu
 	return o
 }
 
+func (o WaiterOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Waiter) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
 // The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
 func (o WaiterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Waiter) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -163,6 +171,15 @@ func (o WaiterOutput) Failure() EndConditionResponseOutput {
 // The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
 func (o WaiterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Waiter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WaiterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Waiter) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters.
+func (o WaiterOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Waiter) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.

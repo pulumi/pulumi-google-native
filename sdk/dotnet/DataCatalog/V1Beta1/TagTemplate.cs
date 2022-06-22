@@ -27,11 +27,23 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>> Fields { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The id of the tag template to create.
+        /// </summary>
+        [Output("tagTemplateId")]
+        public Output<string> TagTemplateId { get; private set; } = null!;
 
 
         /// <summary>

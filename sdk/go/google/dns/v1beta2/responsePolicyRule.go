@@ -18,11 +18,15 @@ type ResponsePolicyRule struct {
 
 	// Answer this query with a behavior rather than DNS data.
 	Behavior pulumi.StringOutput `pulumi:"behavior"`
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+	ClientOperationId pulumi.StringPtrOutput `pulumi:"clientOperationId"`
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	Kind    pulumi.StringOutput `pulumi:"kind"`
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-	LocalData ResponsePolicyRuleLocalDataResponseOutput `pulumi:"localData"`
+	LocalData      ResponsePolicyRuleLocalDataResponseOutput `pulumi:"localData"`
+	Project        pulumi.StringOutput                       `pulumi:"project"`
+	ResponsePolicy pulumi.StringOutput                       `pulumi:"responsePolicy"`
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
 }
@@ -143,6 +147,11 @@ func (o ResponsePolicyRuleOutput) Behavior() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.Behavior }).(pulumi.StringOutput)
 }
 
+// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+func (o ResponsePolicyRuleOutput) ClientOperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringPtrOutput { return v.ClientOperationId }).(pulumi.StringPtrOutput)
+}
+
 // The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 func (o ResponsePolicyRuleOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
@@ -155,6 +164,14 @@ func (o ResponsePolicyRuleOutput) Kind() pulumi.StringOutput {
 // Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
 func (o ResponsePolicyRuleOutput) LocalData() ResponsePolicyRuleLocalDataResponseOutput {
 	return o.ApplyT(func(v *ResponsePolicyRule) ResponsePolicyRuleLocalDataResponseOutput { return v.LocalData }).(ResponsePolicyRuleLocalDataResponseOutput)
+}
+
+func (o ResponsePolicyRuleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o ResponsePolicyRuleOutput) ResponsePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.ResponsePolicy }).(pulumi.StringOutput)
 }
 
 // An identifier for this rule. Must be unique with the ResponsePolicy.

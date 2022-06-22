@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
     [GoogleNativeResourceType("google-native:firebaseappcheck/v1beta:DebugToken")]
     public partial class DebugToken : Pulumi.CustomResource
     {
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
         /// <summary>
         /// A human readable display name used to identify this debug token.
         /// </summary>
@@ -26,6 +29,9 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class AppProfile : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+        /// </summary>
+        [Output("appProfileId")]
+        public Output<string> AppProfileId { get; private set; } = null!;
+
+        /// <summary>
         /// Long form description of the use case for this AppProfile.
         /// </summary>
         [Output("description")]
@@ -28,6 +34,15 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// If true, ignore safety checks when creating the app profile.
+        /// </summary>
+        [Output("ignoreWarnings")]
+        public Output<string?> IgnoreWarnings { get; private set; } = null!;
+
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// Use a multi-cluster routing policy.
         /// </summary>
         [Output("multiClusterRoutingUseAny")]
@@ -38,6 +53,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Use a single-cluster routing policy.

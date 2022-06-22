@@ -33,7 +33,8 @@ type Build struct {
 	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 	FinishTime pulumi.StringOutput `pulumi:"finishTime"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-	Images pulumi.StringArrayOutput `pulumi:"images"`
+	Images   pulumi.StringArrayOutput `pulumi:"images"`
+	Location pulumi.StringOutput      `pulumi:"location"`
 	// URL to logs for this build in Google Cloud Console.
 	LogUrl pulumi.StringOutput `pulumi:"logUrl"`
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
@@ -42,8 +43,9 @@ type Build struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Special options for this build.
 	Options BuildOptionsResponseOutput `pulumi:"options"`
-	// ID of the project.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput        `pulumi:"project"`
+	// Required. ID of the project.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringOutput `pulumi:"queueTtl"`
 	// Results of the build.
@@ -264,6 +266,10 @@ func (o BuildOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Build) pulumi.StringArrayOutput { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+func (o BuildOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // URL to logs for this build in Google Cloud Console.
 func (o BuildOutput) LogUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.LogUrl }).(pulumi.StringOutput)
@@ -284,9 +290,13 @@ func (o BuildOutput) Options() BuildOptionsResponseOutput {
 	return o.ApplyT(func(v *Build) BuildOptionsResponseOutput { return v.Options }).(BuildOptionsResponseOutput)
 }
 
-// ID of the project.
 func (o BuildOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. ID of the project.
+func (o BuildOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

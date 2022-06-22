@@ -305,6 +305,8 @@ class MachineImage(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["machine_image_encryption_key"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["saved_disks"] = None
         __props__.__dict__["self_link"] = None
@@ -374,6 +376,19 @@ class MachineImage(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
@@ -417,7 +432,7 @@ class MachineImage(pulumi.CustomResource):
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> pulumi.Output[str]:
         """
-        The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
+        Required. Source instance that is used to create the machine image from.
         """
         return pulumi.get(self, "source_instance")
 

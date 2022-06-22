@@ -19,7 +19,8 @@ type Version struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerResponseOutput `pulumi:"apiConfig"`
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
-	AppEngineApis pulumi.BoolOutput `pulumi:"appEngineApis"`
+	AppEngineApis pulumi.BoolOutput   `pulumi:"appEngineApis"`
+	AppId         pulumi.StringOutput `pulumi:"appId"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling AutomaticScalingResponseOutput `pulumi:"automaticScaling"`
 	// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -82,6 +83,7 @@ type Version struct {
 	RuntimeMainExecutablePath pulumi.StringOutput `pulumi:"runtimeMainExecutablePath"`
 	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	ServiceId      pulumi.StringOutput `pulumi:"serviceId"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
 	ServingStatus pulumi.StringOutput `pulumi:"servingStatus"`
 	// Whether multiple requests can be dispatched to this version at once.
@@ -344,6 +346,10 @@ func (o VersionOutput) AppEngineApis() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Version) pulumi.BoolOutput { return v.AppEngineApis }).(pulumi.BoolOutput)
 }
 
+func (o VersionOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
 // Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 func (o VersionOutput) AutomaticScaling() AutomaticScalingResponseOutput {
 	return o.ApplyT(func(v *Version) AutomaticScalingResponseOutput { return v.AutomaticScaling }).(AutomaticScalingResponseOutput)
@@ -497,6 +503,10 @@ func (o VersionOutput) RuntimeMainExecutablePath() pulumi.StringOutput {
 // The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 func (o VersionOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o VersionOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.

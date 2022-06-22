@@ -20,8 +20,10 @@ type IssueModel struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Configs for the input data that used to create the issue model.
 	InputDataConfig GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput `pulumi:"inputDataConfig"`
+	Location        pulumi.StringOutput                                                       `pulumi:"location"`
 	// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// State of the model.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Immutable. The issue model's label statistics on its training data.
@@ -145,9 +147,17 @@ func (o IssueModelOutput) InputDataConfig() GoogleCloudContactcenterinsightsV1Is
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput)
 }
 
+func (o IssueModelOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 func (o IssueModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o IssueModelOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State of the model.

@@ -24,9 +24,16 @@ type MetadataImport struct {
 	// The description of the metadata import.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The time when the metadata import finished.
-	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	EndTime  pulumi.StringOutput `pulumi:"endTime"`
+	Location pulumi.StringOutput `pulumi:"location"`
+	// Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+	MetadataImportId pulumi.StringOutput `pulumi:"metadataImportId"`
 	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	ServiceId pulumi.StringOutput    `pulumi:"serviceId"`
 	// The current state of the metadata import.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time when the metadata import was last updated.
@@ -167,9 +174,31 @@ func (o MetadataImportOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
+func (o MetadataImportOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+func (o MetadataImportOutput) MetadataImportId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.MetadataImportId }).(pulumi.StringOutput)
+}
+
 // Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
 func (o MetadataImportOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o MetadataImportOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+func (o MetadataImportOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataImportOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The current state of the metadata import.

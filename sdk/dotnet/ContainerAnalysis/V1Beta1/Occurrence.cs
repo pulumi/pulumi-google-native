@@ -88,6 +88,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [Output("noteName")]
         public Output<string> NoteName { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// A description of actions that can be taken to remedy the note.
         /// </summary>

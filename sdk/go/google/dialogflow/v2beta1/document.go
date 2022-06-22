@@ -23,16 +23,21 @@ type Document struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload pulumi.BoolOutput `pulumi:"enableAutoReload"`
+	// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
+	ImportGcsCustomMetadata pulumi.StringPtrOutput `pulumi:"importGcsCustomMetadata"`
+	KnowledgeBaseId         pulumi.StringOutput    `pulumi:"knowledgeBaseId"`
 	// The knowledge type of document content.
 	KnowledgeTypes pulumi.StringArrayOutput `pulumi:"knowledgeTypes"`
 	// The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
 	LatestReloadStatus GoogleCloudDialogflowV2beta1DocumentReloadStatusResponseOutput `pulumi:"latestReloadStatus"`
+	Location           pulumi.StringOutput                                            `pulumi:"location"`
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The MIME type of this document.
 	MimeType pulumi.StringOutput `pulumi:"mimeType"`
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent pulumi.StringOutput `pulumi:"rawContent"`
 	// The current state of the document.
@@ -199,6 +204,15 @@ func (o DocumentOutput) EnableAutoReload() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Document) pulumi.BoolOutput { return v.EnableAutoReload }).(pulumi.BoolOutput)
 }
 
+// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
+func (o DocumentOutput) ImportGcsCustomMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringPtrOutput { return v.ImportGcsCustomMetadata }).(pulumi.StringPtrOutput)
+}
+
+func (o DocumentOutput) KnowledgeBaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.KnowledgeBaseId }).(pulumi.StringOutput)
+}
+
 // The knowledge type of document content.
 func (o DocumentOutput) KnowledgeTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringArrayOutput { return v.KnowledgeTypes }).(pulumi.StringArrayOutput)
@@ -209,6 +223,10 @@ func (o DocumentOutput) LatestReloadStatus() GoogleCloudDialogflowV2beta1Documen
 	return o.ApplyT(func(v *Document) GoogleCloudDialogflowV2beta1DocumentReloadStatusResponseOutput {
 		return v.LatestReloadStatus
 	}).(GoogleCloudDialogflowV2beta1DocumentReloadStatusResponseOutput)
+}
+
+func (o DocumentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
@@ -224,6 +242,10 @@ func (o DocumentOutput) MimeType() pulumi.StringOutput {
 // Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 func (o DocumentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DocumentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.

@@ -315,13 +315,17 @@ class Batch(pulumi.CustomResource):
 
         __props__ = BatchArgs.__new__(BatchArgs)
 
+        __props__.__dict__["batch_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["creator"] = None
         __props__.__dict__["environment_config"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["pyspark_batch"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["runtime_config"] = None
         __props__.__dict__["runtime_info"] = None
         __props__.__dict__["spark_batch"] = None
@@ -333,6 +337,14 @@ class Batch(pulumi.CustomResource):
         __props__.__dict__["state_time"] = None
         __props__.__dict__["uuid"] = None
         return Batch(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="batchId")
+    def batch_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+        """
+        return pulumi.get(self, "batch_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -368,6 +380,11 @@ class Batch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the batch.
@@ -383,12 +400,25 @@ class Batch(pulumi.CustomResource):
         return pulumi.get(self, "operation")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="pysparkBatch")
     def pyspark_batch(self) -> pulumi.Output['outputs.PySparkBatchResponse']:
         """
         Optional. PySpark batch config.
         """
         return pulumi.get(self, "pyspark_batch")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="runtimeConfig")

@@ -16,6 +16,7 @@ import (
 type CatalogItem struct {
 	pulumi.CustomResourceState
 
+	CatalogId pulumi.StringOutput `pulumi:"catalogId"`
 	// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 	CategoryHierarchies GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput `pulumi:"categoryHierarchies"`
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
@@ -28,8 +29,10 @@ type CatalogItem struct {
 	//
 	// Deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// Optional. Metadata specific to retail products.
 	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput `pulumi:"productMetadata"`
+	Project         pulumi.StringOutput                                                    `pulumi:"project"`
 	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
@@ -176,6 +179,10 @@ func (o CatalogItemOutput) ToCatalogItemOutputWithContext(ctx context.Context) C
 	return o
 }
 
+func (o CatalogItemOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.CatalogId }).(pulumi.StringOutput)
+}
+
 // Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 func (o CatalogItemOutput) CategoryHierarchies() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
 	return o.ApplyT(func(v *CatalogItem) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
@@ -207,11 +214,19 @@ func (o CatalogItemOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
+func (o CatalogItemOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Metadata specific to retail products.
 func (o CatalogItemOutput) ProductMetadata() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
 	return o.ApplyT(func(v *CatalogItem) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
 		return v.ProductMetadata
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput)
+}
+
+func (o CatalogItemOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.

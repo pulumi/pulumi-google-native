@@ -36,6 +36,8 @@ export class CustomerRepricingConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomerRepricingConfig.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
+    public readonly customerId!: pulumi.Output<string>;
     /**
      * Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
      */
@@ -75,6 +77,8 @@ export class CustomerRepricingConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["customerId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["repricingConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

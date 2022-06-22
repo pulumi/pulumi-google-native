@@ -211,9 +211,6 @@ class Index(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        Project ID.
-        """
         return pulumi.get(self, "project")
 
     @property

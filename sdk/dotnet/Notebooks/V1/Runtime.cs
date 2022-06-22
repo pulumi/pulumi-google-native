@@ -34,6 +34,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Output("healthState")]
         public Output<string> HealthState { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
         /// </summary>
@@ -45,6 +48,21 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Idempotent request UUID.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. User-defined unique ID of this Runtime.
+        /// </summary>
+        [Output("runtimeId")]
+        public Output<string> RuntimeId { get; private set; } = null!;
 
         /// <summary>
         /// The config settings for software inside the runtime.

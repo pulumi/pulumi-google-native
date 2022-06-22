@@ -76,11 +76,20 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("format")]
         public Output<Outputs.GoogleCloudDataplexV1StorageFormatResponse> Format { get; private set; } = null!;
 
+        [Output("lakeId")]
+        public Output<string> LakeId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
@@ -105,6 +114,15 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
+
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>

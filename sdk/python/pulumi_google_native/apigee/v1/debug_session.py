@@ -280,14 +280,23 @@ class DebugSession(pulumi.CustomResource):
 
         __props__ = DebugSessionArgs.__new__(DebugSessionArgs)
 
+        __props__.__dict__["api_id"] = None
         __props__.__dict__["count"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["filter"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
+        __props__.__dict__["revision_id"] = None
         __props__.__dict__["timeout"] = None
         __props__.__dict__["tracesize"] = None
         __props__.__dict__["validity"] = None
         return DebugSession(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter
@@ -306,6 +315,11 @@ class DebugSession(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def filter(self) -> pulumi.Output[str]:
         """
@@ -322,10 +336,20 @@ class DebugSession(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "revision_id")
+
+    @property
     @pulumi.getter
     def timeout(self) -> pulumi.Output[str]:
         """
-        Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+        Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value.
         """
         return pulumi.get(self, "timeout")
 

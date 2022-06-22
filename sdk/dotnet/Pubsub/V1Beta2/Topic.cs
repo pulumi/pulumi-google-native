@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("topicId")]
+        public Output<string> TopicId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Topic resource with the given unique name, arguments, and options.

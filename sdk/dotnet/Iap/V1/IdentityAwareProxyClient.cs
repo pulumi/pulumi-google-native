@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Iap.V1
     [GoogleNativeResourceType("google-native:iap/v1:IdentityAwareProxyClient")]
     public partial class IdentityAwareProxyClient : Pulumi.CustomResource
     {
+        [Output("brandId")]
+        public Output<string> BrandId { get; private set; } = null!;
+
         /// <summary>
         /// Human-friendly name given to the OAuth client.
         /// </summary>
@@ -27,6 +30,9 @@ namespace Pulumi.GoogleNative.Iap.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Client secret of the OAuth client.

@@ -47,6 +47,7 @@ export class PolicyTag extends pulumi.CustomResource {
      * User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
      */
@@ -55,6 +56,8 @@ export class PolicyTag extends pulumi.CustomResource {
      * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
      */
     public readonly parentPolicyTag!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly taxonomyId!: pulumi.Output<string>;
 
     /**
      * Create a PolicyTag resource with the given unique name, arguments, and options.
@@ -85,8 +88,11 @@ export class PolicyTag extends pulumi.CustomResource {
             resourceInputs["childPolicyTags"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parentPolicyTag"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["taxonomyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyTag.__pulumiType, name, resourceInputs, opts);

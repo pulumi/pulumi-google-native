@@ -33,11 +33,17 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Output("granularity")]
         public Output<string> Granularity { get; private set; } = null!;
 
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
         /// <summary>
         /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.

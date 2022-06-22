@@ -117,6 +117,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Output("manualScaling")]
         public Output<Outputs.GoogleCloudMlV1__ManualScalingResponse> ManualScaling { get; private set; } = null!;
 
+        [Output("modelId")]
+        public Output<string> ModelId { get; private set; } = null!;
+
         /// <summary>
         /// The name specified for the version when it was created. The version name must be unique within the model it is created in.
         /// </summary>
@@ -134,6 +137,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         [Output("predictionClass")]
         public Output<string> PredictionClass { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).

@@ -67,10 +67,15 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      * Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
      */
     public readonly pdpScope!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The list of public delegated prefixes that exist for this public advertised prefix.
      */
     public /*out*/ readonly publicDelegatedPrefixs!: pulumi.Output<outputs.compute.alpha.PublicAdvertisedPrefixPublicDelegatedPrefixResponse[]>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
@@ -123,7 +128,9 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pdpScope"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["publicDelegatedPrefixs"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["sharedSecret"] = undefined /*out*/;

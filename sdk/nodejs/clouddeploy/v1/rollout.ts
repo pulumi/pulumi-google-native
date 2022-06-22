@@ -53,6 +53,7 @@ export class Rollout extends pulumi.CustomResource {
      * Time at which the `Rollout` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly deliveryPipelineId!: pulumi.Output<string>;
     /**
      * Time at which the `Rollout` finished deploying.
      */
@@ -89,10 +90,21 @@ export class Rollout extends pulumi.CustomResource {
      * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly releaseId!: pulumi.Output<string>;
+    /**
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Required. ID of the `Rollout`.
+     */
+    public readonly rolloutId!: pulumi.Output<string>;
     /**
      * Current state of the `Rollout`.
      */
@@ -105,6 +117,10 @@ export class Rollout extends pulumi.CustomResource {
      * Unique identifier of the `Rollout`.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
+     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Rollout resource with the given unique name, arguments, and options.
@@ -158,6 +174,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["approvalState"] = undefined /*out*/;
             resourceInputs["approveTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliveryPipelineId"] = undefined /*out*/;
             resourceInputs["deployEndTime"] = undefined /*out*/;
             resourceInputs["deployFailureCause"] = undefined /*out*/;
             resourceInputs["deployStartTime"] = undefined /*out*/;
@@ -167,10 +184,16 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["failureReason"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["releaseId"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["rolloutId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["targetId"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rollout.__pulumiType, name, resourceInputs, opts);

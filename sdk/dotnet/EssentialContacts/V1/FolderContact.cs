@@ -22,6 +22,9 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
+        [Output("folderId")]
+        public Output<string> FolderId { get; private set; } = null!;
+
         /// <summary>
         /// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
         /// </summary>

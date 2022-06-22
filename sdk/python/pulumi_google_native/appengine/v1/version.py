@@ -841,6 +841,7 @@ class Version(pulumi.CustomResource):
 
         __props__.__dict__["api_config"] = None
         __props__.__dict__["app_engine_apis"] = None
+        __props__.__dict__["app_id"] = None
         __props__.__dict__["automatic_scaling"] = None
         __props__.__dict__["basic_scaling"] = None
         __props__.__dict__["beta_settings"] = None
@@ -872,6 +873,7 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["runtime_channel"] = None
         __props__.__dict__["runtime_main_executable_path"] = None
         __props__.__dict__["service_account"] = None
+        __props__.__dict__["service_id"] = None
         __props__.__dict__["serving_status"] = None
         __props__.__dict__["threadsafe"] = None
         __props__.__dict__["version_url"] = None
@@ -895,6 +897,11 @@ class Version(pulumi.CustomResource):
         Allows App Engine second generation runtimes to access the legacy bundled services.
         """
         return pulumi.get(self, "app_engine_apis")
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter(name="automaticScaling")
@@ -1143,6 +1150,11 @@ class Version(pulumi.CustomResource):
         The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter(name="servingStatus")

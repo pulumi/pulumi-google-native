@@ -41,16 +41,28 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+        /// </summary>
+        [Output("gatewayId")]
+        public Output<string> GatewayId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The current state of the Gateway.

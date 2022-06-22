@@ -37,6 +37,7 @@ type Device struct {
 	LastHeartbeatTime pulumi.StringOutput `pulumi:"lastHeartbeatTime"`
 	// [Output only] The last time a state event was received. Timestamps are periodically collected and written to storage; they may be stale by a few minutes.
 	LastStateTime pulumi.StringOutput `pulumi:"lastStateTime"`
+	Location      pulumi.StringOutput `pulumi:"location"`
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel pulumi.StringOutput `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
@@ -44,7 +45,9 @@ type Device struct {
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
-	NumId pulumi.StringOutput `pulumi:"numId"`
+	NumId      pulumi.StringOutput `pulumi:"numId"`
+	Project    pulumi.StringOutput `pulumi:"project"`
+	RegistryId pulumi.StringOutput `pulumi:"registryId"`
 	// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
 	State DeviceStateResponseOutput `pulumi:"state"`
 }
@@ -227,6 +230,10 @@ func (o DeviceOutput) LastStateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.LastStateTime }).(pulumi.StringOutput)
 }
 
+func (o DeviceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 func (o DeviceOutput) LogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.LogLevel }).(pulumi.StringOutput)
@@ -245,6 +252,14 @@ func (o DeviceOutput) Name() pulumi.StringOutput {
 // [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
 func (o DeviceOutput) NumId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.NumId }).(pulumi.StringOutput)
+}
+
+func (o DeviceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o DeviceOutput) RegistryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.RegistryId }).(pulumi.StringOutput)
 }
 
 // [Output only] The state most recently received from the device. If no state has been reported, this field is not present.

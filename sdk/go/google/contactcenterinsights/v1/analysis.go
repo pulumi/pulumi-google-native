@@ -17,10 +17,13 @@ type Analysis struct {
 
 	// The result of the analysis, which is populated when the analysis finishes.
 	AnalysisResult GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput `pulumi:"analysisResult"`
+	ConversationId pulumi.StringOutput                                            `pulumi:"conversationId"`
 	// The time at which the analysis was created, which occurs when the long-running operation completes.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The time at which the analysis was requested.
 	RequestTime pulumi.StringOutput `pulumi:"requestTime"`
 }
@@ -127,14 +130,26 @@ func (o AnalysisOutput) AnalysisResult() GoogleCloudContactcenterinsightsV1Analy
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput)
 }
 
+func (o AnalysisOutput) ConversationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.ConversationId }).(pulumi.StringOutput)
+}
+
 // The time at which the analysis was created, which occurs when the long-running operation completes.
 func (o AnalysisOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+func (o AnalysisOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
 func (o AnalysisOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AnalysisOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The time at which the analysis was requested.

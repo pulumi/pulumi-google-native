@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
     [GoogleNativeResourceType("google-native:recommendationengine/v1beta1:CatalogItem")]
     public partial class CatalogItem : Pulumi.CustomResource
     {
+        [Output("catalogId")]
+        public Output<string> CatalogId { get; private set; } = null!;
+
         /// <summary>
         /// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
         /// </summary>
@@ -46,11 +49,17 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Output("languageCode")]
         public Output<string> LanguageCode { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Metadata specific to retail products.
         /// </summary>
         [Output("productMetadata")]
         public Output<Outputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse> ProductMetadata { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.

@@ -47,11 +47,17 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Output("dimensionValue")]
         public Output<ImmutableArray<Outputs.StepDimensionValueEntryResponse>> DimensionValue { get; private set; } = null!;
 
+        [Output("executionId")]
+        public Output<string> ExecutionId { get; private set; } = null!;
+
         /// <summary>
         /// Whether any of the outputs of this step are images whose thumbnails can be fetched with ListThumbnails. - In response: always set - In create/update request: never set
         /// </summary>
         [Output("hasImages")]
         public Output<bool> HasImages { get; private set; } = null!;
+
+        [Output("historyId")]
+        public Output<string> HistoryId { get; private set; } = null!;
 
         /// <summary>
         /// Arbitrary user-supplied key/value pairs that are associated with the step. Users are responsible for managing the key namespace such that keys don't accidentally collide. An INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or if the length of any of the keys or values exceeds 100 characters. - In response: always set - In create request: optional - In update request: optional; any new key/value pair will be added to the map, and any new value for an existing key will update that key's value
@@ -76,6 +82,15 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// </summary>
         [Output("outcome")]
         public Output<Outputs.OutcomeResponse> Outcome { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional

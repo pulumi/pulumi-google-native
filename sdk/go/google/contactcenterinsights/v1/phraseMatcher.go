@@ -21,10 +21,12 @@ type PhraseMatcher struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// The human-readable name of the phrase matcher.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of phase match rule groups that are included in this matcher.
 	PhraseMatchRuleGroups GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayOutput `pulumi:"phraseMatchRuleGroups"`
+	Project               pulumi.StringOutput                                                       `pulumi:"project"`
 	// The timestamp of when the revision was created. It is also the create time when a new matcher is added.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// Immutable. The revision ID of the phrase matcher. A new revision is committed whenever the matcher is changed, except when it is activated or deactivated. A server generated random ID will be used. Example: locations/global/phraseMatchers/my-first-matcher@1234567
@@ -171,6 +173,10 @@ func (o PhraseMatcherOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o PhraseMatcherOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
 func (o PhraseMatcherOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -181,6 +187,10 @@ func (o PhraseMatcherOutput) PhraseMatchRuleGroups() GoogleCloudContactcenterins
 	return o.ApplyT(func(v *PhraseMatcher) GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayOutput {
 		return v.PhraseMatchRuleGroups
 	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayOutput)
+}
+
+func (o PhraseMatcherOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The timestamp of when the revision was created. It is also the create time when a new matcher is added.

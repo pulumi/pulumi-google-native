@@ -184,10 +184,17 @@ class DebugToken(pulumi.CustomResource):
 
         __props__ = DebugTokenArgs.__new__(DebugTokenArgs)
 
+        __props__.__dict__["app_id"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["token"] = None
         return DebugToken(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -204,6 +211,11 @@ class DebugToken(pulumi.CustomResource):
         The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

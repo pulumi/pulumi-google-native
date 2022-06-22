@@ -45,6 +45,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly configVariables!: pulumi.Output<outputs.connectors.v1.ConfigVariableResponse[]>;
     /**
+     * Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+     */
+    public readonly connectionId!: pulumi.Output<string>;
+    /**
      * Connector version on which the connection is created. The format is: projects/*&#47;locations/global/providers/*&#47;connectors/*&#47;versions/*
      */
     public readonly connectorVersion!: pulumi.Output<string>;
@@ -72,6 +76,7 @@ export class Connection extends pulumi.CustomResource {
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optional. Configuration that indicates whether or not the Connection can be edited.
      */
@@ -80,6 +85,7 @@ export class Connection extends pulumi.CustomResource {
      * Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Service account needed for runtime plane to access GCP resources.
      */
@@ -140,6 +146,7 @@ export class Connection extends pulumi.CustomResource {
         } else {
             resourceInputs["authConfig"] = undefined /*out*/;
             resourceInputs["configVariables"] = undefined /*out*/;
+            resourceInputs["connectionId"] = undefined /*out*/;
             resourceInputs["connectorVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -147,8 +154,10 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
             resourceInputs["imageLocation"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["lockConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceDirectory"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

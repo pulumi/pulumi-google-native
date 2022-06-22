@@ -15,6 +15,8 @@ import (
 type Batch struct {
 	pulumi.CustomResourceState
 
+	// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+	BatchId pulumi.StringPtrOutput `pulumi:"batchId"`
 	// The time when the batch was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The email address of the user who created the batch.
@@ -22,13 +24,17 @@ type Batch struct {
 	// Optional. Environment configuration for the batch execution.
 	EnvironmentConfig EnvironmentConfigResponseOutput `pulumi:"environmentConfig"`
 	// Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the batch.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the operation associated with this batch.
 	Operation pulumi.StringOutput `pulumi:"operation"`
+	Project   pulumi.StringOutput `pulumi:"project"`
 	// Optional. PySpark batch config.
 	PysparkBatch PySparkBatchResponseOutput `pulumi:"pysparkBatch"`
+	// Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Runtime configuration for the batch execution.
 	RuntimeConfig RuntimeConfigResponseOutput `pulumi:"runtimeConfig"`
 	// Runtime information about batch execution.
@@ -173,6 +179,11 @@ func (o BatchOutput) ToBatchOutputWithContext(ctx context.Context) BatchOutput {
 	return o
 }
 
+// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+func (o BatchOutput) BatchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringPtrOutput { return v.BatchId }).(pulumi.StringPtrOutput)
+}
+
 // The time when the batch was created.
 func (o BatchOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -193,6 +204,10 @@ func (o BatchOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Batch) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o BatchOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the batch.
 func (o BatchOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -203,9 +218,18 @@ func (o BatchOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
 }
 
+func (o BatchOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Optional. PySpark batch config.
 func (o BatchOutput) PysparkBatch() PySparkBatchResponseOutput {
 	return o.ApplyT(func(v *Batch) PySparkBatchResponseOutput { return v.PysparkBatch }).(PySparkBatchResponseOutput)
+}
+
+// Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+func (o BatchOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Runtime configuration for the batch execution.

@@ -204,8 +204,12 @@ class Service(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["endpoints"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["namespace_id"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["service_id"] = None
         __props__.__dict__["update_time"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
 
@@ -227,6 +231,11 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Optional. Metadata for the service. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
@@ -240,6 +249,24 @@ class Service(pulumi.CustomResource):
         Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Output[str]:
+        """
+        Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter(name="updateTime")

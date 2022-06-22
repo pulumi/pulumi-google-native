@@ -276,6 +276,7 @@ class TestMatrix(pulumi.CustomResource):
         __props__.__dict__["invalid_matrix_details"] = None
         __props__.__dict__["outcome_summary"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["result_storage"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["test_executions"] = None
@@ -335,10 +336,15 @@ class TestMatrix(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The cloud project that owns the test matrix.
-        """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="resultStorage")

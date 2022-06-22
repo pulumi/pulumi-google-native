@@ -24,7 +24,7 @@ type Folder struct {
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+	// Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 }
 
@@ -141,7 +141,7 @@ func (o FolderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+// Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 func (o FolderOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

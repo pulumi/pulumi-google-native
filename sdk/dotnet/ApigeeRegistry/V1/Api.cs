@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        /// </summary>
+        [Output("apiId")]
+        public Output<string> ApiId { get; private set; } = null!;
+
+        /// <summary>
         /// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         /// </summary>
         [Output("availability")]
@@ -51,11 +57,17 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}

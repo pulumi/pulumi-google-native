@@ -16,12 +16,15 @@ import (
 type EndpointAttachment struct {
 	pulumi.CustomResourceState
 
+	// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+	EndpointAttachmentId pulumi.StringPtrOutput `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Location of the endpoint attachment.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Format: projects/*/regions/*/serviceAttachments/*
 	ServiceAttachment pulumi.StringOutput `pulumi:"serviceAttachment"`
 	// State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
@@ -131,6 +134,11 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+func (o EndpointAttachmentOutput) EndpointAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringPtrOutput { return v.EndpointAttachmentId }).(pulumi.StringPtrOutput)
+}
+
 // Host that can be used in either the HTTP target endpoint directly or as the host in target server.
 func (o EndpointAttachmentOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
@@ -144,6 +152,10 @@ func (o EndpointAttachmentOutput) Location() pulumi.StringOutput {
 // Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
 func (o EndpointAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EndpointAttachmentOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Format: projects/*/regions/*/serviceAttachments/*

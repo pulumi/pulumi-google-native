@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+        /// </summary>
+        [Output("domainName")]
+        public Output<string> DomainName { get; private set; } = null!;
+
+        /// <summary>
         /// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
         /// </summary>
         [Output("fqdn")]
@@ -63,6 +69,9 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].

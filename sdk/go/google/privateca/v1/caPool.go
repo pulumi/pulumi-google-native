@@ -16,14 +16,20 @@ import (
 type CaPool struct {
 	pulumi.CustomResourceState
 
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	CaPoolId pulumi.StringOutput `pulumi:"caPoolId"`
 	// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	IssuancePolicy IssuancePolicyResponseOutput `pulumi:"issuancePolicy"`
 	// Optional. Labels with user-defined metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
 	PublishingOptions PublishingOptionsResponseOutput `pulumi:"publishingOptions"`
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Immutable. The Tier of this CaPool.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 }
@@ -144,6 +150,11 @@ func (o CaPoolOutput) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutpu
 	return o
 }
 
+// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+func (o CaPoolOutput) CaPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.CaPoolId }).(pulumi.StringOutput)
+}
+
 // Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
 func (o CaPoolOutput) IssuancePolicy() IssuancePolicyResponseOutput {
 	return o.ApplyT(func(v *CaPool) IssuancePolicyResponseOutput { return v.IssuancePolicy }).(IssuancePolicyResponseOutput)
@@ -154,14 +165,27 @@ func (o CaPoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o CaPoolOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
 func (o CaPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o CaPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
 func (o CaPoolOutput) PublishingOptions() PublishingOptionsResponseOutput {
 	return o.ApplyT(func(v *CaPool) PublishingOptionsResponseOutput { return v.PublishingOptions }).(PublishingOptionsResponseOutput)
+}
+
+// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o CaPoolOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // Immutable. The Tier of this CaPool.

@@ -73,8 +73,10 @@ type InterconnectAttachment struct {
 	PartnerMetadata InterconnectAttachmentPartnerMetadataResponseOutput `pulumi:"partnerMetadata"`
 	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoResponseOutput `pulumi:"privateInterconnectInfo"`
-	// URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Project                 pulumi.StringOutput                             `pulumi:"project"`
+	Region                  pulumi.StringOutput                             `pulumi:"region"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router pulumi.StringOutput `pulumi:"router"`
 	// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
@@ -87,6 +89,8 @@ type InterconnectAttachment struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// If true, the request will not be committed.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q pulumi.IntOutput `pulumi:"vlanTag8021q"`
 }
@@ -418,9 +422,17 @@ func (o InterconnectAttachmentOutput) PrivateInterconnectInfo() InterconnectAtta
 	}).(InterconnectAttachmentPrivateInfoResponseOutput)
 }
 
-// URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o InterconnectAttachmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 func (o InterconnectAttachmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o InterconnectAttachmentOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
@@ -451,6 +463,11 @@ func (o InterconnectAttachmentOutput) State() pulumi.StringOutput {
 // The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 func (o InterconnectAttachmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// If true, the request will not be committed.
+func (o InterconnectAttachmentOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 // The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.

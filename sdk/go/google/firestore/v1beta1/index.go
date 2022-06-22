@@ -17,10 +17,12 @@ type Index struct {
 
 	// The collection ID to which this index applies. Required.
 	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
+	DatabaseId   pulumi.StringOutput `pulumi:"databaseId"`
 	// The fields to index.
 	Fields GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput `pulumi:"fields"`
 	// The resource name of the index. Output only.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The state of the index. Output only.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -135,6 +137,10 @@ func (o IndexOutput) CollectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.CollectionId }).(pulumi.StringOutput)
 }
 
+func (o IndexOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
 // The fields to index.
 func (o IndexOutput) Fields() GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput {
 	return o.ApplyT(func(v *Index) GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput { return v.Fields }).(GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput)
@@ -143,6 +149,10 @@ func (o IndexOutput) Fields() GoogleFirestoreAdminV1beta1IndexFieldResponseArray
 // The resource name of the index. Output only.
 func (o IndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o IndexOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The state of the index. Output only.

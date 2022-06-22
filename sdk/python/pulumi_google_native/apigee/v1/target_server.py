@@ -269,9 +269,11 @@ class TargetServer(pulumi.CustomResource):
         __props__ = TargetServerArgs.__new__(TargetServerArgs)
 
         __props__.__dict__["description"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["host"] = None
         __props__.__dict__["is_enabled"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["port"] = None
         __props__.__dict__["protocol"] = None
         __props__.__dict__["s_sl_info"] = None
@@ -284,6 +286,11 @@ class TargetServer(pulumi.CustomResource):
         Optional. A human-readable description of this TargetServer.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
 
     @property
     @pulumi.getter
@@ -305,9 +312,14 @@ class TargetServer(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource id of this target server. Values must match the regular expression 
+        Optional. The ID to give the TargetServer. This will overwrite the value in TargetServer.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

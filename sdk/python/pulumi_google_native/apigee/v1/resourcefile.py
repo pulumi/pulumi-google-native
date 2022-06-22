@@ -229,7 +229,11 @@ class Resourcefile(pulumi.CustomResource):
 
         __props__.__dict__["content_type"] = None
         __props__.__dict__["data"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["extensions"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
+        __props__.__dict__["type"] = None
         return Resourcefile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -249,10 +253,36 @@ class Resourcefile(pulumi.CustomResource):
         return pulumi.get(self, "data")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter
     def extensions(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
         """
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         return pulumi.get(self, "extensions")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Required. Resource file type. {{ resource_file_type }}
+        """
+        return pulumi.get(self, "type")
 

@@ -272,17 +272,28 @@ class FolderBucket(pulumi.CustomResource):
 
         __props__ = FolderBucketArgs.__new__(FolderBucketArgs)
 
+        __props__.__dict__["bucket_id"] = None
         __props__.__dict__["cmek_settings"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["folder_id"] = None
         __props__.__dict__["index_configs"] = None
         __props__.__dict__["lifecycle_state"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["locked"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["restricted_fields"] = None
         __props__.__dict__["retention_days"] = None
         __props__.__dict__["update_time"] = None
         return FolderBucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Output[str]:
+        """
+        Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+        """
+        return pulumi.get(self, "bucket_id")
 
     @property
     @pulumi.getter(name="cmekSettings")
@@ -309,6 +320,11 @@ class FolderBucket(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "folder_id")
+
+    @property
     @pulumi.getter(name="indexConfigs")
     def index_configs(self) -> pulumi.Output[Sequence['outputs.IndexConfigResponse']]:
         """
@@ -323,6 +339,11 @@ class FolderBucket(pulumi.CustomResource):
         The bucket lifecycle state.
         """
         return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

@@ -27,11 +27,20 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Output("data")]
         public Output<string> Data { get; private set; } = null!;
 
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
+        [Output("hl7V2StoreId")]
+        public Output<string> Hl7V2StoreId { get; private set; } = null!;
+
         /// <summary>
         /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The message type for this message. MSH-9.1.
@@ -56,6 +65,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Output("patientIds")]
         public Output<ImmutableArray<Outputs.PatientIdResponse>> PatientIds { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.

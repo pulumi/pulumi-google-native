@@ -17,10 +17,14 @@ type DomainMapping struct {
 
 	// The API version for this call such as "domains.cloudrun.com/v1".
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
+	// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+	DryRun pulumi.StringPtrOutput `pulumi:"dryRun"`
 	// The kind of resource, in this case "DomainMapping".
-	Kind pulumi.StringOutput `pulumi:"kind"`
+	Kind     pulumi.StringOutput `pulumi:"kind"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata associated with this BuildTemplate.
 	Metadata ObjectMetaResponseOutput `pulumi:"metadata"`
+	Project  pulumi.StringOutput      `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecResponseOutput `pulumi:"spec"`
 	// The current status of the DomainMapping.
@@ -138,14 +142,27 @@ func (o DomainMappingOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
 }
 
+// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+func (o DomainMappingOutput) DryRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringPtrOutput { return v.DryRun }).(pulumi.StringPtrOutput)
+}
+
 // The kind of resource, in this case "DomainMapping".
 func (o DomainMappingOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+func (o DomainMappingOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Metadata associated with this BuildTemplate.
 func (o DomainMappingOutput) Metadata() ObjectMetaResponseOutput {
 	return o.ApplyT(func(v *DomainMapping) ObjectMetaResponseOutput { return v.Metadata }).(ObjectMetaResponseOutput)
+}
+
+func (o DomainMappingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The spec for this DomainMapping.

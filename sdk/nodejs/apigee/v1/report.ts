@@ -95,6 +95,7 @@ export class Report extends pulumi.CustomResource {
      * Organization name
      */
     public /*out*/ readonly organization!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * This field contains report properties such as ui metadata etc.
      */
@@ -180,6 +181,7 @@ export class Report extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["offset"] = undefined /*out*/;
             resourceInputs["organization"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["sortByCols"] = undefined /*out*/;
             resourceInputs["sortOrder"] = undefined /*out*/;

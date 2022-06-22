@@ -50,10 +50,16 @@ export class Mesh extends pulumi.CustomResource {
      * Optional. Set of label tags associated with the Mesh resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * Required. Short name of the Mesh resource to be created.
+     */
+    public readonly meshId!: pulumi.Output<string>;
     /**
      * Name of the Mesh resource. It matches pattern `projects/*&#47;locations/global/meshes/`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Server-defined URL of this resource
      */
@@ -92,7 +98,10 @@ export class Mesh extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["interceptionPort"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["meshId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

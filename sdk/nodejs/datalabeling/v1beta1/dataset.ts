@@ -68,6 +68,7 @@ export class Dataset extends pulumi.CustomResource {
      * Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -101,6 +102,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["inputConfigs"] = undefined /*out*/;
             resourceInputs["lastMigrateTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dataset.__pulumiType, name, resourceInputs, opts);

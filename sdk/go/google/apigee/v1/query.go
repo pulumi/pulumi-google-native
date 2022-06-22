@@ -21,12 +21,14 @@ type Query struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Hostname is available only when query is executed at host level.
 	EnvgroupHostname pulumi.StringOutput `pulumi:"envgroupHostname"`
+	EnvironmentId    pulumi.StringOutput `pulumi:"environmentId"`
 	// Error is set when query fails.
 	Error pulumi.StringOutput `pulumi:"error"`
 	// ExecutionTime is available only after the query is completed.
 	ExecutionTime pulumi.StringOutput `pulumi:"executionTime"`
 	// Asynchronous Query Name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Contains information like metrics, dimenstions etc of the AsyncQuery.
 	QueryParams GoogleCloudApigeeV1QueryMetadataResponseOutput `pulumi:"queryParams"`
 	// Asynchronous Report ID.
@@ -194,6 +196,10 @@ func (o QueryOutput) EnvgroupHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.EnvgroupHostname }).(pulumi.StringOutput)
 }
 
+func (o QueryOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // Error is set when query fails.
 func (o QueryOutput) Error() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Error }).(pulumi.StringOutput)
@@ -207,6 +213,10 @@ func (o QueryOutput) ExecutionTime() pulumi.StringOutput {
 // Asynchronous Query Name.
 func (o QueryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o QueryOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Contains information like metrics, dimenstions etc of the AsyncQuery.

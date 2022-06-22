@@ -1362,6 +1362,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["pod_security_policy_config"] = None
         __props__.__dict__["private_cluster"] = None
         __props__.__dict__["private_cluster_config"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["protect_config"] = None
         __props__.__dict__["release_channel"] = None
         __props__.__dict__["resource_labels"] = None
@@ -1600,9 +1601,6 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
-        """
-        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-        """
         return pulumi.get(self, "location")
 
     @property
@@ -1796,6 +1794,11 @@ class Cluster(pulumi.CustomResource):
         Configuration for private cluster.
         """
         return pulumi.get(self, "private_cluster_config")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="protectConfig")

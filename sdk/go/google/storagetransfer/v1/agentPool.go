@@ -15,12 +15,15 @@ import (
 type AgentPool struct {
 	pulumi.CustomResourceState
 
+	// Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
+	AgentPoolId pulumi.StringOutput `pulumi:"agentPoolId"`
 	// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 	BandwidthLimit BandwidthLimitResponseOutput `pulumi:"bandwidthLimit"`
 	// Specifies the client-specified AgentPool description.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the state of the AgentPool.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -128,6 +131,11 @@ func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) Agent
 	return o
 }
 
+// Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
+func (o AgentPoolOutput) AgentPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.AgentPoolId }).(pulumi.StringOutput)
+}
+
 // Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 func (o AgentPoolOutput) BandwidthLimit() BandwidthLimitResponseOutput {
 	return o.ApplyT(func(v *AgentPool) BandwidthLimitResponseOutput { return v.BandwidthLimit }).(BandwidthLimitResponseOutput)
@@ -141,6 +149,10 @@ func (o AgentPoolOutput) DisplayName() pulumi.StringOutput {
 // Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
 func (o AgentPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AgentPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Specifies the state of the AgentPool.

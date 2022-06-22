@@ -48,16 +48,31 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> GenerateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        /// </summary>
+        [Output("importJobId")]
+        public Output<string> ImportJobId { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The wrapping method to be used for incoming key material.
         /// </summary>
         [Output("importMethod")]
         public Output<string> ImportMethod { get; private set; } = null!;
+
+        [Output("keyRingId")]
+        public Output<string> KeyRingId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.

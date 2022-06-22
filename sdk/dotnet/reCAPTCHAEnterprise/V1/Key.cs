@@ -51,6 +51,9 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Options for user acceptance testing.
         /// </summary>

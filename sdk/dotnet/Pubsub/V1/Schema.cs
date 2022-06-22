@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The timestamp that the revision was created.
         /// </summary>
@@ -38,6 +41,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         [Output("revisionId")]
         public Output<string> RevisionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        /// </summary>
+        [Output("schemaId")]
+        public Output<string?> SchemaId { get; private set; } = null!;
 
         /// <summary>
         /// The type of the schema definition.

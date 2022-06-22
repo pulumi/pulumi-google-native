@@ -15,8 +15,11 @@ import (
 type EnvironmentEntry struct {
 	pulumi.CustomResourceState
 
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
+	KeyvaluemapId pulumi.StringOutput `pulumi:"keyvaluemapId"`
 	// Resource URI that can be used to identify the scope of the key value map entries.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Data or payload that is being retrieved and associated with the unique key.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
@@ -129,9 +132,21 @@ func (o EnvironmentEntryOutput) ToEnvironmentEntryOutputWithContext(ctx context.
 	return o
 }
 
+func (o EnvironmentEntryOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentEntry) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentEntryOutput) KeyvaluemapId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentEntry) pulumi.StringOutput { return v.KeyvaluemapId }).(pulumi.StringOutput)
+}
+
 // Resource URI that can be used to identify the scope of the key value map entries.
 func (o EnvironmentEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentEntryOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentEntry) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Data or payload that is being retrieved and associated with the unique key.

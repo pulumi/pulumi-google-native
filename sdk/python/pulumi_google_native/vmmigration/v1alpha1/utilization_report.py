@@ -255,10 +255,15 @@ class UtilizationReport(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["frame_end_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
+        __props__.__dict__["source_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_time"] = None
         __props__.__dict__["time_frame"] = None
+        __props__.__dict__["utilization_report_id"] = None
         __props__.__dict__["vm_count"] = None
         __props__.__dict__["vms"] = None
         __props__.__dict__["vms_count"] = None
@@ -298,11 +303,34 @@ class UtilizationReport(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The report unique name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "source_id")
 
     @property
     @pulumi.getter
@@ -327,6 +355,14 @@ class UtilizationReport(pulumi.CustomResource):
         Time frame of the report.
         """
         return pulumi.get(self, "time_frame")
+
+    @property
+    @pulumi.getter(name="utilizationReportId")
+    def utilization_report_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
+        """
+        return pulumi.get(self, "utilization_report_id")
 
     @property
     @pulumi.getter(name="vmCount")

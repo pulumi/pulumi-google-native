@@ -225,12 +225,22 @@ class ResponsePolicy(pulumi.CustomResource):
 
         __props__ = ResponsePolicyArgs.__new__(ResponsePolicyArgs)
 
+        __props__.__dict__["client_operation_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["gke_clusters"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["response_policy_name"] = None
         return ResponsePolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
+        return pulumi.get(self, "client_operation_id")
 
     @property
     @pulumi.getter
@@ -260,6 +270,11 @@ class ResponsePolicy(pulumi.CustomResource):
         List of network names specifying networks to which this policy is applied.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="responsePolicyName")

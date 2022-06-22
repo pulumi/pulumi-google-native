@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
 
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
+
         /// <summary>
         /// This field contains report properties such as ui metadata etc.
         /// </summary>

@@ -17,16 +17,19 @@ import (
 type TestCase struct {
 	pulumi.CustomResourceState
 
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// When the test was created.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The latest test result.
 	LastTestResult GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput `pulumi:"lastTestResult"`
+	Location       pulumi.StringOutput                                        `pulumi:"location"`
 	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Additional freeform notes about the test case. Limit of 400 characters.
-	Notes pulumi.StringOutput `pulumi:"notes"`
+	Notes   pulumi.StringOutput `pulumi:"notes"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
@@ -157,6 +160,10 @@ func (o TestCaseOutput) ToTestCaseOutputWithContext(ctx context.Context) TestCas
 	return o
 }
 
+func (o TestCaseOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestCase) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
 // When the test was created.
 func (o TestCaseOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestCase) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
@@ -172,6 +179,10 @@ func (o TestCaseOutput) LastTestResult() GoogleCloudDialogflowCxV3beta1TestCaseR
 	return o.ApplyT(func(v *TestCase) GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput { return v.LastTestResult }).(GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput)
 }
 
+func (o TestCaseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestCase) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
 func (o TestCaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestCase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -180,6 +191,10 @@ func (o TestCaseOutput) Name() pulumi.StringOutput {
 // Additional freeform notes about the test case. Limit of 400 characters.
 func (o TestCaseOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v *TestCase) pulumi.StringOutput { return v.Notes }).(pulumi.StringOutput)
+}
+
+func (o TestCaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestCase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.

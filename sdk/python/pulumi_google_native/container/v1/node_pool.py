@@ -434,16 +434,19 @@ class NodePool(pulumi.CustomResource):
         __props__ = NodePoolInitArgs.__new__(NodePoolInitArgs)
 
         __props__.__dict__["autoscaling"] = None
+        __props__.__dict__["cluster_id"] = None
         __props__.__dict__["conditions"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["initial_node_count"] = None
         __props__.__dict__["instance_group_urls"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["locations"] = None
         __props__.__dict__["management"] = None
         __props__.__dict__["max_pods_constraint"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["pod_ipv4_cidr_size"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_message"] = None
@@ -458,6 +461,11 @@ class NodePool(pulumi.CustomResource):
         Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         """
         return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter
@@ -490,6 +498,11 @@ class NodePool(pulumi.CustomResource):
         [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
         """
         return pulumi.get(self, "instance_group_urls")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -538,6 +551,11 @@ class NodePool(pulumi.CustomResource):
         [Output only] The pod CIDR block size per node in this node pool.
         """
         return pulumi.get(self, "pod_ipv4_cidr_size")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

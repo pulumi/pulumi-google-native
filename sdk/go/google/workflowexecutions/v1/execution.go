@@ -25,15 +25,18 @@ type Execution struct {
 	// Marks the end of execution, successful or not.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error ErrorResponseOutput `pulumi:"error"`
+	Error    ErrorResponseOutput `pulumi:"error"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
 	Result pulumi.StringOutput `pulumi:"result"`
 	// Marks the beginning of execution.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Current state of the execution.
-	State pulumi.StringOutput `pulumi:"state"`
+	State      pulumi.StringOutput `pulumi:"state"`
+	WorkflowId pulumi.StringOutput `pulumi:"workflowId"`
 	// Revision of the workflow this execution is using.
 	WorkflowRevisionId pulumi.StringOutput `pulumi:"workflowRevisionId"`
 }
@@ -157,9 +160,17 @@ func (o ExecutionOutput) Error() ErrorResponseOutput {
 	return o.ApplyT(func(v *Execution) ErrorResponseOutput { return v.Error }).(ErrorResponseOutput)
 }
 
+func (o ExecutionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
 func (o ExecutionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ExecutionOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
@@ -175,6 +186,10 @@ func (o ExecutionOutput) StartTime() pulumi.StringOutput {
 // Current state of the execution.
 func (o ExecutionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o ExecutionOutput) WorkflowId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.WorkflowId }).(pulumi.StringOutput)
 }
 
 // Revision of the workflow this execution is using.

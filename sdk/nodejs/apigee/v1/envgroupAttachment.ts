@@ -38,6 +38,7 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
      * The time at which the environment group attachment was created as milliseconds since epoch.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly envgroupId!: pulumi.Output<string>;
     /**
      * ID of the attached environment.
      */
@@ -50,6 +51,7 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
      * ID of the environment group attachment.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
 
     /**
      * Create a EnvgroupAttachment resource with the given unique name, arguments, and options.
@@ -79,9 +81,11 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
             resourceInputs["environmentGroupId"] = undefined /*out*/;
         } else {
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["envgroupId"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["environmentGroupId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvgroupAttachment.__pulumiType, name, resourceInputs, opts);

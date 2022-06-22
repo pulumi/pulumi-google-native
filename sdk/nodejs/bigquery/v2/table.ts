@@ -48,6 +48,7 @@ export class Table extends pulumi.CustomResource {
      * The time when this table was created, in milliseconds since the epoch.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    public readonly datasetId!: pulumi.Output<string>;
     /**
      * The default collation of the table.
      */
@@ -148,6 +149,7 @@ export class Table extends pulumi.CustomResource {
      * The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
      */
     public /*out*/ readonly numTotalPhysicalBytes!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */
@@ -247,6 +249,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["cloneDefinition"] = undefined /*out*/;
             resourceInputs["clustering"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["encryptionConfiguration"] = undefined /*out*/;
@@ -272,6 +275,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["numTimeTravelPhysicalBytes"] = undefined /*out*/;
             resourceInputs["numTotalLogicalBytes"] = undefined /*out*/;
             resourceInputs["numTotalPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rangePartitioning"] = undefined /*out*/;
             resourceInputs["requirePartitionFilter"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;

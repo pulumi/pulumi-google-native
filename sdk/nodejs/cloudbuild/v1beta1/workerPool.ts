@@ -56,6 +56,7 @@ export class WorkerPool extends pulumi.CustomResource {
      * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
      */
@@ -64,6 +65,7 @@ export class WorkerPool extends pulumi.CustomResource {
      * Network configuration for the `WorkerPool`.
      */
     public readonly networkConfig!: pulumi.Output<outputs.cloudbuild.v1beta1.NetworkConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * `WorkerPool` state.
      */
@@ -80,6 +82,10 @@ export class WorkerPool extends pulumi.CustomResource {
      * Worker configuration for the `WorkerPool`.
      */
     public readonly workerConfig!: pulumi.Output<outputs.cloudbuild.v1beta1.WorkerConfigResponse>;
+    /**
+     * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+     */
+    public readonly workerPoolId!: pulumi.Output<string>;
 
     /**
      * Create a WorkerPool resource with the given unique name, arguments, and options.
@@ -115,12 +121,15 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["workerConfig"] = undefined /*out*/;
+            resourceInputs["workerPoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkerPool.__pulumiType, name, resourceInputs, opts);

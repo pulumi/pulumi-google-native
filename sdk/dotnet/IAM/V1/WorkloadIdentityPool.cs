@@ -34,17 +34,29 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the pool.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The state of the pool.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+        /// </summary>
+        [Output("workloadIdentityPoolId")]
+        public Output<string> WorkloadIdentityPoolId { get; private set; } = null!;
 
 
         /// <summary>

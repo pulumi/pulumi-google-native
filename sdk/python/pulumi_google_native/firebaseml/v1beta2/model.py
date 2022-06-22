@@ -220,6 +220,7 @@ class Model(pulumi.CustomResource):
         __props__.__dict__["etag"] = None
         __props__.__dict__["model_hash"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["tflite_model"] = None
@@ -273,6 +274,11 @@ class Model(pulumi.CustomResource):
         The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

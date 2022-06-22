@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Output("enableAutoReload")]
         public Output<bool> EnableAutoReload { get; private set; } = null!;
 
+        [Output("knowledgeBaseId")]
+        public Output<string> KnowledgeBaseId { get; private set; } = null!;
+
         /// <summary>
         /// The knowledge type of document content.
         /// </summary>
@@ -44,6 +47,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         [Output("latestReloadStatus")]
         public Output<Outputs.GoogleCloudDialogflowV2DocumentReloadStatusResponse> LatestReloadStatus { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
@@ -62,6 +68,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.

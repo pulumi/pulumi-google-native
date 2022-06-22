@@ -37,6 +37,10 @@ export class Asset extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
+     */
+    public readonly assetId!: pulumi.Output<string>;
+    /**
      * The time when the asset was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -60,10 +64,13 @@ export class Asset extends pulumi.CustomResource {
      * Optional. User defined labels for the asset.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly lakeId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The relative resource name of the asset, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Specification of the resource that is referenced by this asset.
      */
@@ -88,6 +95,11 @@ export class Asset extends pulumi.CustomResource {
      * The time when the asset was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Asset resource with the given unique name, arguments, and options.
@@ -129,19 +141,25 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["assetId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["discoverySpec"] = undefined /*out*/;
             resourceInputs["discoveryStatus"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lakeId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["resourceSpec"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["securityStatus"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Asset.__pulumiType, name, resourceInputs, opts);

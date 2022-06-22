@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Required. User-defined unique ID of this execution.
+        /// </summary>
+        [Output("executionId")]
+        public Output<string> ExecutionId { get; private set; } = null!;
+
+        /// <summary>
         /// execute metadata including name, hardware spec, region, labels, etc.
         /// </summary>
         [Output("executionTemplate")]
@@ -45,6 +51,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Output("jobUri")]
         public Output<string> JobUri { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
@@ -57,6 +66,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Output("outputNotebookFile")]
         public Output<string> OutputNotebookFile { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// State of the underlying AI Platform job.

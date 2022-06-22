@@ -211,12 +211,22 @@ class NotificationConfig(pulumi.CustomResource):
 
         __props__ = NotificationConfigArgs.__new__(NotificationConfigArgs)
 
+        __props__.__dict__["config_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["pubsub_topic"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["streaming_config"] = None
         return NotificationConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Output[str]:
+        """
+        Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+        """
+        return pulumi.get(self, "config_id")
 
     @property
     @pulumi.getter
@@ -233,6 +243,11 @@ class NotificationConfig(pulumi.CustomResource):
         The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="pubsubTopic")

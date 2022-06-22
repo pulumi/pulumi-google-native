@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
     public partial class Attestor : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The attestors ID.
+        /// </summary>
+        [Output("attestorId")]
+        public Output<string> AttestorId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         /// </summary>
         [Output("description")]
@@ -32,6 +38,9 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Time when the attestor was last updated.

@@ -249,7 +249,10 @@ class Realm(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["realm_id"] = None
         __props__.__dict__["time_zone"] = None
         __props__.__dict__["update_time"] = None
         return Realm(resource_name, opts=opts, __props__=__props__)
@@ -288,11 +291,29 @@ class Realm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="realmId")
+    def realm_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the realm resource to create.
+        """
+        return pulumi.get(self, "realm_id")
 
     @property
     @pulumi.getter(name="timeZone")

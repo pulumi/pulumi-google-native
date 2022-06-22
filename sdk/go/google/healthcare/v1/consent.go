@@ -17,14 +17,18 @@ type Consent struct {
 
 	// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact pulumi.StringOutput `pulumi:"consentArtifact"`
+	ConsentStoreId  pulumi.StringOutput `pulumi:"consentStoreId"`
+	DatasetId       pulumi.StringOutput `pulumi:"datasetId"`
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	Location   pulumi.StringOutput `pulumi:"location"`
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies GoogleCloudHealthcareV1ConsentPolicyResponseArrayOutput `pulumi:"policies"`
+	Project  pulumi.StringOutput                                     `pulumi:"project"`
 	// The timestamp that the revision was created.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
@@ -179,9 +183,21 @@ func (o ConsentOutput) ConsentArtifact() pulumi.StringOutput {
 	return o.ApplyT(func(v *Consent) pulumi.StringOutput { return v.ConsentArtifact }).(pulumi.StringOutput)
 }
 
+func (o ConsentOutput) ConsentStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Consent) pulumi.StringOutput { return v.ConsentStoreId }).(pulumi.StringOutput)
+}
+
+func (o ConsentOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Consent) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
 // Timestamp in UTC of when this Consent is considered expired.
 func (o ConsentOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Consent) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+func (o ConsentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Consent) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
@@ -197,6 +213,10 @@ func (o ConsentOutput) Name() pulumi.StringOutput {
 // Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 func (o ConsentOutput) Policies() GoogleCloudHealthcareV1ConsentPolicyResponseArrayOutput {
 	return o.ApplyT(func(v *Consent) GoogleCloudHealthcareV1ConsentPolicyResponseArrayOutput { return v.Policies }).(GoogleCloudHealthcareV1ConsentPolicyResponseArrayOutput)
+}
+
+func (o ConsentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Consent) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The timestamp that the revision was created.

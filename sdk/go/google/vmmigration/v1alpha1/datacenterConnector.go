@@ -26,14 +26,21 @@ type DatacenterConnector struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The time the connector was created (as an API call, not when it was actually installed).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. The datacenterConnector identifier.
+	DatacenterConnectorId pulumi.StringOutput `pulumi:"datacenterConnectorId"`
 	// Provides details on the state of the Datacenter Connector in case of an error.
-	Error StatusResponseOutput `pulumi:"error"`
+	Error    StatusResponseOutput `pulumi:"error"`
+	Location pulumi.StringOutput  `pulumi:"location"`
 	// The connector's name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified.
 	RegistrationId pulumi.StringOutput `pulumi:"registrationId"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The service account to use in the connector when communicating with the cloud.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	SourceId       pulumi.StringOutput `pulumi:"sourceId"`
 	// State of the DatacenterConnector, as determined by the health checks.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time the state was last set.
@@ -185,9 +192,18 @@ func (o DatacenterConnectorOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Required. The datacenterConnector identifier.
+func (o DatacenterConnectorOutput) DatacenterConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.DatacenterConnectorId }).(pulumi.StringOutput)
+}
+
 // Provides details on the state of the Datacenter Connector in case of an error.
 func (o DatacenterConnectorOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v *DatacenterConnector) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+func (o DatacenterConnectorOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The connector's name.
@@ -195,14 +211,27 @@ func (o DatacenterConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o DatacenterConnectorOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified.
 func (o DatacenterConnectorOutput) RegistrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.RegistrationId }).(pulumi.StringOutput)
 }
 
+// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o DatacenterConnectorOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // The service account to use in the connector when communicating with the cloud.
 func (o DatacenterConnectorOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o DatacenterConnectorOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
 }
 
 // State of the DatacenterConnector, as determined by the health checks.

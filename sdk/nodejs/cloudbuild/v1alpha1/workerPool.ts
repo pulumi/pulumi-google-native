@@ -47,9 +47,6 @@ export class WorkerPool extends pulumi.CustomResource {
      * User-defined name of the `WorkerPool`.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The project ID of the GCP project for which the `WorkerPool` is created.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.

@@ -24,16 +24,28 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+        /// </summary>
+        [Output("ekmConnectionId")]
+        public Output<string> EkmConnectionId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.

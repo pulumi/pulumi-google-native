@@ -55,10 +55,12 @@ export class Job extends pulumi.CustomResource {
      * The time the last job attempt started.
      */
     public /*out*/ readonly lastAttemptTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Pub/Sub target.
      */
@@ -125,7 +127,9 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["httpTarget"] = undefined /*out*/;
             resourceInputs["lastAttemptTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pubsubTarget"] = undefined /*out*/;
             resourceInputs["retryConfig"] = undefined /*out*/;
             resourceInputs["schedule"] = undefined /*out*/;

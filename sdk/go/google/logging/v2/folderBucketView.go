@@ -16,16 +16,21 @@ import (
 type FolderBucketView struct {
 	pulumi.CustomResourceState
 
+	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The creation timestamp of the view.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Describes this view.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-	Filter pulumi.StringOutput `pulumi:"filter"`
+	Filter   pulumi.StringOutput `pulumi:"filter"`
+	FolderId pulumi.StringOutput `pulumi:"folderId"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The last update timestamp of the view.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Required. The id to use for this view.
+	ViewId pulumi.StringOutput `pulumi:"viewId"`
 }
 
 // NewFolderBucketView registers a new resource with the given unique name, arguments, and options.
@@ -141,6 +146,10 @@ func (o FolderBucketViewOutput) ToFolderBucketViewOutputWithContext(ctx context.
 	return o
 }
 
+func (o FolderBucketViewOutput) BucketId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
+}
+
 // The creation timestamp of the view.
 func (o FolderBucketViewOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -156,6 +165,14 @@ func (o FolderBucketViewOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
 
+func (o FolderBucketViewOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
+}
+
+func (o FolderBucketViewOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 func (o FolderBucketViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -164,6 +181,11 @@ func (o FolderBucketViewOutput) Name() pulumi.StringOutput {
 // The last update timestamp of the view.
 func (o FolderBucketViewOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Required. The id to use for this view.
+func (o FolderBucketViewOutput) ViewId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.ViewId }).(pulumi.StringOutput)
 }
 
 func init() {

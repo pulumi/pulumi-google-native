@@ -340,7 +340,9 @@ class RegionUrlMap(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["path_matchers"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["tests"] = None
         return RegionUrlMap(resource_name, opts=opts, __props__=__props__)
@@ -435,11 +437,21 @@ class RegionUrlMap(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="selfLink")

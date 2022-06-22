@@ -48,6 +48,8 @@ type Organization struct {
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the Apigee organization.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configuration for the Portals settings.
 	PortalDisabled pulumi.BoolOutput `pulumi:"portalDisabled"`
 	// Project ID associated with the Apigee organization.
@@ -294,6 +296,11 @@ func (o OrganizationOutput) LastModifiedAt() pulumi.StringOutput {
 // Name of the Apigee organization.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+func (o OrganizationOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
 // Configuration for the Portals settings.

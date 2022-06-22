@@ -63,13 +63,15 @@ export class TargetInstance extends pulumi.CustomResource {
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */
     public readonly network!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    /**
-     * URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -102,6 +104,8 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["natPolicy"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }

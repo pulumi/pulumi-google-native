@@ -35,6 +35,7 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
         return obj['__pulumiType'] === IdentityAwareProxyClient.__pulumiType;
     }
 
+    public readonly brandId!: pulumi.Output<string>;
     /**
      * Human-friendly name given to the OAuth client.
      */
@@ -43,6 +44,7 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
      * Unique identifier of the OAuth client.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Client secret of the OAuth client.
      */
@@ -68,8 +70,10 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
         } else {
+            resourceInputs["brandId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

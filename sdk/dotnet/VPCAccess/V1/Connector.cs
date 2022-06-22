@@ -22,10 +22,19 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         public Output<ImmutableArray<string>> ConnectedProjects { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID to use for this connector.
+        /// </summary>
+        [Output("connectorId")]
+        public Output<string> ConnectorId { get; private set; } = null!;
+
+        /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Machine type of VM Instance underlying connector. Default is e2-micro
@@ -68,6 +77,9 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// State of the VPC access connector.

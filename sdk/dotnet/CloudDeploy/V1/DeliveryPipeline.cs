@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Required. ID of the `DeliveryPipeline`.
+        /// </summary>
+        [Output("deliveryPipelineId")]
+        public Output<string> DeliveryPipelineId { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the `DeliveryPipeline`. Max length is 255 characters.
         /// </summary>
         [Output("description")]
@@ -52,11 +58,23 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -75,6 +93,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

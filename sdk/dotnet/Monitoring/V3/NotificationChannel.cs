@@ -57,6 +57,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
         /// </summary>

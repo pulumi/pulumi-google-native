@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:SessionEntityType")]
     public partial class SessionEntityType : Pulumi.CustomResource
     {
+        [Output("agentId")]
+        public Output<string> AgentId { get; private set; } = null!;
+
         /// <summary>
         /// The collection of entities to override or supplement the custom entity type.
         /// </summary>
@@ -27,11 +30,23 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Output("entityOverrideMode")]
         public Output<string> EntityOverrideMode { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("sessionId")]
+        public Output<string> SessionId { get; private set; } = null!;
 
 
         /// <summary>

@@ -231,7 +231,9 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["cluster_states"] = None
         __props__.__dict__["column_families"] = None
         __props__.__dict__["granularity"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["restore_info"] = None
         return Table(resource_name, opts=opts, __props__=__props__)
 
@@ -260,12 +262,22 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "granularity")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="restoreInfo")

@@ -16,6 +16,15 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     public partial class ConsentStore : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
+        /// </summary>
+        [Output("consentStoreId")]
+        public Output<string> ConsentStoreId { get; private set; } = null!;
+
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
         /// </summary>
         [Output("defaultConsentTtl")]
@@ -33,11 +42,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

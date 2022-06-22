@@ -295,6 +295,7 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["ios_settings"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["testing_options"] = None
         __props__.__dict__["waf_settings"] = None
         __props__.__dict__["web_settings"] = None
@@ -347,6 +348,11 @@ class Key(pulumi.CustomResource):
         The resource name for the Key in the format "projects/{project}/keys/{key}".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="testingOptions")

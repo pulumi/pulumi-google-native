@@ -17,6 +17,8 @@ type Api struct {
 
 	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+	ApiId pulumi.StringOutput `pulumi:"apiId"`
 	// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
 	Availability pulumi.StringOutput `pulumi:"availability"`
 	// Creation timestamp.
@@ -26,9 +28,11 @@ type Api struct {
 	// Human-meaningful name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
 	RecommendedDeployment pulumi.StringOutput `pulumi:"recommendedDeployment"`
 	// The recommended version of the API. Format: apis/{api}/versions/{version}
@@ -167,6 +171,11 @@ func (o ApiOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+func (o ApiOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
 // A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
 func (o ApiOutput) Availability() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Availability }).(pulumi.StringOutput)
@@ -192,9 +201,17 @@ func (o ApiOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ApiOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name.
 func (o ApiOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ApiOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}

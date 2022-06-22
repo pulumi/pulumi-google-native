@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<Outputs.ClusterConfigResponse> ClusterConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+        /// </summary>
+        [Output("clusterId")]
+        public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         /// </summary>
         [Output("defaultStorageType")]
@@ -32,6 +38,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Output("encryptionConfig")]
         public Output<Outputs.EncryptionConfigResponse> EncryptionConfig { get; private set; } = null!;
+
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
@@ -44,6 +53,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.

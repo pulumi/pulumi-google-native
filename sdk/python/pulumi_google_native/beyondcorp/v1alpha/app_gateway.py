@@ -292,16 +292,21 @@ class AppGateway(pulumi.CustomResource):
         __props__ = AppGatewayArgs.__new__(AppGatewayArgs)
 
         __props__.__dict__["allocated_connections"] = None
+        __props__.__dict__["app_gateway_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["host_type"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["uri"] = None
+        __props__.__dict__["validate_only"] = None
         return AppGateway(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -311,6 +316,14 @@ class AppGateway(pulumi.CustomResource):
         A list of connections allocated for the Gateway
         """
         return pulumi.get(self, "allocated_connections")
+
+    @property
+    @pulumi.getter(name="appGatewayId")
+    def app_gateway_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        """
+        return pulumi.get(self, "app_gateway_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -346,11 +359,29 @@ class AppGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Unique resource name of the AppGateway. The name is ignored when creating an AppGateway.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter
@@ -391,4 +422,12 @@ class AppGateway(pulumi.CustomResource):
         Server-defined URI for this resource.
         """
         return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+        """
+        return pulumi.get(self, "validate_only")
 

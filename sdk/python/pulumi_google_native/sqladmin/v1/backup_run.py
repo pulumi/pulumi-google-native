@@ -423,6 +423,7 @@ class BackupRun(pulumi.CustomResource):
         __props__.__dict__["instance"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["status"] = None
@@ -489,9 +490,6 @@ class BackupRun(pulumi.CustomResource):
     @property
     @pulumi.getter
     def instance(self) -> pulumi.Output[str]:
-        """
-        Name of the database instance.
-        """
         return pulumi.get(self, "instance")
 
     @property
@@ -509,6 +507,11 @@ class BackupRun(pulumi.CustomResource):
         Location of the backups.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfLink")

@@ -207,8 +207,12 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["filesystem_used_bytes"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["snapshot_id"] = None
         __props__.__dict__["state"] = None
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
@@ -237,6 +241,11 @@ class Snapshot(pulumi.CustomResource):
         return pulumi.get(self, "filesystem_used_bytes")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -246,11 +255,29 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        """
+        return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter

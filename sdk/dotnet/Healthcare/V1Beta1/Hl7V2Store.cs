@@ -15,11 +15,23 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:Hl7V2Store")]
     public partial class Hl7V2Store : Pulumi.CustomResource
     {
+        [Output("datasetId")]
+        public Output<string> DatasetId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// </summary>
+        [Output("hl7V2StoreId")]
+        public Output<string?> Hl7V2StoreId { get; private set; } = null!;
+
         /// <summary>
         /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
@@ -44,6 +56,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Output("parserConfig")]
         public Output<Outputs.ParserConfigResponse> ParserConfig { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.

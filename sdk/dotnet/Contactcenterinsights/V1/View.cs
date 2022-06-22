@@ -27,11 +27,17 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The most recent time at which the view was updated.

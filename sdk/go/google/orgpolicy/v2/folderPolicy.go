@@ -20,6 +20,7 @@ type FolderPolicy struct {
 	//
 	// Deprecated: Deprecated.
 	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput `pulumi:"alternate"`
+	FolderId  pulumi.StringOutput                                     `pulumi:"folderId"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Basic information about the Organization Policy.
@@ -134,6 +135,10 @@ func (o FolderPolicyOutput) ToFolderPolicyOutputWithContext(ctx context.Context)
 // Deprecated: Deprecated.
 func (o FolderPolicyOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
 	return o.ApplyT(func(v *FolderPolicy) GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput { return v.Alternate }).(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput)
+}
+
+func (o FolderPolicyOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderPolicy) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
 
 // Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.

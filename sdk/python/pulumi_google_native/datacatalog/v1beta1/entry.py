@@ -371,10 +371,14 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["bigquery_table_spec"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["entry_group_id"] = None
+        __props__.__dict__["entry_id"] = None
         __props__.__dict__["gcs_fileset_spec"] = None
         __props__.__dict__["integrated_system"] = None
         __props__.__dict__["linked_resource"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["schema"] = None
         __props__.__dict__["source_system_timestamps"] = None
         __props__.__dict__["type"] = None
@@ -416,6 +420,19 @@ class Entry(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="entryGroupId")
+    def entry_group_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "entry_group_id")
+
+    @property
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> pulumi.Output[str]:
+        """
+        Required. The id of the entry to create.
+        """
+        return pulumi.get(self, "entry_id")
+
+    @property
     @pulumi.getter(name="gcsFilesetSpec")
     def gcs_fileset_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse']:
         """
@@ -441,11 +458,21 @@ class Entry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -64,6 +64,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
      */
     public /*out*/ readonly probingDetails!: pulumi.Output<outputs.networkmanagement.v1beta1.ProbingDetailsResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
@@ -80,6 +81,10 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
      */
     public readonly source!: pulumi.Output<outputs.networkmanagement.v1beta1.EndpointResponse>;
+    /**
+     * Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
+     */
+    public readonly testId!: pulumi.Output<string>;
     /**
      * The time the test's configuration was updated.
      */
@@ -130,10 +135,12 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["probingDetails"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["reachabilityDetails"] = undefined /*out*/;
             resourceInputs["relatedProjects"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
+            resourceInputs["testId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

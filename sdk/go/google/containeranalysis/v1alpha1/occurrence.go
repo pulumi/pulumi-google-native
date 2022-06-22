@@ -36,10 +36,11 @@ type Occurrence struct {
 	Installation InstallationResponseOutput `pulumi:"installation"`
 	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+	// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName pulumi.StringOutput `pulumi:"noteName"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// A description of actions that can be taken to remedy the `Note`
 	Remediation pulumi.StringOutput `pulumi:"remediation"`
 	//  The resource for which the `Occurrence` applies.
@@ -281,7 +282,7 @@ func (o OccurrenceOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
 func (o OccurrenceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -289,6 +290,10 @@ func (o OccurrenceOutput) Name() pulumi.StringOutput {
 // An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 func (o OccurrenceOutput) NoteName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.NoteName }).(pulumi.StringOutput)
+}
+
+func (o OccurrenceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A description of actions that can be taken to remedy the `Note`

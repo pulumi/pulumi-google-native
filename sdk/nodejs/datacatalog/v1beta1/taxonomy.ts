@@ -48,6 +48,7 @@ export class Taxonomy extends pulumi.CustomResource {
      * User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
      */
@@ -56,6 +57,7 @@ export class Taxonomy extends pulumi.CustomResource {
      * Number of policy tags contained in this taxonomy.
      */
     public /*out*/ readonly policyTagCount!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Timestamps about this taxonomy. Only create_time and update_time are used.
      */
@@ -87,8 +89,10 @@ export class Taxonomy extends pulumi.CustomResource {
             resourceInputs["activatedPolicyTypes"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["policyTagCount"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

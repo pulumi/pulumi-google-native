@@ -35,6 +35,7 @@ export class OrganizationBucketView extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationBucketView.__pulumiType;
     }
 
+    public readonly bucketId!: pulumi.Output<string>;
     /**
      * The creation timestamp of the view.
      */
@@ -47,14 +48,20 @@ export class OrganizationBucketView extends pulumi.CustomResource {
      * Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
      */
     public readonly filter!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * The last update timestamp of the view.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Required. The id to use for this view.
+     */
+    public readonly viewId!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationBucketView resource with the given unique name, arguments, and options.
@@ -86,11 +93,15 @@ export class OrganizationBucketView extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["viewId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationBucketView.__pulumiType, name, resourceInputs, opts);

@@ -124,10 +124,34 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<Outputs.BucketOwnerResponse> Owner { get; private set; } = null!;
 
         /// <summary>
+        /// Apply a predefined set of access controls to this bucket.
+        /// </summary>
+        [Output("predefinedAcl")]
+        public Output<string?> PredefinedAcl { get; private set; } = null!;
+
+        /// <summary>
+        /// Apply a predefined set of default object access controls to this bucket.
+        /// </summary>
+        [Output("predefinedDefaultObjectAcl")]
+        public Output<string?> PredefinedDefaultObjectAcl { get; private set; } = null!;
+
+        /// <summary>
+        /// A valid API project identifier.
+        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
         /// The project number of the project the bucket belongs to.
         /// </summary>
         [Output("projectNumber")]
         public Output<string> ProjectNumber { get; private set; } = null!;
+
+        /// <summary>
+        /// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+        /// </summary>
+        [Output("projection")]
+        public Output<string?> Projection { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
@@ -170,6 +194,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's versioning configuration.

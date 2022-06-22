@@ -225,10 +225,13 @@ class GameServerDeployment(pulumi.CustomResource):
         __props__ = GameServerDeploymentArgs.__new__(GameServerDeploymentArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["deployment_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         return GameServerDeployment(resource_name, opts=opts, __props__=__props__)
 
@@ -239,6 +242,14 @@ class GameServerDeployment(pulumi.CustomResource):
         The creation time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the game server deployment resource to create.
+        """
+        return pulumi.get(self, "deployment_id")
 
     @property
     @pulumi.getter
@@ -266,11 +277,21 @@ class GameServerDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -194,8 +194,11 @@ class TargetProject(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["request_id"] = None
+        __props__.__dict__["target_project_id"] = None
         __props__.__dict__["update_time"] = None
         return TargetProject(resource_name, opts=opts, __props__=__props__)
 
@@ -217,6 +220,11 @@ class TargetProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the target project.
@@ -226,10 +234,23 @@ class TargetProject(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The target project ID (number) or project name.
-        """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="targetProjectId")
+    def target_project_id(self) -> pulumi.Output[str]:
+        """
+        Required. The target_project identifier.
+        """
+        return pulumi.get(self, "target_project_id")
 
     @property
     @pulumi.getter(name="updateTime")

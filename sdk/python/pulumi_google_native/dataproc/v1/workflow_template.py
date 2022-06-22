@@ -270,9 +270,11 @@ class WorkflowTemplate(pulumi.CustomResource):
         __props__.__dict__["dag_timeout"] = None
         __props__.__dict__["jobs"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parameters"] = None
         __props__.__dict__["placement"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["version"] = None
         return WorkflowTemplate(resource_name, opts=opts, __props__=__props__)
@@ -311,6 +313,11 @@ class WorkflowTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
@@ -332,6 +339,11 @@ class WorkflowTemplate(pulumi.CustomResource):
         WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -190,6 +190,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
 
         __props__ = BillingAccountExclusionArgs.__new__(BillingAccountExclusionArgs)
 
+        __props__.__dict__["billing_account_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
@@ -197,6 +198,11 @@ class BillingAccountExclusion(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["update_time"] = None
         return BillingAccountExclusion(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "billing_account_id")
 
     @property
     @pulumi.getter(name="createTime")

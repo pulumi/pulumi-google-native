@@ -267,7 +267,9 @@ class WorkerPool(pulumi.CustomResource):
 
         __props__.__dict__["autoscale"] = None
         __props__.__dict__["channel"] = None
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["worker_config"] = None
         __props__.__dict__["worker_count"] = None
@@ -290,12 +292,22 @@ class WorkerPool(pulumi.CustomResource):
         return pulumi.get(self, "channel")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

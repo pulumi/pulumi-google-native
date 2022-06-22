@@ -37,6 +37,7 @@ export class Evaluation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Evaluation.__pulumiType;
     }
 
+    public readonly conversationModelId!: pulumi.Output<string>;
     /**
      * Creation time of this model.
      */
@@ -49,10 +50,12 @@ export class Evaluation extends pulumi.CustomResource {
      * Optional. The configuration of the evaluation task.
      */
     public readonly evaluationConfig!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2EvaluationConfigResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Only available when model is for smart reply.
      */
@@ -81,10 +84,13 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["smartReplyMetrics"] = undefined /*out*/;
         } else {
+            resourceInputs["conversationModelId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["evaluationConfig"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["smartReplyMetrics"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

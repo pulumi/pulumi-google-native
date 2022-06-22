@@ -322,10 +322,14 @@ class Consent(pulumi.CustomResource):
         __props__ = ConsentArgs.__new__(ConsentArgs)
 
         __props__.__dict__["consent_artifact"] = None
+        __props__.__dict__["consent_store_id"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["expire_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["policies"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["revision_create_time"] = None
         __props__.__dict__["revision_id"] = None
         __props__.__dict__["state"] = None
@@ -342,12 +346,27 @@ class Consent(pulumi.CustomResource):
         return pulumi.get(self, "consent_artifact")
 
     @property
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "consent_store_id")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
+
+    @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[str]:
         """
         Timestamp in UTC of when this Consent is considered expired.
         """
         return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -372,6 +391,11 @@ class Consent(pulumi.CustomResource):
         Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
         """
         return pulumi.get(self, "policies")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="revisionCreateTime")

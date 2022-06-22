@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         /// </summary>

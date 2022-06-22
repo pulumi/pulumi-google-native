@@ -36,6 +36,10 @@ export class Attestor extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The attestors ID.
+     */
+    public readonly attestorId!: pulumi.Output<string>;
+    /**
      * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
     public readonly description!: pulumi.Output<string>;
@@ -47,6 +51,7 @@ export class Attestor extends pulumi.CustomResource {
      * The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Time when the attestor was last updated.
      */
@@ -78,9 +83,11 @@ export class Attestor extends pulumi.CustomResource {
             resourceInputs["userOwnedDrydockNote"] = args ? args.userOwnedDrydockNote : undefined;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["attestorId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["userOwnedDrydockNote"] = undefined /*out*/;
         }

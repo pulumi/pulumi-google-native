@@ -292,12 +292,16 @@ class Contentitem(pulumi.CustomResource):
         __props__.__dict__["data_text"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["lake_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notebook"] = None
         __props__.__dict__["path"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["sql_script"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Contentitem(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -333,6 +337,16 @@ class Contentitem(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="lakeId")
+    def lake_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "lake_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -357,6 +371,11 @@ class Contentitem(pulumi.CustomResource):
         return pulumi.get(self, "path")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="sqlScript")
     def sql_script(self) -> pulumi.Output['outputs.GoogleCloudDataplexV1ContentSqlScriptResponse']:
         """
@@ -379,4 +398,12 @@ class Contentitem(pulumi.CustomResource):
         The time when the content was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
 

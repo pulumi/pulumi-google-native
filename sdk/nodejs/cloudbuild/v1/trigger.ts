@@ -95,10 +95,16 @@ export class Trigger extends pulumi.CustomResource {
      * If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
      */
     public readonly includedFiles!: pulumi.Output<string[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Required. ID of the project for which to configure automatic builds.
+     */
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
      */
@@ -189,7 +195,10 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["ignoredFiles"] = undefined /*out*/;
             resourceInputs["includeBuildLogs"] = undefined /*out*/;
             resourceInputs["includedFiles"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["pubsubConfig"] = undefined /*out*/;
             resourceInputs["resourceName"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;

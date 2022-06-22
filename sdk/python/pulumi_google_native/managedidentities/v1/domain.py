@@ -283,10 +283,12 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["audit_logs_enabled"] = None
         __props__.__dict__["authorized_networks"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["domain_name"] = None
         __props__.__dict__["fqdn"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["locations"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reserved_ip_range"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
@@ -327,6 +329,14 @@ class Domain(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Output[str]:
+        """
+        Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
     @pulumi.getter
     def fqdn(self) -> pulumi.Output[str]:
         """
@@ -357,6 +367,11 @@ class Domain(pulumi.CustomResource):
         The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="reservedIpRange")

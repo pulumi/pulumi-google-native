@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class EndpointAttachment : Pulumi.CustomResource
     {
         /// <summary>
+        /// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        /// </summary>
+        [Output("endpointAttachmentId")]
+        public Output<string?> EndpointAttachmentId { get; private set; } = null!;
+
+        /// <summary>
         /// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
         /// </summary>
         [Output("host")]
@@ -33,6 +39,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// Format: projects/*/regions/*/serviceAttachments/*

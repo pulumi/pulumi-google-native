@@ -18,7 +18,8 @@ type Release struct {
 	// Time the release was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Format: `projects/{project_id}/releases/{release_id}`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
 	RulesetName pulumi.StringOutput `pulumi:"rulesetName"`
 	// Time the release was updated.
@@ -128,6 +129,10 @@ func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
 // Format: `projects/{project_id}/releases/{release_id}`
 func (o ReleaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.

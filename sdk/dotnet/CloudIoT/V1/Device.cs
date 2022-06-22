@@ -81,6 +81,9 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Output("lastStateTime")]
         public Output<string> LastStateTime { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         /// </summary>
@@ -104,6 +107,12 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// </summary>
         [Output("numId")]
         public Output<string> NumId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("registryId")]
+        public Output<string> RegistryId { get; private set; } = null!;
 
         /// <summary>
         /// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.

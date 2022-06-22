@@ -27,8 +27,9 @@ type Environment struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
-	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesResponseOutput `pulumi:"properties"`
 	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
@@ -176,9 +177,13 @@ func (o EnvironmentOutput) LastModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
 }
 
-// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Optional. Key-value pairs that may be used for customizing the environment.

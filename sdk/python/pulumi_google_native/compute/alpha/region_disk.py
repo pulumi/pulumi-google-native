@@ -779,9 +779,11 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["options"] = None
         __props__.__dict__["physical_block_size_bytes"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["provisioned_iops"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["replica_zones"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["resource_policies"] = None
         __props__.__dict__["resource_status"] = None
         __props__.__dict__["satisfies_pzs"] = None
@@ -986,6 +988,11 @@ class RegionDisk(pulumi.CustomResource):
         return pulumi.get(self, "physical_block_size_bytes")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> pulumi.Output[str]:
         """
@@ -996,9 +1003,6 @@ class RegionDisk(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
         return pulumi.get(self, "region")
 
     @property
@@ -1008,6 +1012,14 @@ class RegionDisk(pulumi.CustomResource):
         URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         """
         return pulumi.get(self, "replica_zones")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -1093,7 +1105,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> pulumi.Output[str]:
         """
-        The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
+        Source image to restore onto a disk. This field is optional.
         """
         return pulumi.get(self, "source_image")
 

@@ -50,6 +50,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
      * End time for the evaluation's analysis.
      */
     public readonly endTime!: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Labels used to filter the metrics used for a canary evaluation.
      */
@@ -58,6 +59,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
      * Name of the canary evalution.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Start time for the canary evaluation's analysis.
      */
@@ -122,8 +124,10 @@ export class CanaryEvaluation extends pulumi.CustomResource {
             resourceInputs["control"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["metricLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["treatment"] = undefined /*out*/;

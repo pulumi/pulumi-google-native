@@ -655,6 +655,7 @@ class Config(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["producer_project_id"] = None
         __props__.__dict__["quota"] = None
+        __props__.__dict__["service_name"] = None
         __props__.__dict__["source_info"] = None
         __props__.__dict__["system_parameters"] = None
         __props__.__dict__["system_types"] = None
@@ -822,6 +823,11 @@ class Config(pulumi.CustomResource):
         Quota configuration.
         """
         return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="sourceInfo")

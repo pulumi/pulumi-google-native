@@ -17,6 +17,8 @@ type AppGateway struct {
 
 	// A list of connections allocated for the Gateway
 	AllocatedConnections AllocatedConnectionResponseArrayOutput `pulumi:"allocatedConnections"`
+	// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	AppGatewayId pulumi.StringPtrOutput `pulumi:"appGatewayId"`
 	// Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters.
@@ -24,9 +26,13 @@ type AppGateway struct {
 	// The type of hosting used by the AppGateway.
 	HostType pulumi.StringOutput `pulumi:"hostType"`
 	// Optional. Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Unique resource name of the AppGateway. The name is ignored when creating an AppGateway.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The current state of the AppGateway.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of network connectivity used by the AppGateway.
@@ -37,6 +43,8 @@ type AppGateway struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Server-defined URI for this resource.
 	Uri pulumi.StringOutput `pulumi:"uri"`
+	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewAppGateway registers a new resource with the given unique name, arguments, and options.
@@ -168,6 +176,11 @@ func (o AppGatewayOutput) AllocatedConnections() AllocatedConnectionResponseArra
 	return o.ApplyT(func(v *AppGateway) AllocatedConnectionResponseArrayOutput { return v.AllocatedConnections }).(AllocatedConnectionResponseArrayOutput)
 }
 
+// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+func (o AppGatewayOutput) AppGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.AppGatewayId }).(pulumi.StringPtrOutput)
+}
+
 // Timestamp when the resource was created.
 func (o AppGatewayOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -188,9 +201,22 @@ func (o AppGatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o AppGatewayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Unique resource name of the AppGateway. The name is ignored when creating an AppGateway.
 func (o AppGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppGatewayOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o AppGatewayOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The current state of the AppGateway.
@@ -216,6 +242,11 @@ func (o AppGatewayOutput) UpdateTime() pulumi.StringOutput {
 // Server-defined URI for this resource.
 func (o AppGatewayOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+func (o AppGatewayOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

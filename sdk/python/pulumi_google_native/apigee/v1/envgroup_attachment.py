@@ -167,9 +167,11 @@ class EnvgroupAttachment(pulumi.CustomResource):
         __props__ = EnvgroupAttachmentArgs.__new__(EnvgroupAttachmentArgs)
 
         __props__.__dict__["created_at"] = None
+        __props__.__dict__["envgroup_id"] = None
         __props__.__dict__["environment"] = None
         __props__.__dict__["environment_group_id"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         return EnvgroupAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -179,6 +181,11 @@ class EnvgroupAttachment(pulumi.CustomResource):
         The time at which the environment group attachment was created as milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="envgroupId")
+    def envgroup_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "envgroup_id")
 
     @property
     @pulumi.getter
@@ -203,4 +210,9 @@ class EnvgroupAttachment(pulumi.CustomResource):
         ID of the environment group attachment.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 

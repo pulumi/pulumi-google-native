@@ -30,6 +30,8 @@ type Feed struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
 	RelationshipTypes pulumi.StringArrayOutput `pulumi:"relationshipTypes"`
+	V1Id              pulumi.StringOutput      `pulumi:"v1Id"`
+	V1Id1             pulumi.StringOutput      `pulumi:"v1Id1"`
 }
 
 // NewFeed registers a new resource with the given unique name, arguments, and options.
@@ -198,6 +200,14 @@ func (o FeedOutput) Name() pulumi.StringOutput {
 // A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
 func (o FeedOutput) RelationshipTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Feed) pulumi.StringArrayOutput { return v.RelationshipTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o FeedOutput) V1Id() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feed) pulumi.StringOutput { return v.V1Id }).(pulumi.StringOutput)
+}
+
+func (o FeedOutput) V1Id1() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feed) pulumi.StringOutput { return v.V1Id1 }).(pulumi.StringOutput)
 }
 
 func init() {

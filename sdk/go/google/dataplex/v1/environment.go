@@ -24,12 +24,17 @@ type Environment struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// URI Endpoints to access sessions associated with the Environment.
 	Endpoints GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput `pulumi:"endpoints"`
+	// Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Infrastructure specification for the Environment.
 	InfrastructureSpec GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput `pulumi:"infrastructureSpec"`
 	// Optional. User defined labels for the environment.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	LakeId   pulumi.StringOutput    `pulumi:"lakeId"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Configuration for sessions created for this environment.
 	SessionSpec GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput `pulumi:"sessionSpec"`
 	// Status of sessions created for this environment.
@@ -40,6 +45,8 @@ type Environment struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the environment was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -187,6 +194,11 @@ func (o EnvironmentOutput) Endpoints() GoogleCloudDataplexV1EnvironmentEndpoints
 	return o.ApplyT(func(v *Environment) GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput { return v.Endpoints }).(GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput)
 }
 
+// Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+func (o EnvironmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // Infrastructure specification for the Environment.
 func (o EnvironmentOutput) InfrastructureSpec() GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput {
 	return o.ApplyT(func(v *Environment) GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput {
@@ -199,9 +211,21 @@ func (o EnvironmentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o EnvironmentOutput) LakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.LakeId }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Configuration for sessions created for this environment.
@@ -229,6 +253,11 @@ func (o EnvironmentOutput) Uid() pulumi.StringOutput {
 // The time when the environment was last updated.
 func (o EnvironmentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o EnvironmentOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

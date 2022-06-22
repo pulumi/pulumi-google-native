@@ -16,7 +16,8 @@ type BillingAccountSink struct {
 	pulumi.CustomResourceState
 
 	// Optional. Options that affect sinks exporting data to BigQuery.
-	BigqueryOptions BigQueryOptionsResponseOutput `pulumi:"bigqueryOptions"`
+	BigqueryOptions  BigQueryOptionsResponseOutput `pulumi:"bigqueryOptions"`
+	BillingAccountId pulumi.StringOutput           `pulumi:"billingAccountId"`
 	// The creation timestamp of the sink.This field may not be present for older sinks.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A description of this sink.The maximum length of the description is 8000 characters.
@@ -37,6 +38,8 @@ type BillingAccountSink struct {
 	//
 	// Deprecated: Deprecated. This field is unused.
 	OutputVersionFormat pulumi.StringOutput `pulumi:"outputVersionFormat"`
+	// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+	UniqueWriterIdentity pulumi.StringPtrOutput `pulumi:"uniqueWriterIdentity"`
 	// The last update timestamp of the sink.This field may not be present for older sinks.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink do not have a writer_identity and no additional permissions are required.
@@ -182,6 +185,10 @@ func (o BillingAccountSinkOutput) BigqueryOptions() BigQueryOptionsResponseOutpu
 	return o.ApplyT(func(v *BillingAccountSink) BigQueryOptionsResponseOutput { return v.BigqueryOptions }).(BigQueryOptionsResponseOutput)
 }
 
+func (o BillingAccountSinkOutput) BillingAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingAccountSink) pulumi.StringOutput { return v.BillingAccountId }).(pulumi.StringOutput)
+}
+
 // The creation timestamp of the sink.This field may not be present for older sinks.
 func (o BillingAccountSinkOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountSink) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -227,6 +234,11 @@ func (o BillingAccountSinkOutput) Name() pulumi.StringOutput {
 // Deprecated: Deprecated. This field is unused.
 func (o BillingAccountSinkOutput) OutputVersionFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountSink) pulumi.StringOutput { return v.OutputVersionFormat }).(pulumi.StringOutput)
+}
+
+// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+func (o BillingAccountSinkOutput) UniqueWriterIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingAccountSink) pulumi.StringPtrOutput { return v.UniqueWriterIdentity }).(pulumi.StringPtrOutput)
 }
 
 // The last update timestamp of the sink.This field may not be present for older sinks.

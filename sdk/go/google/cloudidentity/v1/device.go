@@ -31,6 +31,8 @@ type Device struct {
 	CompromisedState pulumi.StringOutput `pulumi:"compromisedState"`
 	// When the Company-Owned device was imported. This field is empty for BYOD devices.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
+	Customer pulumi.StringPtrOutput `pulumi:"customer"`
 	// Unique identifier for the device.
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// Type of device.
@@ -221,6 +223,11 @@ func (o DeviceOutput) CompromisedState() pulumi.StringOutput {
 // When the Company-Owned device was imported. This field is empty for BYOD devices.
 func (o DeviceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
+func (o DeviceOutput) Customer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Customer }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier for the device.

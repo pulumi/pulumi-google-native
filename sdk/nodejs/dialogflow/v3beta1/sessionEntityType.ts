@@ -35,6 +35,7 @@ export class SessionEntityType extends pulumi.CustomResource {
         return obj['__pulumiType'] === SessionEntityType.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * The collection of entities to override or supplement the custom entity type.
      */
@@ -43,10 +44,14 @@ export class SessionEntityType extends pulumi.CustomResource {
      * Indicates whether the additional data should override or supplement the custom entity type definition.
      */
     public readonly entityOverrideMode!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly sessionId!: pulumi.Output<string>;
 
     /**
      * Create a SessionEntityType resource with the given unique name, arguments, and options.
@@ -83,9 +88,14 @@ export class SessionEntityType extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sessionId"] = args ? args.sessionId : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["entities"] = undefined /*out*/;
             resourceInputs["entityOverrideMode"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["sessionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SessionEntityType.__pulumiType, name, resourceInputs, opts);

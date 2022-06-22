@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Storage.V1
     [GoogleNativeResourceType("google-native:storage/v1:Notification")]
     public partial class Notification : Pulumi.CustomResource
     {
+        [Output("bucket")]
+        public Output<string> Bucket { get; private set; } = null!;
+
         /// <summary>
         /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         /// </summary>
@@ -63,6 +66,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
+
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
+        [Output("userProject")]
+        public Output<string?> UserProject { get; private set; } = null!;
 
 
         /// <summary>

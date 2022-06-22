@@ -75,9 +75,6 @@ export class Job extends pulumi.CustomResource {
      * User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-     */
     public readonly location!: pulumi.Output<string>;
     /**
      * The user-specified Cloud Dataflow job name. Only one Job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
@@ -87,12 +84,9 @@ export class Job extends pulumi.CustomResource {
      * Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
      */
     public readonly pipelineDescription!: pulumi.Output<outputs.dataflow.v1b3.PipelineDescriptionResponse>;
-    /**
-     * The ID of the Cloud Platform project that the job belongs to.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
+     * Deprecated. This field is now in the Job message.
      */
     public readonly replaceJobId!: pulumi.Output<string>;
     /**
@@ -135,6 +129,10 @@ export class Job extends pulumi.CustomResource {
      * The type of Cloud Dataflow job.
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * The level of information requested in response.
+     */
+    public readonly view!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -198,6 +196,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tempFiles"] = undefined /*out*/;
             resourceInputs["transformNameMapping"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["view"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);

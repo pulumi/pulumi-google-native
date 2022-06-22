@@ -21,7 +21,10 @@ type History struct {
 	// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
 	HistoryId pulumi.StringOutput `pulumi:"historyId"`
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform pulumi.StringOutput `pulumi:"testPlatform"`
 }
@@ -143,6 +146,15 @@ func (o HistoryOutput) HistoryId() pulumi.StringOutput {
 // A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 func (o HistoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *History) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o HistoryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *History) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+func (o HistoryOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *History) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.

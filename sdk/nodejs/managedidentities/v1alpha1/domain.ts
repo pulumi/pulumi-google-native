@@ -49,6 +49,10 @@ export class Domain extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * Must be unique within the project. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric.
+     */
+    public readonly domainName!: pulumi.Output<string | undefined>;
+    /**
      * Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
      */
     public /*out*/ readonly fqdn!: pulumi.Output<string>;
@@ -68,6 +72,7 @@ export class Domain extends pulumi.CustomResource {
      * Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
@@ -125,11 +130,13 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["auditLogsEnabled"] = undefined /*out*/;
             resourceInputs["authorizedNetworks"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["domainName"] = undefined /*out*/;
             resourceInputs["fqdn"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["locations"] = undefined /*out*/;
             resourceInputs["managedIdentitiesAdminName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reservedIpRange"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;

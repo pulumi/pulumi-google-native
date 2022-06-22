@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         /// </summary>
@@ -51,6 +54,9 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
         /// </summary>
@@ -62,6 +68,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
+        /// </summary>
+        [Output("tcpRouteId")]
+        public Output<string> TcpRouteId { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was updated.

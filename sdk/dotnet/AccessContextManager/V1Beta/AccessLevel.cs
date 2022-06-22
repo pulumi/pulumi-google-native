@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1beta:AccessLevel")]
     public partial class AccessLevel : Pulumi.CustomResource
     {
+        [Output("accessPolicyId")]
+        public Output<string> AccessPolicyId { get; private set; } = null!;
+
         /// <summary>
         /// A `BasicLevel` composed of `Conditions`.
         /// </summary>

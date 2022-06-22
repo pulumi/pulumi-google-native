@@ -145,10 +145,17 @@ class NatAddress(pulumi.CustomResource):
 
         __props__ = NatAddressArgs.__new__(NatAddressArgs)
 
+        __props__.__dict__["instance_id"] = None
         __props__.__dict__["ip_address"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["state"] = None
         return NatAddress(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -165,6 +172,11 @@ class NatAddress(pulumi.CustomResource):
         Resource ID of the NAT address.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

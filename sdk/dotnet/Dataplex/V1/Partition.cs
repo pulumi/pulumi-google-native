@@ -16,15 +16,18 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     [GoogleNativeResourceType("google-native:dataplex/v1:Partition")]
     public partial class Partition : Pulumi.CustomResource
     {
+        [Output("entityId")]
+        public Output<string> EntityId { get; private set; } = null!;
+
         /// <summary>
         /// Optional. The etag for this partition.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-        /// </summary>
+        [Output("lakeId")]
+        public Output<string> LakeId { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -34,11 +37,23 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
         /// </summary>
         [Output("values")]
         public Output<ImmutableArray<string>> Values { get; private set; } = null!;
+
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>

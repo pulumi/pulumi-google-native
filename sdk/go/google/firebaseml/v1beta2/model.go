@@ -26,7 +26,8 @@ type Model struct {
 	// The model_hash will change if a new file is available for download.
 	ModelHash pulumi.StringOutput `pulumi:"modelHash"`
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// State common to all model types. Includes publishing and validation information.
 	State ModelStateResponseOutput `pulumi:"state"`
 	// User defined tags which can be used to group/filter models during listing
@@ -172,6 +173,10 @@ func (o ModelOutput) ModelHash() pulumi.StringOutput {
 // The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 func (o ModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ModelOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State common to all model types. Includes publishing and validation information.

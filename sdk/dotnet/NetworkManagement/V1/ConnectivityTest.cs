@@ -52,6 +52,9 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// IP Protocol of the test. When not provided, "TCP" is assumed.
         /// </summary>
@@ -75,6 +78,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         /// </summary>
         [Output("source")]
         public Output<Outputs.EndpointResponse> Source { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
+        /// </summary>
+        [Output("testId")]
+        public Output<string> TestId { get; private set; } = null!;
 
         /// <summary>
         /// The time the test's configuration was updated.

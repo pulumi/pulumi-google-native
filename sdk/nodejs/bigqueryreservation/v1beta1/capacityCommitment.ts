@@ -37,6 +37,10 @@ export class CapacityCommitment extends pulumi.CustomResource {
     }
 
     /**
+     * The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+     */
+    public readonly capacityCommitmentId!: pulumi.Output<string | undefined>;
+    /**
      * The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */
     public /*out*/ readonly commitmentEndTime!: pulumi.Output<string>;
@@ -45,9 +49,14 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly commitmentStartTime!: pulumi.Output<string>;
     /**
+     * If true, fail the request if another project in the organization has a capacity commitment.
+     */
+    public readonly enforceSingleAdminProjectPerOrg!: pulumi.Output<string | undefined>;
+    /**
      * For FAILED commitment plan, provides the reason of failure.
      */
     public /*out*/ readonly failureStatus!: pulumi.Output<outputs.bigqueryreservation.v1beta1.StatusResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
      */
@@ -60,6 +69,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
      * Capacity commitment commitment plan.
      */
     public readonly plan!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
      */
@@ -98,12 +108,16 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["capacityCommitmentId"] = undefined /*out*/;
             resourceInputs["commitmentEndTime"] = undefined /*out*/;
             resourceInputs["commitmentStartTime"] = undefined /*out*/;
+            resourceInputs["enforceSingleAdminProjectPerOrg"] = undefined /*out*/;
             resourceInputs["failureStatus"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["multiRegionAuxiliary"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["plan"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["renewalPlan"] = undefined /*out*/;
             resourceInputs["slotCount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

@@ -79,10 +79,12 @@ export class RegionUrlMap extends pulumi.CustomResource {
      * The list of named PathMatchers to use against the URL.
      */
     public readonly pathMatchers!: pulumi.Output<outputs.compute.alpha.PathMatcherResponse[]>;
-    /**
-     * URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     */
+    public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
+    /**
+     * begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
@@ -134,7 +136,9 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pathMatchers"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tests"] = undefined /*out*/;
         }

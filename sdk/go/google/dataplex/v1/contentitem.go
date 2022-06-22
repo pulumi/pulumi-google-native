@@ -23,19 +23,24 @@ type Contentitem struct {
 	// Optional. Description of the content.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. User defined labels for the content.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	LakeId   pulumi.StringOutput    `pulumi:"lakeId"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notebook related configurations.
 	Notebook GoogleCloudDataplexV1ContentNotebookResponseOutput `pulumi:"notebook"`
 	// The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
-	Path pulumi.StringOutput `pulumi:"path"`
+	Path    pulumi.StringOutput `pulumi:"path"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Sql Script related configurations.
 	SqlScript GoogleCloudDataplexV1ContentSqlScriptResponseOutput `pulumi:"sqlScript"`
 	// System generated globally unique ID for the content. This ID will be different if the content is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the content was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewContentitem registers a new resource with the given unique name, arguments, and options.
@@ -183,6 +188,14 @@ func (o ContentitemOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Contentitem) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ContentitemOutput) LakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.LakeId }).(pulumi.StringOutput)
+}
+
+func (o ContentitemOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
 func (o ContentitemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -198,6 +211,10 @@ func (o ContentitemOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
+func (o ContentitemOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Sql Script related configurations.
 func (o ContentitemOutput) SqlScript() GoogleCloudDataplexV1ContentSqlScriptResponseOutput {
 	return o.ApplyT(func(v *Contentitem) GoogleCloudDataplexV1ContentSqlScriptResponseOutput { return v.SqlScript }).(GoogleCloudDataplexV1ContentSqlScriptResponseOutput)
@@ -211,6 +228,11 @@ func (o ContentitemOutput) Uid() pulumi.StringOutput {
 // The time when the content was last updated.
 func (o ContentitemOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o ContentitemOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

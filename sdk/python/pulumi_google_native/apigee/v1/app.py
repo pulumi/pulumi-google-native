@@ -324,6 +324,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["key_expires_in"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["scopes"] = None
         __props__.__dict__["status"] = None
         return App(resource_name, opts=opts, __props__=__props__)
@@ -387,9 +388,6 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter(name="developerId")
     def developer_id(self) -> pulumi.Output[str]:
-        """
-        ID of the developer.
-        """
         return pulumi.get(self, "developer_id")
 
     @property
@@ -415,6 +413,11 @@ class App(pulumi.CustomResource):
         Name of the developer app.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter

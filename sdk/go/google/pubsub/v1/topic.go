@@ -24,11 +24,13 @@ type Topic struct {
 	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
 	MessageStoragePolicy MessageStoragePolicyResponseOutput `pulumi:"messageStoragePolicy"`
 	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Settings for validating messages published against a schema.
 	SchemaSettings SchemaSettingsResponseOutput `pulumi:"schemaSettings"`
+	TopicId        pulumi.StringOutput          `pulumi:"topicId"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -173,6 +175,10 @@ func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o TopicOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 // Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 func (o TopicOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Topic) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -181,6 +187,10 @@ func (o TopicOutput) SatisfiesPzs() pulumi.BoolOutput {
 // Settings for validating messages published against a schema.
 func (o TopicOutput) SchemaSettings() SchemaSettingsResponseOutput {
 	return o.ApplyT(func(v *Topic) SchemaSettingsResponseOutput { return v.SchemaSettings }).(SchemaSettingsResponseOutput)
+}
+
+func (o TopicOutput) TopicId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.TopicId }).(pulumi.StringOutput)
 }
 
 func init() {

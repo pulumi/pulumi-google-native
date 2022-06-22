@@ -76,14 +76,17 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// Resource labels to represent user provided metadata
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
-        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -140,6 +143,9 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        /// </summary>
+        [Output("guestPolicyId")]
+        public Output<string> GuestPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         /// </summary>
         [Output("name")]
@@ -56,6 +62,9 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// </summary>
         [Output("packages")]
         public Output<ImmutableArray<Outputs.PackageResponse>> Packages { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A list of Recipes to install on the VM instance.

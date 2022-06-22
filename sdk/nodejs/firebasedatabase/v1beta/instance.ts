@@ -36,16 +36,18 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The globally unique identifier of the database instance.
+     */
+    public readonly databaseId!: pulumi.Output<string | undefined>;
+    /**
      * Output Only. The globally unique hostname of the database.
      */
     public /*out*/ readonly databaseUrl!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The database's lifecycle state. Read-only.
@@ -55,6 +57,10 @@ export class Instance extends pulumi.CustomResource {
      * Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * When set to true, the request will be validated but not submitted.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -76,11 +82,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["databaseUrl"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["databaseId"] = undefined /*out*/;
             resourceInputs["databaseUrl"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);

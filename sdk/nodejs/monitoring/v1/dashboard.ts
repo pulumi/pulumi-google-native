@@ -67,10 +67,15 @@ export class Dashboard extends pulumi.CustomResource {
      * Immutable. The resource name of the dashboard.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */
     public readonly rowLayout!: pulumi.Output<outputs.monitoring.v1.RowLayoutResponse>;
+    /**
+     * If set, validate the request and preview the review, but do not actually save it.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -106,7 +111,9 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["mosaicLayout"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rowLayout"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dashboard.__pulumiType, name, resourceInputs, opts);

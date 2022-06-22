@@ -228,12 +228,15 @@ class Connection(pulumi.CustomResource):
         __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
         __props__.__dict__["cloud_sql"] = None
+        __props__.__dict__["connection_id"] = None
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["friendly_name"] = None
         __props__.__dict__["has_credential"] = None
         __props__.__dict__["last_modified_time"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -243,6 +246,14 @@ class Connection(pulumi.CustomResource):
         Cloud SQL properties.
         """
         return pulumi.get(self, "cloud_sql")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Connection id that should be assigned to the created connection.
+        """
+        return pulumi.get(self, "connection_id")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -286,9 +297,19 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

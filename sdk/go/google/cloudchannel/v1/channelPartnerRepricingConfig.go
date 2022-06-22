@@ -16,6 +16,8 @@ import (
 type ChannelPartnerRepricingConfig struct {
 	pulumi.CustomResourceState
 
+	AccountId            pulumi.StringOutput `pulumi:"accountId"`
+	ChannelPartnerLinkId pulumi.StringOutput `pulumi:"channelPartnerLinkId"`
 	// Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The configuration for bill modifications made by a reseller before sending it to ChannelPartner.
@@ -121,6 +123,14 @@ func (o ChannelPartnerRepricingConfigOutput) ToChannelPartnerRepricingConfigOutp
 
 func (o ChannelPartnerRepricingConfigOutput) ToChannelPartnerRepricingConfigOutputWithContext(ctx context.Context) ChannelPartnerRepricingConfigOutput {
 	return o
+}
+
+func (o ChannelPartnerRepricingConfigOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerRepricingConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o ChannelPartnerRepricingConfigOutput) ChannelPartnerLinkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerRepricingConfig) pulumi.StringOutput { return v.ChannelPartnerLinkId }).(pulumi.StringOutput)
 }
 
 // Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.

@@ -247,6 +247,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["dynamic_group_metadata"] = None
         __props__.__dict__["group_key"] = None
+        __props__.__dict__["initial_group_config"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent"] = None
@@ -292,6 +293,14 @@ class Group(pulumi.CustomResource):
         The `EntityKey` of the `Group`.
         """
         return pulumi.get(self, "group_key")
+
+    @property
+    @pulumi.getter(name="initialGroupConfig")
+    def initial_group_config(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The initial configuration option for the `Group`.
+        """
+        return pulumi.get(self, "initial_group_config")
 
     @property
     @pulumi.getter

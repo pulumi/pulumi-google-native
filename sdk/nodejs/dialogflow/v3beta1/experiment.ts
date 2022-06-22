@@ -35,6 +35,7 @@ export class Experiment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Experiment.__pulumiType;
     }
 
+    public readonly agentId!: pulumi.Output<string>;
     /**
      * Creation time of this experiment.
      */
@@ -55,6 +56,7 @@ export class Experiment extends pulumi.CustomResource {
      * End time of this experiment.
      */
     public readonly endTime!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
      */
@@ -63,10 +65,12 @@ export class Experiment extends pulumi.CustomResource {
      * Last update time of this experiment.
      */
     public readonly lastUpdateTime!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the experiment. Format: projects//locations//agents//environments//experiments/..
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Inference result of the experiment.
      */
@@ -136,14 +140,18 @@ export class Experiment extends pulumi.CustomResource {
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["variantsHistory"] = args ? args.variantsHistory : undefined;
         } else {
+            resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["definition"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["experimentLength"] = undefined /*out*/;
             resourceInputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["result"] = undefined /*out*/;
             resourceInputs["rolloutConfig"] = undefined /*out*/;
             resourceInputs["rolloutFailureReason"] = undefined /*out*/;

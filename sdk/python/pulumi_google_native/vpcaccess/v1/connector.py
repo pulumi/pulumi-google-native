@@ -327,7 +327,9 @@ class Connector(pulumi.CustomResource):
         __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
         __props__.__dict__["connected_projects"] = None
+        __props__.__dict__["connector_id"] = None
         __props__.__dict__["ip_cidr_range"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["machine_type"] = None
         __props__.__dict__["max_instances"] = None
         __props__.__dict__["max_throughput"] = None
@@ -335,6 +337,7 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["min_throughput"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["subnet"] = None
         return Connector(resource_name, opts=opts, __props__=__props__)
@@ -348,12 +351,25 @@ class Connector(pulumi.CustomResource):
         return pulumi.get(self, "connected_projects")
 
     @property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for this connector.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Output[str]:
         """
         The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         """
         return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="machineType")
@@ -410,6 +426,11 @@ class Connector(pulumi.CustomResource):
         Name of a VPC network.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

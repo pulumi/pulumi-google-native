@@ -66,6 +66,10 @@ export class TagValue extends pulumi.CustomResource {
      * Update time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a TagValue resource with the given unique name, arguments, and options.
@@ -99,6 +103,7 @@ export class TagValue extends pulumi.CustomResource {
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["shortName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TagValue.__pulumiType, name, resourceInputs, opts);

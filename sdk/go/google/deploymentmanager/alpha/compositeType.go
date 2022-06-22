@@ -24,6 +24,7 @@ type CompositeType struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Operation that most recently ran, or is currently running, on this composite type.
 	Operation OperationResponseOutput `pulumi:"operation"`
+	Project   pulumi.StringOutput     `pulumi:"project"`
 	// Server defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	Status   pulumi.StringOutput `pulumi:"status"`
@@ -156,6 +157,10 @@ func (o CompositeTypeOutput) Name() pulumi.StringOutput {
 // The Operation that most recently ran, or is currently running, on this composite type.
 func (o CompositeTypeOutput) Operation() OperationResponseOutput {
 	return o.ApplyT(func(v *CompositeType) OperationResponseOutput { return v.Operation }).(OperationResponseOutput)
+}
+
+func (o CompositeTypeOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompositeType) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Server defined URL for the resource.

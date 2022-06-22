@@ -53,6 +53,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fileShares!: pulumi.Output<outputs.file.v1.FileShareConfigResponse[]>;
     /**
+     * Required. The name of the instance to create. The name must be unique for the specified project and location.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
      * KMS key name used for data encryption.
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
@@ -60,6 +64,7 @@ export class Instance extends pulumi.CustomResource {
      * Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
      */
@@ -68,6 +73,7 @@ export class Instance extends pulumi.CustomResource {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     public readonly networks!: pulumi.Output<outputs.file.v1.NetworkConfigResponse[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Reserved for future use.
      */
@@ -124,10 +130,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fileShares"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;

@@ -34,6 +34,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
         /// </summary>
@@ -45,6 +48,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         [Output("policyTagCount")]
         public Output<int> PolicyTagCount { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Timestamps about this taxonomy. Only create_time and update_time are used.

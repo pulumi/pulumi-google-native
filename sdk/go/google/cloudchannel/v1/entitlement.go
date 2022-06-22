@@ -18,12 +18,14 @@ import (
 type Entitlement struct {
 	pulumi.CustomResourceState
 
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Association information to other entitlements.
 	AssociationInfo GoogleCloudChannelV1AssociationInfoResponseOutput `pulumi:"associationInfo"`
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsResponseOutput `pulumi:"commitmentSettings"`
 	// The time at which the entitlement is created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CustomerId pulumi.StringOutput `pulumi:"customerId"`
 	// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
@@ -163,6 +165,10 @@ func (o EntitlementOutput) ToEntitlementOutputWithContext(ctx context.Context) E
 	return o
 }
 
+func (o EntitlementOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
 // Association information to other entitlements.
 func (o EntitlementOutput) AssociationInfo() GoogleCloudChannelV1AssociationInfoResponseOutput {
 	return o.ApplyT(func(v *Entitlement) GoogleCloudChannelV1AssociationInfoResponseOutput { return v.AssociationInfo }).(GoogleCloudChannelV1AssociationInfoResponseOutput)
@@ -176,6 +182,10 @@ func (o EntitlementOutput) CommitmentSettings() GoogleCloudChannelV1CommitmentSe
 // The time at which the entitlement is created.
 func (o EntitlementOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o EntitlementOutput) CustomerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.CustomerId }).(pulumi.StringOutput)
 }
 
 // Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.

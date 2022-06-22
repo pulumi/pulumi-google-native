@@ -71,9 +71,17 @@ export class FirewallPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
     /**
+     * Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+     */
+    public readonly parentId!: pulumi.Output<string | undefined>;
+    /**
      * URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
@@ -131,7 +139,9 @@ export class FirewallPolicy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["parentId"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

@@ -17,14 +17,18 @@ type AuthorizationPolicy struct {
 
 	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
 	Action pulumi.StringOutput `pulumi:"action"`
+	// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+	AuthorizationPolicyId pulumi.StringOutput `pulumi:"authorizationPolicyId"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Free-text description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Set of label tags associated with the AuthorizationPolicy resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
 	Rules RuleResponseArrayOutput `pulumi:"rules"`
 	// The timestamp when the resource was updated.
@@ -152,6 +156,11 @@ func (o AuthorizationPolicyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
+// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+func (o AuthorizationPolicyOutput) AuthorizationPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.AuthorizationPolicyId }).(pulumi.StringOutput)
+}
+
 // The timestamp when the resource was created.
 func (o AuthorizationPolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -167,9 +176,17 @@ func (o AuthorizationPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o AuthorizationPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
 func (o AuthorizationPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AuthorizationPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.

@@ -52,11 +52,20 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("lakeId")]
+        public Output<string> LakeId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Config related to running custom Spark tasks.
@@ -69,6 +78,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Task identifier.
+        /// </summary>
+        [Output("taskId")]
+        public Output<string> TaskId { get; private set; } = null!;
 
         /// <summary>
         /// Spec related to how often and when a task should be triggered.
@@ -87,6 +102,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>

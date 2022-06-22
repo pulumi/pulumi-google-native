@@ -21,14 +21,18 @@ type GrpcRoute struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Gateways defines a list of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
+	// Required. Short name of the GrpcRoute resource to be created.
+	GrpcRouteId pulumi.StringOutput `pulumi:"grpcRouteId"`
 	// Service hostnames with an optional port for which this route describes traffic. Format: [:] Hostname is the fully qualified domain name of a network host. This matches the RFC 1123 definition of a hostname with 2 notable exceptions: - IPs are not allowed. - A hostname may be prefixed with a wildcard label (*.). The wildcard label must appear by itself as the first label. Hostname can be "precise" which is a domain name without the terminating dot of a network host (e.g. "foo.example.com") or "wildcard", which is a domain name prefixed with a single wildcard label (e.g. *.example.com). Note that as per RFC1035 and RFC1123, a label must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. No other punctuation is allowed. The routes associated with a Mesh or Gateway must have unique hostnames. If you attempt to attach multiple routes with conflicting hostnames, the configuration will be rejected. For example, while it is acceptable for routes for the hostnames "*.foo.bar.com" and "*.bar.com" to be associated with the same route, it is not possible to associate two routes both with "*.bar.com" or both with "bar.com". If a port is specified, then gRPC clients must use the channel URI with the port to match this rule (i.e. "xds:///service:123"), otherwise they must supply the URI without a port (i.e. "xds:///service").
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// Optional. Set of label tags associated with the GrpcRoute resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/`
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
 	Rules GrpcRouteRouteRuleResponseArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource
@@ -179,6 +183,11 @@ func (o GrpcRouteOutput) Gateways() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
 }
 
+// Required. Short name of the GrpcRoute resource to be created.
+func (o GrpcRouteOutput) GrpcRouteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.GrpcRouteId }).(pulumi.StringOutput)
+}
+
 // Service hostnames with an optional port for which this route describes traffic. Format: [:] Hostname is the fully qualified domain name of a network host. This matches the RFC 1123 definition of a hostname with 2 notable exceptions: - IPs are not allowed. - A hostname may be prefixed with a wildcard label (*.). The wildcard label must appear by itself as the first label. Hostname can be "precise" which is a domain name without the terminating dot of a network host (e.g. "foo.example.com") or "wildcard", which is a domain name prefixed with a single wildcard label (e.g. *.example.com). Note that as per RFC1035 and RFC1123, a label must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. No other punctuation is allowed. The routes associated with a Mesh or Gateway must have unique hostnames. If you attempt to attach multiple routes with conflicting hostnames, the configuration will be rejected. For example, while it is acceptable for routes for the hostnames "*.foo.bar.com" and "*.bar.com" to be associated with the same route, it is not possible to associate two routes both with "*.bar.com" or both with "bar.com". If a port is specified, then gRPC clients must use the channel URI with the port to match this rule (i.e. "xds:///service:123"), otherwise they must supply the URI without a port (i.e. "xds:///service").
 func (o GrpcRouteOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
@@ -189,6 +198,10 @@ func (o GrpcRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o GrpcRouteOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/`
 func (o GrpcRouteOutput) Meshes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
@@ -197,6 +210,10 @@ func (o GrpcRouteOutput) Meshes() pulumi.StringArrayOutput {
 // Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
 func (o GrpcRouteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GrpcRouteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.

@@ -16,16 +16,20 @@ import (
 type FolderBucket struct {
 	pulumi.CustomResourceState
 
+	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings CmekSettingsResponseOutput `pulumi:"cmekSettings"`
 	// The creation timestamp of the bucket. This is not set for any of the default buckets.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
+	FolderId    pulumi.StringOutput `pulumi:"folderId"`
 	// A list of indexed fields and related configuration data.
 	IndexConfigs IndexConfigResponseArrayOutput `pulumi:"indexConfigs"`
 	// The bucket lifecycle state.
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
+	Location       pulumi.StringOutput `pulumi:"location"`
 	// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The resource name of the bucket.For example:projects/my-project/locations/global/buckets/my-bucketFor a list of supported locations, see Supported Regions (https://cloud.google.com/logging/docs/region-support)For the location of global it is unspecified where log entries are actually stored.After a bucket has been created, the location cannot be changed.
@@ -158,6 +162,11 @@ func (o FolderBucketOutput) ToFolderBucketOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+func (o FolderBucketOutput) BucketId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucket) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
+}
+
 // The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o FolderBucketOutput) CmekSettings() CmekSettingsResponseOutput {
 	return o.ApplyT(func(v *FolderBucket) CmekSettingsResponseOutput { return v.CmekSettings }).(CmekSettingsResponseOutput)
@@ -173,6 +182,10 @@ func (o FolderBucketOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucket) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o FolderBucketOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucket) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
+}
+
 // A list of indexed fields and related configuration data.
 func (o FolderBucketOutput) IndexConfigs() IndexConfigResponseArrayOutput {
 	return o.ApplyT(func(v *FolderBucket) IndexConfigResponseArrayOutput { return v.IndexConfigs }).(IndexConfigResponseArrayOutput)
@@ -181,6 +194,10 @@ func (o FolderBucketOutput) IndexConfigs() IndexConfigResponseArrayOutput {
 // The bucket lifecycle state.
 func (o FolderBucketOutput) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucket) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+func (o FolderBucketOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.

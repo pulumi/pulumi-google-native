@@ -108,9 +108,25 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly owner!: pulumi.Output<outputs.storage.v1.BucketOwnerResponse>;
     /**
+     * Apply a predefined set of access controls to this bucket.
+     */
+    public readonly predefinedAcl!: pulumi.Output<string | undefined>;
+    /**
+     * Apply a predefined set of default object access controls to this bucket.
+     */
+    public readonly predefinedDefaultObjectAcl!: pulumi.Output<string | undefined>;
+    /**
+     * A valid API project identifier.
+     */
+    public readonly project!: pulumi.Output<string>;
+    /**
      * The project number of the project the bucket belongs to.
      */
     public readonly projectNumber!: pulumi.Output<string>;
+    /**
+     * Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+     */
+    public readonly projection!: pulumi.Output<string | undefined>;
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */
@@ -139,6 +155,10 @@ export class Bucket extends pulumi.CustomResource {
      * The modification time of the bucket in RFC 3339 format.
      */
     public readonly updated!: pulumi.Output<string>;
+    /**
+     * The project to be billed for this request.
+     */
+    public readonly userProject!: pulumi.Output<string | undefined>;
     /**
      * The bucket's versioning configuration.
      */
@@ -212,7 +232,11 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["metageneration"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
+            resourceInputs["predefinedAcl"] = undefined /*out*/;
+            resourceInputs["predefinedDefaultObjectAcl"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["projectNumber"] = undefined /*out*/;
+            resourceInputs["projection"] = undefined /*out*/;
             resourceInputs["retentionPolicy"] = undefined /*out*/;
             resourceInputs["rpo"] = undefined /*out*/;
             resourceInputs["satisfiesPZS"] = undefined /*out*/;
@@ -220,6 +244,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["storageClass"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["userProject"] = undefined /*out*/;
             resourceInputs["versioning"] = undefined /*out*/;
             resourceInputs["website"] = undefined /*out*/;
         }

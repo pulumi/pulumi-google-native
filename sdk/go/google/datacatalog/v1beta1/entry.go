@@ -23,15 +23,20 @@ type Entry struct {
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName  pulumi.StringOutput `pulumi:"displayName"`
+	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
+	// Required. The id of the entry to create.
+	EntryId pulumi.StringOutput `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput `pulumi:"gcsFilesetSpec"`
 	// This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
 	IntegratedSystem pulumi.StringOutput `pulumi:"integratedSystem"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
 	LinkedResource pulumi.StringOutput `pulumi:"linkedResource"`
+	Location       pulumi.StringOutput `pulumi:"location"`
 	// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1beta1SchemaResponseOutput `pulumi:"schema"`
 	// Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
@@ -208,6 +213,15 @@ func (o EntryOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o EntryOutput) EntryGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryGroupId }).(pulumi.StringOutput)
+}
+
+// Required. The id of the entry to create.
+func (o EntryOutput) EntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryId }).(pulumi.StringOutput)
+}
+
 // Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 func (o EntryOutput) GcsFilesetSpec() GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput {
 	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput { return v.GcsFilesetSpec }).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput)
@@ -223,9 +237,17 @@ func (o EntryOutput) LinkedResource() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.LinkedResource }).(pulumi.StringOutput)
 }
 
+func (o EntryOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
 func (o EntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EntryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Schema of the entry. An entry might not have any schema attached to it.

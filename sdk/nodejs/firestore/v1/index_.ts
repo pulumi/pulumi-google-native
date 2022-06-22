@@ -36,6 +36,8 @@ export class Index extends pulumi.CustomResource {
         return obj['__pulumiType'] === Index.__pulumiType;
     }
 
+    public readonly collectionGroupId!: pulumi.Output<string>;
+    public readonly databaseId!: pulumi.Output<string>;
     /**
      * The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
      */
@@ -44,6 +46,7 @@ export class Index extends pulumi.CustomResource {
      * A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
      */
@@ -78,8 +81,11 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["collectionGroupId"] = undefined /*out*/;
+            resourceInputs["databaseId"] = undefined /*out*/;
             resourceInputs["fields"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["queryScope"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

@@ -187,10 +187,12 @@ class ArchiveDeployment(pulumi.CustomResource):
         __props__ = ArchiveDeploymentArgs.__new__(ArchiveDeploymentArgs)
 
         __props__.__dict__["created_at"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["gcs_uri"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation"] = None
+        __props__.__dict__["organization_id"] = None
         __props__.__dict__["updated_at"] = None
         return ArchiveDeployment(resource_name, opts=opts, __props__=__props__)
 
@@ -201,6 +203,11 @@ class ArchiveDeployment(pulumi.CustomResource):
         The time at which the Archive Deployment was created in milliseconds since the epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "environment_id")
 
     @property
     @pulumi.getter(name="gcsUri")
@@ -233,6 +240,11 @@ class ArchiveDeployment(pulumi.CustomResource):
         A reference to the LRO that created this Archive Deployment in the following format: `organizations/{org}/operations/{id}`
         """
         return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_id")
 
     @property
     @pulumi.getter(name="updatedAt")

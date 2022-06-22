@@ -23,7 +23,10 @@ type Site struct {
 	// Optional. User-specified labels for the Hosting site.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -145,6 +148,15 @@ func (o SiteOutput) Labels() pulumi.StringMapOutput {
 // The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 func (o SiteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SiteOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
+func (o SiteOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.

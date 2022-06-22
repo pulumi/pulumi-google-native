@@ -39,6 +39,8 @@ type Job struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringOutput `pulumi:"generation"`
+	// Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+	JobId pulumi.StringOutput `pulumi:"jobId"`
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
@@ -47,10 +49,12 @@ type Job struct {
 	LatestCreatedExecution GoogleCloudRunV2ExecutionReferenceResponseOutput `pulumi:"latestCreatedExecution"`
 	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The generation of this Job. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
 	ObservedGeneration pulumi.StringOutput `pulumi:"observedGeneration"`
+	Project            pulumi.StringOutput `pulumi:"project"`
 	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The template used to create executions for this Job.
@@ -61,6 +65,8 @@ type Job struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -255,6 +261,11 @@ func (o JobOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
 
+// Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+func (o JobOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
+}
+
 // KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -275,6 +286,10 @@ func (o JobOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)
 }
 
+func (o JobOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -283,6 +298,10 @@ func (o JobOutput) Name() pulumi.StringOutput {
 // The generation of this Job. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
 func (o JobOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ObservedGeneration }).(pulumi.StringOutput)
+}
+
+func (o JobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
@@ -308,6 +327,11 @@ func (o JobOutput) Uid() pulumi.StringOutput {
 // The last-modified time.
 func (o JobOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+func (o JobOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

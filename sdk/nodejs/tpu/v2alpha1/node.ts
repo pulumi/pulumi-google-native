@@ -72,6 +72,7 @@ export class Node extends pulumi.CustomResource {
      * Resource labels to represent user-provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
      */
@@ -88,6 +89,15 @@ export class Node extends pulumi.CustomResource {
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
      */
     public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.v2alpha1.NetworkEndpointResponse[]>;
+    /**
+     * The unqualified resource name.
+     */
+    public readonly nodeId!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * Idempotent request UUID.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The runtime version running in the Node.
      */
@@ -160,10 +170,14 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["health"] = undefined /*out*/;
             resourceInputs["healthDescription"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["nodeId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["runtimeVersion"] = undefined /*out*/;
             resourceInputs["schedulingConfig"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;

@@ -19,12 +19,16 @@ type ConsentArtifact struct {
 	ConsentContentScreenshots ImageResponseArrayOutput `pulumi:"consentContentScreenshots"`
 	// Optional. An string indicating the version of the consent information shown to the user.
 	ConsentContentVersion pulumi.StringOutput `pulumi:"consentContentVersion"`
+	ConsentStoreId        pulumi.StringOutput `pulumi:"consentStoreId"`
+	DatasetId             pulumi.StringOutput `pulumi:"datasetId"`
 	// Optional. A signature from a guardian.
 	GuardianSignature SignatureResponseOutput `pulumi:"guardianSignature"`
+	Location          pulumi.StringOutput     `pulumi:"location"`
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// User's UUID provided by the client.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// Optional. User's signature.
@@ -174,9 +178,21 @@ func (o ConsentArtifactOutput) ConsentContentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.ConsentContentVersion }).(pulumi.StringOutput)
 }
 
+func (o ConsentArtifactOutput) ConsentStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.ConsentStoreId }).(pulumi.StringOutput)
+}
+
+func (o ConsentArtifactOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
 // Optional. A signature from a guardian.
 func (o ConsentArtifactOutput) GuardianSignature() SignatureResponseOutput {
 	return o.ApplyT(func(v *ConsentArtifact) SignatureResponseOutput { return v.GuardianSignature }).(SignatureResponseOutput)
+}
+
+func (o ConsentArtifactOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
@@ -187,6 +203,10 @@ func (o ConsentArtifactOutput) Metadata() pulumi.StringMapOutput {
 // Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 func (o ConsentArtifactOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConsentArtifactOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // User's UUID provided by the client.

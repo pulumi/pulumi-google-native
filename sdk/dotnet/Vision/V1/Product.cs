@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
         /// </summary>
@@ -40,10 +43,19 @@ namespace Pulumi.GoogleNative.Vision.V1
         public Output<string> ProductCategory { get; private set; } = null!;
 
         /// <summary>
+        /// A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        /// </summary>
+        [Output("productId")]
+        public Output<string?> ProductId { get; private set; } = null!;
+
+        /// <summary>
         /// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
         /// </summary>
         [Output("productLabels")]
         public Output<ImmutableArray<Outputs.KeyValueResponse>> ProductLabels { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

@@ -16,13 +16,15 @@ type TargetServer struct {
 	pulumi.CustomResourceState
 
 	// Optional. A human-readable description of this TargetServer.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description   pulumi.StringOutput `pulumi:"description"`
+	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
 	IsEnabled pulumi.BoolOutput `pulumi:"isEnabled"`
-	// The resource id of this target server. Values must match the regular expression
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The ID to give the TargetServer. This will overwrite the value in TargetServer.
+	Name           pulumi.StringOutput `pulumi:"name"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Immutable. The protocol used by this TargetServer.
@@ -162,6 +164,10 @@ func (o TargetServerOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o TargetServerOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
 // The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 func (o TargetServerOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
@@ -172,9 +178,13 @@ func (o TargetServerOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TargetServer) pulumi.BoolOutput { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
-// The resource id of this target server. Values must match the regular expression
+// Optional. The ID to give the TargetServer. This will overwrite the value in TargetServer.
 func (o TargetServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TargetServerOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.

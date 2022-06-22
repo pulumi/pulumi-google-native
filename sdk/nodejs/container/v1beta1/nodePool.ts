@@ -39,6 +39,7 @@ export class NodePool extends pulumi.CustomResource {
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
     public readonly autoscaling!: pulumi.Output<outputs.container.v1beta1.NodePoolAutoscalingResponse>;
+    public readonly clusterId!: pulumi.Output<string>;
     /**
      * Which conditions caused the current node pool state.
      */
@@ -55,6 +56,7 @@ export class NodePool extends pulumi.CustomResource {
      * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
      */
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
      */
@@ -83,6 +85,7 @@ export class NodePool extends pulumi.CustomResource {
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     public /*out*/ readonly podIpv4CidrSize!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * [Output only] Server-defined URL for the resource.
      */
@@ -144,10 +147,12 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["statusMessage"] = undefined /*out*/;
         } else {
             resourceInputs["autoscaling"] = undefined /*out*/;
+            resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["initialNodeCount"] = undefined /*out*/;
             resourceInputs["instanceGroupUrls"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["locations"] = undefined /*out*/;
             resourceInputs["management"] = undefined /*out*/;
             resourceInputs["maxPodsConstraint"] = undefined /*out*/;
@@ -155,6 +160,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["placementPolicy"] = undefined /*out*/;
             resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;

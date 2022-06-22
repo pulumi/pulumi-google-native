@@ -40,6 +40,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly cloudsql!: pulumi.Output<outputs.datamigration.v1.CloudSqlConnectionProfileResponse>;
     /**
+     * Required. The connection profile identifier.
+     */
+    public readonly connectionProfileId!: pulumi.Output<string>;
+    /**
      * The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -55,6 +59,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * A MySQL database connection profile.
      */
@@ -67,10 +72,15 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * A PostgreSQL database connection profile.
      */
     public readonly postgresql!: pulumi.Output<outputs.datamigration.v1.PostgreSqlConnectionProfileResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The database provider.
      */
     public readonly provider!: pulumi.Output<string>;
+    /**
+     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
@@ -111,14 +121,18 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["cloudsql"] = undefined /*out*/;
+            resourceInputs["connectionProfileId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mysql"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["postgresql"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provider"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

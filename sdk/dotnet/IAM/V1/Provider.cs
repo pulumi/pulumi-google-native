@@ -52,6 +52,9 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the provider.
         /// </summary>
@@ -64,6 +67,9 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Output("oidc")]
         public Output<Outputs.OidcResponse> Oidc { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// An SAML 2.0 identity provider.
         /// </summary>
@@ -75,6 +81,15 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("workloadIdentityPoolId")]
+        public Output<string> WorkloadIdentityPoolId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+        /// </summary>
+        [Output("workloadIdentityPoolProviderId")]
+        public Output<string> WorkloadIdentityPoolProviderId { get; private set; } = null!;
 
 
         /// <summary>

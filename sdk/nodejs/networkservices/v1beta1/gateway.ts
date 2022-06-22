@@ -44,9 +44,14 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Required. Short name of the Gateway resource to be created.
+     */
+    public readonly gatewayId!: pulumi.Output<string>;
+    /**
      * Optional. Set of label tags associated with the Gateway resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the Gateway resource. It matches pattern `projects/*&#47;locations/*&#47;gateways/`.
      */
@@ -55,6 +60,7 @@ export class Gateway extends pulumi.CustomResource {
      * One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
      */
     public readonly ports!: pulumi.Output<number[]>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      */
@@ -112,9 +118,12 @@ export class Gateway extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["gatewayId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["scope"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["serverTlsPolicy"] = undefined /*out*/;

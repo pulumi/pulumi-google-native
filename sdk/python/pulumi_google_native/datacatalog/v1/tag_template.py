@@ -226,7 +226,10 @@ class TagTemplate(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["fields"] = None
         __props__.__dict__["is_publicly_readable"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["tag_template_id"] = None
         return TagTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -255,9 +258,27 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="tagTemplateId")
+    def tag_template_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+        """
+        return pulumi.get(self, "tag_template_id")
 

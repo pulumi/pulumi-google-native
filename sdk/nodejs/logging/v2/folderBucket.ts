@@ -37,6 +37,10 @@ export class FolderBucket extends pulumi.CustomResource {
     }
 
     /**
+     * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+     */
+    public readonly bucketId!: pulumi.Output<string>;
+    /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     public readonly cmekSettings!: pulumi.Output<outputs.logging.v2.CmekSettingsResponse>;
@@ -48,6 +52,7 @@ export class FolderBucket extends pulumi.CustomResource {
      * Describes this bucket.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly folderId!: pulumi.Output<string>;
     /**
      * A list of indexed fields and related configuration data.
      */
@@ -56,6 +61,7 @@ export class FolderBucket extends pulumi.CustomResource {
      * The bucket lifecycle state.
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
@@ -108,11 +114,14 @@ export class FolderBucket extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["cmekSettings"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["folderId"] = undefined /*out*/;
             resourceInputs["indexConfigs"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["restrictedFields"] = undefined /*out*/;

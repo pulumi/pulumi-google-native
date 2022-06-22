@@ -302,11 +302,14 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["recaptcha_options_config"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["validate_only"] = None
         return SecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -365,6 +368,11 @@ class SecurityPolicy(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="recaptchaOptionsConfig")
     def recaptcha_options_config(self) -> pulumi.Output['outputs.SecurityPolicyRecaptchaOptionsConfigResponse']:
         return pulumi.get(self, "recaptcha_options_config")
@@ -376,6 +384,14 @@ class SecurityPolicy(pulumi.CustomResource):
         URL of the region where the regional security policy resides. This field is not applicable to global security policies.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter
@@ -400,4 +416,12 @@ class SecurityPolicy(pulumi.CustomResource):
         The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        If true, the request will not be committed.
+        """
+        return pulumi.get(self, "validate_only")
 

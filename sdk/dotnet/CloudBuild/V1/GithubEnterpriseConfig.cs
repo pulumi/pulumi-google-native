@@ -34,10 +34,19 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
+        /// </summary>
+        [Output("gheConfigId")]
+        public Output<string?> GheConfigId { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of the github enterprise host the configuration is for.
         /// </summary>
         [Output("hostUrl")]
         public Output<string> HostUrl { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -50,6 +59,15 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         [Output("peeredNetwork")]
         public Output<string> PeeredNetwork { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the project.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// Names of secrets in Secret Manager.

@@ -30,10 +30,15 @@ type Intent struct {
 	FollowupIntentInfo GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput `pulumi:"followupIntentInfo"`
 	// Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
 	InputContextNames pulumi.StringArrayOutput `pulumi:"inputContextNames"`
+	// Optional. The resource view to apply to the returned intent.
+	IntentView pulumi.StringPtrOutput `pulumi:"intentView"`
 	// Optional. Indicates whether this is a fallback intent.
 	IsFallback pulumi.BoolOutput `pulumi:"isFallback"`
+	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
 	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
-	LiveAgentHandoff pulumi.BoolOutput `pulumi:"liveAgentHandoff"`
+	LiveAgentHandoff pulumi.BoolOutput   `pulumi:"liveAgentHandoff"`
+	Location         pulumi.StringOutput `pulumi:"location"`
 	// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
 	Messages GoogleCloudDialogflowV2IntentMessageResponseArrayOutput `pulumi:"messages"`
 	// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
@@ -47,7 +52,8 @@ type Intent struct {
 	// Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
 	ParentFollowupIntentName pulumi.StringOutput `pulumi:"parentFollowupIntentName"`
 	// Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-	Priority pulumi.IntOutput `pulumi:"priority"`
+	Priority pulumi.IntOutput    `pulumi:"priority"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts pulumi.BoolOutput `pulumi:"resetContexts"`
 	// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
@@ -264,14 +270,28 @@ func (o IntentOutput) InputContextNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringArrayOutput { return v.InputContextNames }).(pulumi.StringArrayOutput)
 }
 
+// Optional. The resource view to apply to the returned intent.
+func (o IntentOutput) IntentView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringPtrOutput { return v.IntentView }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Indicates whether this is a fallback intent.
 func (o IntentOutput) IsFallback() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Intent) pulumi.BoolOutput { return v.IsFallback }).(pulumi.BoolOutput)
 }
 
+// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+func (o IntentOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
 func (o IntentOutput) LiveAgentHandoff() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Intent) pulumi.BoolOutput { return v.LiveAgentHandoff }).(pulumi.BoolOutput)
+}
+
+func (o IntentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
@@ -307,6 +327,10 @@ func (o IntentOutput) ParentFollowupIntentName() pulumi.StringOutput {
 // Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 func (o IntentOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *Intent) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+func (o IntentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Indicates whether to delete all contexts in the current session when this intent is matched.

@@ -210,12 +210,18 @@ class AccessLevel(pulumi.CustomResource):
 
         __props__ = AccessLevelArgs.__new__(AccessLevelArgs)
 
+        __props__.__dict__["access_policy_id"] = None
         __props__.__dict__["basic"] = None
         __props__.__dict__["custom"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["title"] = None
         return AccessLevel(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter

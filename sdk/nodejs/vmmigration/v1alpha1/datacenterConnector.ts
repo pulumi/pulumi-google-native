@@ -57,21 +57,32 @@ export class DatacenterConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Required. The datacenterConnector identifier.
+     */
+    public readonly datacenterConnectorId!: pulumi.Output<string>;
+    /**
      * Provides details on the state of the Datacenter Connector in case of an error.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.vmmigration.v1alpha1.StatusResponse>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The connector's name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified.
      */
     public readonly registrationId!: pulumi.Output<string>;
     /**
+     * A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
      * The service account to use in the connector when communicating with the cloud.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
+    public readonly sourceId!: pulumi.Output<string>;
     /**
      * State of the DatacenterConnector, as determined by the health checks.
      */
@@ -135,10 +146,15 @@ export class DatacenterConnector extends pulumi.CustomResource {
             resourceInputs["availableVersions"] = undefined /*out*/;
             resourceInputs["bucket"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["datacenterConnectorId"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["registrationId"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["sourceId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

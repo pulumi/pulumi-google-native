@@ -506,6 +506,7 @@ class ServingConfig(pulumi.CustomResource):
         __props__ = ServingConfigArgs.__new__(ServingConfigArgs)
 
         __props__.__dict__["boost_control_ids"] = None
+        __props__.__dict__["catalog_id"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["diversity_level"] = None
         __props__.__dict__["do_not_associate_control_ids"] = None
@@ -514,12 +515,15 @@ class ServingConfig(pulumi.CustomResource):
         __props__.__dict__["facet_control_ids"] = None
         __props__.__dict__["filter_control_ids"] = None
         __props__.__dict__["ignore_control_ids"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["model_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["oneway_synonyms_control_ids"] = None
         __props__.__dict__["price_reranking_level"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["redirect_control_ids"] = None
         __props__.__dict__["replacement_control_ids"] = None
+        __props__.__dict__["serving_config_id"] = None
         __props__.__dict__["solution_types"] = None
         __props__.__dict__["twoway_synonyms_control_ids"] = None
         return ServingConfig(resource_name, opts=opts, __props__=__props__)
@@ -531,6 +535,11 @@ class ServingConfig(pulumi.CustomResource):
         Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         """
         return pulumi.get(self, "boost_control_ids")
+
+    @property
+    @pulumi.getter(name="catalogId")
+    def catalog_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "catalog_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -597,6 +606,11 @@ class ServingConfig(pulumi.CustomResource):
         return pulumi.get(self, "ignore_control_ids")
 
     @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="modelId")
     def model_id(self) -> pulumi.Output[str]:
         """
@@ -629,6 +643,11 @@ class ServingConfig(pulumi.CustomResource):
         return pulumi.get(self, "price_reranking_level")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="redirectControlIds")
     def redirect_control_ids(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -643,6 +662,14 @@ class ServingConfig(pulumi.CustomResource):
         Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         """
         return pulumi.get(self, "replacement_control_ids")
+
+    @property
+    @pulumi.getter(name="servingConfigId")
+    def serving_config_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+        """
+        return pulumi.get(self, "serving_config_id")
 
     @property
     @pulumi.getter(name="solutionTypes")

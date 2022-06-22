@@ -197,9 +197,26 @@ class AnnotationStore(pulumi.CustomResource):
 
         __props__ = AnnotationStoreArgs.__new__(AnnotationStoreArgs)
 
+        __props__.__dict__["annotation_store_id"] = None
+        __props__.__dict__["dataset_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         return AnnotationStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="annotationStoreId")
+    def annotation_store_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        """
+        return pulumi.get(self, "annotation_store_id")
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "dataset_id")
 
     @property
     @pulumi.getter
@@ -211,9 +228,19 @@ class AnnotationStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 

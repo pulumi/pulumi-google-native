@@ -68,6 +68,12 @@ export class SavedQuery extends pulumi.CustomResource {
      * The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+     */
+    public readonly savedQueryId!: pulumi.Output<string>;
+    public readonly v1Id!: pulumi.Output<string>;
+    public readonly v1Id1!: pulumi.Output<string>;
 
     /**
      * Create a SavedQuery resource with the given unique name, arguments, and options.
@@ -109,6 +115,9 @@ export class SavedQuery extends pulumi.CustomResource {
             resourceInputs["lastUpdateTime"] = undefined /*out*/;
             resourceInputs["lastUpdater"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["savedQueryId"] = undefined /*out*/;
+            resourceInputs["v1Id"] = undefined /*out*/;
+            resourceInputs["v1Id1"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SavedQuery.__pulumiType, name, resourceInputs, opts);

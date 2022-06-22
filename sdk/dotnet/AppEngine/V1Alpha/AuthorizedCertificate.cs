@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
     [GoogleNativeResourceType("google-native:appengine/v1alpha:AuthorizedCertificate")]
     public partial class AuthorizedCertificate : Pulumi.CustomResource
     {
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
         /// <summary>
         /// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
         /// </summary>

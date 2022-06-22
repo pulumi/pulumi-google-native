@@ -35,6 +35,10 @@ export class ManagedZone extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedZone.__pulumiType;
     }
 
+    /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
+    public readonly clientOperationId!: pulumi.Output<string | undefined>;
     public readonly cloudLoggingConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZoneCloudLoggingConfigResponse>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
@@ -81,6 +85,7 @@ export class ManagedZone extends pulumi.CustomResource {
      * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
      */
     public readonly privateVisibilityConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZonePrivateVisibilityConfigResponse>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
      */
@@ -124,6 +129,7 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["visibility"] = args ? args.visibility : undefined;
             resourceInputs["nameServers"] = undefined /*out*/;
         } else {
+            resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["cloudLoggingConfig"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -137,6 +143,7 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["nameServers"] = undefined /*out*/;
             resourceInputs["peeringConfig"] = undefined /*out*/;
             resourceInputs["privateVisibilityConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["reverseLookupConfig"] = undefined /*out*/;
             resourceInputs["serviceDirectoryConfig"] = undefined /*out*/;
             resourceInputs["visibility"] = undefined /*out*/;

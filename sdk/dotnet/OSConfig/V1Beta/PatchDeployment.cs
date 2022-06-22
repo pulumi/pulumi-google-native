@@ -64,6 +64,15 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public Output<Outputs.PatchConfigResponse> PatchConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        /// </summary>
+        [Output("patchDeploymentId")]
+        public Output<string> PatchDeploymentId { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
         /// Schedule recurring executions.
         /// </summary>
         [Output("recurringSchedule")]

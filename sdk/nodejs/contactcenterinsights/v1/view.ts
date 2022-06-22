@@ -42,10 +42,12 @@ export class View extends pulumi.CustomResource {
      * The human-readable display name of the view.
      */
     public readonly displayName!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The most recent time at which the view was updated.
      */
@@ -76,7 +78,9 @@ export class View extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }

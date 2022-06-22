@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         [Output("collectionId")]
         public Output<string> CollectionId { get; private set; } = null!;
 
+        [Output("databaseId")]
+        public Output<string> DatabaseId { get; private set; } = null!;
+
         /// <summary>
         /// The fields to index.
         /// </summary>
@@ -32,6 +35,9 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The state of the index. Output only.

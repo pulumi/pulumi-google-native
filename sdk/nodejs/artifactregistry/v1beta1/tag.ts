@@ -34,10 +34,18 @@ export class Tag extends pulumi.CustomResource {
         return obj['__pulumiType'] === Tag.__pulumiType;
     }
 
+    public readonly location!: pulumi.Output<string>;
     /**
      * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly packageId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly repositoryId!: pulumi.Output<string>;
+    /**
+     * The tag id to use for this repository.
+     */
+    public readonly tagId!: pulumi.Output<string | undefined>;
     /**
      * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
      */
@@ -68,7 +76,12 @@ export class Tag extends pulumi.CustomResource {
             resourceInputs["tagId"] = args ? args.tagId : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
         } else {
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["packageId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["repositoryId"] = undefined /*out*/;
+            resourceInputs["tagId"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -25,8 +25,10 @@ type Product struct {
 	AvailableQuantity pulumi.IntOutput `pulumi:"availableQuantity"`
 	// The timestamp when this Product becomes available for SearchService.Search.
 	AvailableTime pulumi.StringOutput `pulumi:"availableTime"`
+	BranchId      pulumi.StringOutput `pulumi:"branchId"`
 	// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
-	Brands pulumi.StringArrayOutput `pulumi:"brands"`
+	Brands    pulumi.StringArrayOutput `pulumi:"brands"`
+	CatalogId pulumi.StringOutput      `pulumi:"catalogId"`
 	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 	Categories pulumi.StringArrayOutput `pulumi:"categories"`
 	// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
@@ -47,6 +49,7 @@ type Product struct {
 	Images GoogleCloudRetailV2alphaImageResponseArrayOutput `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	Location     pulumi.StringOutput `pulumi:"location"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials pulumi.StringArrayOutput `pulumi:"materials"`
 	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
@@ -57,6 +60,9 @@ type Product struct {
 	PriceInfo GoogleCloudRetailV2alphaPriceInfoResponseOutput `pulumi:"priceInfo"`
 	// Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
 	PrimaryProductId pulumi.StringOutput `pulumi:"primaryProductId"`
+	// Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+	ProductId pulumi.StringOutput `pulumi:"productId"`
+	Project   pulumi.StringOutput `pulumi:"project"`
 	// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
 	Promotions GoogleCloudRetailV2alphaPromotionResponseArrayOutput `pulumi:"promotions"`
 	// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
@@ -340,9 +346,17 @@ func (o ProductOutput) AvailableTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.AvailableTime }).(pulumi.StringOutput)
 }
 
+func (o ProductOutput) BranchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.BranchId }).(pulumi.StringOutput)
+}
+
 // The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
 func (o ProductOutput) Brands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringArrayOutput { return v.Brands }).(pulumi.StringArrayOutput)
+}
+
+func (o ProductOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.CatalogId }).(pulumi.StringOutput)
 }
 
 // Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
@@ -395,6 +409,10 @@ func (o ProductOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
+func (o ProductOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 func (o ProductOutput) Materials() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringArrayOutput { return v.Materials }).(pulumi.StringArrayOutput)
@@ -418,6 +436,15 @@ func (o ProductOutput) PriceInfo() GoogleCloudRetailV2alphaPriceInfoResponseOutp
 // Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
 func (o ProductOutput) PrimaryProductId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.PrimaryProductId }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o ProductOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.ProductId }).(pulumi.StringOutput)
+}
+
+func (o ProductOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.

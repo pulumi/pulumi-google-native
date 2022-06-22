@@ -353,17 +353,21 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["execution_count"] = None
         __props__.__dict__["expire_time"] = None
         __props__.__dict__["generation"] = None
+        __props__.__dict__["job_id"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["last_modifier"] = None
         __props__.__dict__["latest_created_execution"] = None
         __props__.__dict__["launch_stage"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["observed_generation"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["template"] = None
         __props__.__dict__["terminal_condition"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -463,6 +467,14 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "generation")
 
     @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Output[str]:
+        """
+        Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -496,6 +508,11 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
@@ -509,6 +526,11 @@ class Job(pulumi.CustomResource):
         The generation of this Job. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "observed_generation")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -549,4 +571,12 @@ class Job(pulumi.CustomResource):
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+        """
+        return pulumi.get(self, "validate_only")
 

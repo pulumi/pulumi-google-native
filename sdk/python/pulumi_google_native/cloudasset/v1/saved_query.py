@@ -240,6 +240,9 @@ class SavedQuery(pulumi.CustomResource):
         __props__.__dict__["last_update_time"] = None
         __props__.__dict__["last_updater"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["saved_query_id"] = None
+        __props__.__dict__["v1_id"] = None
+        __props__.__dict__["v1_id1"] = None
         return SavedQuery(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -305,4 +308,22 @@ class SavedQuery(pulumi.CustomResource):
         The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="savedQueryId")
+    def saved_query_id(self) -> pulumi.Output[str]:
+        """
+        Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+        """
+        return pulumi.get(self, "saved_query_id")
+
+    @property
+    @pulumi.getter(name="v1Id")
+    def v1_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v1_id")
+
+    @property
+    @pulumi.getter(name="v1Id1")
+    def v1_id1(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "v1_id1")
 

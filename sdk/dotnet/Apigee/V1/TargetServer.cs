@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("environmentId")]
+        public Output<string> EnvironmentId { get; private set; } = null!;
+
         /// <summary>
         /// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         /// </summary>
@@ -34,10 +37,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<bool> IsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The resource id of this target server. Values must match the regular expression 
+        /// Optional. The ID to give the TargetServer. This will overwrite the value in TargetServer.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("organizationId")]
+        public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.

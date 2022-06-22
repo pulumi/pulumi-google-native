@@ -28,8 +28,10 @@ type Database struct {
 	EncryptionConfig EncryptionConfigResponseOutput `pulumi:"encryptionConfig"`
 	// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
 	EncryptionInfo EncryptionInfoResponseArrayOutput `pulumi:"encryptionInfo"`
+	InstanceId     pulumi.StringOutput               `pulumi:"instanceId"`
 	// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Applicable only for restored databases. Contains information about the restore source.
 	RestoreInfo RestoreInfoResponseOutput `pulumi:"restoreInfo"`
 	// The current database state.
@@ -176,9 +178,17 @@ func (o DatabaseOutput) EncryptionInfo() EncryptionInfoResponseArrayOutput {
 	return o.ApplyT(func(v *Database) EncryptionInfoResponseArrayOutput { return v.EncryptionInfo }).(EncryptionInfoResponseArrayOutput)
 }
 
+func (o DatabaseOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DatabaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Applicable only for restored databases. Contains information about the restore source.

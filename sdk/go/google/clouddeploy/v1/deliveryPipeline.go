@@ -22,20 +22,28 @@ type DeliveryPipeline struct {
 	Condition PipelineConditionResponseOutput `pulumi:"condition"`
 	// Time at which the pipeline was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. ID of the `DeliveryPipeline`.
+	DeliveryPipelineId pulumi.StringOutput `pulumi:"deliveryPipelineId"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline SerialPipelineResponseOutput `pulumi:"serialPipeline"`
 	// Unique identifier of the `DeliveryPipeline`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Most recent time at which the pipeline was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDeliveryPipeline registers a new resource with the given unique name, arguments, and options.
@@ -178,6 +186,11 @@ func (o DeliveryPipelineOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Required. ID of the `DeliveryPipeline`.
+func (o DeliveryPipelineOutput) DeliveryPipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.DeliveryPipelineId }).(pulumi.StringOutput)
+}
+
 // Description of the `DeliveryPipeline`. Max length is 255 characters.
 func (o DeliveryPipelineOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -193,9 +206,22 @@ func (o DeliveryPipelineOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o DeliveryPipelineOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
 func (o DeliveryPipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DeliveryPipelineOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+func (o DeliveryPipelineOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -211,6 +237,11 @@ func (o DeliveryPipelineOutput) Uid() pulumi.StringOutput {
 // Most recent time at which the pipeline was updated.
 func (o DeliveryPipelineOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+func (o DeliveryPipelineOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

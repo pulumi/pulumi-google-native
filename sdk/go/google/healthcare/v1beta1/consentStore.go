@@ -15,14 +15,19 @@ import (
 type ConsentStore struct {
 	pulumi.CustomResourceState
 
+	// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
+	ConsentStoreId pulumi.StringOutput `pulumi:"consentStoreId"`
+	DatasetId      pulumi.StringOutput `pulumi:"datasetId"`
 	// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	DefaultConsentTtl pulumi.StringOutput `pulumi:"defaultConsentTtl"`
 	// Optional. If `true`, UpdateConsent creates the Consent if it does not already exist. If unspecified, defaults to `false`.
 	EnableConsentCreateOnUpdate pulumi.BoolOutput `pulumi:"enableConsentCreateOnUpdate"`
 	// Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewConsentStore registers a new resource with the given unique name, arguments, and options.
@@ -139,6 +144,15 @@ func (o ConsentStoreOutput) ToConsentStoreOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
+func (o ConsentStoreOutput) ConsentStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.ConsentStoreId }).(pulumi.StringOutput)
+}
+
+func (o ConsentStoreOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
 // Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 func (o ConsentStoreOutput) DefaultConsentTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.DefaultConsentTtl }).(pulumi.StringOutput)
@@ -154,9 +168,17 @@ func (o ConsentStoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ConsentStoreOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
 func (o ConsentStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConsentStoreOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {

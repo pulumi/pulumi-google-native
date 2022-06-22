@@ -43,9 +43,15 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly endpointId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
+    /**
      * Immutable. The resource name for the endpoint in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly namespaceId!: pulumi.Output<string>;
     /**
      * Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
      */
@@ -54,6 +60,8 @@ export class Endpoint extends pulumi.CustomResource {
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
     public readonly port!: pulumi.Output<number>;
+    public readonly project!: pulumi.Output<string>;
+    public readonly serviceId!: pulumi.Output<string>;
 
     /**
      * Create a Endpoint resource with the given unique name, arguments, and options.
@@ -88,9 +96,14 @@ export class Endpoint extends pulumi.CustomResource {
         } else {
             resourceInputs["address"] = undefined /*out*/;
             resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["endpointId"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namespaceId"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Endpoint.__pulumiType, name, resourceInputs, opts);

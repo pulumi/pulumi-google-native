@@ -245,8 +245,11 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
         __props__ = BackupPlanIamPolicyArgs.__new__(BackupPlanIamPolicyArgs)
 
         __props__.__dict__["audit_configs"] = None
+        __props__.__dict__["backup_plan_id"] = None
         __props__.__dict__["bindings"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["location"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["version"] = None
         return BackupPlanIamPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -257,6 +260,11 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
         Specifies cloud audit logging configuration for this policy.
         """
         return pulumi.get(self, "audit_configs")
+
+    @property
+    @pulumi.getter(name="backupPlanId")
+    def backup_plan_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "backup_plan_id")
 
     @property
     @pulumi.getter
@@ -273,6 +281,16 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
         `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

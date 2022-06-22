@@ -46,16 +46,31 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Required. The ID of the game server cluster resource to create.
+        /// </summary>
+        [Output("gameServerClusterId")]
+        public Output<string> GameServerClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// The labels associated with this game server cluster. Each label is a key-value pair.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        [Output("realmId")]
+        public Output<string> RealmId { get; private set; } = null!;
 
         /// <summary>
         /// The last-modified time.

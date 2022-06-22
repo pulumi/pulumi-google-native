@@ -37,7 +37,8 @@ type Developer struct {
 	// Time at which the developer was last modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Last name of the developer.
-	LastName pulumi.StringOutput `pulumi:"lastName"`
+	LastName       pulumi.StringOutput `pulumi:"lastName"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Name of the Apigee organization in which the developer resides.
 	OrganizationName pulumi.StringOutput `pulumi:"organizationName"`
 	// Status of the developer. Valid values are `active` and `inactive`.
@@ -238,6 +239,10 @@ func (o DeveloperOutput) LastModifiedAt() pulumi.StringOutput {
 // Last name of the developer.
 func (o DeveloperOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Developer) pulumi.StringOutput { return v.LastName }).(pulumi.StringOutput)
+}
+
+func (o DeveloperOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Developer) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // Name of the Apigee organization in which the developer resides.

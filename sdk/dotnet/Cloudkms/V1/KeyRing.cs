@@ -24,10 +24,22 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        /// </summary>
+        [Output("keyRingId")]
+        public Output<string> KeyRingId { get; private set; } = null!;
+
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>

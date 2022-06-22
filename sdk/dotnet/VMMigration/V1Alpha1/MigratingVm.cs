@@ -82,6 +82,15 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         [Output("lastSync")]
         public Output<Outputs.ReplicationSyncResponse> LastSync { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The migratingVm identifier.
+        /// </summary>
+        [Output("migratingVmId")]
+        public Output<string> MigratingVmId { get; private set; } = null!;
+
         /// <summary>
         /// The identifier of the MigratingVm.
         /// </summary>
@@ -94,6 +103,9 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         [Output("policy")]
         public Output<Outputs.SchedulePolicyResponse> Policy { get; private set; } = null!;
 
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
         /// <summary>
         /// The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
         /// </summary>
@@ -105,6 +117,15 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         [Output("recentCutoverJobs")]
         public Output<ImmutableArray<Outputs.CutoverJobResponse>> RecentCutoverJobs { get; private set; } = null!;
+
+        /// <summary>
+        /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Output("requestId")]
+        public Output<string?> RequestId { get; private set; } = null!;
+
+        [Output("sourceId")]
+        public Output<string> SourceId { get; private set; } = null!;
 
         /// <summary>
         /// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.

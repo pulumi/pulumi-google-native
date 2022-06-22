@@ -18,9 +18,11 @@ type AutoscalingPolicy struct {
 
 	BasicAlgorithm BasicAutoscalingAlgorithmResponseOutput `pulumi:"basicAlgorithm"`
 	// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponseOutput `pulumi:"secondaryWorkerConfig"`
 	// Describes how the autoscaler will operate for primary workers.
@@ -146,9 +148,17 @@ func (o AutoscalingPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o AutoscalingPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
 func (o AutoscalingPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AutoscalingPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Optional. Describes how the autoscaler will operate for secondary workers.

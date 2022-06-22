@@ -191,8 +191,10 @@ class Schema(pulumi.CustomResource):
 
         __props__.__dict__["definition"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["revision_create_time"] = None
         __props__.__dict__["revision_id"] = None
+        __props__.__dict__["schema_id"] = None
         __props__.__dict__["type"] = None
         return Schema(resource_name, opts=opts, __props__=__props__)
 
@@ -213,6 +215,11 @@ class Schema(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
     @pulumi.getter(name="revisionCreateTime")
     def revision_create_time(self) -> pulumi.Output[str]:
         """
@@ -227,6 +234,14 @@ class Schema(pulumi.CustomResource):
         Immutable. The revision ID of the schema.
         """
         return pulumi.get(self, "revision_id")
+
+    @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        """
+        return pulumi.get(self, "schema_id")
 
     @property
     @pulumi.getter

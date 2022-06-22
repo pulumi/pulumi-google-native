@@ -36,6 +36,10 @@ export class AgentPool extends pulumi.CustomResource {
     }
 
     /**
+     * Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
+     */
+    public readonly agentPoolId!: pulumi.Output<string>;
+    /**
      * Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
      */
     public readonly bandwidthLimit!: pulumi.Output<outputs.storagetransfer.v1.BandwidthLimitResponse>;
@@ -47,6 +51,7 @@ export class AgentPool extends pulumi.CustomResource {
      * Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Specifies the state of the AgentPool.
      */
@@ -73,9 +78,11 @@ export class AgentPool extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["agentPoolId"] = undefined /*out*/;
             resourceInputs["bandwidthLimit"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

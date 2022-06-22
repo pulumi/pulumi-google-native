@@ -524,7 +524,9 @@ class Note(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["long_description"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["note_id"] = None
         __props__.__dict__["package"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["related_url"] = None
         __props__.__dict__["sbom"] = None
         __props__.__dict__["short_description"] = None
@@ -628,9 +630,17 @@ class Note(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+        The name of the project. Should be of the form "providers/{provider_id}". @Deprecated
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="noteId")
+    def note_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID to use for this note.
+        """
+        return pulumi.get(self, "note_id")
 
     @property
     @pulumi.getter
@@ -639,6 +649,11 @@ class Note(pulumi.CustomResource):
         A note describing a package hosted by various package managers.
         """
         return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="relatedUrl")

@@ -36,6 +36,10 @@ export class FolderBigQueryExport extends pulumi.CustomResource {
     }
 
     /**
+     * Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+     */
+    public readonly bigQueryExportId!: pulumi.Output<string>;
+    /**
      * The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -51,6 +55,7 @@ export class FolderBigQueryExport extends pulumi.CustomResource {
      * Expression that defines the filter to apply across create/update events of findings. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
      */
     public readonly filter!: pulumi.Output<string>;
+    public readonly folderId!: pulumi.Output<string>;
     /**
      * Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
      */
@@ -96,10 +101,12 @@ export class FolderBigQueryExport extends pulumi.CustomResource {
             resourceInputs["principal"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bigQueryExportId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataset"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["folderId"] = undefined /*out*/;
             resourceInputs["mostRecentEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["principal"] = undefined /*out*/;

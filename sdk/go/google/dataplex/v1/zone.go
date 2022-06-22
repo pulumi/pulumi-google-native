@@ -27,9 +27,12 @@ type Zone struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. User defined labels for the zone.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	LakeId   pulumi.StringOutput    `pulumi:"lakeId"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The relative resource name of the zone, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec GoogleCloudDataplexV1ZoneResourceSpecResponseOutput `pulumi:"resourceSpec"`
 	// Current state of the zone.
@@ -40,6 +43,10 @@ type Zone struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the zone was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewZone registers a new resource with the given unique name, arguments, and options.
@@ -204,9 +211,21 @@ func (o ZoneOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+func (o ZoneOutput) LakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.LakeId }).(pulumi.StringOutput)
+}
+
+func (o ZoneOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
 // The relative resource name of the zone, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
 func (o ZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ZoneOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Specification of the resources that are referenced by the assets within this zone.
@@ -232,6 +251,16 @@ func (o ZoneOutput) Uid() pulumi.StringOutput {
 // The time when the zone was last updated.
 func (o ZoneOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o ZoneOutput) ValidateOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+}
+
+// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
+func (o ZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 func init() {

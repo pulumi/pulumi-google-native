@@ -40,6 +40,10 @@ export class DataCollector extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+     */
+    public readonly dataCollectorId!: pulumi.Output<string | undefined>;
+    /**
      * A description of the data collector.
      */
     public readonly description!: pulumi.Output<string>;
@@ -51,6 +55,7 @@ export class DataCollector extends pulumi.CustomResource {
      * ID of the data collector. Must begin with `dc_`.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
     /**
      * Immutable. The type of data this data collector will collect.
      */
@@ -79,9 +84,11 @@ export class DataCollector extends pulumi.CustomResource {
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
         } else {
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["dataCollectorId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

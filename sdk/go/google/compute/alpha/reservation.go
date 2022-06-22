@@ -23,7 +23,10 @@ type Reservation struct {
 	// Type of the resource. Always compute#reservations for reservations.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies pulumi.StringMapOutput `pulumi:"resourcePolicies"`
 	// Reserved for future use.
@@ -40,8 +43,7 @@ type Reservation struct {
 	SpecificReservationRequired pulumi.BoolOutput `pulumi:"specificReservationRequired"`
 	// The status of the reservation.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone   pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewReservation registers a new resource with the given unique name, arguments, and options.
@@ -185,6 +187,15 @@ func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ReservationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+func (o ReservationOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
 // Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 func (o ReservationOutput) ResourcePolicies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringMapOutput { return v.ResourcePolicies }).(pulumi.StringMapOutput)
@@ -225,7 +236,6 @@ func (o ReservationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
 func (o ReservationOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

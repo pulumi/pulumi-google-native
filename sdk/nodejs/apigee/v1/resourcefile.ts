@@ -43,10 +43,20 @@ export class Resourcefile extends pulumi.CustomResource {
      * The HTTP request/response body as raw binary.
      */
     public readonly data!: pulumi.Output<string>;
+    public readonly environmentId!: pulumi.Output<string>;
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     public readonly extensions!: pulumi.Output<{[key: string]: string}[]>;
+    /**
+     * Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+     */
+    public readonly name!: pulumi.Output<string>;
+    public readonly organizationId!: pulumi.Output<string>;
+    /**
+     * Required. Resource file type. {{ resource_file_type }}
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Resourcefile resource with the given unique name, arguments, and options.
@@ -81,7 +91,11 @@ export class Resourcefile extends pulumi.CustomResource {
         } else {
             resourceInputs["contentType"] = undefined /*out*/;
             resourceInputs["data"] = undefined /*out*/;
+            resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["extensions"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationId"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Resourcefile.__pulumiType, name, resourceInputs, opts);

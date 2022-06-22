@@ -157,6 +157,7 @@ class AuthorizedCertificate(pulumi.CustomResource):
 
         __props__ = AuthorizedCertificateArgs.__new__(AuthorizedCertificateArgs)
 
+        __props__.__dict__["app_id"] = None
         __props__.__dict__["certificate_raw_data"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["domain_mappings_count"] = None
@@ -166,6 +167,11 @@ class AuthorizedCertificate(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["visible_domain_mappings"] = None
         return AuthorizedCertificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter(name="certificateRawData")

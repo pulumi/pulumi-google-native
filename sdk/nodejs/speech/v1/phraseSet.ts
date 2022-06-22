@@ -39,6 +39,7 @@ export class PhraseSet extends pulumi.CustomResource {
      * Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
      */
     public readonly boost!: pulumi.Output<number>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the phrase set.
      */
@@ -47,6 +48,7 @@ export class PhraseSet extends pulumi.CustomResource {
      * A list of word and phrases.
      */
     public readonly phrases!: pulumi.Output<outputs.speech.v1.PhraseResponse[]>;
+    public readonly project!: pulumi.Output<string>;
 
     /**
      * Create a PhraseSet resource with the given unique name, arguments, and options.
@@ -70,8 +72,10 @@ export class PhraseSet extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
             resourceInputs["boost"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["phrases"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PhraseSet.__pulumiType, name, resourceInputs, opts);

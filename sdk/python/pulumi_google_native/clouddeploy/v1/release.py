@@ -398,14 +398,19 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["annotations"] = None
         __props__.__dict__["build_artifacts"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["delivery_pipeline_id"] = None
         __props__.__dict__["delivery_pipeline_snapshot"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
+        __props__.__dict__["release_id"] = None
         __props__.__dict__["render_end_time"] = None
         __props__.__dict__["render_start_time"] = None
         __props__.__dict__["render_state"] = None
+        __props__.__dict__["request_id"] = None
         __props__.__dict__["skaffold_config_path"] = None
         __props__.__dict__["skaffold_config_uri"] = None
         __props__.__dict__["skaffold_version"] = None
@@ -413,6 +418,7 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["target_renders"] = None
         __props__.__dict__["target_snapshots"] = None
         __props__.__dict__["uid"] = None
+        __props__.__dict__["validate_only"] = None
         return Release(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -438,6 +444,11 @@ class Release(pulumi.CustomResource):
         Time at which the `Release` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deliveryPipelineId")
+    def delivery_pipeline_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "delivery_pipeline_id")
 
     @property
     @pulumi.getter(name="deliveryPipelineSnapshot")
@@ -473,11 +484,29 @@ class Release(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="releaseId")
+    def release_id(self) -> pulumi.Output[str]:
+        """
+        Required. ID of the `Release`.
+        """
+        return pulumi.get(self, "release_id")
 
     @property
     @pulumi.getter(name="renderEndTime")
@@ -502,6 +531,14 @@ class Release(pulumi.CustomResource):
         Current state of the render operation.
         """
         return pulumi.get(self, "render_state")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter(name="skaffoldConfigPath")
@@ -558,4 +595,12 @@ class Release(pulumi.CustomResource):
         Unique identifier of the `Release`.
         """
         return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+        """
+        return pulumi.get(self, "validate_only")
 

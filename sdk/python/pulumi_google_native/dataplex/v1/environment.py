@@ -294,14 +294,19 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["endpoints"] = None
+        __props__.__dict__["environment_id"] = None
         __props__.__dict__["infrastructure_spec"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["lake_id"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["session_spec"] = None
         __props__.__dict__["session_status"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -337,6 +342,14 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "endpoints")
 
     @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Output[str]:
+        """
+        Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @property
     @pulumi.getter(name="infrastructureSpec")
     def infrastructure_spec(self) -> pulumi.Output['outputs.GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse']:
         """
@@ -353,12 +366,27 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="lakeId")
+    def lake_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "lake_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sessionSpec")
@@ -399,4 +427,12 @@ class Environment(pulumi.CustomResource):
         The time when the environment was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
 
