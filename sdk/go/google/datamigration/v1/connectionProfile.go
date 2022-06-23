@@ -108,7 +108,7 @@ type connectionProfileArgs struct {
 	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-	State *ConnectionProfileStateEnum `pulumi:"state"`
+	State *ConnectionProfileState `pulumi:"state"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -134,7 +134,7 @@ type ConnectionProfileArgs struct {
 	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-	State ConnectionProfileStateEnumPtrInput
+	State ConnectionProfileStatePtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {

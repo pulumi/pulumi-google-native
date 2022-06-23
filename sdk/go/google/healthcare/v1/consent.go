@@ -110,7 +110,7 @@ type consentArgs struct {
 	Policies []GoogleCloudHealthcareV1ConsentPolicy `pulumi:"policies"`
 	Project  *string                                `pulumi:"project"`
 	// Indicates the current state of this Consent.
-	State ConsentStateEnum `pulumi:"state"`
+	State ConsentState `pulumi:"state"`
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl *string `pulumi:"ttl"`
 	// User's UUID provided by the client.
@@ -134,7 +134,7 @@ type ConsentArgs struct {
 	Policies GoogleCloudHealthcareV1ConsentPolicyArrayInput
 	Project  pulumi.StringPtrInput
 	// Indicates the current state of this Consent.
-	State ConsentStateEnumInput
+	State ConsentStateInput
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl pulumi.StringPtrInput
 	// User's UUID provided by the client.

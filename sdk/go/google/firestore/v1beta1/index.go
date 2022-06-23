@@ -78,7 +78,7 @@ type indexArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The state of the index. Output only.
-	State *IndexStateEnum `pulumi:"state"`
+	State *IndexState `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Index resource.
@@ -92,7 +92,7 @@ type IndexArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The state of the index. Output only.
-	State IndexStateEnumPtrInput
+	State IndexStatePtrInput
 }
 
 func (IndexArgs) ElementType() reflect.Type {

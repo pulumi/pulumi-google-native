@@ -100,7 +100,7 @@ type cryptoKeyVersionArgs struct {
 	Location                       *string                         `pulumi:"location"`
 	Project                        *string                         `pulumi:"project"`
 	// The current state of the CryptoKeyVersion.
-	State *CryptoKeyVersionStateEnum `pulumi:"state"`
+	State *CryptoKeyVersionState `pulumi:"state"`
 }
 
 // The set of arguments for constructing a CryptoKeyVersion resource.
@@ -112,7 +112,7 @@ type CryptoKeyVersionArgs struct {
 	Location                       pulumi.StringPtrInput
 	Project                        pulumi.StringPtrInput
 	// The current state of the CryptoKeyVersion.
-	State CryptoKeyVersionStateEnumPtrInput
+	State CryptoKeyVersionStatePtrInput
 }
 
 func (CryptoKeyVersionArgs) ElementType() reflect.Type {

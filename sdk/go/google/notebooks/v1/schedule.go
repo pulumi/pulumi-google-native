@@ -92,8 +92,8 @@ type scheduleArgs struct {
 	Location          *string            `pulumi:"location"`
 	Project           *string            `pulumi:"project"`
 	// Required. User-defined unique ID of this schedule.
-	ScheduleId string             `pulumi:"scheduleId"`
-	State      *ScheduleStateEnum `pulumi:"state"`
+	ScheduleId string         `pulumi:"scheduleId"`
+	State      *ScheduleState `pulumi:"state"`
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone *string `pulumi:"timeZone"`
 }
@@ -110,7 +110,7 @@ type ScheduleArgs struct {
 	Project           pulumi.StringPtrInput
 	// Required. User-defined unique ID of this schedule.
 	ScheduleId pulumi.StringInput
-	State      ScheduleStateEnumPtrInput
+	State      ScheduleStatePtrInput
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone pulumi.StringPtrInput
 }

@@ -92,8 +92,8 @@ type trialArgs struct {
 	Parameters []GoogleCloudMlV1_Trial_Parameter `pulumi:"parameters"`
 	Project    *string                           `pulumi:"project"`
 	// The detailed state of a trial.
-	State   *TrialStateEnum `pulumi:"state"`
-	StudyId string          `pulumi:"studyId"`
+	State   *TrialState `pulumi:"state"`
+	StudyId string      `pulumi:"studyId"`
 }
 
 // The set of arguments for constructing a Trial resource.
@@ -107,7 +107,7 @@ type TrialArgs struct {
 	Parameters GoogleCloudMlV1_Trial_ParameterArrayInput
 	Project    pulumi.StringPtrInput
 	// The detailed state of a trial.
-	State   TrialStateEnumPtrInput
+	State   TrialStatePtrInput
 	StudyId pulumi.StringInput
 }
 
