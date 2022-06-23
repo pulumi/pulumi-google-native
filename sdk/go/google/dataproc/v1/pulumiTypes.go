@@ -4385,6 +4385,8 @@ func (o GkeClusterConfigResponseOutput) NodePoolTarget() GkeNodePoolTargetRespon
 type GkeNodeConfig struct {
 	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
 	Accelerators []GkeNodePoolAcceleratorConfig `pulumi:"accelerators"`
+	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
@@ -4412,6 +4414,8 @@ type GkeNodeConfigInput interface {
 type GkeNodeConfigArgs struct {
 	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
 	Accelerators GkeNodePoolAcceleratorConfigArrayInput `pulumi:"accelerators"`
+	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
@@ -4507,6 +4511,11 @@ func (o GkeNodeConfigOutput) Accelerators() GkeNodePoolAcceleratorConfigArrayOut
 	return o.ApplyT(func(v GkeNodeConfig) []GkeNodePoolAcceleratorConfig { return v.Accelerators }).(GkeNodePoolAcceleratorConfigArrayOutput)
 }
 
+// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+func (o GkeNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 func (o GkeNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GkeNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
@@ -4566,6 +4575,16 @@ func (o GkeNodeConfigPtrOutput) Accelerators() GkeNodePoolAcceleratorConfigArray
 	}).(GkeNodePoolAcceleratorConfigArrayOutput)
 }
 
+// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+func (o GkeNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskKmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 func (o GkeNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GkeNodeConfig) *int {
@@ -4620,6 +4639,8 @@ func (o GkeNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 type GkeNodeConfigResponse struct {
 	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
 	Accelerators []GkeNodePoolAcceleratorConfigResponse `pulumi:"accelerators"`
+	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 	LocalSsdCount int `pulumi:"localSsdCount"`
 	// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
@@ -4650,6 +4671,11 @@ func (o GkeNodeConfigResponseOutput) ToGkeNodeConfigResponseOutputWithContext(ct
 // Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
 func (o GkeNodeConfigResponseOutput) Accelerators() GkeNodePoolAcceleratorConfigResponseArrayOutput {
 	return o.ApplyT(func(v GkeNodeConfigResponse) []GkeNodePoolAcceleratorConfigResponse { return v.Accelerators }).(GkeNodePoolAcceleratorConfigResponseArrayOutput)
+}
+
+// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+func (o GkeNodeConfigResponseOutput) BootDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodeConfigResponse) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
 // Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).

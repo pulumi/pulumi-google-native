@@ -1377,6 +1377,26 @@ export const InstanceGroupManagerUpdatePolicyType = {
  */
 export type InstanceGroupManagerUpdatePolicyType = (typeof InstanceGroupManagerUpdatePolicyType)[keyof typeof InstanceGroupManagerUpdatePolicyType];
 
+export const InstanceKeyRevocationActionType = {
+    /**
+     * Default value. This value is unused.
+     */
+    KeyRevocationActionTypeUnspecified: "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED",
+    /**
+     * Indicates user chose no operation.
+     */
+    None: "NONE",
+    /**
+     * Indicates user chose to opt for VM shutdown on key revocation.
+     */
+    Stop: "STOP",
+} as const;
+
+/**
+ * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+ */
+export type InstanceKeyRevocationActionType = (typeof InstanceKeyRevocationActionType)[keyof typeof InstanceKeyRevocationActionType];
+
 export const InstancePrivateIpv6GoogleAccess = {
     /**
      * Bidirectional private IPv6 access to/from Google services. If specified, the subnetwork who is attached to the instance's default network interface will be assigned an internal IPv6 prefix if it doesn't have before.
@@ -1396,6 +1416,26 @@ export const InstancePrivateIpv6GoogleAccess = {
  * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
  */
 export type InstancePrivateIpv6GoogleAccess = (typeof InstancePrivateIpv6GoogleAccess)[keyof typeof InstancePrivateIpv6GoogleAccess];
+
+export const InstancePropertiesKeyRevocationActionType = {
+    /**
+     * Default value. This value is unused.
+     */
+    KeyRevocationActionTypeUnspecified: "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED",
+    /**
+     * Indicates user chose no operation.
+     */
+    None: "NONE",
+    /**
+     * Indicates user chose to opt for VM shutdown on key revocation.
+     */
+    Stop: "STOP",
+} as const;
+
+/**
+ * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+ */
+export type InstancePropertiesKeyRevocationActionType = (typeof InstancePropertiesKeyRevocationActionType)[keyof typeof InstancePropertiesKeyRevocationActionType];
 
 export const InstancePropertiesPrivateIpv6GoogleAccess = {
     /**

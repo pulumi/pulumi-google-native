@@ -32,7 +32,7 @@ class DataSourceArgs:
         :param pulumi.Input[bool] disable_serving: Disable serving any search or assist results.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] indexing_service_accounts: List of service accounts that have indexing access.
         :param pulumi.Input[Sequence[pulumi.Input['GSuitePrincipalArgs']]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
-        :param pulumi.Input[str] name: Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        :param pulumi.Input[str] name: The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: IDs of the Long Running Operations (LROs) currently running for this schema.
         :param pulumi.Input[bool] return_thumbnail_urls: Can a user request to get thumbnail URI for Items indexed in this data source.
         :param pulumi.Input[str] short_name: A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
@@ -119,7 +119,7 @@ class DataSourceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         """
         return pulumi.get(self, "name")
 
@@ -189,7 +189,7 @@ class DataSource(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display name of the datasource The maximum length is 300 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] indexing_service_accounts: List of service accounts that have indexing access.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
-        :param pulumi.Input[str] name: Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        :param pulumi.Input[str] name: The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: IDs of the Long Running Operations (LROs) currently running for this schema.
         :param pulumi.Input[bool] return_thumbnail_urls: Can a user request to get thumbnail URI for Items indexed in this data source.
         :param pulumi.Input[str] short_name: A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
@@ -329,7 +329,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         """
         return pulumi.get(self, "name")
 

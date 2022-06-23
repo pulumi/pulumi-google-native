@@ -6859,6 +6859,8 @@ class InstancePropertiesResponse(dict):
             suggest = "confidential_instance_config"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "keyRevocationActionType":
+            suggest = "key_revocation_action_type"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "minCpuPlatform":
@@ -6898,6 +6900,7 @@ class InstancePropertiesResponse(dict):
                  description: str,
                  disks: Sequence['outputs.AttachedDiskResponse'],
                  guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 key_revocation_action_type: str,
                  labels: Mapping[str, str],
                  machine_type: str,
                  metadata: 'outputs.MetadataResponse',
@@ -6919,6 +6922,7 @@ class InstancePropertiesResponse(dict):
         :param str description: An optional text description for the instances that are created from these properties.
         :param Sequence['AttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from these properties.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from these properties.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from these properties.
         :param str machine_type: The machine type to use for instances that are created from these properties.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -6940,6 +6944,7 @@ class InstancePropertiesResponse(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -7002,6 +7007,14 @@ class InstancePropertiesResponse(dict):
         A list of guest accelerator cards' type and count to use for instances created from these properties.
         """
         return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter
@@ -13772,6 +13785,8 @@ class SourceInstancePropertiesResponse(dict):
             suggest = "deletion_protection"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "keyRevocationActionType":
+            suggest = "key_revocation_action_type"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "minCpuPlatform":
@@ -13798,6 +13813,7 @@ class SourceInstancePropertiesResponse(dict):
                  description: str,
                  disks: Sequence['outputs.SavedAttachedDiskResponse'],
                  guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 key_revocation_action_type: str,
                  labels: Mapping[str, str],
                  machine_type: str,
                  metadata: 'outputs.MetadataResponse',
@@ -13813,6 +13829,7 @@ class SourceInstancePropertiesResponse(dict):
         :param str description: An optional text description for the instances that are created from this machine image.
         :param Sequence['SavedAttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from this machine image.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from this machine image.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from this machine image.
         :param str machine_type: The machine type to use for instances that are created from this machine image.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -13827,6 +13844,7 @@ class SourceInstancePropertiesResponse(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -13875,6 +13893,14 @@ class SourceInstancePropertiesResponse(dict):
         A list of guest accelerator cards' type and count to use for instances created from this machine image.
         """
         return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter

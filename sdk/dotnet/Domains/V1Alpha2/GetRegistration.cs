@@ -102,6 +102,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         /// </summary>
         public readonly Outputs.ContactSettingsResponse PendingContactSettings;
         /// <summary>
+        /// The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
+        /// </summary>
+        public readonly string RegisterFailureReason;
+        /// <summary>
         /// The state of the `Registration`
         /// </summary>
         public readonly string State;
@@ -109,6 +113,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         /// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
         /// </summary>
         public readonly ImmutableArray<string> SupportedPrivacy;
+        /// <summary>
+        /// The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        /// </summary>
+        public readonly string TransferFailureReason;
 
         [OutputConstructor]
         private GetRegistrationResult(
@@ -132,9 +140,13 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
 
             Outputs.ContactSettingsResponse pendingContactSettings,
 
+            string registerFailureReason,
+
             string state,
 
-            ImmutableArray<string> supportedPrivacy)
+            ImmutableArray<string> supportedPrivacy,
+
+            string transferFailureReason)
         {
             ContactSettings = contactSettings;
             CreateTime = createTime;
@@ -146,8 +158,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
             ManagementSettings = managementSettings;
             Name = name;
             PendingContactSettings = pendingContactSettings;
+            RegisterFailureReason = registerFailureReason;
             State = state;
             SupportedPrivacy = supportedPrivacy;
+            TransferFailureReason = transferFailureReason;
         }
     }
 }

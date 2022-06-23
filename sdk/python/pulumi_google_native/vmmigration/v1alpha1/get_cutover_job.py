@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCutoverJobResult:
-    def __init__(__self__, compute_engine_target_details=None, compute_engine_vm_details=None, create_time=None, error=None, name=None, progress=None, progress_percent=None, state=None, state_message=None, state_time=None, target_details=None):
+    def __init__(__self__, compute_engine_target_details=None, compute_engine_vm_details=None, create_time=None, end_time=None, error=None, name=None, progress=None, progress_percent=None, state=None, state_message=None, state_time=None, steps=None, target_details=None):
         if compute_engine_target_details and not isinstance(compute_engine_target_details, dict):
             raise TypeError("Expected argument 'compute_engine_target_details' to be a dict")
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
@@ -33,6 +33,9 @@ class GetCutoverJobResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if end_time and not isinstance(end_time, str):
+            raise TypeError("Expected argument 'end_time' to be a str")
+        pulumi.set(__self__, "end_time", end_time)
         if error and not isinstance(error, dict):
             raise TypeError("Expected argument 'error' to be a dict")
         pulumi.set(__self__, "error", error)
@@ -54,6 +57,9 @@ class GetCutoverJobResult:
         if state_time and not isinstance(state_time, str):
             raise TypeError("Expected argument 'state_time' to be a str")
         pulumi.set(__self__, "state_time", state_time)
+        if steps and not isinstance(steps, list):
+            raise TypeError("Expected argument 'steps' to be a list")
+        pulumi.set(__self__, "steps", steps)
         if target_details and not isinstance(target_details, dict):
             raise TypeError("Expected argument 'target_details' to be a dict")
         if target_details is not None:
@@ -85,6 +91,14 @@ class GetCutoverJobResult:
         The time the cutover job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the cutover job had finished.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -143,6 +157,14 @@ class GetCutoverJobResult:
         return pulumi.get(self, "state_time")
 
     @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CutoverStepResponse']:
+        """
+        The cutover steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
+    @property
     @pulumi.getter(name="targetDetails")
     def target_details(self) -> 'outputs.TargetVMDetailsResponse':
         """
@@ -160,6 +182,7 @@ class AwaitableGetCutoverJobResult(GetCutoverJobResult):
             compute_engine_target_details=self.compute_engine_target_details,
             compute_engine_vm_details=self.compute_engine_vm_details,
             create_time=self.create_time,
+            end_time=self.end_time,
             error=self.error,
             name=self.name,
             progress=self.progress,
@@ -167,6 +190,7 @@ class AwaitableGetCutoverJobResult(GetCutoverJobResult):
             state=self.state,
             state_message=self.state_message,
             state_time=self.state_time,
+            steps=self.steps,
             target_details=self.target_details)
 
 
@@ -195,6 +219,7 @@ def get_cutover_job(cutover_job_id: Optional[str] = None,
         compute_engine_target_details=__ret__.compute_engine_target_details,
         compute_engine_vm_details=__ret__.compute_engine_vm_details,
         create_time=__ret__.create_time,
+        end_time=__ret__.end_time,
         error=__ret__.error,
         name=__ret__.name,
         progress=__ret__.progress,
@@ -202,6 +227,7 @@ def get_cutover_job(cutover_job_id: Optional[str] = None,
         state=__ret__.state,
         state_message=__ret__.state_message,
         state_time=__ret__.state_time,
+        steps=__ret__.steps,
         target_details=__ret__.target_details)
 
 

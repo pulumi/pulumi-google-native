@@ -182,6 +182,7 @@ class CutoverJob(pulumi.CustomResource):
             __props__.__dict__["compute_engine_target_details"] = None
             __props__.__dict__["compute_engine_vm_details"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["end_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["progress"] = None
@@ -189,6 +190,7 @@ class CutoverJob(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
             __props__.__dict__["state_time"] = None
+            __props__.__dict__["steps"] = None
             __props__.__dict__["target_details"] = None
         super(CutoverJob, __self__).__init__(
             'google-native:vmmigration/v1alpha1:CutoverJob',
@@ -216,6 +218,7 @@ class CutoverJob(pulumi.CustomResource):
         __props__.__dict__["compute_engine_vm_details"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["cutover_job_id"] = None
+        __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["migrating_vm_id"] = None
@@ -228,6 +231,7 @@ class CutoverJob(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
         __props__.__dict__["state_time"] = None
+        __props__.__dict__["steps"] = None
         __props__.__dict__["target_details"] = None
         return CutoverJob(resource_name, opts=opts, __props__=__props__)
 
@@ -262,6 +266,14 @@ class CutoverJob(pulumi.CustomResource):
         Required. The cutover job identifier.
         """
         return pulumi.get(self, "cutover_job_id")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time the cutover job had finished.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -346,6 +358,14 @@ class CutoverJob(pulumi.CustomResource):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> pulumi.Output[Sequence['outputs.CutoverStepResponse']]:
+        """
+        The cutover steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
 
     @property
     @pulumi.getter(name="targetDetails")

@@ -1234,6 +1234,8 @@ func (o GoogleCloudRunV2EnvVarSourceResponseOutput) SecretKeyRef() GoogleCloudRu
 // Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
 type GoogleCloudRunV2ExecutionReferenceResponse struct {
 	// Creation timestamp of the execution.
+	CompletionTime string `pulumi:"completionTime"`
+	// Creation timestamp of the execution.
 	CreateTime string `pulumi:"createTime"`
 	// Name of the execution.
 	Name string `pulumi:"name"`
@@ -1252,6 +1254,11 @@ func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) ToGoogleCloudRunV2Exec
 
 func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) ToGoogleCloudRunV2ExecutionReferenceResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionReferenceResponseOutput {
 	return o
+}
+
+// Creation timestamp of the execution.
+func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) CompletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionReferenceResponse) string { return v.CompletionTime }).(pulumi.StringOutput)
 }
 
 // Creation timestamp of the execution.

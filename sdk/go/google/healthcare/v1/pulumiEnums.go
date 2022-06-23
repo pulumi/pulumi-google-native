@@ -525,6 +525,175 @@ func (in *consentStateEnumPtr) ToConsentStateEnumPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConsentStateEnumPtrOutput)
 }
 
+// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+type FhirStoreComplexDataTypeReferenceParsing string
+
+const (
+	// No parsing behavior specified. This is the same as DISABLED for backwards compatibility.
+	FhirStoreComplexDataTypeReferenceParsingComplexDataTypeReferenceParsingUnspecified = FhirStoreComplexDataTypeReferenceParsing("COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED")
+	// References in complex data types are ignored.
+	FhirStoreComplexDataTypeReferenceParsingDisabled = FhirStoreComplexDataTypeReferenceParsing("DISABLED")
+	// References in complex data types are parsed.
+	FhirStoreComplexDataTypeReferenceParsingEnabled = FhirStoreComplexDataTypeReferenceParsing("ENABLED")
+)
+
+func (FhirStoreComplexDataTypeReferenceParsing) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreComplexDataTypeReferenceParsing)(nil)).Elem()
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToFhirStoreComplexDataTypeReferenceParsingOutput() FhirStoreComplexDataTypeReferenceParsingOutput {
+	return pulumi.ToOutput(e).(FhirStoreComplexDataTypeReferenceParsingOutput)
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToFhirStoreComplexDataTypeReferenceParsingOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FhirStoreComplexDataTypeReferenceParsingOutput)
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToFhirStoreComplexDataTypeReferenceParsingPtrOutput() FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return e.ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(context.Background())
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return FhirStoreComplexDataTypeReferenceParsing(e).ToFhirStoreComplexDataTypeReferenceParsingOutputWithContext(ctx).ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx)
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FhirStoreComplexDataTypeReferenceParsing) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FhirStoreComplexDataTypeReferenceParsingOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreComplexDataTypeReferenceParsingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreComplexDataTypeReferenceParsing)(nil)).Elem()
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToFhirStoreComplexDataTypeReferenceParsingOutput() FhirStoreComplexDataTypeReferenceParsingOutput {
+	return o
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToFhirStoreComplexDataTypeReferenceParsingOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingOutput {
+	return o
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToFhirStoreComplexDataTypeReferenceParsingPtrOutput() FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return o.ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreComplexDataTypeReferenceParsing) *FhirStoreComplexDataTypeReferenceParsing {
+		return &v
+	}).(FhirStoreComplexDataTypeReferenceParsingPtrOutput)
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FhirStoreComplexDataTypeReferenceParsing) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FhirStoreComplexDataTypeReferenceParsing) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FhirStoreComplexDataTypeReferenceParsingPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreComplexDataTypeReferenceParsingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreComplexDataTypeReferenceParsing)(nil)).Elem()
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToFhirStoreComplexDataTypeReferenceParsingPtrOutput() FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return o
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return o
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) Elem() FhirStoreComplexDataTypeReferenceParsingOutput {
+	return o.ApplyT(func(v *FhirStoreComplexDataTypeReferenceParsing) FhirStoreComplexDataTypeReferenceParsing {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreComplexDataTypeReferenceParsing
+		return ret
+	}).(FhirStoreComplexDataTypeReferenceParsingOutput)
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FhirStoreComplexDataTypeReferenceParsing) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FhirStoreComplexDataTypeReferenceParsingInput is an input type that accepts FhirStoreComplexDataTypeReferenceParsingArgs and FhirStoreComplexDataTypeReferenceParsingOutput values.
+// You can construct a concrete instance of `FhirStoreComplexDataTypeReferenceParsingInput` via:
+//
+//          FhirStoreComplexDataTypeReferenceParsingArgs{...}
+type FhirStoreComplexDataTypeReferenceParsingInput interface {
+	pulumi.Input
+
+	ToFhirStoreComplexDataTypeReferenceParsingOutput() FhirStoreComplexDataTypeReferenceParsingOutput
+	ToFhirStoreComplexDataTypeReferenceParsingOutputWithContext(context.Context) FhirStoreComplexDataTypeReferenceParsingOutput
+}
+
+var fhirStoreComplexDataTypeReferenceParsingPtrType = reflect.TypeOf((**FhirStoreComplexDataTypeReferenceParsing)(nil)).Elem()
+
+type FhirStoreComplexDataTypeReferenceParsingPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreComplexDataTypeReferenceParsingPtrOutput() FhirStoreComplexDataTypeReferenceParsingPtrOutput
+	ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput
+}
+
+type fhirStoreComplexDataTypeReferenceParsingPtr string
+
+func FhirStoreComplexDataTypeReferenceParsingPtr(v string) FhirStoreComplexDataTypeReferenceParsingPtrInput {
+	return (*fhirStoreComplexDataTypeReferenceParsingPtr)(&v)
+}
+
+func (*fhirStoreComplexDataTypeReferenceParsingPtr) ElementType() reflect.Type {
+	return fhirStoreComplexDataTypeReferenceParsingPtrType
+}
+
+func (in *fhirStoreComplexDataTypeReferenceParsingPtr) ToFhirStoreComplexDataTypeReferenceParsingPtrOutput() FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return pulumi.ToOutput(in).(FhirStoreComplexDataTypeReferenceParsingPtrOutput)
+}
+
+func (in *fhirStoreComplexDataTypeReferenceParsingPtr) ToFhirStoreComplexDataTypeReferenceParsingPtrOutputWithContext(ctx context.Context) FhirStoreComplexDataTypeReferenceParsingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FhirStoreComplexDataTypeReferenceParsingPtrOutput)
+}
+
 // Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
 type FhirStoreVersion string
 
@@ -1721,6 +1890,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStateEnumInput)(nil)).Elem(), ConsentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStateEnumPtrInput)(nil)).Elem(), ConsentStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreComplexDataTypeReferenceParsingInput)(nil)).Elem(), FhirStoreComplexDataTypeReferenceParsing("COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreComplexDataTypeReferenceParsingPtrInput)(nil)).Elem(), FhirStoreComplexDataTypeReferenceParsing("COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreVersionInput)(nil)).Elem(), FhirStoreVersion("VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreVersionPtrInput)(nil)).Elem(), FhirStoreVersion("VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED"))
@@ -1741,6 +1912,8 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ConsentStateEnumOutput{})
 	pulumi.RegisterOutputType(ConsentStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreComplexDataTypeReferenceParsingOutput{})
+	pulumi.RegisterOutputType(FhirStoreComplexDataTypeReferenceParsingPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreVersionOutput{})
 	pulumi.RegisterOutputType(FhirStoreVersionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput{})

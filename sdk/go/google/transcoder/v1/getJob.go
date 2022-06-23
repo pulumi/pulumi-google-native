@@ -37,6 +37,8 @@ type LookupJobResult struct {
 	Error StatusResponse `pulumi:"error"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	InputUri string `pulumi:"inputUri"`
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name string `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -111,6 +113,11 @@ func (o LookupJobResultOutput) Error() StatusResponseOutput {
 // Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o LookupJobResultOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.InputUri }).(pulumi.StringOutput)
+}
+
+// The labels associated with this job. You can use these to organize and group your jobs.
+func (o LookupJobResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupJobResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`

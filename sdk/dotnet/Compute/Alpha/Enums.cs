@@ -3645,7 +3645,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+    /// Pagination behavior of the listManagedInstances API method for this managed instance group.
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerListManagedInstancesResults : IEquatable<InstanceGroupManagerListManagedInstancesResults>
@@ -3658,11 +3658,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
         /// </summary>
         public static InstanceGroupManagerListManagedInstancesResults Pageless { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGELESS");
         /// <summary>
-        /// Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
         /// </summary>
         public static InstanceGroupManagerListManagedInstancesResults Paginated { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGINATED");
 
@@ -5960,7 +5960,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+    /// Pagination behavior of the listManagedInstances API method for this managed instance group.
     /// </summary>
     [EnumType]
     public readonly struct RegionInstanceGroupManagerListManagedInstancesResults : IEquatable<RegionInstanceGroupManagerListManagedInstancesResults>
@@ -5973,11 +5973,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
         /// </summary>
         public static RegionInstanceGroupManagerListManagedInstancesResults Pageless { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS");
         /// <summary>
-        /// Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
         /// </summary>
         public static RegionInstanceGroupManagerListManagedInstancesResults Paginated { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGINATED");
 
@@ -8332,10 +8332,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Outbound private IPv6 access from VMs in this subnet to Google services.
         /// </summary>
         public static SubnetworkPrivateIpv6GoogleAccess EnableOutboundVmAccessToGoogle { get; } = new SubnetworkPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE");
-        /// <summary>
-        /// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. Outbound private IPv6 access is enabled per VM based on Service Accounts. This applies only to VMs with primary service accounts as listed in private_ipv6_google_access_service_account.
-        /// </summary>
-        public static SubnetworkPrivateIpv6GoogleAccess EnableOutboundVmAccessToGoogleForServiceAccounts { get; } = new SubnetworkPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS");
 
         public static bool operator ==(SubnetworkPrivateIpv6GoogleAccess left, SubnetworkPrivateIpv6GoogleAccess right) => left.Equals(right);
         public static bool operator !=(SubnetworkPrivateIpv6GoogleAccess left, SubnetworkPrivateIpv6GoogleAccess right) => !left.Equals(right);

@@ -20,10 +20,10 @@ type DestGroup struct {
 	// null List of FQDNs that this group applies to.
 	Fqdns    pulumi.StringArrayOutput `pulumi:"fqdns"`
 	Location pulumi.StringOutput      `pulumi:"location"`
-	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
 	TunnelDestGroupId pulumi.StringOutput `pulumi:"tunnelDestGroupId"`
 }
 
@@ -74,10 +74,10 @@ type destGroupArgs struct {
 	// null List of FQDNs that this group applies to.
 	Fqdns    []string `pulumi:"fqdns"`
 	Location *string  `pulumi:"location"`
-	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
 	TunnelDestGroupId string `pulumi:"tunnelDestGroupId"`
 }
 
@@ -88,10 +88,10 @@ type DestGroupArgs struct {
 	// null List of FQDNs that this group applies to.
 	Fqdns    pulumi.StringArrayInput
 	Location pulumi.StringPtrInput
-	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
 	TunnelDestGroupId pulumi.StringInput
 }
 
@@ -146,7 +146,7 @@ func (o DestGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
 func (o DestGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -155,7 +155,7 @@ func (o DestGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
 func (o DestGroupOutput) TunnelDestGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.TunnelDestGroupId }).(pulumi.StringOutput)
 }

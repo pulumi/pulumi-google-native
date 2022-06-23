@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public Input<string>? StorageClass { get; set; }
 
         /// <summary>
-        /// Type of the action. Currently, only Delete and SetStorageClass are supported.
+        /// Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

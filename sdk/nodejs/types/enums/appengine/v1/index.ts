@@ -187,6 +187,26 @@ export const IngressRuleAction = {
  */
 export type IngressRuleAction = (typeof IngressRuleAction)[keyof typeof IngressRuleAction];
 
+export const NetworkInstanceIpMode = {
+    /**
+     * Unspecified is treated as EXTERNAL.
+     */
+    InstanceIpModeUnspecified: "INSTANCE_IP_MODE_UNSPECIFIED",
+    /**
+     * Instances are created with both internal and external IP addresses.
+     */
+    External: "EXTERNAL",
+    /**
+     * Instances are created with internal IP addresses only.
+     */
+    Internal: "INTERNAL",
+} as const;
+
+/**
+ * The IP mode for instances. Only applicable in the App Engine flexible environment.
+ */
+export type NetworkInstanceIpMode = (typeof NetworkInstanceIpMode)[keyof typeof NetworkInstanceIpMode];
+
 export const SslSettingsSslManagementType = {
     /**
      * Defaults to AUTOMATIC.

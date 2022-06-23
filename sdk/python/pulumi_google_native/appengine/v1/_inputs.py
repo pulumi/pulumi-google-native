@@ -1330,6 +1330,7 @@ class NetworkUtilizationArgs:
 class NetworkArgs:
     def __init__(__self__, *,
                  forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_ip_mode: Optional[pulumi.Input['NetworkInstanceIpMode']] = None,
                  instance_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[bool]] = None,
@@ -1337,6 +1338,7 @@ class NetworkArgs:
         """
         Extra network settings. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
+        :param pulumi.Input['NetworkInstanceIpMode'] instance_ip_mode: The IP mode for instances. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] instance_tag: Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
         :param pulumi.Input[bool] session_affinity: Enable session affinity. Only applicable in the App Engine flexible environment.
@@ -1344,6 +1346,8 @@ class NetworkArgs:
         """
         if forwarded_ports is not None:
             pulumi.set(__self__, "forwarded_ports", forwarded_ports)
+        if instance_ip_mode is not None:
+            pulumi.set(__self__, "instance_ip_mode", instance_ip_mode)
         if instance_tag is not None:
             pulumi.set(__self__, "instance_tag", instance_tag)
         if name is not None:
@@ -1364,6 +1368,18 @@ class NetworkArgs:
     @forwarded_ports.setter
     def forwarded_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "forwarded_ports", value)
+
+    @property
+    @pulumi.getter(name="instanceIpMode")
+    def instance_ip_mode(self) -> Optional[pulumi.Input['NetworkInstanceIpMode']]:
+        """
+        The IP mode for instances. Only applicable in the App Engine flexible environment.
+        """
+        return pulumi.get(self, "instance_ip_mode")
+
+    @instance_ip_mode.setter
+    def instance_ip_mode(self, value: Optional[pulumi.Input['NetworkInstanceIpMode']]):
+        pulumi.set(self, "instance_ip_mode", value)
 
     @property
     @pulumi.getter(name="instanceTag")

@@ -1050,6 +1050,8 @@ type DeliveryPipelineResponse struct {
 	Name string `pulumi:"name"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline SerialPipelineResponse `pulumi:"serialPipeline"`
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended bool `pulumi:"suspended"`
 	// Unique identifier of the `DeliveryPipeline`.
 	Uid string `pulumi:"uid"`
 	// Most recent time at which the pipeline was updated.
@@ -1109,6 +1111,11 @@ func (o DeliveryPipelineResponseOutput) Name() pulumi.StringOutput {
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 func (o DeliveryPipelineResponseOutput) SerialPipeline() SerialPipelineResponseOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) SerialPipelineResponse { return v.SerialPipeline }).(SerialPipelineResponseOutput)
+}
+
+// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+func (o DeliveryPipelineResponseOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v DeliveryPipelineResponse) bool { return v.Suspended }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the `DeliveryPipeline`.

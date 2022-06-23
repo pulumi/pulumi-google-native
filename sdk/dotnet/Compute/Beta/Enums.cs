@@ -2841,6 +2841,43 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// Pagination behavior of the listManagedInstances API method for this managed instance group.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceGroupManagerListManagedInstancesResults : IEquatable<InstanceGroupManagerListManagedInstancesResults>
+    {
+        private readonly string _value;
+
+        private InstanceGroupManagerListManagedInstancesResults(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// </summary>
+        public static InstanceGroupManagerListManagedInstancesResults Pageless { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGELESS");
+        /// <summary>
+        /// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// </summary>
+        public static InstanceGroupManagerListManagedInstancesResults Paginated { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGINATED");
+
+        public static bool operator ==(InstanceGroupManagerListManagedInstancesResults left, InstanceGroupManagerListManagedInstancesResults right) => left.Equals(right);
+        public static bool operator !=(InstanceGroupManagerListManagedInstancesResults left, InstanceGroupManagerListManagedInstancesResults right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceGroupManagerListManagedInstancesResults value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceGroupManagerListManagedInstancesResults other && Equals(other);
+        public bool Equals(InstanceGroupManagerListManagedInstancesResults other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled. 
     /// </summary>
     [EnumType]
@@ -4803,6 +4840,43 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionInstanceGroupManagerFailoverAction other && Equals(other);
         public bool Equals(RegionInstanceGroupManagerFailoverAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Pagination behavior of the listManagedInstances API method for this managed instance group.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionInstanceGroupManagerListManagedInstancesResults : IEquatable<RegionInstanceGroupManagerListManagedInstancesResults>
+    {
+        private readonly string _value;
+
+        private RegionInstanceGroupManagerListManagedInstancesResults(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// </summary>
+        public static RegionInstanceGroupManagerListManagedInstancesResults Pageless { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS");
+        /// <summary>
+        /// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// </summary>
+        public static RegionInstanceGroupManagerListManagedInstancesResults Paginated { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGINATED");
+
+        public static bool operator ==(RegionInstanceGroupManagerListManagedInstancesResults left, RegionInstanceGroupManagerListManagedInstancesResults right) => left.Equals(right);
+        public static bool operator !=(RegionInstanceGroupManagerListManagedInstancesResults left, RegionInstanceGroupManagerListManagedInstancesResults right) => !left.Equals(right);
+
+        public static explicit operator string(RegionInstanceGroupManagerListManagedInstancesResults value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionInstanceGroupManagerListManagedInstancesResults other && Equals(other);
+        public bool Equals(RegionInstanceGroupManagerListManagedInstancesResults other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

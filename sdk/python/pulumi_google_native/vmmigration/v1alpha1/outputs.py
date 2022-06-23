@@ -12,24 +12,30 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AdaptingOSStepResponse',
     'ApplianceVersionResponse',
     'AppliedLicenseResponse',
     'AvailableUpdatesResponse',
     'AwsSourceVmDetailsResponse',
     'CloneJobResponse',
+    'CloneStepResponse',
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
     'ComputeSchedulingResponse',
     'CutoverJobResponse',
+    'CutoverStepResponse',
     'CycleStepResponse',
     'InitializingReplicationStepResponse',
+    'InstantiatingMigratedVMStepResponse',
     'NetworkInterfaceResponse',
     'PostProcessingStepResponse',
+    'PreparingVMDisksStepResponse',
     'ReplicatingStepResponse',
     'ReplicationCycleResponse',
     'ReplicationSyncResponse',
     'SchedulePolicyResponse',
     'SchedulingNodeAffinityResponse',
+    'ShuttingDownSourceVMStepResponse',
     'StatusResponse',
     'TargetVMDetailsResponse',
     'UpgradeStatusResponse',
@@ -38,6 +44,18 @@ __all__ = [
     'VmwareSourceDetailsResponse',
     'VmwareVmDetailsResponse',
 ]
+
+@pulumi.output_type
+class AdaptingOSStepResponse(dict):
+    """
+    AdaptingOSStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        AdaptingOSStep contains specific step details.
+        """
+        pass
+
 
 @pulumi.output_type
 class ApplianceVersionResponse(dict):
@@ -249,6 +267,8 @@ class CloneJobResponse(dict):
             suggest = "compute_engine_vm_details"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "endTime":
+            suggest = "end_time"
         elif key == "stateTime":
             suggest = "state_time"
         elif key == "targetDetails":
@@ -269,29 +289,35 @@ class CloneJobResponse(dict):
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
                  compute_engine_vm_details: 'outputs.TargetVMDetailsResponse',
                  create_time: str,
+                 end_time: str,
                  error: 'outputs.StatusResponse',
                  name: str,
                  state: str,
                  state_time: str,
+                 steps: Sequence['outputs.CloneStepResponse'],
                  target_details: 'outputs.TargetVMDetailsResponse'):
         """
         CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
         :param 'TargetVMDetailsResponse' compute_engine_vm_details: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         :param str create_time: The time the clone job was created (as an API call, not when it was actually created in the target).
+        :param str end_time: The time the clone job was ended.
         :param 'StatusResponse' error: Provides details for the errors that led to the Clone Job's state.
         :param str name: The name of the clone.
         :param str state: State of the clone job.
         :param str state_time: The time the state was last updated.
+        :param Sequence['CloneStepResponse'] steps: The clone steps list representing its progress.
         :param 'TargetVMDetailsResponse' target_details: Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "compute_engine_vm_details", compute_engine_vm_details)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_time", state_time)
+        pulumi.set(__self__, "steps", steps)
         pulumi.set(__self__, "target_details", target_details)
 
     @property
@@ -317,6 +343,14 @@ class CloneJobResponse(dict):
         The time the clone job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the clone job was ended.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -351,12 +385,111 @@ class CloneJobResponse(dict):
         return pulumi.get(self, "state_time")
 
     @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CloneStepResponse']:
+        """
+        The clone steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
+    @property
     @pulumi.getter(name="targetDetails")
     def target_details(self) -> 'outputs.TargetVMDetailsResponse':
         """
         Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
         """
         return pulumi.get(self, "target_details")
+
+
+@pulumi.output_type
+class CloneStepResponse(dict):
+    """
+    CloneStep holds information about the clone step progress.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adaptingOs":
+            suggest = "adapting_os"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "instantiatingMigratedVm":
+            suggest = "instantiating_migrated_vm"
+        elif key == "preparingVmDisks":
+            suggest = "preparing_vm_disks"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloneStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloneStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloneStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 adapting_os: 'outputs.AdaptingOSStepResponse',
+                 end_time: str,
+                 instantiating_migrated_vm: 'outputs.InstantiatingMigratedVMStepResponse',
+                 preparing_vm_disks: 'outputs.PreparingVMDisksStepResponse',
+                 start_time: str):
+        """
+        CloneStep holds information about the clone step progress.
+        :param 'AdaptingOSStepResponse' adapting_os: Adapting OS step.
+        :param str end_time: The time the step has ended.
+        :param 'InstantiatingMigratedVMStepResponse' instantiating_migrated_vm: Instantiating migrated VM step.
+        :param 'PreparingVMDisksStepResponse' preparing_vm_disks: Preparing VM disks step.
+        :param str start_time: The time the step has started.
+        """
+        pulumi.set(__self__, "adapting_os", adapting_os)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "instantiating_migrated_vm", instantiating_migrated_vm)
+        pulumi.set(__self__, "preparing_vm_disks", preparing_vm_disks)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="adaptingOs")
+    def adapting_os(self) -> 'outputs.AdaptingOSStepResponse':
+        """
+        Adapting OS step.
+        """
+        return pulumi.get(self, "adapting_os")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the step has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="instantiatingMigratedVm")
+    def instantiating_migrated_vm(self) -> 'outputs.InstantiatingMigratedVMStepResponse':
+        """
+        Instantiating migrated VM step.
+        """
+        return pulumi.get(self, "instantiating_migrated_vm")
+
+    @property
+    @pulumi.getter(name="preparingVmDisks")
+    def preparing_vm_disks(self) -> 'outputs.PreparingVMDisksStepResponse':
+        """
+        Preparing VM disks step.
+        """
+        return pulumi.get(self, "preparing_vm_disks")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the step has started.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -962,6 +1095,8 @@ class CutoverJobResponse(dict):
             suggest = "compute_engine_vm_details"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "endTime":
+            suggest = "end_time"
         elif key == "progressPercent":
             suggest = "progress_percent"
         elif key == "stateMessage":
@@ -986,6 +1121,7 @@ class CutoverJobResponse(dict):
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
                  compute_engine_vm_details: 'outputs.TargetVMDetailsResponse',
                  create_time: str,
+                 end_time: str,
                  error: 'outputs.StatusResponse',
                  name: str,
                  progress: int,
@@ -993,12 +1129,14 @@ class CutoverJobResponse(dict):
                  state: str,
                  state_message: str,
                  state_time: str,
+                 steps: Sequence['outputs.CutoverStepResponse'],
                  target_details: 'outputs.TargetVMDetailsResponse'):
         """
         CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
         :param 'TargetVMDetailsResponse' compute_engine_vm_details: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         :param str create_time: The time the cutover job was created (as an API call, not when it was actually created in the target).
+        :param str end_time: The time the cutover job had finished.
         :param 'StatusResponse' error: Provides details for the errors that led to the Cutover Job's state.
         :param str name: The name of the cutover job.
         :param int progress: The current progress in percentage of the cutover job.
@@ -1006,11 +1144,13 @@ class CutoverJobResponse(dict):
         :param str state: State of the cutover job.
         :param str state_message: A message providing possible extra details about the current state.
         :param str state_time: The time the state was last updated.
+        :param Sequence['CutoverStepResponse'] steps: The cutover steps list representing its progress.
         :param 'TargetVMDetailsResponse' target_details: Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "compute_engine_vm_details", compute_engine_vm_details)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "progress", progress)
@@ -1018,6 +1158,7 @@ class CutoverJobResponse(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_message", state_message)
         pulumi.set(__self__, "state_time", state_time)
+        pulumi.set(__self__, "steps", steps)
         pulumi.set(__self__, "target_details", target_details)
 
     @property
@@ -1043,6 +1184,14 @@ class CutoverJobResponse(dict):
         The time the cutover job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the cutover job had finished.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -1101,12 +1250,137 @@ class CutoverJobResponse(dict):
         return pulumi.get(self, "state_time")
 
     @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CutoverStepResponse']:
+        """
+        The cutover steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
+    @property
     @pulumi.getter(name="targetDetails")
     def target_details(self) -> 'outputs.TargetVMDetailsResponse':
         """
         Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
         """
         return pulumi.get(self, "target_details")
+
+
+@pulumi.output_type
+class CutoverStepResponse(dict):
+    """
+    CutoverStep holds information about the cutover step progress.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "finalSync":
+            suggest = "final_sync"
+        elif key == "instantiatingMigratedVm":
+            suggest = "instantiating_migrated_vm"
+        elif key == "preparingVmDisks":
+            suggest = "preparing_vm_disks"
+        elif key == "previousReplicationCycle":
+            suggest = "previous_replication_cycle"
+        elif key == "shuttingDownSourceVm":
+            suggest = "shutting_down_source_vm"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CutoverStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CutoverStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CutoverStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 final_sync: 'outputs.ReplicationCycleResponse',
+                 instantiating_migrated_vm: 'outputs.InstantiatingMigratedVMStepResponse',
+                 preparing_vm_disks: 'outputs.PreparingVMDisksStepResponse',
+                 previous_replication_cycle: 'outputs.ReplicationCycleResponse',
+                 shutting_down_source_vm: 'outputs.ShuttingDownSourceVMStepResponse',
+                 start_time: str):
+        """
+        CutoverStep holds information about the cutover step progress.
+        :param str end_time: The time the step has ended.
+        :param 'ReplicationCycleResponse' final_sync: Final sync step.
+        :param 'InstantiatingMigratedVMStepResponse' instantiating_migrated_vm: Instantiating migrated VM step.
+        :param 'PreparingVMDisksStepResponse' preparing_vm_disks: Preparing VM disks step.
+        :param 'ReplicationCycleResponse' previous_replication_cycle: A replication cycle prior cutover step.
+        :param 'ShuttingDownSourceVMStepResponse' shutting_down_source_vm: Shutting down VM step.
+        :param str start_time: The time the step has started.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "final_sync", final_sync)
+        pulumi.set(__self__, "instantiating_migrated_vm", instantiating_migrated_vm)
+        pulumi.set(__self__, "preparing_vm_disks", preparing_vm_disks)
+        pulumi.set(__self__, "previous_replication_cycle", previous_replication_cycle)
+        pulumi.set(__self__, "shutting_down_source_vm", shutting_down_source_vm)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the step has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="finalSync")
+    def final_sync(self) -> 'outputs.ReplicationCycleResponse':
+        """
+        Final sync step.
+        """
+        return pulumi.get(self, "final_sync")
+
+    @property
+    @pulumi.getter(name="instantiatingMigratedVm")
+    def instantiating_migrated_vm(self) -> 'outputs.InstantiatingMigratedVMStepResponse':
+        """
+        Instantiating migrated VM step.
+        """
+        return pulumi.get(self, "instantiating_migrated_vm")
+
+    @property
+    @pulumi.getter(name="preparingVmDisks")
+    def preparing_vm_disks(self) -> 'outputs.PreparingVMDisksStepResponse':
+        """
+        Preparing VM disks step.
+        """
+        return pulumi.get(self, "preparing_vm_disks")
+
+    @property
+    @pulumi.getter(name="previousReplicationCycle")
+    def previous_replication_cycle(self) -> 'outputs.ReplicationCycleResponse':
+        """
+        A replication cycle prior cutover step.
+        """
+        return pulumi.get(self, "previous_replication_cycle")
+
+    @property
+    @pulumi.getter(name="shuttingDownSourceVm")
+    def shutting_down_source_vm(self) -> 'outputs.ShuttingDownSourceVMStepResponse':
+        """
+        Shutting down VM step.
+        """
+        return pulumi.get(self, "shutting_down_source_vm")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the step has started.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -1211,6 +1485,18 @@ class InitializingReplicationStepResponse(dict):
 
 
 @pulumi.output_type
+class InstantiatingMigratedVMStepResponse(dict):
+    """
+    InstantiatingMigratedVMStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        InstantiatingMigratedVMStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
 class NetworkInterfaceResponse(dict):
     """
     NetworkInterface represents a NIC of a VM.
@@ -1292,6 +1578,18 @@ class PostProcessingStepResponse(dict):
     def __init__(__self__):
         """
         PostProcessingStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
+class PreparingVMDisksStepResponse(dict):
+    """
+    PreparingVMDisksStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        PreparingVMDisksStep contains specific step details.
         """
         pass
 
@@ -1382,7 +1680,9 @@ class ReplicationCycleResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "progressPercent":
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "progressPercent":
             suggest = "progress_percent"
         elif key == "startTime":
             suggest = "start_time"
@@ -1401,6 +1701,8 @@ class ReplicationCycleResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 end_time: str,
+                 name: str,
                  progress: int,
                  progress_percent: int,
                  start_time: str,
@@ -1408,17 +1710,37 @@ class ReplicationCycleResponse(dict):
                  total_pause_duration: str):
         """
         ReplicationCycle contains information about the current replication cycle status.
+        :param str end_time: The time the replication cycle has ended.
+        :param str name: The identifier of the ReplicationCycle.
         :param int progress: The current progress in percentage of this cycle.
         :param int progress_percent: The current progress in percentage of this cycle.
         :param str start_time: The time the replication cycle has started.
         :param Sequence['CycleStepResponse'] steps: The cycle's steps list representing its progress.
         :param str total_pause_duration: The accumulated duration the replication cycle was paused.
         """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "progress_percent", progress_percent)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "steps", steps)
         pulumi.set(__self__, "total_pause_duration", total_pause_duration)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the replication cycle has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The identifier of the ReplicationCycle.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
@@ -1594,6 +1916,18 @@ class SchedulingNodeAffinityResponse(dict):
         Corresponds to the label values of Node resource.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class ShuttingDownSourceVMStepResponse(dict):
+    """
+    ShuttingDownSourceVMStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        ShuttingDownSourceVMStep contains specific step details.
+        """
+        pass
 
 
 @pulumi.output_type

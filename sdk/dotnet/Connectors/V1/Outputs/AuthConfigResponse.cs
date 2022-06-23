@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly Outputs.Oauth2JwtBearerResponse Oauth2JwtBearer;
         /// <summary>
+        /// SSH Public Key.
+        /// </summary>
+        public readonly Outputs.SshPublicKeyResponse SshPublicKey;
+        /// <summary>
         /// UserPassword.
         /// </summary>
         public readonly Outputs.UserPasswordResponse UserPassword;
@@ -47,12 +51,15 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 
             Outputs.Oauth2JwtBearerResponse oauth2JwtBearer,
 
+            Outputs.SshPublicKeyResponse sshPublicKey,
+
             Outputs.UserPasswordResponse userPassword)
         {
             AdditionalVariables = additionalVariables;
             AuthType = authType;
             Oauth2ClientCredentials = oauth2ClientCredentials;
             Oauth2JwtBearer = oauth2JwtBearer;
+            SshPublicKey = sshPublicKey;
             UserPassword = userPassword;
         }
     }

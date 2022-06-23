@@ -80,6 +80,10 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      * Volumes to be created.
      */
     public readonly volumes!: pulumi.Output<outputs.baremetalsolution.v2.VolumeConfigResponse[]>;
+    /**
+     * If true, VPC SC is enabled for the cluster.
+     */
+    public readonly vpcScEnabled!: pulumi.Output<boolean>;
 
     /**
      * Create a ProvisioningConfig resource with the given unique name, arguments, and options.
@@ -100,6 +104,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["ticketId"] = args ? args.ticketId : undefined;
             resourceInputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["vpcScEnabled"] = args ? args.vpcScEnabled : undefined;
             resourceInputs["cloudConsoleUri"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -117,6 +122,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["ticketId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["volumes"] = undefined /*out*/;
+            resourceInputs["vpcScEnabled"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProvisioningConfig.__pulumiType, name, resourceInputs, opts);
@@ -158,4 +164,8 @@ export interface ProvisioningConfigArgs {
      * Volumes to be created.
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.baremetalsolution.v2.VolumeConfigArgs>[]>;
+    /**
+     * If true, VPC SC is enabled for the cluster.
+     */
+    vpcScEnabled?: pulumi.Input<boolean>;
 }

@@ -10,6 +10,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// AdaptingOSStep contains specific step details.
+type AdaptingOSStepResponse struct {
+}
+
+// AdaptingOSStep contains specific step details.
+type AdaptingOSStepResponseOutput struct{ *pulumi.OutputState }
+
+func (AdaptingOSStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdaptingOSStepResponse)(nil)).Elem()
+}
+
+func (o AdaptingOSStepResponseOutput) ToAdaptingOSStepResponseOutput() AdaptingOSStepResponseOutput {
+	return o
+}
+
+func (o AdaptingOSStepResponseOutput) ToAdaptingOSStepResponseOutputWithContext(ctx context.Context) AdaptingOSStepResponseOutput {
+	return o
+}
+
 // Describes an appliance version.
 type ApplianceVersionResponse struct {
 	// Determine whether it's critical to upgrade the appliance to this version.
@@ -159,6 +178,8 @@ type CloneJobResponse struct {
 	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the clone job was ended.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Clone Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the clone.
@@ -167,6 +188,8 @@ type CloneJobResponse struct {
 	State string `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The clone steps list representing its progress.
+	Steps []CloneStepResponse `pulumi:"steps"`
 	// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
 	//
 	// Deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
@@ -205,6 +228,11 @@ func (o CloneJobResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CloneJobResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The time the clone job was ended.
+func (o CloneJobResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CloneJobResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
 // Provides details for the errors that led to the Clone Job's state.
 func (o CloneJobResponseOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v CloneJobResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
@@ -223,6 +251,11 @@ func (o CloneJobResponseOutput) State() pulumi.StringOutput {
 // The time the state was last updated.
 func (o CloneJobResponseOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CloneJobResponse) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The clone steps list representing its progress.
+func (o CloneJobResponseOutput) Steps() CloneStepResponseArrayOutput {
+	return o.ApplyT(func(v CloneJobResponse) []CloneStepResponse { return v.Steps }).(CloneStepResponseArrayOutput)
 }
 
 // Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
@@ -250,6 +283,80 @@ func (o CloneJobResponseArrayOutput) Index(i pulumi.IntInput) CloneJobResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloneJobResponse {
 		return vs[0].([]CloneJobResponse)[vs[1].(int)]
 	}).(CloneJobResponseOutput)
+}
+
+// CloneStep holds information about the clone step progress.
+type CloneStepResponse struct {
+	// Adapting OS step.
+	AdaptingOs AdaptingOSStepResponse `pulumi:"adaptingOs"`
+	// The time the step has ended.
+	EndTime string `pulumi:"endTime"`
+	// Instantiating migrated VM step.
+	InstantiatingMigratedVm InstantiatingMigratedVMStepResponse `pulumi:"instantiatingMigratedVm"`
+	// Preparing VM disks step.
+	PreparingVmDisks PreparingVMDisksStepResponse `pulumi:"preparingVmDisks"`
+	// The time the step has started.
+	StartTime string `pulumi:"startTime"`
+}
+
+// CloneStep holds information about the clone step progress.
+type CloneStepResponseOutput struct{ *pulumi.OutputState }
+
+func (CloneStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloneStepResponse)(nil)).Elem()
+}
+
+func (o CloneStepResponseOutput) ToCloneStepResponseOutput() CloneStepResponseOutput {
+	return o
+}
+
+func (o CloneStepResponseOutput) ToCloneStepResponseOutputWithContext(ctx context.Context) CloneStepResponseOutput {
+	return o
+}
+
+// Adapting OS step.
+func (o CloneStepResponseOutput) AdaptingOs() AdaptingOSStepResponseOutput {
+	return o.ApplyT(func(v CloneStepResponse) AdaptingOSStepResponse { return v.AdaptingOs }).(AdaptingOSStepResponseOutput)
+}
+
+// The time the step has ended.
+func (o CloneStepResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CloneStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Instantiating migrated VM step.
+func (o CloneStepResponseOutput) InstantiatingMigratedVm() InstantiatingMigratedVMStepResponseOutput {
+	return o.ApplyT(func(v CloneStepResponse) InstantiatingMigratedVMStepResponse { return v.InstantiatingMigratedVm }).(InstantiatingMigratedVMStepResponseOutput)
+}
+
+// Preparing VM disks step.
+func (o CloneStepResponseOutput) PreparingVmDisks() PreparingVMDisksStepResponseOutput {
+	return o.ApplyT(func(v CloneStepResponse) PreparingVMDisksStepResponse { return v.PreparingVmDisks }).(PreparingVMDisksStepResponseOutput)
+}
+
+// The time the step has started.
+func (o CloneStepResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CloneStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type CloneStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CloneStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloneStepResponse)(nil)).Elem()
+}
+
+func (o CloneStepResponseArrayOutput) ToCloneStepResponseArrayOutput() CloneStepResponseArrayOutput {
+	return o
+}
+
+func (o CloneStepResponseArrayOutput) ToCloneStepResponseArrayOutputWithContext(ctx context.Context) CloneStepResponseArrayOutput {
+	return o
+}
+
+func (o CloneStepResponseArrayOutput) Index(i pulumi.IntInput) CloneStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloneStepResponse {
+		return vs[0].([]CloneStepResponse)[vs[1].(int)]
+	}).(CloneStepResponseOutput)
 }
 
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
@@ -1241,6 +1348,8 @@ type CutoverJobResponse struct {
 	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the cutover job had finished.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the cutover job.
@@ -1255,6 +1364,8 @@ type CutoverJobResponse struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The cutover steps list representing its progress.
+	Steps []CutoverStepResponse `pulumi:"steps"`
 	// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
 	//
 	// Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
@@ -1293,6 +1404,11 @@ func (o CutoverJobResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CutoverJobResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The time the cutover job had finished.
+func (o CutoverJobResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverJobResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
 // Provides details for the errors that led to the Cutover Job's state.
 func (o CutoverJobResponseOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v CutoverJobResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
@@ -1328,6 +1444,11 @@ func (o CutoverJobResponseOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CutoverJobResponse) string { return v.StateTime }).(pulumi.StringOutput)
 }
 
+// The cutover steps list representing its progress.
+func (o CutoverJobResponseOutput) Steps() CutoverStepResponseArrayOutput {
+	return o.ApplyT(func(v CutoverJobResponse) []CutoverStepResponse { return v.Steps }).(CutoverStepResponseArrayOutput)
+}
+
 // Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
 //
 // Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
@@ -1353,6 +1474,94 @@ func (o CutoverJobResponseArrayOutput) Index(i pulumi.IntInput) CutoverJobRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CutoverJobResponse {
 		return vs[0].([]CutoverJobResponse)[vs[1].(int)]
 	}).(CutoverJobResponseOutput)
+}
+
+// CutoverStep holds information about the cutover step progress.
+type CutoverStepResponse struct {
+	// The time the step has ended.
+	EndTime string `pulumi:"endTime"`
+	// Final sync step.
+	FinalSync ReplicationCycleResponse `pulumi:"finalSync"`
+	// Instantiating migrated VM step.
+	InstantiatingMigratedVm InstantiatingMigratedVMStepResponse `pulumi:"instantiatingMigratedVm"`
+	// Preparing VM disks step.
+	PreparingVmDisks PreparingVMDisksStepResponse `pulumi:"preparingVmDisks"`
+	// A replication cycle prior cutover step.
+	PreviousReplicationCycle ReplicationCycleResponse `pulumi:"previousReplicationCycle"`
+	// Shutting down VM step.
+	ShuttingDownSourceVm ShuttingDownSourceVMStepResponse `pulumi:"shuttingDownSourceVm"`
+	// The time the step has started.
+	StartTime string `pulumi:"startTime"`
+}
+
+// CutoverStep holds information about the cutover step progress.
+type CutoverStepResponseOutput struct{ *pulumi.OutputState }
+
+func (CutoverStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CutoverStepResponse)(nil)).Elem()
+}
+
+func (o CutoverStepResponseOutput) ToCutoverStepResponseOutput() CutoverStepResponseOutput {
+	return o
+}
+
+func (o CutoverStepResponseOutput) ToCutoverStepResponseOutputWithContext(ctx context.Context) CutoverStepResponseOutput {
+	return o
+}
+
+// The time the step has ended.
+func (o CutoverStepResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Final sync step.
+func (o CutoverStepResponseOutput) FinalSync() ReplicationCycleResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) ReplicationCycleResponse { return v.FinalSync }).(ReplicationCycleResponseOutput)
+}
+
+// Instantiating migrated VM step.
+func (o CutoverStepResponseOutput) InstantiatingMigratedVm() InstantiatingMigratedVMStepResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) InstantiatingMigratedVMStepResponse { return v.InstantiatingMigratedVm }).(InstantiatingMigratedVMStepResponseOutput)
+}
+
+// Preparing VM disks step.
+func (o CutoverStepResponseOutput) PreparingVmDisks() PreparingVMDisksStepResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) PreparingVMDisksStepResponse { return v.PreparingVmDisks }).(PreparingVMDisksStepResponseOutput)
+}
+
+// A replication cycle prior cutover step.
+func (o CutoverStepResponseOutput) PreviousReplicationCycle() ReplicationCycleResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) ReplicationCycleResponse { return v.PreviousReplicationCycle }).(ReplicationCycleResponseOutput)
+}
+
+// Shutting down VM step.
+func (o CutoverStepResponseOutput) ShuttingDownSourceVm() ShuttingDownSourceVMStepResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) ShuttingDownSourceVMStepResponse { return v.ShuttingDownSourceVm }).(ShuttingDownSourceVMStepResponseOutput)
+}
+
+// The time the step has started.
+func (o CutoverStepResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type CutoverStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CutoverStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CutoverStepResponse)(nil)).Elem()
+}
+
+func (o CutoverStepResponseArrayOutput) ToCutoverStepResponseArrayOutput() CutoverStepResponseArrayOutput {
+	return o
+}
+
+func (o CutoverStepResponseArrayOutput) ToCutoverStepResponseArrayOutputWithContext(ctx context.Context) CutoverStepResponseArrayOutput {
+	return o
+}
+
+func (o CutoverStepResponseArrayOutput) Index(i pulumi.IntInput) CutoverStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CutoverStepResponse {
+		return vs[0].([]CutoverStepResponse)[vs[1].(int)]
+	}).(CutoverStepResponseOutput)
 }
 
 // CycleStep holds information about a step progress.
@@ -1445,6 +1654,25 @@ func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStep
 }
 
 func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStepResponseOutputWithContext(ctx context.Context) InitializingReplicationStepResponseOutput {
+	return o
+}
+
+// InstantiatingMigratedVMStep contains specific step details.
+type InstantiatingMigratedVMStepResponse struct {
+}
+
+// InstantiatingMigratedVMStep contains specific step details.
+type InstantiatingMigratedVMStepResponseOutput struct{ *pulumi.OutputState }
+
+func (InstantiatingMigratedVMStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstantiatingMigratedVMStepResponse)(nil)).Elem()
+}
+
+func (o InstantiatingMigratedVMStepResponseOutput) ToInstantiatingMigratedVMStepResponseOutput() InstantiatingMigratedVMStepResponseOutput {
+	return o
+}
+
+func (o InstantiatingMigratedVMStepResponseOutput) ToInstantiatingMigratedVMStepResponseOutputWithContext(ctx context.Context) InstantiatingMigratedVMStepResponseOutput {
 	return o
 }
 
@@ -1661,6 +1889,25 @@ func (o PostProcessingStepResponseOutput) ToPostProcessingStepResponseOutputWith
 	return o
 }
 
+// PreparingVMDisksStep contains specific step details.
+type PreparingVMDisksStepResponse struct {
+}
+
+// PreparingVMDisksStep contains specific step details.
+type PreparingVMDisksStepResponseOutput struct{ *pulumi.OutputState }
+
+func (PreparingVMDisksStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreparingVMDisksStepResponse)(nil)).Elem()
+}
+
+func (o PreparingVMDisksStepResponseOutput) ToPreparingVMDisksStepResponseOutput() PreparingVMDisksStepResponseOutput {
+	return o
+}
+
+func (o PreparingVMDisksStepResponseOutput) ToPreparingVMDisksStepResponseOutputWithContext(ctx context.Context) PreparingVMDisksStepResponseOutput {
+	return o
+}
+
 // ReplicatingStep contains specific step details.
 type ReplicatingStepResponse struct {
 	// The source disks replication rate for the last 30 minutes in bytes per second.
@@ -1710,6 +1957,10 @@ func (o ReplicatingStepResponseOutput) TotalBytes() pulumi.StringOutput {
 
 // ReplicationCycle contains information about the current replication cycle status.
 type ReplicationCycleResponse struct {
+	// The time the replication cycle has ended.
+	EndTime string `pulumi:"endTime"`
+	// The identifier of the ReplicationCycle.
+	Name string `pulumi:"name"`
 	// The current progress in percentage of this cycle.
 	Progress int `pulumi:"progress"`
 	// The current progress in percentage of this cycle.
@@ -1735,6 +1986,16 @@ func (o ReplicationCycleResponseOutput) ToReplicationCycleResponseOutput() Repli
 
 func (o ReplicationCycleResponseOutput) ToReplicationCycleResponseOutputWithContext(ctx context.Context) ReplicationCycleResponseOutput {
 	return o
+}
+
+// The time the replication cycle has ended.
+func (o ReplicationCycleResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The identifier of the ReplicationCycle.
+func (o ReplicationCycleResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The current progress in percentage of this cycle.
@@ -2156,6 +2417,25 @@ func (o SchedulingNodeAffinityResponseArrayOutput) Index(i pulumi.IntInput) Sche
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchedulingNodeAffinityResponse {
 		return vs[0].([]SchedulingNodeAffinityResponse)[vs[1].(int)]
 	}).(SchedulingNodeAffinityResponseOutput)
+}
+
+// ShuttingDownSourceVMStep contains specific step details.
+type ShuttingDownSourceVMStepResponse struct {
+}
+
+// ShuttingDownSourceVMStep contains specific step details.
+type ShuttingDownSourceVMStepResponseOutput struct{ *pulumi.OutputState }
+
+func (ShuttingDownSourceVMStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShuttingDownSourceVMStepResponse)(nil)).Elem()
+}
+
+func (o ShuttingDownSourceVMStepResponseOutput) ToShuttingDownSourceVMStepResponseOutput() ShuttingDownSourceVMStepResponseOutput {
+	return o
+}
+
+func (o ShuttingDownSourceVMStepResponseOutput) ToShuttingDownSourceVMStepResponseOutputWithContext(ctx context.Context) ShuttingDownSourceVMStepResponseOutput {
+	return o
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -4339,12 +4619,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsPtrInput)(nil)).Elem(), VmwareSourceDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsInput)(nil)).Elem(), VmwareVmDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPtrInput)(nil)).Elem(), VmwareVmDetailsArgs{})
+	pulumi.RegisterOutputType(AdaptingOSStepResponseOutput{})
 	pulumi.RegisterOutputType(ApplianceVersionResponseOutput{})
 	pulumi.RegisterOutputType(AppliedLicenseResponseOutput{})
 	pulumi.RegisterOutputType(AvailableUpdatesResponseOutput{})
 	pulumi.RegisterOutputType(AwsSourceVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseArrayOutput{})
+	pulumi.RegisterOutputType(CloneStepResponseOutput{})
+	pulumi.RegisterOutputType(CloneStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsResponseOutput{})
@@ -4354,14 +4637,18 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
+	pulumi.RegisterOutputType(CutoverStepResponseOutput{})
+	pulumi.RegisterOutputType(CutoverStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(CycleStepResponseOutput{})
 	pulumi.RegisterOutputType(CycleStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(InitializingReplicationStepResponseOutput{})
+	pulumi.RegisterOutputType(InstantiatingMigratedVMStepResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(PostProcessingStepResponseOutput{})
+	pulumi.RegisterOutputType(PreparingVMDisksStepResponseOutput{})
 	pulumi.RegisterOutputType(ReplicatingStepResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationCycleResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationSyncResponseOutput{})
@@ -4372,6 +4659,7 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
+	pulumi.RegisterOutputType(ShuttingDownSourceVMStepResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(TargetVMDetailsOutput{})
 	pulumi.RegisterOutputType(TargetVMDetailsPtrOutput{})

@@ -1912,7 +1912,7 @@ func (o EgressPolicyResponseArrayOutput) Index(i pulumi.IntInput) EgressPolicyRe
 
 // Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressTo struct {
-	// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+	// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
 	ExternalResources []string `pulumi:"externalResources"`
 	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 	Operations []ApiOperation `pulumi:"operations"`
@@ -1933,7 +1933,7 @@ type EgressToInput interface {
 
 // Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToArgs struct {
-	// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+	// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
 	ExternalResources pulumi.StringArrayInput `pulumi:"externalResources"`
 	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 	Operations ApiOperationArrayInput `pulumi:"operations"`
@@ -2019,7 +2019,7 @@ func (o EgressToOutput) ToEgressToPtrOutputWithContext(ctx context.Context) Egre
 	}).(EgressToPtrOutput)
 }
 
-// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
 func (o EgressToOutput) ExternalResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EgressTo) []string { return v.ExternalResources }).(pulumi.StringArrayOutput)
 }
@@ -2058,7 +2058,7 @@ func (o EgressToPtrOutput) Elem() EgressToOutput {
 	}).(EgressToOutput)
 }
 
-// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
 func (o EgressToPtrOutput) ExternalResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EgressTo) []string {
 		if v == nil {
@@ -2090,7 +2090,7 @@ func (o EgressToPtrOutput) Resources() pulumi.StringArrayOutput {
 
 // Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToResponse struct {
-	// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+	// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
 	ExternalResources []string `pulumi:"externalResources"`
 	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 	Operations []ApiOperationResponse `pulumi:"operations"`
@@ -2113,7 +2113,7 @@ func (o EgressToResponseOutput) ToEgressToResponseOutputWithContext(ctx context.
 	return o
 }
 
-// A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
 func (o EgressToResponseOutput) ExternalResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EgressToResponse) []string { return v.ExternalResources }).(pulumi.StringArrayOutput)
 }

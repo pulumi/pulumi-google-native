@@ -21800,6 +21800,8 @@ type InstanceGroupManagerActionsSummaryResponse struct {
 	Abandoning int `pulumi:"abandoning"`
 	// The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
 	Creating int `pulumi:"creating"`
+	// The number of instances that the managed instance group will attempt to create atomically, in a batch mode. If the desired count of instances can not be created, entire batch will be deleted and the group will decrease its targetSize value accordingly.
+	CreatingAtomically int `pulumi:"creatingAtomically"`
 	// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
 	CreatingWithoutRetries int `pulumi:"creatingWithoutRetries"`
 	// The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
@@ -21846,6 +21848,11 @@ func (o InstanceGroupManagerActionsSummaryResponseOutput) Abandoning() pulumi.In
 // The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
 func (o InstanceGroupManagerActionsSummaryResponseOutput) Creating() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Creating }).(pulumi.IntOutput)
+}
+
+// The number of instances that the managed instance group will attempt to create atomically, in a batch mode. If the desired count of instances can not be created, entire batch will be deleted and the group will decrease its targetSize value accordingly.
+func (o InstanceGroupManagerActionsSummaryResponseOutput) CreatingAtomically() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.CreatingAtomically }).(pulumi.IntOutput)
 }
 
 // The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
@@ -22780,6 +22787,30 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyResponseOutput) MetadataBased
 	return o.ApplyT(func(v InstanceGroupManagerInstanceLifecyclePolicyResponse) InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse {
 		return v.MetadataBasedReadinessSignal
 	}).(InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponseOutput)
+}
+
+type InstanceGroupManagerResizeRequestStatusResponse struct {
+	// Constraints for the time when the instances start provisioning. Always exposed as absolute time.
+	QueuingPolicy QueuingPolicyResponse `pulumi:"queuingPolicy"`
+}
+
+type InstanceGroupManagerResizeRequestStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerResizeRequestStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerResizeRequestStatusResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerResizeRequestStatusResponseOutput) ToInstanceGroupManagerResizeRequestStatusResponseOutput() InstanceGroupManagerResizeRequestStatusResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusResponseOutput) ToInstanceGroupManagerResizeRequestStatusResponseOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestStatusResponseOutput {
+	return o
+}
+
+// Constraints for the time when the instances start provisioning. Always exposed as absolute time.
+func (o InstanceGroupManagerResizeRequestStatusResponseOutput) QueuingPolicy() QueuingPolicyResponseOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusResponse) QueuingPolicyResponse { return v.QueuingPolicy }).(QueuingPolicyResponseOutput)
 }
 
 type InstanceGroupManagerStandbyPolicy struct {
@@ -35163,6 +35194,198 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicDelegatedPrefixPublicDelegatedSubPrefixResponse {
 		return vs[0].([]PublicDelegatedPrefixPublicDelegatedSubPrefixResponse)[vs[1].(int)]
 	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput)
+}
+
+// Queuing parameters for the requested deferred capacity.
+type QueuingPolicy struct {
+	// Relative deadline for waiting for capacity.
+	ValidUntilDuration *Duration `pulumi:"validUntilDuration"`
+	// Absolute deadline for waiting for capacity in RFC3339 text format.
+	ValidUntilTime *string `pulumi:"validUntilTime"`
+}
+
+// QueuingPolicyInput is an input type that accepts QueuingPolicyArgs and QueuingPolicyOutput values.
+// You can construct a concrete instance of `QueuingPolicyInput` via:
+//
+//          QueuingPolicyArgs{...}
+type QueuingPolicyInput interface {
+	pulumi.Input
+
+	ToQueuingPolicyOutput() QueuingPolicyOutput
+	ToQueuingPolicyOutputWithContext(context.Context) QueuingPolicyOutput
+}
+
+// Queuing parameters for the requested deferred capacity.
+type QueuingPolicyArgs struct {
+	// Relative deadline for waiting for capacity.
+	ValidUntilDuration DurationPtrInput `pulumi:"validUntilDuration"`
+	// Absolute deadline for waiting for capacity in RFC3339 text format.
+	ValidUntilTime pulumi.StringPtrInput `pulumi:"validUntilTime"`
+}
+
+func (QueuingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuingPolicy)(nil)).Elem()
+}
+
+func (i QueuingPolicyArgs) ToQueuingPolicyOutput() QueuingPolicyOutput {
+	return i.ToQueuingPolicyOutputWithContext(context.Background())
+}
+
+func (i QueuingPolicyArgs) ToQueuingPolicyOutputWithContext(ctx context.Context) QueuingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuingPolicyOutput)
+}
+
+func (i QueuingPolicyArgs) ToQueuingPolicyPtrOutput() QueuingPolicyPtrOutput {
+	return i.ToQueuingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i QueuingPolicyArgs) ToQueuingPolicyPtrOutputWithContext(ctx context.Context) QueuingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuingPolicyOutput).ToQueuingPolicyPtrOutputWithContext(ctx)
+}
+
+// QueuingPolicyPtrInput is an input type that accepts QueuingPolicyArgs, QueuingPolicyPtr and QueuingPolicyPtrOutput values.
+// You can construct a concrete instance of `QueuingPolicyPtrInput` via:
+//
+//          QueuingPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type QueuingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToQueuingPolicyPtrOutput() QueuingPolicyPtrOutput
+	ToQueuingPolicyPtrOutputWithContext(context.Context) QueuingPolicyPtrOutput
+}
+
+type queuingPolicyPtrType QueuingPolicyArgs
+
+func QueuingPolicyPtr(v *QueuingPolicyArgs) QueuingPolicyPtrInput {
+	return (*queuingPolicyPtrType)(v)
+}
+
+func (*queuingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueuingPolicy)(nil)).Elem()
+}
+
+func (i *queuingPolicyPtrType) ToQueuingPolicyPtrOutput() QueuingPolicyPtrOutput {
+	return i.ToQueuingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *queuingPolicyPtrType) ToQueuingPolicyPtrOutputWithContext(ctx context.Context) QueuingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuingPolicyPtrOutput)
+}
+
+// Queuing parameters for the requested deferred capacity.
+type QueuingPolicyOutput struct{ *pulumi.OutputState }
+
+func (QueuingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuingPolicy)(nil)).Elem()
+}
+
+func (o QueuingPolicyOutput) ToQueuingPolicyOutput() QueuingPolicyOutput {
+	return o
+}
+
+func (o QueuingPolicyOutput) ToQueuingPolicyOutputWithContext(ctx context.Context) QueuingPolicyOutput {
+	return o
+}
+
+func (o QueuingPolicyOutput) ToQueuingPolicyPtrOutput() QueuingPolicyPtrOutput {
+	return o.ToQueuingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o QueuingPolicyOutput) ToQueuingPolicyPtrOutputWithContext(ctx context.Context) QueuingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueuingPolicy) *QueuingPolicy {
+		return &v
+	}).(QueuingPolicyPtrOutput)
+}
+
+// Relative deadline for waiting for capacity.
+func (o QueuingPolicyOutput) ValidUntilDuration() DurationPtrOutput {
+	return o.ApplyT(func(v QueuingPolicy) *Duration { return v.ValidUntilDuration }).(DurationPtrOutput)
+}
+
+// Absolute deadline for waiting for capacity in RFC3339 text format.
+func (o QueuingPolicyOutput) ValidUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueuingPolicy) *string { return v.ValidUntilTime }).(pulumi.StringPtrOutput)
+}
+
+type QueuingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (QueuingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueuingPolicy)(nil)).Elem()
+}
+
+func (o QueuingPolicyPtrOutput) ToQueuingPolicyPtrOutput() QueuingPolicyPtrOutput {
+	return o
+}
+
+func (o QueuingPolicyPtrOutput) ToQueuingPolicyPtrOutputWithContext(ctx context.Context) QueuingPolicyPtrOutput {
+	return o
+}
+
+func (o QueuingPolicyPtrOutput) Elem() QueuingPolicyOutput {
+	return o.ApplyT(func(v *QueuingPolicy) QueuingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret QueuingPolicy
+		return ret
+	}).(QueuingPolicyOutput)
+}
+
+// Relative deadline for waiting for capacity.
+func (o QueuingPolicyPtrOutput) ValidUntilDuration() DurationPtrOutput {
+	return o.ApplyT(func(v *QueuingPolicy) *Duration {
+		if v == nil {
+			return nil
+		}
+		return v.ValidUntilDuration
+	}).(DurationPtrOutput)
+}
+
+// Absolute deadline for waiting for capacity in RFC3339 text format.
+func (o QueuingPolicyPtrOutput) ValidUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueuingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidUntilTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Queuing parameters for the requested deferred capacity.
+type QueuingPolicyResponse struct {
+	// Relative deadline for waiting for capacity.
+	ValidUntilDuration DurationResponse `pulumi:"validUntilDuration"`
+	// Absolute deadline for waiting for capacity in RFC3339 text format.
+	ValidUntilTime string `pulumi:"validUntilTime"`
+}
+
+// Queuing parameters for the requested deferred capacity.
+type QueuingPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuingPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuingPolicyResponse)(nil)).Elem()
+}
+
+func (o QueuingPolicyResponseOutput) ToQueuingPolicyResponseOutput() QueuingPolicyResponseOutput {
+	return o
+}
+
+func (o QueuingPolicyResponseOutput) ToQueuingPolicyResponseOutputWithContext(ctx context.Context) QueuingPolicyResponseOutput {
+	return o
+}
+
+// Relative deadline for waiting for capacity.
+func (o QueuingPolicyResponseOutput) ValidUntilDuration() DurationResponseOutput {
+	return o.ApplyT(func(v QueuingPolicyResponse) DurationResponse { return v.ValidUntilDuration }).(DurationResponseOutput)
+}
+
+// Absolute deadline for waiting for capacity in RFC3339 text format.
+func (o QueuingPolicyResponseOutput) ValidUntilTime() pulumi.StringOutput {
+	return o.ApplyT(func(v QueuingPolicyResponse) string { return v.ValidUntilTime }).(pulumi.StringOutput)
 }
 
 type RbacPolicy struct {
@@ -55025,6 +55248,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalArrayInput)(nil)).Elem(), PrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueuingPolicyInput)(nil)).Elem(), QueuingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueuingPolicyPtrInput)(nil)).Elem(), QueuingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RbacPolicyInput)(nil)).Elem(), RbacPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RbacPolicyArrayInput)(nil)).Elem(), RbacPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestMirrorPolicyInput)(nil)).Elem(), RequestMirrorPolicyArgs{})
@@ -55539,6 +55764,7 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStandbyPolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStandbyPolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStandbyPolicyResponseOutput{})
@@ -55741,6 +55967,9 @@ func init() {
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput{})
+	pulumi.RegisterOutputType(QueuingPolicyOutput{})
+	pulumi.RegisterOutputType(QueuingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(QueuingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RbacPolicyOutput{})
 	pulumi.RegisterOutputType(RbacPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RbacPolicyResponseOutput{})

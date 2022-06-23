@@ -79,6 +79,10 @@ export class Registration extends pulumi.CustomResource {
     public /*out*/ readonly pendingContactSettings!: pulumi.Output<outputs.domains.v1.ContactSettingsResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
+     */
+    public /*out*/ readonly registerFailureReason!: pulumi.Output<string>;
+    /**
      * The state of the `Registration`
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -86,6 +90,10 @@ export class Registration extends pulumi.CustomResource {
      * Set of options for the `contact_settings.privacy` field that this `Registration` supports.
      */
     public /*out*/ readonly supportedPrivacy!: pulumi.Output<string[]>;
+    /**
+     * The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+     */
+    public /*out*/ readonly transferFailureReason!: pulumi.Output<string>;
 
     /**
      * Create a Registration resource with the given unique name, arguments, and options.
@@ -123,8 +131,10 @@ export class Registration extends pulumi.CustomResource {
             resourceInputs["issues"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingContactSettings"] = undefined /*out*/;
+            resourceInputs["registerFailureReason"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["supportedPrivacy"] = undefined /*out*/;
+            resourceInputs["transferFailureReason"] = undefined /*out*/;
         } else {
             resourceInputs["contactSettings"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -138,8 +148,10 @@ export class Registration extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingContactSettings"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["registerFailureReason"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["supportedPrivacy"] = undefined /*out*/;
+            resourceInputs["transferFailureReason"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Registration.__pulumiType, name, resourceInputs, opts);

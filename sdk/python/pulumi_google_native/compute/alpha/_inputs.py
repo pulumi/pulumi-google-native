@@ -165,6 +165,7 @@ __all__ = [
     'PermissionArgs',
     'PrincipalArgs',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixArgs',
+    'QueuingPolicyArgs',
     'RbacPolicyArgs',
     'RequestMirrorPolicyArgs',
     'ReservationAffinityArgs',
@@ -10790,6 +10791,46 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class QueuingPolicyArgs:
+    def __init__(__self__, *,
+                 valid_until_duration: Optional[pulumi.Input['DurationArgs']] = None,
+                 valid_until_time: Optional[pulumi.Input[str]] = None):
+        """
+        Queuing parameters for the requested deferred capacity.
+        :param pulumi.Input['DurationArgs'] valid_until_duration: Relative deadline for waiting for capacity.
+        :param pulumi.Input[str] valid_until_time: Absolute deadline for waiting for capacity in RFC3339 text format.
+        """
+        if valid_until_duration is not None:
+            pulumi.set(__self__, "valid_until_duration", valid_until_duration)
+        if valid_until_time is not None:
+            pulumi.set(__self__, "valid_until_time", valid_until_time)
+
+    @property
+    @pulumi.getter(name="validUntilDuration")
+    def valid_until_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
+        """
+        Relative deadline for waiting for capacity.
+        """
+        return pulumi.get(self, "valid_until_duration")
+
+    @valid_until_duration.setter
+    def valid_until_duration(self, value: Optional[pulumi.Input['DurationArgs']]):
+        pulumi.set(self, "valid_until_duration", value)
+
+    @property
+    @pulumi.getter(name="validUntilTime")
+    def valid_until_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Absolute deadline for waiting for capacity in RFC3339 text format.
+        """
+        return pulumi.get(self, "valid_until_time")
+
+    @valid_until_time.setter
+    def valid_until_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valid_until_time", value)
 
 
 @pulumi.input_type

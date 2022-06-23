@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         private InputList<Inputs.SpriteSheetArgs>? _spriteSheets;
 
         /// <summary>
-        /// List of output sprite sheets.
+        /// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
         /// </summary>
         public InputList<Inputs.SpriteSheetArgs> SpriteSheets
         {

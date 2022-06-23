@@ -30,10 +30,13 @@ class GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
-        :param pulumi.Input[int] interface_index: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        :param pulumi.Input[int] interface_index: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
         :param pulumi.Input[Sequence[pulumi.Input['LogicalNetworkInterfaceArgs']]] logical_network_interfaces: List of logical network interfaces within a logical interface.
         :param pulumi.Input[str] name: Interface name. This is of syntax or and forms part of the network template name.
         """
+        if interface_index is not None:
+            warnings.warn("""The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""interface_index is deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.""")
         if interface_index is not None:
             pulumi.set(__self__, "interface_index", interface_index)
         if logical_network_interfaces is not None:
@@ -45,7 +48,7 @@ class GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs:
     @pulumi.getter(name="interfaceIndex")
     def interface_index(self) -> Optional[pulumi.Input[int]]:
         """
-        The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
         """
         return pulumi.get(self, "interface_index")
 
@@ -493,6 +496,7 @@ class NetworkConfigArgs:
                  cidr: Optional[pulumi.Input[str]] = None,
                  gcp_service: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 jumbo_frames_enabled: Optional[pulumi.Input[bool]] = None,
                  service_cidr: Optional[pulumi.Input['NetworkConfigServiceCidr']] = None,
                  type: Optional[pulumi.Input['NetworkConfigType']] = None,
                  user_note: Optional[pulumi.Input[str]] = None,
@@ -504,6 +508,7 @@ class NetworkConfigArgs:
         :param pulumi.Input[str] cidr: CIDR range of the network.
         :param pulumi.Input[str] gcp_service: The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
         :param pulumi.Input[str] id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        :param pulumi.Input[bool] jumbo_frames_enabled: The JumboFramesEnabled option for customer to set.
         :param pulumi.Input['NetworkConfigServiceCidr'] service_cidr: Service CIDR, if any.
         :param pulumi.Input['NetworkConfigType'] type: The type of this network, either Client or Private.
         :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -518,6 +523,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "gcp_service", gcp_service)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if jumbo_frames_enabled is not None:
+            pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
         if service_cidr is not None:
             pulumi.set(__self__, "service_cidr", service_cidr)
         if type is not None:
@@ -576,6 +583,18 @@ class NetworkConfigArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="jumboFramesEnabled")
+    def jumbo_frames_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The JumboFramesEnabled option for customer to set.
+        """
+        return pulumi.get(self, "jumbo_frames_enabled")
+
+    @jumbo_frames_enabled.setter
+    def jumbo_frames_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "jumbo_frames_enabled", value)
 
     @property
     @pulumi.getter(name="serviceCidr")

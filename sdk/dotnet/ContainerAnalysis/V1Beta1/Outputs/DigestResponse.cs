@@ -21,18 +21,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly string Algo;
         /// <summary>
-        /// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        /// Value of the digest.
         /// </summary>
-        public readonly string DigestValue;
+        public readonly string DigestBytes;
 
         [OutputConstructor]
         private DigestResponse(
             string algo,
 
-            string digestValue)
+            string digestBytes)
         {
             Algo = algo;
-            DigestValue = digestValue;
+            DigestBytes = digestBytes;
         }
     }
 }

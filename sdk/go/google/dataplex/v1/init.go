@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:dataplex/v1:Asset":
 		r = &Asset{}
+	case "google-native:dataplex/v1:Content":
+		r = &Content{}
 	case "google-native:dataplex/v1:Contentitem":
 		r = &Contentitem{}
 	case "google-native:dataplex/v1:Entity":
@@ -35,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LakeAssetIamPolicy{}
 	case "google-native:dataplex/v1:LakeContentIamPolicy":
 		r = &LakeContentIamPolicy{}
+	case "google-native:dataplex/v1:LakeContentitemIamPolicy":
+		r = &LakeContentitemIamPolicy{}
 	case "google-native:dataplex/v1:LakeEnvironmentIamPolicy":
 		r = &LakeEnvironmentIamPolicy{}
 	case "google-native:dataplex/v1:LakeIamPolicy":

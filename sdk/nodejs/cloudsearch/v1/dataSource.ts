@@ -56,7 +56,7 @@ export class DataSource extends pulumi.CustomResource {
      */
     public readonly itemsVisibility!: pulumi.Output<outputs.cloudsearch.v1.GSuitePrincipalResponse[]>;
     /**
-     * Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+     * The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface DataSourceArgs {
      */
     itemsVisibility?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.GSuitePrincipalArgs>[]>;
     /**
-     * Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+     * The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
      */
     name?: pulumi.Input<string>;
     /**

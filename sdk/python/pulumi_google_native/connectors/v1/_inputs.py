@@ -22,6 +22,7 @@ __all__ = [
     'Oauth2ClientCredentialsArgs',
     'Oauth2JwtBearerArgs',
     'SecretArgs',
+    'SshPublicKeyArgs',
     'UserPasswordArgs',
 ]
 
@@ -112,6 +113,7 @@ class AuthConfigArgs:
                  auth_type: Optional[pulumi.Input['AuthConfigAuthType']] = None,
                  oauth2_client_credentials: Optional[pulumi.Input['Oauth2ClientCredentialsArgs']] = None,
                  oauth2_jwt_bearer: Optional[pulumi.Input['Oauth2JwtBearerArgs']] = None,
+                 ssh_public_key: Optional[pulumi.Input['SshPublicKeyArgs']] = None,
                  user_password: Optional[pulumi.Input['UserPasswordArgs']] = None):
         """
         AuthConfig defines details of a authentication type.
@@ -119,6 +121,7 @@ class AuthConfigArgs:
         :param pulumi.Input['AuthConfigAuthType'] auth_type: The type of authentication configured.
         :param pulumi.Input['Oauth2ClientCredentialsArgs'] oauth2_client_credentials: Oauth2ClientCredentials.
         :param pulumi.Input['Oauth2JwtBearerArgs'] oauth2_jwt_bearer: Oauth2JwtBearer.
+        :param pulumi.Input['SshPublicKeyArgs'] ssh_public_key: SSH Public Key.
         :param pulumi.Input['UserPasswordArgs'] user_password: UserPassword.
         """
         if additional_variables is not None:
@@ -129,6 +132,8 @@ class AuthConfigArgs:
             pulumi.set(__self__, "oauth2_client_credentials", oauth2_client_credentials)
         if oauth2_jwt_bearer is not None:
             pulumi.set(__self__, "oauth2_jwt_bearer", oauth2_jwt_bearer)
+        if ssh_public_key is not None:
+            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
         if user_password is not None:
             pulumi.set(__self__, "user_password", user_password)
 
@@ -179,6 +184,18 @@ class AuthConfigArgs:
     @oauth2_jwt_bearer.setter
     def oauth2_jwt_bearer(self, value: Optional[pulumi.Input['Oauth2JwtBearerArgs']]):
         pulumi.set(self, "oauth2_jwt_bearer", value)
+
+    @property
+    @pulumi.getter(name="sshPublicKey")
+    def ssh_public_key(self) -> Optional[pulumi.Input['SshPublicKeyArgs']]:
+        """
+        SSH Public Key.
+        """
+        return pulumi.get(self, "ssh_public_key")
+
+    @ssh_public_key.setter
+    def ssh_public_key(self, value: Optional[pulumi.Input['SshPublicKeyArgs']]):
+        pulumi.set(self, "ssh_public_key", value)
 
     @property
     @pulumi.getter(name="userPassword")
@@ -607,6 +624,77 @@ class SecretArgs:
     @secret_version.setter
     def secret_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_version", value)
+
+
+@pulumi.input_type
+class SshPublicKeyArgs:
+    def __init__(__self__, *,
+                 cert_type: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input['SecretArgs']] = None,
+                 ssh_client_cert: Optional[pulumi.Input['SecretArgs']] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cert_type: Format of SSH Client cert.
+        :param pulumi.Input['SecretArgs'] password: This is an optional field used in case client has enabled multi-factor authentication
+        :param pulumi.Input['SecretArgs'] ssh_client_cert: SSH Client Cert. It should contain both public and private key.
+        :param pulumi.Input[str] username: The user account used to authenticate.
+        """
+        if cert_type is not None:
+            pulumi.set(__self__, "cert_type", cert_type)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssh_client_cert is not None:
+            pulumi.set(__self__, "ssh_client_cert", ssh_client_cert)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="certType")
+    def cert_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Format of SSH Client cert.
+        """
+        return pulumi.get(self, "cert_type")
+
+    @cert_type.setter
+    def cert_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_type", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        This is an optional field used in case client has enabled multi-factor authentication
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="sshClientCert")
+    def ssh_client_cert(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        SSH Client Cert. It should contain both public and private key.
+        """
+        return pulumi.get(self, "ssh_client_cert")
+
+    @ssh_client_cert.setter
+    def ssh_client_cert(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "ssh_client_cert", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user account used to authenticate.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type

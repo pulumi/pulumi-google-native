@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     public sealed class GetFhirStoreResult
     {
         /// <summary>
+        /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        /// </summary>
+        public readonly string ComplexDataTypeReferenceParsing;
+        /// <summary>
         /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         /// </summary>
         public readonly bool DefaultSearchHandlingStrict;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
         [OutputConstructor]
         private GetFhirStoreResult(
+            string complexDataTypeReferenceParsing,
+
             bool defaultSearchHandlingStrict,
 
             bool disableReferentialIntegrity,
@@ -142,6 +148,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
             string version)
         {
+            ComplexDataTypeReferenceParsing = complexDataTypeReferenceParsing;
             DefaultSearchHandlingStrict = defaultSearchHandlingStrict;
             DisableReferentialIntegrity = disableReferentialIntegrity;
             DisableResourceVersioning = disableResourceVersioning;

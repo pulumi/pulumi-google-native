@@ -1751,17 +1751,17 @@ export type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = (ty
 
 export const InstanceGroupManagerListManagedInstancesResults = {
     /**
-     * (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+     * (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
      */
     Pageless: "PAGELESS",
     /**
-     * Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+     * Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
      */
     Paginated: "PAGINATED",
 } as const;
 
 /**
- * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+ * Pagination behavior of the listManagedInstances API method for this managed instance group.
  */
 export type InstanceGroupManagerListManagedInstancesResults = (typeof InstanceGroupManagerListManagedInstancesResults)[keyof typeof InstanceGroupManagerListManagedInstancesResults];
 
@@ -2848,17 +2848,17 @@ export type RegionInstanceGroupManagerFailoverAction = (typeof RegionInstanceGro
 
 export const RegionInstanceGroupManagerListManagedInstancesResults = {
     /**
-     * (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+     * (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
      */
     Pageless: "PAGELESS",
     /**
-     * Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+     * Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
      */
     Paginated: "PAGINATED",
 } as const;
 
 /**
- * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+ * Pagination behavior of the listManagedInstances API method for this managed instance group.
  */
 export type RegionInstanceGroupManagerListManagedInstancesResults = (typeof RegionInstanceGroupManagerListManagedInstancesResults)[keyof typeof RegionInstanceGroupManagerListManagedInstancesResults];
 
@@ -3842,10 +3842,6 @@ export const SubnetworkPrivateIpv6GoogleAccess = {
      * Outbound private IPv6 access from VMs in this subnet to Google services.
      */
     EnableOutboundVmAccessToGoogle: "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE",
-    /**
-     * Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. Outbound private IPv6 access is enabled per VM based on Service Accounts. This applies only to VMs with primary service accounts as listed in private_ipv6_google_access_service_account.
-     */
-    EnableOutboundVmAccessToGoogleForServiceAccounts: "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS",
 } as const;
 
 /**

@@ -7252,8 +7252,6 @@ func (o MetricDescriptorResponseArrayOutput) Index(i pulumi.IntInput) MetricDesc
 
 // Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
 type MetricRule struct {
-	// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
-	DynamicMetricCosts map[string]string `pulumi:"dynamicMetricCosts"`
 	// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
 	MetricCosts map[string]string `pulumi:"metricCosts"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -7273,8 +7271,6 @@ type MetricRuleInput interface {
 
 // Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
 type MetricRuleArgs struct {
-	// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
-	DynamicMetricCosts pulumi.StringMapInput `pulumi:"dynamicMetricCosts"`
 	// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
 	MetricCosts pulumi.StringMapInput `pulumi:"metricCosts"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -7333,11 +7329,6 @@ func (o MetricRuleOutput) ToMetricRuleOutputWithContext(ctx context.Context) Met
 	return o
 }
 
-// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
-func (o MetricRuleOutput) DynamicMetricCosts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MetricRule) map[string]string { return v.DynamicMetricCosts }).(pulumi.StringMapOutput)
-}
-
 // Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
 func (o MetricRuleOutput) MetricCosts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MetricRule) map[string]string { return v.MetricCosts }).(pulumi.StringMapOutput)
@@ -7370,8 +7361,6 @@ func (o MetricRuleArrayOutput) Index(i pulumi.IntInput) MetricRuleOutput {
 
 // Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
 type MetricRuleResponse struct {
-	// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
-	DynamicMetricCosts map[string]string `pulumi:"dynamicMetricCosts"`
 	// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
 	MetricCosts map[string]string `pulumi:"metricCosts"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -7391,11 +7380,6 @@ func (o MetricRuleResponseOutput) ToMetricRuleResponseOutput() MetricRuleRespons
 
 func (o MetricRuleResponseOutput) ToMetricRuleResponseOutputWithContext(ctx context.Context) MetricRuleResponseOutput {
 	return o
-}
-
-// Metrics to update when the selected methods are called. The key of the map is the metric name, the value is the DynamicCostType to specify how to calculate the cost from the request. The cost amount will be increased for the metric against which the quota limits are defined. It is only implemented in CloudESF(go/cloudesf)
-func (o MetricRuleResponseOutput) DynamicMetricCosts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MetricRuleResponse) map[string]string { return v.DynamicMetricCosts }).(pulumi.StringMapOutput)
 }
 
 // Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.

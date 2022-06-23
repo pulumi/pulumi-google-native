@@ -11875,6 +11875,173 @@ func (in *instanceGroupManagerFailoverActionPtr) ToInstanceGroupManagerFailoverA
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerFailoverActionPtrOutput)
 }
 
+// Pagination behavior of the listManagedInstances API method for this managed instance group.
+type InstanceGroupManagerListManagedInstancesResults string
+
+const (
+	// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+	InstanceGroupManagerListManagedInstancesResultsPageless = InstanceGroupManagerListManagedInstancesResults("PAGELESS")
+	// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+	InstanceGroupManagerListManagedInstancesResultsPaginated = InstanceGroupManagerListManagedInstancesResults("PAGINATED")
+)
+
+func (InstanceGroupManagerListManagedInstancesResults) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToInstanceGroupManagerListManagedInstancesResultsOutput() InstanceGroupManagerListManagedInstancesResultsOutput {
+	return pulumi.ToOutput(e).(InstanceGroupManagerListManagedInstancesResultsOutput)
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToInstanceGroupManagerListManagedInstancesResultsOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceGroupManagerListManagedInstancesResultsOutput)
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToInstanceGroupManagerListManagedInstancesResultsPtrOutput() InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return e.ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return InstanceGroupManagerListManagedInstancesResults(e).ToInstanceGroupManagerListManagedInstancesResultsOutputWithContext(ctx).ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx)
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerListManagedInstancesResults) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceGroupManagerListManagedInstancesResultsOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerListManagedInstancesResultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToInstanceGroupManagerListManagedInstancesResultsOutput() InstanceGroupManagerListManagedInstancesResultsOutput {
+	return o
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToInstanceGroupManagerListManagedInstancesResultsOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsOutput {
+	return o
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToInstanceGroupManagerListManagedInstancesResultsPtrOutput() InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o.ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerListManagedInstancesResults) *InstanceGroupManagerListManagedInstancesResults {
+		return &v
+	}).(InstanceGroupManagerListManagedInstancesResultsPtrOutput)
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerListManagedInstancesResults) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerListManagedInstancesResults) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroupManagerListManagedInstancesResultsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerListManagedInstancesResultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToInstanceGroupManagerListManagedInstancesResultsPtrOutput() InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) Elem() InstanceGroupManagerListManagedInstancesResultsOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerListManagedInstancesResults) InstanceGroupManagerListManagedInstancesResults {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerListManagedInstancesResults
+		return ret
+	}).(InstanceGroupManagerListManagedInstancesResultsOutput)
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceGroupManagerListManagedInstancesResults) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceGroupManagerListManagedInstancesResultsInput is an input type that accepts InstanceGroupManagerListManagedInstancesResultsArgs and InstanceGroupManagerListManagedInstancesResultsOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerListManagedInstancesResultsInput` via:
+//
+//          InstanceGroupManagerListManagedInstancesResultsArgs{...}
+type InstanceGroupManagerListManagedInstancesResultsInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerListManagedInstancesResultsOutput() InstanceGroupManagerListManagedInstancesResultsOutput
+	ToInstanceGroupManagerListManagedInstancesResultsOutputWithContext(context.Context) InstanceGroupManagerListManagedInstancesResultsOutput
+}
+
+var instanceGroupManagerListManagedInstancesResultsPtrType = reflect.TypeOf((**InstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+
+type InstanceGroupManagerListManagedInstancesResultsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerListManagedInstancesResultsPtrOutput() InstanceGroupManagerListManagedInstancesResultsPtrOutput
+	ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(context.Context) InstanceGroupManagerListManagedInstancesResultsPtrOutput
+}
+
+type instanceGroupManagerListManagedInstancesResultsPtr string
+
+func InstanceGroupManagerListManagedInstancesResultsPtr(v string) InstanceGroupManagerListManagedInstancesResultsPtrInput {
+	return (*instanceGroupManagerListManagedInstancesResultsPtr)(&v)
+}
+
+func (*instanceGroupManagerListManagedInstancesResultsPtr) ElementType() reflect.Type {
+	return instanceGroupManagerListManagedInstancesResultsPtrType
+}
+
+func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToInstanceGroupManagerListManagedInstancesResultsPtrOutput() InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return pulumi.ToOutput(in).(InstanceGroupManagerListManagedInstancesResultsPtrOutput)
+}
+
+func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerListManagedInstancesResultsPtrOutput)
+}
+
 // The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled.
 type InstanceGroupManagerUpdatePolicyInstanceRedistributionType string
 
@@ -20008,6 +20175,173 @@ func (in *regionInstanceGroupManagerFailoverActionPtr) ToRegionInstanceGroupMana
 
 func (in *regionInstanceGroupManagerFailoverActionPtr) ToRegionInstanceGroupManagerFailoverActionPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerFailoverActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerFailoverActionPtrOutput)
+}
+
+// Pagination behavior of the listManagedInstances API method for this managed instance group.
+type RegionInstanceGroupManagerListManagedInstancesResults string
+
+const (
+	// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+	RegionInstanceGroupManagerListManagedInstancesResultsPageless = RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS")
+	// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+	RegionInstanceGroupManagerListManagedInstancesResultsPaginated = RegionInstanceGroupManagerListManagedInstancesResults("PAGINATED")
+)
+
+func (RegionInstanceGroupManagerListManagedInstancesResults) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToRegionInstanceGroupManagerListManagedInstancesResultsOutput() RegionInstanceGroupManagerListManagedInstancesResultsOutput {
+	return pulumi.ToOutput(e).(RegionInstanceGroupManagerListManagedInstancesResultsOutput)
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToRegionInstanceGroupManagerListManagedInstancesResultsOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionInstanceGroupManagerListManagedInstancesResultsOutput)
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutput() RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return e.ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(context.Background())
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return RegionInstanceGroupManagerListManagedInstancesResults(e).ToRegionInstanceGroupManagerListManagedInstancesResultsOutputWithContext(ctx).ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx)
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionInstanceGroupManagerListManagedInstancesResults) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionInstanceGroupManagerListManagedInstancesResultsOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerListManagedInstancesResultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToRegionInstanceGroupManagerListManagedInstancesResultsOutput() RegionInstanceGroupManagerListManagedInstancesResultsOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToRegionInstanceGroupManagerListManagedInstancesResultsOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutput() RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o.ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceGroupManagerListManagedInstancesResults) *RegionInstanceGroupManagerListManagedInstancesResults {
+		return &v
+	}).(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput)
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionInstanceGroupManagerListManagedInstancesResults) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionInstanceGroupManagerListManagedInstancesResults) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutput() RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) Elem() RegionInstanceGroupManagerListManagedInstancesResultsOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManagerListManagedInstancesResults) RegionInstanceGroupManagerListManagedInstancesResults {
+		if v != nil {
+			return *v
+		}
+		var ret RegionInstanceGroupManagerListManagedInstancesResults
+		return ret
+	}).(RegionInstanceGroupManagerListManagedInstancesResultsOutput)
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionInstanceGroupManagerListManagedInstancesResults) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionInstanceGroupManagerListManagedInstancesResultsInput is an input type that accepts RegionInstanceGroupManagerListManagedInstancesResultsArgs and RegionInstanceGroupManagerListManagedInstancesResultsOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerListManagedInstancesResultsInput` via:
+//
+//          RegionInstanceGroupManagerListManagedInstancesResultsArgs{...}
+type RegionInstanceGroupManagerListManagedInstancesResultsInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerListManagedInstancesResultsOutput() RegionInstanceGroupManagerListManagedInstancesResultsOutput
+	ToRegionInstanceGroupManagerListManagedInstancesResultsOutputWithContext(context.Context) RegionInstanceGroupManagerListManagedInstancesResultsOutput
+}
+
+var regionInstanceGroupManagerListManagedInstancesResultsPtrType = reflect.TypeOf((**RegionInstanceGroupManagerListManagedInstancesResults)(nil)).Elem()
+
+type RegionInstanceGroupManagerListManagedInstancesResultsPtrInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutput() RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput
+	ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput
+}
+
+type regionInstanceGroupManagerListManagedInstancesResultsPtr string
+
+func RegionInstanceGroupManagerListManagedInstancesResultsPtr(v string) RegionInstanceGroupManagerListManagedInstancesResultsPtrInput {
+	return (*regionInstanceGroupManagerListManagedInstancesResultsPtr)(&v)
+}
+
+func (*regionInstanceGroupManagerListManagedInstancesResultsPtr) ElementType() reflect.Type {
+	return regionInstanceGroupManagerListManagedInstancesResultsPtrType
+}
+
+func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutput() RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return pulumi.ToOutput(in).(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput)
+}
+
+func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToRegionInstanceGroupManagerListManagedInstancesResultsPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput)
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -30721,6 +31055,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageSourceTypePtrInput)(nil)).Elem(), ImageSourceType("RAW"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerFailoverActionInput)(nil)).Elem(), InstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), InstanceGroupManagerFailoverAction("NO_FAILOVER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyMinimalActionInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyMinimalAction("NONE"))
@@ -30817,6 +31153,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckTypePtrInput)(nil)).Elem(), RegionHealthCheckType("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerFailoverActionInput)(nil)).Elem(), RegionInstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), RegionInstanceGroupManagerFailoverAction("NO_FAILOVER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypeInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
@@ -31085,6 +31423,8 @@ func init() {
 	pulumi.RegisterOutputType(ImageSourceTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerFailoverActionOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerFailoverActionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyMinimalActionOutput{})
@@ -31181,6 +31521,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionHealthCheckTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerFailoverActionOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerFailoverActionPtrOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerListManagedInstancesResultsOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypeOutput{})

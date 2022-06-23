@@ -43,6 +43,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<string> CutoverJobId { get; private set; } = null!;
 
         /// <summary>
+        /// The time the cutover job had finished.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
         /// Provides details for the errors that led to the Cutover Job's state.
         /// </summary>
         [Output("error")]
@@ -101,6 +107,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         [Output("stateTime")]
         public Output<string> StateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The cutover steps list representing its progress.
+        /// </summary>
+        [Output("steps")]
+        public Output<ImmutableArray<Outputs.CutoverStepResponse>> Steps { get; private set; } = null!;
 
         /// <summary>
         /// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.

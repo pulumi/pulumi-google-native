@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string GcpService;
         /// <summary>
+        /// The JumboFramesEnabled option for customer to set.
+        /// </summary>
+        public readonly bool JumboFramesEnabled;
+        /// <summary>
         /// The name of the network config.
         /// </summary>
         public readonly string Name;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string gcpService,
 
+            bool jumboFramesEnabled,
+
             string name,
 
             string serviceCidr,
@@ -76,6 +82,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             Bandwidth = bandwidth;
             Cidr = cidr;
             GcpService = gcpService;
+            JumboFramesEnabled = jumboFramesEnabled;
             Name = name;
             ServiceCidr = serviceCidr;
             Type = type;

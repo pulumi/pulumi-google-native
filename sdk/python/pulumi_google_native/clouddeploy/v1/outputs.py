@@ -319,6 +319,7 @@ class DeliveryPipelineResponse(dict):
                  labels: Mapping[str, str],
                  name: str,
                  serial_pipeline: 'outputs.SerialPipelineResponse',
+                 suspended: bool,
                  uid: str,
                  update_time: str):
         """
@@ -331,6 +332,7 @@ class DeliveryPipelineResponse(dict):
         :param Mapping[str, str] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param str name: Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
         :param 'SerialPipelineResponse' serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param bool suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         :param str uid: Unique identifier of the `DeliveryPipeline`.
         :param str update_time: Most recent time at which the pipeline was updated.
         """
@@ -342,6 +344,7 @@ class DeliveryPipelineResponse(dict):
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "serial_pipeline", serial_pipeline)
+        pulumi.set(__self__, "suspended", suspended)
         pulumi.set(__self__, "uid", uid)
         pulumi.set(__self__, "update_time", update_time)
 
@@ -408,6 +411,14 @@ class DeliveryPipelineResponse(dict):
         SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         """
         return pulumi.get(self, "serial_pipeline")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> bool:
+        """
+        When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        """
+        return pulumi.get(self, "suspended")
 
     @property
     @pulumi.getter

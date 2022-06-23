@@ -55,6 +55,10 @@ export class Job extends pulumi.CustomResource {
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
      */
     public readonly inputUri!: pulumi.Output<string>;
+    /**
+     * The labels associated with this job. You can use these to organize and group your jobs.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -95,6 +99,7 @@ export class Job extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["inputUri"] = args ? args.inputUri : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["outputUri"] = args ? args.outputUri : undefined;
@@ -112,6 +117,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["inputUri"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outputUri"] = undefined /*out*/;
@@ -138,6 +144,10 @@ export interface JobArgs {
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
      */
     inputUri?: pulumi.Input<string>;
+    /**
+     * The labels associated with this job. You can use these to organize and group your jobs.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`

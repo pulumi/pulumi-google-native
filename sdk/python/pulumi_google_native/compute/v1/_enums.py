@@ -74,7 +74,9 @@ __all__ = [
     'InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction',
     'InstanceGroupManagerUpdatePolicyReplacementMethod',
     'InstanceGroupManagerUpdatePolicyType',
+    'InstanceKeyRevocationActionType',
     'InstancePrivateIpv6GoogleAccess',
+    'InstancePropertiesKeyRevocationActionType',
     'InstancePropertiesPrivateIpv6GoogleAccess',
     'InterconnectAttachmentBandwidth',
     'InterconnectAttachmentEdgeAvailabilityDomain',
@@ -1405,6 +1407,24 @@ class InstanceGroupManagerUpdatePolicyType(str, Enum):
     """
 
 
+class InstanceKeyRevocationActionType(str, Enum):
+    """
+    KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+    """
+    KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    NONE = "NONE"
+    """
+    Indicates user chose no operation.
+    """
+    STOP = "STOP"
+    """
+    Indicates user chose to opt for VM shutdown on key revocation.
+    """
+
+
 class InstancePrivateIpv6GoogleAccess(str, Enum):
     """
     The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -1420,6 +1440,24 @@ class InstancePrivateIpv6GoogleAccess(str, Enum):
     INHERIT_FROM_SUBNETWORK = "INHERIT_FROM_SUBNETWORK"
     """
     Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
+    """
+
+
+class InstancePropertiesKeyRevocationActionType(str, Enum):
+    """
+    KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+    """
+    KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    NONE = "NONE"
+    """
+    Indicates user chose no operation.
+    """
+    STOP = "STOP"
+    """
+    Indicates user chose to opt for VM shutdown on key revocation.
     """
 
 

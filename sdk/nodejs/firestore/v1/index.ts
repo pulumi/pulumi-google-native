@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./database";
+export * from "./getDatabase";
 export * from "./getIndex";
 export * from "./index_";
 
@@ -12,12 +14,15 @@ export * from "./index_";
 export * from "../../types/enums/firestore/v1";
 
 // Import resources to register:
+import { Database } from "./database";
 import { Index } from "./index_";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:firestore/v1:Database":
+                return new Database(name, <any>undefined, { urn })
             case "google-native:firestore/v1:Index":
                 return new Index(name, <any>undefined, { urn })
             default:

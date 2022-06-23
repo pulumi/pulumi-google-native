@@ -207,6 +207,8 @@ const (
 	WorkloadComplianceRegimeEuRegionsAndSupport = WorkloadComplianceRegime("EU_REGIONS_AND_SUPPORT")
 	// Assured Workloads For Canada Regions and Support controls
 	WorkloadComplianceRegimeCaRegionsAndSupport = WorkloadComplianceRegime("CA_REGIONS_AND_SUPPORT")
+	// International Traffic in Arms Regulations
+	WorkloadComplianceRegimeItar = WorkloadComplianceRegime("ITAR")
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {

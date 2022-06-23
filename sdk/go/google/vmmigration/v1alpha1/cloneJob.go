@@ -28,6 +28,8 @@ type CloneJob struct {
 	ComputeEngineVmDetails TargetVMDetailsResponseOutput `pulumi:"computeEngineVmDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The time the clone job was ended.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Provides details for the errors that led to the Clone Job's state.
 	Error         StatusResponseOutput `pulumi:"error"`
 	Location      pulumi.StringOutput  `pulumi:"location"`
@@ -42,6 +44,8 @@ type CloneJob struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
+	// The clone steps list representing its progress.
+	Steps CloneStepResponseArrayOutput `pulumi:"steps"`
 	// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
 	//
 	// Deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
@@ -177,6 +181,11 @@ func (o CloneJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The time the clone job was ended.
+func (o CloneJobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
 // Provides details for the errors that led to the Clone Job's state.
 func (o CloneJobOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v *CloneJob) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
@@ -216,6 +225,11 @@ func (o CloneJobOutput) State() pulumi.StringOutput {
 // The time the state was last updated.
 func (o CloneJobOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The clone steps list representing its progress.
+func (o CloneJobOutput) Steps() CloneStepResponseArrayOutput {
+	return o.ApplyT(func(v *CloneJob) CloneStepResponseArrayOutput { return v.Steps }).(CloneStepResponseArrayOutput)
 }
 
 // Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.

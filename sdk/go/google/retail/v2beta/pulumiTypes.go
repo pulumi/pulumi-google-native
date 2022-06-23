@@ -4714,6 +4714,8 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) Limit() pulumi.I
 
 // Specifies how a facet is computed.
 type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey struct {
+	// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+	CaseInsensitive *bool `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
 	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
@@ -4743,6 +4745,8 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput interface {
 
 // Specifies how a facet is computed.
 type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs struct {
+	// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+	CaseInsensitive pulumi.BoolPtrInput `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains pulumi.StringArrayInput `pulumi:"contains"`
 	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
@@ -4837,6 +4841,11 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) ToGoogleClo
 	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput)
 }
 
+// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) CaseInsensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *bool { return v.CaseInsensitive }).(pulumi.BoolPtrOutput)
+}
+
 // Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Contains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string { return v.Contains }).(pulumi.StringArrayOutput)
@@ -4896,6 +4905,16 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Elem() G
 		var ret GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey
 		return ret
 	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput)
+}
+
+// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) CaseInsensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CaseInsensitive
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
@@ -4970,6 +4989,8 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Restrict
 
 // Specifies how a facet is computed.
 type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse struct {
+	// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+	CaseInsensitive bool `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
 	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
@@ -4999,6 +5020,11 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) ToG
 
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) ToGoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput {
 	return o
+}
+
+// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) CaseInsensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) bool { return v.CaseInsensitive }).(pulumi.BoolOutput)
 }
 
 // Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.

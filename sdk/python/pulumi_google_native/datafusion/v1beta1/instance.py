@@ -28,6 +28,7 @@ class InstanceArgs:
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 event_publish_config: Optional[pulumi.Input['EventPublishConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
@@ -49,6 +50,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input['EventPublishConfigArgs'] event_publish_config: Option to enable and pass metadata for event publishing.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
@@ -76,6 +78,8 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if enable_stackdriver_monitoring is not None:
             pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
+        if event_publish_config is not None:
+            pulumi.set(__self__, "event_publish_config", event_publish_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -226,6 +230,18 @@ class InstanceArgs:
         pulumi.set(self, "enable_stackdriver_monitoring", value)
 
     @property
+    @pulumi.getter(name="eventPublishConfig")
+    def event_publish_config(self) -> Optional[pulumi.Input['EventPublishConfigArgs']]:
+        """
+        Option to enable and pass metadata for event publishing.
+        """
+        return pulumi.get(self, "event_publish_config")
+
+    @event_publish_config.setter
+    def event_publish_config(self, value: Optional[pulumi.Input['EventPublishConfigArgs']]):
+        pulumi.set(self, "event_publish_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -330,6 +346,7 @@ class Instance(pulumi.CustomResource):
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 event_publish_config: Optional[pulumi.Input[pulumi.InputType['EventPublishConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -356,6 +373,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input[pulumi.InputType['EventPublishConfigArgs']] event_publish_config: Option to enable and pass metadata for event publishing.
         :param pulumi.Input[str] instance_id: Required. The name of the instance to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -399,6 +417,7 @@ class Instance(pulumi.CustomResource):
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 event_publish_config: Optional[pulumi.Input[pulumi.InputType['EventPublishConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -432,6 +451,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_rbac"] = enable_rbac
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
+            __props__.__dict__["event_publish_config"] = event_publish_config
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -492,6 +512,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["enable_rbac"] = None
         __props__.__dict__["enable_stackdriver_logging"] = None
         __props__.__dict__["enable_stackdriver_monitoring"] = None
+        __props__.__dict__["event_publish_config"] = None
         __props__.__dict__["gcs_bucket"] = None
         __props__.__dict__["instance_id"] = None
         __props__.__dict__["labels"] = None
@@ -608,6 +629,14 @@ class Instance(pulumi.CustomResource):
         Option to enable Stackdriver Monitoring.
         """
         return pulumi.get(self, "enable_stackdriver_monitoring")
+
+    @property
+    @pulumi.getter(name="eventPublishConfig")
+    def event_publish_config(self) -> pulumi.Output['outputs.EventPublishConfigResponse']:
+        """
+        Option to enable and pass metadata for event publishing.
+        """
+        return pulumi.get(self, "event_publish_config")
 
     @property
     @pulumi.getter(name="gcsBucket")

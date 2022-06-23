@@ -81,6 +81,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
+     * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+     */
+    public readonly keyRevocationActionType!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#instance for instances.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -214,6 +218,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["displayDevice"] = args ? args.displayDevice : undefined;
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
@@ -262,6 +267,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["guestAccelerators"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
+            resourceInputs["keyRevocationActionType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -337,6 +343,10 @@ export interface InstanceArgs {
      * Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+     */
+    keyRevocationActionType?: pulumi.Input<enums.compute.v1.InstanceKeyRevocationActionType>;
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      */

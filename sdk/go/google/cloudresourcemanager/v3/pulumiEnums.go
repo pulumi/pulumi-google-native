@@ -187,7 +187,7 @@ type TagKeyPurpose string
 const (
 	// Unspecified purpose.
 	TagKeyPurposePurposeUnspecified = TagKeyPurpose("PURPOSE_UNSPECIFIED")
-	// Purpose for Compute Engine firewalls. A corresponding purpose_data should be set for the network the tag is intended for. The key should be 'network' and the value should be in the format of the network url id string: http://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+	// Purpose for Compute Engine firewalls. A corresponding purpose_data should be set for the network the tag is intended for. The key should be 'network' and the value should be in the format of the network url id string: https://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
 	TagKeyPurposeGceFirewall = TagKeyPurpose("GCE_FIREWALL")
 )
 

@@ -26,6 +26,7 @@ class InstanceArgs:
                  display_device: Optional[pulumi.Input['DisplayDeviceArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input['InstanceKeyRevocationActionType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['MetadataArgs']] = None,
@@ -58,6 +59,7 @@ class InstanceArgs:
         :param pulumi.Input['DisplayDeviceArgs'] display_device: Enables display device for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+        :param pulumi.Input['InstanceKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
@@ -94,6 +96,8 @@ class InstanceArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if machine_type is not None:
@@ -243,6 +247,18 @@ class InstanceArgs:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input['InstanceKeyRevocationActionType']]:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input['InstanceKeyRevocationActionType']]):
+        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter
@@ -508,6 +524,7 @@ class Instance(pulumi.CustomResource):
                  display_device: Optional[pulumi.Input[pulumi.InputType['DisplayDeviceArgs']]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input['InstanceKeyRevocationActionType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
@@ -544,6 +561,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DisplayDeviceArgs']] display_device: Enables display device for the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+        :param pulumi.Input['InstanceKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         :param pulumi.Input[pulumi.InputType['MetadataArgs']] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
@@ -595,6 +613,7 @@ class Instance(pulumi.CustomResource):
                  display_device: Optional[pulumi.Input[pulumi.InputType['DisplayDeviceArgs']]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input['InstanceKeyRevocationActionType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
@@ -640,6 +659,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["display_device"] = display_device
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
+            __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["metadata"] = metadata
@@ -709,6 +729,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["guest_accelerators"] = None
         __props__.__dict__["hostname"] = None
+        __props__.__dict__["key_revocation_action_type"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
@@ -835,6 +856,14 @@ class Instance(pulumi.CustomResource):
         Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> pulumi.Output[str]:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter

@@ -75,6 +75,7 @@ __all__ = [
     'ImageRawDiskContainerType',
     'ImageSourceType',
     'InstanceGroupManagerFailoverAction',
+    'InstanceGroupManagerListManagedInstancesResults',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
     'InstanceGroupManagerUpdatePolicyMinimalAction',
     'InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction',
@@ -124,6 +125,7 @@ __all__ = [
     'RegionHealthCheckServiceHealthStatusAggregationStrategy',
     'RegionHealthCheckType',
     'RegionInstanceGroupManagerFailoverAction',
+    'RegionInstanceGroupManagerListManagedInstancesResults',
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionSecurityPolicyType',
     'RegionSslCertificateType',
@@ -1412,6 +1414,20 @@ class InstanceGroupManagerFailoverAction(str, Enum):
     UNKNOWN = "UNKNOWN"
 
 
+class InstanceGroupManagerListManagedInstancesResults(str, Enum):
+    """
+    Pagination behavior of the listManagedInstances API method for this managed instance group.
+    """
+    PAGELESS = "PAGELESS"
+    """
+    (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+    """
+    PAGINATED = "PAGINATED"
+    """
+    Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+    """
+
+
 class InstanceGroupManagerUpdatePolicyInstanceRedistributionType(str, Enum):
     """
     The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled. 
@@ -2253,6 +2269,20 @@ class RegionInstanceGroupManagerFailoverAction(str, Enum):
     """
     NO_FAILOVER = "NO_FAILOVER"
     UNKNOWN = "UNKNOWN"
+
+
+class RegionInstanceGroupManagerListManagedInstancesResults(str, Enum):
+    """
+    Pagination behavior of the listManagedInstances API method for this managed instance group.
+    """
+    PAGELESS = "PAGELESS"
+    """
+    (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+    """
+    PAGINATED = "PAGINATED"
+    """
+    Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+    """
 
 
 class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):

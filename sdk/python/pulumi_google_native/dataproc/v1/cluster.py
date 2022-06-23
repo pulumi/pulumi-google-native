@@ -27,7 +27,7 @@ class ClusterArgs:
                  virtual_cluster_config: Optional[pulumi.Input['VirtualClusterConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        :param pulumi.Input[str] cluster_name: The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
         :param pulumi.Input[str] action_on_failed_primary_workers: Optional. Failure action when primary worker creation fails.
         :param pulumi.Input['ClusterConfigArgs'] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
@@ -54,7 +54,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[str]:
         """
-        The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -165,7 +165,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_on_failed_primary_workers: Optional. Failure action when primary worker creation fails.
-        :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        :param pulumi.Input[str] cluster_name: The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
         :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
@@ -283,7 +283,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Output[str]:
         """
-        The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
         """
         return pulumi.get(self, "cluster_name")
 

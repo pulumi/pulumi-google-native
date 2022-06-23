@@ -263,58 +263,30 @@ class EventPublishConfigResponse(dict):
     """
     Confirguration of PubSubEventWriter.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "eventPublishEnabled":
-            suggest = "event_publish_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EventPublishConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EventPublishConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EventPublishConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 event_publish_enabled: bool,
-                 project: str,
+                 enabled: bool,
                  topic: str):
         """
         Confirguration of PubSubEventWriter.
-        :param bool event_publish_enabled: Option to enable Event Publishing.
-        :param str project: Project name.
-        :param str topic: Pub/Sub Topic.
+        :param bool enabled: Option to enable Event Publishing.
+        :param str topic: The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
         """
-        pulumi.set(__self__, "event_publish_enabled", event_publish_enabled)
-        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "topic", topic)
 
     @property
-    @pulumi.getter(name="eventPublishEnabled")
-    def event_publish_enabled(self) -> bool:
+    @pulumi.getter
+    def enabled(self) -> bool:
         """
         Option to enable Event Publishing.
         """
-        return pulumi.get(self, "event_publish_enabled")
-
-    @property
-    @pulumi.getter
-    def project(self) -> str:
-        """
-        Project name.
-        """
-        return pulumi.get(self, "project")
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def topic(self) -> str:
         """
-        Pub/Sub Topic.
+        The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
         """
         return pulumi.get(self, "topic")
 

@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        /// </summary>
+        public readonly string ForwardProxyUri;
+        /// <summary>
         /// Last modification time of this environment as milliseconds since epoch.
         /// </summary>
         public readonly string LastModifiedAt;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string displayName,
 
+            string forwardProxyUri,
+
             string lastModifiedAt,
 
             string name,
@@ -117,6 +123,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             DeploymentType = deploymentType;
             Description = description;
             DisplayName = displayName;
+            ForwardProxyUri = forwardProxyUri;
             LastModifiedAt = lastModifiedAt;
             Name = name;
             Properties = properties;

@@ -22,6 +22,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int Creating;
         /// <summary>
+        /// The number of instances that the managed instance group will attempt to create atomically, in a batch mode. If the desired count of instances can not be created, entire batch will be deleted and the group will decrease its targetSize value accordingly.
+        /// </summary>
+        public readonly int CreatingAtomically;
+        /// <summary>
         /// The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
         /// </summary>
         public readonly int CreatingWithoutRetries;
@@ -72,6 +76,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int creating,
 
+            int creatingAtomically,
+
             int creatingWithoutRetries,
 
             int deleting,
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         {
             Abandoning = abandoning;
             Creating = creating;
+            CreatingAtomically = creatingAtomically;
             CreatingWithoutRetries = creatingWithoutRetries;
             Deleting = deleting;
             None = none;

@@ -18,6 +18,7 @@ __all__ = ['FhirStoreArgs', 'FhirStore']
 class FhirStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
+                 complex_data_type_reference_parsing: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +35,7 @@ class FhirStoreArgs:
                  version: Optional[pulumi.Input['FhirStoreVersion']] = None):
         """
         The set of arguments for constructing a FhirStore resource.
+        :param pulumi.Input['FhirStoreComplexDataTypeReferenceParsing'] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
@@ -48,6 +50,8 @@ class FhirStoreArgs:
         :param pulumi.Input['FhirStoreVersion'] version: Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
+        if complex_data_type_reference_parsing is not None:
+            pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
         if default_search_handling_strict is not None:
             pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
@@ -85,6 +89,18 @@ class FhirStoreArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="complexDataTypeReferenceParsing")
+    def complex_data_type_reference_parsing(self) -> Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']]:
+        """
+        Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        """
+        return pulumi.get(self, "complex_data_type_reference_parsing")
+
+    @complex_data_type_reference_parsing.setter
+    def complex_data_type_reference_parsing(self, value: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']]):
+        pulumi.set(self, "complex_data_type_reference_parsing", value)
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -254,6 +270,7 @@ class FhirStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 complex_data_type_reference_parsing: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
@@ -276,6 +293,7 @@ class FhirStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['FhirStoreComplexDataTypeReferenceParsing'] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
@@ -314,6 +332,7 @@ class FhirStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 complex_data_type_reference_parsing: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
@@ -343,6 +362,7 @@ class FhirStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FhirStoreArgs.__new__(FhirStoreArgs)
 
+            __props__.__dict__["complex_data_type_reference_parsing"] = complex_data_type_reference_parsing
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
@@ -383,6 +403,7 @@ class FhirStore(pulumi.CustomResource):
 
         __props__ = FhirStoreArgs.__new__(FhirStoreArgs)
 
+        __props__.__dict__["complex_data_type_reference_parsing"] = None
         __props__.__dict__["dataset_id"] = None
         __props__.__dict__["default_search_handling_strict"] = None
         __props__.__dict__["disable_referential_integrity"] = None
@@ -400,6 +421,14 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["validation_config"] = None
         __props__.__dict__["version"] = None
         return FhirStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="complexDataTypeReferenceParsing")
+    def complex_data_type_reference_parsing(self) -> pulumi.Output[str]:
+        """
+        Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        """
+        return pulumi.get(self, "complex_data_type_reference_parsing")
 
     @property
     @pulumi.getter(name="datasetId")

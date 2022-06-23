@@ -43,7 +43,7 @@ export class AndroidApp extends pulumi.CustomResource {
     /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    public readonly appId!: pulumi.Output<string>;
+    public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
      * The user-assigned display name for the `AndroidApp`.
      */
@@ -70,11 +70,11 @@ export class AndroidApp extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["packageName"] = args ? args.packageName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["appId"] = undefined /*out*/;
         } else {
             resourceInputs["apiKeyId"] = undefined /*out*/;
             resourceInputs["appId"] = undefined /*out*/;
@@ -97,10 +97,6 @@ export interface AndroidAppArgs {
      */
     apiKeyId?: pulumi.Input<string>;
     /**
-     * Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
-     */
-    appId?: pulumi.Input<string>;
-    /**
      * The user-assigned display name for the `AndroidApp`.
      */
     displayName?: pulumi.Input<string>;
@@ -112,8 +108,5 @@ export interface AndroidAppArgs {
      * Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
      */
     packageName?: pulumi.Input<string>;
-    /**
-     * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-     */
     project?: pulumi.Input<string>;
 }

@@ -56,6 +56,10 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+     */
+    public readonly forwardProxyUri!: pulumi.Output<string>;
+    /**
      * Last modification time of this environment as milliseconds since epoch.
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["forwardProxyUri"] = args ? args.forwardProxyUri : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
@@ -103,6 +108,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["deploymentType"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["forwardProxyUri"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
@@ -134,6 +140,10 @@ export interface EnvironmentArgs {
      * Optional. Display name for this environment.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+     */
+    forwardProxyUri?: pulumi.Input<string>;
     /**
      * Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */

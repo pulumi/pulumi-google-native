@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     public sealed class GoogleCloudDatacatalogV1DatabaseTableSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fields specific to a Dataplex table and present only in the Dataplex table entries.
-        /// </summary>
-        [Input("dataplexTable")]
-        public Input<Inputs.GoogleCloudDatacatalogV1DataplexTableSpecArgs>? DataplexTable { get; set; }
-
-        /// <summary>
         /// Type of this table.
         /// </summary>
         [Input("type")]

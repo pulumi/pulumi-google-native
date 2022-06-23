@@ -688,6 +688,179 @@ func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeature
 	return pulumi.ToOutputWithContext(ctx, in).(MultiClusterIngressFeatureSpecBillingPtrOutput)
 }
 
+// Immutable. The on prem cluster's type.
+type OnPremClusterClusterType string
+
+const (
+	// The ClusterType is not set.
+	OnPremClusterClusterTypeClustertypeUnspecified = OnPremClusterClusterType("CLUSTERTYPE_UNSPECIFIED")
+	// The ClusterType is bootstrap cluster.
+	OnPremClusterClusterTypeBootstrap = OnPremClusterClusterType("BOOTSTRAP")
+	// The ClusterType is baremetal hybrid cluster.
+	OnPremClusterClusterTypeHybrid = OnPremClusterClusterType("HYBRID")
+	// The ClusterType is baremetal standalone cluster.
+	OnPremClusterClusterTypeStandalone = OnPremClusterClusterType("STANDALONE")
+	// The ClusterType is user cluster.
+	OnPremClusterClusterTypeUser = OnPremClusterClusterType("USER")
+)
+
+func (OnPremClusterClusterType) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremClusterClusterType)(nil)).Elem()
+}
+
+func (e OnPremClusterClusterType) ToOnPremClusterClusterTypeOutput() OnPremClusterClusterTypeOutput {
+	return pulumi.ToOutput(e).(OnPremClusterClusterTypeOutput)
+}
+
+func (e OnPremClusterClusterType) ToOnPremClusterClusterTypeOutputWithContext(ctx context.Context) OnPremClusterClusterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OnPremClusterClusterTypeOutput)
+}
+
+func (e OnPremClusterClusterType) ToOnPremClusterClusterTypePtrOutput() OnPremClusterClusterTypePtrOutput {
+	return e.ToOnPremClusterClusterTypePtrOutputWithContext(context.Background())
+}
+
+func (e OnPremClusterClusterType) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
+	return OnPremClusterClusterType(e).ToOnPremClusterClusterTypeOutputWithContext(ctx).ToOnPremClusterClusterTypePtrOutputWithContext(ctx)
+}
+
+func (e OnPremClusterClusterType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OnPremClusterClusterType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OnPremClusterClusterType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OnPremClusterClusterType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OnPremClusterClusterTypeOutput struct{ *pulumi.OutputState }
+
+func (OnPremClusterClusterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremClusterClusterType)(nil)).Elem()
+}
+
+func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypeOutput() OnPremClusterClusterTypeOutput {
+	return o
+}
+
+func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypeOutputWithContext(ctx context.Context) OnPremClusterClusterTypeOutput {
+	return o
+}
+
+func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypePtrOutput() OnPremClusterClusterTypePtrOutput {
+	return o.ToOnPremClusterClusterTypePtrOutputWithContext(context.Background())
+}
+
+func (o OnPremClusterClusterTypeOutput) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnPremClusterClusterType) *OnPremClusterClusterType {
+		return &v
+	}).(OnPremClusterClusterTypePtrOutput)
+}
+
+func (o OnPremClusterClusterTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OnPremClusterClusterTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OnPremClusterClusterType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OnPremClusterClusterTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OnPremClusterClusterTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OnPremClusterClusterType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OnPremClusterClusterTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OnPremClusterClusterTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnPremClusterClusterType)(nil)).Elem()
+}
+
+func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutput() OnPremClusterClusterTypePtrOutput {
+	return o
+}
+
+func (o OnPremClusterClusterTypePtrOutput) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
+	return o
+}
+
+func (o OnPremClusterClusterTypePtrOutput) Elem() OnPremClusterClusterTypeOutput {
+	return o.ApplyT(func(v *OnPremClusterClusterType) OnPremClusterClusterType {
+		if v != nil {
+			return *v
+		}
+		var ret OnPremClusterClusterType
+		return ret
+	}).(OnPremClusterClusterTypeOutput)
+}
+
+func (o OnPremClusterClusterTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OnPremClusterClusterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OnPremClusterClusterType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OnPremClusterClusterTypeInput is an input type that accepts OnPremClusterClusterTypeArgs and OnPremClusterClusterTypeOutput values.
+// You can construct a concrete instance of `OnPremClusterClusterTypeInput` via:
+//
+//          OnPremClusterClusterTypeArgs{...}
+type OnPremClusterClusterTypeInput interface {
+	pulumi.Input
+
+	ToOnPremClusterClusterTypeOutput() OnPremClusterClusterTypeOutput
+	ToOnPremClusterClusterTypeOutputWithContext(context.Context) OnPremClusterClusterTypeOutput
+}
+
+var onPremClusterClusterTypePtrType = reflect.TypeOf((**OnPremClusterClusterType)(nil)).Elem()
+
+type OnPremClusterClusterTypePtrInput interface {
+	pulumi.Input
+
+	ToOnPremClusterClusterTypePtrOutput() OnPremClusterClusterTypePtrOutput
+	ToOnPremClusterClusterTypePtrOutputWithContext(context.Context) OnPremClusterClusterTypePtrOutput
+}
+
+type onPremClusterClusterTypePtr string
+
+func OnPremClusterClusterTypePtr(v string) OnPremClusterClusterTypePtrInput {
+	return (*onPremClusterClusterTypePtr)(&v)
+}
+
+func (*onPremClusterClusterTypePtr) ElementType() reflect.Type {
+	return onPremClusterClusterTypePtrType
+}
+
+func (in *onPremClusterClusterTypePtr) ToOnPremClusterClusterTypePtrOutput() OnPremClusterClusterTypePtrOutput {
+	return pulumi.ToOutput(in).(OnPremClusterClusterTypePtrOutput)
+}
+
+func (in *onPremClusterClusterTypePtr) ToOnPremClusterClusterTypePtrOutputWithContext(ctx context.Context) OnPremClusterClusterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OnPremClusterClusterTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -697,6 +870,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecCertificateManagementPtrInput)(nil)).Elem(), MembershipSpecCertificateManagement("CERTIFICATE_MANAGEMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingPtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterClusterTypeInput)(nil)).Elem(), OnPremClusterClusterType("CLUSTERTYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterClusterTypePtrInput)(nil)).Elem(), OnPremClusterClusterType("CLUSTERTYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecProvisionGoogleCaOutput{})
@@ -705,4 +880,6 @@ func init() {
 	pulumi.RegisterOutputType(MembershipSpecCertificateManagementPtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingPtrOutput{})
+	pulumi.RegisterOutputType(OnPremClusterClusterTypeOutput{})
+	pulumi.RegisterOutputType(OnPremClusterClusterTypePtrOutput{})
 }

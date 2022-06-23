@@ -16,6 +16,7 @@ __all__ = [
     'BucketAutoclassResponse',
     'BucketBillingResponse',
     'BucketCorsItemResponse',
+    'BucketCustomPlacementConfigResponse',
     'BucketEncryptionResponse',
     'BucketIamConfigurationBucketPolicyOnlyResponse',
     'BucketIamConfigurationResponse',
@@ -413,6 +414,45 @@ class BucketCorsItemResponse(dict):
 
 
 @pulumi.output_type
+class BucketCustomPlacementConfigResponse(dict):
+    """
+    The bucket's custom placement configuration for Custom Dual Regions.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataLocations":
+            suggest = "data_locations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketCustomPlacementConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketCustomPlacementConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketCustomPlacementConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_locations: Sequence[str]):
+        """
+        The bucket's custom placement configuration for Custom Dual Regions.
+        :param Sequence[str] data_locations: The list of regional locations in which data is placed.
+        """
+        pulumi.set(__self__, "data_locations", data_locations)
+
+    @property
+    @pulumi.getter(name="dataLocations")
+    def data_locations(self) -> Sequence[str]:
+        """
+        The list of regional locations in which data is placed.
+        """
+        return pulumi.get(self, "data_locations")
+
+
+@pulumi.output_type
 class BucketEncryptionResponse(dict):
     """
     Encryption configuration for a bucket.
@@ -744,7 +784,7 @@ class BucketLifecycleRuleItemActionResponse(dict):
         """
         The action to take.
         :param str storage_class: Target storage class. Required iff the type of the action is SetStorageClass.
-        :param str type: Type of the action. Currently, only Delete and SetStorageClass are supported.
+        :param str type: Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
         """
         pulumi.set(__self__, "storage_class", storage_class)
         pulumi.set(__self__, "type", type)
@@ -761,7 +801,7 @@ class BucketLifecycleRuleItemActionResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the action. Currently, only Delete and SetStorageClass are supported.
+        Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
         """
         return pulumi.get(self, "type")
 

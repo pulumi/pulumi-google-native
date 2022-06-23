@@ -81,6 +81,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// Oauth 2.0 Client Credentials Grant Authentication
         /// </summary>
         public static AuthConfigAuthType Oauth2ClientCredentials { get; } = new AuthConfigAuthType("OAUTH2_CLIENT_CREDENTIALS");
+        /// <summary>
+        /// SSH Public Key Authentication
+        /// </summary>
+        public static AuthConfigAuthType SshPublicKey { get; } = new AuthConfigAuthType("SSH_PUBLIC_KEY");
 
         public static bool operator ==(AuthConfigAuthType left, AuthConfigAuthType right) => left.Equals(right);
         public static bool operator !=(AuthConfigAuthType left, AuthConfigAuthType right) => !left.Equals(right);

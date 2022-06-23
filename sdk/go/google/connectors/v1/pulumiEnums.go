@@ -193,6 +193,8 @@ const (
 	AuthConfigAuthTypeOauth2JwtBearer = AuthConfigAuthType("OAUTH2_JWT_BEARER")
 	// Oauth 2.0 Client Credentials Grant Authentication
 	AuthConfigAuthTypeOauth2ClientCredentials = AuthConfigAuthType("OAUTH2_CLIENT_CREDENTIALS")
+	// SSH Public Key Authentication
+	AuthConfigAuthTypeSshPublicKey = AuthConfigAuthType("SSH_PUBLIC_KEY")
 )
 
 func (AuthConfigAuthType) ElementType() reflect.Type {

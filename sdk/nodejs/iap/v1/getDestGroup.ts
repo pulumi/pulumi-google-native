@@ -36,7 +36,7 @@ export interface GetDestGroupResult {
      */
     readonly fqdns: string[];
     /**
-     * Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+     * Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
      */
     readonly name: string;
 }

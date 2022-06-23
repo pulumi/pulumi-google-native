@@ -18,7 +18,7 @@ type Cluster struct {
 
 	// Optional. Failure action when primary worker creation fails.
 	ActionOnFailedPrimaryWorkers pulumi.StringPtrOutput `pulumi:"actionOnFailedPrimaryWorkers"`
-	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	// The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
 	ClusterUuid pulumi.StringOutput `pulumi:"clusterUuid"`
@@ -87,7 +87,7 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// Optional. Failure action when primary worker creation fails.
 	ActionOnFailedPrimaryWorkers *string `pulumi:"actionOnFailedPrimaryWorkers"`
-	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	// The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
 	ClusterName string `pulumi:"clusterName"`
 	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
 	Config *ClusterConfig `pulumi:"config"`
@@ -106,7 +106,7 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// Optional. Failure action when primary worker creation fails.
 	ActionOnFailedPrimaryWorkers pulumi.StringPtrInput
-	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	// The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
 	ClusterName pulumi.StringInput
 	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
 	Config ClusterConfigPtrInput
@@ -163,7 +163,7 @@ func (o ClusterOutput) ActionOnFailedPrimaryWorkers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ActionOnFailedPrimaryWorkers }).(pulumi.StringPtrOutput)
 }
 
-// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+// The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
 func (o ClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
 }

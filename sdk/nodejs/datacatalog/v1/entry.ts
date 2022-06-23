@@ -39,11 +39,11 @@ export class Entry extends pulumi.CustomResource {
     /**
      * Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
      */
-    public readonly bigqueryDateShardedSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse>;
+    public /*out*/ readonly bigqueryDateShardedSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse>;
     /**
      * Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
      */
-    public readonly bigqueryTableSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecResponse>;
+    public /*out*/ readonly bigqueryTableSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecResponse>;
     /**
      * Business Context of the entry. Not supported for BigQuery datasets
      */
@@ -153,8 +153,6 @@ export class Entry extends pulumi.CustomResource {
             if ((!args || args.entryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
-            resourceInputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
-            resourceInputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
             resourceInputs["businessContext"] = args ? args.businessContext : undefined;
             resourceInputs["dataSourceConnectionSpec"] = args ? args.dataSourceConnectionSpec : undefined;
             resourceInputs["databaseTableSpec"] = args ? args.databaseTableSpec : undefined;
@@ -175,6 +173,8 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["userSpecifiedSystem"] = args ? args.userSpecifiedSystem : undefined;
             resourceInputs["userSpecifiedType"] = args ? args.userSpecifiedType : undefined;
+            resourceInputs["bigqueryDateShardedSpec"] = undefined /*out*/;
+            resourceInputs["bigqueryTableSpec"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["integratedSystem"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -218,14 +218,6 @@ export class Entry extends pulumi.CustomResource {
  * The set of arguments for constructing a Entry resource.
  */
 export interface EntryArgs {
-    /**
-     * Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-     */
-    bigqueryDateShardedSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs>;
-    /**
-     * Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
-     */
-    bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1BigQueryTableSpecArgs>;
     /**
      * Business Context of the entry. Not supported for BigQuery datasets
      */

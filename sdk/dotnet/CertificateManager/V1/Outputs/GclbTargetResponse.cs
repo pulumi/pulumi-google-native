@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.IpConfigResponse> IpConfigs;
         /// <summary>
-        /// A name must be in the format `projects/*/locations/*/targetHttpsProxies/*`.
+        /// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
         /// </summary>
         public readonly string TargetHttpsProxy;
         /// <summary>
-        /// A name must be in the format `projects/*/locations/*/targetSslProxies/*`.
+        /// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
         /// </summary>
         public readonly string TargetSslProxy;
 

@@ -61,6 +61,10 @@ export interface GetDeliveryPipelineResult {
      */
     readonly serialPipeline: outputs.clouddeploy.v1.SerialPipelineResponse;
     /**
+     * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+     */
+    readonly suspended: boolean;
+    /**
      * Unique identifier of the `DeliveryPipeline`.
      */
     readonly uid: string;

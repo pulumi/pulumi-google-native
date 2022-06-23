@@ -285,6 +285,7 @@ class Trigger(pulumi.CustomResource):
             if validate_only is None and not opts.urn:
                 raise TypeError("Missing required property 'validate_only'")
             __props__.__dict__["validate_only"] = validate_only
+            __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["uid"] = None
@@ -312,6 +313,7 @@ class Trigger(pulumi.CustomResource):
         __props__ = TriggerArgs.__new__(TriggerArgs)
 
         __props__.__dict__["channel"] = None
+        __props__.__dict__["conditions"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["destination"] = None
         __props__.__dict__["etag"] = None
@@ -335,6 +337,14 @@ class Trigger(pulumi.CustomResource):
         Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         """
         return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The reason(s) why a trigger is in FAILED state.
+        """
+        return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter(name="createTime")

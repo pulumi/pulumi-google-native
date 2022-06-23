@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates key value entries in a org, env or apis scoped key value map.
+ * Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
  */
 export class Entry extends pulumi.CustomResource {
     /**

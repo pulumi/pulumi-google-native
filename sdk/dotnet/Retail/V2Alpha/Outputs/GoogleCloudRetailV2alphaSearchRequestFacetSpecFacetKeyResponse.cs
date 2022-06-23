@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
     public sealed class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse
     {
         /// <summary>
+        /// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+        /// </summary>
+        public readonly bool CaseInsensitive;
+        /// <summary>
         /// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women &gt; Shoe", "Women &gt; Dress" and "Men &gt; Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women &gt; Shoe" and "Men &gt; Shoe". Only supported on textual fields. Maximum is 10.
         /// </summary>
         public readonly ImmutableArray<string> Contains;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
 
         [OutputConstructor]
         private GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(
+            bool caseInsensitive,
+
             ImmutableArray<string> contains,
 
             ImmutableArray<Outputs.GoogleCloudRetailV2alphaIntervalResponse> intervals,
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
 
             ImmutableArray<string> restrictedValues)
         {
+            CaseInsensitive = caseInsensitive;
             Contains = contains;
             Intervals = intervals;
             Key = key;

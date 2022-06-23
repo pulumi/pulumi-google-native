@@ -25,6 +25,8 @@ type Environment struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Display name for this environment.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+	ForwardProxyUri pulumi.StringOutput `pulumi:"forwardProxyUri"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
@@ -86,6 +88,8 @@ type environmentArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Display name for this environment.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+	ForwardProxyUri *string `pulumi:"forwardProxyUri"`
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -103,6 +107,8 @@ type EnvironmentArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Display name for this environment.
 	DisplayName pulumi.StringPtrInput
+	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+	ForwardProxyUri pulumi.StringPtrInput
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
@@ -170,6 +176,11 @@ func (o EnvironmentOutput) Description() pulumi.StringOutput {
 // Optional. Display name for this environment.
 func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+func (o EnvironmentOutput) ForwardProxyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ForwardProxyUri }).(pulumi.StringOutput)
 }
 
 // Last modification time of this environment as milliseconds since epoch.

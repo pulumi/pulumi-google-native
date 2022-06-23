@@ -4879,8 +4879,8 @@ func (o DetailsResponseOutput) Attestation() AttestationResponseOutput {
 type Digest struct {
 	// `SHA1`, `SHA512` etc.
 	Algo *string `pulumi:"algo"`
-	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
-	DigestValue *string `pulumi:"digestValue"`
+	// Value of the digest.
+	DigestBytes *string `pulumi:"digestBytes"`
 }
 
 // DigestInput is an input type that accepts DigestArgs and DigestOutput values.
@@ -4898,8 +4898,8 @@ type DigestInput interface {
 type DigestArgs struct {
 	// `SHA1`, `SHA512` etc.
 	Algo pulumi.StringPtrInput `pulumi:"algo"`
-	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
-	DigestValue pulumi.StringPtrInput `pulumi:"digestValue"`
+	// Value of the digest.
+	DigestBytes pulumi.StringPtrInput `pulumi:"digestBytes"`
 }
 
 func (DigestArgs) ElementType() reflect.Type {
@@ -4959,9 +4959,9 @@ func (o DigestOutput) Algo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Digest) *string { return v.Algo }).(pulumi.StringPtrOutput)
 }
 
-// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
-func (o DigestOutput) DigestValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Digest) *string { return v.DigestValue }).(pulumi.StringPtrOutput)
+// Value of the digest.
+func (o DigestOutput) DigestBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Digest) *string { return v.DigestBytes }).(pulumi.StringPtrOutput)
 }
 
 type DigestArrayOutput struct{ *pulumi.OutputState }
@@ -4988,8 +4988,8 @@ func (o DigestArrayOutput) Index(i pulumi.IntInput) DigestOutput {
 type DigestResponse struct {
 	// `SHA1`, `SHA512` etc.
 	Algo string `pulumi:"algo"`
-	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
-	DigestValue string `pulumi:"digestValue"`
+	// Value of the digest.
+	DigestBytes string `pulumi:"digestBytes"`
 }
 
 // Digest information.
@@ -5012,9 +5012,9 @@ func (o DigestResponseOutput) Algo() pulumi.StringOutput {
 	return o.ApplyT(func(v DigestResponse) string { return v.Algo }).(pulumi.StringOutput)
 }
 
-// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
-func (o DigestResponseOutput) DigestValue() pulumi.StringOutput {
-	return o.ApplyT(func(v DigestResponse) string { return v.DigestValue }).(pulumi.StringOutput)
+// Value of the digest.
+func (o DigestResponseOutput) DigestBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v DigestResponse) string { return v.DigestBytes }).(pulumi.StringOutput)
 }
 
 type DigestResponseArrayOutput struct{ *pulumi.OutputState }

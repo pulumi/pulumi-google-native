@@ -46,6 +46,7 @@ from .get_image_iam_policy import *
 from .get_instance import *
 from .get_instance_group import *
 from .get_instance_group_manager import *
+from .get_instance_group_manager_resize_request import *
 from .get_instance_iam_policy import *
 from .get_instance_template import *
 from .get_instance_template_iam_policy import *
@@ -135,6 +136,7 @@ from .image_iam_policy import *
 from .instance import *
 from .instance_group import *
 from .instance_group_manager import *
+from .instance_group_manager_resize_request import *
 from .instance_iam_policy import *
 from .instance_template import *
 from .instance_template_iam_policy import *

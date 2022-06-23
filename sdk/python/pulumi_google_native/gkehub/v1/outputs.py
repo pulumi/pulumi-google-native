@@ -1069,6 +1069,8 @@ class OnPremClusterResponse(dict):
             suggest = "admin_cluster"
         elif key == "clusterMissing":
             suggest = "cluster_missing"
+        elif key == "clusterType":
+            suggest = "cluster_type"
         elif key == "resourceLink":
             suggest = "resource_link"
 
@@ -1086,15 +1088,18 @@ class OnPremClusterResponse(dict):
     def __init__(__self__, *,
                  admin_cluster: bool,
                  cluster_missing: bool,
+                 cluster_type: str,
                  resource_link: str):
         """
         OnPremCluster contains information specific to GKE On-Prem clusters.
         :param bool admin_cluster: Immutable. Whether the cluster is an admin cluster.
         :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        :param str cluster_type: Immutable. The on prem cluster's type.
         :param str resource_link: Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         """
         pulumi.set(__self__, "admin_cluster", admin_cluster)
         pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "resource_link", resource_link)
 
     @property
@@ -1112,6 +1117,14 @@ class OnPremClusterResponse(dict):
         If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
         """
         return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        Immutable. The on prem cluster's type.
+        """
+        return pulumi.get(self, "cluster_type")
 
     @property
     @pulumi.getter(name="resourceLink")

@@ -61,10 +61,6 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Outbound domains/hosts needs to be allowlisted.
-     */
-    public /*out*/ readonly egressBackends!: pulumi.Output<string[]>;
-    /**
      * GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
      */
     public /*out*/ readonly envoyImageLocation!: pulumi.Output<string>;
@@ -136,7 +132,6 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["egressBackends"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
             resourceInputs["imageLocation"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -150,7 +145,6 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["connectorVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
-            resourceInputs["egressBackends"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
             resourceInputs["imageLocation"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;

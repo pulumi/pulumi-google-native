@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:eventarc/v1:Channel":
 		r = &Channel{}
+	case "google-native:eventarc/v1:ChannelConnection":
+		r = &ChannelConnection{}
 	case "google-native:eventarc/v1:ChannelConnectionIamPolicy":
 		r = &ChannelConnectionIamPolicy{}
 	case "google-native:eventarc/v1:ChannelIamPolicy":

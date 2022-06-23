@@ -19,8 +19,6 @@ class EntryArgs:
     def __init__(__self__, *,
                  entry_group_id: pulumi.Input[str],
                  entry_id: pulumi.Input[str],
-                 bigquery_date_sharded_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']] = None,
-                 bigquery_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']] = None,
                  business_context: Optional[pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs']] = None,
                  data_source_connection_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] = None,
                  database_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] = None,
@@ -42,8 +40,6 @@ class EntryArgs:
         """
         The set of arguments for constructing a Entry resource.
         :param pulumi.Input[str] entry_id: Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
-        :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs'] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-        :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs'] bigquery_table_spec: Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs'] business_context: Business Context of the entry. Not supported for BigQuery datasets
         :param pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs'] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs'] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
@@ -63,10 +59,6 @@ class EntryArgs:
         """
         pulumi.set(__self__, "entry_group_id", entry_group_id)
         pulumi.set(__self__, "entry_id", entry_id)
-        if bigquery_date_sharded_spec is not None:
-            pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
-        if bigquery_table_spec is not None:
-            pulumi.set(__self__, "bigquery_table_spec", bigquery_table_spec)
         if business_context is not None:
             pulumi.set(__self__, "business_context", business_context)
         if data_source_connection_spec is not None:
@@ -124,30 +116,6 @@ class EntryArgs:
     @entry_id.setter
     def entry_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "entry_id", value)
-
-    @property
-    @pulumi.getter(name="bigqueryDateShardedSpec")
-    def bigquery_date_sharded_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']]:
-        """
-        Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-        """
-        return pulumi.get(self, "bigquery_date_sharded_spec")
-
-    @bigquery_date_sharded_spec.setter
-    def bigquery_date_sharded_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']]):
-        pulumi.set(self, "bigquery_date_sharded_spec", value)
-
-    @property
-    @pulumi.getter(name="bigqueryTableSpec")
-    def bigquery_table_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']]:
-        """
-        Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
-        """
-        return pulumi.get(self, "bigquery_table_spec")
-
-    @bigquery_table_spec.setter
-    def bigquery_table_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']]):
-        pulumi.set(self, "bigquery_table_spec", value)
 
     @property
     @pulumi.getter(name="businessContext")
@@ -365,8 +333,6 @@ class Entry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']]] = None,
-                 bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']]] = None,
                  business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
@@ -394,8 +360,6 @@ class Entry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']] bigquery_table_spec: Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']] business_context: Business Context of the entry. Not supported for BigQuery datasets
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
@@ -439,8 +403,6 @@ class Entry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs']]] = None,
-                 bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BigQueryTableSpecArgs']]] = None,
                  business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
@@ -475,8 +437,6 @@ class Entry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EntryArgs.__new__(EntryArgs)
 
-            __props__.__dict__["bigquery_date_sharded_spec"] = bigquery_date_sharded_spec
-            __props__.__dict__["bigquery_table_spec"] = bigquery_table_spec
             __props__.__dict__["business_context"] = business_context
             __props__.__dict__["data_source_connection_spec"] = data_source_connection_spec
             __props__.__dict__["database_table_spec"] = database_table_spec
@@ -501,6 +461,8 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["user_specified_system"] = user_specified_system
             __props__.__dict__["user_specified_type"] = user_specified_type
+            __props__.__dict__["bigquery_date_sharded_spec"] = None
+            __props__.__dict__["bigquery_table_spec"] = None
             __props__.__dict__["data_source"] = None
             __props__.__dict__["integrated_system"] = None
             __props__.__dict__["name"] = None

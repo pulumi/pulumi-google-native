@@ -843,10 +843,8 @@ func (o CryptoKeyConfigResponseOutput) KeyReference() pulumi.StringOutput {
 // Confirguration of PubSubEventWriter.
 type EventPublishConfig struct {
 	// Option to enable Event Publishing.
-	EventPublishEnabled bool `pulumi:"eventPublishEnabled"`
-	// Project name.
-	Project *string `pulumi:"project"`
-	// Pub/Sub Topic.
+	Enabled bool `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
 	Topic string `pulumi:"topic"`
 }
 
@@ -864,10 +862,8 @@ type EventPublishConfigInput interface {
 // Confirguration of PubSubEventWriter.
 type EventPublishConfigArgs struct {
 	// Option to enable Event Publishing.
-	EventPublishEnabled pulumi.BoolInput `pulumi:"eventPublishEnabled"`
-	// Project name.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// Pub/Sub Topic.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
@@ -950,16 +946,11 @@ func (o EventPublishConfigOutput) ToEventPublishConfigPtrOutputWithContext(ctx c
 }
 
 // Option to enable Event Publishing.
-func (o EventPublishConfigOutput) EventPublishEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v EventPublishConfig) bool { return v.EventPublishEnabled }).(pulumi.BoolOutput)
+func (o EventPublishConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EventPublishConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Project name.
-func (o EventPublishConfigOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventPublishConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// Pub/Sub Topic.
+// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
 func (o EventPublishConfigOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v EventPublishConfig) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -989,26 +980,16 @@ func (o EventPublishConfigPtrOutput) Elem() EventPublishConfigOutput {
 }
 
 // Option to enable Event Publishing.
-func (o EventPublishConfigPtrOutput) EventPublishEnabled() pulumi.BoolPtrOutput {
+func (o EventPublishConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EventPublishConfig) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.EventPublishEnabled
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Project name.
-func (o EventPublishConfigPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventPublishConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// Pub/Sub Topic.
+// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
 func (o EventPublishConfigPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventPublishConfig) *string {
 		if v == nil {
@@ -1021,10 +1002,8 @@ func (o EventPublishConfigPtrOutput) Topic() pulumi.StringPtrOutput {
 // Confirguration of PubSubEventWriter.
 type EventPublishConfigResponse struct {
 	// Option to enable Event Publishing.
-	EventPublishEnabled bool `pulumi:"eventPublishEnabled"`
-	// Project name.
-	Project string `pulumi:"project"`
-	// Pub/Sub Topic.
+	Enabled bool `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
 	Topic string `pulumi:"topic"`
 }
 
@@ -1044,16 +1023,11 @@ func (o EventPublishConfigResponseOutput) ToEventPublishConfigResponseOutputWith
 }
 
 // Option to enable Event Publishing.
-func (o EventPublishConfigResponseOutput) EventPublishEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v EventPublishConfigResponse) bool { return v.EventPublishEnabled }).(pulumi.BoolOutput)
+func (o EventPublishConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EventPublishConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Project name.
-func (o EventPublishConfigResponseOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v EventPublishConfigResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// Pub/Sub Topic.
+// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
 func (o EventPublishConfigResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v EventPublishConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
 }

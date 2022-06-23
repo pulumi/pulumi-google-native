@@ -1805,15 +1805,15 @@ class InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(str, Enum):
 
 class InstanceGroupManagerListManagedInstancesResults(str, Enum):
     """
-    Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+    Pagination behavior of the listManagedInstances API method for this managed instance group.
     """
     PAGELESS = "PAGELESS"
     """
-    (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+    (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
     """
     PAGINATED = "PAGINATED"
     """
-    Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+    Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
     """
 
 
@@ -2786,15 +2786,15 @@ class RegionInstanceGroupManagerFailoverAction(str, Enum):
 
 class RegionInstanceGroupManagerListManagedInstancesResults(str, Enum):
     """
-    Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+    Pagination behavior of the listManagedInstances API method for this managed instance group.
     """
     PAGELESS = "PAGELESS"
     """
-    (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+    (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
     """
     PAGINATED = "PAGINATED"
     """
-    Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+    Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
     """
 
 
@@ -3652,10 +3652,6 @@ class SubnetworkPrivateIpv6GoogleAccess(str, Enum):
     ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE = "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
     """
     Outbound private IPv6 access from VMs in this subnet to Google services.
-    """
-    ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS = "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS"
-    """
-    Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. Outbound private IPv6 access is enabled per VM based on Service Accounts. This applies only to VMs with primary service accounts as listed in private_ipv6_google_access_service_account.
     """
 
 

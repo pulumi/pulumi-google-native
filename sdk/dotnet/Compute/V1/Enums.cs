@@ -2832,6 +2832,47 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceKeyRevocationActionType : IEquatable<InstanceKeyRevocationActionType>
+    {
+        private readonly string _value;
+
+        private InstanceKeyRevocationActionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static InstanceKeyRevocationActionType KeyRevocationActionTypeUnspecified { get; } = new InstanceKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Indicates user chose no operation.
+        /// </summary>
+        public static InstanceKeyRevocationActionType None { get; } = new InstanceKeyRevocationActionType("NONE");
+        /// <summary>
+        /// Indicates user chose to opt for VM shutdown on key revocation.
+        /// </summary>
+        public static InstanceKeyRevocationActionType Stop { get; } = new InstanceKeyRevocationActionType("STOP");
+
+        public static bool operator ==(InstanceKeyRevocationActionType left, InstanceKeyRevocationActionType right) => left.Equals(right);
+        public static bool operator !=(InstanceKeyRevocationActionType left, InstanceKeyRevocationActionType right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceKeyRevocationActionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceKeyRevocationActionType other && Equals(other);
+        public bool Equals(InstanceKeyRevocationActionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
     /// </summary>
     [EnumType]
@@ -2865,6 +2906,47 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InstancePrivateIpv6GoogleAccess other && Equals(other);
         public bool Equals(InstancePrivateIpv6GoogleAccess other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstancePropertiesKeyRevocationActionType : IEquatable<InstancePropertiesKeyRevocationActionType>
+    {
+        private readonly string _value;
+
+        private InstancePropertiesKeyRevocationActionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static InstancePropertiesKeyRevocationActionType KeyRevocationActionTypeUnspecified { get; } = new InstancePropertiesKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Indicates user chose no operation.
+        /// </summary>
+        public static InstancePropertiesKeyRevocationActionType None { get; } = new InstancePropertiesKeyRevocationActionType("NONE");
+        /// <summary>
+        /// Indicates user chose to opt for VM shutdown on key revocation.
+        /// </summary>
+        public static InstancePropertiesKeyRevocationActionType Stop { get; } = new InstancePropertiesKeyRevocationActionType("STOP");
+
+        public static bool operator ==(InstancePropertiesKeyRevocationActionType left, InstancePropertiesKeyRevocationActionType right) => left.Equals(right);
+        public static bool operator !=(InstancePropertiesKeyRevocationActionType left, InstancePropertiesKeyRevocationActionType right) => !left.Equals(right);
+
+        public static explicit operator string(InstancePropertiesKeyRevocationActionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstancePropertiesKeyRevocationActionType other && Equals(other);
+        public bool Equals(InstancePropertiesKeyRevocationActionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

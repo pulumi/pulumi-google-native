@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+        /// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+        /// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

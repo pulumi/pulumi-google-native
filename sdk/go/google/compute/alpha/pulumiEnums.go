@@ -15255,13 +15255,13 @@ func (in *instanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtr) ToI
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
 }
 
-// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+// Pagination behavior of the listManagedInstances API method for this managed instance group.
 type InstanceGroupManagerListManagedInstancesResults string
 
 const (
-	// (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+	// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
 	InstanceGroupManagerListManagedInstancesResultsPageless = InstanceGroupManagerListManagedInstancesResults("PAGELESS")
-	// Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+	// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
 	InstanceGroupManagerListManagedInstancesResultsPaginated = InstanceGroupManagerListManagedInstancesResults("PAGINATED")
 )
 
@@ -24903,13 +24903,13 @@ func (in *regionInstanceGroupManagerFailoverActionPtr) ToRegionInstanceGroupMana
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerFailoverActionPtrOutput)
 }
 
-// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+// Pagination behavior of the listManagedInstances API method for this managed instance group.
 type RegionInstanceGroupManagerListManagedInstancesResults string
 
 const (
-	// (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+	// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
 	RegionInstanceGroupManagerListManagedInstancesResultsPageless = RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS")
-	// Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+	// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
 	RegionInstanceGroupManagerListManagedInstancesResultsPaginated = RegionInstanceGroupManagerListManagedInstancesResults("PAGINATED")
 )
 
@@ -35975,8 +35975,6 @@ const (
 	SubnetworkPrivateIpv6GoogleAccessEnableBidirectionalAccessToGoogle = SubnetworkPrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE")
 	// Outbound private IPv6 access from VMs in this subnet to Google services.
 	SubnetworkPrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogle = SubnetworkPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE")
-	// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. Outbound private IPv6 access is enabled per VM based on Service Accounts. This applies only to VMs with primary service accounts as listed in private_ipv6_google_access_service_account.
-	SubnetworkPrivateIpv6GoogleAccessEnableOutboundVmAccessToGoogleForServiceAccounts = SubnetworkPrivateIpv6GoogleAccess("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS")
 )
 
 func (SubnetworkPrivateIpv6GoogleAccess) ElementType() reflect.Type {

@@ -164,7 +164,7 @@ class LakeContentIamPolicy(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+        Sets the access control policy on the specified contentitem resource. Replaces any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -183,7 +183,7 @@ class LakeContentIamPolicy(pulumi.CustomResource):
                  args: LakeContentIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+        Sets the access control policy on the specified contentitem resource. Replaces any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 

@@ -24,6 +24,7 @@ __all__ = [
     'Oauth2ClientCredentialsResponse',
     'Oauth2JwtBearerResponse',
     'SecretResponse',
+    'SshPublicKeyResponse',
     'UserPasswordResponse',
 ]
 
@@ -145,6 +146,8 @@ class AuthConfigResponse(dict):
             suggest = "oauth2_client_credentials"
         elif key == "oauth2JwtBearer":
             suggest = "oauth2_jwt_bearer"
+        elif key == "sshPublicKey":
+            suggest = "ssh_public_key"
         elif key == "userPassword":
             suggest = "user_password"
 
@@ -164,6 +167,7 @@ class AuthConfigResponse(dict):
                  auth_type: str,
                  oauth2_client_credentials: 'outputs.Oauth2ClientCredentialsResponse',
                  oauth2_jwt_bearer: 'outputs.Oauth2JwtBearerResponse',
+                 ssh_public_key: 'outputs.SshPublicKeyResponse',
                  user_password: 'outputs.UserPasswordResponse'):
         """
         AuthConfig defines details of a authentication type.
@@ -171,12 +175,14 @@ class AuthConfigResponse(dict):
         :param str auth_type: The type of authentication configured.
         :param 'Oauth2ClientCredentialsResponse' oauth2_client_credentials: Oauth2ClientCredentials.
         :param 'Oauth2JwtBearerResponse' oauth2_jwt_bearer: Oauth2JwtBearer.
+        :param 'SshPublicKeyResponse' ssh_public_key: SSH Public Key.
         :param 'UserPasswordResponse' user_password: UserPassword.
         """
         pulumi.set(__self__, "additional_variables", additional_variables)
         pulumi.set(__self__, "auth_type", auth_type)
         pulumi.set(__self__, "oauth2_client_credentials", oauth2_client_credentials)
         pulumi.set(__self__, "oauth2_jwt_bearer", oauth2_jwt_bearer)
+        pulumi.set(__self__, "ssh_public_key", ssh_public_key)
         pulumi.set(__self__, "user_password", user_password)
 
     @property
@@ -210,6 +216,14 @@ class AuthConfigResponse(dict):
         Oauth2JwtBearer.
         """
         return pulumi.get(self, "oauth2_jwt_bearer")
+
+    @property
+    @pulumi.getter(name="sshPublicKey")
+    def ssh_public_key(self) -> 'outputs.SshPublicKeyResponse':
+        """
+        SSH Public Key.
+        """
+        return pulumi.get(self, "ssh_public_key")
 
     @property
     @pulumi.getter(name="userPassword")
@@ -670,6 +684,76 @@ class SecretResponse(dict):
         The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "secret_version")
+
+
+@pulumi.output_type
+class SshPublicKeyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certType":
+            suggest = "cert_type"
+        elif key == "sshClientCert":
+            suggest = "ssh_client_cert"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SshPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SshPublicKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SshPublicKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_type: str,
+                 password: 'outputs.SecretResponse',
+                 ssh_client_cert: 'outputs.SecretResponse',
+                 username: str):
+        """
+        :param str cert_type: Format of SSH Client cert.
+        :param 'SecretResponse' password: This is an optional field used in case client has enabled multi-factor authentication
+        :param 'SecretResponse' ssh_client_cert: SSH Client Cert. It should contain both public and private key.
+        :param str username: The user account used to authenticate.
+        """
+        pulumi.set(__self__, "cert_type", cert_type)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "ssh_client_cert", ssh_client_cert)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="certType")
+    def cert_type(self) -> str:
+        """
+        Format of SSH Client cert.
+        """
+        return pulumi.get(self, "cert_type")
+
+    @property
+    @pulumi.getter
+    def password(self) -> 'outputs.SecretResponse':
+        """
+        This is an optional field used in case client has enabled multi-factor authentication
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="sshClientCert")
+    def ssh_client_cert(self) -> 'outputs.SecretResponse':
+        """
+        SSH Client Cert. It should contain both public and private key.
+        """
+        return pulumi.get(self, "ssh_client_cert")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The user account used to authenticate.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type

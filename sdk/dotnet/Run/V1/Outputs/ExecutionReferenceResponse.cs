@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class ExecutionReferenceResponse
     {
         /// <summary>
+        /// Optional. Completion timestamp of the execution.
+        /// </summary>
+        public readonly string CompletionTimestamp;
+        /// <summary>
         /// Optional. Creation timestamp of the execution.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 
         [OutputConstructor]
         private ExecutionReferenceResponse(
+            string completionTimestamp,
+
             string creationTimestamp,
 
             string name)
         {
+            CompletionTimestamp = completionTimestamp;
             CreationTimestamp = creationTimestamp;
             Name = name;
         }

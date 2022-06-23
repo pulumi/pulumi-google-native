@@ -116,6 +116,7 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPolicyResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyResponse',
+    'InstanceGroupManagerResizeRequestStatusResponse',
     'InstanceGroupManagerStandbyPolicyResponse',
     'InstanceGroupManagerStatusAllInstancesConfigResponse',
     'InstanceGroupManagerStatusResponse',
@@ -182,6 +183,7 @@ __all__ = [
     'PrincipalResponse',
     'PublicAdvertisedPrefixPublicDelegatedPrefixResponse',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixResponse',
+    'QueuingPolicyResponse',
     'RbacPolicyResponse',
     'RegionSslPolicyWarningsItemDataItemResponse',
     'RegionSslPolicyWarningsItemResponse',
@@ -7567,7 +7569,9 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "creatingWithoutRetries":
+        if key == "creatingAtomically":
+            suggest = "creating_atomically"
+        elif key == "creatingWithoutRetries":
             suggest = "creating_without_retries"
 
         if suggest:
@@ -7584,6 +7588,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
     def __init__(__self__, *,
                  abandoning: int,
                  creating: int,
+                 creating_atomically: int,
                  creating_without_retries: int,
                  deleting: int,
                  none: int,
@@ -7598,6 +7603,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         """
         :param int abandoning: The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
         :param int creating: The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
+        :param int creating_atomically: The number of instances that the managed instance group will attempt to create atomically, in a batch mode. If the desired count of instances can not be created, entire batch will be deleted and the group will decrease its targetSize value accordingly.
         :param int creating_without_retries: The number of instances that the managed instance group will attempt to create. The group attempts to create each instance only once. If the group fails to create any of these instances, it decreases the group's targetSize value accordingly.
         :param int deleting: The number of instances in the managed instance group that are scheduled to be deleted or are currently being deleted.
         :param int none: The number of instances in the managed instance group that are running and have no scheduled actions.
@@ -7612,6 +7618,7 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         """
         pulumi.set(__self__, "abandoning", abandoning)
         pulumi.set(__self__, "creating", creating)
+        pulumi.set(__self__, "creating_atomically", creating_atomically)
         pulumi.set(__self__, "creating_without_retries", creating_without_retries)
         pulumi.set(__self__, "deleting", deleting)
         pulumi.set(__self__, "none", none)
@@ -7639,6 +7646,14 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         The number of instances in the managed instance group that are scheduled to be created or are currently being created. If the group fails to create any of these instances, it tries again until it creates the instance successfully. If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries field will be populated.
         """
         return pulumi.get(self, "creating")
+
+    @property
+    @pulumi.getter(name="creatingAtomically")
+    def creating_atomically(self) -> int:
+        """
+        The number of instances that the managed instance group will attempt to create atomically, in a batch mode. If the desired count of instances can not be created, entire batch will be deleted and the group will decrease its targetSize value accordingly.
+        """
+        return pulumi.get(self, "creating_atomically")
 
     @property
     @pulumi.getter(name="creatingWithoutRetries")
@@ -7937,6 +7952,41 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponse(dict):
         The configuration for metadata based readiness signal sent by the instance during initialization when stopping / suspending an instance. The Instance Group Manager will wait for a signal that indicates successful initialization before stopping / suspending an instance. If a successful readiness signal is not sent before timeout, the corresponding instance will not be stopped / suspended. Instead, an error will be visible in the lastAttempt.errors field of the managed instance in the listmanagedinstances method. If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group Manager will directly proceed to suspend / stop instances, skipping initialization on them.
         """
         return pulumi.get(self, "metadata_based_readiness_signal")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queuingPolicy":
+            suggest = "queuing_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerResizeRequestStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerResizeRequestStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerResizeRequestStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 queuing_policy: 'outputs.QueuingPolicyResponse'):
+        """
+        :param 'QueuingPolicyResponse' queuing_policy: Constraints for the time when the instances start provisioning. Always exposed as absolute time.
+        """
+        pulumi.set(__self__, "queuing_policy", queuing_policy)
+
+    @property
+    @pulumi.getter(name="queuingPolicy")
+    def queuing_policy(self) -> 'outputs.QueuingPolicyResponse':
+        """
+        Constraints for the time when the instances start provisioning. Always exposed as absolute time.
+        """
+        return pulumi.get(self, "queuing_policy")
 
 
 @pulumi.output_type
@@ -12426,6 +12476,58 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
         The status of the sub public delegated prefix.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class QueuingPolicyResponse(dict):
+    """
+    Queuing parameters for the requested deferred capacity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "validUntilDuration":
+            suggest = "valid_until_duration"
+        elif key == "validUntilTime":
+            suggest = "valid_until_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueuingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueuingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueuingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 valid_until_duration: 'outputs.DurationResponse',
+                 valid_until_time: str):
+        """
+        Queuing parameters for the requested deferred capacity.
+        :param 'DurationResponse' valid_until_duration: Relative deadline for waiting for capacity.
+        :param str valid_until_time: Absolute deadline for waiting for capacity in RFC3339 text format.
+        """
+        pulumi.set(__self__, "valid_until_duration", valid_until_duration)
+        pulumi.set(__self__, "valid_until_time", valid_until_time)
+
+    @property
+    @pulumi.getter(name="validUntilDuration")
+    def valid_until_duration(self) -> 'outputs.DurationResponse':
+        """
+        Relative deadline for waiting for capacity.
+        """
+        return pulumi.get(self, "valid_until_duration")
+
+    @property
+    @pulumi.getter(name="validUntilTime")
+    def valid_until_time(self) -> str:
+        """
+        Absolute deadline for waiting for capacity in RFC3339 text format.
+        """
+        return pulumi.get(self, "valid_until_time")
 
 
 @pulumi.output_type

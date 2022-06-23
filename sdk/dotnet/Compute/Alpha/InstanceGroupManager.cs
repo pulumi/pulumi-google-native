@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        /// Pagination behavior of the listManagedInstances API method for this managed instance group.
         /// </summary>
         [Output("listManagedInstancesResults")]
         public Output<string> ListManagedInstancesResults { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? InstanceTemplate { get; set; }
 
         /// <summary>
-        /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        /// Pagination behavior of the listManagedInstances API method for this managed instance group.
         /// </summary>
         [Input("listManagedInstancesResults")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerListManagedInstancesResults>? ListManagedInstancesResults { get; set; }

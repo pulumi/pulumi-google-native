@@ -109,6 +109,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// Assured Workloads For Canada Regions and Support controls
         /// </summary>
         public static WorkloadComplianceRegime CaRegionsAndSupport { get; } = new WorkloadComplianceRegime("CA_REGIONS_AND_SUPPORT");
+        /// <summary>
+        /// International Traffic in Arms Regulations
+        /// </summary>
+        public static WorkloadComplianceRegime Itar { get; } = new WorkloadComplianceRegime("ITAR");
 
         public static bool operator ==(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => left.Equals(right);
         public static bool operator !=(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => !left.Equals(right);

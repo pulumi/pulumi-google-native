@@ -57,6 +57,10 @@ export class CloneJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The time the clone job was ended.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
      * Provides details for the errors that led to the Clone Job's state.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.vmmigration.v1alpha1.StatusResponse>;
@@ -80,6 +84,10 @@ export class CloneJob extends pulumi.CustomResource {
      * The time the state was last updated.
      */
     public /*out*/ readonly stateTime!: pulumi.Output<string>;
+    /**
+     * The clone steps list representing its progress.
+     */
+    public /*out*/ readonly steps!: pulumi.Output<outputs.vmmigration.v1alpha1.CloneStepResponse[]>;
     /**
      * Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
      *
@@ -116,16 +124,19 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
             resourceInputs["targetDetails"] = undefined /*out*/;
         } else {
             resourceInputs["cloneJobId"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["migratingVmId"] = undefined /*out*/;
@@ -135,6 +146,7 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["sourceId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
             resourceInputs["targetDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

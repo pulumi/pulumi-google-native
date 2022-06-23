@@ -39,6 +39,8 @@ type ProvisioningConfig struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Volumes to be created.
 	Volumes VolumeConfigResponseArrayOutput `pulumi:"volumes"`
+	// If true, VPC SC is enabled for the cluster.
+	VpcScEnabled pulumi.BoolOutput `pulumi:"vpcScEnabled"`
 }
 
 // NewProvisioningConfig registers a new resource with the given unique name, arguments, and options.
@@ -97,6 +99,8 @@ type provisioningConfigArgs struct {
 	TicketId *string `pulumi:"ticketId"`
 	// Volumes to be created.
 	Volumes []VolumeConfig `pulumi:"volumes"`
+	// If true, VPC SC is enabled for the cluster.
+	VpcScEnabled *bool `pulumi:"vpcScEnabled"`
 }
 
 // The set of arguments for constructing a ProvisioningConfig resource.
@@ -118,6 +122,8 @@ type ProvisioningConfigArgs struct {
 	TicketId pulumi.StringPtrInput
 	// Volumes to be created.
 	Volumes VolumeConfigArrayInput
+	// If true, VPC SC is enabled for the cluster.
+	VpcScEnabled pulumi.BoolPtrInput
 }
 
 func (ProvisioningConfigArgs) ElementType() reflect.Type {
@@ -213,6 +219,11 @@ func (o ProvisioningConfigOutput) UpdateTime() pulumi.StringOutput {
 // Volumes to be created.
 func (o ProvisioningConfigOutput) Volumes() VolumeConfigResponseArrayOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) VolumeConfigResponseArrayOutput { return v.Volumes }).(VolumeConfigResponseArrayOutput)
+}
+
+// If true, VPC SC is enabled for the cluster.
+func (o ProvisioningConfigOutput) VpcScEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.BoolOutput { return v.VpcScEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

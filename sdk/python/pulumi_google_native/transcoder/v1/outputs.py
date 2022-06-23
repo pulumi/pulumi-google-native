@@ -1628,7 +1628,7 @@ class JobConfigResponse(dict):
         :param 'OutputResponse' output: Output configuration.
         :param Sequence['OverlayResponse'] overlays: List of overlays on the output video, in descending Z-order.
         :param 'PubsubDestinationResponse' pubsub_destination: Destination on Pub/Sub.
-        :param Sequence['SpriteSheetResponse'] sprite_sheets: List of output sprite sheets.
+        :param Sequence['SpriteSheetResponse'] sprite_sheets: List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
         """
         pulumi.set(__self__, "ad_breaks", ad_breaks)
         pulumi.set(__self__, "edit_list", edit_list)
@@ -1717,7 +1717,7 @@ class JobConfigResponse(dict):
     @pulumi.getter(name="spriteSheets")
     def sprite_sheets(self) -> Sequence['outputs.SpriteSheetResponse']:
         """
-        List of output sprite sheets.
+        List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
         """
         return pulumi.get(self, "sprite_sheets")
 

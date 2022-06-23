@@ -8,7 +8,7 @@ export const EntryType = {
      */
     EntryTypeUnspecified: "ENTRY_TYPE_UNSPECIFIED",
     /**
-     * Output only. The entry type that has a GoogleSQL schema, including logical views.
+     * The entry type that has a GoogleSQL schema, including logical views.
      */
     Table: "TABLE",
     /**
@@ -113,34 +113,6 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpecType = {
  * Type of this table.
  */
 export type GoogleCloudDatacatalogV1DatabaseTableSpecType = (typeof GoogleCloudDatacatalogV1DatabaseTableSpecType)[keyof typeof GoogleCloudDatacatalogV1DatabaseTableSpecType];
-
-export const GoogleCloudDatacatalogV1DataplexExternalTableSystem = {
-    /**
-     * Default unknown system.
-     */
-    IntegratedSystemUnspecified: "INTEGRATED_SYSTEM_UNSPECIFIED",
-    /**
-     * BigQuery.
-     */
-    Bigquery: "BIGQUERY",
-    /**
-     * Cloud Pub/Sub.
-     */
-    CloudPubsub: "CLOUD_PUBSUB",
-    /**
-     * Dataproc Metastore.
-     */
-    DataprocMetastore: "DATAPROC_METASTORE",
-    /**
-     * Dataplex.
-     */
-    Dataplex: "DATAPLEX",
-} as const;
-
-/**
- * Service in which the external table is registered.
- */
-export type GoogleCloudDatacatalogV1DataplexExternalTableSystem = (typeof GoogleCloudDatacatalogV1DataplexExternalTableSystem)[keyof typeof GoogleCloudDatacatalogV1DataplexExternalTableSystem];
 
 export const GoogleCloudDatacatalogV1RoutineSpecArgumentMode = {
     /**

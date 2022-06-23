@@ -182,10 +182,12 @@ class CloneJob(pulumi.CustomResource):
             __props__.__dict__["compute_engine_target_details"] = None
             __props__.__dict__["compute_engine_vm_details"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["end_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_time"] = None
+            __props__.__dict__["steps"] = None
             __props__.__dict__["target_details"] = None
         super(CloneJob, __self__).__init__(
             'google-native:vmmigration/v1alpha1:CloneJob',
@@ -213,6 +215,7 @@ class CloneJob(pulumi.CustomResource):
         __props__.__dict__["compute_engine_target_details"] = None
         __props__.__dict__["compute_engine_vm_details"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["migrating_vm_id"] = None
@@ -222,6 +225,7 @@ class CloneJob(pulumi.CustomResource):
         __props__.__dict__["source_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_time"] = None
+        __props__.__dict__["steps"] = None
         __props__.__dict__["target_details"] = None
         return CloneJob(resource_name, opts=opts, __props__=__props__)
 
@@ -256,6 +260,14 @@ class CloneJob(pulumi.CustomResource):
         The time the clone job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time the clone job was ended.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -316,6 +328,14 @@ class CloneJob(pulumi.CustomResource):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> pulumi.Output[Sequence['outputs.CloneStepResponse']]:
+        """
+        The clone steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
 
     @property
     @pulumi.getter(name="targetDetails")

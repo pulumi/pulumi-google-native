@@ -92,4 +92,53 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Immutable. The on prem cluster's type.
+    /// </summary>
+    [EnumType]
+    public readonly struct OnPremClusterClusterType : IEquatable<OnPremClusterClusterType>
+    {
+        private readonly string _value;
+
+        private OnPremClusterClusterType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The ClusterType is not set.
+        /// </summary>
+        public static OnPremClusterClusterType ClustertypeUnspecified { get; } = new OnPremClusterClusterType("CLUSTERTYPE_UNSPECIFIED");
+        /// <summary>
+        /// The ClusterType is bootstrap cluster.
+        /// </summary>
+        public static OnPremClusterClusterType Bootstrap { get; } = new OnPremClusterClusterType("BOOTSTRAP");
+        /// <summary>
+        /// The ClusterType is baremetal hybrid cluster.
+        /// </summary>
+        public static OnPremClusterClusterType Hybrid { get; } = new OnPremClusterClusterType("HYBRID");
+        /// <summary>
+        /// The ClusterType is baremetal standalone cluster.
+        /// </summary>
+        public static OnPremClusterClusterType Standalone { get; } = new OnPremClusterClusterType("STANDALONE");
+        /// <summary>
+        /// The ClusterType is user cluster.
+        /// </summary>
+        public static OnPremClusterClusterType User { get; } = new OnPremClusterClusterType("USER");
+
+        public static bool operator ==(OnPremClusterClusterType left, OnPremClusterClusterType right) => left.Equals(right);
+        public static bool operator !=(OnPremClusterClusterType left, OnPremClusterClusterType right) => !left.Equals(right);
+
+        public static explicit operator string(OnPremClusterClusterType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OnPremClusterClusterType other && Equals(other);
+        public bool Equals(OnPremClusterClusterType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

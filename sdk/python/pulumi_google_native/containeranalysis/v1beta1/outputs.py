@@ -1587,8 +1587,8 @@ class DigestResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "digestValue":
-            suggest = "digest_value"
+        if key == "digestBytes":
+            suggest = "digest_bytes"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DigestResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1603,14 +1603,14 @@ class DigestResponse(dict):
 
     def __init__(__self__, *,
                  algo: str,
-                 digest_value: str):
+                 digest_bytes: str):
         """
         Digest information.
         :param str algo: `SHA1`, `SHA512` etc.
-        :param str digest_value: Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        :param str digest_bytes: Value of the digest.
         """
         pulumi.set(__self__, "algo", algo)
-        pulumi.set(__self__, "digest_value", digest_value)
+        pulumi.set(__self__, "digest_bytes", digest_bytes)
 
     @property
     @pulumi.getter
@@ -1621,12 +1621,12 @@ class DigestResponse(dict):
         return pulumi.get(self, "algo")
 
     @property
-    @pulumi.getter(name="digestValue")
-    def digest_value(self) -> str:
+    @pulumi.getter(name="digestBytes")
+    def digest_bytes(self) -> str:
         """
-        Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        Value of the digest.
         """
-        return pulumi.get(self, "digest_value")
+        return pulumi.get(self, "digest_bytes")
 
 
 @pulumi.output_type

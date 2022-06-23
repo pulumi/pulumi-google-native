@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public readonly string Channel;
         /// <summary>
+        /// The reason(s) why a trigger is in FAILED state.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Conditions;
+        /// <summary>
         /// The creation time.
         /// </summary>
         public readonly string CreateTime;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         private GetTriggerResult(
             string channel,
 
+            ImmutableDictionary<string, string> conditions,
+
             string createTime,
 
             Outputs.DestinationResponse destination,
@@ -131,6 +137,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
             string updateTime)
         {
             Channel = channel;
+            Conditions = conditions;
             CreateTime = createTime;
             Destination = destination;
             Etag = etag;

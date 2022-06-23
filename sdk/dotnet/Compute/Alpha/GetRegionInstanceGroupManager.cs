@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        /// Pagination behavior of the listManagedInstances API method for this managed instance group.
         /// </summary>
         public readonly string ListManagedInstancesResults;
         /// <summary>

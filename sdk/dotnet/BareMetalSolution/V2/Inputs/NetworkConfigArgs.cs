@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// The JumboFramesEnabled option for customer to set.
+        /// </summary>
+        [Input("jumboFramesEnabled")]
+        public Input<bool>? JumboFramesEnabled { get; set; }
+
+        /// <summary>
         /// Service CIDR, if any.
         /// </summary>
         [Input("serviceCidr")]

@@ -197,6 +197,8 @@ const (
 	RepositoryFormatYum = RepositoryFormat("YUM")
 	// Python package format.
 	RepositoryFormatPython = RepositoryFormat("PYTHON")
+	// Kubeflow Pipelines package format.
+	RepositoryFormatKfp = RepositoryFormat("KFP")
 )
 
 func (RepositoryFormat) ElementType() reflect.Type {

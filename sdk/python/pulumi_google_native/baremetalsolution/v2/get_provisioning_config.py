@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProvisioningConfigResult:
-    def __init__(__self__, cloud_console_uri=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, state=None, ticket_id=None, update_time=None, volumes=None):
+    def __init__(__self__, cloud_console_uri=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, state=None, ticket_id=None, update_time=None, volumes=None, vpc_sc_enabled=None):
         if cloud_console_uri and not isinstance(cloud_console_uri, str):
             raise TypeError("Expected argument 'cloud_console_uri' to be a str")
         pulumi.set(__self__, "cloud_console_uri", cloud_console_uri)
@@ -57,6 +57,9 @@ class GetProvisioningConfigResult:
         if volumes and not isinstance(volumes, list):
             raise TypeError("Expected argument 'volumes' to be a list")
         pulumi.set(__self__, "volumes", volumes)
+        if vpc_sc_enabled and not isinstance(vpc_sc_enabled, bool):
+            raise TypeError("Expected argument 'vpc_sc_enabled' to be a bool")
+        pulumi.set(__self__, "vpc_sc_enabled", vpc_sc_enabled)
 
     @property
     @pulumi.getter(name="cloudConsoleUri")
@@ -146,6 +149,14 @@ class GetProvisioningConfigResult:
         """
         return pulumi.get(self, "volumes")
 
+    @property
+    @pulumi.getter(name="vpcScEnabled")
+    def vpc_sc_enabled(self) -> bool:
+        """
+        If true, VPC SC is enabled for the cluster.
+        """
+        return pulumi.get(self, "vpc_sc_enabled")
+
 
 class AwaitableGetProvisioningConfigResult(GetProvisioningConfigResult):
     # pylint: disable=using-constant-test
@@ -163,7 +174,8 @@ class AwaitableGetProvisioningConfigResult(GetProvisioningConfigResult):
             state=self.state,
             ticket_id=self.ticket_id,
             update_time=self.update_time,
-            volumes=self.volumes)
+            volumes=self.volumes,
+            vpc_sc_enabled=self.vpc_sc_enabled)
 
 
 def get_provisioning_config(location: Optional[str] = None,
@@ -194,7 +206,8 @@ def get_provisioning_config(location: Optional[str] = None,
         state=__ret__.state,
         ticket_id=__ret__.ticket_id,
         update_time=__ret__.update_time,
-        volumes=__ret__.volumes)
+        volumes=__ret__.volumes,
+        vpc_sc_enabled=__ret__.vpc_sc_enabled)
 
 
 @_utilities.lift_output_func(get_provisioning_config)

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+// Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
 func LookupLakeContentIamPolicy(ctx *pulumi.Context, args *LookupLakeContentIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupLakeContentIamPolicyResult, error) {
 	var rv LookupLakeContentIamPolicyResult
 	err := ctx.Invoke("google-native:dataplex/v1:getLakeContentIamPolicy", args, &rv, opts...)

@@ -56,7 +56,7 @@ export class SearchApplication extends pulumi.CustomResource {
      */
     public readonly enableAuditLog!: pulumi.Output<boolean>;
     /**
-     * Name of the Search Application. Format: searchapplications/{application_id}.
+     * The name of the Search Application. Format: searchapplications/{application_id}.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -145,7 +145,7 @@ export interface SearchApplicationArgs {
      */
     enableAuditLog?: pulumi.Input<boolean>;
     /**
-     * Name of the Search Application. Format: searchapplications/{application_id}.
+     * The name of the Search Application. Format: searchapplications/{application_id}.
      */
     name?: pulumi.Input<string>;
     /**

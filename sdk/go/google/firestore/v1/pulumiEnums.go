@@ -10,6 +10,515 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The App Engine integration mode to use for this database.
+type DatabaseAppEngineIntegrationMode string
+
+const (
+	// Not used.
+	DatabaseAppEngineIntegrationModeAppEngineIntegrationModeUnspecified = DatabaseAppEngineIntegrationMode("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED")
+	// If an App Engine application exists in the same region as this database, App Engine configuration will impact this database. This includes disabling of the application & database, as well as disabling writes to the database.
+	DatabaseAppEngineIntegrationModeEnabled = DatabaseAppEngineIntegrationMode("ENABLED")
+	// Appengine has no affect on the ability of this database to serve requests.
+	DatabaseAppEngineIntegrationModeDisabled = DatabaseAppEngineIntegrationMode("DISABLED")
+)
+
+func (DatabaseAppEngineIntegrationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseAppEngineIntegrationMode)(nil)).Elem()
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToDatabaseAppEngineIntegrationModeOutput() DatabaseAppEngineIntegrationModeOutput {
+	return pulumi.ToOutput(e).(DatabaseAppEngineIntegrationModeOutput)
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToDatabaseAppEngineIntegrationModeOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseAppEngineIntegrationModeOutput)
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToDatabaseAppEngineIntegrationModePtrOutput() DatabaseAppEngineIntegrationModePtrOutput {
+	return e.ToDatabaseAppEngineIntegrationModePtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModePtrOutput {
+	return DatabaseAppEngineIntegrationMode(e).ToDatabaseAppEngineIntegrationModeOutputWithContext(ctx).ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx)
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseAppEngineIntegrationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatabaseAppEngineIntegrationModeOutput struct{ *pulumi.OutputState }
+
+func (DatabaseAppEngineIntegrationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseAppEngineIntegrationMode)(nil)).Elem()
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToDatabaseAppEngineIntegrationModeOutput() DatabaseAppEngineIntegrationModeOutput {
+	return o
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToDatabaseAppEngineIntegrationModeOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModeOutput {
+	return o
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToDatabaseAppEngineIntegrationModePtrOutput() DatabaseAppEngineIntegrationModePtrOutput {
+	return o.ToDatabaseAppEngineIntegrationModePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseAppEngineIntegrationMode) *DatabaseAppEngineIntegrationMode {
+		return &v
+	}).(DatabaseAppEngineIntegrationModePtrOutput)
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseAppEngineIntegrationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseAppEngineIntegrationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseAppEngineIntegrationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseAppEngineIntegrationModePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseAppEngineIntegrationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseAppEngineIntegrationMode)(nil)).Elem()
+}
+
+func (o DatabaseAppEngineIntegrationModePtrOutput) ToDatabaseAppEngineIntegrationModePtrOutput() DatabaseAppEngineIntegrationModePtrOutput {
+	return o
+}
+
+func (o DatabaseAppEngineIntegrationModePtrOutput) ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModePtrOutput {
+	return o
+}
+
+func (o DatabaseAppEngineIntegrationModePtrOutput) Elem() DatabaseAppEngineIntegrationModeOutput {
+	return o.ApplyT(func(v *DatabaseAppEngineIntegrationMode) DatabaseAppEngineIntegrationMode {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseAppEngineIntegrationMode
+		return ret
+	}).(DatabaseAppEngineIntegrationModeOutput)
+}
+
+func (o DatabaseAppEngineIntegrationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseAppEngineIntegrationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseAppEngineIntegrationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatabaseAppEngineIntegrationModeInput is an input type that accepts DatabaseAppEngineIntegrationModeArgs and DatabaseAppEngineIntegrationModeOutput values.
+// You can construct a concrete instance of `DatabaseAppEngineIntegrationModeInput` via:
+//
+//          DatabaseAppEngineIntegrationModeArgs{...}
+type DatabaseAppEngineIntegrationModeInput interface {
+	pulumi.Input
+
+	ToDatabaseAppEngineIntegrationModeOutput() DatabaseAppEngineIntegrationModeOutput
+	ToDatabaseAppEngineIntegrationModeOutputWithContext(context.Context) DatabaseAppEngineIntegrationModeOutput
+}
+
+var databaseAppEngineIntegrationModePtrType = reflect.TypeOf((**DatabaseAppEngineIntegrationMode)(nil)).Elem()
+
+type DatabaseAppEngineIntegrationModePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseAppEngineIntegrationModePtrOutput() DatabaseAppEngineIntegrationModePtrOutput
+	ToDatabaseAppEngineIntegrationModePtrOutputWithContext(context.Context) DatabaseAppEngineIntegrationModePtrOutput
+}
+
+type databaseAppEngineIntegrationModePtr string
+
+func DatabaseAppEngineIntegrationModePtr(v string) DatabaseAppEngineIntegrationModePtrInput {
+	return (*databaseAppEngineIntegrationModePtr)(&v)
+}
+
+func (*databaseAppEngineIntegrationModePtr) ElementType() reflect.Type {
+	return databaseAppEngineIntegrationModePtrType
+}
+
+func (in *databaseAppEngineIntegrationModePtr) ToDatabaseAppEngineIntegrationModePtrOutput() DatabaseAppEngineIntegrationModePtrOutput {
+	return pulumi.ToOutput(in).(DatabaseAppEngineIntegrationModePtrOutput)
+}
+
+func (in *databaseAppEngineIntegrationModePtr) ToDatabaseAppEngineIntegrationModePtrOutputWithContext(ctx context.Context) DatabaseAppEngineIntegrationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAppEngineIntegrationModePtrOutput)
+}
+
+// The concurrency control mode to use for this database.
+type DatabaseConcurrencyMode string
+
+const (
+	// Not used.
+	DatabaseConcurrencyModeConcurrencyModeUnspecified = DatabaseConcurrencyMode("CONCURRENCY_MODE_UNSPECIFIED")
+	// Use optimistic concurrency control by default. This mode is available for Cloud Firestore databases.
+	DatabaseConcurrencyModeOptimistic = DatabaseConcurrencyMode("OPTIMISTIC")
+	// Use pessimistic concurrency control by default. This mode is available for Cloud Firestore databases. This is the default setting for Cloud Firestore.
+	DatabaseConcurrencyModePessimistic = DatabaseConcurrencyMode("PESSIMISTIC")
+	// Use optimistic concurrency control with entity groups by default. This is the only available mode for Cloud Datastore. This mode is also available for Cloud Firestore with Datastore Mode but is not recommended.
+	DatabaseConcurrencyModeOptimisticWithEntityGroups = DatabaseConcurrencyMode("OPTIMISTIC_WITH_ENTITY_GROUPS")
+)
+
+func (DatabaseConcurrencyMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConcurrencyMode)(nil)).Elem()
+}
+
+func (e DatabaseConcurrencyMode) ToDatabaseConcurrencyModeOutput() DatabaseConcurrencyModeOutput {
+	return pulumi.ToOutput(e).(DatabaseConcurrencyModeOutput)
+}
+
+func (e DatabaseConcurrencyMode) ToDatabaseConcurrencyModeOutputWithContext(ctx context.Context) DatabaseConcurrencyModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseConcurrencyModeOutput)
+}
+
+func (e DatabaseConcurrencyMode) ToDatabaseConcurrencyModePtrOutput() DatabaseConcurrencyModePtrOutput {
+	return e.ToDatabaseConcurrencyModePtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseConcurrencyMode) ToDatabaseConcurrencyModePtrOutputWithContext(ctx context.Context) DatabaseConcurrencyModePtrOutput {
+	return DatabaseConcurrencyMode(e).ToDatabaseConcurrencyModeOutputWithContext(ctx).ToDatabaseConcurrencyModePtrOutputWithContext(ctx)
+}
+
+func (e DatabaseConcurrencyMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseConcurrencyMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseConcurrencyMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseConcurrencyMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatabaseConcurrencyModeOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConcurrencyModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConcurrencyMode)(nil)).Elem()
+}
+
+func (o DatabaseConcurrencyModeOutput) ToDatabaseConcurrencyModeOutput() DatabaseConcurrencyModeOutput {
+	return o
+}
+
+func (o DatabaseConcurrencyModeOutput) ToDatabaseConcurrencyModeOutputWithContext(ctx context.Context) DatabaseConcurrencyModeOutput {
+	return o
+}
+
+func (o DatabaseConcurrencyModeOutput) ToDatabaseConcurrencyModePtrOutput() DatabaseConcurrencyModePtrOutput {
+	return o.ToDatabaseConcurrencyModePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseConcurrencyModeOutput) ToDatabaseConcurrencyModePtrOutputWithContext(ctx context.Context) DatabaseConcurrencyModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseConcurrencyMode) *DatabaseConcurrencyMode {
+		return &v
+	}).(DatabaseConcurrencyModePtrOutput)
+}
+
+func (o DatabaseConcurrencyModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabaseConcurrencyModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseConcurrencyMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabaseConcurrencyModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseConcurrencyModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseConcurrencyMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseConcurrencyModePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConcurrencyModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConcurrencyMode)(nil)).Elem()
+}
+
+func (o DatabaseConcurrencyModePtrOutput) ToDatabaseConcurrencyModePtrOutput() DatabaseConcurrencyModePtrOutput {
+	return o
+}
+
+func (o DatabaseConcurrencyModePtrOutput) ToDatabaseConcurrencyModePtrOutputWithContext(ctx context.Context) DatabaseConcurrencyModePtrOutput {
+	return o
+}
+
+func (o DatabaseConcurrencyModePtrOutput) Elem() DatabaseConcurrencyModeOutput {
+	return o.ApplyT(func(v *DatabaseConcurrencyMode) DatabaseConcurrencyMode {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseConcurrencyMode
+		return ret
+	}).(DatabaseConcurrencyModeOutput)
+}
+
+func (o DatabaseConcurrencyModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseConcurrencyModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseConcurrencyMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatabaseConcurrencyModeInput is an input type that accepts DatabaseConcurrencyModeArgs and DatabaseConcurrencyModeOutput values.
+// You can construct a concrete instance of `DatabaseConcurrencyModeInput` via:
+//
+//          DatabaseConcurrencyModeArgs{...}
+type DatabaseConcurrencyModeInput interface {
+	pulumi.Input
+
+	ToDatabaseConcurrencyModeOutput() DatabaseConcurrencyModeOutput
+	ToDatabaseConcurrencyModeOutputWithContext(context.Context) DatabaseConcurrencyModeOutput
+}
+
+var databaseConcurrencyModePtrType = reflect.TypeOf((**DatabaseConcurrencyMode)(nil)).Elem()
+
+type DatabaseConcurrencyModePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseConcurrencyModePtrOutput() DatabaseConcurrencyModePtrOutput
+	ToDatabaseConcurrencyModePtrOutputWithContext(context.Context) DatabaseConcurrencyModePtrOutput
+}
+
+type databaseConcurrencyModePtr string
+
+func DatabaseConcurrencyModePtr(v string) DatabaseConcurrencyModePtrInput {
+	return (*databaseConcurrencyModePtr)(&v)
+}
+
+func (*databaseConcurrencyModePtr) ElementType() reflect.Type {
+	return databaseConcurrencyModePtrType
+}
+
+func (in *databaseConcurrencyModePtr) ToDatabaseConcurrencyModePtrOutput() DatabaseConcurrencyModePtrOutput {
+	return pulumi.ToOutput(in).(DatabaseConcurrencyModePtrOutput)
+}
+
+func (in *databaseConcurrencyModePtr) ToDatabaseConcurrencyModePtrOutputWithContext(ctx context.Context) DatabaseConcurrencyModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseConcurrencyModePtrOutput)
+}
+
+// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
+type DatabaseType string
+
+const (
+	// The default value. This value is used if the database type is omitted.
+	DatabaseTypeDatabaseTypeUnspecified = DatabaseType("DATABASE_TYPE_UNSPECIFIED")
+	// Firestore Native Mode
+	DatabaseTypeFirestoreNative = DatabaseType("FIRESTORE_NATIVE")
+	// Firestore in Datastore Mode.
+	DatabaseTypeDatastoreMode = DatabaseType("DATASTORE_MODE")
+)
+
+func (DatabaseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseType)(nil)).Elem()
+}
+
+func (e DatabaseType) ToDatabaseTypeOutput() DatabaseTypeOutput {
+	return pulumi.ToOutput(e).(DatabaseTypeOutput)
+}
+
+func (e DatabaseType) ToDatabaseTypeOutputWithContext(ctx context.Context) DatabaseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseTypeOutput)
+}
+
+func (e DatabaseType) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
+	return e.ToDatabaseTypePtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseType) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
+	return DatabaseType(e).ToDatabaseTypeOutputWithContext(ctx).ToDatabaseTypePtrOutputWithContext(ctx)
+}
+
+func (e DatabaseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatabaseTypeOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseType)(nil)).Elem()
+}
+
+func (o DatabaseTypeOutput) ToDatabaseTypeOutput() DatabaseTypeOutput {
+	return o
+}
+
+func (o DatabaseTypeOutput) ToDatabaseTypeOutputWithContext(ctx context.Context) DatabaseTypeOutput {
+	return o
+}
+
+func (o DatabaseTypeOutput) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
+	return o.ToDatabaseTypePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseType) *DatabaseType {
+		return &v
+	}).(DatabaseTypePtrOutput)
+}
+
+func (o DatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabaseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseType)(nil)).Elem()
+}
+
+func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
+	return o
+}
+
+func (o DatabaseTypePtrOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
+	return o
+}
+
+func (o DatabaseTypePtrOutput) Elem() DatabaseTypeOutput {
+	return o.ApplyT(func(v *DatabaseType) DatabaseType {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseType
+		return ret
+	}).(DatabaseTypeOutput)
+}
+
+func (o DatabaseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatabaseTypeInput is an input type that accepts DatabaseTypeArgs and DatabaseTypeOutput values.
+// You can construct a concrete instance of `DatabaseTypeInput` via:
+//
+//          DatabaseTypeArgs{...}
+type DatabaseTypeInput interface {
+	pulumi.Input
+
+	ToDatabaseTypeOutput() DatabaseTypeOutput
+	ToDatabaseTypeOutputWithContext(context.Context) DatabaseTypeOutput
+}
+
+var databaseTypePtrType = reflect.TypeOf((**DatabaseType)(nil)).Elem()
+
+type DatabaseTypePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseTypePtrOutput() DatabaseTypePtrOutput
+	ToDatabaseTypePtrOutputWithContext(context.Context) DatabaseTypePtrOutput
+}
+
+type databaseTypePtr string
+
+func DatabaseTypePtr(v string) DatabaseTypePtrInput {
+	return (*databaseTypePtr)(&v)
+}
+
+func (*databaseTypePtr) ElementType() reflect.Type {
+	return databaseTypePtrType
+}
+
+func (in *databaseTypePtr) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
+	return pulumi.ToOutput(in).(DatabaseTypePtrOutput)
+}
+
+func (in *databaseTypePtr) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypePtrOutput)
+}
+
 // Indicates that this field supports operations on `array_value`s.
 type GoogleFirestoreAdminV1IndexFieldArrayConfig string
 
@@ -516,12 +1025,24 @@ func (in *indexQueryScopePtr) ToIndexQueryScopePtrOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseAppEngineIntegrationModeInput)(nil)).Elem(), DatabaseAppEngineIntegrationMode("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseAppEngineIntegrationModePtrInput)(nil)).Elem(), DatabaseAppEngineIntegrationMode("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConcurrencyModeInput)(nil)).Elem(), DatabaseConcurrencyMode("CONCURRENCY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConcurrencyModePtrInput)(nil)).Elem(), DatabaseConcurrencyMode("CONCURRENCY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeInput)(nil)).Elem(), DatabaseType("DATABASE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypePtrInput)(nil)).Elem(), DatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayConfigInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayConfigPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldOrderInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldOrder("ORDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldOrderPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldOrder("ORDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexQueryScopeInput)(nil)).Elem(), IndexQueryScope("QUERY_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexQueryScopePtrInput)(nil)).Elem(), IndexQueryScope("QUERY_SCOPE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(DatabaseAppEngineIntegrationModeOutput{})
+	pulumi.RegisterOutputType(DatabaseAppEngineIntegrationModePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseConcurrencyModeOutput{})
+	pulumi.RegisterOutputType(DatabaseConcurrencyModePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseTypeOutput{})
+	pulumi.RegisterOutputType(DatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayConfigOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldOrderOutput{})

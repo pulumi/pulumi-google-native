@@ -45,6 +45,7 @@ export * from "./getImageIamPolicy";
 export * from "./getInstance";
 export * from "./getInstanceGroup";
 export * from "./getInstanceGroupManager";
+export * from "./getInstanceGroupManagerResizeRequest";
 export * from "./getInstanceIamPolicy";
 export * from "./getInstanceTemplate";
 export * from "./getInstanceTemplateIamPolicy";
@@ -134,6 +135,7 @@ export * from "./imageIamPolicy";
 export * from "./instance";
 export * from "./instanceGroup";
 export * from "./instanceGroupManager";
+export * from "./instanceGroupManagerResizeRequest";
 export * from "./instanceIamPolicy";
 export * from "./instanceTemplate";
 export * from "./instanceTemplateIamPolicy";
@@ -242,6 +244,7 @@ import { ImageIamPolicy } from "./imageIamPolicy";
 import { Instance } from "./instance";
 import { InstanceGroup } from "./instanceGroup";
 import { InstanceGroupManager } from "./instanceGroupManager";
+import { InstanceGroupManagerResizeRequest } from "./instanceGroupManagerResizeRequest";
 import { InstanceIamPolicy } from "./instanceIamPolicy";
 import { InstanceTemplate } from "./instanceTemplate";
 import { InstanceTemplateIamPolicy } from "./instanceTemplateIamPolicy";
@@ -376,6 +379,8 @@ const _module = {
                 return new InstanceGroup(name, <any>undefined, { urn })
             case "google-native:compute/alpha:InstanceGroupManager":
                 return new InstanceGroupManager(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:InstanceGroupManagerResizeRequest":
+                return new InstanceGroupManagerResizeRequest(name, <any>undefined, { urn })
             case "google-native:compute/alpha:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:InstanceTemplate":

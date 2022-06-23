@@ -33,6 +33,10 @@ export interface GetJobTemplateResult {
      */
     readonly config: outputs.transcoder.v1.JobConfigResponse;
     /**
+     * The labels associated with this job template. You can use these to organize and group your job templates.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
      */
     readonly name: string;

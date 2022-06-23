@@ -74,6 +74,10 @@ export interface GetProvisioningConfigResult {
      * Volumes to be created.
      */
     readonly volumes: outputs.baremetalsolution.v2.VolumeConfigResponse[];
+    /**
+     * If true, VPC SC is enabled for the cluster.
+     */
+    readonly vpcScEnabled: boolean;
 }
 
 export function getProvisioningConfigOutput(args: GetProvisioningConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisioningConfigResult> {

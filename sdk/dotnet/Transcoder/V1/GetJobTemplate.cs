@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         public readonly Outputs.JobConfigResponse Config;
         /// <summary>
+        /// The labels associated with this job template. You can use these to organize and group your job templates.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
         /// </summary>
         public readonly string Name;
@@ -74,9 +78,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         private GetJobTemplateResult(
             Outputs.JobConfigResponse config,
 
+            ImmutableDictionary<string, string> labels,
+
             string name)
         {
             Config = config;
+            Labels = labels;
             Name = name;
         }
     }

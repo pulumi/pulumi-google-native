@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     public static class GetLakeContentIamPolicy
     {
         /// <summary>
-        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
         /// </summary>
         public static Task<GetLakeContentIamPolicyResult> InvokeAsync(GetLakeContentIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLakeContentIamPolicyResult>("google-native:dataplex/v1:getLakeContentIamPolicy", args ?? new GetLakeContentIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+        /// Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
         /// </summary>
         public static Output<GetLakeContentIamPolicyResult> Invoke(GetLakeContentIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetLakeContentIamPolicyResult>("google-native:dataplex/v1:getLakeContentIamPolicy", args ?? new GetLakeContentIamPolicyInvokeArgs(), options.WithDefaults());

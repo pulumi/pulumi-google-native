@@ -88,7 +88,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+     * Pagination behavior of the listManagedInstances API method for this managed instance group.
      */
     public readonly listManagedInstancesResults!: pulumi.Output<string>;
     /**
@@ -280,7 +280,7 @@ export interface RegionInstanceGroupManagerArgs {
      */
     instanceTemplate?: pulumi.Input<string>;
     /**
-     * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+     * Pagination behavior of the listManagedInstances API method for this managed instance group.
      */
     listManagedInstancesResults?: pulumi.Input<enums.compute.alpha.RegionInstanceGroupManagerListManagedInstancesResults>;
     /**

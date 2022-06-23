@@ -507,7 +507,9 @@ class GoogleCloudRunV2ExecutionReferenceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "createTime":
+        if key == "completionTime":
+            suggest = "completion_time"
+        elif key == "createTime":
             suggest = "create_time"
 
         if suggest:
@@ -522,15 +524,26 @@ class GoogleCloudRunV2ExecutionReferenceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 completion_time: str,
                  create_time: str,
                  name: str):
         """
         Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+        :param str completion_time: Creation timestamp of the execution.
         :param str create_time: Creation timestamp of the execution.
         :param str name: Name of the execution.
         """
+        pulumi.set(__self__, "completion_time", completion_time)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="completionTime")
+    def completion_time(self) -> str:
+        """
+        Creation timestamp of the execution.
+        """
+        return pulumi.get(self, "completion_time")
 
     @property
     @pulumi.getter(name="createTime")

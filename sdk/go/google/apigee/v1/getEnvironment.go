@@ -36,6 +36,8 @@ type LookupEnvironmentResult struct {
 	Description string `pulumi:"description"`
 	// Optional. Display name for this environment.
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+	ForwardProxyUri string `pulumi:"forwardProxyUri"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
@@ -105,6 +107,11 @@ func (o LookupEnvironmentResultOutput) Description() pulumi.StringOutput {
 // Optional. Display name for this environment.
 func (o LookupEnvironmentResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+func (o LookupEnvironmentResultOutput) ForwardProxyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ForwardProxyUri }).(pulumi.StringOutput)
 }
 
 // Last modification time of this environment as milliseconds since epoch.

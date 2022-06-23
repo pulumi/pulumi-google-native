@@ -41,7 +41,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly actionOnFailedPrimaryWorkers!: pulumi.Output<string | undefined>;
     /**
-     * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+     * The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
      */
     public readonly clusterName!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface ClusterArgs {
      */
     actionOnFailedPrimaryWorkers?: pulumi.Input<string>;
     /**
-     * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+     * The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
      */
     clusterName: pulumi.Input<string>;
     /**

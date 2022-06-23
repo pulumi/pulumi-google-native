@@ -225,55 +225,39 @@ class CryptoKeyConfigArgs:
 @pulumi.input_type
 class EventPublishConfigArgs:
     def __init__(__self__, *,
-                 event_publish_enabled: pulumi.Input[bool],
-                 topic: pulumi.Input[str],
-                 project: Optional[pulumi.Input[str]] = None):
+                 enabled: pulumi.Input[bool],
+                 topic: pulumi.Input[str]):
         """
         Confirguration of PubSubEventWriter.
-        :param pulumi.Input[bool] event_publish_enabled: Option to enable Event Publishing.
-        :param pulumi.Input[str] topic: Pub/Sub Topic.
-        :param pulumi.Input[str] project: Project name.
+        :param pulumi.Input[bool] enabled: Option to enable Event Publishing.
+        :param pulumi.Input[str] topic: The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
         """
-        pulumi.set(__self__, "event_publish_enabled", event_publish_enabled)
+        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "topic", topic)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
 
     @property
-    @pulumi.getter(name="eventPublishEnabled")
-    def event_publish_enabled(self) -> pulumi.Input[bool]:
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
         """
         Option to enable Event Publishing.
         """
-        return pulumi.get(self, "event_publish_enabled")
+        return pulumi.get(self, "enabled")
 
-    @event_publish_enabled.setter
-    def event_publish_enabled(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "event_publish_enabled", value)
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
         """
-        Pub/Sub Topic.
+        The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
     def topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project name.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type

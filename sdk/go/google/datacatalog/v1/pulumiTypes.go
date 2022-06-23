@@ -657,127 +657,6 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) HasCredent
 }
 
 // Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpec struct {
-}
-
-// GoogleCloudDatacatalogV1BigQueryDateShardedSpecInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs and GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryDateShardedSpecInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs{...}
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput
-}
-
-// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs struct {
-}
-
-func (GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput).ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs, GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtr and GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1BigQueryDateShardedSpecPtrType GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs
-
-func GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtr(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs) GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput {
-	return (*googleCloudDatacatalogV1BigQueryDateShardedSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1BigQueryDateShardedSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryDateShardedSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1BigQueryDateShardedSpecPtrType) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1BigQueryDateShardedSpecPtrType) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput)
-}
-
-// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryDateShardedSpec) *GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput)
-}
-
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryDateShardedSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpec) GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1BigQueryDateShardedSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput)
-}
-
-// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
 type GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse struct {
 	// The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
 	Dataset string `pulumi:"dataset"`
@@ -988,167 +867,6 @@ func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ToGoogleCloud
 // Paths of the imported libraries.
 func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ImportedLibraries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse) []string { return v.ImportedLibraries }).(pulumi.StringArrayOutput)
-}
-
-// Describes a BigQuery table.
-type GoogleCloudDatacatalogV1BigQueryTableSpec struct {
-	// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-	TableSpec *GoogleCloudDatacatalogV1TableSpec `pulumi:"tableSpec"`
-	// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-	ViewSpec *GoogleCloudDatacatalogV1ViewSpec `pulumi:"viewSpec"`
-}
-
-// GoogleCloudDatacatalogV1BigQueryTableSpecInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryTableSpecArgs and GoogleCloudDatacatalogV1BigQueryTableSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryTableSpecInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryTableSpecArgs{...}
-type GoogleCloudDatacatalogV1BigQueryTableSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecOutput() GoogleCloudDatacatalogV1BigQueryTableSpecOutput
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecOutput
-}
-
-// Describes a BigQuery table.
-type GoogleCloudDatacatalogV1BigQueryTableSpecArgs struct {
-	// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-	TableSpec GoogleCloudDatacatalogV1TableSpecPtrInput `pulumi:"tableSpec"`
-	// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-	ViewSpec GoogleCloudDatacatalogV1ViewSpecPtrInput `pulumi:"viewSpec"`
-}
-
-func (GoogleCloudDatacatalogV1BigQueryTableSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecOutput() GoogleCloudDatacatalogV1BigQueryTableSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryTableSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryTableSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryTableSpecOutput).ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryTableSpecArgs, GoogleCloudDatacatalogV1BigQueryTableSpecPtr and GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryTableSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1BigQueryTableSpecPtrType GoogleCloudDatacatalogV1BigQueryTableSpecArgs
-
-func GoogleCloudDatacatalogV1BigQueryTableSpecPtr(v *GoogleCloudDatacatalogV1BigQueryTableSpecArgs) GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput {
-	return (*googleCloudDatacatalogV1BigQueryTableSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1BigQueryTableSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryTableSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1BigQueryTableSpecPtrType) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1BigQueryTableSpecPtrType) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput)
-}
-
-// Describes a BigQuery table.
-type GoogleCloudDatacatalogV1BigQueryTableSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryTableSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecOutput() GoogleCloudDatacatalogV1BigQueryTableSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryTableSpec) *GoogleCloudDatacatalogV1BigQueryTableSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput)
-}
-
-// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecOutput) TableSpec() GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryTableSpec) *GoogleCloudDatacatalogV1TableSpec {
-		return v.TableSpec
-	}).(GoogleCloudDatacatalogV1TableSpecPtrOutput)
-}
-
-// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecOutput) ViewSpec() GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryTableSpec) *GoogleCloudDatacatalogV1ViewSpec { return v.ViewSpec }).(GoogleCloudDatacatalogV1ViewSpecPtrOutput)
-}
-
-type GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryTableSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryTableSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryTableSpec) GoogleCloudDatacatalogV1BigQueryTableSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1BigQueryTableSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryTableSpecOutput)
-}
-
-// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput) TableSpec() GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryTableSpec) *GoogleCloudDatacatalogV1TableSpec {
-		if v == nil {
-			return nil
-		}
-		return v.TableSpec
-	}).(GoogleCloudDatacatalogV1TableSpecPtrOutput)
-}
-
-// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput) ViewSpec() GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryTableSpec) *GoogleCloudDatacatalogV1ViewSpec {
-		if v == nil {
-			return nil
-		}
-		return v.ViewSpec
-	}).(GoogleCloudDatacatalogV1ViewSpecPtrOutput)
 }
 
 // Describes a BigQuery table.
@@ -2378,8 +2096,6 @@ func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) StorageProperties() Go
 
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpec struct {
-	// Fields specific to a Dataplex table and present only in the Dataplex table entries.
-	DataplexTable *GoogleCloudDatacatalogV1DataplexTableSpec `pulumi:"dataplexTable"`
 	// Type of this table.
 	Type *GoogleCloudDatacatalogV1DatabaseTableSpecType `pulumi:"type"`
 }
@@ -2397,8 +2113,6 @@ type GoogleCloudDatacatalogV1DatabaseTableSpecInput interface {
 
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpecArgs struct {
-	// Fields specific to a Dataplex table and present only in the Dataplex table entries.
-	DataplexTable GoogleCloudDatacatalogV1DataplexTableSpecPtrInput `pulumi:"dataplexTable"`
 	// Type of this table.
 	Type GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput `pulumi:"type"`
 }
@@ -2481,13 +2195,6 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) ToGoogleCloudDatacatalo
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput)
 }
 
-// Fields specific to a Dataplex table and present only in the Dataplex table entries.
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) DataplexTable() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DataplexTableSpec {
-		return v.DataplexTable
-	}).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
-}
-
 // Type of this table.
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) Type() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DatabaseTableSpecType {
@@ -2517,16 +2224,6 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Elem() GoogleCloudDa
 		var ret GoogleCloudDatacatalogV1DatabaseTableSpec
 		return ret
 	}).(GoogleCloudDatacatalogV1DatabaseTableSpecOutput)
-}
-
-// Fields specific to a Dataplex table and present only in the Dataplex table entries.
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) DataplexTable() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DataplexTableSpec {
-		if v == nil {
-			return nil
-		}
-		return v.DataplexTable
-	}).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
 }
 
 // Type of this table.
@@ -2572,135 +2269,6 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) DataplexTable()
 // Type of this table.
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpecResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
-type GoogleCloudDatacatalogV1DataplexExternalTable struct {
-	// Name of the Data Catalog entry representing the external table.
-	DataCatalogEntry *string `pulumi:"dataCatalogEntry"`
-	// Fully qualified name (FQN) of the external table.
-	FullyQualifiedName *string `pulumi:"fullyQualifiedName"`
-	// Google Cloud resource name of the external table.
-	GoogleCloudResource *string `pulumi:"googleCloudResource"`
-	// Service in which the external table is registered.
-	System *GoogleCloudDatacatalogV1DataplexExternalTableSystem `pulumi:"system"`
-}
-
-// GoogleCloudDatacatalogV1DataplexExternalTableInput is an input type that accepts GoogleCloudDatacatalogV1DataplexExternalTableArgs and GoogleCloudDatacatalogV1DataplexExternalTableOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexExternalTableInput` via:
-//
-//          GoogleCloudDatacatalogV1DataplexExternalTableArgs{...}
-type GoogleCloudDatacatalogV1DataplexExternalTableInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataplexExternalTableOutput() GoogleCloudDatacatalogV1DataplexExternalTableOutput
-	ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexExternalTableOutput
-}
-
-// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
-type GoogleCloudDatacatalogV1DataplexExternalTableArgs struct {
-	// Name of the Data Catalog entry representing the external table.
-	DataCatalogEntry pulumi.StringPtrInput `pulumi:"dataCatalogEntry"`
-	// Fully qualified name (FQN) of the external table.
-	FullyQualifiedName pulumi.StringPtrInput `pulumi:"fullyQualifiedName"`
-	// Google Cloud resource name of the external table.
-	GoogleCloudResource pulumi.StringPtrInput `pulumi:"googleCloudResource"`
-	// Service in which the external table is registered.
-	System GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrInput `pulumi:"system"`
-}
-
-func (GoogleCloudDatacatalogV1DataplexExternalTableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1DataplexExternalTableArgs) ToGoogleCloudDatacatalogV1DataplexExternalTableOutput() GoogleCloudDatacatalogV1DataplexExternalTableOutput {
-	return i.ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataplexExternalTableArgs) ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexExternalTableOutput)
-}
-
-// GoogleCloudDatacatalogV1DataplexExternalTableArrayInput is an input type that accepts GoogleCloudDatacatalogV1DataplexExternalTableArray and GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexExternalTableArrayInput` via:
-//
-//          GoogleCloudDatacatalogV1DataplexExternalTableArray{ GoogleCloudDatacatalogV1DataplexExternalTableArgs{...} }
-type GoogleCloudDatacatalogV1DataplexExternalTableArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutput() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput
-	ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput
-}
-
-type GoogleCloudDatacatalogV1DataplexExternalTableArray []GoogleCloudDatacatalogV1DataplexExternalTableInput
-
-func (GoogleCloudDatacatalogV1DataplexExternalTableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1DataplexExternalTableArray) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutput() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
-	return i.ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataplexExternalTableArray) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput)
-}
-
-// External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
-type GoogleCloudDatacatalogV1DataplexExternalTableOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1DataplexExternalTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableOutput() GoogleCloudDatacatalogV1DataplexExternalTableOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableOutput {
-	return o
-}
-
-// Name of the Data Catalog entry representing the external table.
-func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) DataCatalogEntry() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *string { return v.DataCatalogEntry }).(pulumi.StringPtrOutput)
-}
-
-// Fully qualified name (FQN) of the external table.
-func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) FullyQualifiedName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *string { return v.FullyQualifiedName }).(pulumi.StringPtrOutput)
-}
-
-// Google Cloud resource name of the external table.
-func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) GoogleCloudResource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *string { return v.GoogleCloudResource }).(pulumi.StringPtrOutput)
-}
-
-// Service in which the external table is registered.
-func (o GoogleCloudDatacatalogV1DataplexExternalTableOutput) System() GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexExternalTable) *GoogleCloudDatacatalogV1DataplexExternalTableSystem {
-		return v.System
-	}).(GoogleCloudDatacatalogV1DataplexExternalTableSystemPtrOutput)
-}
-
-type GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1DataplexExternalTable)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutput() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) ToGoogleCloudDatacatalogV1DataplexExternalTableArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1DataplexExternalTableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1DataplexExternalTable {
-		return vs[0].([]GoogleCloudDatacatalogV1DataplexExternalTable)[vs[1].(int)]
-	}).(GoogleCloudDatacatalogV1DataplexExternalTableOutput)
 }
 
 // External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
@@ -3186,188 +2754,6 @@ func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) DataFormat() GoogleC
 // Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
 func (o GoogleCloudDatacatalogV1DataplexSpecResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexSpecResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// Entry specification for a Dataplex table.
-type GoogleCloudDatacatalogV1DataplexTableSpec struct {
-	// Common Dataplex fields.
-	DataplexSpec *GoogleCloudDatacatalogV1DataplexSpec `pulumi:"dataplexSpec"`
-	// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-	ExternalTables []GoogleCloudDatacatalogV1DataplexExternalTable `pulumi:"externalTables"`
-	// Indicates if the table schema is managed by the user or not.
-	UserManaged *bool `pulumi:"userManaged"`
-}
-
-// GoogleCloudDatacatalogV1DataplexTableSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataplexTableSpecArgs and GoogleCloudDatacatalogV1DataplexTableSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexTableSpecInput` via:
-//
-//          GoogleCloudDatacatalogV1DataplexTableSpecArgs{...}
-type GoogleCloudDatacatalogV1DataplexTableSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataplexTableSpecOutput() GoogleCloudDatacatalogV1DataplexTableSpecOutput
-	ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexTableSpecOutput
-}
-
-// Entry specification for a Dataplex table.
-type GoogleCloudDatacatalogV1DataplexTableSpecArgs struct {
-	// Common Dataplex fields.
-	DataplexSpec GoogleCloudDatacatalogV1DataplexSpecPtrInput `pulumi:"dataplexSpec"`
-	// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-	ExternalTables GoogleCloudDatacatalogV1DataplexExternalTableArrayInput `pulumi:"externalTables"`
-	// Indicates if the table schema is managed by the user or not.
-	UserManaged pulumi.BoolPtrInput `pulumi:"userManaged"`
-}
-
-func (GoogleCloudDatacatalogV1DataplexTableSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecOutput() GoogleCloudDatacatalogV1DataplexTableSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexTableSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataplexTableSpecArgs) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexTableSpecOutput).ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1DataplexTableSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DataplexTableSpecArgs, GoogleCloudDatacatalogV1DataplexTableSpecPtr and GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexTableSpecPtrInput` via:
-//
-//          GoogleCloudDatacatalogV1DataplexTableSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1DataplexTableSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput
-	ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1DataplexTableSpecPtrType GoogleCloudDatacatalogV1DataplexTableSpecArgs
-
-func GoogleCloudDatacatalogV1DataplexTableSpecPtr(v *GoogleCloudDatacatalogV1DataplexTableSpecArgs) GoogleCloudDatacatalogV1DataplexTableSpecPtrInput {
-	return (*googleCloudDatacatalogV1DataplexTableSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1DataplexTableSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1DataplexTableSpecPtrType) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1DataplexTableSpecPtrType) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
-}
-
-// Entry specification for a Dataplex table.
-type GoogleCloudDatacatalogV1DataplexTableSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1DataplexTableSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecOutput() GoogleCloudDatacatalogV1DataplexTableSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataplexTableSpec) *GoogleCloudDatacatalogV1DataplexTableSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput)
-}
-
-// Common Dataplex fields.
-func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpec) *GoogleCloudDatacatalogV1DataplexSpec {
-		return v.DataplexSpec
-	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
-}
-
-// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) ExternalTables() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpec) []GoogleCloudDatacatalogV1DataplexExternalTable {
-		return v.ExternalTables
-	}).(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput)
-}
-
-// Indicates if the table schema is managed by the user or not.
-func (o GoogleCloudDatacatalogV1DataplexTableSpecOutput) UserManaged() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataplexTableSpec) *bool { return v.UserManaged }).(pulumi.BoolPtrOutput)
-}
-
-type GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataplexTableSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutput() GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ToGoogleCloudDatacatalogV1DataplexTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) Elem() GoogleCloudDatacatalogV1DataplexTableSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) GoogleCloudDatacatalogV1DataplexTableSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1DataplexTableSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1DataplexTableSpecOutput)
-}
-
-// Common Dataplex fields.
-func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) DataplexSpec() GoogleCloudDatacatalogV1DataplexSpecPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) *GoogleCloudDatacatalogV1DataplexSpec {
-		if v == nil {
-			return nil
-		}
-		return v.DataplexSpec
-	}).(GoogleCloudDatacatalogV1DataplexSpecPtrOutput)
-}
-
-// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) ExternalTables() GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) []GoogleCloudDatacatalogV1DataplexExternalTable {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalTables
-	}).(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput)
-}
-
-// Indicates if the table schema is managed by the user or not.
-func (o GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput) UserManaged() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataplexTableSpec) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UserManaged
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Entry specification for a Dataplex table.
@@ -6145,127 +5531,6 @@ func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) UpdateTime() pul
 }
 
 // Normal BigQuery table specification.
-type GoogleCloudDatacatalogV1TableSpec struct {
-}
-
-// GoogleCloudDatacatalogV1TableSpecInput is an input type that accepts GoogleCloudDatacatalogV1TableSpecArgs and GoogleCloudDatacatalogV1TableSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1TableSpecInput` via:
-//
-//          GoogleCloudDatacatalogV1TableSpecArgs{...}
-type GoogleCloudDatacatalogV1TableSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1TableSpecOutput() GoogleCloudDatacatalogV1TableSpecOutput
-	ToGoogleCloudDatacatalogV1TableSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1TableSpecOutput
-}
-
-// Normal BigQuery table specification.
-type GoogleCloudDatacatalogV1TableSpecArgs struct {
-}
-
-func (GoogleCloudDatacatalogV1TableSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecArgs) ToGoogleCloudDatacatalogV1TableSpecOutput() GoogleCloudDatacatalogV1TableSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1TableSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecArgs) ToGoogleCloudDatacatalogV1TableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1TableSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecArgs) ToGoogleCloudDatacatalogV1TableSpecPtrOutput() GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecArgs) ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1TableSpecOutput).ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1TableSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1TableSpecArgs, GoogleCloudDatacatalogV1TableSpecPtr and GoogleCloudDatacatalogV1TableSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1TableSpecPtrInput` via:
-//
-//          GoogleCloudDatacatalogV1TableSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1TableSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1TableSpecPtrOutput() GoogleCloudDatacatalogV1TableSpecPtrOutput
-	ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1TableSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1TableSpecPtrType GoogleCloudDatacatalogV1TableSpecArgs
-
-func GoogleCloudDatacatalogV1TableSpecPtr(v *GoogleCloudDatacatalogV1TableSpecArgs) GoogleCloudDatacatalogV1TableSpecPtrInput {
-	return (*googleCloudDatacatalogV1TableSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1TableSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1TableSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1TableSpecPtrType) ToGoogleCloudDatacatalogV1TableSpecPtrOutput() GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1TableSpecPtrType) ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1TableSpecPtrOutput)
-}
-
-// Normal BigQuery table specification.
-type GoogleCloudDatacatalogV1TableSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1TableSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecOutput) ToGoogleCloudDatacatalogV1TableSpecOutput() GoogleCloudDatacatalogV1TableSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecOutput) ToGoogleCloudDatacatalogV1TableSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecOutput) ToGoogleCloudDatacatalogV1TableSpecPtrOutput() GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecOutput) ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1TableSpec) *GoogleCloudDatacatalogV1TableSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1TableSpecPtrOutput)
-}
-
-type GoogleCloudDatacatalogV1TableSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1TableSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1TableSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecPtrOutput) ToGoogleCloudDatacatalogV1TableSpecPtrOutput() GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecPtrOutput) ToGoogleCloudDatacatalogV1TableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecPtrOutput) Elem() GoogleCloudDatacatalogV1TableSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1TableSpec) GoogleCloudDatacatalogV1TableSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1TableSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1TableSpecOutput)
-}
-
-// Normal BigQuery table specification.
 type GoogleCloudDatacatalogV1TableSpecResponse struct {
 	// If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty.
 	GroupedEntry string `pulumi:"groupedEntry"`
@@ -6325,127 +5590,6 @@ func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) UsageWithinTimeRange(
 }
 
 // Table view specification.
-type GoogleCloudDatacatalogV1ViewSpec struct {
-}
-
-// GoogleCloudDatacatalogV1ViewSpecInput is an input type that accepts GoogleCloudDatacatalogV1ViewSpecArgs and GoogleCloudDatacatalogV1ViewSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ViewSpecInput` via:
-//
-//          GoogleCloudDatacatalogV1ViewSpecArgs{...}
-type GoogleCloudDatacatalogV1ViewSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ViewSpecOutput() GoogleCloudDatacatalogV1ViewSpecOutput
-	ToGoogleCloudDatacatalogV1ViewSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1ViewSpecOutput
-}
-
-// Table view specification.
-type GoogleCloudDatacatalogV1ViewSpecArgs struct {
-}
-
-func (GoogleCloudDatacatalogV1ViewSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecArgs) ToGoogleCloudDatacatalogV1ViewSpecOutput() GoogleCloudDatacatalogV1ViewSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1ViewSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecArgs) ToGoogleCloudDatacatalogV1ViewSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ViewSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecArgs) ToGoogleCloudDatacatalogV1ViewSpecPtrOutput() GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecArgs) ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ViewSpecOutput).ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1ViewSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1ViewSpecArgs, GoogleCloudDatacatalogV1ViewSpecPtr and GoogleCloudDatacatalogV1ViewSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ViewSpecPtrInput` via:
-//
-//          GoogleCloudDatacatalogV1ViewSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1ViewSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ViewSpecPtrOutput() GoogleCloudDatacatalogV1ViewSpecPtrOutput
-	ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ViewSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1ViewSpecPtrType GoogleCloudDatacatalogV1ViewSpecArgs
-
-func GoogleCloudDatacatalogV1ViewSpecPtr(v *GoogleCloudDatacatalogV1ViewSpecArgs) GoogleCloudDatacatalogV1ViewSpecPtrInput {
-	return (*googleCloudDatacatalogV1ViewSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1ViewSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1ViewSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1ViewSpecPtrType) ToGoogleCloudDatacatalogV1ViewSpecPtrOutput() GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1ViewSpecPtrType) ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ViewSpecPtrOutput)
-}
-
-// Table view specification.
-type GoogleCloudDatacatalogV1ViewSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1ViewSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecOutput) ToGoogleCloudDatacatalogV1ViewSpecOutput() GoogleCloudDatacatalogV1ViewSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecOutput) ToGoogleCloudDatacatalogV1ViewSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecOutput) ToGoogleCloudDatacatalogV1ViewSpecPtrOutput() GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecOutput) ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1ViewSpec) *GoogleCloudDatacatalogV1ViewSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1ViewSpecPtrOutput)
-}
-
-type GoogleCloudDatacatalogV1ViewSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1ViewSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1ViewSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecPtrOutput) ToGoogleCloudDatacatalogV1ViewSpecPtrOutput() GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecPtrOutput) ToGoogleCloudDatacatalogV1ViewSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecPtrOutput) Elem() GoogleCloudDatacatalogV1ViewSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ViewSpec) GoogleCloudDatacatalogV1ViewSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1ViewSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1ViewSpecOutput)
-}
-
-// Table view specification.
 type GoogleCloudDatacatalogV1ViewSpecResponse struct {
 	// The query that defines the table view.
 	ViewQuery string `pulumi:"viewQuery"`
@@ -6478,12 +5622,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{})
@@ -6498,14 +5638,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexExternalTableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexExternalTableArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexExternalTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexFilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexTableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataplexTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataplexTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1EntryOverviewPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1EntryOverviewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1FilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1FilesetSpecArgs{})
@@ -6534,10 +5670,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsInput)(nil)).Elem(), GoogleCloudDatacatalogV1SystemTimestampsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SystemTimestampsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1TableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1TableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1ViewSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ViewSpecArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -6548,14 +5680,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextPtrOutput{})
@@ -6581,8 +5709,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexExternalTableResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexFilesetSpecOutput{})
@@ -6591,8 +5717,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexTableSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataplexTableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1EntryOverviewPtrOutput{})
@@ -6641,11 +5765,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1TableSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1TableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1TableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1UsageSignalResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ViewSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ViewSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ViewSpecResponseOutput{})
 }

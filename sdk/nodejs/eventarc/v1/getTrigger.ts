@@ -33,6 +33,10 @@ export interface GetTriggerResult {
      */
     readonly channel: string;
     /**
+     * The reason(s) why a trigger is in FAILED state.
+     */
+    readonly conditions: {[key: string]: string};
+    /**
      * The creation time.
      */
     readonly createTime: string;

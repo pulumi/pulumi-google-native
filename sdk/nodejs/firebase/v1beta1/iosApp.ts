@@ -43,7 +43,7 @@ export class IosApp extends pulumi.CustomResource {
     /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    public readonly appId!: pulumi.Output<string>;
+    public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
      * The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
      */
@@ -78,13 +78,13 @@ export class IosApp extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
             resourceInputs["appStoreId"] = args ? args.appStoreId : undefined;
             resourceInputs["bundleId"] = args ? args.bundleId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["teamId"] = args ? args.teamId : undefined;
+            resourceInputs["appId"] = undefined /*out*/;
         } else {
             resourceInputs["apiKeyId"] = undefined /*out*/;
             resourceInputs["appId"] = undefined /*out*/;
@@ -109,10 +109,6 @@ export interface IosAppArgs {
      */
     apiKeyId?: pulumi.Input<string>;
     /**
-     * Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
-     */
-    appId?: pulumi.Input<string>;
-    /**
      * The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
      */
     appStoreId?: pulumi.Input<string>;
@@ -128,9 +124,6 @@ export interface IosAppArgs {
      * The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
      */
     name?: pulumi.Input<string>;
-    /**
-     * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
-     */
     project?: pulumi.Input<string>;
     /**
      * The Apple Developer Team ID associated with the App in the App Store.

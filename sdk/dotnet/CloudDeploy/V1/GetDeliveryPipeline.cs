@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly Outputs.SerialPipelineResponse SerialPipeline;
         /// <summary>
+        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// </summary>
+        public readonly bool Suspended;
+        /// <summary>
         /// Unique identifier of the `DeliveryPipeline`.
         /// </summary>
         public readonly string Uid;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             Outputs.SerialPipelineResponse serialPipeline,
 
+            bool suspended,
+
             string uid,
 
             string updateTime)
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Labels = labels;
             Name = name;
             SerialPipeline = serialPipeline;
+            Suspended = suspended;
             Uid = uid;
             UpdateTime = updateTime;
         }

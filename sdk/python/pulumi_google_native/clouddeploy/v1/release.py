@@ -364,6 +364,7 @@ class Release(pulumi.CustomResource):
             __props__.__dict__["skaffold_config_uri"] = skaffold_config_uri
             __props__.__dict__["skaffold_version"] = skaffold_version
             __props__.__dict__["validate_only"] = validate_only
+            __props__.__dict__["abandoned"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delivery_pipeline_snapshot"] = None
             __props__.__dict__["render_end_time"] = None
@@ -395,6 +396,7 @@ class Release(pulumi.CustomResource):
 
         __props__ = ReleaseArgs.__new__(ReleaseArgs)
 
+        __props__.__dict__["abandoned"] = None
         __props__.__dict__["annotations"] = None
         __props__.__dict__["build_artifacts"] = None
         __props__.__dict__["create_time"] = None
@@ -420,6 +422,14 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["uid"] = None
         __props__.__dict__["validate_only"] = None
         return Release(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def abandoned(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether this is an abandoned release.
+        """
+        return pulumi.get(self, "abandoned")
 
     @property
     @pulumi.getter

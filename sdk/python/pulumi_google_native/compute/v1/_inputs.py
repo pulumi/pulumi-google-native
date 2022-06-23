@@ -6215,6 +6215,7 @@ class InstancePropertiesArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input['InstancePropertiesKeyRevocationActionType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['MetadataArgs']] = None,
@@ -6236,6 +6237,7 @@ class InstancePropertiesArgs:
         :param pulumi.Input[str] description: An optional text description for the instances that are created from these properties.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: An array of disks that are associated with the instances that are created from these properties.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from these properties.
+        :param pulumi.Input['InstancePropertiesKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to instances that are created from these properties.
         :param pulumi.Input[str] machine_type: The machine type to use for instances that are created from these properties.
         :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -6263,6 +6265,8 @@ class InstancePropertiesArgs:
             pulumi.set(__self__, "disks", disks)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if machine_type is not None:
@@ -6363,6 +6367,18 @@ class InstancePropertiesArgs:
     @guest_accelerators.setter
     def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input['InstancePropertiesKeyRevocationActionType']]:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input['InstancePropertiesKeyRevocationActionType']]):
+        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter

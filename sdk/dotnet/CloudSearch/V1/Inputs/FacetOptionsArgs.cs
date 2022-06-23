@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public Input<string>? ObjectType { get; set; }
 
         /// <summary>
-        /// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+        /// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
         /// </summary>
         [Input("operatorName")]
         public Input<string>? OperatorName { get; set; }

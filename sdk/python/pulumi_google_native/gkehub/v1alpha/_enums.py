@@ -9,6 +9,7 @@ __all__ = [
     'FeatureSpecProvisionGoogleCa',
     'MembershipSpecCertificateManagement',
     'MultiClusterIngressFeatureSpecBilling',
+    'OnPremClusterClusterType',
 ]
 
 
@@ -85,4 +86,30 @@ class MultiClusterIngressFeatureSpecBilling(str, Enum):
     ANTHOS_LICENSE = "ANTHOS_LICENSE"
     """
     User is paying for Anthos as a whole.
+    """
+
+
+class OnPremClusterClusterType(str, Enum):
+    """
+    Immutable. The on prem cluster's type.
+    """
+    CLUSTERTYPE_UNSPECIFIED = "CLUSTERTYPE_UNSPECIFIED"
+    """
+    The ClusterType is not set.
+    """
+    BOOTSTRAP = "BOOTSTRAP"
+    """
+    The ClusterType is bootstrap cluster.
+    """
+    HYBRID = "HYBRID"
+    """
+    The ClusterType is baremetal hybrid cluster.
+    """
+    STANDALONE = "STANDALONE"
+    """
+    The ClusterType is baremetal standalone cluster.
+    """
+    USER = "USER"
+    """
+    The ClusterType is user cluster.
     """

@@ -24,7 +24,7 @@ type SearchApplication struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
 	EnableAuditLog pulumi.BoolOutput `pulumi:"enableAuditLog"`
-	// Name of the Search Application. Format: searchapplications/{application_id}.
+	// The name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
 	OperationIds pulumi.StringArrayOutput `pulumi:"operationIds"`
@@ -87,7 +87,7 @@ type searchApplicationArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
 	EnableAuditLog *bool `pulumi:"enableAuditLog"`
-	// Name of the Search Application. Format: searchapplications/{application_id}.
+	// The name of the Search Application. Format: searchapplications/{application_id}.
 	Name *string `pulumi:"name"`
 	// The default options for query interpretation
 	QueryInterpretationConfig *QueryInterpretationConfig `pulumi:"queryInterpretationConfig"`
@@ -111,7 +111,7 @@ type SearchApplicationArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
 	EnableAuditLog pulumi.BoolPtrInput
-	// Name of the Search Application. Format: searchapplications/{application_id}.
+	// The name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringPtrInput
 	// The default options for query interpretation
 	QueryInterpretationConfig QueryInterpretationConfigPtrInput
@@ -185,7 +185,7 @@ func (o SearchApplicationOutput) EnableAuditLog() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SearchApplication) pulumi.BoolOutput { return v.EnableAuditLog }).(pulumi.BoolOutput)
 }
 
-// Name of the Search Application. Format: searchapplications/{application_id}.
+// The name of the Search Application. Format: searchapplications/{application_id}.
 func (o SearchApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

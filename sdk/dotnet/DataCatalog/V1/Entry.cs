@@ -215,18 +215,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     public sealed class EntryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-        /// </summary>
-        [Input("bigqueryDateShardedSpec")]
-        public Input<Inputs.GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs>? BigqueryDateShardedSpec { get; set; }
-
-        /// <summary>
-        /// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
-        /// </summary>
-        [Input("bigqueryTableSpec")]
-        public Input<Inputs.GoogleCloudDatacatalogV1BigQueryTableSpecArgs>? BigqueryTableSpec { get; set; }
-
-        /// <summary>
         /// Business Context of the entry. Not supported for BigQuery datasets
         /// </summary>
         [Input("businessContext")]

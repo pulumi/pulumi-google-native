@@ -2254,6 +2254,8 @@ func (o MultiCloudClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 type OnPremCluster struct {
 	// Immutable. Whether the cluster is an admin cluster.
 	AdminCluster *bool `pulumi:"adminCluster"`
+	// Immutable. The on prem cluster's type.
+	ClusterType *OnPremClusterClusterType `pulumi:"clusterType"`
 	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 	ResourceLink *string `pulumi:"resourceLink"`
 }
@@ -2273,6 +2275,8 @@ type OnPremClusterInput interface {
 type OnPremClusterArgs struct {
 	// Immutable. Whether the cluster is an admin cluster.
 	AdminCluster pulumi.BoolPtrInput `pulumi:"adminCluster"`
+	// Immutable. The on prem cluster's type.
+	ClusterType OnPremClusterClusterTypePtrInput `pulumi:"clusterType"`
 	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
 }
@@ -2360,6 +2364,11 @@ func (o OnPremClusterOutput) AdminCluster() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OnPremCluster) *bool { return v.AdminCluster }).(pulumi.BoolPtrOutput)
 }
 
+// Immutable. The on prem cluster's type.
+func (o OnPremClusterOutput) ClusterType() OnPremClusterClusterTypePtrOutput {
+	return o.ApplyT(func(v OnPremCluster) *OnPremClusterClusterType { return v.ClusterType }).(OnPremClusterClusterTypePtrOutput)
+}
+
 // Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 func (o OnPremClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
@@ -2399,6 +2408,16 @@ func (o OnPremClusterPtrOutput) AdminCluster() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Immutable. The on prem cluster's type.
+func (o OnPremClusterPtrOutput) ClusterType() OnPremClusterClusterTypePtrOutput {
+	return o.ApplyT(func(v *OnPremCluster) *OnPremClusterClusterType {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterType
+	}).(OnPremClusterClusterTypePtrOutput)
+}
+
 // Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 func (o OnPremClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnPremCluster) *string {
@@ -2415,6 +2434,8 @@ type OnPremClusterResponse struct {
 	AdminCluster bool `pulumi:"adminCluster"`
 	// If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
 	ClusterMissing bool `pulumi:"clusterMissing"`
+	// Immutable. The on prem cluster's type.
+	ClusterType string `pulumi:"clusterType"`
 	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 	ResourceLink string `pulumi:"resourceLink"`
 }
@@ -2442,6 +2463,11 @@ func (o OnPremClusterResponseOutput) AdminCluster() pulumi.BoolOutput {
 // If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
 func (o OnPremClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
 	return o.ApplyT(func(v OnPremClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
+}
+
+// Immutable. The on prem cluster's type.
+func (o OnPremClusterResponseOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremClusterResponse) string { return v.ClusterType }).(pulumi.StringOutput)
 }
 
 // Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster

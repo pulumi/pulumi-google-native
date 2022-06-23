@@ -1660,7 +1660,9 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "orderBy":
+        if key == "caseInsensitive":
+            suggest = "case_insensitive"
+        elif key == "orderBy":
             suggest = "order_by"
         elif key == "restrictedValues":
             suggest = "restricted_values"
@@ -1677,6 +1679,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 case_insensitive: bool,
                  contains: Sequence[str],
                  intervals: Sequence['outputs.GoogleCloudRetailV2alphaIntervalResponse'],
                  key: str,
@@ -1686,6 +1689,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
                  restricted_values: Sequence[str]):
         """
         Specifies how a facet is computed.
+        :param bool case_insensitive: True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
         :param Sequence[str] contains: Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
         :param Sequence['GoogleCloudRetailV2alphaIntervalResponse'] intervals: Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
         :param str key: Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
@@ -1694,6 +1698,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
         :param str query: The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, FacetValue.value will be always "1" and FacetValue.count will be the number of results that matches the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
         :param Sequence[str] restricted_values: Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
         """
+        pulumi.set(__self__, "case_insensitive", case_insensitive)
         pulumi.set(__self__, "contains", contains)
         pulumi.set(__self__, "intervals", intervals)
         pulumi.set(__self__, "key", key)
@@ -1701,6 +1706,14 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
         pulumi.set(__self__, "prefixes", prefixes)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "restricted_values", restricted_values)
+
+    @property
+    @pulumi.getter(name="caseInsensitive")
+    def case_insensitive(self) -> bool:
+        """
+        True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+        """
+        return pulumi.get(self, "case_insensitive")
 
     @property
     @pulumi.getter

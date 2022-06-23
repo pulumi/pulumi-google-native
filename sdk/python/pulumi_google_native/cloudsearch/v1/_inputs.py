@@ -175,7 +175,7 @@ class FacetOptionsArgs:
         Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
         :param pulumi.Input[int] num_facet_buckets: Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
         :param pulumi.Input[str] object_type: If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
-        :param pulumi.Input[str] operator_name: Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+        :param pulumi.Input[str] operator_name: The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
         :param pulumi.Input[str] source_name: Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
         """
         if num_facet_buckets is not None:
@@ -215,7 +215,7 @@ class FacetOptionsArgs:
     @pulumi.getter(name="operatorName")
     def operator_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+        The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
         """
         return pulumi.get(self, "operator_name")
 
@@ -449,7 +449,7 @@ class SortOptionsArgs:
                  operator_name: Optional[pulumi.Input[str]] = None,
                  sort_order: Optional[pulumi.Input['SortOptionsSortOrder']] = None):
         """
-        :param pulumi.Input[str] operator_name: Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+        :param pulumi.Input[str] operator_name: The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
         :param pulumi.Input['SortOptionsSortOrder'] sort_order: Ascending is the default sort order
         """
         if operator_name is not None:
@@ -461,7 +461,7 @@ class SortOptionsArgs:
     @pulumi.getter(name="operatorName")
     def operator_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+        The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
         """
         return pulumi.get(self, "operator_name")
 

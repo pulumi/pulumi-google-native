@@ -50,7 +50,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The repair policy for this managed instance group.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
-        :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -219,7 +219,7 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="listManagedInstancesResults")
     def list_managed_instances_results(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults']]:
         """
-        Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        Pagination behavior of the listManagedInstances API method for this managed instance group.
         """
         return pulumi.get(self, "list_managed_instances_results")
 
@@ -423,7 +423,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The repair policy for this managed instance group.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
-        :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -696,7 +696,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="listManagedInstancesResults")
     def list_managed_instances_results(self) -> pulumi.Output[str]:
         """
-        Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        Pagination behavior of the listManagedInstances API method for this managed instance group.
         """
         return pulumi.get(self, "list_managed_instances_results")
 

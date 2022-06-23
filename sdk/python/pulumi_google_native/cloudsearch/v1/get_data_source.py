@@ -92,7 +92,7 @@ class GetDataSourceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         """
         return pulumi.get(self, "name")
 

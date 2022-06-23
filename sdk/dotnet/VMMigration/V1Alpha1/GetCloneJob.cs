@@ -86,6 +86,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The time the clone job was ended.
+        /// </summary>
+        public readonly string EndTime;
+        /// <summary>
         /// Provides details for the errors that led to the Clone Job's state.
         /// </summary>
         public readonly Outputs.StatusResponse Error;
@@ -102,6 +106,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly string StateTime;
         /// <summary>
+        /// The clone steps list representing its progress.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CloneStepResponse> Steps;
+        /// <summary>
         /// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
         /// </summary>
         public readonly Outputs.TargetVMDetailsResponse TargetDetails;
@@ -114,6 +122,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             string createTime,
 
+            string endTime,
+
             Outputs.StatusResponse error,
 
             string name,
@@ -122,15 +132,19 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             string stateTime,
 
+            ImmutableArray<Outputs.CloneStepResponse> steps,
+
             Outputs.TargetVMDetailsResponse targetDetails)
         {
             ComputeEngineTargetDetails = computeEngineTargetDetails;
             ComputeEngineVmDetails = computeEngineVmDetails;
             CreateTime = createTime;
+            EndTime = endTime;
             Error = error;
             Name = name;
             State = state;
             StateTime = stateTime;
+            Steps = steps;
             TargetDetails = targetDetails;
         }
     }

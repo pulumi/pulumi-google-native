@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string?> ActionOnFailedPrimaryWorkers { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        /// The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
         /// </summary>
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Input<string>? ActionOnFailedPrimaryWorkers { get; set; }
 
         /// <summary>
-        /// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        /// The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
         /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;

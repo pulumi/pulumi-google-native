@@ -15,6 +15,7 @@ __all__ = [
     'BucketAutoclassArgs',
     'BucketBillingArgs',
     'BucketCorsItemArgs',
+    'BucketCustomPlacementConfigArgs',
     'BucketEncryptionArgs',
     'BucketIamConfigurationBucketPolicyOnlyArgs',
     'BucketIamConfigurationUniformBucketLevelAccessArgs',
@@ -420,6 +421,30 @@ class BucketCorsItemArgs:
 
 
 @pulumi.input_type
+class BucketCustomPlacementConfigArgs:
+    def __init__(__self__, *,
+                 data_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The bucket's custom placement configuration for Custom Dual Regions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_locations: The list of regional locations in which data is placed.
+        """
+        if data_locations is not None:
+            pulumi.set(__self__, "data_locations", data_locations)
+
+    @property
+    @pulumi.getter(name="dataLocations")
+    def data_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of regional locations in which data is placed.
+        """
+        return pulumi.get(self, "data_locations")
+
+    @data_locations.setter
+    def data_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "data_locations", value)
+
+
+@pulumi.input_type
 class BucketEncryptionArgs:
     def __init__(__self__, *,
                  default_kms_key_name: Optional[pulumi.Input[str]] = None):
@@ -680,7 +705,7 @@ class BucketLifecycleRuleItemActionArgs:
         """
         The action to take.
         :param pulumi.Input[str] storage_class: Target storage class. Required iff the type of the action is SetStorageClass.
-        :param pulumi.Input[str] type: Type of the action. Currently, only Delete and SetStorageClass are supported.
+        :param pulumi.Input[str] type: Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
         """
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
@@ -703,7 +728,7 @@ class BucketLifecycleRuleItemActionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the action. Currently, only Delete and SetStorageClass are supported.
+        Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
         """
         return pulumi.get(self, "type")
 

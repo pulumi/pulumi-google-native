@@ -34,7 +34,7 @@ class SearchApplicationArgs:
         :param pulumi.Input['SortOptionsArgs'] default_sort_options: The default options for sorting the search results
         :param pulumi.Input[str] display_name: Display name of the Search Application. The maximum length is 300 characters.
         :param pulumi.Input[bool] enable_audit_log: Indicates whether audit logging is on/off for requests made for the search application in query APIs.
-        :param pulumi.Input[str] name: Name of the Search Application. Format: searchapplications/{application_id}.
+        :param pulumi.Input[str] name: The name of the Search Application. Format: searchapplications/{application_id}.
         :param pulumi.Input['QueryInterpretationConfigArgs'] query_interpretation_config: The default options for query interpretation
         :param pulumi.Input[bool] return_result_thumbnail_urls: With each result we should return the URI for its thumbnail (when applicable)
         :param pulumi.Input['ScoringConfigArgs'] scoring_config: Configuration for ranking results.
@@ -125,7 +125,7 @@ class SearchApplicationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Search Application. Format: searchapplications/{application_id}.
+        The name of the Search Application. Format: searchapplications/{application_id}.
         """
         return pulumi.get(self, "name")
 
@@ -208,7 +208,7 @@ class SearchApplication(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SortOptionsArgs']] default_sort_options: The default options for sorting the search results
         :param pulumi.Input[str] display_name: Display name of the Search Application. The maximum length is 300 characters.
         :param pulumi.Input[bool] enable_audit_log: Indicates whether audit logging is on/off for requests made for the search application in query APIs.
-        :param pulumi.Input[str] name: Name of the Search Application. Format: searchapplications/{application_id}.
+        :param pulumi.Input[str] name: The name of the Search Application. Format: searchapplications/{application_id}.
         :param pulumi.Input[pulumi.InputType['QueryInterpretationConfigArgs']] query_interpretation_config: The default options for query interpretation
         :param pulumi.Input[bool] return_result_thumbnail_urls: With each result we should return the URI for its thumbnail (when applicable)
         :param pulumi.Input[pulumi.InputType['ScoringConfigArgs']] scoring_config: Configuration for ranking results.
@@ -352,7 +352,7 @@ class SearchApplication(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Search Application. Format: searchapplications/{application_id}.
+        The name of the Search Application. Format: searchapplications/{application_id}.
         """
         return pulumi.get(self, "name")
 

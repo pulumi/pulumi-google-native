@@ -519,6 +519,688 @@ func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointPolicyTypePtrOutput)
 }
 
+// Immutable. The type of the customer managed gateway.
+type GatewayType string
+
+const (
+	// The type of the customer managed gateway is unspecified.
+	GatewayTypeTypeUnspecified = GatewayType("TYPE_UNSPECIFIED")
+	// The type of the customer managed gateway is TrafficDirector Open Mesh.
+	GatewayTypeOpenMesh = GatewayType("OPEN_MESH")
+	// The type of the customer managed gateway is SecureWebGateway (SWG).
+	GatewayTypeSecureWebGateway = GatewayType("SECURE_WEB_GATEWAY")
+)
+
+func (GatewayType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayType)(nil)).Elem()
+}
+
+func (e GatewayType) ToGatewayTypeOutput() GatewayTypeOutput {
+	return pulumi.ToOutput(e).(GatewayTypeOutput)
+}
+
+func (e GatewayType) ToGatewayTypeOutputWithContext(ctx context.Context) GatewayTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayTypeOutput)
+}
+
+func (e GatewayType) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return e.ToGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (e GatewayType) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return GatewayType(e).ToGatewayTypeOutputWithContext(ctx).ToGatewayTypePtrOutputWithContext(ctx)
+}
+
+func (e GatewayType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayTypeOutput struct{ *pulumi.OutputState }
+
+func (GatewayTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayType)(nil)).Elem()
+}
+
+func (o GatewayTypeOutput) ToGatewayTypeOutput() GatewayTypeOutput {
+	return o
+}
+
+func (o GatewayTypeOutput) ToGatewayTypeOutputWithContext(ctx context.Context) GatewayTypeOutput {
+	return o
+}
+
+func (o GatewayTypeOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return o.ToGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTypeOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayType) *GatewayType {
+		return &v
+	}).(GatewayTypePtrOutput)
+}
+
+func (o GatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayType)(nil)).Elem()
+}
+
+func (o GatewayTypePtrOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return o
+}
+
+func (o GatewayTypePtrOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return o
+}
+
+func (o GatewayTypePtrOutput) Elem() GatewayTypeOutput {
+	return o.ApplyT(func(v *GatewayType) GatewayType {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayType
+		return ret
+	}).(GatewayTypeOutput)
+}
+
+func (o GatewayTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayTypeInput is an input type that accepts GatewayTypeArgs and GatewayTypeOutput values.
+// You can construct a concrete instance of `GatewayTypeInput` via:
+//
+//          GatewayTypeArgs{...}
+type GatewayTypeInput interface {
+	pulumi.Input
+
+	ToGatewayTypeOutput() GatewayTypeOutput
+	ToGatewayTypeOutputWithContext(context.Context) GatewayTypeOutput
+}
+
+var gatewayTypePtrType = reflect.TypeOf((**GatewayType)(nil)).Elem()
+
+type GatewayTypePtrInput interface {
+	pulumi.Input
+
+	ToGatewayTypePtrOutput() GatewayTypePtrOutput
+	ToGatewayTypePtrOutputWithContext(context.Context) GatewayTypePtrOutput
+}
+
+type gatewayTypePtr string
+
+func GatewayTypePtr(v string) GatewayTypePtrInput {
+	return (*gatewayTypePtr)(&v)
+}
+
+func (*gatewayTypePtr) ElementType() reflect.Type {
+	return gatewayTypePtrType
+}
+
+func (in *gatewayTypePtr) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return pulumi.ToOutput(in).(GatewayTypePtrOutput)
+}
+
+func (in *gatewayTypePtr) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayTypePtrOutput)
+}
+
+// Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
+type GrpcRouteHeaderMatchType string
+
+const (
+	// Unspecified.
+	GrpcRouteHeaderMatchTypeTypeUnspecified = GrpcRouteHeaderMatchType("TYPE_UNSPECIFIED")
+	// Will only match the exact value provided.
+	GrpcRouteHeaderMatchTypeExact = GrpcRouteHeaderMatchType("EXACT")
+	// Will match paths conforming to the prefix specified by value. RE2 syntax is supported.
+	GrpcRouteHeaderMatchTypeRegularExpression = GrpcRouteHeaderMatchType("REGULAR_EXPRESSION")
+)
+
+func (GrpcRouteHeaderMatchType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteHeaderMatchType)(nil)).Elem()
+}
+
+func (e GrpcRouteHeaderMatchType) ToGrpcRouteHeaderMatchTypeOutput() GrpcRouteHeaderMatchTypeOutput {
+	return pulumi.ToOutput(e).(GrpcRouteHeaderMatchTypeOutput)
+}
+
+func (e GrpcRouteHeaderMatchType) ToGrpcRouteHeaderMatchTypeOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GrpcRouteHeaderMatchTypeOutput)
+}
+
+func (e GrpcRouteHeaderMatchType) ToGrpcRouteHeaderMatchTypePtrOutput() GrpcRouteHeaderMatchTypePtrOutput {
+	return e.ToGrpcRouteHeaderMatchTypePtrOutputWithContext(context.Background())
+}
+
+func (e GrpcRouteHeaderMatchType) ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypePtrOutput {
+	return GrpcRouteHeaderMatchType(e).ToGrpcRouteHeaderMatchTypeOutputWithContext(ctx).ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx)
+}
+
+func (e GrpcRouteHeaderMatchType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GrpcRouteHeaderMatchType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GrpcRouteHeaderMatchType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GrpcRouteHeaderMatchType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GrpcRouteHeaderMatchTypeOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteHeaderMatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteHeaderMatchType)(nil)).Elem()
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToGrpcRouteHeaderMatchTypeOutput() GrpcRouteHeaderMatchTypeOutput {
+	return o
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToGrpcRouteHeaderMatchTypeOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypeOutput {
+	return o
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToGrpcRouteHeaderMatchTypePtrOutput() GrpcRouteHeaderMatchTypePtrOutput {
+	return o.ToGrpcRouteHeaderMatchTypePtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteHeaderMatchType) *GrpcRouteHeaderMatchType {
+		return &v
+	}).(GrpcRouteHeaderMatchTypePtrOutput)
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GrpcRouteHeaderMatchType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteHeaderMatchTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GrpcRouteHeaderMatchType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GrpcRouteHeaderMatchTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteHeaderMatchTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteHeaderMatchType)(nil)).Elem()
+}
+
+func (o GrpcRouteHeaderMatchTypePtrOutput) ToGrpcRouteHeaderMatchTypePtrOutput() GrpcRouteHeaderMatchTypePtrOutput {
+	return o
+}
+
+func (o GrpcRouteHeaderMatchTypePtrOutput) ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypePtrOutput {
+	return o
+}
+
+func (o GrpcRouteHeaderMatchTypePtrOutput) Elem() GrpcRouteHeaderMatchTypeOutput {
+	return o.ApplyT(func(v *GrpcRouteHeaderMatchType) GrpcRouteHeaderMatchType {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteHeaderMatchType
+		return ret
+	}).(GrpcRouteHeaderMatchTypeOutput)
+}
+
+func (o GrpcRouteHeaderMatchTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteHeaderMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GrpcRouteHeaderMatchType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GrpcRouteHeaderMatchTypeInput is an input type that accepts GrpcRouteHeaderMatchTypeArgs and GrpcRouteHeaderMatchTypeOutput values.
+// You can construct a concrete instance of `GrpcRouteHeaderMatchTypeInput` via:
+//
+//          GrpcRouteHeaderMatchTypeArgs{...}
+type GrpcRouteHeaderMatchTypeInput interface {
+	pulumi.Input
+
+	ToGrpcRouteHeaderMatchTypeOutput() GrpcRouteHeaderMatchTypeOutput
+	ToGrpcRouteHeaderMatchTypeOutputWithContext(context.Context) GrpcRouteHeaderMatchTypeOutput
+}
+
+var grpcRouteHeaderMatchTypePtrType = reflect.TypeOf((**GrpcRouteHeaderMatchType)(nil)).Elem()
+
+type GrpcRouteHeaderMatchTypePtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteHeaderMatchTypePtrOutput() GrpcRouteHeaderMatchTypePtrOutput
+	ToGrpcRouteHeaderMatchTypePtrOutputWithContext(context.Context) GrpcRouteHeaderMatchTypePtrOutput
+}
+
+type grpcRouteHeaderMatchTypePtr string
+
+func GrpcRouteHeaderMatchTypePtr(v string) GrpcRouteHeaderMatchTypePtrInput {
+	return (*grpcRouteHeaderMatchTypePtr)(&v)
+}
+
+func (*grpcRouteHeaderMatchTypePtr) ElementType() reflect.Type {
+	return grpcRouteHeaderMatchTypePtrType
+}
+
+func (in *grpcRouteHeaderMatchTypePtr) ToGrpcRouteHeaderMatchTypePtrOutput() GrpcRouteHeaderMatchTypePtrOutput {
+	return pulumi.ToOutput(in).(GrpcRouteHeaderMatchTypePtrOutput)
+}
+
+func (in *grpcRouteHeaderMatchTypePtr) ToGrpcRouteHeaderMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteHeaderMatchTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GrpcRouteHeaderMatchTypePtrOutput)
+}
+
+// Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+type GrpcRouteMethodMatchType string
+
+const (
+	// Unspecified.
+	GrpcRouteMethodMatchTypeTypeUnspecified = GrpcRouteMethodMatchType("TYPE_UNSPECIFIED")
+	// Will only match the exact name provided.
+	GrpcRouteMethodMatchTypeExact = GrpcRouteMethodMatchType("EXACT")
+	// Will interpret grpc_method and grpc_service as regexes. RE2 syntax is supported.
+	GrpcRouteMethodMatchTypeRegularExpression = GrpcRouteMethodMatchType("REGULAR_EXPRESSION")
+)
+
+func (GrpcRouteMethodMatchType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteMethodMatchType)(nil)).Elem()
+}
+
+func (e GrpcRouteMethodMatchType) ToGrpcRouteMethodMatchTypeOutput() GrpcRouteMethodMatchTypeOutput {
+	return pulumi.ToOutput(e).(GrpcRouteMethodMatchTypeOutput)
+}
+
+func (e GrpcRouteMethodMatchType) ToGrpcRouteMethodMatchTypeOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GrpcRouteMethodMatchTypeOutput)
+}
+
+func (e GrpcRouteMethodMatchType) ToGrpcRouteMethodMatchTypePtrOutput() GrpcRouteMethodMatchTypePtrOutput {
+	return e.ToGrpcRouteMethodMatchTypePtrOutputWithContext(context.Background())
+}
+
+func (e GrpcRouteMethodMatchType) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
+	return GrpcRouteMethodMatchType(e).ToGrpcRouteMethodMatchTypeOutputWithContext(ctx).ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx)
+}
+
+func (e GrpcRouteMethodMatchType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GrpcRouteMethodMatchType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GrpcRouteMethodMatchType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GrpcRouteMethodMatchType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GrpcRouteMethodMatchTypeOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteMethodMatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteMethodMatchType)(nil)).Elem()
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToGrpcRouteMethodMatchTypeOutput() GrpcRouteMethodMatchTypeOutput {
+	return o
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToGrpcRouteMethodMatchTypeOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypeOutput {
+	return o
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToGrpcRouteMethodMatchTypePtrOutput() GrpcRouteMethodMatchTypePtrOutput {
+	return o.ToGrpcRouteMethodMatchTypePtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteMethodMatchType) *GrpcRouteMethodMatchType {
+		return &v
+	}).(GrpcRouteMethodMatchTypePtrOutput)
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GrpcRouteMethodMatchType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteMethodMatchTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GrpcRouteMethodMatchType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GrpcRouteMethodMatchTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteMethodMatchTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteMethodMatchType)(nil)).Elem()
+}
+
+func (o GrpcRouteMethodMatchTypePtrOutput) ToGrpcRouteMethodMatchTypePtrOutput() GrpcRouteMethodMatchTypePtrOutput {
+	return o
+}
+
+func (o GrpcRouteMethodMatchTypePtrOutput) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
+	return o
+}
+
+func (o GrpcRouteMethodMatchTypePtrOutput) Elem() GrpcRouteMethodMatchTypeOutput {
+	return o.ApplyT(func(v *GrpcRouteMethodMatchType) GrpcRouteMethodMatchType {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteMethodMatchType
+		return ret
+	}).(GrpcRouteMethodMatchTypeOutput)
+}
+
+func (o GrpcRouteMethodMatchTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteMethodMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GrpcRouteMethodMatchType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GrpcRouteMethodMatchTypeInput is an input type that accepts GrpcRouteMethodMatchTypeArgs and GrpcRouteMethodMatchTypeOutput values.
+// You can construct a concrete instance of `GrpcRouteMethodMatchTypeInput` via:
+//
+//          GrpcRouteMethodMatchTypeArgs{...}
+type GrpcRouteMethodMatchTypeInput interface {
+	pulumi.Input
+
+	ToGrpcRouteMethodMatchTypeOutput() GrpcRouteMethodMatchTypeOutput
+	ToGrpcRouteMethodMatchTypeOutputWithContext(context.Context) GrpcRouteMethodMatchTypeOutput
+}
+
+var grpcRouteMethodMatchTypePtrType = reflect.TypeOf((**GrpcRouteMethodMatchType)(nil)).Elem()
+
+type GrpcRouteMethodMatchTypePtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteMethodMatchTypePtrOutput() GrpcRouteMethodMatchTypePtrOutput
+	ToGrpcRouteMethodMatchTypePtrOutputWithContext(context.Context) GrpcRouteMethodMatchTypePtrOutput
+}
+
+type grpcRouteMethodMatchTypePtr string
+
+func GrpcRouteMethodMatchTypePtr(v string) GrpcRouteMethodMatchTypePtrInput {
+	return (*grpcRouteMethodMatchTypePtr)(&v)
+}
+
+func (*grpcRouteMethodMatchTypePtr) ElementType() reflect.Type {
+	return grpcRouteMethodMatchTypePtrType
+}
+
+func (in *grpcRouteMethodMatchTypePtr) ToGrpcRouteMethodMatchTypePtrOutput() GrpcRouteMethodMatchTypePtrOutput {
+	return pulumi.ToOutput(in).(GrpcRouteMethodMatchTypePtrOutput)
+}
+
+func (in *grpcRouteMethodMatchTypePtr) ToGrpcRouteMethodMatchTypePtrOutputWithContext(ctx context.Context) GrpcRouteMethodMatchTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GrpcRouteMethodMatchTypePtrOutput)
+}
+
+// The HTTP Status code to use for the redirect.
+type HttpRouteRedirectResponseCode string
+
+const (
+	// Default value
+	HttpRouteRedirectResponseCodeResponseCodeUnspecified = HttpRouteRedirectResponseCode("RESPONSE_CODE_UNSPECIFIED")
+	// Corresponds to 301.
+	HttpRouteRedirectResponseCodeMovedPermanentlyDefault = HttpRouteRedirectResponseCode("MOVED_PERMANENTLY_DEFAULT")
+	// Corresponds to 302.
+	HttpRouteRedirectResponseCodeFound = HttpRouteRedirectResponseCode("FOUND")
+	// Corresponds to 303.
+	HttpRouteRedirectResponseCodeSeeOther = HttpRouteRedirectResponseCode("SEE_OTHER")
+	// Corresponds to 307. In this case, the request method will be retained.
+	HttpRouteRedirectResponseCodeTemporaryRedirect = HttpRouteRedirectResponseCode("TEMPORARY_REDIRECT")
+	// Corresponds to 308. In this case, the request method will be retained.
+	HttpRouteRedirectResponseCodePermanentRedirect = HttpRouteRedirectResponseCode("PERMANENT_REDIRECT")
+)
+
+func (HttpRouteRedirectResponseCode) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRedirectResponseCode)(nil)).Elem()
+}
+
+func (e HttpRouteRedirectResponseCode) ToHttpRouteRedirectResponseCodeOutput() HttpRouteRedirectResponseCodeOutput {
+	return pulumi.ToOutput(e).(HttpRouteRedirectResponseCodeOutput)
+}
+
+func (e HttpRouteRedirectResponseCode) ToHttpRouteRedirectResponseCodeOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HttpRouteRedirectResponseCodeOutput)
+}
+
+func (e HttpRouteRedirectResponseCode) ToHttpRouteRedirectResponseCodePtrOutput() HttpRouteRedirectResponseCodePtrOutput {
+	return e.ToHttpRouteRedirectResponseCodePtrOutputWithContext(context.Background())
+}
+
+func (e HttpRouteRedirectResponseCode) ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodePtrOutput {
+	return HttpRouteRedirectResponseCode(e).ToHttpRouteRedirectResponseCodeOutputWithContext(ctx).ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx)
+}
+
+func (e HttpRouteRedirectResponseCode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HttpRouteRedirectResponseCode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HttpRouteRedirectResponseCode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HttpRouteRedirectResponseCode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HttpRouteRedirectResponseCodeOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRedirectResponseCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRedirectResponseCode)(nil)).Elem()
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToHttpRouteRedirectResponseCodeOutput() HttpRouteRedirectResponseCodeOutput {
+	return o
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToHttpRouteRedirectResponseCodeOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodeOutput {
+	return o
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToHttpRouteRedirectResponseCodePtrOutput() HttpRouteRedirectResponseCodePtrOutput {
+	return o.ToHttpRouteRedirectResponseCodePtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRedirectResponseCode) *HttpRouteRedirectResponseCode {
+		return &v
+	}).(HttpRouteRedirectResponseCodePtrOutput)
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpRouteRedirectResponseCode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRedirectResponseCodeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpRouteRedirectResponseCode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRedirectResponseCodePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRedirectResponseCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRedirectResponseCode)(nil)).Elem()
+}
+
+func (o HttpRouteRedirectResponseCodePtrOutput) ToHttpRouteRedirectResponseCodePtrOutput() HttpRouteRedirectResponseCodePtrOutput {
+	return o
+}
+
+func (o HttpRouteRedirectResponseCodePtrOutput) ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodePtrOutput {
+	return o
+}
+
+func (o HttpRouteRedirectResponseCodePtrOutput) Elem() HttpRouteRedirectResponseCodeOutput {
+	return o.ApplyT(func(v *HttpRouteRedirectResponseCode) HttpRouteRedirectResponseCode {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRedirectResponseCode
+		return ret
+	}).(HttpRouteRedirectResponseCodeOutput)
+}
+
+func (o HttpRouteRedirectResponseCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRedirectResponseCodePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HttpRouteRedirectResponseCode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HttpRouteRedirectResponseCodeInput is an input type that accepts HttpRouteRedirectResponseCodeArgs and HttpRouteRedirectResponseCodeOutput values.
+// You can construct a concrete instance of `HttpRouteRedirectResponseCodeInput` via:
+//
+//          HttpRouteRedirectResponseCodeArgs{...}
+type HttpRouteRedirectResponseCodeInput interface {
+	pulumi.Input
+
+	ToHttpRouteRedirectResponseCodeOutput() HttpRouteRedirectResponseCodeOutput
+	ToHttpRouteRedirectResponseCodeOutputWithContext(context.Context) HttpRouteRedirectResponseCodeOutput
+}
+
+var httpRouteRedirectResponseCodePtrType = reflect.TypeOf((**HttpRouteRedirectResponseCode)(nil)).Elem()
+
+type HttpRouteRedirectResponseCodePtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRedirectResponseCodePtrOutput() HttpRouteRedirectResponseCodePtrOutput
+	ToHttpRouteRedirectResponseCodePtrOutputWithContext(context.Context) HttpRouteRedirectResponseCodePtrOutput
+}
+
+type httpRouteRedirectResponseCodePtr string
+
+func HttpRouteRedirectResponseCodePtr(v string) HttpRouteRedirectResponseCodePtrInput {
+	return (*httpRouteRedirectResponseCodePtr)(&v)
+}
+
+func (*httpRouteRedirectResponseCodePtr) ElementType() reflect.Type {
+	return httpRouteRedirectResponseCodePtrType
+}
+
+func (in *httpRouteRedirectResponseCodePtr) ToHttpRouteRedirectResponseCodePtrOutput() HttpRouteRedirectResponseCodePtrOutput {
+	return pulumi.ToOutput(in).(HttpRouteRedirectResponseCodePtrOutput)
+}
+
+func (in *httpRouteRedirectResponseCodePtr) ToHttpRouteRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRouteRedirectResponseCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HttpRouteRedirectResponseCodePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -526,10 +1208,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria("METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTypeInput)(nil)).Elem(), EndpointPolicyType("ENDPOINT_POLICY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTypePtrInput)(nil)).Elem(), EndpointPolicyType("ENDPOINT_POLICY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTypeInput)(nil)).Elem(), GatewayType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTypePtrInput)(nil)).Elem(), GatewayType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteHeaderMatchTypeInput)(nil)).Elem(), GrpcRouteHeaderMatchType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteHeaderMatchTypePtrInput)(nil)).Elem(), GrpcRouteHeaderMatchType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteMethodMatchTypeInput)(nil)).Elem(), GrpcRouteMethodMatchType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteMethodMatchTypePtrInput)(nil)).Elem(), GrpcRouteMethodMatchType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRedirectResponseCodeInput)(nil)).Elem(), HttpRouteRedirectResponseCode("RESPONSE_CODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRedirectResponseCodePtrInput)(nil)).Elem(), HttpRouteRedirectResponseCode("RESPONSE_CODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput{})
 	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(EndpointPolicyTypeOutput{})
 	pulumi.RegisterOutputType(EndpointPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(GatewayTypeOutput{})
+	pulumi.RegisterOutputType(GatewayTypePtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteHeaderMatchTypeOutput{})
+	pulumi.RegisterOutputType(GrpcRouteHeaderMatchTypePtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteMethodMatchTypeOutput{})
+	pulumi.RegisterOutputType(GrpcRouteMethodMatchTypePtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRedirectResponseCodeOutput{})
+	pulumi.RegisterOutputType(HttpRouteRedirectResponseCodePtrOutput{})
 }

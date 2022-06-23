@@ -24,7 +24,8 @@ class ProvisioningConfigArgs:
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]]] = None):
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]]] = None,
+                 vpc_sc_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ProvisioningConfig resource.
         :param pulumi.Input[str] email: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
@@ -34,6 +35,7 @@ class ProvisioningConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: Networks to be created.
         :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]] volumes: Volumes to be created.
+        :param pulumi.Input[bool] vpc_sc_enabled: If true, VPC SC is enabled for the cluster.
         """
         if email is not None:
             warnings.warn("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""", DeprecationWarning)
@@ -54,6 +56,8 @@ class ProvisioningConfigArgs:
             pulumi.set(__self__, "ticket_id", ticket_id)
         if volumes is not None:
             pulumi.set(__self__, "volumes", volumes)
+        if vpc_sc_enabled is not None:
+            pulumi.set(__self__, "vpc_sc_enabled", vpc_sc_enabled)
 
     @property
     @pulumi.getter
@@ -148,6 +152,18 @@ class ProvisioningConfigArgs:
     def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]]]):
         pulumi.set(self, "volumes", value)
 
+    @property
+    @pulumi.getter(name="vpcScEnabled")
+    def vpc_sc_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, VPC SC is enabled for the cluster.
+        """
+        return pulumi.get(self, "vpc_sc_enabled")
+
+    @vpc_sc_enabled.setter
+    def vpc_sc_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vpc_sc_enabled", value)
+
 
 class ProvisioningConfig(pulumi.CustomResource):
     @overload
@@ -162,6 +178,7 @@ class ProvisioningConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]]] = None,
+                 vpc_sc_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create new ProvisioningConfig.
@@ -178,6 +195,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: Networks to be created.
         :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]] volumes: Volumes to be created.
+        :param pulumi.Input[bool] vpc_sc_enabled: If true, VPC SC is enabled for the cluster.
         """
         ...
     @overload
@@ -214,6 +232,7 @@ class ProvisioningConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]]] = None,
+                 vpc_sc_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -239,6 +258,7 @@ class ProvisioningConfig(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["ticket_id"] = ticket_id
             __props__.__dict__["volumes"] = volumes
+            __props__.__dict__["vpc_sc_enabled"] = vpc_sc_enabled
             __props__.__dict__["cloud_console_uri"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
@@ -277,6 +297,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         __props__.__dict__["ticket_id"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["volumes"] = None
+        __props__.__dict__["vpc_sc_enabled"] = None
         return ProvisioningConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -368,4 +389,12 @@ class ProvisioningConfig(pulumi.CustomResource):
         Volumes to be created.
         """
         return pulumi.get(self, "volumes")
+
+    @property
+    @pulumi.getter(name="vpcScEnabled")
+    def vpc_sc_enabled(self) -> pulumi.Output[bool]:
+        """
+        If true, VPC SC is enabled for the cluster.
+        """
+        return pulumi.get(self, "vpc_sc_enabled")
 

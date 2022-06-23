@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Output<ImmutableArray<Outputs.GSuitePrincipalResponse>> ItemsVisibility { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        /// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         }
 
         /// <summary>
-        /// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        /// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

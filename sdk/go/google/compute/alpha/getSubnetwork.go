@@ -73,10 +73,6 @@ type LookupSubnetworkResult struct {
 	PrivateIpGoogleAccess bool `pulumi:"privateIpGoogleAccess"`
 	// This field is for internal use. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
-	// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-	//
-	// Deprecated: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-	PrivateIpv6GoogleAccessServiceAccounts []string `pulumi:"privateIpv6GoogleAccessServiceAccounts"`
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose string `pulumi:"purpose"`
 	// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
@@ -246,13 +242,6 @@ func (o LookupSubnetworkResultOutput) PrivateIpGoogleAccess() pulumi.BoolOutput 
 // This field is for internal use. This field can be both set at resource creation time and updated using patch.
 func (o LookupSubnetworkResultOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
-}
-
-// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-//
-// Deprecated: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-func (o LookupSubnetworkResultOutput) PrivateIpv6GoogleAccessServiceAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupSubnetworkResult) []string { return v.PrivateIpv6GoogleAccessServiceAccounts }).(pulumi.StringArrayOutput)
 }
 
 // The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.

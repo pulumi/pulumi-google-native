@@ -19,6 +19,7 @@ class JobTemplateArgs:
     def __init__(__self__, *,
                  job_template_id: pulumi.Input[str],
                  config: Optional[pulumi.Input['JobConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -26,11 +27,14 @@ class JobTemplateArgs:
         The set of arguments for constructing a JobTemplate resource.
         :param pulumi.Input[str] job_template_id: Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job template. You can use these to organize and group your job templates.
         :param pulumi.Input[str] name: The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
         """
         pulumi.set(__self__, "job_template_id", job_template_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -61,6 +65,18 @@ class JobTemplateArgs:
     @config.setter
     def config(self, value: Optional[pulumi.Input['JobConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels associated with this job template. You can use these to organize and group your job templates.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -100,6 +116,7 @@ class JobTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  job_template_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -111,6 +128,7 @@ class JobTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this template.
         :param pulumi.Input[str] job_template_id: Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job template. You can use these to organize and group your job templates.
         :param pulumi.Input[str] name: The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
         """
         ...
@@ -139,6 +157,7 @@ class JobTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  job_template_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -160,6 +179,7 @@ class JobTemplate(pulumi.CustomResource):
             if job_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_template_id'")
             __props__.__dict__["job_template_id"] = job_template_id
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -187,6 +207,7 @@ class JobTemplate(pulumi.CustomResource):
 
         __props__.__dict__["config"] = None
         __props__.__dict__["job_template_id"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -207,6 +228,14 @@ class JobTemplate(pulumi.CustomResource):
         Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
         """
         return pulumi.get(self, "job_template_id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels associated with this job template. You can use these to organize and group your job templates.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

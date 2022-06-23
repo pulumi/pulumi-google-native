@@ -1331,6 +1331,7 @@ class GkeClusterConfigArgs:
 class GkeNodeConfigArgs:
     def __init__(__self__, *,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['GkeNodePoolAcceleratorConfigArgs']]]] = None,
+                 boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -1339,6 +1340,7 @@ class GkeNodeConfigArgs:
         """
         Parameters that describe cluster nodes.
         :param pulumi.Input[Sequence[pulumi.Input['GkeNodePoolAcceleratorConfigArgs']]] accelerators: Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+        :param pulumi.Input[str] boot_disk_kms_key: Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
         :param pulumi.Input[int] local_ssd_count: Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
         :param pulumi.Input[str] machine_type: Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
         :param pulumi.Input[str] min_cpu_platform: Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
@@ -1347,6 +1349,8 @@ class GkeNodeConfigArgs:
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if boot_disk_kms_key is not None:
+            pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -1369,6 +1373,18 @@ class GkeNodeConfigArgs:
     @accelerators.setter
     def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GkeNodePoolAcceleratorConfigArgs']]]]):
         pulumi.set(self, "accelerators", value)
+
+    @property
+    @pulumi.getter(name="bootDiskKmsKey")
+    def boot_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        """
+        return pulumi.get(self, "boot_disk_kms_key")
+
+    @boot_disk_kms_key.setter
+    def boot_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "boot_disk_kms_key", value)
 
     @property
     @pulumi.getter(name="localSsdCount")

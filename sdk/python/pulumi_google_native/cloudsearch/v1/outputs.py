@@ -209,7 +209,7 @@ class FacetOptionsResponse(dict):
         Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
         :param int num_facet_buckets: Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
         :param str object_type: If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
-        :param str operator_name: Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+        :param str operator_name: The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
         :param str source_name: Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
         """
         pulumi.set(__self__, "num_facet_buckets", num_facet_buckets)
@@ -237,7 +237,7 @@ class FacetOptionsResponse(dict):
     @pulumi.getter(name="operatorName")
     def operator_name(self) -> str:
         """
-        Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+        The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
         """
         return pulumi.get(self, "operator_name")
 
@@ -534,7 +534,7 @@ class SortOptionsResponse(dict):
                  operator_name: str,
                  sort_order: str):
         """
-        :param str operator_name: Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+        :param str operator_name: The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
         :param str sort_order: Ascending is the default sort order
         """
         pulumi.set(__self__, "operator_name", operator_name)
@@ -544,7 +544,7 @@ class SortOptionsResponse(dict):
     @pulumi.getter(name="operatorName")
     def operator_name(self) -> str:
         """
-        Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+        The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
         """
         return pulumi.get(self, "operator_name")
 

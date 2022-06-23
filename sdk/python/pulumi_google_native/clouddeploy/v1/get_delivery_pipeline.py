@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDeliveryPipelineResult:
-    def __init__(__self__, annotations=None, condition=None, create_time=None, description=None, etag=None, labels=None, name=None, serial_pipeline=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, condition=None, create_time=None, description=None, etag=None, labels=None, name=None, serial_pipeline=None, suspended=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -44,6 +44,9 @@ class GetDeliveryPipelineResult:
         if serial_pipeline and not isinstance(serial_pipeline, dict):
             raise TypeError("Expected argument 'serial_pipeline' to be a dict")
         pulumi.set(__self__, "serial_pipeline", serial_pipeline)
+        if suspended and not isinstance(suspended, bool):
+            raise TypeError("Expected argument 'suspended' to be a bool")
+        pulumi.set(__self__, "suspended", suspended)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -117,6 +120,14 @@ class GetDeliveryPipelineResult:
 
     @property
     @pulumi.getter
+    def suspended(self) -> bool:
+        """
+        When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        """
+        return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter
     def uid(self) -> str:
         """
         Unique identifier of the `DeliveryPipeline`.
@@ -146,6 +157,7 @@ class AwaitableGetDeliveryPipelineResult(GetDeliveryPipelineResult):
             labels=self.labels,
             name=self.name,
             serial_pipeline=self.serial_pipeline,
+            suspended=self.suspended,
             uid=self.uid,
             update_time=self.update_time)
 
@@ -176,6 +188,7 @@ def get_delivery_pipeline(delivery_pipeline_id: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         serial_pipeline=__ret__.serial_pipeline,
+        suspended=__ret__.suspended,
         uid=__ret__.uid,
         update_time=__ret__.update_time)
 

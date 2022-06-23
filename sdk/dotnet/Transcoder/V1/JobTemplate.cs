@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         [Output("jobTemplateId")]
         public Output<string> JobTemplateId { get; private set; } = null!;
 
+        /// <summary>
+        /// The labels associated with this job template. You can use these to organize and group your job templates.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -95,6 +101,18 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         [Input("jobTemplateId", required: true)]
         public Input<string> JobTemplateId { get; set; } = null!;
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// The labels associated with this job template. You can use these to organize and group your job templates.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

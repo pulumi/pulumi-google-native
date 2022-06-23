@@ -37,6 +37,8 @@ type LookupCloneJobResult struct {
 	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the clone job was ended.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Clone Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the clone.
@@ -45,6 +47,8 @@ type LookupCloneJobResult struct {
 	State string `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The clone steps list representing its progress.
+	Steps []CloneStepResponse `pulumi:"steps"`
 	// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
 	//
 	// Deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
@@ -107,6 +111,11 @@ func (o LookupCloneJobResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloneJobResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The time the clone job was ended.
+func (o LookupCloneJobResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloneJobResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
 // Provides details for the errors that led to the Clone Job's state.
 func (o LookupCloneJobResultOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v LookupCloneJobResult) StatusResponse { return v.Error }).(StatusResponseOutput)
@@ -125,6 +134,11 @@ func (o LookupCloneJobResultOutput) State() pulumi.StringOutput {
 // The time the state was last updated.
 func (o LookupCloneJobResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloneJobResult) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The clone steps list representing its progress.
+func (o LookupCloneJobResultOutput) Steps() CloneStepResponseArrayOutput {
+	return o.ApplyT(func(v LookupCloneJobResult) []CloneStepResponse { return v.Steps }).(CloneStepResponseArrayOutput)
 }
 
 // Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.

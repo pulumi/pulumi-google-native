@@ -49,7 +49,7 @@ class GetDestGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+        Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
         """
         return pulumi.get(self, "name")
 

@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Output<bool> EnableAuditLog { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Search Application. Format: searchapplications/{application_id}.
+        /// The name of the Search Application. Format: searchapplications/{application_id}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Input<bool>? EnableAuditLog { get; set; }
 
         /// <summary>
-        /// Name of the Search Application. Format: searchapplications/{application_id}.
+        /// The name of the Search Application. Format: searchapplications/{application_id}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

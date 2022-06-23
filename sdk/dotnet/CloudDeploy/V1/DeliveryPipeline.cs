@@ -83,6 +83,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<Outputs.SerialPipelineResponse> SerialPipeline { get; private set; } = null!;
 
         /// <summary>
+        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// </summary>
+        [Output("suspended")]
+        public Output<bool> Suspended { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the `DeliveryPipeline`.
         /// </summary>
         [Output("uid")]
@@ -210,6 +216,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Input("serialPipeline")]
         public Input<Inputs.SerialPipelineArgs>? SerialPipeline { get; set; }
+
+        /// <summary>
+        /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
 
         /// <summary>
         /// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.

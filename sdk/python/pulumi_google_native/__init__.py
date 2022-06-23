@@ -1060,6 +1060,7 @@ _utilities.register(
    "google-native:compute/alpha:Instance": "Instance",
    "google-native:compute/alpha:InstanceGroup": "InstanceGroup",
    "google-native:compute/alpha:InstanceGroupManager": "InstanceGroupManager",
+   "google-native:compute/alpha:InstanceGroupManagerResizeRequest": "InstanceGroupManagerResizeRequest",
    "google-native:compute/alpha:InstanceIamPolicy": "InstanceIamPolicy",
    "google-native:compute/alpha:InstanceTemplate": "InstanceTemplate",
    "google-native:compute/alpha:InstanceTemplateIamPolicy": "InstanceTemplateIamPolicy",
@@ -1515,12 +1516,14 @@ _utilities.register(
   "fqn": "pulumi_google_native.dataplex.v1",
   "classes": {
    "google-native:dataplex/v1:Asset": "Asset",
+   "google-native:dataplex/v1:Content": "Content",
    "google-native:dataplex/v1:Contentitem": "Contentitem",
    "google-native:dataplex/v1:Entity": "Entity",
    "google-native:dataplex/v1:Environment": "Environment",
    "google-native:dataplex/v1:Lake": "Lake",
    "google-native:dataplex/v1:LakeAssetIamPolicy": "LakeAssetIamPolicy",
    "google-native:dataplex/v1:LakeContentIamPolicy": "LakeContentIamPolicy",
+   "google-native:dataplex/v1:LakeContentitemIamPolicy": "LakeContentitemIamPolicy",
    "google-native:dataplex/v1:LakeEnvironmentIamPolicy": "LakeEnvironmentIamPolicy",
    "google-native:dataplex/v1:LakeIamPolicy": "LakeIamPolicy",
    "google-native:dataplex/v1:LakeTaskIamPolicy": "LakeTaskIamPolicy",
@@ -1817,6 +1820,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.eventarc.v1",
   "classes": {
    "google-native:eventarc/v1:Channel": "Channel",
+   "google-native:eventarc/v1:ChannelConnection": "ChannelConnection",
    "google-native:eventarc/v1:ChannelConnectionIamPolicy": "ChannelConnectionIamPolicy",
    "google-native:eventarc/v1:ChannelIamPolicy": "ChannelIamPolicy",
    "google-native:eventarc/v1:Trigger": "Trigger",
@@ -1919,6 +1923,7 @@ _utilities.register(
   "mod": "firestore/v1",
   "fqn": "pulumi_google_native.firestore.v1",
   "classes": {
+   "google-native:firestore/v1:Database": "Database",
    "google-native:firestore/v1:Index": "Index"
   }
  },
@@ -2229,6 +2234,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1alpha",
   "classes": {
    "google-native:metastore/v1alpha:Backup": "Backup",
+   "google-native:metastore/v1alpha:Federation": "Federation",
    "google-native:metastore/v1alpha:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1alpha:MetadataImport": "MetadataImport",
    "google-native:metastore/v1alpha:Service": "Service",
@@ -2244,6 +2250,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1beta",
   "classes": {
    "google-native:metastore/v1beta:Backup": "Backup",
+   "google-native:metastore/v1beta:Federation": "Federation",
    "google-native:metastore/v1beta:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1beta:MetadataImport": "MetadataImport",
    "google-native:metastore/v1beta:Service": "Service",
@@ -2369,8 +2376,16 @@ _utilities.register(
    "google-native:networkservices/v1:EdgeCacheServiceIamPolicy": "EdgeCacheServiceIamPolicy",
    "google-native:networkservices/v1:EndpointPolicy": "EndpointPolicy",
    "google-native:networkservices/v1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy",
+   "google-native:networkservices/v1:Gateway": "Gateway",
+   "google-native:networkservices/v1:GatewayIamPolicy": "GatewayIamPolicy",
+   "google-native:networkservices/v1:GrpcRoute": "GrpcRoute",
+   "google-native:networkservices/v1:HttpRoute": "HttpRoute",
+   "google-native:networkservices/v1:Mesh": "Mesh",
+   "google-native:networkservices/v1:MeshIamPolicy": "MeshIamPolicy",
    "google-native:networkservices/v1:ServiceBinding": "ServiceBinding",
-   "google-native:networkservices/v1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy"
+   "google-native:networkservices/v1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy",
+   "google-native:networkservices/v1:TcpRoute": "TcpRoute",
+   "google-native:networkservices/v1:TlsRoute": "TlsRoute"
   }
  },
  {

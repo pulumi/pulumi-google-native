@@ -29,6 +29,8 @@ type LookupJobTemplateArgs struct {
 type LookupJobTemplateResult struct {
 	// The configuration for this template.
 	Config JobConfigResponse `pulumi:"config"`
+	// The labels associated with this job template. You can use these to organize and group your job templates.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
 	Name string `pulumi:"name"`
 }
@@ -73,6 +75,11 @@ func (o LookupJobTemplateResultOutput) ToLookupJobTemplateResultOutputWithContex
 // The configuration for this template.
 func (o LookupJobTemplateResultOutput) Config() JobConfigResponseOutput {
 	return o.ApplyT(func(v LookupJobTemplateResult) JobConfigResponse { return v.Config }).(JobConfigResponseOutput)
+}
+
+// The labels associated with this job template. You can use these to organize and group your job templates.
+func (o LookupJobTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupJobTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`

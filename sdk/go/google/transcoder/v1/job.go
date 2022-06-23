@@ -24,7 +24,9 @@ type Job struct {
 	Error StatusResponseOutput `pulumi:"error"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	InputUri pulumi.StringOutput `pulumi:"inputUri"`
-	Location pulumi.StringOutput `pulumi:"location"`
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -83,7 +85,9 @@ type jobArgs struct {
 	Config *JobConfig `pulumi:"config"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	InputUri *string `pulumi:"inputUri"`
-	Location *string `pulumi:"location"`
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -101,6 +105,8 @@ type JobArgs struct {
 	Config JobConfigPtrInput
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	InputUri pulumi.StringPtrInput
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput
@@ -173,6 +179,11 @@ func (o JobOutput) Error() StatusResponseOutput {
 // Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o JobOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.InputUri }).(pulumi.StringOutput)
+}
+
+// The labels associated with this job. You can use these to organize and group your jobs.
+func (o JobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o JobOutput) Location() pulumi.StringOutput {

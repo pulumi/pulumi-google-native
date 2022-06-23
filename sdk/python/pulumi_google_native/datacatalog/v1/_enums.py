@@ -9,7 +9,6 @@ __all__ = [
     'GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
-    'GoogleCloudDatacatalogV1DataplexExternalTableSystem',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
     'TaxonomyActivatedPolicyTypesItem',
@@ -26,7 +25,7 @@ class EntryType(str, Enum):
     """
     TABLE = "TABLE"
     """
-    Output only. The entry type that has a GoogleSQL schema, including logical views.
+    The entry type that has a GoogleSQL schema, including logical views.
     """
     MODEL = "MODEL"
     """
@@ -117,32 +116,6 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecType(str, Enum):
     EXTERNAL = "EXTERNAL"
     """
     External table.
-    """
-
-
-class GoogleCloudDatacatalogV1DataplexExternalTableSystem(str, Enum):
-    """
-    Service in which the external table is registered.
-    """
-    INTEGRATED_SYSTEM_UNSPECIFIED = "INTEGRATED_SYSTEM_UNSPECIFIED"
-    """
-    Default unknown system.
-    """
-    BIGQUERY = "BIGQUERY"
-    """
-    BigQuery.
-    """
-    CLOUD_PUBSUB = "CLOUD_PUBSUB"
-    """
-    Cloud Pub/Sub.
-    """
-    DATAPROC_METASTORE = "DATAPROC_METASTORE"
-    """
-    Dataproc Metastore.
-    """
-    DATAPLEX = "DATAPLEX"
-    """
-    Dataplex.
     """
 
 

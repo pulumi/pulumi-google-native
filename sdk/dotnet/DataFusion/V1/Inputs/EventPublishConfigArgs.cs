@@ -18,17 +18,11 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
         /// <summary>
         /// Option to enable Event Publishing.
         /// </summary>
-        [Input("eventPublishEnabled", required: true)]
-        public Input<bool> EventPublishEnabled { get; set; } = null!;
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Project name.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Pub/Sub Topic.
+        /// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;

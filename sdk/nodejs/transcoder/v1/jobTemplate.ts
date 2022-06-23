@@ -43,6 +43,10 @@ export class JobTemplate extends pulumi.CustomResource {
      * Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
      */
     public readonly jobTemplateId!: pulumi.Output<string>;
+    /**
+     * The labels associated with this job template. You can use these to organize and group your job templates.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
@@ -66,12 +70,14 @@ export class JobTemplate extends pulumi.CustomResource {
             }
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["jobTemplateId"] = args ? args.jobTemplateId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["jobTemplateId"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -93,6 +99,10 @@ export interface JobTemplateArgs {
      * Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
      */
     jobTemplateId: pulumi.Input<string>;
+    /**
+     * The labels associated with this job template. You can use these to organize and group your job templates.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`

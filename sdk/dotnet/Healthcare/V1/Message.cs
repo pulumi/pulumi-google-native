@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<string> MessageType { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+        /// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Input<string>? MessageType { get; set; }
 
         /// <summary>
-        /// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+        /// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

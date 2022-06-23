@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         public readonly string InputUri;
         /// <summary>
+        /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         /// </summary>
         public readonly string Name;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1
 
             string inputUri,
 
+            ImmutableDictionary<string, string> labels,
+
             string name,
 
             string outputUri,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
             EndTime = endTime;
             Error = error;
             InputUri = inputUri;
+            Labels = labels;
             Name = name;
             OutputUri = outputUri;
             StartTime = startTime;

@@ -53,7 +53,7 @@ class GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse(dict):
                  name: str):
         """
         Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
-        :param int interface_index: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        :param int interface_index: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
         :param Sequence['LogicalNetworkInterfaceResponse'] logical_network_interfaces: List of logical network interfaces within a logical interface.
         :param str name: Interface name. This is of syntax or and forms part of the network template name.
         """
@@ -65,7 +65,7 @@ class GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse(dict):
     @pulumi.getter(name="interfaceIndex")
     def interface_index(self) -> int:
         """
-        The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
         """
         return pulumi.get(self, "interface_index")
 
@@ -489,6 +489,8 @@ class NetworkConfigResponse(dict):
         suggest = None
         if key == "gcpService":
             suggest = "gcp_service"
+        elif key == "jumboFramesEnabled":
+            suggest = "jumbo_frames_enabled"
         elif key == "serviceCidr":
             suggest = "service_cidr"
         elif key == "userNote":
@@ -513,6 +515,7 @@ class NetworkConfigResponse(dict):
                  bandwidth: str,
                  cidr: str,
                  gcp_service: str,
+                 jumbo_frames_enabled: bool,
                  name: str,
                  service_cidr: str,
                  type: str,
@@ -524,6 +527,7 @@ class NetworkConfigResponse(dict):
         :param str bandwidth: Interconnect bandwidth. Set only when type is CLIENT.
         :param str cidr: CIDR range of the network.
         :param str gcp_service: The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
+        :param bool jumbo_frames_enabled: The JumboFramesEnabled option for customer to set.
         :param str name: The name of the network config.
         :param str service_cidr: Service CIDR, if any.
         :param str type: The type of this network, either Client or Private.
@@ -534,6 +538,7 @@ class NetworkConfigResponse(dict):
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "gcp_service", gcp_service)
+        pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "service_cidr", service_cidr)
         pulumi.set(__self__, "type", type)
@@ -564,6 +569,14 @@ class NetworkConfigResponse(dict):
         The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
         """
         return pulumi.get(self, "gcp_service")
+
+    @property
+    @pulumi.getter(name="jumboFramesEnabled")
+    def jumbo_frames_enabled(self) -> bool:
+        """
+        The JumboFramesEnabled option for customer to set.
+        """
+        return pulumi.get(self, "jumbo_frames_enabled")
 
     @property
     @pulumi.getter

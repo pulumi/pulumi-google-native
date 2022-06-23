@@ -824,6 +824,198 @@ func (o CryptoKeyConfigResponseOutput) KeyReference() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyConfigResponse) string { return v.KeyReference }).(pulumi.StringOutput)
 }
 
+// Confirguration of PubSubEventWriter.
+type EventPublishConfig struct {
+	// Option to enable Event Publishing.
+	Enabled bool `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+	Topic string `pulumi:"topic"`
+}
+
+// EventPublishConfigInput is an input type that accepts EventPublishConfigArgs and EventPublishConfigOutput values.
+// You can construct a concrete instance of `EventPublishConfigInput` via:
+//
+//          EventPublishConfigArgs{...}
+type EventPublishConfigInput interface {
+	pulumi.Input
+
+	ToEventPublishConfigOutput() EventPublishConfigOutput
+	ToEventPublishConfigOutputWithContext(context.Context) EventPublishConfigOutput
+}
+
+// Confirguration of PubSubEventWriter.
+type EventPublishConfigArgs struct {
+	// Option to enable Event Publishing.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (EventPublishConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventPublishConfig)(nil)).Elem()
+}
+
+func (i EventPublishConfigArgs) ToEventPublishConfigOutput() EventPublishConfigOutput {
+	return i.ToEventPublishConfigOutputWithContext(context.Background())
+}
+
+func (i EventPublishConfigArgs) ToEventPublishConfigOutputWithContext(ctx context.Context) EventPublishConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventPublishConfigOutput)
+}
+
+func (i EventPublishConfigArgs) ToEventPublishConfigPtrOutput() EventPublishConfigPtrOutput {
+	return i.ToEventPublishConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EventPublishConfigArgs) ToEventPublishConfigPtrOutputWithContext(ctx context.Context) EventPublishConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventPublishConfigOutput).ToEventPublishConfigPtrOutputWithContext(ctx)
+}
+
+// EventPublishConfigPtrInput is an input type that accepts EventPublishConfigArgs, EventPublishConfigPtr and EventPublishConfigPtrOutput values.
+// You can construct a concrete instance of `EventPublishConfigPtrInput` via:
+//
+//          EventPublishConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EventPublishConfigPtrInput interface {
+	pulumi.Input
+
+	ToEventPublishConfigPtrOutput() EventPublishConfigPtrOutput
+	ToEventPublishConfigPtrOutputWithContext(context.Context) EventPublishConfigPtrOutput
+}
+
+type eventPublishConfigPtrType EventPublishConfigArgs
+
+func EventPublishConfigPtr(v *EventPublishConfigArgs) EventPublishConfigPtrInput {
+	return (*eventPublishConfigPtrType)(v)
+}
+
+func (*eventPublishConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventPublishConfig)(nil)).Elem()
+}
+
+func (i *eventPublishConfigPtrType) ToEventPublishConfigPtrOutput() EventPublishConfigPtrOutput {
+	return i.ToEventPublishConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *eventPublishConfigPtrType) ToEventPublishConfigPtrOutputWithContext(ctx context.Context) EventPublishConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventPublishConfigPtrOutput)
+}
+
+// Confirguration of PubSubEventWriter.
+type EventPublishConfigOutput struct{ *pulumi.OutputState }
+
+func (EventPublishConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventPublishConfig)(nil)).Elem()
+}
+
+func (o EventPublishConfigOutput) ToEventPublishConfigOutput() EventPublishConfigOutput {
+	return o
+}
+
+func (o EventPublishConfigOutput) ToEventPublishConfigOutputWithContext(ctx context.Context) EventPublishConfigOutput {
+	return o
+}
+
+func (o EventPublishConfigOutput) ToEventPublishConfigPtrOutput() EventPublishConfigPtrOutput {
+	return o.ToEventPublishConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EventPublishConfigOutput) ToEventPublishConfigPtrOutputWithContext(ctx context.Context) EventPublishConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventPublishConfig) *EventPublishConfig {
+		return &v
+	}).(EventPublishConfigPtrOutput)
+}
+
+// Option to enable Event Publishing.
+func (o EventPublishConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EventPublishConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+func (o EventPublishConfigOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v EventPublishConfig) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type EventPublishConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EventPublishConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventPublishConfig)(nil)).Elem()
+}
+
+func (o EventPublishConfigPtrOutput) ToEventPublishConfigPtrOutput() EventPublishConfigPtrOutput {
+	return o
+}
+
+func (o EventPublishConfigPtrOutput) ToEventPublishConfigPtrOutputWithContext(ctx context.Context) EventPublishConfigPtrOutput {
+	return o
+}
+
+func (o EventPublishConfigPtrOutput) Elem() EventPublishConfigOutput {
+	return o.ApplyT(func(v *EventPublishConfig) EventPublishConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EventPublishConfig
+		return ret
+	}).(EventPublishConfigOutput)
+}
+
+// Option to enable Event Publishing.
+func (o EventPublishConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EventPublishConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+func (o EventPublishConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventPublishConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Confirguration of PubSubEventWriter.
+type EventPublishConfigResponse struct {
+	// Option to enable Event Publishing.
+	Enabled bool `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+	Topic string `pulumi:"topic"`
+}
+
+// Confirguration of PubSubEventWriter.
+type EventPublishConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EventPublishConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventPublishConfigResponse)(nil)).Elem()
+}
+
+func (o EventPublishConfigResponseOutput) ToEventPublishConfigResponseOutput() EventPublishConfigResponseOutput {
+	return o
+}
+
+func (o EventPublishConfigResponseOutput) ToEventPublishConfigResponseOutputWithContext(ctx context.Context) EventPublishConfigResponseOutput {
+	return o
+}
+
+// Option to enable Event Publishing.
+func (o EventPublishConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EventPublishConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+func (o EventPublishConfigResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v EventPublishConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1465,6 +1657,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyConfigInput)(nil)).Elem(), CryptoKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyConfigPtrInput)(nil)).Elem(), CryptoKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventPublishConfigInput)(nil)).Elem(), EventPublishConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventPublishConfigPtrInput)(nil)).Elem(), EventPublishConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
@@ -1490,6 +1684,9 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyConfigOutput{})
 	pulumi.RegisterOutputType(CryptoKeyConfigPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyConfigResponseOutput{})
+	pulumi.RegisterOutputType(EventPublishConfigOutput{})
+	pulumi.RegisterOutputType(EventPublishConfigPtrOutput{})
+	pulumi.RegisterOutputType(EventPublishConfigResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

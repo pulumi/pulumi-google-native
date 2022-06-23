@@ -170,8 +170,8 @@ class GclbTargetResponse(dict):
         """
         Describes a Target Proxy which uses this Certificate Map.
         :param Sequence['IpConfigResponse'] ip_configs: IP configurations for this Target Proxy where the Certificate Map is serving.
-        :param str target_https_proxy: A name must be in the format `projects/*/locations/*/targetHttpsProxies/*`.
-        :param str target_ssl_proxy: A name must be in the format `projects/*/locations/*/targetSslProxies/*`.
+        :param str target_https_proxy: This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
+        :param str target_ssl_proxy: This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
         """
         pulumi.set(__self__, "ip_configs", ip_configs)
         pulumi.set(__self__, "target_https_proxy", target_https_proxy)
@@ -189,7 +189,7 @@ class GclbTargetResponse(dict):
     @pulumi.getter(name="targetHttpsProxy")
     def target_https_proxy(self) -> str:
         """
-        A name must be in the format `projects/*/locations/*/targetHttpsProxies/*`.
+        This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
         """
         return pulumi.get(self, "target_https_proxy")
 
@@ -197,7 +197,7 @@ class GclbTargetResponse(dict):
     @pulumi.getter(name="targetSslProxy")
     def target_ssl_proxy(self) -> str:
         """
-        A name must be in the format `projects/*/locations/*/targetSslProxies/*`.
+        This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
         """
         return pulumi.get(self, "target_ssl_proxy")
 

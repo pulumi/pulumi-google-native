@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, channel=None, create_time=None, destination=None, etag=None, event_filters=None, labels=None, name=None, service_account=None, transport=None, uid=None, update_time=None):
+    def __init__(__self__, channel=None, conditions=None, create_time=None, destination=None, etag=None, event_filters=None, labels=None, name=None, service_account=None, transport=None, uid=None, update_time=None):
         if channel and not isinstance(channel, str):
             raise TypeError("Expected argument 'channel' to be a str")
         pulumi.set(__self__, "channel", channel)
+        if conditions and not isinstance(conditions, dict):
+            raise TypeError("Expected argument 'conditions' to be a dict")
+        pulumi.set(__self__, "conditions", conditions)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -61,6 +64,14 @@ class GetTriggerResult:
         Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         """
         return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Mapping[str, str]:
+        """
+        The reason(s) why a trigger is in FAILED state.
+        """
+        return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter(name="createTime")
@@ -150,6 +161,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             yield self
         return GetTriggerResult(
             channel=self.channel,
+            conditions=self.conditions,
             create_time=self.create_time,
             destination=self.destination,
             etag=self.etag,
@@ -181,6 +193,7 @@ def get_trigger(location: Optional[str] = None,
 
     return AwaitableGetTriggerResult(
         channel=__ret__.channel,
+        conditions=__ret__.conditions,
         create_time=__ret__.create_time,
         destination=__ret__.destination,
         etag=__ret__.etag,

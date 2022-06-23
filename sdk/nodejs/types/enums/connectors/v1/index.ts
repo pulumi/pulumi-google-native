@@ -43,6 +43,10 @@ export const AuthConfigAuthType = {
      * Oauth 2.0 Client Credentials Grant Authentication
      */
     Oauth2ClientCredentials: "OAUTH2_CLIENT_CREDENTIALS",
+    /**
+     * SSH Public Key Authentication
+     */
+    SshPublicKey: "SSH_PUBLIC_KEY",
 } as const;
 
 /**

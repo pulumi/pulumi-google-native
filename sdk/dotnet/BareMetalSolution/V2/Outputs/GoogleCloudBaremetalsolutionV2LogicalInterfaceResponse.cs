@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
     public sealed class GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse
     {
         /// <summary>
-        /// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        /// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
         /// </summary>
         public readonly int InterfaceIndex;
         /// <summary>

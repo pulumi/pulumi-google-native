@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? Algo { get; set; }
 
         /// <summary>
-        /// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        /// Value of the digest.
         /// </summary>
-        [Input("digestValue")]
-        public Input<string>? DigestValue { get; set; }
+        [Input("digestBytes")]
+        public Input<string>? DigestBytes { get; set; }
 
         public DigestArgs()
         {

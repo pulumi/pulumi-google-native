@@ -127,7 +127,7 @@ class TagValue(pulumi.CustomResource):
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 300 TagValues can exist under a TagKey at any given time.
+        Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 1000 TagValues can exist under a TagKey at any given time.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -145,7 +145,7 @@ class TagValue(pulumi.CustomResource):
                  args: TagValueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 300 TagValues can exist under a TagKey at any given time.
+        Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 1000 TagValues can exist under a TagKey at any given time.
 
         :param str resource_name: The name of the resource.
         :param TagValueArgs args: The arguments to use to populate this resource's properties.

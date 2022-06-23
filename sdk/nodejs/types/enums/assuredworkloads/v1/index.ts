@@ -71,6 +71,10 @@ export const WorkloadComplianceRegime = {
      * Assured Workloads For Canada Regions and Support controls
      */
     CaRegionsAndSupport: "CA_REGIONS_AND_SUPPORT",
+    /**
+     * International Traffic in Arms Regulations
+     */
+    Itar: "ITAR",
 } as const;
 
 /**

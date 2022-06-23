@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         [Output("inputUri")]
         public Output<string> InputUri { get; private set; } = null!;
 
+        /// <summary>
+        /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -143,6 +149,18 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         [Input("inputUri")]
         public Input<string>? InputUri { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

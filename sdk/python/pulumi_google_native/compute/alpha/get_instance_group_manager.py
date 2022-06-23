@@ -219,7 +219,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="listManagedInstancesResults")
     def list_managed_instances_results(self) -> str:
         """
-        Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+        Pagination behavior of the listManagedInstances API method for this managed instance group.
         """
         return pulumi.get(self, "list_managed_instances_results")
 

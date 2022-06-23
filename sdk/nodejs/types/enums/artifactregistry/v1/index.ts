@@ -51,6 +51,10 @@ export const RepositoryFormat = {
      * Python package format.
      */
     Python: "PYTHON",
+    /**
+     * Kubeflow Pipelines package format.
+     */
+    Kfp: "KFP",
 } as const;
 
 /**

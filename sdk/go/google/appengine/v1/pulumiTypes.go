@@ -4360,6 +4360,8 @@ func (o ManualScalingResponseOutput) Instances() pulumi.IntOutput {
 type Network struct {
 	// List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
 	ForwardedPorts []string `pulumi:"forwardedPorts"`
+	// The IP mode for instances. Only applicable in the App Engine flexible environment.
+	InstanceIpMode *NetworkInstanceIpMode `pulumi:"instanceIpMode"`
 	// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
 	InstanceTag *string `pulumi:"instanceTag"`
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
@@ -4385,6 +4387,8 @@ type NetworkInput interface {
 type NetworkArgs struct {
 	// List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
 	ForwardedPorts pulumi.StringArrayInput `pulumi:"forwardedPorts"`
+	// The IP mode for instances. Only applicable in the App Engine flexible environment.
+	InstanceIpMode NetworkInstanceIpModePtrInput `pulumi:"instanceIpMode"`
 	// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
 	InstanceTag pulumi.StringPtrInput `pulumi:"instanceTag"`
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
@@ -4478,6 +4482,11 @@ func (o NetworkOutput) ForwardedPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Network) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
 }
 
+// The IP mode for instances. Only applicable in the App Engine flexible environment.
+func (o NetworkOutput) InstanceIpMode() NetworkInstanceIpModePtrOutput {
+	return o.ApplyT(func(v Network) *NetworkInstanceIpMode { return v.InstanceIpMode }).(NetworkInstanceIpModePtrOutput)
+}
+
 // Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
 func (o NetworkOutput) InstanceTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Network) *string { return v.InstanceTag }).(pulumi.StringPtrOutput)
@@ -4532,6 +4541,16 @@ func (o NetworkPtrOutput) ForwardedPorts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The IP mode for instances. Only applicable in the App Engine flexible environment.
+func (o NetworkPtrOutput) InstanceIpMode() NetworkInstanceIpModePtrOutput {
+	return o.ApplyT(func(v *Network) *NetworkInstanceIpMode {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceIpMode
+	}).(NetworkInstanceIpModePtrOutput)
+}
+
 // Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
 func (o NetworkPtrOutput) InstanceTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) *string {
@@ -4576,6 +4595,8 @@ func (o NetworkPtrOutput) SubnetworkName() pulumi.StringPtrOutput {
 type NetworkResponse struct {
 	// List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
 	ForwardedPorts []string `pulumi:"forwardedPorts"`
+	// The IP mode for instances. Only applicable in the App Engine flexible environment.
+	InstanceIpMode string `pulumi:"instanceIpMode"`
 	// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
 	InstanceTag string `pulumi:"instanceTag"`
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
@@ -4604,6 +4625,11 @@ func (o NetworkResponseOutput) ToNetworkResponseOutputWithContext(ctx context.Co
 // List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
 func (o NetworkResponseOutput) ForwardedPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkResponse) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
+}
+
+// The IP mode for instances. Only applicable in the App Engine flexible environment.
+func (o NetworkResponseOutput) InstanceIpMode() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.InstanceIpMode }).(pulumi.StringOutput)
 }
 
 // Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.

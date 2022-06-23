@@ -38,6 +38,8 @@ type DeliveryPipeline struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline SerialPipelineResponseOutput `pulumi:"serialPipeline"`
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended pulumi.BoolOutput `pulumi:"suspended"`
 	// Unique identifier of the `DeliveryPipeline`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Most recent time at which the pipeline was updated.
@@ -106,6 +108,8 @@ type deliveryPipelineArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline *SerialPipeline `pulumi:"serialPipeline"`
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended *bool `pulumi:"suspended"`
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
 	ValidateOnly *string `pulumi:"validateOnly"`
 }
@@ -130,6 +134,8 @@ type DeliveryPipelineArgs struct {
 	RequestId pulumi.StringPtrInput
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline SerialPipelinePtrInput
+	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+	Suspended pulumi.BoolPtrInput
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
 	ValidateOnly pulumi.StringPtrInput
 }
@@ -227,6 +233,11 @@ func (o DeliveryPipelineOutput) RequestId() pulumi.StringPtrOutput {
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 func (o DeliveryPipelineOutput) SerialPipeline() SerialPipelineResponseOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) SerialPipelineResponseOutput { return v.SerialPipeline }).(SerialPipelineResponseOutput)
+}
+
+// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+func (o DeliveryPipelineOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the `DeliveryPipeline`.

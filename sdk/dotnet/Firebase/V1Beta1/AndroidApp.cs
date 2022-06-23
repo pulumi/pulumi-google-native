@@ -102,12 +102,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public Input<string>? ApiKeyId { get; set; }
 
         /// <summary>
-        /// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
-        /// </summary>
-        [Input("appId")]
-        public Input<string>? AppId { get; set; }
-
-        /// <summary>
         /// The user-assigned display name for the `AndroidApp`.
         /// </summary>
         [Input("displayName")]
@@ -125,9 +119,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Input("packageName")]
         public Input<string>? PackageName { get; set; }
 
-        /// <summary>
-        /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

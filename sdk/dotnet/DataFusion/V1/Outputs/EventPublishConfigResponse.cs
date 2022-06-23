@@ -19,26 +19,19 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Outputs
         /// <summary>
         /// Option to enable Event Publishing.
         /// </summary>
-        public readonly bool EventPublishEnabled;
+        public readonly bool Enabled;
         /// <summary>
-        /// Project name.
-        /// </summary>
-        public readonly string Project;
-        /// <summary>
-        /// Pub/Sub Topic.
+        /// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
         /// </summary>
         public readonly string Topic;
 
         [OutputConstructor]
         private EventPublishConfigResponse(
-            bool eventPublishEnabled,
-
-            string project,
+            bool enabled,
 
             string topic)
         {
-            EventPublishEnabled = eventPublishEnabled;
-            Project = project;
+            Enabled = enabled;
             Topic = topic;
         }
     }

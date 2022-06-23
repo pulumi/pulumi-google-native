@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates key value entries in a org, env or apis scoped key value map.
+// Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
 type EnvironmentEntry struct {
 	pulumi.CustomResourceState
 

@@ -18,6 +18,8 @@ import (
 type Release struct {
 	pulumi.CustomResourceState
 
+	// Indicates whether this is an abandoned release.
+	Abandoned pulumi.BoolOutput `pulumi:"abandoned"`
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// List of artifacts to pass through to Skaffold command.
@@ -205,6 +207,11 @@ func (o ReleaseOutput) ToReleaseOutput() ReleaseOutput {
 
 func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOutput {
 	return o
+}
+
+// Indicates whether this is an abandoned release.
+func (o ReleaseOutput) Abandoned() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Release) pulumi.BoolOutput { return v.Abandoned }).(pulumi.BoolOutput)
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobTemplateResult:
-    def __init__(__self__, config=None, name=None):
+    def __init__(__self__, config=None, labels=None, name=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -34,6 +37,14 @@ class GetJobTemplateResult:
         The configuration for this template.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The labels associated with this job template. You can use these to organize and group your job templates.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -51,6 +62,7 @@ class AwaitableGetJobTemplateResult(GetJobTemplateResult):
             yield self
         return GetJobTemplateResult(
             config=self.config,
+            labels=self.labels,
             name=self.name)
 
 
@@ -73,6 +85,7 @@ def get_job_template(job_template_id: Optional[str] = None,
 
     return AwaitableGetJobTemplateResult(
         config=__ret__.config,
+        labels=__ret__.labels,
         name=__ret__.name)
 
 

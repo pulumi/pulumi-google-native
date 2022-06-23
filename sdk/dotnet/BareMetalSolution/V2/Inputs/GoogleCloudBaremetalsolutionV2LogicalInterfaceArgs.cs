@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     public sealed class GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+        /// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
         /// </summary>
         [Input("interfaceIndex")]
         public Input<int>? InterfaceIndex { get; set; }

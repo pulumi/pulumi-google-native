@@ -147,6 +147,47 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
     /// <summary>
+    /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+    /// </summary>
+    [EnumType]
+    public readonly struct FhirStoreComplexDataTypeReferenceParsing : IEquatable<FhirStoreComplexDataTypeReferenceParsing>
+    {
+        private readonly string _value;
+
+        private FhirStoreComplexDataTypeReferenceParsing(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No parsing behavior specified. This is the same as DISABLED for backwards compatibility.
+        /// </summary>
+        public static FhirStoreComplexDataTypeReferenceParsing ComplexDataTypeReferenceParsingUnspecified { get; } = new FhirStoreComplexDataTypeReferenceParsing("COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED");
+        /// <summary>
+        /// References in complex data types are ignored.
+        /// </summary>
+        public static FhirStoreComplexDataTypeReferenceParsing Disabled { get; } = new FhirStoreComplexDataTypeReferenceParsing("DISABLED");
+        /// <summary>
+        /// References in complex data types are parsed.
+        /// </summary>
+        public static FhirStoreComplexDataTypeReferenceParsing Enabled { get; } = new FhirStoreComplexDataTypeReferenceParsing("ENABLED");
+
+        public static bool operator ==(FhirStoreComplexDataTypeReferenceParsing left, FhirStoreComplexDataTypeReferenceParsing right) => left.Equals(right);
+        public static bool operator !=(FhirStoreComplexDataTypeReferenceParsing left, FhirStoreComplexDataTypeReferenceParsing right) => !left.Equals(right);
+
+        public static explicit operator string(FhirStoreComplexDataTypeReferenceParsing value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FhirStoreComplexDataTypeReferenceParsing other && Equals(other);
+        public bool Equals(FhirStoreComplexDataTypeReferenceParsing other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
     /// </summary>
     [EnumType]

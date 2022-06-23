@@ -36,7 +36,7 @@ type LookupSearchApplicationResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
 	EnableAuditLog bool `pulumi:"enableAuditLog"`
-	// Name of the Search Application. Format: searchapplications/{application_id}.
+	// The name of the Search Application. Format: searchapplications/{application_id}.
 	Name string `pulumi:"name"`
 	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
 	OperationIds []string `pulumi:"operationIds"`
@@ -111,7 +111,7 @@ func (o LookupSearchApplicationResultOutput) EnableAuditLog() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupSearchApplicationResult) bool { return v.EnableAuditLog }).(pulumi.BoolOutput)
 }
 
-// Name of the Search Application. Format: searchapplications/{application_id}.
+// The name of the Search Application. Format: searchapplications/{application_id}.
 func (o LookupSearchApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSearchApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }

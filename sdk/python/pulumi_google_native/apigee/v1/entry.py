@@ -95,7 +95,7 @@ class Entry(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates key value entries in a org, env or apis scoped key value map.
+        Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,7 +109,7 @@ class Entry(pulumi.CustomResource):
                  args: EntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates key value entries in a org, env or apis scoped key value map.
+        Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
 
         :param str resource_name: The name of the resource.
         :param EntryArgs args: The arguments to use to populate this resource's properties.

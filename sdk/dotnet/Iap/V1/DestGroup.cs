@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+        /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+        /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
         /// </summary>
         [Output("tunnelDestGroupId")]
         public Output<string> TunnelDestGroupId { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+        /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+        /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
         /// </summary>
         [Input("tunnelDestGroupId", required: true)]
         public Input<string> TunnelDestGroupId { get; set; } = null!;

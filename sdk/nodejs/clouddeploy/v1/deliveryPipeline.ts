@@ -79,6 +79,10 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      */
     public readonly serialPipeline!: pulumi.Output<outputs.clouddeploy.v1.SerialPipelineResponse>;
     /**
+     * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+     */
+    public readonly suspended!: pulumi.Output<boolean>;
+    /**
      * Unique identifier of the `DeliveryPipeline`.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -115,6 +119,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["serialPipeline"] = args ? args.serialPipeline : undefined;
+            resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -133,6 +138,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["serialPipeline"] = undefined /*out*/;
+            resourceInputs["suspended"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["validateOnly"] = undefined /*out*/;
@@ -180,6 +186,10 @@ export interface DeliveryPipelineArgs {
      * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
      */
     serialPipeline?: pulumi.Input<inputs.clouddeploy.v1.SerialPipelineArgs>;
+    /**
+     * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+     */
+    suspended?: pulumi.Input<boolean>;
     /**
      * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
      */

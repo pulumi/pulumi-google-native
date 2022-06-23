@@ -1375,6 +1375,175 @@ func (in *ingressRuleActionPtr) ToIngressRuleActionPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(IngressRuleActionPtrOutput)
 }
 
+// The IP mode for instances. Only applicable in the App Engine flexible environment.
+type NetworkInstanceIpMode string
+
+const (
+	// Unspecified is treated as EXTERNAL.
+	NetworkInstanceIpModeInstanceIpModeUnspecified = NetworkInstanceIpMode("INSTANCE_IP_MODE_UNSPECIFIED")
+	// Instances are created with both internal and external IP addresses.
+	NetworkInstanceIpModeExternal = NetworkInstanceIpMode("EXTERNAL")
+	// Instances are created with internal IP addresses only.
+	NetworkInstanceIpModeInternal = NetworkInstanceIpMode("INTERNAL")
+)
+
+func (NetworkInstanceIpMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInstanceIpMode)(nil)).Elem()
+}
+
+func (e NetworkInstanceIpMode) ToNetworkInstanceIpModeOutput() NetworkInstanceIpModeOutput {
+	return pulumi.ToOutput(e).(NetworkInstanceIpModeOutput)
+}
+
+func (e NetworkInstanceIpMode) ToNetworkInstanceIpModeOutputWithContext(ctx context.Context) NetworkInstanceIpModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkInstanceIpModeOutput)
+}
+
+func (e NetworkInstanceIpMode) ToNetworkInstanceIpModePtrOutput() NetworkInstanceIpModePtrOutput {
+	return e.ToNetworkInstanceIpModePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkInstanceIpMode) ToNetworkInstanceIpModePtrOutputWithContext(ctx context.Context) NetworkInstanceIpModePtrOutput {
+	return NetworkInstanceIpMode(e).ToNetworkInstanceIpModeOutputWithContext(ctx).ToNetworkInstanceIpModePtrOutputWithContext(ctx)
+}
+
+func (e NetworkInstanceIpMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkInstanceIpMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkInstanceIpMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkInstanceIpMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkInstanceIpModeOutput struct{ *pulumi.OutputState }
+
+func (NetworkInstanceIpModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInstanceIpMode)(nil)).Elem()
+}
+
+func (o NetworkInstanceIpModeOutput) ToNetworkInstanceIpModeOutput() NetworkInstanceIpModeOutput {
+	return o
+}
+
+func (o NetworkInstanceIpModeOutput) ToNetworkInstanceIpModeOutputWithContext(ctx context.Context) NetworkInstanceIpModeOutput {
+	return o
+}
+
+func (o NetworkInstanceIpModeOutput) ToNetworkInstanceIpModePtrOutput() NetworkInstanceIpModePtrOutput {
+	return o.ToNetworkInstanceIpModePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkInstanceIpModeOutput) ToNetworkInstanceIpModePtrOutputWithContext(ctx context.Context) NetworkInstanceIpModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkInstanceIpMode) *NetworkInstanceIpMode {
+		return &v
+	}).(NetworkInstanceIpModePtrOutput)
+}
+
+func (o NetworkInstanceIpModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkInstanceIpModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkInstanceIpMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkInstanceIpModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkInstanceIpModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkInstanceIpMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkInstanceIpModePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkInstanceIpModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInstanceIpMode)(nil)).Elem()
+}
+
+func (o NetworkInstanceIpModePtrOutput) ToNetworkInstanceIpModePtrOutput() NetworkInstanceIpModePtrOutput {
+	return o
+}
+
+func (o NetworkInstanceIpModePtrOutput) ToNetworkInstanceIpModePtrOutputWithContext(ctx context.Context) NetworkInstanceIpModePtrOutput {
+	return o
+}
+
+func (o NetworkInstanceIpModePtrOutput) Elem() NetworkInstanceIpModeOutput {
+	return o.ApplyT(func(v *NetworkInstanceIpMode) NetworkInstanceIpMode {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkInstanceIpMode
+		return ret
+	}).(NetworkInstanceIpModeOutput)
+}
+
+func (o NetworkInstanceIpModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkInstanceIpModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkInstanceIpMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkInstanceIpModeInput is an input type that accepts NetworkInstanceIpModeArgs and NetworkInstanceIpModeOutput values.
+// You can construct a concrete instance of `NetworkInstanceIpModeInput` via:
+//
+//          NetworkInstanceIpModeArgs{...}
+type NetworkInstanceIpModeInput interface {
+	pulumi.Input
+
+	ToNetworkInstanceIpModeOutput() NetworkInstanceIpModeOutput
+	ToNetworkInstanceIpModeOutputWithContext(context.Context) NetworkInstanceIpModeOutput
+}
+
+var networkInstanceIpModePtrType = reflect.TypeOf((**NetworkInstanceIpMode)(nil)).Elem()
+
+type NetworkInstanceIpModePtrInput interface {
+	pulumi.Input
+
+	ToNetworkInstanceIpModePtrOutput() NetworkInstanceIpModePtrOutput
+	ToNetworkInstanceIpModePtrOutputWithContext(context.Context) NetworkInstanceIpModePtrOutput
+}
+
+type networkInstanceIpModePtr string
+
+func NetworkInstanceIpModePtr(v string) NetworkInstanceIpModePtrInput {
+	return (*networkInstanceIpModePtr)(&v)
+}
+
+func (*networkInstanceIpModePtr) ElementType() reflect.Type {
+	return networkInstanceIpModePtrType
+}
+
+func (in *networkInstanceIpModePtr) ToNetworkInstanceIpModePtrOutput() NetworkInstanceIpModePtrOutput {
+	return pulumi.ToOutput(in).(NetworkInstanceIpModePtrOutput)
+}
+
+func (in *networkInstanceIpModePtr) ToNetworkInstanceIpModePtrOutputWithContext(ctx context.Context) NetworkInstanceIpModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkInstanceIpModePtrOutput)
+}
+
 // SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
 type SslSettingsSslManagementType string
 
@@ -2809,6 +2978,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ErrorHandlerErrorCodePtrInput)(nil)).Elem(), ErrorHandlerErrorCode("ERROR_CODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleActionInput)(nil)).Elem(), IngressRuleAction("UNSPECIFIED_ACTION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleActionPtrInput)(nil)).Elem(), IngressRuleAction("UNSPECIFIED_ACTION"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInstanceIpModeInput)(nil)).Elem(), NetworkInstanceIpMode("INSTANCE_IP_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInstanceIpModePtrInput)(nil)).Elem(), NetworkInstanceIpMode("INSTANCE_IP_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslSettingsSslManagementTypeInput)(nil)).Elem(), SslSettingsSslManagementType("SSL_MANAGEMENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslSettingsSslManagementTypePtrInput)(nil)).Elem(), SslSettingsSslManagementType("SSL_MANAGEMENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapAuthFailActionInput)(nil)).Elem(), UrlMapAuthFailAction("AUTH_FAIL_ACTION_UNSPECIFIED"))
@@ -2842,6 +3013,8 @@ func init() {
 	pulumi.RegisterOutputType(ErrorHandlerErrorCodePtrOutput{})
 	pulumi.RegisterOutputType(IngressRuleActionOutput{})
 	pulumi.RegisterOutputType(IngressRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(NetworkInstanceIpModeOutput{})
+	pulumi.RegisterOutputType(NetworkInstanceIpModePtrOutput{})
 	pulumi.RegisterOutputType(SslSettingsSslManagementTypeOutput{})
 	pulumi.RegisterOutputType(SslSettingsSslManagementTypePtrOutput{})
 	pulumi.RegisterOutputType(UrlMapAuthFailActionOutput{})

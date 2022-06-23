@@ -57,7 +57,7 @@ export interface GetAgentResult {
      */
     readonly enableStackdriverLogging: boolean;
     /**
-     * Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+     * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
      */
     readonly locked: boolean;
     /**

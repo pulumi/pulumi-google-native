@@ -52,3 +52,7 @@ class AuthConfigAuthType(str, Enum):
     """
     Oauth 2.0 Client Credentials Grant Authentication
     """
+    SSH_PUBLIC_KEY = "SSH_PUBLIC_KEY"
+    """
+    SSH Public Key Authentication
+    """

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetReleaseResult:
-    def __init__(__self__, annotations=None, build_artifacts=None, create_time=None, delivery_pipeline_snapshot=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
+    def __init__(__self__, abandoned=None, annotations=None, build_artifacts=None, create_time=None, delivery_pipeline_snapshot=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
+        if abandoned and not isinstance(abandoned, bool):
+            raise TypeError("Expected argument 'abandoned' to be a bool")
+        pulumi.set(__self__, "abandoned", abandoned)
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -74,6 +77,14 @@ class GetReleaseResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def abandoned(self) -> bool:
+        """
+        Indicates whether this is an abandoned release.
+        """
+        return pulumi.get(self, "abandoned")
 
     @property
     @pulumi.getter
@@ -226,6 +237,7 @@ class AwaitableGetReleaseResult(GetReleaseResult):
         if False:
             yield self
         return GetReleaseResult(
+            abandoned=self.abandoned,
             annotations=self.annotations,
             build_artifacts=self.build_artifacts,
             create_time=self.create_time,
@@ -266,6 +278,7 @@ def get_release(delivery_pipeline_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:clouddeploy/v1:getRelease', __args__, opts=opts, typ=GetReleaseResult).value
 
     return AwaitableGetReleaseResult(
+        abandoned=__ret__.abandoned,
         annotations=__ret__.annotations,
         build_artifacts=__ret__.build_artifacts,
         create_time=__ret__.create_time,

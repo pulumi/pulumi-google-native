@@ -47,6 +47,10 @@ export interface GetCloneJobResult {
      */
     readonly createTime: string;
     /**
+     * The time the clone job was ended.
+     */
+    readonly endTime: string;
+    /**
      * Provides details for the errors that led to the Clone Job's state.
      */
     readonly error: outputs.vmmigration.v1alpha1.StatusResponse;
@@ -62,6 +66,10 @@ export interface GetCloneJobResult {
      * The time the state was last updated.
      */
     readonly stateTime: string;
+    /**
+     * The clone steps list representing its progress.
+     */
+    readonly steps: outputs.vmmigration.v1alpha1.CloneStepResponse[];
     /**
      * Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
      *

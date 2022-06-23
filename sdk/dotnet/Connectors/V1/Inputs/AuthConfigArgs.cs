@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<Inputs.Oauth2JwtBearerArgs>? Oauth2JwtBearer { get; set; }
 
         /// <summary>
+        /// SSH Public Key.
+        /// </summary>
+        [Input("sshPublicKey")]
+        public Input<Inputs.SshPublicKeyArgs>? SshPublicKey { get; set; }
+
+        /// <summary>
         /// UserPassword.
         /// </summary>
         [Input("userPassword")]

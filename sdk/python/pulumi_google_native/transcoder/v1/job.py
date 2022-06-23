@@ -19,6 +19,7 @@ class JobArgs:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['JobConfigArgs']] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this job.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
@@ -38,6 +40,8 @@ class JobArgs:
             pulumi.set(__self__, "config", config)
         if input_uri is not None:
             pulumi.set(__self__, "input_uri", input_uri)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -74,6 +78,18 @@ class JobArgs:
     @input_uri.setter
     def input_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "input_uri", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels associated with this job. You can use these to organize and group your jobs.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -149,6 +165,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
@@ -163,6 +180,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this job.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
@@ -194,6 +212,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
@@ -216,6 +235,7 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["config"] = config
             __props__.__dict__["input_uri"] = input_uri
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["output_uri"] = output_uri
@@ -254,6 +274,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["input_uri"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["output_uri"] = None
@@ -303,6 +324,14 @@ class Job(pulumi.CustomResource):
         Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         return pulumi.get(self, "input_uri")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels associated with this job. You can use these to organize and group your jobs.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

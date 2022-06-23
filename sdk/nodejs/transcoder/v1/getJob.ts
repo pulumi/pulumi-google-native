@@ -49,6 +49,10 @@ export interface GetJobResult {
      */
     readonly inputUri: string;
     /**
+     * The labels associated with this job. You can use these to organize and group your jobs.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
      */
     readonly name: string;

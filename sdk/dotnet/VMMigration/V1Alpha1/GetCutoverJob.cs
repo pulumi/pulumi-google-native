@@ -86,6 +86,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The time the cutover job had finished.
+        /// </summary>
+        public readonly string EndTime;
+        /// <summary>
         /// Provides details for the errors that led to the Cutover Job's state.
         /// </summary>
         public readonly Outputs.StatusResponse Error;
@@ -114,6 +118,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly string StateTime;
         /// <summary>
+        /// The cutover steps list representing its progress.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CutoverStepResponse> Steps;
+        /// <summary>
         /// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
         /// </summary>
         public readonly Outputs.TargetVMDetailsResponse TargetDetails;
@@ -125,6 +133,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
             Outputs.TargetVMDetailsResponse computeEngineVmDetails,
 
             string createTime,
+
+            string endTime,
 
             Outputs.StatusResponse error,
 
@@ -140,11 +150,14 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             string stateTime,
 
+            ImmutableArray<Outputs.CutoverStepResponse> steps,
+
             Outputs.TargetVMDetailsResponse targetDetails)
         {
             ComputeEngineTargetDetails = computeEngineTargetDetails;
             ComputeEngineVmDetails = computeEngineVmDetails;
             CreateTime = createTime;
+            EndTime = endTime;
             Error = error;
             Name = name;
             Progress = progress;
@@ -152,6 +165,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
             State = state;
             StateMessage = stateMessage;
             StateTime = stateTime;
+            Steps = steps;
             TargetDetails = targetDetails;
         }
     }

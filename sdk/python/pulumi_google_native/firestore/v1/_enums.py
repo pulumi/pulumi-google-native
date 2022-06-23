@@ -5,10 +5,71 @@
 from enum import Enum
 
 __all__ = [
+    'DatabaseAppEngineIntegrationMode',
+    'DatabaseConcurrencyMode',
+    'DatabaseType',
     'GoogleFirestoreAdminV1IndexFieldArrayConfig',
     'GoogleFirestoreAdminV1IndexFieldOrder',
     'IndexQueryScope',
 ]
+
+
+class DatabaseAppEngineIntegrationMode(str, Enum):
+    """
+    The App Engine integration mode to use for this database.
+    """
+    APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED = "APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"
+    """
+    Not used.
+    """
+    ENABLED = "ENABLED"
+    """
+    If an App Engine application exists in the same region as this database, App Engine configuration will impact this database. This includes disabling of the application & database, as well as disabling writes to the database.
+    """
+    DISABLED = "DISABLED"
+    """
+    Appengine has no affect on the ability of this database to serve requests.
+    """
+
+
+class DatabaseConcurrencyMode(str, Enum):
+    """
+    The concurrency control mode to use for this database.
+    """
+    CONCURRENCY_MODE_UNSPECIFIED = "CONCURRENCY_MODE_UNSPECIFIED"
+    """
+    Not used.
+    """
+    OPTIMISTIC = "OPTIMISTIC"
+    """
+    Use optimistic concurrency control by default. This mode is available for Cloud Firestore databases.
+    """
+    PESSIMISTIC = "PESSIMISTIC"
+    """
+    Use pessimistic concurrency control by default. This mode is available for Cloud Firestore databases. This is the default setting for Cloud Firestore.
+    """
+    OPTIMISTIC_WITH_ENTITY_GROUPS = "OPTIMISTIC_WITH_ENTITY_GROUPS"
+    """
+    Use optimistic concurrency control with entity groups by default. This is the only available mode for Cloud Datastore. This mode is also available for Cloud Firestore with Datastore Mode but is not recommended.
+    """
+
+
+class DatabaseType(str, Enum):
+    """
+    The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
+    """
+    DATABASE_TYPE_UNSPECIFIED = "DATABASE_TYPE_UNSPECIFIED"
+    """
+    The default value. This value is used if the database type is omitted.
+    """
+    FIRESTORE_NATIVE = "FIRESTORE_NATIVE"
+    """
+    Firestore Native Mode
+    """
+    DATASTORE_MODE = "DATASTORE_MODE"
+    """
+    Firestore in Datastore Mode.
+    """
 
 
 class GoogleFirestoreAdminV1IndexFieldArrayConfig(str, Enum):

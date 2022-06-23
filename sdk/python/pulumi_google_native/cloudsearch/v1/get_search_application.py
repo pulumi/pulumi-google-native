@@ -98,7 +98,7 @@ class GetSearchApplicationResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Search Application. Format: searchapplications/{application_id}.
+        The name of the Search Application. Format: searchapplications/{application_id}.
         """
         return pulumi.get(self, "name")
 

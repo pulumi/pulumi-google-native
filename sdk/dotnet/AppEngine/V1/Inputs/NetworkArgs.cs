@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         }
 
         /// <summary>
+        /// The IP mode for instances. Only applicable in the App Engine flexible environment.
+        /// </summary>
+        [Input("instanceIpMode")]
+        public Input<Pulumi.GoogleNative.AppEngine.V1.NetworkInstanceIpMode>? InstanceIpMode { get; set; }
+
+        /// <summary>
         /// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
         /// </summary>
         [Input("instanceTag")]

@@ -125,6 +125,8 @@ func (o AvailableUpdatesResponseOutput) NewDeployableAppliance() ApplianceVersio
 
 // Represent the source AWS VM details.
 type AwsSourceVmDetailsResponse struct {
+	// The total size of the disks being migrated in bytes.
+	CommittedStorageBytes string `pulumi:"committedStorageBytes"`
 	// The firmware type of the source VM.
 	Firmware string `pulumi:"firmware"`
 }
@@ -142,6 +144,11 @@ func (o AwsSourceVmDetailsResponseOutput) ToAwsSourceVmDetailsResponseOutput() A
 
 func (o AwsSourceVmDetailsResponseOutput) ToAwsSourceVmDetailsResponseOutputWithContext(ctx context.Context) AwsSourceVmDetailsResponseOutput {
 	return o
+}
+
+// The total size of the disks being migrated in bytes.
+func (o AwsSourceVmDetailsResponseOutput) CommittedStorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSourceVmDetailsResponse) string { return v.CommittedStorageBytes }).(pulumi.StringOutput)
 }
 
 // The firmware type of the source VM.

@@ -1642,7 +1642,7 @@ class JobConfigArgs:
         :param pulumi.Input['OutputArgs'] output: Output configuration.
         :param pulumi.Input[Sequence[pulumi.Input['OverlayArgs']]] overlays: List of overlays on the output video, in descending Z-order.
         :param pulumi.Input['PubsubDestinationArgs'] pubsub_destination: Destination on Pub/Sub.
-        :param pulumi.Input[Sequence[pulumi.Input['SpriteSheetArgs']]] sprite_sheets: List of output sprite sheets.
+        :param pulumi.Input[Sequence[pulumi.Input['SpriteSheetArgs']]] sprite_sheets: List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
         """
         if ad_breaks is not None:
             pulumi.set(__self__, "ad_breaks", ad_breaks)
@@ -1777,7 +1777,7 @@ class JobConfigArgs:
     @pulumi.getter(name="spriteSheets")
     def sprite_sheets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpriteSheetArgs']]]]:
         """
-        List of output sprite sheets.
+        List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
         """
         return pulumi.get(self, "sprite_sheets")
 

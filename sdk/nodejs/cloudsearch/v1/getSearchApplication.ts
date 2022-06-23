@@ -47,7 +47,7 @@ export interface GetSearchApplicationResult {
      */
     readonly enableAuditLog: boolean;
     /**
-     * Name of the Search Application. Format: searchapplications/{application_id}.
+     * The name of the Search Application. Format: searchapplications/{application_id}.
      */
     readonly name: string;
     /**

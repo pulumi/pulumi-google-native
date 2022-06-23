@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ForwardedPorts;
         /// <summary>
+        /// The IP mode for instances. Only applicable in the App Engine flexible environment.
+        /// </summary>
+        public readonly string InstanceIpMode;
+        /// <summary>
         /// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
         /// </summary>
         public readonly string InstanceTag;
@@ -41,6 +45,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
         private NetworkResponse(
             ImmutableArray<string> forwardedPorts,
 
+            string instanceIpMode,
+
             string instanceTag,
 
             string name,
@@ -50,6 +56,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
             string subnetworkName)
         {
             ForwardedPorts = forwardedPorts;
+            InstanceIpMode = instanceIpMode;
             InstanceTag = instanceTag;
             Name = name;
             SessionAffinity = sessionAffinity;

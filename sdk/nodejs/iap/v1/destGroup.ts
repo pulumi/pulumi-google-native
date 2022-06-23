@@ -44,12 +44,12 @@ export class DestGroup extends pulumi.CustomResource {
     public readonly fqdns!: pulumi.Output<string[]>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+     * Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+     * Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
      */
     public readonly tunnelDestGroupId!: pulumi.Output<string>;
 
@@ -100,12 +100,12 @@ export interface DestGroupArgs {
     fqdns?: pulumi.Input<pulumi.Input<string>[]>;
     location?: pulumi.Input<string>;
     /**
-     * Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+     * Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
+     * Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
      */
     tunnelDestGroupId: pulumi.Input<string>;
 }

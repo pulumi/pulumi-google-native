@@ -17,6 +17,7 @@ __all__ = [
     'AuditLogConfigResponse',
     'BindingResponse',
     'CryptoKeyConfigResponse',
+    'EventPublishConfigResponse',
     'ExprResponse',
     'NetworkConfigResponse',
     'VersionResponse',
@@ -244,6 +245,39 @@ class CryptoKeyConfigResponse(dict):
         The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "key_reference")
+
+
+@pulumi.output_type
+class EventPublishConfigResponse(dict):
+    """
+    Confirguration of PubSubEventWriter.
+    """
+    def __init__(__self__, *,
+                 enabled: bool,
+                 topic: str):
+        """
+        Confirguration of PubSubEventWriter.
+        :param bool enabled: Option to enable Event Publishing.
+        :param str topic: The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Option to enable Event Publishing.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
+        """
+        return pulumi.get(self, "topic")
 
 
 @pulumi.output_type

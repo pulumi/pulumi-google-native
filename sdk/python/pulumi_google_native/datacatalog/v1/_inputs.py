@@ -14,9 +14,7 @@ __all__ = [
     'BindingArgs',
     'ExprArgs',
     'GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs',
-    'GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs',
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs',
-    'GoogleCloudDatacatalogV1BigQueryTableSpecArgs',
     'GoogleCloudDatacatalogV1BusinessContextArgs',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaArgs',
@@ -24,10 +22,8 @@ __all__ = [
     'GoogleCloudDatacatalogV1ContactsArgs',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs',
     'GoogleCloudDatacatalogV1DatabaseTableSpecArgs',
-    'GoogleCloudDatacatalogV1DataplexExternalTableArgs',
     'GoogleCloudDatacatalogV1DataplexFilesetSpecArgs',
     'GoogleCloudDatacatalogV1DataplexSpecArgs',
-    'GoogleCloudDatacatalogV1DataplexTableSpecArgs',
     'GoogleCloudDatacatalogV1EntryOverviewArgs',
     'GoogleCloudDatacatalogV1FilesetSpecArgs',
     'GoogleCloudDatacatalogV1GcsFilesetSpecArgs',
@@ -42,8 +38,6 @@ __all__ = [
     'GoogleCloudDatacatalogV1RoutineSpecArgs',
     'GoogleCloudDatacatalogV1SchemaArgs',
     'GoogleCloudDatacatalogV1SystemTimestampsArgs',
-    'GoogleCloudDatacatalogV1TableSpecArgs',
-    'GoogleCloudDatacatalogV1ViewSpecArgs',
 ]
 
 @pulumi.input_type
@@ -231,15 +225,6 @@ class GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs:
-    def __init__(__self__):
-        """
-        Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-        """
-        pass
-
-
-@pulumi.input_type
 class GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs:
     def __init__(__self__, *,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -261,46 +246,6 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs:
     @imported_libraries.setter
     def imported_libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "imported_libraries", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1BigQueryTableSpecArgs:
-    def __init__(__self__, *,
-                 table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1TableSpecArgs']] = None,
-                 view_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1ViewSpecArgs']] = None):
-        """
-        Describes a BigQuery table.
-        :param pulumi.Input['GoogleCloudDatacatalogV1TableSpecArgs'] table_spec: Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-        :param pulumi.Input['GoogleCloudDatacatalogV1ViewSpecArgs'] view_spec: Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-        """
-        if table_spec is not None:
-            pulumi.set(__self__, "table_spec", table_spec)
-        if view_spec is not None:
-            pulumi.set(__self__, "view_spec", view_spec)
-
-    @property
-    @pulumi.getter(name="tableSpec")
-    def table_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1TableSpecArgs']]:
-        """
-        Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-        """
-        return pulumi.get(self, "table_spec")
-
-    @table_spec.setter
-    def table_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1TableSpecArgs']]):
-        pulumi.set(self, "table_spec", value)
-
-    @property
-    @pulumi.getter(name="viewSpec")
-    def view_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ViewSpecArgs']]:
-        """
-        Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-        """
-        return pulumi.get(self, "view_spec")
-
-    @view_spec.setter
-    def view_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ViewSpecArgs']]):
-        pulumi.set(self, "view_spec", value)
 
 
 @pulumi.input_type
@@ -576,29 +521,13 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs:
 @pulumi.input_type
 class GoogleCloudDatacatalogV1DatabaseTableSpecArgs:
     def __init__(__self__, *,
-                 dataplex_table: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs']] = None,
                  type: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType']] = None):
         """
         Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
-        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs'] dataplex_table: Fields specific to a Dataplex table and present only in the Dataplex table entries.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType'] type: Type of this table.
         """
-        if dataplex_table is not None:
-            pulumi.set(__self__, "dataplex_table", dataplex_table)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="dataplexTable")
-    def dataplex_table(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs']]:
-        """
-        Fields specific to a Dataplex table and present only in the Dataplex table entries.
-        """
-        return pulumi.get(self, "dataplex_table")
-
-    @dataplex_table.setter
-    def dataplex_table(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexTableSpecArgs']]):
-        pulumi.set(self, "dataplex_table", value)
 
     @property
     @pulumi.getter
@@ -611,78 +540,6 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType']]):
         pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1DataplexExternalTableArgs:
-    def __init__(__self__, *,
-                 data_catalog_entry: Optional[pulumi.Input[str]] = None,
-                 fully_qualified_name: Optional[pulumi.Input[str]] = None,
-                 google_cloud_resource: Optional[pulumi.Input[str]] = None,
-                 system: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem']] = None):
-        """
-        External table registered by Dataplex. Dataplex publishes data discovered from an asset into multiple other systems (BigQuery, DPMS) in form of tables. We call them "external tables". External tables are also synced into the Data Catalog. This message contains pointers to those external tables (fully qualified name, resource name et cetera) within the Data Catalog.
-        :param pulumi.Input[str] data_catalog_entry: Name of the Data Catalog entry representing the external table.
-        :param pulumi.Input[str] fully_qualified_name: Fully qualified name (FQN) of the external table.
-        :param pulumi.Input[str] google_cloud_resource: Google Cloud resource name of the external table.
-        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem'] system: Service in which the external table is registered.
-        """
-        if data_catalog_entry is not None:
-            pulumi.set(__self__, "data_catalog_entry", data_catalog_entry)
-        if fully_qualified_name is not None:
-            pulumi.set(__self__, "fully_qualified_name", fully_qualified_name)
-        if google_cloud_resource is not None:
-            pulumi.set(__self__, "google_cloud_resource", google_cloud_resource)
-        if system is not None:
-            pulumi.set(__self__, "system", system)
-
-    @property
-    @pulumi.getter(name="dataCatalogEntry")
-    def data_catalog_entry(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the Data Catalog entry representing the external table.
-        """
-        return pulumi.get(self, "data_catalog_entry")
-
-    @data_catalog_entry.setter
-    def data_catalog_entry(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "data_catalog_entry", value)
-
-    @property
-    @pulumi.getter(name="fullyQualifiedName")
-    def fully_qualified_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fully qualified name (FQN) of the external table.
-        """
-        return pulumi.get(self, "fully_qualified_name")
-
-    @fully_qualified_name.setter
-    def fully_qualified_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fully_qualified_name", value)
-
-    @property
-    @pulumi.getter(name="googleCloudResource")
-    def google_cloud_resource(self) -> Optional[pulumi.Input[str]]:
-        """
-        Google Cloud resource name of the external table.
-        """
-        return pulumi.get(self, "google_cloud_resource")
-
-    @google_cloud_resource.setter
-    def google_cloud_resource(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "google_cloud_resource", value)
-
-    @property
-    @pulumi.getter
-    def system(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem']]:
-        """
-        Service in which the external table is registered.
-        """
-        return pulumi.get(self, "system")
-
-    @system.setter
-    def system(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableSystem']]):
-        pulumi.set(self, "system", value)
 
 
 @pulumi.input_type
@@ -779,62 +636,6 @@ class GoogleCloudDatacatalogV1DataplexSpecArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1DataplexTableSpecArgs:
-    def __init__(__self__, *,
-                 dataplex_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']] = None,
-                 external_tables: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]]] = None,
-                 user_managed: Optional[pulumi.Input[bool]] = None):
-        """
-        Entry specification for a Dataplex table.
-        :param pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs'] dataplex_spec: Common Dataplex fields.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]] external_tables: List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-        :param pulumi.Input[bool] user_managed: Indicates if the table schema is managed by the user or not.
-        """
-        if dataplex_spec is not None:
-            pulumi.set(__self__, "dataplex_spec", dataplex_spec)
-        if external_tables is not None:
-            pulumi.set(__self__, "external_tables", external_tables)
-        if user_managed is not None:
-            pulumi.set(__self__, "user_managed", user_managed)
-
-    @property
-    @pulumi.getter(name="dataplexSpec")
-    def dataplex_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']]:
-        """
-        Common Dataplex fields.
-        """
-        return pulumi.get(self, "dataplex_spec")
-
-    @dataplex_spec.setter
-    def dataplex_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataplexSpecArgs']]):
-        pulumi.set(self, "dataplex_spec", value)
-
-    @property
-    @pulumi.getter(name="externalTables")
-    def external_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]]]:
-        """
-        List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-        """
-        return pulumi.get(self, "external_tables")
-
-    @external_tables.setter
-    def external_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1DataplexExternalTableArgs']]]]):
-        pulumi.set(self, "external_tables", value)
-
-    @property
-    @pulumi.getter(name="userManaged")
-    def user_managed(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates if the table schema is managed by the user or not.
-        """
-        return pulumi.get(self, "user_managed")
-
-    @user_managed.setter
-    def user_managed(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "user_managed", value)
 
 
 @pulumi.input_type
@@ -1333,23 +1134,5 @@ class GoogleCloudDatacatalogV1SystemTimestampsArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1TableSpecArgs:
-    def __init__(__self__):
-        """
-        Normal BigQuery table specification.
-        """
-        pass
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1ViewSpecArgs:
-    def __init__(__self__):
-        """
-        Table view specification.
-        """
-        pass
 
 

@@ -12,7 +12,9 @@ import (
 
 // Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
 type GoogleCloudBaremetalsolutionV2LogicalInterface struct {
-	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
+	//
+	// Deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
 	InterfaceIndex *int `pulumi:"interfaceIndex"`
 	// List of logical network interfaces within a logical interface.
 	LogicalNetworkInterfaces []LogicalNetworkInterface `pulumi:"logicalNetworkInterfaces"`
@@ -33,7 +35,9 @@ type GoogleCloudBaremetalsolutionV2LogicalInterfaceInput interface {
 
 // Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
 type GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs struct {
-	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
+	//
+	// Deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
 	InterfaceIndex pulumi.IntPtrInput `pulumi:"interfaceIndex"`
 	// List of logical network interfaces within a logical interface.
 	LogicalNetworkInterfaces LogicalNetworkInterfaceArrayInput `pulumi:"logicalNetworkInterfaces"`
@@ -93,7 +97,9 @@ func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) ToGoogleCloudBarem
 	return o
 }
 
-// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
+//
+// Deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
 func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput) InterfaceIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterface) *int { return v.InterfaceIndex }).(pulumi.IntPtrOutput)
 }
@@ -132,7 +138,9 @@ func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput) Index(i pulum
 
 // Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
 type GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse struct {
-	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
+	//
+	// Deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
 	InterfaceIndex int `pulumi:"interfaceIndex"`
 	// List of logical network interfaces within a logical interface.
 	LogicalNetworkInterfaces []LogicalNetworkInterfaceResponse `pulumi:"logicalNetworkInterfaces"`
@@ -155,7 +163,9 @@ func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) ToGoogleCl
 	return o
 }
 
-// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template.
+// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
+//
+// Deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
 func (o GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput) InterfaceIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse) int { return v.InterfaceIndex }).(pulumi.IntOutput)
 }
@@ -1248,6 +1258,8 @@ type NetworkConfig struct {
 	GcpService *string `pulumi:"gcpService"`
 	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
 	Id *string `pulumi:"id"`
+	// The JumboFramesEnabled option for customer to set.
+	JumboFramesEnabled *bool `pulumi:"jumboFramesEnabled"`
 	// Service CIDR, if any.
 	ServiceCidr *NetworkConfigServiceCidr `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
@@ -1281,6 +1293,8 @@ type NetworkConfigArgs struct {
 	GcpService pulumi.StringPtrInput `pulumi:"gcpService"`
 	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The JumboFramesEnabled option for customer to set.
+	JumboFramesEnabled pulumi.BoolPtrInput `pulumi:"jumboFramesEnabled"`
 	// Service CIDR, if any.
 	ServiceCidr NetworkConfigServiceCidrPtrInput `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
@@ -1365,6 +1379,11 @@ func (o NetworkConfigOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The JumboFramesEnabled option for customer to set.
+func (o NetworkConfigOutput) JumboFramesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *bool { return v.JumboFramesEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Service CIDR, if any.
 func (o NetworkConfigOutput) ServiceCidr() NetworkConfigServiceCidrPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *NetworkConfigServiceCidr { return v.ServiceCidr }).(NetworkConfigServiceCidrPtrOutput)
@@ -1418,6 +1437,8 @@ type NetworkConfigResponse struct {
 	Cidr string `pulumi:"cidr"`
 	// The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 	GcpService string `pulumi:"gcpService"`
+	// The JumboFramesEnabled option for customer to set.
+	JumboFramesEnabled bool `pulumi:"jumboFramesEnabled"`
 	// The name of the network config.
 	Name string `pulumi:"name"`
 	// Service CIDR, if any.
@@ -1460,6 +1481,11 @@ func (o NetworkConfigResponseOutput) Cidr() pulumi.StringOutput {
 // The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 func (o NetworkConfigResponseOutput) GcpService() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.GcpService }).(pulumi.StringOutput)
+}
+
+// The JumboFramesEnabled option for customer to set.
+func (o NetworkConfigResponseOutput) JumboFramesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.JumboFramesEnabled }).(pulumi.BoolOutput)
 }
 
 // The name of the network config.

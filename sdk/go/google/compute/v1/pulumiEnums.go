@@ -11718,6 +11718,175 @@ func (in *instanceGroupManagerUpdatePolicyTypePtr) ToInstanceGroupManagerUpdateP
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerUpdatePolicyTypePtrOutput)
 }
 
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+type InstanceKeyRevocationActionType string
+
+const (
+	// Default value. This value is unused.
+	InstanceKeyRevocationActionTypeKeyRevocationActionTypeUnspecified = InstanceKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED")
+	// Indicates user chose no operation.
+	InstanceKeyRevocationActionTypeNone = InstanceKeyRevocationActionType("NONE")
+	// Indicates user chose to opt for VM shutdown on key revocation.
+	InstanceKeyRevocationActionTypeStop = InstanceKeyRevocationActionType("STOP")
+)
+
+func (InstanceKeyRevocationActionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceKeyRevocationActionType)(nil)).Elem()
+}
+
+func (e InstanceKeyRevocationActionType) ToInstanceKeyRevocationActionTypeOutput() InstanceKeyRevocationActionTypeOutput {
+	return pulumi.ToOutput(e).(InstanceKeyRevocationActionTypeOutput)
+}
+
+func (e InstanceKeyRevocationActionType) ToInstanceKeyRevocationActionTypeOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceKeyRevocationActionTypeOutput)
+}
+
+func (e InstanceKeyRevocationActionType) ToInstanceKeyRevocationActionTypePtrOutput() InstanceKeyRevocationActionTypePtrOutput {
+	return e.ToInstanceKeyRevocationActionTypePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceKeyRevocationActionType) ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypePtrOutput {
+	return InstanceKeyRevocationActionType(e).ToInstanceKeyRevocationActionTypeOutputWithContext(ctx).ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx)
+}
+
+func (e InstanceKeyRevocationActionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceKeyRevocationActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceKeyRevocationActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceKeyRevocationActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceKeyRevocationActionTypeOutput struct{ *pulumi.OutputState }
+
+func (InstanceKeyRevocationActionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceKeyRevocationActionType)(nil)).Elem()
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToInstanceKeyRevocationActionTypeOutput() InstanceKeyRevocationActionTypeOutput {
+	return o
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToInstanceKeyRevocationActionTypeOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypeOutput {
+	return o
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToInstanceKeyRevocationActionTypePtrOutput() InstanceKeyRevocationActionTypePtrOutput {
+	return o.ToInstanceKeyRevocationActionTypePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceKeyRevocationActionType) *InstanceKeyRevocationActionType {
+		return &v
+	}).(InstanceKeyRevocationActionTypePtrOutput)
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceKeyRevocationActionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceKeyRevocationActionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceKeyRevocationActionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceKeyRevocationActionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceKeyRevocationActionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceKeyRevocationActionType)(nil)).Elem()
+}
+
+func (o InstanceKeyRevocationActionTypePtrOutput) ToInstanceKeyRevocationActionTypePtrOutput() InstanceKeyRevocationActionTypePtrOutput {
+	return o
+}
+
+func (o InstanceKeyRevocationActionTypePtrOutput) ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypePtrOutput {
+	return o
+}
+
+func (o InstanceKeyRevocationActionTypePtrOutput) Elem() InstanceKeyRevocationActionTypeOutput {
+	return o.ApplyT(func(v *InstanceKeyRevocationActionType) InstanceKeyRevocationActionType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceKeyRevocationActionType
+		return ret
+	}).(InstanceKeyRevocationActionTypeOutput)
+}
+
+func (o InstanceKeyRevocationActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceKeyRevocationActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceKeyRevocationActionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceKeyRevocationActionTypeInput is an input type that accepts InstanceKeyRevocationActionTypeArgs and InstanceKeyRevocationActionTypeOutput values.
+// You can construct a concrete instance of `InstanceKeyRevocationActionTypeInput` via:
+//
+//          InstanceKeyRevocationActionTypeArgs{...}
+type InstanceKeyRevocationActionTypeInput interface {
+	pulumi.Input
+
+	ToInstanceKeyRevocationActionTypeOutput() InstanceKeyRevocationActionTypeOutput
+	ToInstanceKeyRevocationActionTypeOutputWithContext(context.Context) InstanceKeyRevocationActionTypeOutput
+}
+
+var instanceKeyRevocationActionTypePtrType = reflect.TypeOf((**InstanceKeyRevocationActionType)(nil)).Elem()
+
+type InstanceKeyRevocationActionTypePtrInput interface {
+	pulumi.Input
+
+	ToInstanceKeyRevocationActionTypePtrOutput() InstanceKeyRevocationActionTypePtrOutput
+	ToInstanceKeyRevocationActionTypePtrOutputWithContext(context.Context) InstanceKeyRevocationActionTypePtrOutput
+}
+
+type instanceKeyRevocationActionTypePtr string
+
+func InstanceKeyRevocationActionTypePtr(v string) InstanceKeyRevocationActionTypePtrInput {
+	return (*instanceKeyRevocationActionTypePtr)(&v)
+}
+
+func (*instanceKeyRevocationActionTypePtr) ElementType() reflect.Type {
+	return instanceKeyRevocationActionTypePtrType
+}
+
+func (in *instanceKeyRevocationActionTypePtr) ToInstanceKeyRevocationActionTypePtrOutput() InstanceKeyRevocationActionTypePtrOutput {
+	return pulumi.ToOutput(in).(InstanceKeyRevocationActionTypePtrOutput)
+}
+
+func (in *instanceKeyRevocationActionTypePtr) ToInstanceKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstanceKeyRevocationActionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceKeyRevocationActionTypePtrOutput)
+}
+
 // The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 type InstancePrivateIpv6GoogleAccess string
 
@@ -11885,6 +12054,175 @@ func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessP
 
 func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) InstancePrivateIpv6GoogleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePrivateIpv6GoogleAccessPtrOutput)
+}
+
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+type InstancePropertiesKeyRevocationActionType string
+
+const (
+	// Default value. This value is unused.
+	InstancePropertiesKeyRevocationActionTypeKeyRevocationActionTypeUnspecified = InstancePropertiesKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED")
+	// Indicates user chose no operation.
+	InstancePropertiesKeyRevocationActionTypeNone = InstancePropertiesKeyRevocationActionType("NONE")
+	// Indicates user chose to opt for VM shutdown on key revocation.
+	InstancePropertiesKeyRevocationActionTypeStop = InstancePropertiesKeyRevocationActionType("STOP")
+)
+
+func (InstancePropertiesKeyRevocationActionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePropertiesKeyRevocationActionType)(nil)).Elem()
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToInstancePropertiesKeyRevocationActionTypeOutput() InstancePropertiesKeyRevocationActionTypeOutput {
+	return pulumi.ToOutput(e).(InstancePropertiesKeyRevocationActionTypeOutput)
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToInstancePropertiesKeyRevocationActionTypeOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstancePropertiesKeyRevocationActionTypeOutput)
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToInstancePropertiesKeyRevocationActionTypePtrOutput() InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return e.ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(context.Background())
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return InstancePropertiesKeyRevocationActionType(e).ToInstancePropertiesKeyRevocationActionTypeOutputWithContext(ctx).ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx)
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstancePropertiesKeyRevocationActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstancePropertiesKeyRevocationActionTypeOutput struct{ *pulumi.OutputState }
+
+func (InstancePropertiesKeyRevocationActionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePropertiesKeyRevocationActionType)(nil)).Elem()
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToInstancePropertiesKeyRevocationActionTypeOutput() InstancePropertiesKeyRevocationActionTypeOutput {
+	return o
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToInstancePropertiesKeyRevocationActionTypeOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypeOutput {
+	return o
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToInstancePropertiesKeyRevocationActionTypePtrOutput() InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return o.ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(context.Background())
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePropertiesKeyRevocationActionType) *InstancePropertiesKeyRevocationActionType {
+		return &v
+	}).(InstancePropertiesKeyRevocationActionTypePtrOutput)
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstancePropertiesKeyRevocationActionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePropertiesKeyRevocationActionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstancePropertiesKeyRevocationActionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstancePropertiesKeyRevocationActionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePropertiesKeyRevocationActionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePropertiesKeyRevocationActionType)(nil)).Elem()
+}
+
+func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToInstancePropertiesKeyRevocationActionTypePtrOutput() InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return o
+}
+
+func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return o
+}
+
+func (o InstancePropertiesKeyRevocationActionTypePtrOutput) Elem() InstancePropertiesKeyRevocationActionTypeOutput {
+	return o.ApplyT(func(v *InstancePropertiesKeyRevocationActionType) InstancePropertiesKeyRevocationActionType {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePropertiesKeyRevocationActionType
+		return ret
+	}).(InstancePropertiesKeyRevocationActionTypeOutput)
+}
+
+func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstancePropertiesKeyRevocationActionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstancePropertiesKeyRevocationActionTypeInput is an input type that accepts InstancePropertiesKeyRevocationActionTypeArgs and InstancePropertiesKeyRevocationActionTypeOutput values.
+// You can construct a concrete instance of `InstancePropertiesKeyRevocationActionTypeInput` via:
+//
+//          InstancePropertiesKeyRevocationActionTypeArgs{...}
+type InstancePropertiesKeyRevocationActionTypeInput interface {
+	pulumi.Input
+
+	ToInstancePropertiesKeyRevocationActionTypeOutput() InstancePropertiesKeyRevocationActionTypeOutput
+	ToInstancePropertiesKeyRevocationActionTypeOutputWithContext(context.Context) InstancePropertiesKeyRevocationActionTypeOutput
+}
+
+var instancePropertiesKeyRevocationActionTypePtrType = reflect.TypeOf((**InstancePropertiesKeyRevocationActionType)(nil)).Elem()
+
+type InstancePropertiesKeyRevocationActionTypePtrInput interface {
+	pulumi.Input
+
+	ToInstancePropertiesKeyRevocationActionTypePtrOutput() InstancePropertiesKeyRevocationActionTypePtrOutput
+	ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(context.Context) InstancePropertiesKeyRevocationActionTypePtrOutput
+}
+
+type instancePropertiesKeyRevocationActionTypePtr string
+
+func InstancePropertiesKeyRevocationActionTypePtr(v string) InstancePropertiesKeyRevocationActionTypePtrInput {
+	return (*instancePropertiesKeyRevocationActionTypePtr)(&v)
+}
+
+func (*instancePropertiesKeyRevocationActionTypePtr) ElementType() reflect.Type {
+	return instancePropertiesKeyRevocationActionTypePtrType
+}
+
+func (in *instancePropertiesKeyRevocationActionTypePtr) ToInstancePropertiesKeyRevocationActionTypePtrOutput() InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return pulumi.ToOutput(in).(InstancePropertiesKeyRevocationActionTypePtrOutput)
+}
+
+func (in *instancePropertiesKeyRevocationActionTypePtr) ToInstancePropertiesKeyRevocationActionTypePtrOutputWithContext(ctx context.Context) InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstancePropertiesKeyRevocationActionTypePtrOutput)
 }
 
 // The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -27201,8 +27539,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyReplacementMethodPtrInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyReplacementMethod("RECREATE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyTypeInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyType("OPPORTUNISTIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyTypePtrInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyType("OPPORTUNISTIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceKeyRevocationActionTypeInput)(nil)).Elem(), InstanceKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceKeyRevocationActionTypePtrInput)(nil)).Elem(), InstanceKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateIpv6GoogleAccessInput)(nil)).Elem(), InstancePrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), InstancePrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesKeyRevocationActionTypeInput)(nil)).Elem(), InstancePropertiesKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesKeyRevocationActionTypePtrInput)(nil)).Elem(), InstancePropertiesKeyRevocationActionType("KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesPrivateIpv6GoogleAccessInput)(nil)).Elem(), InstancePropertiesPrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), InstancePropertiesPrivateIpv6GoogleAccess("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentBandwidthInput)(nil)).Elem(), InterconnectAttachmentBandwidth("BPS_100M"))
@@ -27523,8 +27865,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyTypeOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(InstanceKeyRevocationActionTypeOutput{})
+	pulumi.RegisterOutputType(InstanceKeyRevocationActionTypePtrOutput{})
 	pulumi.RegisterOutputType(InstancePrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(InstancePrivateIpv6GoogleAccessPtrOutput{})
+	pulumi.RegisterOutputType(InstancePropertiesKeyRevocationActionTypeOutput{})
+	pulumi.RegisterOutputType(InstancePropertiesKeyRevocationActionTypePtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPrivateIpv6GoogleAccessPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentBandwidthOutput{})

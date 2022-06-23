@@ -22,6 +22,7 @@ class EnvironmentArgs:
                  deployment_type: Optional[pulumi.Input['EnvironmentDeploymentType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None):
         """
@@ -30,6 +31,7 @@ class EnvironmentArgs:
         :param pulumi.Input['EnvironmentDeploymentType'] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
@@ -42,6 +44,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if forward_proxy_uri is not None:
+            pulumi.set(__self__, "forward_proxy_uri", forward_proxy_uri)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if properties is not None:
@@ -105,6 +109,18 @@ class EnvironmentArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="forwardProxyUri")
+    def forward_proxy_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        """
+        return pulumi.get(self, "forward_proxy_uri")
+
+    @forward_proxy_uri.setter
+    def forward_proxy_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forward_proxy_uri", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -138,6 +154,7 @@ class Environment(pulumi.CustomResource):
                  deployment_type: Optional[pulumi.Input['EnvironmentDeploymentType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
@@ -151,6 +168,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input['EnvironmentDeploymentType'] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
@@ -182,6 +200,7 @@ class Environment(pulumi.CustomResource):
                  deployment_type: Optional[pulumi.Input['EnvironmentDeploymentType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
@@ -203,6 +222,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["forward_proxy_uri"] = forward_proxy_uri
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
@@ -238,6 +258,7 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["deployment_type"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["forward_proxy_uri"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["organization_id"] = None
@@ -284,6 +305,14 @@ class Environment(pulumi.CustomResource):
         Optional. Display name for this environment.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="forwardProxyUri")
+    def forward_proxy_uri(self) -> pulumi.Output[str]:
+        """
+        Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        """
+        return pulumi.get(self, "forward_proxy_uri")
 
     @property
     @pulumi.getter(name="lastModifiedAt")

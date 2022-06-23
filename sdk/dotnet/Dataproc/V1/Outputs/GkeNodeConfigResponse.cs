@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GkeNodePoolAcceleratorConfigResponse> Accelerators;
         /// <summary>
+        /// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        /// </summary>
+        public readonly string BootDiskKmsKey;
+        /// <summary>
         /// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
         /// </summary>
         public readonly int LocalSsdCount;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         private GkeNodeConfigResponse(
             ImmutableArray<Outputs.GkeNodePoolAcceleratorConfigResponse> accelerators,
 
+            string bootDiskKmsKey,
+
             int localSsdCount,
 
             string machineType,
@@ -56,6 +62,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
             bool spot)
         {
             Accelerators = accelerators;
+            BootDiskKmsKey = bootDiskKmsKey;
             LocalSsdCount = localSsdCount;
             MachineType = machineType;
             MinCpuPlatform = minCpuPlatform;

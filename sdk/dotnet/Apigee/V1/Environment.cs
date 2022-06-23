@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        /// </summary>
+        [Output("forwardProxyUri")]
+        public Output<string> ForwardProxyUri { get; private set; } = null!;
+
+        /// <summary>
         /// Last modification time of this environment as milliseconds since epoch.
         /// </summary>
         [Output("lastModifiedAt")]
@@ -140,6 +146,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        /// </summary>
+        [Input("forwardProxyUri")]
+        public Input<string>? ForwardProxyUri { get; set; }
 
         /// <summary>
         /// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`

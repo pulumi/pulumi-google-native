@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         }
 
         /// <summary>
+        /// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        /// </summary>
+        [Input("bootDiskKmsKey")]
+        public Input<string>? BootDiskKmsKey { get; set; }
+
+        /// <summary>
         /// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
         /// </summary>
         [Input("localSsdCount")]

@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     public sealed class GetReleaseResult
     {
         /// <summary>
+        /// Indicates whether this is an abandoned release.
+        /// </summary>
+        public readonly bool Abandoned;
+        /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
@@ -142,6 +146,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
         [OutputConstructor]
         private GetReleaseResult(
+            bool abandoned,
+
             ImmutableDictionary<string, string> annotations,
 
             ImmutableArray<Outputs.BuildArtifactResponse> buildArtifacts,
@@ -178,6 +184,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             string uid)
         {
+            Abandoned = abandoned;
             Annotations = annotations;
             BuildArtifacts = buildArtifacts;
             CreateTime = createTime;

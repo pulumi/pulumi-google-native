@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:FhirStore")]
     public partial class FhirStore : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        /// </summary>
+        [Output("complexDataTypeReferenceParsing")]
+        public Output<string> ComplexDataTypeReferenceParsing { get; private set; } = null!;
+
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
 
@@ -148,6 +154,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class FhirStoreArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        /// </summary>
+        [Input("complexDataTypeReferenceParsing")]
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.FhirStoreComplexDataTypeReferenceParsing>? ComplexDataTypeReferenceParsing { get; set; }
+
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 

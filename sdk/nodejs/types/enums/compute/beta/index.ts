@@ -1365,6 +1365,22 @@ export const InstanceGroupManagerFailoverAction = {
  */
 export type InstanceGroupManagerFailoverAction = (typeof InstanceGroupManagerFailoverAction)[keyof typeof InstanceGroupManagerFailoverAction];
 
+export const InstanceGroupManagerListManagedInstancesResults = {
+    /**
+     * (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+     */
+    Pageless: "PAGELESS",
+    /**
+     * Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+     */
+    Paginated: "PAGINATED",
+} as const;
+
+/**
+ * Pagination behavior of the listManagedInstances API method for this managed instance group.
+ */
+export type InstanceGroupManagerListManagedInstancesResults = (typeof InstanceGroupManagerListManagedInstancesResults)[keyof typeof InstanceGroupManagerListManagedInstancesResults];
+
 export const InstanceGroupManagerUpdatePolicyInstanceRedistributionType = {
     /**
      * No action is being proactively performed in order to bring this IGM to its target instance distribution.
@@ -2305,6 +2321,22 @@ export const RegionInstanceGroupManagerFailoverAction = {
  * The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
  */
 export type RegionInstanceGroupManagerFailoverAction = (typeof RegionInstanceGroupManagerFailoverAction)[keyof typeof RegionInstanceGroupManagerFailoverAction];
+
+export const RegionInstanceGroupManagerListManagedInstancesResults = {
+    /**
+     * (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+     */
+    Pageless: "PAGELESS",
+    /**
+     * Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+     */
+    Paginated: "PAGINATED",
+} as const;
+
+/**
+ * Pagination behavior of the listManagedInstances API method for this managed instance group.
+ */
+export type RegionInstanceGroupManagerListManagedInstancesResults = (typeof RegionInstanceGroupManagerListManagedInstancesResults)[keyof typeof RegionInstanceGroupManagerListManagedInstancesResults];
 
 export const RegionNetworkEndpointGroupNetworkEndpointType = {
     /**

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvironmentResult:
-    def __init__(__self__, api_proxy_type=None, created_at=None, deployment_type=None, description=None, display_name=None, last_modified_at=None, name=None, properties=None, state=None):
+    def __init__(__self__, api_proxy_type=None, created_at=None, deployment_type=None, description=None, display_name=None, forward_proxy_uri=None, last_modified_at=None, name=None, properties=None, state=None):
         if api_proxy_type and not isinstance(api_proxy_type, str):
             raise TypeError("Expected argument 'api_proxy_type' to be a str")
         pulumi.set(__self__, "api_proxy_type", api_proxy_type)
@@ -35,6 +35,9 @@ class GetEnvironmentResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if forward_proxy_uri and not isinstance(forward_proxy_uri, str):
+            raise TypeError("Expected argument 'forward_proxy_uri' to be a str")
+        pulumi.set(__self__, "forward_proxy_uri", forward_proxy_uri)
         if last_modified_at and not isinstance(last_modified_at, str):
             raise TypeError("Expected argument 'last_modified_at' to be a str")
         pulumi.set(__self__, "last_modified_at", last_modified_at)
@@ -89,6 +92,14 @@ class GetEnvironmentResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="forwardProxyUri")
+    def forward_proxy_uri(self) -> str:
+        """
+        Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        """
+        return pulumi.get(self, "forward_proxy_uri")
+
+    @property
     @pulumi.getter(name="lastModifiedAt")
     def last_modified_at(self) -> str:
         """
@@ -132,6 +143,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             deployment_type=self.deployment_type,
             description=self.description,
             display_name=self.display_name,
+            forward_proxy_uri=self.forward_proxy_uri,
             last_modified_at=self.last_modified_at,
             name=self.name,
             properties=self.properties,
@@ -159,6 +171,7 @@ def get_environment(environment_id: Optional[str] = None,
         deployment_type=__ret__.deployment_type,
         description=__ret__.description,
         display_name=__ret__.display_name,
+        forward_proxy_uri=__ret__.forward_proxy_uri,
         last_modified_at=__ret__.last_modified_at,
         name=__ret__.name,
         properties=__ret__.properties,

@@ -105,6 +105,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// Volumes to be created.
         /// </summary>
         public readonly ImmutableArray<Outputs.VolumeConfigResponse> Volumes;
+        /// <summary>
+        /// If true, VPC SC is enabled for the cluster.
+        /// </summary>
+        public readonly bool VpcScEnabled;
 
         [OutputConstructor]
         private GetProvisioningConfigResult(
@@ -128,7 +132,9 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
             string updateTime,
 
-            ImmutableArray<Outputs.VolumeConfigResponse> volumes)
+            ImmutableArray<Outputs.VolumeConfigResponse> volumes,
+
+            bool vpcScEnabled)
         {
             CloudConsoleUri = cloudConsoleUri;
             Email = email;
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             TicketId = ticketId;
             UpdateTime = updateTime;
             Volumes = volumes;
+            VpcScEnabled = vpcScEnabled;
         }
     }
 }

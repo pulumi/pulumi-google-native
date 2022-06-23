@@ -19,7 +19,9 @@ type JobTemplate struct {
 	Config JobConfigResponseOutput `pulumi:"config"`
 	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
 	JobTemplateId pulumi.StringOutput `pulumi:"jobTemplateId"`
-	Location      pulumi.StringOutput `pulumi:"location"`
+	// The labels associated with this job template. You can use these to organize and group your job templates.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -70,8 +72,10 @@ type jobTemplateArgs struct {
 	// The configuration for this template.
 	Config *JobConfig `pulumi:"config"`
 	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
-	JobTemplateId string  `pulumi:"jobTemplateId"`
-	Location      *string `pulumi:"location"`
+	JobTemplateId string `pulumi:"jobTemplateId"`
+	// The labels associated with this job template. You can use these to organize and group your job templates.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
 	// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -83,7 +87,9 @@ type JobTemplateArgs struct {
 	Config JobConfigPtrInput
 	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
 	JobTemplateId pulumi.StringInput
-	Location      pulumi.StringPtrInput
+	// The labels associated with this job template. You can use these to organize and group your job templates.
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
 	// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -134,6 +140,11 @@ func (o JobTemplateOutput) Config() JobConfigResponseOutput {
 // Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
 func (o JobTemplateOutput) JobTemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.JobTemplateId }).(pulumi.StringOutput)
+}
+
+// The labels associated with this job template. You can use these to organize and group your job templates.
+func (o JobTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o JobTemplateOutput) Location() pulumi.StringOutput {

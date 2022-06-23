@@ -26,7 +26,7 @@ type Message struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The message type for this message. MSH-9.1.
 	MessageType pulumi.StringOutput `pulumi:"messageType"`
-	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+	// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parsed version of the raw message data.
 	ParsedData ParsedDataResponseOutput `pulumi:"parsedData"`
@@ -95,7 +95,7 @@ type messageArgs struct {
 	Location *string           `pulumi:"location"`
 	// The message type for this message. MSH-9.1.
 	MessageType *string `pulumi:"messageType"`
-	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+	// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
 	Name *string `pulumi:"name"`
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds []PatientId `pulumi:"patientIds"`
@@ -119,7 +119,7 @@ type MessageArgs struct {
 	Location pulumi.StringPtrInput
 	// The message type for this message. MSH-9.1.
 	MessageType pulumi.StringPtrInput
-	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+	// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
 	Name pulumi.StringPtrInput
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds PatientIdArrayInput
@@ -201,7 +201,7 @@ func (o MessageOutput) MessageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.MessageType }).(pulumi.StringOutput)
 }
 
-// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
 func (o MessageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

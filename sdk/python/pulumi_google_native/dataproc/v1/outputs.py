@@ -1533,7 +1533,9 @@ class GkeNodeConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "localSsdCount":
+        if key == "bootDiskKmsKey":
+            suggest = "boot_disk_kms_key"
+        elif key == "localSsdCount":
             suggest = "local_ssd_count"
         elif key == "machineType":
             suggest = "machine_type"
@@ -1553,6 +1555,7 @@ class GkeNodeConfigResponse(dict):
 
     def __init__(__self__, *,
                  accelerators: Sequence['outputs.GkeNodePoolAcceleratorConfigResponse'],
+                 boot_disk_kms_key: str,
                  local_ssd_count: int,
                  machine_type: str,
                  min_cpu_platform: str,
@@ -1561,6 +1564,7 @@ class GkeNodeConfigResponse(dict):
         """
         Parameters that describe cluster nodes.
         :param Sequence['GkeNodePoolAcceleratorConfigResponse'] accelerators: Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+        :param str boot_disk_kms_key: Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
         :param int local_ssd_count: Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
         :param str machine_type: Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
         :param str min_cpu_platform: Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
@@ -1568,6 +1572,7 @@ class GkeNodeConfigResponse(dict):
         :param bool spot: Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         """
         pulumi.set(__self__, "accelerators", accelerators)
+        pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
@@ -1581,6 +1586,14 @@ class GkeNodeConfigResponse(dict):
         Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
         """
         return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="bootDiskKmsKey")
+    def boot_disk_kms_key(self) -> str:
+        """
+        Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        """
+        return pulumi.get(self, "boot_disk_kms_key")
 
     @property
     @pulumi.getter(name="localSsdCount")

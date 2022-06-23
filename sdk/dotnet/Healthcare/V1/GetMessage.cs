@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public readonly string MessageType;
         /// <summary>
-        /// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+        /// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
         /// </summary>
         public readonly string Name;
         /// <summary>

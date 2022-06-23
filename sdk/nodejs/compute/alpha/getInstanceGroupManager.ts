@@ -81,7 +81,7 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly kind: string;
     /**
-     * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+     * Pagination behavior of the listManagedInstances API method for this managed instance group.
      */
     readonly listManagedInstancesResults: string;
     /**

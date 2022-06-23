@@ -89,6 +89,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// Python package format.
         /// </summary>
         public static RepositoryFormat Python { get; } = new RepositoryFormat("PYTHON");
+        /// <summary>
+        /// Kubeflow Pipelines package format.
+        /// </summary>
+        public static RepositoryFormat Kfp { get; } = new RepositoryFormat("KFP");
 
         public static bool operator ==(RepositoryFormat left, RepositoryFormat right) => left.Equals(right);
         public static bool operator !=(RepositoryFormat left, RepositoryFormat right) => !left.Equals(right);

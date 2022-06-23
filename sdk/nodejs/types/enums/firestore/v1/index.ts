@@ -2,6 +2,70 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const DatabaseAppEngineIntegrationMode = {
+    /**
+     * Not used.
+     */
+    AppEngineIntegrationModeUnspecified: "APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED",
+    /**
+     * If an App Engine application exists in the same region as this database, App Engine configuration will impact this database. This includes disabling of the application & database, as well as disabling writes to the database.
+     */
+    Enabled: "ENABLED",
+    /**
+     * Appengine has no affect on the ability of this database to serve requests.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * The App Engine integration mode to use for this database.
+ */
+export type DatabaseAppEngineIntegrationMode = (typeof DatabaseAppEngineIntegrationMode)[keyof typeof DatabaseAppEngineIntegrationMode];
+
+export const DatabaseConcurrencyMode = {
+    /**
+     * Not used.
+     */
+    ConcurrencyModeUnspecified: "CONCURRENCY_MODE_UNSPECIFIED",
+    /**
+     * Use optimistic concurrency control by default. This mode is available for Cloud Firestore databases.
+     */
+    Optimistic: "OPTIMISTIC",
+    /**
+     * Use pessimistic concurrency control by default. This mode is available for Cloud Firestore databases. This is the default setting for Cloud Firestore.
+     */
+    Pessimistic: "PESSIMISTIC",
+    /**
+     * Use optimistic concurrency control with entity groups by default. This is the only available mode for Cloud Datastore. This mode is also available for Cloud Firestore with Datastore Mode but is not recommended.
+     */
+    OptimisticWithEntityGroups: "OPTIMISTIC_WITH_ENTITY_GROUPS",
+} as const;
+
+/**
+ * The concurrency control mode to use for this database.
+ */
+export type DatabaseConcurrencyMode = (typeof DatabaseConcurrencyMode)[keyof typeof DatabaseConcurrencyMode];
+
+export const DatabaseType = {
+    /**
+     * The default value. This value is used if the database type is omitted.
+     */
+    DatabaseTypeUnspecified: "DATABASE_TYPE_UNSPECIFIED",
+    /**
+     * Firestore Native Mode
+     */
+    FirestoreNative: "FIRESTORE_NATIVE",
+    /**
+     * Firestore in Datastore Mode.
+     */
+    DatastoreMode: "DATASTORE_MODE",
+} as const;
+
+/**
+ * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
+ */
+export type DatabaseType = (typeof DatabaseType)[keyof typeof DatabaseType];
+
 export const GoogleFirestoreAdminV1IndexFieldArrayConfig = {
     /**
      * The index does not support additional array queries.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, config=None, create_time=None, end_time=None, error=None, input_uri=None, name=None, output_uri=None, start_time=None, state=None, template_id=None, ttl_after_completion_days=None):
+    def __init__(__self__, config=None, create_time=None, end_time=None, error=None, input_uri=None, labels=None, name=None, output_uri=None, start_time=None, state=None, template_id=None, ttl_after_completion_days=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -35,6 +35,9 @@ class GetJobResult:
         if input_uri and not isinstance(input_uri, str):
             raise TypeError("Expected argument 'input_uri' to be a str")
         pulumi.set(__self__, "input_uri", input_uri)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -96,6 +99,14 @@ class GetJobResult:
 
     @property
     @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The labels associated with this job. You can use these to organize and group your jobs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -154,6 +165,7 @@ class AwaitableGetJobResult(GetJobResult):
             end_time=self.end_time,
             error=self.error,
             input_uri=self.input_uri,
+            labels=self.labels,
             name=self.name,
             output_uri=self.output_uri,
             start_time=self.start_time,
@@ -185,6 +197,7 @@ def get_job(job_id: Optional[str] = None,
         end_time=__ret__.end_time,
         error=__ret__.error,
         input_uri=__ret__.input_uri,
+        labels=__ret__.labels,
         name=__ret__.name,
         output_uri=__ret__.output_uri,
         start_time=__ret__.start_time,

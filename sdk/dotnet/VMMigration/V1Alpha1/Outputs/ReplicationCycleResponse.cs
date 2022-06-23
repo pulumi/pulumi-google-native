@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
     public sealed class ReplicationCycleResponse
     {
         /// <summary>
+        /// The time the replication cycle has ended.
+        /// </summary>
+        public readonly string EndTime;
+        /// <summary>
+        /// The identifier of the ReplicationCycle.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
         /// The current progress in percentage of this cycle.
         /// </summary>
         public readonly int Progress;
@@ -39,6 +47,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 
         [OutputConstructor]
         private ReplicationCycleResponse(
+            string endTime,
+
+            string name,
+
             int progress,
 
             int progressPercent,
@@ -49,6 +61,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 
             string totalPauseDuration)
         {
+            EndTime = endTime;
+            Name = name;
             Progress = progress;
             ProgressPercent = progressPercent;
             StartTime = startTime;

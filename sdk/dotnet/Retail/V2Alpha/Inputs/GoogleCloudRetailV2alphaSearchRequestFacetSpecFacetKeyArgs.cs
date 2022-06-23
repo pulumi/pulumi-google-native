@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
     /// </summary>
     public sealed class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
+        /// </summary>
+        [Input("caseInsensitive")]
+        public Input<bool>? CaseInsensitive { get; set; }
+
         [Input("contains")]
         private InputList<string>? _contains;
 

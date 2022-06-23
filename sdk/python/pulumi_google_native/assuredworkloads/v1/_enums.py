@@ -80,3 +80,7 @@ class WorkloadComplianceRegime(str, Enum):
     """
     Assured Workloads For Canada Regions and Support controls
     """
+    ITAR = "ITAR"
+    """
+    International Traffic in Arms Regulations
+    """

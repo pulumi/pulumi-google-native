@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+ * Sets the access control policy on the specified contentitem resource. Replaces any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */

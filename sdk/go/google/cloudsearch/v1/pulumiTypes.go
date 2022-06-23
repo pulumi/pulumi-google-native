@@ -589,7 +589,7 @@ type FacetOptions struct {
 	NumFacetBuckets *int `pulumi:"numFacetBuckets"`
 	// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
 	ObjectType *string `pulumi:"objectType"`
-	// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+	// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
 	OperatorName *string `pulumi:"operatorName"`
 	// Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
 	SourceName *string `pulumi:"sourceName"`
@@ -612,7 +612,7 @@ type FacetOptionsArgs struct {
 	NumFacetBuckets pulumi.IntPtrInput `pulumi:"numFacetBuckets"`
 	// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
 	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+	// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
 	OperatorName pulumi.StringPtrInput `pulumi:"operatorName"`
 	// Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
 	SourceName pulumi.StringPtrInput `pulumi:"sourceName"`
@@ -680,7 +680,7 @@ func (o FacetOptionsOutput) ObjectType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FacetOptions) *string { return v.ObjectType }).(pulumi.StringPtrOutput)
 }
 
-// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
 func (o FacetOptionsOutput) OperatorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FacetOptions) *string { return v.OperatorName }).(pulumi.StringPtrOutput)
 }
@@ -716,7 +716,7 @@ type FacetOptionsResponse struct {
 	NumFacetBuckets int `pulumi:"numFacetBuckets"`
 	// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
 	ObjectType string `pulumi:"objectType"`
-	// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+	// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
 	OperatorName string `pulumi:"operatorName"`
 	// Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
 	SourceName string `pulumi:"sourceName"`
@@ -747,7 +747,7 @@ func (o FacetOptionsResponseOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v FacetOptionsResponse) string { return v.ObjectType }).(pulumi.StringOutput)
 }
 
-// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
 func (o FacetOptionsResponseOutput) OperatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v FacetOptionsResponse) string { return v.OperatorName }).(pulumi.StringOutput)
 }
@@ -1742,7 +1742,7 @@ func (o ScoringConfigResponseOutput) DisablePersonalization() pulumi.BoolOutput 
 }
 
 type SortOptions struct {
-	// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+	// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 	OperatorName *string `pulumi:"operatorName"`
 	// Ascending is the default sort order
 	SortOrder *SortOptionsSortOrder `pulumi:"sortOrder"`
@@ -1760,7 +1760,7 @@ type SortOptionsInput interface {
 }
 
 type SortOptionsArgs struct {
-	// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+	// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 	OperatorName pulumi.StringPtrInput `pulumi:"operatorName"`
 	// Ascending is the default sort order
 	SortOrder SortOptionsSortOrderPtrInput `pulumi:"sortOrder"`
@@ -1843,7 +1843,7 @@ func (o SortOptionsOutput) ToSortOptionsPtrOutputWithContext(ctx context.Context
 	}).(SortOptionsPtrOutput)
 }
 
-// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 func (o SortOptionsOutput) OperatorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SortOptions) *string { return v.OperatorName }).(pulumi.StringPtrOutput)
 }
@@ -1877,7 +1877,7 @@ func (o SortOptionsPtrOutput) Elem() SortOptionsOutput {
 	}).(SortOptionsOutput)
 }
 
-// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 func (o SortOptionsPtrOutput) OperatorName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SortOptions) *string {
 		if v == nil {
@@ -1898,7 +1898,7 @@ func (o SortOptionsPtrOutput) SortOrder() SortOptionsSortOrderPtrOutput {
 }
 
 type SortOptionsResponse struct {
-	// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+	// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 	OperatorName string `pulumi:"operatorName"`
 	// Ascending is the default sort order
 	SortOrder string `pulumi:"sortOrder"`
@@ -1918,7 +1918,7 @@ func (o SortOptionsResponseOutput) ToSortOptionsResponseOutputWithContext(ctx co
 	return o
 }
 
-// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 func (o SortOptionsResponseOutput) OperatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v SortOptionsResponse) string { return v.OperatorName }).(pulumi.StringOutput)
 }

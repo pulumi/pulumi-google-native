@@ -47,6 +47,10 @@ export interface GetEnvironmentResult {
      */
     readonly displayName: string;
     /**
+     * Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+     */
+    readonly forwardProxyUri: string;
+    /**
      * Last modification time of this environment as milliseconds since epoch.
      */
     readonly lastModifiedAt: string;

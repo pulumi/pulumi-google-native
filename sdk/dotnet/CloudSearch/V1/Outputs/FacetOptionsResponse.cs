@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
         /// </summary>
         public readonly string ObjectType;
         /// <summary>
-        /// Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
+        /// The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
         /// </summary>
         public readonly string OperatorName;
         /// <summary>

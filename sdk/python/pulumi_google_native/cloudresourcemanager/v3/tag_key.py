@@ -162,7 +162,7 @@ class TagKey(pulumi.CustomResource):
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any given time.
+        Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 1000 TagKeys can exist under a parent at any given time.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,7 +182,7 @@ class TagKey(pulumi.CustomResource):
                  args: TagKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any given time.
+        Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 1000 TagKeys can exist under a parent at any given time.
 
         :param str resource_name: The name of the resource.
         :param TagKeyArgs args: The arguments to use to populate this resource's properties.

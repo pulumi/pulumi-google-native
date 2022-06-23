@@ -121,9 +121,9 @@ func (o DnsResourceRecordResponseOutput) Type() pulumi.StringOutput {
 type GclbTargetResponse struct {
 	// IP configurations for this Target Proxy where the Certificate Map is serving.
 	IpConfigs []IpConfigResponse `pulumi:"ipConfigs"`
-	// A name must be in the format `projects/*/locations/*/targetHttpsProxies/*`.
+	// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
 	TargetHttpsProxy string `pulumi:"targetHttpsProxy"`
-	// A name must be in the format `projects/*/locations/*/targetSslProxies/*`.
+	// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
 	TargetSslProxy string `pulumi:"targetSslProxy"`
 }
 
@@ -147,12 +147,12 @@ func (o GclbTargetResponseOutput) IpConfigs() IpConfigResponseArrayOutput {
 	return o.ApplyT(func(v GclbTargetResponse) []IpConfigResponse { return v.IpConfigs }).(IpConfigResponseArrayOutput)
 }
 
-// A name must be in the format `projects/*/locations/*/targetHttpsProxies/*`.
+// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
 func (o GclbTargetResponseOutput) TargetHttpsProxy() pulumi.StringOutput {
 	return o.ApplyT(func(v GclbTargetResponse) string { return v.TargetHttpsProxy }).(pulumi.StringOutput)
 }
 
-// A name must be in the format `projects/*/locations/*/targetSslProxies/*`.
+// This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.
 func (o GclbTargetResponseOutput) TargetSslProxy() pulumi.StringOutput {
 	return o.ApplyT(func(v GclbTargetResponse) string { return v.TargetSslProxy }).(pulumi.StringOutput)
 }

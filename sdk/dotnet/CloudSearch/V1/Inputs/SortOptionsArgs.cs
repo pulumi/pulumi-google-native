@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     public sealed class SortOptionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+        /// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
         /// </summary>
         [Input("operatorName")]
         public Input<string>? OperatorName { get; set; }

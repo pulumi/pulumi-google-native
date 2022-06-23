@@ -4620,7 +4620,7 @@ type JobConfig struct {
 	Overlays []Overlay `pulumi:"overlays"`
 	// Destination on Pub/Sub.
 	PubsubDestination *PubsubDestination `pulumi:"pubsubDestination"`
-	// List of output sprite sheets.
+	// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
 	SpriteSheets []SpriteSheet `pulumi:"spriteSheets"`
 }
 
@@ -4655,7 +4655,7 @@ type JobConfigArgs struct {
 	Overlays OverlayArrayInput `pulumi:"overlays"`
 	// Destination on Pub/Sub.
 	PubsubDestination PubsubDestinationPtrInput `pulumi:"pubsubDestination"`
-	// List of output sprite sheets.
+	// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
 	SpriteSheets SpriteSheetArrayInput `pulumi:"spriteSheets"`
 }
 
@@ -4782,7 +4782,7 @@ func (o JobConfigOutput) PubsubDestination() PubsubDestinationPtrOutput {
 	return o.ApplyT(func(v JobConfig) *PubsubDestination { return v.PubsubDestination }).(PubsubDestinationPtrOutput)
 }
 
-// List of output sprite sheets.
+// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
 func (o JobConfigOutput) SpriteSheets() SpriteSheetArrayOutput {
 	return o.ApplyT(func(v JobConfig) []SpriteSheet { return v.SpriteSheets }).(SpriteSheetArrayOutput)
 }
@@ -4901,7 +4901,7 @@ func (o JobConfigPtrOutput) PubsubDestination() PubsubDestinationPtrOutput {
 	}).(PubsubDestinationPtrOutput)
 }
 
-// List of output sprite sheets.
+// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
 func (o JobConfigPtrOutput) SpriteSheets() SpriteSheetArrayOutput {
 	return o.ApplyT(func(v *JobConfig) []SpriteSheet {
 		if v == nil {
@@ -4931,7 +4931,7 @@ type JobConfigResponse struct {
 	Overlays []OverlayResponse `pulumi:"overlays"`
 	// Destination on Pub/Sub.
 	PubsubDestination PubsubDestinationResponse `pulumi:"pubsubDestination"`
-	// List of output sprite sheets.
+	// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
 	SpriteSheets []SpriteSheetResponse `pulumi:"spriteSheets"`
 }
 
@@ -4995,7 +4995,7 @@ func (o JobConfigResponseOutput) PubsubDestination() PubsubDestinationResponseOu
 	return o.ApplyT(func(v JobConfigResponse) PubsubDestinationResponse { return v.PubsubDestination }).(PubsubDestinationResponseOutput)
 }
 
-// List of output sprite sheets.
+// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
 func (o JobConfigResponseOutput) SpriteSheets() SpriteSheetResponseArrayOutput {
 	return o.ApplyT(func(v JobConfigResponse) []SpriteSheetResponse { return v.SpriteSheets }).(SpriteSheetResponseArrayOutput)
 }

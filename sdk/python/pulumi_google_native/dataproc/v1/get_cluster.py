@@ -52,7 +52,7 @@ class GetClusterResult:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
         """
-        The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        The cluster name, which must be unique within a project. The name must start with a lowercase letter, and can contain up to 51 lowercase letters, numbers, and hyphens. It cannot end with a hyphen. The name of a deleted cluster can be reused.
         """
         return pulumi.get(self, "cluster_name")
 

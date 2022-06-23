@@ -73,6 +73,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceGroup{}
 	case "google-native:compute/alpha:InstanceGroupManager":
 		r = &InstanceGroupManager{}
+	case "google-native:compute/alpha:InstanceGroupManagerResizeRequest":
+		r = &InstanceGroupManagerResizeRequest{}
 	case "google-native:compute/alpha:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
 	case "google-native:compute/alpha:InstanceTemplate":

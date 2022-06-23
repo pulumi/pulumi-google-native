@@ -37,6 +37,8 @@ type LookupCutoverJobResult struct {
 	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the cutover job had finished.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the cutover job.
@@ -51,6 +53,8 @@ type LookupCutoverJobResult struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The cutover steps list representing its progress.
+	Steps []CutoverStepResponse `pulumi:"steps"`
 	// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
 	//
 	// Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
@@ -113,6 +117,11 @@ func (o LookupCutoverJobResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The time the cutover job had finished.
+func (o LookupCutoverJobResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
 // Provides details for the errors that led to the Cutover Job's state.
 func (o LookupCutoverJobResultOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v LookupCutoverJobResult) StatusResponse { return v.Error }).(StatusResponseOutput)
@@ -146,6 +155,11 @@ func (o LookupCutoverJobResultOutput) StateMessage() pulumi.StringOutput {
 // The time the state was last updated.
 func (o LookupCutoverJobResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The cutover steps list representing its progress.
+func (o LookupCutoverJobResultOutput) Steps() CutoverStepResponseArrayOutput {
+	return o.ApplyT(func(v LookupCutoverJobResult) []CutoverStepResponse { return v.Steps }).(CutoverStepResponseArrayOutput)
 }
 
 // Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.

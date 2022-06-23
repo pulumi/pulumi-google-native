@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public readonly bool EnableAuditLog;
         /// <summary>
-        /// Name of the Search Application. Format: searchapplications/{application_id}.
+        /// The name of the Search Application. Format: searchapplications/{application_id}.
         /// </summary>
         public readonly string Name;
         /// <summary>

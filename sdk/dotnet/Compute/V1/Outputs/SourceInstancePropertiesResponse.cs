@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AcceleratorConfigResponse> GuestAccelerators;
         /// <summary>
+        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        /// </summary>
+        public readonly string KeyRevocationActionType;
+        /// <summary>
         /// Labels to apply to instances that are created from this machine image.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             ImmutableArray<Outputs.AcceleratorConfigResponse> guestAccelerators,
 
+            string keyRevocationActionType,
+
             ImmutableDictionary<string, string> labels,
 
             string machineType,
@@ -102,6 +108,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Description = description;
             Disks = disks;
             GuestAccelerators = guestAccelerators;
+            KeyRevocationActionType = keyRevocationActionType;
             Labels = labels;
             MachineType = machineType;
             Metadata = metadata;

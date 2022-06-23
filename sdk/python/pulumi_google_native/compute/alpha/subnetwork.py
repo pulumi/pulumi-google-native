@@ -33,7 +33,6 @@ class SubnetworkArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']] = None,
-                 private_ipv6_google_access_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -60,7 +59,6 @@ class SubnetworkArgs:
         :param pulumi.Input[str] network: The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. This field can be set only at resource creation time.
         :param pulumi.Input[bool] private_ip_google_access: Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
         :param pulumi.Input['SubnetworkPrivateIpv6GoogleAccess'] private_ipv6_google_access: This field is for internal use. This field can be both set at resource creation time and updated using patch.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ipv6_google_access_service_accounts: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
         :param pulumi.Input['SubnetworkPurpose'] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] reserved_internal_range: The URL of the reserved internal range.
@@ -103,11 +101,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
-        if private_ipv6_google_access_service_accounts is not None:
-            warnings.warn("""Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.""", DeprecationWarning)
-            pulumi.log.warn("""private_ipv6_google_access_service_accounts is deprecated: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.""")
-        if private_ipv6_google_access_service_accounts is not None:
-            pulumi.set(__self__, "private_ipv6_google_access_service_accounts", private_ipv6_google_access_service_accounts)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if purpose is not None:
@@ -318,18 +311,6 @@ class SubnetworkArgs:
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @property
-    @pulumi.getter(name="privateIpv6GoogleAccessServiceAccounts")
-    def private_ipv6_google_access_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        """
-        return pulumi.get(self, "private_ipv6_google_access_service_accounts")
-
-    @private_ipv6_google_access_service_accounts.setter
-    def private_ipv6_google_access_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "private_ipv6_google_access_service_accounts", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -443,7 +424,6 @@ class Subnetwork(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']] = None,
-                 private_ipv6_google_access_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -474,7 +454,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. This field can be set only at resource creation time.
         :param pulumi.Input[bool] private_ip_google_access: Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
         :param pulumi.Input['SubnetworkPrivateIpv6GoogleAccess'] private_ipv6_google_access: This field is for internal use. This field can be both set at resource creation time and updated using patch.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ipv6_google_access_service_accounts: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
         :param pulumi.Input['SubnetworkPurpose'] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[str] region: URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -523,7 +502,6 @@ class Subnetwork(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']] = None,
-                 private_ipv6_google_access_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -565,10 +543,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["private_ip_google_access"] = private_ip_google_access
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
-            if private_ipv6_google_access_service_accounts is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.""", DeprecationWarning)
-                pulumi.log.warn("""private_ipv6_google_access_service_accounts is deprecated: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.""")
-            __props__.__dict__["private_ipv6_google_access_service_accounts"] = private_ipv6_google_access_service_accounts
             __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             if region is None and not opts.urn:
@@ -634,7 +608,6 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["private_ip_google_access"] = None
         __props__.__dict__["private_ipv6_google_access"] = None
-        __props__.__dict__["private_ipv6_google_access_service_accounts"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["purpose"] = None
         __props__.__dict__["region"] = None
@@ -824,14 +797,6 @@ class Subnetwork(pulumi.CustomResource):
         This field is for internal use. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "private_ipv6_google_access")
-
-    @property
-    @pulumi.getter(name="privateIpv6GoogleAccessServiceAccounts")
-    def private_ipv6_google_access_service_accounts(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        """
-        return pulumi.get(self, "private_ipv6_google_access_service_accounts")
 
     @property
     @pulumi.getter

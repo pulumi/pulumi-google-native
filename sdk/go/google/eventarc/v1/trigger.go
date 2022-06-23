@@ -17,6 +17,8 @@ type Trigger struct {
 
 	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
 	Channel pulumi.StringOutput `pulumi:"channel"`
+	// The reason(s) why a trigger is in FAILED state.
+	Conditions pulumi.StringMapOutput `pulumi:"conditions"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Destination specifies where the events should be sent to.
@@ -182,6 +184,11 @@ func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOu
 // Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
 func (o TriggerOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The reason(s) why a trigger is in FAILED state.
+func (o TriggerOutput) Conditions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Conditions }).(pulumi.StringMapOutput)
 }
 
 // The creation time.

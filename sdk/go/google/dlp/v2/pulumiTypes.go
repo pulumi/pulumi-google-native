@@ -1900,7 +1900,7 @@ type GooglePrivacyDlpV2CharacterMaskConfig struct {
 	CharactersToIgnore []GooglePrivacyDlpV2CharsToIgnore `pulumi:"charactersToIgnore"`
 	// Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to `*` for strings, and `0` for digits.
 	MaskingCharacter *string `pulumi:"maskingCharacter"`
-	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.
 	NumberToMask *int `pulumi:"numberToMask"`
 	// Mask characters in reverse order. For example, if `masking_character` is `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the input string `1234-5678-9012-3456` is masked as `00000000000000-3456`. If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is `true`, then the string `12345` is masked as `12***`.
 	ReverseOrder *bool `pulumi:"reverseOrder"`
@@ -1923,7 +1923,7 @@ type GooglePrivacyDlpV2CharacterMaskConfigArgs struct {
 	CharactersToIgnore GooglePrivacyDlpV2CharsToIgnoreArrayInput `pulumi:"charactersToIgnore"`
 	// Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to `*` for strings, and `0` for digits.
 	MaskingCharacter pulumi.StringPtrInput `pulumi:"maskingCharacter"`
-	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.
 	NumberToMask pulumi.IntPtrInput `pulumi:"numberToMask"`
 	// Mask characters in reverse order. For example, if `masking_character` is `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the input string `1234-5678-9012-3456` is masked as `00000000000000-3456`. If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is `true`, then the string `12345` is masked as `12***`.
 	ReverseOrder pulumi.BoolPtrInput `pulumi:"reverseOrder"`
@@ -2019,7 +2019,7 @@ func (o GooglePrivacyDlpV2CharacterMaskConfigOutput) MaskingCharacter() pulumi.S
 	return o.ApplyT(func(v GooglePrivacyDlpV2CharacterMaskConfig) *string { return v.MaskingCharacter }).(pulumi.StringPtrOutput)
 }
 
-// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.
 func (o GooglePrivacyDlpV2CharacterMaskConfigOutput) NumberToMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CharacterMaskConfig) *int { return v.NumberToMask }).(pulumi.IntPtrOutput)
 }
@@ -2073,7 +2073,7 @@ func (o GooglePrivacyDlpV2CharacterMaskConfigPtrOutput) MaskingCharacter() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.
 func (o GooglePrivacyDlpV2CharacterMaskConfigPtrOutput) NumberToMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CharacterMaskConfig) *int {
 		if v == nil {
@@ -2099,7 +2099,7 @@ type GooglePrivacyDlpV2CharacterMaskConfigResponse struct {
 	CharactersToIgnore []GooglePrivacyDlpV2CharsToIgnoreResponse `pulumi:"charactersToIgnore"`
 	// Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to `*` for strings, and `0` for digits.
 	MaskingCharacter string `pulumi:"maskingCharacter"`
-	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.
 	NumberToMask int `pulumi:"numberToMask"`
 	// Mask characters in reverse order. For example, if `masking_character` is `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the input string `1234-5678-9012-3456` is masked as `00000000000000-3456`. If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is `true`, then the string `12345` is masked as `12***`.
 	ReverseOrder bool `pulumi:"reverseOrder"`
@@ -2132,7 +2132,7 @@ func (o GooglePrivacyDlpV2CharacterMaskConfigResponseOutput) MaskingCharacter() 
 	return o.ApplyT(func(v GooglePrivacyDlpV2CharacterMaskConfigResponse) string { return v.MaskingCharacter }).(pulumi.StringOutput)
 }
 
-// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
+// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.
 func (o GooglePrivacyDlpV2CharacterMaskConfigResponseOutput) NumberToMask() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CharacterMaskConfigResponse) int { return v.NumberToMask }).(pulumi.IntOutput)
 }

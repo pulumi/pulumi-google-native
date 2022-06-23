@@ -60,6 +60,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
             set => _guestAccelerators = value;
         }
 
+        /// <summary>
+        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<Pulumi.GoogleNative.Compute.V1.InstancePropertiesKeyRevocationActionType>? KeyRevocationActionType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

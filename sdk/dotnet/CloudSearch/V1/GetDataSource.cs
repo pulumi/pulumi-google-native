@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.GSuitePrincipalResponse> ItemsVisibility;
         /// <summary>
-        /// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        /// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         /// </summary>
         public readonly string Name;
         /// <summary>

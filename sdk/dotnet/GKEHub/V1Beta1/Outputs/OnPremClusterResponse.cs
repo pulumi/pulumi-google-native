@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
         /// </summary>
         public readonly bool ClusterMissing;
         /// <summary>
+        /// Immutable. The on prem cluster's type.
+        /// </summary>
+        public readonly string ClusterType;
+        /// <summary>
         /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         /// </summary>
         public readonly string ResourceLink;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
 
             bool clusterMissing,
 
+            string clusterType,
+
             string resourceLink)
         {
             AdminCluster = adminCluster;
             ClusterMissing = clusterMissing;
+            ClusterType = clusterType;
             ResourceLink = resourceLink;
         }
     }

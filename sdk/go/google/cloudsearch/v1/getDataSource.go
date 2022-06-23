@@ -36,7 +36,7 @@ type LookupDataSourceResult struct {
 	IndexingServiceAccounts []string `pulumi:"indexingServiceAccounts"`
 	// This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
 	ItemsVisibility []GSuitePrincipalResponse `pulumi:"itemsVisibility"`
-	// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+	// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
 	Name string `pulumi:"name"`
 	// IDs of the Long Running Operations (LROs) currently running for this schema.
 	OperationIds []string `pulumi:"operationIds"`
@@ -107,7 +107,7 @@ func (o LookupDataSourceResultOutput) ItemsVisibility() GSuitePrincipalResponseA
 	return o.ApplyT(func(v LookupDataSourceResult) []GSuitePrincipalResponse { return v.ItemsVisibility }).(GSuitePrincipalResponseArrayOutput)
 }
 
-// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
 func (o LookupDataSourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataSourceResult) string { return v.Name }).(pulumi.StringOutput)
 }

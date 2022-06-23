@@ -25,3 +25,31 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const OnPremClusterClusterType = {
+    /**
+     * The ClusterType is not set.
+     */
+    ClustertypeUnspecified: "CLUSTERTYPE_UNSPECIFIED",
+    /**
+     * The ClusterType is bootstrap cluster.
+     */
+    Bootstrap: "BOOTSTRAP",
+    /**
+     * The ClusterType is baremetal hybrid cluster.
+     */
+    Hybrid: "HYBRID",
+    /**
+     * The ClusterType is baremetal standalone cluster.
+     */
+    Standalone: "STANDALONE",
+    /**
+     * The ClusterType is user cluster.
+     */
+    User: "USER",
+} as const;
+
+/**
+ * Immutable. The on prem cluster's type.
+ */
+export type OnPremClusterClusterType = (typeof OnPremClusterClusterType)[keyof typeof OnPremClusterClusterType];

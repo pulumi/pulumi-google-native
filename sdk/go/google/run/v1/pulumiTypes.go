@@ -2824,6 +2824,8 @@ func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 
 // Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
 type ExecutionReferenceResponse struct {
+	// Optional. Completion timestamp of the execution.
+	CompletionTimestamp string `pulumi:"completionTimestamp"`
 	// Optional. Creation timestamp of the execution.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// Optional. Name of the execution.
@@ -2843,6 +2845,11 @@ func (o ExecutionReferenceResponseOutput) ToExecutionReferenceResponseOutput() E
 
 func (o ExecutionReferenceResponseOutput) ToExecutionReferenceResponseOutputWithContext(ctx context.Context) ExecutionReferenceResponseOutput {
 	return o
+}
+
+// Optional. Completion timestamp of the execution.
+func (o ExecutionReferenceResponseOutput) CompletionTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionReferenceResponse) string { return v.CompletionTimestamp }).(pulumi.StringOutput)
 }
 
 // Optional. Creation timestamp of the execution.

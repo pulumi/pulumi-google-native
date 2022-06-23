@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Inputs
         public Input<bool>? AdminCluster { get; set; }
 
         /// <summary>
+        /// Immutable. The on prem cluster's type.
+        /// </summary>
+        [Input("clusterType")]
+        public Input<Pulumi.GoogleNative.GKEHub.V1Beta1.OnPremClusterClusterType>? ClusterType { get; set; }
+
+        /// <summary>
         /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         /// </summary>
         [Input("resourceLink")]

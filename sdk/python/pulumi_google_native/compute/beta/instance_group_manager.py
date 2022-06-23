@@ -24,6 +24,7 @@ class InstanceGroupManagerArgs:
                  distribution_policy: Optional[pulumi.Input['DistributionPolicyArgs']] = None,
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input['DistributionPolicyArgs'] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['InstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
+        :param pulumi.Input['InstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -68,6 +70,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "failover_action", failover_action)
         if instance_template is not None:
             pulumi.set(__self__, "instance_template", instance_template)
+        if list_managed_instances_results is not None:
+            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
@@ -174,6 +178,18 @@ class InstanceGroupManagerArgs:
     @instance_template.setter
     def instance_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_template", value)
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']]:
+        """
+        Pagination behavior of the listManagedInstances API method for this managed instance group.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
+
+    @list_managed_instances_results.setter
+    def list_managed_instances_results(self, value: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']]):
+        pulumi.set(self, "list_managed_instances_results", value)
 
     @property
     @pulumi.getter
@@ -314,6 +330,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -338,6 +355,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['InstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
+        :param pulumi.Input['InstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -379,6 +397,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -411,6 +430,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["distribution_policy"] = distribution_policy
             __props__.__dict__["failover_action"] = failover_action
             __props__.__dict__["instance_template"] = instance_template
+            __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
             __props__.__dict__["project"] = project
@@ -464,6 +484,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["instance_group"] = None
         __props__.__dict__["instance_template"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["list_managed_instances_results"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["named_ports"] = None
         __props__.__dict__["project"] = None
@@ -575,6 +596,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         The resource type, which is always compute#instanceGroupManager for managed instance groups.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> pulumi.Output[str]:
+        """
+        Pagination behavior of the listManagedInstances API method for this managed instance group.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
 
     @property
     @pulumi.getter

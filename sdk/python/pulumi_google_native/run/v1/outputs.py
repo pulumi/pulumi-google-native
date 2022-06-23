@@ -1075,15 +1075,26 @@ class ExecutionReferenceResponse(dict):
     Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
     """
     def __init__(__self__, *,
+                 completion_timestamp: str,
                  creation_timestamp: str,
                  name: str):
         """
         Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+        :param str completion_timestamp: Optional. Completion timestamp of the execution.
         :param str creation_timestamp: Optional. Creation timestamp of the execution.
         :param str name: Optional. Name of the execution.
         """
+        pulumi.set(__self__, "completion_timestamp", completion_timestamp)
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="completionTimestamp")
+    def completion_timestamp(self) -> str:
+        """
+        Optional. Completion timestamp of the execution.
+        """
+        return pulumi.get(self, "completion_timestamp")
 
     @property
     @pulumi.getter(name="creationTimestamp")

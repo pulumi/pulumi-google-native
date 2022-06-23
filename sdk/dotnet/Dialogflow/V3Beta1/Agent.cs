@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+        /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         /// </summary>
         [Output("locked")]
         public Output<bool> Locked { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+        /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }

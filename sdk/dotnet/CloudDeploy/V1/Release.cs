@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     public partial class Release : Pulumi.CustomResource
     {
         /// <summary>
+        /// Indicates whether this is an abandoned release.
+        /// </summary>
+        [Output("abandoned")]
+        public Output<bool> Abandoned { get; private set; } = null!;
+
+        /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Output("annotations")]

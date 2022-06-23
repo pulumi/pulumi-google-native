@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetFhirStoreResult:
-    def __init__(__self__, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, stream_configs=None, validation_config=None, version=None):
+    def __init__(__self__, complex_data_type_reference_parsing=None, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, stream_configs=None, validation_config=None, version=None):
+        if complex_data_type_reference_parsing and not isinstance(complex_data_type_reference_parsing, str):
+            raise TypeError("Expected argument 'complex_data_type_reference_parsing' to be a str")
+        pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
         if default_search_handling_strict and not isinstance(default_search_handling_strict, bool):
             raise TypeError("Expected argument 'default_search_handling_strict' to be a bool")
         pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
@@ -50,6 +53,14 @@ class GetFhirStoreResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="complexDataTypeReferenceParsing")
+    def complex_data_type_reference_parsing(self) -> str:
+        """
+        Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        """
+        return pulumi.get(self, "complex_data_type_reference_parsing")
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -138,6 +149,7 @@ class AwaitableGetFhirStoreResult(GetFhirStoreResult):
         if False:
             yield self
         return GetFhirStoreResult(
+            complex_data_type_reference_parsing=self.complex_data_type_reference_parsing,
             default_search_handling_strict=self.default_search_handling_strict,
             disable_referential_integrity=self.disable_referential_integrity,
             disable_resource_versioning=self.disable_resource_versioning,
@@ -170,6 +182,7 @@ def get_fhir_store(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1:getFhirStore', __args__, opts=opts, typ=GetFhirStoreResult).value
 
     return AwaitableGetFhirStoreResult(
+        complex_data_type_reference_parsing=__ret__.complex_data_type_reference_parsing,
         default_search_handling_strict=__ret__.default_search_handling_strict,
         disable_referential_integrity=__ret__.disable_referential_integrity,
         disable_resource_versioning=__ret__.disable_resource_versioning,

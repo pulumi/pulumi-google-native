@@ -6,16 +6,19 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./asset";
+export * from "./content";
 export * from "./contentitem";
 export * from "./entity";
 export * from "./environment";
 export * from "./getAsset";
+export * from "./getContent";
 export * from "./getContentitem";
 export * from "./getEntity";
 export * from "./getEnvironment";
 export * from "./getLake";
 export * from "./getLakeAssetIamPolicy";
 export * from "./getLakeContentIamPolicy";
+export * from "./getLakeContentitemIamPolicy";
 export * from "./getLakeEnvironmentIamPolicy";
 export * from "./getLakeIamPolicy";
 export * from "./getLakeTaskIamPolicy";
@@ -26,6 +29,7 @@ export * from "./getZone";
 export * from "./lake";
 export * from "./lakeAssetIamPolicy";
 export * from "./lakeContentIamPolicy";
+export * from "./lakeContentitemIamPolicy";
 export * from "./lakeEnvironmentIamPolicy";
 export * from "./lakeIamPolicy";
 export * from "./lakeTaskIamPolicy";
@@ -39,12 +43,14 @@ export * from "../../types/enums/dataplex/v1";
 
 // Import resources to register:
 import { Asset } from "./asset";
+import { Content } from "./content";
 import { Contentitem } from "./contentitem";
 import { Entity } from "./entity";
 import { Environment } from "./environment";
 import { Lake } from "./lake";
 import { LakeAssetIamPolicy } from "./lakeAssetIamPolicy";
 import { LakeContentIamPolicy } from "./lakeContentIamPolicy";
+import { LakeContentitemIamPolicy } from "./lakeContentitemIamPolicy";
 import { LakeEnvironmentIamPolicy } from "./lakeEnvironmentIamPolicy";
 import { LakeIamPolicy } from "./lakeIamPolicy";
 import { LakeTaskIamPolicy } from "./lakeTaskIamPolicy";
@@ -59,6 +65,8 @@ const _module = {
         switch (type) {
             case "google-native:dataplex/v1:Asset":
                 return new Asset(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:Content":
+                return new Content(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Contentitem":
                 return new Contentitem(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Entity":
@@ -71,6 +79,8 @@ const _module = {
                 return new LakeAssetIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeContentIamPolicy":
                 return new LakeContentIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeContentitemIamPolicy":
+                return new LakeContentitemIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeEnvironmentIamPolicy":
                 return new LakeEnvironmentIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeIamPolicy":

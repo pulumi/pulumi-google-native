@@ -47,7 +47,7 @@ export interface GetDataSourceResult {
      */
     readonly itemsVisibility: outputs.cloudsearch.v1.GSuitePrincipalResponse[];
     /**
-     * Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+     * The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
      */
     readonly name: string;
     /**

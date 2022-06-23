@@ -292,8 +292,10 @@ class Registration(pulumi.CustomResource):
             __props__.__dict__["issues"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pending_contact_settings"] = None
+            __props__.__dict__["register_failure_reason"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["supported_privacy"] = None
+            __props__.__dict__["transfer_failure_reason"] = None
         super(Registration, __self__).__init__(
             'google-native:domains/v1:Registration',
             resource_name,
@@ -328,8 +330,10 @@ class Registration(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["pending_contact_settings"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["register_failure_reason"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["supported_privacy"] = None
+        __props__.__dict__["transfer_failure_reason"] = None
         return Registration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -423,6 +427,14 @@ class Registration(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="registerFailureReason")
+    def register_failure_reason(self) -> pulumi.Output[str]:
+        """
+        The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
+        """
+        return pulumi.get(self, "register_failure_reason")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
@@ -437,4 +449,12 @@ class Registration(pulumi.CustomResource):
         Set of options for the `contact_settings.privacy` field that this `Registration` supports.
         """
         return pulumi.get(self, "supported_privacy")
+
+    @property
+    @pulumi.getter(name="transferFailureReason")
+    def transfer_failure_reason(self) -> pulumi.Output[str]:
+        """
+        The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        """
+        return pulumi.get(self, "transfer_failure_reason")
 

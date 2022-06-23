@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// </summary>
         public readonly string StorageClass;
         /// <summary>
-        /// Type of the action. Currently, only Delete and SetStorageClass are supported.
+        /// Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
         /// </summary>
         public readonly string Type;
 

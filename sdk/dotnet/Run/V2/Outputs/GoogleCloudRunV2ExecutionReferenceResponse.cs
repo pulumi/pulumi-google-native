@@ -19,6 +19,10 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// <summary>
         /// Creation timestamp of the execution.
         /// </summary>
+        public readonly string CompletionTime;
+        /// <summary>
+        /// Creation timestamp of the execution.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// Name of the execution.
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 
         [OutputConstructor]
         private GoogleCloudRunV2ExecutionReferenceResponse(
+            string completionTime,
+
             string createTime,
 
             string name)
         {
+            CompletionTime = completionTime;
             CreateTime = createTime;
             Name = name;
         }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public static EntryType EntryTypeUnspecified { get; } = new EntryType("ENTRY_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Output only. The entry type that has a GoogleSQL schema, including logical views.
+        /// The entry type that has a GoogleSQL schema, including logical views.
         /// </summary>
         public static EntryType Table { get; } = new EntryType("TABLE");
         /// <summary>
@@ -196,55 +196,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1DatabaseTableSpecType other && Equals(other);
         public bool Equals(GoogleCloudDatacatalogV1DatabaseTableSpecType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Service in which the external table is registered.
-    /// </summary>
-    [EnumType]
-    public readonly struct GoogleCloudDatacatalogV1DataplexExternalTableSystem : IEquatable<GoogleCloudDatacatalogV1DataplexExternalTableSystem>
-    {
-        private readonly string _value;
-
-        private GoogleCloudDatacatalogV1DataplexExternalTableSystem(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Default unknown system.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem IntegratedSystemUnspecified { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("INTEGRATED_SYSTEM_UNSPECIFIED");
-        /// <summary>
-        /// BigQuery.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem Bigquery { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("BIGQUERY");
-        /// <summary>
-        /// Cloud Pub/Sub.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem CloudPubsub { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("CLOUD_PUBSUB");
-        /// <summary>
-        /// Dataproc Metastore.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem DataprocMetastore { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("DATAPROC_METASTORE");
-        /// <summary>
-        /// Dataplex.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1DataplexExternalTableSystem Dataplex { get; } = new GoogleCloudDatacatalogV1DataplexExternalTableSystem("DATAPLEX");
-
-        public static bool operator ==(GoogleCloudDatacatalogV1DataplexExternalTableSystem left, GoogleCloudDatacatalogV1DataplexExternalTableSystem right) => left.Equals(right);
-        public static bool operator !=(GoogleCloudDatacatalogV1DataplexExternalTableSystem left, GoogleCloudDatacatalogV1DataplexExternalTableSystem right) => !left.Equals(right);
-
-        public static explicit operator string(GoogleCloudDatacatalogV1DataplexExternalTableSystem value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1DataplexExternalTableSystem other && Equals(other);
-        public bool Equals(GoogleCloudDatacatalogV1DataplexExternalTableSystem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

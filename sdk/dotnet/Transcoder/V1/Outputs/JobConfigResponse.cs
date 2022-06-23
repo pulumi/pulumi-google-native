@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly Outputs.PubsubDestinationResponse PubsubDestination;
         /// <summary>
-        /// List of output sprite sheets.
+        /// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
         /// </summary>
         public readonly ImmutableArray<Outputs.SpriteSheetResponse> SpriteSheets;
 

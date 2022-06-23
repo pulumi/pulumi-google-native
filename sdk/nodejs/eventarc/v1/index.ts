@@ -6,9 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./channel";
+export * from "./channelConnection";
 export * from "./channelConnectionIamPolicy";
 export * from "./channelIamPolicy";
 export * from "./getChannel";
+export * from "./getChannelConnection";
 export * from "./getChannelConnectionIamPolicy";
 export * from "./getChannelIamPolicy";
 export * from "./getTrigger";
@@ -21,6 +23,7 @@ export * from "../../types/enums/eventarc/v1";
 
 // Import resources to register:
 import { Channel } from "./channel";
+import { ChannelConnection } from "./channelConnection";
 import { ChannelConnectionIamPolicy } from "./channelConnectionIamPolicy";
 import { ChannelIamPolicy } from "./channelIamPolicy";
 import { Trigger } from "./trigger";
@@ -32,6 +35,8 @@ const _module = {
         switch (type) {
             case "google-native:eventarc/v1:Channel":
                 return new Channel(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1:ChannelConnection":
+                return new ChannelConnection(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:ChannelConnectionIamPolicy":
                 return new ChannelConnectionIamPolicy(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:ChannelIamPolicy":

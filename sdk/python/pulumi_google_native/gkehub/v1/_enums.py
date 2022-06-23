@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'OnPremClusterClusterType',
 ]
 
 
@@ -28,4 +29,30 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class OnPremClusterClusterType(str, Enum):
+    """
+    Immutable. The on prem cluster's type.
+    """
+    CLUSTERTYPE_UNSPECIFIED = "CLUSTERTYPE_UNSPECIFIED"
+    """
+    The ClusterType is not set.
+    """
+    BOOTSTRAP = "BOOTSTRAP"
+    """
+    The ClusterType is bootstrap cluster.
+    """
+    HYBRID = "HYBRID"
+    """
+    The ClusterType is baremetal hybrid cluster.
+    """
+    STANDALONE = "STANDALONE"
+    """
+    The ClusterType is baremetal standalone cluster.
+    """
+    USER = "USER"
+    """
+    The ClusterType is user cluster.
     """

@@ -51,6 +51,8 @@ type LookupProvisioningConfigResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// Volumes to be created.
 	Volumes []VolumeConfigResponse `pulumi:"volumes"`
+	// If true, VPC SC is enabled for the cluster.
+	VpcScEnabled bool `pulumi:"vpcScEnabled"`
 }
 
 func LookupProvisioningConfigOutput(ctx *pulumi.Context, args LookupProvisioningConfigOutputArgs, opts ...pulumi.InvokeOption) LookupProvisioningConfigResultOutput {
@@ -145,6 +147,11 @@ func (o LookupProvisioningConfigResultOutput) UpdateTime() pulumi.StringOutput {
 // Volumes to be created.
 func (o LookupProvisioningConfigResultOutput) Volumes() VolumeConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupProvisioningConfigResult) []VolumeConfigResponse { return v.Volumes }).(VolumeConfigResponseArrayOutput)
+}
+
+// If true, VPC SC is enabled for the cluster.
+func (o LookupProvisioningConfigResultOutput) VpcScEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProvisioningConfigResult) bool { return v.VpcScEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

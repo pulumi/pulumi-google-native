@@ -31,7 +31,7 @@ type LookupDestGroupResult struct {
 	Cidrs []string `pulumi:"cidrs"`
 	// null List of FQDNs that this group applies to.
 	Fqdns []string `pulumi:"fqdns"`
-	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
 	Name string `pulumi:"name"`
 }
 
@@ -82,7 +82,7 @@ func (o LookupDestGroupResultOutput) Fqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDestGroupResult) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
 func (o LookupDestGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }

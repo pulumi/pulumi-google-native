@@ -147,12 +147,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("privateIpv6GoogleAccess")]
         public Output<string> PrivateIpv6GoogleAccess { get; private set; } = null!;
 
-        /// <summary>
-        /// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        /// </summary>
-        [Output("privateIpv6GoogleAccessServiceAccounts")]
-        public Output<ImmutableArray<string>> PrivateIpv6GoogleAccessServiceAccounts { get; private set; } = null!;
-
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -353,19 +347,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
-
-        [Input("privateIpv6GoogleAccessServiceAccounts")]
-        private InputList<string>? _privateIpv6GoogleAccessServiceAccounts;
-
-        /// <summary>
-        /// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        /// </summary>
-        [Obsolete(@"Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.")]
-        public InputList<string> PrivateIpv6GoogleAccessServiceAccounts
-        {
-            get => _privateIpv6GoogleAccessServiceAccounts ?? (_privateIpv6GoogleAccessServiceAccounts = new InputList<string>());
-            set => _privateIpv6GoogleAccessServiceAccounts = value;
-        }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

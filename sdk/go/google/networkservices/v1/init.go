@@ -31,10 +31,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EndpointPolicy{}
 	case "google-native:networkservices/v1:EndpointPolicyIamPolicy":
 		r = &EndpointPolicyIamPolicy{}
+	case "google-native:networkservices/v1:Gateway":
+		r = &Gateway{}
+	case "google-native:networkservices/v1:GatewayIamPolicy":
+		r = &GatewayIamPolicy{}
+	case "google-native:networkservices/v1:GrpcRoute":
+		r = &GrpcRoute{}
+	case "google-native:networkservices/v1:HttpRoute":
+		r = &HttpRoute{}
+	case "google-native:networkservices/v1:Mesh":
+		r = &Mesh{}
+	case "google-native:networkservices/v1:MeshIamPolicy":
+		r = &MeshIamPolicy{}
 	case "google-native:networkservices/v1:ServiceBinding":
 		r = &ServiceBinding{}
 	case "google-native:networkservices/v1:ServiceBindingIamPolicy":
 		r = &ServiceBindingIamPolicy{}
+	case "google-native:networkservices/v1:TcpRoute":
+		r = &TcpRoute{}
+	case "google-native:networkservices/v1:TlsRoute":
+		r = &TlsRoute{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

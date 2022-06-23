@@ -39,6 +39,10 @@ export class Release extends pulumi.CustomResource {
     }
 
     /**
+     * Indicates whether this is an abandoned release.
+     */
+    public /*out*/ readonly abandoned!: pulumi.Output<boolean>;
+    /**
      * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
@@ -158,6 +162,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["skaffoldConfigUri"] = args ? args.skaffoldConfigUri : undefined;
             resourceInputs["skaffoldVersion"] = args ? args.skaffoldVersion : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["abandoned"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deliveryPipelineSnapshot"] = undefined /*out*/;
             resourceInputs["renderEndTime"] = undefined /*out*/;
@@ -168,6 +173,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["targetSnapshots"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         } else {
+            resourceInputs["abandoned"] = undefined /*out*/;
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["buildArtifacts"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

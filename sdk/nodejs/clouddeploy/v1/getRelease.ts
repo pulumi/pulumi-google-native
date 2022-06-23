@@ -31,6 +31,10 @@ export interface GetReleaseArgs {
 
 export interface GetReleaseResult {
     /**
+     * Indicates whether this is an abandoned release.
+     */
+    readonly abandoned: boolean;
+    /**
      * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      */
     readonly annotations: {[key: string]: string};

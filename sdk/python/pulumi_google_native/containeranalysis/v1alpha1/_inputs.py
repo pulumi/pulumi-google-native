@@ -1789,16 +1789,16 @@ class DetailArgs:
 class DigestArgs:
     def __init__(__self__, *,
                  algo: Optional[pulumi.Input[str]] = None,
-                 digest_value: Optional[pulumi.Input[str]] = None):
+                 digest_bytes: Optional[pulumi.Input[str]] = None):
         """
         Digest information.
         :param pulumi.Input[str] algo: `SHA1`, `SHA512` etc.
-        :param pulumi.Input[str] digest_value: Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        :param pulumi.Input[str] digest_bytes: Value of the digest.
         """
         if algo is not None:
             pulumi.set(__self__, "algo", algo)
-        if digest_value is not None:
-            pulumi.set(__self__, "digest_value", digest_value)
+        if digest_bytes is not None:
+            pulumi.set(__self__, "digest_bytes", digest_bytes)
 
     @property
     @pulumi.getter
@@ -1813,16 +1813,16 @@ class DigestArgs:
         pulumi.set(self, "algo", value)
 
     @property
-    @pulumi.getter(name="digestValue")
-    def digest_value(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="digestBytes")
+    def digest_bytes(self) -> Optional[pulumi.Input[str]]:
         """
-        Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        Value of the digest.
         """
-        return pulumi.get(self, "digest_value")
+        return pulumi.get(self, "digest_bytes")
 
-    @digest_value.setter
-    def digest_value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "digest_value", value)
+    @digest_bytes.setter
+    def digest_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest_bytes", value)
 
 
 @pulumi.input_type

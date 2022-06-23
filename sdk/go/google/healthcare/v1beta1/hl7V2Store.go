@@ -21,7 +21,7 @@ type Hl7V2Store struct {
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+	// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The notification destination all messages (both Ingest & Create) are published on. Only the message name is sent as part of the notification. If this is unset, no notifications are sent. Supplied by the client.
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
@@ -82,7 +82,7 @@ type hl7V2StoreArgs struct {
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+	// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 	Name *string `pulumi:"name"`
 	// The notification destination all messages (both Ingest & Create) are published on. Only the message name is sent as part of the notification. If this is unset, no notifications are sent. Supplied by the client.
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
@@ -103,7 +103,7 @@ type Hl7V2StoreArgs struct {
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+	// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 	Name pulumi.StringPtrInput
 	// The notification destination all messages (both Ingest & Create) are published on. Only the message name is sent as part of the notification. If this is unset, no notifications are sent. Supplied by the client.
 	NotificationConfig NotificationConfigPtrInput
@@ -171,7 +171,7 @@ func (o Hl7V2StoreOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
 func (o Hl7V2StoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7V2Store) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

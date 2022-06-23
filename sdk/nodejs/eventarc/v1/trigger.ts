@@ -40,6 +40,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly channel!: pulumi.Output<string>;
     /**
+     * The reason(s) why a trigger is in FAILED state.
+     */
+    public /*out*/ readonly conditions!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -124,12 +128,14 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["transport"] = args ? args.transport : undefined;
             resourceInputs["triggerId"] = args ? args.triggerId : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["channel"] = undefined /*out*/;
+            resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

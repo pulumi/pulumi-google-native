@@ -133,4 +133,180 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Immutable. The type of the customer managed gateway.
+    /// </summary>
+    [EnumType]
+    public readonly struct GatewayType : IEquatable<GatewayType>
+    {
+        private readonly string _value;
+
+        private GatewayType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The type of the customer managed gateway is unspecified.
+        /// </summary>
+        public static GatewayType TypeUnspecified { get; } = new GatewayType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The type of the customer managed gateway is TrafficDirector Open Mesh.
+        /// </summary>
+        public static GatewayType OpenMesh { get; } = new GatewayType("OPEN_MESH");
+        /// <summary>
+        /// The type of the customer managed gateway is SecureWebGateway (SWG).
+        /// </summary>
+        public static GatewayType SecureWebGateway { get; } = new GatewayType("SECURE_WEB_GATEWAY");
+
+        public static bool operator ==(GatewayType left, GatewayType right) => left.Equals(right);
+        public static bool operator !=(GatewayType left, GatewayType right) => !left.Equals(right);
+
+        public static explicit operator string(GatewayType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GatewayType other && Equals(other);
+        public bool Equals(GatewayType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct GrpcRouteHeaderMatchType : IEquatable<GrpcRouteHeaderMatchType>
+    {
+        private readonly string _value;
+
+        private GrpcRouteHeaderMatchType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static GrpcRouteHeaderMatchType TypeUnspecified { get; } = new GrpcRouteHeaderMatchType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Will only match the exact value provided.
+        /// </summary>
+        public static GrpcRouteHeaderMatchType Exact { get; } = new GrpcRouteHeaderMatchType("EXACT");
+        /// <summary>
+        /// Will match paths conforming to the prefix specified by value. RE2 syntax is supported.
+        /// </summary>
+        public static GrpcRouteHeaderMatchType RegularExpression { get; } = new GrpcRouteHeaderMatchType("REGULAR_EXPRESSION");
+
+        public static bool operator ==(GrpcRouteHeaderMatchType left, GrpcRouteHeaderMatchType right) => left.Equals(right);
+        public static bool operator !=(GrpcRouteHeaderMatchType left, GrpcRouteHeaderMatchType right) => !left.Equals(right);
+
+        public static explicit operator string(GrpcRouteHeaderMatchType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GrpcRouteHeaderMatchType other && Equals(other);
+        public bool Equals(GrpcRouteHeaderMatchType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct GrpcRouteMethodMatchType : IEquatable<GrpcRouteMethodMatchType>
+    {
+        private readonly string _value;
+
+        private GrpcRouteMethodMatchType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static GrpcRouteMethodMatchType TypeUnspecified { get; } = new GrpcRouteMethodMatchType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Will only match the exact name provided.
+        /// </summary>
+        public static GrpcRouteMethodMatchType Exact { get; } = new GrpcRouteMethodMatchType("EXACT");
+        /// <summary>
+        /// Will interpret grpc_method and grpc_service as regexes. RE2 syntax is supported.
+        /// </summary>
+        public static GrpcRouteMethodMatchType RegularExpression { get; } = new GrpcRouteMethodMatchType("REGULAR_EXPRESSION");
+
+        public static bool operator ==(GrpcRouteMethodMatchType left, GrpcRouteMethodMatchType right) => left.Equals(right);
+        public static bool operator !=(GrpcRouteMethodMatchType left, GrpcRouteMethodMatchType right) => !left.Equals(right);
+
+        public static explicit operator string(GrpcRouteMethodMatchType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GrpcRouteMethodMatchType other && Equals(other);
+        public bool Equals(GrpcRouteMethodMatchType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The HTTP Status code to use for the redirect.
+    /// </summary>
+    [EnumType]
+    public readonly struct HttpRouteRedirectResponseCode : IEquatable<HttpRouteRedirectResponseCode>
+    {
+        private readonly string _value;
+
+        private HttpRouteRedirectResponseCode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value
+        /// </summary>
+        public static HttpRouteRedirectResponseCode ResponseCodeUnspecified { get; } = new HttpRouteRedirectResponseCode("RESPONSE_CODE_UNSPECIFIED");
+        /// <summary>
+        /// Corresponds to 301.
+        /// </summary>
+        public static HttpRouteRedirectResponseCode MovedPermanentlyDefault { get; } = new HttpRouteRedirectResponseCode("MOVED_PERMANENTLY_DEFAULT");
+        /// <summary>
+        /// Corresponds to 302.
+        /// </summary>
+        public static HttpRouteRedirectResponseCode Found { get; } = new HttpRouteRedirectResponseCode("FOUND");
+        /// <summary>
+        /// Corresponds to 303.
+        /// </summary>
+        public static HttpRouteRedirectResponseCode SeeOther { get; } = new HttpRouteRedirectResponseCode("SEE_OTHER");
+        /// <summary>
+        /// Corresponds to 307. In this case, the request method will be retained.
+        /// </summary>
+        public static HttpRouteRedirectResponseCode TemporaryRedirect { get; } = new HttpRouteRedirectResponseCode("TEMPORARY_REDIRECT");
+        /// <summary>
+        /// Corresponds to 308. In this case, the request method will be retained.
+        /// </summary>
+        public static HttpRouteRedirectResponseCode PermanentRedirect { get; } = new HttpRouteRedirectResponseCode("PERMANENT_REDIRECT");
+
+        public static bool operator ==(HttpRouteRedirectResponseCode left, HttpRouteRedirectResponseCode right) => left.Equals(right);
+        public static bool operator !=(HttpRouteRedirectResponseCode left, HttpRouteRedirectResponseCode right) => !left.Equals(right);
+
+        public static explicit operator string(HttpRouteRedirectResponseCode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is HttpRouteRedirectResponseCode other && Equals(other);
+        public bool Equals(HttpRouteRedirectResponseCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

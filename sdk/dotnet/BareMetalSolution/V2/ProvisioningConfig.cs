@@ -84,6 +84,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [Output("volumes")]
         public Output<ImmutableArray<Outputs.VolumeConfigResponse>> Volumes { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, VPC SC is enabled for the cluster.
+        /// </summary>
+        [Output("vpcScEnabled")]
+        public Output<bool> VpcScEnabled { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ProvisioningConfig resource with the given unique name, arguments, and options.
@@ -191,6 +197,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             get => _volumes ?? (_volumes = new InputList<Inputs.VolumeConfigArgs>());
             set => _volumes = value;
         }
+
+        /// <summary>
+        /// If true, VPC SC is enabled for the cluster.
+        /// </summary>
+        [Input("vpcScEnabled")]
+        public Input<bool>? VpcScEnabled { get; set; }
 
         public ProvisioningConfigArgs()
         {

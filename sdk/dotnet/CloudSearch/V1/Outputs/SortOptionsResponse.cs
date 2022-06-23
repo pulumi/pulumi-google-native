@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
     public sealed class SortOptionsResponse
     {
         /// <summary>
-        /// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
+        /// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
         /// </summary>
         public readonly string OperatorName;
         /// <summary>

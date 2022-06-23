@@ -19540,6 +19540,8 @@ type InstanceProperties struct {
 	Disks []AttachedDisk `pulumi:"disks"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+	KeyRevocationActionType *InstancePropertiesKeyRevocationActionType `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for instances that are created from these properties.
@@ -19594,6 +19596,8 @@ type InstancePropertiesArgs struct {
 	Disks AttachedDiskArrayInput `pulumi:"disks"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators AcceleratorConfigArrayInput `pulumi:"guestAccelerators"`
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+	KeyRevocationActionType InstancePropertiesKeyRevocationActionTypePtrInput `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The machine type to use for instances that are created from these properties.
@@ -19729,6 +19733,13 @@ func (o InstancePropertiesOutput) Disks() AttachedDiskArrayOutput {
 // A list of guest accelerator cards' type and count to use for instances created from these properties.
 func (o InstancePropertiesOutput) GuestAccelerators() AcceleratorConfigArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []AcceleratorConfig { return v.GuestAccelerators }).(AcceleratorConfigArrayOutput)
+}
+
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+func (o InstancePropertiesOutput) KeyRevocationActionType() InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return o.ApplyT(func(v InstanceProperties) *InstancePropertiesKeyRevocationActionType {
+		return v.KeyRevocationActionType
+	}).(InstancePropertiesKeyRevocationActionTypePtrOutput)
 }
 
 // Labels to apply to instances that are created from these properties.
@@ -19887,6 +19898,16 @@ func (o InstancePropertiesPtrOutput) GuestAccelerators() AcceleratorConfigArrayO
 	}).(AcceleratorConfigArrayOutput)
 }
 
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+func (o InstancePropertiesPtrOutput) KeyRevocationActionType() InstancePropertiesKeyRevocationActionTypePtrOutput {
+	return o.ApplyT(func(v *InstanceProperties) *InstancePropertiesKeyRevocationActionType {
+		if v == nil {
+			return nil
+		}
+		return v.KeyRevocationActionType
+	}).(InstancePropertiesKeyRevocationActionTypePtrOutput)
+}
+
 // Labels to apply to instances that are created from these properties.
 func (o InstancePropertiesPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceProperties) map[string]string {
@@ -20040,6 +20061,8 @@ type InstancePropertiesResponse struct {
 	Disks []AttachedDiskResponse `pulumi:"disks"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for instances that are created from these properties.
@@ -20114,6 +20137,11 @@ func (o InstancePropertiesResponseOutput) Disks() AttachedDiskResponseArrayOutpu
 // A list of guest accelerator cards' type and count to use for instances created from these properties.
 func (o InstancePropertiesResponseOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
+}
+
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+func (o InstancePropertiesResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
 
 // Labels to apply to instances that are created from these properties.
@@ -38958,6 +38986,8 @@ type SourceInstancePropertiesResponse struct {
 	Disks []SavedAttachedDiskResponse `pulumi:"disks"`
 	// A list of guest accelerator cards' type and count to use for instances created from this machine image.
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from this machine image.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for instances that are created from this machine image.
@@ -39014,6 +39044,11 @@ func (o SourceInstancePropertiesResponseOutput) Disks() SavedAttachedDiskRespons
 // A list of guest accelerator cards' type and count to use for instances created from this machine image.
 func (o SourceInstancePropertiesResponseOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput {
 	return o.ApplyT(func(v SourceInstancePropertiesResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
+}
+
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+func (o SourceInstancePropertiesResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceInstancePropertiesResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
 
 // Labels to apply to instances that are created from this machine image.

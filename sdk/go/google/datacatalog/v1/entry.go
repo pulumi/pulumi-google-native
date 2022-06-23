@@ -114,10 +114,6 @@ func (EntryState) ElementType() reflect.Type {
 }
 
 type entryArgs struct {
-	// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-	BigqueryDateShardedSpec *GoogleCloudDatacatalogV1BigQueryDateShardedSpec `pulumi:"bigqueryDateShardedSpec"`
-	// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
-	BigqueryTableSpec *GoogleCloudDatacatalogV1BigQueryTableSpec `pulumi:"bigqueryTableSpec"`
 	// Business Context of the entry. Not supported for BigQuery datasets
 	BusinessContext *GoogleCloudDatacatalogV1BusinessContext `pulumi:"businessContext"`
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
@@ -159,10 +155,6 @@ type entryArgs struct {
 
 // The set of arguments for constructing a Entry resource.
 type EntryArgs struct {
-	// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-	BigqueryDateShardedSpec GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput
-	// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
-	BigqueryTableSpec GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput
 	// Business Context of the entry. Not supported for BigQuery datasets
 	BusinessContext GoogleCloudDatacatalogV1BusinessContextPtrInput
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.

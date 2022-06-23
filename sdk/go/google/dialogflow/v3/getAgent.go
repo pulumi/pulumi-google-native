@@ -41,7 +41,7 @@ type LookupAgentResult struct {
 	EnableSpellCorrection bool `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging bool `pulumi:"enableStackdriverLogging"`
-	// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked bool `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name string `pulumi:"name"`
@@ -129,7 +129,7 @@ func (o LookupAgentResultOutput) EnableStackdriverLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAgentResult) bool { return v.EnableStackdriverLogging }).(pulumi.BoolOutput)
 }
 
-// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 func (o LookupAgentResultOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAgentResult) bool { return v.Locked }).(pulumi.BoolOutput)
 }

@@ -518,14 +518,18 @@ class MultiCloudClusterArgs:
 class OnPremClusterArgs:
     def __init__(__self__, *,
                  admin_cluster: Optional[pulumi.Input[bool]] = None,
+                 cluster_type: Optional[pulumi.Input['OnPremClusterClusterType']] = None,
                  resource_link: Optional[pulumi.Input[str]] = None):
         """
         OnPremCluster contains information specific to GKE On-Prem clusters.
         :param pulumi.Input[bool] admin_cluster: Immutable. Whether the cluster is an admin cluster.
+        :param pulumi.Input['OnPremClusterClusterType'] cluster_type: Immutable. The on prem cluster's type.
         :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         """
         if admin_cluster is not None:
             pulumi.set(__self__, "admin_cluster", admin_cluster)
+        if cluster_type is not None:
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if resource_link is not None:
             pulumi.set(__self__, "resource_link", resource_link)
 
@@ -540,6 +544,18 @@ class OnPremClusterArgs:
     @admin_cluster.setter
     def admin_cluster(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "admin_cluster", value)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> Optional[pulumi.Input['OnPremClusterClusterType']]:
+        """
+        Immutable. The on prem cluster's type.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: Optional[pulumi.Input['OnPremClusterClusterType']]):
+        pulumi.set(self, "cluster_type", value)
 
     @property
     @pulumi.getter(name="resourceLink")

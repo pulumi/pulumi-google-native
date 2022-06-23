@@ -85,7 +85,7 @@ def get_lake_content_iam_policy(content_id: Optional[str] = None,
                                 project: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLakeContentIamPolicyResult:
     """
-    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
     """
     __args__ = dict()
     __args__['contentId'] = content_id
@@ -114,6 +114,6 @@ def get_lake_content_iam_policy_output(content_id: Optional[pulumi.Input[str]] =
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLakeContentIamPolicyResult]:
     """
-    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
     """
     ...

@@ -45,3 +45,31 @@ export const MembershipInfrastructureType = {
  * Optional. The infrastructure type this Membership is running on.
  */
 export type MembershipInfrastructureType = (typeof MembershipInfrastructureType)[keyof typeof MembershipInfrastructureType];
+
+export const OnPremClusterClusterType = {
+    /**
+     * The ClusterType is not set.
+     */
+    ClustertypeUnspecified: "CLUSTERTYPE_UNSPECIFIED",
+    /**
+     * The ClusterType is bootstrap cluster.
+     */
+    Bootstrap: "BOOTSTRAP",
+    /**
+     * The ClusterType is baremetal hybrid cluster.
+     */
+    Hybrid: "HYBRID",
+    /**
+     * The ClusterType is baremetal standalone cluster.
+     */
+    Standalone: "STANDALONE",
+    /**
+     * The ClusterType is user cluster.
+     */
+    User: "USER",
+} as const;
+
+/**
+ * Immutable. The on prem cluster's type.
+ */
+export type OnPremClusterClusterType = (typeof OnPremClusterClusterType)[keyof typeof OnPremClusterClusterType];

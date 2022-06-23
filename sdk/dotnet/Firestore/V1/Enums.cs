@@ -8,6 +8,133 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Firestore.V1
 {
     /// <summary>
+    /// The App Engine integration mode to use for this database.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatabaseAppEngineIntegrationMode : IEquatable<DatabaseAppEngineIntegrationMode>
+    {
+        private readonly string _value;
+
+        private DatabaseAppEngineIntegrationMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not used.
+        /// </summary>
+        public static DatabaseAppEngineIntegrationMode AppEngineIntegrationModeUnspecified { get; } = new DatabaseAppEngineIntegrationMode("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED");
+        /// <summary>
+        /// If an App Engine application exists in the same region as this database, App Engine configuration will impact this database. This includes disabling of the application &amp; database, as well as disabling writes to the database.
+        /// </summary>
+        public static DatabaseAppEngineIntegrationMode Enabled { get; } = new DatabaseAppEngineIntegrationMode("ENABLED");
+        /// <summary>
+        /// Appengine has no affect on the ability of this database to serve requests.
+        /// </summary>
+        public static DatabaseAppEngineIntegrationMode Disabled { get; } = new DatabaseAppEngineIntegrationMode("DISABLED");
+
+        public static bool operator ==(DatabaseAppEngineIntegrationMode left, DatabaseAppEngineIntegrationMode right) => left.Equals(right);
+        public static bool operator !=(DatabaseAppEngineIntegrationMode left, DatabaseAppEngineIntegrationMode right) => !left.Equals(right);
+
+        public static explicit operator string(DatabaseAppEngineIntegrationMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatabaseAppEngineIntegrationMode other && Equals(other);
+        public bool Equals(DatabaseAppEngineIntegrationMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The concurrency control mode to use for this database.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatabaseConcurrencyMode : IEquatable<DatabaseConcurrencyMode>
+    {
+        private readonly string _value;
+
+        private DatabaseConcurrencyMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not used.
+        /// </summary>
+        public static DatabaseConcurrencyMode ConcurrencyModeUnspecified { get; } = new DatabaseConcurrencyMode("CONCURRENCY_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Use optimistic concurrency control by default. This mode is available for Cloud Firestore databases.
+        /// </summary>
+        public static DatabaseConcurrencyMode Optimistic { get; } = new DatabaseConcurrencyMode("OPTIMISTIC");
+        /// <summary>
+        /// Use pessimistic concurrency control by default. This mode is available for Cloud Firestore databases. This is the default setting for Cloud Firestore.
+        /// </summary>
+        public static DatabaseConcurrencyMode Pessimistic { get; } = new DatabaseConcurrencyMode("PESSIMISTIC");
+        /// <summary>
+        /// Use optimistic concurrency control with entity groups by default. This is the only available mode for Cloud Datastore. This mode is also available for Cloud Firestore with Datastore Mode but is not recommended.
+        /// </summary>
+        public static DatabaseConcurrencyMode OptimisticWithEntityGroups { get; } = new DatabaseConcurrencyMode("OPTIMISTIC_WITH_ENTITY_GROUPS");
+
+        public static bool operator ==(DatabaseConcurrencyMode left, DatabaseConcurrencyMode right) => left.Equals(right);
+        public static bool operator !=(DatabaseConcurrencyMode left, DatabaseConcurrencyMode right) => !left.Equals(right);
+
+        public static explicit operator string(DatabaseConcurrencyMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatabaseConcurrencyMode other && Equals(other);
+        public bool Equals(DatabaseConcurrencyMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatabaseType : IEquatable<DatabaseType>
+    {
+        private readonly string _value;
+
+        private DatabaseType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default value. This value is used if the database type is omitted.
+        /// </summary>
+        public static DatabaseType DatabaseTypeUnspecified { get; } = new DatabaseType("DATABASE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Firestore Native Mode
+        /// </summary>
+        public static DatabaseType FirestoreNative { get; } = new DatabaseType("FIRESTORE_NATIVE");
+        /// <summary>
+        /// Firestore in Datastore Mode.
+        /// </summary>
+        public static DatabaseType DatastoreMode { get; } = new DatabaseType("DATASTORE_MODE");
+
+        public static bool operator ==(DatabaseType left, DatabaseType right) => left.Equals(right);
+        public static bool operator !=(DatabaseType left, DatabaseType right) => !left.Equals(right);
+
+        public static explicit operator string(DatabaseType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatabaseType other && Equals(other);
+        public bool Equals(DatabaseType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Indicates that this field supports operations on `array_value`s.
     /// </summary>
     [EnumType]
