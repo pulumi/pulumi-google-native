@@ -329,10 +329,7 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
     __args__['instanceGroupManager'] = instance_group_manager
     __args__['project'] = project
     __args__['region'] = region
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getRegionInstanceGroupManager', __args__, opts=opts, typ=GetRegionInstanceGroupManagerResult).value
 
     return AwaitableGetRegionInstanceGroupManagerResult(

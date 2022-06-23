@@ -86,10 +86,7 @@ def get_ssh_public_key(ssh_public_key_id: Optional[str] = None,
     __args__ = dict()
     __args__['sshPublicKeyId'] = ssh_public_key_id
     __args__['userId'] = user_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:oslogin/v1alpha:getSshPublicKey', __args__, opts=opts, typ=GetSshPublicKeyResult).value
 
     return AwaitableGetSshPublicKeyResult(

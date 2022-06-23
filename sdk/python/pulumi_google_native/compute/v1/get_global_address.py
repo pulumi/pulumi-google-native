@@ -230,10 +230,7 @@ def get_global_address(address: Optional[str] = None,
     __args__ = dict()
     __args__['address'] = address
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getGlobalAddress', __args__, opts=opts, typ=GetGlobalAddressResult).value
 
     return AwaitableGetGlobalAddressResult(

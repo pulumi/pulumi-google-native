@@ -213,10 +213,7 @@ def get_case(case_id: Optional[str] = None,
     __args__['caseId'] = case_id
     __args__['v2betaId1'] = v2beta_id1
     __args__['v2betumId'] = v2betum_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudsupport/v2beta:getCase', __args__, opts=opts, typ=GetCaseResult).value
 
     return AwaitableGetCaseResult(

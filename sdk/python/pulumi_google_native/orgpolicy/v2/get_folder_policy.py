@@ -79,10 +79,7 @@ def get_folder_policy(folder_id: Optional[str] = None,
     __args__ = dict()
     __args__['folderId'] = folder_id
     __args__['policyId'] = policy_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:orgpolicy/v2:getFolderPolicy', __args__, opts=opts, typ=GetFolderPolicyResult).value
 
     return AwaitableGetFolderPolicyResult(

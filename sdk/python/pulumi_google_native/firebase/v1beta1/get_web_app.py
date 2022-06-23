@@ -122,10 +122,7 @@ def get_web_app(project: Optional[str] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['webAppId'] = web_app_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:firebase/v1beta1:getWebApp', __args__, opts=opts, typ=GetWebAppResult).value
 
     return AwaitableGetWebAppResult(
