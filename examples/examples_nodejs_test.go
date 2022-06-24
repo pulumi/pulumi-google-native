@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//go:build nodejs || all
 // +build nodejs all
 
 package examples
@@ -95,6 +96,10 @@ func TestWebserverTs(t *testing.T) {
 				{
 					Dir:      "step2",
 					Additive: true,
+					ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+						assertHTTPMatchesContent(t, stack.Outputs["instanceIP"].(string), "Hello, World!\n", nil)
+						assert.Equal(t, stack.Outputs["tag"].(string), "test")
+					},
 				},
 			},
 		})

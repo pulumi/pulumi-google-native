@@ -315,7 +315,7 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 	if res.Create.Autoname.FieldName != "" && !news.HasValue(nameKey) {
 		var randomlyNamed bool
-		news[nameKey], randomlyNamed = getDefaultName(urn, res.Create.Autoname.FieldName, olds, news)
+		news[nameKey], randomlyNamed = getDefaultName(urn, nameKey, res.Create.Autoname.FieldName, olds, news)
 		if randomlyNamed {
 			news[autonamed] = resource.NewBoolProperty(true)
 		}
@@ -411,12 +411,6 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	// Extract old inputs from the `__inputs` field of the old state.
 	oldInputs := parseCheckpointObject(oldState)
 
-	var isAutonamed bool
-	if v, ok := oldInputs[autonamed]; ok && v.IsBool() {
-		isAutonamed = v.BoolValue()
-	}
-	delete(oldInputs, autonamed)
-
 	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
 		Label:        fmt.Sprintf("%s.newInputs", label),
 		KeepUnknowns: true,
@@ -424,6 +418,17 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	})
 	if err != nil {
 		return nil, errors.Wrapf(err, "diff failed because malformed resource inputs")
+	}
+
+	// Delete the auto-injected __autonamed tag in old and new inputs to avoid spurious diffs.
+	if v, ok := oldInputs[autonamed]; ok && v.IsBool() {
+		delete(oldInputs, autonamed)
+	}
+
+	var isAutonamed bool
+	if v, ok := newInputs[autonamed]; ok && v.IsBool() {
+		isAutonamed = v.BoolValue()
+		delete(newInputs, autonamed)
 	}
 
 	diff := oldInputs.Diff(newInputs)
