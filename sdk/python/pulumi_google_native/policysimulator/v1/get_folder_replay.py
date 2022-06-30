@@ -89,10 +89,7 @@ def get_folder_replay(folder_id: Optional[str] = None,
     __args__['folderId'] = folder_id
     __args__['location'] = location
     __args__['replayId'] = replay_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:policysimulator/v1:getFolderReplay', __args__, opts=opts, typ=GetFolderReplayResult).value
 
     return AwaitableGetFolderReplayResult(

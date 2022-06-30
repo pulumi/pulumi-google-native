@@ -84,10 +84,7 @@ def get_client_token(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     Use this function to get an Google authentication token for the current login context.
     """
     __args__ = dict()
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:authorization:getClientToken', __args__, opts=opts, typ=GetClientTokenResult).value
 
     return AwaitableGetClientTokenResult(

@@ -147,10 +147,7 @@ def get_external_vpn_gateway(external_vpn_gateway: Optional[str] = None,
     __args__ = dict()
     __args__['externalVpnGateway'] = external_vpn_gateway
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getExternalVpnGateway', __args__, opts=opts, typ=GetExternalVpnGatewayResult).value
 
     return AwaitableGetExternalVpnGatewayResult(

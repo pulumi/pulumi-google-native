@@ -163,10 +163,7 @@ def get_provider(location: Optional[str] = None,
     __args__['project'] = project
     __args__['providerId'] = provider_id
     __args__['workloadIdentityPoolId'] = workload_identity_pool_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getProvider', __args__, opts=opts, typ=GetProviderResult).value
 
     return AwaitableGetProviderResult(

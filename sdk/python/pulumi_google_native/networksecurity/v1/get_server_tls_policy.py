@@ -137,10 +137,7 @@ def get_server_tls_policy(location: Optional[str] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['serverTlsPolicyId'] = server_tls_policy_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getServerTlsPolicy', __args__, opts=opts, typ=GetServerTlsPolicyResult).value
 
     return AwaitableGetServerTlsPolicyResult(

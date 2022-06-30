@@ -93,10 +93,7 @@ def get_certificate_authority_certificate_revocation_list_iam_policy(certificate
     __args__['location'] = location
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy', __args__, opts=opts, typ=GetCertificateAuthorityCertificateRevocationListIamPolicyResult).value
 
     return AwaitableGetCertificateAuthorityCertificateRevocationListIamPolicyResult(

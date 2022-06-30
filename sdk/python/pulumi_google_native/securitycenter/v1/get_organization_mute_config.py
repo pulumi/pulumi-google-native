@@ -122,10 +122,7 @@ def get_organization_mute_config(mute_config_id: Optional[str] = None,
     __args__ = dict()
     __args__['muteConfigId'] = mute_config_id
     __args__['organizationId'] = organization_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getOrganizationMuteConfig', __args__, opts=opts, typ=GetOrganizationMuteConfigResult).value
 
     return AwaitableGetOrganizationMuteConfigResult(

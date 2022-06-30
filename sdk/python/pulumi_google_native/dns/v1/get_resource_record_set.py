@@ -126,10 +126,7 @@ def get_resource_record_set(client_operation_id: Optional[str] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['type'] = type
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1:getResourceRecordSet', __args__, opts=opts, typ=GetResourceRecordSetResult).value
 
     return AwaitableGetResourceRecordSetResult(

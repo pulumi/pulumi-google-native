@@ -103,10 +103,7 @@ def get_region_network_firewall_policy_iam_policy(options_requested_policy_versi
     __args__['project'] = project
     __args__['region'] = region
     __args__['resource'] = resource
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionNetworkFirewallPolicyIamPolicy', __args__, opts=opts, typ=GetRegionNetworkFirewallPolicyIamPolicyResult).value
 
     return AwaitableGetRegionNetworkFirewallPolicyIamPolicyResult(

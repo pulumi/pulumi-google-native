@@ -132,10 +132,7 @@ def get_composite_type(composite_type: Optional[str] = None,
     __args__ = dict()
     __args__['compositeType'] = composite_type
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:deploymentmanager/alpha:getCompositeType', __args__, opts=opts, typ=GetCompositeTypeResult).value
 
     return AwaitableGetCompositeTypeResult(

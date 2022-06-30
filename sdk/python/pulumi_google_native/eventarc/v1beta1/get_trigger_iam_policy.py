@@ -91,10 +91,7 @@ def get_trigger_iam_policy(location: Optional[str] = None,
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
     __args__['project'] = project
     __args__['triggerId'] = trigger_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:eventarc/v1beta1:getTriggerIamPolicy', __args__, opts=opts, typ=GetTriggerIamPolicyResult).value
 
     return AwaitableGetTriggerIamPolicyResult(

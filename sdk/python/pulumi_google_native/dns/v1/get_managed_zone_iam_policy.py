@@ -87,10 +87,7 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
     __args__ = dict()
     __args__['managedZone'] = managed_zone
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1:getManagedZoneIamPolicy', __args__, opts=opts, typ=GetManagedZoneIamPolicyResult).value
 
     return AwaitableGetManagedZoneIamPolicyResult(

@@ -86,10 +86,7 @@ def get_history(history_id: Optional[str] = None,
     __args__ = dict()
     __args__['historyId'] = history_id
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:toolresults/v1beta3:getHistory', __args__, opts=opts, typ=GetHistoryResult).value
 
     return AwaitableGetHistoryResult(
