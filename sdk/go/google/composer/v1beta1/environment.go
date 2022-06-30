@@ -80,7 +80,7 @@ type environmentArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The current state of the environment.
-	State *EnvironmentStateEnum `pulumi:"state"`
+	State *EnvironmentState `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -94,7 +94,7 @@ type EnvironmentArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The current state of the environment.
-	State EnvironmentStateEnumPtrInput
+	State EnvironmentStatePtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
