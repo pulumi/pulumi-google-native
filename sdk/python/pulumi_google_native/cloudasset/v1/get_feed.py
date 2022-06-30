@@ -125,10 +125,7 @@ def get_feed(feed_id: Optional[str] = None,
     __args__['feedId'] = feed_id
     __args__['v1Id'] = v1_id
     __args__['v1Id1'] = v1_id1
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudasset/v1:getFeed', __args__, opts=opts, typ=GetFeedResult).value
 
     return AwaitableGetFeedResult(

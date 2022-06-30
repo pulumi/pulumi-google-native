@@ -101,10 +101,7 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
     __args__['bucket'] = bucket
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
     __args__['userProject'] = user_project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getBucketIamPolicy', __args__, opts=opts, typ=GetBucketIamPolicyResult).value
 
     return AwaitableGetBucketIamPolicyResult(

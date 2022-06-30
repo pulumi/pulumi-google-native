@@ -111,10 +111,7 @@ def get_feedback_message(annotated_dataset_id: Optional[str] = None,
     __args__['feedbackMessageId'] = feedback_message_id
     __args__['feedbackThreadId'] = feedback_thread_id
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:datalabeling/v1beta1:getFeedbackMessage', __args__, opts=opts, typ=GetFeedbackMessageResult).value
 
     return AwaitableGetFeedbackMessageResult(

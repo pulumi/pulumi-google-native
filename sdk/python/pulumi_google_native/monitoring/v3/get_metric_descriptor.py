@@ -171,10 +171,7 @@ def get_metric_descriptor(metric_descriptor_id: Optional[str] = None,
     __args__ = dict()
     __args__['metricDescriptorId'] = metric_descriptor_id
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getMetricDescriptor', __args__, opts=opts, typ=GetMetricDescriptorResult).value
 
     return AwaitableGetMetricDescriptorResult(

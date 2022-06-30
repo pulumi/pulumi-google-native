@@ -202,10 +202,7 @@ def get_app(app_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['appId'] = app_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1beta:getApp', __args__, opts=opts, typ=GetAppResult).value
 
     return AwaitableGetAppResult(

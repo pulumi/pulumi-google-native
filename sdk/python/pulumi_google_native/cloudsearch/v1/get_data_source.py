@@ -147,10 +147,7 @@ def get_data_source(datasource_id: Optional[str] = None,
     __args__ = dict()
     __args__['datasourceId'] = datasource_id
     __args__['debugOptionsEnableDebugging'] = debug_options_enable_debugging
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudsearch/v1:getDataSource', __args__, opts=opts, typ=GetDataSourceResult).value
 
     return AwaitableGetDataSourceResult(

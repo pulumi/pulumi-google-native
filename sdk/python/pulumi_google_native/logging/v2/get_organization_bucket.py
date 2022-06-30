@@ -161,10 +161,7 @@ def get_organization_bucket(bucket_id: Optional[str] = None,
     __args__['bucketId'] = bucket_id
     __args__['location'] = location
     __args__['organizationId'] = organization_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getOrganizationBucket', __args__, opts=opts, typ=GetOrganizationBucketResult).value
 
     return AwaitableGetOrganizationBucketResult(
