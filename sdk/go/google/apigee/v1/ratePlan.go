@@ -140,7 +140,7 @@ type ratePlanArgs struct {
 	// Time when the rate plan becomes active in milliseconds since epoch.
 	StartTime *string `pulumi:"startTime"`
 	// Current state of the rate plan (draft or published).
-	State *RatePlanStateEnum `pulumi:"state"`
+	State *RatePlanState `pulumi:"state"`
 }
 
 // The set of arguments for constructing a RatePlan resource.
@@ -180,7 +180,7 @@ type RatePlanArgs struct {
 	// Time when the rate plan becomes active in milliseconds since epoch.
 	StartTime pulumi.StringPtrInput
 	// Current state of the rate plan (draft or published).
-	State RatePlanStateEnumPtrInput
+	State RatePlanStatePtrInput
 }
 
 func (RatePlanArgs) ElementType() reflect.Type {

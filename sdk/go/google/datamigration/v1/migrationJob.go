@@ -141,7 +141,7 @@ type migrationJobArgs struct {
 	// The database engine type and provider of the source.
 	SourceDatabase *DatabaseType `pulumi:"sourceDatabase"`
 	// The current migration job state.
-	State *MigrationJobStateEnum `pulumi:"state"`
+	State *MigrationJobState `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity *StaticIpConnectivity `pulumi:"staticIpConnectivity"`
 	// The migration job type.
@@ -179,7 +179,7 @@ type MigrationJobArgs struct {
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypePtrInput
 	// The current migration job state.
-	State MigrationJobStateEnumPtrInput
+	State MigrationJobStatePtrInput
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity StaticIpConnectivityPtrInput
 	// The migration job type.
