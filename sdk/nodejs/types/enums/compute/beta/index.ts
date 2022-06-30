@@ -890,7 +890,7 @@ export const ForwardingRuleIpVersion = {
 } as const;
 
 /**
- * The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+ * The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
  */
 export type ForwardingRuleIpVersion = (typeof ForwardingRuleIpVersion)[keyof typeof ForwardingRuleIpVersion];
 
@@ -941,6 +941,10 @@ export const ForwardingRulePscConnectionStatus = {
      * The connection has been closed by the producer and will not serve traffic going forward.
      */
     Closed: "CLOSED",
+    /**
+     * The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
+     */
+    NeedsAttention: "NEEDS_ATTENTION",
     /**
      * The connection is pending acceptance by the producer.
      */
@@ -1088,7 +1092,7 @@ export const GlobalForwardingRuleIpVersion = {
 } as const;
 
 /**
- * The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+ * The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
  */
 export type GlobalForwardingRuleIpVersion = (typeof GlobalForwardingRuleIpVersion)[keyof typeof GlobalForwardingRuleIpVersion];
 
@@ -1139,6 +1143,10 @@ export const GlobalForwardingRulePscConnectionStatus = {
      * The connection has been closed by the producer and will not serve traffic going forward.
      */
     Closed: "CLOSED",
+    /**
+     * The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
+     */
+    NeedsAttention: "NEEDS_ATTENTION",
     /**
      * The connection is pending acceptance by the producer.
      */

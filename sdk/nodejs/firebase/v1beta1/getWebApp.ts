@@ -50,6 +50,10 @@ export interface GetWebAppResult {
      */
     readonly project: string;
     /**
+     * The lifecycle state of the App.
+     */
+    readonly state: string;
+    /**
      * Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
      */
     readonly webId: string;

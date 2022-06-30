@@ -32,6 +32,8 @@ type Cluster struct {
 	Conditions StatusConditionResponseArrayOutput `pulumi:"conditions"`
 	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes ConfidentialNodesResponseOutput `pulumi:"confidentialNodes"`
+	// Configuration for the fine-grained cost management feature.
+	CostManagementConfig CostManagementConfigResponseOutput `pulumi:"costManagementConfig"`
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
@@ -229,6 +231,8 @@ type clusterArgs struct {
 	Conditions []StatusCondition `pulumi:"conditions"`
 	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes *ConfidentialNodes `pulumi:"confidentialNodes"`
+	// Configuration for the fine-grained cost management feature.
+	CostManagementConfig *CostManagementConfig `pulumi:"costManagementConfig"`
 	// Configuration of etcd encryption.
 	DatabaseEncryption *DatabaseEncryption `pulumi:"databaseEncryption"`
 	// The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
@@ -364,6 +368,8 @@ type ClusterArgs struct {
 	Conditions StatusConditionArrayInput
 	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes ConfidentialNodesPtrInput
+	// Configuration for the fine-grained cost management feature.
+	CostManagementConfig CostManagementConfigPtrInput
 	// Configuration of etcd encryption.
 	DatabaseEncryption DatabaseEncryptionPtrInput
 	// The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
@@ -559,6 +565,11 @@ func (o ClusterOutput) Conditions() StatusConditionResponseArrayOutput {
 // Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 func (o ClusterOutput) ConfidentialNodes() ConfidentialNodesResponseOutput {
 	return o.ApplyT(func(v *Cluster) ConfidentialNodesResponseOutput { return v.ConfidentialNodes }).(ConfidentialNodesResponseOutput)
+}
+
+// Configuration for the fine-grained cost management feature.
+func (o ClusterOutput) CostManagementConfig() CostManagementConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) CostManagementConfigResponseOutput { return v.CostManagementConfig }).(CostManagementConfigResponseOutput)
 }
 
 // [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.

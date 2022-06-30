@@ -45,6 +45,8 @@ type LookupProvisioningConfigResult struct {
 	Networks []NetworkConfigResponse `pulumi:"networks"`
 	// State of ProvisioningConfig.
 	State string `pulumi:"state"`
+	// Optional status messages associated with the FAILED state.
+	StatusMessage string `pulumi:"statusMessage"`
 	// A generated ticket id to track provisioning request.
 	TicketId string `pulumi:"ticketId"`
 	// Last update timestamp.
@@ -132,6 +134,11 @@ func (o LookupProvisioningConfigResultOutput) Networks() NetworkConfigResponseAr
 // State of ProvisioningConfig.
 func (o LookupProvisioningConfigResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional status messages associated with the FAILED state.
+func (o LookupProvisioningConfigResultOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
 // A generated ticket id to track provisioning request.

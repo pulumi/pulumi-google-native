@@ -28,6 +28,8 @@ type Connection struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Outbound domains/hosts needs to be allowlisted.
+	EgressBackends pulumi.StringArrayOutput `pulumi:"egressBackends"`
 	// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	EnvoyImageLocation pulumi.StringOutput `pulumi:"envoyImageLocation"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -208,6 +210,11 @@ func (o ConnectionOutput) CreateTime() pulumi.StringOutput {
 // Optional. Description of the resource.
 func (o ConnectionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Outbound domains/hosts needs to be allowlisted.
+func (o ConnectionOutput) EgressBackends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EgressBackends }).(pulumi.StringArrayOutput)
 }
 
 // GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}

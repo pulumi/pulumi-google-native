@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Output<string> ClientConnectorService { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Output("clientGatewayId")]
         public Output<string?> ClientGatewayId { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public sealed class ClientGatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Input("clientGatewayId")]
         public Input<string>? ClientGatewayId { get; set; }

@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.InstancePropertiesResponse Properties;
         /// <summary>
+        /// URL of the region where the instance template resides. Only applicable for regional resources.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// The URL for this instance template. The server defines this URL.
         /// </summary>
         public readonly string SelfLink;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.InstancePropertiesResponse properties,
 
+            string region,
+
             string selfLink,
 
             string selfLinkWithId,
@@ -117,6 +123,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Kind = kind;
             Name = name;
             Properties = properties;
+            Region = region;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             SourceInstance = sourceInstance;

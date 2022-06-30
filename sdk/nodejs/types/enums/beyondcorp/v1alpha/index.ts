@@ -132,7 +132,7 @@ export const GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus = {
      */
     Unresponsive: "UNRESPONSIVE",
     /**
-     * The resource is some sub-resources are UNHEALTHY.
+     * Some sub-resources are UNHEALTHY.
      */
     Degraded: "DEGRADED",
 } as const;
@@ -184,7 +184,7 @@ export const ResourceInfoStatus = {
      */
     Unresponsive: "UNRESPONSIVE",
     /**
-     * The resource is some sub-resources are UNHEALTHY.
+     * Some sub-resources are UNHEALTHY.
      */
     Degraded: "DEGRADED",
 } as const;

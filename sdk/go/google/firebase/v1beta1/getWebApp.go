@@ -38,6 +38,8 @@ type LookupWebAppResult struct {
 	Name string `pulumi:"name"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
 	Project string `pulumi:"project"`
+	// The lifecycle state of the App.
+	State string `pulumi:"state"`
 	// Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
 	WebId string `pulumi:"webId"`
 }
@@ -106,6 +108,11 @@ func (o LookupWebAppResultOutput) Name() pulumi.StringOutput {
 // Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
 func (o LookupWebAppResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of the App.
+func (o LookupWebAppResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.

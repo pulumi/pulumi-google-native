@@ -12,6 +12,7 @@ from .app_connector import *
 from .app_connector_iam_policy import *
 from .app_gateway import *
 from .app_gateway_iam_policy import *
+from .application_iam_policy import *
 from .client_connector_service import *
 from .client_connector_service_iam_policy import *
 from .client_gateway import *
@@ -26,6 +27,7 @@ from .get_app_connector import *
 from .get_app_connector_iam_policy import *
 from .get_app_gateway import *
 from .get_app_gateway_iam_policy import *
+from .get_application_iam_policy import *
 from .get_client_connector_service import *
 from .get_client_connector_service_iam_policy import *
 from .get_client_gateway import *

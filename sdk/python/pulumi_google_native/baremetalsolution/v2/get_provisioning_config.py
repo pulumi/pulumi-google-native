@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProvisioningConfigResult:
-    def __init__(__self__, cloud_console_uri=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, state=None, ticket_id=None, update_time=None, volumes=None, vpc_sc_enabled=None):
+    def __init__(__self__, cloud_console_uri=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, state=None, status_message=None, ticket_id=None, update_time=None, volumes=None, vpc_sc_enabled=None):
         if cloud_console_uri and not isinstance(cloud_console_uri, str):
             raise TypeError("Expected argument 'cloud_console_uri' to be a str")
         pulumi.set(__self__, "cloud_console_uri", cloud_console_uri)
@@ -48,6 +48,9 @@ class GetProvisioningConfigResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if status_message and not isinstance(status_message, str):
+            raise TypeError("Expected argument 'status_message' to be a str")
+        pulumi.set(__self__, "status_message", status_message)
         if ticket_id and not isinstance(ticket_id, str):
             raise TypeError("Expected argument 'ticket_id' to be a str")
         pulumi.set(__self__, "ticket_id", ticket_id)
@@ -126,6 +129,14 @@ class GetProvisioningConfigResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> str:
+        """
+        Optional status messages associated with the FAILED state.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
     @pulumi.getter(name="ticketId")
     def ticket_id(self) -> str:
         """
@@ -172,6 +183,7 @@ class AwaitableGetProvisioningConfigResult(GetProvisioningConfigResult):
             name=self.name,
             networks=self.networks,
             state=self.state,
+            status_message=self.status_message,
             ticket_id=self.ticket_id,
             update_time=self.update_time,
             volumes=self.volumes,
@@ -204,6 +216,7 @@ def get_provisioning_config(location: Optional[str] = None,
         name=__ret__.name,
         networks=__ret__.networks,
         state=__ret__.state,
+        status_message=__ret__.status_message,
         ticket_id=__ret__.ticket_id,
         update_time=__ret__.update_time,
         volumes=__ret__.volumes,

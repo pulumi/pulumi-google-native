@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Optional status messages associated with the FAILED state.
+        /// </summary>
+        public readonly string StatusMessage;
+        /// <summary>
         /// A generated ticket id to track provisioning request.
         /// </summary>
         public readonly string TicketId;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
             string state,
 
+            string statusMessage,
+
             string ticketId,
 
             string updateTime,
@@ -144,6 +150,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             Name = name;
             Networks = networks;
             State = state;
+            StatusMessage = statusMessage;
             TicketId = ticketId;
             UpdateTime = updateTime;
             Volumes = volumes;

@@ -1613,7 +1613,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+    /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
     /// </summary>
     [EnumType]
     public readonly struct ForwardingRuleIpVersion : IEquatable<ForwardingRuleIpVersion>
@@ -1742,6 +1742,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The connection has been closed by the producer and will not serve traffic going forward.
         /// </summary>
         public static ForwardingRulePscConnectionStatus Closed { get; } = new ForwardingRulePscConnectionStatus("CLOSED");
+        /// <summary>
+        /// The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus NeedsAttention { get; } = new ForwardingRulePscConnectionStatus("NEEDS_ATTENTION");
         /// <summary>
         /// The connection is pending acceptance by the producer.
         /// </summary>
@@ -2021,7 +2025,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+    /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
     /// </summary>
     [EnumType]
     public readonly struct GlobalForwardingRuleIpVersion : IEquatable<GlobalForwardingRuleIpVersion>
@@ -2150,6 +2154,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The connection has been closed by the producer and will not serve traffic going forward.
         /// </summary>
         public static GlobalForwardingRulePscConnectionStatus Closed { get; } = new GlobalForwardingRulePscConnectionStatus("CLOSED");
+        /// <summary>
+        /// The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus NeedsAttention { get; } = new GlobalForwardingRulePscConnectionStatus("NEEDS_ATTENTION");
         /// <summary>
         /// The connection is pending acceptance by the producer.
         /// </summary>

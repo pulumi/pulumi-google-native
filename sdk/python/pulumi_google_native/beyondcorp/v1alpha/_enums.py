@@ -138,7 +138,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus(str, Enum):
     """
     DEGRADED = "DEGRADED"
     """
-    The resource is some sub-resources are UNHEALTHY.
+    Some sub-resources are UNHEALTHY.
     """
 
 
@@ -186,5 +186,5 @@ class ResourceInfoStatus(str, Enum):
     """
     DEGRADED = "DEGRADED"
     """
-    The resource is some sub-resources are UNHEALTHY.
+    Some sub-resources are UNHEALTHY.
     """

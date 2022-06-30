@@ -36,7 +36,7 @@ export class ClientConnectorService extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+     * Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
      */
     public readonly clientConnectorServiceId!: pulumi.Output<string | undefined>;
     /**
@@ -131,7 +131,7 @@ export class ClientConnectorService extends pulumi.CustomResource {
  */
 export interface ClientConnectorServiceArgs {
     /**
-     * Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+     * Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
      */
     clientConnectorServiceId?: pulumi.Input<string>;
     /**

@@ -60,7 +60,3 @@ class RepositoryFormat(str, Enum):
     """
     Python package format.
     """
-    KFP = "KFP"
-    """
-    Kubeflow Pipelines package format.
-    """

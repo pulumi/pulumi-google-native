@@ -30,7 +30,7 @@ class ConnectorArgs:
         """
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input['PrincipalInfoArgs'] principal_info: Principal information about the Identity of the connector.
-        :param pulumi.Input[str] connector_id: Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] connector_id: Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the connector. Cannot exceed 64 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: Unique resource name of the connector. The name is ignored when creating a connector.
@@ -74,7 +74,7 @@ class ConnectorArgs:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "connector_id")
 
@@ -194,7 +194,7 @@ class Connector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] connector_id: Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the connector. Cannot exceed 64 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: Unique resource name of the connector. The name is ignored when creating a connector.
@@ -309,7 +309,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "connector_id")
 

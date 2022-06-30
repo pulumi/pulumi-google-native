@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int RuleTupleCount;
         /// <summary>
+        /// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+        /// </summary>
+        public readonly string SecurityProfileGroup;
+        /// <summary>
         /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         public readonly ImmutableArray<string> TargetResources;
@@ -91,6 +95,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int ruleTupleCount,
 
+            string securityProfileGroup,
+
             ImmutableArray<string> targetResources,
 
             ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> targetSecureTags,
@@ -107,6 +113,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Priority = priority;
             RuleName = ruleName;
             RuleTupleCount = ruleTupleCount;
+            SecurityProfileGroup = securityProfileGroup;
             TargetResources = targetResources;
             TargetSecureTags = targetSecureTags;
             TargetServiceAccounts = targetServiceAccounts;

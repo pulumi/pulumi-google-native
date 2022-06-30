@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
     public sealed class AwsSourceVmDetailsResponse
     {
         /// <summary>
+        /// The total size of the disks being migrated in bytes.
+        /// </summary>
+        public readonly string CommittedStorageBytes;
+        /// <summary>
         /// The firmware type of the source VM.
         /// </summary>
         public readonly string Firmware;
 
         [OutputConstructor]
-        private AwsSourceVmDetailsResponse(string firmware)
+        private AwsSourceVmDetailsResponse(
+            string committedStorageBytes,
+
+            string firmware)
         {
+            CommittedStorageBytes = committedStorageBytes;
             Firmware = firmware;
         }
     }

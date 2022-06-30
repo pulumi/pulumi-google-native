@@ -51,6 +51,10 @@ export interface GetConnectionResult {
      */
     readonly description: string;
     /**
+     * Outbound domains/hosts needs to be allowlisted.
+     */
+    readonly egressBackends: string[];
+    /**
      * GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
      */
     readonly envoyImageLocation: string;

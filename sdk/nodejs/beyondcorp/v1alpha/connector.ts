@@ -36,7 +36,7 @@ export class Connector extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     public readonly connectorId!: pulumi.Output<string | undefined>;
     /**
@@ -140,7 +140,7 @@ export class Connector extends pulumi.CustomResource {
  */
 export interface ConnectorArgs {
     /**
-     * Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     connectorId?: pulumi.Input<string>;
     /**

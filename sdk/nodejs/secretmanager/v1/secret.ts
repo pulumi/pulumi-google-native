@@ -77,6 +77,10 @@ export class Secret extends pulumi.CustomResource {
      * Input only. The TTL for the Secret.
      */
     public readonly ttl!: pulumi.Output<string>;
+    /**
+     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+     */
+    public readonly versionAliases!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -104,6 +108,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secretId"] = args ? args.secretId : undefined;
             resourceInputs["topics"] = args ? args.topics : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["versionAliases"] = args ? args.versionAliases : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {
@@ -118,6 +123,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secretId"] = undefined /*out*/;
             resourceInputs["topics"] = undefined /*out*/;
             resourceInputs["ttl"] = undefined /*out*/;
+            resourceInputs["versionAliases"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
@@ -161,4 +167,8 @@ export interface SecretArgs {
      * Input only. The TTL for the Secret.
      */
     ttl?: pulumi.Input<string>;
+    /**
+     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+     */
+    versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

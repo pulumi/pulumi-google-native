@@ -33,7 +33,7 @@ class ConnectionArgs:
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input['ApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp Connection.
         :param pulumi.Input['ConnectionType'] type: The type of network connectivity used by the connection.
-        :param pulumi.Input[str] connection_id: Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] connection_id: Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the connection. Cannot exceed 64 characters.
         :param pulumi.Input['GatewayArgs'] gateway: Optional. Gateway used by the connection.
@@ -93,7 +93,7 @@ class ConnectionArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "connection_id")
 
@@ -228,7 +228,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ApplicationEndpointArgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp Connection.
-        :param pulumi.Input[str] connection_id: Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] connection_id: Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the connection. Cannot exceed 64 characters.
         :param pulumi.Input[pulumi.InputType['GatewayArgs']] gateway: Optional. Gateway used by the connection.
@@ -360,7 +360,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "connection_id")
 

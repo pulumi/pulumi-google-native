@@ -47,6 +47,10 @@ export interface GetInstanceTemplateResult {
      */
     readonly properties: outputs.compute.alpha.InstancePropertiesResponse;
     /**
+     * URL of the region where the instance template resides. Only applicable for regional resources.
+     */
+    readonly region: string;
+    /**
      * The URL for this instance template. The server defines this URL.
      */
     readonly selfLink: string;

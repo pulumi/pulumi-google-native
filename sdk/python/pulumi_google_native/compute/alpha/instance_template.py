@@ -209,6 +209,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["source_instance_params"] = source_instance_params
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         super(InstanceTemplate, __self__).__init__(
@@ -239,6 +240,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["properties"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -290,6 +292,14 @@ class InstanceTemplate(pulumi.CustomResource):
         The instance properties for this instance template.
         """
         return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the instance template resides. Only applicable for regional resources.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="requestId")

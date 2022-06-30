@@ -29,6 +29,8 @@ type IosApp struct {
 	// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The lifecycle state of the App.
+	State pulumi.StringOutput `pulumi:"state"`
 	// The Apple Developer Team ID associated with the App in the App Store.
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
 }
@@ -173,6 +175,11 @@ func (o IosAppOutput) Name() pulumi.StringOutput {
 
 func (o IosAppOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of the App.
+func (o IosAppOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The Apple Developer Team ID associated with the App in the App Store.

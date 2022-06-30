@@ -3096,6 +3096,8 @@ type ClusterUpdate struct {
 	DesiredClusterAutoscaling *ClusterAutoscaling `pulumi:"desiredClusterAutoscaling"`
 	// The desired telemetry integration for the cluster.
 	DesiredClusterTelemetry *ClusterTelemetry `pulumi:"desiredClusterTelemetry"`
+	// The desired configuration for the fine-grained cost management feature.
+	DesiredCostManagementConfig *CostManagementConfig `pulumi:"desiredCostManagementConfig"`
 	// Configuration of etcd encryption.
 	DesiredDatabaseEncryption *DatabaseEncryption `pulumi:"desiredDatabaseEncryption"`
 	// The desired datapath provider for the cluster.
@@ -3666,6 +3668,172 @@ func (o ConsumptionMeteringConfigResponseOutput) ToConsumptionMeteringConfigResp
 // Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
 func (o ConsumptionMeteringConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConsumptionMeteringConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfig struct {
+	// Whether the feature is enabled or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// CostManagementConfigInput is an input type that accepts CostManagementConfigArgs and CostManagementConfigOutput values.
+// You can construct a concrete instance of `CostManagementConfigInput` via:
+//
+//          CostManagementConfigArgs{...}
+type CostManagementConfigInput interface {
+	pulumi.Input
+
+	ToCostManagementConfigOutput() CostManagementConfigOutput
+	ToCostManagementConfigOutputWithContext(context.Context) CostManagementConfigOutput
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigArgs struct {
+	// Whether the feature is enabled or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (CostManagementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CostManagementConfig)(nil)).Elem()
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigOutput() CostManagementConfigOutput {
+	return i.ToCostManagementConfigOutputWithContext(context.Background())
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigOutputWithContext(ctx context.Context) CostManagementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CostManagementConfigOutput)
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return i.ToCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CostManagementConfigOutput).ToCostManagementConfigPtrOutputWithContext(ctx)
+}
+
+// CostManagementConfigPtrInput is an input type that accepts CostManagementConfigArgs, CostManagementConfigPtr and CostManagementConfigPtrOutput values.
+// You can construct a concrete instance of `CostManagementConfigPtrInput` via:
+//
+//          CostManagementConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type CostManagementConfigPtrInput interface {
+	pulumi.Input
+
+	ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput
+	ToCostManagementConfigPtrOutputWithContext(context.Context) CostManagementConfigPtrOutput
+}
+
+type costManagementConfigPtrType CostManagementConfigArgs
+
+func CostManagementConfigPtr(v *CostManagementConfigArgs) CostManagementConfigPtrInput {
+	return (*costManagementConfigPtrType)(v)
+}
+
+func (*costManagementConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CostManagementConfig)(nil)).Elem()
+}
+
+func (i *costManagementConfigPtrType) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return i.ToCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *costManagementConfigPtrType) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CostManagementConfigPtrOutput)
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigOutput struct{ *pulumi.OutputState }
+
+func (CostManagementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CostManagementConfig)(nil)).Elem()
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigOutput() CostManagementConfigOutput {
+	return o
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigOutputWithContext(ctx context.Context) CostManagementConfigOutput {
+	return o
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return o.ToCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CostManagementConfig) *CostManagementConfig {
+		return &v
+	}).(CostManagementConfigPtrOutput)
+}
+
+// Whether the feature is enabled or not.
+func (o CostManagementConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CostManagementConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type CostManagementConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CostManagementConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CostManagementConfig)(nil)).Elem()
+}
+
+func (o CostManagementConfigPtrOutput) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return o
+}
+
+func (o CostManagementConfigPtrOutput) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return o
+}
+
+func (o CostManagementConfigPtrOutput) Elem() CostManagementConfigOutput {
+	return o.ApplyT(func(v *CostManagementConfig) CostManagementConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CostManagementConfig
+		return ret
+	}).(CostManagementConfigOutput)
+}
+
+// Whether the feature is enabled or not.
+func (o CostManagementConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CostManagementConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigResponse struct {
+	// Whether the feature is enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CostManagementConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CostManagementConfigResponse)(nil)).Elem()
+}
+
+func (o CostManagementConfigResponseOutput) ToCostManagementConfigResponseOutput() CostManagementConfigResponseOutput {
+	return o
+}
+
+func (o CostManagementConfigResponseOutput) ToCostManagementConfigResponseOutputWithContext(ctx context.Context) CostManagementConfigResponseOutput {
+	return o
+}
+
+// Whether the feature is enabled or not.
+func (o CostManagementConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CostManagementConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // DNSConfig contains the desired set of options for configuring clusterDNS.
@@ -19109,6 +19277,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigConnectorConfigPtrInput)(nil)).Elem(), ConfigConnectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigInput)(nil)).Elem(), ConsumptionMeteringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigPtrInput)(nil)).Elem(), ConsumptionMeteringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CostManagementConfigInput)(nil)).Elem(), CostManagementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CostManagementConfigPtrInput)(nil)).Elem(), CostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigInput)(nil)).Elem(), DNSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigPtrInput)(nil)).Elem(), DNSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowInput)(nil)).Elem(), DailyMaintenanceWindowArgs{})
@@ -19314,6 +19484,9 @@ func init() {
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigResponseOutput{})
+	pulumi.RegisterOutputType(CostManagementConfigOutput{})
+	pulumi.RegisterOutputType(CostManagementConfigPtrOutput{})
+	pulumi.RegisterOutputType(CostManagementConfigResponseOutput{})
 	pulumi.RegisterOutputType(DNSConfigOutput{})
 	pulumi.RegisterOutputType(DNSConfigPtrOutput{})
 	pulumi.RegisterOutputType(DNSConfigResponseOutput{})

@@ -5387,6 +5387,8 @@ class QueryTimelineSampleResponse(dict):
             suggest = "completed_units"
         elif key == "elapsedMs":
             suggest = "elapsed_ms"
+        elif key == "estimatedRunnableUnits":
+            suggest = "estimated_runnable_units"
         elif key == "pendingUnits":
             suggest = "pending_units"
         elif key == "totalSlotMs":
@@ -5407,18 +5409,21 @@ class QueryTimelineSampleResponse(dict):
                  active_units: str,
                  completed_units: str,
                  elapsed_ms: str,
+                 estimated_runnable_units: str,
                  pending_units: str,
                  total_slot_ms: str):
         """
         :param str active_units: Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
         :param str completed_units: Total parallel units of work completed by this query.
         :param str elapsed_ms: Milliseconds elapsed since the start of query execution.
+        :param str estimated_runnable_units: Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
         :param str pending_units: Total parallel units of work remaining for the active stages.
         :param str total_slot_ms: Cumulative slot-ms consumed by the query.
         """
         pulumi.set(__self__, "active_units", active_units)
         pulumi.set(__self__, "completed_units", completed_units)
         pulumi.set(__self__, "elapsed_ms", elapsed_ms)
+        pulumi.set(__self__, "estimated_runnable_units", estimated_runnable_units)
         pulumi.set(__self__, "pending_units", pending_units)
         pulumi.set(__self__, "total_slot_ms", total_slot_ms)
 
@@ -5445,6 +5450,14 @@ class QueryTimelineSampleResponse(dict):
         Milliseconds elapsed since the start of query execution.
         """
         return pulumi.get(self, "elapsed_ms")
+
+    @property
+    @pulumi.getter(name="estimatedRunnableUnits")
+    def estimated_runnable_units(self) -> str:
+        """
+        Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
+        """
+        return pulumi.get(self, "estimated_runnable_units")
 
     @property
     @pulumi.getter(name="pendingUnits")

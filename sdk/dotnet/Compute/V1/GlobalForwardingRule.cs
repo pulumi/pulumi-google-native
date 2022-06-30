@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+        /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
         /// </summary>
         [Output("ipVersion")]
         public Output<string> IpVersion { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<Pulumi.GoogleNative.Compute.V1.GlobalForwardingRuleIpProtocol>? IpProtocol { get; set; }
 
         /// <summary>
-        /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+        /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
         /// </summary>
         [Input("ipVersion")]
         public Input<Pulumi.GoogleNative.Compute.V1.GlobalForwardingRuleIpVersion>? IpVersion { get; set; }

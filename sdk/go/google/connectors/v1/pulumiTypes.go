@@ -2262,6 +2262,7 @@ func (o SecretResponseOutput) SecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretResponse) string { return v.SecretVersion }).(pulumi.StringOutput)
 }
 
+// Parameters to support Ssh public key Authentication.
 type SshPublicKey struct {
 	// Format of SSH Client cert.
 	CertType *string `pulumi:"certType"`
@@ -2284,6 +2285,7 @@ type SshPublicKeyInput interface {
 	ToSshPublicKeyOutputWithContext(context.Context) SshPublicKeyOutput
 }
 
+// Parameters to support Ssh public key Authentication.
 type SshPublicKeyArgs struct {
 	// Format of SSH Client cert.
 	CertType pulumi.StringPtrInput `pulumi:"certType"`
@@ -2348,6 +2350,7 @@ func (i *sshPublicKeyPtrType) ToSshPublicKeyPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyPtrOutput)
 }
 
+// Parameters to support Ssh public key Authentication.
 type SshPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyOutput) ElementType() reflect.Type {
@@ -2456,6 +2459,7 @@ func (o SshPublicKeyPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Parameters to support Ssh public key Authentication.
 type SshPublicKeyResponse struct {
 	// Format of SSH Client cert.
 	CertType string `pulumi:"certType"`
@@ -2467,6 +2471,7 @@ type SshPublicKeyResponse struct {
 	Username string `pulumi:"username"`
 }
 
+// Parameters to support Ssh public key Authentication.
 type SshPublicKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyResponseOutput) ElementType() reflect.Type {

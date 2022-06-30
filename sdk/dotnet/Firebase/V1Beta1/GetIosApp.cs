@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// </summary>
         public readonly string Project;
         /// <summary>
+        /// The lifecycle state of the App.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
         /// The Apple Developer Team ID associated with the App in the App Store.
         /// </summary>
         public readonly string TeamId;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
             string project,
 
+            string state,
+
             string teamId)
         {
             ApiKeyId = apiKeyId;
@@ -113,6 +119,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
             DisplayName = displayName;
             Name = name;
             Project = project;
+            State = state;
             TeamId = teamId;
         }
     }

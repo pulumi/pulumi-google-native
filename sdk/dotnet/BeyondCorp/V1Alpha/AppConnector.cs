@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public partial class AppConnector : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Output("appConnectorId")]
         public Output<string?> AppConnectorId { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public sealed class AppConnectorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Input("appConnectorId")]
         public Input<string>? AppConnectorId { get; set; }

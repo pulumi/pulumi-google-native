@@ -50,6 +50,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The lifecycle state of the App.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AndroidApp resource with the given unique name, arguments, and options.

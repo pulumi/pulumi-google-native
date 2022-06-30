@@ -67,6 +67,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// Optional status messages associated with the FAILED state.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
         /// A generated ticket id to track provisioning request.
         /// </summary>
         [Output("ticketId")]
@@ -179,6 +185,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional status messages associated with the FAILED state.
+        /// </summary>
+        [Input("statusMessage")]
+        public Input<string>? StatusMessage { get; set; }
 
         /// <summary>
         /// A generated ticket id to track provisioning request.

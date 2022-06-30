@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, service_account=None, service_directory=None, status=None, suspended=None, update_time=None):
+    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, egress_backends=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, service_account=None, service_directory=None, status=None, suspended=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -35,6 +35,9 @@ class GetConnectionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if egress_backends and not isinstance(egress_backends, list):
+            raise TypeError("Expected argument 'egress_backends' to be a list")
+        pulumi.set(__self__, "egress_backends", egress_backends)
         if envoy_image_location and not isinstance(envoy_image_location, str):
             raise TypeError("Expected argument 'envoy_image_location' to be a str")
         pulumi.set(__self__, "envoy_image_location", envoy_image_location)
@@ -105,6 +108,14 @@ class GetConnectionResult:
         Optional. Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="egressBackends")
+    def egress_backends(self) -> Sequence[str]:
+        """
+        Outbound domains/hosts needs to be allowlisted.
+        """
+        return pulumi.get(self, "egress_backends")
 
     @property
     @pulumi.getter(name="envoyImageLocation")
@@ -198,6 +209,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             connector_version=self.connector_version,
             create_time=self.create_time,
             description=self.description,
+            egress_backends=self.egress_backends,
             envoy_image_location=self.envoy_image_location,
             image_location=self.image_location,
             labels=self.labels,
@@ -235,6 +247,7 @@ def get_connection(connection_id: Optional[str] = None,
         connector_version=__ret__.connector_version,
         create_time=__ret__.create_time,
         description=__ret__.description,
+        egress_backends=__ret__.egress_backends,
         envoy_image_location=__ret__.envoy_image_location,
         image_location=__ret__.image_location,
         labels=__ret__.labels,

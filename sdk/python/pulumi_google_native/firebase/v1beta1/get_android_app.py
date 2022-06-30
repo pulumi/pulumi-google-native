@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAndroidAppResult:
-    def __init__(__self__, api_key_id=None, app_id=None, display_name=None, name=None, package_name=None, project=None):
+    def __init__(__self__, api_key_id=None, app_id=None, display_name=None, name=None, package_name=None, project=None, state=None):
         if api_key_id and not isinstance(api_key_id, str):
             raise TypeError("Expected argument 'api_key_id' to be a str")
         pulumi.set(__self__, "api_key_id", api_key_id)
@@ -37,6 +37,9 @@ class GetAndroidAppResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="apiKeyId")
@@ -86,6 +89,14 @@ class GetAndroidAppResult:
         """
         return pulumi.get(self, "project")
 
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The lifecycle state of the App.
+        """
+        return pulumi.get(self, "state")
+
 
 class AwaitableGetAndroidAppResult(GetAndroidAppResult):
     # pylint: disable=using-constant-test
@@ -98,7 +109,8 @@ class AwaitableGetAndroidAppResult(GetAndroidAppResult):
             display_name=self.display_name,
             name=self.name,
             package_name=self.package_name,
-            project=self.project)
+            project=self.project,
+            state=self.state)
 
 
 def get_android_app(android_app_id: Optional[str] = None,
@@ -122,7 +134,8 @@ def get_android_app(android_app_id: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         package_name=__ret__.package_name,
-        project=__ret__.project)
+        project=__ret__.project,
+        state=__ret__.state)
 
 
 @_utilities.lift_output_func(get_android_app)

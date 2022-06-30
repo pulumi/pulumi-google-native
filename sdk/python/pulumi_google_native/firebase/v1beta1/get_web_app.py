@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWebAppResult:
-    def __init__(__self__, api_key_id=None, app_id=None, app_urls=None, display_name=None, name=None, project=None, web_id=None):
+    def __init__(__self__, api_key_id=None, app_id=None, app_urls=None, display_name=None, name=None, project=None, state=None, web_id=None):
         if api_key_id and not isinstance(api_key_id, str):
             raise TypeError("Expected argument 'api_key_id' to be a str")
         pulumi.set(__self__, "api_key_id", api_key_id)
@@ -37,6 +37,9 @@ class GetWebAppResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
         if web_id and not isinstance(web_id, str):
             raise TypeError("Expected argument 'web_id' to be a str")
         pulumi.set(__self__, "web_id", web_id)
@@ -90,6 +93,14 @@ class GetWebAppResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The lifecycle state of the App.
+        """
+        return pulumi.get(self, "state")
+
+    @property
     @pulumi.getter(name="webId")
     def web_id(self) -> str:
         """
@@ -110,6 +121,7 @@ class AwaitableGetWebAppResult(GetWebAppResult):
             display_name=self.display_name,
             name=self.name,
             project=self.project,
+            state=self.state,
             web_id=self.web_id)
 
 
@@ -135,6 +147,7 @@ def get_web_app(project: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         project=__ret__.project,
+        state=__ret__.state,
         web_id=__ret__.web_id)
 
 

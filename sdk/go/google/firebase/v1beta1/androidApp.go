@@ -27,6 +27,8 @@ type AndroidApp struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringOutput `pulumi:"packageName"`
 	Project     pulumi.StringOutput `pulumi:"project"`
+	// The lifecycle state of the App.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewAndroidApp registers a new resource with the given unique name, arguments, and options.
@@ -156,6 +158,11 @@ func (o AndroidAppOutput) PackageName() pulumi.StringOutput {
 
 func (o AndroidAppOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of the App.
+func (o AndroidAppOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

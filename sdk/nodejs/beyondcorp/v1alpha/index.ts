@@ -11,6 +11,7 @@ export * from "./appConnector";
 export * from "./appConnectorIamPolicy";
 export * from "./appGateway";
 export * from "./appGatewayIamPolicy";
+export * from "./applicationIamPolicy";
 export * from "./clientConnectorService";
 export * from "./clientConnectorServiceIamPolicy";
 export * from "./clientGateway";
@@ -25,6 +26,7 @@ export * from "./getAppConnector";
 export * from "./getAppConnectorIamPolicy";
 export * from "./getAppGateway";
 export * from "./getAppGatewayIamPolicy";
+export * from "./getApplicationIamPolicy";
 export * from "./getClientConnectorService";
 export * from "./getClientConnectorServiceIamPolicy";
 export * from "./getClientGateway";
@@ -44,6 +46,7 @@ import { AppConnector } from "./appConnector";
 import { AppConnectorIamPolicy } from "./appConnectorIamPolicy";
 import { AppGateway } from "./appGateway";
 import { AppGatewayIamPolicy } from "./appGatewayIamPolicy";
+import { ApplicationIamPolicy } from "./applicationIamPolicy";
 import { ClientConnectorService } from "./clientConnectorService";
 import { ClientConnectorServiceIamPolicy } from "./clientConnectorServiceIamPolicy";
 import { ClientGateway } from "./clientGateway";
@@ -69,6 +72,8 @@ const _module = {
                 return new AppGateway(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:AppGatewayIamPolicy":
                 return new AppGatewayIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:ApplicationIamPolicy":
+                return new ApplicationIamPolicy(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ClientConnectorService":
                 return new ClientConnectorService(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamPolicy":

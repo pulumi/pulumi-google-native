@@ -11499,6 +11499,8 @@ type QueryTimelineSampleResponse struct {
 	CompletedUnits string `pulumi:"completedUnits"`
 	// Milliseconds elapsed since the start of query execution.
 	ElapsedMs string `pulumi:"elapsedMs"`
+	// Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
+	EstimatedRunnableUnits string `pulumi:"estimatedRunnableUnits"`
 	// Total parallel units of work remaining for the active stages.
 	PendingUnits string `pulumi:"pendingUnits"`
 	// Cumulative slot-ms consumed by the query.
@@ -11532,6 +11534,11 @@ func (o QueryTimelineSampleResponseOutput) CompletedUnits() pulumi.StringOutput 
 // Milliseconds elapsed since the start of query execution.
 func (o QueryTimelineSampleResponseOutput) ElapsedMs() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryTimelineSampleResponse) string { return v.ElapsedMs }).(pulumi.StringOutput)
+}
+
+// Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
+func (o QueryTimelineSampleResponseOutput) EstimatedRunnableUnits() pulumi.StringOutput {
+	return o.ApplyT(func(v QueryTimelineSampleResponse) string { return v.EstimatedRunnableUnits }).(pulumi.StringOutput)
 }
 
 // Total parallel units of work remaining for the active stages.

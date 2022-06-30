@@ -26,6 +26,7 @@ class ClusterArgs:
                  cluster_telemetry: Optional[pulumi.Input['ClusterTelemetryArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  confidential_nodes: Optional[pulumi.Input['ConfidentialNodesArgs']] = None,
+                 cost_management_config: Optional[pulumi.Input['CostManagementConfigArgs']] = None,
                  database_encryption: Optional[pulumi.Input['DatabaseEncryptionArgs']] = None,
                  default_max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -86,6 +87,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterTelemetryArgs'] cluster_telemetry: Telemetry integration for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current cluster state.
         :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
+        :param pulumi.Input['CostManagementConfigArgs'] cost_management_config: Configuration for the fine-grained cost management feature.
         :param pulumi.Input['DatabaseEncryptionArgs'] database_encryption: Configuration of etcd encryption.
         :param pulumi.Input['MaxPodsConstraintArgs'] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
@@ -153,6 +155,8 @@ class ClusterArgs:
             pulumi.set(__self__, "conditions", conditions)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if cost_management_config is not None:
+            pulumi.set(__self__, "cost_management_config", cost_management_config)
         if database_encryption is not None:
             pulumi.set(__self__, "database_encryption", database_encryption)
         if default_max_pods_constraint is not None:
@@ -383,6 +387,18 @@ class ClusterArgs:
     @confidential_nodes.setter
     def confidential_nodes(self, value: Optional[pulumi.Input['ConfidentialNodesArgs']]):
         pulumi.set(self, "confidential_nodes", value)
+
+    @property
+    @pulumi.getter(name="costManagementConfig")
+    def cost_management_config(self) -> Optional[pulumi.Input['CostManagementConfigArgs']]:
+        """
+        Configuration for the fine-grained cost management feature.
+        """
+        return pulumi.get(self, "cost_management_config")
+
+    @cost_management_config.setter
+    def cost_management_config(self, value: Optional[pulumi.Input['CostManagementConfigArgs']]):
+        pulumi.set(self, "cost_management_config", value)
 
     @property
     @pulumi.getter(name="databaseEncryption")
@@ -984,6 +1000,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterTelemetryArgs']]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
+                 cost_management_config: Optional[pulumi.Input[pulumi.InputType['CostManagementConfigArgs']]] = None,
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']]] = None,
                  default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1048,6 +1065,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterTelemetryArgs']] cluster_telemetry: Telemetry integration for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current cluster state.
         :param pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']] confidential_nodes: Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
+        :param pulumi.Input[pulumi.InputType['CostManagementConfigArgs']] cost_management_config: Configuration for the fine-grained cost management feature.
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']] database_encryption: Configuration of etcd encryption.
         :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
@@ -1130,6 +1148,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterTelemetryArgs']]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
+                 cost_management_config: Optional[pulumi.Input[pulumi.InputType['CostManagementConfigArgs']]] = None,
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']]] = None,
                  default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1202,6 +1221,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cluster_telemetry"] = cluster_telemetry
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["confidential_nodes"] = confidential_nodes
+            __props__.__dict__["cost_management_config"] = cost_management_config
             __props__.__dict__["database_encryption"] = database_encryption
             __props__.__dict__["default_max_pods_constraint"] = default_max_pods_constraint
             __props__.__dict__["description"] = description
@@ -1319,6 +1339,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_telemetry"] = None
         __props__.__dict__["conditions"] = None
         __props__.__dict__["confidential_nodes"] = None
+        __props__.__dict__["cost_management_config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_master_version"] = None
         __props__.__dict__["current_node_count"] = None
@@ -1453,6 +1474,14 @@ class Cluster(pulumi.CustomResource):
         Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="costManagementConfig")
+    def cost_management_config(self) -> pulumi.Output['outputs.CostManagementConfigResponse']:
+        """
+        Configuration for the fine-grained cost management feature.
+        """
+        return pulumi.get(self, "cost_management_config")
 
     @property
     @pulumi.getter(name="createTime")

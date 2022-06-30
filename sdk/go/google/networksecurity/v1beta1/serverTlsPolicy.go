@@ -15,7 +15,7 @@ import (
 type ServerTlsPolicy struct {
 	pulumi.CustomResourceState
 
-	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 	AllowOpen pulumi.BoolOutput `pulumi:"allowOpen"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -79,7 +79,7 @@ func (ServerTlsPolicyState) ElementType() reflect.Type {
 }
 
 type serverTlsPolicyArgs struct {
-	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 	AllowOpen *bool `pulumi:"allowOpen"`
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
@@ -99,7 +99,7 @@ type serverTlsPolicyArgs struct {
 
 // The set of arguments for constructing a ServerTlsPolicy resource.
 type ServerTlsPolicyArgs struct {
-	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 	AllowOpen pulumi.BoolPtrInput
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
@@ -154,7 +154,7 @@ func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 func (o ServerTlsPolicyOutput) AllowOpen() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.BoolOutput { return v.AllowOpen }).(pulumi.BoolOutput)
 }

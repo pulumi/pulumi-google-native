@@ -596,6 +596,18 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "beyondcorp/v1",
+  "fqn": "pulumi_google_native.beyondcorp.v1",
+  "classes": {
+   "google-native:beyondcorp/v1:AppConnectionIamPolicy": "AppConnectionIamPolicy",
+   "google-native:beyondcorp/v1:AppConnectorIamPolicy": "AppConnectorIamPolicy",
+   "google-native:beyondcorp/v1:AppGatewayIamPolicy": "AppGatewayIamPolicy",
+   "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy": "ClientConnectorServiceIamPolicy",
+   "google-native:beyondcorp/v1:ClientGatewayIamPolicy": "ClientGatewayIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "beyondcorp/v1alpha",
   "fqn": "pulumi_google_native.beyondcorp.v1alpha",
   "classes": {
@@ -605,6 +617,7 @@ _utilities.register(
    "google-native:beyondcorp/v1alpha:AppConnectorIamPolicy": "AppConnectorIamPolicy",
    "google-native:beyondcorp/v1alpha:AppGateway": "AppGateway",
    "google-native:beyondcorp/v1alpha:AppGatewayIamPolicy": "AppGatewayIamPolicy",
+   "google-native:beyondcorp/v1alpha:ApplicationIamPolicy": "ApplicationIamPolicy",
    "google-native:beyondcorp/v1alpha:ClientConnectorService": "ClientConnectorService",
    "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamPolicy": "ClientConnectorServiceIamPolicy",
    "google-native:beyondcorp/v1alpha:ClientGateway": "ClientGateway",
@@ -1097,6 +1110,7 @@ _utilities.register(
    "google-native:compute/alpha:RegionHealthCheck": "RegionHealthCheck",
    "google-native:compute/alpha:RegionHealthCheckService": "RegionHealthCheckService",
    "google-native:compute/alpha:RegionInstanceGroupManager": "RegionInstanceGroupManager",
+   "google-native:compute/alpha:RegionInstanceTemplate": "RegionInstanceTemplate",
    "google-native:compute/alpha:RegionInstantSnapshot": "RegionInstantSnapshot",
    "google-native:compute/alpha:RegionInstantSnapshotIamPolicy": "RegionInstantSnapshotIamPolicy",
    "google-native:compute/alpha:RegionNetwork": "RegionNetwork",

@@ -83,6 +83,7 @@ from .get_region_disk_iam_policy import *
 from .get_region_health_check import *
 from .get_region_health_check_service import *
 from .get_region_instance_group_manager import *
+from .get_region_instance_template import *
 from .get_region_instant_snapshot import *
 from .get_region_instant_snapshot_iam_policy import *
 from .get_region_network import *
@@ -173,6 +174,7 @@ from .region_disk_iam_policy import *
 from .region_health_check import *
 from .region_health_check_service import *
 from .region_instance_group_manager import *
+from .region_instance_template import *
 from .region_instant_snapshot import *
 from .region_instant_snapshot_iam_policy import *
 from .region_network import *

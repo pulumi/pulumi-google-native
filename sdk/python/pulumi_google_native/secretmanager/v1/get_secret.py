@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecretResult:
-    def __init__(__self__, create_time=None, etag=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None):
+    def __init__(__self__, create_time=None, etag=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None, version_aliases=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -47,6 +47,9 @@ class GetSecretResult:
         if ttl and not isinstance(ttl, str):
             raise TypeError("Expected argument 'ttl' to be a str")
         pulumi.set(__self__, "ttl", ttl)
+        if version_aliases and not isinstance(version_aliases, dict):
+            raise TypeError("Expected argument 'version_aliases' to be a dict")
+        pulumi.set(__self__, "version_aliases", version_aliases)
 
     @property
     @pulumi.getter(name="createTime")
@@ -120,6 +123,14 @@ class GetSecretResult:
         """
         return pulumi.get(self, "ttl")
 
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Mapping[str, str]:
+        """
+        Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+        """
+        return pulumi.get(self, "version_aliases")
+
 
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
@@ -135,7 +146,8 @@ class AwaitableGetSecretResult(GetSecretResult):
             replication=self.replication,
             rotation=self.rotation,
             topics=self.topics,
-            ttl=self.ttl)
+            ttl=self.ttl,
+            version_aliases=self.version_aliases)
 
 
 def get_secret(project: Optional[str] = None,
@@ -162,7 +174,8 @@ def get_secret(project: Optional[str] = None,
         replication=__ret__.replication,
         rotation=__ret__.rotation,
         topics=__ret__.topics,
-        ttl=__ret__.ttl)
+        ttl=__ret__.ttl,
+        version_aliases=__ret__.version_aliases)
 
 
 @_utilities.lift_output_func(get_secret)

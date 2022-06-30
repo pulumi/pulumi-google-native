@@ -69,6 +69,10 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Optional status messages associated with the FAILED state.
+     */
+    public readonly statusMessage!: pulumi.Output<string>;
+    /**
      * A generated ticket id to track provisioning request.
      */
     public readonly ticketId!: pulumi.Output<string>;
@@ -102,6 +106,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["statusMessage"] = args ? args.statusMessage : undefined;
             resourceInputs["ticketId"] = args ? args.ticketId : undefined;
             resourceInputs["volumes"] = args ? args.volumes : undefined;
             resourceInputs["vpcScEnabled"] = args ? args.vpcScEnabled : undefined;
@@ -119,6 +124,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
             resourceInputs["ticketId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["volumes"] = undefined /*out*/;
@@ -156,6 +162,10 @@ export interface ProvisioningConfigArgs {
      */
     networks?: pulumi.Input<pulumi.Input<inputs.baremetalsolution.v2.NetworkConfigArgs>[]>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional status messages associated with the FAILED state.
+     */
+    statusMessage?: pulumi.Input<string>;
     /**
      * A generated ticket id to track provisioning request.
      */

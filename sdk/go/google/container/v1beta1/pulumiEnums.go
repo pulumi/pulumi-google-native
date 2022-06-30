@@ -14,11 +14,11 @@ import (
 type BinaryAuthorizationEvaluationMode string
 
 const (
-	// Default value, equivalent to DISABLED.
+	// Default value
 	BinaryAuthorizationEvaluationModeEvaluationModeUnspecified = BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED")
 	// Disable BinaryAuthorization
 	BinaryAuthorizationEvaluationModeDisabled = BinaryAuthorizationEvaluationMode("DISABLED")
-	// If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+	// Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy. This is equivalent to setting the enabled boolean to true.
 	BinaryAuthorizationEvaluationModeProjectSingletonPolicyEnforce = BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE")
 )
 

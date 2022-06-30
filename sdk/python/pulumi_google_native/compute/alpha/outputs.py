@@ -248,6 +248,7 @@ __all__ = [
     'SecurityPolicyRuleMatcherConfigResponse',
     'SecurityPolicyRuleMatcherResponse',
     'SecurityPolicyRuleRateLimitOptionsResponse',
+    'SecurityPolicyRuleRateLimitOptionsRpcStatusResponse',
     'SecurityPolicyRuleRateLimitOptionsThresholdResponse',
     'SecurityPolicyRuleRedirectOptionsResponse',
     'SecurityPolicyRuleResponse',
@@ -5276,6 +5277,8 @@ class FirewallPolicyRuleResponse(dict):
             suggest = "rule_name"
         elif key == "ruleTupleCount":
             suggest = "rule_tuple_count"
+        elif key == "securityProfileGroup":
+            suggest = "security_profile_group"
         elif key == "targetResources":
             suggest = "target_resources"
         elif key == "targetSecureTags":
@@ -5305,6 +5308,7 @@ class FirewallPolicyRuleResponse(dict):
                  priority: int,
                  rule_name: str,
                  rule_tuple_count: int,
+                 security_profile_group: str,
                  target_resources: Sequence[str],
                  target_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse'],
                  target_service_accounts: Sequence[str]):
@@ -5320,6 +5324,7 @@ class FirewallPolicyRuleResponse(dict):
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param str rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param int rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
+        :param str security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param Sequence[str] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -5334,6 +5339,7 @@ class FirewallPolicyRuleResponse(dict):
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "rule_name", rule_name)
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
+        pulumi.set(__self__, "security_profile_group", security_profile_group)
         pulumi.set(__self__, "target_resources", target_resources)
         pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         pulumi.set(__self__, "target_service_accounts", target_service_accounts)
@@ -5417,6 +5423,14 @@ class FirewallPolicyRuleResponse(dict):
         Calculation of the complexity of a single firewall policy rule.
         """
         return pulumi.get(self, "rule_tuple_count")
+
+    @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> str:
+        """
+        A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+        """
+        return pulumi.get(self, "security_profile_group")
 
     @property
     @pulumi.getter(name="targetResources")
@@ -16824,6 +16838,8 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
             suggest = "enforce_on_key_name"
         elif key == "exceedAction":
             suggest = "exceed_action"
+        elif key == "exceedActionRpcStatus":
+            suggest = "exceed_action_rpc_status"
         elif key == "exceedRedirectOptions":
             suggest = "exceed_redirect_options"
         elif key == "rateLimitThreshold":
@@ -16847,6 +16863,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
                  enforce_on_key: str,
                  enforce_on_key_name: str,
                  exceed_action: str,
+                 exceed_action_rpc_status: 'outputs.SecurityPolicyRuleRateLimitOptionsRpcStatusResponse',
                  exceed_redirect_options: 'outputs.SecurityPolicyRuleRedirectOptionsResponse',
                  rate_limit_threshold: 'outputs.SecurityPolicyRuleRateLimitOptionsThresholdResponse'):
         """
@@ -16856,6 +16873,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        :param 'SecurityPolicyRuleRateLimitOptionsRpcStatusResponse' exceed_action_rpc_status: Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
         :param 'SecurityPolicyRuleRedirectOptionsResponse' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
@@ -16865,6 +16883,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         pulumi.set(__self__, "enforce_on_key", enforce_on_key)
         pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         pulumi.set(__self__, "exceed_action", exceed_action)
+        pulumi.set(__self__, "exceed_action_rpc_status", exceed_action_rpc_status)
         pulumi.set(__self__, "exceed_redirect_options", exceed_redirect_options)
         pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
 
@@ -16917,6 +16936,14 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         return pulumi.get(self, "exceed_action")
 
     @property
+    @pulumi.getter(name="exceedActionRpcStatus")
+    def exceed_action_rpc_status(self) -> 'outputs.SecurityPolicyRuleRateLimitOptionsRpcStatusResponse':
+        """
+        Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+        """
+        return pulumi.get(self, "exceed_action_rpc_status")
+
+    @property
     @pulumi.getter(name="exceedRedirectOptions")
     def exceed_redirect_options(self) -> 'outputs.SecurityPolicyRuleRedirectOptionsResponse':
         """
@@ -16931,6 +16958,39 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         Threshold at which to begin ratelimiting.
         """
         return pulumi.get(self, "rate_limit_threshold")
+
+
+@pulumi.output_type
+class SecurityPolicyRuleRateLimitOptionsRpcStatusResponse(dict):
+    """
+    Simplified google.rpc.Status type (omitting details).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 message: str):
+        """
+        Simplified google.rpc.Status type (omitting details).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param str message: A developer-facing error message, which should be in English.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

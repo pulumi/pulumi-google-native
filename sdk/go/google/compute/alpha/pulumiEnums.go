@@ -9340,7 +9340,7 @@ func (in *forwardingRuleIpProtocolPtr) ToForwardingRuleIpProtocolPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleIpProtocolPtrOutput)
 }
 
-// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 type ForwardingRuleIpVersion string
 
 const (
@@ -9855,6 +9855,8 @@ const (
 	ForwardingRulePscConnectionStatusAccepted = ForwardingRulePscConnectionStatus("ACCEPTED")
 	// The connection has been closed by the producer and will not serve traffic going forward.
 	ForwardingRulePscConnectionStatusClosed = ForwardingRulePscConnectionStatus("CLOSED")
+	// The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
+	ForwardingRulePscConnectionStatusNeedsAttention = ForwardingRulePscConnectionStatus("NEEDS_ATTENTION")
 	// The connection is pending acceptance by the producer.
 	ForwardingRulePscConnectionStatusPending = ForwardingRulePscConnectionStatus("PENDING")
 	// The connection has been rejected by the producer.
@@ -11212,7 +11214,7 @@ func (in *globalForwardingRuleIpProtocolPtr) ToGlobalForwardingRuleIpProtocolPtr
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleIpProtocolPtrOutput)
 }
 
-// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 type GlobalForwardingRuleIpVersion string
 
 const (
@@ -11727,6 +11729,8 @@ const (
 	GlobalForwardingRulePscConnectionStatusAccepted = GlobalForwardingRulePscConnectionStatus("ACCEPTED")
 	// The connection has been closed by the producer and will not serve traffic going forward.
 	GlobalForwardingRulePscConnectionStatusClosed = GlobalForwardingRulePscConnectionStatus("CLOSED")
+	// The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
+	GlobalForwardingRulePscConnectionStatusNeedsAttention = GlobalForwardingRulePscConnectionStatus("NEEDS_ATTENTION")
 	// The connection is pending acceptance by the producer.
 	GlobalForwardingRulePscConnectionStatusPending = GlobalForwardingRulePscConnectionStatus("PENDING")
 	// The connection has been rejected by the producer.

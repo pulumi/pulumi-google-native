@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public partial class Connector : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Output("connectorId")]
         public Output<string?> ConnectorId { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public sealed class ConnectorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Input("connectorId")]
         public Input<string>? ConnectorId { get; set; }

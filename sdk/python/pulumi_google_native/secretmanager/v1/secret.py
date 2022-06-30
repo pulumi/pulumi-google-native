@@ -24,7 +24,8 @@ class SecretArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  rotation: Optional[pulumi.Input['RotationArgs']] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['TopicArgs']]]] = None,
-                 ttl: Optional[pulumi.Input[str]] = None):
+                 ttl: Optional[pulumi.Input[str]] = None,
+                 version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Secret resource.
         :param pulumi.Input['ReplicationArgs'] replication: Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
@@ -35,6 +36,7 @@ class SecretArgs:
         :param pulumi.Input['RotationArgs'] rotation: Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
         :param pulumi.Input[Sequence[pulumi.Input['TopicArgs']]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
         :param pulumi.Input[str] ttl: Input only. The TTL for the Secret.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version_aliases: Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
         """
         pulumi.set(__self__, "replication", replication)
         pulumi.set(__self__, "secret_id", secret_id)
@@ -52,6 +54,8 @@ class SecretArgs:
             pulumi.set(__self__, "topics", topics)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+        if version_aliases is not None:
+            pulumi.set(__self__, "version_aliases", version_aliases)
 
     @property
     @pulumi.getter
@@ -158,6 +162,18 @@ class SecretArgs:
     def ttl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ttl", value)
 
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+        """
+        return pulumi.get(self, "version_aliases")
+
+    @version_aliases.setter
+    def version_aliases(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "version_aliases", value)
+
 
 class Secret(pulumi.CustomResource):
     @overload
@@ -173,6 +189,7 @@ class Secret(pulumi.CustomResource):
                  secret_id: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
+                 version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Creates a new Secret containing no SecretVersions.
@@ -188,6 +205,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] secret_id: Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
         :param pulumi.Input[str] ttl: Input only. The TTL for the Secret.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version_aliases: Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
         """
         ...
     @overload
@@ -223,6 +241,7 @@ class Secret(pulumi.CustomResource):
                  secret_id: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
+                 version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -250,6 +269,7 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["secret_id"] = secret_id
             __props__.__dict__["topics"] = topics
             __props__.__dict__["ttl"] = ttl
+            __props__.__dict__["version_aliases"] = version_aliases
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
         super(Secret, __self__).__init__(
@@ -285,6 +305,7 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["secret_id"] = None
         __props__.__dict__["topics"] = None
         __props__.__dict__["ttl"] = None
+        __props__.__dict__["version_aliases"] = None
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -371,4 +392,12 @@ class Secret(pulumi.CustomResource):
         Input only. The TTL for the Secret.
         """
         return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+        """
+        return pulumi.get(self, "version_aliases")
 

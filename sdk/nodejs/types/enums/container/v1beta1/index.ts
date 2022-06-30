@@ -4,7 +4,7 @@
 
 export const BinaryAuthorizationEvaluationMode = {
     /**
-     * Default value, equivalent to DISABLED.
+     * Default value
      */
     EvaluationModeUnspecified: "EVALUATION_MODE_UNSPECIFIED",
     /**
@@ -12,7 +12,7 @@ export const BinaryAuthorizationEvaluationMode = {
      */
     Disabled: "DISABLED",
     /**
-     * If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+     * Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy. This is equivalent to setting the enabled boolean to true.
      */
     ProjectSingletonPolicyEnforce: "PROJECT_SINGLETON_POLICY_ENFORCE",
 } as const;

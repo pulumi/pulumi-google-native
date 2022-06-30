@@ -69,6 +69,10 @@ export interface GetClusterResult {
      */
     readonly confidentialNodes: outputs.container.v1beta1.ConfidentialNodesResponse;
     /**
+     * Configuration for the fine-grained cost management feature.
+     */
+    readonly costManagementConfig: outputs.container.v1beta1.CostManagementConfigResponse;
+    /**
      * [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     readonly createTime: string;

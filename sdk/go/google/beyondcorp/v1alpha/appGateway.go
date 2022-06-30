@@ -17,7 +17,7 @@ type AppGateway struct {
 
 	// A list of connections allocated for the Gateway
 	AllocatedConnections AllocatedConnectionResponseArrayOutput `pulumi:"allocatedConnections"`
-	// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppGatewayId pulumi.StringPtrOutput `pulumi:"appGatewayId"`
 	// Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -92,7 +92,7 @@ func (AppGatewayState) ElementType() reflect.Type {
 }
 
 type appGatewayArgs struct {
-	// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppGatewayId *string `pulumi:"appGatewayId"`
 	// Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -114,7 +114,7 @@ type appGatewayArgs struct {
 
 // The set of arguments for constructing a AppGateway resource.
 type AppGatewayArgs struct {
-	// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppGatewayId pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -176,7 +176,7 @@ func (o AppGatewayOutput) AllocatedConnections() AllocatedConnectionResponseArra
 	return o.ApplyT(func(v *AppGateway) AllocatedConnectionResponseArrayOutput { return v.AllocatedConnections }).(AllocatedConnectionResponseArrayOutput)
 }
 
-// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 func (o AppGatewayOutput) AppGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.AppGatewayId }).(pulumi.StringPtrOutput)
 }

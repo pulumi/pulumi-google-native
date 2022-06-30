@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     public partial class ServerTlsPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         /// </summary>
         [Output("allowOpen")]
         public Output<bool> AllowOpen { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     public sealed class ServerTlsPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         /// </summary>
         [Input("allowOpen")]
         public Input<bool>? AllowOpen { get; set; }

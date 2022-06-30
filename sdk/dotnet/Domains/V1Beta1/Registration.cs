@@ -83,6 +83,12 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
+        /// </summary>
+        [Output("registerFailureReason")]
+        public Output<string> RegisterFailureReason { get; private set; } = null!;
+
+        /// <summary>
         /// The state of the `Registration`
         /// </summary>
         [Output("state")]
@@ -93,6 +99,12 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         /// </summary>
         [Output("supportedPrivacy")]
         public Output<ImmutableArray<string>> SupportedPrivacy { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        /// </summary>
+        [Output("transferFailureReason")]
+        public Output<string> TransferFailureReason { get; private set; } = null!;
 
 
         /// <summary>

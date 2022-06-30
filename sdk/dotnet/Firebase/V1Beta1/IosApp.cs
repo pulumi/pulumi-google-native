@@ -57,6 +57,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The lifecycle state of the App.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
         /// The Apple Developer Team ID associated with the App in the App Store.
         /// </summary>
         [Output("teamId")]

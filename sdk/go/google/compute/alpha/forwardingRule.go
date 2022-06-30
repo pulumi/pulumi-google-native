@@ -33,7 +33,7 @@ type ForwardingRule struct {
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
-	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector pulumi.BoolOutput `pulumi:"isMirroringCollector"`
@@ -139,7 +139,7 @@ type forwardingRuleArgs struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	IpProtocol *ForwardingRuleIpProtocol `pulumi:"ipProtocol"`
-	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 	IpVersion *ForwardingRuleIpVersion `pulumi:"ipVersion"`
 	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
@@ -193,7 +193,7 @@ type ForwardingRuleArgs struct {
 	IpAddress pulumi.StringPtrInput
 	// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	IpProtocol ForwardingRuleIpProtocolPtrInput
-	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 	IpVersion ForwardingRuleIpVersionPtrInput
 	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector pulumi.BoolPtrInput
@@ -313,7 +313,7 @@ func (o ForwardingRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
-// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
 func (o ForwardingRuleOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }

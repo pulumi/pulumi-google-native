@@ -49,6 +49,10 @@ export interface GetAndroidAppResult {
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
      */
     readonly project: string;
+    /**
+     * The lifecycle state of the App.
+     */
+    readonly state: string;
 }
 
 export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppResult> {

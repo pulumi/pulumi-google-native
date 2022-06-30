@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppGateway{}
 	case "google-native:beyondcorp/v1alpha:AppGatewayIamPolicy":
 		r = &AppGatewayIamPolicy{}
+	case "google-native:beyondcorp/v1alpha:ApplicationIamPolicy":
+		r = &ApplicationIamPolicy{}
 	case "google-native:beyondcorp/v1alpha:ClientConnectorService":
 		r = &ClientConnectorService{}
 	case "google-native:beyondcorp/v1alpha:ClientConnectorServiceIamPolicy":

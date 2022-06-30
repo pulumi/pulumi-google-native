@@ -15,7 +15,7 @@ import (
 type ClientConnectorService struct {
 	pulumi.CustomResourceState
 
-	// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+	// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
 	ClientConnectorServiceId pulumi.StringPtrOutput `pulumi:"clientConnectorServiceId"`
 	// [Output only] Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -84,7 +84,7 @@ func (ClientConnectorServiceState) ElementType() reflect.Type {
 }
 
 type clientConnectorServiceArgs struct {
-	// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+	// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
 	ClientConnectorServiceId *string `pulumi:"clientConnectorServiceId"`
 	// Optional. User-provided name. The display name should follow certain format. * Must be 6 to 30 characters in length. * Can only contain lowercase letters, numbers, and hyphens. * Must start with a letter.
 	DisplayName *string `pulumi:"displayName"`
@@ -104,7 +104,7 @@ type clientConnectorServiceArgs struct {
 
 // The set of arguments for constructing a ClientConnectorService resource.
 type ClientConnectorServiceArgs struct {
-	// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+	// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
 	ClientConnectorServiceId pulumi.StringPtrInput
 	// Optional. User-provided name. The display name should follow certain format. * Must be 6 to 30 characters in length. * Can only contain lowercase letters, numbers, and hyphens. * Must start with a letter.
 	DisplayName pulumi.StringPtrInput
@@ -159,7 +159,7 @@ func (o ClientConnectorServiceOutput) ToClientConnectorServiceOutputWithContext(
 	return o
 }
 
-// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
 func (o ClientConnectorServiceOutput) ClientConnectorServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringPtrOutput { return v.ClientConnectorServiceId }).(pulumi.StringPtrOutput)
 }

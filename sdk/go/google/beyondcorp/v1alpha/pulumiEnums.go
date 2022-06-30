@@ -1191,7 +1191,7 @@ const (
 	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusUnhealthy = GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus("UNHEALTHY")
 	// The resource is unresponsive.
 	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusUnresponsive = GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus("UNRESPONSIVE")
-	// The resource is some sub-resources are UNHEALTHY.
+	// Some sub-resources are UNHEALTHY.
 	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusDegraded = GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus("DEGRADED")
 )
 
@@ -1535,7 +1535,7 @@ const (
 	ResourceInfoStatusUnhealthy = ResourceInfoStatus("UNHEALTHY")
 	// The resource is unresponsive.
 	ResourceInfoStatusUnresponsive = ResourceInfoStatus("UNRESPONSIVE")
-	// The resource is some sub-resources are UNHEALTHY.
+	// Some sub-resources are UNHEALTHY.
 	ResourceInfoStatusDegraded = ResourceInfoStatus("DEGRADED")
 )
 

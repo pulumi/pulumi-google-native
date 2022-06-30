@@ -36,7 +36,7 @@ export class AppConnector extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     public readonly appConnectorId!: pulumi.Output<string | undefined>;
     /**
@@ -140,7 +140,7 @@ export class AppConnector extends pulumi.CustomResource {
  */
 export interface AppConnectorArgs {
     /**
-     * Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     appConnectorId?: pulumi.Input<string>;
     /**

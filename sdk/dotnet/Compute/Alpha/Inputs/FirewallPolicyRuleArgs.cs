@@ -63,6 +63,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
+        /// <summary>
+        /// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+        /// </summary>
+        [Input("securityProfileGroup")]
+        public Input<string>? SecurityProfileGroup { get; set; }
+
         [Input("targetResources")]
         private InputList<string>? _targetResources;
 

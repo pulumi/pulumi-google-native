@@ -16,7 +16,7 @@ type ClientGateway struct {
 
 	// The client connector service name that the client gateway is associated to. Client Connector Services, named as follows: `projects/{project_id}/locations/{location_id}/client_connector_services/{client_connector_service_id}`.
 	ClientConnectorService pulumi.StringOutput `pulumi:"clientConnectorService"`
-	// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ClientGatewayId pulumi.StringPtrOutput `pulumi:"clientGatewayId"`
 	// [Output only] Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -73,7 +73,7 @@ func (ClientGatewayState) ElementType() reflect.Type {
 }
 
 type clientGatewayArgs struct {
-	// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ClientGatewayId *string `pulumi:"clientGatewayId"`
 	Location        *string `pulumi:"location"`
 	// name of resource. The name is ignored during creation.
@@ -87,7 +87,7 @@ type clientGatewayArgs struct {
 
 // The set of arguments for constructing a ClientGateway resource.
 type ClientGatewayArgs struct {
-	// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ClientGatewayId pulumi.StringPtrInput
 	Location        pulumi.StringPtrInput
 	// name of resource. The name is ignored during creation.
@@ -141,7 +141,7 @@ func (o ClientGatewayOutput) ClientConnectorService() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGateway) pulumi.StringOutput { return v.ClientConnectorService }).(pulumi.StringOutput)
 }
 
-// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 func (o ClientGatewayOutput) ClientGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientGateway) pulumi.StringPtrOutput { return v.ClientGatewayId }).(pulumi.StringPtrOutput)
 }

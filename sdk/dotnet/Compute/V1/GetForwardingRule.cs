@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string IpProtocol;
         /// <summary>
-        /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+        /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
         /// </summary>
         public readonly string IpVersion;
         /// <summary>

@@ -22,7 +22,7 @@ class ClientGatewayArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClientGateway resource.
-        :param pulumi.Input[str] client_gateway_id: Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] client_gateway_id: Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] name: name of resource. The name is ignored during creation.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
@@ -44,7 +44,7 @@ class ClientGatewayArgs:
     @pulumi.getter(name="clientGatewayId")
     def client_gateway_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "client_gateway_id")
 
@@ -124,7 +124,7 @@ class ClientGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] client_gateway_id: Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] client_gateway_id: Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] name: name of resource. The name is ignored during creation.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
@@ -229,7 +229,7 @@ class ClientGateway(pulumi.CustomResource):
     @pulumi.getter(name="clientGatewayId")
     def client_gateway_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "client_gateway_id")
 

@@ -33,6 +33,8 @@ type ProvisioningConfig struct {
 	Project  pulumi.StringOutput              `pulumi:"project"`
 	// State of ProvisioningConfig.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Optional status messages associated with the FAILED state.
+	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// A generated ticket id to track provisioning request.
 	TicketId pulumi.StringOutput `pulumi:"ticketId"`
 	// Last update timestamp.
@@ -95,6 +97,8 @@ type provisioningConfigArgs struct {
 	// Networks to be created.
 	Networks []NetworkConfig `pulumi:"networks"`
 	Project  *string         `pulumi:"project"`
+	// Optional status messages associated with the FAILED state.
+	StatusMessage *string `pulumi:"statusMessage"`
 	// A generated ticket id to track provisioning request.
 	TicketId *string `pulumi:"ticketId"`
 	// Volumes to be created.
@@ -118,6 +122,8 @@ type ProvisioningConfigArgs struct {
 	// Networks to be created.
 	Networks NetworkConfigArrayInput
 	Project  pulumi.StringPtrInput
+	// Optional status messages associated with the FAILED state.
+	StatusMessage pulumi.StringPtrInput
 	// A generated ticket id to track provisioning request.
 	TicketId pulumi.StringPtrInput
 	// Volumes to be created.
@@ -204,6 +210,11 @@ func (o ProvisioningConfigOutput) Project() pulumi.StringOutput {
 // State of ProvisioningConfig.
 func (o ProvisioningConfigOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional status messages associated with the FAILED state.
+func (o ProvisioningConfigOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
 // A generated ticket id to track provisioning request.

@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Outbound domains/hosts needs to be allowlisted.
+        /// </summary>
+        public readonly ImmutableArray<string> EgressBackends;
+        /// <summary>
         /// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         /// </summary>
         public readonly string EnvoyImageLocation;
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string description,
 
+            ImmutableArray<string> egressBackends,
+
             string envoyImageLocation,
 
             string imageLocation,
@@ -165,6 +171,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
             ConnectorVersion = connectorVersion;
             CreateTime = createTime;
             Description = description;
+            EgressBackends = egressBackends;
             EnvoyImageLocation = envoyImageLocation;
             ImageLocation = imageLocation;
             Labels = labels;

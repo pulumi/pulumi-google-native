@@ -29,6 +29,7 @@ __all__ = [
     'ConfidentialNodesResponse',
     'ConfigConnectorConfigResponse',
     'ConsumptionMeteringConfigResponse',
+    'CostManagementConfigResponse',
     'DNSConfigResponse',
     'DailyMaintenanceWindowResponse',
     'DatabaseEncryptionResponse',
@@ -1100,6 +1101,28 @@ class ConsumptionMeteringConfigResponse(dict):
     def enabled(self) -> bool:
         """
         Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class CostManagementConfigResponse(dict):
+    """
+    Configuration for fine-grained cost management feature.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for fine-grained cost management feature.
+        :param bool enabled: Whether the feature is enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the feature is enabled or not.
         """
         return pulumi.get(self, "enabled")
 

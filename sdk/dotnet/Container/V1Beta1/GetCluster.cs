@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly Outputs.ConfidentialNodesResponse ConfidentialNodes;
         /// <summary>
+        /// Configuration for the fine-grained cost management feature.
+        /// </summary>
+        public readonly Outputs.CostManagementConfigResponse CostManagementConfig;
+        /// <summary>
         /// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         public readonly string CreateTime;
@@ -370,6 +374,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             Outputs.ConfidentialNodesResponse confidentialNodes,
 
+            Outputs.CostManagementConfigResponse costManagementConfig,
+
             string createTime,
 
             string currentMasterVersion,
@@ -499,6 +505,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             ClusterTelemetry = clusterTelemetry;
             Conditions = conditions;
             ConfidentialNodes = confidentialNodes;
+            CostManagementConfig = costManagementConfig;
             CreateTime = createTime;
             CurrentMasterVersion = currentMasterVersion;
             CurrentNodeCount = currentNodeCount;

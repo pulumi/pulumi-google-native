@@ -57,6 +57,10 @@ export class AndroidApp extends pulumi.CustomResource {
      */
     public readonly packageName!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The lifecycle state of the App.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a AndroidApp resource with the given unique name, arguments, and options.
@@ -75,6 +79,7 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["packageName"] = args ? args.packageName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["apiKeyId"] = undefined /*out*/;
             resourceInputs["appId"] = undefined /*out*/;
@@ -82,6 +87,7 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["packageName"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AndroidApp.__pulumiType, name, resourceInputs, opts);

@@ -63,6 +63,10 @@ export interface GetProvisioningConfigResult {
      */
     readonly state: string;
     /**
+     * Optional status messages associated with the FAILED state.
+     */
+    readonly statusMessage: string;
+    /**
      * A generated ticket id to track provisioning request.
      */
     readonly ticketId: string;

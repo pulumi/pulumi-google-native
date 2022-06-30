@@ -49,6 +49,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? ExceedAction { get; set; }
 
         /// <summary>
+        /// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+        /// </summary>
+        [Input("exceedActionRpcStatus")]
+        public Input<Inputs.SecurityPolicyRuleRateLimitOptionsRpcStatusArgs>? ExceedActionRpcStatus { get; set; }
+
+        /// <summary>
         /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         /// </summary>
         [Input("exceedRedirectOptions")]

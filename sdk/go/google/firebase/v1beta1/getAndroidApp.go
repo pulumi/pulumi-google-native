@@ -38,6 +38,8 @@ type LookupAndroidAppResult struct {
 	PackageName string `pulumi:"packageName"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
 	Project string `pulumi:"project"`
+	// The lifecycle state of the App.
+	State string `pulumi:"state"`
 }
 
 func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs, opts ...pulumi.InvokeOption) LookupAndroidAppResultOutput {
@@ -104,6 +106,11 @@ func (o LookupAndroidAppResultOutput) PackageName() pulumi.StringOutput {
 // Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
 func (o LookupAndroidAppResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of the App.
+func (o LookupAndroidAppResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

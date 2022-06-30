@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
         if clone_definition and not isinstance(clone_definition, dict):
             raise TypeError("Expected argument 'clone_definition' to be a dict")
         pulumi.set(__self__, "clone_definition", clone_definition)
@@ -65,6 +65,9 @@ class GetTableResult:
         if materialized_view and not isinstance(materialized_view, dict):
             raise TypeError("Expected argument 'materialized_view' to be a dict")
         pulumi.set(__self__, "materialized_view", materialized_view)
+        if max_staleness and not isinstance(max_staleness, str):
+            raise TypeError("Expected argument 'max_staleness' to be a str")
+        pulumi.set(__self__, "max_staleness", max_staleness)
         if model and not isinstance(model, dict):
             raise TypeError("Expected argument 'model' to be a dict")
         pulumi.set(__self__, "model", model)
@@ -254,6 +257,14 @@ class GetTableResult:
         [Optional] Materialized view definition.
         """
         return pulumi.get(self, "materialized_view")
+
+    @property
+    @pulumi.getter(name="maxStaleness")
+    def max_staleness(self) -> str:
+        """
+        [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        """
+        return pulumi.get(self, "max_staleness")
 
     @property
     @pulumi.getter
@@ -461,6 +472,7 @@ class AwaitableGetTableResult(GetTableResult):
             last_modified_time=self.last_modified_time,
             location=self.location,
             materialized_view=self.materialized_view,
+            max_staleness=self.max_staleness,
             model=self.model,
             num_active_logical_bytes=self.num_active_logical_bytes,
             num_active_physical_bytes=self.num_active_physical_bytes,
@@ -523,6 +535,7 @@ def get_table(dataset_id: Optional[str] = None,
         last_modified_time=__ret__.last_modified_time,
         location=__ret__.location,
         materialized_view=__ret__.materialized_view,
+        max_staleness=__ret__.max_staleness,
         model=__ret__.model,
         num_active_logical_bytes=__ret__.num_active_logical_bytes,
         num_active_physical_bytes=__ret__.num_active_physical_bytes,

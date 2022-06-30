@@ -110,6 +110,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.MaterializedViewDefinitionResponse> MaterializedView { get; private set; } = null!;
 
         /// <summary>
+        /// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        /// </summary>
+        [Output("maxStaleness")]
+        public Output<string> MaxStaleness { get; private set; } = null!;
+
+        /// <summary>
         /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
         /// </summary>
         [Output("model")]
@@ -351,6 +357,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("materializedView")]
         public Input<Inputs.MaterializedViewDefinitionArgs>? MaterializedView { get; set; }
+
+        /// <summary>
+        /// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        /// </summary>
+        [Input("maxStaleness")]
+        public Input<string>? MaxStaleness { get; set; }
 
         /// <summary>
         /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.

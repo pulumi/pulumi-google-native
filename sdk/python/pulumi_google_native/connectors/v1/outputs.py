@@ -688,6 +688,9 @@ class SecretResponse(dict):
 
 @pulumi.output_type
 class SshPublicKeyResponse(dict):
+    """
+    Parameters to support Ssh public key Authentication.
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -713,6 +716,7 @@ class SshPublicKeyResponse(dict):
                  ssh_client_cert: 'outputs.SecretResponse',
                  username: str):
         """
+        Parameters to support Ssh public key Authentication.
         :param str cert_type: Format of SSH Client cert.
         :param 'SecretResponse' password: This is an optional field used in case client has enabled multi-factor authentication
         :param 'SecretResponse' ssh_client_cert: SSH Client Cert. It should contain both public and private key.

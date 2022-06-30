@@ -59,6 +59,8 @@ type LookupTableResult struct {
 	Location string `pulumi:"location"`
 	// [Optional] Materialized view definition.
 	MaterializedView MaterializedViewDefinitionResponse `pulumi:"materializedView"`
+	// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+	MaxStaleness string `pulumi:"maxStaleness"`
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model ModelDefinitionResponse `pulumi:"model"`
 	// Number of logical bytes that are less than 90 days old.
@@ -219,6 +221,11 @@ func (o LookupTableResultOutput) Location() pulumi.StringOutput {
 // [Optional] Materialized view definition.
 func (o LookupTableResultOutput) MaterializedView() MaterializedViewDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) MaterializedViewDefinitionResponse { return v.MaterializedView }).(MaterializedViewDefinitionResponseOutput)
+}
+
+// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+func (o LookupTableResultOutput) MaxStaleness() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.MaxStaleness }).(pulumi.StringOutput)
 }
 
 // [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.

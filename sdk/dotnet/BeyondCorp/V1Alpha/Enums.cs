@@ -296,7 +296,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// </summary>
         public static GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus Unresponsive { get; } = new GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus("UNRESPONSIVE");
         /// <summary>
-        /// The resource is some sub-resources are UNHEALTHY.
+        /// Some sub-resources are UNHEALTHY.
         /// </summary>
         public static GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus Degraded { get; } = new GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus("DEGRADED");
 
@@ -390,7 +390,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// </summary>
         public static ResourceInfoStatus Unresponsive { get; } = new ResourceInfoStatus("UNRESPONSIVE");
         /// <summary>
-        /// The resource is some sub-resources are UNHEALTHY.
+        /// Some sub-resources are UNHEALTHY.
         /// </summary>
         public static ResourceInfoStatus Degraded { get; } = new ResourceInfoStatus("DEGRADED");
 

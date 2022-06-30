@@ -38,6 +38,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string ExceedAction;
         /// <summary>
+        /// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRuleRateLimitOptionsRpcStatusResponse ExceedActionRpcStatus;
+        /// <summary>
         /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRedirectOptionsResponse ExceedRedirectOptions;
@@ -60,6 +64,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string exceedAction,
 
+            Outputs.SecurityPolicyRuleRateLimitOptionsRpcStatusResponse exceedActionRpcStatus,
+
             Outputs.SecurityPolicyRuleRedirectOptionsResponse exceedRedirectOptions,
 
             Outputs.SecurityPolicyRuleRateLimitOptionsThresholdResponse rateLimitThreshold)
@@ -70,6 +76,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             EnforceOnKey = enforceOnKey;
             EnforceOnKeyName = enforceOnKeyName;
             ExceedAction = exceedAction;
+            ExceedActionRpcStatus = exceedActionRpcStatus;
             ExceedRedirectOptions = exceedRedirectOptions;
             RateLimitThreshold = rateLimitThreshold;
         }

@@ -36,6 +36,8 @@ type LookupInstanceTemplateResult struct {
 	Name string `pulumi:"name"`
 	// The instance properties for this instance template.
 	Properties InstancePropertiesResponse `pulumi:"properties"`
+	// URL of the region where the instance template resides. Only applicable for regional resources.
+	Region string `pulumi:"region"`
 	// The URL for this instance template. The server defines this URL.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -105,6 +107,11 @@ func (o LookupInstanceTemplateResultOutput) Name() pulumi.StringOutput {
 // The instance properties for this instance template.
 func (o LookupInstanceTemplateResultOutput) Properties() InstancePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) InstancePropertiesResponse { return v.Properties }).(InstancePropertiesResponseOutput)
+}
+
+// URL of the region where the instance template resides. Only applicable for regional resources.
+func (o LookupInstanceTemplateResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The URL for this instance template. The server defines this URL.

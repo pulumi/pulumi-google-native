@@ -30,7 +30,7 @@ class ClientConnectorServiceArgs:
         The set of arguments for constructing a ClientConnectorService resource.
         :param pulumi.Input['EgressArgs'] egress: The details of the egress settings.
         :param pulumi.Input['IngressArgs'] ingress: The details of the ingress settings.
-        :param pulumi.Input[str] client_connector_service_id: Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+        :param pulumi.Input[str] client_connector_service_id: Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
         :param pulumi.Input[str] display_name: Optional. User-provided name. The display name should follow certain format. * Must be 6 to 30 characters in length. * Can only contain lowercase letters, numbers, and hyphens. * Must start with a letter.
         :param pulumi.Input[str] name: Name of resource. The name is ignored during creation.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -81,7 +81,7 @@ class ClientConnectorServiceArgs:
     @pulumi.getter(name="clientConnectorServiceId")
     def client_connector_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+        Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
         """
         return pulumi.get(self, "client_connector_service_id")
 
@@ -176,7 +176,7 @@ class ClientConnectorService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] client_connector_service_id: Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+        :param pulumi.Input[str] client_connector_service_id: Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
         :param pulumi.Input[str] display_name: Optional. User-provided name. The display name should follow certain format. * Must be 6 to 30 characters in length. * Can only contain lowercase letters, numbers, and hyphens. * Must start with a letter.
         :param pulumi.Input[pulumi.InputType['EgressArgs']] egress: The details of the egress settings.
         :param pulumi.Input[pulumi.InputType['IngressArgs']] ingress: The details of the ingress settings.
@@ -287,7 +287,7 @@ class ClientConnectorService(pulumi.CustomResource):
     @pulumi.getter(name="clientConnectorServiceId")
     def client_connector_service_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+        Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
         """
         return pulumi.get(self, "client_connector_service_id")
 

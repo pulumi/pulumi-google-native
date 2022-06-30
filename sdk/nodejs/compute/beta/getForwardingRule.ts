@@ -61,7 +61,7 @@ export interface GetForwardingRuleResult {
      */
     readonly ipProtocol: string;
     /**
-     * The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+     * The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
      */
     readonly ipVersion: string;
     /**

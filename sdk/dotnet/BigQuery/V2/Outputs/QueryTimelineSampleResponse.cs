@@ -26,6 +26,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string ElapsedMs;
         /// <summary>
+        /// Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
+        /// </summary>
+        public readonly string EstimatedRunnableUnits;
+        /// <summary>
         /// Total parallel units of work remaining for the active stages.
         /// </summary>
         public readonly string PendingUnits;
@@ -42,6 +46,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string elapsedMs,
 
+            string estimatedRunnableUnits,
+
             string pendingUnits,
 
             string totalSlotMs)
@@ -49,6 +55,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ActiveUnits = activeUnits;
             CompletedUnits = completedUnits;
             ElapsedMs = elapsedMs;
+            EstimatedRunnableUnits = estimatedRunnableUnits;
             PendingUnits = pendingUnits;
             TotalSlotMs = totalSlotMs;
         }

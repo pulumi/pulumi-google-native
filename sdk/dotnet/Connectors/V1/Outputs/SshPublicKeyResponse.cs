@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 {
 
+    /// <summary>
+    /// Parameters to support Ssh public key Authentication.
+    /// </summary>
     [OutputType]
     public sealed class SshPublicKeyResponse
     {

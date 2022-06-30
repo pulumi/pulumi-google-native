@@ -23,6 +23,7 @@ class ProvisioningConfigArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]]] = None,
                  vpc_sc_enabled: Optional[pulumi.Input[bool]] = None):
@@ -33,6 +34,7 @@ class ProvisioningConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] instances: Instances to be created.
         :param pulumi.Input[str] location: Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: Networks to be created.
+        :param pulumi.Input[str] status_message: Optional status messages associated with the FAILED state.
         :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]] volumes: Volumes to be created.
         :param pulumi.Input[bool] vpc_sc_enabled: If true, VPC SC is enabled for the cluster.
@@ -52,6 +54,8 @@ class ProvisioningConfigArgs:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if status_message is not None:
+            pulumi.set(__self__, "status_message", status_message)
         if ticket_id is not None:
             pulumi.set(__self__, "ticket_id", ticket_id)
         if volumes is not None:
@@ -129,6 +133,18 @@ class ProvisioningConfigArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional status messages associated with the FAILED state.
+        """
+        return pulumi.get(self, "status_message")
+
+    @status_message.setter
+    def status_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status_message", value)
+
+    @property
     @pulumi.getter(name="ticketId")
     def ticket_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -176,6 +192,7 @@ class ProvisioningConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]]] = None,
                  vpc_sc_enabled: Optional[pulumi.Input[bool]] = None,
@@ -193,6 +210,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] instances: Instances to be created.
         :param pulumi.Input[str] location: Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: Networks to be created.
+        :param pulumi.Input[str] status_message: Optional status messages associated with the FAILED state.
         :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]] volumes: Volumes to be created.
         :param pulumi.Input[bool] vpc_sc_enabled: If true, VPC SC is enabled for the cluster.
@@ -230,6 +248,7 @@ class ProvisioningConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]]] = None,
                  vpc_sc_enabled: Optional[pulumi.Input[bool]] = None,
@@ -256,6 +275,7 @@ class ProvisioningConfig(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
+            __props__.__dict__["status_message"] = status_message
             __props__.__dict__["ticket_id"] = ticket_id
             __props__.__dict__["volumes"] = volumes
             __props__.__dict__["vpc_sc_enabled"] = vpc_sc_enabled
@@ -294,6 +314,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         __props__.__dict__["networks"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["status_message"] = None
         __props__.__dict__["ticket_id"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["volumes"] = None
@@ -365,6 +386,14 @@ class ProvisioningConfig(pulumi.CustomResource):
         State of ProvisioningConfig.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> pulumi.Output[str]:
+        """
+        Optional status messages associated with the FAILED state.
+        """
+        return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter(name="ticketId")

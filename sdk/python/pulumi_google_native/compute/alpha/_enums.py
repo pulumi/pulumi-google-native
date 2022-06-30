@@ -1239,7 +1239,7 @@ class ForwardingRuleIpProtocol(str, Enum):
 
 class ForwardingRuleIpVersion(str, Enum):
     """
-    The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+    The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
     """
     IPV4 = "IPV4"
     IPV6 = "IPV6"
@@ -1292,6 +1292,10 @@ class ForwardingRulePscConnectionStatus(str, Enum):
     CLOSED = "CLOSED"
     """
     The connection has been closed by the producer and will not serve traffic going forward.
+    """
+    NEEDS_ATTENTION = "NEEDS_ATTENTION"
+    """
+    The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
     """
     PENDING = "PENDING"
     """
@@ -1440,7 +1444,7 @@ class GlobalForwardingRuleIpProtocol(str, Enum):
 
 class GlobalForwardingRuleIpVersion(str, Enum):
     """
-    The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
+    The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6.
     """
     IPV4 = "IPV4"
     IPV6 = "IPV6"
@@ -1493,6 +1497,10 @@ class GlobalForwardingRulePscConnectionStatus(str, Enum):
     CLOSED = "CLOSED"
     """
     The connection has been closed by the producer and will not serve traffic going forward.
+    """
+    NEEDS_ATTENTION = "NEEDS_ATTENTION"
+    """
+    The connection has been accepted by the producer, but the producer needs to take further action before the forwarding rule can serve traffic.
     """
     PENDING = "PENDING"
     """

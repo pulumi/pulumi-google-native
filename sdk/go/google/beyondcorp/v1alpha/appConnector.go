@@ -15,7 +15,7 @@ import (
 type AppConnector struct {
 	pulumi.CustomResourceState
 
-	// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppConnectorId pulumi.StringPtrOutput `pulumi:"appConnectorId"`
 	// Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -85,7 +85,7 @@ func (AppConnectorState) ElementType() reflect.Type {
 }
 
 type appConnectorArgs struct {
-	// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppConnectorId *string `pulumi:"appConnectorId"`
 	// Optional. An arbitrary user-provided name for the AppConnector. Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -107,7 +107,7 @@ type appConnectorArgs struct {
 
 // The set of arguments for constructing a AppConnector resource.
 type AppConnectorArgs struct {
-	// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppConnectorId pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the AppConnector. Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -164,7 +164,7 @@ func (o AppConnectorOutput) ToAppConnectorOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+// Optional. User-settable AppConnector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 func (o AppConnectorOutput) AppConnectorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringPtrOutput { return v.AppConnectorId }).(pulumi.StringPtrOutput)
 }

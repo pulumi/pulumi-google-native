@@ -27,6 +27,8 @@ type WebApp struct {
 	// The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The lifecycle state of the App.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
 	WebId pulumi.StringOutput `pulumi:"webId"`
 }
@@ -158,6 +160,11 @@ func (o WebAppOutput) Name() pulumi.StringOutput {
 
 func (o WebAppOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of the App.
+func (o WebAppOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.

@@ -15,7 +15,7 @@ import (
 type Connector struct {
 	pulumi.CustomResourceState
 
-	// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ConnectorId pulumi.StringPtrOutput `pulumi:"connectorId"`
 	// Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -85,7 +85,7 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
-	// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ConnectorId *string `pulumi:"connectorId"`
 	// Optional. An arbitrary user-provided name for the connector. Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -107,7 +107,7 @@ type connectorArgs struct {
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
-	// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ConnectorId pulumi.StringPtrInput
 	// Optional. An arbitrary user-provided name for the connector. Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
@@ -164,7 +164,7 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 	return o
 }
 
-// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 func (o ConnectorOutput) ConnectorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.ConnectorId }).(pulumi.StringPtrOutput)
 }

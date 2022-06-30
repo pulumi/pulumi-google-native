@@ -54,6 +54,10 @@ export interface GetIosAppResult {
      */
     readonly project: string;
     /**
+     * The lifecycle state of the App.
+     */
+    readonly state: string;
+    /**
      * The Apple Developer Team ID associated with the App in the App Store.
      */
     readonly teamId: string;

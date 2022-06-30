@@ -79,6 +79,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The lifecycle state of the App.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetAndroidAppResult(
@@ -92,7 +96,9 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
             string packageName,
 
-            string project)
+            string project,
+
+            string state)
         {
             ApiKeyId = apiKeyId;
             AppId = appId;
@@ -100,6 +106,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
             Name = name;
             PackageName = packageName;
             Project = project;
+            State = state;
         }
     }
 }

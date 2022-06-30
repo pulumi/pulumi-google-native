@@ -62,6 +62,10 @@ export class IosApp extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * The lifecycle state of the App.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * The Apple Developer Team ID associated with the App in the App Store.
      */
     public readonly teamId!: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class IosApp extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["teamId"] = args ? args.teamId : undefined;
             resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["apiKeyId"] = undefined /*out*/;
             resourceInputs["appId"] = undefined /*out*/;
@@ -93,6 +98,7 @@ export class IosApp extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["teamId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

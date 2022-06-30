@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Output<Outputs.ApplicationEndpointResponse> ApplicationEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Output("connectionId")]
         public Output<string?> ConnectionId { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Input<Inputs.ApplicationEndpointArgs> ApplicationEndpoint { get; set; } = null!;
 
         /// <summary>
-        /// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }

@@ -1971,13 +1971,13 @@ class ProbeResponse(dict):
                  timeout_seconds: int):
         """
         Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
-        :param 'ExecActionResponse' exec_: (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+        :param 'ExecActionResponse' exec_: (Optional) Not supported by Cloud Run One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
         :param int failure_threshold: (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         :param 'GRPCActionResponse' grpc: (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
         :param 'HTTPGetActionResponse' http_get: (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
-        :param int initial_delay_seconds: (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param int period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
-        :param int success_threshold: (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
+        :param int initial_delay_seconds: (Optional) Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        :param int success_threshold: (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
         :param 'TCPSocketActionResponse' tcp_socket: (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
         :param int timeout_seconds: (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
@@ -1995,7 +1995,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="exec")
     def exec_(self) -> 'outputs.ExecActionResponse':
         """
-        (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+        (Optional) Not supported by Cloud Run One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
         """
         return pulumi.get(self, "exec_")
 
@@ -2027,7 +2027,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> int:
         """
-        (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        (Optional) Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -2035,7 +2035,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> int:
         """
-        (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
         """
         return pulumi.get(self, "period_seconds")
 
@@ -2043,7 +2043,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="successThreshold")
     def success_threshold(self) -> int:
         """
-        (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
+        (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
         """
         return pulumi.get(self, "success_threshold")
 

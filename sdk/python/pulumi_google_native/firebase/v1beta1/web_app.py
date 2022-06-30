@@ -169,6 +169,7 @@ class WebApp(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["app_id"] = None
+            __props__.__dict__["state"] = None
             __props__.__dict__["web_id"] = None
         super(WebApp, __self__).__init__(
             'google-native:firebase/v1beta1:WebApp',
@@ -198,6 +199,7 @@ class WebApp(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["state"] = None
         __props__.__dict__["web_id"] = None
         return WebApp(resource_name, opts=opts, __props__=__props__)
 
@@ -245,6 +247,14 @@ class WebApp(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The lifecycle state of the App.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="webId")

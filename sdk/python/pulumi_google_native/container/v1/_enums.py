@@ -38,7 +38,7 @@ class BinaryAuthorizationEvaluationMode(str, Enum):
     """
     EVALUATION_MODE_UNSPECIFIED = "EVALUATION_MODE_UNSPECIFIED"
     """
-    Default value, equivalent to DISABLED.
+    Default value
     """
     DISABLED = "DISABLED"
     """
@@ -46,7 +46,7 @@ class BinaryAuthorizationEvaluationMode(str, Enum):
     """
     PROJECT_SINGLETON_POLICY_ENFORCE = "PROJECT_SINGLETON_POLICY_ENFORCE"
     """
-    If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+    Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy. This is equivalent to setting the enabled boolean to true.
     """
 
 

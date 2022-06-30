@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Container.V1
         }
 
         /// <summary>
-        /// Default value, equivalent to DISABLED.
+        /// Default value
         /// </summary>
         public static BinaryAuthorizationEvaluationMode EvaluationModeUnspecified { get; } = new BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED");
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public static BinaryAuthorizationEvaluationMode Disabled { get; } = new BinaryAuthorizationEvaluationMode("DISABLED");
         /// <summary>
-        /// If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+        /// Enforce Kubernetes admission requests with BinaryAuthorization using the project's singleton policy. This is equivalent to setting the enabled boolean to true.
         /// </summary>
         public static BinaryAuthorizationEvaluationMode ProjectSingletonPolicyEnforce { get; } = new BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE");
 

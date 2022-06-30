@@ -40,7 +40,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly applicationEndpoint!: pulumi.Output<outputs.beyondcorp.v1alpha.ApplicationEndpointResponse>;
     /**
-     * Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     public readonly connectionId!: pulumi.Output<string | undefined>;
     /**
@@ -159,7 +159,7 @@ export interface ConnectionArgs {
      */
     applicationEndpoint: pulumi.Input<inputs.beyondcorp.v1alpha.ApplicationEndpointArgs>;
     /**
-     * Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     connectionId?: pulumi.Input<string>;
     /**

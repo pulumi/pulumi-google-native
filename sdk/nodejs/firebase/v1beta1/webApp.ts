@@ -58,6 +58,10 @@ export class WebApp extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * The lifecycle state of the App.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
      */
     public /*out*/ readonly webId!: pulumi.Output<string>;
@@ -79,6 +83,7 @@ export class WebApp extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["webId"] = undefined /*out*/;
         } else {
             resourceInputs["apiKeyId"] = undefined /*out*/;
@@ -87,6 +92,7 @@ export class WebApp extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["webId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

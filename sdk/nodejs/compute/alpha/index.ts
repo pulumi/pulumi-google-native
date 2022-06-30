@@ -82,6 +82,7 @@ export * from "./getRegionDiskIamPolicy";
 export * from "./getRegionHealthCheck";
 export * from "./getRegionHealthCheckService";
 export * from "./getRegionInstanceGroupManager";
+export * from "./getRegionInstanceTemplate";
 export * from "./getRegionInstantSnapshot";
 export * from "./getRegionInstantSnapshotIamPolicy";
 export * from "./getRegionNetwork";
@@ -172,6 +173,7 @@ export * from "./regionDiskIamPolicy";
 export * from "./regionHealthCheck";
 export * from "./regionHealthCheckService";
 export * from "./regionInstanceGroupManager";
+export * from "./regionInstanceTemplate";
 export * from "./regionInstantSnapshot";
 export * from "./regionInstantSnapshotIamPolicy";
 export * from "./regionNetwork";
@@ -281,6 +283,7 @@ import { RegionDiskIamPolicy } from "./regionDiskIamPolicy";
 import { RegionHealthCheck } from "./regionHealthCheck";
 import { RegionHealthCheckService } from "./regionHealthCheckService";
 import { RegionInstanceGroupManager } from "./regionInstanceGroupManager";
+import { RegionInstanceTemplate } from "./regionInstanceTemplate";
 import { RegionInstantSnapshot } from "./regionInstantSnapshot";
 import { RegionInstantSnapshotIamPolicy } from "./regionInstantSnapshotIamPolicy";
 import { RegionNetwork } from "./regionNetwork";
@@ -453,6 +456,8 @@ const _module = {
                 return new RegionHealthCheckService(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionInstanceGroupManager":
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionInstanceTemplate":
+                return new RegionInstanceTemplate(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionInstantSnapshot":
                 return new RegionInstantSnapshot(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionInstantSnapshotIamPolicy":

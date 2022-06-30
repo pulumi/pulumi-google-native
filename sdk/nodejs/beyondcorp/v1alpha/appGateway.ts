@@ -40,7 +40,7 @@ export class AppGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly allocatedConnections!: pulumi.Output<outputs.beyondcorp.v1alpha.AllocatedConnectionResponse[]>;
     /**
-     * Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     public readonly appGatewayId!: pulumi.Output<string | undefined>;
     /**
@@ -155,7 +155,7 @@ export class AppGateway extends pulumi.CustomResource {
  */
 export interface AppGatewayArgs {
     /**
-     * Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+     * Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
      */
     appGatewayId?: pulumi.Input<string>;
     /**

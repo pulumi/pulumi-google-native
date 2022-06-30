@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegistrationResult:
-    def __init__(__self__, contact_settings=None, create_time=None, dns_settings=None, domain_name=None, expire_time=None, issues=None, labels=None, management_settings=None, name=None, pending_contact_settings=None, state=None, supported_privacy=None):
+    def __init__(__self__, contact_settings=None, create_time=None, dns_settings=None, domain_name=None, expire_time=None, issues=None, labels=None, management_settings=None, name=None, pending_contact_settings=None, register_failure_reason=None, state=None, supported_privacy=None, transfer_failure_reason=None):
         if contact_settings and not isinstance(contact_settings, dict):
             raise TypeError("Expected argument 'contact_settings' to be a dict")
         pulumi.set(__self__, "contact_settings", contact_settings)
@@ -50,12 +50,18 @@ class GetRegistrationResult:
         if pending_contact_settings and not isinstance(pending_contact_settings, dict):
             raise TypeError("Expected argument 'pending_contact_settings' to be a dict")
         pulumi.set(__self__, "pending_contact_settings", pending_contact_settings)
+        if register_failure_reason and not isinstance(register_failure_reason, str):
+            raise TypeError("Expected argument 'register_failure_reason' to be a str")
+        pulumi.set(__self__, "register_failure_reason", register_failure_reason)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
         if supported_privacy and not isinstance(supported_privacy, list):
             raise TypeError("Expected argument 'supported_privacy' to be a list")
         pulumi.set(__self__, "supported_privacy", supported_privacy)
+        if transfer_failure_reason and not isinstance(transfer_failure_reason, str):
+            raise TypeError("Expected argument 'transfer_failure_reason' to be a str")
+        pulumi.set(__self__, "transfer_failure_reason", transfer_failure_reason)
 
     @property
     @pulumi.getter(name="contactSettings")
@@ -138,6 +144,14 @@ class GetRegistrationResult:
         return pulumi.get(self, "pending_contact_settings")
 
     @property
+    @pulumi.getter(name="registerFailureReason")
+    def register_failure_reason(self) -> str:
+        """
+        The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
+        """
+        return pulumi.get(self, "register_failure_reason")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -152,6 +166,14 @@ class GetRegistrationResult:
         Set of options for the `contact_settings.privacy` field that this `Registration` supports.
         """
         return pulumi.get(self, "supported_privacy")
+
+    @property
+    @pulumi.getter(name="transferFailureReason")
+    def transfer_failure_reason(self) -> str:
+        """
+        The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        """
+        return pulumi.get(self, "transfer_failure_reason")
 
 
 class AwaitableGetRegistrationResult(GetRegistrationResult):
@@ -170,8 +192,10 @@ class AwaitableGetRegistrationResult(GetRegistrationResult):
             management_settings=self.management_settings,
             name=self.name,
             pending_contact_settings=self.pending_contact_settings,
+            register_failure_reason=self.register_failure_reason,
             state=self.state,
-            supported_privacy=self.supported_privacy)
+            supported_privacy=self.supported_privacy,
+            transfer_failure_reason=self.transfer_failure_reason)
 
 
 def get_registration(location: Optional[str] = None,
@@ -202,8 +226,10 @@ def get_registration(location: Optional[str] = None,
         management_settings=__ret__.management_settings,
         name=__ret__.name,
         pending_contact_settings=__ret__.pending_contact_settings,
+        register_failure_reason=__ret__.register_failure_reason,
         state=__ret__.state,
-        supported_privacy=__ret__.supported_privacy)
+        supported_privacy=__ret__.supported_privacy,
+        transfer_failure_reason=__ret__.transfer_failure_reason)
 
 
 @_utilities.lift_output_func(get_registration)

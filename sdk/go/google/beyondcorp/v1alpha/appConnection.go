@@ -15,7 +15,7 @@ import (
 type AppConnection struct {
 	pulumi.CustomResourceState
 
-	// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppConnectionId pulumi.StringPtrOutput `pulumi:"appConnectionId"`
 	// Address of the remote application endpoint for the BeyondCorp AppConnection.
 	ApplicationEndpoint GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponseOutput `pulumi:"applicationEndpoint"`
@@ -92,7 +92,7 @@ func (AppConnectionState) ElementType() reflect.Type {
 }
 
 type appConnectionArgs struct {
-	// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppConnectionId *string `pulumi:"appConnectionId"`
 	// Address of the remote application endpoint for the BeyondCorp AppConnection.
 	ApplicationEndpoint GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint `pulumi:"applicationEndpoint"`
@@ -118,7 +118,7 @@ type appConnectionArgs struct {
 
 // The set of arguments for constructing a AppConnection resource.
 type AppConnectionArgs struct {
-	// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	AppConnectionId pulumi.StringPtrInput
 	// Address of the remote application endpoint for the BeyondCorp AppConnection.
 	ApplicationEndpoint GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointInput
@@ -179,7 +179,7 @@ func (o AppConnectionOutput) ToAppConnectionOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 func (o AppConnectionOutput) AppConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.AppConnectionId }).(pulumi.StringPtrOutput)
 }

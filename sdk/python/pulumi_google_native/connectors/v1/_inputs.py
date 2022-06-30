@@ -634,6 +634,7 @@ class SshPublicKeyArgs:
                  ssh_client_cert: Optional[pulumi.Input['SecretArgs']] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        Parameters to support Ssh public key Authentication.
         :param pulumi.Input[str] cert_type: Format of SSH Client cert.
         :param pulumi.Input['SecretArgs'] password: This is an optional field used in case client has enabled multi-factor authentication
         :param pulumi.Input['SecretArgs'] ssh_client_cert: SSH Client Cert. It should contain both public and private key.

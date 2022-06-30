@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The lifecycle state of the App.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
         /// </summary>
         [Output("webId")]

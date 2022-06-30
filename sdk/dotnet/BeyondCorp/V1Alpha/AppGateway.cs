@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Output<ImmutableArray<Outputs.AllocatedConnectionResponse>> AllocatedConnections { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Output("appGatewayId")]
         public Output<string?> AppGatewayId { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public sealed class AppGatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        /// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         /// </summary>
         [Input("appGatewayId")]
         public Input<string>? AppGatewayId { get; set; }

@@ -169,6 +169,7 @@ class AndroidApp(pulumi.CustomResource):
             __props__.__dict__["package_name"] = package_name
             __props__.__dict__["project"] = project
             __props__.__dict__["app_id"] = None
+            __props__.__dict__["state"] = None
         super(AndroidApp, __self__).__init__(
             'google-native:firebase/v1beta1:AndroidApp',
             resource_name,
@@ -197,6 +198,7 @@ class AndroidApp(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["package_name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["state"] = None
         return AndroidApp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -243,4 +245,12 @@ class AndroidApp(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The lifecycle state of the App.
+        """
+        return pulumi.get(self, "state")
 

@@ -14465,6 +14465,8 @@ type FirewallPolicyRule struct {
 	Priority *int `pulumi:"priority"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName *string `pulumi:"ruleName"`
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -14502,6 +14504,8 @@ type FirewallPolicyRuleArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrInput `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -14600,6 +14604,11 @@ func (o FirewallPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
 // An optional name for the rule. This field is not a unique identifier and can be updated.
 func (o FirewallPolicyRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+func (o FirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.SecurityProfileGroup }).(pulumi.StringPtrOutput)
 }
 
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -15272,6 +15281,8 @@ type FirewallPolicyRuleResponse struct {
 	RuleName string `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -15343,6 +15354,11 @@ func (o FirewallPolicyRuleResponseOutput) RuleName() pulumi.StringOutput {
 // Calculation of the complexity of a single firewall policy rule.
 func (o FirewallPolicyRuleResponseOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) int { return v.RuleTupleCount }).(pulumi.IntOutput)
+}
+
+// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+func (o FirewallPolicyRuleResponseOutput) SecurityProfileGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleResponse) string { return v.SecurityProfileGroup }).(pulumi.StringOutput)
 }
 
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -47381,6 +47397,8 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
 	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
 	ExceedAction *string `pulumi:"exceedAction"`
+	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+	ExceedActionRpcStatus *SecurityPolicyRuleRateLimitOptionsRpcStatus `pulumi:"exceedActionRpcStatus"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
@@ -47411,6 +47429,8 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
 	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
+	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput `pulumi:"exceedActionRpcStatus"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
@@ -47528,6 +47548,13 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPt
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
 }
 
+// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		return v.ExceedActionRpcStatus
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
 // Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
@@ -47626,6 +47653,16 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		if v == nil {
+			return nil
+		}
+		return v.ExceedActionRpcStatus
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
 // Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
@@ -47659,6 +47696,8 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
 	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
 	ExceedAction string `pulumi:"exceedAction"`
+	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusResponse `pulumi:"exceedActionRpcStatus"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
@@ -47711,6 +47750,13 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
 }
 
+// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
+		return v.ExceedActionRpcStatus
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput)
+}
+
 // Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
@@ -47723,6 +47769,198 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) RateLimitThreshold() S
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
 		return v.RateLimitThreshold
 	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatus struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsRpcStatusInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs and SecurityPolicyRuleRateLimitOptionsRpcStatusOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
+type SecurityPolicyRuleRateLimitOptionsRpcStatusInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput).ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs, SecurityPolicyRuleRateLimitOptionsRpcStatusPtr and SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsRpcStatusPtrType SecurityPolicyRuleRateLimitOptionsRpcStatusArgs
+
+func SecurityPolicyRuleRateLimitOptionsRpcStatusPtr(v *SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType)(v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptionsRpcStatus) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleRateLimitOptionsRpcStatus
+		return ret
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message string `pulumi:"message"`
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
 type SecurityPolicyRuleRateLimitOptionsThreshold struct {
@@ -55358,6 +55596,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
@@ -56166,6 +56406,9 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput{})

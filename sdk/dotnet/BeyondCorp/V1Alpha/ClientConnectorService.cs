@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public partial class ClientConnectorService : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+        /// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
         /// </summary>
         [Output("clientConnectorServiceId")]
         public Output<string?> ClientConnectorServiceId { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     public sealed class ClientConnectorServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
+        /// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
         /// </summary>
         [Input("clientConnectorServiceId")]
         public Input<string>? ClientConnectorServiceId { get; set; }

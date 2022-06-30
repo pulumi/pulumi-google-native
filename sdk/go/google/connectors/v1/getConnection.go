@@ -38,6 +38,8 @@ type LookupConnectionResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Description of the resource.
 	Description string `pulumi:"description"`
+	// Outbound domains/hosts needs to be allowlisted.
+	EgressBackends []string `pulumi:"egressBackends"`
 	// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	EnvoyImageLocation string `pulumi:"envoyImageLocation"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -121,6 +123,11 @@ func (o LookupConnectionResultOutput) CreateTime() pulumi.StringOutput {
 // Optional. Description of the resource.
 func (o LookupConnectionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Outbound domains/hosts needs to be allowlisted.
+func (o LookupConnectionResultOutput) EgressBackends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []string { return v.EgressBackends }).(pulumi.StringArrayOutput)
 }
 
 // GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}

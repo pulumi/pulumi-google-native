@@ -30,7 +30,7 @@ class AppGatewayArgs:
         The set of arguments for constructing a AppGateway resource.
         :param pulumi.Input['AppGatewayHostType'] host_type: The type of hosting used by the AppGateway.
         :param pulumi.Input['AppGatewayType'] type: The type of network connectivity used by the AppGateway.
-        :param pulumi.Input[str] app_gateway_id: Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] app_gateway_id: Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: Unique resource name of the AppGateway. The name is ignored when creating an AppGateway.
@@ -84,7 +84,7 @@ class AppGatewayArgs:
     @pulumi.getter(name="appGatewayId")
     def app_gateway_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "app_gateway_id")
 
@@ -192,7 +192,7 @@ class AppGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_gateway_id: Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        :param pulumi.Input[str] app_gateway_id: Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters.
         :param pulumi.Input['AppGatewayHostType'] host_type: The type of hosting used by the AppGateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
@@ -321,7 +321,7 @@ class AppGateway(pulumi.CustomResource):
     @pulumi.getter(name="appGatewayId")
     def app_gateway_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+        Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """
         return pulumi.get(self, "app_gateway_id")
 

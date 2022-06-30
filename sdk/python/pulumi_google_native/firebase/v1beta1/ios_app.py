@@ -209,6 +209,7 @@ class IosApp(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["team_id"] = team_id
             __props__.__dict__["app_id"] = None
+            __props__.__dict__["state"] = None
         super(IosApp, __self__).__init__(
             'google-native:firebase/v1beta1:IosApp',
             resource_name,
@@ -238,6 +239,7 @@ class IosApp(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["state"] = None
         __props__.__dict__["team_id"] = None
         return IosApp(resource_name, opts=opts, __props__=__props__)
 
@@ -293,6 +295,14 @@ class IosApp(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The lifecycle state of the App.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="teamId")

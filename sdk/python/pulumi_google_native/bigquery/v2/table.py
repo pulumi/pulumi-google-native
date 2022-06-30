@@ -25,6 +25,7 @@ class TableArgs:
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  materialized_view: Optional[pulumi.Input['MaterializedViewDefinitionArgs']] = None,
+                 max_staleness: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input['ModelDefinitionArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
@@ -43,6 +44,7 @@ class TableArgs:
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for this table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
         :param pulumi.Input['MaterializedViewDefinitionArgs'] materialized_view: [Optional] Materialized view definition.
+        :param pulumi.Input[str] max_staleness: [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
         :param pulumi.Input['ModelDefinitionArgs'] model: [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
         :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
@@ -68,6 +70,8 @@ class TableArgs:
             pulumi.set(__self__, "labels", labels)
         if materialized_view is not None:
             pulumi.set(__self__, "materialized_view", materialized_view)
+        if max_staleness is not None:
+            pulumi.set(__self__, "max_staleness", max_staleness)
         if model is not None:
             pulumi.set(__self__, "model", model)
         if project is not None:
@@ -191,6 +195,18 @@ class TableArgs:
         pulumi.set(self, "materialized_view", value)
 
     @property
+    @pulumi.getter(name="maxStaleness")
+    def max_staleness(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        """
+        return pulumi.get(self, "max_staleness")
+
+    @max_staleness.setter
+    def max_staleness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_staleness", value)
+
+    @property
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input['ModelDefinitionArgs']]:
         """
@@ -298,6 +314,7 @@ class Table(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  materialized_view: Optional[pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']]] = None,
+                 max_staleness: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[pulumi.InputType['ModelDefinitionArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
@@ -321,6 +338,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for this table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
         :param pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']] materialized_view: [Optional] Materialized view definition.
+        :param pulumi.Input[str] max_staleness: [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
         :param pulumi.Input[pulumi.InputType['ModelDefinitionArgs']] model: [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
         :param pulumi.Input[pulumi.InputType['RangePartitioningArgs']] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
@@ -363,6 +381,7 @@ class Table(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  materialized_view: Optional[pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']]] = None,
+                 max_staleness: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[pulumi.InputType['ModelDefinitionArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
@@ -396,6 +415,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["materialized_view"] = materialized_view
+            __props__.__dict__["max_staleness"] = max_staleness
             __props__.__dict__["model"] = model
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
@@ -465,6 +485,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["last_modified_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["materialized_view"] = None
+        __props__.__dict__["max_staleness"] = None
         __props__.__dict__["model"] = None
         __props__.__dict__["num_active_logical_bytes"] = None
         __props__.__dict__["num_active_physical_bytes"] = None
@@ -615,6 +636,14 @@ class Table(pulumi.CustomResource):
         [Optional] Materialized view definition.
         """
         return pulumi.get(self, "materialized_view")
+
+    @property
+    @pulumi.getter(name="maxStaleness")
+    def max_staleness(self) -> pulumi.Output[str]:
+        """
+        [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        """
+        return pulumi.get(self, "max_staleness")
 
     @property
     @pulumi.getter

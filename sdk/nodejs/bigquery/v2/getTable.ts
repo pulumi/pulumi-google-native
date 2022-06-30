@@ -93,6 +93,10 @@ export interface GetTableResult {
      */
     readonly materializedView: outputs.bigquery.v2.MaterializedViewDefinitionResponse;
     /**
+     * [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+     */
+    readonly maxStaleness: string;
+    /**
      * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
      */
     readonly model: outputs.bigquery.v2.ModelDefinitionResponse;

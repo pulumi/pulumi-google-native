@@ -17,7 +17,7 @@ type Connection struct {
 
 	// Address of the remote application endpoint for the BeyondCorp Connection.
 	ApplicationEndpoint ApplicationEndpointResponseOutput `pulumi:"applicationEndpoint"`
-	// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ConnectionId pulumi.StringPtrOutput `pulumi:"connectionId"`
 	// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
 	Connectors pulumi.StringArrayOutput `pulumi:"connectors"`
@@ -94,7 +94,7 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// Address of the remote application endpoint for the BeyondCorp Connection.
 	ApplicationEndpoint ApplicationEndpoint `pulumi:"applicationEndpoint"`
-	// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ConnectionId *string `pulumi:"connectionId"`
 	// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
 	Connectors []string `pulumi:"connectors"`
@@ -120,7 +120,7 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// Address of the remote application endpoint for the BeyondCorp Connection.
 	ApplicationEndpoint ApplicationEndpointInput
-	// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+	// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 	ConnectionId pulumi.StringPtrInput
 	// Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
 	Connectors pulumi.StringArrayInput
@@ -184,7 +184,7 @@ func (o ConnectionOutput) ApplicationEndpoint() ApplicationEndpointResponseOutpu
 	return o.ApplyT(func(v *Connection) ApplicationEndpointResponseOutput { return v.ApplicationEndpoint }).(ApplicationEndpointResponseOutput)
 }
 
-// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from (/a-z-/). * Must end with a number or a letter.
+// Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
 func (o ConnectionOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }

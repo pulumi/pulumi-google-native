@@ -47,6 +47,8 @@ type Table struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// [Optional] Materialized view definition.
 	MaterializedView MaterializedViewDefinitionResponseOutput `pulumi:"materializedView"`
+	// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+	MaxStaleness pulumi.StringOutput `pulumi:"maxStaleness"`
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model ModelDefinitionResponseOutput `pulumi:"model"`
 	// Number of logical bytes that are less than 90 days old.
@@ -155,6 +157,8 @@ type tableArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// [Optional] Materialized view definition.
 	MaterializedView *MaterializedViewDefinition `pulumi:"materializedView"`
+	// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+	MaxStaleness *string `pulumi:"maxStaleness"`
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model   *ModelDefinition `pulumi:"model"`
 	Project *string          `pulumi:"project"`
@@ -191,6 +195,8 @@ type TableArgs struct {
 	Labels pulumi.StringMapInput
 	// [Optional] Materialized view definition.
 	MaterializedView MaterializedViewDefinitionPtrInput
+	// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+	MaxStaleness pulumi.StringPtrInput
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model   ModelDefinitionPtrInput
 	Project pulumi.StringPtrInput
@@ -322,6 +328,11 @@ func (o TableOutput) Location() pulumi.StringOutput {
 // [Optional] Materialized view definition.
 func (o TableOutput) MaterializedView() MaterializedViewDefinitionResponseOutput {
 	return o.ApplyT(func(v *Table) MaterializedViewDefinitionResponseOutput { return v.MaterializedView }).(MaterializedViewDefinitionResponseOutput)
+}
+
+// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+func (o TableOutput) MaxStaleness() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.MaxStaleness }).(pulumi.StringOutput)
 }
 
 // [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.

@@ -37,6 +37,8 @@ type Secret struct {
 	Topics TopicResponseArrayOutput `pulumi:"topics"`
 	// Input only. The TTL for the Secret.
 	Ttl pulumi.StringOutput `pulumi:"ttl"`
+	// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+	VersionAliases pulumi.StringMapOutput `pulumi:"versionAliases"`
 }
 
 // NewSecret registers a new resource with the given unique name, arguments, and options.
@@ -101,6 +103,8 @@ type secretArgs struct {
 	Topics []Topic `pulumi:"topics"`
 	// Input only. The TTL for the Secret.
 	Ttl *string `pulumi:"ttl"`
+	// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+	VersionAliases map[string]string `pulumi:"versionAliases"`
 }
 
 // The set of arguments for constructing a Secret resource.
@@ -122,6 +126,8 @@ type SecretArgs struct {
 	Topics TopicArrayInput
 	// Input only. The TTL for the Secret.
 	Ttl pulumi.StringPtrInput
+	// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+	VersionAliases pulumi.StringMapInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {
@@ -213,6 +219,11 @@ func (o SecretOutput) Topics() TopicResponseArrayOutput {
 // Input only. The TTL for the Secret.
 func (o SecretOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Ttl }).(pulumi.StringOutput)
+}
+
+// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+func (o SecretOutput) VersionAliases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.VersionAliases }).(pulumi.StringMapOutput)
 }
 
 func init() {

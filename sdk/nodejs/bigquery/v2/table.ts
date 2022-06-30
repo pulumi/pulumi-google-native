@@ -98,6 +98,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly materializedView!: pulumi.Output<outputs.bigquery.v2.MaterializedViewDefinitionResponse>;
     /**
+     * [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+     */
+    public readonly maxStaleness!: pulumi.Output<string>;
+    /**
      * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
      */
     public readonly model!: pulumi.Output<outputs.bigquery.v2.ModelDefinitionResponse>;
@@ -214,6 +218,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["materializedView"] = args ? args.materializedView : undefined;
+            resourceInputs["maxStaleness"] = args ? args.maxStaleness : undefined;
             resourceInputs["model"] = args ? args.model : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
@@ -262,6 +267,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["materializedView"] = undefined /*out*/;
+            resourceInputs["maxStaleness"] = undefined /*out*/;
             resourceInputs["model"] = undefined /*out*/;
             resourceInputs["numActiveLogicalBytes"] = undefined /*out*/;
             resourceInputs["numActivePhysicalBytes"] = undefined /*out*/;
@@ -329,6 +335,10 @@ export interface TableArgs {
      * [Optional] Materialized view definition.
      */
     materializedView?: pulumi.Input<inputs.bigquery.v2.MaterializedViewDefinitionArgs>;
+    /**
+     * [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+     */
+    maxStaleness?: pulumi.Input<string>;
     /**
      * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
      */
