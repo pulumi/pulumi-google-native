@@ -42,6 +42,7 @@ from .get_environment import *
 from .get_environment_entry import *
 from .get_export import *
 from .get_host_query import *
+from .get_host_security_report import *
 from .get_instance import *
 from .get_instance_attachment import *
 from .get_key import *
@@ -55,10 +56,12 @@ from .get_rate_plan import *
 from .get_reference import *
 from .get_report import *
 from .get_resourcefile import *
+from .get_security_report import *
 from .get_sharedflow import *
 from .get_subscription import *
 from .get_target_server import *
 from .host_query import *
+from .host_security_report import *
 from .instance import *
 from .instance_attachment import *
 from .keystore import *
@@ -71,6 +74,7 @@ from .rate_plan import *
 from .reference import *
 from .report import *
 from .resourcefile import *
+from .security_report import *
 from .sharedflow import *
 from .subscription import *
 from .target_server import *

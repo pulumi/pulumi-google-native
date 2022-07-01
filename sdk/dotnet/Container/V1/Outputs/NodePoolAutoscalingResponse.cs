@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// Location policy used when scaling up a nodepool.
+        /// </summary>
+        public readonly string LocationPolicy;
+        /// <summary>
         /// Maximum number of nodes for one location in the NodePool. Must be &gt;= min_node_count. There has to be enough quota to scale up the cluster.
         /// </summary>
         public readonly int MaxNodeCount;
@@ -32,6 +36,14 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Minimum number of nodes for one location in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
         /// </summary>
         public readonly int MinNodeCount;
+        /// <summary>
+        /// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        /// </summary>
+        public readonly int TotalMaxNodeCount;
+        /// <summary>
+        /// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        /// </summary>
+        public readonly int TotalMinNodeCount;
 
         [OutputConstructor]
         private NodePoolAutoscalingResponse(
@@ -39,14 +51,23 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             bool enabled,
 
+            string locationPolicy,
+
             int maxNodeCount,
 
-            int minNodeCount)
+            int minNodeCount,
+
+            int totalMaxNodeCount,
+
+            int totalMinNodeCount)
         {
             Autoprovisioned = autoprovisioned;
             Enabled = enabled;
+            LocationPolicy = locationPolicy;
             MaxNodeCount = maxNodeCount;
             MinNodeCount = minNodeCount;
+            TotalMaxNodeCount = totalMaxNodeCount;
+            TotalMinNodeCount = totalMinNodeCount;
         }
     }
 }

@@ -411,6 +411,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["status_message"] = None
+            __props__.__dict__["update_info"] = None
         super(NodePool, __self__).__init__(
             'google-native:container/v1:NodePool',
             resource_name,
@@ -450,6 +451,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_message"] = None
+        __props__.__dict__["update_info"] = None
         __props__.__dict__["upgrade_settings"] = None
         __props__.__dict__["version"] = None
         return NodePool(resource_name, opts=opts, __props__=__props__)
@@ -495,7 +497,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="instanceGroupUrls")
     def instance_group_urls(self) -> pulumi.Output[Sequence[str]]:
         """
-        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
         """
         return pulumi.get(self, "instance_group_urls")
 
@@ -580,6 +582,14 @@ class NodePool(pulumi.CustomResource):
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         """
         return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="updateInfo")
+    def update_info(self) -> pulumi.Output['outputs.UpdateInfoResponse']:
+        """
+        [Output only] Update info contains relevant information during a node pool update.
+        """
+        return pulumi.get(self, "update_info")
 
     @property
     @pulumi.getter(name="upgradeSettings")

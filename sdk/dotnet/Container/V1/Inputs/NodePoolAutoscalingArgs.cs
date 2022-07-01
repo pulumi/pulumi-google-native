@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Location policy used when scaling up a nodepool.
+        /// </summary>
+        [Input("locationPolicy")]
+        public Input<Pulumi.GoogleNative.Container.V1.NodePoolAutoscalingLocationPolicy>? LocationPolicy { get; set; }
+
+        /// <summary>
         /// Maximum number of nodes for one location in the NodePool. Must be &gt;= min_node_count. There has to be enough quota to scale up the cluster.
         /// </summary>
         [Input("maxNodeCount")]
@@ -38,6 +44,18 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// </summary>
         [Input("minNodeCount")]
         public Input<int>? MinNodeCount { get; set; }
+
+        /// <summary>
+        /// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        /// </summary>
+        [Input("totalMaxNodeCount")]
+        public Input<int>? TotalMaxNodeCount { get; set; }
+
+        /// <summary>
+        /// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        /// </summary>
+        [Input("totalMinNodeCount")]
+        public Input<int>? TotalMinNodeCount { get; set; }
 
         public NodePoolAutoscalingArgs()
         {

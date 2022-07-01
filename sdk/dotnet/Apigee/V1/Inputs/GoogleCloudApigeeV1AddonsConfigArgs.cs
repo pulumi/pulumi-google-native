@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public Input<Inputs.GoogleCloudApigeeV1AdvancedApiOpsConfigArgs>? AdvancedApiOpsConfig { get; set; }
 
         /// <summary>
+        /// Configuration for the API Security add-on.
+        /// </summary>
+        [Input("apiSecurityConfig")]
+        public Input<Inputs.GoogleCloudApigeeV1ApiSecurityConfigArgs>? ApiSecurityConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the Connectors Platform add-on.
         /// </summary>
         [Input("connectorsPlatformConfig")]

@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'GoogleCloudApigeeV1AddonsConfigArgs',
     'GoogleCloudApigeeV1AdvancedApiOpsConfigArgs',
+    'GoogleCloudApigeeV1ApiSecurityConfigArgs',
     'GoogleCloudApigeeV1AttributeArgs',
     'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs',
     'GoogleCloudApigeeV1ConnectorsPlatformConfigArgs',
@@ -34,6 +35,7 @@ __all__ = [
     'GoogleCloudApigeeV1RateRangeArgs',
     'GoogleCloudApigeeV1ReportPropertyArgs',
     'GoogleCloudApigeeV1RevenueShareRangeArgs',
+    'GoogleCloudApigeeV1SecurityReportQueryMetricArgs',
     'GoogleCloudApigeeV1TlsInfoCommonNameArgs',
     'GoogleCloudApigeeV1TlsInfoArgs',
     'GoogleCloudApigeeV1TraceSamplingConfigArgs',
@@ -48,18 +50,22 @@ __all__ = [
 class GoogleCloudApigeeV1AddonsConfigArgs:
     def __init__(__self__, *,
                  advanced_api_ops_config: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']] = None,
+                 api_security_config: Optional[pulumi.Input['GoogleCloudApigeeV1ApiSecurityConfigArgs']] = None,
                  connectors_platform_config: Optional[pulumi.Input['GoogleCloudApigeeV1ConnectorsPlatformConfigArgs']] = None,
                  integration_config: Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']] = None,
                  monetization_config: Optional[pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs']] = None):
         """
         Add-on configurations for the Apigee organization.
         :param pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
+        :param pulumi.Input['GoogleCloudApigeeV1ApiSecurityConfigArgs'] api_security_config: Configuration for the API Security add-on.
         :param pulumi.Input['GoogleCloudApigeeV1ConnectorsPlatformConfigArgs'] connectors_platform_config: Configuration for the Connectors Platform add-on.
         :param pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs'] integration_config: Configuration for the Integration add-on.
         :param pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs'] monetization_config: Configuration for the Monetization add-on.
         """
         if advanced_api_ops_config is not None:
             pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+        if api_security_config is not None:
+            pulumi.set(__self__, "api_security_config", api_security_config)
         if connectors_platform_config is not None:
             pulumi.set(__self__, "connectors_platform_config", connectors_platform_config)
         if integration_config is not None:
@@ -78,6 +84,18 @@ class GoogleCloudApigeeV1AddonsConfigArgs:
     @advanced_api_ops_config.setter
     def advanced_api_ops_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']]):
         pulumi.set(self, "advanced_api_ops_config", value)
+
+    @property
+    @pulumi.getter(name="apiSecurityConfig")
+    def api_security_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1ApiSecurityConfigArgs']]:
+        """
+        Configuration for the API Security add-on.
+        """
+        return pulumi.get(self, "api_security_config")
+
+    @api_security_config.setter
+    def api_security_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1ApiSecurityConfigArgs']]):
+        pulumi.set(self, "api_security_config", value)
 
     @property
     @pulumi.getter(name="connectorsPlatformConfig")
@@ -132,6 +150,30 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfigArgs:
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1ApiSecurityConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configurations of the API Security add-on.
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the API security add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the API security add-on is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -1122,6 +1164,93 @@ class GoogleCloudApigeeV1RevenueShareRangeArgs:
     @start.setter
     def start(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1SecurityReportQueryMetricArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 aggregation_function: Optional[pulumi.Input[str]] = None,
+                 alias: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Metric of the Query
+        :param pulumi.Input[str] name: Metric name.
+        :param pulumi.Input[str] aggregation_function: Aggregation function: avg, min, max, or sum.
+        :param pulumi.Input[str] alias: Alias for the metric. Alias will be used to replace metric name in query results.
+        :param pulumi.Input[str] operator: One of `+`, `-`, `/`, `%`, `*`.
+        :param pulumi.Input[str] value: Operand value should be provided when operator is set.
+        """
+        pulumi.set(__self__, "name", name)
+        if aggregation_function is not None:
+            pulumi.set(__self__, "aggregation_function", aggregation_function)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Metric name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="aggregationFunction")
+    def aggregation_function(self) -> Optional[pulumi.Input[str]]:
+        """
+        Aggregation function: avg, min, max, or sum.
+        """
+        return pulumi.get(self, "aggregation_function")
+
+    @aggregation_function.setter
+    def aggregation_function(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aggregation_function", value)
+
+    @property
+    @pulumi.getter
+    def alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alias for the metric. Alias will be used to replace metric name in query results.
+        """
+        return pulumi.get(self, "alias")
+
+    @alias.setter
+    def alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alias", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of `+`, `-`, `/`, `%`, `*`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operand value should be provided when operator is set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

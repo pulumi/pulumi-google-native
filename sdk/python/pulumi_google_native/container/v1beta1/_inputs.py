@@ -20,6 +20,7 @@ __all__ = [
     'AutoprovisioningNodePoolDefaultsArgs',
     'BigQueryDestinationArgs',
     'BinaryAuthorizationArgs',
+    'BlueGreenSettingsArgs',
     'CidrBlockArgs',
     'ClientCertificateConfigArgs',
     'CloudRunConfigArgs',
@@ -94,6 +95,7 @@ __all__ = [
     'ServiceExternalIPsConfigArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedNodesArgs',
+    'StandardRolloutPolicyArgs',
     'StatusConditionArgs',
     'TimeWindowArgs',
     'TpuConfigArgs',
@@ -725,6 +727,46 @@ class BinaryAuthorizationArgs:
     @evaluation_mode.setter
     def evaluation_mode(self, value: Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']]):
         pulumi.set(self, "evaluation_mode", value)
+
+
+@pulumi.input_type
+class BlueGreenSettingsArgs:
+    def __init__(__self__, *,
+                 node_pool_soak_duration: Optional[pulumi.Input[str]] = None,
+                 standard_rollout_policy: Optional[pulumi.Input['StandardRolloutPolicyArgs']] = None):
+        """
+        Settings for blue-green upgrade.
+        :param pulumi.Input[str] node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+        :param pulumi.Input['StandardRolloutPolicyArgs'] standard_rollout_policy: Standard policy for the blue-green upgrade.
+        """
+        if node_pool_soak_duration is not None:
+            pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
+        if standard_rollout_policy is not None:
+            pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
+
+    @property
+    @pulumi.getter(name="nodePoolSoakDuration")
+    def node_pool_soak_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+        """
+        return pulumi.get(self, "node_pool_soak_duration")
+
+    @node_pool_soak_duration.setter
+    def node_pool_soak_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_pool_soak_duration", value)
+
+    @property
+    @pulumi.getter(name="standardRolloutPolicy")
+    def standard_rollout_policy(self) -> Optional[pulumi.Input['StandardRolloutPolicyArgs']]:
+        """
+        Standard policy for the blue-green upgrade.
+        """
+        return pulumi.get(self, "standard_rollout_policy")
+
+    @standard_rollout_policy.setter
+    def standard_rollout_policy(self, value: Optional[pulumi.Input['StandardRolloutPolicyArgs']]):
+        pulumi.set(self, "standard_rollout_policy", value)
 
 
 @pulumi.input_type
@@ -1854,13 +1896,29 @@ class LegacyAbacArgs:
 @pulumi.input_type
 class LinuxNodeConfigArgs:
     def __init__(__self__, *,
+                 cgroup_mode: Optional[pulumi.Input['LinuxNodeConfigCgroupMode']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Parameters that can be configured on Linux nodes.
+        :param pulumi.Input['LinuxNodeConfigCgroupMode'] cgroup_mode: cgroup_mode specifies the cgroup mode to be used on the node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
+        if cgroup_mode is not None:
+            pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> Optional[pulumi.Input['LinuxNodeConfigCgroupMode']]:
+        """
+        cgroup_mode specifies the cgroup mode to be used on the node.
+        """
+        return pulumi.get(self, "cgroup_mode")
+
+    @cgroup_mode.setter
+    def cgroup_mode(self, value: Optional[pulumi.Input['LinuxNodeConfigCgroupMode']]):
+        pulumi.set(self, "cgroup_mode", value)
 
     @property
     @pulumi.getter
@@ -2550,7 +2608,7 @@ class NodeConfigDefaultsArgs:
                  gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None):
         """
         Subset of NodeConfig message that has defaults.
-        :param pulumi.Input['GcfsConfigArgs'] gcfs_config: GCFS (Google Container File System, a.k.a Riptide) options.
+        :param pulumi.Input['GcfsConfigArgs'] gcfs_config: GCFS (Google Container File System, a.k.a. Riptide) options.
         """
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
@@ -2559,7 +2617,7 @@ class NodeConfigDefaultsArgs:
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> Optional[pulumi.Input['GcfsConfigArgs']]:
         """
-        GCFS (Google Container File System, a.k.a Riptide) options.
+        GCFS (Google Container File System, a.k.a. Riptide) options.
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -3253,23 +3311,35 @@ class NodePoolAutoscalingArgs:
     def __init__(__self__, *,
                  autoprovisioned: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 location_policy: Optional[pulumi.Input['NodePoolAutoscalingLocationPolicy']] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
-                 min_node_count: Optional[pulumi.Input[int]] = None):
+                 min_node_count: Optional[pulumi.Input[int]] = None,
+                 total_max_node_count: Optional[pulumi.Input[int]] = None,
+                 total_min_node_count: Optional[pulumi.Input[int]] = None):
         """
         NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         :param pulumi.Input[bool] autoprovisioned: Can this node pool be deleted automatically.
         :param pulumi.Input[bool] enabled: Is autoscaling enabled for this node pool.
+        :param pulumi.Input['NodePoolAutoscalingLocationPolicy'] location_policy: Location policy used when scaling up a nodepool.
         :param pulumi.Input[int] max_node_count: Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
         :param pulumi.Input[int] min_node_count: Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
+        :param pulumi.Input[int] total_max_node_count: Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        :param pulumi.Input[int] total_min_node_count: Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
         """
         if autoprovisioned is not None:
             pulumi.set(__self__, "autoprovisioned", autoprovisioned)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if location_policy is not None:
+            pulumi.set(__self__, "location_policy", location_policy)
         if max_node_count is not None:
             pulumi.set(__self__, "max_node_count", max_node_count)
         if min_node_count is not None:
             pulumi.set(__self__, "min_node_count", min_node_count)
+        if total_max_node_count is not None:
+            pulumi.set(__self__, "total_max_node_count", total_max_node_count)
+        if total_min_node_count is not None:
+            pulumi.set(__self__, "total_min_node_count", total_min_node_count)
 
     @property
     @pulumi.getter
@@ -3296,6 +3366,18 @@ class NodePoolAutoscalingArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="locationPolicy")
+    def location_policy(self) -> Optional[pulumi.Input['NodePoolAutoscalingLocationPolicy']]:
+        """
+        Location policy used when scaling up a nodepool.
+        """
+        return pulumi.get(self, "location_policy")
+
+    @location_policy.setter
+    def location_policy(self, value: Optional[pulumi.Input['NodePoolAutoscalingLocationPolicy']]):
+        pulumi.set(self, "location_policy", value)
+
+    @property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -3318,6 +3400,30 @@ class NodePoolAutoscalingArgs:
     @min_node_count.setter
     def min_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_node_count", value)
+
+    @property
+    @pulumi.getter(name="totalMaxNodeCount")
+    def total_max_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        """
+        return pulumi.get(self, "total_max_node_count")
+
+    @total_max_node_count.setter
+    def total_max_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_max_node_count", value)
+
+    @property
+    @pulumi.getter(name="totalMinNodeCount")
+    def total_min_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        """
+        return pulumi.get(self, "total_min_node_count")
+
+    @total_min_node_count.setter
+    def total_min_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_min_node_count", value)
 
 
 @pulumi.input_type
@@ -4209,6 +4315,62 @@ class ShieldedNodesArgs:
 
 
 @pulumi.input_type
+class StandardRolloutPolicyArgs:
+    def __init__(__self__, *,
+                 batch_node_count: Optional[pulumi.Input[int]] = None,
+                 batch_percentage: Optional[pulumi.Input[float]] = None,
+                 batch_soak_duration: Optional[pulumi.Input[str]] = None):
+        """
+        Standard rollout policy is the default policy for blue-green.
+        :param pulumi.Input[int] batch_node_count: Number of blue nodes to drain in a batch.
+        :param pulumi.Input[float] batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        :param pulumi.Input[str] batch_soak_duration: Soak time after each batch gets drained. Default to zero.
+        """
+        if batch_node_count is not None:
+            pulumi.set(__self__, "batch_node_count", batch_node_count)
+        if batch_percentage is not None:
+            pulumi.set(__self__, "batch_percentage", batch_percentage)
+        if batch_soak_duration is not None:
+            pulumi.set(__self__, "batch_soak_duration", batch_soak_duration)
+
+    @property
+    @pulumi.getter(name="batchNodeCount")
+    def batch_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of blue nodes to drain in a batch.
+        """
+        return pulumi.get(self, "batch_node_count")
+
+    @batch_node_count.setter
+    def batch_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_node_count", value)
+
+    @property
+    @pulumi.getter(name="batchPercentage")
+    def batch_percentage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        """
+        return pulumi.get(self, "batch_percentage")
+
+    @batch_percentage.setter
+    def batch_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "batch_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSoakDuration")
+    def batch_soak_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Soak time after each batch gets drained. Default to zero.
+        """
+        return pulumi.get(self, "batch_soak_duration")
+
+    @batch_soak_duration.setter
+    def batch_soak_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "batch_soak_duration", value)
+
+
+@pulumi.input_type
 class StatusConditionArgs:
     def __init__(__self__, *,
                  canonical_code: Optional[pulumi.Input['StatusConditionCanonicalCode']] = None,
@@ -4382,16 +4544,37 @@ class TpuConfigArgs:
 @pulumi.input_type
 class UpgradeSettingsArgs:
     def __init__(__self__, *,
+                 blue_green_settings: Optional[pulumi.Input['BlueGreenSettingsArgs']] = None,
                  max_surge: Optional[pulumi.Input[int]] = None,
-                 max_unavailable: Optional[pulumi.Input[int]] = None):
+                 max_unavailable: Optional[pulumi.Input[int]] = None,
+                 strategy: Optional[pulumi.Input['UpgradeSettingsStrategy']] = None):
         """
+        These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is SURGE, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
+        :param pulumi.Input['BlueGreenSettingsArgs'] blue_green_settings: Settings for blue-green upgrade strategy.
         :param pulumi.Input[int] max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
         :param pulumi.Input[int] max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
+        :param pulumi.Input['UpgradeSettingsStrategy'] strategy: Update strategy of the node pool.
         """
+        if blue_green_settings is not None:
+            pulumi.set(__self__, "blue_green_settings", blue_green_settings)
         if max_surge is not None:
             pulumi.set(__self__, "max_surge", max_surge)
         if max_unavailable is not None:
             pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="blueGreenSettings")
+    def blue_green_settings(self) -> Optional[pulumi.Input['BlueGreenSettingsArgs']]:
+        """
+        Settings for blue-green upgrade strategy.
+        """
+        return pulumi.get(self, "blue_green_settings")
+
+    @blue_green_settings.setter
+    def blue_green_settings(self, value: Optional[pulumi.Input['BlueGreenSettingsArgs']]):
+        pulumi.set(self, "blue_green_settings", value)
 
     @property
     @pulumi.getter(name="maxSurge")
@@ -4416,6 +4599,18 @@ class UpgradeSettingsArgs:
     @max_unavailable.setter
     def max_unavailable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unavailable", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input['UpgradeSettingsStrategy']]:
+        """
+        Update strategy of the node pool.
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input['UpgradeSettingsStrategy']]):
+        pulumi.set(self, "strategy", value)
 
 
 @pulumi.input_type

@@ -51,7 +51,7 @@ export interface GetNodePoolResult {
      */
     readonly initialNodeCount: number;
     /**
-     * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+     * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
      */
     readonly instanceGroupUrls: string[];
     /**
@@ -96,6 +96,10 @@ export interface GetNodePoolResult {
      * @deprecated [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
      */
     readonly statusMessage: string;
+    /**
+     * [Output only] Update info contains relevant information during a node pool update.
+     */
+    readonly updateInfo: outputs.container.v1beta1.UpdateInfoResponse;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */

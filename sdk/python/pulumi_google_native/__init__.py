@@ -465,6 +465,7 @@ _utilities.register(
    "google-native:apigee/v1:EnvironmentEntry": "EnvironmentEntry",
    "google-native:apigee/v1:Export": "Export",
    "google-native:apigee/v1:HostQuery": "HostQuery",
+   "google-native:apigee/v1:HostSecurityReport": "HostSecurityReport",
    "google-native:apigee/v1:Instance": "Instance",
    "google-native:apigee/v1:InstanceAttachment": "InstanceAttachment",
    "google-native:apigee/v1:Keystore": "Keystore",
@@ -477,6 +478,7 @@ _utilities.register(
    "google-native:apigee/v1:Reference": "Reference",
    "google-native:apigee/v1:Report": "Report",
    "google-native:apigee/v1:Resourcefile": "Resourcefile",
+   "google-native:apigee/v1:SecurityReport": "SecurityReport",
    "google-native:apigee/v1:Sharedflow": "Sharedflow",
    "google-native:apigee/v1:Subscription": "Subscription",
    "google-native:apigee/v1:TargetServer": "TargetServer"
@@ -2170,6 +2172,8 @@ _utilities.register(
   "mod": "logging/v2",
   "fqn": "pulumi_google_native.logging.v2",
   "classes": {
+   "google-native:logging/v2:BillingAccountBucket": "BillingAccountBucket",
+   "google-native:logging/v2:BillingAccountBucketView": "BillingAccountBucketView",
    "google-native:logging/v2:BillingAccountExclusion": "BillingAccountExclusion",
    "google-native:logging/v2:BillingAccountSink": "BillingAccountSink",
    "google-native:logging/v2:Bucket": "Bucket",
@@ -2814,7 +2818,8 @@ _utilities.register(
    "google-native:sqladmin/v1:BackupRun": "BackupRun",
    "google-native:sqladmin/v1:Database": "Database",
    "google-native:sqladmin/v1:Instance": "Instance",
-   "google-native:sqladmin/v1:SslCert": "SslCert"
+   "google-native:sqladmin/v1:SslCert": "SslCert",
+   "google-native:sqladmin/v1:User": "User"
   }
  },
  {
@@ -2825,7 +2830,8 @@ _utilities.register(
    "google-native:sqladmin/v1beta4:BackupRun": "BackupRun",
    "google-native:sqladmin/v1beta4:Database": "Database",
    "google-native:sqladmin/v1beta4:Instance": "Instance",
-   "google-native:sqladmin/v1beta4:SslCert": "SslCert"
+   "google-native:sqladmin/v1beta4:SslCert": "SslCert",
+   "google-native:sqladmin/v1beta4:User": "User"
   }
  },
  {

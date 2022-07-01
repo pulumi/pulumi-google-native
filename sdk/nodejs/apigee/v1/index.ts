@@ -41,6 +41,7 @@ export * from "./getEnvironment";
 export * from "./getEnvironmentEntry";
 export * from "./getExport";
 export * from "./getHostQuery";
+export * from "./getHostSecurityReport";
 export * from "./getInstance";
 export * from "./getInstanceAttachment";
 export * from "./getKey";
@@ -54,10 +55,12 @@ export * from "./getRatePlan";
 export * from "./getReference";
 export * from "./getReport";
 export * from "./getResourcefile";
+export * from "./getSecurityReport";
 export * from "./getSharedflow";
 export * from "./getSubscription";
 export * from "./getTargetServer";
 export * from "./hostQuery";
+export * from "./hostSecurityReport";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./keystore";
@@ -70,6 +73,7 @@ export * from "./ratePlan";
 export * from "./reference";
 export * from "./report";
 export * from "./resourcefile";
+export * from "./securityReport";
 export * from "./sharedflow";
 export * from "./subscription";
 export * from "./targetServer";
@@ -96,6 +100,7 @@ import { Environment } from "./environment";
 import { EnvironmentEntry } from "./environmentEntry";
 import { Export } from "./export";
 import { HostQuery } from "./hostQuery";
+import { HostSecurityReport } from "./hostSecurityReport";
 import { Instance } from "./instance";
 import { InstanceAttachment } from "./instanceAttachment";
 import { Keystore } from "./keystore";
@@ -108,6 +113,7 @@ import { RatePlan } from "./ratePlan";
 import { Reference } from "./reference";
 import { Report } from "./report";
 import { Resourcefile } from "./resourcefile";
+import { SecurityReport } from "./securityReport";
 import { Sharedflow } from "./sharedflow";
 import { Subscription } from "./subscription";
 import { TargetServer } from "./targetServer";
@@ -152,6 +158,8 @@ const _module = {
                 return new Export(name, <any>undefined, { urn })
             case "google-native:apigee/v1:HostQuery":
                 return new HostQuery(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:HostSecurityReport":
+                return new HostSecurityReport(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "google-native:apigee/v1:InstanceAttachment":
@@ -176,6 +184,8 @@ const _module = {
                 return new Report(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Resourcefile":
                 return new Resourcefile(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:SecurityReport":
+                return new SecurityReport(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Sharedflow":
                 return new Sharedflow(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Subscription":

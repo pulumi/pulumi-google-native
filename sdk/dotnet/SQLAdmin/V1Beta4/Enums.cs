@@ -901,4 +901,90 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Dual password status for the user.
+    /// </summary>
+    [EnumType]
+    public readonly struct UserDualPasswordType : IEquatable<UserDualPasswordType>
+    {
+        private readonly string _value;
+
+        private UserDualPasswordType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default value.
+        /// </summary>
+        public static UserDualPasswordType DualPasswordTypeUnspecified { get; } = new UserDualPasswordType("DUAL_PASSWORD_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Do not update the user's dual password status.
+        /// </summary>
+        public static UserDualPasswordType NoModifyDualPassword { get; } = new UserDualPasswordType("NO_MODIFY_DUAL_PASSWORD");
+        /// <summary>
+        /// No dual password usable for connecting using this user.
+        /// </summary>
+        public static UserDualPasswordType NoDualPassword { get; } = new UserDualPasswordType("NO_DUAL_PASSWORD");
+        /// <summary>
+        /// Dual password usable for connecting using this user.
+        /// </summary>
+        public static UserDualPasswordType DualPassword { get; } = new UserDualPasswordType("DUAL_PASSWORD");
+
+        public static bool operator ==(UserDualPasswordType left, UserDualPasswordType right) => left.Equals(right);
+        public static bool operator !=(UserDualPasswordType left, UserDualPasswordType right) => !left.Equals(right);
+
+        public static explicit operator string(UserDualPasswordType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UserDualPasswordType other && Equals(other);
+        public bool Equals(UserDualPasswordType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
+    /// </summary>
+    [EnumType]
+    public readonly struct UserType : IEquatable<UserType>
+    {
+        private readonly string _value;
+
+        private UserType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The database's built-in user type.
+        /// </summary>
+        public static UserType BuiltIn { get; } = new UserType("BUILT_IN");
+        /// <summary>
+        /// Cloud IAM user.
+        /// </summary>
+        public static UserType CloudIamUser { get; } = new UserType("CLOUD_IAM_USER");
+        /// <summary>
+        /// Cloud IAM service account.
+        /// </summary>
+        public static UserType CloudIamServiceAccount { get; } = new UserType("CLOUD_IAM_SERVICE_ACCOUNT");
+
+        public static bool operator ==(UserType left, UserType right) => left.Equals(right);
+        public static bool operator !=(UserType left, UserType right) => !left.Equals(right);
+
+        public static explicit operator string(UserType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UserType other && Equals(other);
+        public bool Equals(UserType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

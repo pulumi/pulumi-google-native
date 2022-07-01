@@ -3019,6 +3019,346 @@ func (in *sqlOutOfDiskReportSqlOutOfDiskStatePtr) ToSqlOutOfDiskReportSqlOutOfDi
 	return pulumi.ToOutputWithContext(ctx, in).(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput)
 }
 
+// Dual password status for the user.
+type UserDualPasswordType string
+
+const (
+	// The default value.
+	UserDualPasswordTypeDualPasswordTypeUnspecified = UserDualPasswordType("DUAL_PASSWORD_TYPE_UNSPECIFIED")
+	// Do not update the user's dual password status.
+	UserDualPasswordTypeNoModifyDualPassword = UserDualPasswordType("NO_MODIFY_DUAL_PASSWORD")
+	// No dual password usable for connecting using this user.
+	UserDualPasswordTypeNoDualPassword = UserDualPasswordType("NO_DUAL_PASSWORD")
+	// Dual password usable for connecting using this user.
+	UserDualPasswordTypeDualPassword = UserDualPasswordType("DUAL_PASSWORD")
+)
+
+func (UserDualPasswordType) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserDualPasswordType)(nil)).Elem()
+}
+
+func (e UserDualPasswordType) ToUserDualPasswordTypeOutput() UserDualPasswordTypeOutput {
+	return pulumi.ToOutput(e).(UserDualPasswordTypeOutput)
+}
+
+func (e UserDualPasswordType) ToUserDualPasswordTypeOutputWithContext(ctx context.Context) UserDualPasswordTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UserDualPasswordTypeOutput)
+}
+
+func (e UserDualPasswordType) ToUserDualPasswordTypePtrOutput() UserDualPasswordTypePtrOutput {
+	return e.ToUserDualPasswordTypePtrOutputWithContext(context.Background())
+}
+
+func (e UserDualPasswordType) ToUserDualPasswordTypePtrOutputWithContext(ctx context.Context) UserDualPasswordTypePtrOutput {
+	return UserDualPasswordType(e).ToUserDualPasswordTypeOutputWithContext(ctx).ToUserDualPasswordTypePtrOutputWithContext(ctx)
+}
+
+func (e UserDualPasswordType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UserDualPasswordType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UserDualPasswordType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UserDualPasswordType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UserDualPasswordTypeOutput struct{ *pulumi.OutputState }
+
+func (UserDualPasswordTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserDualPasswordType)(nil)).Elem()
+}
+
+func (o UserDualPasswordTypeOutput) ToUserDualPasswordTypeOutput() UserDualPasswordTypeOutput {
+	return o
+}
+
+func (o UserDualPasswordTypeOutput) ToUserDualPasswordTypeOutputWithContext(ctx context.Context) UserDualPasswordTypeOutput {
+	return o
+}
+
+func (o UserDualPasswordTypeOutput) ToUserDualPasswordTypePtrOutput() UserDualPasswordTypePtrOutput {
+	return o.ToUserDualPasswordTypePtrOutputWithContext(context.Background())
+}
+
+func (o UserDualPasswordTypeOutput) ToUserDualPasswordTypePtrOutputWithContext(ctx context.Context) UserDualPasswordTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserDualPasswordType) *UserDualPasswordType {
+		return &v
+	}).(UserDualPasswordTypePtrOutput)
+}
+
+func (o UserDualPasswordTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UserDualPasswordTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserDualPasswordType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UserDualPasswordTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UserDualPasswordTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserDualPasswordType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UserDualPasswordTypePtrOutput struct{ *pulumi.OutputState }
+
+func (UserDualPasswordTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserDualPasswordType)(nil)).Elem()
+}
+
+func (o UserDualPasswordTypePtrOutput) ToUserDualPasswordTypePtrOutput() UserDualPasswordTypePtrOutput {
+	return o
+}
+
+func (o UserDualPasswordTypePtrOutput) ToUserDualPasswordTypePtrOutputWithContext(ctx context.Context) UserDualPasswordTypePtrOutput {
+	return o
+}
+
+func (o UserDualPasswordTypePtrOutput) Elem() UserDualPasswordTypeOutput {
+	return o.ApplyT(func(v *UserDualPasswordType) UserDualPasswordType {
+		if v != nil {
+			return *v
+		}
+		var ret UserDualPasswordType
+		return ret
+	}).(UserDualPasswordTypeOutput)
+}
+
+func (o UserDualPasswordTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UserDualPasswordTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UserDualPasswordType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UserDualPasswordTypeInput is an input type that accepts UserDualPasswordTypeArgs and UserDualPasswordTypeOutput values.
+// You can construct a concrete instance of `UserDualPasswordTypeInput` via:
+//
+//          UserDualPasswordTypeArgs{...}
+type UserDualPasswordTypeInput interface {
+	pulumi.Input
+
+	ToUserDualPasswordTypeOutput() UserDualPasswordTypeOutput
+	ToUserDualPasswordTypeOutputWithContext(context.Context) UserDualPasswordTypeOutput
+}
+
+var userDualPasswordTypePtrType = reflect.TypeOf((**UserDualPasswordType)(nil)).Elem()
+
+type UserDualPasswordTypePtrInput interface {
+	pulumi.Input
+
+	ToUserDualPasswordTypePtrOutput() UserDualPasswordTypePtrOutput
+	ToUserDualPasswordTypePtrOutputWithContext(context.Context) UserDualPasswordTypePtrOutput
+}
+
+type userDualPasswordTypePtr string
+
+func UserDualPasswordTypePtr(v string) UserDualPasswordTypePtrInput {
+	return (*userDualPasswordTypePtr)(&v)
+}
+
+func (*userDualPasswordTypePtr) ElementType() reflect.Type {
+	return userDualPasswordTypePtrType
+}
+
+func (in *userDualPasswordTypePtr) ToUserDualPasswordTypePtrOutput() UserDualPasswordTypePtrOutput {
+	return pulumi.ToOutput(in).(UserDualPasswordTypePtrOutput)
+}
+
+func (in *userDualPasswordTypePtr) ToUserDualPasswordTypePtrOutputWithContext(ctx context.Context) UserDualPasswordTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UserDualPasswordTypePtrOutput)
+}
+
+// The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
+type UserType string
+
+const (
+	// The database's built-in user type.
+	UserTypeBuiltIn = UserType("BUILT_IN")
+	// Cloud IAM user.
+	UserTypeCloudIamUser = UserType("CLOUD_IAM_USER")
+	// Cloud IAM service account.
+	UserTypeCloudIamServiceAccount = UserType("CLOUD_IAM_SERVICE_ACCOUNT")
+)
+
+func (UserType) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserType)(nil)).Elem()
+}
+
+func (e UserType) ToUserTypeOutput() UserTypeOutput {
+	return pulumi.ToOutput(e).(UserTypeOutput)
+}
+
+func (e UserType) ToUserTypeOutputWithContext(ctx context.Context) UserTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UserTypeOutput)
+}
+
+func (e UserType) ToUserTypePtrOutput() UserTypePtrOutput {
+	return e.ToUserTypePtrOutputWithContext(context.Background())
+}
+
+func (e UserType) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
+	return UserType(e).ToUserTypeOutputWithContext(ctx).ToUserTypePtrOutputWithContext(ctx)
+}
+
+func (e UserType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UserType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UserType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UserType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UserTypeOutput struct{ *pulumi.OutputState }
+
+func (UserTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserType)(nil)).Elem()
+}
+
+func (o UserTypeOutput) ToUserTypeOutput() UserTypeOutput {
+	return o
+}
+
+func (o UserTypeOutput) ToUserTypeOutputWithContext(ctx context.Context) UserTypeOutput {
+	return o
+}
+
+func (o UserTypeOutput) ToUserTypePtrOutput() UserTypePtrOutput {
+	return o.ToUserTypePtrOutputWithContext(context.Background())
+}
+
+func (o UserTypeOutput) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserType) *UserType {
+		return &v
+	}).(UserTypePtrOutput)
+}
+
+func (o UserTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UserTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UserTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UserTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UserTypePtrOutput struct{ *pulumi.OutputState }
+
+func (UserTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserType)(nil)).Elem()
+}
+
+func (o UserTypePtrOutput) ToUserTypePtrOutput() UserTypePtrOutput {
+	return o
+}
+
+func (o UserTypePtrOutput) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
+	return o
+}
+
+func (o UserTypePtrOutput) Elem() UserTypeOutput {
+	return o.ApplyT(func(v *UserType) UserType {
+		if v != nil {
+			return *v
+		}
+		var ret UserType
+		return ret
+	}).(UserTypeOutput)
+}
+
+func (o UserTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UserTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UserType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UserTypeInput is an input type that accepts UserTypeArgs and UserTypeOutput values.
+// You can construct a concrete instance of `UserTypeInput` via:
+//
+//          UserTypeArgs{...}
+type UserTypeInput interface {
+	pulumi.Input
+
+	ToUserTypeOutput() UserTypeOutput
+	ToUserTypeOutputWithContext(context.Context) UserTypeOutput
+}
+
+var userTypePtrType = reflect.TypeOf((**UserType)(nil)).Elem()
+
+type UserTypePtrInput interface {
+	pulumi.Input
+
+	ToUserTypePtrOutput() UserTypePtrOutput
+	ToUserTypePtrOutputWithContext(context.Context) UserTypePtrOutput
+}
+
+type userTypePtr string
+
+func UserTypePtr(v string) UserTypePtrInput {
+	return (*userTypePtr)(&v)
+}
+
+func (*userTypePtr) ElementType() reflect.Type {
+	return userTypePtrType
+}
+
+func (in *userTypePtr) ToUserTypePtrOutput() UserTypePtrOutput {
+	return pulumi.ToOutput(in).(UserTypePtrOutput)
+}
+
+func (in *userTypePtr) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UserTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsRetentionUnitInput)(nil)).Elem(), BackupRetentionSettingsRetentionUnit("RETENTION_UNIT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsRetentionUnitPtrInput)(nil)).Elem(), BackupRetentionSettingsRetentionUnit("RETENTION_UNIT_UNSPECIFIED"))
@@ -3055,6 +3395,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsReplicationTypePtrInput)(nil)).Elem(), SettingsReplicationType("SQL_REPLICATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportSqlOutOfDiskStateInput)(nil)).Elem(), SqlOutOfDiskReportSqlOutOfDiskState("SQL_OUT_OF_DISK_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportSqlOutOfDiskStatePtrInput)(nil)).Elem(), SqlOutOfDiskReportSqlOutOfDiskState("SQL_OUT_OF_DISK_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UserDualPasswordTypeInput)(nil)).Elem(), UserDualPasswordType("DUAL_PASSWORD_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UserDualPasswordTypePtrInput)(nil)).Elem(), UserDualPasswordType("DUAL_PASSWORD_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UserTypeInput)(nil)).Elem(), UserType("BUILT_IN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UserTypePtrInput)(nil)).Elem(), UserType("BUILT_IN"))
 	pulumi.RegisterOutputType(BackupRetentionSettingsRetentionUnitOutput{})
 	pulumi.RegisterOutputType(BackupRetentionSettingsRetentionUnitPtrOutput{})
 	pulumi.RegisterOutputType(BackupRunBackupKindOutput{})
@@ -3090,4 +3434,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingsReplicationTypePtrOutput{})
 	pulumi.RegisterOutputType(SqlOutOfDiskReportSqlOutOfDiskStateOutput{})
 	pulumi.RegisterOutputType(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput{})
+	pulumi.RegisterOutputType(UserDualPasswordTypeOutput{})
+	pulumi.RegisterOutputType(UserDualPasswordTypePtrOutput{})
+	pulumi.RegisterOutputType(UserTypeOutput{})
+	pulumi.RegisterOutputType(UserTypePtrOutput{})
 }

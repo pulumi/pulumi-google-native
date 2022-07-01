@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .billing_account_bucket import *
+from .billing_account_bucket_view import *
 from .billing_account_exclusion import *
 from .billing_account_sink import *
 from .bucket import *
@@ -15,6 +17,8 @@ from .folder_bucket import *
 from .folder_bucket_view import *
 from .folder_exclusion import *
 from .folder_sink import *
+from .get_billing_account_bucket import *
+from .get_billing_account_bucket_view import *
 from .get_billing_account_exclusion import *
 from .get_billing_account_sink import *
 from .get_bucket import *

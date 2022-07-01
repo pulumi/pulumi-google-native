@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodePoolResult:
-    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, placement_policy=None, pod_ipv4_cidr_size=None, self_link=None, status=None, status_message=None, upgrade_settings=None, version=None):
+    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, placement_policy=None, pod_ipv4_cidr_size=None, self_link=None, status=None, status_message=None, update_info=None, upgrade_settings=None, version=None):
         if autoscaling and not isinstance(autoscaling, dict):
             raise TypeError("Expected argument 'autoscaling' to be a dict")
         pulumi.set(__self__, "autoscaling", autoscaling)
@@ -69,6 +69,9 @@ class GetNodePoolResult:
             pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
 
         pulumi.set(__self__, "status_message", status_message)
+        if update_info and not isinstance(update_info, dict):
+            raise TypeError("Expected argument 'update_info' to be a dict")
+        pulumi.set(__self__, "update_info", update_info)
         if upgrade_settings and not isinstance(upgrade_settings, dict):
             raise TypeError("Expected argument 'upgrade_settings' to be a dict")
         pulumi.set(__self__, "upgrade_settings", upgrade_settings)
@@ -112,7 +115,7 @@ class GetNodePoolResult:
     @pulumi.getter(name="instanceGroupUrls")
     def instance_group_urls(self) -> Sequence[str]:
         """
-        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
         """
         return pulumi.get(self, "instance_group_urls")
 
@@ -197,6 +200,14 @@ class GetNodePoolResult:
         return pulumi.get(self, "status_message")
 
     @property
+    @pulumi.getter(name="updateInfo")
+    def update_info(self) -> 'outputs.UpdateInfoResponse':
+        """
+        [Output only] Update info contains relevant information during a node pool update.
+        """
+        return pulumi.get(self, "update_info")
+
+    @property
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> 'outputs.UpgradeSettingsResponse':
         """
@@ -234,6 +245,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             self_link=self.self_link,
             status=self.status,
             status_message=self.status_message,
+            update_info=self.update_info,
             upgrade_settings=self.upgrade_settings,
             version=self.version)
 
@@ -277,6 +289,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
         self_link=__ret__.self_link,
         status=__ret__.status,
         status_message=__ret__.status_message,
+        update_info=__ret__.update_info,
         upgrade_settings=__ret__.upgrade_settings,
         version=__ret__.version)
 

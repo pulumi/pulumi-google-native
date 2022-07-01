@@ -19,6 +19,7 @@ __all__ = [
     'IPAllocationPolicyIpv6AccessType',
     'IPAllocationPolicyStackType',
     'IstioConfigAuth',
+    'LinuxNodeConfigCgroupMode',
     'LoggingComponentConfigEnableComponentsItem',
     'MaintenanceExclusionOptionsScope',
     'MonitoringComponentConfigEnableComponentsItem',
@@ -27,6 +28,7 @@ __all__ = [
     'NetworkPerformanceConfigExternalIpEgressBandwidthTier',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkPolicyProvider',
+    'NodePoolAutoscalingLocationPolicy',
     'NodeTaintEffect',
     'PlacementPolicyType',
     'ReleaseChannelChannel',
@@ -34,6 +36,7 @@ __all__ = [
     'SandboxConfigType',
     'StatusConditionCanonicalCode',
     'StatusConditionCode',
+    'UpgradeSettingsStrategy',
     'WorkloadConfigAuditMode',
     'WorkloadMetadataConfigMode',
     'WorkloadMetadataConfigNodeMetadata',
@@ -293,6 +296,24 @@ class IstioConfigAuth(str, Enum):
     """
 
 
+class LinuxNodeConfigCgroupMode(str, Enum):
+    """
+    cgroup_mode specifies the cgroup mode to be used on the node.
+    """
+    CGROUP_MODE_UNSPECIFIED = "CGROUP_MODE_UNSPECIFIED"
+    """
+    CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+    """
+    CGROUP_MODE_V1 = "CGROUP_MODE_V1"
+    """
+    CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+    """
+    CGROUP_MODE_V2 = "CGROUP_MODE_V2"
+    """
+    CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+    """
+
+
 class LoggingComponentConfigEnableComponentsItem(str, Enum):
     COMPONENT_UNSPECIFIED = "COMPONENT_UNSPECIFIED"
     """
@@ -338,6 +359,18 @@ class MonitoringComponentConfigEnableComponentsItem(str, Enum):
     WORKLOADS = "WORKLOADS"
     """
     Deprecated: Use Google Cloud Managed Service for Prometheus.
+    """
+    APISERVER = "APISERVER"
+    """
+    kube-apiserver
+    """
+    SCHEDULER = "SCHEDULER"
+    """
+    kube-scheduler
+    """
+    CONTROLLER_MANAGER = "CONTROLLER_MANAGER"
+    """
+    kube-controller-manager
     """
 
 
@@ -420,6 +453,24 @@ class NetworkPolicyProvider(str, Enum):
     CALICO = "CALICO"
     """
     Tigera (Calico Felix).
+    """
+
+
+class NodePoolAutoscalingLocationPolicy(str, Enum):
+    """
+    Location policy used when scaling up a nodepool.
+    """
+    LOCATION_POLICY_UNSPECIFIED = "LOCATION_POLICY_UNSPECIFIED"
+    """
+    Not set.
+    """
+    BALANCED = "BALANCED"
+    """
+    BALANCED is a best effort policy that aims to balance the sizes of different zones.
+    """
+    ANY = "ANY"
+    """
+    ANY policy picks zones that have the highest capacity available.
     """
 
 
@@ -622,6 +673,24 @@ class StatusConditionCode(str, Enum):
     CA_EXPIRING = "CA_EXPIRING"
     """
     Cluster CA is expiring soon. More codes TBA
+    """
+
+
+class UpgradeSettingsStrategy(str, Enum):
+    """
+    Update strategy of the node pool.
+    """
+    NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED = "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"
+    """
+    Default value.
+    """
+    BLUE_GREEN = "BLUE_GREEN"
+    """
+    blue-green upgrade.
+    """
+    SURGE = "SURGE"
+    """
+    SURGE is the traditional way of upgrading a node pool. max_surge and max_unavailable determines the level of upgrade parallelism.
     """
 
 

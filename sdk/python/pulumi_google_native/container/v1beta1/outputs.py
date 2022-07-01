@@ -21,6 +21,8 @@ __all__ = [
     'AutoprovisioningNodePoolDefaultsResponse',
     'BigQueryDestinationResponse',
     'BinaryAuthorizationResponse',
+    'BlueGreenInfoResponse',
+    'BlueGreenSettingsResponse',
     'CidrBlockResponse',
     'ClientCertificateConfigResponse',
     'CloudRunConfigResponse',
@@ -95,9 +97,11 @@ __all__ = [
     'ServiceExternalIPsConfigResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedNodesResponse',
+    'StandardRolloutPolicyResponse',
     'StatusConditionResponse',
     'TimeWindowResponse',
     'TpuConfigResponse',
+    'UpdateInfoResponse',
     'UpgradeSettingsResponse',
     'VerticalPodAutoscalingResponse',
     'VirtualNICResponse',
@@ -783,6 +787,147 @@ class BinaryAuthorizationResponse(dict):
         Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
         """
         return pulumi.get(self, "evaluation_mode")
+
+
+@pulumi.output_type
+class BlueGreenInfoResponse(dict):
+    """
+    Information relevant to blue-green upgrade.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blueInstanceGroupUrls":
+            suggest = "blue_instance_group_urls"
+        elif key == "bluePoolDeletionStartTime":
+            suggest = "blue_pool_deletion_start_time"
+        elif key == "greenInstanceGroupUrls":
+            suggest = "green_instance_group_urls"
+        elif key == "greenPoolVersion":
+            suggest = "green_pool_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueGreenInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueGreenInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueGreenInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 blue_instance_group_urls: Sequence[str],
+                 blue_pool_deletion_start_time: str,
+                 green_instance_group_urls: Sequence[str],
+                 green_pool_version: str,
+                 phase: str):
+        """
+        Information relevant to blue-green upgrade.
+        :param Sequence[str] blue_instance_group_urls: The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
+        :param str blue_pool_deletion_start_time: Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        :param Sequence[str] green_instance_group_urls: The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
+        :param str green_pool_version: Version of green pool.
+        :param str phase: Current blue-green upgrade phase.
+        """
+        pulumi.set(__self__, "blue_instance_group_urls", blue_instance_group_urls)
+        pulumi.set(__self__, "blue_pool_deletion_start_time", blue_pool_deletion_start_time)
+        pulumi.set(__self__, "green_instance_group_urls", green_instance_group_urls)
+        pulumi.set(__self__, "green_pool_version", green_pool_version)
+        pulumi.set(__self__, "phase", phase)
+
+    @property
+    @pulumi.getter(name="blueInstanceGroupUrls")
+    def blue_instance_group_urls(self) -> Sequence[str]:
+        """
+        The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
+        """
+        return pulumi.get(self, "blue_instance_group_urls")
+
+    @property
+    @pulumi.getter(name="bluePoolDeletionStartTime")
+    def blue_pool_deletion_start_time(self) -> str:
+        """
+        Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        """
+        return pulumi.get(self, "blue_pool_deletion_start_time")
+
+    @property
+    @pulumi.getter(name="greenInstanceGroupUrls")
+    def green_instance_group_urls(self) -> Sequence[str]:
+        """
+        The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
+        """
+        return pulumi.get(self, "green_instance_group_urls")
+
+    @property
+    @pulumi.getter(name="greenPoolVersion")
+    def green_pool_version(self) -> str:
+        """
+        Version of green pool.
+        """
+        return pulumi.get(self, "green_pool_version")
+
+    @property
+    @pulumi.getter
+    def phase(self) -> str:
+        """
+        Current blue-green upgrade phase.
+        """
+        return pulumi.get(self, "phase")
+
+
+@pulumi.output_type
+class BlueGreenSettingsResponse(dict):
+    """
+    Settings for blue-green upgrade.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodePoolSoakDuration":
+            suggest = "node_pool_soak_duration"
+        elif key == "standardRolloutPolicy":
+            suggest = "standard_rollout_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueGreenSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueGreenSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueGreenSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_pool_soak_duration: str,
+                 standard_rollout_policy: 'outputs.StandardRolloutPolicyResponse'):
+        """
+        Settings for blue-green upgrade.
+        :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+        :param 'StandardRolloutPolicyResponse' standard_rollout_policy: Standard policy for the blue-green upgrade.
+        """
+        pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
+        pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
+
+    @property
+    @pulumi.getter(name="nodePoolSoakDuration")
+    def node_pool_soak_duration(self) -> str:
+        """
+        Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+        """
+        return pulumi.get(self, "node_pool_soak_duration")
+
+    @property
+    @pulumi.getter(name="standardRolloutPolicy")
+    def standard_rollout_policy(self) -> 'outputs.StandardRolloutPolicyResponse':
+        """
+        Standard policy for the blue-green upgrade.
+        """
+        return pulumi.get(self, "standard_rollout_policy")
 
 
 @pulumi.output_type
@@ -1626,10 +1771,14 @@ class IPAllocationPolicyResponse(dict):
             suggest = "services_ipv4_cidr"
         elif key == "servicesIpv4CidrBlock":
             suggest = "services_ipv4_cidr_block"
+        elif key == "servicesIpv6CidrBlock":
+            suggest = "services_ipv6_cidr_block"
         elif key == "servicesSecondaryRangeName":
             suggest = "services_secondary_range_name"
         elif key == "stackType":
             suggest = "stack_type"
+        elif key == "subnetIpv6CidrBlock":
+            suggest = "subnet_ipv6_cidr_block"
         elif key == "subnetworkName":
             suggest = "subnetwork_name"
         elif key == "tpuIpv4CidrBlock":
@@ -1661,8 +1810,10 @@ class IPAllocationPolicyResponse(dict):
                  node_ipv4_cidr_block: str,
                  services_ipv4_cidr: str,
                  services_ipv4_cidr_block: str,
+                 services_ipv6_cidr_block: str,
                  services_secondary_range_name: str,
                  stack_type: str,
+                 subnet_ipv6_cidr_block: str,
                  subnetwork_name: str,
                  tpu_ipv4_cidr_block: str,
                  use_ip_aliases: bool,
@@ -1679,8 +1830,10 @@ class IPAllocationPolicyResponse(dict):
         :param str node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param str services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+        :param str services_ipv6_cidr_block: [Output only] The services IPv6 CIDR block for the cluster.
         :param str services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         :param str stack_type: IP stack type
+        :param str subnet_ipv6_cidr_block: [Output only] The subnet's IPv6 CIDR block used by nodes and pods.
         :param str subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
         :param str tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
         :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -1696,8 +1849,10 @@ class IPAllocationPolicyResponse(dict):
         pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
+        pulumi.set(__self__, "services_ipv6_cidr_block", services_ipv6_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         pulumi.set(__self__, "stack_type", stack_type)
+        pulumi.set(__self__, "subnet_ipv6_cidr_block", subnet_ipv6_cidr_block)
         pulumi.set(__self__, "subnetwork_name", subnetwork_name)
         pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
@@ -1784,6 +1939,14 @@ class IPAllocationPolicyResponse(dict):
         return pulumi.get(self, "services_ipv4_cidr_block")
 
     @property
+    @pulumi.getter(name="servicesIpv6CidrBlock")
+    def services_ipv6_cidr_block(self) -> str:
+        """
+        [Output only] The services IPv6 CIDR block for the cluster.
+        """
+        return pulumi.get(self, "services_ipv6_cidr_block")
+
+    @property
     @pulumi.getter(name="servicesSecondaryRangeName")
     def services_secondary_range_name(self) -> str:
         """
@@ -1798,6 +1961,14 @@ class IPAllocationPolicyResponse(dict):
         IP stack type
         """
         return pulumi.get(self, "stack_type")
+
+    @property
+    @pulumi.getter(name="subnetIpv6CidrBlock")
+    def subnet_ipv6_cidr_block(self) -> str:
+        """
+        [Output only] The subnet's IPv6 CIDR block used by nodes and pods.
+        """
+        return pulumi.get(self, "subnet_ipv6_cidr_block")
 
     @property
     @pulumi.getter(name="subnetworkName")
@@ -1958,13 +2129,41 @@ class LinuxNodeConfigResponse(dict):
     """
     Parameters that can be configured on Linux nodes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cgroupMode":
+            suggest = "cgroup_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinuxNodeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinuxNodeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinuxNodeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 cgroup_mode: str,
                  sysctls: Mapping[str, str]):
         """
         Parameters that can be configured on Linux nodes.
+        :param str cgroup_mode: cgroup_mode specifies the cgroup mode to be used on the node.
         :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
+        pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> str:
+        """
+        cgroup_mode specifies the cgroup mode to be used on the node.
+        """
+        return pulumi.get(self, "cgroup_mode")
 
     @property
     @pulumi.getter
@@ -2833,7 +3032,7 @@ class NodeConfigDefaultsResponse(dict):
                  gcfs_config: 'outputs.GcfsConfigResponse'):
         """
         Subset of NodeConfig message that has defaults.
-        :param 'GcfsConfigResponse' gcfs_config: GCFS (Google Container File System, a.k.a Riptide) options.
+        :param 'GcfsConfigResponse' gcfs_config: GCFS (Google Container File System, a.k.a. Riptide) options.
         """
         pulumi.set(__self__, "gcfs_config", gcfs_config)
 
@@ -2841,7 +3040,7 @@ class NodeConfigDefaultsResponse(dict):
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> 'outputs.GcfsConfigResponse':
         """
-        GCFS (Google Container File System, a.k.a Riptide) options.
+        GCFS (Google Container File System, a.k.a. Riptide) options.
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -3488,10 +3687,16 @@ class NodePoolAutoscalingResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxNodeCount":
+        if key == "locationPolicy":
+            suggest = "location_policy"
+        elif key == "maxNodeCount":
             suggest = "max_node_count"
         elif key == "minNodeCount":
             suggest = "min_node_count"
+        elif key == "totalMaxNodeCount":
+            suggest = "total_max_node_count"
+        elif key == "totalMinNodeCount":
+            suggest = "total_min_node_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolAutoscalingResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3507,19 +3712,28 @@ class NodePoolAutoscalingResponse(dict):
     def __init__(__self__, *,
                  autoprovisioned: bool,
                  enabled: bool,
+                 location_policy: str,
                  max_node_count: int,
-                 min_node_count: int):
+                 min_node_count: int,
+                 total_max_node_count: int,
+                 total_min_node_count: int):
         """
         NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         :param bool autoprovisioned: Can this node pool be deleted automatically.
         :param bool enabled: Is autoscaling enabled for this node pool.
+        :param str location_policy: Location policy used when scaling up a nodepool.
         :param int max_node_count: Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
         :param int min_node_count: Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
+        :param int total_max_node_count: Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        :param int total_min_node_count: Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
         """
         pulumi.set(__self__, "autoprovisioned", autoprovisioned)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "location_policy", location_policy)
         pulumi.set(__self__, "max_node_count", max_node_count)
         pulumi.set(__self__, "min_node_count", min_node_count)
+        pulumi.set(__self__, "total_max_node_count", total_max_node_count)
+        pulumi.set(__self__, "total_min_node_count", total_min_node_count)
 
     @property
     @pulumi.getter
@@ -3538,6 +3752,14 @@ class NodePoolAutoscalingResponse(dict):
         return pulumi.get(self, "enabled")
 
     @property
+    @pulumi.getter(name="locationPolicy")
+    def location_policy(self) -> str:
+        """
+        Location policy used when scaling up a nodepool.
+        """
+        return pulumi.get(self, "location_policy")
+
+    @property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> int:
         """
@@ -3552,6 +3774,22 @@ class NodePoolAutoscalingResponse(dict):
         Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
         """
         return pulumi.get(self, "min_node_count")
+
+    @property
+    @pulumi.getter(name="totalMaxNodeCount")
+    def total_max_node_count(self) -> int:
+        """
+        Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        """
+        return pulumi.get(self, "total_max_node_count")
+
+    @property
+    @pulumi.getter(name="totalMinNodeCount")
+    def total_min_node_count(self) -> int:
+        """
+        Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+        """
+        return pulumi.get(self, "total_min_node_count")
 
 
 @pulumi.output_type
@@ -3617,6 +3855,8 @@ class NodePoolResponse(dict):
             suggest = "self_link"
         elif key == "statusMessage":
             suggest = "status_message"
+        elif key == "updateInfo":
+            suggest = "update_info"
         elif key == "upgradeSettings":
             suggest = "upgrade_settings"
 
@@ -3647,6 +3887,7 @@ class NodePoolResponse(dict):
                  self_link: str,
                  status: str,
                  status_message: str,
+                 update_info: 'outputs.UpdateInfoResponse',
                  upgrade_settings: 'outputs.UpgradeSettingsResponse',
                  version: str):
         """
@@ -3655,7 +3896,7 @@ class NodePoolResponse(dict):
         :param Sequence['StatusConditionResponse'] conditions: Which conditions caused the current node pool state.
         :param 'NodeConfigResponse' config: The node configuration of the pool.
         :param int initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-        :param Sequence[str] instance_group_urls: [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        :param Sequence[str] instance_group_urls: [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
         :param Sequence[str] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         :param 'NodeManagementResponse' management: NodeManagement configuration for this NodePool.
         :param 'MaxPodsConstraintResponse' max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
@@ -3666,6 +3907,7 @@ class NodePoolResponse(dict):
         :param str self_link: [Output only] Server-defined URL for the resource.
         :param str status: [Output only] The status of the nodes in this pool instance.
         :param str status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        :param 'UpdateInfoResponse' update_info: [Output only] Update info contains relevant information during a node pool update.
         :param 'UpgradeSettingsResponse' upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param str version: The version of the Kubernetes of this node.
         """
@@ -3684,6 +3926,7 @@ class NodePoolResponse(dict):
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "update_info", update_info)
         pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         pulumi.set(__self__, "version", version)
 
@@ -3723,7 +3966,7 @@ class NodePoolResponse(dict):
     @pulumi.getter(name="instanceGroupUrls")
     def instance_group_urls(self) -> Sequence[str]:
         """
-        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
         """
         return pulumi.get(self, "instance_group_urls")
 
@@ -3806,6 +4049,14 @@ class NodePoolResponse(dict):
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         """
         return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="updateInfo")
+    def update_info(self) -> 'outputs.UpdateInfoResponse':
+        """
+        [Output only] Update info contains relevant information during a node pool update.
+        """
+        return pulumi.get(self, "update_info")
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -4545,6 +4796,71 @@ class ShieldedNodesResponse(dict):
 
 
 @pulumi.output_type
+class StandardRolloutPolicyResponse(dict):
+    """
+    Standard rollout policy is the default policy for blue-green.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchNodeCount":
+            suggest = "batch_node_count"
+        elif key == "batchPercentage":
+            suggest = "batch_percentage"
+        elif key == "batchSoakDuration":
+            suggest = "batch_soak_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardRolloutPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardRolloutPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardRolloutPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_node_count: int,
+                 batch_percentage: float,
+                 batch_soak_duration: str):
+        """
+        Standard rollout policy is the default policy for blue-green.
+        :param int batch_node_count: Number of blue nodes to drain in a batch.
+        :param float batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        :param str batch_soak_duration: Soak time after each batch gets drained. Default to zero.
+        """
+        pulumi.set(__self__, "batch_node_count", batch_node_count)
+        pulumi.set(__self__, "batch_percentage", batch_percentage)
+        pulumi.set(__self__, "batch_soak_duration", batch_soak_duration)
+
+    @property
+    @pulumi.getter(name="batchNodeCount")
+    def batch_node_count(self) -> int:
+        """
+        Number of blue nodes to drain in a batch.
+        """
+        return pulumi.get(self, "batch_node_count")
+
+    @property
+    @pulumi.getter(name="batchPercentage")
+    def batch_percentage(self) -> float:
+        """
+        Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        """
+        return pulumi.get(self, "batch_percentage")
+
+    @property
+    @pulumi.getter(name="batchSoakDuration")
+    def batch_soak_duration(self) -> str:
+        """
+        Soak time after each batch gets drained. Default to zero.
+        """
+        return pulumi.get(self, "batch_soak_duration")
+
+
+@pulumi.output_type
 class StatusConditionResponse(dict):
     """
     StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
@@ -4734,11 +5050,55 @@ class TpuConfigResponse(dict):
 
 
 @pulumi.output_type
-class UpgradeSettingsResponse(dict):
+class UpdateInfoResponse(dict):
+    """
+    UpdateInfo contains resource (instance groups, etc), status and other intermediate information relevant to a node pool upgrade.
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxSurge":
+        if key == "blueGreenInfo":
+            suggest = "blue_green_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpdateInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpdateInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpdateInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 blue_green_info: 'outputs.BlueGreenInfoResponse'):
+        """
+        UpdateInfo contains resource (instance groups, etc), status and other intermediate information relevant to a node pool upgrade.
+        :param 'BlueGreenInfoResponse' blue_green_info: Information of a blue-green upgrade.
+        """
+        pulumi.set(__self__, "blue_green_info", blue_green_info)
+
+    @property
+    @pulumi.getter(name="blueGreenInfo")
+    def blue_green_info(self) -> 'outputs.BlueGreenInfoResponse':
+        """
+        Information of a blue-green upgrade.
+        """
+        return pulumi.get(self, "blue_green_info")
+
+
+@pulumi.output_type
+class UpgradeSettingsResponse(dict):
+    """
+    These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is SURGE, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blueGreenSettings":
+            suggest = "blue_green_settings"
+        elif key == "maxSurge":
             suggest = "max_surge"
         elif key == "maxUnavailable":
             suggest = "max_unavailable"
@@ -4755,14 +5115,29 @@ class UpgradeSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 blue_green_settings: 'outputs.BlueGreenSettingsResponse',
                  max_surge: int,
-                 max_unavailable: int):
+                 max_unavailable: int,
+                 strategy: str):
         """
+        These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is SURGE, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
+        :param 'BlueGreenSettingsResponse' blue_green_settings: Settings for blue-green upgrade strategy.
         :param int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
         :param int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
+        :param str strategy: Update strategy of the node pool.
         """
+        pulumi.set(__self__, "blue_green_settings", blue_green_settings)
         pulumi.set(__self__, "max_surge", max_surge)
         pulumi.set(__self__, "max_unavailable", max_unavailable)
+        pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="blueGreenSettings")
+    def blue_green_settings(self) -> 'outputs.BlueGreenSettingsResponse':
+        """
+        Settings for blue-green upgrade strategy.
+        """
+        return pulumi.get(self, "blue_green_settings")
 
     @property
     @pulumi.getter(name="maxSurge")
@@ -4779,6 +5154,14 @@ class UpgradeSettingsResponse(dict):
         The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
         """
         return pulumi.get(self, "max_unavailable")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> str:
+        """
+        Update strategy of the node pool.
+        """
+        return pulumi.get(self, "strategy")
 
 
 @pulumi.output_type

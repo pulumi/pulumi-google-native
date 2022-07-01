@@ -12,7 +12,9 @@ from .get_backup_run import *
 from .get_database import *
 from .get_instance import *
 from .get_ssl_cert import *
+from .get_user import *
 from .instance import *
 from .ssl_cert import *
+from .user import *
 from ._inputs import *
 from . import outputs

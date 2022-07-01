@@ -53,7 +53,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly initialNodeCount!: pulumi.Output<number>;
     /**
-     * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+     * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
      */
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     public readonly location!: pulumi.Output<string>;
@@ -96,6 +96,10 @@ export class NodePool extends pulumi.CustomResource {
      * @deprecated [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * [Output only] Update info contains relevant information during a node pool update.
+     */
+    public /*out*/ readonly updateInfo!: pulumi.Output<outputs.container.v1.UpdateInfoResponse>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
@@ -140,6 +144,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["updateInfo"] = undefined /*out*/;
         } else {
             resourceInputs["autoscaling"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
@@ -158,6 +163,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["updateInfo"] = undefined /*out*/;
             resourceInputs["upgradeSettings"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }

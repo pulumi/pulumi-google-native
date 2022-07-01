@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly int InitialNodeCount;
         /// <summary>
-        /// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        /// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
         /// </summary>
         public readonly ImmutableArray<string> InstanceGroupUrls;
         /// <summary>
@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string StatusMessage;
         /// <summary>
+        /// [Output only] Update info contains relevant information during a node pool update.
+        /// </summary>
+        public readonly Outputs.UpdateInfoResponse UpdateInfo;
+        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         public readonly Outputs.UpgradeSettingsResponse UpgradeSettings;
@@ -117,6 +121,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string statusMessage,
 
+            Outputs.UpdateInfoResponse updateInfo,
+
             Outputs.UpgradeSettingsResponse upgradeSettings,
 
             string version)
@@ -136,6 +142,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             SelfLink = selfLink;
             Status = status;
             StatusMessage = statusMessage;
+            UpdateInfo = updateInfo;
             UpgradeSettings = upgradeSettings;
             Version = version;
         }

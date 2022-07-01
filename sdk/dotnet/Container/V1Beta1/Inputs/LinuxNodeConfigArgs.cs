@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// </summary>
     public sealed class LinuxNodeConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// cgroup_mode specifies the cgroup mode to be used on the node.
+        /// </summary>
+        [Input("cgroupMode")]
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.LinuxNodeConfigCgroupMode>? CgroupMode { get; set; }
+
         [Input("sysctls")]
         private InputMap<string>? _sysctls;
 

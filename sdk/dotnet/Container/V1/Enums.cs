@@ -511,6 +511,18 @@ namespace Pulumi.GoogleNative.Container.V1
         /// system components
         /// </summary>
         public static MonitoringComponentConfigEnableComponentsItem SystemComponents { get; } = new MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS");
+        /// <summary>
+        /// kube-apiserver
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Apiserver { get; } = new MonitoringComponentConfigEnableComponentsItem("APISERVER");
+        /// <summary>
+        /// kube-scheduler
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem Scheduler { get; } = new MonitoringComponentConfigEnableComponentsItem("SCHEDULER");
+        /// <summary>
+        /// kube-controller-manager
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem ControllerManager { get; } = new MonitoringComponentConfigEnableComponentsItem("CONTROLLER_MANAGER");
 
         public static bool operator ==(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => left.Equals(right);
         public static bool operator !=(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => !left.Equals(right);
@@ -680,6 +692,47 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NetworkPolicyProvider other && Equals(other);
         public bool Equals(NetworkPolicyProvider other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Location policy used when scaling up a nodepool.
+    /// </summary>
+    [EnumType]
+    public readonly struct NodePoolAutoscalingLocationPolicy : IEquatable<NodePoolAutoscalingLocationPolicy>
+    {
+        private readonly string _value;
+
+        private NodePoolAutoscalingLocationPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set.
+        /// </summary>
+        public static NodePoolAutoscalingLocationPolicy LocationPolicyUnspecified { get; } = new NodePoolAutoscalingLocationPolicy("LOCATION_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// BALANCED is a best effort policy that aims to balance the sizes of different zones.
+        /// </summary>
+        public static NodePoolAutoscalingLocationPolicy Balanced { get; } = new NodePoolAutoscalingLocationPolicy("BALANCED");
+        /// <summary>
+        /// ANY policy picks zones that have the highest capacity available.
+        /// </summary>
+        public static NodePoolAutoscalingLocationPolicy Any { get; } = new NodePoolAutoscalingLocationPolicy("ANY");
+
+        public static bool operator ==(NodePoolAutoscalingLocationPolicy left, NodePoolAutoscalingLocationPolicy right) => left.Equals(right);
+        public static bool operator !=(NodePoolAutoscalingLocationPolicy left, NodePoolAutoscalingLocationPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(NodePoolAutoscalingLocationPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NodePoolAutoscalingLocationPolicy other && Equals(other);
+        public bool Equals(NodePoolAutoscalingLocationPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1006,6 +1059,47 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is StatusConditionCode other && Equals(other);
         public bool Equals(StatusConditionCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Update strategy of the node pool.
+    /// </summary>
+    [EnumType]
+    public readonly struct UpgradeSettingsStrategy : IEquatable<UpgradeSettingsStrategy>
+    {
+        private readonly string _value;
+
+        private UpgradeSettingsStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static UpgradeSettingsStrategy NodePoolUpdateStrategyUnspecified { get; } = new UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// blue-green upgrade.
+        /// </summary>
+        public static UpgradeSettingsStrategy BlueGreen { get; } = new UpgradeSettingsStrategy("BLUE_GREEN");
+        /// <summary>
+        /// SURGE is the traditional way of upgrade a node pool. max_surge and max_unavailable determines the level of upgrade parallelism.
+        /// </summary>
+        public static UpgradeSettingsStrategy Surge { get; } = new UpgradeSettingsStrategy("SURGE");
+
+        public static bool operator ==(UpgradeSettingsStrategy left, UpgradeSettingsStrategy right) => left.Equals(right);
+        public static bool operator !=(UpgradeSettingsStrategy left, UpgradeSettingsStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(UpgradeSettingsStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UpgradeSettingsStrategy other && Equals(other);
+        public bool Equals(UpgradeSettingsStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

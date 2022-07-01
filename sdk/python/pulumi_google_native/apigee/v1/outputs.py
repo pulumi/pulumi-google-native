@@ -16,6 +16,7 @@ __all__ = [
     'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
     'GoogleCloudApigeeV1ApiCategoryDataResponse',
     'GoogleCloudApigeeV1ApiProductRefResponse',
+    'GoogleCloudApigeeV1ApiSecurityConfigResponse',
     'GoogleCloudApigeeV1AsyncQueryResultResponse',
     'GoogleCloudApigeeV1AttributeResponse',
     'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse',
@@ -41,6 +42,8 @@ __all__ = [
     'GoogleCloudApigeeV1RateRangeResponse',
     'GoogleCloudApigeeV1ReportPropertyResponse',
     'GoogleCloudApigeeV1RevenueShareRangeResponse',
+    'GoogleCloudApigeeV1SecurityReportMetadataResponse',
+    'GoogleCloudApigeeV1SecurityReportResultMetadataResponse',
     'GoogleCloudApigeeV1TlsInfoCommonNameResponse',
     'GoogleCloudApigeeV1TlsInfoResponse',
     'GoogleCloudApigeeV1TraceSamplingConfigResponse',
@@ -61,6 +64,8 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
         suggest = None
         if key == "advancedApiOpsConfig":
             suggest = "advanced_api_ops_config"
+        elif key == "apiSecurityConfig":
+            suggest = "api_security_config"
         elif key == "connectorsPlatformConfig":
             suggest = "connectors_platform_config"
         elif key == "integrationConfig":
@@ -81,17 +86,20 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
 
     def __init__(__self__, *,
                  advanced_api_ops_config: 'outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
+                 api_security_config: 'outputs.GoogleCloudApigeeV1ApiSecurityConfigResponse',
                  connectors_platform_config: 'outputs.GoogleCloudApigeeV1ConnectorsPlatformConfigResponse',
                  integration_config: 'outputs.GoogleCloudApigeeV1IntegrationConfigResponse',
                  monetization_config: 'outputs.GoogleCloudApigeeV1MonetizationConfigResponse'):
         """
         Add-on configurations for the Apigee organization.
         :param 'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse' advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
+        :param 'GoogleCloudApigeeV1ApiSecurityConfigResponse' api_security_config: Configuration for the API Security add-on.
         :param 'GoogleCloudApigeeV1ConnectorsPlatformConfigResponse' connectors_platform_config: Configuration for the Connectors Platform add-on.
         :param 'GoogleCloudApigeeV1IntegrationConfigResponse' integration_config: Configuration for the Integration add-on.
         :param 'GoogleCloudApigeeV1MonetizationConfigResponse' monetization_config: Configuration for the Monetization add-on.
         """
         pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+        pulumi.set(__self__, "api_security_config", api_security_config)
         pulumi.set(__self__, "connectors_platform_config", connectors_platform_config)
         pulumi.set(__self__, "integration_config", integration_config)
         pulumi.set(__self__, "monetization_config", monetization_config)
@@ -103,6 +111,14 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
         Configuration for the Advanced API Ops add-on.
         """
         return pulumi.get(self, "advanced_api_ops_config")
+
+    @property
+    @pulumi.getter(name="apiSecurityConfig")
+    def api_security_config(self) -> 'outputs.GoogleCloudApigeeV1ApiSecurityConfigResponse':
+        """
+        Configuration for the API Security add-on.
+        """
+        return pulumi.get(self, "api_security_config")
 
     @property
     @pulumi.getter(name="connectorsPlatformConfig")
@@ -222,6 +238,56 @@ class GoogleCloudApigeeV1ApiProductRefResponse(dict):
         Status of the API product. Valid values are `approved` or `revoked`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1ApiSecurityConfigResponse(dict):
+    """
+    Configurations of the API Security add-on.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiresAt":
+            suggest = "expires_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1ApiSecurityConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1ApiSecurityConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1ApiSecurityConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 expires_at: str):
+        """
+        Configurations of the API Security add-on.
+        :param bool enabled: Flag that specifies whether the API security add-on is enabled.
+        :param str expires_at: Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "expires_at", expires_at)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Flag that specifies whether the API security add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> str:
+        """
+        Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+        """
+        return pulumi.get(self, "expires_at")
 
 
 @pulumi.output_type
@@ -1619,6 +1685,139 @@ class GoogleCloudApigeeV1RevenueShareRangeResponse(dict):
         Starting value of the range. Set to 0 or `null` for the initial range of values.
         """
         return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1SecurityReportMetadataResponse(dict):
+    """
+    Metadata for the security report.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTimestamp":
+            suggest = "end_timestamp"
+        elif key == "mimeType":
+            suggest = "mime_type"
+        elif key == "startTimestamp":
+            suggest = "start_timestamp"
+        elif key == "timeUnit":
+            suggest = "time_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1SecurityReportMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1SecurityReportMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1SecurityReportMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimensions: Sequence[str],
+                 end_timestamp: str,
+                 metrics: Sequence[str],
+                 mime_type: str,
+                 start_timestamp: str,
+                 time_unit: str):
+        """
+        Metadata for the security report.
+        :param Sequence[str] dimensions: Dimensions of the SecurityReport.
+        :param str end_timestamp: End timestamp of the query range.
+        :param Sequence[str] metrics: Metrics of the SecurityReport. Example: ["name:bot_count,func:sum,alias:sum_bot_count"]
+        :param str mime_type: MIME type / Output format.
+        :param str start_timestamp: Start timestamp of the query range.
+        :param str time_unit: Query GroupBy time unit. Example: "seconds", "minute", "hour"
+        """
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "end_timestamp", end_timestamp)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "mime_type", mime_type)
+        pulumi.set(__self__, "start_timestamp", start_timestamp)
+        pulumi.set(__self__, "time_unit", time_unit)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Sequence[str]:
+        """
+        Dimensions of the SecurityReport.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="endTimestamp")
+    def end_timestamp(self) -> str:
+        """
+        End timestamp of the query range.
+        """
+        return pulumi.get(self, "end_timestamp")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Sequence[str]:
+        """
+        Metrics of the SecurityReport. Example: ["name:bot_count,func:sum,alias:sum_bot_count"]
+        """
+        return pulumi.get(self, "metrics")
+
+    @property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> str:
+        """
+        MIME type / Output format.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @property
+    @pulumi.getter(name="startTimestamp")
+    def start_timestamp(self) -> str:
+        """
+        Start timestamp of the query range.
+        """
+        return pulumi.get(self, "start_timestamp")
+
+    @property
+    @pulumi.getter(name="timeUnit")
+    def time_unit(self) -> str:
+        """
+        Query GroupBy time unit. Example: "seconds", "minute", "hour"
+        """
+        return pulumi.get(self, "time_unit")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1SecurityReportResultMetadataResponse(dict):
+    """
+    Contains informations about the security report results.
+    """
+    def __init__(__self__, *,
+                 expires: str,
+                 self: str):
+        """
+        Contains informations about the security report results.
+        :param str expires: Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
+        :param str self: Self link of the query results. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+        """
+        pulumi.set(__self__, "expires", expires)
+        pulumi.set(__self__, "self", self)
+
+    @property
+    @pulumi.getter
+    def expires(self) -> str:
+        """
+        Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
+        """
+        return pulumi.get(self, "expires")
+
+    @property
+    @pulumi.getter
+    def self(self) -> str:
+        """
+        Self link of the query results. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+        """
+        return pulumi.get(self, "self")
 
 
 @pulumi.output_type

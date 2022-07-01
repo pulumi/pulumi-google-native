@@ -2030,6 +2030,252 @@ func (o BinaryAuthorizationResponseOutput) EvaluationMode() pulumi.StringOutput 
 	return o.ApplyT(func(v BinaryAuthorizationResponse) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
+// Information relevant to blue-green upgrade.
+type BlueGreenInfoResponse struct {
+	// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
+	BlueInstanceGroupUrls []string `pulumi:"blueInstanceGroupUrls"`
+	// Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	BluePoolDeletionStartTime string `pulumi:"bluePoolDeletionStartTime"`
+	// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
+	GreenInstanceGroupUrls []string `pulumi:"greenInstanceGroupUrls"`
+	// Version of green pool.
+	GreenPoolVersion string `pulumi:"greenPoolVersion"`
+	// Current blue-green upgrade phase.
+	Phase string `pulumi:"phase"`
+}
+
+// Information relevant to blue-green upgrade.
+type BlueGreenInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (BlueGreenInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueGreenInfoResponse)(nil)).Elem()
+}
+
+func (o BlueGreenInfoResponseOutput) ToBlueGreenInfoResponseOutput() BlueGreenInfoResponseOutput {
+	return o
+}
+
+func (o BlueGreenInfoResponseOutput) ToBlueGreenInfoResponseOutputWithContext(ctx context.Context) BlueGreenInfoResponseOutput {
+	return o
+}
+
+// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
+func (o BlueGreenInfoResponseOutput) BlueInstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BlueGreenInfoResponse) []string { return v.BlueInstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+// Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+func (o BlueGreenInfoResponseOutput) BluePoolDeletionStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueGreenInfoResponse) string { return v.BluePoolDeletionStartTime }).(pulumi.StringOutput)
+}
+
+// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
+func (o BlueGreenInfoResponseOutput) GreenInstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BlueGreenInfoResponse) []string { return v.GreenInstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+// Version of green pool.
+func (o BlueGreenInfoResponseOutput) GreenPoolVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueGreenInfoResponse) string { return v.GreenPoolVersion }).(pulumi.StringOutput)
+}
+
+// Current blue-green upgrade phase.
+func (o BlueGreenInfoResponseOutput) Phase() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueGreenInfoResponse) string { return v.Phase }).(pulumi.StringOutput)
+}
+
+// Settings for blue-green upgrade.
+type BlueGreenSettings struct {
+	// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+	NodePoolSoakDuration *string `pulumi:"nodePoolSoakDuration"`
+	// Standard policy for the blue-green upgrade.
+	StandardRolloutPolicy *StandardRolloutPolicy `pulumi:"standardRolloutPolicy"`
+}
+
+// BlueGreenSettingsInput is an input type that accepts BlueGreenSettingsArgs and BlueGreenSettingsOutput values.
+// You can construct a concrete instance of `BlueGreenSettingsInput` via:
+//
+//          BlueGreenSettingsArgs{...}
+type BlueGreenSettingsInput interface {
+	pulumi.Input
+
+	ToBlueGreenSettingsOutput() BlueGreenSettingsOutput
+	ToBlueGreenSettingsOutputWithContext(context.Context) BlueGreenSettingsOutput
+}
+
+// Settings for blue-green upgrade.
+type BlueGreenSettingsArgs struct {
+	// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+	NodePoolSoakDuration pulumi.StringPtrInput `pulumi:"nodePoolSoakDuration"`
+	// Standard policy for the blue-green upgrade.
+	StandardRolloutPolicy StandardRolloutPolicyPtrInput `pulumi:"standardRolloutPolicy"`
+}
+
+func (BlueGreenSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueGreenSettings)(nil)).Elem()
+}
+
+func (i BlueGreenSettingsArgs) ToBlueGreenSettingsOutput() BlueGreenSettingsOutput {
+	return i.ToBlueGreenSettingsOutputWithContext(context.Background())
+}
+
+func (i BlueGreenSettingsArgs) ToBlueGreenSettingsOutputWithContext(ctx context.Context) BlueGreenSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueGreenSettingsOutput)
+}
+
+func (i BlueGreenSettingsArgs) ToBlueGreenSettingsPtrOutput() BlueGreenSettingsPtrOutput {
+	return i.ToBlueGreenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BlueGreenSettingsArgs) ToBlueGreenSettingsPtrOutputWithContext(ctx context.Context) BlueGreenSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueGreenSettingsOutput).ToBlueGreenSettingsPtrOutputWithContext(ctx)
+}
+
+// BlueGreenSettingsPtrInput is an input type that accepts BlueGreenSettingsArgs, BlueGreenSettingsPtr and BlueGreenSettingsPtrOutput values.
+// You can construct a concrete instance of `BlueGreenSettingsPtrInput` via:
+//
+//          BlueGreenSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type BlueGreenSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBlueGreenSettingsPtrOutput() BlueGreenSettingsPtrOutput
+	ToBlueGreenSettingsPtrOutputWithContext(context.Context) BlueGreenSettingsPtrOutput
+}
+
+type blueGreenSettingsPtrType BlueGreenSettingsArgs
+
+func BlueGreenSettingsPtr(v *BlueGreenSettingsArgs) BlueGreenSettingsPtrInput {
+	return (*blueGreenSettingsPtrType)(v)
+}
+
+func (*blueGreenSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueGreenSettings)(nil)).Elem()
+}
+
+func (i *blueGreenSettingsPtrType) ToBlueGreenSettingsPtrOutput() BlueGreenSettingsPtrOutput {
+	return i.ToBlueGreenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *blueGreenSettingsPtrType) ToBlueGreenSettingsPtrOutputWithContext(ctx context.Context) BlueGreenSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueGreenSettingsPtrOutput)
+}
+
+// Settings for blue-green upgrade.
+type BlueGreenSettingsOutput struct{ *pulumi.OutputState }
+
+func (BlueGreenSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueGreenSettings)(nil)).Elem()
+}
+
+func (o BlueGreenSettingsOutput) ToBlueGreenSettingsOutput() BlueGreenSettingsOutput {
+	return o
+}
+
+func (o BlueGreenSettingsOutput) ToBlueGreenSettingsOutputWithContext(ctx context.Context) BlueGreenSettingsOutput {
+	return o
+}
+
+func (o BlueGreenSettingsOutput) ToBlueGreenSettingsPtrOutput() BlueGreenSettingsPtrOutput {
+	return o.ToBlueGreenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BlueGreenSettingsOutput) ToBlueGreenSettingsPtrOutputWithContext(ctx context.Context) BlueGreenSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueGreenSettings) *BlueGreenSettings {
+		return &v
+	}).(BlueGreenSettingsPtrOutput)
+}
+
+// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+func (o BlueGreenSettingsOutput) NodePoolSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueGreenSettings) *string { return v.NodePoolSoakDuration }).(pulumi.StringPtrOutput)
+}
+
+// Standard policy for the blue-green upgrade.
+func (o BlueGreenSettingsOutput) StandardRolloutPolicy() StandardRolloutPolicyPtrOutput {
+	return o.ApplyT(func(v BlueGreenSettings) *StandardRolloutPolicy { return v.StandardRolloutPolicy }).(StandardRolloutPolicyPtrOutput)
+}
+
+type BlueGreenSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueGreenSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueGreenSettings)(nil)).Elem()
+}
+
+func (o BlueGreenSettingsPtrOutput) ToBlueGreenSettingsPtrOutput() BlueGreenSettingsPtrOutput {
+	return o
+}
+
+func (o BlueGreenSettingsPtrOutput) ToBlueGreenSettingsPtrOutputWithContext(ctx context.Context) BlueGreenSettingsPtrOutput {
+	return o
+}
+
+func (o BlueGreenSettingsPtrOutput) Elem() BlueGreenSettingsOutput {
+	return o.ApplyT(func(v *BlueGreenSettings) BlueGreenSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BlueGreenSettings
+		return ret
+	}).(BlueGreenSettingsOutput)
+}
+
+// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+func (o BlueGreenSettingsPtrOutput) NodePoolSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueGreenSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolSoakDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Standard policy for the blue-green upgrade.
+func (o BlueGreenSettingsPtrOutput) StandardRolloutPolicy() StandardRolloutPolicyPtrOutput {
+	return o.ApplyT(func(v *BlueGreenSettings) *StandardRolloutPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.StandardRolloutPolicy
+	}).(StandardRolloutPolicyPtrOutput)
+}
+
+// Settings for blue-green upgrade.
+type BlueGreenSettingsResponse struct {
+	// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+	NodePoolSoakDuration string `pulumi:"nodePoolSoakDuration"`
+	// Standard policy for the blue-green upgrade.
+	StandardRolloutPolicy StandardRolloutPolicyResponse `pulumi:"standardRolloutPolicy"`
+}
+
+// Settings for blue-green upgrade.
+type BlueGreenSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (BlueGreenSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueGreenSettingsResponse)(nil)).Elem()
+}
+
+func (o BlueGreenSettingsResponseOutput) ToBlueGreenSettingsResponseOutput() BlueGreenSettingsResponseOutput {
+	return o
+}
+
+func (o BlueGreenSettingsResponseOutput) ToBlueGreenSettingsResponseOutputWithContext(ctx context.Context) BlueGreenSettingsResponseOutput {
+	return o
+}
+
+// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+func (o BlueGreenSettingsResponseOutput) NodePoolSoakDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueGreenSettingsResponse) string { return v.NodePoolSoakDuration }).(pulumi.StringOutput)
+}
+
+// Standard policy for the blue-green upgrade.
+func (o BlueGreenSettingsResponseOutput) StandardRolloutPolicy() StandardRolloutPolicyResponseOutput {
+	return o.ApplyT(func(v BlueGreenSettingsResponse) StandardRolloutPolicyResponse { return v.StandardRolloutPolicy }).(StandardRolloutPolicyResponseOutput)
+}
+
 // CidrBlock contains an optional name and one CIDR block.
 type CidrBlock struct {
 	// cidr_block must be specified in CIDR notation.
@@ -10548,7 +10794,7 @@ func (o NodeConfigPtrOutput) WorkloadMetadataConfig() WorkloadMetadataConfigPtrO
 
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaults struct {
-	// GCFS (Google Container File System, a.k.a Riptide) options.
+	// GCFS (Google Container File System, a.k.a. Riptide) options.
 	GcfsConfig *GcfsConfig `pulumi:"gcfsConfig"`
 }
 
@@ -10565,7 +10811,7 @@ type NodeConfigDefaultsInput interface {
 
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaultsArgs struct {
-	// GCFS (Google Container File System, a.k.a Riptide) options.
+	// GCFS (Google Container File System, a.k.a. Riptide) options.
 	GcfsConfig GcfsConfigPtrInput `pulumi:"gcfsConfig"`
 }
 
@@ -10647,7 +10893,7 @@ func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsPtrOutputWithContext(ctx c
 	}).(NodeConfigDefaultsPtrOutput)
 }
 
-// GCFS (Google Container File System, a.k.a Riptide) options.
+// GCFS (Google Container File System, a.k.a. Riptide) options.
 func (o NodeConfigDefaultsOutput) GcfsConfig() GcfsConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfigDefaults) *GcfsConfig { return v.GcfsConfig }).(GcfsConfigPtrOutput)
 }
@@ -10676,7 +10922,7 @@ func (o NodeConfigDefaultsPtrOutput) Elem() NodeConfigDefaultsOutput {
 	}).(NodeConfigDefaultsOutput)
 }
 
-// GCFS (Google Container File System, a.k.a Riptide) options.
+// GCFS (Google Container File System, a.k.a. Riptide) options.
 func (o NodeConfigDefaultsPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
 	return o.ApplyT(func(v *NodeConfigDefaults) *GcfsConfig {
 		if v == nil {
@@ -10688,7 +10934,7 @@ func (o NodeConfigDefaultsPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
 
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaultsResponse struct {
-	// GCFS (Google Container File System, a.k.a Riptide) options.
+	// GCFS (Google Container File System, a.k.a. Riptide) options.
 	GcfsConfig GcfsConfigResponse `pulumi:"gcfsConfig"`
 }
 
@@ -10707,7 +10953,7 @@ func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponseOutputWith
 	return o
 }
 
-// GCFS (Google Container File System, a.k.a Riptide) options.
+// GCFS (Google Container File System, a.k.a. Riptide) options.
 func (o NodeConfigDefaultsResponseOutput) GcfsConfig() GcfsConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigDefaultsResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
 }
@@ -11994,10 +12240,16 @@ type NodePoolAutoscaling struct {
 	Autoprovisioned *bool `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled *bool `pulumi:"enabled"`
+	// Location policy used when scaling up a nodepool.
+	LocationPolicy *NodePoolAutoscalingLocationPolicy `pulumi:"locationPolicy"`
 	// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount *int `pulumi:"maxNodeCount"`
 	// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount *int `pulumi:"minNodeCount"`
+	// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+	TotalMaxNodeCount *int `pulumi:"totalMaxNodeCount"`
+	// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+	TotalMinNodeCount *int `pulumi:"totalMinNodeCount"`
 }
 
 // NodePoolAutoscalingInput is an input type that accepts NodePoolAutoscalingArgs and NodePoolAutoscalingOutput values.
@@ -12017,10 +12269,16 @@ type NodePoolAutoscalingArgs struct {
 	Autoprovisioned pulumi.BoolPtrInput `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Location policy used when scaling up a nodepool.
+	LocationPolicy NodePoolAutoscalingLocationPolicyPtrInput `pulumi:"locationPolicy"`
 	// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
 	// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+	// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+	TotalMaxNodeCount pulumi.IntPtrInput `pulumi:"totalMaxNodeCount"`
+	// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+	TotalMinNodeCount pulumi.IntPtrInput `pulumi:"totalMinNodeCount"`
 }
 
 func (NodePoolAutoscalingArgs) ElementType() reflect.Type {
@@ -12111,6 +12369,11 @@ func (o NodePoolAutoscalingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Location policy used when scaling up a nodepool.
+func (o NodePoolAutoscalingOutput) LocationPolicy() NodePoolAutoscalingLocationPolicyPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *NodePoolAutoscalingLocationPolicy { return v.LocationPolicy }).(NodePoolAutoscalingLocationPolicyPtrOutput)
+}
+
 // Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
@@ -12119,6 +12382,16 @@ func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
 // Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 func (o NodePoolAutoscalingOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+func (o NodePoolAutoscalingOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.TotalMaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+func (o NodePoolAutoscalingOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.TotalMinNodeCount }).(pulumi.IntPtrOutput)
 }
 
 type NodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
@@ -12165,6 +12438,16 @@ func (o NodePoolAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Location policy used when scaling up a nodepool.
+func (o NodePoolAutoscalingPtrOutput) LocationPolicy() NodePoolAutoscalingLocationPolicyPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *NodePoolAutoscalingLocationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.LocationPolicy
+	}).(NodePoolAutoscalingLocationPolicyPtrOutput)
+}
+
 // Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
@@ -12185,16 +12468,42 @@ func (o NodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+func (o NodePoolAutoscalingPtrOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalMaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+func (o NodePoolAutoscalingPtrOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalMinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
 type NodePoolAutoscalingResponse struct {
 	// Can this node pool be deleted automatically.
 	Autoprovisioned bool `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled bool `pulumi:"enabled"`
+	// Location policy used when scaling up a nodepool.
+	LocationPolicy string `pulumi:"locationPolicy"`
 	// Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
 	// Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount int `pulumi:"minNodeCount"`
+	// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+	TotalMaxNodeCount int `pulumi:"totalMaxNodeCount"`
+	// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+	TotalMinNodeCount int `pulumi:"totalMinNodeCount"`
 }
 
 // NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
@@ -12222,6 +12531,11 @@ func (o NodePoolAutoscalingResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Location policy used when scaling up a nodepool.
+func (o NodePoolAutoscalingResponseOutput) LocationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolAutoscalingResponse) string { return v.LocationPolicy }).(pulumi.StringOutput)
+}
+
 // Maximum number of nodes for one location in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingResponseOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) int { return v.MaxNodeCount }).(pulumi.IntOutput)
@@ -12230,6 +12544,16 @@ func (o NodePoolAutoscalingResponseOutput) MaxNodeCount() pulumi.IntOutput {
 // Minimum number of nodes for one location in the NodePool. Must be >= 1 and <= max_node_count.
 func (o NodePoolAutoscalingResponseOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+// Maximum number of nodes in the node pool. Must be greater than total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+func (o NodePoolAutoscalingResponseOutput) TotalMaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolAutoscalingResponse) int { return v.TotalMaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
+func (o NodePoolAutoscalingResponseOutput) TotalMinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolAutoscalingResponse) int { return v.TotalMinNodeCount }).(pulumi.IntOutput)
 }
 
 // Subset of Nodepool message that has defaults.
@@ -12408,7 +12732,7 @@ type NodePoolResponse struct {
 	Config NodeConfigResponse `pulumi:"config"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount int `pulumi:"initialNodeCount"`
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
@@ -12430,6 +12754,8 @@ type NodePoolResponse struct {
 	//
 	// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
 	StatusMessage string `pulumi:"statusMessage"`
+	// [Output only] Update info contains relevant information during a node pool update.
+	UpdateInfo UpdateInfoResponse `pulumi:"updateInfo"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponse `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -12471,7 +12797,7 @@ func (o NodePoolResponseOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolResponse) int { return v.InitialNodeCount }).(pulumi.IntOutput)
 }
 
-// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
 func (o NodePoolResponseOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodePoolResponse) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
@@ -12521,6 +12847,11 @@ func (o NodePoolResponseOutput) Status() pulumi.StringOutput {
 // Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
 func (o NodePoolResponseOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolResponse) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// [Output only] Update info contains relevant information during a node pool update.
+func (o NodePoolResponseOutput) UpdateInfo() UpdateInfoResponseOutput {
+	return o.ApplyT(func(v NodePoolResponse) UpdateInfoResponse { return v.UpdateInfo }).(UpdateInfoResponseOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
@@ -15222,6 +15553,224 @@ func (o ShieldedNodesResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ShieldedNodesResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Standard rollout policy is the default policy for blue-green.
+type StandardRolloutPolicy struct {
+	// Number of blue nodes to drain in a batch.
+	BatchNodeCount *int `pulumi:"batchNodeCount"`
+	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	BatchPercentage *float64 `pulumi:"batchPercentage"`
+	// Soak time after each batch gets drained. Default to zero.
+	BatchSoakDuration *string `pulumi:"batchSoakDuration"`
+}
+
+// StandardRolloutPolicyInput is an input type that accepts StandardRolloutPolicyArgs and StandardRolloutPolicyOutput values.
+// You can construct a concrete instance of `StandardRolloutPolicyInput` via:
+//
+//          StandardRolloutPolicyArgs{...}
+type StandardRolloutPolicyInput interface {
+	pulumi.Input
+
+	ToStandardRolloutPolicyOutput() StandardRolloutPolicyOutput
+	ToStandardRolloutPolicyOutputWithContext(context.Context) StandardRolloutPolicyOutput
+}
+
+// Standard rollout policy is the default policy for blue-green.
+type StandardRolloutPolicyArgs struct {
+	// Number of blue nodes to drain in a batch.
+	BatchNodeCount pulumi.IntPtrInput `pulumi:"batchNodeCount"`
+	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	BatchPercentage pulumi.Float64PtrInput `pulumi:"batchPercentage"`
+	// Soak time after each batch gets drained. Default to zero.
+	BatchSoakDuration pulumi.StringPtrInput `pulumi:"batchSoakDuration"`
+}
+
+func (StandardRolloutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardRolloutPolicy)(nil)).Elem()
+}
+
+func (i StandardRolloutPolicyArgs) ToStandardRolloutPolicyOutput() StandardRolloutPolicyOutput {
+	return i.ToStandardRolloutPolicyOutputWithContext(context.Background())
+}
+
+func (i StandardRolloutPolicyArgs) ToStandardRolloutPolicyOutputWithContext(ctx context.Context) StandardRolloutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardRolloutPolicyOutput)
+}
+
+func (i StandardRolloutPolicyArgs) ToStandardRolloutPolicyPtrOutput() StandardRolloutPolicyPtrOutput {
+	return i.ToStandardRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i StandardRolloutPolicyArgs) ToStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) StandardRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardRolloutPolicyOutput).ToStandardRolloutPolicyPtrOutputWithContext(ctx)
+}
+
+// StandardRolloutPolicyPtrInput is an input type that accepts StandardRolloutPolicyArgs, StandardRolloutPolicyPtr and StandardRolloutPolicyPtrOutput values.
+// You can construct a concrete instance of `StandardRolloutPolicyPtrInput` via:
+//
+//          StandardRolloutPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type StandardRolloutPolicyPtrInput interface {
+	pulumi.Input
+
+	ToStandardRolloutPolicyPtrOutput() StandardRolloutPolicyPtrOutput
+	ToStandardRolloutPolicyPtrOutputWithContext(context.Context) StandardRolloutPolicyPtrOutput
+}
+
+type standardRolloutPolicyPtrType StandardRolloutPolicyArgs
+
+func StandardRolloutPolicyPtr(v *StandardRolloutPolicyArgs) StandardRolloutPolicyPtrInput {
+	return (*standardRolloutPolicyPtrType)(v)
+}
+
+func (*standardRolloutPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardRolloutPolicy)(nil)).Elem()
+}
+
+func (i *standardRolloutPolicyPtrType) ToStandardRolloutPolicyPtrOutput() StandardRolloutPolicyPtrOutput {
+	return i.ToStandardRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *standardRolloutPolicyPtrType) ToStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) StandardRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardRolloutPolicyPtrOutput)
+}
+
+// Standard rollout policy is the default policy for blue-green.
+type StandardRolloutPolicyOutput struct{ *pulumi.OutputState }
+
+func (StandardRolloutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardRolloutPolicy)(nil)).Elem()
+}
+
+func (o StandardRolloutPolicyOutput) ToStandardRolloutPolicyOutput() StandardRolloutPolicyOutput {
+	return o
+}
+
+func (o StandardRolloutPolicyOutput) ToStandardRolloutPolicyOutputWithContext(ctx context.Context) StandardRolloutPolicyOutput {
+	return o
+}
+
+func (o StandardRolloutPolicyOutput) ToStandardRolloutPolicyPtrOutput() StandardRolloutPolicyPtrOutput {
+	return o.ToStandardRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o StandardRolloutPolicyOutput) ToStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) StandardRolloutPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandardRolloutPolicy) *StandardRolloutPolicy {
+		return &v
+	}).(StandardRolloutPolicyPtrOutput)
+}
+
+// Number of blue nodes to drain in a batch.
+func (o StandardRolloutPolicyOutput) BatchNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StandardRolloutPolicy) *int { return v.BatchNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+func (o StandardRolloutPolicyOutput) BatchPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StandardRolloutPolicy) *float64 { return v.BatchPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Soak time after each batch gets drained. Default to zero.
+func (o StandardRolloutPolicyOutput) BatchSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardRolloutPolicy) *string { return v.BatchSoakDuration }).(pulumi.StringPtrOutput)
+}
+
+type StandardRolloutPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardRolloutPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardRolloutPolicy)(nil)).Elem()
+}
+
+func (o StandardRolloutPolicyPtrOutput) ToStandardRolloutPolicyPtrOutput() StandardRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o StandardRolloutPolicyPtrOutput) ToStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) StandardRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o StandardRolloutPolicyPtrOutput) Elem() StandardRolloutPolicyOutput {
+	return o.ApplyT(func(v *StandardRolloutPolicy) StandardRolloutPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret StandardRolloutPolicy
+		return ret
+	}).(StandardRolloutPolicyOutput)
+}
+
+// Number of blue nodes to drain in a batch.
+func (o StandardRolloutPolicyPtrOutput) BatchNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardRolloutPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+func (o StandardRolloutPolicyPtrOutput) BatchPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StandardRolloutPolicy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BatchPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Soak time after each batch gets drained. Default to zero.
+func (o StandardRolloutPolicyPtrOutput) BatchSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardRolloutPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSoakDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Standard rollout policy is the default policy for blue-green.
+type StandardRolloutPolicyResponse struct {
+	// Number of blue nodes to drain in a batch.
+	BatchNodeCount int `pulumi:"batchNodeCount"`
+	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	BatchPercentage float64 `pulumi:"batchPercentage"`
+	// Soak time after each batch gets drained. Default to zero.
+	BatchSoakDuration string `pulumi:"batchSoakDuration"`
+}
+
+// Standard rollout policy is the default policy for blue-green.
+type StandardRolloutPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (StandardRolloutPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardRolloutPolicyResponse)(nil)).Elem()
+}
+
+func (o StandardRolloutPolicyResponseOutput) ToStandardRolloutPolicyResponseOutput() StandardRolloutPolicyResponseOutput {
+	return o
+}
+
+func (o StandardRolloutPolicyResponseOutput) ToStandardRolloutPolicyResponseOutputWithContext(ctx context.Context) StandardRolloutPolicyResponseOutput {
+	return o
+}
+
+// Number of blue nodes to drain in a batch.
+func (o StandardRolloutPolicyResponseOutput) BatchNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v StandardRolloutPolicyResponse) int { return v.BatchNodeCount }).(pulumi.IntOutput)
+}
+
+// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+func (o StandardRolloutPolicyResponseOutput) BatchPercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v StandardRolloutPolicyResponse) float64 { return v.BatchPercentage }).(pulumi.Float64Output)
+}
+
+// Soak time after each batch gets drained. Default to zero.
+func (o StandardRolloutPolicyResponseOutput) BatchSoakDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v StandardRolloutPolicyResponse) string { return v.BatchSoakDuration }).(pulumi.StringOutput)
+}
+
 // StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 type StatusCondition struct {
 	// Canonical code of the condition.
@@ -15628,12 +16177,42 @@ func (o TimeWindowResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
+// UpdateInfo contains resource (instance groups, etc), status and other intermediate information relevant to a node pool upgrade.
+type UpdateInfoResponse struct {
+	// Information of a blue-green upgrade.
+	BlueGreenInfo BlueGreenInfoResponse `pulumi:"blueGreenInfo"`
+}
+
+// UpdateInfo contains resource (instance groups, etc), status and other intermediate information relevant to a node pool upgrade.
+type UpdateInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateInfoResponse)(nil)).Elem()
+}
+
+func (o UpdateInfoResponseOutput) ToUpdateInfoResponseOutput() UpdateInfoResponseOutput {
+	return o
+}
+
+func (o UpdateInfoResponseOutput) ToUpdateInfoResponseOutputWithContext(ctx context.Context) UpdateInfoResponseOutput {
+	return o
+}
+
+// Information of a blue-green upgrade.
+func (o UpdateInfoResponseOutput) BlueGreenInfo() BlueGreenInfoResponseOutput {
+	return o.ApplyT(func(v UpdateInfoResponse) BlueGreenInfoResponse { return v.BlueGreenInfo }).(BlueGreenInfoResponseOutput)
+}
+
+// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available. These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is ROLLING, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
 type UpgradeSettings struct {
+	// Settings for blue-green upgrade strategy.
+	BlueGreenSettings *BlueGreenSettings `pulumi:"blueGreenSettings"`
 	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 	MaxSurge *int `pulumi:"maxSurge"`
 	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
 	MaxUnavailable *int `pulumi:"maxUnavailable"`
+	// Update strategy of the node pool.
+	Strategy *UpgradeSettingsStrategy `pulumi:"strategy"`
 }
 
 // UpgradeSettingsInput is an input type that accepts UpgradeSettingsArgs and UpgradeSettingsOutput values.
@@ -15647,12 +16226,16 @@ type UpgradeSettingsInput interface {
 	ToUpgradeSettingsOutputWithContext(context.Context) UpgradeSettingsOutput
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
+// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available. These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is ROLLING, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
 type UpgradeSettingsArgs struct {
+	// Settings for blue-green upgrade strategy.
+	BlueGreenSettings BlueGreenSettingsPtrInput `pulumi:"blueGreenSettings"`
 	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
 	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
 	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+	// Update strategy of the node pool.
+	Strategy UpgradeSettingsStrategyPtrInput `pulumi:"strategy"`
 }
 
 func (UpgradeSettingsArgs) ElementType() reflect.Type {
@@ -15708,7 +16291,7 @@ func (i *upgradeSettingsPtrType) ToUpgradeSettingsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(UpgradeSettingsPtrOutput)
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
+// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available. These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is ROLLING, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
 type UpgradeSettingsOutput struct{ *pulumi.OutputState }
 
 func (UpgradeSettingsOutput) ElementType() reflect.Type {
@@ -15733,6 +16316,11 @@ func (o UpgradeSettingsOutput) ToUpgradeSettingsPtrOutputWithContext(ctx context
 	}).(UpgradeSettingsPtrOutput)
 }
 
+// Settings for blue-green upgrade strategy.
+func (o UpgradeSettingsOutput) BlueGreenSettings() BlueGreenSettingsPtrOutput {
+	return o.ApplyT(func(v UpgradeSettings) *BlueGreenSettings { return v.BlueGreenSettings }).(BlueGreenSettingsPtrOutput)
+}
+
 // The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 func (o UpgradeSettingsOutput) MaxSurge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeSettings) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
@@ -15741,6 +16329,11 @@ func (o UpgradeSettingsOutput) MaxSurge() pulumi.IntPtrOutput {
 // The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
 func (o UpgradeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+// Update strategy of the node pool.
+func (o UpgradeSettingsOutput) Strategy() UpgradeSettingsStrategyPtrOutput {
+	return o.ApplyT(func(v UpgradeSettings) *UpgradeSettingsStrategy { return v.Strategy }).(UpgradeSettingsStrategyPtrOutput)
 }
 
 type UpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -15767,6 +16360,16 @@ func (o UpgradeSettingsPtrOutput) Elem() UpgradeSettingsOutput {
 	}).(UpgradeSettingsOutput)
 }
 
+// Settings for blue-green upgrade strategy.
+func (o UpgradeSettingsPtrOutput) BlueGreenSettings() BlueGreenSettingsPtrOutput {
+	return o.ApplyT(func(v *UpgradeSettings) *BlueGreenSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BlueGreenSettings
+	}).(BlueGreenSettingsPtrOutput)
+}
+
 // The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 func (o UpgradeSettingsPtrOutput) MaxSurge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UpgradeSettings) *int {
@@ -15787,15 +16390,29 @@ func (o UpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
+// Update strategy of the node pool.
+func (o UpgradeSettingsPtrOutput) Strategy() UpgradeSettingsStrategyPtrOutput {
+	return o.ApplyT(func(v *UpgradeSettings) *UpgradeSettingsStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(UpgradeSettingsStrategyPtrOutput)
+}
+
+// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available. These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is ROLLING, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
 type UpgradeSettingsResponse struct {
+	// Settings for blue-green upgrade strategy.
+	BlueGreenSettings BlueGreenSettingsResponse `pulumi:"blueGreenSettings"`
 	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 	MaxSurge int `pulumi:"maxSurge"`
 	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
 	MaxUnavailable int `pulumi:"maxUnavailable"`
+	// Update strategy of the node pool.
+	Strategy string `pulumi:"strategy"`
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
+// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available. These upgrade settings configure the upgrade strategy for the node pool. Use strategy to switch between the strategies applied to the node pool. If the strategy is ROLLING, use max_surge and max_unavailable to control the level of parallelism and the level of disruption caused by upgrade. 1. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. 2. maxUnavailable controls the number of nodes that can be simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). If the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-green upgrade related settings. 1. standard_rollout_policy is the default policy. The policy is used to control the way blue pool gets drained. The draining is executed in the batch mode. The batch size could be specified as either percentage of the node pool size or the number of nodes. batch_soak_duration is the soak time after each batch gets drained. 2. node_pool_soak_duration is the soak time after all blue nodes are drained. After this period, the blue pool nodes will be deleted.
 type UpgradeSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (UpgradeSettingsResponseOutput) ElementType() reflect.Type {
@@ -15810,6 +16427,11 @@ func (o UpgradeSettingsResponseOutput) ToUpgradeSettingsResponseOutputWithContex
 	return o
 }
 
+// Settings for blue-green upgrade strategy.
+func (o UpgradeSettingsResponseOutput) BlueGreenSettings() BlueGreenSettingsResponseOutput {
+	return o.ApplyT(func(v UpgradeSettingsResponse) BlueGreenSettingsResponse { return v.BlueGreenSettings }).(BlueGreenSettingsResponseOutput)
+}
+
 // The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 func (o UpgradeSettingsResponseOutput) MaxSurge() pulumi.IntOutput {
 	return o.ApplyT(func(v UpgradeSettingsResponse) int { return v.MaxSurge }).(pulumi.IntOutput)
@@ -15818,6 +16440,11 @@ func (o UpgradeSettingsResponseOutput) MaxSurge() pulumi.IntOutput {
 // The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
 func (o UpgradeSettingsResponseOutput) MaxUnavailable() pulumi.IntOutput {
 	return o.ApplyT(func(v UpgradeSettingsResponse) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+}
+
+// Update strategy of the node pool.
+func (o UpgradeSettingsResponseOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeSettingsResponse) string { return v.Strategy }).(pulumi.StringOutput)
 }
 
 // VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to automatically adjust the resources of pods controlled by it.
@@ -16503,6 +17130,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationPtrInput)(nil)).Elem(), BigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationInput)(nil)).Elem(), BinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationPtrInput)(nil)).Elem(), BinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueGreenSettingsInput)(nil)).Elem(), BlueGreenSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueGreenSettingsPtrInput)(nil)).Elem(), BlueGreenSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockInput)(nil)).Elem(), CidrBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockArrayInput)(nil)).Elem(), CidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCertificateConfigInput)(nil)).Elem(), ClientCertificateConfigArgs{})
@@ -16631,6 +17260,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesInput)(nil)).Elem(), ShieldedNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedNodesPtrInput)(nil)).Elem(), ShieldedNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardRolloutPolicyInput)(nil)).Elem(), StandardRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardRolloutPolicyPtrInput)(nil)).Elem(), StandardRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionInput)(nil)).Elem(), StatusConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionArrayInput)(nil)).Elem(), StatusConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowInput)(nil)).Elem(), TimeWindowArgs{})
@@ -16673,6 +17304,10 @@ func init() {
 	pulumi.RegisterOutputType(BinaryAuthorizationOutput{})
 	pulumi.RegisterOutputType(BinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(BinaryAuthorizationResponseOutput{})
+	pulumi.RegisterOutputType(BlueGreenInfoResponseOutput{})
+	pulumi.RegisterOutputType(BlueGreenSettingsOutput{})
+	pulumi.RegisterOutputType(BlueGreenSettingsPtrOutput{})
+	pulumi.RegisterOutputType(BlueGreenSettingsResponseOutput{})
 	pulumi.RegisterOutputType(CidrBlockOutput{})
 	pulumi.RegisterOutputType(CidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(CidrBlockResponseOutput{})
@@ -16869,6 +17504,9 @@ func init() {
 	pulumi.RegisterOutputType(ShieldedNodesOutput{})
 	pulumi.RegisterOutputType(ShieldedNodesPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedNodesResponseOutput{})
+	pulumi.RegisterOutputType(StandardRolloutPolicyOutput{})
+	pulumi.RegisterOutputType(StandardRolloutPolicyPtrOutput{})
+	pulumi.RegisterOutputType(StandardRolloutPolicyResponseOutput{})
 	pulumi.RegisterOutputType(StatusConditionOutput{})
 	pulumi.RegisterOutputType(StatusConditionArrayOutput{})
 	pulumi.RegisterOutputType(StatusConditionResponseOutput{})
@@ -16876,6 +17514,7 @@ func init() {
 	pulumi.RegisterOutputType(TimeWindowOutput{})
 	pulumi.RegisterOutputType(TimeWindowPtrOutput{})
 	pulumi.RegisterOutputType(TimeWindowResponseOutput{})
+	pulumi.RegisterOutputType(UpdateInfoResponseOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsResponseOutput{})

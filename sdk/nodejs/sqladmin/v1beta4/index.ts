@@ -11,8 +11,10 @@ export * from "./getBackupRun";
 export * from "./getDatabase";
 export * from "./getInstance";
 export * from "./getSslCert";
+export * from "./getUser";
 export * from "./instance";
 export * from "./sslCert";
+export * from "./user";
 
 // Export enums:
 export * from "../../types/enums/sqladmin/v1beta4";
@@ -22,6 +24,7 @@ import { BackupRun } from "./backupRun";
 import { Database } from "./database";
 import { Instance } from "./instance";
 import { SslCert } from "./sslCert";
+import { User } from "./user";
 
 const _module = {
     version: utilities.getVersion(),
@@ -35,6 +38,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "google-native:sqladmin/v1beta4:SslCert":
                 return new SslCert(name, <any>undefined, { urn })
+            case "google-native:sqladmin/v1beta4:User":
+                return new User(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

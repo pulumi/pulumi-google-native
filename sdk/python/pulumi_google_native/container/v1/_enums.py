@@ -22,12 +22,14 @@ __all__ = [
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkPolicyProvider',
+    'NodePoolAutoscalingLocationPolicy',
     'NodeTaintEffect',
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
     'StatusConditionCanonicalCode',
     'StatusConditionCode',
+    'UpgradeSettingsStrategy',
     'WorkloadMetadataConfigMode',
 ]
 
@@ -251,6 +253,18 @@ class MonitoringComponentConfigEnableComponentsItem(str, Enum):
     """
     system components
     """
+    APISERVER = "APISERVER"
+    """
+    kube-apiserver
+    """
+    SCHEDULER = "SCHEDULER"
+    """
+    kube-scheduler
+    """
+    CONTROLLER_MANAGER = "CONTROLLER_MANAGER"
+    """
+    kube-controller-manager
+    """
 
 
 class NetworkConfigDatapathProvider(str, Enum):
@@ -318,6 +332,24 @@ class NetworkPolicyProvider(str, Enum):
     CALICO = "CALICO"
     """
     Tigera (Calico Felix).
+    """
+
+
+class NodePoolAutoscalingLocationPolicy(str, Enum):
+    """
+    Location policy used when scaling up a nodepool.
+    """
+    LOCATION_POLICY_UNSPECIFIED = "LOCATION_POLICY_UNSPECIFIED"
+    """
+    Not set.
+    """
+    BALANCED = "BALANCED"
+    """
+    BALANCED is a best effort policy that aims to balance the sizes of different zones.
+    """
+    ANY = "ANY"
+    """
+    ANY policy picks zones that have the highest capacity available.
     """
 
 
@@ -506,6 +538,24 @@ class StatusConditionCode(str, Enum):
     CA_EXPIRING = "CA_EXPIRING"
     """
     Cluster CA is expiring soon.
+    """
+
+
+class UpgradeSettingsStrategy(str, Enum):
+    """
+    Update strategy of the node pool.
+    """
+    NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED = "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"
+    """
+    Default value.
+    """
+    BLUE_GREEN = "BLUE_GREEN"
+    """
+    blue-green upgrade.
+    """
+    SURGE = "SURGE"
+    """
+    SURGE is the traditional way of upgrade a node pool. max_surge and max_unavailable determines the level of upgrade parallelism.
     """
 
 

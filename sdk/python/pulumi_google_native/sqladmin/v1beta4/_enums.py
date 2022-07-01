@@ -23,6 +23,8 @@ __all__ = [
     'SettingsPricingPlan',
     'SettingsReplicationType',
     'SqlOutOfDiskReportSqlOutOfDiskState',
+    'UserDualPasswordType',
+    'UserType',
 ]
 
 
@@ -504,4 +506,44 @@ class SqlOutOfDiskReportSqlOutOfDiskState(str, Enum):
     SOFT_SHUTDOWN = "SOFT_SHUTDOWN"
     """
     Data disk is almost used up. It is shutdown to prevent data corruption.
+    """
+
+
+class UserDualPasswordType(str, Enum):
+    """
+    Dual password status for the user.
+    """
+    DUAL_PASSWORD_TYPE_UNSPECIFIED = "DUAL_PASSWORD_TYPE_UNSPECIFIED"
+    """
+    The default value.
+    """
+    NO_MODIFY_DUAL_PASSWORD = "NO_MODIFY_DUAL_PASSWORD"
+    """
+    Do not update the user's dual password status.
+    """
+    NO_DUAL_PASSWORD = "NO_DUAL_PASSWORD"
+    """
+    No dual password usable for connecting using this user.
+    """
+    DUAL_PASSWORD = "DUAL_PASSWORD"
+    """
+    Dual password usable for connecting using this user.
+    """
+
+
+class UserType(str, Enum):
+    """
+    The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
+    """
+    BUILT_IN = "BUILT_IN"
+    """
+    The database's built-in user type.
+    """
+    CLOUD_IAM_USER = "CLOUD_IAM_USER"
+    """
+    Cloud IAM user.
+    """
+    CLOUD_IAM_SERVICE_ACCOUNT = "CLOUD_IAM_SERVICE_ACCOUNT"
+    """
+    Cloud IAM service account.
     """

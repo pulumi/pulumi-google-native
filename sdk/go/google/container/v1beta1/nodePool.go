@@ -24,7 +24,7 @@ type NodePool struct {
 	Config NodeConfigResponseOutput `pulumi:"config"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
 	Location          pulumi.StringOutput      `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
@@ -50,6 +50,8 @@ type NodePool struct {
 	//
 	// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// [Output only] Update info contains relevant information during a node pool update.
+	UpdateInfo UpdateInfoResponseOutput `pulumi:"updateInfo"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponseOutput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -243,7 +245,7 @@ func (o NodePoolOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.InitialNodeCount }).(pulumi.IntOutput)
 }
 
-// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
 func (o NodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
@@ -306,6 +308,11 @@ func (o NodePoolOutput) Status() pulumi.StringOutput {
 // Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
 func (o NodePoolOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// [Output only] Update info contains relevant information during a node pool update.
+func (o NodePoolOutput) UpdateInfo() UpdateInfoResponseOutput {
+	return o.ApplyT(func(v *NodePool) UpdateInfoResponseOutput { return v.UpdateInfo }).(UpdateInfoResponseOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.

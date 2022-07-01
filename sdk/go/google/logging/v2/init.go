@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:logging/v2:BillingAccountBucket":
+		r = &BillingAccountBucket{}
+	case "google-native:logging/v2:BillingAccountBucketView":
+		r = &BillingAccountBucketView{}
 	case "google-native:logging/v2:BillingAccountExclusion":
 		r = &BillingAccountExclusion{}
 	case "google-native:logging/v2:BillingAccountSink":

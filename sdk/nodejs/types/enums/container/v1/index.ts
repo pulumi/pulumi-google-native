@@ -245,6 +245,18 @@ export const MonitoringComponentConfigEnableComponentsItem = {
      * system components
      */
     SystemComponents: "SYSTEM_COMPONENTS",
+    /**
+     * kube-apiserver
+     */
+    Apiserver: "APISERVER",
+    /**
+     * kube-scheduler
+     */
+    Scheduler: "SCHEDULER",
+    /**
+     * kube-controller-manager
+     */
+    ControllerManager: "CONTROLLER_MANAGER",
 } as const;
 
 export type MonitoringComponentConfigEnableComponentsItem = (typeof MonitoringComponentConfigEnableComponentsItem)[keyof typeof MonitoringComponentConfigEnableComponentsItem];
@@ -324,6 +336,26 @@ export const NetworkPolicyProvider = {
  * The selected network policy provider.
  */
 export type NetworkPolicyProvider = (typeof NetworkPolicyProvider)[keyof typeof NetworkPolicyProvider];
+
+export const NodePoolAutoscalingLocationPolicy = {
+    /**
+     * Not set.
+     */
+    LocationPolicyUnspecified: "LOCATION_POLICY_UNSPECIFIED",
+    /**
+     * BALANCED is a best effort policy that aims to balance the sizes of different zones.
+     */
+    Balanced: "BALANCED",
+    /**
+     * ANY policy picks zones that have the highest capacity available.
+     */
+    Any: "ANY",
+} as const;
+
+/**
+ * Location policy used when scaling up a nodepool.
+ */
+export type NodePoolAutoscalingLocationPolicy = (typeof NodePoolAutoscalingLocationPolicy)[keyof typeof NodePoolAutoscalingLocationPolicy];
 
 export const NodeTaintEffect = {
     /**
@@ -524,6 +556,26 @@ export const StatusConditionCode = {
  * Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
  */
 export type StatusConditionCode = (typeof StatusConditionCode)[keyof typeof StatusConditionCode];
+
+export const UpgradeSettingsStrategy = {
+    /**
+     * Default value.
+     */
+    NodePoolUpdateStrategyUnspecified: "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED",
+    /**
+     * blue-green upgrade.
+     */
+    BlueGreen: "BLUE_GREEN",
+    /**
+     * SURGE is the traditional way of upgrade a node pool. max_surge and max_unavailable determines the level of upgrade parallelism.
+     */
+    Surge: "SURGE",
+} as const;
+
+/**
+ * Update strategy of the node pool.
+ */
+export type UpgradeSettingsStrategy = (typeof UpgradeSettingsStrategy)[keyof typeof UpgradeSettingsStrategy];
 
 export const WorkloadMetadataConfigMode = {
     /**

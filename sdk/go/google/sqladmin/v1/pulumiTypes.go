@@ -4128,6 +4128,39 @@ func (o OperationErrorResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationErrorResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// Read-only password status.
+type PasswordStatusResponse struct {
+	// If true, user does not have login privileges.
+	Locked bool `pulumi:"locked"`
+	// The expiration time of the current password.
+	PasswordExpirationTime string `pulumi:"passwordExpirationTime"`
+}
+
+// Read-only password status.
+type PasswordStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (PasswordStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PasswordStatusResponse)(nil)).Elem()
+}
+
+func (o PasswordStatusResponseOutput) ToPasswordStatusResponseOutput() PasswordStatusResponseOutput {
+	return o
+}
+
+func (o PasswordStatusResponseOutput) ToPasswordStatusResponseOutputWithContext(ctx context.Context) PasswordStatusResponseOutput {
+	return o
+}
+
+// If true, user does not have login privileges.
+func (o PasswordStatusResponseOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v PasswordStatusResponse) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// The expiration time of the current password.
+func (o PasswordStatusResponseOutput) PasswordExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v PasswordStatusResponse) string { return v.PasswordExpirationTime }).(pulumi.StringOutput)
+}
+
 // Database instance local user password validation policy
 type PasswordValidationPolicy struct {
 	// The complexity of the password.
@@ -6542,6 +6575,198 @@ func (o SqlServerDatabaseDetailsResponseOutput) RecoveryModel() pulumi.StringOut
 	return o.ApplyT(func(v SqlServerDatabaseDetailsResponse) string { return v.RecoveryModel }).(pulumi.StringOutput)
 }
 
+// Represents a Sql Server user on the Cloud SQL instance.
+type SqlServerUserDetails struct {
+	// If the user has been disabled
+	Disabled *bool `pulumi:"disabled"`
+	// The server roles for this user
+	ServerRoles []string `pulumi:"serverRoles"`
+}
+
+// SqlServerUserDetailsInput is an input type that accepts SqlServerUserDetailsArgs and SqlServerUserDetailsOutput values.
+// You can construct a concrete instance of `SqlServerUserDetailsInput` via:
+//
+//          SqlServerUserDetailsArgs{...}
+type SqlServerUserDetailsInput interface {
+	pulumi.Input
+
+	ToSqlServerUserDetailsOutput() SqlServerUserDetailsOutput
+	ToSqlServerUserDetailsOutputWithContext(context.Context) SqlServerUserDetailsOutput
+}
+
+// Represents a Sql Server user on the Cloud SQL instance.
+type SqlServerUserDetailsArgs struct {
+	// If the user has been disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The server roles for this user
+	ServerRoles pulumi.StringArrayInput `pulumi:"serverRoles"`
+}
+
+func (SqlServerUserDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerUserDetails)(nil)).Elem()
+}
+
+func (i SqlServerUserDetailsArgs) ToSqlServerUserDetailsOutput() SqlServerUserDetailsOutput {
+	return i.ToSqlServerUserDetailsOutputWithContext(context.Background())
+}
+
+func (i SqlServerUserDetailsArgs) ToSqlServerUserDetailsOutputWithContext(ctx context.Context) SqlServerUserDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerUserDetailsOutput)
+}
+
+func (i SqlServerUserDetailsArgs) ToSqlServerUserDetailsPtrOutput() SqlServerUserDetailsPtrOutput {
+	return i.ToSqlServerUserDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerUserDetailsArgs) ToSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) SqlServerUserDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerUserDetailsOutput).ToSqlServerUserDetailsPtrOutputWithContext(ctx)
+}
+
+// SqlServerUserDetailsPtrInput is an input type that accepts SqlServerUserDetailsArgs, SqlServerUserDetailsPtr and SqlServerUserDetailsPtrOutput values.
+// You can construct a concrete instance of `SqlServerUserDetailsPtrInput` via:
+//
+//          SqlServerUserDetailsArgs{...}
+//
+//  or:
+//
+//          nil
+type SqlServerUserDetailsPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerUserDetailsPtrOutput() SqlServerUserDetailsPtrOutput
+	ToSqlServerUserDetailsPtrOutputWithContext(context.Context) SqlServerUserDetailsPtrOutput
+}
+
+type sqlServerUserDetailsPtrType SqlServerUserDetailsArgs
+
+func SqlServerUserDetailsPtr(v *SqlServerUserDetailsArgs) SqlServerUserDetailsPtrInput {
+	return (*sqlServerUserDetailsPtrType)(v)
+}
+
+func (*sqlServerUserDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerUserDetails)(nil)).Elem()
+}
+
+func (i *sqlServerUserDetailsPtrType) ToSqlServerUserDetailsPtrOutput() SqlServerUserDetailsPtrOutput {
+	return i.ToSqlServerUserDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerUserDetailsPtrType) ToSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) SqlServerUserDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerUserDetailsPtrOutput)
+}
+
+// Represents a Sql Server user on the Cloud SQL instance.
+type SqlServerUserDetailsOutput struct{ *pulumi.OutputState }
+
+func (SqlServerUserDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerUserDetails)(nil)).Elem()
+}
+
+func (o SqlServerUserDetailsOutput) ToSqlServerUserDetailsOutput() SqlServerUserDetailsOutput {
+	return o
+}
+
+func (o SqlServerUserDetailsOutput) ToSqlServerUserDetailsOutputWithContext(ctx context.Context) SqlServerUserDetailsOutput {
+	return o
+}
+
+func (o SqlServerUserDetailsOutput) ToSqlServerUserDetailsPtrOutput() SqlServerUserDetailsPtrOutput {
+	return o.ToSqlServerUserDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerUserDetailsOutput) ToSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) SqlServerUserDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerUserDetails) *SqlServerUserDetails {
+		return &v
+	}).(SqlServerUserDetailsPtrOutput)
+}
+
+// If the user has been disabled
+func (o SqlServerUserDetailsOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlServerUserDetails) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The server roles for this user
+func (o SqlServerUserDetailsOutput) ServerRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlServerUserDetails) []string { return v.ServerRoles }).(pulumi.StringArrayOutput)
+}
+
+type SqlServerUserDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerUserDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerUserDetails)(nil)).Elem()
+}
+
+func (o SqlServerUserDetailsPtrOutput) ToSqlServerUserDetailsPtrOutput() SqlServerUserDetailsPtrOutput {
+	return o
+}
+
+func (o SqlServerUserDetailsPtrOutput) ToSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) SqlServerUserDetailsPtrOutput {
+	return o
+}
+
+func (o SqlServerUserDetailsPtrOutput) Elem() SqlServerUserDetailsOutput {
+	return o.ApplyT(func(v *SqlServerUserDetails) SqlServerUserDetails {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerUserDetails
+		return ret
+	}).(SqlServerUserDetailsOutput)
+}
+
+// If the user has been disabled
+func (o SqlServerUserDetailsPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlServerUserDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The server roles for this user
+func (o SqlServerUserDetailsPtrOutput) ServerRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SqlServerUserDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerRoles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Represents a Sql Server user on the Cloud SQL instance.
+type SqlServerUserDetailsResponse struct {
+	// If the user has been disabled
+	Disabled bool `pulumi:"disabled"`
+	// The server roles for this user
+	ServerRoles []string `pulumi:"serverRoles"`
+}
+
+// Represents a Sql Server user on the Cloud SQL instance.
+type SqlServerUserDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerUserDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerUserDetailsResponse)(nil)).Elem()
+}
+
+func (o SqlServerUserDetailsResponseOutput) ToSqlServerUserDetailsResponseOutput() SqlServerUserDetailsResponseOutput {
+	return o
+}
+
+func (o SqlServerUserDetailsResponseOutput) ToSqlServerUserDetailsResponseOutputWithContext(ctx context.Context) SqlServerUserDetailsResponseOutput {
+	return o
+}
+
+// If the user has been disabled
+func (o SqlServerUserDetailsResponseOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerUserDetailsResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The server roles for this user
+func (o SqlServerUserDetailsResponseOutput) ServerRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlServerUserDetailsResponse) []string { return v.ServerRoles }).(pulumi.StringArrayOutput)
+}
+
 // SslCerts Resource
 type SslCertType struct {
 	// PEM representation.
@@ -6916,6 +7141,257 @@ func (o SslCertResponseOutput) Sha1Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v SslCertResponse) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }
 
+// User level password validation policy.
+type UserPasswordValidationPolicy struct {
+	// Number of failed login attempts allowed before user get locked.
+	AllowedFailedAttempts *int `pulumi:"allowedFailedAttempts"`
+	// If true, failed login attempts check will be enabled.
+	EnableFailedAttemptsCheck *bool `pulumi:"enableFailedAttemptsCheck"`
+	// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+	EnablePasswordVerification *bool `pulumi:"enablePasswordVerification"`
+	// Expiration duration after password is updated.
+	PasswordExpirationDuration *string `pulumi:"passwordExpirationDuration"`
+}
+
+// UserPasswordValidationPolicyInput is an input type that accepts UserPasswordValidationPolicyArgs and UserPasswordValidationPolicyOutput values.
+// You can construct a concrete instance of `UserPasswordValidationPolicyInput` via:
+//
+//          UserPasswordValidationPolicyArgs{...}
+type UserPasswordValidationPolicyInput interface {
+	pulumi.Input
+
+	ToUserPasswordValidationPolicyOutput() UserPasswordValidationPolicyOutput
+	ToUserPasswordValidationPolicyOutputWithContext(context.Context) UserPasswordValidationPolicyOutput
+}
+
+// User level password validation policy.
+type UserPasswordValidationPolicyArgs struct {
+	// Number of failed login attempts allowed before user get locked.
+	AllowedFailedAttempts pulumi.IntPtrInput `pulumi:"allowedFailedAttempts"`
+	// If true, failed login attempts check will be enabled.
+	EnableFailedAttemptsCheck pulumi.BoolPtrInput `pulumi:"enableFailedAttemptsCheck"`
+	// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+	EnablePasswordVerification pulumi.BoolPtrInput `pulumi:"enablePasswordVerification"`
+	// Expiration duration after password is updated.
+	PasswordExpirationDuration pulumi.StringPtrInput `pulumi:"passwordExpirationDuration"`
+}
+
+func (UserPasswordValidationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i UserPasswordValidationPolicyArgs) ToUserPasswordValidationPolicyOutput() UserPasswordValidationPolicyOutput {
+	return i.ToUserPasswordValidationPolicyOutputWithContext(context.Background())
+}
+
+func (i UserPasswordValidationPolicyArgs) ToUserPasswordValidationPolicyOutputWithContext(ctx context.Context) UserPasswordValidationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordValidationPolicyOutput)
+}
+
+func (i UserPasswordValidationPolicyArgs) ToUserPasswordValidationPolicyPtrOutput() UserPasswordValidationPolicyPtrOutput {
+	return i.ToUserPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i UserPasswordValidationPolicyArgs) ToUserPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) UserPasswordValidationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordValidationPolicyOutput).ToUserPasswordValidationPolicyPtrOutputWithContext(ctx)
+}
+
+// UserPasswordValidationPolicyPtrInput is an input type that accepts UserPasswordValidationPolicyArgs, UserPasswordValidationPolicyPtr and UserPasswordValidationPolicyPtrOutput values.
+// You can construct a concrete instance of `UserPasswordValidationPolicyPtrInput` via:
+//
+//          UserPasswordValidationPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type UserPasswordValidationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToUserPasswordValidationPolicyPtrOutput() UserPasswordValidationPolicyPtrOutput
+	ToUserPasswordValidationPolicyPtrOutputWithContext(context.Context) UserPasswordValidationPolicyPtrOutput
+}
+
+type userPasswordValidationPolicyPtrType UserPasswordValidationPolicyArgs
+
+func UserPasswordValidationPolicyPtr(v *UserPasswordValidationPolicyArgs) UserPasswordValidationPolicyPtrInput {
+	return (*userPasswordValidationPolicyPtrType)(v)
+}
+
+func (*userPasswordValidationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i *userPasswordValidationPolicyPtrType) ToUserPasswordValidationPolicyPtrOutput() UserPasswordValidationPolicyPtrOutput {
+	return i.ToUserPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *userPasswordValidationPolicyPtrType) ToUserPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) UserPasswordValidationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordValidationPolicyPtrOutput)
+}
+
+// User level password validation policy.
+type UserPasswordValidationPolicyOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordValidationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o UserPasswordValidationPolicyOutput) ToUserPasswordValidationPolicyOutput() UserPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o UserPasswordValidationPolicyOutput) ToUserPasswordValidationPolicyOutputWithContext(ctx context.Context) UserPasswordValidationPolicyOutput {
+	return o
+}
+
+func (o UserPasswordValidationPolicyOutput) ToUserPasswordValidationPolicyPtrOutput() UserPasswordValidationPolicyPtrOutput {
+	return o.ToUserPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o UserPasswordValidationPolicyOutput) ToUserPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) UserPasswordValidationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserPasswordValidationPolicy) *UserPasswordValidationPolicy {
+		return &v
+	}).(UserPasswordValidationPolicyPtrOutput)
+}
+
+// Number of failed login attempts allowed before user get locked.
+func (o UserPasswordValidationPolicyOutput) AllowedFailedAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicy) *int { return v.AllowedFailedAttempts }).(pulumi.IntPtrOutput)
+}
+
+// If true, failed login attempts check will be enabled.
+func (o UserPasswordValidationPolicyOutput) EnableFailedAttemptsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicy) *bool { return v.EnableFailedAttemptsCheck }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+func (o UserPasswordValidationPolicyOutput) EnablePasswordVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicy) *bool { return v.EnablePasswordVerification }).(pulumi.BoolPtrOutput)
+}
+
+// Expiration duration after password is updated.
+func (o UserPasswordValidationPolicyOutput) PasswordExpirationDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicy) *string { return v.PasswordExpirationDuration }).(pulumi.StringPtrOutput)
+}
+
+type UserPasswordValidationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordValidationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o UserPasswordValidationPolicyPtrOutput) ToUserPasswordValidationPolicyPtrOutput() UserPasswordValidationPolicyPtrOutput {
+	return o
+}
+
+func (o UserPasswordValidationPolicyPtrOutput) ToUserPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) UserPasswordValidationPolicyPtrOutput {
+	return o
+}
+
+func (o UserPasswordValidationPolicyPtrOutput) Elem() UserPasswordValidationPolicyOutput {
+	return o.ApplyT(func(v *UserPasswordValidationPolicy) UserPasswordValidationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret UserPasswordValidationPolicy
+		return ret
+	}).(UserPasswordValidationPolicyOutput)
+}
+
+// Number of failed login attempts allowed before user get locked.
+func (o UserPasswordValidationPolicyPtrOutput) AllowedFailedAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UserPasswordValidationPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedFailedAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// If true, failed login attempts check will be enabled.
+func (o UserPasswordValidationPolicyPtrOutput) EnableFailedAttemptsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserPasswordValidationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFailedAttemptsCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+func (o UserPasswordValidationPolicyPtrOutput) EnablePasswordVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserPasswordValidationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePasswordVerification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Expiration duration after password is updated.
+func (o UserPasswordValidationPolicyPtrOutput) PasswordExpirationDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserPasswordValidationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordExpirationDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// User level password validation policy.
+type UserPasswordValidationPolicyResponse struct {
+	// Number of failed login attempts allowed before user get locked.
+	AllowedFailedAttempts int `pulumi:"allowedFailedAttempts"`
+	// If true, failed login attempts check will be enabled.
+	EnableFailedAttemptsCheck bool `pulumi:"enableFailedAttemptsCheck"`
+	// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+	EnablePasswordVerification bool `pulumi:"enablePasswordVerification"`
+	// Expiration duration after password is updated.
+	PasswordExpirationDuration string `pulumi:"passwordExpirationDuration"`
+	// Read-only password status.
+	Status PasswordStatusResponse `pulumi:"status"`
+}
+
+// User level password validation policy.
+type UserPasswordValidationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordValidationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordValidationPolicyResponse)(nil)).Elem()
+}
+
+func (o UserPasswordValidationPolicyResponseOutput) ToUserPasswordValidationPolicyResponseOutput() UserPasswordValidationPolicyResponseOutput {
+	return o
+}
+
+func (o UserPasswordValidationPolicyResponseOutput) ToUserPasswordValidationPolicyResponseOutputWithContext(ctx context.Context) UserPasswordValidationPolicyResponseOutput {
+	return o
+}
+
+// Number of failed login attempts allowed before user get locked.
+func (o UserPasswordValidationPolicyResponseOutput) AllowedFailedAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicyResponse) int { return v.AllowedFailedAttempts }).(pulumi.IntOutput)
+}
+
+// If true, failed login attempts check will be enabled.
+func (o UserPasswordValidationPolicyResponseOutput) EnableFailedAttemptsCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicyResponse) bool { return v.EnableFailedAttemptsCheck }).(pulumi.BoolOutput)
+}
+
+// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+func (o UserPasswordValidationPolicyResponseOutput) EnablePasswordVerification() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicyResponse) bool { return v.EnablePasswordVerification }).(pulumi.BoolOutput)
+}
+
+// Expiration duration after password is updated.
+func (o UserPasswordValidationPolicyResponseOutput) PasswordExpirationDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicyResponse) string { return v.PasswordExpirationDuration }).(pulumi.StringOutput)
+}
+
+// Read-only password status.
+func (o UserPasswordValidationPolicyResponseOutput) Status() PasswordStatusResponseOutput {
+	return o.ApplyT(func(v UserPasswordValidationPolicyResponse) PasswordStatusResponse { return v.Status }).(PasswordStatusResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryInput)(nil)).Elem(), AclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryArrayInput)(nil)).Elem(), AclEntryArray{})
@@ -6967,8 +7443,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerAuditConfigPtrInput)(nil)).Elem(), SqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseDetailsInput)(nil)).Elem(), SqlServerDatabaseDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseDetailsPtrInput)(nil)).Elem(), SqlServerDatabaseDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerUserDetailsInput)(nil)).Elem(), SqlServerUserDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerUserDetailsPtrInput)(nil)).Elem(), SqlServerUserDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertTypeInput)(nil)).Elem(), SslCertTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertTypePtrInput)(nil)).Elem(), SslCertTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordValidationPolicyInput)(nil)).Elem(), UserPasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordValidationPolicyPtrInput)(nil)).Elem(), UserPasswordValidationPolicyArgs{})
 	pulumi.RegisterOutputType(AclEntryOutput{})
 	pulumi.RegisterOutputType(AclEntryArrayOutput{})
 	pulumi.RegisterOutputType(AclEntryResponseOutput{})
@@ -7024,6 +7504,7 @@ func init() {
 	pulumi.RegisterOutputType(OperationErrorOutput{})
 	pulumi.RegisterOutputType(OperationErrorPtrOutput{})
 	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
+	pulumi.RegisterOutputType(PasswordStatusResponseOutput{})
 	pulumi.RegisterOutputType(PasswordValidationPolicyOutput{})
 	pulumi.RegisterOutputType(PasswordValidationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(PasswordValidationPolicyResponseOutput{})
@@ -7048,7 +7529,13 @@ func init() {
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerUserDetailsOutput{})
+	pulumi.RegisterOutputType(SqlServerUserDetailsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerUserDetailsResponseOutput{})
 	pulumi.RegisterOutputType(SslCertTypeOutput{})
 	pulumi.RegisterOutputType(SslCertTypePtrOutput{})
 	pulumi.RegisterOutputType(SslCertResponseOutput{})
+	pulumi.RegisterOutputType(UserPasswordValidationPolicyOutput{})
+	pulumi.RegisterOutputType(UserPasswordValidationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(UserPasswordValidationPolicyResponseOutput{})
 }

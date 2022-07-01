@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class NodeConfigDefaultsResponse
     {
         /// <summary>
-        /// GCFS (Google Container File System, a.k.a Riptide) options.
+        /// GCFS (Google Container File System, a.k.a. Riptide) options.
         /// </summary>
         public readonly Outputs.GcfsConfigResponse GcfsConfig;
 

@@ -14,6 +14,8 @@ import (
 type GoogleCloudApigeeV1AddonsConfig struct {
 	// Configuration for the Advanced API Ops add-on.
 	AdvancedApiOpsConfig *GoogleCloudApigeeV1AdvancedApiOpsConfig `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the API Security add-on.
+	ApiSecurityConfig *GoogleCloudApigeeV1ApiSecurityConfig `pulumi:"apiSecurityConfig"`
 	// Configuration for the Connectors Platform add-on.
 	ConnectorsPlatformConfig *GoogleCloudApigeeV1ConnectorsPlatformConfig `pulumi:"connectorsPlatformConfig"`
 	// Configuration for the Integration add-on.
@@ -37,6 +39,8 @@ type GoogleCloudApigeeV1AddonsConfigInput interface {
 type GoogleCloudApigeeV1AddonsConfigArgs struct {
 	// Configuration for the Advanced API Ops add-on.
 	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the API Security add-on.
+	ApiSecurityConfig GoogleCloudApigeeV1ApiSecurityConfigPtrInput `pulumi:"apiSecurityConfig"`
 	// Configuration for the Connectors Platform add-on.
 	ConnectorsPlatformConfig GoogleCloudApigeeV1ConnectorsPlatformConfigPtrInput `pulumi:"connectorsPlatformConfig"`
 	// Configuration for the Integration add-on.
@@ -130,6 +134,13 @@ func (o GoogleCloudApigeeV1AddonsConfigOutput) AdvancedApiOpsConfig() GoogleClou
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
 }
 
+// Configuration for the API Security add-on.
+func (o GoogleCloudApigeeV1AddonsConfigOutput) ApiSecurityConfig() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1ApiSecurityConfig {
+		return v.ApiSecurityConfig
+	}).(GoogleCloudApigeeV1ApiSecurityConfigPtrOutput)
+}
+
 // Configuration for the Connectors Platform add-on.
 func (o GoogleCloudApigeeV1AddonsConfigOutput) ConnectorsPlatformConfig() GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1ConnectorsPlatformConfig {
@@ -185,6 +196,16 @@ func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) AdvancedApiOpsConfig() GoogleC
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
 }
 
+// Configuration for the API Security add-on.
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ApiSecurityConfig() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1ApiSecurityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecurityConfig
+	}).(GoogleCloudApigeeV1ApiSecurityConfigPtrOutput)
+}
+
 // Configuration for the Connectors Platform add-on.
 func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ConnectorsPlatformConfig() GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1ConnectorsPlatformConfig {
@@ -219,6 +240,8 @@ func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) MonetizationConfig() GoogleClo
 type GoogleCloudApigeeV1AddonsConfigResponse struct {
 	// Configuration for the Advanced API Ops add-on.
 	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigResponse `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the API Security add-on.
+	ApiSecurityConfig GoogleCloudApigeeV1ApiSecurityConfigResponse `pulumi:"apiSecurityConfig"`
 	// Configuration for the Connectors Platform add-on.
 	ConnectorsPlatformConfig GoogleCloudApigeeV1ConnectorsPlatformConfigResponse `pulumi:"connectorsPlatformConfig"`
 	// Configuration for the Integration add-on.
@@ -247,6 +270,13 @@ func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) AdvancedApiOpsConfig() Go
 	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
 		return v.AdvancedApiOpsConfig
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput)
+}
+
+// Configuration for the API Security add-on.
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ApiSecurityConfig() GoogleCloudApigeeV1ApiSecurityConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1ApiSecurityConfigResponse {
+		return v.ApiSecurityConfig
+	}).(GoogleCloudApigeeV1ApiSecurityConfigResponseOutput)
 }
 
 // Configuration for the Connectors Platform add-on.
@@ -525,6 +555,179 @@ func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1ApiProductRefResponse {
 		return vs[0].([]GoogleCloudApigeeV1ApiProductRefResponse)[vs[1].(int)]
 	}).(GoogleCloudApigeeV1ApiProductRefResponseOutput)
+}
+
+// Configurations of the API Security add-on.
+type GoogleCloudApigeeV1ApiSecurityConfig struct {
+	// Flag that specifies whether the API security add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GoogleCloudApigeeV1ApiSecurityConfigInput is an input type that accepts GoogleCloudApigeeV1ApiSecurityConfigArgs and GoogleCloudApigeeV1ApiSecurityConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ApiSecurityConfigInput` via:
+//
+//          GoogleCloudApigeeV1ApiSecurityConfigArgs{...}
+type GoogleCloudApigeeV1ApiSecurityConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1ApiSecurityConfigOutput() GoogleCloudApigeeV1ApiSecurityConfigOutput
+	ToGoogleCloudApigeeV1ApiSecurityConfigOutputWithContext(context.Context) GoogleCloudApigeeV1ApiSecurityConfigOutput
+}
+
+// Configurations of the API Security add-on.
+type GoogleCloudApigeeV1ApiSecurityConfigArgs struct {
+	// Flag that specifies whether the API security add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudApigeeV1ApiSecurityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiSecurityConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToGoogleCloudApigeeV1ApiSecurityConfigOutput() GoogleCloudApigeeV1ApiSecurityConfigOutput {
+	return i.ToGoogleCloudApigeeV1ApiSecurityConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToGoogleCloudApigeeV1ApiSecurityConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiSecurityConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutput() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiSecurityConfigOutput).ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1ApiSecurityConfigPtrInput is an input type that accepts GoogleCloudApigeeV1ApiSecurityConfigArgs, GoogleCloudApigeeV1ApiSecurityConfigPtr and GoogleCloudApigeeV1ApiSecurityConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ApiSecurityConfigPtrInput` via:
+//
+//          GoogleCloudApigeeV1ApiSecurityConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1ApiSecurityConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutput() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput
+	ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1ApiSecurityConfigPtrOutput
+}
+
+type googleCloudApigeeV1ApiSecurityConfigPtrType GoogleCloudApigeeV1ApiSecurityConfigArgs
+
+func GoogleCloudApigeeV1ApiSecurityConfigPtr(v *GoogleCloudApigeeV1ApiSecurityConfigArgs) GoogleCloudApigeeV1ApiSecurityConfigPtrInput {
+	return (*googleCloudApigeeV1ApiSecurityConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1ApiSecurityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1ApiSecurityConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1ApiSecurityConfigPtrType) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutput() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1ApiSecurityConfigPtrType) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiSecurityConfigPtrOutput)
+}
+
+// Configurations of the API Security add-on.
+type GoogleCloudApigeeV1ApiSecurityConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ApiSecurityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiSecurityConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) ToGoogleCloudApigeeV1ApiSecurityConfigOutput() GoogleCloudApigeeV1ApiSecurityConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) ToGoogleCloudApigeeV1ApiSecurityConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutput() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1ApiSecurityConfig) *GoogleCloudApigeeV1ApiSecurityConfig {
+		return &v
+	}).(GoogleCloudApigeeV1ApiSecurityConfigPtrOutput)
+}
+
+// Flag that specifies whether the API security add-on is enabled.
+func (o GoogleCloudApigeeV1ApiSecurityConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiSecurityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudApigeeV1ApiSecurityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1ApiSecurityConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutput() GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) ToGoogleCloudApigeeV1ApiSecurityConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) Elem() GoogleCloudApigeeV1ApiSecurityConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiSecurityConfig) GoogleCloudApigeeV1ApiSecurityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1ApiSecurityConfig
+		return ret
+	}).(GoogleCloudApigeeV1ApiSecurityConfigOutput)
+}
+
+// Flag that specifies whether the API security add-on is enabled.
+func (o GoogleCloudApigeeV1ApiSecurityConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiSecurityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configurations of the API Security add-on.
+type GoogleCloudApigeeV1ApiSecurityConfigResponse struct {
+	// Flag that specifies whether the API security add-on is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+	ExpiresAt string `pulumi:"expiresAt"`
+}
+
+// Configurations of the API Security add-on.
+type GoogleCloudApigeeV1ApiSecurityConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiSecurityConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) ToGoogleCloudApigeeV1ApiSecurityConfigResponseOutput() GoogleCloudApigeeV1ApiSecurityConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) ToGoogleCloudApigeeV1ApiSecurityConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiSecurityConfigResponseOutput {
+	return o
+}
+
+// Flag that specifies whether the API security add-on is enabled.
+func (o GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiSecurityConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+func (o GoogleCloudApigeeV1ApiSecurityConfigResponseOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiSecurityConfigResponse) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 type GoogleCloudApigeeV1AsyncQueryResultResponse struct {
@@ -4485,6 +4688,236 @@ func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) Index(i pulumi.
 	}).(GoogleCloudApigeeV1RevenueShareRangeResponseOutput)
 }
 
+// Metadata for the security report.
+type GoogleCloudApigeeV1SecurityReportMetadataResponse struct {
+	// Dimensions of the SecurityReport.
+	Dimensions []string `pulumi:"dimensions"`
+	// End timestamp of the query range.
+	EndTimestamp string `pulumi:"endTimestamp"`
+	// Metrics of the SecurityReport. Example: ["name:bot_count,func:sum,alias:sum_bot_count"]
+	Metrics []string `pulumi:"metrics"`
+	// MIME type / Output format.
+	MimeType string `pulumi:"mimeType"`
+	// Start timestamp of the query range.
+	StartTimestamp string `pulumi:"startTimestamp"`
+	// Query GroupBy time unit. Example: "seconds", "minute", "hour"
+	TimeUnit string `pulumi:"timeUnit"`
+}
+
+// Metadata for the security report.
+type GoogleCloudApigeeV1SecurityReportMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1SecurityReportMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) ToGoogleCloudApigeeV1SecurityReportMetadataResponseOutput() GoogleCloudApigeeV1SecurityReportMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) ToGoogleCloudApigeeV1SecurityReportMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportMetadataResponseOutput {
+	return o
+}
+
+// Dimensions of the SecurityReport.
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportMetadataResponse) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
+}
+
+// End timestamp of the query range.
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) EndTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportMetadataResponse) string { return v.EndTimestamp }).(pulumi.StringOutput)
+}
+
+// Metrics of the SecurityReport. Example: ["name:bot_count,func:sum,alias:sum_bot_count"]
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportMetadataResponse) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+}
+
+// MIME type / Output format.
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportMetadataResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// Start timestamp of the query range.
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) StartTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportMetadataResponse) string { return v.StartTimestamp }).(pulumi.StringOutput)
+}
+
+// Query GroupBy time unit. Example: "seconds", "minute", "hour"
+func (o GoogleCloudApigeeV1SecurityReportMetadataResponseOutput) TimeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportMetadataResponse) string { return v.TimeUnit }).(pulumi.StringOutput)
+}
+
+// Metric of the Query
+type GoogleCloudApigeeV1SecurityReportQueryMetric struct {
+	// Aggregation function: avg, min, max, or sum.
+	AggregationFunction *string `pulumi:"aggregationFunction"`
+	// Alias for the metric. Alias will be used to replace metric name in query results.
+	Alias *string `pulumi:"alias"`
+	// Metric name.
+	Name string `pulumi:"name"`
+	// One of `+`, `-`, `/`, `%`, `*`.
+	Operator *string `pulumi:"operator"`
+	// Operand value should be provided when operator is set.
+	Value *string `pulumi:"value"`
+}
+
+// GoogleCloudApigeeV1SecurityReportQueryMetricInput is an input type that accepts GoogleCloudApigeeV1SecurityReportQueryMetricArgs and GoogleCloudApigeeV1SecurityReportQueryMetricOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1SecurityReportQueryMetricInput` via:
+//
+//          GoogleCloudApigeeV1SecurityReportQueryMetricArgs{...}
+type GoogleCloudApigeeV1SecurityReportQueryMetricInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1SecurityReportQueryMetricOutput() GoogleCloudApigeeV1SecurityReportQueryMetricOutput
+	ToGoogleCloudApigeeV1SecurityReportQueryMetricOutputWithContext(context.Context) GoogleCloudApigeeV1SecurityReportQueryMetricOutput
+}
+
+// Metric of the Query
+type GoogleCloudApigeeV1SecurityReportQueryMetricArgs struct {
+	// Aggregation function: avg, min, max, or sum.
+	AggregationFunction pulumi.StringPtrInput `pulumi:"aggregationFunction"`
+	// Alias for the metric. Alias will be used to replace metric name in query results.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// Metric name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// One of `+`, `-`, `/`, `%`, `*`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Operand value should be provided when operator is set.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GoogleCloudApigeeV1SecurityReportQueryMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1SecurityReportQueryMetric)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1SecurityReportQueryMetricArgs) ToGoogleCloudApigeeV1SecurityReportQueryMetricOutput() GoogleCloudApigeeV1SecurityReportQueryMetricOutput {
+	return i.ToGoogleCloudApigeeV1SecurityReportQueryMetricOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1SecurityReportQueryMetricArgs) ToGoogleCloudApigeeV1SecurityReportQueryMetricOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportQueryMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1SecurityReportQueryMetricOutput)
+}
+
+// GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput is an input type that accepts GoogleCloudApigeeV1SecurityReportQueryMetricArray and GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput` via:
+//
+//          GoogleCloudApigeeV1SecurityReportQueryMetricArray{ GoogleCloudApigeeV1SecurityReportQueryMetricArgs{...} }
+type GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput() GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput
+	ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutputWithContext(context.Context) GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput
+}
+
+type GoogleCloudApigeeV1SecurityReportQueryMetricArray []GoogleCloudApigeeV1SecurityReportQueryMetricInput
+
+func (GoogleCloudApigeeV1SecurityReportQueryMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1SecurityReportQueryMetric)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1SecurityReportQueryMetricArray) ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput() GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput {
+	return i.ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1SecurityReportQueryMetricArray) ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput)
+}
+
+// Metric of the Query
+type GoogleCloudApigeeV1SecurityReportQueryMetricOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1SecurityReportQueryMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1SecurityReportQueryMetric)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) ToGoogleCloudApigeeV1SecurityReportQueryMetricOutput() GoogleCloudApigeeV1SecurityReportQueryMetricOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) ToGoogleCloudApigeeV1SecurityReportQueryMetricOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportQueryMetricOutput {
+	return o
+}
+
+// Aggregation function: avg, min, max, or sum.
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) AggregationFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportQueryMetric) *string { return v.AggregationFunction }).(pulumi.StringPtrOutput)
+}
+
+// Alias for the metric. Alias will be used to replace metric name in query results.
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportQueryMetric) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// Metric name.
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportQueryMetric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// One of `+`, `-`, `/`, `%`, `*`.
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportQueryMetric) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Operand value should be provided when operator is set.
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportQueryMetric) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1SecurityReportQueryMetric)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput) ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput() GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput) ToGoogleCloudApigeeV1SecurityReportQueryMetricArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1SecurityReportQueryMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1SecurityReportQueryMetric {
+		return vs[0].([]GoogleCloudApigeeV1SecurityReportQueryMetric)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1SecurityReportQueryMetricOutput)
+}
+
+// Contains informations about the security report results.
+type GoogleCloudApigeeV1SecurityReportResultMetadataResponse struct {
+	// Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
+	Expires string `pulumi:"expires"`
+	// Self link of the query results. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+	Self string `pulumi:"self"`
+}
+
+// Contains informations about the security report results.
+type GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1SecurityReportResultMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) ToGoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput() GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) ToGoogleCloudApigeeV1SecurityReportResultMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput {
+	return o
+}
+
+// Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
+func (o GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) Expires() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportResultMetadataResponse) string { return v.Expires }).(pulumi.StringOutput)
+}
+
+// Self link of the query results. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+func (o GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1SecurityReportResultMetadataResponse) string { return v.Self }).(pulumi.StringOutput)
+}
+
 // TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfo struct {
 	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
@@ -6211,6 +6644,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AddonsConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1AddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AdvancedApiOpsConfigInput)(nil)).Elem(), GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1ApiSecurityConfigInput)(nil)).Elem(), GoogleCloudApigeeV1ApiSecurityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1ApiSecurityConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1ApiSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AttributeInput)(nil)).Elem(), GoogleCloudApigeeV1AttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1AttributeArrayInput)(nil)).Elem(), GoogleCloudApigeeV1AttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1CanaryEvaluationMetricLabelsInput)(nil)).Elem(), GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs{})
@@ -6251,6 +6686,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1ReportPropertyArrayInput)(nil)).Elem(), GoogleCloudApigeeV1ReportPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1RevenueShareRangeInput)(nil)).Elem(), GoogleCloudApigeeV1RevenueShareRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1RevenueShareRangeArrayInput)(nil)).Elem(), GoogleCloudApigeeV1RevenueShareRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1SecurityReportQueryMetricInput)(nil)).Elem(), GoogleCloudApigeeV1SecurityReportQueryMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput)(nil)).Elem(), GoogleCloudApigeeV1SecurityReportQueryMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1TlsInfoInput)(nil)).Elem(), GoogleCloudApigeeV1TlsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1TlsInfoPtrInput)(nil)).Elem(), GoogleCloudApigeeV1TlsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1TlsInfoCommonNameInput)(nil)).Elem(), GoogleCloudApigeeV1TlsInfoCommonNameArgs{})
@@ -6276,6 +6713,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiSecurityConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiSecurityConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiSecurityConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AsyncQueryResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeArrayOutput{})
@@ -6353,6 +6793,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1RevenueShareRangeArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1RevenueShareRangeResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1SecurityReportMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1SecurityReportQueryMetricOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1SecurityReportResultMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNameOutput{})

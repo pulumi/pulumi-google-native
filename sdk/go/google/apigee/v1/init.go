@@ -57,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Export{}
 	case "google-native:apigee/v1:HostQuery":
 		r = &HostQuery{}
+	case "google-native:apigee/v1:HostSecurityReport":
+		r = &HostSecurityReport{}
 	case "google-native:apigee/v1:Instance":
 		r = &Instance{}
 	case "google-native:apigee/v1:InstanceAttachment":
@@ -81,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Report{}
 	case "google-native:apigee/v1:Resourcefile":
 		r = &Resourcefile{}
+	case "google-native:apigee/v1:SecurityReport":
+		r = &SecurityReport{}
 	case "google-native:apigee/v1:Sharedflow":
 		r = &Sharedflow{}
 	case "google-native:apigee/v1:Subscription":

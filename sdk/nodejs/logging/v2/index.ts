@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./billingAccountBucket";
+export * from "./billingAccountBucketView";
 export * from "./billingAccountExclusion";
 export * from "./billingAccountSink";
 export * from "./bucket";
@@ -14,6 +16,8 @@ export * from "./folderBucket";
 export * from "./folderBucketView";
 export * from "./folderExclusion";
 export * from "./folderSink";
+export * from "./getBillingAccountBucket";
+export * from "./getBillingAccountBucketView";
 export * from "./getBillingAccountExclusion";
 export * from "./getBillingAccountSink";
 export * from "./getBucket";
@@ -40,6 +44,8 @@ export * from "./sink";
 export * from "../../types/enums/logging/v2";
 
 // Import resources to register:
+import { BillingAccountBucket } from "./billingAccountBucket";
+import { BillingAccountBucketView } from "./billingAccountBucketView";
 import { BillingAccountExclusion } from "./billingAccountExclusion";
 import { BillingAccountSink } from "./billingAccountSink";
 import { Bucket } from "./bucket";
@@ -60,6 +66,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:logging/v2:BillingAccountBucket":
+                return new BillingAccountBucket(name, <any>undefined, { urn })
+            case "google-native:logging/v2:BillingAccountBucketView":
+                return new BillingAccountBucketView(name, <any>undefined, { urn })
             case "google-native:logging/v2:BillingAccountExclusion":
                 return new BillingAccountExclusion(name, <any>undefined, { urn })
             case "google-native:logging/v2:BillingAccountSink":

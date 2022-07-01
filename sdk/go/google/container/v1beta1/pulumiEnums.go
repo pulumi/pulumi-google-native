@@ -2108,6 +2108,175 @@ func (in *istioConfigAuthPtr) ToIstioConfigAuthPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(IstioConfigAuthPtrOutput)
 }
 
+// cgroup_mode specifies the cgroup mode to be used on the node.
+type LinuxNodeConfigCgroupMode string
+
+const (
+	// CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	LinuxNodeConfigCgroupModeCgroupModeUnspecified = LinuxNodeConfigCgroupMode("CGROUP_MODE_UNSPECIFIED")
+	// CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	LinuxNodeConfigCgroupModeCgroupModeV1 = LinuxNodeConfigCgroupMode("CGROUP_MODE_V1")
+	// CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+	LinuxNodeConfigCgroupModeCgroupModeV2 = LinuxNodeConfigCgroupMode("CGROUP_MODE_V2")
+)
+
+func (LinuxNodeConfigCgroupMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxNodeConfigCgroupMode)(nil)).Elem()
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModeOutput() LinuxNodeConfigCgroupModeOutput {
+	return pulumi.ToOutput(e).(LinuxNodeConfigCgroupModeOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModeOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LinuxNodeConfigCgroupModeOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return e.ToLinuxNodeConfigCgroupModePtrOutputWithContext(context.Background())
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return LinuxNodeConfigCgroupMode(e).ToLinuxNodeConfigCgroupModeOutputWithContext(ctx).ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LinuxNodeConfigCgroupModeOutput struct{ *pulumi.OutputState }
+
+func (LinuxNodeConfigCgroupModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxNodeConfigCgroupMode)(nil)).Elem()
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModeOutput() LinuxNodeConfigCgroupModeOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModeOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModeOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return o.ToLinuxNodeConfigCgroupModePtrOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxNodeConfigCgroupMode) *LinuxNodeConfigCgroupMode {
+		return &v
+	}).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LinuxNodeConfigCgroupMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LinuxNodeConfigCgroupMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LinuxNodeConfigCgroupModePtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxNodeConfigCgroupModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxNodeConfigCgroupMode)(nil)).Elem()
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) Elem() LinuxNodeConfigCgroupModeOutput {
+	return o.ApplyT(func(v *LinuxNodeConfigCgroupMode) LinuxNodeConfigCgroupMode {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxNodeConfigCgroupMode
+		return ret
+	}).(LinuxNodeConfigCgroupModeOutput)
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LinuxNodeConfigCgroupMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LinuxNodeConfigCgroupModeInput is an input type that accepts LinuxNodeConfigCgroupModeArgs and LinuxNodeConfigCgroupModeOutput values.
+// You can construct a concrete instance of `LinuxNodeConfigCgroupModeInput` via:
+//
+//          LinuxNodeConfigCgroupModeArgs{...}
+type LinuxNodeConfigCgroupModeInput interface {
+	pulumi.Input
+
+	ToLinuxNodeConfigCgroupModeOutput() LinuxNodeConfigCgroupModeOutput
+	ToLinuxNodeConfigCgroupModeOutputWithContext(context.Context) LinuxNodeConfigCgroupModeOutput
+}
+
+var linuxNodeConfigCgroupModePtrType = reflect.TypeOf((**LinuxNodeConfigCgroupMode)(nil)).Elem()
+
+type LinuxNodeConfigCgroupModePtrInput interface {
+	pulumi.Input
+
+	ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput
+	ToLinuxNodeConfigCgroupModePtrOutputWithContext(context.Context) LinuxNodeConfigCgroupModePtrOutput
+}
+
+type linuxNodeConfigCgroupModePtr string
+
+func LinuxNodeConfigCgroupModePtr(v string) LinuxNodeConfigCgroupModePtrInput {
+	return (*linuxNodeConfigCgroupModePtr)(&v)
+}
+
+func (*linuxNodeConfigCgroupModePtr) ElementType() reflect.Type {
+	return linuxNodeConfigCgroupModePtrType
+}
+
+func (in *linuxNodeConfigCgroupModePtr) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return pulumi.ToOutput(in).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
+func (in *linuxNodeConfigCgroupModePtr) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
 type LoggingComponentConfigEnableComponentsItem string
 
 const (
@@ -2499,6 +2668,12 @@ const (
 	MonitoringComponentConfigEnableComponentsItemSystemComponents = MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS")
 	// Deprecated: Use Google Cloud Managed Service for Prometheus.
 	MonitoringComponentConfigEnableComponentsItemWorkloads = MonitoringComponentConfigEnableComponentsItem("WORKLOADS")
+	// kube-apiserver
+	MonitoringComponentConfigEnableComponentsItemApiserver = MonitoringComponentConfigEnableComponentsItem("APISERVER")
+	// kube-scheduler
+	MonitoringComponentConfigEnableComponentsItemScheduler = MonitoringComponentConfigEnableComponentsItem("SCHEDULER")
+	// kube-controller-manager
+	MonitoringComponentConfigEnableComponentsItemControllerManager = MonitoringComponentConfigEnableComponentsItem("CONTROLLER_MANAGER")
 )
 
 func (MonitoringComponentConfigEnableComponentsItem) ElementType() reflect.Type {
@@ -3542,6 +3717,175 @@ func (in *networkPolicyProviderPtr) ToNetworkPolicyProviderPtrOutput() NetworkPo
 
 func (in *networkPolicyProviderPtr) ToNetworkPolicyProviderPtrOutputWithContext(ctx context.Context) NetworkPolicyProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPolicyProviderPtrOutput)
+}
+
+// Location policy used when scaling up a nodepool.
+type NodePoolAutoscalingLocationPolicy string
+
+const (
+	// Not set.
+	NodePoolAutoscalingLocationPolicyLocationPolicyUnspecified = NodePoolAutoscalingLocationPolicy("LOCATION_POLICY_UNSPECIFIED")
+	// BALANCED is a best effort policy that aims to balance the sizes of different zones.
+	NodePoolAutoscalingLocationPolicyBalanced = NodePoolAutoscalingLocationPolicy("BALANCED")
+	// ANY policy picks zones that have the highest capacity available.
+	NodePoolAutoscalingLocationPolicyAny = NodePoolAutoscalingLocationPolicy("ANY")
+)
+
+func (NodePoolAutoscalingLocationPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoscalingLocationPolicy)(nil)).Elem()
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToNodePoolAutoscalingLocationPolicyOutput() NodePoolAutoscalingLocationPolicyOutput {
+	return pulumi.ToOutput(e).(NodePoolAutoscalingLocationPolicyOutput)
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToNodePoolAutoscalingLocationPolicyOutputWithContext(ctx context.Context) NodePoolAutoscalingLocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NodePoolAutoscalingLocationPolicyOutput)
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToNodePoolAutoscalingLocationPolicyPtrOutput() NodePoolAutoscalingLocationPolicyPtrOutput {
+	return e.ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingLocationPolicyPtrOutput {
+	return NodePoolAutoscalingLocationPolicy(e).ToNodePoolAutoscalingLocationPolicyOutputWithContext(ctx).ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(ctx)
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NodePoolAutoscalingLocationPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NodePoolAutoscalingLocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoscalingLocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoscalingLocationPolicy)(nil)).Elem()
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToNodePoolAutoscalingLocationPolicyOutput() NodePoolAutoscalingLocationPolicyOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToNodePoolAutoscalingLocationPolicyOutputWithContext(ctx context.Context) NodePoolAutoscalingLocationPolicyOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToNodePoolAutoscalingLocationPolicyPtrOutput() NodePoolAutoscalingLocationPolicyPtrOutput {
+	return o.ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingLocationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolAutoscalingLocationPolicy) *NodePoolAutoscalingLocationPolicy {
+		return &v
+	}).(NodePoolAutoscalingLocationPolicyPtrOutput)
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodePoolAutoscalingLocationPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoscalingLocationPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodePoolAutoscalingLocationPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolAutoscalingLocationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoscalingLocationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoscalingLocationPolicy)(nil)).Elem()
+}
+
+func (o NodePoolAutoscalingLocationPolicyPtrOutput) ToNodePoolAutoscalingLocationPolicyPtrOutput() NodePoolAutoscalingLocationPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingLocationPolicyPtrOutput) ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingLocationPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingLocationPolicyPtrOutput) Elem() NodePoolAutoscalingLocationPolicyOutput {
+	return o.ApplyT(func(v *NodePoolAutoscalingLocationPolicy) NodePoolAutoscalingLocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolAutoscalingLocationPolicy
+		return ret
+	}).(NodePoolAutoscalingLocationPolicyOutput)
+}
+
+func (o NodePoolAutoscalingLocationPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoscalingLocationPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NodePoolAutoscalingLocationPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NodePoolAutoscalingLocationPolicyInput is an input type that accepts NodePoolAutoscalingLocationPolicyArgs and NodePoolAutoscalingLocationPolicyOutput values.
+// You can construct a concrete instance of `NodePoolAutoscalingLocationPolicyInput` via:
+//
+//          NodePoolAutoscalingLocationPolicyArgs{...}
+type NodePoolAutoscalingLocationPolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoscalingLocationPolicyOutput() NodePoolAutoscalingLocationPolicyOutput
+	ToNodePoolAutoscalingLocationPolicyOutputWithContext(context.Context) NodePoolAutoscalingLocationPolicyOutput
+}
+
+var nodePoolAutoscalingLocationPolicyPtrType = reflect.TypeOf((**NodePoolAutoscalingLocationPolicy)(nil)).Elem()
+
+type NodePoolAutoscalingLocationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoscalingLocationPolicyPtrOutput() NodePoolAutoscalingLocationPolicyPtrOutput
+	ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(context.Context) NodePoolAutoscalingLocationPolicyPtrOutput
+}
+
+type nodePoolAutoscalingLocationPolicyPtr string
+
+func NodePoolAutoscalingLocationPolicyPtr(v string) NodePoolAutoscalingLocationPolicyPtrInput {
+	return (*nodePoolAutoscalingLocationPolicyPtr)(&v)
+}
+
+func (*nodePoolAutoscalingLocationPolicyPtr) ElementType() reflect.Type {
+	return nodePoolAutoscalingLocationPolicyPtrType
+}
+
+func (in *nodePoolAutoscalingLocationPolicyPtr) ToNodePoolAutoscalingLocationPolicyPtrOutput() NodePoolAutoscalingLocationPolicyPtrOutput {
+	return pulumi.ToOutput(in).(NodePoolAutoscalingLocationPolicyPtrOutput)
+}
+
+func (in *nodePoolAutoscalingLocationPolicyPtr) ToNodePoolAutoscalingLocationPolicyPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingLocationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NodePoolAutoscalingLocationPolicyPtrOutput)
 }
 
 // Effect for taint.
@@ -4765,6 +5109,175 @@ func (in *statusConditionCodePtr) ToStatusConditionCodePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StatusConditionCodePtrOutput)
 }
 
+// Update strategy of the node pool.
+type UpgradeSettingsStrategy string
+
+const (
+	// Default value.
+	UpgradeSettingsStrategyNodePoolUpdateStrategyUnspecified = UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED")
+	// blue-green upgrade.
+	UpgradeSettingsStrategyBlueGreen = UpgradeSettingsStrategy("BLUE_GREEN")
+	// SURGE is the traditional way of upgrading a node pool. max_surge and max_unavailable determines the level of upgrade parallelism.
+	UpgradeSettingsStrategySurge = UpgradeSettingsStrategy("SURGE")
+)
+
+func (UpgradeSettingsStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeSettingsStrategy)(nil)).Elem()
+}
+
+func (e UpgradeSettingsStrategy) ToUpgradeSettingsStrategyOutput() UpgradeSettingsStrategyOutput {
+	return pulumi.ToOutput(e).(UpgradeSettingsStrategyOutput)
+}
+
+func (e UpgradeSettingsStrategy) ToUpgradeSettingsStrategyOutputWithContext(ctx context.Context) UpgradeSettingsStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UpgradeSettingsStrategyOutput)
+}
+
+func (e UpgradeSettingsStrategy) ToUpgradeSettingsStrategyPtrOutput() UpgradeSettingsStrategyPtrOutput {
+	return e.ToUpgradeSettingsStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e UpgradeSettingsStrategy) ToUpgradeSettingsStrategyPtrOutputWithContext(ctx context.Context) UpgradeSettingsStrategyPtrOutput {
+	return UpgradeSettingsStrategy(e).ToUpgradeSettingsStrategyOutputWithContext(ctx).ToUpgradeSettingsStrategyPtrOutputWithContext(ctx)
+}
+
+func (e UpgradeSettingsStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UpgradeSettingsStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UpgradeSettingsStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UpgradeSettingsStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UpgradeSettingsStrategyOutput struct{ *pulumi.OutputState }
+
+func (UpgradeSettingsStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeSettingsStrategy)(nil)).Elem()
+}
+
+func (o UpgradeSettingsStrategyOutput) ToUpgradeSettingsStrategyOutput() UpgradeSettingsStrategyOutput {
+	return o
+}
+
+func (o UpgradeSettingsStrategyOutput) ToUpgradeSettingsStrategyOutputWithContext(ctx context.Context) UpgradeSettingsStrategyOutput {
+	return o
+}
+
+func (o UpgradeSettingsStrategyOutput) ToUpgradeSettingsStrategyPtrOutput() UpgradeSettingsStrategyPtrOutput {
+	return o.ToUpgradeSettingsStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeSettingsStrategyOutput) ToUpgradeSettingsStrategyPtrOutputWithContext(ctx context.Context) UpgradeSettingsStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeSettingsStrategy) *UpgradeSettingsStrategy {
+		return &v
+	}).(UpgradeSettingsStrategyPtrOutput)
+}
+
+func (o UpgradeSettingsStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UpgradeSettingsStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UpgradeSettingsStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UpgradeSettingsStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeSettingsStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UpgradeSettingsStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UpgradeSettingsStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeSettingsStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeSettingsStrategy)(nil)).Elem()
+}
+
+func (o UpgradeSettingsStrategyPtrOutput) ToUpgradeSettingsStrategyPtrOutput() UpgradeSettingsStrategyPtrOutput {
+	return o
+}
+
+func (o UpgradeSettingsStrategyPtrOutput) ToUpgradeSettingsStrategyPtrOutputWithContext(ctx context.Context) UpgradeSettingsStrategyPtrOutput {
+	return o
+}
+
+func (o UpgradeSettingsStrategyPtrOutput) Elem() UpgradeSettingsStrategyOutput {
+	return o.ApplyT(func(v *UpgradeSettingsStrategy) UpgradeSettingsStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeSettingsStrategy
+		return ret
+	}).(UpgradeSettingsStrategyOutput)
+}
+
+func (o UpgradeSettingsStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeSettingsStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UpgradeSettingsStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UpgradeSettingsStrategyInput is an input type that accepts UpgradeSettingsStrategyArgs and UpgradeSettingsStrategyOutput values.
+// You can construct a concrete instance of `UpgradeSettingsStrategyInput` via:
+//
+//          UpgradeSettingsStrategyArgs{...}
+type UpgradeSettingsStrategyInput interface {
+	pulumi.Input
+
+	ToUpgradeSettingsStrategyOutput() UpgradeSettingsStrategyOutput
+	ToUpgradeSettingsStrategyOutputWithContext(context.Context) UpgradeSettingsStrategyOutput
+}
+
+var upgradeSettingsStrategyPtrType = reflect.TypeOf((**UpgradeSettingsStrategy)(nil)).Elem()
+
+type UpgradeSettingsStrategyPtrInput interface {
+	pulumi.Input
+
+	ToUpgradeSettingsStrategyPtrOutput() UpgradeSettingsStrategyPtrOutput
+	ToUpgradeSettingsStrategyPtrOutputWithContext(context.Context) UpgradeSettingsStrategyPtrOutput
+}
+
+type upgradeSettingsStrategyPtr string
+
+func UpgradeSettingsStrategyPtr(v string) UpgradeSettingsStrategyPtrInput {
+	return (*upgradeSettingsStrategyPtr)(&v)
+}
+
+func (*upgradeSettingsStrategyPtr) ElementType() reflect.Type {
+	return upgradeSettingsStrategyPtrType
+}
+
+func (in *upgradeSettingsStrategyPtr) ToUpgradeSettingsStrategyPtrOutput() UpgradeSettingsStrategyPtrOutput {
+	return pulumi.ToOutput(in).(UpgradeSettingsStrategyPtrOutput)
+}
+
+func (in *upgradeSettingsStrategyPtr) ToUpgradeSettingsStrategyPtrOutputWithContext(ctx context.Context) UpgradeSettingsStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UpgradeSettingsStrategyPtrOutput)
+}
+
 // Sets which mode of auditing should be used for the cluster's workloads.
 type WorkloadConfigAuditMode string
 
@@ -5304,6 +5817,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyStackTypePtrInput)(nil)).Elem(), IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IstioConfigAuthInput)(nil)).Elem(), IstioConfigAuth("AUTH_NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IstioConfigAuthPtrInput)(nil)).Elem(), IstioConfigAuth("AUTH_NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigCgroupModeInput)(nil)).Elem(), LinuxNodeConfigCgroupMode("CGROUP_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigCgroupModePtrInput)(nil)).Elem(), LinuxNodeConfigCgroupMode("CGROUP_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemPtrInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemArrayInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItemArray{})
@@ -5322,6 +5837,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyProviderInput)(nil)).Elem(), NetworkPolicyProvider("PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyProviderPtrInput)(nil)).Elem(), NetworkPolicyProvider("PROVIDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingLocationPolicyInput)(nil)).Elem(), NodePoolAutoscalingLocationPolicy("LOCATION_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingLocationPolicyPtrInput)(nil)).Elem(), NodePoolAutoscalingLocationPolicy("LOCATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectPtrInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyTypeInput)(nil)).Elem(), PlacementPolicyType("TYPE_UNSPECIFIED"))
@@ -5336,6 +5853,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCanonicalCodePtrInput)(nil)).Elem(), StatusConditionCanonicalCode("OK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCodeInput)(nil)).Elem(), StatusConditionCode("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCodePtrInput)(nil)).Elem(), StatusConditionCode("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsStrategyInput)(nil)).Elem(), UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsStrategyPtrInput)(nil)).Elem(), UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadConfigAuditModeInput)(nil)).Elem(), WorkloadConfigAuditMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadConfigAuditModePtrInput)(nil)).Elem(), WorkloadConfigAuditMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModeInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
@@ -5367,6 +5886,8 @@ func init() {
 	pulumi.RegisterOutputType(IPAllocationPolicyStackTypePtrOutput{})
 	pulumi.RegisterOutputType(IstioConfigAuthOutput{})
 	pulumi.RegisterOutputType(IstioConfigAuthPtrOutput{})
+	pulumi.RegisterOutputType(LinuxNodeConfigCgroupModeOutput{})
+	pulumi.RegisterOutputType(LinuxNodeConfigCgroupModePtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemPtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemArrayOutput{})
@@ -5385,6 +5906,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyProviderOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyProviderPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoscalingLocationPolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoscalingLocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectPtrOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyTypeOutput{})
@@ -5399,6 +5922,8 @@ func init() {
 	pulumi.RegisterOutputType(StatusConditionCanonicalCodePtrOutput{})
 	pulumi.RegisterOutputType(StatusConditionCodeOutput{})
 	pulumi.RegisterOutputType(StatusConditionCodePtrOutput{})
+	pulumi.RegisterOutputType(UpgradeSettingsStrategyOutput{})
+	pulumi.RegisterOutputType(UpgradeSettingsStrategyPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadConfigAuditModeOutput{})
 	pulumi.RegisterOutputType(WorkloadConfigAuditModePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigModeOutput{})
