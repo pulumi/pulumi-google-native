@@ -92,6 +92,7 @@ func (c *GoogleClient) OAuth2Token() *oauth2.Token { return c.token }
 // RequestWithTimeout performs the specified request using the specified HTTP method and with the specified timeout.
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
 func (c *GoogleClient) RequestWithTimeout(
+	ctx context.Context,
 	method, rawurl string,
 	body map[string]interface{},
 	timeout time.Duration,
@@ -113,7 +114,7 @@ func (c *GoogleClient) RequestWithTimeout(
 		}
 	}
 
-	if err := c.refreshClientCredentials(context.Background()); err != nil {
+	if err := c.refreshClientCredentials(ctx); err != nil {
 		return nil, err
 	}
 
@@ -122,7 +123,9 @@ func (c *GoogleClient) RequestWithTimeout(
 		return nil, err
 	}
 	// TODO: request not handling timeout
-	req, err := http.NewRequest(method, u, &buf)
+	// ctx, cancelFunc := context.WithTimeout(ctx, timeout)
+	// defer cancelFunc()
+	req, err := http.NewRequestWithContext(ctx, method, u, &buf)
 	if err != nil {
 		return nil, err
 	}
@@ -170,6 +173,7 @@ const multipartBoundary = "boundary-fa78ad331d"
 // UploadWithTimeout performs a multi-part upload using the specified HTTP method, rawurl, etc. using the specified
 // timeout.
 func (c *GoogleClient) UploadWithTimeout(
+	ctx context.Context,
 	method, rawurl string,
 	metadata map[string]interface{},
 	binary []byte,
@@ -200,7 +204,7 @@ func (c *GoogleClient) UploadWithTimeout(
 	buf.Write(binary)
 	buf.WriteString(fmt.Sprintf("\r\n--%s--\r\n", multipartBoundary))
 
-	if err := c.refreshClientCredentials(context.Background()); err != nil {
+	if err := c.refreshClientCredentials(ctx); err != nil {
 		return nil, err
 	}
 
@@ -210,7 +214,7 @@ func (c *GoogleClient) UploadWithTimeout(
 	}
 
 	// TODO: request not handling timeout
-	req, err := http.NewRequest(method, u, &buf)
+	req, err := http.NewRequestWithContext(ctx, method, u, &buf)
 	if err != nil {
 		return nil, err
 	}

@@ -54,7 +54,7 @@ const defaultRetryTransportTimeoutSec = 90
 func NewTransportWithDefaultRetries(t http.RoundTripper) *retryTransport {
 	return &retryTransport{
 		retryPredicates: defaultErrorRetryPredicates,
-		internal:        t,
+		internal:        traceInjector()(t),
 	}
 }
 

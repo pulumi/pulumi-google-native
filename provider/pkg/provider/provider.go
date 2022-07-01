@@ -28,6 +28,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/opentracing/opentracing-go"
+
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
@@ -159,7 +161,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 }
 
 // Invoke dynamically executes a built-in function in the provider.
-func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
+func (p *googleCloudProvider) Invoke(ctx context.Context, req *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
 	label := fmt.Sprintf("%s.Invoke(%s)", p.name, req.Tok)
 
 	args, err := plugin.UnmarshalProperties(req.GetArgs(), plugin.MarshalOptions{
@@ -211,7 +213,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 			return nil, err
 		}
 
-		resp, err = p.client.RequestWithTimeout(inv.Verb, uri, nil, 0)
+		resp, err = p.client.RequestWithTimeout(ctx, inv.Verb, uri, nil, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s", err)
 		}
@@ -251,8 +253,10 @@ func (p *googleCloudProvider) Attach(_ context.Context, req *rpc.PluginAttach) (
 // representation of the properties as present in the program inputs. Though this rule is not
 // required for correctness, violations thereof can negatively impact the end-user experience, as
 // the provider inputs are using for detecting and rendering diffs.
-func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*rpc.CheckResponse, error) {
+func (p *googleCloudProvider) Check(ctx context.Context, req *rpc.CheckRequest) (*rpc.CheckResponse, error) {
 	urn := resource.URN(req.GetUrn())
+	span := opentracing.SpanFromContext(ctx)
+	span.SetTag("urn", urn)
 	label := fmt.Sprintf("%s.Check(%s)", p.name, urn)
 	logging.V(9).Infof("%s executing", label)
 
@@ -388,8 +392,10 @@ func (p *googleCloudProvider) DiffConfig(context.Context, *rpc.DiffRequest) (*rp
 }
 
 // Diff checks what impacts a hypothetical update will have on the resource's properties.
-func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rpc.DiffResponse, error) {
+func (p *googleCloudProvider) Diff(ctx context.Context, req *rpc.DiffRequest) (*rpc.DiffResponse, error) {
 	urn := resource.URN(req.GetUrn())
+	span := opentracing.SpanFromContext(ctx)
+	span.SetTag("urn", urn)
 	label := fmt.Sprintf("%s.Diff(%s)", p.name, urn)
 	logging.V(9).Infof("%s executing", label)
 
@@ -472,6 +478,8 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
 func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest) (*rpc.CreateResponse, error) {
 	urn := resource.URN(req.GetUrn())
+	span := opentracing.SpanFromContext(ctx)
+	span.SetTag("urn", urn)
 	label := fmt.Sprintf("%s.Create(%s)", p.name, urn)
 	logging.V(9).Infof("%s executing", label)
 
@@ -510,18 +518,18 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, err
 		}
 
-		op, err = p.client.UploadWithTimeout(res.Create.Verb, uri, body, content, 0)
+		op, err = p.client.UploadWithTimeout(ctx, res.Create.Verb, uri, body, content, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
 		}
 	} else {
-		op, err = retryRequest(p.client, res.Create.Verb, uri, body)
+		op, err = retryRequest(ctx, p.client, res.Create.Verb, uri, body)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.Create.CloudAPIOperation, op)
+	resp, err := p.waitForResourceOpCompletion(ctx, res.Create.CloudAPIOperation, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -532,7 +540,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if idErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
 		}
-		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), nil, 0)
+		readResp, getErr := p.client.RequestWithTimeout(ctx, "GET", resources.AssembleURL(res.RootURL, id), nil, 0)
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
@@ -581,6 +589,7 @@ func (p *googleCloudProvider) prepareAPIInputs(
 // N.B if a resource is partially created it is important to return the partial state in addition
 // to the error. Otherwise, the partially created resource will be leaked.
 func (p *googleCloudProvider) waitForResourceOpCompletion(
+	ctx context.Context,
 	operation resources.CloudAPIOperation,
 	resp map[string]interface{},
 ) (map[string]interface{}, error) {
@@ -641,7 +650,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				// Check if there's a target link.
 				if targetLink, has := resp["targetLink"].(string); has {
 					// Try reading resource state.
-					state, getErr := p.client.RequestWithTimeout("GET", targetLink, nil, 0)
+					state, getErr := p.client.RequestWithTimeout(ctx, "GET", targetLink, nil, 0)
 					if getErr != nil {
 						if err != nil {
 							// Return the original creation error if resource read failed.
@@ -681,7 +690,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		time.Sleep(retryPolicy.Duration())
 
 		logging.V(9).Infof("Polling URL: %q", pollURI)
-		op, err := p.client.RequestWithTimeout("GET", pollURI, nil, 0)
+		op, err := p.client.RequestWithTimeout(ctx, "GET", pollURI, nil, 0)
 		if err != nil {
 			return resp, errors.Wrapf(err, "polling operation status")
 		}
@@ -691,8 +700,10 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 }
 
 // Read the current live state associated with a resource.
-func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rpc.ReadResponse, error) {
+func (p *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*rpc.ReadResponse, error) {
 	urn := resource.URN(req.GetUrn())
+	span := opentracing.SpanFromContext(ctx)
+	span.SetTag("urn", urn)
 	label := fmt.Sprintf("%s.Read(%s)", p.name, urn)
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
@@ -719,7 +730,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	// Read the current state of the resource from the API.
-	newState, err := retryRequest(p.client, res.Read.Verb, uri, nil)
+	newState, err := retryRequest(ctx, p.client, res.Read.Verb, uri, nil)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -766,8 +777,10 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 }
 
 // Update updates an existing resource with new values.
-func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
+func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
 	urn := resource.URN(req.GetUrn())
+	span := opentracing.SpanFromContext(ctx)
+	span.SetTag("urn", urn)
 	label := fmt.Sprintf("%s.Update(%s)", p.name, urn)
 	logging.V(9).Infof("%s executing", label)
 
@@ -847,12 +860,12 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, err
 	}
 
-	op, err := retryRequest(p.client, res.Update.Verb, uri, body)
+	op, err := retryRequest(ctx, p.client, res.Update.Verb, uri, body)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
+	resp, err := p.waitForResourceOpCompletion(ctx, res.Update.CloudAPIOperation, op)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -883,8 +896,11 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 
 // Delete tears down an existing resource with the given ID. If it fails, the resource is assumed
 // to still exist.
-func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) (*empty.Empty, error) {
+func (p *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest) (*empty.Empty, error) {
 	urn := resource.URN(req.GetUrn())
+	span := opentracing.SpanFromContext(ctx)
+	span.SetTag("urn", urn)
+
 	label := fmt.Sprintf("%s.Delete(%s)", p.name, urn)
 	logging.V(9).Infof("%s executing", label)
 
@@ -930,12 +946,12 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := retryRequest(p.client, res.Delete.Verb, uri, nil)
+	resp, err := retryRequest(ctx, p.client, res.Delete.Verb, uri, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.Delete, resp)
+	_, err = p.waitForResourceOpCompletion(ctx, res.Delete, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -945,7 +961,8 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 // Deprecated: retryRequest is a temporary retry helper that will be replaced by centralized retry logic after some
 // additional refactoring. This function should not be used outside the provider CRUD methods.
-func retryRequest(client *googleclient.GoogleClient, method string, rawurl string, body map[string]interface{},
+func retryRequest(ctx context.Context, client *googleclient.GoogleClient, method string, rawurl string,
+	body map[string]interface{},
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -954,14 +971,14 @@ func retryRequest(client *googleclient.GoogleClient, method string, rawurl strin
 		Jitter: true,
 	}
 	timeout := 30 * time.Minute
-	ctx, cancel := context.WithTimeout(context.TODO(), 30*time.Minute)
+	ctx, cancel := context.WithTimeout(ctx, 30*time.Minute)
 	defer cancel()
 	for {
 		select {
 		case <-ctx.Done():
 			return nil, fmt.Errorf("request %s %s timed out after %s", method, rawurl, timeout)
 		case <-time.After(retryPolicy.Duration()):
-			resp, err := client.RequestWithTimeout(method, rawurl, body, 0)
+			resp, err := client.RequestWithTimeout(ctx, method, rawurl, body, 0)
 			if err != nil {
 				// Retryable error
 				if gerr, ok := err.(*googleapi.Error); ok {
