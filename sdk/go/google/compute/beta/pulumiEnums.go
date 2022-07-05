@@ -1360,6 +1360,175 @@ func (in *allocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIn
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput)
 }
 
+// The architecture of the attached disk. Valid values are arm64 or x86_64.
+type AttachedDiskInitializeParamsArchitecture string
+
+const (
+	// Default value indicating Architecture is not set.
+	AttachedDiskInitializeParamsArchitectureArchitectureUnspecified = AttachedDiskInitializeParamsArchitecture("ARCHITECTURE_UNSPECIFIED")
+	// Machines with architecture ARM64
+	AttachedDiskInitializeParamsArchitectureArm64 = AttachedDiskInitializeParamsArchitecture("ARM64")
+	// Machines with architecture X86_64
+	AttachedDiskInitializeParamsArchitectureX8664 = AttachedDiskInitializeParamsArchitecture("X86_64")
+)
+
+func (AttachedDiskInitializeParamsArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedDiskInitializeParamsArchitecture)(nil)).Elem()
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToAttachedDiskInitializeParamsArchitectureOutput() AttachedDiskInitializeParamsArchitectureOutput {
+	return pulumi.ToOutput(e).(AttachedDiskInitializeParamsArchitectureOutput)
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToAttachedDiskInitializeParamsArchitectureOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AttachedDiskInitializeParamsArchitectureOutput)
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToAttachedDiskInitializeParamsArchitecturePtrOutput() AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return e.ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return AttachedDiskInitializeParamsArchitecture(e).ToAttachedDiskInitializeParamsArchitectureOutputWithContext(ctx).ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AttachedDiskInitializeParamsArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AttachedDiskInitializeParamsArchitectureOutput struct{ *pulumi.OutputState }
+
+func (AttachedDiskInitializeParamsArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedDiskInitializeParamsArchitecture)(nil)).Elem()
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToAttachedDiskInitializeParamsArchitectureOutput() AttachedDiskInitializeParamsArchitectureOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToAttachedDiskInitializeParamsArchitectureOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitectureOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToAttachedDiskInitializeParamsArchitecturePtrOutput() AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return o.ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedDiskInitializeParamsArchitecture) *AttachedDiskInitializeParamsArchitecture {
+		return &v
+	}).(AttachedDiskInitializeParamsArchitecturePtrOutput)
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AttachedDiskInitializeParamsArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AttachedDiskInitializeParamsArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttachedDiskInitializeParamsArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedDiskInitializeParamsArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedDiskInitializeParamsArchitecture)(nil)).Elem()
+}
+
+func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToAttachedDiskInitializeParamsArchitecturePtrOutput() AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsArchitecturePtrOutput) Elem() AttachedDiskInitializeParamsArchitectureOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParamsArchitecture) AttachedDiskInitializeParamsArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedDiskInitializeParamsArchitecture
+		return ret
+	}).(AttachedDiskInitializeParamsArchitectureOutput)
+}
+
+func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AttachedDiskInitializeParamsArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AttachedDiskInitializeParamsArchitectureInput is an input type that accepts AttachedDiskInitializeParamsArchitectureArgs and AttachedDiskInitializeParamsArchitectureOutput values.
+// You can construct a concrete instance of `AttachedDiskInitializeParamsArchitectureInput` via:
+//
+//          AttachedDiskInitializeParamsArchitectureArgs{...}
+type AttachedDiskInitializeParamsArchitectureInput interface {
+	pulumi.Input
+
+	ToAttachedDiskInitializeParamsArchitectureOutput() AttachedDiskInitializeParamsArchitectureOutput
+	ToAttachedDiskInitializeParamsArchitectureOutputWithContext(context.Context) AttachedDiskInitializeParamsArchitectureOutput
+}
+
+var attachedDiskInitializeParamsArchitecturePtrType = reflect.TypeOf((**AttachedDiskInitializeParamsArchitecture)(nil)).Elem()
+
+type AttachedDiskInitializeParamsArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToAttachedDiskInitializeParamsArchitecturePtrOutput() AttachedDiskInitializeParamsArchitecturePtrOutput
+	ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(context.Context) AttachedDiskInitializeParamsArchitecturePtrOutput
+}
+
+type attachedDiskInitializeParamsArchitecturePtr string
+
+func AttachedDiskInitializeParamsArchitecturePtr(v string) AttachedDiskInitializeParamsArchitecturePtrInput {
+	return (*attachedDiskInitializeParamsArchitecturePtr)(&v)
+}
+
+func (*attachedDiskInitializeParamsArchitecturePtr) ElementType() reflect.Type {
+	return attachedDiskInitializeParamsArchitecturePtrType
+}
+
+func (in *attachedDiskInitializeParamsArchitecturePtr) ToAttachedDiskInitializeParamsArchitecturePtrOutput() AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(AttachedDiskInitializeParamsArchitecturePtrOutput)
+}
+
+func (in *attachedDiskInitializeParamsArchitecturePtr) ToAttachedDiskInitializeParamsArchitecturePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsArchitecturePtrOutput)
+}
+
 // Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 type AttachedDiskInitializeParamsOnUpdateAction string
 
@@ -5631,6 +5800,175 @@ func (in *deprecationStatusStatePtr) ToDeprecationStatusStatePtrOutput() Depreca
 
 func (in *deprecationStatusStatePtr) ToDeprecationStatusStatePtrOutputWithContext(ctx context.Context) DeprecationStatusStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeprecationStatusStatePtrOutput)
+}
+
+// The architecture of the disk. Valid values are ARM64 or X86_64.
+type DiskArchitecture string
+
+const (
+	// Default value indicating Architecture is not set.
+	DiskArchitectureArchitectureUnspecified = DiskArchitecture("ARCHITECTURE_UNSPECIFIED")
+	// Machines with architecture ARM64
+	DiskArchitectureArm64 = DiskArchitecture("ARM64")
+	// Machines with architecture X86_64
+	DiskArchitectureX8664 = DiskArchitecture("X86_64")
+)
+
+func (DiskArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskArchitecture)(nil)).Elem()
+}
+
+func (e DiskArchitecture) ToDiskArchitectureOutput() DiskArchitectureOutput {
+	return pulumi.ToOutput(e).(DiskArchitectureOutput)
+}
+
+func (e DiskArchitecture) ToDiskArchitectureOutputWithContext(ctx context.Context) DiskArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiskArchitectureOutput)
+}
+
+func (e DiskArchitecture) ToDiskArchitecturePtrOutput() DiskArchitecturePtrOutput {
+	return e.ToDiskArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e DiskArchitecture) ToDiskArchitecturePtrOutputWithContext(ctx context.Context) DiskArchitecturePtrOutput {
+	return DiskArchitecture(e).ToDiskArchitectureOutputWithContext(ctx).ToDiskArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e DiskArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiskArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiskArchitectureOutput struct{ *pulumi.OutputState }
+
+func (DiskArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskArchitecture)(nil)).Elem()
+}
+
+func (o DiskArchitectureOutput) ToDiskArchitectureOutput() DiskArchitectureOutput {
+	return o
+}
+
+func (o DiskArchitectureOutput) ToDiskArchitectureOutputWithContext(ctx context.Context) DiskArchitectureOutput {
+	return o
+}
+
+func (o DiskArchitectureOutput) ToDiskArchitecturePtrOutput() DiskArchitecturePtrOutput {
+	return o.ToDiskArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o DiskArchitectureOutput) ToDiskArchitecturePtrOutputWithContext(ctx context.Context) DiskArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskArchitecture) *DiskArchitecture {
+		return &v
+	}).(DiskArchitecturePtrOutput)
+}
+
+func (o DiskArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiskArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiskArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskArchitecture)(nil)).Elem()
+}
+
+func (o DiskArchitecturePtrOutput) ToDiskArchitecturePtrOutput() DiskArchitecturePtrOutput {
+	return o
+}
+
+func (o DiskArchitecturePtrOutput) ToDiskArchitecturePtrOutputWithContext(ctx context.Context) DiskArchitecturePtrOutput {
+	return o
+}
+
+func (o DiskArchitecturePtrOutput) Elem() DiskArchitectureOutput {
+	return o.ApplyT(func(v *DiskArchitecture) DiskArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret DiskArchitecture
+		return ret
+	}).(DiskArchitectureOutput)
+}
+
+func (o DiskArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiskArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiskArchitectureInput is an input type that accepts DiskArchitectureArgs and DiskArchitectureOutput values.
+// You can construct a concrete instance of `DiskArchitectureInput` via:
+//
+//          DiskArchitectureArgs{...}
+type DiskArchitectureInput interface {
+	pulumi.Input
+
+	ToDiskArchitectureOutput() DiskArchitectureOutput
+	ToDiskArchitectureOutputWithContext(context.Context) DiskArchitectureOutput
+}
+
+var diskArchitecturePtrType = reflect.TypeOf((**DiskArchitecture)(nil)).Elem()
+
+type DiskArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToDiskArchitecturePtrOutput() DiskArchitecturePtrOutput
+	ToDiskArchitecturePtrOutputWithContext(context.Context) DiskArchitecturePtrOutput
+}
+
+type diskArchitecturePtr string
+
+func DiskArchitecturePtr(v string) DiskArchitecturePtrInput {
+	return (*diskArchitecturePtr)(&v)
+}
+
+func (*diskArchitecturePtr) ElementType() reflect.Type {
+	return diskArchitecturePtrType
+}
+
+func (in *diskArchitecturePtr) ToDiskArchitecturePtrOutput() DiskArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(DiskArchitecturePtrOutput)
+}
+
+func (in *diskArchitecturePtr) ToDiskArchitecturePtrOutputWithContext(ctx context.Context) DiskArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiskArchitecturePtrOutput)
 }
 
 // Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks.
@@ -11384,6 +11722,175 @@ func (in *httpRedirectActionRedirectResponseCodePtr) ToHttpRedirectActionRedirec
 
 func (in *httpRedirectActionRedirectResponseCodePtr) ToHttpRedirectActionRedirectResponseCodePtrOutputWithContext(ctx context.Context) HttpRedirectActionRedirectResponseCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpRedirectActionRedirectResponseCodePtrOutput)
+}
+
+// The architecture of the image. Valid values are ARM64 or X86_64.
+type ImageArchitecture string
+
+const (
+	// Default value indicating Architecture is not set.
+	ImageArchitectureArchitectureUnspecified = ImageArchitecture("ARCHITECTURE_UNSPECIFIED")
+	// Machines with architecture ARM64
+	ImageArchitectureArm64 = ImageArchitecture("ARM64")
+	// Machines with architecture X86_64
+	ImageArchitectureX8664 = ImageArchitecture("X86_64")
+)
+
+func (ImageArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageArchitecture)(nil)).Elem()
+}
+
+func (e ImageArchitecture) ToImageArchitectureOutput() ImageArchitectureOutput {
+	return pulumi.ToOutput(e).(ImageArchitectureOutput)
+}
+
+func (e ImageArchitecture) ToImageArchitectureOutputWithContext(ctx context.Context) ImageArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImageArchitectureOutput)
+}
+
+func (e ImageArchitecture) ToImageArchitecturePtrOutput() ImageArchitecturePtrOutput {
+	return e.ToImageArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e ImageArchitecture) ToImageArchitecturePtrOutputWithContext(ctx context.Context) ImageArchitecturePtrOutput {
+	return ImageArchitecture(e).ToImageArchitectureOutputWithContext(ctx).ToImageArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e ImageArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ImageArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImageArchitectureOutput struct{ *pulumi.OutputState }
+
+func (ImageArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageArchitecture)(nil)).Elem()
+}
+
+func (o ImageArchitectureOutput) ToImageArchitectureOutput() ImageArchitectureOutput {
+	return o
+}
+
+func (o ImageArchitectureOutput) ToImageArchitectureOutputWithContext(ctx context.Context) ImageArchitectureOutput {
+	return o
+}
+
+func (o ImageArchitectureOutput) ToImageArchitecturePtrOutput() ImageArchitecturePtrOutput {
+	return o.ToImageArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o ImageArchitectureOutput) ToImageArchitecturePtrOutputWithContext(ctx context.Context) ImageArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageArchitecture) *ImageArchitecture {
+		return &v
+	}).(ImageArchitecturePtrOutput)
+}
+
+func (o ImageArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImageArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImageArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImageArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageArchitecture)(nil)).Elem()
+}
+
+func (o ImageArchitecturePtrOutput) ToImageArchitecturePtrOutput() ImageArchitecturePtrOutput {
+	return o
+}
+
+func (o ImageArchitecturePtrOutput) ToImageArchitecturePtrOutputWithContext(ctx context.Context) ImageArchitecturePtrOutput {
+	return o
+}
+
+func (o ImageArchitecturePtrOutput) Elem() ImageArchitectureOutput {
+	return o.ApplyT(func(v *ImageArchitecture) ImageArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret ImageArchitecture
+		return ret
+	}).(ImageArchitectureOutput)
+}
+
+func (o ImageArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImageArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImageArchitectureInput is an input type that accepts ImageArchitectureArgs and ImageArchitectureOutput values.
+// You can construct a concrete instance of `ImageArchitectureInput` via:
+//
+//          ImageArchitectureArgs{...}
+type ImageArchitectureInput interface {
+	pulumi.Input
+
+	ToImageArchitectureOutput() ImageArchitectureOutput
+	ToImageArchitectureOutputWithContext(context.Context) ImageArchitectureOutput
+}
+
+var imageArchitecturePtrType = reflect.TypeOf((**ImageArchitecture)(nil)).Elem()
+
+type ImageArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToImageArchitecturePtrOutput() ImageArchitecturePtrOutput
+	ToImageArchitecturePtrOutputWithContext(context.Context) ImageArchitecturePtrOutput
+}
+
+type imageArchitecturePtr string
+
+func ImageArchitecturePtr(v string) ImageArchitecturePtrInput {
+	return (*imageArchitecturePtr)(&v)
+}
+
+func (*imageArchitecturePtr) ElementType() reflect.Type {
+	return imageArchitecturePtrType
+}
+
+func (in *imageArchitecturePtr) ToImageArchitecturePtrOutput() ImageArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(ImageArchitecturePtrOutput)
+}
+
+func (in *imageArchitecturePtr) ToImageArchitecturePtrOutputWithContext(ctx context.Context) ImageArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImageArchitecturePtrOutput)
 }
 
 // The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
@@ -19179,6 +19686,175 @@ func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutput() RegionCommi
 
 func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentTypePtrOutput)
+}
+
+// The architecture of the disk. Valid values are ARM64 or X86_64.
+type RegionDiskArchitecture string
+
+const (
+	// Default value indicating Architecture is not set.
+	RegionDiskArchitectureArchitectureUnspecified = RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED")
+	// Machines with architecture ARM64
+	RegionDiskArchitectureArm64 = RegionDiskArchitecture("ARM64")
+	// Machines with architecture X86_64
+	RegionDiskArchitectureX8664 = RegionDiskArchitecture("X86_64")
+)
+
+func (RegionDiskArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskArchitecture)(nil)).Elem()
+}
+
+func (e RegionDiskArchitecture) ToRegionDiskArchitectureOutput() RegionDiskArchitectureOutput {
+	return pulumi.ToOutput(e).(RegionDiskArchitectureOutput)
+}
+
+func (e RegionDiskArchitecture) ToRegionDiskArchitectureOutputWithContext(ctx context.Context) RegionDiskArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionDiskArchitectureOutput)
+}
+
+func (e RegionDiskArchitecture) ToRegionDiskArchitecturePtrOutput() RegionDiskArchitecturePtrOutput {
+	return e.ToRegionDiskArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskArchitecture) ToRegionDiskArchitecturePtrOutputWithContext(ctx context.Context) RegionDiskArchitecturePtrOutput {
+	return RegionDiskArchitecture(e).ToRegionDiskArchitectureOutputWithContext(ctx).ToRegionDiskArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e RegionDiskArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionDiskArchitectureOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskArchitecture)(nil)).Elem()
+}
+
+func (o RegionDiskArchitectureOutput) ToRegionDiskArchitectureOutput() RegionDiskArchitectureOutput {
+	return o
+}
+
+func (o RegionDiskArchitectureOutput) ToRegionDiskArchitectureOutputWithContext(ctx context.Context) RegionDiskArchitectureOutput {
+	return o
+}
+
+func (o RegionDiskArchitectureOutput) ToRegionDiskArchitecturePtrOutput() RegionDiskArchitecturePtrOutput {
+	return o.ToRegionDiskArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskArchitectureOutput) ToRegionDiskArchitecturePtrOutputWithContext(ctx context.Context) RegionDiskArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskArchitecture) *RegionDiskArchitecture {
+		return &v
+	}).(RegionDiskArchitecturePtrOutput)
+}
+
+func (o RegionDiskArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionDiskArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionDiskArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionDiskArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskArchitecture)(nil)).Elem()
+}
+
+func (o RegionDiskArchitecturePtrOutput) ToRegionDiskArchitecturePtrOutput() RegionDiskArchitecturePtrOutput {
+	return o
+}
+
+func (o RegionDiskArchitecturePtrOutput) ToRegionDiskArchitecturePtrOutputWithContext(ctx context.Context) RegionDiskArchitecturePtrOutput {
+	return o
+}
+
+func (o RegionDiskArchitecturePtrOutput) Elem() RegionDiskArchitectureOutput {
+	return o.ApplyT(func(v *RegionDiskArchitecture) RegionDiskArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret RegionDiskArchitecture
+		return ret
+	}).(RegionDiskArchitectureOutput)
+}
+
+func (o RegionDiskArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionDiskArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionDiskArchitectureInput is an input type that accepts RegionDiskArchitectureArgs and RegionDiskArchitectureOutput values.
+// You can construct a concrete instance of `RegionDiskArchitectureInput` via:
+//
+//          RegionDiskArchitectureArgs{...}
+type RegionDiskArchitectureInput interface {
+	pulumi.Input
+
+	ToRegionDiskArchitectureOutput() RegionDiskArchitectureOutput
+	ToRegionDiskArchitectureOutputWithContext(context.Context) RegionDiskArchitectureOutput
+}
+
+var regionDiskArchitecturePtrType = reflect.TypeOf((**RegionDiskArchitecture)(nil)).Elem()
+
+type RegionDiskArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskArchitecturePtrOutput() RegionDiskArchitecturePtrOutput
+	ToRegionDiskArchitecturePtrOutputWithContext(context.Context) RegionDiskArchitecturePtrOutput
+}
+
+type regionDiskArchitecturePtr string
+
+func RegionDiskArchitecturePtr(v string) RegionDiskArchitecturePtrInput {
+	return (*regionDiskArchitecturePtr)(&v)
+}
+
+func (*regionDiskArchitecturePtr) ElementType() reflect.Type {
+	return regionDiskArchitecturePtrType
+}
+
+func (in *regionDiskArchitecturePtr) ToRegionDiskArchitecturePtrOutput() RegionDiskArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(RegionDiskArchitecturePtrOutput)
+}
+
+func (in *regionDiskArchitecturePtr) ToRegionDiskArchitecturePtrOutputWithContext(ctx context.Context) RegionDiskArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskArchitecturePtrOutput)
 }
 
 // [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -30935,6 +31611,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface("NVME"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("PERIODIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("PERIODIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsArchitectureInput)(nil)).Elem(), AttachedDiskInitializeParamsArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsArchitecturePtrInput)(nil)).Elem(), AttachedDiskInitializeParamsArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsOnUpdateActionInput)(nil)).Elem(), AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsOnUpdateActionPtrInput)(nil)).Elem(), AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInterfaceInput)(nil)).Elem(), AttachedDiskInterface("NVME"))
@@ -30985,6 +31663,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionSysPtrInput)(nil)).Elem(), ConditionSys("IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusStateInput)(nil)).Elem(), DeprecationStatusState("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusStatePtrInput)(nil)).Elem(), DeprecationStatusState("ACTIVE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskArchitectureInput)(nil)).Elem(), DiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskArchitecturePtrInput)(nil)).Elem(), DiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInstantiateFromInput)(nil)).Elem(), DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInstantiateFromPtrInput)(nil)).Elem(), DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInterfaceInput)(nil)).Elem(), DiskInterface("NVME"))
@@ -31053,6 +31733,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckTypePtrInput)(nil)).Elem(), HealthCheckType("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRedirectActionRedirectResponseCodeInput)(nil)).Elem(), HttpRedirectActionRedirectResponseCode("FOUND"))
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRedirectActionRedirectResponseCodePtrInput)(nil)).Elem(), HttpRedirectActionRedirectResponseCode("FOUND"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageArchitectureInput)(nil)).Elem(), ImageArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageArchitecturePtrInput)(nil)).Elem(), ImageArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskContainerTypeInput)(nil)).Elem(), ImageRawDiskContainerType("TAR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskContainerTypePtrInput)(nil)).Elem(), ImageRawDiskContainerType("TAR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageSourceTypeInput)(nil)).Elem(), ImageSourceType("RAW"))
@@ -31145,6 +31827,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentPlanPtrInput)(nil)).Elem(), RegionCommitmentPlan("INVALID"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentTypeInput)(nil)).Elem(), RegionCommitmentType("ACCELERATOR_OPTIMIZED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentTypePtrInput)(nil)).Elem(), RegionCommitmentType("ACCELERATOR_OPTIMIZED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArchitectureInput)(nil)).Elem(), RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArchitecturePtrInput)(nil)).Elem(), RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInterfaceInput)(nil)).Elem(), RegionDiskInterface("NVME"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInterfacePtrInput)(nil)).Elem(), RegionDiskInterface("NVME"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskStorageTypeInput)(nil)).Elem(), RegionDiskStorageType("HDD"))
@@ -31303,6 +31987,8 @@ func init() {
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput{})
+	pulumi.RegisterOutputType(AttachedDiskInitializeParamsArchitectureOutput{})
+	pulumi.RegisterOutputType(AttachedDiskInitializeParamsArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInitializeParamsOnUpdateActionOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInitializeParamsOnUpdateActionPtrOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInterfaceOutput{})
@@ -31353,6 +32039,8 @@ func init() {
 	pulumi.RegisterOutputType(ConditionSysPtrOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusStateOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusStatePtrOutput{})
+	pulumi.RegisterOutputType(DiskArchitectureOutput{})
+	pulumi.RegisterOutputType(DiskArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigInstantiateFromOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigInstantiateFromPtrOutput{})
 	pulumi.RegisterOutputType(DiskInterfaceOutput{})
@@ -31421,6 +32109,8 @@ func init() {
 	pulumi.RegisterOutputType(HealthCheckTypePtrOutput{})
 	pulumi.RegisterOutputType(HttpRedirectActionRedirectResponseCodeOutput{})
 	pulumi.RegisterOutputType(HttpRedirectActionRedirectResponseCodePtrOutput{})
+	pulumi.RegisterOutputType(ImageArchitectureOutput{})
+	pulumi.RegisterOutputType(ImageArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(ImageRawDiskContainerTypeOutput{})
 	pulumi.RegisterOutputType(ImageRawDiskContainerTypePtrOutput{})
 	pulumi.RegisterOutputType(ImageSourceTypeOutput{})
@@ -31513,6 +32203,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionCommitmentPlanPtrOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentTypeOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentTypePtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskArchitectureOutput{})
+	pulumi.RegisterOutputType(RegionDiskArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskInterfaceOutput{})
 	pulumi.RegisterOutputType(RegionDiskInterfacePtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskStorageTypeOutput{})

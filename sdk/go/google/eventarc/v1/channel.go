@@ -21,7 +21,9 @@ type Channel struct {
 	ChannelId pulumi.StringOutput `pulumi:"channelId"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	Location   pulumi.StringOutput `pulumi:"location"`
+	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	CryptoKeyName pulumi.StringOutput `pulumi:"cryptoKeyName"`
+	Location      pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -85,8 +87,10 @@ func (ChannelState) ElementType() reflect.Type {
 
 type channelArgs struct {
 	// Required. The user-provided ID to be assigned to the channel.
-	ChannelId string  `pulumi:"channelId"`
-	Location  *string `pulumi:"location"`
+	ChannelId string `pulumi:"channelId"`
+	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	Location      *string `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -100,7 +104,9 @@ type channelArgs struct {
 type ChannelArgs struct {
 	// Required. The user-provided ID to be assigned to the channel.
 	ChannelId pulumi.StringInput
-	Location  pulumi.StringPtrInput
+	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	CryptoKeyName pulumi.StringPtrInput
+	Location      pulumi.StringPtrInput
 	// The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -160,6 +166,11 @@ func (o ChannelOutput) ChannelId() pulumi.StringOutput {
 // The creation time.
 func (o ChannelOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o ChannelOutput) CryptoKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.CryptoKeyName }).(pulumi.StringOutput)
 }
 
 func (o ChannelOutput) Location() pulumi.StringOutput {

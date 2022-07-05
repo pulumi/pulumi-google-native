@@ -36,6 +36,10 @@ export class Snapshot extends pulumi.CustomResource {
     }
 
     /**
+     * The architecture of the snapshot. Valid values are ARM64 or X86_64.
+     */
+    public /*out*/ readonly architecture!: pulumi.Output<string>;
+    /**
      * Set to true if snapshots are automatically created by applying resource policy on the target disk.
      */
     public /*out*/ readonly autoCreated!: pulumi.Output<boolean>;
@@ -155,6 +159,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["autoCreated"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
@@ -170,6 +175,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["storageBytes"] = undefined /*out*/;
             resourceInputs["storageBytesStatus"] = undefined /*out*/;
         } else {
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["autoCreated"] = undefined /*out*/;
             resourceInputs["chainName"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;

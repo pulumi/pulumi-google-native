@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetChannelResult:
-    def __init__(__self__, activation_token=None, create_time=None, name=None, provider=None, pubsub_topic=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, activation_token=None, create_time=None, crypto_key_name=None, name=None, provider=None, pubsub_topic=None, state=None, uid=None, update_time=None):
         if activation_token and not isinstance(activation_token, str):
             raise TypeError("Expected argument 'activation_token' to be a str")
         pulumi.set(__self__, "activation_token", activation_token)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if crypto_key_name and not isinstance(crypto_key_name, str):
+            raise TypeError("Expected argument 'crypto_key_name' to be a str")
+        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -59,6 +62,14 @@ class GetChannelResult:
         The creation time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> str:
+        """
+        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "crypto_key_name")
 
     @property
     @pulumi.getter
@@ -117,6 +128,7 @@ class AwaitableGetChannelResult(GetChannelResult):
         return GetChannelResult(
             activation_token=self.activation_token,
             create_time=self.create_time,
+            crypto_key_name=self.crypto_key_name,
             name=self.name,
             provider=self.provider,
             pubsub_topic=self.pubsub_topic,
@@ -145,6 +157,7 @@ def get_channel(channel_id: Optional[str] = None,
     return AwaitableGetChannelResult(
         activation_token=__ret__.activation_token,
         create_time=__ret__.create_time,
+        crypto_key_name=__ret__.crypto_key_name,
         name=__ret__.name,
         provider=__ret__.provider,
         pubsub_topic=__ret__.pubsub_topic,

@@ -10,10 +10,12 @@ export * from "./getEndpoint";
 export * from "./getNamespace";
 export * from "./getNamespaceIamPolicy";
 export * from "./getNamespaceServiceIamPolicy";
+export * from "./getNamespaceServiceWorkloadIamPolicy";
 export * from "./getService";
 export * from "./namespace";
 export * from "./namespaceIamPolicy";
 export * from "./namespaceServiceIamPolicy";
+export * from "./namespaceServiceWorkloadIamPolicy";
 export * from "./service";
 
 // Import resources to register:
@@ -21,6 +23,7 @@ import { Endpoint } from "./endpoint";
 import { Namespace } from "./namespace";
 import { NamespaceIamPolicy } from "./namespaceIamPolicy";
 import { NamespaceServiceIamPolicy } from "./namespaceServiceIamPolicy";
+import { NamespaceServiceWorkloadIamPolicy } from "./namespaceServiceWorkloadIamPolicy";
 import { Service } from "./service";
 
 const _module = {
@@ -35,6 +38,8 @@ const _module = {
                 return new NamespaceIamPolicy(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy":
                 return new NamespaceServiceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy":
+                return new NamespaceServiceWorkloadIamPolicy(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:Service":
                 return new Service(name, <any>undefined, { urn })
             default:

@@ -26,6 +26,8 @@ type LookupImageArgs struct {
 }
 
 type LookupImageResult struct {
+	// The architecture of the image. Valid values are ARM64 or X86_64.
+	Architecture string `pulumi:"architecture"`
 	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
 	ArchiveSizeBytes string `pulumi:"archiveSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
@@ -128,6 +130,11 @@ func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOu
 
 func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
 	return o
+}
+
+// The architecture of the image. Valid values are ARM64 or X86_64.
+func (o LookupImageResultOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).

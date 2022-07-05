@@ -17,6 +17,7 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
+                 architecture: Optional[pulumi.Input['ImageArchitecture']] = None,
                  archive_size_bytes: Optional[pulumi.Input[str]] = None,
                  deprecated: Optional[pulumi.Input['DeprecationStatusArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class ImageArgs:
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
+        :param pulumi.Input['ImageArchitecture'] architecture: The architecture of the image. Valid values are ARM64 or X86_64.
         :param pulumi.Input[str] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         :param pulumi.Input['DeprecationStatusArgs'] deprecated: The deprecation status associated with this image.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -73,6 +75,8 @@ class ImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if archive_size_bytes is not None:
             pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
         if deprecated is not None:
@@ -127,6 +131,18 @@ class ImageArgs:
             pulumi.set(__self__, "storage_locations", storage_locations)
         if user_licenses is not None:
             pulumi.set(__self__, "user_licenses", user_licenses)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input['ImageArchitecture']]:
+        """
+        The architecture of the image. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input['ImageArchitecture']]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -455,6 +471,7 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 architecture: Optional[pulumi.Input['ImageArchitecture']] = None,
                  archive_size_bytes: Optional[pulumi.Input[str]] = None,
                  deprecated: Optional[pulumi.Input[pulumi.InputType['DeprecationStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -488,6 +505,7 @@ class Image(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['ImageArchitecture'] architecture: The architecture of the image. Valid values are ARM64 or X86_64.
         :param pulumi.Input[str] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         :param pulumi.Input[pulumi.InputType['DeprecationStatusArgs']] deprecated: The deprecation status associated with this image.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -539,6 +557,7 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 architecture: Optional[pulumi.Input['ImageArchitecture']] = None,
                  archive_size_bytes: Optional[pulumi.Input[str]] = None,
                  deprecated: Optional[pulumi.Input[pulumi.InputType['DeprecationStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -580,6 +599,7 @@ class Image(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageArgs.__new__(ImageArgs)
 
+            __props__.__dict__["architecture"] = architecture
             __props__.__dict__["archive_size_bytes"] = archive_size_bytes
             __props__.__dict__["deprecated"] = deprecated
             __props__.__dict__["description"] = description
@@ -638,6 +658,7 @@ class Image(pulumi.CustomResource):
 
         __props__ = ImageArgs.__new__(ImageArgs)
 
+        __props__.__dict__["architecture"] = None
         __props__.__dict__["archive_size_bytes"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["deprecated"] = None
@@ -675,6 +696,14 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["storage_locations"] = None
         __props__.__dict__["user_licenses"] = None
         return Image(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> pulumi.Output[str]:
+        """
+        The architecture of the image. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="archiveSizeBytes")

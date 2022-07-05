@@ -36,6 +36,10 @@ export interface GetChannelResult {
      */
     readonly createTime: string;
     /**
+     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     */
+    readonly cryptoKeyName: string;
+    /**
      * The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
      */
     readonly name: string;

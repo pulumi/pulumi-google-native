@@ -27,6 +27,10 @@ export interface GetImageArgs {
 
 export interface GetImageResult {
     /**
+     * The architecture of the image. Valid values are ARM64 or X86_64.
+     */
+    readonly architecture: string;
+    /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */
     readonly archiveSizeBytes: string;

@@ -43625,6 +43625,8 @@ func (o SavedDiskArrayOutput) Index(i pulumi.IntInput) SavedDiskOutput {
 
 // An instance-attached disk resource.
 type SavedDiskResponse struct {
+	// The architecture of the attached disk.
+	Architecture string `pulumi:"architecture"`
 	// Type of the resource. Always compute#savedDisk for attached disks.
 	Kind string `pulumi:"kind"`
 	// Specifies a URL of the disk attached to the source instance.
@@ -43648,6 +43650,11 @@ func (o SavedDiskResponseOutput) ToSavedDiskResponseOutput() SavedDiskResponseOu
 
 func (o SavedDiskResponseOutput) ToSavedDiskResponseOutputWithContext(ctx context.Context) SavedDiskResponseOutput {
 	return o
+}
+
+// The architecture of the attached disk.
+func (o SavedDiskResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedDiskResponse) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#savedDisk for attached disks.

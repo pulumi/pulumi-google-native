@@ -291,6 +291,47 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// The architecture of the attached disk. Valid values are arm64 or x86_64.
+    /// </summary>
+    [EnumType]
+    public readonly struct AttachedDiskInitializeParamsArchitecture : IEquatable<AttachedDiskInitializeParamsArchitecture>
+    {
+        private readonly string _value;
+
+        private AttachedDiskInitializeParamsArchitecture(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value indicating Architecture is not set.
+        /// </summary>
+        public static AttachedDiskInitializeParamsArchitecture ArchitectureUnspecified { get; } = new AttachedDiskInitializeParamsArchitecture("ARCHITECTURE_UNSPECIFIED");
+        /// <summary>
+        /// Machines with architecture ARM64
+        /// </summary>
+        public static AttachedDiskInitializeParamsArchitecture Arm64 { get; } = new AttachedDiskInitializeParamsArchitecture("ARM64");
+        /// <summary>
+        /// Machines with architecture X86_64
+        /// </summary>
+        public static AttachedDiskInitializeParamsArchitecture X8664 { get; } = new AttachedDiskInitializeParamsArchitecture("X86_64");
+
+        public static bool operator ==(AttachedDiskInitializeParamsArchitecture left, AttachedDiskInitializeParamsArchitecture right) => left.Equals(right);
+        public static bool operator !=(AttachedDiskInitializeParamsArchitecture left, AttachedDiskInitializeParamsArchitecture right) => !left.Equals(right);
+
+        public static explicit operator string(AttachedDiskInitializeParamsArchitecture value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AttachedDiskInitializeParamsArchitecture other && Equals(other);
+        public bool Equals(AttachedDiskInitializeParamsArchitecture other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
     /// </summary>
     [EnumType]
@@ -1299,6 +1340,47 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DeprecationStatusState other && Equals(other);
         public bool Equals(DeprecationStatusState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The architecture of the disk. Valid values are ARM64 or X86_64.
+    /// </summary>
+    [EnumType]
+    public readonly struct DiskArchitecture : IEquatable<DiskArchitecture>
+    {
+        private readonly string _value;
+
+        private DiskArchitecture(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value indicating Architecture is not set.
+        /// </summary>
+        public static DiskArchitecture ArchitectureUnspecified { get; } = new DiskArchitecture("ARCHITECTURE_UNSPECIFIED");
+        /// <summary>
+        /// Machines with architecture ARM64
+        /// </summary>
+        public static DiskArchitecture Arm64 { get; } = new DiskArchitecture("ARM64");
+        /// <summary>
+        /// Machines with architecture X86_64
+        /// </summary>
+        public static DiskArchitecture X8664 { get; } = new DiskArchitecture("X86_64");
+
+        public static bool operator ==(DiskArchitecture left, DiskArchitecture right) => left.Equals(right);
+        public static bool operator !=(DiskArchitecture left, DiskArchitecture right) => !left.Equals(right);
+
+        public static explicit operator string(DiskArchitecture value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DiskArchitecture other && Equals(other);
+        public bool Equals(DiskArchitecture other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2571,6 +2653,47 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is HttpRedirectActionRedirectResponseCode other && Equals(other);
         public bool Equals(HttpRedirectActionRedirectResponseCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The architecture of the image. Valid values are ARM64 or X86_64.
+    /// </summary>
+    [EnumType]
+    public readonly struct ImageArchitecture : IEquatable<ImageArchitecture>
+    {
+        private readonly string _value;
+
+        private ImageArchitecture(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value indicating Architecture is not set.
+        /// </summary>
+        public static ImageArchitecture ArchitectureUnspecified { get; } = new ImageArchitecture("ARCHITECTURE_UNSPECIFIED");
+        /// <summary>
+        /// Machines with architecture ARM64
+        /// </summary>
+        public static ImageArchitecture Arm64 { get; } = new ImageArchitecture("ARM64");
+        /// <summary>
+        /// Machines with architecture X86_64
+        /// </summary>
+        public static ImageArchitecture X8664 { get; } = new ImageArchitecture("X86_64");
+
+        public static bool operator ==(ImageArchitecture left, ImageArchitecture right) => left.Equals(right);
+        public static bool operator !=(ImageArchitecture left, ImageArchitecture right) => !left.Equals(right);
+
+        public static explicit operator string(ImageArchitecture value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ImageArchitecture other && Equals(other);
+        public bool Equals(ImageArchitecture other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4241,6 +4364,47 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionCommitmentType other && Equals(other);
         public bool Equals(RegionCommitmentType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The architecture of the disk. Valid values are ARM64 or X86_64.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionDiskArchitecture : IEquatable<RegionDiskArchitecture>
+    {
+        private readonly string _value;
+
+        private RegionDiskArchitecture(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value indicating Architecture is not set.
+        /// </summary>
+        public static RegionDiskArchitecture ArchitectureUnspecified { get; } = new RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED");
+        /// <summary>
+        /// Machines with architecture ARM64
+        /// </summary>
+        public static RegionDiskArchitecture Arm64 { get; } = new RegionDiskArchitecture("ARM64");
+        /// <summary>
+        /// Machines with architecture X86_64
+        /// </summary>
+        public static RegionDiskArchitecture X8664 { get; } = new RegionDiskArchitecture("X86_64");
+
+        public static bool operator ==(RegionDiskArchitecture left, RegionDiskArchitecture right) => left.Equals(right);
+        public static bool operator !=(RegionDiskArchitecture left, RegionDiskArchitecture right) => !left.Equals(right);
+
+        public static explicit operator string(RegionDiskArchitecture value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionDiskArchitecture other && Equals(other);
+        public bool Equals(RegionDiskArchitecture other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

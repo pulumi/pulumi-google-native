@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetImageResult
     {
         /// <summary>
+        /// The architecture of the image. Valid values are ARM64 or X86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         /// </summary>
         public readonly string ArchiveSizeBytes;
@@ -190,6 +194,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [OutputConstructor]
         private GetImageResult(
+            string architecture,
+
             string archiveSizeBytes,
 
             string creationTimestamp,
@@ -256,6 +262,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<string> userLicenses)
         {
+            Architecture = architecture;
             ArchiveSizeBytes = archiveSizeBytes;
             CreationTimestamp = creationTimestamp;
             Deprecated = deprecated;

@@ -44,7 +44,7 @@ export interface GetChannelConnectionResult {
      */
     readonly name: string;
     /**
-     * / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+     * Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
      */
     readonly uid: string;
     /**

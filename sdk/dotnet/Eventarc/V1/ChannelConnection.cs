@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+        /// Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;

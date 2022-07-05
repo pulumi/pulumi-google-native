@@ -14,6 +14,8 @@ import (
 type Image struct {
 	pulumi.CustomResourceState
 
+	// The architecture of the image. Valid values are ARM64 or X86_64.
+	Architecture pulumi.StringOutput `pulumi:"architecture"`
 	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
 	ArchiveSizeBytes pulumi.StringOutput `pulumi:"archiveSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
@@ -120,6 +122,8 @@ func (ImageState) ElementType() reflect.Type {
 }
 
 type imageArgs struct {
+	// The architecture of the image. Valid values are ARM64 or X86_64.
+	Architecture *ImageArchitecture `pulumi:"architecture"`
 	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
 	ArchiveSizeBytes *string `pulumi:"archiveSizeBytes"`
 	// The deprecation status associated with this image.
@@ -171,6 +175,8 @@ type imageArgs struct {
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
+	// The architecture of the image. Valid values are ARM64 or X86_64.
+	Architecture ImageArchitecturePtrInput
 	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
 	ArchiveSizeBytes pulumi.StringPtrInput
 	// The deprecation status associated with this image.
@@ -255,6 +261,11 @@ func (o ImageOutput) ToImageOutput() ImageOutput {
 
 func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
+}
+
+// The architecture of the image. Valid values are ARM64 or X86_64.
+func (o ImageOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).

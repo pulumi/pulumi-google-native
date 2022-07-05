@@ -35,7 +35,7 @@ export class Federation extends pulumi.CustomResource {
     }
 
     /**
-     * A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+     * A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
      */
     public readonly backendMetastores!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -139,7 +139,7 @@ export class Federation extends pulumi.CustomResource {
  */
 export interface FederationArgs {
     /**
-     * A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+     * A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
      */
     backendMetastores?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

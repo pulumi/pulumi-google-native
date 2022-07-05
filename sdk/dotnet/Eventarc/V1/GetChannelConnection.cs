@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+        /// Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
         /// </summary>
         public readonly string Uid;
         /// <summary>

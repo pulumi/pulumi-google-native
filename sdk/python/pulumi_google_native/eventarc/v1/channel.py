@@ -16,6 +16,7 @@ class ChannelArgs:
     def __init__(__self__, *,
                  channel_id: pulumi.Input[str],
                  validate_only: pulumi.Input[str],
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -24,11 +25,14 @@ class ChannelArgs:
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[str] channel_id: Required. The user-provided ID to be assigned to the channel.
         :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not post it.
+        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
         pulumi.set(__self__, "channel_id", channel_id)
         pulumi.set(__self__, "validate_only", validate_only)
+        if crypto_key_name is not None:
+            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -61,6 +65,18 @@ class ChannelArgs:
     @validate_only.setter
     def validate_only(self, value: pulumi.Input[str]):
         pulumi.set(self, "validate_only", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "crypto_key_name")
+
+    @crypto_key_name.setter
+    def crypto_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_name", value)
 
     @property
     @pulumi.getter
@@ -111,6 +127,7 @@ class Channel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -123,6 +140,7 @@ class Channel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel_id: Required. The user-provided ID to be assigned to the channel.
+        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not post it.
@@ -152,6 +170,7 @@ class Channel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -174,6 +193,7 @@ class Channel(pulumi.CustomResource):
             if channel_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channel_id'")
             __props__.__dict__["channel_id"] = channel_id
+            __props__.__dict__["crypto_key_name"] = crypto_key_name
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -212,6 +232,7 @@ class Channel(pulumi.CustomResource):
         __props__.__dict__["activation_token"] = None
         __props__.__dict__["channel_id"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["crypto_key_name"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -246,6 +267,14 @@ class Channel(pulumi.CustomResource):
         The creation time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> pulumi.Output[str]:
+        """
+        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "crypto_key_name")
 
     @property
     @pulumi.getter

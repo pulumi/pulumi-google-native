@@ -12,6 +12,7 @@ __all__ = [
     'AddressNetworkTier',
     'AddressPurpose',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
+    'AttachedDiskInitializeParamsArchitecture',
     'AttachedDiskInitializeParamsOnUpdateAction',
     'AttachedDiskInterface',
     'AttachedDiskMode',
@@ -35,6 +36,7 @@ __all__ = [
     'ConditionOp',
     'ConditionSys',
     'DeprecationStatusState',
+    'DiskArchitecture',
     'DiskInstantiationConfigInstantiateFrom',
     'DistributionPolicyTargetShape',
     'ExternalVpnGatewayRedundancyType',
@@ -67,6 +69,7 @@ __all__ = [
     'HTTPSHealthCheckProxyHeader',
     'HealthCheckType',
     'HttpRedirectActionRedirectResponseCode',
+    'ImageArchitecture',
     'ImageRawDiskContainerType',
     'ImageSourceType',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
@@ -108,6 +111,7 @@ __all__ = [
     'RegionCommitmentCategory',
     'RegionCommitmentPlan',
     'RegionCommitmentType',
+    'RegionDiskArchitecture',
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
     'RegionHealthCheckType',
     'RegionNetworkEndpointGroupNetworkEndpointType',
@@ -290,6 +294,24 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInte
     """
     NVME = "NVME"
     SCSI = "SCSI"
+
+
+class AttachedDiskInitializeParamsArchitecture(str, Enum):
+    """
+    The architecture of the attached disk. Valid values are arm64 or x86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
+    """
 
 
 class AttachedDiskInitializeParamsOnUpdateAction(str, Enum):
@@ -777,6 +799,24 @@ class DeprecationStatusState(str, Enum):
     DELETED = "DELETED"
     DEPRECATED = "DEPRECATED"
     OBSOLETE = "OBSOLETE"
+
+
+class DiskArchitecture(str, Enum):
+    """
+    The architecture of the disk. Valid values are ARM64 or X86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
+    """
 
 
 class DiskInstantiationConfigInstantiateFrom(str, Enum):
@@ -1312,6 +1352,24 @@ class HttpRedirectActionRedirectResponseCode(str, Enum):
     TEMPORARY_REDIRECT = "TEMPORARY_REDIRECT"
     """
     Http Status Code 307 - Temporary Redirect maintaining HTTP method.
+    """
+
+
+class ImageArchitecture(str, Enum):
+    """
+    The architecture of the image. Valid values are ARM64 or X86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
     """
 
 
@@ -2040,6 +2098,24 @@ class RegionCommitmentType(str, Enum):
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
     MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+
+
+class RegionDiskArchitecture(str, Enum):
+    """
+    The architecture of the disk. Valid values are ARM64 or X86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
+    """
 
 
 class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):

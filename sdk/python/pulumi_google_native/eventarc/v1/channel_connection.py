@@ -271,7 +271,7 @@ class ChannelConnection(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+        Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
         """
         return pulumi.get(self, "uid")
 

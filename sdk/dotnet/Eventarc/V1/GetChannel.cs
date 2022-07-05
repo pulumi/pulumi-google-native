@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        public readonly string CryptoKeyName;
+        /// <summary>
         /// The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         /// </summary>
         public readonly string Name;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1
 
             string createTime,
 
+            string cryptoKeyName,
+
             string name,
 
             string provider,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         {
             ActivationToken = activationToken;
             CreateTime = createTime;
+            CryptoKeyName = cryptoKeyName;
             Name = name;
             Provider = provider;
             PubsubTopic = pubsubTopic;

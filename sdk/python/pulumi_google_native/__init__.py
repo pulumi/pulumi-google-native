@@ -2763,6 +2763,7 @@ _utilities.register(
    "google-native:servicedirectory/v1beta1:Namespace": "Namespace",
    "google-native:servicedirectory/v1beta1:NamespaceIamPolicy": "NamespaceIamPolicy",
    "google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy": "NamespaceServiceIamPolicy",
+   "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy": "NamespaceServiceWorkloadIamPolicy",
    "google-native:servicedirectory/v1beta1:Service": "Service"
   }
  },

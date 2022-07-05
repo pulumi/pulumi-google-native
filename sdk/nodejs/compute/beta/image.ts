@@ -36,6 +36,10 @@ export class Image extends pulumi.CustomResource {
     }
 
     /**
+     * The architecture of the image. Valid values are ARM64 or X86_64.
+     */
+    public readonly architecture!: pulumi.Output<string>;
+    /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */
     public readonly archiveSizeBytes!: pulumi.Output<string>;
@@ -188,6 +192,7 @@ export class Image extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["architecture"] = args ? args.architecture : undefined;
             resourceInputs["archiveSizeBytes"] = args ? args.archiveSizeBytes : undefined;
             resourceInputs["deprecated"] = args ? args.deprecated : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -225,6 +230,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["archiveSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["deprecated"] = undefined /*out*/;
@@ -271,6 +277,10 @@ export class Image extends pulumi.CustomResource {
  * The set of arguments for constructing a Image resource.
  */
 export interface ImageArgs {
+    /**
+     * The architecture of the image. Valid values are ARM64 or X86_64.
+     */
+    architecture?: pulumi.Input<enums.compute.beta.ImageArchitecture>;
     /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */

@@ -57,7 +57,7 @@ export class ChannelConnection extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+     * Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**

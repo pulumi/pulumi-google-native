@@ -784,6 +784,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: str,
                  description: str,
                  disk_name: str,
                  disk_size_gb: str,
@@ -799,6 +800,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  source_snapshot_encryption_key: 'outputs.CustomerEncryptionKeyResponse'):
         """
         [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param str architecture: The architecture of the attached disk. Valid values are arm64 or x86_64.
         :param str description: An optional description. Provide this property when creating the disk.
         :param str disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param str disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
@@ -813,6 +815,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param 'CustomerEncryptionKeyResponse' source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disk_name", disk_name)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -826,6 +829,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the attached disk. Valid values are arm64 or x86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter
@@ -967,6 +978,7 @@ class AttachedDiskResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: str,
                  auto_delete: bool,
                  boot: bool,
                  device_name: str,
@@ -984,6 +996,7 @@ class AttachedDiskResponse(dict):
                  type: str):
         """
         An instance-attached disk resource.
+        :param str architecture: The architecture of the attached disk. Valid values are ARM64 or X86_64.
         :param bool auto_delete: Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
         :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         :param str device_name: Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
@@ -1000,6 +1013,7 @@ class AttachedDiskResponse(dict):
         :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
         :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "boot", boot)
         pulumi.set(__self__, "device_name", device_name)
@@ -1015,6 +1029,14 @@ class AttachedDiskResponse(dict):
         pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the attached disk. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -12399,21 +12421,32 @@ class SavedDiskResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: str,
                  kind: str,
                  source_disk: str,
                  storage_bytes: str,
                  storage_bytes_status: str):
         """
         An instance-attached disk resource.
+        :param str architecture: The architecture of the attached disk.
         :param str kind: Type of the resource. Always compute#savedDisk for attached disks.
         :param str source_disk: Specifies a URL of the disk attached to the source instance.
         :param str storage_bytes: Size of the individual disk snapshot used by this machine image.
         :param str storage_bytes_status: An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "source_disk", source_disk)
         pulumi.set(__self__, "storage_bytes", storage_bytes)
         pulumi.set(__self__, "storage_bytes_status", storage_bytes_status)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the attached disk.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter

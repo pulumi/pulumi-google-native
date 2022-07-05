@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class SavedDiskResponse
     {
         /// <summary>
+        /// The architecture of the attached disk.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Type of the resource. Always compute#savedDisk for attached disks.
         /// </summary>
         public readonly string Kind;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
         [OutputConstructor]
         private SavedDiskResponse(
+            string architecture,
+
             string kind,
 
             string sourceDisk,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string storageBytesStatus)
         {
+            Architecture = architecture;
             Kind = kind;
             SourceDisk = sourceDisk;
             StorageBytes = storageBytes;

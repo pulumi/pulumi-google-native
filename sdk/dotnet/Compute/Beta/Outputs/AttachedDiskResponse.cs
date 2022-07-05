@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class AttachedDiskResponse
     {
         /// <summary>
+        /// The architecture of the attached disk. Valid values are ARM64 or X86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
         /// </summary>
         public readonly bool AutoDelete;
@@ -87,6 +91,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
         [OutputConstructor]
         private AttachedDiskResponse(
+            string architecture,
+
             bool autoDelete,
 
             bool boot,
@@ -121,6 +127,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             ImmutableArray<string> userLicenses)
         {
+            Architecture = architecture;
             AutoDelete = autoDelete;
             Boot = boot;
             DeviceName = deviceName;

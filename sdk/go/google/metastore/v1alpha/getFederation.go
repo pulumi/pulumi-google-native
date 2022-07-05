@@ -27,7 +27,7 @@ type LookupFederationArgs struct {
 }
 
 type LookupFederationResult struct {
-	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	BackendMetastores map[string]string `pulumi:"backendMetastores"`
 	// The time when the metastore federation was created.
 	CreateTime string `pulumi:"createTime"`
@@ -86,7 +86,7 @@ func (o LookupFederationResultOutput) ToLookupFederationResultOutputWithContext(
 	return o
 }
 
-// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 func (o LookupFederationResultOutput) BackendMetastores() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFederationResult) map[string]string { return v.BackendMetastores }).(pulumi.StringMapOutput)
 }

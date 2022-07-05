@@ -27,6 +27,8 @@ type LookupDiskArgs struct {
 }
 
 type LookupDiskResult struct {
+	// The architecture of the disk. Valid values are ARM64 or X86_64.
+	Architecture string `pulumi:"architecture"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -150,6 +152,11 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutput() LookupDiskResultOutpu
 
 func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.Context) LookupDiskResultOutput {
 	return o
+}
+
+// The architecture of the disk. Valid values are ARM64 or X86_64.
+func (o LookupDiskResultOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

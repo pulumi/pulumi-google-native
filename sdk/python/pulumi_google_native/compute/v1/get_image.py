@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetImageResult:
-    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None):
+    def __init__(__self__, architecture=None, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None):
+        if architecture and not isinstance(architecture, str):
+            raise TypeError("Expected argument 'architecture' to be a str")
+        pulumi.set(__self__, "architecture", architecture)
         if archive_size_bytes and not isinstance(archive_size_bytes, str):
             raise TypeError("Expected argument 'archive_size_bytes' to be a str")
         pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -110,6 +113,14 @@ class GetImageResult:
         if storage_locations and not isinstance(storage_locations, list):
             raise TypeError("Expected argument 'storage_locations' to be a list")
         pulumi.set(__self__, "storage_locations", storage_locations)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the image. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -358,6 +369,7 @@ class AwaitableGetImageResult(GetImageResult):
         if False:
             yield self
         return GetImageResult(
+            architecture=self.architecture,
             archive_size_bytes=self.archive_size_bytes,
             creation_timestamp=self.creation_timestamp,
             deprecated=self.deprecated,
@@ -406,6 +418,7 @@ def get_image(image: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getImage', __args__, opts=opts, typ=GetImageResult).value
 
     return AwaitableGetImageResult(
+        architecture=__ret__.architecture,
         archive_size_bytes=__ret__.archive_size_bytes,
         creation_timestamp=__ret__.creation_timestamp,
         deprecated=__ret__.deprecated,

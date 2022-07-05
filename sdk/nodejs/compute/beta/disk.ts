@@ -36,6 +36,10 @@ export class Disk extends pulumi.CustomResource {
     }
 
     /**
+     * The architecture of the disk. Valid values are ARM64 or X86_64.
+     */
+    public readonly architecture!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -217,6 +221,7 @@ export class Disk extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["architecture"] = args ? args.architecture : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
@@ -261,6 +266,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         } else {
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
@@ -314,6 +320,10 @@ export class Disk extends pulumi.CustomResource {
  * The set of arguments for constructing a Disk resource.
  */
 export interface DiskArgs {
+    /**
+     * The architecture of the disk. Valid values are ARM64 or X86_64.
+     */
+    architecture?: pulumi.Input<enums.compute.beta.DiskArchitecture>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

@@ -643,6 +643,7 @@ class AllocationSpecificSKUReservationArgs:
 @pulumi.input_type
 class AttachedDiskInitializeParamsArgs:
     def __init__(__self__, *,
+                 architecture: Optional[pulumi.Input['AttachedDiskInitializeParamsArchitecture']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_name: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
@@ -658,6 +659,7 @@ class AttachedDiskInitializeParamsArgs:
                  source_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None):
         """
         [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param pulumi.Input['AttachedDiskInitializeParamsArchitecture'] architecture: The architecture of the attached disk. Valid values are arm64 or x86_64.
         :param pulumi.Input[str] description: An optional description. Provide this property when creating the disk.
         :param pulumi.Input[str] disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param pulumi.Input[str] disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
@@ -672,6 +674,8 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input[str] source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
         """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_name is not None:
@@ -698,6 +702,18 @@ class AttachedDiskInitializeParamsArgs:
             pulumi.set(__self__, "source_snapshot", source_snapshot)
         if source_snapshot_encryption_key is not None:
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input['AttachedDiskInitializeParamsArchitecture']]:
+        """
+        The architecture of the attached disk. Valid values are arm64 or x86_64.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input['AttachedDiskInitializeParamsArchitecture']]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.V1
     public partial class Image : Pulumi.CustomResource
     {
         /// <summary>
+        /// The architecture of the image. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Output("architecture")]
+        public Output<string> Architecture { get; private set; } = null!;
+
+        /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         /// </summary>
         [Output("archiveSizeBytes")]
@@ -255,6 +261,12 @@ namespace Pulumi.GoogleNative.Compute.V1
 
     public sealed class ImageArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The architecture of the image. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Input("architecture")]
+        public Input<Pulumi.GoogleNative.Compute.V1.ImageArchitecture>? Architecture { get; set; }
+
         /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         /// </summary>

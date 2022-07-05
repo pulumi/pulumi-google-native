@@ -15761,21 +15761,32 @@ class SavedDiskResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: str,
                  kind: str,
                  source_disk: str,
                  storage_bytes: str,
                  storage_bytes_status: str):
         """
         An instance-attached disk resource.
+        :param str architecture: The architecture of the attached disk.
         :param str kind: Type of the resource. Always compute#savedDisk for attached disks.
         :param str source_disk: Specifies a URL of the disk attached to the source instance.
         :param str storage_bytes: Size of the individual disk snapshot used by this machine image.
         :param str storage_bytes_status: An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "source_disk", source_disk)
         pulumi.set(__self__, "storage_bytes", storage_bytes)
         pulumi.set(__self__, "storage_bytes_status", storage_bytes_status)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the attached disk.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter

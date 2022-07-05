@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+        if architecture and not isinstance(architecture, str):
+            raise TypeError("Expected argument 'architecture' to be a str")
+        pulumi.set(__self__, "architecture", architecture)
         if auto_created and not isinstance(auto_created, bool):
             raise TypeError("Expected argument 'auto_created' to be a bool")
         pulumi.set(__self__, "auto_created", auto_created)
@@ -101,6 +104,14 @@ class GetSnapshotResult:
         if user_licenses and not isinstance(user_licenses, list):
             raise TypeError("Expected argument 'user_licenses' to be a list")
         pulumi.set(__self__, "user_licenses", user_licenses)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the snapshot. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoCreated")
@@ -325,6 +336,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
         if False:
             yield self
         return GetSnapshotResult(
+            architecture=self.architecture,
             auto_created=self.auto_created,
             chain_name=self.chain_name,
             creation_timestamp=self.creation_timestamp,
@@ -370,6 +382,7 @@ def get_snapshot(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
+        architecture=__ret__.architecture,
         auto_created=__ret__.auto_created,
         chain_name=__ret__.chain_name,
         creation_timestamp=__ret__.creation_timestamp,

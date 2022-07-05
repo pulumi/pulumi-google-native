@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetRegionDiskResult
     {
         /// <summary>
+        /// The architecture of the disk. Valid values are ARM64 or X86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -228,6 +232,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [OutputConstructor]
         private GetRegionDiskResult(
+            string architecture,
+
             string creationTimestamp,
 
             string description,
@@ -310,6 +316,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string zone)
         {
+            Architecture = architecture;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKey = diskEncryptionKey;

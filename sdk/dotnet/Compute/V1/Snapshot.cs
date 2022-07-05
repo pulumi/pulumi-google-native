@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.V1
     public partial class Snapshot : Pulumi.CustomResource
     {
         /// <summary>
+        /// The architecture of the snapshot. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Output("architecture")]
+        public Output<string> Architecture { get; private set; } = null!;
+
+        /// <summary>
         /// Set to true if snapshots are automatically created by applying resource policy on the target disk.
         /// </summary>
         [Output("autoCreated")]

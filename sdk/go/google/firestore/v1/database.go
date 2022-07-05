@@ -34,8 +34,6 @@ type Database struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// If set, validate the request and preview the response, but do not actually create the database.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -95,8 +93,6 @@ type databaseArgs struct {
 	Project *string `pulumi:"project"`
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type *DatabaseType `pulumi:"type"`
-	// If set, validate the request and preview the response, but do not actually create the database.
-	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Database resource.
@@ -116,8 +112,6 @@ type DatabaseArgs struct {
 	Project pulumi.StringPtrInput
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type DatabaseTypePtrInput
-	// If set, validate the request and preview the response, but do not actually create the database.
-	ValidateOnly pulumi.StringPtrInput
 }
 
 func (DatabaseArgs) ElementType() reflect.Type {
@@ -199,11 +193,6 @@ func (o DatabaseOutput) Project() pulumi.StringOutput {
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// If set, validate the request and preview the response, but do not actually create the database.
-func (o DatabaseOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
 }
 
 func init() {

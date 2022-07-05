@@ -13,6 +13,7 @@ __all__ = [
     'AddressPurpose',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval',
+    'AttachedDiskInitializeParamsArchitecture',
     'AttachedDiskInitializeParamsOnUpdateAction',
     'AttachedDiskInterface',
     'AttachedDiskMode',
@@ -38,6 +39,7 @@ __all__ = [
     'ConditionOp',
     'ConditionSys',
     'DeprecationStatusState',
+    'DiskArchitecture',
     'DiskInstantiationConfigInstantiateFrom',
     'DiskInterface',
     'DiskStorageType',
@@ -72,6 +74,7 @@ __all__ = [
     'HTTPSHealthCheckProxyHeader',
     'HealthCheckType',
     'HttpRedirectActionRedirectResponseCode',
+    'ImageArchitecture',
     'ImageRawDiskContainerType',
     'ImageSourceType',
     'InstanceGroupManagerFailoverAction',
@@ -119,6 +122,7 @@ __all__ = [
     'RegionCommitmentCategory',
     'RegionCommitmentPlan',
     'RegionCommitmentType',
+    'RegionDiskArchitecture',
     'RegionDiskInterface',
     'RegionDiskStorageType',
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
@@ -320,6 +324,24 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterv
     PERIODIC = "PERIODIC"
     """
     VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+    """
+
+
+class AttachedDiskInitializeParamsArchitecture(str, Enum):
+    """
+    The architecture of the attached disk. Valid values are arm64 or x86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
     """
 
 
@@ -845,6 +867,24 @@ class DeprecationStatusState(str, Enum):
     DELETED = "DELETED"
     DEPRECATED = "DEPRECATED"
     OBSOLETE = "OBSOLETE"
+
+
+class DiskArchitecture(str, Enum):
+    """
+    The architecture of the disk. Valid values are ARM64 or X86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
+    """
 
 
 class DiskInstantiationConfigInstantiateFrom(str, Enum):
@@ -1397,6 +1437,24 @@ class HttpRedirectActionRedirectResponseCode(str, Enum):
     TEMPORARY_REDIRECT = "TEMPORARY_REDIRECT"
     """
     Http Status Code 307 - Temporary Redirect maintaining HTTP method.
+    """
+
+
+class ImageArchitecture(str, Enum):
+    """
+    The architecture of the image. Valid values are ARM64 or X86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
     """
 
 
@@ -2211,6 +2269,24 @@ class RegionCommitmentType(str, Enum):
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
     MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+
+
+class RegionDiskArchitecture(str, Enum):
+    """
+    The architecture of the disk. Valid values are ARM64 or X86_64.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Default value indicating Architecture is not set.
+    """
+    ARM64 = "ARM64"
+    """
+    Machines with architecture ARM64
+    """
+    X8664 = "X86_64"
+    """
+    Machines with architecture X86_64
+    """
 
 
 class RegionDiskInterface(str, Enum):

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetDiskResult:
-    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_key=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_encryption_key=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, users=None, zone=None):
+        if architecture and not isinstance(architecture, str):
+            raise TypeError("Expected argument 'architecture' to be a str")
+        pulumi.set(__self__, "architecture", architecture)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -125,6 +128,14 @@ class GetDiskResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the disk. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -413,6 +424,7 @@ class AwaitableGetDiskResult(GetDiskResult):
         if False:
             yield self
         return GetDiskResult(
+            architecture=self.architecture,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_key=self.disk_encryption_key,
@@ -468,6 +480,7 @@ def get_disk(disk: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getDisk', __args__, opts=opts, typ=GetDiskResult).value
 
     return AwaitableGetDiskResult(
+        architecture=__ret__.architecture,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_encryption_key=__ret__.disk_encryption_key,

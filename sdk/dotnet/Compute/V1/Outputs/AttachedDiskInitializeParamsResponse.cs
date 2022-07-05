@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class AttachedDiskInitializeParamsResponse
     {
         /// <summary>
+        /// The architecture of the attached disk. Valid values are arm64 or x86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// An optional description. Provide this property when creating the disk.
         /// </summary>
         public readonly string Description;
@@ -71,6 +75,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
         [OutputConstructor]
         private AttachedDiskInitializeParamsResponse(
+            string architecture,
+
             string description,
 
             string diskName,
@@ -97,6 +103,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey)
         {
+            Architecture = architecture;
             Description = description;
             DiskName = diskName;
             DiskSizeGb = diskSizeGb;

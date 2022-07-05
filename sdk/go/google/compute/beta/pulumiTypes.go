@@ -1752,6 +1752,8 @@ func (o AttachedDiskArrayOutput) Index(i pulumi.IntInput) AttachedDiskOutput {
 
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParams struct {
+	// The architecture of the attached disk. Valid values are arm64 or x86_64.
+	Architecture *AttachedDiskInitializeParamsArchitecture `pulumi:"architecture"`
 	// An optional description. Provide this property when creating the disk.
 	Description *string `pulumi:"description"`
 	// Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
@@ -1797,6 +1799,8 @@ type AttachedDiskInitializeParamsInput interface {
 
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsArgs struct {
+	// The architecture of the attached disk. Valid values are arm64 or x86_64.
+	Architecture AttachedDiskInitializeParamsArchitecturePtrInput `pulumi:"architecture"`
 	// An optional description. Provide this property when creating the disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
@@ -1907,6 +1911,11 @@ func (o AttachedDiskInitializeParamsOutput) ToAttachedDiskInitializeParamsPtrOut
 	}).(AttachedDiskInitializeParamsPtrOutput)
 }
 
+// The architecture of the attached disk. Valid values are arm64 or x86_64.
+func (o AttachedDiskInitializeParamsOutput) Architecture() AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) *AttachedDiskInitializeParamsArchitecture { return v.Architecture }).(AttachedDiskInitializeParamsArchitecturePtrOutput)
+}
+
 // An optional description. Provide this property when creating the disk.
 func (o AttachedDiskInitializeParamsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -2006,6 +2015,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) Elem() AttachedDiskInitializePara
 		var ret AttachedDiskInitializeParams
 		return ret
 	}).(AttachedDiskInitializeParamsOutput)
+}
+
+// The architecture of the attached disk. Valid values are arm64 or x86_64.
+func (o AttachedDiskInitializeParamsPtrOutput) Architecture() AttachedDiskInitializeParamsArchitecturePtrOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) *AttachedDiskInitializeParamsArchitecture {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(AttachedDiskInitializeParamsArchitecturePtrOutput)
 }
 
 // An optional description. Provide this property when creating the disk.
@@ -2160,6 +2179,8 @@ func (o AttachedDiskInitializeParamsPtrOutput) SourceSnapshotEncryptionKey() Cus
 
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsResponse struct {
+	// The architecture of the attached disk. Valid values are arm64 or x86_64.
+	Architecture string `pulumi:"architecture"`
 	// An optional description. Provide this property when creating the disk.
 	Description string `pulumi:"description"`
 	// Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
@@ -2205,6 +2226,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) ToAttachedDiskInitializePara
 
 func (o AttachedDiskInitializeParamsResponseOutput) ToAttachedDiskInitializeParamsResponseOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsResponseOutput {
 	return o
+}
+
+// The architecture of the attached disk. Valid values are arm64 or x86_64.
+func (o AttachedDiskInitializeParamsResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // An optional description. Provide this property when creating the disk.
@@ -2288,6 +2314,8 @@ func (o AttachedDiskInitializeParamsResponseOutput) SourceSnapshotEncryptionKey(
 
 // An instance-attached disk resource.
 type AttachedDiskResponse struct {
+	// The architecture of the attached disk. Valid values are ARM64 or X86_64.
+	Architecture string `pulumi:"architecture"`
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete bool `pulumi:"autoDelete"`
 	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
@@ -2337,6 +2365,11 @@ func (o AttachedDiskResponseOutput) ToAttachedDiskResponseOutput() AttachedDiskR
 
 func (o AttachedDiskResponseOutput) ToAttachedDiskResponseOutputWithContext(ctx context.Context) AttachedDiskResponseOutput {
 	return o
+}
+
+// The architecture of the attached disk. Valid values are ARM64 or X86_64.
+func (o AttachedDiskResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -36477,6 +36510,8 @@ func (o SavedDiskArrayOutput) Index(i pulumi.IntInput) SavedDiskOutput {
 
 // An instance-attached disk resource.
 type SavedDiskResponse struct {
+	// The architecture of the attached disk.
+	Architecture string `pulumi:"architecture"`
 	// Type of the resource. Always compute#savedDisk for attached disks.
 	Kind string `pulumi:"kind"`
 	// Specifies a URL of the disk attached to the source instance.
@@ -36500,6 +36535,11 @@ func (o SavedDiskResponseOutput) ToSavedDiskResponseOutput() SavedDiskResponseOu
 
 func (o SavedDiskResponseOutput) ToSavedDiskResponseOutputWithContext(ctx context.Context) SavedDiskResponseOutput {
 	return o
+}
+
+// The architecture of the attached disk.
+func (o SavedDiskResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedDiskResponse) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#savedDisk for attached disks.

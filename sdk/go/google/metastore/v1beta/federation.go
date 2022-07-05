@@ -15,7 +15,7 @@ import (
 type Federation struct {
 	pulumi.CustomResourceState
 
-	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	BackendMetastores pulumi.StringMapOutput `pulumi:"backendMetastores"`
 	// The time when the metastore federation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -85,7 +85,7 @@ func (FederationState) ElementType() reflect.Type {
 }
 
 type federationArgs struct {
-	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	BackendMetastores map[string]string `pulumi:"backendMetastores"`
 	// Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	FederationId string `pulumi:"federationId"`
@@ -103,7 +103,7 @@ type federationArgs struct {
 
 // The set of arguments for constructing a Federation resource.
 type FederationArgs struct {
-	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	BackendMetastores pulumi.StringMapInput
 	// Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	FederationId pulumi.StringInput
@@ -156,7 +156,7 @@ func (o FederationOutput) ToFederationOutputWithContext(ctx context.Context) Fed
 	return o
 }
 
-// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key is an integer that represents the order in which BackendMetastores should be evaluated to resolve database names at query time. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 func (o FederationOutput) BackendMetastores() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Federation) pulumi.StringMapOutput { return v.BackendMetastores }).(pulumi.StringMapOutput)
 }

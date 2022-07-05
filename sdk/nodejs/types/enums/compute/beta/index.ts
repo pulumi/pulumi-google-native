@@ -150,6 +150,26 @@ export const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanc
  */
 export type AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval = (typeof AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval)[keyof typeof AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval];
 
+export const AttachedDiskInitializeParamsArchitecture = {
+    /**
+     * Default value indicating Architecture is not set.
+     */
+    ArchitectureUnspecified: "ARCHITECTURE_UNSPECIFIED",
+    /**
+     * Machines with architecture ARM64
+     */
+    Arm64: "ARM64",
+    /**
+     * Machines with architecture X86_64
+     */
+    X8664: "X86_64",
+} as const;
+
+/**
+ * The architecture of the attached disk. Valid values are arm64 or x86_64.
+ */
+export type AttachedDiskInitializeParamsArchitecture = (typeof AttachedDiskInitializeParamsArchitecture)[keyof typeof AttachedDiskInitializeParamsArchitecture];
+
 export const AttachedDiskInitializeParamsOnUpdateAction = {
     /**
      * Always recreate the disk.
@@ -723,6 +743,26 @@ export const DeprecationStatusState = {
  * The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
  */
 export type DeprecationStatusState = (typeof DeprecationStatusState)[keyof typeof DeprecationStatusState];
+
+export const DiskArchitecture = {
+    /**
+     * Default value indicating Architecture is not set.
+     */
+    ArchitectureUnspecified: "ARCHITECTURE_UNSPECIFIED",
+    /**
+     * Machines with architecture ARM64
+     */
+    Arm64: "ARM64",
+    /**
+     * Machines with architecture X86_64
+     */
+    X8664: "X86_64",
+} as const;
+
+/**
+ * The architecture of the disk. Valid values are ARM64 or X86_64.
+ */
+export type DiskArchitecture = (typeof DiskArchitecture)[keyof typeof DiskArchitecture];
 
 export const DiskInstantiationConfigInstantiateFrom = {
     /**
@@ -1344,6 +1384,26 @@ export const HttpRedirectActionRedirectResponseCode = {
  * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. 
  */
 export type HttpRedirectActionRedirectResponseCode = (typeof HttpRedirectActionRedirectResponseCode)[keyof typeof HttpRedirectActionRedirectResponseCode];
+
+export const ImageArchitecture = {
+    /**
+     * Default value indicating Architecture is not set.
+     */
+    ArchitectureUnspecified: "ARCHITECTURE_UNSPECIFIED",
+    /**
+     * Machines with architecture ARM64
+     */
+    Arm64: "ARM64",
+    /**
+     * Machines with architecture X86_64
+     */
+    X8664: "X86_64",
+} as const;
+
+/**
+ * The architecture of the image. Valid values are ARM64 or X86_64.
+ */
+export type ImageArchitecture = (typeof ImageArchitecture)[keyof typeof ImageArchitecture];
 
 export const ImageRawDiskContainerType = {
     Tar: "TAR",
@@ -2251,6 +2311,26 @@ export const RegionCommitmentType = {
  * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
  */
 export type RegionCommitmentType = (typeof RegionCommitmentType)[keyof typeof RegionCommitmentType];
+
+export const RegionDiskArchitecture = {
+    /**
+     * Default value indicating Architecture is not set.
+     */
+    ArchitectureUnspecified: "ARCHITECTURE_UNSPECIFIED",
+    /**
+     * Machines with architecture ARM64
+     */
+    Arm64: "ARM64",
+    /**
+     * Machines with architecture X86_64
+     */
+    X8664: "X86_64",
+} as const;
+
+/**
+ * The architecture of the disk. Valid values are ARM64 or X86_64.
+ */
+export type RegionDiskArchitecture = (typeof RegionDiskArchitecture)[keyof typeof RegionDiskArchitecture];
 
 export const RegionDiskInterface = {
     Nvme: "NVME",

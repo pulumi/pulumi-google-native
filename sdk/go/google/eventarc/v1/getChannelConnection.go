@@ -35,7 +35,7 @@ type LookupChannelConnectionResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The name of the connection.
 	Name string `pulumi:"name"`
-	// / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+	// Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
 	Uid string `pulumi:"uid"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`
@@ -98,7 +98,7 @@ func (o LookupChannelConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+// Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
 func (o LookupChannelConnectionResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelConnectionResult) string { return v.Uid }).(pulumi.StringOutput)
 }

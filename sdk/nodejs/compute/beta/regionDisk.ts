@@ -36,6 +36,10 @@ export class RegionDisk extends pulumi.CustomResource {
     }
 
     /**
+     * The architecture of the disk. Valid values are ARM64 or X86_64.
+     */
+    public readonly architecture!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -220,6 +224,7 @@ export class RegionDisk extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["architecture"] = args ? args.architecture : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
@@ -264,6 +269,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["users"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         } else {
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
@@ -317,6 +323,10 @@ export class RegionDisk extends pulumi.CustomResource {
  * The set of arguments for constructing a RegionDisk resource.
  */
 export interface RegionDiskArgs {
+    /**
+     * The architecture of the disk. Valid values are ARM64 or X86_64.
+     */
+    architecture?: pulumi.Input<enums.compute.beta.RegionDiskArchitecture>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

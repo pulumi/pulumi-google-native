@@ -46,6 +46,10 @@ export class Channel extends pulumi.CustomResource {
      * The creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     */
+    public readonly cryptoKeyName!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
@@ -95,6 +99,7 @@ export class Channel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'validateOnly'");
             }
             resourceInputs["channelId"] = args ? args.channelId : undefined;
+            resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -110,6 +115,7 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["activationToken"] = undefined /*out*/;
             resourceInputs["channelId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["cryptoKeyName"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -133,6 +139,10 @@ export interface ChannelArgs {
      * Required. The user-provided ID to be assigned to the channel.
      */
     channelId: pulumi.Input<string>;
+    /**
+     * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     */
+    cryptoKeyName?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
      * The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.

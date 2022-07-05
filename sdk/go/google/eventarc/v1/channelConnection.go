@@ -27,7 +27,7 @@ type ChannelConnection struct {
 	// The name of the connection.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+	// Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -174,7 +174,7 @@ func (o ChannelConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ChannelConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// / Output only. Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
+// Server assigned ID of the resource. The server guarantees uniqueness and immutability until deleted.
 func (o ChannelConnectionOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ChannelConnection) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
