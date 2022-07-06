@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         [Input("bigqueryDestination")]
         public Input<Inputs.GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs>? BigqueryDestination { get; set; }
 
+        /// <summary>
+        /// The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        /// </summary>
+        [Input("deidentifiedStoreDestination")]
+        public Input<Inputs.DeidentifiedStoreDestinationArgs>? DeidentifiedStoreDestination { get; set; }
+
         [Input("resourceTypes")]
         private InputList<string>? _resourceTypes;
 

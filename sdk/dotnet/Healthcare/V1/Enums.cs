@@ -339,6 +339,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`.
         /// </summary>
         public static SchemaConfigSchemaType Analytics { get; } = new SchemaConfigSchemaType("ANALYTICS");
+        /// <summary>
+        /// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+        /// </summary>
+        public static SchemaConfigSchemaType AnalyticsV2 { get; } = new SchemaConfigSchemaType("ANALYTICS_V2");
 
         public static bool operator ==(SchemaConfigSchemaType left, SchemaConfigSchemaType right) => left.Equals(right);
         public static bool operator !=(SchemaConfigSchemaType left, SchemaConfigSchemaType right) => !left.Equals(right);

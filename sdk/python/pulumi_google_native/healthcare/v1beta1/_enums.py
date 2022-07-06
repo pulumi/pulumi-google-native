@@ -8,10 +8,13 @@ __all__ = [
     'AttributeDefinitionCategory',
     'AuditLogConfigLogType',
     'ConsentState',
+    'DicomConfigFilterProfile',
     'FhirStoreComplexDataTypeReferenceParsing',
     'FhirStoreVersion',
+    'FieldMetadataAction',
     'GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition',
     'GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition',
+    'ImageConfigTextRedactionMode',
     'ParserConfigVersion',
     'SchemaConfigSchemaType',
     'SchemaPackageSchematizedParsingType',
@@ -90,6 +93,32 @@ class ConsentState(str, Enum):
     """
 
 
+class DicomConfigFilterProfile(str, Enum):
+    """
+    Tag filtering profile that determines which tags to keep/remove.
+    """
+    TAG_FILTER_PROFILE_UNSPECIFIED = "TAG_FILTER_PROFILE_UNSPECIFIED"
+    """
+    No tag filtration profile provided. Same as KEEP_ALL_PROFILE.
+    """
+    MINIMAL_KEEP_LIST_PROFILE = "MINIMAL_KEEP_LIST_PROFILE"
+    """
+    Keep only tags required to produce valid DICOM.
+    """
+    ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE = "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"
+    """
+    Remove tags based on DICOM Standard's Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e) http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
+    """
+    KEEP_ALL_PROFILE = "KEEP_ALL_PROFILE"
+    """
+    Keep all tags.
+    """
+    DEIDENTIFY_TAG_CONTENTS = "DEIDENTIFY_TAG_CONTENTS"
+    """
+    Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+    """
+
+
 class FhirStoreComplexDataTypeReferenceParsing(str, Enum):
     """
     Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
@@ -127,6 +156,28 @@ class FhirStoreVersion(str, Enum):
     R4 = "R4"
     """
     [Release 4](https://www.hl7.org/fhir/R4)
+    """
+
+
+class FieldMetadataAction(str, Enum):
+    """
+    Deidentify action for one field.
+    """
+    ACTION_UNSPECIFIED = "ACTION_UNSPECIFIED"
+    """
+    No action specified.
+    """
+    TRANSFORM = "TRANSFORM"
+    """
+    Transform the entire field based on transformations specified in TextConfig. When the specified transformation cannot be applied to a field, RedactConfig is used. For example, a Crypto Hash transformation can't be applied to a FHIR Date field.
+    """
+    INSPECT_AND_TRANSFORM = "INSPECT_AND_TRANSFORM"
+    """
+    Inspect and transform any found PHI. When `AnnotationConfig` is provided, annotations of PHI will be generated, except for Date and Datetime.
+    """
+    DO_NOT_TRANSFORM = "DO_NOT_TRANSFORM"
+    """
+    Do not transform.
     """
 
 
@@ -171,6 +222,28 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition(str, E
     WRITE_APPEND = "WRITE_APPEND"
     """
     Append data to the existing tables.
+    """
+
+
+class ImageConfigTextRedactionMode(str, Enum):
+    """
+    Determines how to redact text from image.
+    """
+    TEXT_REDACTION_MODE_UNSPECIFIED = "TEXT_REDACTION_MODE_UNSPECIFIED"
+    """
+    No text redaction specified. Same as REDACT_NO_TEXT.
+    """
+    REDACT_ALL_TEXT = "REDACT_ALL_TEXT"
+    """
+    Redact all text.
+    """
+    REDACT_SENSITIVE_TEXT = "REDACT_SENSITIVE_TEXT"
+    """
+    Redact sensitive text. Uses the set of [Default DICOM InfoTypes](https://cloud.google.com/healthcare-api/docs/how-tos/dicom-deidentify#default_dicom_infotypes).
+    """
+    REDACT_NO_TEXT = "REDACT_NO_TEXT"
+    """
+    Do not redact text.
     """
 
 

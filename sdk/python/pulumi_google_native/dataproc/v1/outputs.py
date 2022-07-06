@@ -889,7 +889,7 @@ class DataprocMetricConfigResponse(dict):
                  metrics: Sequence['outputs.MetricResponse']):
         """
         Dataproc metric config.
-        :param Sequence['MetricResponse'] metrics: Metrics sources to enable.
+        :param Sequence['MetricResponse'] metrics: Metrics to enable.
         """
         pulumi.set(__self__, "metrics", metrics)
 
@@ -897,7 +897,7 @@ class DataprocMetricConfigResponse(dict):
     @pulumi.getter
     def metrics(self) -> Sequence['outputs.MetricResponse']:
         """
-        Metrics sources to enable.
+        Metrics to enable.
         """
         return pulumi.get(self, "metrics")
 
@@ -940,7 +940,7 @@ class DiskConfigResponse(dict):
         :param int boot_disk_size_gb: Optional. Size in GB of the boot disk (default is 500GB).
         :param str boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
         :param str local_ssd_interface: Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
-        :param int num_local_ssds: Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
+        :param int num_local_ssds: Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         pulumi.set(__self__, "boot_disk_type", boot_disk_type)
@@ -975,7 +975,7 @@ class DiskConfigResponse(dict):
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> int:
         """
-        Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
+        Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -1564,7 +1564,7 @@ class GkeNodeConfigResponse(dict):
         """
         Parameters that describe cluster nodes.
         :param Sequence['GkeNodePoolAcceleratorConfigResponse'] accelerators: Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
-        :param str boot_disk_kms_key: Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        :param str boot_disk_kms_key: Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
         :param int local_ssd_count: Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
         :param str machine_type: Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
         :param str min_cpu_platform: Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
@@ -1591,7 +1591,7 @@ class GkeNodeConfigResponse(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> str:
         """
-        Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+        Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -3278,7 +3278,7 @@ class MetastoreConfigResponse(dict):
 @pulumi.output_type
 class MetricResponse(dict):
     """
-    A Dataproc OSS metric.
+    The metric source to enable, with any optional metrics, to override Dataproc default metrics.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3303,9 +3303,9 @@ class MetricResponse(dict):
                  metric_overrides: Sequence[str],
                  metric_source: str):
         """
-        A Dataproc OSS metric.
-        :param Sequence[str] metric_overrides: Optional. Specify one or more available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the SPARK metric source, any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
-        :param str metric_source: Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
+        The metric source to enable, with any optional metrics, to override Dataproc default metrics.
+        :param Sequence[str] metric_overrides: Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
+        :param str metric_source: MetricSource to enable.
         """
         pulumi.set(__self__, "metric_overrides", metric_overrides)
         pulumi.set(__self__, "metric_source", metric_source)
@@ -3314,7 +3314,7 @@ class MetricResponse(dict):
     @pulumi.getter(name="metricOverrides")
     def metric_overrides(self) -> Sequence[str]:
         """
-        Optional. Specify one or more available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the SPARK metric source, any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
+        Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
         """
         return pulumi.get(self, "metric_overrides")
 
@@ -3322,7 +3322,7 @@ class MetricResponse(dict):
     @pulumi.getter(name="metricSource")
     def metric_source(self) -> str:
         """
-        Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
+        MetricSource to enable.
         """
         return pulumi.get(self, "metric_source")
 
