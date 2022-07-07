@@ -89,10 +89,7 @@ def get_secret_iam_policy(options_requested_policy_version: Optional[str] = None
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
     __args__['project'] = project
     __args__['secretId'] = secret_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:secretmanager/v1:getSecretIamPolicy', __args__, opts=opts, typ=GetSecretIamPolicyResult).value
 
     return AwaitableGetSecretIamPolicyResult(

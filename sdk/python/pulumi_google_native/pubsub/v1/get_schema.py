@@ -100,10 +100,7 @@ def get_schema(project: Optional[str] = None,
     __args__['project'] = project
     __args__['schemaId'] = schema_id
     __args__['view'] = view
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1:getSchema', __args__, opts=opts, typ=GetSchemaResult).value
 
     return AwaitableGetSchemaResult(

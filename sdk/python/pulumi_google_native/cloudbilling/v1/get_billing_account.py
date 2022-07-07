@@ -84,10 +84,7 @@ def get_billing_account(billing_account_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['billingAccountId'] = billing_account_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudbilling/v1:getBillingAccount', __args__, opts=opts, typ=GetBillingAccountResult).value
 
     return AwaitableGetBillingAccountResult(

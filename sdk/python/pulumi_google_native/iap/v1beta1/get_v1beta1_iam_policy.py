@@ -73,10 +73,7 @@ def get_v1beta1_iam_policy(v1beta1_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['v1beta1Id'] = v1beta1_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:iap/v1beta1:getV1beta1IamPolicy', __args__, opts=opts, typ=GetV1beta1IamPolicyResult).value
 
     return AwaitableGetV1beta1IamPolicyResult(

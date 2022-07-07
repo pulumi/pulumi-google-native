@@ -77,10 +77,7 @@ def get_subscription(location: Optional[str] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['subscriptionId'] = subscription_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:pubsublite/v1:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
