@@ -2216,7 +2216,7 @@ func (o ConfidentialInstanceConfigResponseOutput) EnableConfidentialCompute() pu
 
 // Dataproc metric config.
 type DataprocMetricConfig struct {
-	// Metrics to enable.
+	// Metrics sources to enable.
 	Metrics []Metric `pulumi:"metrics"`
 }
 
@@ -2233,7 +2233,7 @@ type DataprocMetricConfigInput interface {
 
 // Dataproc metric config.
 type DataprocMetricConfigArgs struct {
-	// Metrics to enable.
+	// Metrics sources to enable.
 	Metrics MetricArrayInput `pulumi:"metrics"`
 }
 
@@ -2315,7 +2315,7 @@ func (o DataprocMetricConfigOutput) ToDataprocMetricConfigPtrOutputWithContext(c
 	}).(DataprocMetricConfigPtrOutput)
 }
 
-// Metrics to enable.
+// Metrics sources to enable.
 func (o DataprocMetricConfigOutput) Metrics() MetricArrayOutput {
 	return o.ApplyT(func(v DataprocMetricConfig) []Metric { return v.Metrics }).(MetricArrayOutput)
 }
@@ -2344,7 +2344,7 @@ func (o DataprocMetricConfigPtrOutput) Elem() DataprocMetricConfigOutput {
 	}).(DataprocMetricConfigOutput)
 }
 
-// Metrics to enable.
+// Metrics sources to enable.
 func (o DataprocMetricConfigPtrOutput) Metrics() MetricArrayOutput {
 	return o.ApplyT(func(v *DataprocMetricConfig) []Metric {
 		if v == nil {
@@ -2356,7 +2356,7 @@ func (o DataprocMetricConfigPtrOutput) Metrics() MetricArrayOutput {
 
 // Dataproc metric config.
 type DataprocMetricConfigResponse struct {
-	// Metrics to enable.
+	// Metrics sources to enable.
 	Metrics []MetricResponse `pulumi:"metrics"`
 }
 
@@ -2375,7 +2375,7 @@ func (o DataprocMetricConfigResponseOutput) ToDataprocMetricConfigResponseOutput
 	return o
 }
 
-// Metrics to enable.
+// Metrics sources to enable.
 func (o DataprocMetricConfigResponseOutput) Metrics() MetricResponseArrayOutput {
 	return o.ApplyT(func(v DataprocMetricConfigResponse) []MetricResponse { return v.Metrics }).(MetricResponseArrayOutput)
 }
@@ -2388,7 +2388,7 @@ type DiskConfig struct {
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 	LocalSsdInterface *string `pulumi:"localSsdInterface"`
-	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -2411,7 +2411,7 @@ type DiskConfigArgs struct {
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
-	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -2508,7 +2508,7 @@ func (o DiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *string { return v.LocalSsdInterface }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
 func (o DiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -2567,7 +2567,7 @@ func (o DiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
 func (o DiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DiskConfig) *int {
 		if v == nil {
@@ -2585,7 +2585,7 @@ type DiskConfigResponse struct {
 	BootDiskType string `pulumi:"bootDiskType"`
 	// Optional. Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express). See local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 	LocalSsdInterface string `pulumi:"localSsdInterface"`
-	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
 	NumLocalSsds int `pulumi:"numLocalSsds"`
 }
 
@@ -2619,7 +2619,7 @@ func (o DiskConfigResponseOutput) LocalSsdInterface() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskConfigResponse) string { return v.LocalSsdInterface }).(pulumi.StringOutput)
 }
 
-// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.Note: Local SSD options may vary by machine type and number of vCPUs selected.
 func (o DiskConfigResponseOutput) NumLocalSsds() pulumi.IntOutput {
 	return o.ApplyT(func(v DiskConfigResponse) int { return v.NumLocalSsds }).(pulumi.IntOutput)
 }
@@ -4385,7 +4385,7 @@ func (o GkeClusterConfigResponseOutput) NodePoolTarget() GkeNodePoolTargetRespon
 type GkeNodeConfig struct {
 	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
 	Accelerators []GkeNodePoolAcceleratorConfig `pulumi:"accelerators"`
-	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 	LocalSsdCount *int `pulumi:"localSsdCount"`
@@ -4414,7 +4414,7 @@ type GkeNodeConfigInput interface {
 type GkeNodeConfigArgs struct {
 	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
 	Accelerators GkeNodePoolAcceleratorConfigArrayInput `pulumi:"accelerators"`
-	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
@@ -4511,7 +4511,7 @@ func (o GkeNodeConfigOutput) Accelerators() GkeNodePoolAcceleratorConfigArrayOut
 	return o.ApplyT(func(v GkeNodeConfig) []GkeNodePoolAcceleratorConfig { return v.Accelerators }).(GkeNodePoolAcceleratorConfigArrayOutput)
 }
 
-// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
 func (o GkeNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -4575,7 +4575,7 @@ func (o GkeNodeConfigPtrOutput) Accelerators() GkeNodePoolAcceleratorConfigArray
 	}).(GkeNodePoolAcceleratorConfigArrayOutput)
 }
 
-// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
 func (o GkeNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GkeNodeConfig) *string {
 		if v == nil {
@@ -4639,7 +4639,7 @@ func (o GkeNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 type GkeNodeConfigResponse struct {
 	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
 	Accelerators []GkeNodePoolAcceleratorConfigResponse `pulumi:"accelerators"`
-	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+	// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
 	LocalSsdCount int `pulumi:"localSsdCount"`
@@ -4673,7 +4673,7 @@ func (o GkeNodeConfigResponseOutput) Accelerators() GkeNodePoolAcceleratorConfig
 	return o.ApplyT(func(v GkeNodeConfigResponse) []GkeNodePoolAcceleratorConfigResponse { return v.Accelerators }).(GkeNodePoolAcceleratorConfigResponseArrayOutput)
 }
 
-// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME.
+// Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/cryptoKeys/KEY_NAME.
 func (o GkeNodeConfigResponseOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeNodeConfigResponse) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
@@ -9219,11 +9219,11 @@ func (o MetastoreConfigResponseOutput) DataprocMetastoreService() pulumi.StringO
 	return o.ApplyT(func(v MetastoreConfigResponse) string { return v.DataprocMetastoreService }).(pulumi.StringOutput)
 }
 
-// The metric source to enable, with any optional metrics, to override Dataproc default metrics.
+// A Dataproc OSS metric.
 type Metric struct {
-	// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
+	// Optional. Specify one or more available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the SPARK metric source, any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
 	MetricOverrides []string `pulumi:"metricOverrides"`
-	// MetricSource to enable.
+	// Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
 	MetricSource MetricMetricSource `pulumi:"metricSource"`
 }
 
@@ -9238,11 +9238,11 @@ type MetricInput interface {
 	ToMetricOutputWithContext(context.Context) MetricOutput
 }
 
-// The metric source to enable, with any optional metrics, to override Dataproc default metrics.
+// A Dataproc OSS metric.
 type MetricArgs struct {
-	// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
+	// Optional. Specify one or more available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the SPARK metric source, any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
 	MetricOverrides pulumi.StringArrayInput `pulumi:"metricOverrides"`
-	// MetricSource to enable.
+	// Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
 	MetricSource MetricMetricSourceInput `pulumi:"metricSource"`
 }
 
@@ -9283,7 +9283,7 @@ func (i MetricArray) ToMetricArrayOutputWithContext(ctx context.Context) MetricA
 	return pulumi.ToOutputWithContext(ctx, i).(MetricArrayOutput)
 }
 
-// The metric source to enable, with any optional metrics, to override Dataproc default metrics.
+// A Dataproc OSS metric.
 type MetricOutput struct{ *pulumi.OutputState }
 
 func (MetricOutput) ElementType() reflect.Type {
@@ -9298,12 +9298,12 @@ func (o MetricOutput) ToMetricOutputWithContext(ctx context.Context) MetricOutpu
 	return o
 }
 
-// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
+// Optional. Specify one or more available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the SPARK metric source, any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
 func (o MetricOutput) MetricOverrides() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Metric) []string { return v.MetricOverrides }).(pulumi.StringArrayOutput)
 }
 
-// MetricSource to enable.
+// Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
 func (o MetricOutput) MetricSource() MetricMetricSourceOutput {
 	return o.ApplyT(func(v Metric) MetricMetricSource { return v.MetricSource }).(MetricMetricSourceOutput)
 }
@@ -9328,15 +9328,15 @@ func (o MetricArrayOutput) Index(i pulumi.IntInput) MetricOutput {
 	}).(MetricOutput)
 }
 
-// The metric source to enable, with any optional metrics, to override Dataproc default metrics.
+// A Dataproc OSS metric.
 type MetricResponse struct {
-	// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
+	// Optional. Specify one or more available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the SPARK metric source, any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
 	MetricOverrides []string `pulumi:"metricOverrides"`
-	// MetricSource to enable.
+	// Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
 	MetricSource string `pulumi:"metricSource"`
 }
 
-// The metric source to enable, with any optional metrics, to override Dataproc default metrics.
+// A Dataproc OSS metric.
 type MetricResponseOutput struct{ *pulumi.OutputState }
 
 func (MetricResponseOutput) ElementType() reflect.Type {
@@ -9351,12 +9351,12 @@ func (o MetricResponseOutput) ToMetricResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
+// Optional. Specify one or more available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the SPARK metric source, any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
 func (o MetricResponseOutput) MetricOverrides() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetricResponse) []string { return v.MetricOverrides }).(pulumi.StringArrayOutput)
 }
 
-// MetricSource to enable.
+// Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
 func (o MetricResponseOutput) MetricSource() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricResponse) string { return v.MetricSource }).(pulumi.StringOutput)
 }

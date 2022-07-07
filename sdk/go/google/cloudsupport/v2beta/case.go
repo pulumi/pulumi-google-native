@@ -33,6 +33,8 @@ type Case struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
 	Priority pulumi.StringOutput `pulumi:"priority"`
+	// The ID of the project associated with the case.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The severity of this case. Deprecated. Use priority instead.
 	//
 	// Deprecated: The severity of this case. Deprecated. Use priority instead.
@@ -110,6 +112,8 @@ type caseArgs struct {
 	Name *string `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
 	Priority *CasePriority `pulumi:"priority"`
+	// The ID of the project associated with the case.
+	Project *string `pulumi:"project"`
 	// The severity of this case. Deprecated. Use priority instead.
 	//
 	// Deprecated: The severity of this case. Deprecated. Use priority instead.
@@ -140,6 +144,8 @@ type CaseArgs struct {
 	Name pulumi.StringPtrInput
 	// The priority of this case. If this is set, do not set severity.
 	Priority CasePriorityPtrInput
+	// The ID of the project associated with the case.
+	Project pulumi.StringPtrInput
 	// The severity of this case. Deprecated. Use priority instead.
 	//
 	// Deprecated: The severity of this case. Deprecated. Use priority instead.
@@ -229,6 +235,11 @@ func (o CaseOutput) Name() pulumi.StringOutput {
 // The priority of this case. If this is set, do not set severity.
 func (o CaseOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
+}
+
+// The ID of the project associated with the case.
+func (o CaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The severity of this case. Deprecated. Use priority instead.

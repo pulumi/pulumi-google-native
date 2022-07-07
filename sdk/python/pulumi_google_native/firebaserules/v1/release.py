@@ -19,7 +19,7 @@ class ReleaseArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Release resource.
-        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
         """
         pulumi.set(__self__, "ruleset_name", ruleset_name)
@@ -32,7 +32,7 @@ class ReleaseArgs:
     @pulumi.getter(name="rulesetName")
     def ruleset_name(self) -> pulumi.Input[str]:
         """
-        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         return pulumi.get(self, "ruleset_name")
 
@@ -77,7 +77,7 @@ class Release(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`
-        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         ...
     @overload
@@ -181,7 +181,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter(name="rulesetName")
     def ruleset_name(self) -> pulumi.Output[str]:
         """
-        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         return pulumi.get(self, "ruleset_name")
 

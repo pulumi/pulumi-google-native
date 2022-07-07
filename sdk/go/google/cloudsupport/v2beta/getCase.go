@@ -43,6 +43,8 @@ type LookupCaseResult struct {
 	Name string `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
 	Priority string `pulumi:"priority"`
+	// The ID of the project associated with the case.
+	Project string `pulumi:"project"`
 	// The severity of this case. Deprecated. Use priority instead.
 	//
 	// Deprecated: The severity of this case. Deprecated. Use priority instead.
@@ -134,6 +136,11 @@ func (o LookupCaseResultOutput) Name() pulumi.StringOutput {
 // The priority of this case. If this is set, do not set severity.
 func (o LookupCaseResultOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCaseResult) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// The ID of the project associated with the case.
+func (o LookupCaseResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // The severity of this case. Deprecated. Use priority instead.

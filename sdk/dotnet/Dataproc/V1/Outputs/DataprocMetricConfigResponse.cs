@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class DataprocMetricConfigResponse
     {
         /// <summary>
-        /// Metrics to enable.
+        /// Metrics sources to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.MetricResponse> Metrics;
 

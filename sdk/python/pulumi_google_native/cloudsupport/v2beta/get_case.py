@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCaseResult:
-    def __init__(__self__, classification=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, name=None, priority=None, severity=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
+    def __init__(__self__, classification=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, name=None, priority=None, project=None, severity=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
         if classification and not isinstance(classification, dict):
             raise TypeError("Expected argument 'classification' to be a dict")
         pulumi.set(__self__, "classification", classification)
@@ -44,6 +44,9 @@ class GetCaseResult:
         if priority and not isinstance(priority, str):
             raise TypeError("Expected argument 'priority' to be a str")
         pulumi.set(__self__, "priority", priority)
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        pulumi.set(__self__, "project", project)
         if severity and not isinstance(severity, str):
             raise TypeError("Expected argument 'severity' to be a str")
         if severity is not None:
@@ -133,6 +136,14 @@ class GetCaseResult:
 
     @property
     @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project associated with the case.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
     def severity(self) -> str:
         """
         The severity of this case. Deprecated. Use priority instead.
@@ -194,6 +205,7 @@ class AwaitableGetCaseResult(GetCaseResult):
             escalated=self.escalated,
             name=self.name,
             priority=self.priority,
+            project=self.project,
             severity=self.severity,
             state=self.state,
             subscriber_email_addresses=self.subscriber_email_addresses,
@@ -228,6 +240,7 @@ def get_case(case_id: Optional[str] = None,
         escalated=__ret__.escalated,
         name=__ret__.name,
         priority=__ret__.priority,
+        project=__ret__.project,
         severity=__ret__.severity,
         state=__ret__.state,
         subscriber_email_addresses=__ret__.subscriber_email_addresses,

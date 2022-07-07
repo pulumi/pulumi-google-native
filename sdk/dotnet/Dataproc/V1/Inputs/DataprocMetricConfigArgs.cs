@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         private InputList<Inputs.MetricArgs>? _metrics;
 
         /// <summary>
-        /// Metrics to enable.
+        /// Metrics sources to enable.
         /// </summary>
         public InputList<Inputs.MetricArgs> Metrics
         {

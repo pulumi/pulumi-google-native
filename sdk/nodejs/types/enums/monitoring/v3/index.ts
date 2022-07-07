@@ -492,7 +492,7 @@ export const MetricThresholdEvaluationMissingData = {
      */
     EvaluationMissingDataInactive: "EVALUATION_MISSING_DATA_INACTIVE",
     /**
-     * If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+     * If there is no data to evaluate the condition, then evaluate the condition as true.
      */
     EvaluationMissingDataActive: "EVALUATION_MISSING_DATA_ACTIVE",
     /**
@@ -516,7 +516,7 @@ export const MonitoringQueryLanguageConditionEvaluationMissingData = {
      */
     EvaluationMissingDataInactive: "EVALUATION_MISSING_DATA_INACTIVE",
     /**
-     * If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+     * If there is no data to evaluate the condition, then evaluate the condition as true.
      */
     EvaluationMissingDataActive: "EVALUATION_MISSING_DATA_ACTIVE",
     /**

@@ -66,6 +66,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public Output<string> Priority { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the project associated with the case.
+        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
         /// The severity of this case. Deprecated. Use priority instead.
         /// </summary>
         [Output("severity")]
@@ -193,6 +199,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         [Input("priority")]
         public Input<Pulumi.GoogleNative.CloudSupport.V2Beta.CasePriority>? Priority { get; set; }
+
+        /// <summary>
+        /// The ID of the project associated with the case.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The severity of this case. Deprecated. Use priority instead.

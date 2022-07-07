@@ -803,7 +803,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static MetricThresholdEvaluationMissingData EvaluationMissingDataInactive { get; } = new MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE");
         /// <summary>
-        /// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+        /// If there is no data to evaluate the condition, then evaluate the condition as true.
         /// </summary>
         public static MetricThresholdEvaluationMissingData EvaluationMissingDataActive { get; } = new MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE");
         /// <summary>
@@ -848,7 +848,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static MonitoringQueryLanguageConditionEvaluationMissingData EvaluationMissingDataInactive { get; } = new MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE");
         /// <summary>
-        /// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
+        /// If there is no data to evaluate the condition, then evaluate the condition as true.
         /// </summary>
         public static MonitoringQueryLanguageConditionEvaluationMissingData EvaluationMissingDataActive { get; } = new MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE");
         /// <summary>

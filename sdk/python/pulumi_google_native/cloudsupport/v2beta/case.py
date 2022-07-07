@@ -26,6 +26,7 @@ class CaseArgs:
                  escalated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['CaseSeverity']] = None,
                  subscriber_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case: Optional[pulumi.Input[bool]] = None,
@@ -39,6 +40,7 @@ class CaseArgs:
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
         :param pulumi.Input[str] name: The resource name for the case.
         :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
+        :param pulumi.Input[str] project: The ID of the project associated with the case.
         :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriber_email_addresses: The email addresses to receive updates on this case.
         :param pulumi.Input[bool] test_case: Whether this case was created for internal API testing and should not be acted on by the support team.
@@ -60,6 +62,8 @@ class CaseArgs:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if severity is not None:
             warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
             pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
@@ -176,6 +180,18 @@ class CaseArgs:
 
     @property
     @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project associated with the case.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
     def severity(self) -> Optional[pulumi.Input['CaseSeverity']]:
         """
         The severity of this case. Deprecated. Use priority instead.
@@ -235,6 +251,7 @@ class Case(pulumi.CustomResource):
                  escalated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['CaseSeverity']] = None,
                  subscriber_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case: Optional[pulumi.Input[bool]] = None,
@@ -256,6 +273,7 @@ class Case(pulumi.CustomResource):
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
         :param pulumi.Input[str] name: The resource name for the case.
         :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
+        :param pulumi.Input[str] project: The ID of the project associated with the case.
         :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriber_email_addresses: The email addresses to receive updates on this case.
         :param pulumi.Input[bool] test_case: Whether this case was created for internal API testing and should not be acted on by the support team.
@@ -294,6 +312,7 @@ class Case(pulumi.CustomResource):
                  escalated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['CaseSeverity']] = None,
                  subscriber_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case: Optional[pulumi.Input[bool]] = None,
@@ -321,6 +340,7 @@ class Case(pulumi.CustomResource):
             __props__.__dict__["escalated"] = escalated
             __props__.__dict__["name"] = name
             __props__.__dict__["priority"] = priority
+            __props__.__dict__["project"] = project
             if severity is not None and not opts.urn:
                 warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
                 pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
@@ -367,6 +387,7 @@ class Case(pulumi.CustomResource):
         __props__.__dict__["escalated"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["priority"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["severity"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["subscriber_email_addresses"] = None
@@ -440,6 +461,14 @@ class Case(pulumi.CustomResource):
         The priority of this case. If this is set, do not set severity.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project associated with the case.
+        """
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

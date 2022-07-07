@@ -52,7 +52,7 @@ class GetReleaseResult:
     @pulumi.getter(name="rulesetName")
     def ruleset_name(self) -> str:
         """
-        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         """
         return pulumi.get(self, "ruleset_name")
 
