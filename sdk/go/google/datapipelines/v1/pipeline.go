@@ -102,7 +102,7 @@ type pipelineArgs struct {
 	// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
 	SchedulerServiceAccountEmail *string `pulumi:"schedulerServiceAccountEmail"`
 	// The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.
-	State PipelineStateEnum `pulumi:"state"`
+	State PipelineState `pulumi:"state"`
 	// The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
 	Type PipelineType `pulumi:"type"`
 	// Workload information for creating new jobs.
@@ -124,7 +124,7 @@ type PipelineArgs struct {
 	// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
 	SchedulerServiceAccountEmail pulumi.StringPtrInput
 	// The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.
-	State PipelineStateEnumInput
+	State PipelineStateInput
 	// The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
 	Type PipelineTypeInput
 	// Workload information for creating new jobs.

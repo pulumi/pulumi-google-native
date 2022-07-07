@@ -124,7 +124,7 @@ type streamArgs struct {
 	// Source connection profile configuration.
 	SourceConfig SourceConfig `pulumi:"sourceConfig"`
 	// The state of the stream.
-	State *StreamStateEnum `pulumi:"state"`
+	State *StreamState `pulumi:"state"`
 	// Required. The stream identifier.
 	StreamId string `pulumi:"streamId"`
 	// Optional. Only validate the stream, but do not create any resources. The default is false.
@@ -154,7 +154,7 @@ type StreamArgs struct {
 	// Source connection profile configuration.
 	SourceConfig SourceConfigInput
 	// The state of the stream.
-	State StreamStateEnumPtrInput
+	State StreamStatePtrInput
 	// Required. The stream identifier.
 	StreamId pulumi.StringInput
 	// Optional. Only validate the stream, but do not create any resources. The default is false.

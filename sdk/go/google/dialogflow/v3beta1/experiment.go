@@ -130,7 +130,7 @@ type experimentArgs struct {
 	// Start time of this experiment.
 	StartTime *string `pulumi:"startTime"`
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-	State *ExperimentStateEnum `pulumi:"state"`
+	State *ExperimentState `pulumi:"state"`
 	// The history of updates to the experiment variants.
 	VariantsHistory []GoogleCloudDialogflowCxV3beta1VariantsHistory `pulumi:"variantsHistory"`
 }
@@ -168,7 +168,7 @@ type ExperimentArgs struct {
 	// Start time of this experiment.
 	StartTime pulumi.StringPtrInput
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-	State ExperimentStateEnumPtrInput
+	State ExperimentStatePtrInput
 	// The history of updates to the experiment variants.
 	VariantsHistory GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayInput
 }

@@ -199,7 +199,7 @@ type instanceArgs struct {
 	// The user settings.
 	Settings *Settings `pulumi:"settings"`
 	// The current serving state of the Cloud SQL instance.
-	State *InstanceStateEnum `pulumi:"state"`
+	State *InstanceState `pulumi:"state"`
 	// If the instance state is SUSPENDED, the reason for the suspension.
 	SuspensionReason []InstanceSuspensionReasonItem `pulumi:"suspensionReason"`
 }
@@ -275,7 +275,7 @@ type InstanceArgs struct {
 	// The user settings.
 	Settings SettingsPtrInput
 	// The current serving state of the Cloud SQL instance.
-	State InstanceStateEnumPtrInput
+	State InstanceStatePtrInput
 	// If the instance state is SUSPENDED, the reason for the suspension.
 	SuspensionReason InstanceSuspensionReasonItemArrayInput
 }
