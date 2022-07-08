@@ -2484,7 +2484,7 @@ const (
 	MetricThresholdEvaluationMissingDataEvaluationMissingDataUnspecified = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED")
 	// If there is no data to evaluate the condition, then evaluate the condition as false.
 	MetricThresholdEvaluationMissingDataEvaluationMissingDataInactive = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE")
-	// If there is no data to evaluate the condition, then evaluate the condition as true.
+	// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
 	MetricThresholdEvaluationMissingDataEvaluationMissingDataActive = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE")
 	// Do not evaluate the condition to any value if there is no data.
 	MetricThresholdEvaluationMissingDataEvaluationMissingDataNoOp = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_NO_OP")
@@ -2655,7 +2655,7 @@ const (
 	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataUnspecified = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED")
 	// If there is no data to evaluate the condition, then evaluate the condition as false.
 	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataInactive = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE")
-	// If there is no data to evaluate the condition, then evaluate the condition as true.
+	// If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
 	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataActive = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_ACTIVE")
 	// Do not evaluate the condition to any value if there is no data.
 	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataNoOp = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_NO_OP")

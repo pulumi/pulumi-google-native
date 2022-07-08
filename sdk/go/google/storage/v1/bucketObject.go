@@ -86,7 +86,7 @@ type BucketObject struct {
 	TimeDeleted pulumi.StringOutput `pulumi:"timeDeleted"`
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated pulumi.StringOutput `pulumi:"timeStorageClassUpdated"`
-	// The modification time of the object metadata in RFC 3339 format.
+	// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
 	Updated pulumi.StringOutput `pulumi:"updated"`
 	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject pulumi.StringPtrOutput `pulumi:"userProject"`
@@ -209,7 +209,7 @@ type bucketObjectArgs struct {
 	TimeDeleted *string `pulumi:"timeDeleted"`
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated *string `pulumi:"timeStorageClassUpdated"`
-	// The modification time of the object metadata in RFC 3339 format.
+	// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
 	Updated *string `pulumi:"updated"`
 	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject *string `pulumi:"userProject"`
@@ -292,7 +292,7 @@ type BucketObjectArgs struct {
 	TimeDeleted pulumi.StringPtrInput
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated pulumi.StringPtrInput
-	// The modification time of the object metadata in RFC 3339 format.
+	// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
 	Updated pulumi.StringPtrInput
 	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject pulumi.StringPtrInput
@@ -514,7 +514,7 @@ func (o BucketObjectOutput) TimeStorageClassUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.TimeStorageClassUpdated }).(pulumi.StringOutput)
 }
 
-// The modification time of the object metadata in RFC 3339 format.
+// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
 func (o BucketObjectOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }

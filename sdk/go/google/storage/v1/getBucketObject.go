@@ -93,7 +93,7 @@ type LookupBucketObjectResult struct {
 	TimeDeleted string `pulumi:"timeDeleted"`
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated string `pulumi:"timeStorageClassUpdated"`
-	// The modification time of the object metadata in RFC 3339 format.
+	// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
 	Updated string `pulumi:"updated"`
 }
 
@@ -290,7 +290,7 @@ func (o LookupBucketObjectResultOutput) TimeStorageClassUpdated() pulumi.StringO
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.TimeStorageClassUpdated }).(pulumi.StringOutput)
 }
 
-// The modification time of the object metadata in RFC 3339 format.
+// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
 func (o LookupBucketObjectResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Updated }).(pulumi.StringOutput)
 }

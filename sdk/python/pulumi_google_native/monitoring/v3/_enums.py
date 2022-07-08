@@ -495,7 +495,7 @@ class MetricThresholdEvaluationMissingData(str, Enum):
     """
     EVALUATION_MISSING_DATA_ACTIVE = "EVALUATION_MISSING_DATA_ACTIVE"
     """
-    If there is no data to evaluate the condition, then evaluate the condition as true.
+    If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
     """
     EVALUATION_MISSING_DATA_NO_OP = "EVALUATION_MISSING_DATA_NO_OP"
     """
@@ -517,7 +517,7 @@ class MonitoringQueryLanguageConditionEvaluationMissingData(str, Enum):
     """
     EVALUATION_MISSING_DATA_ACTIVE = "EVALUATION_MISSING_DATA_ACTIVE"
     """
-    If there is no data to evaluate the condition, then evaluate the condition as true.
+    If there is no data to evaluate the condition, then evaluate the condition as true. The default for conditions with a duration value.
     """
     EVALUATION_MISSING_DATA_NO_OP = "EVALUATION_MISSING_DATA_NO_OP"
     """

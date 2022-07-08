@@ -177,7 +177,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly timeStorageClassUpdated!: pulumi.Output<string>;
     /**
-     * The modification time of the object metadata in RFC 3339 format.
+     * The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
      */
     public readonly updated!: pulumi.Output<string>;
     /**
@@ -438,7 +438,7 @@ export interface BucketObjectArgs {
      */
     timeStorageClassUpdated?: pulumi.Input<string>;
     /**
-     * The modification time of the object metadata in RFC 3339 format.
+     * The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
      */
     updated?: pulumi.Input<string>;
     /**

@@ -95,7 +95,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] time_created: The creation time of the object in RFC 3339 format.
         :param pulumi.Input[str] time_deleted: The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         :param pulumi.Input[str] time_storage_class_updated: The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
-        :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format.
+        :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         pulumi.set(__self__, "bucket", bucket)
@@ -635,7 +635,7 @@ class BucketObjectArgs:
     @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[str]]:
         """
-        The modification time of the object metadata in RFC 3339 format.
+        The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         """
         return pulumi.get(self, "updated")
 
@@ -744,7 +744,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] time_created: The creation time of the object in RFC 3339 format.
         :param pulumi.Input[str] time_deleted: The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         :param pulumi.Input[str] time_storage_class_updated: The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
-        :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format.
+        :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         ...
@@ -1218,7 +1218,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter
     def updated(self) -> pulumi.Output[str]:
         """
-        The modification time of the object metadata in RFC 3339 format.
+        The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         """
         return pulumi.get(self, "updated")
 
