@@ -144,6 +144,8 @@ export class Customer extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["accountId", "channelPartnerLinkId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Customer.__pulumiType, name, resourceInputs, opts);
     }
 }

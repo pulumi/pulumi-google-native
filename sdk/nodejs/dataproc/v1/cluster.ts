@@ -123,6 +123,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["virtualClusterConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }

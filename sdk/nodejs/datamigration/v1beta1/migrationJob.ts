@@ -194,6 +194,8 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["vpcPeeringConnectivity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "migrationJobId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(MigrationJob.__pulumiType, name, resourceInputs, opts);
     }
 }

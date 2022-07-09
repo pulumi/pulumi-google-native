@@ -82,6 +82,8 @@ export class EntryGroupIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["entryGroupId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EntryGroupIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

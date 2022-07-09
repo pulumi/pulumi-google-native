@@ -99,6 +99,8 @@ export class CompositeType extends pulumi.CustomResource {
             resourceInputs["templateContents"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CompositeType.__pulumiType, name, resourceInputs, opts);
     }
 }

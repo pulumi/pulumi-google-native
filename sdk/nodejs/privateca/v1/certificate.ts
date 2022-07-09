@@ -176,6 +176,8 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["caPoolId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }

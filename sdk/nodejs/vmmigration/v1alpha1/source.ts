@@ -114,6 +114,8 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["vmware"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "sourceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Source.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -131,6 +131,8 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
             resourceInputs["webhookKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BitbucketServerConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

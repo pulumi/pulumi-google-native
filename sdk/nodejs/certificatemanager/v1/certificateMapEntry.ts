@@ -125,6 +125,8 @@ export class CertificateMapEntry extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["certificateMapEntryId", "certificateMapId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CertificateMapEntry.__pulumiType, name, resourceInputs, opts);
     }
 }

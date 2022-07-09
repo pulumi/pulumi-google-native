@@ -121,6 +121,8 @@ export class MetadataImport extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "metadataImportId", "project", "serviceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(MetadataImport.__pulumiType, name, resourceInputs, opts);
     }
 }

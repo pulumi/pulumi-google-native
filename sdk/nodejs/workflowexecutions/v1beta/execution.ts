@@ -119,6 +119,8 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["workflowRevisionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "workflowId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Execution.__pulumiType, name, resourceInputs, opts);
     }
 }

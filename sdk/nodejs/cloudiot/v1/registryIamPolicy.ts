@@ -82,6 +82,8 @@ export class RegistryIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "registryId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegistryIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

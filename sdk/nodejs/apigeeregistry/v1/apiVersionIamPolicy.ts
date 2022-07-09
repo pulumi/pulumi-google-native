@@ -88,6 +88,8 @@ export class ApiVersionIamPolicy extends pulumi.CustomResource {
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "location", "project", "versionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ApiVersionIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

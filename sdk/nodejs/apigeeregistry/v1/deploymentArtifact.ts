@@ -118,6 +118,8 @@ export class DeploymentArtifact extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "artifactId", "deploymentId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DeploymentArtifact.__pulumiType, name, resourceInputs, opts);
     }
 }

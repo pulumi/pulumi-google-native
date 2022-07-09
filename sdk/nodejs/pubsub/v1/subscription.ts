@@ -164,6 +164,8 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["topicMessageRetentionDuration"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "subscriptionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
 }

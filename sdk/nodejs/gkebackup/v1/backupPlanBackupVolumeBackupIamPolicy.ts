@@ -101,6 +101,8 @@ export class BackupPlanBackupVolumeBackupIamPolicy extends pulumi.CustomResource
             resourceInputs["volumeBackupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["backupId", "backupPlanId", "location", "project", "volumeBackupId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BackupPlanBackupVolumeBackupIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -157,6 +157,8 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["saaEnrollmentResponse"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Workload.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -135,6 +135,8 @@ export class RestorePlan extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "restorePlanId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RestorePlan.__pulumiType, name, resourceInputs, opts);
     }
 }

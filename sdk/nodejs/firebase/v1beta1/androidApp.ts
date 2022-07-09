@@ -90,6 +90,8 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AndroidApp.__pulumiType, name, resourceInputs, opts);
     }
 }

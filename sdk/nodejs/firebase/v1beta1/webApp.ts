@@ -96,6 +96,8 @@ export class WebApp extends pulumi.CustomResource {
             resourceInputs["webId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(WebApp.__pulumiType, name, resourceInputs, opts);
     }
 }

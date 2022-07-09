@@ -101,6 +101,8 @@ export class RestorePlanRestoreVolumeRestoreIamPolicy extends pulumi.CustomResou
             resourceInputs["volumeRestoreId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "restoreId", "restorePlanId", "volumeRestoreId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RestorePlanRestoreVolumeRestoreIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

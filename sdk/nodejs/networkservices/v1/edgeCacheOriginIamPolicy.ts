@@ -89,6 +89,8 @@ export class EdgeCacheOriginIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["edgeCacheOriginId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EdgeCacheOriginIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

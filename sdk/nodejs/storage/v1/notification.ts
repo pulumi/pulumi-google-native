@@ -111,6 +111,8 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bucket"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Notification.__pulumiType, name, resourceInputs, opts);
     }
 }

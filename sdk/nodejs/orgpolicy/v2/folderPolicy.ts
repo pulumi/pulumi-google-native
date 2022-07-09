@@ -77,6 +77,8 @@ export class FolderPolicy extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["folderId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FolderPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

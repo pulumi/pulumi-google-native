@@ -113,6 +113,8 @@ export class Api extends pulumi.CustomResource {
             resourceInputs["validate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Api.__pulumiType, name, resourceInputs, opts);
     }
 }

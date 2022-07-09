@@ -89,6 +89,8 @@ export class DeliveryPipelineIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DeliveryPipelineIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

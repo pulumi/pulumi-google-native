@@ -125,6 +125,8 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["versionRetentionPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }

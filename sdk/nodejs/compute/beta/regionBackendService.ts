@@ -280,6 +280,8 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["timeoutSec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionBackendService.__pulumiType, name, resourceInputs, opts);
     }
 }

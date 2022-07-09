@@ -79,6 +79,8 @@ export class SubscriptionIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "subscriptionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SubscriptionIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

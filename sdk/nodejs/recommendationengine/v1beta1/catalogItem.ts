@@ -123,6 +123,8 @@ export class CatalogItem extends pulumi.CustomResource {
             resourceInputs["title"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["catalogId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CatalogItem.__pulumiType, name, resourceInputs, opts);
     }
 }

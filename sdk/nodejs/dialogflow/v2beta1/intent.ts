@@ -200,6 +200,8 @@ export class Intent extends pulumi.CustomResource {
             resourceInputs["webhookState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Intent.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -154,6 +154,8 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["revisionUpdateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiDeploymentId", "apiId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Deployment.__pulumiType, name, resourceInputs, opts);
     }
 }

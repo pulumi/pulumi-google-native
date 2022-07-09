@@ -179,6 +179,8 @@ export class RatePlan extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiproductId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RatePlan.__pulumiType, name, resourceInputs, opts);
     }
 }

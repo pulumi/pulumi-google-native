@@ -82,6 +82,8 @@ export class ProviderNoteIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["noteId", "providerId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ProviderNoteIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

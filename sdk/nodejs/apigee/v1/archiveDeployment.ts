@@ -97,6 +97,8 @@ export class ArchiveDeployment extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ArchiveDeployment.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -83,6 +83,8 @@ export class Folder extends pulumi.CustomResource {
             resourceInputs["parent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["parent"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Folder.__pulumiType, name, resourceInputs, opts);
     }
 }

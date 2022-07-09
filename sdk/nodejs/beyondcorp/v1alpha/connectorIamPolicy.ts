@@ -89,6 +89,8 @@ export class ConnectorIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["connectorId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConnectorIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

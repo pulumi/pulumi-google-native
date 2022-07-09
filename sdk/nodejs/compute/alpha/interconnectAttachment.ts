@@ -289,6 +289,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["vlanTag8021q"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(InterconnectAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

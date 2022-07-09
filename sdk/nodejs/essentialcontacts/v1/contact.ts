@@ -93,6 +93,8 @@ export class Contact extends pulumi.CustomResource {
             resourceInputs["validationState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Contact.__pulumiType, name, resourceInputs, opts);
     }
 }

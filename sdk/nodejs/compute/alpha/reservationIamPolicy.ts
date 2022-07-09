@@ -94,6 +94,8 @@ export class ReservationIamPolicy extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "resource", "zone"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ReservationIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -79,6 +79,8 @@ export class DomainIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["domainId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DomainIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

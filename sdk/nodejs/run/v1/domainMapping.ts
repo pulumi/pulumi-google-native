@@ -93,6 +93,8 @@ export class DomainMapping extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DomainMapping.__pulumiType, name, resourceInputs, opts);
     }
 }

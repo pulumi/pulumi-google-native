@@ -85,6 +85,8 @@ export class DomainBackupIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["backupId", "domainId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DomainBackupIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -119,6 +119,8 @@ export class GuestPolicy extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["guestPolicyId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GuestPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

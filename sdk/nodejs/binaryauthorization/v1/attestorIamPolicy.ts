@@ -79,6 +79,8 @@ export class AttestorIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["attestorId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AttestorIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

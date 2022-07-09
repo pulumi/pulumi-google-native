@@ -98,6 +98,8 @@ export class Resourcefile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "name", "organizationId", "type"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Resourcefile.__pulumiType, name, resourceInputs, opts);
     }
 }

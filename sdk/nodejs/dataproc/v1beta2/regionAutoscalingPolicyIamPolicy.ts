@@ -85,6 +85,8 @@ export class RegionAutoscalingPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["autoscalingPolicyId", "project", "regionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionAutoscalingPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

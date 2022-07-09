@@ -178,6 +178,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["yarnApplications"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }

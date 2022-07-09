@@ -96,6 +96,8 @@ export class FolderContact extends pulumi.CustomResource {
             resourceInputs["validationState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["folderId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FolderContact.__pulumiType, name, resourceInputs, opts);
     }
 }

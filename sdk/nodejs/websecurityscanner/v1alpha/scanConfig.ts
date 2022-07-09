@@ -119,6 +119,8 @@ export class ScanConfig extends pulumi.CustomResource {
             resourceInputs["userAgent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ScanConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

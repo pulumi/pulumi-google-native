@@ -102,6 +102,8 @@ export class ConversationDataset extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConversationDataset.__pulumiType, name, resourceInputs, opts);
     }
 }

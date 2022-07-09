@@ -102,6 +102,8 @@ export class Datastore extends pulumi.CustomResource {
             resourceInputs["targetType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Datastore.__pulumiType, name, resourceInputs, opts);
     }
 }

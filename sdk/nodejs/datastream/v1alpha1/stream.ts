@@ -165,6 +165,8 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "streamId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Stream.__pulumiType, name, resourceInputs, opts);
     }
 }

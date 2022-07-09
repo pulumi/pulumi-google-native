@@ -125,6 +125,8 @@ export class PhraseMatcher extends pulumi.CustomResource {
             resourceInputs["versionTag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PhraseMatcher.__pulumiType, name, resourceInputs, opts);
     }
 }

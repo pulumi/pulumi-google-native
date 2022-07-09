@@ -89,6 +89,8 @@ export class DatasetIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DatasetIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

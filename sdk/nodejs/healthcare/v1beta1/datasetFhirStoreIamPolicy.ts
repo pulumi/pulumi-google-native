@@ -95,6 +95,8 @@ export class DatasetFhirStoreIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "fhirStoreId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DatasetFhirStoreIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

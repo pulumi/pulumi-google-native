@@ -92,6 +92,8 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "siteId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Site.__pulumiType, name, resourceInputs, opts);
     }
 }

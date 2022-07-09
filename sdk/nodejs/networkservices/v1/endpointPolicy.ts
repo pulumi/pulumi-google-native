@@ -137,6 +137,8 @@ export class EndpointPolicy extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["endpointPolicyId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EndpointPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

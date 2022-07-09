@@ -255,6 +255,8 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["website"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Bucket.__pulumiType, name, resourceInputs, opts);
     }
 }

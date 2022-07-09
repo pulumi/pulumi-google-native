@@ -114,6 +114,8 @@ export class Control extends pulumi.CustomResource {
             resourceInputs["solutionTypes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["catalogId", "controlId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Control.__pulumiType, name, resourceInputs, opts);
     }
 }

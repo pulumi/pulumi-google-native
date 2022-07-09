@@ -119,6 +119,8 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["agentId", "flowId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Page.__pulumiType, name, resourceInputs, opts);
     }
 }

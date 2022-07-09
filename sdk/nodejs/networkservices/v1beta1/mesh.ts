@@ -106,6 +106,8 @@ export class Mesh extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "meshId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Mesh.__pulumiType, name, resourceInputs, opts);
     }
 }

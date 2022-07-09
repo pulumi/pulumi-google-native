@@ -89,6 +89,8 @@ export class InternalRangeIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["internalRangeId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(InternalRangeIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

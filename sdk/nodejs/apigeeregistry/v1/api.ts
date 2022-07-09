@@ -124,6 +124,8 @@ export class Api extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Api.__pulumiType, name, resourceInputs, opts);
     }
 }

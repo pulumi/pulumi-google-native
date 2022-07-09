@@ -79,6 +79,8 @@ export class NoteIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["noteId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NoteIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

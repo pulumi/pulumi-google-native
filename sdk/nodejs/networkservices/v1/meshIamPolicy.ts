@@ -89,6 +89,8 @@ export class MeshIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "meshId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(MeshIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -95,6 +95,8 @@ export class DatasetAnnotationStoreIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["annotationStoreId", "datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DatasetAnnotationStoreIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -152,6 +152,8 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "osPolicyAssignmentId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OsPolicyAssignment.__pulumiType, name, resourceInputs, opts);
     }
 }

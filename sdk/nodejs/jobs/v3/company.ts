@@ -137,6 +137,8 @@ export class Company extends pulumi.CustomResource {
             resourceInputs["websiteUri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Company.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -94,6 +94,8 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["billingAccountId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BillingAccountExclusion.__pulumiType, name, resourceInputs, opts);
     }
 }

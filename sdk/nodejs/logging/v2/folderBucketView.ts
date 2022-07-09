@@ -104,6 +104,8 @@ export class FolderBucketView extends pulumi.CustomResource {
             resourceInputs["viewId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bucketId", "folderId", "location", "viewId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FolderBucketView.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -75,6 +75,8 @@ export class KeyRing extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["keyRingId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(KeyRing.__pulumiType, name, resourceInputs, opts);
     }
 }

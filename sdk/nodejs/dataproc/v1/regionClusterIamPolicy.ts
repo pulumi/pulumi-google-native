@@ -85,6 +85,8 @@ export class RegionClusterIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["clusterId", "project", "regionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionClusterIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

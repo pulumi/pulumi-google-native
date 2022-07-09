@@ -125,6 +125,8 @@ export class AlertPolicy extends pulumi.CustomResource {
             resourceInputs["validity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AlertPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

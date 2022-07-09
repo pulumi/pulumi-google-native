@@ -116,6 +116,8 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["testExecutionMatrixId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["historyId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Execution.__pulumiType, name, resourceInputs, opts);
     }
 }

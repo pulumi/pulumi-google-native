@@ -85,6 +85,8 @@ export class InstanceBackupIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["backupId", "instanceId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(InstanceBackupIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

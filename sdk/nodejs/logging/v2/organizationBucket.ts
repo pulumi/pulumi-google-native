@@ -129,6 +129,8 @@ export class OrganizationBucket extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bucketId", "location", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationBucket.__pulumiType, name, resourceInputs, opts);
     }
 }

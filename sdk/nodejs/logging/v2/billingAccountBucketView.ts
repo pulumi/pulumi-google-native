@@ -104,6 +104,8 @@ export class BillingAccountBucketView extends pulumi.CustomResource {
             resourceInputs["viewId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["billingAccountId", "bucketId", "location", "viewId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BillingAccountBucketView.__pulumiType, name, resourceInputs, opts);
     }
 }

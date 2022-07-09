@@ -117,6 +117,8 @@ export class Alias extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "format", "keystoreId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Alias.__pulumiType, name, resourceInputs, opts);
     }
 }

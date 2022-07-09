@@ -89,6 +89,8 @@ export class ServerTlsPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "serverTlsPolicyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServerTlsPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

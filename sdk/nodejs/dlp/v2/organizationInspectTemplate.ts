@@ -97,6 +97,8 @@ export class OrganizationInspectTemplate extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationInspectTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

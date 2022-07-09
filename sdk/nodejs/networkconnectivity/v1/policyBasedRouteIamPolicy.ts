@@ -86,6 +86,8 @@ export class PolicyBasedRouteIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["policyBasedRouteId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PolicyBasedRouteIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

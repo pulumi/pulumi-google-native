@@ -83,6 +83,8 @@ export class TagKeyIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["tagKeyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TagKeyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

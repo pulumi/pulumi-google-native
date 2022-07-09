@@ -100,6 +100,8 @@ export class BucketView extends pulumi.CustomResource {
             resourceInputs["viewId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bucketId", "location", "project", "viewId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BucketView.__pulumiType, name, resourceInputs, opts);
     }
 }

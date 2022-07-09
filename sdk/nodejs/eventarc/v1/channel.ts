@@ -127,6 +127,8 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["channelId", "location", "project", "validateOnly"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Channel.__pulumiType, name, resourceInputs, opts);
     }
 }

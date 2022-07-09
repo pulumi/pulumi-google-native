@@ -150,6 +150,8 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["dataExchangeId", "listingId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Listing.__pulumiType, name, resourceInputs, opts);
     }
 }

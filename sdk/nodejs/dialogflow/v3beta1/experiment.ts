@@ -161,6 +161,8 @@ export class Experiment extends pulumi.CustomResource {
             resourceInputs["variantsHistory"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["agentId", "environmentId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Experiment.__pulumiType, name, resourceInputs, opts);
     }
 }

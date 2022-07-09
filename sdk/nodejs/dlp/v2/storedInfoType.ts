@@ -80,6 +80,8 @@ export class StoredInfoType extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(StoredInfoType.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -95,6 +95,8 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             resourceInputs["workloadIdentityPoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "workloadIdentityPoolId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(WorkloadIdentityPool.__pulumiType, name, resourceInputs, opts);
     }
 }

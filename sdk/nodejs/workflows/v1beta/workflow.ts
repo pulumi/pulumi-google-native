@@ -124,6 +124,8 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["workflowId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "workflowId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Workflow.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -159,6 +159,8 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "registryId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Device.__pulumiType, name, resourceInputs, opts);
     }
 }

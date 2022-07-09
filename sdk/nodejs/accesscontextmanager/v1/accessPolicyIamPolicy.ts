@@ -83,6 +83,8 @@ export class AccessPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["accessPolicyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AccessPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -92,6 +92,8 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["streamConfigs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DicomStore.__pulumiType, name, resourceInputs, opts);
     }
 }

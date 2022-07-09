@@ -89,6 +89,8 @@ export class EdgeCacheKeysetIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["edgeCacheKeysetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EdgeCacheKeysetIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
