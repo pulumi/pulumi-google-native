@@ -40,6 +40,12 @@ func NewConnectionPolicyIamPolicy(ctx *pulumi.Context,
 	if args.ConnectionPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"connectionPolicyId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ConnectionPolicyIamPolicy
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

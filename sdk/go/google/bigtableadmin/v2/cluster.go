@@ -48,6 +48,12 @@ func NewCluster(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"clusterId",
+		"instanceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:Cluster", name, args, &resource, opts...)
 	if err != nil {

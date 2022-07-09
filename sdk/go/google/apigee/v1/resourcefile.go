@@ -49,6 +49,13 @@ func NewResourcefile(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"name",
+		"organizationId",
+		"type",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Resourcefile
 	err := ctx.RegisterResource("google-native:apigee/v1:Resourcefile", name, args, &resource, opts...)
 	if err != nil {

@@ -52,6 +52,12 @@ func NewTcpRoute(ctx *pulumi.Context,
 	if args.TcpRouteId == nil {
 		return nil, errors.New("invalid value for required argument 'TcpRouteId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"tcpRouteId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TcpRoute
 	err := ctx.RegisterResource("google-native:networkservices/v1beta1:TcpRoute", name, args, &resource, opts...)
 	if err != nil {

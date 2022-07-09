@@ -40,6 +40,12 @@ func NewEkmConnectionIamPolicy(ctx *pulumi.Context,
 	if args.EkmConnectionId == nil {
 		return nil, errors.New("invalid value for required argument 'EkmConnectionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"ekmConnectionId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EkmConnectionIamPolicy
 	err := ctx.RegisterResource("google-native:cloudkms/v1:EkmConnectionIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -41,6 +41,11 @@ func NewSite(ctx *pulumi.Context,
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"siteId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Site
 	err := ctx.RegisterResource("google-native:firebasehosting/v1beta1:Site", name, args, &resource, opts...)
 	if err != nil {

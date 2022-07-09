@@ -44,6 +44,13 @@ func NewLakeTaskIamPolicy(ctx *pulumi.Context,
 	if args.TaskId == nil {
 		return nil, errors.New("invalid value for required argument 'TaskId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"lakeId",
+		"location",
+		"project",
+		"taskId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource LakeTaskIamPolicy
 	err := ctx.RegisterResource("google-native:dataplex/v1:LakeTaskIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -55,6 +55,12 @@ func NewBillingAccountBucket(ctx *pulumi.Context,
 	if args.BucketId == nil {
 		return nil, errors.New("invalid value for required argument 'BucketId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"billingAccountId",
+		"bucketId",
+		"location",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BillingAccountBucket
 	err := ctx.RegisterResource("google-native:logging/v2:BillingAccountBucket", name, args, &resource, opts...)
 	if err != nil {

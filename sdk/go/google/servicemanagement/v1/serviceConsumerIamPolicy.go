@@ -42,6 +42,11 @@ func NewServiceConsumerIamPolicy(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"consumerId",
+		"serviceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServiceConsumerIamPolicy
 	err := ctx.RegisterResource("google-native:servicemanagement/v1:ServiceConsumerIamPolicy", name, args, &resource, opts...)
 	if err != nil {

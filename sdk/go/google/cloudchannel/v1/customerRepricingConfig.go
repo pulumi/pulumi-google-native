@@ -42,6 +42,11 @@ func NewCustomerRepricingConfig(ctx *pulumi.Context,
 	if args.RepricingConfig == nil {
 		return nil, errors.New("invalid value for required argument 'RepricingConfig'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"accountId",
+		"customerId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CustomerRepricingConfig
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:CustomerRepricingConfig", name, args, &resource, opts...)
 	if err != nil {

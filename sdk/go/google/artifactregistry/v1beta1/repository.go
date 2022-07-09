@@ -43,6 +43,11 @@ func NewRepository(ctx *pulumi.Context,
 		args = &RepositoryArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Repository
 	err := ctx.RegisterResource("google-native:artifactregistry/v1beta1:Repository", name, args, &resource, opts...)
 	if err != nil {

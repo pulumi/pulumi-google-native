@@ -34,6 +34,10 @@ func NewTraceSink(ctx *pulumi.Context,
 	if args.OutputConfig == nil {
 		return nil, errors.New("invalid value for required argument 'OutputConfig'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TraceSink
 	err := ctx.RegisterResource("google-native:cloudtrace/v2beta1:TraceSink", name, args, &resource, opts...)
 	if err != nil {

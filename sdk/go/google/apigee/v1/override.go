@@ -38,6 +38,11 @@ func NewOverride(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Override
 	err := ctx.RegisterResource("google-native:apigee/v1:Override", name, args, &resource, opts...)
 	if err != nil {

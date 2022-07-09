@@ -47,6 +47,11 @@ func NewEntityType(ctx *pulumi.Context,
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EntityType
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:EntityType", name, args, &resource, opts...)
 	if err != nil {

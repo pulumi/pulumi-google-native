@@ -51,6 +51,12 @@ func NewSchedule(ctx *pulumi.Context,
 	if args.ScheduleId == nil {
 		return nil, errors.New("invalid value for required argument 'ScheduleId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"scheduleId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Schedule
 	err := ctx.RegisterResource("google-native:notebooks/v1:Schedule", name, args, &resource, opts...)
 	if err != nil {

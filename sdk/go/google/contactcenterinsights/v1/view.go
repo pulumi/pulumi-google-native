@@ -35,6 +35,11 @@ func NewView(ctx *pulumi.Context,
 		args = &ViewArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource View
 	err := ctx.RegisterResource("google-native:contactcenterinsights/v1:View", name, args, &resource, opts...)
 	if err != nil {

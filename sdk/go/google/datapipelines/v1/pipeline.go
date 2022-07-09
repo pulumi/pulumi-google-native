@@ -57,6 +57,11 @@ func NewPipeline(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Pipeline
 	err := ctx.RegisterResource("google-native:datapipelines/v1:Pipeline", name, args, &resource, opts...)
 	if err != nil {

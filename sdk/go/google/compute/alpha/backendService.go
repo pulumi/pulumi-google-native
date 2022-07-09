@@ -107,6 +107,10 @@ func NewBackendService(ctx *pulumi.Context,
 		args = &BackendServiceArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BackendService
 	err := ctx.RegisterResource("google-native:compute/alpha:BackendService", name, args, &resource, opts...)
 	if err != nil {

@@ -54,6 +54,12 @@ func NewSavedQuery(ctx *pulumi.Context,
 	if args.V1Id1 == nil {
 		return nil, errors.New("invalid value for required argument 'V1Id1'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"savedQueryId",
+		"v1Id",
+		"v1Id1",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SavedQuery
 	err := ctx.RegisterResource("google-native:cloudasset/v1:SavedQuery", name, args, &resource, opts...)
 	if err != nil {

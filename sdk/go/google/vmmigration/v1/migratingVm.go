@@ -74,6 +74,13 @@ func NewMigratingVm(ctx *pulumi.Context,
 	if args.SourceId == nil {
 		return nil, errors.New("invalid value for required argument 'SourceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"migratingVmId",
+		"project",
+		"sourceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource MigratingVm
 	err := ctx.RegisterResource("google-native:vmmigration/v1:MigratingVm", name, args, &resource, opts...)
 	if err != nil {

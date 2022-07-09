@@ -53,6 +53,13 @@ func NewMetadataImport(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"metadataImportId",
+		"project",
+		"serviceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource MetadataImport
 	err := ctx.RegisterResource("google-native:metastore/v1alpha:MetadataImport", name, args, &resource, opts...)
 	if err != nil {

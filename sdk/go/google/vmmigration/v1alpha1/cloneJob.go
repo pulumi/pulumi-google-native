@@ -68,6 +68,14 @@ func NewCloneJob(ctx *pulumi.Context,
 	if args.SourceId == nil {
 		return nil, errors.New("invalid value for required argument 'SourceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"cloneJobId",
+		"location",
+		"migratingVmId",
+		"project",
+		"sourceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CloneJob
 	err := ctx.RegisterResource("google-native:vmmigration/v1alpha1:CloneJob", name, args, &resource, opts...)
 	if err != nil {

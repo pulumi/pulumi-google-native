@@ -48,6 +48,10 @@ func NewPublicAdvertisedPrefix(ctx *pulumi.Context,
 		args = &PublicAdvertisedPrefixArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PublicAdvertisedPrefix
 	err := ctx.RegisterResource("google-native:compute/beta:PublicAdvertisedPrefix", name, args, &resource, opts...)
 	if err != nil {

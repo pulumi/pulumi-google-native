@@ -40,6 +40,12 @@ func NewDataExchangeIamPolicy(ctx *pulumi.Context,
 	if args.DataExchangeId == nil {
 		return nil, errors.New("invalid value for required argument 'DataExchangeId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"dataExchangeId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DataExchangeIamPolicy
 	err := ctx.RegisterResource("google-native:analyticshub/v1beta1:DataExchangeIamPolicy", name, args, &resource, opts...)
 	if err != nil {

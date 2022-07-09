@@ -38,6 +38,10 @@ func NewProjectIamPolicy(ctx *pulumi.Context,
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"resource",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ProjectIamPolicy
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v1beta1:ProjectIamPolicy", name, args, &resource, opts...)
 	if err != nil {

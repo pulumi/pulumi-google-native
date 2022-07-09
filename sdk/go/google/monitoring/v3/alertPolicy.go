@@ -48,6 +48,10 @@ func NewAlertPolicy(ctx *pulumi.Context,
 		args = &AlertPolicyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AlertPolicy
 	err := ctx.RegisterResource("google-native:monitoring/v3:AlertPolicy", name, args, &resource, opts...)
 	if err != nil {

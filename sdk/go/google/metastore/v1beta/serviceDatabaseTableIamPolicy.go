@@ -48,6 +48,14 @@ func NewServiceDatabaseTableIamPolicy(ctx *pulumi.Context,
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"databaseId",
+		"location",
+		"project",
+		"serviceId",
+		"tableId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServiceDatabaseTableIamPolicy
 	err := ctx.RegisterResource("google-native:metastore/v1beta:ServiceDatabaseTableIamPolicy", name, args, &resource, opts...)
 	if err != nil {

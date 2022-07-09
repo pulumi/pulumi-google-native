@@ -62,6 +62,12 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.Lifetime == nil {
 		return nil, errors.New("invalid value for required argument 'Lifetime'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"certificateAuthorityId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Certificate
 	err := ctx.RegisterResource("google-native:privateca/v1beta1:Certificate", name, args, &resource, opts...)
 	if err != nil {

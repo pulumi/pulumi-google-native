@@ -53,6 +53,12 @@ func NewFederation(ctx *pulumi.Context,
 	if args.FederationId == nil {
 		return nil, errors.New("invalid value for required argument 'FederationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"federationId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Federation
 	err := ctx.RegisterResource("google-native:metastore/v1beta:Federation", name, args, &resource, opts...)
 	if err != nil {

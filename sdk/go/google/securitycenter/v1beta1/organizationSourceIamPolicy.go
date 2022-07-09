@@ -42,6 +42,11 @@ func NewOrganizationSourceIamPolicy(ctx *pulumi.Context,
 	if args.SourceId == nil {
 		return nil, errors.New("invalid value for required argument 'SourceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"organizationId",
+		"sourceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OrganizationSourceIamPolicy
 	err := ctx.RegisterResource("google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

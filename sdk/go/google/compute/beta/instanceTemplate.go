@@ -42,6 +42,10 @@ func NewInstanceTemplate(ctx *pulumi.Context,
 		args = &InstanceTemplateArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InstanceTemplate
 	err := ctx.RegisterResource("google-native:compute/beta:InstanceTemplate", name, args, &resource, opts...)
 	if err != nil {

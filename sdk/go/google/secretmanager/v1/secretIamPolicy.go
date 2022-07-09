@@ -39,6 +39,11 @@ func NewSecretIamPolicy(ctx *pulumi.Context,
 	if args.SecretId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"secretId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SecretIamPolicy
 	err := ctx.RegisterResource("google-native:secretmanager/v1:SecretIamPolicy", name, args, &resource, opts...)
 	if err != nil {

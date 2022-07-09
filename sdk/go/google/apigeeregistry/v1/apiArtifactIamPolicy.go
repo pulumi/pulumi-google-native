@@ -42,6 +42,13 @@ func NewApiArtifactIamPolicy(ctx *pulumi.Context,
 	if args.ArtifactId == nil {
 		return nil, errors.New("invalid value for required argument 'ArtifactId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"apiId",
+		"artifactId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ApiArtifactIamPolicy
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:ApiArtifactIamPolicy", name, args, &resource, opts...)
 	if err != nil {

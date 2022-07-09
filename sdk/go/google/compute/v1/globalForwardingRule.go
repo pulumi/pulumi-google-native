@@ -84,6 +84,10 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 		args = &GlobalForwardingRuleArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GlobalForwardingRule
 	err := ctx.RegisterResource("google-native:compute/v1:GlobalForwardingRule", name, args, &resource, opts...)
 	if err != nil {

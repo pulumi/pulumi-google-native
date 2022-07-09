@@ -64,6 +64,11 @@ func NewRegistration(ctx *pulumi.Context,
 	if args.YearlyPrice == nil {
 		return nil, errors.New("invalid value for required argument 'YearlyPrice'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Registration
 	err := ctx.RegisterResource("google-native:domains/v1beta1:Registration", name, args, &resource, opts...)
 	if err != nil {

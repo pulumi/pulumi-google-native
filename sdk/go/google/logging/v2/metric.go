@@ -52,6 +52,10 @@ func NewMetric(ctx *pulumi.Context,
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Metric
 	err := ctx.RegisterResource("google-native:logging/v2:Metric", name, args, &resource, opts...)
 	if err != nil {

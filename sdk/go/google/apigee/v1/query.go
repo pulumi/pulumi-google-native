@@ -63,6 +63,11 @@ func NewQuery(ctx *pulumi.Context,
 	if args.TimeRange == nil {
 		return nil, errors.New("invalid value for required argument 'TimeRange'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Query
 	err := ctx.RegisterResource("google-native:apigee/v1:Query", name, args, &resource, opts...)
 	if err != nil {

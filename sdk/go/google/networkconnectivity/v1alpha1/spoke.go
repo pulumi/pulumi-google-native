@@ -51,6 +51,11 @@ func NewSpoke(ctx *pulumi.Context,
 		args = &SpokeArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Spoke
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:Spoke", name, args, &resource, opts...)
 	if err != nil {

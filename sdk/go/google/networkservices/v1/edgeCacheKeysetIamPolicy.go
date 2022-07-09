@@ -40,6 +40,12 @@ func NewEdgeCacheKeysetIamPolicy(ctx *pulumi.Context,
 	if args.EdgeCacheKeysetId == nil {
 		return nil, errors.New("invalid value for required argument 'EdgeCacheKeysetId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"edgeCacheKeysetId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EdgeCacheKeysetIamPolicy
 	err := ctx.RegisterResource("google-native:networkservices/v1:EdgeCacheKeysetIamPolicy", name, args, &resource, opts...)
 	if err != nil {

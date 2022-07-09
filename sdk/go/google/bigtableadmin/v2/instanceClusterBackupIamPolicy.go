@@ -47,6 +47,13 @@ func NewInstanceClusterBackupIamPolicy(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"backupId",
+		"clusterId",
+		"instanceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InstanceClusterBackupIamPolicy
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:InstanceClusterBackupIamPolicy", name, args, &resource, opts...)
 	if err != nil {

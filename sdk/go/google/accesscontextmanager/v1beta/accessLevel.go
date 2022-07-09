@@ -38,6 +38,10 @@ func NewAccessLevel(ctx *pulumi.Context,
 	if args.AccessPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"accessPolicyId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AccessLevel
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1beta:AccessLevel", name, args, &resource, opts...)
 	if err != nil {

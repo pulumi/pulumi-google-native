@@ -37,6 +37,11 @@ func NewSubscriptionIamPolicy(ctx *pulumi.Context,
 	if args.SubscriptionId == nil {
 		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"subscriptionId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SubscriptionIamPolicy
 	err := ctx.RegisterResource("google-native:pubsub/v1:SubscriptionIamPolicy", name, args, &resource, opts...)
 	if err != nil {

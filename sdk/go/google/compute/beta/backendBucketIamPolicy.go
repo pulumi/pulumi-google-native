@@ -41,6 +41,11 @@ func NewBackendBucketIamPolicy(ctx *pulumi.Context,
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"resource",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BackendBucketIamPolicy
 	err := ctx.RegisterResource("google-native:compute/beta:BackendBucketIamPolicy", name, args, &resource, opts...)
 	if err != nil {

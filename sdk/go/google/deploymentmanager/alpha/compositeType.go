@@ -39,6 +39,10 @@ func NewCompositeType(ctx *pulumi.Context,
 		args = &CompositeTypeArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CompositeType
 	err := ctx.RegisterResource("google-native:deploymentmanager/alpha:CompositeType", name, args, &resource, opts...)
 	if err != nil {

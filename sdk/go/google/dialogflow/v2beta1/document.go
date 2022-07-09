@@ -63,6 +63,12 @@ func NewDocument(ctx *pulumi.Context,
 	if args.MimeType == nil {
 		return nil, errors.New("invalid value for required argument 'MimeType'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"knowledgeBaseId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Document
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Document", name, args, &resource, opts...)
 	if err != nil {

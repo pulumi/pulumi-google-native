@@ -83,6 +83,14 @@ func NewRollout(ctx *pulumi.Context,
 	if args.TargetId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"deliveryPipelineId",
+		"location",
+		"project",
+		"releaseId",
+		"rolloutId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Rollout
 	err := ctx.RegisterResource("google-native:clouddeploy/v1:Rollout", name, args, &resource, opts...)
 	if err != nil {

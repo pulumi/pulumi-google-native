@@ -43,6 +43,13 @@ func NewConsentStore(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"consentStoreId",
+		"datasetId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ConsentStore
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:ConsentStore", name, args, &resource, opts...)
 	if err != nil {

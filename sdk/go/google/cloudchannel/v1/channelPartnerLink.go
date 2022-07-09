@@ -53,6 +53,10 @@ func NewChannelPartnerLink(ctx *pulumi.Context,
 	if args.ResellerCloudIdentityId == nil {
 		return nil, errors.New("invalid value for required argument 'ResellerCloudIdentityId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"accountId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ChannelPartnerLink
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:ChannelPartnerLink", name, args, &resource, opts...)
 	if err != nil {

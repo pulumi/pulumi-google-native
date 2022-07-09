@@ -45,6 +45,12 @@ func NewWebhook(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"agentId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Webhook
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Webhook", name, args, &resource, opts...)
 	if err != nil {

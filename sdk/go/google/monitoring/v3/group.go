@@ -37,6 +37,10 @@ func NewGroup(ctx *pulumi.Context,
 		args = &GroupArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Group
 	err := ctx.RegisterResource("google-native:monitoring/v3:Group", name, args, &resource, opts...)
 	if err != nil {

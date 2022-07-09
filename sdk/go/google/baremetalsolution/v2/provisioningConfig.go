@@ -52,6 +52,11 @@ func NewProvisioningConfig(ctx *pulumi.Context,
 		args = &ProvisioningConfigArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ProvisioningConfig
 	err := ctx.RegisterResource("google-native:baremetalsolution/v2:ProvisioningConfig", name, args, &resource, opts...)
 	if err != nil {

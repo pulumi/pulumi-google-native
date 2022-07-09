@@ -50,6 +50,11 @@ func NewKey(ctx *pulumi.Context,
 	if args.ServiceAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"serviceAccountId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Key
 	err := ctx.RegisterResource("google-native:iam/v1:Key", name, args, &resource, opts...)
 	if err != nil {

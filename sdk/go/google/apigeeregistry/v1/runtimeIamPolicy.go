@@ -33,6 +33,11 @@ func NewRuntimeIamPolicy(ctx *pulumi.Context,
 		args = &RuntimeIamPolicyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RuntimeIamPolicy
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:RuntimeIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -44,6 +44,10 @@ func NewFolderContact(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"folderId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FolderContact
 	err := ctx.RegisterResource("google-native:essentialcontacts/v1:FolderContact", name, args, &resource, opts...)
 	if err != nil {

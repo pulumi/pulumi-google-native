@@ -37,6 +37,12 @@ func NewDestGroup(ctx *pulumi.Context,
 	if args.TunnelDestGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelDestGroupId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"tunnelDestGroupId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DestGroup
 	err := ctx.RegisterResource("google-native:iap/v1:DestGroup", name, args, &resource, opts...)
 	if err != nil {

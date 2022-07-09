@@ -42,6 +42,10 @@ func NewTargetTcpProxy(ctx *pulumi.Context,
 		args = &TargetTcpProxyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TargetTcpProxy
 	err := ctx.RegisterResource("google-native:compute/v1:TargetTcpProxy", name, args, &resource, opts...)
 	if err != nil {

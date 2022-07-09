@@ -42,6 +42,11 @@ func NewTaxonomy(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Taxonomy
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:Taxonomy", name, args, &resource, opts...)
 	if err != nil {

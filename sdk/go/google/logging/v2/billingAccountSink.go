@@ -59,6 +59,10 @@ func NewBillingAccountSink(ctx *pulumi.Context,
 	if args.Destination == nil {
 		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"billingAccountId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BillingAccountSink
 	err := ctx.RegisterResource("google-native:logging/v2:BillingAccountSink", name, args, &resource, opts...)
 	if err != nil {

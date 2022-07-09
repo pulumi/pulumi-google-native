@@ -40,6 +40,12 @@ func NewDeliveryPipelineIamPolicy(ctx *pulumi.Context,
 	if args.DeliveryPipelineId == nil {
 		return nil, errors.New("invalid value for required argument 'DeliveryPipelineId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"deliveryPipelineId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DeliveryPipelineIamPolicy
 	err := ctx.RegisterResource("google-native:clouddeploy/v1:DeliveryPipelineIamPolicy", name, args, &resource, opts...)
 	if err != nil {

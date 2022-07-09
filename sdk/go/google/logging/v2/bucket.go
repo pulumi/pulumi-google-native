@@ -52,6 +52,12 @@ func NewBucket(ctx *pulumi.Context,
 	if args.BucketId == nil {
 		return nil, errors.New("invalid value for required argument 'BucketId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bucketId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Bucket
 	err := ctx.RegisterResource("google-native:logging/v2:Bucket", name, args, &resource, opts...)
 	if err != nil {

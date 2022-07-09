@@ -47,6 +47,14 @@ func NewPartition(ctx *pulumi.Context,
 	if args.Values == nil {
 		return nil, errors.New("invalid value for required argument 'Values'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"entityId",
+		"lakeId",
+		"location",
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Partition
 	err := ctx.RegisterResource("google-native:dataplex/v1:Partition", name, args, &resource, opts...)
 	if err != nil {

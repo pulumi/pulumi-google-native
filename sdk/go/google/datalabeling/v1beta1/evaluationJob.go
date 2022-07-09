@@ -64,6 +64,10 @@ func NewEvaluationJob(ctx *pulumi.Context,
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EvaluationJob
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:EvaluationJob", name, args, &resource, opts...)
 	if err != nil {

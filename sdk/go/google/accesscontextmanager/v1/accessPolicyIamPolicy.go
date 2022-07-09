@@ -38,6 +38,10 @@ func NewAccessPolicyIamPolicy(ctx *pulumi.Context,
 	if args.AccessPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"accessPolicyId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AccessPolicyIamPolicy
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1:AccessPolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

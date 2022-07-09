@@ -68,6 +68,14 @@ func NewAsset(ctx *pulumi.Context,
 	if args.ResourceSpec == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceSpec'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"assetId",
+		"lakeId",
+		"location",
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Asset
 	err := ctx.RegisterResource("google-native:dataplex/v1:Asset", name, args, &resource, opts...)
 	if err != nil {

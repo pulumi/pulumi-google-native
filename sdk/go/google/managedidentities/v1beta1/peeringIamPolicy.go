@@ -37,6 +37,11 @@ func NewPeeringIamPolicy(ctx *pulumi.Context,
 	if args.PeeringId == nil {
 		return nil, errors.New("invalid value for required argument 'PeeringId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"peeringId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PeeringIamPolicy
 	err := ctx.RegisterResource("google-native:managedidentities/v1beta1:PeeringIamPolicy", name, args, &resource, opts...)
 	if err != nil {

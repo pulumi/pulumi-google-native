@@ -45,6 +45,10 @@ func NewLicense(ctx *pulumi.Context,
 		args = &LicenseArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource License
 	err := ctx.RegisterResource("google-native:compute/v1:License", name, args, &resource, opts...)
 	if err != nil {

@@ -46,6 +46,10 @@ func NewTargetSslProxy(ctx *pulumi.Context,
 		args = &TargetSslProxyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TargetSslProxy
 	err := ctx.RegisterResource("google-native:compute/beta:TargetSslProxy", name, args, &resource, opts...)
 	if err != nil {

@@ -40,6 +40,12 @@ func NewRegistrationIamPolicy(ctx *pulumi.Context,
 	if args.RegistrationId == nil {
 		return nil, errors.New("invalid value for required argument 'RegistrationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"registrationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RegistrationIamPolicy
 	err := ctx.RegisterResource("google-native:domains/v1beta1:RegistrationIamPolicy", name, args, &resource, opts...)
 	if err != nil {

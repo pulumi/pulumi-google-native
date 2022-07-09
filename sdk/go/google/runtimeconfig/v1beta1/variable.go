@@ -41,6 +41,11 @@ func NewVariable(ctx *pulumi.Context,
 	if args.ConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"configId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Variable
 	err := ctx.RegisterResource("google-native:runtimeconfig/v1beta1:Variable", name, args, &resource, opts...)
 	if err != nil {

@@ -60,6 +60,11 @@ func NewRegionNetworkFirewallPolicy(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"region",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RegionNetworkFirewallPolicy
 	err := ctx.RegisterResource("google-native:compute/v1:RegionNetworkFirewallPolicy", name, args, &resource, opts...)
 	if err != nil {

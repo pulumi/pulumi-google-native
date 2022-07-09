@@ -37,6 +37,12 @@ func NewEkmConnection(ctx *pulumi.Context,
 		args = &EkmConnectionArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"ekmConnectionId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EkmConnection
 	err := ctx.RegisterResource("google-native:cloudkms/v1:EkmConnection", name, args, &resource, opts...)
 	if err != nil {

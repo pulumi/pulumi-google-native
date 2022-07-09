@@ -41,6 +41,12 @@ func NewRegionClusterIamPolicy(ctx *pulumi.Context,
 	if args.RegionId == nil {
 		return nil, errors.New("invalid value for required argument 'RegionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"clusterId",
+		"project",
+		"regionId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RegionClusterIamPolicy
 	err := ctx.RegisterResource("google-native:dataproc/v1:RegionClusterIamPolicy", name, args, &resource, opts...)
 	if err != nil {

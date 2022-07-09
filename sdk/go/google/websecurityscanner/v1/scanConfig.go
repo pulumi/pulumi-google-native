@@ -57,6 +57,10 @@ func NewScanConfig(ctx *pulumi.Context,
 	if args.StartingUrls == nil {
 		return nil, errors.New("invalid value for required argument 'StartingUrls'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ScanConfig
 	err := ctx.RegisterResource("google-native:websecurityscanner/v1:ScanConfig", name, args, &resource, opts...)
 	if err != nil {

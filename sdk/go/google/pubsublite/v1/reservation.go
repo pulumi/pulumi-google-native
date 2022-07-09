@@ -35,6 +35,12 @@ func NewReservation(ctx *pulumi.Context,
 	if args.ReservationId == nil {
 		return nil, errors.New("invalid value for required argument 'ReservationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"reservationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Reservation
 	err := ctx.RegisterResource("google-native:pubsublite/v1:Reservation", name, args, &resource, opts...)
 	if err != nil {

@@ -46,6 +46,11 @@ func NewDlpJob(ctx *pulumi.Context,
 		args = &DlpJobArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DlpJob
 	err := ctx.RegisterResource("google-native:dlp/v2:DlpJob", name, args, &resource, opts...)
 	if err != nil {

@@ -42,6 +42,11 @@ func NewChannelPartnerRepricingConfig(ctx *pulumi.Context,
 	if args.RepricingConfig == nil {
 		return nil, errors.New("invalid value for required argument 'RepricingConfig'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"accountId",
+		"channelPartnerLinkId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ChannelPartnerRepricingConfig
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:ChannelPartnerRepricingConfig", name, args, &resource, opts...)
 	if err != nil {

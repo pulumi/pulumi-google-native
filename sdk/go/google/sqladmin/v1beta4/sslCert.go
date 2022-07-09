@@ -46,6 +46,11 @@ func NewSslCert(ctx *pulumi.Context,
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instance",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SslCert
 	err := ctx.RegisterResource("google-native:sqladmin/v1beta4:SslCert", name, args, &resource, opts...)
 	if err != nil {

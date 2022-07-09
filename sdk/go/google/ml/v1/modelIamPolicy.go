@@ -39,6 +39,11 @@ func NewModelIamPolicy(ctx *pulumi.Context,
 	if args.ModelId == nil {
 		return nil, errors.New("invalid value for required argument 'ModelId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"modelId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ModelIamPolicy
 	err := ctx.RegisterResource("google-native:ml/v1:ModelIamPolicy", name, args, &resource, opts...)
 	if err != nil {

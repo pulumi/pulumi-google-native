@@ -52,6 +52,10 @@ func NewSslCertificate(ctx *pulumi.Context,
 		args = &SslCertificateArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SslCertificate
 	err := ctx.RegisterResource("google-native:compute/v1:SslCertificate", name, args, &resource, opts...)
 	if err != nil {
