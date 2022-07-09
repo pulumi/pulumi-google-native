@@ -210,6 +210,8 @@ class Context(pulumi.CustomResource):
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "location", "project", "session_id", "user_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Context, __self__).__init__(
             'google-native:dialogflow/v2beta1:Context',
             resource_name,

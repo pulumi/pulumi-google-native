@@ -301,6 +301,8 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["storage_bytes"] = None
             __props__.__dict__["storage_bytes_status"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Snapshot, __self__).__init__(
             'google-native:compute/v1:Snapshot',
             resource_name,

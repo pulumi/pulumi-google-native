@@ -272,6 +272,8 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["version_aliases"] = version_aliases
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "secret_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Secret, __self__).__init__(
             'google-native:secretmanager/v1:Secret',
             resource_name,

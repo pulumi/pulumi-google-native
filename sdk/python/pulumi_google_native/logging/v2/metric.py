@@ -276,6 +276,8 @@ class Metric(pulumi.CustomResource):
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Metric, __self__).__init__(
             'google-native:logging/v2:Metric',
             resource_name,

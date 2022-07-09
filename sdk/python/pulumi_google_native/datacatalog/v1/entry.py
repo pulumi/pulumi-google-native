@@ -468,6 +468,8 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["personal_details"] = None
             __props__.__dict__["usage_signal"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entry_group_id", "entry_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Entry, __self__).__init__(
             'google-native:datacatalog/v1:Entry',
             resource_name,

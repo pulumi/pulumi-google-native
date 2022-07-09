@@ -221,6 +221,8 @@ class Product(pulumi.CustomResource):
             __props__.__dict__["product_id"] = product_id
             __props__.__dict__["product_labels"] = product_labels
             __props__.__dict__["project"] = project
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Product, __self__).__init__(
             'google-native:vision/v1:Product',
             resource_name,

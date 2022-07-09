@@ -387,6 +387,8 @@ class Entity(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["lake_id", "location", "project", "zone"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Entity, __self__).__init__(
             'google-native:dataplex/v1:Entity',
             resource_name,

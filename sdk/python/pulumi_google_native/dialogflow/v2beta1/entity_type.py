@@ -246,6 +246,8 @@ class EntityType(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EntityType, __self__).__init__(
             'google-native:dialogflow/v2beta1:EntityType',
             resource_name,

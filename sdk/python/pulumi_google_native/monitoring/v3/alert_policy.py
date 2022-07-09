@@ -327,6 +327,8 @@ class AlertPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["validity"] = validity
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AlertPolicy, __self__).__init__(
             'google-native:monitoring/v3:AlertPolicy',
             resource_name,

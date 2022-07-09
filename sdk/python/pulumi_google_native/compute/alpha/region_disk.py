@@ -735,6 +735,8 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["users"] = None
             __props__.__dict__["zone"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RegionDisk, __self__).__init__(
             'google-native:compute/alpha:RegionDisk',
             resource_name,

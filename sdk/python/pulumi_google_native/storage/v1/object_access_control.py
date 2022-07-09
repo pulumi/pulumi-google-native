@@ -388,6 +388,8 @@ class ObjectAccessControl(pulumi.CustomResource):
             __props__.__dict__["role"] = role
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["user_project"] = user_project
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket", "object"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ObjectAccessControl, __self__).__init__(
             'google-native:storage/v1:ObjectAccessControl',
             resource_name,

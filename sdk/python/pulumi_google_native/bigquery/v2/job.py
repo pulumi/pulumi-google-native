@@ -149,6 +149,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["statistics"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["user_email"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Job, __self__).__init__(
             'google-native:bigquery/v2:Job',
             resource_name,

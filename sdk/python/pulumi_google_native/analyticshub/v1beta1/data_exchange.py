@@ -225,6 +225,8 @@ class DataExchange(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["listing_count"] = None
             __props__.__dict__["name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["data_exchange_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DataExchange, __self__).__init__(
             'google-native:analyticshub/v1beta1:DataExchange',
             resource_name,

@@ -191,6 +191,8 @@ class ImportJob(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["public_key"] = None
             __props__.__dict__["state"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["import_job_id", "key_ring_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ImportJob, __self__).__init__(
             'google-native:cloudkms/v1:ImportJob',
             resource_name,

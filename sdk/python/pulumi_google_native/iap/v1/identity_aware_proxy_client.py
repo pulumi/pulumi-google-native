@@ -124,6 +124,8 @@ class IdentityAwareProxyClient(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
             __props__.__dict__["secret"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["brand_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(IdentityAwareProxyClient, __self__).__init__(
             'google-native:iap/v1:IdentityAwareProxyClient',
             resource_name,

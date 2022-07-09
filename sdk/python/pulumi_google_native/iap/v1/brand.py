@@ -132,6 +132,8 @@ class Brand(pulumi.CustomResource):
             __props__.__dict__["support_email"] = support_email
             __props__.__dict__["name"] = None
             __props__.__dict__["org_internal_only"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Brand, __self__).__init__(
             'google-native:iap/v1:Brand',
             resource_name,

@@ -199,6 +199,8 @@ class Template(pulumi.CustomResource):
             __props__.__dict__["runtime_metadata"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["template_type"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Template, __self__).__init__(
             'google-native:dataflow/v1b3:Template',
             resource_name,

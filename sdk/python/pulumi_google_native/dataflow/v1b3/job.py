@@ -602,6 +602,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["transform_name_mapping"] = transform_name_mapping
             __props__.__dict__["type"] = type
             __props__.__dict__["view"] = view
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Job, __self__).__init__(
             'google-native:dataflow/v1b3:Job',
             resource_name,

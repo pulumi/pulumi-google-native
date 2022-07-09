@@ -197,6 +197,8 @@ class RegistryGroupIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'registry_id'")
             __props__.__dict__["registry_id"] = registry_id
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["group_id", "location", "project", "registry_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RegistryGroupIamPolicy, __self__).__init__(
             'google-native:cloudiot/v1:RegistryGroupIamPolicy',
             resource_name,
