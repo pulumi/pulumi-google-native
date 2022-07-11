@@ -34,7 +34,7 @@ export interface GetReleaseResult {
      */
     readonly name: string;
     /**
-     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+     * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
      */
     readonly rulesetName: string;
     /**

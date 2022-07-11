@@ -909,6 +909,8 @@ type CloudSqlPropertiesResponse struct {
 	Database string `pulumi:"database"`
 	// Cloud SQL instance ID in the form `project:location:instance`.
 	InstanceId string `pulumi:"instanceId"`
+	// The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as identity being used for connecting to the CloudSQL instance specified in this connection.
+	ServiceAccountId string `pulumi:"serviceAccountId"`
 	// Type of the Cloud SQL database.
 	Type string `pulumi:"type"`
 }
@@ -941,6 +943,11 @@ func (o CloudSqlPropertiesResponseOutput) Database() pulumi.StringOutput {
 // Cloud SQL instance ID in the form `project:location:instance`.
 func (o CloudSqlPropertiesResponseOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlPropertiesResponse) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as identity being used for connecting to the CloudSQL instance specified in this connection.
+func (o CloudSqlPropertiesResponseOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSqlPropertiesResponse) string { return v.ServiceAccountId }).(pulumi.StringOutput)
 }
 
 // Type of the Cloud SQL database.
