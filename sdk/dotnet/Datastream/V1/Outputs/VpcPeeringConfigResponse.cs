@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
     public sealed class VpcPeeringConfigResponse
     {
         /// <summary>
-        /// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+        /// A free subnet for peering. (CIDR of /29)
         /// </summary>
         public readonly string Subnet;
         /// <summary>

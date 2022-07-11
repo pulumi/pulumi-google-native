@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
         /// </summary>
         [Output("rulesetName")]
         public Output<string> RulesetName { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
         /// </summary>
         [Input("rulesetName", required: true)]
         public Input<string> RulesetName { get; set; } = null!;

@@ -5021,7 +5021,7 @@ func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivity
 
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
 type VpcPeeringConfig struct {
-	// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
 	// fully qualified name of the VPC Datastream will peer to.
 	VpcName string `pulumi:"vpcName"`
@@ -5040,7 +5040,7 @@ type VpcPeeringConfigInput interface {
 
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
 type VpcPeeringConfigArgs struct {
-	// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+	// A free subnet for peering. (CIDR of /29)
 	Subnet pulumi.StringInput `pulumi:"subnet"`
 	// fully qualified name of the VPC Datastream will peer to.
 	VpcName pulumi.StringInput `pulumi:"vpcName"`
@@ -5124,7 +5124,7 @@ func (o VpcPeeringConfigOutput) ToVpcPeeringConfigPtrOutputWithContext(ctx conte
 	}).(VpcPeeringConfigPtrOutput)
 }
 
-// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+// A free subnet for peering. (CIDR of /29)
 func (o VpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -5158,7 +5158,7 @@ func (o VpcPeeringConfigPtrOutput) Elem() VpcPeeringConfigOutput {
 	}).(VpcPeeringConfigOutput)
 }
 
-// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+// A free subnet for peering. (CIDR of /29)
 func (o VpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcPeeringConfig) *string {
 		if v == nil {
@@ -5180,7 +5180,7 @@ func (o VpcPeeringConfigPtrOutput) VpcName() pulumi.StringPtrOutput {
 
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
 type VpcPeeringConfigResponse struct {
-	// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
 	// fully qualified name of the VPC Datastream will peer to.
 	VpcName string `pulumi:"vpcName"`
@@ -5201,7 +5201,7 @@ func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponseOutputWithCont
 	return o
 }
 
-// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+// A free subnet for peering. (CIDR of /29)
 func (o VpcPeeringConfigResponseOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfigResponse) string { return v.Subnet }).(pulumi.StringOutput)
 }

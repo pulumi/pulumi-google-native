@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     public sealed class VpcPeeringConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+        /// A free subnet for peering. (CIDR of /29)
         /// </summary>
         [Input("subnet", required: true)]
         public Input<string> Subnet { get; set; } = null!;
