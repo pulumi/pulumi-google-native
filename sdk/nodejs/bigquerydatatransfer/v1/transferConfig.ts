@@ -178,6 +178,8 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["versionInfo"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TransferConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

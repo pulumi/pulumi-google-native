@@ -771,6 +771,8 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["user_project"] = user_project
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["website"] = website
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Bucket, __self__).__init__(
             'google-native:storage/v1:Bucket',
             resource_name,

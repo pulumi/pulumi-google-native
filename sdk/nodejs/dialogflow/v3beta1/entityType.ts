@@ -122,6 +122,8 @@ export class EntityType extends pulumi.CustomResource {
             resourceInputs["redact"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["agentId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EntityType.__pulumiType, name, resourceInputs, opts);
     }
 }

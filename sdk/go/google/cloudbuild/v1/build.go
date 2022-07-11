@@ -91,6 +91,12 @@ func NewBuild(ctx *pulumi.Context,
 	if args.Steps == nil {
 		return nil, errors.New("invalid value for required argument 'Steps'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"projectId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Build
 	err := ctx.RegisterResource("google-native:cloudbuild/v1:Build", name, args, &resource, opts...)
 	if err != nil {

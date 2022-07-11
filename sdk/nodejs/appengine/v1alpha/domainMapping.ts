@@ -88,6 +88,8 @@ export class DomainMapping extends pulumi.CustomResource {
             resourceInputs["sslSettings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["appId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DomainMapping.__pulumiType, name, resourceInputs, opts);
     }
 }

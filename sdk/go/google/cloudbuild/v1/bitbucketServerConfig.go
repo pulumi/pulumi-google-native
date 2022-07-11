@@ -57,6 +57,11 @@ func NewBitbucketServerConfig(ctx *pulumi.Context,
 	if args.Secrets == nil {
 		return nil, errors.New("invalid value for required argument 'Secrets'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BitbucketServerConfig
 	err := ctx.RegisterResource("google-native:cloudbuild/v1:BitbucketServerConfig", name, args, &resource, opts...)
 	if err != nil {

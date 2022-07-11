@@ -101,6 +101,8 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionNotificationEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }

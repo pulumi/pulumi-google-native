@@ -79,6 +79,8 @@ export class SchemaIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "schemaId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SchemaIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

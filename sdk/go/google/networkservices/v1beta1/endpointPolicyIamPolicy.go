@@ -40,6 +40,12 @@ func NewEndpointPolicyIamPolicy(ctx *pulumi.Context,
 	if args.EndpointPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'EndpointPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"endpointPolicyId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EndpointPolicyIamPolicy
 	err := ctx.RegisterResource("google-native:networkservices/v1beta1:EndpointPolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

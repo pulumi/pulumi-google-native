@@ -66,6 +66,11 @@ func NewCase(ctx *pulumi.Context,
 	if args.V2betumId == nil {
 		return nil, errors.New("invalid value for required argument 'V2betumId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"v2betaId1",
+		"v2betumId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Case
 	err := ctx.RegisterResource("google-native:cloudsupport/v2beta:Case", name, args, &resource, opts...)
 	if err != nil {

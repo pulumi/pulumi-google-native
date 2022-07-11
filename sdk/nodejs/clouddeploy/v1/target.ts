@@ -149,6 +149,8 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "targetId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Target.__pulumiType, name, resourceInputs, opts);
     }
 }

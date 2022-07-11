@@ -51,6 +51,11 @@ func NewAutoscaler(ctx *pulumi.Context,
 		args = &AutoscalerArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Autoscaler
 	err := ctx.RegisterResource("google-native:compute/v1:Autoscaler", name, args, &resource, opts...)
 	if err != nil {

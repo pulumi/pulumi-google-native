@@ -67,6 +67,11 @@ func NewTransferConfig(ctx *pulumi.Context,
 		args = &TransferConfigArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TransferConfig
 	err := ctx.RegisterResource("google-native:bigquerydatatransfer/v1:TransferConfig", name, args, &resource, opts...)
 	if err != nil {

@@ -144,6 +144,8 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "testId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConnectivityTest.__pulumiType, name, resourceInputs, opts);
     }
 }

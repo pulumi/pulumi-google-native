@@ -51,6 +51,13 @@ func NewVersion(ctx *pulumi.Context,
 	if args.ApiVersionId == nil {
 		return nil, errors.New("invalid value for required argument 'ApiVersionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"apiId",
+		"apiVersionId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Version
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:Version", name, args, &resource, opts...)
 	if err != nil {

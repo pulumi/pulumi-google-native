@@ -95,6 +95,8 @@ export class DatasetConsentStoreIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["consentStoreId", "datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DatasetConsentStoreIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

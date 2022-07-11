@@ -166,6 +166,8 @@ class PeeringIamPolicy(pulumi.CustomResource):
             __props__.__dict__["peering_id"] = peering_id
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["peering_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(PeeringIamPolicy, __self__).__init__(
             'google-native:managedidentities/v1alpha1:PeeringIamPolicy',
             resource_name,

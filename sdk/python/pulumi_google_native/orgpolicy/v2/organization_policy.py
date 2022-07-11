@@ -155,6 +155,8 @@ class OrganizationPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["spec"] = spec
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationPolicy, __self__).__init__(
             'google-native:orgpolicy/v2:OrganizationPolicy',
             resource_name,

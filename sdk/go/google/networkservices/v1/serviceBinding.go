@@ -46,6 +46,12 @@ func NewServiceBinding(ctx *pulumi.Context,
 	if args.ServiceBindingId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceBindingId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"serviceBindingId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServiceBinding
 	err := ctx.RegisterResource("google-native:networkservices/v1:ServiceBinding", name, args, &resource, opts...)
 	if err != nil {

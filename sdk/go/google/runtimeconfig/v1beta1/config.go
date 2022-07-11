@@ -30,6 +30,10 @@ func NewConfig(ctx *pulumi.Context,
 		args = &ConfigArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Config
 	err := ctx.RegisterResource("google-native:runtimeconfig/v1beta1:Config", name, args, &resource, opts...)
 	if err != nil {

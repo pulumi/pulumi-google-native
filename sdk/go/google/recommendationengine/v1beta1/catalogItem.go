@@ -58,6 +58,12 @@ func NewCatalogItem(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"catalogId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CatalogItem
 	err := ctx.RegisterResource("google-native:recommendationengine/v1beta1:CatalogItem", name, args, &resource, opts...)
 	if err != nil {

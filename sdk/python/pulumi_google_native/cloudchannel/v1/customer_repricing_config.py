@@ -129,6 +129,8 @@ class CustomerRepricingConfig(pulumi.CustomResource):
             __props__.__dict__["repricing_config"] = repricing_config
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["account_id", "customer_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CustomerRepricingConfig, __self__).__init__(
             'google-native:cloudchannel/v1:CustomerRepricingConfig',
             resource_name,

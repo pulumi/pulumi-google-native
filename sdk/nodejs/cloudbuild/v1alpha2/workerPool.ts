@@ -114,6 +114,8 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["workerPoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "workerPoolId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(WorkerPool.__pulumiType, name, resourceInputs, opts);
     }
 }

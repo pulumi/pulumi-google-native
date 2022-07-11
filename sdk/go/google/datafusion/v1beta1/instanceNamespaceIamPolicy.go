@@ -44,6 +44,13 @@ func NewInstanceNamespaceIamPolicy(ctx *pulumi.Context,
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"location",
+		"namespaceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InstanceNamespaceIamPolicy
 	err := ctx.RegisterResource("google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

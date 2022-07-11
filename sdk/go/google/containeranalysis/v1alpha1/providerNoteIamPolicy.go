@@ -40,6 +40,11 @@ func NewProviderNoteIamPolicy(ctx *pulumi.Context,
 	if args.ProviderId == nil {
 		return nil, errors.New("invalid value for required argument 'ProviderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"noteId",
+		"providerId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ProviderNoteIamPolicy
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -314,6 +314,8 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["start_timestamp"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["status_message"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RegionCommitment, __self__).__init__(
             'google-native:compute/v1:RegionCommitment',
             resource_name,

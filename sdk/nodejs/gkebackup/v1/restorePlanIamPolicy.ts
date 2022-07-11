@@ -89,6 +89,8 @@ export class RestorePlanIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "restorePlanId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RestorePlanIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -42,6 +42,12 @@ func NewWorkloadIdentityPool(ctx *pulumi.Context,
 	if args.WorkloadIdentityPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"workloadIdentityPoolId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource WorkloadIdentityPool
 	err := ctx.RegisterResource("google-native:iam/v1:WorkloadIdentityPool", name, args, &resource, opts...)
 	if err != nil {

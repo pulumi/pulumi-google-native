@@ -157,6 +157,8 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["subnetworks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Network.__pulumiType, name, resourceInputs, opts);
     }
 }

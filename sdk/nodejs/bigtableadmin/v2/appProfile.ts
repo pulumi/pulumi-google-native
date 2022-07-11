@@ -104,6 +104,8 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["singleClusterRouting"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["appProfileId", "instanceId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AppProfile.__pulumiType, name, resourceInputs, opts);
     }
 }

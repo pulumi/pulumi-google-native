@@ -112,6 +112,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["instance", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

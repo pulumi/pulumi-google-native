@@ -47,6 +47,11 @@ func NewHmacKey(ctx *pulumi.Context,
 	if args.ServiceAccountEmail == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountEmail'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"serviceAccountEmail",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource HmacKey
 	err := ctx.RegisterResource("google-native:storage/v1:HmacKey", name, args, &resource, opts...)
 	if err != nil {

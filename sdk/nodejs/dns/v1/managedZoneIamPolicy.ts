@@ -86,6 +86,8 @@ export class ManagedZoneIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["managedZone", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ManagedZoneIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

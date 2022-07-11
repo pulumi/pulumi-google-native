@@ -51,6 +51,12 @@ func NewApi(ctx *pulumi.Context,
 	if args.ApiId == nil {
 		return nil, errors.New("invalid value for required argument 'ApiId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"apiId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Api
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:Api", name, args, &resource, opts...)
 	if err != nil {

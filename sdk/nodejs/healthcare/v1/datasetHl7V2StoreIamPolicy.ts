@@ -95,6 +95,8 @@ export class DatasetHl7V2StoreIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "hl7V2StoreId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DatasetHl7V2StoreIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

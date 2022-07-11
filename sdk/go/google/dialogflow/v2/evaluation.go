@@ -42,6 +42,12 @@ func NewEvaluation(ctx *pulumi.Context,
 	if args.ConversationModelId == nil {
 		return nil, errors.New("invalid value for required argument 'ConversationModelId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"conversationModelId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Evaluation
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Evaluation", name, args, &resource, opts...)
 	if err != nil {

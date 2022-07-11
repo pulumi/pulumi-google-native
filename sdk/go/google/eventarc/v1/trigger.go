@@ -66,6 +66,13 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.ValidateOnly == nil {
 		return nil, errors.New("invalid value for required argument 'ValidateOnly'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"triggerId",
+		"validateOnly",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Trigger
 	err := ctx.RegisterResource("google-native:eventarc/v1:Trigger", name, args, &resource, opts...)
 	if err != nil {

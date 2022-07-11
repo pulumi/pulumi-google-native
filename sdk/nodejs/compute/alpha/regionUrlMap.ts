@@ -143,6 +143,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["tests"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionUrlMap.__pulumiType, name, resourceInputs, opts);
     }
 }

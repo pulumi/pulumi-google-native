@@ -46,6 +46,10 @@ func NewMembership(ctx *pulumi.Context,
 	if args.PreferredMemberKey == nil {
 		return nil, errors.New("invalid value for required argument 'PreferredMemberKey'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"groupId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Membership
 	err := ctx.RegisterResource("google-native:cloudidentity/v1beta1:Membership", name, args, &resource, opts...)
 	if err != nil {

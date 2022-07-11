@@ -37,6 +37,11 @@ func NewOccurrenceIamPolicy(ctx *pulumi.Context,
 	if args.OccurrenceId == nil {
 		return nil, errors.New("invalid value for required argument 'OccurrenceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"occurrenceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OccurrenceIamPolicy
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:OccurrenceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -89,6 +89,8 @@ export class CaPoolIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["caPoolId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CaPoolIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

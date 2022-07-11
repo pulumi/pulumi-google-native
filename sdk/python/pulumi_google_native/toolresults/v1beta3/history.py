@@ -189,6 +189,8 @@ class History(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["test_platform"] = test_platform
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(History, __self__).__init__(
             'google-native:toolresults/v1beta3:History',
             resource_name,

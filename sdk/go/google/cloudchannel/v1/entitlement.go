@@ -62,6 +62,11 @@ func NewEntitlement(ctx *pulumi.Context,
 	if args.Offer == nil {
 		return nil, errors.New("invalid value for required argument 'Offer'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"accountId",
+		"customerId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Entitlement
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:Entitlement", name, args, &resource, opts...)
 	if err != nil {

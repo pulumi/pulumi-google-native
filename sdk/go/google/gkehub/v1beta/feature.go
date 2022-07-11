@@ -50,6 +50,11 @@ func NewFeature(ctx *pulumi.Context,
 		args = &FeatureArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Feature
 	err := ctx.RegisterResource("google-native:gkehub/v1beta:Feature", name, args, &resource, opts...)
 	if err != nil {

@@ -146,6 +146,8 @@ export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["shortName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionNetworkFirewallPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -105,6 +105,8 @@ export class CaPool extends pulumi.CustomResource {
             resourceInputs["tier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["caPoolId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CaPool.__pulumiType, name, resourceInputs, opts);
     }
 }

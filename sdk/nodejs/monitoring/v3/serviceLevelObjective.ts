@@ -117,6 +117,8 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
             resourceInputs["v3Id1"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["serviceId", "v3Id", "v3Id1"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServiceLevelObjective.__pulumiType, name, resourceInputs, opts);
     }
 }

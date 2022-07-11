@@ -40,6 +40,12 @@ func NewTargetIamPolicy(ctx *pulumi.Context,
 	if args.TargetId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"targetId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TargetIamPolicy
 	err := ctx.RegisterResource("google-native:clouddeploy/v1:TargetIamPolicy", name, args, &resource, opts...)
 	if err != nil {

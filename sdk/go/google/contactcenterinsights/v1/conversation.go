@@ -65,6 +65,11 @@ func NewConversation(ctx *pulumi.Context,
 		args = &ConversationArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Conversation
 	err := ctx.RegisterResource("google-native:contactcenterinsights/v1:Conversation", name, args, &resource, opts...)
 	if err != nil {

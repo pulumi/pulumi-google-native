@@ -325,6 +325,8 @@ class CryptoKey(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["primary"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["crypto_key_id", "key_ring_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CryptoKey, __self__).__init__(
             'google-native:cloudkms/v1:CryptoKey',
             resource_name,

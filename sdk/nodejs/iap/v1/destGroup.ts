@@ -82,6 +82,8 @@ export class DestGroup extends pulumi.CustomResource {
             resourceInputs["tunnelDestGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "tunnelDestGroupId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DestGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

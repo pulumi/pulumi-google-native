@@ -239,6 +239,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["target"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GlobalForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }

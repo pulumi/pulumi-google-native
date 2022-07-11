@@ -62,6 +62,10 @@ func NewFirewall(ctx *pulumi.Context,
 		args = &FirewallArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Firewall
 	err := ctx.RegisterResource("google-native:compute/v1:Firewall", name, args, &resource, opts...)
 	if err != nil {

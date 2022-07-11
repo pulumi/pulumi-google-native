@@ -106,6 +106,14 @@ func NewProduct(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"branchId",
+		"catalogId",
+		"location",
+		"productId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Product
 	err := ctx.RegisterResource("google-native:retail/v2:Product", name, args, &resource, opts...)
 	if err != nil {

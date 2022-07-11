@@ -39,6 +39,11 @@ func NewRepoIamPolicy(ctx *pulumi.Context,
 	if args.RepoId == nil {
 		return nil, errors.New("invalid value for required argument 'RepoId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"repoId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RepoIamPolicy
 	err := ctx.RegisterResource("google-native:sourcerepo/v1:RepoIamPolicy", name, args, &resource, opts...)
 	if err != nil {

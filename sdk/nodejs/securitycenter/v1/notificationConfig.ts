@@ -95,6 +95,8 @@ export class NotificationConfig extends pulumi.CustomResource {
             resourceInputs["streamingConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["configId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NotificationConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

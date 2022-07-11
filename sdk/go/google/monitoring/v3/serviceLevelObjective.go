@@ -53,6 +53,12 @@ func NewServiceLevelObjective(ctx *pulumi.Context,
 	if args.V3Id1 == nil {
 		return nil, errors.New("invalid value for required argument 'V3Id1'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"serviceId",
+		"v3Id",
+		"v3Id1",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServiceLevelObjective
 	err := ctx.RegisterResource("google-native:monitoring/v3:ServiceLevelObjective", name, args, &resource, opts...)
 	if err != nil {

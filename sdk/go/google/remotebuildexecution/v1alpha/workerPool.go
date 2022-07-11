@@ -41,6 +41,11 @@ func NewWorkerPool(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:remotebuildexecution/v1alpha:WorkerPool", name, args, &resource, opts...)
 	if err != nil {

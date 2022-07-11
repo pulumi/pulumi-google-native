@@ -51,6 +51,11 @@ func NewGithubEnterpriseConfig(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GithubEnterpriseConfig
 	err := ctx.RegisterResource("google-native:cloudbuild/v1:GithubEnterpriseConfig", name, args, &resource, opts...)
 	if err != nil {

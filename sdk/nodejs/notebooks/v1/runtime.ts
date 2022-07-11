@@ -126,6 +126,8 @@ export class Runtime extends pulumi.CustomResource {
             resourceInputs["virtualMachine"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "runtimeId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Runtime.__pulumiType, name, resourceInputs, opts);
     }
 }

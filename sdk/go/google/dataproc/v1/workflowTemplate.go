@@ -51,6 +51,11 @@ func NewWorkflowTemplate(ctx *pulumi.Context,
 	if args.Placement == nil {
 		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource WorkflowTemplate
 	err := ctx.RegisterResource("google-native:dataproc/v1:WorkflowTemplate", name, args, &resource, opts...)
 	if err != nil {

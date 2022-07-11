@@ -40,6 +40,12 @@ func NewServerTlsPolicyIamPolicy(ctx *pulumi.Context,
 	if args.ServerTlsPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'ServerTlsPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"serverTlsPolicyId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServerTlsPolicyIamPolicy
 	err := ctx.RegisterResource("google-native:networksecurity/v1beta1:ServerTlsPolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

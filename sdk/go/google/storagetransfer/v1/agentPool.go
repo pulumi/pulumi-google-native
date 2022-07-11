@@ -38,6 +38,11 @@ func NewAgentPool(ctx *pulumi.Context,
 	if args.AgentPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentPoolId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"agentPoolId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AgentPool
 	err := ctx.RegisterResource("google-native:storagetransfer/v1:AgentPool", name, args, &resource, opts...)
 	if err != nil {

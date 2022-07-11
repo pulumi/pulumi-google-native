@@ -48,6 +48,10 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Environment
 	err := ctx.RegisterResource("google-native:apigee/v1:Environment", name, args, &resource, opts...)
 	if err != nil {

@@ -102,6 +102,8 @@ export class IosApp extends pulumi.CustomResource {
             resourceInputs["teamId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(IosApp.__pulumiType, name, resourceInputs, opts);
     }
 }

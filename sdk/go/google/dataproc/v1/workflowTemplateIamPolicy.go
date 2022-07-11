@@ -38,6 +38,12 @@ func NewWorkflowTemplateIamPolicy(ctx *pulumi.Context,
 	if args.WorkflowTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowTemplateId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"workflowTemplateId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource WorkflowTemplateIamPolicy
 	err := ctx.RegisterResource("google-native:dataproc/v1:WorkflowTemplateIamPolicy", name, args, &resource, opts...)
 	if err != nil {

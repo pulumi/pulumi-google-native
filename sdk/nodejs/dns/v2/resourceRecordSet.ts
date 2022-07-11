@@ -107,6 +107,8 @@ export class ResourceRecordSet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "managedZone", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ResourceRecordSet.__pulumiType, name, resourceInputs, opts);
     }
 }

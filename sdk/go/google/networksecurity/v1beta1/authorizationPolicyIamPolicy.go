@@ -40,6 +40,12 @@ func NewAuthorizationPolicyIamPolicy(ctx *pulumi.Context,
 	if args.AuthorizationPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AuthorizationPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"authorizationPolicyId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AuthorizationPolicyIamPolicy
 	err := ctx.RegisterResource("google-native:networksecurity/v1beta1:AuthorizationPolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -205,6 +205,8 @@ class Resourcefile(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "name", "organization_id", "type"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Resourcefile, __self__).__init__(
             'google-native:apigee/v1:Resourcefile',
             resource_name,

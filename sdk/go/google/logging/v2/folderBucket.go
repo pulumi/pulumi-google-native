@@ -55,6 +55,12 @@ func NewFolderBucket(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bucketId",
+		"folderId",
+		"location",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FolderBucket
 	err := ctx.RegisterResource("google-native:logging/v2:FolderBucket", name, args, &resource, opts...)
 	if err != nil {

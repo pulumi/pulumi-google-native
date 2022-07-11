@@ -52,6 +52,12 @@ func NewRuntime(ctx *pulumi.Context,
 	if args.RuntimeId == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"runtimeId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Runtime
 	err := ctx.RegisterResource("google-native:notebooks/v1:Runtime", name, args, &resource, opts...)
 	if err != nil {

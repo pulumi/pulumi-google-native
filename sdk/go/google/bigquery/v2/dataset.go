@@ -62,6 +62,10 @@ func NewDataset(ctx *pulumi.Context,
 		args = &DatasetArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:bigquery/v2:Dataset", name, args, &resource, opts...)
 	if err != nil {

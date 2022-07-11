@@ -37,6 +37,11 @@ func NewAttestorIamPolicy(ctx *pulumi.Context,
 	if args.AttestorId == nil {
 		return nil, errors.New("invalid value for required argument 'AttestorId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"attestorId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AttestorIamPolicy
 	err := ctx.RegisterResource("google-native:binaryauthorization/v1beta1:AttestorIamPolicy", name, args, &resource, opts...)
 	if err != nil {

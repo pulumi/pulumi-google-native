@@ -129,6 +129,11 @@ func NewDisk(ctx *pulumi.Context,
 		args = &DiskArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Disk
 	err := ctx.RegisterResource("google-native:compute/alpha:Disk", name, args, &resource, opts...)
 	if err != nil {

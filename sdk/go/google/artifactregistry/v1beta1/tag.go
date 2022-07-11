@@ -40,6 +40,13 @@ func NewTag(ctx *pulumi.Context,
 	if args.RepositoryId == nil {
 		return nil, errors.New("invalid value for required argument 'RepositoryId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"packageId",
+		"project",
+		"repositoryId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Tag
 	err := ctx.RegisterResource("google-native:artifactregistry/v1beta1:Tag", name, args, &resource, opts...)
 	if err != nil {

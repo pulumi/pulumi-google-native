@@ -201,6 +201,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'worker_config'")
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AutoscalingPolicy, __self__).__init__(
             'google-native:dataproc/v1:AutoscalingPolicy',
             resource_name,

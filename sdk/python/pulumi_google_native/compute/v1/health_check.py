@@ -380,6 +380,8 @@ class HealthCheck(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(HealthCheck, __self__).__init__(
             'google-native:compute/v1:HealthCheck',
             resource_name,

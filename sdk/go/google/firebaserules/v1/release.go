@@ -36,6 +36,10 @@ func NewRelease(ctx *pulumi.Context,
 	if args.RulesetName == nil {
 		return nil, errors.New("invalid value for required argument 'RulesetName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Release
 	err := ctx.RegisterResource("google-native:firebaserules/v1:Release", name, args, &resource, opts...)
 	if err != nil {

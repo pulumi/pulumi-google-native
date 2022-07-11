@@ -46,6 +46,10 @@ func NewMetricDescriptor(ctx *pulumi.Context,
 		args = &MetricDescriptorArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource MetricDescriptor
 	err := ctx.RegisterResource("google-native:monitoring/v3:MetricDescriptor", name, args, &resource, opts...)
 	if err != nil {

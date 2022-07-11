@@ -153,6 +153,8 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["v3Id1"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["v3Id", "v3Id1"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }

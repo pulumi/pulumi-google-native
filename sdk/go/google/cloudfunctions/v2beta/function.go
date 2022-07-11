@@ -47,6 +47,11 @@ func NewFunction(ctx *pulumi.Context,
 		args = &FunctionArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Function
 	err := ctx.RegisterResource("google-native:cloudfunctions/v2beta:Function", name, args, &resource, opts...)
 	if err != nil {

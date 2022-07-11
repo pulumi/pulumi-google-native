@@ -114,6 +114,13 @@ namespace Pulumi.GoogleNative.IAM.V1
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "location",
+                    "project",
+                    "workloadIdentityPoolId",
+                    "workloadIdentityPoolProviderId",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

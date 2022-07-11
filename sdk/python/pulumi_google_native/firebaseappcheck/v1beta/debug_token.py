@@ -162,6 +162,8 @@ class DebugToken(pulumi.CustomResource):
             if token is None and not opts.urn:
                 raise TypeError("Missing required property 'token'")
             __props__.__dict__["token"] = token
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DebugToken, __self__).__init__(
             'google-native:firebaseappcheck/v1beta:DebugToken',
             resource_name,

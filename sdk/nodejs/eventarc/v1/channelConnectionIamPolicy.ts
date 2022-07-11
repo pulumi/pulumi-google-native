@@ -89,6 +89,8 @@ export class ChannelConnectionIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["channelConnectionId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ChannelConnectionIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

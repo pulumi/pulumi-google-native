@@ -32,6 +32,10 @@ func NewTenant(ctx *pulumi.Context,
 	if args.ExternalId == nil {
 		return nil, errors.New("invalid value for required argument 'ExternalId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Tenant
 	err := ctx.RegisterResource("google-native:jobs/v4:Tenant", name, args, &resource, opts...)
 	if err != nil {

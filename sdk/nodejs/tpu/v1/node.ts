@@ -187,6 +187,8 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["useServiceNetworking"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }

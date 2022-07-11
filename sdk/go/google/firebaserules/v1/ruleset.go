@@ -37,6 +37,10 @@ func NewRuleset(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Ruleset
 	err := ctx.RegisterResource("google-native:firebaserules/v1:Ruleset", name, args, &resource, opts...)
 	if err != nil {

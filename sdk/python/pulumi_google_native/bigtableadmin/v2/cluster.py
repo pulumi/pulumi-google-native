@@ -245,6 +245,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["serve_nodes"] = serve_nodes
             __props__.__dict__["state"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cluster_id", "instance_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Cluster, __self__).__init__(
             'google-native:bigtableadmin/v2:Cluster',
             resource_name,

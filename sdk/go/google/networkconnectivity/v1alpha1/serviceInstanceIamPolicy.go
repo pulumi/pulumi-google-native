@@ -40,6 +40,12 @@ func NewServiceInstanceIamPolicy(ctx *pulumi.Context,
 	if args.ServiceInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceInstanceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"serviceInstanceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServiceInstanceIamPolicy
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -57,6 +57,11 @@ func NewConversationProfile(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ConversationProfile
 	err := ctx.RegisterResource("google-native:dialogflow/v2:ConversationProfile", name, args, &resource, opts...)
 	if err != nil {

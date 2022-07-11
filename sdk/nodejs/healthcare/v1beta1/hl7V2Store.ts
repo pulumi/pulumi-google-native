@@ -104,6 +104,8 @@ export class Hl7V2Store extends pulumi.CustomResource {
             resourceInputs["rejectDuplicateMessage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Hl7V2Store.__pulumiType, name, resourceInputs, opts);
     }
 }

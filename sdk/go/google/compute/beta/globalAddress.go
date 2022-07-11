@@ -62,6 +62,10 @@ func NewGlobalAddress(ctx *pulumi.Context,
 		args = &GlobalAddressArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GlobalAddress
 	err := ctx.RegisterResource("google-native:compute/beta:GlobalAddress", name, args, &resource, opts...)
 	if err != nil {

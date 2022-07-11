@@ -215,6 +215,8 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["usage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["serviceName"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Config.__pulumiType, name, resourceInputs, opts);
     }
 }

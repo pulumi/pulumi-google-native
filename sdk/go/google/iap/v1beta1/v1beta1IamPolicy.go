@@ -36,6 +36,10 @@ func NewV1beta1IamPolicy(ctx *pulumi.Context,
 	if args.V1beta1Id == nil {
 		return nil, errors.New("invalid value for required argument 'V1beta1Id'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"v1beta1Id",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource V1beta1IamPolicy
 	err := ctx.RegisterResource("google-native:iap/v1beta1:V1beta1IamPolicy", name, args, &resource, opts...)
 	if err != nil {

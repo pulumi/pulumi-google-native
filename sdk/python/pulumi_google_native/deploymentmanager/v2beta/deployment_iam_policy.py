@@ -187,6 +187,8 @@ class DeploymentIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "resource"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DeploymentIamPolicy, __self__).__init__(
             'google-native:deploymentmanager/v2beta:DeploymentIamPolicy',
             resource_name,

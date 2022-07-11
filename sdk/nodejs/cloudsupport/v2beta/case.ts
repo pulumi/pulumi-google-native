@@ -156,6 +156,8 @@ export class Case extends pulumi.CustomResource {
             resourceInputs["v2betumId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["v2betaId1", "v2betumId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Case.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -41,6 +41,10 @@ func NewContact(ctx *pulumi.Context,
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Contact
 	err := ctx.RegisterResource("google-native:essentialcontacts/v1:Contact", name, args, &resource, opts...)
 	if err != nil {

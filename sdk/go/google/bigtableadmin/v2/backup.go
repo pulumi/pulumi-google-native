@@ -61,6 +61,13 @@ func NewBackup(ctx *pulumi.Context,
 	if args.SourceTable == nil {
 		return nil, errors.New("invalid value for required argument 'SourceTable'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"backupId",
+		"clusterId",
+		"instanceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Backup
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:Backup", name, args, &resource, opts...)
 	if err != nil {

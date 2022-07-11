@@ -48,6 +48,12 @@ func NewRealm(ctx *pulumi.Context,
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"realmId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Realm
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:Realm", name, args, &resource, opts...)
 	if err != nil {

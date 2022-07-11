@@ -86,6 +86,14 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "endpointId",
+                    "location",
+                    "namespaceId",
+                    "project",
+                    "serviceId",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

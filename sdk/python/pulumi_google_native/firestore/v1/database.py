@@ -231,6 +231,8 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
             __props__.__dict__["key_prefix"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Database, __self__).__init__(
             'google-native:firestore/v1:Database',
             resource_name,

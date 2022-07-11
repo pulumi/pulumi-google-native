@@ -44,6 +44,12 @@ func NewGroup(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"groupId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Group
 	err := ctx.RegisterResource("google-native:vmmigration/v1alpha1:Group", name, args, &resource, opts...)
 	if err != nil {

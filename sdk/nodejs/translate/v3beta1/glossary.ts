@@ -101,6 +101,8 @@ export class Glossary extends pulumi.CustomResource {
             resourceInputs["submitTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Glossary.__pulumiType, name, resourceInputs, opts);
     }
 }

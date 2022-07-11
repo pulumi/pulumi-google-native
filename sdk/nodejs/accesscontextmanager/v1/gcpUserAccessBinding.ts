@@ -79,6 +79,8 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["organizationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GcpUserAccessBinding.__pulumiType, name, resourceInputs, opts);
     }
 }

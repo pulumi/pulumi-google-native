@@ -40,6 +40,12 @@ func NewChannelIamPolicy(ctx *pulumi.Context,
 	if args.ChannelId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"channelId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ChannelIamPolicy
 	err := ctx.RegisterResource("google-native:eventarc/v1:ChannelIamPolicy", name, args, &resource, opts...)
 	if err != nil {

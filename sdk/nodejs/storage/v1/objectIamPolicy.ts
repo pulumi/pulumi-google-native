@@ -106,6 +106,8 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bucket", "object"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ObjectIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

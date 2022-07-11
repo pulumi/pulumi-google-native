@@ -59,6 +59,12 @@ func NewContentitem(ctx *pulumi.Context,
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"lakeId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Contentitem
 	err := ctx.RegisterResource("google-native:dataplex/v1:Contentitem", name, args, &resource, opts...)
 	if err != nil {

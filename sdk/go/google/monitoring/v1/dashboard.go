@@ -48,6 +48,10 @@ func NewDashboard(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Dashboard
 	err := ctx.RegisterResource("google-native:monitoring/v1:Dashboard", name, args, &resource, opts...)
 	if err != nil {

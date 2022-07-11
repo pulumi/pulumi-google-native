@@ -44,6 +44,13 @@ func NewPerfSampleSeries(ctx *pulumi.Context,
 	if args.StepId == nil {
 		return nil, errors.New("invalid value for required argument 'StepId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"executionId",
+		"historyId",
+		"project",
+		"stepId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PerfSampleSeries
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:PerfSampleSeries", name, args, &resource, opts...)
 	if err != nil {

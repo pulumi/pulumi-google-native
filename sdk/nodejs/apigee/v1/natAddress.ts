@@ -79,6 +79,8 @@ export class NatAddress extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NatAddress.__pulumiType, name, resourceInputs, opts);
     }
 }

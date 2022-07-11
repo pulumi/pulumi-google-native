@@ -867,6 +867,8 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["time_storage_class_updated"] = time_storage_class_updated
             __props__.__dict__["updated"] = updated
             __props__.__dict__["user_project"] = user_project
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BucketObject, __self__).__init__(
             'google-native:storage/v1:BucketObject',
             resource_name,

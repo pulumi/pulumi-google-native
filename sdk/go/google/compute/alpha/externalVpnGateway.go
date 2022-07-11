@@ -44,6 +44,10 @@ func NewExternalVpnGateway(ctx *pulumi.Context,
 		args = &ExternalVpnGatewayArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ExternalVpnGateway
 	err := ctx.RegisterResource("google-native:compute/alpha:ExternalVpnGateway", name, args, &resource, opts...)
 	if err != nil {

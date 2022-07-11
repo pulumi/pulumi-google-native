@@ -40,6 +40,11 @@ func NewFleet(ctx *pulumi.Context,
 		args = &FleetArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Fleet
 	err := ctx.RegisterResource("google-native:gkehub/v1alpha:Fleet", name, args, &resource, opts...)
 	if err != nil {

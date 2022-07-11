@@ -53,6 +53,12 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.CertificateId == nil {
 		return nil, errors.New("invalid value for required argument 'CertificateId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"certificateId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Certificate
 	err := ctx.RegisterResource("google-native:certificatemanager/v1:Certificate", name, args, &resource, opts...)
 	if err != nil {

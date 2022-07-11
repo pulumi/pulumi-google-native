@@ -40,6 +40,12 @@ func NewClientConnectorServiceIamPolicy(ctx *pulumi.Context,
 	if args.ClientConnectorServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ClientConnectorServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"clientConnectorServiceId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ClientConnectorServiceIamPolicy
 	err := ctx.RegisterResource("google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

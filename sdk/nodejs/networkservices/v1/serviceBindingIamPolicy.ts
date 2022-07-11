@@ -89,6 +89,8 @@ export class ServiceBindingIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "serviceBindingId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServiceBindingIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

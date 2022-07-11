@@ -86,6 +86,8 @@ export class SecretIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "secretId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SecretIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

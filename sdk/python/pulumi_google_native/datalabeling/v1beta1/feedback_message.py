@@ -244,6 +244,8 @@ class FeedbackMessage(pulumi.CustomResource):
             __props__.__dict__["operator_feedback_metadata"] = operator_feedback_metadata
             __props__.__dict__["project"] = project
             __props__.__dict__["requester_feedback_metadata"] = requester_feedback_metadata
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["annotated_dataset_id", "dataset_id", "feedback_thread_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FeedbackMessage, __self__).__init__(
             'google-native:datalabeling/v1beta1:FeedbackMessage',
             resource_name,

@@ -38,6 +38,10 @@ func NewAndroidApp(ctx *pulumi.Context,
 		args = &AndroidAppArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AndroidApp
 	err := ctx.RegisterResource("google-native:firebase/v1beta1:AndroidApp", name, args, &resource, opts...)
 	if err != nil {

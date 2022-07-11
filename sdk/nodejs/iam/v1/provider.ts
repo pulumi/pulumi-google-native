@@ -132,6 +132,8 @@ export class Provider extends pulumi.CustomResource {
             resourceInputs["workloadIdentityPoolProviderId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "workloadIdentityPoolId", "workloadIdentityPoolProviderId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

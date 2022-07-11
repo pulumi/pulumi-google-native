@@ -53,6 +53,11 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Database
 	err := ctx.RegisterResource("google-native:spanner/v1:Database", name, args, &resource, opts...)
 	if err != nil {

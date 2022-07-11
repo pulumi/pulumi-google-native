@@ -66,6 +66,12 @@ func NewOsPolicyAssignment(ctx *pulumi.Context,
 	if args.Rollout == nil {
 		return nil, errors.New("invalid value for required argument 'Rollout'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"osPolicyAssignmentId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OsPolicyAssignment
 	err := ctx.RegisterResource("google-native:osconfig/v1alpha:OsPolicyAssignment", name, args, &resource, opts...)
 	if err != nil {

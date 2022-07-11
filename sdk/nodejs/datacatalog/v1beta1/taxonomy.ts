@@ -96,6 +96,8 @@ export class Taxonomy extends pulumi.CustomResource {
             resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Taxonomy.__pulumiType, name, resourceInputs, opts);
     }
 }

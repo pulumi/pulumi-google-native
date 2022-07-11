@@ -45,6 +45,12 @@ func NewStudy(ctx *pulumi.Context,
 	if args.StudyId == nil {
 		return nil, errors.New("invalid value for required argument 'StudyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"studyId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Study
 	err := ctx.RegisterResource("google-native:ml/v1:Study", name, args, &resource, opts...)
 	if err != nil {

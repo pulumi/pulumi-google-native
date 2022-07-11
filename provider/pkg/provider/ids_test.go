@@ -71,26 +71,61 @@ func TestGetDefaultName_Generated(t *testing.T) {
 		"location": "west",
 		"ignoreMe": 1.2,
 	})
-	actual, autonamed := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
+	actual, autonamed := getDefaultName(urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
+		news)
 	expectedPrefix := "projects/p01/locations/west/things/myName-"
 	assert.True(t, autonamed)
 	assert.True(t, strings.HasPrefix(actual.StringValue(), expectedPrefix))
 	assert.Equal(t, len(expectedPrefix)+7, len(actual.StringValue()))
 }
 
+func TestGetDefaultName_NamedToGenerated(t *testing.T) {
+	urn := resource.URN("urn:pulumi:dev::test::test-provider:testModule:TestResource::myName")
+	olds := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"project":  "p01",
+		"location": "west",
+		"name":     "my-special-name",
+	})
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"project":  "p01",
+		"location": "west",
+	})
+	actual, autonamed := getDefaultName(urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
+		news)
+	expectedPrefix := "projects/p01/locations/west/things/myName-"
+	assert.True(t, autonamed)
+	assert.True(t, strings.HasPrefix(actual.StringValue(), expectedPrefix))
+	assert.Equal(t, len(expectedPrefix)+7, len(actual.StringValue()))
+}
+
+func TestGetDefaultName_SimpleAutonamePatternField(t *testing.T) {
+	urn := resource.URN("urn:pulumi:dev::test::test-provider:testModule:TestResource::myName")
+	fixedName := "myName-abc123f"
+	olds := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"keyRingId":   "myName-abc123f",
+		"__autonamed": true,
+	})
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{})
+	actual, autonamed := getDefaultName(urn, "keyRingId", "keyRingId", olds, news)
+	assert.True(t, autonamed)
+	assert.Equal(t, fixedName, actual.StringValue())
+}
+
 func TestGetDefaultName_OldApplied(t *testing.T) {
 	urn := resource.URN("urn:pulumi:dev::test::test-provider:testModule:TestResource::myName")
 	fixedName := "projects/p01/locations/west/things/anotherName"
 	olds := resource.NewPropertyMapFromMap(map[string]interface{}{
-		"name": fixedName,
+		"name":        fixedName,
+		"__autonamed": true,
 	})
 	news := resource.NewPropertyMapFromMap(map[string]interface{}{
 		"project":  "p01",
 		"location": "west",
 		"ignoreMe": 1.2,
 	})
-	actual, autonamed := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
-	assert.False(t, autonamed)
+	actual, autonamed := getDefaultName(urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
+		news)
+	assert.True(t, autonamed)
 	assert.Equal(t, fixedName, actual.StringValue())
 }
 

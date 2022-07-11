@@ -119,6 +119,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "location",
+                    "project",
+                    "queueId",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

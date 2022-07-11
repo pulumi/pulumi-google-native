@@ -95,6 +95,8 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["trafficPercentStrategy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["serviceName"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Rollout.__pulumiType, name, resourceInputs, opts);
     }
 }

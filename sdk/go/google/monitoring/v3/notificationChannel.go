@@ -44,6 +44,10 @@ func NewNotificationChannel(ctx *pulumi.Context,
 		args = &NotificationChannelArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource NotificationChannel
 	err := ctx.RegisterResource("google-native:monitoring/v3:NotificationChannel", name, args, &resource, opts...)
 	if err != nil {

@@ -45,6 +45,10 @@ func NewIndex(ctx *pulumi.Context,
 	if args.Properties == nil {
 		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Index
 	err := ctx.RegisterResource("google-native:datastore/v1:Index", name, args, &resource, opts...)
 	if err != nil {

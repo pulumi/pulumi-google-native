@@ -31,6 +31,11 @@ func NewDataset(ctx *pulumi.Context,
 		args = &DatasetArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:healthcare/v1:Dataset", name, args, &resource, opts...)
 	if err != nil {

@@ -200,6 +200,8 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project", "releaseId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Release.__pulumiType, name, resourceInputs, opts);
     }
 }

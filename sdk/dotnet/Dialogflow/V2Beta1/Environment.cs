@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "environmentId",
+                    "location",
+                    "project",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

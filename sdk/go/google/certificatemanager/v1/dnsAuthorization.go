@@ -48,6 +48,12 @@ func NewDnsAuthorization(ctx *pulumi.Context,
 	if args.Domain == nil {
 		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"dnsAuthorizationId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DnsAuthorization
 	err := ctx.RegisterResource("google-native:certificatemanager/v1:DnsAuthorization", name, args, &resource, opts...)
 	if err != nil {

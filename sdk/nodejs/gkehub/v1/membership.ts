@@ -144,6 +144,8 @@ export class Membership extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "membershipId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Membership.__pulumiType, name, resourceInputs, opts);
     }
 }

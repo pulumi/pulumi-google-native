@@ -101,6 +101,8 @@ export class Model extends pulumi.CustomResource {
             resourceInputs["regions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Model.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -39,6 +39,11 @@ func NewManagedZoneIamPolicy(ctx *pulumi.Context,
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"managedZone",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ManagedZoneIamPolicy
 	err := ctx.RegisterResource("google-native:dns/v1:ManagedZoneIamPolicy", name, args, &resource, opts...)
 	if err != nil {

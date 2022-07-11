@@ -46,6 +46,12 @@ func NewSource(ctx *pulumi.Context,
 	if args.SourceId == nil {
 		return nil, errors.New("invalid value for required argument 'SourceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"sourceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Source
 	err := ctx.RegisterResource("google-native:vmmigration/v1:Source", name, args, &resource, opts...)
 	if err != nil {

@@ -50,6 +50,11 @@ func NewFolderBigQueryExport(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bigQueryExportId",
+		"folderId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FolderBigQueryExport
 	err := ctx.RegisterResource("google-native:securitycenter/v1:FolderBigQueryExport", name, args, &resource, opts...)
 	if err != nil {

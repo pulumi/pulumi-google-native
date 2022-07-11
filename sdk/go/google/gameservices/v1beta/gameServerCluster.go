@@ -51,6 +51,13 @@ func NewGameServerCluster(ctx *pulumi.Context,
 	if args.RealmId == nil {
 		return nil, errors.New("invalid value for required argument 'RealmId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"gameServerClusterId",
+		"location",
+		"project",
+		"realmId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GameServerCluster
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:GameServerCluster", name, args, &resource, opts...)
 	if err != nil {

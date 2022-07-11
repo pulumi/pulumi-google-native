@@ -95,6 +95,8 @@ export class GameServerDeploymentIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["gameServerDeploymentId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GameServerDeploymentIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

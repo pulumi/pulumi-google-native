@@ -54,6 +54,13 @@ func NewChannel(ctx *pulumi.Context,
 	if args.ValidateOnly == nil {
 		return nil, errors.New("invalid value for required argument 'ValidateOnly'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"channelId",
+		"location",
+		"project",
+		"validateOnly",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Channel
 	err := ctx.RegisterResource("google-native:eventarc/v1:Channel", name, args, &resource, opts...)
 	if err != nil {

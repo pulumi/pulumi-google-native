@@ -129,6 +129,8 @@ export class BillingAccountBucket extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["billingAccountId", "bucketId", "location"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BillingAccountBucket.__pulumiType, name, resourceInputs, opts);
     }
 }

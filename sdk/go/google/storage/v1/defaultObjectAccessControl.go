@@ -64,6 +64,10 @@ func NewDefaultObjectAccessControl(ctx *pulumi.Context,
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bucket",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DefaultObjectAccessControl
 	err := ctx.RegisterResource("google-native:storage/v1:DefaultObjectAccessControl", name, args, &resource, opts...)
 	if err != nil {

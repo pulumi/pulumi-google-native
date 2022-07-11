@@ -257,6 +257,8 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__.__dict__["display_name"] = None
             __props__.__dict__["reachability_details"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "test_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ConnectivityTest, __self__).__init__(
             'google-native:networkmanagement/v1:ConnectivityTest',
             resource_name,

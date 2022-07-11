@@ -63,6 +63,12 @@ func NewConnectionProfile(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"connectionProfileId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ConnectionProfile
 	err := ctx.RegisterResource("google-native:datastream/v1:ConnectionProfile", name, args, &resource, opts...)
 	if err != nil {

@@ -49,6 +49,13 @@ func NewOrganizationBucketView(ctx *pulumi.Context,
 	if args.ViewId == nil {
 		return nil, errors.New("invalid value for required argument 'ViewId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bucketId",
+		"location",
+		"organizationId",
+		"viewId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OrganizationBucketView
 	err := ctx.RegisterResource("google-native:logging/v2:OrganizationBucketView", name, args, &resource, opts...)
 	if err != nil {

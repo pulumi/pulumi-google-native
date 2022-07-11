@@ -54,6 +54,10 @@ func NewDeployment(ctx *pulumi.Context,
 		args = &DeploymentArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Deployment
 	err := ctx.RegisterResource("google-native:deploymentmanager/alpha:Deployment", name, args, &resource, opts...)
 	if err != nil {

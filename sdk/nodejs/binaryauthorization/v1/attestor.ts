@@ -92,6 +92,8 @@ export class Attestor extends pulumi.CustomResource {
             resourceInputs["userOwnedGrafeasNote"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["attestorId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Attestor.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -39,6 +39,11 @@ func NewIssueModel(ctx *pulumi.Context,
 		args = &IssueModelArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource IssueModel
 	err := ctx.RegisterResource("google-native:contactcenterinsights/v1:IssueModel", name, args, &resource, opts...)
 	if err != nil {

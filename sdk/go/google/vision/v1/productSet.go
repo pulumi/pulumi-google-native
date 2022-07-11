@@ -35,6 +35,11 @@ func NewProductSet(ctx *pulumi.Context,
 		args = &ProductSetArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ProductSet
 	err := ctx.RegisterResource("google-native:vision/v1:ProductSet", name, args, &resource, opts...)
 	if err != nil {

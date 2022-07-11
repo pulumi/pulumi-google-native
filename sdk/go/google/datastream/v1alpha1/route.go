@@ -58,6 +58,13 @@ func NewRoute(ctx *pulumi.Context,
 	if args.RouteId == nil {
 		return nil, errors.New("invalid value for required argument 'RouteId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"privateConnectionId",
+		"project",
+		"routeId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Route
 	err := ctx.RegisterResource("google-native:datastream/v1alpha1:Route", name, args, &resource, opts...)
 	if err != nil {

@@ -98,6 +98,8 @@ export class SessionEntityType extends pulumi.CustomResource {
             resourceInputs["sessionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["agentId", "environmentId", "location", "project", "sessionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SessionEntityType.__pulumiType, name, resourceInputs, opts);
     }
 }

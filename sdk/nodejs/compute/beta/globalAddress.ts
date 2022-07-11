@@ -167,6 +167,8 @@ export class GlobalAddress extends pulumi.CustomResource {
             resourceInputs["users"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GlobalAddress.__pulumiType, name, resourceInputs, opts);
     }
 }

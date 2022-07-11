@@ -207,6 +207,8 @@ class NetworkFirewallPolicyIamPolicy(pulumi.CustomResource):
             __props__.__dict__["resource"] = resource
             __props__.__dict__["rules"] = rules
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "resource"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NetworkFirewallPolicyIamPolicy, __self__).__init__(
             'google-native:compute/v1:NetworkFirewallPolicyIamPolicy',
             resource_name,

@@ -135,6 +135,8 @@ class AuthorizedCertificate(pulumi.CustomResource):
             __props__.__dict__["managed_certificate"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["visible_domain_mappings"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AuthorizedCertificate, __self__).__init__(
             'google-native:appengine/v1alpha:AuthorizedCertificate',
             resource_name,

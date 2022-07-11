@@ -221,6 +221,8 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["slot_capacity"] = slot_capacity
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Reservation, __self__).__init__(
             'google-native:bigqueryreservation/v1:Reservation',
             resource_name,

@@ -46,6 +46,12 @@ func NewChannelConnection(ctx *pulumi.Context,
 	if args.ChannelConnectionId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelConnectionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"channelConnectionId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ChannelConnection
 	err := ctx.RegisterResource("google-native:eventarc/v1:ChannelConnection", name, args, &resource, opts...)
 	if err != nil {

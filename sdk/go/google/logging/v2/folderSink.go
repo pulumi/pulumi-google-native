@@ -59,6 +59,10 @@ func NewFolderSink(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"folderId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FolderSink
 	err := ctx.RegisterResource("google-native:logging/v2:FolderSink", name, args, &resource, opts...)
 	if err != nil {

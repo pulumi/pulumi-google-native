@@ -87,6 +87,11 @@ func NewVersion(ctx *pulumi.Context,
 	if args.RuntimeVersion == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeVersion'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"modelId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Version
 	err := ctx.RegisterResource("google-native:ml/v1:Version", name, args, &resource, opts...)
 	if err != nil {

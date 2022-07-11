@@ -53,6 +53,14 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"endpointId",
+		"location",
+		"namespaceId",
+		"project",
+		"serviceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Endpoint
 	err := ctx.RegisterResource("google-native:servicedirectory/v1beta1:Endpoint", name, args, &resource, opts...)
 	if err != nil {

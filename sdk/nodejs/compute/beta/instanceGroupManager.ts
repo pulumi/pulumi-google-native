@@ -206,6 +206,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "zone"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(InstanceGroupManager.__pulumiType, name, resourceInputs, opts);
     }
 }

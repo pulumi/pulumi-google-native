@@ -82,6 +82,10 @@ func NewSnapshot(ctx *pulumi.Context,
 		args = &SnapshotArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Snapshot
 	err := ctx.RegisterResource("google-native:compute/beta:Snapshot", name, args, &resource, opts...)
 	if err != nil {

@@ -81,6 +81,8 @@ export class IngressRule extends pulumi.CustomResource {
             resourceInputs["sourceRange"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["appId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(IngressRule.__pulumiType, name, resourceInputs, opts);
     }
 }

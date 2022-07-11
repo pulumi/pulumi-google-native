@@ -191,6 +191,8 @@ export class Report extends pulumi.CustomResource {
             resourceInputs["topk"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Report.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -39,6 +39,11 @@ func NewEnvironment(ctx *pulumi.Context,
 		args = &EnvironmentArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Environment
 	err := ctx.RegisterResource("google-native:composer/v1:Environment", name, args, &resource, opts...)
 	if err != nil {

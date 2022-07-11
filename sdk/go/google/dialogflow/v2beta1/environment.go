@@ -46,6 +46,12 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Environment
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Environment", name, args, &resource, opts...)
 	if err != nil {

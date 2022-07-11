@@ -80,6 +80,13 @@ func NewRelease(ctx *pulumi.Context,
 	if args.ReleaseId == nil {
 		return nil, errors.New("invalid value for required argument 'ReleaseId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"deliveryPipelineId",
+		"location",
+		"project",
+		"releaseId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Release
 	err := ctx.RegisterResource("google-native:clouddeploy/v1:Release", name, args, &resource, opts...)
 	if err != nil {

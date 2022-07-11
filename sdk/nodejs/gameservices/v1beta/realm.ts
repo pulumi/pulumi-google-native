@@ -109,6 +109,8 @@ export class Realm extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "realmId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Realm.__pulumiType, name, resourceInputs, opts);
     }
 }

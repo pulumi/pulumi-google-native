@@ -298,6 +298,8 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["status_message"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NodeTemplate, __self__).__init__(
             'google-native:compute/v1:NodeTemplate',
             resource_name,

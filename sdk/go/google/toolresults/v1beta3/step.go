@@ -67,6 +67,12 @@ func NewStep(ctx *pulumi.Context,
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"executionId",
+		"historyId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Step
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:Step", name, args, &resource, opts...)
 	if err != nil {

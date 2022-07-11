@@ -93,6 +93,8 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             resourceInputs["ruleName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "responsePolicy"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ResponsePolicyRule.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -95,6 +95,8 @@ export class TargetProject extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "targetProjectId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TargetProject.__pulumiType, name, resourceInputs, opts);
     }
 }

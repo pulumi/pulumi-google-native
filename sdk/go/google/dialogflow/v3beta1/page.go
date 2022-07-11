@@ -53,6 +53,13 @@ func NewPage(ctx *pulumi.Context,
 	if args.FlowId == nil {
 		return nil, errors.New("invalid value for required argument 'FlowId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"agentId",
+		"flowId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Page
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:Page", name, args, &resource, opts...)
 	if err != nil {

@@ -495,8 +495,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		patternParams.Add(sdkName)
 
 		inputProperties[sdkName] = schema.PropertySpec{
-			Description: param.Description,
-			TypeSpec:    schema.TypeSpec{Type: "string"},
+			Description:      param.Description,
+			TypeSpec:         schema.TypeSpec{Type: "string"},
+			ReplaceOnChanges: isRequired(param),
 		}
 		if isRequired(param) {
 			requiredInputProperties.Add(sdkName)
@@ -514,7 +515,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		name := names[1]
 		sdkName := apiParamNameToSdkName(name)
 		inputProperties[sdkName] = schema.PropertySpec{
-			TypeSpec: schema.TypeSpec{Type: "string"},
+			TypeSpec:         schema.TypeSpec{Type: "string"},
+			ReplaceOnChanges: true, // All path parameters should trigger replace-on-changes.
 		}
 		properties[sdkName] = inputProperties[sdkName]
 		p := resources.CloudAPIResourceParam{
@@ -754,7 +756,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			resourceMeta.Create.Autoname.FieldName = namePattern
 		} else if name, ok := autonameOverrides[fmt.Sprintf("google-native:%s:%s", g.mod, typeName)]; ok {
 			requiredInputProperties.Delete(name)
-			resourceMeta.Create.Autoname.FieldName = fmt.Sprintf("%s", name)
+			resourceMeta.Create.Autoname.FieldName = name
 		} else {
 			description += "\nAuto-naming is currently not supported for this resource."
 		}

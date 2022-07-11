@@ -207,6 +207,8 @@ class SecretIamPolicy(pulumi.CustomResource):
             __props__.__dict__["secret_id"] = secret_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "secret_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SecretIamPolicy, __self__).__init__(
             'google-native:secretmanager/v1beta1:SecretIamPolicy',
             resource_name,

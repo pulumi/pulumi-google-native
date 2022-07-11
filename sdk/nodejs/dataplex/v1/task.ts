@@ -156,6 +156,8 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["lakeId", "location", "project", "taskId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Task.__pulumiType, name, resourceInputs, opts);
     }
 }

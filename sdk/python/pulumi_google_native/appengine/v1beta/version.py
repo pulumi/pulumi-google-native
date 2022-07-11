@@ -817,6 +817,8 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["disk_usage_bytes"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["version_url"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_id", "service_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Version, __self__).__init__(
             'google-native:appengine/v1beta:Version',
             resource_name,

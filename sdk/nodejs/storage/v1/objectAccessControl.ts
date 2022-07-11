@@ -141,6 +141,8 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bucket", "object"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ObjectAccessControl.__pulumiType, name, resourceInputs, opts);
     }
 }

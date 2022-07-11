@@ -108,6 +108,11 @@ func NewTable(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"datasetId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Table
 	err := ctx.RegisterResource("google-native:bigquery/v2:Table", name, args, &resource, opts...)
 	if err != nil {

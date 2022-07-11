@@ -69,6 +69,10 @@ func NewDeveloper(ctx *pulumi.Context,
 	if args.UserName == nil {
 		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Developer
 	err := ctx.RegisterResource("google-native:apigee/v1:Developer", name, args, &resource, opts...)
 	if err != nil {

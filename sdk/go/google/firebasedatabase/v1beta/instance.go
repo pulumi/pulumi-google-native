@@ -37,6 +37,11 @@ func NewInstance(ctx *pulumi.Context,
 		args = &InstanceArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Instance
 	err := ctx.RegisterResource("google-native:firebasedatabase/v1beta:Instance", name, args, &resource, opts...)
 	if err != nil {

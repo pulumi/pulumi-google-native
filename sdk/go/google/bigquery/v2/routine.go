@@ -69,6 +69,11 @@ func NewRoutine(ctx *pulumi.Context,
 	if args.RoutineType == nil {
 		return nil, errors.New("invalid value for required argument 'RoutineType'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"datasetId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Routine
 	err := ctx.RegisterResource("google-native:bigquery/v2:Routine", name, args, &resource, opts...)
 	if err != nil {

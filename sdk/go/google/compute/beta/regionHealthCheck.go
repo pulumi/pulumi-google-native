@@ -59,6 +59,11 @@ func NewRegionHealthCheck(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"region",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RegionHealthCheck
 	err := ctx.RegisterResource("google-native:compute/beta:RegionHealthCheck", name, args, &resource, opts...)
 	if err != nil {

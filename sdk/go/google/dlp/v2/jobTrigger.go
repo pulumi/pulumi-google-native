@@ -49,6 +49,11 @@ func NewJobTrigger(ctx *pulumi.Context,
 	if args.Status == nil {
 		return nil, errors.New("invalid value for required argument 'Status'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource JobTrigger
 	err := ctx.RegisterResource("google-native:dlp/v2:JobTrigger", name, args, &resource, opts...)
 	if err != nil {

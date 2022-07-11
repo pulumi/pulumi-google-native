@@ -80,6 +80,8 @@ export class Override extends pulumi.CustomResource {
             resourceInputs["samplingConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Override.__pulumiType, name, resourceInputs, opts);
     }
 }

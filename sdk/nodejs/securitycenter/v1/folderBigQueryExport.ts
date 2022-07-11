@@ -113,6 +113,8 @@ export class FolderBigQueryExport extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bigQueryExportId", "folderId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FolderBigQueryExport.__pulumiType, name, resourceInputs, opts);
     }
 }

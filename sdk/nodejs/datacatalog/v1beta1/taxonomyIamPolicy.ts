@@ -82,6 +82,8 @@ export class TaxonomyIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "taxonomyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TaxonomyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

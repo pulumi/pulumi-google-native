@@ -60,6 +60,11 @@ func NewAppGateway(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AppGateway
 	err := ctx.RegisterResource("google-native:beyondcorp/v1alpha:AppGateway", name, args, &resource, opts...)
 	if err != nil {

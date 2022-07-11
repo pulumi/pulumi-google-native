@@ -38,6 +38,10 @@ func NewFolderIamPolicy(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"folderId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FolderIamPolicy
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v2:FolderIamPolicy", name, args, &resource, opts...)
 	if err != nil {

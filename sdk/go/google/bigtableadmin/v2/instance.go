@@ -55,6 +55,10 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Instance
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:Instance", name, args, &resource, opts...)
 	if err != nil {

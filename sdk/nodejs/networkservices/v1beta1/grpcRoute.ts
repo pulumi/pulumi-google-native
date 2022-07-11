@@ -131,6 +131,8 @@ export class GrpcRoute extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["grpcRouteId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GrpcRoute.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -68,6 +68,13 @@ func NewTask(ctx *pulumi.Context,
 	if args.TriggerSpec == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerSpec'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"lakeId",
+		"location",
+		"project",
+		"taskId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Task
 	err := ctx.RegisterResource("google-native:dataplex/v1:Task", name, args, &resource, opts...)
 	if err != nil {

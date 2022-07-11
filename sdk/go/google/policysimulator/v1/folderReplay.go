@@ -43,6 +43,11 @@ func NewFolderReplay(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"folderId",
+		"location",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FolderReplay
 	err := ctx.RegisterResource("google-native:policysimulator/v1:FolderReplay", name, args, &resource, opts...)
 	if err != nil {

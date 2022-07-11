@@ -110,6 +110,8 @@ export class TargetServer extends pulumi.CustomResource {
             resourceInputs["sSLInfo"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TargetServer.__pulumiType, name, resourceInputs, opts);
     }
 }

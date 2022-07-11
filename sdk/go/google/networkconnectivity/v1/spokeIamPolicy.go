@@ -40,6 +40,12 @@ func NewSpokeIamPolicy(ctx *pulumi.Context,
 	if args.SpokeId == nil {
 		return nil, errors.New("invalid value for required argument 'SpokeId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"spokeId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SpokeIamPolicy
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1:SpokeIamPolicy", name, args, &resource, opts...)
 	if err != nil {
