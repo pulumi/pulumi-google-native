@@ -95,6 +95,8 @@ export class PolicyTag extends pulumi.CustomResource {
             resourceInputs["taxonomyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "taxonomyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PolicyTag.__pulumiType, name, resourceInputs, opts);
     }
 }

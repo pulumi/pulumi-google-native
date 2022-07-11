@@ -39,6 +39,11 @@ func NewPolicyBasedRouteIamPolicy(ctx *pulumi.Context,
 	if args.PolicyBasedRouteId == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyBasedRouteId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"policyBasedRouteId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PolicyBasedRouteIamPolicy
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1:PolicyBasedRouteIamPolicy", name, args, &resource, opts...)
 	if err != nil {

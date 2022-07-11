@@ -33,6 +33,12 @@ func NewKeyRing(ctx *pulumi.Context,
 		args = &KeyRingArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"keyRingId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource KeyRing
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRing", name, args, &resource, opts...)
 	if err != nil {

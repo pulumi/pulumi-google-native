@@ -47,6 +47,12 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Instance
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:Instance", name, args, &resource, opts...)
 	if err != nil {

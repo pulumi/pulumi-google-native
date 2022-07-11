@@ -61,6 +61,12 @@ func NewBackupPlan(ctx *pulumi.Context,
 	if args.Cluster == nil {
 		return nil, errors.New("invalid value for required argument 'Cluster'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"backupPlanId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BackupPlan
 	err := ctx.RegisterResource("google-native:gkebackup/v1:BackupPlan", name, args, &resource, opts...)
 	if err != nil {

@@ -40,6 +40,12 @@ func NewReusableConfigIamPolicy(ctx *pulumi.Context,
 	if args.ReusableConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ReusableConfigId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"reusableConfigId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ReusableConfigIamPolicy
 	err := ctx.RegisterResource("google-native:privateca/v1beta1:ReusableConfigIamPolicy", name, args, &resource, opts...)
 	if err != nil {

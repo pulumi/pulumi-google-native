@@ -178,6 +178,8 @@ class Index(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Index, __self__).__init__(
             'google-native:firestore/v1beta1:Index',
             resource_name,

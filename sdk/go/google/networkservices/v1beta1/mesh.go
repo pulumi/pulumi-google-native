@@ -45,6 +45,12 @@ func NewMesh(ctx *pulumi.Context,
 	if args.MeshId == nil {
 		return nil, errors.New("invalid value for required argument 'MeshId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"meshId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Mesh
 	err := ctx.RegisterResource("google-native:networkservices/v1beta1:Mesh", name, args, &resource, opts...)
 	if err != nil {

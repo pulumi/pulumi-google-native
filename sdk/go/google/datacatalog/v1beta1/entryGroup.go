@@ -39,6 +39,12 @@ func NewEntryGroup(ctx *pulumi.Context,
 	if args.EntryGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryGroupId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"entryGroupId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EntryGroup
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:EntryGroup", name, args, &resource, opts...)
 	if err != nil {

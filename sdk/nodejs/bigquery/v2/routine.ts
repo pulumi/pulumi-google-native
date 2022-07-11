@@ -159,6 +159,8 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["strictMode"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Routine.__pulumiType, name, resourceInputs, opts);
     }
 }

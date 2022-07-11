@@ -184,6 +184,8 @@ class CloneJob(pulumi.CustomResource):
             __props__.__dict__["state_time"] = None
             __props__.__dict__["steps"] = None
             __props__.__dict__["target_details"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clone_job_id", "location", "migrating_vm_id", "project", "source_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CloneJob, __self__).__init__(
             'google-native:vmmigration/v1alpha1:CloneJob',
             resource_name,

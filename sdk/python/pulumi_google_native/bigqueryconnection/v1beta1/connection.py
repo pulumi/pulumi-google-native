@@ -200,6 +200,8 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["has_credential"] = None
             __props__.__dict__["last_modified_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Connection, __self__).__init__(
             'google-native:bigqueryconnection/v1beta1:Connection',
             resource_name,

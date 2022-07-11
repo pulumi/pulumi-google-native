@@ -37,6 +37,10 @@ func NewIngressRule(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"appId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource IngressRule
 	err := ctx.RegisterResource("google-native:appengine/v1:IngressRule", name, args, &resource, opts...)
 	if err != nil {

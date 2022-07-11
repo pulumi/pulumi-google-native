@@ -56,6 +56,13 @@ func NewDebugSession(ctx *pulumi.Context,
 	if args.RevisionId == nil {
 		return nil, errors.New("invalid value for required argument 'RevisionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"apiId",
+		"environmentId",
+		"organizationId",
+		"revisionId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DebugSession
 	err := ctx.RegisterResource("google-native:apigee/v1:DebugSession", name, args, &resource, opts...)
 	if err != nil {

@@ -45,6 +45,11 @@ func NewTargetInstance(ctx *pulumi.Context,
 		args = &TargetInstanceArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TargetInstance
 	err := ctx.RegisterResource("google-native:compute/alpha:TargetInstance", name, args, &resource, opts...)
 	if err != nil {

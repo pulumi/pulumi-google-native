@@ -38,6 +38,10 @@ func NewFolder(ctx *pulumi.Context,
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"parent",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Folder
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v2:Folder", name, args, &resource, opts...)
 	if err != nil {

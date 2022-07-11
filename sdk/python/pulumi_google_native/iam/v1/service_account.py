@@ -192,6 +192,8 @@ class ServiceAccount(pulumi.CustomResource):
             __props__.__dict__["email"] = None
             __props__.__dict__["oauth2_client_id"] = None
             __props__.__dict__["unique_id"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceAccount, __self__).__init__(
             'google-native:iam/v1:ServiceAccount',
             resource_name,

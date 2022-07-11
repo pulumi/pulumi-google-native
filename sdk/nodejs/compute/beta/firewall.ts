@@ -175,6 +175,8 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["targetTags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Firewall.__pulumiType, name, resourceInputs, opts);
     }
 }

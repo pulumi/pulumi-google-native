@@ -187,6 +187,8 @@ class Model(pulumi.CustomResource):
             __props__.__dict__["etag"] = None
             __props__.__dict__["model_hash"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Model, __self__).__init__(
             'google-native:firebaseml/v1beta2:Model',
             resource_name,

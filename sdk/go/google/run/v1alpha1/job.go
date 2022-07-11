@@ -39,6 +39,10 @@ func NewJob(ctx *pulumi.Context,
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"namespaceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Job
 	err := ctx.RegisterResource("google-native:run/v1alpha1:Job", name, args, &resource, opts...)
 	if err != nil {

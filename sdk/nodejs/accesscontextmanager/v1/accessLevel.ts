@@ -86,6 +86,8 @@ export class AccessLevel extends pulumi.CustomResource {
             resourceInputs["title"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["accessPolicyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AccessLevel.__pulumiType, name, resourceInputs, opts);
     }
 }

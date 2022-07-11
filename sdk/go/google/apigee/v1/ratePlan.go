@@ -73,6 +73,11 @@ func NewRatePlan(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"apiproductId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RatePlan
 	err := ctx.RegisterResource("google-native:apigee/v1:RatePlan", name, args, &resource, opts...)
 	if err != nil {

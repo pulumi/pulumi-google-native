@@ -262,6 +262,8 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["testing_options"] = testing_options
             __props__.__dict__["waf_settings"] = waf_settings
             __props__.__dict__["web_settings"] = web_settings
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Key, __self__).__init__(
             'google-native:recaptchaenterprise/v1:Key',
             resource_name,

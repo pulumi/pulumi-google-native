@@ -120,6 +120,8 @@ export class SavedQuery extends pulumi.CustomResource {
             resourceInputs["v1Id1"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["savedQueryId", "v1Id", "v1Id1"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SavedQuery.__pulumiType, name, resourceInputs, opts);
     }
 }

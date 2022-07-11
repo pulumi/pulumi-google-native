@@ -47,6 +47,10 @@ func NewServiceAccount(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServiceAccount
 	err := ctx.RegisterResource("google-native:iam/v1:ServiceAccount", name, args, &resource, opts...)
 	if err != nil {

@@ -84,6 +84,13 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"caPoolId",
+		"certificateAuthorityId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CertificateAuthority
 	err := ctx.RegisterResource("google-native:privateca/v1:CertificateAuthority", name, args, &resource, opts...)
 	if err != nil {

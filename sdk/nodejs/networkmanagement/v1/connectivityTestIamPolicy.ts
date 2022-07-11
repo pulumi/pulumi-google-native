@@ -86,6 +86,8 @@ export class ConnectivityTestIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["connectivityTestId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConnectivityTestIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

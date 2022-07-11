@@ -248,6 +248,8 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["sqlserver_database_details"] = sqlserver_database_details
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Database, __self__).__init__(
             'google-native:sqladmin/v1:Database',
             resource_name,

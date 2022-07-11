@@ -105,6 +105,8 @@ export class AuthorizedCertificate extends pulumi.CustomResource {
             resourceInputs["visibleDomainMappings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["appId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AuthorizedCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

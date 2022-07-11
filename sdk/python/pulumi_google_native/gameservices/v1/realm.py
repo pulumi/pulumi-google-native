@@ -218,6 +218,8 @@ class Realm(pulumi.CustomResource):
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "realm_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Realm, __self__).__init__(
             'google-native:gameservices/v1:Realm',
             resource_name,

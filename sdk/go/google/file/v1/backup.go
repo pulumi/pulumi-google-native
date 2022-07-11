@@ -56,6 +56,12 @@ func NewBackup(ctx *pulumi.Context,
 	if args.BackupId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"backupId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Backup
 	err := ctx.RegisterResource("google-native:file/v1:Backup", name, args, &resource, opts...)
 	if err != nil {

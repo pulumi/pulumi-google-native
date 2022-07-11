@@ -395,6 +395,8 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["size"] = None
             __props__.__dict__["zone"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(GlobalNetworkEndpointGroup, __self__).__init__(
             'google-native:compute/alpha:GlobalNetworkEndpointGroup',
             resource_name,

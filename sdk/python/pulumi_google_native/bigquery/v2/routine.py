@@ -346,6 +346,8 @@ class Routine(pulumi.CustomResource):
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["last_modified_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Routine, __self__).__init__(
             'google-native:bigquery/v2:Routine',
             resource_name,

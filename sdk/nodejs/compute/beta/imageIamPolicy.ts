@@ -91,6 +91,8 @@ export class ImageIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "resource"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ImageIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

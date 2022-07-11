@@ -235,6 +235,8 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["scaling_configs"] = scaling_configs
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["config_id", "game_server_deployment_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Config, __self__).__init__(
             'google-native:gameservices/v1beta:Config',
             resource_name,

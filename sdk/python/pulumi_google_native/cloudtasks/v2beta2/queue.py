@@ -239,6 +239,8 @@ class Queue(pulumi.CustomResource):
             __props__.__dict__["purge_time"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["stats"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Queue, __self__).__init__(
             'google-native:cloudtasks/v2beta2:Queue',
             resource_name,

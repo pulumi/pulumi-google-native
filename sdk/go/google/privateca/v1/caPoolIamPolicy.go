@@ -40,6 +40,12 @@ func NewCaPoolIamPolicy(ctx *pulumi.Context,
 	if args.CaPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'CaPoolId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"caPoolId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CaPoolIamPolicy
 	err := ctx.RegisterResource("google-native:privateca/v1:CaPoolIamPolicy", name, args, &resource, opts...)
 	if err != nil {

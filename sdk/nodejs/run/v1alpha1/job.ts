@@ -87,6 +87,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["namespaceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }

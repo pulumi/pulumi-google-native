@@ -245,6 +245,8 @@ class FolderBucket(pulumi.CustomResource):
             __props__.__dict__["lifecycle_state"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket_id", "folder_id", "location"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FolderBucket, __self__).__init__(
             'google-native:logging/v2:FolderBucket',
             resource_name,

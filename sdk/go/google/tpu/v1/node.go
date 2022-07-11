@@ -77,6 +77,11 @@ func NewNode(ctx *pulumi.Context,
 	if args.TensorflowVersion == nil {
 		return nil, errors.New("invalid value for required argument 'TensorflowVersion'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Node
 	err := ctx.RegisterResource("google-native:tpu/v1:Node", name, args, &resource, opts...)
 	if err != nil {

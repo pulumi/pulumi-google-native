@@ -144,6 +144,8 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DeliveryPipeline.__pulumiType, name, resourceInputs, opts);
     }
 }

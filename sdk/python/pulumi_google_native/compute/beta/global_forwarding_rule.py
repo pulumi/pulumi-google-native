@@ -560,6 +560,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["service_name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(GlobalForwardingRule, __self__).__init__(
             'google-native:compute/beta:GlobalForwardingRule',
             resource_name,

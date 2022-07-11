@@ -86,6 +86,10 @@ func NewOrganization(ctx *pulumi.Context,
 	if args.RuntimeType == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeType'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"parent",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Organization
 	err := ctx.RegisterResource("google-native:apigee/v1:Organization", name, args, &resource, opts...)
 	if err != nil {

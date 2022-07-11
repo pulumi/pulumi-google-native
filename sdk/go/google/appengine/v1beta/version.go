@@ -113,6 +113,11 @@ func NewVersion(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"appId",
+		"serviceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Version
 	err := ctx.RegisterResource("google-native:appengine/v1beta:Version", name, args, &resource, opts...)
 	if err != nil {

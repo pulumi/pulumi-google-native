@@ -42,6 +42,12 @@ func NewGameServerDeploymentIamPolicy(ctx *pulumi.Context,
 	if args.GameServerDeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'GameServerDeploymentId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"gameServerDeploymentId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GameServerDeploymentIamPolicy
 	err := ctx.RegisterResource("google-native:gameservices/v1:GameServerDeploymentIamPolicy", name, args, &resource, opts...)
 	if err != nil {

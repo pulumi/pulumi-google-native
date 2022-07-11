@@ -86,6 +86,8 @@ export class HubIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["hubId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(HubIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

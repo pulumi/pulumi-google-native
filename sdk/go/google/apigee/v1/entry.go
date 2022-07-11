@@ -43,6 +43,12 @@ func NewEntry(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"apiId",
+		"keyvaluemapId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Entry
 	err := ctx.RegisterResource("google-native:apigee/v1:Entry", name, args, &resource, opts...)
 	if err != nil {

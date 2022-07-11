@@ -282,6 +282,8 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["last_state_time"] = None
             __props__.__dict__["num_id"] = None
             __props__.__dict__["state"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "registry_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Device, __self__).__init__(
             'google-native:cloudiot/v1:Device',
             resource_name,

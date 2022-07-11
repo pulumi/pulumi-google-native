@@ -168,6 +168,8 @@ class Conversation(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["phone_number"] = None
             __props__.__dict__["start_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Conversation, __self__).__init__(
             'google-native:dialogflow/v2beta1:Conversation',
             resource_name,

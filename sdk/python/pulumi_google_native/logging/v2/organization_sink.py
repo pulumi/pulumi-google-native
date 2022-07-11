@@ -293,6 +293,8 @@ class OrganizationSink(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["writer_identity"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationSink, __self__).__init__(
             'google-native:logging/v2:OrganizationSink',
             resource_name,

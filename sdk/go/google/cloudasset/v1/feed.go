@@ -56,6 +56,11 @@ func NewFeed(ctx *pulumi.Context,
 	if args.V1Id1 == nil {
 		return nil, errors.New("invalid value for required argument 'V1Id1'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"v1Id",
+		"v1Id1",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Feed
 	err := ctx.RegisterResource("google-native:cloudasset/v1:Feed", name, args, &resource, opts...)
 	if err != nil {

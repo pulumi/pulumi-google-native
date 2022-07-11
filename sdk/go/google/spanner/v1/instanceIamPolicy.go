@@ -37,6 +37,11 @@ func NewInstanceIamPolicy(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InstanceIamPolicy
 	err := ctx.RegisterResource("google-native:spanner/v1:InstanceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

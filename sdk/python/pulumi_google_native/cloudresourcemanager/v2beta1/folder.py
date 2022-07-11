@@ -110,6 +110,8 @@ class Folder(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None
             __props__.__dict__["name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["parent"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Folder, __self__).__init__(
             'google-native:cloudresourcemanager/v2beta1:Folder',
             resource_name,

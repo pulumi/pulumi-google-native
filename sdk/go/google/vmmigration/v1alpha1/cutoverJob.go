@@ -74,6 +74,14 @@ func NewCutoverJob(ctx *pulumi.Context,
 	if args.SourceId == nil {
 		return nil, errors.New("invalid value for required argument 'SourceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"cutoverJobId",
+		"location",
+		"migratingVmId",
+		"project",
+		"sourceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CutoverJob
 	err := ctx.RegisterResource("google-native:vmmigration/v1alpha1:CutoverJob", name, args, &resource, opts...)
 	if err != nil {

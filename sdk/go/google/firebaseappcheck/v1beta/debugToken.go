@@ -41,6 +41,11 @@ func NewDebugToken(ctx *pulumi.Context,
 	if args.Token == nil {
 		return nil, errors.New("invalid value for required argument 'Token'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"appId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DebugToken
 	err := ctx.RegisterResource("google-native:firebaseappcheck/v1beta:DebugToken", name, args, &resource, opts...)
 	if err != nil {

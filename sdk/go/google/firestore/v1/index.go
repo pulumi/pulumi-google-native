@@ -42,6 +42,12 @@ func NewIndex(ctx *pulumi.Context,
 	if args.DatabaseId == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"collectionGroupId",
+		"databaseId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Index
 	err := ctx.RegisterResource("google-native:firestore/v1:Index", name, args, &resource, opts...)
 	if err != nil {

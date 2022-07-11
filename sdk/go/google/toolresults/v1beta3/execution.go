@@ -50,6 +50,11 @@ func NewExecution(ctx *pulumi.Context,
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"historyId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Execution
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:Execution", name, args, &resource, opts...)
 	if err != nil {

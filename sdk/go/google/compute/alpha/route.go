@@ -74,6 +74,10 @@ func NewRoute(ctx *pulumi.Context,
 		args = &RouteArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Route
 	err := ctx.RegisterResource("google-native:compute/alpha:Route", name, args, &resource, opts...)
 	if err != nil {

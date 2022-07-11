@@ -58,6 +58,13 @@ func NewUtilizationReport(ctx *pulumi.Context,
 	if args.UtilizationReportId == nil {
 		return nil, errors.New("invalid value for required argument 'UtilizationReportId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"sourceId",
+		"utilizationReportId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource UtilizationReport
 	err := ctx.RegisterResource("google-native:vmmigration/v1:UtilizationReport", name, args, &resource, opts...)
 	if err != nil {

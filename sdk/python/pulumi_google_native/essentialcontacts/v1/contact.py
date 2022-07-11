@@ -203,6 +203,8 @@ class Contact(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["validate_time"] = validate_time
             __props__.__dict__["validation_state"] = validation_state
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Contact, __self__).__init__(
             'google-native:essentialcontacts/v1:Contact',
             resource_name,

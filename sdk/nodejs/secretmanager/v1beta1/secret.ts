@@ -90,6 +90,8 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secretId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "secretId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }

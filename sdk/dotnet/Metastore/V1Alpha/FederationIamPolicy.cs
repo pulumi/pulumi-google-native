@@ -73,6 +73,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "federationId",
+                    "location",
+                    "project",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

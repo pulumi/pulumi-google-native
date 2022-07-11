@@ -202,6 +202,8 @@ class ServiceAccountIamPolicy(pulumi.CustomResource):
             __props__.__dict__["service_account_id"] = service_account_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "service_account_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceAccountIamPolicy, __self__).__init__(
             'google-native:iam/v1:ServiceAccountIamPolicy',
             resource_name,

@@ -311,6 +311,8 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["service_account"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["symptoms"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Node, __self__).__init__(
             'google-native:tpu/v1:Node',
             resource_name,

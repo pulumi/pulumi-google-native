@@ -51,6 +51,12 @@ func NewExecution(ctx *pulumi.Context,
 	if args.WorkflowId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"workflowId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Execution
 	err := ctx.RegisterResource("google-native:workflowexecutions/v1beta:Execution", name, args, &resource, opts...)
 	if err != nil {

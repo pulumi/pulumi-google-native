@@ -368,6 +368,8 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["project"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["subscription_type"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["parent"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Organization, __self__).__init__(
             'google-native:apigee/v1:Organization',
             resource_name,

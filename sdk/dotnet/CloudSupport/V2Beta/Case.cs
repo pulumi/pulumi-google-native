@@ -136,6 +136,11 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "v2betaId1",
+                    "v2betumId",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

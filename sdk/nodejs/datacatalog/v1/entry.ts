@@ -210,6 +210,8 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["userSpecifiedType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["entryGroupId", "entryId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Entry.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -94,6 +94,8 @@ export class ConsentStore extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["consentStoreId", "datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConsentStore.__pulumiType, name, resourceInputs, opts);
     }
 }

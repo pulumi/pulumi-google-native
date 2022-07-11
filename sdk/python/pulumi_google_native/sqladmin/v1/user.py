@@ -289,6 +289,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["sqlserver_user_details"] = sqlserver_user_details
             __props__.__dict__["type"] = type
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(User, __self__).__init__(
             'google-native:sqladmin/v1:User',
             resource_name,

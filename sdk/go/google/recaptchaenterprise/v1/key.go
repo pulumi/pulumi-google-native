@@ -42,6 +42,10 @@ func NewKey(ctx *pulumi.Context,
 		args = &KeyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Key
 	err := ctx.RegisterResource("google-native:recaptchaenterprise/v1:Key", name, args, &resource, opts...)
 	if err != nil {

@@ -181,6 +181,8 @@ class CompositeType(pulumi.CustomResource):
             __props__.__dict__["operation"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CompositeType, __self__).__init__(
             'google-native:deploymentmanager/alpha:CompositeType',
             resource_name,

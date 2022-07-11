@@ -41,6 +41,10 @@ func NewJob(ctx *pulumi.Context,
 		args = &JobArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Job
 	err := ctx.RegisterResource("google-native:bigquery/v2:Job", name, args, &resource, opts...)
 	if err != nil {

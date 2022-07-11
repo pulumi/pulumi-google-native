@@ -230,6 +230,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["metrics"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["status_history"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Cluster, __self__).__init__(
             'google-native:dataproc/v1:Cluster',
             resource_name,

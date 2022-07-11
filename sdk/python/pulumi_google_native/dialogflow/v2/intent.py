@@ -502,6 +502,8 @@ class Intent(pulumi.CustomResource):
             __props__.__dict__["webhook_state"] = webhook_state
             __props__.__dict__["followup_intent_info"] = None
             __props__.__dict__["root_followup_intent_name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Intent, __self__).__init__(
             'google-native:dialogflow/v2:Intent',
             resource_name,

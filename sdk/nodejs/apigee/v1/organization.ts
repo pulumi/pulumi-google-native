@@ -208,6 +208,8 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["parent"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Organization.__pulumiType, name, resourceInputs, opts);
     }
 }

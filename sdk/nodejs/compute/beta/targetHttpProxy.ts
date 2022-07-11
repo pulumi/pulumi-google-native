@@ -118,6 +118,8 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             resourceInputs["urlMap"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TargetHttpProxy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -48,6 +48,11 @@ func NewCapacityCommitment(ctx *pulumi.Context,
 		args = &CapacityCommitmentArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CapacityCommitment
 	err := ctx.RegisterResource("google-native:bigqueryreservation/v1:CapacityCommitment", name, args, &resource, opts...)
 	if err != nil {

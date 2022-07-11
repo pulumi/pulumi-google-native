@@ -44,6 +44,13 @@ func NewDatasetDicomStoreIamPolicy(ctx *pulumi.Context,
 	if args.DicomStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'DicomStoreId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"datasetId",
+		"dicomStoreId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DatasetDicomStoreIamPolicy
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetDicomStoreIamPolicy", name, args, &resource, opts...)
 	if err != nil {

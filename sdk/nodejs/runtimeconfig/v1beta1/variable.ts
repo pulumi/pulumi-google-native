@@ -94,6 +94,8 @@ export class Variable extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["configId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Variable.__pulumiType, name, resourceInputs, opts);
     }
 }

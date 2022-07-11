@@ -40,6 +40,11 @@ func NewReplay(ctx *pulumi.Context,
 	if args.Config == nil {
 		return nil, errors.New("invalid value for required argument 'Config'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Replay
 	err := ctx.RegisterResource("google-native:policysimulator/v1:Replay", name, args, &resource, opts...)
 	if err != nil {

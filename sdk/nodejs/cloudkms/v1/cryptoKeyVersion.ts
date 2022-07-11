@@ -151,6 +151,8 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["cryptoKeyId", "keyRingId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CryptoKeyVersion.__pulumiType, name, resourceInputs, opts);
     }
 }

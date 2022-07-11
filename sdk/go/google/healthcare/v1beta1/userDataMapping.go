@@ -52,6 +52,13 @@ func NewUserDataMapping(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"consentStoreId",
+		"datasetId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource UserDataMapping
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:UserDataMapping", name, args, &resource, opts...)
 	if err != nil {

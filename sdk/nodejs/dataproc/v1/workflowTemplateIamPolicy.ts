@@ -82,6 +82,8 @@ export class WorkflowTemplateIamPolicy extends pulumi.CustomResource {
             resourceInputs["workflowTemplateId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "workflowTemplateId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(WorkflowTemplateIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

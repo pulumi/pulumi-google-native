@@ -203,6 +203,8 @@ class OrganizationEnvironmentIamPolicy(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationEnvironmentIamPolicy, __self__).__init__(
             'google-native:apigee/v1:OrganizationEnvironmentIamPolicy',
             resource_name,

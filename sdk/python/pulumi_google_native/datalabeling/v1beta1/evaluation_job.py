@@ -214,6 +214,8 @@ class EvaluationJob(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EvaluationJob, __self__).__init__(
             'google-native:datalabeling/v1beta1:EvaluationJob',
             resource_name,

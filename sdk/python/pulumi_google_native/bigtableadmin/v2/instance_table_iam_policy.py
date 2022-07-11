@@ -218,6 +218,8 @@ class InstanceTableIamPolicy(pulumi.CustomResource):
             __props__.__dict__["table_id"] = table_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "project", "table_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(InstanceTableIamPolicy, __self__).__init__(
             'google-native:bigtableadmin/v2:InstanceTableIamPolicy',
             resource_name,

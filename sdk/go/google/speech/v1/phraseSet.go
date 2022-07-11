@@ -35,6 +35,11 @@ func NewPhraseSet(ctx *pulumi.Context,
 	if args.PhraseSetId == nil {
 		return nil, errors.New("invalid value for required argument 'PhraseSetId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PhraseSet
 	err := ctx.RegisterResource("google-native:speech/v1:PhraseSet", name, args, &resource, opts...)
 	if err != nil {

@@ -379,6 +379,8 @@ class Agent(pulumi.CustomResource):
             if time_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'time_zone'")
             __props__.__dict__["time_zone"] = time_zone
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Agent, __self__).__init__(
             'google-native:dialogflow/v3:Agent',
             resource_name,

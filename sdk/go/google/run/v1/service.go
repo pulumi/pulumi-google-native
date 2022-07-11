@@ -38,6 +38,11 @@ func NewService(ctx *pulumi.Context,
 		args = &ServiceArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Service
 	err := ctx.RegisterResource("google-native:run/v1:Service", name, args, &resource, opts...)
 	if err != nil {

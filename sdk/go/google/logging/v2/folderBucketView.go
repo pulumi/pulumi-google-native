@@ -49,6 +49,13 @@ func NewFolderBucketView(ctx *pulumi.Context,
 	if args.ViewId == nil {
 		return nil, errors.New("invalid value for required argument 'ViewId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bucketId",
+		"folderId",
+		"location",
+		"viewId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FolderBucketView
 	err := ctx.RegisterResource("google-native:logging/v2:FolderBucketView", name, args, &resource, opts...)
 	if err != nil {

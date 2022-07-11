@@ -43,6 +43,11 @@ func NewTopic(ctx *pulumi.Context,
 	if args.TopicId == nil {
 		return nil, errors.New("invalid value for required argument 'TopicId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"topicId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Topic
 	err := ctx.RegisterResource("google-native:pubsub/v1:Topic", name, args, &resource, opts...)
 	if err != nil {

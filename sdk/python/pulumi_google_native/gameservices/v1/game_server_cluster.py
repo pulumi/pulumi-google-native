@@ -236,6 +236,8 @@ class GameServerCluster(pulumi.CustomResource):
             __props__.__dict__["cluster_state"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["game_server_cluster_id", "location", "project", "realm_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(GameServerCluster, __self__).__init__(
             'google-native:gameservices/v1:GameServerCluster',
             resource_name,

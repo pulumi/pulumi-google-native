@@ -40,6 +40,10 @@ func NewModel(ctx *pulumi.Context,
 		args = &ModelArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Model
 	err := ctx.RegisterResource("google-native:ml/v1:Model", name, args, &resource, opts...)
 	if err != nil {

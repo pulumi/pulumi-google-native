@@ -82,6 +82,8 @@ export class DebugToken extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["appId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DebugToken.__pulumiType, name, resourceInputs, opts);
     }
 }

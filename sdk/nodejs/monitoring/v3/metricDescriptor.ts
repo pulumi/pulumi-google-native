@@ -119,6 +119,8 @@ export class MetricDescriptor extends pulumi.CustomResource {
             resourceInputs["valueType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(MetricDescriptor.__pulumiType, name, resourceInputs, opts);
     }
 }

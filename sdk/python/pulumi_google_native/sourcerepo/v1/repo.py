@@ -181,6 +181,8 @@ class Repo(pulumi.CustomResource):
             __props__.__dict__["pubsub_configs"] = pubsub_configs
             __props__.__dict__["size"] = size
             __props__.__dict__["url"] = url
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Repo, __self__).__init__(
             'google-native:sourcerepo/v1:Repo',
             resource_name,

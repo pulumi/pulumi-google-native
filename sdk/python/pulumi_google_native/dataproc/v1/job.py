@@ -367,6 +367,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["status_history"] = None
             __props__.__dict__["yarn_applications"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Job, __self__).__init__(
             'google-native:dataproc/v1:Job',
             resource_name,

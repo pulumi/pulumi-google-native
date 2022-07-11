@@ -305,6 +305,8 @@ class Company(pulumi.CustomResource):
             __props__.__dict__["website_uri"] = website_uri
             __props__.__dict__["derived_info"] = None
             __props__.__dict__["suspended"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Company, __self__).__init__(
             'google-native:jobs/v3:Company',
             resource_name,

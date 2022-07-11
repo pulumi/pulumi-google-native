@@ -130,6 +130,8 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
             resourceInputs["unhealthyThreshold"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(HttpsHealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }

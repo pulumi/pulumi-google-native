@@ -300,6 +300,8 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["appId", "serviceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Version.__pulumiType, name, resourceInputs, opts);
     }
 }

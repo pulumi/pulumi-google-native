@@ -212,6 +212,8 @@ class UserDataMapping(pulumi.CustomResource):
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["archive_time"] = None
             __props__.__dict__["archived"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["consent_store_id", "dataset_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(UserDataMapping, __self__).__init__(
             'google-native:healthcare/v1beta1:UserDataMapping',
             resource_name,

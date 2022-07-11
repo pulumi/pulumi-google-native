@@ -159,6 +159,8 @@ class Override(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["sampling_config"] = sampling_config
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Override, __self__).__init__(
             'google-native:apigee/v1:Override',
             resource_name,

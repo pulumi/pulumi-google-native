@@ -36,6 +36,10 @@ func NewSchema(ctx *pulumi.Context,
 		args = &SchemaArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Schema
 	err := ctx.RegisterResource("google-native:pubsub/v1:Schema", name, args, &resource, opts...)
 	if err != nil {

@@ -41,6 +41,12 @@ func NewDomainBackupIamPolicy(ctx *pulumi.Context,
 	if args.DomainId == nil {
 		return nil, errors.New("invalid value for required argument 'DomainId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"backupId",
+		"domainId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DomainBackupIamPolicy
 	err := ctx.RegisterResource("google-native:managedidentities/v1:DomainBackupIamPolicy", name, args, &resource, opts...)
 	if err != nil {

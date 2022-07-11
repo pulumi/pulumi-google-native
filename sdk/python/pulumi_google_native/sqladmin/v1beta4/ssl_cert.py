@@ -124,6 +124,8 @@ class SslCert(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["sha1_fingerprint"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SslCert, __self__).__init__(
             'google-native:sqladmin/v1beta4:SslCert',
             resource_name,

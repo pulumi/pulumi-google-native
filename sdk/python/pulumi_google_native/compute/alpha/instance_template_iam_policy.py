@@ -202,6 +202,8 @@ class InstanceTemplateIamPolicy(pulumi.CustomResource):
             __props__.__dict__["resource"] = resource
             __props__.__dict__["rules"] = rules
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "resource"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(InstanceTemplateIamPolicy, __self__).__init__(
             'google-native:compute/alpha:InstanceTemplateIamPolicy',
             resource_name,

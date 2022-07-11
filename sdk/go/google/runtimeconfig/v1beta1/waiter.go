@@ -45,6 +45,11 @@ func NewWaiter(ctx *pulumi.Context,
 	if args.ConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"configId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Waiter
 	err := ctx.RegisterResource("google-native:runtimeconfig/v1beta1:Waiter", name, args, &resource, opts...)
 	if err != nil {

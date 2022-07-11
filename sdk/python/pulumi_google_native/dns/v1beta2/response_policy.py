@@ -198,6 +198,8 @@ class ResponsePolicy(pulumi.CustomResource):
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
             __props__.__dict__["response_policy_name"] = response_policy_name
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ResponsePolicy, __self__).__init__(
             'google-native:dns/v1beta2:ResponsePolicy',
             resource_name,

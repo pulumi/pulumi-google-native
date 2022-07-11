@@ -49,6 +49,11 @@ func NewOrganizationBigQueryExport(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bigQueryExportId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OrganizationBigQueryExport
 	err := ctx.RegisterResource("google-native:securitycenter/v1:OrganizationBigQueryExport", name, args, &resource, opts...)
 	if err != nil {

@@ -165,6 +165,8 @@ class TargetProject(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "target_project_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TargetProject, __self__).__init__(
             'google-native:vmmigration/v1:TargetProject',
             resource_name,

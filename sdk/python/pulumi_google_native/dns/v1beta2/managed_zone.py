@@ -393,6 +393,8 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["service_directory_config"] = service_directory_config
             __props__.__dict__["visibility"] = visibility
             __props__.__dict__["name_servers"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ManagedZone, __self__).__init__(
             'google-native:dns/v1beta2:ManagedZone',
             resource_name,

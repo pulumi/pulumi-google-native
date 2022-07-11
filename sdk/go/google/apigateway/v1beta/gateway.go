@@ -51,6 +51,12 @@ func NewGateway(ctx *pulumi.Context,
 	if args.GatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'GatewayId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"gatewayId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Gateway
 	err := ctx.RegisterResource("google-native:apigateway/v1beta:Gateway", name, args, &resource, opts...)
 	if err != nil {

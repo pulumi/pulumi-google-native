@@ -71,6 +71,12 @@ func NewStream(ctx *pulumi.Context,
 	if args.StreamId == nil {
 		return nil, errors.New("invalid value for required argument 'StreamId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"streamId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Stream
 	err := ctx.RegisterResource("google-native:datastream/v1alpha1:Stream", name, args, &resource, opts...)
 	if err != nil {

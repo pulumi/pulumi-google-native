@@ -52,6 +52,10 @@ func NewInstruction(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Instruction
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:Instruction", name, args, &resource, opts...)
 	if err != nil {

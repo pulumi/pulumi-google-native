@@ -177,6 +177,8 @@ export class Restore extends pulumi.CustomResource {
             resourceInputs["volumesRestoredCount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "restoreId", "restorePlanId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Restore.__pulumiType, name, resourceInputs, opts);
     }
 }

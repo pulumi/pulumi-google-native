@@ -82,6 +82,10 @@ func NewConfig(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"serviceName",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Config
 	err := ctx.RegisterResource("google-native:servicemanagement/v1:Config", name, args, &resource, opts...)
 	if err != nil {

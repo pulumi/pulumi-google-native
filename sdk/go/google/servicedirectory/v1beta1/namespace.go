@@ -39,6 +39,12 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"namespaceId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Namespace
 	err := ctx.RegisterResource("google-native:servicedirectory/v1beta1:Namespace", name, args, &resource, opts...)
 	if err != nil {

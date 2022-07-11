@@ -228,6 +228,8 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "zone"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Reservation, __self__).__init__(
             'google-native:compute/beta:Reservation',
             resource_name,

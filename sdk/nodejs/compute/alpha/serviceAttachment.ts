@@ -161,6 +161,8 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["targetService"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServiceAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -37,6 +37,12 @@ func NewJobTemplate(ctx *pulumi.Context,
 	if args.JobTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'JobTemplateId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"jobTemplateId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource JobTemplate
 	err := ctx.RegisterResource("google-native:transcoder/v1:JobTemplate", name, args, &resource, opts...)
 	if err != nil {

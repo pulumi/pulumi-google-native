@@ -189,6 +189,8 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["vulnerability"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["noteId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Note.__pulumiType, name, resourceInputs, opts);
     }
 }

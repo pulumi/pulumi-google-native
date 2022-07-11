@@ -44,6 +44,13 @@ func NewDatasetHl7V2StoreIamPolicy(ctx *pulumi.Context,
 	if args.Hl7V2StoreId == nil {
 		return nil, errors.New("invalid value for required argument 'Hl7V2StoreId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"datasetId",
+		"hl7V2StoreId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DatasetHl7V2StoreIamPolicy
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy", name, args, &resource, opts...)
 	if err != nil {

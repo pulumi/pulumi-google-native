@@ -199,6 +199,8 @@ class Processor(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["process_endpoint"] = None
             __props__.__dict__["state"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Processor, __self__).__init__(
             'google-native:documentai/v1:Processor',
             resource_name,

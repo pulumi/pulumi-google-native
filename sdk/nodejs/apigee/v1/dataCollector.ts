@@ -92,6 +92,8 @@ export class DataCollector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DataCollector.__pulumiType, name, resourceInputs, opts);
     }
 }

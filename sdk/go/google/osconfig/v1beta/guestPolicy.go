@@ -51,6 +51,11 @@ func NewGuestPolicy(ctx *pulumi.Context,
 	if args.GuestPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"guestPolicyId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GuestPolicy
 	err := ctx.RegisterResource("google-native:osconfig/v1beta:GuestPolicy", name, args, &resource, opts...)
 	if err != nil {

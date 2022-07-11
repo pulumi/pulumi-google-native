@@ -50,6 +50,14 @@ func NewSessionEntityType(ctx *pulumi.Context,
 	if args.SessionId == nil {
 		return nil, errors.New("invalid value for required argument 'SessionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"agentId",
+		"environmentId",
+		"location",
+		"project",
+		"sessionId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SessionEntityType
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:SessionEntityType", name, args, &resource, opts...)
 	if err != nil {

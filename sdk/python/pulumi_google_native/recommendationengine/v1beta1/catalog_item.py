@@ -304,6 +304,8 @@ class CatalogItem(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalog_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CatalogItem, __self__).__init__(
             'google-native:recommendationengine/v1beta1:CatalogItem',
             resource_name,

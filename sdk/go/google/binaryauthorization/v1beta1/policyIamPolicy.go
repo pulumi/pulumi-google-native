@@ -32,6 +32,10 @@ func NewPolicyIamPolicy(ctx *pulumi.Context,
 		args = &PolicyIamPolicyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PolicyIamPolicy
 	err := ctx.RegisterResource("google-native:binaryauthorization/v1beta1:PolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

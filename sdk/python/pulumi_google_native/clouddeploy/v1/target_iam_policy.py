@@ -217,6 +217,8 @@ class TargetIamPolicy(pulumi.CustomResource):
             __props__.__dict__["target_id"] = target_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "target_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TargetIamPolicy, __self__).__init__(
             'google-native:clouddeploy/v1:TargetIamPolicy',
             resource_name,

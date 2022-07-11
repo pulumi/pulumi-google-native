@@ -43,6 +43,10 @@ func NewRollout(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"serviceName",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Rollout
 	err := ctx.RegisterResource("google-native:servicemanagement/v1:Rollout", name, args, &resource, opts...)
 	if err != nil {

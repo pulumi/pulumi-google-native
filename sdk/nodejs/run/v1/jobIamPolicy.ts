@@ -89,6 +89,8 @@ export class JobIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["jobId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(JobIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

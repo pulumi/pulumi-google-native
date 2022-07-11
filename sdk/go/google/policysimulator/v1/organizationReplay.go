@@ -43,6 +43,11 @@ func NewOrganizationReplay(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OrganizationReplay
 	err := ctx.RegisterResource("google-native:policysimulator/v1:OrganizationReplay", name, args, &resource, opts...)
 	if err != nil {

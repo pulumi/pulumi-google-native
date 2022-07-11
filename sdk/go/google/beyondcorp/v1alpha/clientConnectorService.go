@@ -52,6 +52,11 @@ func NewClientConnectorService(ctx *pulumi.Context,
 	if args.Ingress == nil {
 		return nil, errors.New("invalid value for required argument 'Ingress'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ClientConnectorService
 	err := ctx.RegisterResource("google-native:beyondcorp/v1alpha:ClientConnectorService", name, args, &resource, opts...)
 	if err != nil {

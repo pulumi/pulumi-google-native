@@ -64,6 +64,10 @@ func NewNetwork(ctx *pulumi.Context,
 		args = &NetworkArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Network
 	err := ctx.RegisterResource("google-native:compute/alpha:Network", name, args, &resource, opts...)
 	if err != nil {

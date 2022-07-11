@@ -42,6 +42,12 @@ func NewTagTemplate(ctx *pulumi.Context,
 	if args.TagTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'TagTemplateId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"tagTemplateId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TagTemplate
 	err := ctx.RegisterResource("google-native:datacatalog/v1:TagTemplate", name, args, &resource, opts...)
 	if err != nil {

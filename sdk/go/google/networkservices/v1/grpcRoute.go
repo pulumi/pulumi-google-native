@@ -57,6 +57,12 @@ func NewGrpcRoute(ctx *pulumi.Context,
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"grpcRouteId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GrpcRoute
 	err := ctx.RegisterResource("google-native:networkservices/v1:GrpcRoute", name, args, &resource, opts...)
 	if err != nil {

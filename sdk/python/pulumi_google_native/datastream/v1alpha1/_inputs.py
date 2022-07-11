@@ -1335,7 +1335,7 @@ class VpcPeeringConfigArgs:
                  vpc_name: pulumi.Input[str]):
         """
         The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
-        :param pulumi.Input[str] subnet: A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+        :param pulumi.Input[str] subnet: A free subnet for peering. (CIDR of /29)
         :param pulumi.Input[str] vpc_name: fully qualified name of the VPC Datastream will peer to.
         """
         pulumi.set(__self__, "subnet", subnet)
@@ -1345,7 +1345,7 @@ class VpcPeeringConfigArgs:
     @pulumi.getter
     def subnet(self) -> pulumi.Input[str]:
         """
-        A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
+        A free subnet for peering. (CIDR of /29)
         """
         return pulumi.get(self, "subnet")
 

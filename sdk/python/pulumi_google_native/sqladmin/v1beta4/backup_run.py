@@ -386,6 +386,8 @@ class BackupRun(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["window_start_time"] = window_start_time
             __props__.__dict__["status"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BackupRun, __self__).__init__(
             'google-native:sqladmin/v1beta4:BackupRun',
             resource_name,

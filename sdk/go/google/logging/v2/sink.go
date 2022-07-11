@@ -56,6 +56,10 @@ func NewSink(ctx *pulumi.Context,
 	if args.Destination == nil {
 		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Sink
 	err := ctx.RegisterResource("google-native:logging/v2:Sink", name, args, &resource, opts...)
 	if err != nil {

@@ -249,6 +249,8 @@ class ServiceDatabaseTableIamPolicy(pulumi.CustomResource):
             __props__.__dict__["table_id"] = table_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "location", "project", "service_id", "table_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceDatabaseTableIamPolicy, __self__).__init__(
             'google-native:metastore/v1beta:ServiceDatabaseTableIamPolicy',
             resource_name,

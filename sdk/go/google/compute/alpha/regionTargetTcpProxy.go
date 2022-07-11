@@ -47,6 +47,11 @@ func NewRegionTargetTcpProxy(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"region",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RegionTargetTcpProxy
 	err := ctx.RegisterResource("google-native:compute/alpha:RegionTargetTcpProxy", name, args, &resource, opts...)
 	if err != nil {

@@ -213,6 +213,8 @@ class CanaryEvaluation(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["verdict"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CanaryEvaluation, __self__).__init__(
             'google-native:apigee/v1:CanaryEvaluation',
             resource_name,

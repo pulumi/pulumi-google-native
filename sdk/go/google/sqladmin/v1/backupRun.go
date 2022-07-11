@@ -58,6 +58,11 @@ func NewBackupRun(ctx *pulumi.Context,
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instance",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BackupRun
 	err := ctx.RegisterResource("google-native:sqladmin/v1:BackupRun", name, args, &resource, opts...)
 	if err != nil {

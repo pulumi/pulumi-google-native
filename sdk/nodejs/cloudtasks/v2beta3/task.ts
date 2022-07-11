@@ -135,6 +135,8 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["view"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "queueId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Task.__pulumiType, name, resourceInputs, opts);
     }
 }

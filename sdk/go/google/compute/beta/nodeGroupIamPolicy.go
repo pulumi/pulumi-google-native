@@ -42,6 +42,12 @@ func NewNodeGroupIamPolicy(ctx *pulumi.Context,
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"resource",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource NodeGroupIamPolicy
 	err := ctx.RegisterResource("google-native:compute/beta:NodeGroupIamPolicy", name, args, &resource, opts...)
 	if err != nil {

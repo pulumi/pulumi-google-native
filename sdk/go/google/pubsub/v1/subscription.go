@@ -66,6 +66,11 @@ func NewSubscription(ctx *pulumi.Context,
 	if args.Topic == nil {
 		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"subscriptionId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Subscription
 	err := ctx.RegisterResource("google-native:pubsub/v1:Subscription", name, args, &resource, opts...)
 	if err != nil {

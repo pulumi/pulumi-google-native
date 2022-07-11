@@ -58,6 +58,12 @@ func NewMembership(ctx *pulumi.Context,
 	if args.MembershipId == nil {
 		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"membershipId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Membership
 	err := ctx.RegisterResource("google-native:gkehub/v1alpha:Membership", name, args, &resource, opts...)
 	if err != nil {

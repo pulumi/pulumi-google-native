@@ -291,6 +291,8 @@ class Registration(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["supported_privacy"] = None
             __props__.__dict__["transfer_failure_reason"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Registration, __self__).__init__(
             'google-native:domains/v1beta1:Registration',
             resource_name,

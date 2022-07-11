@@ -64,6 +64,11 @@ func NewMachineImage(ctx *pulumi.Context,
 	if args.SourceInstance == nil {
 		return nil, errors.New("invalid value for required argument 'SourceInstance'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"sourceInstance",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource MachineImage
 	err := ctx.RegisterResource("google-native:compute/alpha:MachineImage", name, args, &resource, opts...)
 	if err != nil {

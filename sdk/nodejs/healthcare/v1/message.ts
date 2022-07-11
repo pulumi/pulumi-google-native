@@ -128,6 +128,8 @@ export class Message extends pulumi.CustomResource {
             resourceInputs["sendTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "hl7V2StoreId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Message.__pulumiType, name, resourceInputs, opts);
     }
 }

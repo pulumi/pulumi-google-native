@@ -41,6 +41,11 @@ func NewInstanceTemplateIamPolicy(ctx *pulumi.Context,
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"resource",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InstanceTemplateIamPolicy
 	err := ctx.RegisterResource("google-native:compute/alpha:InstanceTemplateIamPolicy", name, args, &resource, opts...)
 	if err != nil {

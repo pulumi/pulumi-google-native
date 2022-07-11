@@ -44,6 +44,13 @@ func NewKeyRingImportJobIamPolicy(ctx *pulumi.Context,
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"importJobId",
+		"keyRingId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource KeyRingImportJobIamPolicy
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRingImportJobIamPolicy", name, args, &resource, opts...)
 	if err != nil {

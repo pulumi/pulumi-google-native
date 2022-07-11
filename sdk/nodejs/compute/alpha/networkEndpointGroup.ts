@@ -184,6 +184,8 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "zone"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NetworkEndpointGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

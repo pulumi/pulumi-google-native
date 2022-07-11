@@ -309,6 +309,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["status_message"] = None
             __props__.__dict__["suspension_reasons"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
             'google-native:file/v1beta1:Instance',
             resource_name,

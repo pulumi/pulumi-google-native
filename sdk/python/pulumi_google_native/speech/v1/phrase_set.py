@@ -177,6 +177,8 @@ class PhraseSet(pulumi.CustomResource):
             __props__.__dict__["phrase_set_id"] = phrase_set_id
             __props__.__dict__["phrases"] = phrases
             __props__.__dict__["project"] = project
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(PhraseSet, __self__).__init__(
             'google-native:speech/v1:PhraseSet',
             resource_name,

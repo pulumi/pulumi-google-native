@@ -203,6 +203,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["storageLocations"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }
 }

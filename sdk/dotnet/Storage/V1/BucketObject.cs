@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> TimeStorageClassUpdated { get; private set; } = null!;
 
         /// <summary>
-        /// The modification time of the object metadata in RFC 3339 format.
+        /// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
@@ -263,6 +263,10 @@ namespace Pulumi.GoogleNative.Storage.V1
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "bucket",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -523,7 +527,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? TimeStorageClassUpdated { get; set; }
 
         /// <summary>
-        /// The modification time of the object metadata in RFC 3339 format.
+        /// The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration.
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }

@@ -63,6 +63,10 @@ func NewTestMatrix(ctx *pulumi.Context,
 	if args.TestSpecification == nil {
 		return nil, errors.New("invalid value for required argument 'TestSpecification'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TestMatrix
 	err := ctx.RegisterResource("google-native:testing/v1:TestMatrix", name, args, &resource, opts...)
 	if err != nil {

@@ -35,6 +35,10 @@ func NewInstance(ctx *pulumi.Context,
 		args = &InstanceArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Instance
 	err := ctx.RegisterResource("google-native:remotebuildexecution/v1alpha:Instance", name, args, &resource, opts...)
 	if err != nil {

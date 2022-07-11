@@ -50,6 +50,10 @@ func NewSslPolicy(ctx *pulumi.Context,
 		args = &SslPolicyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SslPolicy
 	err := ctx.RegisterResource("google-native:compute/beta:SslPolicy", name, args, &resource, opts...)
 	if err != nil {

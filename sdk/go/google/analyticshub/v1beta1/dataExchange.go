@@ -49,6 +49,12 @@ func NewDataExchange(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"dataExchangeId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DataExchange
 	err := ctx.RegisterResource("google-native:analyticshub/v1beta1:DataExchange", name, args, &resource, opts...)
 	if err != nil {

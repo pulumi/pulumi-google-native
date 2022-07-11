@@ -146,6 +146,8 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["shortName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NetworkFirewallPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -43,6 +43,11 @@ func NewNotificationConfig(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"configId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource NotificationConfig
 	err := ctx.RegisterResource("google-native:securitycenter/v1:NotificationConfig", name, args, &resource, opts...)
 	if err != nil {

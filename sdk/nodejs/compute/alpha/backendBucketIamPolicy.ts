@@ -91,6 +91,8 @@ export class BackendBucketIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "resource"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BackendBucketIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -131,6 +131,8 @@ export class RegionSslPolicy extends pulumi.CustomResource {
             resourceInputs["warnings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionSslPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

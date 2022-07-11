@@ -407,6 +407,8 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["error"] = None
             __props__.__dict__["phase"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "migration_job_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(MigrationJob, __self__).__init__(
             'google-native:datamigration/v1beta1:MigrationJob',
             resource_name,

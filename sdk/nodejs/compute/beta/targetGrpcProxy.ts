@@ -112,6 +112,8 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             resourceInputs["validateForProxyless"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TargetGrpcProxy.__pulumiType, name, resourceInputs, opts);
     }
 }

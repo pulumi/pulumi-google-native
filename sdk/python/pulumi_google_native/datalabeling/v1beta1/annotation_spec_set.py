@@ -147,6 +147,8 @@ class AnnotationSpecSet(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["blocking_resources"] = None
             __props__.__dict__["name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AnnotationSpecSet, __self__).__init__(
             'google-native:datalabeling/v1beta1:AnnotationSpecSet',
             resource_name,

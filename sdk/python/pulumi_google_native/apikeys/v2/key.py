@@ -185,6 +185,8 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Key, __self__).__init__(
             'google-native:apikeys/v2:Key',
             resource_name,

@@ -161,6 +161,8 @@ class IssueModel(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["training_stats"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(IssueModel, __self__).__init__(
             'google-native:contactcenterinsights/v1:IssueModel',
             resource_name,

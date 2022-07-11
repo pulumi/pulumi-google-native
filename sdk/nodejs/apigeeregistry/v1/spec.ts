@@ -160,6 +160,8 @@ export class Spec extends pulumi.CustomResource {
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "apiSpecId", "location", "project", "versionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Spec.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -175,6 +175,8 @@ class PolicyTag(pulumi.CustomResource):
             __props__.__dict__["taxonomy_id"] = taxonomy_id
             __props__.__dict__["child_policy_tags"] = None
             __props__.__dict__["name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "taxonomy_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(PolicyTag, __self__).__init__(
             'google-native:datacatalog/v1beta1:PolicyTag',
             resource_name,

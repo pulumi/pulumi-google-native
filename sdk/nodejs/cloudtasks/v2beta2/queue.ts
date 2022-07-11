@@ -116,6 +116,8 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["tombstoneTtl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Queue.__pulumiType, name, resourceInputs, opts);
     }
 }

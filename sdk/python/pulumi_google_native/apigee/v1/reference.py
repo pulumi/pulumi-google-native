@@ -177,6 +177,8 @@ class Reference(pulumi.CustomResource):
                 raise TypeError("Missing required property 'refers'")
             __props__.__dict__["refers"] = refers
             __props__.__dict__["resource_type"] = resource_type
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Reference, __self__).__init__(
             'google-native:apigee/v1:Reference',
             resource_name,

@@ -63,6 +63,11 @@ func NewPatchDeployment(ctx *pulumi.Context,
 	if args.RecurringSchedule == nil {
 		return nil, errors.New("invalid value for required argument 'RecurringSchedule'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"patchDeploymentId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PatchDeployment
 	err := ctx.RegisterResource("google-native:osconfig/v1beta:PatchDeployment", name, args, &resource, opts...)
 	if err != nil {

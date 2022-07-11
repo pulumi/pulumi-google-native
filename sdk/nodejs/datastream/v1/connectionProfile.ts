@@ -153,6 +153,8 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["connectionProfileId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -50,6 +50,11 @@ func NewOrganizationMuteConfig(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"muteConfigId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OrganizationMuteConfig
 	err := ctx.RegisterResource("google-native:securitycenter/v1:OrganizationMuteConfig", name, args, &resource, opts...)
 	if err != nil {

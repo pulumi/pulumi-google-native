@@ -73,6 +73,12 @@ func NewService(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"serviceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Service
 	err := ctx.RegisterResource("google-native:metastore/v1beta:Service", name, args, &resource, opts...)
 	if err != nil {

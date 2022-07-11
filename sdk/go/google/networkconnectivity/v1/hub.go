@@ -49,6 +49,11 @@ func NewHub(ctx *pulumi.Context,
 	if args.HubId == nil {
 		return nil, errors.New("invalid value for required argument 'HubId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"hubId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Hub
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1:Hub", name, args, &resource, opts...)
 	if err != nil {

@@ -242,6 +242,8 @@ class ObjectIamPolicy(pulumi.CustomResource):
             __props__.__dict__["resource_id"] = resource_id
             __props__.__dict__["user_project"] = user_project
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket", "object"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ObjectIamPolicy, __self__).__init__(
             'google-native:storage/v1:ObjectIamPolicy',
             resource_name,

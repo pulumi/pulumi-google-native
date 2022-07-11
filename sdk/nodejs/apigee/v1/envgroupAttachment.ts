@@ -88,6 +88,8 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
             resourceInputs["organizationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["envgroupId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EnvgroupAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

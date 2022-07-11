@@ -40,6 +40,12 @@ func NewMigrationJobIamPolicy(ctx *pulumi.Context,
 	if args.MigrationJobId == nil {
 		return nil, errors.New("invalid value for required argument 'MigrationJobId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"migrationJobId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource MigrationJobIamPolicy
 	err := ctx.RegisterResource("google-native:datamigration/v1beta1:MigrationJobIamPolicy", name, args, &resource, opts...)
 	if err != nil {

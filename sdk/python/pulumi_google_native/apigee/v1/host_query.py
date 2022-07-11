@@ -317,6 +317,8 @@ class HostQuery(pulumi.CustomResource):
             __props__.__dict__["self"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["updated"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(HostQuery, __self__).__init__(
             'google-native:apigee/v1:HostQuery',
             resource_name,

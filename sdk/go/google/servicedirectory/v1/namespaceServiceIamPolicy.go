@@ -42,6 +42,13 @@ func NewNamespaceServiceIamPolicy(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"namespaceId",
+		"project",
+		"serviceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource NamespaceServiceIamPolicy
 	err := ctx.RegisterResource("google-native:servicedirectory/v1:NamespaceServiceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

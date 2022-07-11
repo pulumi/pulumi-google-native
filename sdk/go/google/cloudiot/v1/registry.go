@@ -39,6 +39,11 @@ func NewRegistry(ctx *pulumi.Context,
 		args = &RegistryArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Registry
 	err := ctx.RegisterResource("google-native:cloudiot/v1:Registry", name, args, &resource, opts...)
 	if err != nil {

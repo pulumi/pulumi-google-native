@@ -442,6 +442,8 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["snapshot_definition"] = None
             __props__.__dict__["streaming_buffer"] = None
             __props__.__dict__["type"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Table, __self__).__init__(
             'google-native:bigquery/v2:Table',
             resource_name,

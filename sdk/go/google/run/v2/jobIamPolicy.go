@@ -40,6 +40,12 @@ func NewJobIamPolicy(ctx *pulumi.Context,
 	if args.JobId == nil {
 		return nil, errors.New("invalid value for required argument 'JobId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"jobId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource JobIamPolicy
 	err := ctx.RegisterResource("google-native:run/v2:JobIamPolicy", name, args, &resource, opts...)
 	if err != nil {

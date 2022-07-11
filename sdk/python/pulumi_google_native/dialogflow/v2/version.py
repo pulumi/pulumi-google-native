@@ -120,6 +120,8 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["version_number"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Version, __self__).__init__(
             'google-native:dialogflow/v2:Version',
             resource_name,

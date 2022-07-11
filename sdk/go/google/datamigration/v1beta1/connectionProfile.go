@@ -53,6 +53,12 @@ func NewConnectionProfile(ctx *pulumi.Context,
 	if args.ConnectionProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionProfileId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"connectionProfileId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ConnectionProfile
 	err := ctx.RegisterResource("google-native:datamigration/v1beta1:ConnectionProfile", name, args, &resource, opts...)
 	if err != nil {

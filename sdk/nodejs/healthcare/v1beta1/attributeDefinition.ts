@@ -119,6 +119,8 @@ export class AttributeDefinition extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["attributeDefinitionId", "consentStoreId", "datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AttributeDefinition.__pulumiType, name, resourceInputs, opts);
     }
 }

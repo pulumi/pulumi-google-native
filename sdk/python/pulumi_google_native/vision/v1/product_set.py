@@ -157,6 +157,8 @@ class ProductSet(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["index_error"] = None
             __props__.__dict__["index_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ProductSet, __self__).__init__(
             'google-native:vision/v1:ProductSet',
             resource_name,

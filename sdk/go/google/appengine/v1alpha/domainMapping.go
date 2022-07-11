@@ -39,6 +39,10 @@ func NewDomainMapping(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"appId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DomainMapping
 	err := ctx.RegisterResource("google-native:appengine/v1alpha:DomainMapping", name, args, &resource, opts...)
 	if err != nil {

@@ -66,6 +66,12 @@ func NewNodePool(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"clusterId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource NodePool
 	err := ctx.RegisterResource("google-native:container/v1:NodePool", name, args, &resource, opts...)
 	if err != nil {

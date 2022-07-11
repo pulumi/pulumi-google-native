@@ -34,6 +34,10 @@ func NewRepo(ctx *pulumi.Context,
 		args = &RepoArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Repo
 	err := ctx.RegisterResource("google-native:sourcerepo/v1:Repo", name, args, &resource, opts...)
 	if err != nil {

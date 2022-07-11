@@ -89,6 +89,8 @@ export class ServiceInstanceIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "serviceInstanceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServiceInstanceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

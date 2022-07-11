@@ -153,6 +153,8 @@ class StoredInfoType(pulumi.CustomResource):
             __props__.__dict__["current_version"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pending_versions"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(StoredInfoType, __self__).__init__(
             'google-native:dlp/v2:StoredInfoType',
             resource_name,

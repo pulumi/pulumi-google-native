@@ -122,6 +122,8 @@ export class TcpRoute extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "tcpRouteId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TcpRoute.__pulumiType, name, resourceInputs, opts);
     }
 }

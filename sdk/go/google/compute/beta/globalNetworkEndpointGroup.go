@@ -66,6 +66,10 @@ func NewGlobalNetworkEndpointGroup(ctx *pulumi.Context,
 		args = &GlobalNetworkEndpointGroupArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GlobalNetworkEndpointGroup
 	err := ctx.RegisterResource("google-native:compute/beta:GlobalNetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {

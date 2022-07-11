@@ -148,6 +148,8 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["data_item_count"] = None
             __props__.__dict__["input_configs"] = None
             __props__.__dict__["name"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Dataset, __self__).__init__(
             'google-native:datalabeling/v1beta1:Dataset',
             resource_name,

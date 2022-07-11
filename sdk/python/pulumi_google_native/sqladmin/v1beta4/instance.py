@@ -761,6 +761,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["suspension_reason"] = suspension_reason
             __props__.__dict__["create_time"] = None
             __props__.__dict__["database_installed_version"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
             'google-native:sqladmin/v1beta4:Instance',
             resource_name,

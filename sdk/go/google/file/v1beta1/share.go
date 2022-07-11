@@ -52,6 +52,13 @@ func NewShare(ctx *pulumi.Context,
 	if args.ShareId == nil {
 		return nil, errors.New("invalid value for required argument 'ShareId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"location",
+		"project",
+		"shareId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Share
 	err := ctx.RegisterResource("google-native:file/v1beta1:Share", name, args, &resource, opts...)
 	if err != nil {

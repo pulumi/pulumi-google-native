@@ -38,6 +38,12 @@ func NewAutoscalingPolicyIamPolicy(ctx *pulumi.Context,
 	if args.AutoscalingPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AutoscalingPolicyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"autoscalingPolicyId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AutoscalingPolicyIamPolicy
 	err := ctx.RegisterResource("google-native:dataproc/v1:AutoscalingPolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

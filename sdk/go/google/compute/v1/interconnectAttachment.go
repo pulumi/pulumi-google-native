@@ -101,6 +101,11 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"region",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InterconnectAttachment
 	err := ctx.RegisterResource("google-native:compute/v1:InterconnectAttachment", name, args, &resource, opts...)
 	if err != nil {

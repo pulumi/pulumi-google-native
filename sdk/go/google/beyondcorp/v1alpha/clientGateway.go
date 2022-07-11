@@ -41,6 +41,11 @@ func NewClientGateway(ctx *pulumi.Context,
 		args = &ClientGatewayArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ClientGateway
 	err := ctx.RegisterResource("google-native:beyondcorp/v1alpha:ClientGateway", name, args, &resource, opts...)
 	if err != nil {

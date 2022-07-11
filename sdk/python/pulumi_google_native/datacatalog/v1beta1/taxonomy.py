@@ -162,6 +162,8 @@ class Taxonomy(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["policy_tag_count"] = None
             __props__.__dict__["taxonomy_timestamps"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Taxonomy, __self__).__init__(
             'google-native:datacatalog/v1beta1:Taxonomy',
             resource_name,

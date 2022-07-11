@@ -187,6 +187,8 @@ class ProjectIamPolicy(pulumi.CustomResource):
             __props__.__dict__["resource"] = resource
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["resource"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ProjectIamPolicy, __self__).__init__(
             'google-native:cloudresourcemanager/v1beta1:ProjectIamPolicy',
             resource_name,

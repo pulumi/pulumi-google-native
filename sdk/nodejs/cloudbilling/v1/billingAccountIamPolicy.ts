@@ -83,6 +83,8 @@ export class BillingAccountIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["billingAccountId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BillingAccountIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

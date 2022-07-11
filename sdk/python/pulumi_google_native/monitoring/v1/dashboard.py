@@ -283,6 +283,8 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["row_layout"] = row_layout
             __props__.__dict__["validate_only"] = validate_only
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Dashboard, __self__).__init__(
             'google-native:monitoring/v1:Dashboard',
             resource_name,

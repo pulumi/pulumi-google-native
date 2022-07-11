@@ -86,6 +86,8 @@ export class AgentPool extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["agentPoolId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AgentPool.__pulumiType, name, resourceInputs, opts);
     }
 }

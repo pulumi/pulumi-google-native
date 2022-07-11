@@ -54,6 +54,10 @@ func NewUrlMap(ctx *pulumi.Context,
 		args = &UrlMapArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource UrlMap
 	err := ctx.RegisterResource("google-native:compute/v1:UrlMap", name, args, &resource, opts...)
 	if err != nil {

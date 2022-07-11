@@ -282,6 +282,8 @@ class NotificationChannel(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["verification_status"] = verification_status
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NotificationChannel, __self__).__init__(
             'google-native:monitoring/v3:NotificationChannel',
             resource_name,

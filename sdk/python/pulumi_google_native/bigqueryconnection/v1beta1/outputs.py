@@ -209,6 +209,8 @@ class CloudSqlPropertiesResponse(dict):
         suggest = None
         if key == "instanceId":
             suggest = "instance_id"
+        elif key == "serviceAccountId":
+            suggest = "service_account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudSqlPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -225,17 +227,20 @@ class CloudSqlPropertiesResponse(dict):
                  credential: 'outputs.CloudSqlCredentialResponse',
                  database: str,
                  instance_id: str,
+                 service_account_id: str,
                  type: str):
         """
         Connection properties specific to the Cloud SQL.
         :param 'CloudSqlCredentialResponse' credential: Input only. Cloud SQL credential.
         :param str database: Database name.
         :param str instance_id: Cloud SQL instance ID in the form `project:location:instance`.
+        :param str service_account_id: The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as identity being used for connecting to the CloudSQL instance specified in this connection.
         :param str type: Type of the Cloud SQL database.
         """
         pulumi.set(__self__, "credential", credential)
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "service_account_id", service_account_id)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -261,6 +266,14 @@ class CloudSqlPropertiesResponse(dict):
         Cloud SQL instance ID in the form `project:location:instance`.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> str:
+        """
+        The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as identity being used for connecting to the CloudSQL instance specified in this connection.
+        """
+        return pulumi.get(self, "service_account_id")
 
     @property
     @pulumi.getter

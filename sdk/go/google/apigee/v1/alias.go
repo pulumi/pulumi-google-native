@@ -54,6 +54,13 @@ func NewAlias(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"format",
+		"keystoreId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Alias
 	err := ctx.RegisterResource("google-native:apigee/v1:Alias", name, args, &resource, opts...)
 	if err != nil {

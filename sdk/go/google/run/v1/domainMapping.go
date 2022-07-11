@@ -38,6 +38,11 @@ func NewDomainMapping(ctx *pulumi.Context,
 		args = &DomainMappingArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DomainMapping
 	err := ctx.RegisterResource("google-native:run/v1:DomainMapping", name, args, &resource, opts...)
 	if err != nil {

@@ -30,7 +30,7 @@ type LookupReleaseResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Format: `projects/{project_id}/releases/{release_id}`
 	Name string `pulumi:"name"`
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
 	RulesetName string `pulumi:"rulesetName"`
 	// Time the release was updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -82,7 +82,7 @@ func (o LookupReleaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
 func (o LookupReleaseResultOutput) RulesetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.RulesetName }).(pulumi.StringOutput)
 }

@@ -51,6 +51,11 @@ func NewPhraseMatcher(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PhraseMatcher
 	err := ctx.RegisterResource("google-native:contactcenterinsights/v1:PhraseMatcher", name, args, &resource, opts...)
 	if err != nil {

@@ -192,6 +192,8 @@ class TaxonomyPolicyTagIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'taxonomy_id'")
             __props__.__dict__["taxonomy_id"] = taxonomy_id
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "policy_tag_id", "project", "taxonomy_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TaxonomyPolicyTagIamPolicy, __self__).__init__(
             'google-native:datacatalog/v1:TaxonomyPolicyTagIamPolicy',
             resource_name,

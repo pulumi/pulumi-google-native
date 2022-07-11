@@ -98,6 +98,8 @@ export class LakeAssetIamPolicy extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["assetId", "lakeId", "location", "project", "zone"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(LakeAssetIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

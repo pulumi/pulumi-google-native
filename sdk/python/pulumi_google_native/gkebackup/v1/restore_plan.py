@@ -228,6 +228,8 @@ class RestorePlan(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "restore_plan_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RestorePlan, __self__).__init__(
             'google-native:gkebackup/v1:RestorePlan',
             resource_name,

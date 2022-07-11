@@ -37,6 +37,11 @@ func NewSnapshotIamPolicy(ctx *pulumi.Context,
 	if args.SnapshotId == nil {
 		return nil, errors.New("invalid value for required argument 'SnapshotId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"snapshotId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SnapshotIamPolicy
 	err := ctx.RegisterResource("google-native:pubsub/v1:SnapshotIamPolicy", name, args, &resource, opts...)
 	if err != nil {

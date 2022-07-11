@@ -60,6 +60,13 @@ func NewImportJob(ctx *pulumi.Context,
 	if args.ProtectionLevel == nil {
 		return nil, errors.New("invalid value for required argument 'ProtectionLevel'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"importJobId",
+		"keyRingId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ImportJob
 	err := ctx.RegisterResource("google-native:cloudkms/v1:ImportJob", name, args, &resource, opts...)
 	if err != nil {

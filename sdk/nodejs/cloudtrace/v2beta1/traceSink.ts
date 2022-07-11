@@ -74,6 +74,8 @@ export class TraceSink extends pulumi.CustomResource {
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TraceSink.__pulumiType, name, resourceInputs, opts);
     }
 }

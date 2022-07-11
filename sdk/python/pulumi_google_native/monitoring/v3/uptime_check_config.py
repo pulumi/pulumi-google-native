@@ -342,6 +342,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__.__dict__["selected_regions"] = selected_regions
             __props__.__dict__["tcp_check"] = tcp_check
             __props__.__dict__["timeout"] = timeout
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(UptimeCheckConfig, __self__).__init__(
             'google-native:monitoring/v3:UptimeCheckConfig',
             resource_name,

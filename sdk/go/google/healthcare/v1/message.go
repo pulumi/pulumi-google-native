@@ -54,6 +54,13 @@ func NewMessage(ctx *pulumi.Context,
 	if args.Hl7V2StoreId == nil {
 		return nil, errors.New("invalid value for required argument 'Hl7V2StoreId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"datasetId",
+		"hl7V2StoreId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Message
 	err := ctx.RegisterResource("google-native:healthcare/v1:Message", name, args, &resource, opts...)
 	if err != nil {

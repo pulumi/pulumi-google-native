@@ -186,6 +186,8 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "migratingVmId", "project", "sourceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(MigratingVm.__pulumiType, name, resourceInputs, opts);
     }
 }

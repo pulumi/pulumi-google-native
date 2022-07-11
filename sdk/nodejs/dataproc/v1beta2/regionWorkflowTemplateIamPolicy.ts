@@ -85,6 +85,8 @@ export class RegionWorkflowTemplateIamPolicy extends pulumi.CustomResource {
             resourceInputs["workflowTemplateId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "regionId", "workflowTemplateId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionWorkflowTemplateIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

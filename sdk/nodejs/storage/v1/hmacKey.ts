@@ -110,6 +110,8 @@ export class HmacKey extends pulumi.CustomResource {
             resourceInputs["userProject"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "serviceAccountEmail"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(HmacKey.__pulumiType, name, resourceInputs, opts);
     }
 }

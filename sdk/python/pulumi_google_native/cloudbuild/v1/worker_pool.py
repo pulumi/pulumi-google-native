@@ -207,6 +207,8 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "worker_pool_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkerPool, __self__).__init__(
             'google-native:cloudbuild/v1:WorkerPool',
             resource_name,

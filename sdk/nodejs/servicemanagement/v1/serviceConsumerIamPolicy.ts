@@ -89,6 +89,8 @@ export class ServiceConsumerIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["consumerId", "serviceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServiceConsumerIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -185,6 +185,8 @@ class Sharedflow(pulumi.CustomResource):
             __props__.__dict__["latest_revision_id"] = None
             __props__.__dict__["meta_data"] = None
             __props__.__dict__["revision"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["action", "name", "organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Sharedflow, __self__).__init__(
             'google-native:apigee/v1:Sharedflow',
             resource_name,

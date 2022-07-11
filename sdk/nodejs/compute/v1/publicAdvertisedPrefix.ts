@@ -125,6 +125,8 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PublicAdvertisedPrefix.__pulumiType, name, resourceInputs, opts);
     }
 }

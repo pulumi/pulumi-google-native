@@ -70,6 +70,10 @@ func NewOccurrence(ctx *pulumi.Context,
 		args = &OccurrenceArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Occurrence
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:Occurrence", name, args, &resource, opts...)
 	if err != nil {

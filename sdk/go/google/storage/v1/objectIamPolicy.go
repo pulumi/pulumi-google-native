@@ -48,6 +48,11 @@ func NewObjectIamPolicy(ctx *pulumi.Context,
 	if args.Object == nil {
 		return nil, errors.New("invalid value for required argument 'Object'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bucket",
+		"object",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ObjectIamPolicy
 	err := ctx.RegisterResource("google-native:storage/v1:ObjectIamPolicy", name, args, &resource, opts...)
 	if err != nil {

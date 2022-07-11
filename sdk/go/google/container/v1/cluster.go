@@ -155,6 +155,11 @@ func NewCluster(ctx *pulumi.Context,
 		args = &ClusterArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:container/v1:Cluster", name, args, &resource, opts...)
 	if err != nil {

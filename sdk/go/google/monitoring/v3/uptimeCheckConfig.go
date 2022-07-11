@@ -50,6 +50,10 @@ func NewUptimeCheckConfig(ctx *pulumi.Context,
 		args = &UptimeCheckConfigArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource UptimeCheckConfig
 	err := ctx.RegisterResource("google-native:monitoring/v3:UptimeCheckConfig", name, args, &resource, opts...)
 	if err != nil {

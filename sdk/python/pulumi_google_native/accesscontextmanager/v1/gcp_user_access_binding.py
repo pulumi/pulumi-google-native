@@ -142,6 +142,8 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(GcpUserAccessBinding, __self__).__init__(
             'google-native:accesscontextmanager/v1:GcpUserAccessBinding',
             resource_name,

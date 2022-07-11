@@ -94,6 +94,8 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["smartReplyMetrics"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["conversationModelId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Evaluation.__pulumiType, name, resourceInputs, opts);
     }
 }

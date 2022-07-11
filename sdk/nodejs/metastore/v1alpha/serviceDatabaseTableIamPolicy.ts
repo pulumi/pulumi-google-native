@@ -101,6 +101,8 @@ export class ServiceDatabaseTableIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["databaseId", "location", "project", "serviceId", "tableId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServiceDatabaseTableIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

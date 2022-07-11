@@ -82,6 +82,8 @@ export class AutoscalingPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["autoscalingPolicyId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AutoscalingPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

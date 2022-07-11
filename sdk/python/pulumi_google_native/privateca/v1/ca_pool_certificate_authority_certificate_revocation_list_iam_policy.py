@@ -249,6 +249,8 @@ class CaPoolCertificateAuthorityCertificateRevocationListIamPolicy(pulumi.Custom
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["ca_pool_id", "certificate_authority_id", "certificate_revocation_list_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CaPoolCertificateAuthorityCertificateRevocationListIamPolicy, __self__).__init__(
             'google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy',
             resource_name,

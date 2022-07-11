@@ -88,6 +88,8 @@ export class NamespaceServiceIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "namespaceId", "project", "serviceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NamespaceServiceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

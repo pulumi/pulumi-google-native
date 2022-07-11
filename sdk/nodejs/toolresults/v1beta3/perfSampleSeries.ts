@@ -86,6 +86,8 @@ export class PerfSampleSeries extends pulumi.CustomResource {
             resourceInputs["stepId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["executionId", "historyId", "project", "stepId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PerfSampleSeries.__pulumiType, name, resourceInputs, opts);
     }
 }

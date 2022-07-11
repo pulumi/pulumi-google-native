@@ -38,6 +38,10 @@ func NewRole(ctx *pulumi.Context,
 		args = &RoleArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Role
 	err := ctx.RegisterResource("google-native:iam/v1:Role", name, args, &resource, opts...)
 	if err != nil {

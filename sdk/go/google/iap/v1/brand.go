@@ -35,6 +35,10 @@ func NewBrand(ctx *pulumi.Context,
 		args = &BrandArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Brand
 	err := ctx.RegisterResource("google-native:iap/v1:Brand", name, args, &resource, opts...)
 	if err != nil {

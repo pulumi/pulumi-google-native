@@ -248,6 +248,8 @@ class SslCertificate(pulumi.CustomResource):
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["subject_alternative_names"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SslCertificate, __self__).__init__(
             'google-native:compute/beta:SslCertificate',
             resource_name,

@@ -92,6 +92,12 @@ func NewService(ctx *pulumi.Context,
 	if args.Template == nil {
 		return nil, errors.New("invalid value for required argument 'Template'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"serviceId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Service
 	err := ctx.RegisterResource("google-native:run/v2:Service", name, args, &resource, opts...)
 	if err != nil {

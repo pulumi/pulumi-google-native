@@ -91,6 +91,8 @@ export class SnapshotIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "resource"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SnapshotIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -260,6 +260,8 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_messages"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Function, __self__).__init__(
             'google-native:cloudfunctions/v2alpha:Function',
             resource_name,

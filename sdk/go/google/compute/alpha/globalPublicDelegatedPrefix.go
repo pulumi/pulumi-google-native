@@ -52,6 +52,10 @@ func NewGlobalPublicDelegatedPrefix(ctx *pulumi.Context,
 		args = &GlobalPublicDelegatedPrefixArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource GlobalPublicDelegatedPrefix
 	err := ctx.RegisterResource("google-native:compute/alpha:GlobalPublicDelegatedPrefix", name, args, &resource, opts...)
 	if err != nil {

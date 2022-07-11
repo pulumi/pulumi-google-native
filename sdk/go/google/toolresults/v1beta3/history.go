@@ -36,6 +36,10 @@ func NewHistory(ctx *pulumi.Context,
 		args = &HistoryArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource History
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:History", name, args, &resource, opts...)
 	if err != nil {

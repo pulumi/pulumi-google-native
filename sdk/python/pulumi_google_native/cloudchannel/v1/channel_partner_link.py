@@ -136,6 +136,8 @@ class ChannelPartnerLink(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["public_id"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["account_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ChannelPartnerLink, __self__).__init__(
             'google-native:cloudchannel/v1:ChannelPartnerLink',
             resource_name,

@@ -40,6 +40,12 @@ func NewFeatureIamPolicy(ctx *pulumi.Context,
 	if args.FeatureId == nil {
 		return nil, errors.New("invalid value for required argument 'FeatureId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"featureId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FeatureIamPolicy
 	err := ctx.RegisterResource("google-native:gkehub/v1beta:FeatureIamPolicy", name, args, &resource, opts...)
 	if err != nil {

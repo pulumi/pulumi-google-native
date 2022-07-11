@@ -57,6 +57,11 @@ func NewManagedZone(ctx *pulumi.Context,
 		args = &ManagedZoneArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ManagedZone
 	err := ctx.RegisterResource("google-native:dns/v2:ManagedZone", name, args, &resource, opts...)
 	if err != nil {
