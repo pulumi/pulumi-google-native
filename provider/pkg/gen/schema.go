@@ -772,6 +772,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	requiredInputProperties.Delete("location")
 	requiredInputProperties.Delete("zone")
 
+	replaceOnChangesOverride := func(resourceMeta resources.CloudAPIResource) []string {
+		// If no update defined, the whole resource is immutable.
+		if resourceMeta.Update.Undefined() {
+			return []string{"*"}
+		}
+		return nil
+	}
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{
 			Description: description,
@@ -779,8 +786,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			Properties:  properties,
 			Required:    requiredProperties.SortedValues(),
 		},
-		InputProperties: inputProperties,
-		RequiredInputs:  requiredInputProperties.SortedValues(),
+		InputProperties:          inputProperties,
+		RequiredInputs:           requiredInputProperties.SortedValues(),
+		ReplaceOnChangesOverride: replaceOnChangesOverride(resourceMeta),
 	}
 
 	if md, ok := metadataOverrides[resourceTok]; ok {
