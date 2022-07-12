@@ -123,7 +123,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project", "scheduleId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "scheduleId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Schedule.__pulumiType, name, resourceInputs, opts);
     }

@@ -113,7 +113,7 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["service"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "region", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionTargetTcpProxy.__pulumiType, name, resourceInputs, opts);
     }

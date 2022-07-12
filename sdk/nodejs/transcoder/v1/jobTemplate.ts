@@ -83,7 +83,7 @@ export class JobTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["jobTemplateId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["jobTemplateId", "location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(JobTemplate.__pulumiType, name, resourceInputs, opts);
     }

@@ -131,7 +131,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["subnet"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["connectorId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["connectorId", "location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Connector.__pulumiType, name, resourceInputs, opts);
     }

@@ -74,6 +74,8 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["topic"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["*"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
 }

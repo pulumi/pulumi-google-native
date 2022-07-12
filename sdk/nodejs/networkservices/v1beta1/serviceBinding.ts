@@ -103,7 +103,7 @@ export class ServiceBinding extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project", "serviceBindingId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "serviceBindingId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServiceBinding.__pulumiType, name, resourceInputs, opts);
     }

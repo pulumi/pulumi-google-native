@@ -100,7 +100,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["startTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["developerId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["developerId", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Subscription.__pulumiType, name, resourceInputs, opts);
     }

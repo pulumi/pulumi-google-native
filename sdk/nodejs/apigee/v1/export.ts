@@ -127,7 +127,7 @@ export class Export extends pulumi.CustomResource {
             resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Export.__pulumiType, name, resourceInputs, opts);
     }

@@ -122,7 +122,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "region", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ResourcePolicy.__pulumiType, name, resourceInputs, opts);
     }

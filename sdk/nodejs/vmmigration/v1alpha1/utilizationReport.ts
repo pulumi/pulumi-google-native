@@ -144,7 +144,7 @@ export class UtilizationReport extends pulumi.CustomResource {
             resourceInputs["vmsCount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project", "sourceId", "utilizationReportId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "sourceId", "utilizationReportId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(UtilizationReport.__pulumiType, name, resourceInputs, opts);
     }

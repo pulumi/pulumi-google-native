@@ -90,7 +90,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AnnotationSpecSet.__pulumiType, name, resourceInputs, opts);
     }

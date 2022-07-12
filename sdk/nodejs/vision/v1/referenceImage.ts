@@ -89,7 +89,7 @@ export class ReferenceImage extends pulumi.CustomResource {
             resourceInputs["uri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "productId", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "productId", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ReferenceImage.__pulumiType, name, resourceInputs, opts);
     }

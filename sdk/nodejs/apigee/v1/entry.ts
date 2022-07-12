@@ -82,7 +82,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["apiId", "keyvaluemapId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "keyvaluemapId", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Entry.__pulumiType, name, resourceInputs, opts);
     }

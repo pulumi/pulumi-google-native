@@ -119,7 +119,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["sourceInstanceParams"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "region", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionInstanceTemplate.__pulumiType, name, resourceInputs, opts);
     }

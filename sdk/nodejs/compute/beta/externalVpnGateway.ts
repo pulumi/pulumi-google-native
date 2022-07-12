@@ -113,7 +113,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ExternalVpnGateway.__pulumiType, name, resourceInputs, opts);
     }

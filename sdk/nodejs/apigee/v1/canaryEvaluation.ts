@@ -134,7 +134,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
             resourceInputs["verdict"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["instanceId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CanaryEvaluation.__pulumiType, name, resourceInputs, opts);
     }

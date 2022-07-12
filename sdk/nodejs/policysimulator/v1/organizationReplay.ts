@@ -89,7 +89,7 @@ export class OrganizationReplay extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationReplay.__pulumiType, name, resourceInputs, opts);
     }

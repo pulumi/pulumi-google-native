@@ -98,7 +98,7 @@ export class Partition extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["entityId", "lakeId", "location", "project", "zone"] };
+        const replaceOnChanges = { replaceOnChanges: ["entityId", "lakeId", "location", "project", "zone", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Partition.__pulumiType, name, resourceInputs, opts);
     }

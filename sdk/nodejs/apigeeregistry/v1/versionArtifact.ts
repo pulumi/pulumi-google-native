@@ -118,7 +118,7 @@ export class VersionArtifact extends pulumi.CustomResource {
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["apiId", "artifactId", "location", "project", "versionId"] };
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "artifactId", "location", "project", "versionId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(VersionArtifact.__pulumiType, name, resourceInputs, opts);
     }

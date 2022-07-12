@@ -92,7 +92,7 @@ export class Sharedflow extends pulumi.CustomResource {
             resourceInputs["revision"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["action", "name", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["action", "name", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Sharedflow.__pulumiType, name, resourceInputs, opts);
     }

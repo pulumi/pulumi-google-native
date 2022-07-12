@@ -85,6 +85,8 @@ export class Lien extends pulumi.CustomResource {
             resourceInputs["restrictions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["*"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Lien.__pulumiType, name, resourceInputs, opts);
     }
 }

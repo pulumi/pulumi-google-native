@@ -92,7 +92,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EndpointAttachment.__pulumiType, name, resourceInputs, opts);
     }

@@ -55,6 +55,8 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["*"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }

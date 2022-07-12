@@ -141,7 +141,7 @@ export class Entitlement extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["accountId", "customerId"] };
+        const replaceOnChanges = { replaceOnChanges: ["accountId", "customerId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Entitlement.__pulumiType, name, resourceInputs, opts);
     }

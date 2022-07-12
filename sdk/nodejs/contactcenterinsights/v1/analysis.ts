@@ -86,7 +86,7 @@ export class Analysis extends pulumi.CustomResource {
             resourceInputs["requestTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["conversationId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["conversationId", "location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Analysis.__pulumiType, name, resourceInputs, opts);
     }

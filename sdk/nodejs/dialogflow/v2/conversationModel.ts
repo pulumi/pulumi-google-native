@@ -110,7 +110,7 @@ export class ConversationModel extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConversationModel.__pulumiType, name, resourceInputs, opts);
     }

@@ -85,7 +85,7 @@ export class History extends pulumi.CustomResource {
             resourceInputs["testPlatform"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(History.__pulumiType, name, resourceInputs, opts);
     }

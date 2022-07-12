@@ -89,7 +89,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Schema.__pulumiType, name, resourceInputs, opts);
     }

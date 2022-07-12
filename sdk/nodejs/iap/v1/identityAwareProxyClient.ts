@@ -77,7 +77,7 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
             resourceInputs["secret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["brandId", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["brandId", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(IdentityAwareProxyClient.__pulumiType, name, resourceInputs, opts);
     }

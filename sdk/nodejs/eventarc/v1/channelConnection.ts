@@ -103,7 +103,7 @@ export class ChannelConnection extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["channelConnectionId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["channelConnectionId", "location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ChannelConnection.__pulumiType, name, resourceInputs, opts);
     }

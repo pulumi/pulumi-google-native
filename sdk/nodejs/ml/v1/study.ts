@@ -99,7 +99,7 @@ export class Study extends pulumi.CustomResource {
             resourceInputs["studyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project", "studyId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "studyId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Study.__pulumiType, name, resourceInputs, opts);
     }

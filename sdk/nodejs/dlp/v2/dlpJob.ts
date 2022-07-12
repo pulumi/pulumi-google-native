@@ -120,7 +120,7 @@ export class DlpJob extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DlpJob.__pulumiType, name, resourceInputs, opts);
     }

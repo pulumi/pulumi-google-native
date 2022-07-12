@@ -118,7 +118,7 @@ export class TargetVpnGateway extends pulumi.CustomResource {
             resourceInputs["tunnels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "region", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TargetVpnGateway.__pulumiType, name, resourceInputs, opts);
     }

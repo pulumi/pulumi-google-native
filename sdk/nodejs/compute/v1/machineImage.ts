@@ -158,7 +158,7 @@ export class MachineImage extends pulumi.CustomResource {
             resourceInputs["totalStorageBytes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "sourceInstance"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "sourceInstance", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(MachineImage.__pulumiType, name, resourceInputs, opts);
     }

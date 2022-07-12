@@ -167,7 +167,7 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "region", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionInstantSnapshot.__pulumiType, name, resourceInputs, opts);
     }

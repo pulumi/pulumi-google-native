@@ -116,7 +116,7 @@ export class Instruction extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Instruction.__pulumiType, name, resourceInputs, opts);
     }

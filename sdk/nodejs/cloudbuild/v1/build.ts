@@ -233,7 +233,7 @@ export class Build extends pulumi.CustomResource {
             resourceInputs["warnings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project", "projectId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "projectId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Build.__pulumiType, name, resourceInputs, opts);
     }

@@ -171,7 +171,7 @@ export class Batch extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Batch.__pulumiType, name, resourceInputs, opts);
     }

@@ -73,7 +73,7 @@ export class Keystore extends pulumi.CustomResource {
             resourceInputs["organizationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Keystore.__pulumiType, name, resourceInputs, opts);
     }

@@ -79,7 +79,7 @@ export class Brand extends pulumi.CustomResource {
             resourceInputs["supportEmail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Brand.__pulumiType, name, resourceInputs, opts);
     }

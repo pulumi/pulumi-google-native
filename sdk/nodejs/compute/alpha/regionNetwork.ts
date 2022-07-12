@@ -169,7 +169,7 @@ export class RegionNetwork extends pulumi.CustomResource {
             resourceInputs["subnetworks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "region", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionNetwork.__pulumiType, name, resourceInputs, opts);
     }

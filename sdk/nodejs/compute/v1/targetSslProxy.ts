@@ -119,7 +119,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
             resourceInputs["sslPolicy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TargetSslProxy.__pulumiType, name, resourceInputs, opts);
     }

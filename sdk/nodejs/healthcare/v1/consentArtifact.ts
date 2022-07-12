@@ -119,7 +119,7 @@ export class ConsentArtifact extends pulumi.CustomResource {
             resourceInputs["witnessSignature"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["consentStoreId", "datasetId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["consentStoreId", "datasetId", "location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ConsentArtifact.__pulumiType, name, resourceInputs, opts);
     }

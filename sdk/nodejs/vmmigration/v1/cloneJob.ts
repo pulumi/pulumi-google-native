@@ -128,7 +128,7 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["stateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["cloneJobId", "location", "migratingVmId", "project", "sourceId"] };
+        const replaceOnChanges = { replaceOnChanges: ["cloneJobId", "location", "migratingVmId", "project", "sourceId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CloneJob.__pulumiType, name, resourceInputs, opts);
     }

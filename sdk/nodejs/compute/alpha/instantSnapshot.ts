@@ -164,7 +164,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "zone"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "zone", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(InstantSnapshot.__pulumiType, name, resourceInputs, opts);
     }

@@ -153,7 +153,7 @@ export class Query extends pulumi.CustomResource {
             resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Query.__pulumiType, name, resourceInputs, opts);
     }

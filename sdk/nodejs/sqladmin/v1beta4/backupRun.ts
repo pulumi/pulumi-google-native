@@ -145,7 +145,7 @@ export class BackupRun extends pulumi.CustomResource {
             resourceInputs["windowStartTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["instance", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["instance", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BackupRun.__pulumiType, name, resourceInputs, opts);
     }

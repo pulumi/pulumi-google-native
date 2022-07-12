@@ -147,7 +147,7 @@ export class HostQuery extends pulumi.CustomResource {
             resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(HostQuery.__pulumiType, name, resourceInputs, opts);
     }

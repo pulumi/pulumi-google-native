@@ -101,7 +101,7 @@ export class Change extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["managedZone", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["managedZone", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Change.__pulumiType, name, resourceInputs, opts);
     }

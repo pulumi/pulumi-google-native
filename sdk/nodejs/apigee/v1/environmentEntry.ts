@@ -82,7 +82,7 @@ export class EnvironmentEntry extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["environmentId", "keyvaluemapId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "keyvaluemapId", "organizationId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EnvironmentEntry.__pulumiType, name, resourceInputs, opts);
     }

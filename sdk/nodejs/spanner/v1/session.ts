@@ -95,7 +95,7 @@ export class Session extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["databaseId", "instanceId", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["databaseId", "instanceId", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Session.__pulumiType, name, resourceInputs, opts);
     }

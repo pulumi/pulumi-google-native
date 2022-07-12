@@ -196,7 +196,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project", "releaseId", "rolloutId"] };
+        const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project", "releaseId", "rolloutId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Rollout.__pulumiType, name, resourceInputs, opts);
     }

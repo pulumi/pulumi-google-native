@@ -120,7 +120,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["validBeforeTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "serviceAccountId"] };
+        const replaceOnChanges = { replaceOnChanges: ["project", "serviceAccountId", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Key.__pulumiType, name, resourceInputs, opts);
     }

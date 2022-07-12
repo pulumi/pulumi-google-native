@@ -94,7 +94,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["restoreInfo"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["instanceId", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Table.__pulumiType, name, resourceInputs, opts);
     }

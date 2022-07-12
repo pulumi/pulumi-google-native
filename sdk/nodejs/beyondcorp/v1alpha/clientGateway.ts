@@ -103,7 +103,7 @@ export class ClientGateway extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ClientGateway.__pulumiType, name, resourceInputs, opts);
     }

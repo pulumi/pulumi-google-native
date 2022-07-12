@@ -89,7 +89,7 @@ export class FolderReplay extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["folderId", "location"] };
+        const replaceOnChanges = { replaceOnChanges: ["folderId", "location", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FolderReplay.__pulumiType, name, resourceInputs, opts);
     }

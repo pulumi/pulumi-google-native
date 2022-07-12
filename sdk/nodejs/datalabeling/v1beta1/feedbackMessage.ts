@@ -101,7 +101,7 @@ export class FeedbackMessage extends pulumi.CustomResource {
             resourceInputs["requesterFeedbackMetadata"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["annotatedDatasetId", "datasetId", "feedbackThreadId", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["annotatedDatasetId", "datasetId", "feedbackThreadId", "project", "*"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FeedbackMessage.__pulumiType, name, resourceInputs, opts);
     }
