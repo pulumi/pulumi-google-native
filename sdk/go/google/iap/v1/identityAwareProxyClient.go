@@ -39,6 +39,7 @@ func NewIdentityAwareProxyClient(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"brandId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource IdentityAwareProxyClient

@@ -49,6 +49,7 @@ func NewNotification(ctx *pulumi.Context,
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"bucket",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Notification

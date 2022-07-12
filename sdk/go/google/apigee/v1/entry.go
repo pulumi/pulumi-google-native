@@ -47,6 +47,7 @@ func NewEntry(ctx *pulumi.Context,
 		"apiId",
 		"keyvaluemapId",
 		"organizationId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Entry

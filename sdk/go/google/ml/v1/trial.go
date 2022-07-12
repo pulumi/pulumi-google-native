@@ -55,6 +55,7 @@ func NewTrial(ctx *pulumi.Context,
 		"location",
 		"project",
 		"studyId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Trial

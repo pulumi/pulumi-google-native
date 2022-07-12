@@ -49,6 +49,7 @@ func NewPerfSampleSeries(ctx *pulumi.Context,
 		"historyId",
 		"project",
 		"stepId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource PerfSampleSeries

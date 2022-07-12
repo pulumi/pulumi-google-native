@@ -45,6 +45,7 @@ func NewReferenceImage(ctx *pulumi.Context,
 		"location",
 		"productId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource ReferenceImage

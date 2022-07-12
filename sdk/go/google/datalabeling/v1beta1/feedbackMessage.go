@@ -52,6 +52,7 @@ func NewFeedbackMessage(ctx *pulumi.Context,
 		"datasetId",
 		"feedbackThreadId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource FeedbackMessage

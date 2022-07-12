@@ -74,6 +74,7 @@ func NewCloneJob(ctx *pulumi.Context,
 		"migratingVmId",
 		"project",
 		"sourceId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource CloneJob

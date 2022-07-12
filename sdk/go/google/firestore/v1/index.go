@@ -46,6 +46,7 @@ func NewIndex(ctx *pulumi.Context,
 		"collectionGroupId",
 		"databaseId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Index

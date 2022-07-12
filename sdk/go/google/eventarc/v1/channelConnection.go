@@ -50,6 +50,7 @@ func NewChannelConnection(ctx *pulumi.Context,
 		"channelConnectionId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource ChannelConnection

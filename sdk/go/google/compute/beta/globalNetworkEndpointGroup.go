@@ -68,6 +68,7 @@ func NewGlobalNetworkEndpointGroup(ctx *pulumi.Context,
 
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource GlobalNetworkEndpointGroup

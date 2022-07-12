@@ -51,6 +51,7 @@ func NewInstance(ctx *pulumi.Context,
 		"instanceId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Instance

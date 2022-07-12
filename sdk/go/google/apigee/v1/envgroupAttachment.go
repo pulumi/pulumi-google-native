@@ -46,6 +46,7 @@ func NewEnvgroupAttachment(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"envgroupId",
 		"organizationId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource EnvgroupAttachment

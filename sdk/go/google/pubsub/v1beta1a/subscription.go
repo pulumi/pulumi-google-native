@@ -31,6 +31,10 @@ func NewSubscription(ctx *pulumi.Context,
 		args = &SubscriptionArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"*",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Subscription
 	err := ctx.RegisterResource("google-native:pubsub/v1beta1a:Subscription", name, args, &resource, opts...)
 	if err != nil {

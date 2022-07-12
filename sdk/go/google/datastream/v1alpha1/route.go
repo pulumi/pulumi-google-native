@@ -63,6 +63,7 @@ func NewRoute(ctx *pulumi.Context,
 		"privateConnectionId",
 		"project",
 		"routeId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Route

@@ -46,6 +46,7 @@ func NewFolderReplay(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"folderId",
 		"location",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource FolderReplay

@@ -65,6 +65,7 @@ func NewImportJob(ctx *pulumi.Context,
 		"keyRingId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource ImportJob

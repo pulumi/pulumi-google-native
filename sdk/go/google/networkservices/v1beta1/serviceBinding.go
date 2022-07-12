@@ -50,6 +50,7 @@ func NewServiceBinding(ctx *pulumi.Context,
 		"location",
 		"project",
 		"serviceBindingId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource ServiceBinding

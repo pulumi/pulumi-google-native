@@ -84,6 +84,10 @@ func NewDevice(ctx *pulumi.Context,
 		args = &DeviceArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"*",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Device
 	err := ctx.RegisterResource("google-native:cloudidentity/v1beta1:Device", name, args, &resource, opts...)
 	if err != nil {

@@ -53,6 +53,7 @@ func NewPartition(ctx *pulumi.Context,
 		"location",
 		"project",
 		"zone",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Partition

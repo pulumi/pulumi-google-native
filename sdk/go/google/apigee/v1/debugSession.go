@@ -61,6 +61,7 @@ func NewDebugSession(ctx *pulumi.Context,
 		"environmentId",
 		"organizationId",
 		"revisionId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource DebugSession

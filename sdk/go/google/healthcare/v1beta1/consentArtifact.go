@@ -58,6 +58,7 @@ func NewConsentArtifact(ctx *pulumi.Context,
 		"datasetId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource ConsentArtifact

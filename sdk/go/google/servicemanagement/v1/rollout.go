@@ -45,6 +45,7 @@ func NewRollout(ctx *pulumi.Context,
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"serviceName",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Rollout

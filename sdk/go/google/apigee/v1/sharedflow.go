@@ -45,6 +45,7 @@ func NewSharedflow(ctx *pulumi.Context,
 		"action",
 		"name",
 		"organizationId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Sharedflow

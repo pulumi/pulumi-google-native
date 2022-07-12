@@ -59,6 +59,7 @@ func NewVersionArtifact(ctx *pulumi.Context,
 		"location",
 		"project",
 		"versionId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource VersionArtifact

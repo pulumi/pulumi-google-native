@@ -35,6 +35,10 @@ func NewLien(ctx *pulumi.Context,
 		args = &LienArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"*",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Lien
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:Lien", name, args, &resource, opts...)
 	if err != nil {

@@ -58,6 +58,7 @@ func NewTask(ctx *pulumi.Context,
 		"location",
 		"project",
 		"queueId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Task

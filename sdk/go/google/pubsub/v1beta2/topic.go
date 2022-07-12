@@ -34,6 +34,7 @@ func NewTopic(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 		"topicId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Topic

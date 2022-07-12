@@ -42,6 +42,7 @@ func NewAnalysis(ctx *pulumi.Context,
 		"conversationId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Analysis

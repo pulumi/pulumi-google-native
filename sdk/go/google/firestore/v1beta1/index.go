@@ -40,6 +40,7 @@ func NewIndex(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"databaseId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Index

@@ -64,6 +64,7 @@ func NewArtifact(ctx *pulumi.Context,
 		"project",
 		"specId",
 		"versionId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Artifact

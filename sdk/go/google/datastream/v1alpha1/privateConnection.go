@@ -57,6 +57,7 @@ func NewPrivateConnection(ctx *pulumi.Context,
 		"location",
 		"privateConnectionId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource PrivateConnection

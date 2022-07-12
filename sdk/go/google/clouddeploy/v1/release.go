@@ -85,6 +85,7 @@ func NewRelease(ctx *pulumi.Context,
 		"location",
 		"project",
 		"releaseId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Release

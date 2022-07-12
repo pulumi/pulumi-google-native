@@ -55,6 +55,7 @@ func NewSchedule(ctx *pulumi.Context,
 		"location",
 		"project",
 		"scheduleId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Schedule

@@ -25,6 +25,10 @@ func NewTopic(ctx *pulumi.Context,
 		args = &TopicArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"*",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Topic
 	err := ctx.RegisterResource("google-native:pubsub/v1beta1a:Topic", name, args, &resource, opts...)
 	if err != nil {

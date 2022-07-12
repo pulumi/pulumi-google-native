@@ -66,6 +66,7 @@ func NewEndpoint(ctx *pulumi.Context,
 		"endpointId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Endpoint

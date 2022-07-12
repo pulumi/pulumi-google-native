@@ -39,6 +39,7 @@ func NewKeystore(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"environmentId",
 		"organizationId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Keystore

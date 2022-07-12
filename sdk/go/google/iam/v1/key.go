@@ -53,6 +53,7 @@ func NewKey(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 		"serviceAccountId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Key

@@ -46,6 +46,7 @@ func NewEvaluation(ctx *pulumi.Context,
 		"conversationModelId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Evaluation

@@ -50,6 +50,7 @@ func NewEnvironment(ctx *pulumi.Context,
 		"environmentId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Environment

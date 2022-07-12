@@ -41,6 +41,7 @@ func NewJobTemplate(ctx *pulumi.Context,
 		"jobTemplateId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource JobTemplate

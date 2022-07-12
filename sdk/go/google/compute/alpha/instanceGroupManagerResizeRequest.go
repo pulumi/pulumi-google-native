@@ -56,6 +56,7 @@ func NewInstanceGroupManagerResizeRequest(ctx *pulumi.Context,
 		"instanceGroupManager",
 		"project",
 		"zone",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource InstanceGroupManagerResizeRequest

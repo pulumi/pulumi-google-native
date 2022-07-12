@@ -55,6 +55,7 @@ func NewExecution(ctx *pulumi.Context,
 		"location",
 		"project",
 		"workflowId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Execution

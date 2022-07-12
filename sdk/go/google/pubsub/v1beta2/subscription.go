@@ -40,6 +40,7 @@ func NewSubscription(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 		"subscriptionId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Subscription

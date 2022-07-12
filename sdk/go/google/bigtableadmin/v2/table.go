@@ -45,6 +45,7 @@ func NewTable(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"instanceId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Table

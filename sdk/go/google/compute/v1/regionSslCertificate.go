@@ -58,6 +58,7 @@ func NewRegionSslCertificate(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 		"region",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource RegionSslCertificate

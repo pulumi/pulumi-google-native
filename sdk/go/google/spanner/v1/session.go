@@ -48,6 +48,7 @@ func NewSession(ctx *pulumi.Context,
 		"databaseId",
 		"instanceId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Session

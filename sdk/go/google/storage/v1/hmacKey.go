@@ -50,6 +50,7 @@ func NewHmacKey(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 		"serviceAccountEmail",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource HmacKey

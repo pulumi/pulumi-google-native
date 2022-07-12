@@ -95,6 +95,7 @@ func NewBuild(ctx *pulumi.Context,
 		"location",
 		"project",
 		"projectId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Build

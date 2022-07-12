@@ -62,6 +62,7 @@ func NewHostSecurityReport(ctx *pulumi.Context,
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"organizationId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource HostSecurityReport

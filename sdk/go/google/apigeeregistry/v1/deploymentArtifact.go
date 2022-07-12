@@ -59,6 +59,7 @@ func NewDeploymentArtifact(ctx *pulumi.Context,
 		"deploymentId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource DeploymentArtifact

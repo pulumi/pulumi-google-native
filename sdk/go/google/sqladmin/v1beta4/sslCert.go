@@ -49,6 +49,7 @@ func NewSslCert(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"instance",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource SslCert

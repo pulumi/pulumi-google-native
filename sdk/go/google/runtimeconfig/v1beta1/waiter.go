@@ -48,6 +48,7 @@ func NewWaiter(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"configId",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Waiter

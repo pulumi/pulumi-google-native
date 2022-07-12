@@ -41,6 +41,7 @@ func NewJob(ctx *pulumi.Context,
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"namespaceId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Job

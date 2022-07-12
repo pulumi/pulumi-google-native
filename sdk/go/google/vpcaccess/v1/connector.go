@@ -57,6 +57,7 @@ func NewConnector(ctx *pulumi.Context,
 		"connectorId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Connector

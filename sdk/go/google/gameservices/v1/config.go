@@ -54,6 +54,7 @@ func NewConfig(ctx *pulumi.Context,
 		"gameServerDeploymentId",
 		"location",
 		"project",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Config

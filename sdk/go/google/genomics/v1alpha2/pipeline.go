@@ -43,6 +43,10 @@ func NewPipeline(ctx *pulumi.Context,
 	if args.Resources == nil {
 		return nil, errors.New("invalid value for required argument 'Resources'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"*",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Pipeline
 	err := ctx.RegisterResource("google-native:genomics/v1alpha2:Pipeline", name, args, &resource, opts...)
 	if err != nil {

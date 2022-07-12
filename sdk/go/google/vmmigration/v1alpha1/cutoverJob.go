@@ -80,6 +80,7 @@ func NewCutoverJob(ctx *pulumi.Context,
 		"migratingVmId",
 		"project",
 		"sourceId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource CutoverJob

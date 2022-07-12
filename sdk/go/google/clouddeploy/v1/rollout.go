@@ -89,6 +89,7 @@ func NewRollout(ctx *pulumi.Context,
 		"project",
 		"releaseId",
 		"rolloutId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Rollout

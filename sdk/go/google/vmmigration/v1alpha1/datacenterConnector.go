@@ -71,6 +71,7 @@ func NewDatacenterConnector(ctx *pulumi.Context,
 		"location",
 		"project",
 		"sourceId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource DatacenterConnector

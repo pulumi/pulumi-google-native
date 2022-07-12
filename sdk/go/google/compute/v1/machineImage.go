@@ -65,6 +65,7 @@ func NewMachineImage(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
 		"sourceInstance",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource MachineImage

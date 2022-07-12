@@ -65,6 +65,7 @@ func NewEntitlement(ctx *pulumi.Context,
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"accountId",
 		"customerId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Entitlement

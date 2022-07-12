@@ -47,6 +47,7 @@ func NewEnvironmentEntry(ctx *pulumi.Context,
 		"environmentId",
 		"keyvaluemapId",
 		"organizationId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource EnvironmentEntry

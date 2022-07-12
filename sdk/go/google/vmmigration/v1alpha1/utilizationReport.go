@@ -65,6 +65,7 @@ func NewUtilizationReport(ctx *pulumi.Context,
 		"project",
 		"sourceId",
 		"utilizationReportId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource UtilizationReport

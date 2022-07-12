@@ -56,6 +56,7 @@ func NewBackup(ctx *pulumi.Context,
 		"location",
 		"project",
 		"serviceId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Backup

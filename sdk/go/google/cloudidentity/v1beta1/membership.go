@@ -48,6 +48,7 @@ func NewMembership(ctx *pulumi.Context,
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"groupId",
+		"*",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Membership
