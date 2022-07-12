@@ -76,6 +76,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
                     "conversationId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

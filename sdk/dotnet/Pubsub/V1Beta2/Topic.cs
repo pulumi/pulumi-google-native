@@ -54,6 +54,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
                 {
                     "project",
                     "topicId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

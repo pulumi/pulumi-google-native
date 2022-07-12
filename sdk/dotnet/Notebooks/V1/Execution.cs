@@ -110,6 +110,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
                     "executionId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

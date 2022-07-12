@@ -85,6 +85,7 @@ namespace Pulumi.GoogleNative.Run.V1
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

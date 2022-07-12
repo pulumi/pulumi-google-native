@@ -84,6 +84,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
                     "conversationModelId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -121,6 +121,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
                     "keyRingId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

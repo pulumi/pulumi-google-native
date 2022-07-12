@@ -123,6 +123,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
                 {
                     "accountId",
                     "customerId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

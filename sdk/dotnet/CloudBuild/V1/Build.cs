@@ -220,6 +220,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
                     "location",
                     "project",
                     "projectId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

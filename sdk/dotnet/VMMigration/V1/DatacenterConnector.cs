@@ -150,6 +150,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
                     "location",
                     "project",
                     "sourceId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

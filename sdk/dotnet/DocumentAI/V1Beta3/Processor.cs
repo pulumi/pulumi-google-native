@@ -97,6 +97,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

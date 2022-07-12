@@ -109,6 +109,7 @@ namespace Pulumi.GoogleNative.IAM.V1
                 {
                     "project",
                     "serviceAccountId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

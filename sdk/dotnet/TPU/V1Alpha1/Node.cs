@@ -175,6 +175,7 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

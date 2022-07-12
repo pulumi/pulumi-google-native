@@ -77,6 +77,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
                     "collectionGroupId",
                     "databaseId",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

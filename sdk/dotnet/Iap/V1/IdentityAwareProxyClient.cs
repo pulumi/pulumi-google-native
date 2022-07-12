@@ -67,6 +67,7 @@ namespace Pulumi.GoogleNative.Iap.V1
                 {
                     "brandId",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

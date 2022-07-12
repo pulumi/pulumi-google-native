@@ -90,6 +90,7 @@ namespace Pulumi.GoogleNative.Translate.V3
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

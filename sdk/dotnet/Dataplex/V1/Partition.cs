@@ -85,6 +85,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
                     "location",
                     "project",
                     "zone",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -202,6 +202,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
                 ReplaceOnChanges =
                 {
                     "serviceName",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

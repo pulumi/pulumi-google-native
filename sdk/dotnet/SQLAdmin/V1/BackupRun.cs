@@ -133,6 +133,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
                 {
                     "instance",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

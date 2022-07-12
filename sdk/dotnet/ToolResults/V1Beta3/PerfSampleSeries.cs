@@ -71,6 +71,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
                     "historyId",
                     "project",
                     "stepId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

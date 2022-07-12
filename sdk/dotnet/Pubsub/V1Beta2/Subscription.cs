@@ -72,6 +72,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
                 {
                     "project",
                     "subscriptionId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

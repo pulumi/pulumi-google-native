@@ -75,6 +75,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

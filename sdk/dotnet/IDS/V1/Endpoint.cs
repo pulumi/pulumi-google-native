@@ -128,6 +128,7 @@ namespace Pulumi.GoogleNative.IDS.V1
                     "endpointId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

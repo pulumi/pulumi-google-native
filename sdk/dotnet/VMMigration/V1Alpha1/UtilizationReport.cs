@@ -132,6 +132,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
                     "project",
                     "sourceId",
                     "utilizationReportId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

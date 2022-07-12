@@ -121,6 +121,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
                     "connectorId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

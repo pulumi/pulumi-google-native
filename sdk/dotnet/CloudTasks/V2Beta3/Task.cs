@@ -124,6 +124,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
                     "location",
                     "project",
                     "queueId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

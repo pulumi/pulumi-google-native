@@ -91,6 +91,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
                     "channelConnectionId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

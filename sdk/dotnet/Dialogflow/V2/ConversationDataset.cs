@@ -91,6 +91,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

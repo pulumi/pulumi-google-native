@@ -101,6 +101,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
                     "gameServerDeploymentId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

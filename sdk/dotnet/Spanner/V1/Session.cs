@@ -83,6 +83,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
                     "databaseId",
                     "instanceId",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

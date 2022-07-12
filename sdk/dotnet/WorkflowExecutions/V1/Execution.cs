@@ -109,6 +109,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
                     "location",
                     "project",
                     "workflowId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

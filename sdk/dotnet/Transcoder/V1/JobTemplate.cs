@@ -73,6 +73,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
                     "jobTemplateId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

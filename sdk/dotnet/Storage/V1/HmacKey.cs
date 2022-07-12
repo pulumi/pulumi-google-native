@@ -100,6 +100,7 @@ namespace Pulumi.GoogleNative.Storage.V1
                 {
                     "project",
                     "serviceAccountEmail",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

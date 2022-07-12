@@ -69,6 +69,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

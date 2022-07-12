@@ -118,6 +118,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
                     "instanceGroupManager",
                     "project",
                     "zone",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

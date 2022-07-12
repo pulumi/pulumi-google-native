@@ -76,6 +76,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

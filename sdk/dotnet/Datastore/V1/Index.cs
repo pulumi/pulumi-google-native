@@ -75,6 +75,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

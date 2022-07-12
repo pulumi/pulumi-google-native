@@ -75,6 +75,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
                 {
                     "folderId",
                     "location",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -147,6 +147,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
                 {
                     "project",
                     "sourceInstance",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

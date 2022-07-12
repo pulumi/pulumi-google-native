@@ -104,6 +104,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
                     "datasetId",
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

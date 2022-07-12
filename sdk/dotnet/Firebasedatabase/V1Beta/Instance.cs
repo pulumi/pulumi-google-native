@@ -84,6 +84,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

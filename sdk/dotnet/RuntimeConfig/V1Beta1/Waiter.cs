@@ -96,6 +96,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
                 {
                     "configId",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

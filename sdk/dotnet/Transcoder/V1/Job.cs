@@ -120,6 +120,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

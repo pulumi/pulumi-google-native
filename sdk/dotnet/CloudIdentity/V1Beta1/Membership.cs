@@ -87,6 +87,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
                 ReplaceOnChanges =
                 {
                     "groupId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

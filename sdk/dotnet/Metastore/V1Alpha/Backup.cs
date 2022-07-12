@@ -107,6 +107,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
                     "location",
                     "project",
                     "serviceId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

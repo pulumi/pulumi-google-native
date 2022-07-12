@@ -76,6 +76,7 @@ namespace Pulumi.GoogleNative.Vision.V1
                     "location",
                     "productId",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

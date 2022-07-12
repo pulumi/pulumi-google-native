@@ -91,6 +91,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
                     "location",
                     "project",
                     "serviceBindingId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

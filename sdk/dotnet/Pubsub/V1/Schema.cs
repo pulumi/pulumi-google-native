@@ -80,6 +80,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

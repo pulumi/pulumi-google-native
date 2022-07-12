@@ -110,6 +110,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

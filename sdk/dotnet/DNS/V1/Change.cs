@@ -90,6 +90,7 @@ namespace Pulumi.GoogleNative.DNS.V1
                 {
                     "managedZone",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

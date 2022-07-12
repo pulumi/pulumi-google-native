@@ -100,6 +100,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
                     "environmentId",
                     "organizationId",
                     "revisionId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

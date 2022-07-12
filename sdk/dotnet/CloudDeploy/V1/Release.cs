@@ -188,6 +188,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
                     "location",
                     "project",
                     "releaseId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

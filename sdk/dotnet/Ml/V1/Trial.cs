@@ -113,6 +113,7 @@ namespace Pulumi.GoogleNative.Ml.V1
                     "location",
                     "project",
                     "studyId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

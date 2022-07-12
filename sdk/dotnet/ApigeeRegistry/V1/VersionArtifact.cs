@@ -105,6 +105,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
                     "location",
                     "project",
                     "versionId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

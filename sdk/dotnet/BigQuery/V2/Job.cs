@@ -93,6 +93,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

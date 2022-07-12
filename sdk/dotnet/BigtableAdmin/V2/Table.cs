@@ -78,6 +78,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
                 {
                     "instanceId",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -75,6 +75,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
                 ReplaceOnChanges =
                 {
                     "namespaceId",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

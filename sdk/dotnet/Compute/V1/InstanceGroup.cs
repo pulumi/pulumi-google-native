@@ -120,6 +120,7 @@ namespace Pulumi.GoogleNative.Compute.V1
                 {
                     "project",
                     "zone",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

@@ -110,6 +110,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
                     "location",
                     "privateConnectionId",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

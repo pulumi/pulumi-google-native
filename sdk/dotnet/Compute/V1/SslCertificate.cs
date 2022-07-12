@@ -128,6 +128,7 @@ namespace Pulumi.GoogleNative.Compute.V1
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

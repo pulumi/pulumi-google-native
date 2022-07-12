@@ -99,6 +99,7 @@ namespace Pulumi.GoogleNative.Storage.V1
                 ReplaceOnChanges =
                 {
                     "bucket",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

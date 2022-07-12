@@ -96,6 +96,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
                 {
                     "location",
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

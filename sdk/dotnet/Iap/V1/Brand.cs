@@ -71,6 +71,7 @@ namespace Pulumi.GoogleNative.Iap.V1
                 ReplaceOnChanges =
                 {
                     "project",
+                    "*",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
