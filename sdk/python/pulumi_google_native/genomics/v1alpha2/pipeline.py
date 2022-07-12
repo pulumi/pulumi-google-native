@@ -210,14 +210,9 @@ class Pipeline(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[pulumi.InputType['PipelineResourcesArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -233,6 +228,8 @@ class Pipeline(pulumi.CustomResource):
             if resources is None and not opts.urn:
                 raise TypeError("Missing required property 'resources'")
             __props__.__dict__["resources"] = resources
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["*"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Pipeline, __self__).__init__(
             'google-native:genomics/v1alpha2:Pipeline',
             resource_name,

@@ -102,10 +102,7 @@ def get_session(database_id: Optional[str] = None,
     __args__['instanceId'] = instance_id
     __args__['project'] = project
     __args__['sessionId'] = session_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getSession', __args__, opts=opts, typ=GetSessionResult).value
 
     return AwaitableGetSessionResult(

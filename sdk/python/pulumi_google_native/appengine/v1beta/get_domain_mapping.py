@@ -75,10 +75,7 @@ def get_domain_mapping(app_id: Optional[str] = None,
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['domainMappingId'] = domain_mapping_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1beta:getDomainMapping', __args__, opts=opts, typ=GetDomainMappingResult).value
 
     return AwaitableGetDomainMappingResult(

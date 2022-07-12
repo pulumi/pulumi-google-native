@@ -778,7 +778,7 @@ class ParserConfigResponse(dict):
         The configuration for the parser. It determines how the server parses the messages.
         :param bool allow_null_header: Determines whether messages with no header are allowed.
         :param 'SchemaPackageResponse' schema: Schemas used to parse messages in this store, if schematized parsing is desired.
-        :param str segment_terminator: Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
+        :param str segment_terminator: Byte(s) to use as the segment terminator. If this is unset, '\\r' is used as segment terminator, matching the HL7 version 2 specification.
         :param str version: Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
         """
         pulumi.set(__self__, "allow_null_header", allow_null_header)
@@ -806,7 +806,7 @@ class ParserConfigResponse(dict):
     @pulumi.getter(name="segmentTerminator")
     def segment_terminator(self) -> str:
         """
-        Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
+        Byte(s) to use as the segment terminator. If this is unset, '\\r' is used as segment terminator, matching the HL7 version 2 specification.
         """
         return pulumi.get(self, "segment_terminator")
 
@@ -1054,7 +1054,7 @@ class SegmentResponse(dict):
                  set_id: str):
         """
         A segment in a structured format.
-        :param Mapping[str, str] fields: A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
+        :param Mapping[str, str] fields: A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\\d+)(\\[\\d+\\])?(.\\d+)?(.\\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
         :param str segment_id: A string that indicates the type of segment. For example, EVN or PID.
         :param str set_id: Set ID for segments that can be in a set. This can be empty if it's missing or isn't applicable.
         """
@@ -1066,7 +1066,7 @@ class SegmentResponse(dict):
     @pulumi.getter
     def fields(self) -> Mapping[str, str]:
         """
-        A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
+        A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\\d+)(\\[\\d+\\])?(.\\d+)?(.\\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
         """
         return pulumi.get(self, "fields")
 

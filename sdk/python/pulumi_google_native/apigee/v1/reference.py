@@ -24,7 +24,7 @@ class ReferenceArgs:
         The set of arguments for constructing a Reference resource.
         :param pulumi.Input[str] refers: The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
-        :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\\w\\s\\-.]+.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         """
         pulumi.set(__self__, "environment_id", environment_id)
@@ -83,7 +83,7 @@ class ReferenceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        The resource id of this reference. Values must match the regular expression [\\w\\s\\-.]+.
         """
         return pulumi.get(self, "name")
 
@@ -122,7 +122,7 @@ class Reference(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
-        :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\\w\\s\\-.]+.
         :param pulumi.Input[str] refers: The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         """
@@ -157,14 +157,9 @@ class Reference(pulumi.CustomResource):
                  refers: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -231,7 +226,7 @@ class Reference(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        The resource id of this reference. Values must match the regular expression [\\w\\s\\-.]+.
         """
         return pulumi.get(self, "name")
 

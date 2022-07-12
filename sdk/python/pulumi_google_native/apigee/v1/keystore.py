@@ -19,7 +19,7 @@ class KeystoreArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Keystore resource.
-        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\\w[:space:]-.]{1,255}`.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -48,7 +48,7 @@ class KeystoreArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        Resource ID for this keystore. Values must match the regular expression `[\\w[:space:]-.]{1,255}`.
         """
         return pulumi.get(self, "name")
 
@@ -71,7 +71,7 @@ class Keystore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\\w[:space:]-.]{1,255}`.
         """
         ...
     @overload
@@ -101,14 +101,9 @@ class Keystore(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -122,7 +117,7 @@ class Keystore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["aliases"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id", "*"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Keystore, __self__).__init__(
             'google-native:apigee/v1:Keystore',

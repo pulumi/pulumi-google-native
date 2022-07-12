@@ -32,7 +32,7 @@ class InstanceArgs:
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
         :param pulumi.Input[str] ip_range: Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
         :param pulumi.Input[str] location: Compute Engine location where the instance resides.
-        :param pulumi.Input[str] name: Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        :param pulumi.Input[str] name: Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\\d]$`.
         :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -138,7 +138,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\\d]$`.
         """
         return pulumi.get(self, "name")
 
@@ -185,7 +185,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
         :param pulumi.Input[str] ip_range: Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
         :param pulumi.Input[str] location: Compute Engine location where the instance resides.
-        :param pulumi.Input[str] name: Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        :param pulumi.Input[str] name: Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\\d]$`.
         :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
         ...
@@ -222,14 +222,9 @@ class Instance(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -371,7 +366,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\\d]$`.
         """
         return pulumi.get(self, "name")
 

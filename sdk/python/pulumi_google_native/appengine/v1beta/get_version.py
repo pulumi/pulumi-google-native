@@ -515,10 +515,7 @@ def get_version(app_id: Optional[str] = None,
     __args__['serviceId'] = service_id
     __args__['versionId'] = version_id
     __args__['view'] = view
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1beta:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(

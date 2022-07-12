@@ -397,7 +397,7 @@ class GetInstanceResult:
     @pulumi.getter(name="serviceAccountEmailAddress")
     def service_account_email_address(self) -> str:
         """
-        The service account email address assigned to the instance.\This property is read-only.
+        The service account email address assigned to the instance.\\This property is read-only.
         """
         return pulumi.get(self, "service_account_email_address")
 
@@ -479,10 +479,7 @@ def get_instance(instance: Optional[str] = None,
     __args__ = dict()
     __args__['instance'] = instance
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:sqladmin/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(

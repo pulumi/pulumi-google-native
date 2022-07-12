@@ -77,10 +77,7 @@ def get_region_job_iam_policy(job_id: Optional[str] = None,
     __args__['jobId'] = job_id
     __args__['project'] = project
     __args__['regionId'] = region_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getRegionJobIamPolicy', __args__, opts=opts, typ=GetRegionJobIamPolicyResult).value
 
     return AwaitableGetRegionJobIamPolicyResult(

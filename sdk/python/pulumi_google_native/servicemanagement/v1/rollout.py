@@ -177,14 +177,9 @@ class Rollout(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  traffic_percent_strategy: Optional[pulumi.Input[pulumi.InputType['TrafficPercentStrategyArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -199,7 +194,7 @@ class Rollout(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["traffic_percent_strategy"] = traffic_percent_strategy
             __props__.__dict__["status"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["service_name"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["service_name", "*"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Rollout, __self__).__init__(
             'google-native:servicemanagement/v1:Rollout',

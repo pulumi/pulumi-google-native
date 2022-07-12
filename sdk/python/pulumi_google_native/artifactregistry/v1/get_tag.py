@@ -30,7 +30,7 @@ class GetTagResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded.
+        The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\\-._~:@], anything else must be URL encoded.
         """
         return pulumi.get(self, "name")
 
@@ -68,10 +68,7 @@ def get_tag(location: Optional[str] = None,
     __args__['project'] = project
     __args__['repositoryId'] = repository_id
     __args__['tagId'] = tag_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:artifactregistry/v1:getTag', __args__, opts=opts, typ=GetTagResult).value
 
     return AwaitableGetTagResult(

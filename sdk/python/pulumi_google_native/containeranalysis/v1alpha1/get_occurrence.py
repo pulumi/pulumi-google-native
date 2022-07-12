@@ -315,10 +315,7 @@ def get_occurrence(occurrence_id: Optional[str] = None,
     __args__ = dict()
     __args__['occurrenceId'] = occurrence_id
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:containeranalysis/v1alpha1:getOccurrence', __args__, opts=opts, typ=GetOccurrenceResult).value
 
     return AwaitableGetOccurrenceResult(

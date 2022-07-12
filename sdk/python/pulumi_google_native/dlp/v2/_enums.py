@@ -60,11 +60,11 @@ class GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore(str, Enum):
     """
     PUNCTUATION = "PUNCTUATION"
     """
-    US Punctuation, one of !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+    US Punctuation, one of !"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~
     """
     WHITESPACE = "WHITESPACE"
     """
-    Whitespace character, one of [ \t\n\\x0B\f\r]
+    Whitespace character, one of [ \\t\\n\\x0B\\f\\r]
     """
 
 

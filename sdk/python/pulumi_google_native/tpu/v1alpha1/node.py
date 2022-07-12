@@ -296,14 +296,9 @@ class Node(pulumi.CustomResource):
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -336,7 +331,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["service_account"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["symptoms"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "*"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Node, __self__).__init__(
             'google-native:tpu/v1alpha1:Node',

@@ -183,10 +183,7 @@ def get_patch_deployment(patch_deployment_id: Optional[str] = None,
     __args__ = dict()
     __args__['patchDeploymentId'] = patch_deployment_id
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:osconfig/v1beta:getPatchDeployment', __args__, opts=opts, typ=GetPatchDeploymentResult).value
 
     return AwaitableGetPatchDeploymentResult(

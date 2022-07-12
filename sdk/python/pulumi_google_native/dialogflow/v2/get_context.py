@@ -82,10 +82,7 @@ def get_context(context_id: Optional[str] = None,
     __args__['project'] = project
     __args__['sessionId'] = session_id
     __args__['userId'] = user_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getContext', __args__, opts=opts, typ=GetContextResult).value
 
     return AwaitableGetContextResult(

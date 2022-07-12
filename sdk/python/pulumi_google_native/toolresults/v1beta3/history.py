@@ -170,14 +170,9 @@ class History(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  test_platform: Optional[pulumi.Input['HistoryTestPlatform']] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -189,7 +184,7 @@ class History(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["test_platform"] = test_platform
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "*"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(History, __self__).__init__(
             'google-native:toolresults/v1beta3:History',

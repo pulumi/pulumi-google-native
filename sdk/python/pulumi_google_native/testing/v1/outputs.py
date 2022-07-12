@@ -586,7 +586,7 @@ class AndroidRoboTestResponse(dict):
 @pulumi.output_type
 class AndroidTestLoopResponse(dict):
     """
-    A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
+    A test of an Android Application with a Test Loop. The intent \\ will be implicitly added, since Games is the only user of this api, for the time being.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -618,7 +618,7 @@ class AndroidTestLoopResponse(dict):
                  scenario_labels: Sequence[str],
                  scenarios: Sequence[int]):
         """
-        A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
+        A test of an Android Application with a Test Loop. The intent \\ will be implicitly added, since Games is the only user of this api, for the time being.
         :param 'FileReferenceResponse' app_apk: The APK for the application under test.
         :param 'AppBundleResponse' app_bundle: A multi-apk app bundle for the application under test.
         :param str app_package_id: The java package for the application under test. The default is determined by examining the application's manifest.
@@ -1621,7 +1621,7 @@ class ObbFileResponse(dict):
         """
         An opaque binary blob file to install on the device before the test starts.
         :param 'FileReferenceResponse' obb: Opaque Binary Blob (OBB) file(s) to install on the device.
-        :param str obb_file_name: OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        :param str obb_file_name: OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \\/Android/obb/\\/ on the device.
         """
         pulumi.set(__self__, "obb", obb)
         pulumi.set(__self__, "obb_file_name", obb_file_name)
@@ -1638,7 +1638,7 @@ class ObbFileResponse(dict):
     @pulumi.getter(name="obbFileName")
     def obb_file_name(self) -> str:
         """
-        OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \\/Android/obb/\\/ on the device.
         """
         return pulumi.get(self, "obb_file_name")
 

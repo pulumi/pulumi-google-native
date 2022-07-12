@@ -1626,7 +1626,7 @@ class ParserConfigArgs:
         The configuration for the parser. It determines how the server parses the messages.
         :param pulumi.Input[bool] allow_null_header: Determines whether messages with no header are allowed.
         :param pulumi.Input['SchemaPackageArgs'] schema: Schemas used to parse messages in this store, if schematized parsing is desired.
-        :param pulumi.Input[str] segment_terminator: Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
+        :param pulumi.Input[str] segment_terminator: Byte(s) to use as the segment terminator. If this is unset, '\\r' is used as segment terminator, matching the HL7 version 2 specification.
         :param pulumi.Input['ParserConfigVersion'] version: Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
         """
         if allow_null_header is not None:
@@ -1666,7 +1666,7 @@ class ParserConfigArgs:
     @pulumi.getter(name="segmentTerminator")
     def segment_terminator(self) -> Optional[pulumi.Input[str]]:
         """
-        Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
+        Byte(s) to use as the segment terminator. If this is unset, '\\r' is used as segment terminator, matching the HL7 version 2 specification.
         """
         return pulumi.get(self, "segment_terminator")
 

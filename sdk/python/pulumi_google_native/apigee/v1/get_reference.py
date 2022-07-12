@@ -44,7 +44,7 @@ class GetReferenceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        The resource id of this reference. Values must match the regular expression [\\w\\s\\-.]+.
         """
         return pulumi.get(self, "name")
 
@@ -88,10 +88,7 @@ def get_reference(environment_id: Optional[str] = None,
     __args__['environmentId'] = environment_id
     __args__['organizationId'] = organization_id
     __args__['referenceId'] = reference_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getReference', __args__, opts=opts, typ=GetReferenceResult).value
 
     return AwaitableGetReferenceResult(

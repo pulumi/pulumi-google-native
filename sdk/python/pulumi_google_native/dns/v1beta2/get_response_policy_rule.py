@@ -100,10 +100,7 @@ def get_response_policy_rule(client_operation_id: Optional[str] = None,
     __args__['project'] = project
     __args__['responsePolicy'] = response_policy
     __args__['responsePolicyRule'] = response_policy_rule
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1beta2:getResponsePolicyRule', __args__, opts=opts, typ=GetResponsePolicyRuleResult).value
 
     return AwaitableGetResponsePolicyRuleResult(

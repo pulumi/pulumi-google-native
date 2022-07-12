@@ -381,7 +381,7 @@ class NetworkInterfaceArgs:
         """
         NetworkInterface represents a NIC of a VM.
         :param pulumi.Input[str] external_ip: The external IP to define in the NIC.
-        :param pulumi.Input[str] internal_ip: The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        :param pulumi.Input[str] internal_ip: The internal IP to define in the NIC. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         :param pulumi.Input[str] network: The network to connect the NIC to.
         :param pulumi.Input[str] subnetwork: The subnetwork to connect the NIC to.
         """
@@ -410,7 +410,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        The internal IP to define in the NIC. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         """
         return pulumi.get(self, "internal_ip")
 
@@ -565,7 +565,7 @@ class TargetVMDetailsArgs:
         :param pulumi.Input['ComputeSchedulingArgs'] compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param pulumi.Input['TargetVMDetailsDiskType'] disk_type: The disk type to use in the VM.
         :param pulumi.Input[str] external_ip: The external IP to define in the VM.
-        :param pulumi.Input[str] internal_ip: The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        :param pulumi.Input[str] internal_ip: The internal IP to define in the VM. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels to associate with the VM.
         :param pulumi.Input['TargetVMDetailsLicenseType'] license_type: The license type to use in OS adaptation.
         :param pulumi.Input[str] machine_type: The machine type to create the VM with.
@@ -658,7 +658,7 @@ class TargetVMDetailsArgs:
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        The internal IP to define in the VM. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         """
         return pulumi.get(self, "internal_ip")
 
