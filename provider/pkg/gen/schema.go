@@ -180,6 +180,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	csharpNamespaces := map[string]string{
 		"google-native": "GoogleNative",
 	}
+	javaPackages := map[string]string{}
 	pythonModuleNames := map[string]string{}
 	golangImportAliases := map[string]string{}
 
@@ -215,6 +216,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		}
 		csharpNamespaces[document.Name] = csharpNamespace(document)
 		csharpNamespaces[module] = csharpVersionedNamespace(document)
+		javaPackages[module] = fmt.Sprintf("%s.%s", document.Name, document.Version)
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
 
@@ -268,6 +270,10 @@ will be introduced in minor version releases.`,
 			"Pulumi": "3.*",
 		},
 		"namespaces": csharpNamespaces,
+	})
+
+	pkg.Language["java"] = rawMessage(map[string]interface{}{
+		"packages": javaPackages,
 	})
 
 	return &pkg, &metadata, nil
