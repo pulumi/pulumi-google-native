@@ -44,6 +44,10 @@ func NewTargetGrpcProxy(ctx *pulumi.Context,
 		args = &TargetGrpcProxyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TargetGrpcProxy
 	err := ctx.RegisterResource("google-native:compute/alpha:TargetGrpcProxy", name, args, &resource, opts...)
 	if err != nil {

@@ -46,6 +46,11 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.DatabaseId == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"databaseId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Database
 	err := ctx.RegisterResource("google-native:firestore/v1:Database", name, args, &resource, opts...)
 	if err != nil {

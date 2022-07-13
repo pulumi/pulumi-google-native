@@ -47,6 +47,11 @@ func NewQueue(ctx *pulumi.Context,
 		args = &QueueArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Queue
 	err := ctx.RegisterResource("google-native:cloudtasks/v2beta3:Queue", name, args, &resource, opts...)
 	if err != nil {

@@ -80,6 +80,8 @@ export class SshPublicKey extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["userId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SshPublicKey.__pulumiType, name, resourceInputs, opts);
     }
 }

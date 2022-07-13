@@ -46,6 +46,10 @@ func NewTypeProvider(ctx *pulumi.Context,
 		args = &TypeProviderArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TypeProvider
 	err := ctx.RegisterResource("google-native:deploymentmanager/v2beta:TypeProvider", name, args, &resource, opts...)
 	if err != nil {

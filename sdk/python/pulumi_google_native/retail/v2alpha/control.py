@@ -244,6 +244,8 @@ class Control(pulumi.CustomResource):
                 raise TypeError("Missing required property 'solution_types'")
             __props__.__dict__["solution_types"] = solution_types
             __props__.__dict__["associated_serving_config_ids"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalog_id", "control_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Control, __self__).__init__(
             'google-native:retail/v2alpha:Control',
             resource_name,

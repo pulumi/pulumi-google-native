@@ -42,6 +42,10 @@ func NewIosApp(ctx *pulumi.Context,
 		args = &IosAppArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource IosApp
 	err := ctx.RegisterResource("google-native:firebase/v1beta1:IosApp", name, args, &resource, opts...)
 	if err != nil {

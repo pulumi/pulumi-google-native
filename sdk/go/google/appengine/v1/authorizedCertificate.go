@@ -45,6 +45,10 @@ func NewAuthorizedCertificate(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"appId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource AuthorizedCertificate
 	err := ctx.RegisterResource("google-native:appengine/v1:AuthorizedCertificate", name, args, &resource, opts...)
 	if err != nil {

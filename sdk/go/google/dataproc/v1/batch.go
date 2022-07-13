@@ -64,6 +64,11 @@ func NewBatch(ctx *pulumi.Context,
 		args = &BatchArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Batch
 	err := ctx.RegisterResource("google-native:dataproc/v1:Batch", name, args, &resource, opts...)
 	if err != nil {

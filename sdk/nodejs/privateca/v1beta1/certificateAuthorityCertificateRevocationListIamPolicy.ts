@@ -95,6 +95,8 @@ export class CertificateAuthorityCertificateRevocationListIamPolicy extends pulu
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["certificateAuthorityId", "certificateRevocationListId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CertificateAuthorityCertificateRevocationListIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

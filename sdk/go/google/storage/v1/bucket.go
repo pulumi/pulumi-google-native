@@ -91,6 +91,10 @@ func NewBucket(ctx *pulumi.Context,
 		args = &BucketArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Bucket
 	err := ctx.RegisterResource("google-native:storage/v1:Bucket", name, args, &resource, opts...)
 	if err != nil {

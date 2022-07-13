@@ -170,6 +170,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["namespace_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Job, __self__).__init__(
             'google-native:run/v1alpha1:Job',
             resource_name,

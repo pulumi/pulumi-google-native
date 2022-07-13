@@ -140,6 +140,8 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "zone"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }

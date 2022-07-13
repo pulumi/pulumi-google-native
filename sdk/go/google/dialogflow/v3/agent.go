@@ -63,6 +63,11 @@ func NewAgent(ctx *pulumi.Context,
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Agent
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Agent", name, args, &resource, opts...)
 	if err != nil {

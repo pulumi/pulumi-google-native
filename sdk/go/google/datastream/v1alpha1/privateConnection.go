@@ -53,6 +53,12 @@ func NewPrivateConnection(ctx *pulumi.Context,
 	if args.PrivateConnectionId == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateConnectionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"privateConnectionId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource PrivateConnection
 	err := ctx.RegisterResource("google-native:datastream/v1alpha1:PrivateConnection", name, args, &resource, opts...)
 	if err != nil {

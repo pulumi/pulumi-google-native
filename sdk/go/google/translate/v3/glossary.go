@@ -43,6 +43,11 @@ func NewGlossary(ctx *pulumi.Context,
 	if args.InputConfig == nil {
 		return nil, errors.New("invalid value for required argument 'InputConfig'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Glossary
 	err := ctx.RegisterResource("google-native:translate/v3:Glossary", name, args, &resource, opts...)
 	if err != nil {

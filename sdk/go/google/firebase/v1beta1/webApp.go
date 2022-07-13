@@ -40,6 +40,10 @@ func NewWebApp(ctx *pulumi.Context,
 		args = &WebAppArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource WebApp
 	err := ctx.RegisterResource("google-native:firebase/v1beta1:WebApp", name, args, &resource, opts...)
 	if err != nil {

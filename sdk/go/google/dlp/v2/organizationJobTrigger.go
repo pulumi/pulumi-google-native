@@ -53,6 +53,11 @@ func NewOrganizationJobTrigger(ctx *pulumi.Context,
 	if args.Status == nil {
 		return nil, errors.New("invalid value for required argument 'Status'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource OrganizationJobTrigger
 	err := ctx.RegisterResource("google-native:dlp/v2:OrganizationJobTrigger", name, args, &resource, opts...)
 	if err != nil {

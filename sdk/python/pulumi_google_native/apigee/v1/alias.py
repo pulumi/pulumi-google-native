@@ -283,6 +283,8 @@ class Alias(pulumi.CustomResource):
             __props__.__dict__["password"] = password
             __props__.__dict__["certs_info"] = None
             __props__.__dict__["type"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "format", "keystore_id", "organization_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Alias, __self__).__init__(
             'google-native:apigee/v1:Alias',
             resource_name,

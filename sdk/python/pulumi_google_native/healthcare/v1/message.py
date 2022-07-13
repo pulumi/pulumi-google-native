@@ -295,6 +295,8 @@ class Message(pulumi.CustomResource):
             __props__.__dict__["send_time"] = send_time
             __props__.__dict__["create_time"] = None
             __props__.__dict__["parsed_data"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "hl7_v2_store_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Message, __self__).__init__(
             'google-native:healthcare/v1:Message',
             resource_name,

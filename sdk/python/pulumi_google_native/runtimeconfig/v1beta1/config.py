@@ -144,6 +144,8 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Config, __self__).__init__(
             'google-native:runtimeconfig/v1beta1:Config',
             resource_name,

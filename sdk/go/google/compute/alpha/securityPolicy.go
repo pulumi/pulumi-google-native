@@ -65,6 +65,10 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 		args = &SecurityPolicyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SecurityPolicy
 	err := ctx.RegisterResource("google-native:compute/alpha:SecurityPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -73,6 +73,11 @@ func NewJob(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"region",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Job
 	err := ctx.RegisterResource("google-native:dataproc/v1beta2:Job", name, args, &resource, opts...)
 	if err != nil {

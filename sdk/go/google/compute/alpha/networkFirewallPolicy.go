@@ -59,6 +59,10 @@ func NewNetworkFirewallPolicy(ctx *pulumi.Context,
 		args = &NetworkFirewallPolicyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource NetworkFirewallPolicy
 	err := ctx.RegisterResource("google-native:compute/alpha:NetworkFirewallPolicy", name, args, &resource, opts...)
 	if err != nil {

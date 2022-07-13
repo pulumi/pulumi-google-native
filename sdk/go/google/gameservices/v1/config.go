@@ -49,6 +49,13 @@ func NewConfig(ctx *pulumi.Context,
 	if args.GameServerDeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'GameServerDeploymentId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"configId",
+		"gameServerDeploymentId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Config
 	err := ctx.RegisterResource("google-native:gameservices/v1:Config", name, args, &resource, opts...)
 	if err != nil {

@@ -286,6 +286,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
             __props__.__dict__["username"] = username
             __props__.__dict__["connected_repositories"] = None
             __props__.__dict__["webhook_key"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BitbucketServerConfig, __self__).__init__(
             'google-native:cloudbuild/v1:BitbucketServerConfig',
             resource_name,

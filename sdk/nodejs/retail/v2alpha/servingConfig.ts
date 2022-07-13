@@ -180,6 +180,8 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["twowaySynonymsControlIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["catalogId", "location", "project", "servingConfigId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServingConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

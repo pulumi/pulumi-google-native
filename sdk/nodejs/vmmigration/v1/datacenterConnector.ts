@@ -162,6 +162,8 @@ export class DatacenterConnector extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datacenterConnectorId", "location", "project", "sourceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DatacenterConnector.__pulumiType, name, resourceInputs, opts);
     }
 }

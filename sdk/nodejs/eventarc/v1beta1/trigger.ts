@@ -134,6 +134,8 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "triggerId", "validateOnly"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Trigger.__pulumiType, name, resourceInputs, opts);
     }
 }

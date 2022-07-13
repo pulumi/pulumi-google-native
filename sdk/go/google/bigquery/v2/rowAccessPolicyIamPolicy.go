@@ -47,6 +47,13 @@ func NewRowAccessPolicyIamPolicy(ctx *pulumi.Context,
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"datasetId",
+		"project",
+		"rowAccessPolicyId",
+		"tableId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RowAccessPolicyIamPolicy
 	err := ctx.RegisterResource("google-native:bigquery/v2:RowAccessPolicyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

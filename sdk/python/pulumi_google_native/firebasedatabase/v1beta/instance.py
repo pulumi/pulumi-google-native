@@ -182,6 +182,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["database_url"] = None
             __props__.__dict__["state"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
             'google-native:firebasedatabase/v1beta:Instance',
             resource_name,

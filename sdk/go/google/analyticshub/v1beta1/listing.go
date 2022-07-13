@@ -66,6 +66,13 @@ func NewListing(ctx *pulumi.Context,
 	if args.ListingId == nil {
 		return nil, errors.New("invalid value for required argument 'ListingId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"dataExchangeId",
+		"listingId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Listing
 	err := ctx.RegisterResource("google-native:analyticshub/v1beta1:Listing", name, args, &resource, opts...)
 	if err != nil {

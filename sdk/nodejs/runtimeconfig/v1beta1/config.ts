@@ -70,6 +70,8 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Config.__pulumiType, name, resourceInputs, opts);
     }
 }

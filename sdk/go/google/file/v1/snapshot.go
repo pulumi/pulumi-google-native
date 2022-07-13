@@ -48,6 +48,13 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args.SnapshotId == nil {
 		return nil, errors.New("invalid value for required argument 'SnapshotId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"location",
+		"project",
+		"snapshotId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Snapshot
 	err := ctx.RegisterResource("google-native:file/v1:Snapshot", name, args, &resource, opts...)
 	if err != nil {

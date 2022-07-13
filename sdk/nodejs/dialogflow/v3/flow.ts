@@ -113,6 +113,8 @@ export class Flow extends pulumi.CustomResource {
             resourceInputs["transitionRoutes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["agentId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Flow.__pulumiType, name, resourceInputs, opts);
     }
 }

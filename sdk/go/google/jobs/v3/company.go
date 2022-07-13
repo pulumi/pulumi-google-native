@@ -57,6 +57,10 @@ func NewCompany(ctx *pulumi.Context,
 	if args.ExternalId == nil {
 		return nil, errors.New("invalid value for required argument 'ExternalId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Company
 	err := ctx.RegisterResource("google-native:jobs/v3:Company", name, args, &resource, opts...)
 	if err != nil {

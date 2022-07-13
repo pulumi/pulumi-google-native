@@ -41,6 +41,12 @@ func NewReferenceImage(ctx *pulumi.Context,
 	if args.Uri == nil {
 		return nil, errors.New("invalid value for required argument 'Uri'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"productId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ReferenceImage
 	err := ctx.RegisterResource("google-native:vision/v1:ReferenceImage", name, args, &resource, opts...)
 	if err != nil {

@@ -113,6 +113,8 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["service"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TargetTcpProxy.__pulumiType, name, resourceInputs, opts);
     }
 }

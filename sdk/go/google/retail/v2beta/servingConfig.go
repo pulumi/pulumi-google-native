@@ -76,6 +76,13 @@ func NewServingConfig(ctx *pulumi.Context,
 	if args.SolutionTypes == nil {
 		return nil, errors.New("invalid value for required argument 'SolutionTypes'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"catalogId",
+		"location",
+		"project",
+		"servingConfigId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ServingConfig
 	err := ctx.RegisterResource("google-native:retail/v2beta:ServingConfig", name, args, &resource, opts...)
 	if err != nil {

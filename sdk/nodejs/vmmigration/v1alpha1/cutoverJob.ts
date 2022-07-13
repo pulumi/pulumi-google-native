@@ -168,6 +168,8 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["targetDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["cutoverJobId", "location", "migratingVmId", "project", "sourceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CutoverJob.__pulumiType, name, resourceInputs, opts);
     }
 }

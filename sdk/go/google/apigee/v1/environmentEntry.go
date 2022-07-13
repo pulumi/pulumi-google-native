@@ -43,6 +43,12 @@ func NewEnvironmentEntry(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"keyvaluemapId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EnvironmentEntry
 	err := ctx.RegisterResource("google-native:apigee/v1:EnvironmentEntry", name, args, &resource, opts...)
 	if err != nil {

@@ -38,6 +38,12 @@ func NewTaxonomyIamPolicy(ctx *pulumi.Context,
 	if args.TaxonomyId == nil {
 		return nil, errors.New("invalid value for required argument 'TaxonomyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"taxonomyId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TaxonomyIamPolicy
 	err := ctx.RegisterResource("google-native:datacatalog/v1:TaxonomyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

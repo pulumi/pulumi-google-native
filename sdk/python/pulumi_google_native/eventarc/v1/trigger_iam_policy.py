@@ -222,6 +222,8 @@ class TriggerIamPolicy(pulumi.CustomResource):
             __props__.__dict__["trigger_id"] = trigger_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "trigger_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TriggerIamPolicy, __self__).__init__(
             'google-native:eventarc/v1:TriggerIamPolicy',
             resource_name,

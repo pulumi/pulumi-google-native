@@ -123,6 +123,8 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["vpcPeeringConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "privateConnectionId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PrivateConnection.__pulumiType, name, resourceInputs, opts);
     }
 }

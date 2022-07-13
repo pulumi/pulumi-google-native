@@ -50,6 +50,12 @@ func NewTlsRoute(ctx *pulumi.Context,
 	if args.TlsRouteId == nil {
 		return nil, errors.New("invalid value for required argument 'TlsRouteId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"tlsRouteId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TlsRoute
 	err := ctx.RegisterResource("google-native:networkservices/v1beta1:TlsRoute", name, args, &resource, opts...)
 	if err != nil {

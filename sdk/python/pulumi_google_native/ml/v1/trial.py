@@ -206,6 +206,8 @@ class Trial(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["trial_infeasible"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "study_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Trial, __self__).__init__(
             'google-native:ml/v1:Trial',
             resource_name,

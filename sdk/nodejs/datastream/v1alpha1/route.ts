@@ -125,6 +125,8 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "privateConnectionId", "project", "routeId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Route.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -60,6 +60,12 @@ func NewNodeGroup(ctx *pulumi.Context,
 	if args.InitialNodeCount == nil {
 		return nil, errors.New("invalid value for required argument 'InitialNodeCount'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"initialNodeCount",
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource NodeGroup
 	err := ctx.RegisterResource("google-native:compute/alpha:NodeGroup", name, args, &resource, opts...)
 	if err != nil {

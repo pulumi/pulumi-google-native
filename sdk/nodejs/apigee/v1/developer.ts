@@ -153,6 +153,8 @@ export class Developer extends pulumi.CustomResource {
             resourceInputs["userName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Developer.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -131,6 +131,8 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PublicDelegatedPrefix.__pulumiType, name, resourceInputs, opts);
     }
 }

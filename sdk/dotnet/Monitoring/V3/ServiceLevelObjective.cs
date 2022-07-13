@@ -96,6 +96,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "serviceId",
+                    "v3Id",
+                    "v3Id1",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

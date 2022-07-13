@@ -40,6 +40,12 @@ func NewEdgeCacheServiceIamPolicy(ctx *pulumi.Context,
 	if args.EdgeCacheServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'EdgeCacheServiceId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"edgeCacheServiceId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource EdgeCacheServiceIamPolicy
 	err := ctx.RegisterResource("google-native:networkservices/v1:EdgeCacheServiceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

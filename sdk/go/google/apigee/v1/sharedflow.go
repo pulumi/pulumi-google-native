@@ -41,6 +41,12 @@ func NewSharedflow(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"action",
+		"name",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Sharedflow
 	err := ctx.RegisterResource("google-native:apigee/v1:Sharedflow", name, args, &resource, opts...)
 	if err != nil {

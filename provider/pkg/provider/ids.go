@@ -115,17 +115,18 @@ func buildURL(
 var autonameFieldRegex = regexp.MustCompile(`^\w+$`) // Only word characters allowed
 
 // getDefaultName generates a random name for a resource based on its URN name, a given pattern,
-// and other properties.
+// and other properties if necessary. If an existing name is derived from previous state,
+// the existing name is returned. If getDefaultName generates a new random name,
+// then the second return value is true, false otherwise.
 func getDefaultName(
 	urn resource.URN,
+	nameKey resource.PropertyKey,
 	pattern string,
 	olds, news resource.PropertyMap,
 ) (resource.PropertyValue, bool) {
-	if v, ok := olds[resource.PropertyKey("name")]; ok {
-		return v, false
-	}
-	if v, ok := olds[resource.PropertyKey(pattern)]; ok {
-		return v, false
+	previouslyAutonamed := olds.HasValue(autonamed)
+	if v, ok := olds[nameKey]; ok && previouslyAutonamed {
+		return v, true
 	}
 
 	name := urn.Name().String()

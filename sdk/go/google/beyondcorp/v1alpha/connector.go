@@ -53,6 +53,11 @@ func NewConnector(ctx *pulumi.Context,
 	if args.PrincipalInfo == nil {
 		return nil, errors.New("invalid value for required argument 'PrincipalInfo'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Connector
 	err := ctx.RegisterResource("google-native:beyondcorp/v1alpha:Connector", name, args, &resource, opts...)
 	if err != nil {

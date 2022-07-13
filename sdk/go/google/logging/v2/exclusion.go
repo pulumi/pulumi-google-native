@@ -40,6 +40,10 @@ func NewExclusion(ctx *pulumi.Context,
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Exclusion
 	err := ctx.RegisterResource("google-native:logging/v2:Exclusion", name, args, &resource, opts...)
 	if err != nil {

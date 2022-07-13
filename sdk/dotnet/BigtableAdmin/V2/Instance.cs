@@ -43,6 +43,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the instance.
         /// </summary>
         [Output("state")]
@@ -77,6 +83,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                ReplaceOnChanges =
+                {
+                    "project",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

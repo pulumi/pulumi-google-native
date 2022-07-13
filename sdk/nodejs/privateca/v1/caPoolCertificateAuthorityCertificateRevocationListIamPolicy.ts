@@ -101,6 +101,8 @@ export class CaPoolCertificateAuthorityCertificateRevocationListIamPolicy extend
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["caPoolId", "certificateAuthorityId", "certificateRevocationListId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CaPoolCertificateAuthorityCertificateRevocationListIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

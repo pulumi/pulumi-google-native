@@ -100,6 +100,8 @@ export class ApiVersionSpecArtifactIamPolicy extends pulumi.CustomResource {
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "artifactId", "location", "project", "specId", "versionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ApiVersionSpecArtifactIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -38,6 +38,10 @@ func NewTagKeyIamPolicy(ctx *pulumi.Context,
 	if args.TagKeyId == nil {
 		return nil, errors.New("invalid value for required argument 'TagKeyId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"tagKeyId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TagKeyIamPolicy
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:TagKeyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

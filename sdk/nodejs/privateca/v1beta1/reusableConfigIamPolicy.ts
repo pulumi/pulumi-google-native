@@ -89,6 +89,8 @@ export class ReusableConfigIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "reusableConfigId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ReusableConfigIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -48,6 +48,11 @@ func NewKey(ctx *pulumi.Context,
 		args = &KeyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Key
 	err := ctx.RegisterResource("google-native:apikeys/v2:Key", name, args, &resource, opts...)
 	if err != nil {

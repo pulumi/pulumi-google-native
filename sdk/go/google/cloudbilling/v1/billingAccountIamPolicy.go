@@ -38,6 +38,10 @@ func NewBillingAccountIamPolicy(ctx *pulumi.Context,
 	if args.BillingAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'BillingAccountId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"billingAccountId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BillingAccountIamPolicy
 	err := ctx.RegisterResource("google-native:cloudbilling/v1:BillingAccountIamPolicy", name, args, &resource, opts...)
 	if err != nil {

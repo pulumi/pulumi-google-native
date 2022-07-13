@@ -61,6 +61,10 @@ func NewGroup(ctx *pulumi.Context,
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"initialGroupConfig",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Group
 	err := ctx.RegisterResource("google-native:cloudidentity/v1beta1:Group", name, args, &resource, opts...)
 	if err != nil {

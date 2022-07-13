@@ -38,6 +38,12 @@ func NewRuntimeIamPolicy(ctx *pulumi.Context,
 	if args.RuntimeId == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"runtimeId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RuntimeIamPolicy
 	err := ctx.RegisterResource("google-native:notebooks/v1:RuntimeIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -43,6 +43,11 @@ func NewTemplate(ctx *pulumi.Context,
 	if args.JobName == nil {
 		return nil, errors.New("invalid value for required argument 'JobName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Template
 	err := ctx.RegisterResource("google-native:dataflow/v1b3:Template", name, args, &resource, opts...)
 	if err != nil {

@@ -163,6 +163,8 @@ export class Step extends pulumi.CustomResource {
             resourceInputs["toolExecutionStep"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["executionId", "historyId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Step.__pulumiType, name, resourceInputs, opts);
     }
 }

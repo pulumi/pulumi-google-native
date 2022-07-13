@@ -85,6 +85,13 @@ func NewEntity(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"lakeId",
+		"location",
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Entity
 	err := ctx.RegisterResource("google-native:dataplex/v1:Entity", name, args, &resource, opts...)
 	if err != nil {

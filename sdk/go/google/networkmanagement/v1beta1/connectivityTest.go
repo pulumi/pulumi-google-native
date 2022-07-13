@@ -64,6 +64,11 @@ func NewConnectivityTest(ctx *pulumi.Context,
 	if args.TestId == nil {
 		return nil, errors.New("invalid value for required argument 'TestId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"testId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ConnectivityTest
 	err := ctx.RegisterResource("google-native:networkmanagement/v1beta1:ConnectivityTest", name, args, &resource, opts...)
 	if err != nil {

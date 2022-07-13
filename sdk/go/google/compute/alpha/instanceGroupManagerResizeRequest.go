@@ -52,6 +52,12 @@ func NewInstanceGroupManagerResizeRequest(ctx *pulumi.Context,
 	if args.InstanceGroupManager == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceGroupManager'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceGroupManager",
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InstanceGroupManagerResizeRequest
 	err := ctx.RegisterResource("google-native:compute/alpha:InstanceGroupManagerResizeRequest", name, args, &resource, opts...)
 	if err != nil {

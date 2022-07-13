@@ -40,6 +40,12 @@ func NewProviderIamPolicy(ctx *pulumi.Context,
 	if args.ProviderId == nil {
 		return nil, errors.New("invalid value for required argument 'ProviderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"providerId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ProviderIamPolicy
 	err := ctx.RegisterResource("google-native:connectors/v1:ProviderIamPolicy", name, args, &resource, opts...)
 	if err != nil {

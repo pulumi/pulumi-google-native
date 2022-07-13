@@ -168,6 +168,8 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["vulnerability"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Occurrence.__pulumiType, name, resourceInputs, opts);
     }
 }

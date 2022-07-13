@@ -211,6 +211,8 @@ class RegionAutoscaler(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["status_details"] = None
             __props__.__dict__["zone"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RegionAutoscaler, __self__).__init__(
             'google-native:compute/beta:RegionAutoscaler',
             resource_name,

@@ -38,6 +38,11 @@ func NewDeidentifyTemplate(ctx *pulumi.Context,
 		args = &DeidentifyTemplateArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DeidentifyTemplate
 	err := ctx.RegisterResource("google-native:dlp/v2:DeidentifyTemplate", name, args, &resource, opts...)
 	if err != nil {

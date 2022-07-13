@@ -53,6 +53,14 @@ func NewDeploymentArtifact(ctx *pulumi.Context,
 	if args.DeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'DeploymentId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"apiId",
+		"artifactId",
+		"deploymentId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource DeploymentArtifact
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:DeploymentArtifact", name, args, &resource, opts...)
 	if err != nil {

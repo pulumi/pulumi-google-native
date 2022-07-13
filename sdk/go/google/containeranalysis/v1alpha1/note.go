@@ -70,6 +70,10 @@ func NewNote(ctx *pulumi.Context,
 		args = &NoteArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Note
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:Note", name, args, &resource, opts...)
 	if err != nil {

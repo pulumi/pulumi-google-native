@@ -89,6 +89,8 @@ export class SpokeIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "spokeId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SpokeIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -177,6 +177,8 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["urlMap"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionTargetHttpsProxy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -40,6 +40,12 @@ func NewMeshIamPolicy(ctx *pulumi.Context,
 	if args.MeshId == nil {
 		return nil, errors.New("invalid value for required argument 'MeshId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"meshId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource MeshIamPolicy
 	err := ctx.RegisterResource("google-native:networkservices/v1beta1:MeshIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -688,6 +688,8 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["users"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "zone"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Disk, __self__).__init__(
             'google-native:compute/beta:Disk',
             resource_name,

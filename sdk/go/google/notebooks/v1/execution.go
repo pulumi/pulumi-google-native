@@ -50,6 +50,12 @@ func NewExecution(ctx *pulumi.Context,
 	if args.ExecutionId == nil {
 		return nil, errors.New("invalid value for required argument 'ExecutionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"executionId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Execution
 	err := ctx.RegisterResource("google-native:notebooks/v1:Execution", name, args, &resource, opts...)
 	if err != nil {

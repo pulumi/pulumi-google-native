@@ -102,6 +102,8 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["thresholdRules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["billingAccountId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Budget.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -51,6 +51,11 @@ func NewInstanceGroup(ctx *pulumi.Context,
 		args = &InstanceGroupArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"zone",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InstanceGroup
 	err := ctx.RegisterResource("google-native:compute/alpha:InstanceGroup", name, args, &resource, opts...)
 	if err != nil {

@@ -52,6 +52,11 @@ func NewTargetServer(ctx *pulumi.Context,
 	if args.Port == nil {
 		return nil, errors.New("invalid value for required argument 'Port'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TargetServer
 	err := ctx.RegisterResource("google-native:apigee/v1:TargetServer", name, args, &resource, opts...)
 	if err != nil {

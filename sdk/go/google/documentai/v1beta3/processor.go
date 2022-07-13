@@ -42,6 +42,11 @@ func NewProcessor(ctx *pulumi.Context,
 		args = &ProcessorArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Processor
 	err := ctx.RegisterResource("google-native:documentai/v1beta3:Processor", name, args, &resource, opts...)
 	if err != nil {

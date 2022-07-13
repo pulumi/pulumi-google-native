@@ -221,6 +221,8 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["modelId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Version.__pulumiType, name, resourceInputs, opts);
     }
 }

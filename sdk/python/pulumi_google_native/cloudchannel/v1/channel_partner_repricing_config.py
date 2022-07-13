@@ -129,6 +129,8 @@ class ChannelPartnerRepricingConfig(pulumi.CustomResource):
             __props__.__dict__["repricing_config"] = repricing_config
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["account_id", "channel_partner_link_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ChannelPartnerRepricingConfig, __self__).__init__(
             'google-native:cloudchannel/v1:ChannelPartnerRepricingConfig',
             resource_name,

@@ -100,6 +100,8 @@ export class GameServerDeployment extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["deploymentId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GameServerDeployment.__pulumiType, name, resourceInputs, opts);
     }
 }

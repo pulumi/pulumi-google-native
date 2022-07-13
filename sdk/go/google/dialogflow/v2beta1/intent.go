@@ -78,6 +78,11 @@ func NewIntent(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Intent
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Intent", name, args, &resource, opts...)
 	if err != nil {

@@ -173,6 +173,8 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionSecurityPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

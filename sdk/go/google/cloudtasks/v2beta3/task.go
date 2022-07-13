@@ -54,6 +54,12 @@ func NewTask(ctx *pulumi.Context,
 	if args.QueueId == nil {
 		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"queueId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Task
 	err := ctx.RegisterResource("google-native:cloudtasks/v2beta3:Task", name, args, &resource, opts...)
 	if err != nil {

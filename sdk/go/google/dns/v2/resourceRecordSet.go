@@ -45,6 +45,12 @@ func NewResourceRecordSet(ctx *pulumi.Context,
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"managedZone",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ResourceRecordSet
 	err := ctx.RegisterResource("google-native:dns/v2:ResourceRecordSet", name, args, &resource, opts...)
 	if err != nil {

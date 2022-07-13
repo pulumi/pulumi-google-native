@@ -92,6 +92,8 @@ export class InstanceTableIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "project", "tableId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(InstanceTableIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -72,6 +72,10 @@ func NewOccurrence(ctx *pulumi.Context,
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Occurrence
 	err := ctx.RegisterResource("google-native:containeranalysis/v1beta1:Occurrence", name, args, &resource, opts...)
 	if err != nil {

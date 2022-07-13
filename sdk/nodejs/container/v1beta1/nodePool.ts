@@ -174,6 +174,8 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["clusterId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NodePool.__pulumiType, name, resourceInputs, opts);
     }
 }

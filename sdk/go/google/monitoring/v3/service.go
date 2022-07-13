@@ -63,6 +63,11 @@ func NewService(ctx *pulumi.Context,
 	if args.V3Id1 == nil {
 		return nil, errors.New("invalid value for required argument 'V3Id1'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"v3Id",
+		"v3Id1",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Service
 	err := ctx.RegisterResource("google-native:monitoring/v3:Service", name, args, &resource, opts...)
 	if err != nil {

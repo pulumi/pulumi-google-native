@@ -40,6 +40,12 @@ func NewFunctionIamPolicy(ctx *pulumi.Context,
 	if args.FunctionId == nil {
 		return nil, errors.New("invalid value for required argument 'FunctionId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"functionId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FunctionIamPolicy
 	err := ctx.RegisterResource("google-native:cloudfunctions/v1:FunctionIamPolicy", name, args, &resource, opts...)
 	if err != nil {

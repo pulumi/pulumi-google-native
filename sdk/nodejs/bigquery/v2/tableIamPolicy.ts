@@ -92,6 +92,8 @@ export class TableIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "project", "tableId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TableIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

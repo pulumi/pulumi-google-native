@@ -46,6 +46,10 @@ func NewBackendBucket(ctx *pulumi.Context,
 		args = &BackendBucketArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BackendBucket
 	err := ctx.RegisterResource("google-native:compute/v1:BackendBucket", name, args, &resource, opts...)
 	if err != nil {

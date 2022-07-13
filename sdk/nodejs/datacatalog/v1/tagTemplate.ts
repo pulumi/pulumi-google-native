@@ -91,6 +91,8 @@ export class TagTemplate extends pulumi.CustomResource {
             resourceInputs["tagTemplateId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "tagTemplateId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TagTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

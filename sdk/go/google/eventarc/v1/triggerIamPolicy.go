@@ -40,6 +40,12 @@ func NewTriggerIamPolicy(ctx *pulumi.Context,
 	if args.TriggerId == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"triggerId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TriggerIamPolicy
 	err := ctx.RegisterResource("google-native:eventarc/v1:TriggerIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -149,6 +149,8 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["timeZone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Agent.__pulumiType, name, resourceInputs, opts);
     }
 }

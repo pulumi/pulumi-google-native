@@ -94,6 +94,8 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationExclusion.__pulumiType, name, resourceInputs, opts);
     }
 }

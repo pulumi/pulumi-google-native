@@ -68,6 +68,11 @@ func NewCanaryEvaluation(ctx *pulumi.Context,
 	if args.Treatment == nil {
 		return nil, errors.New("invalid value for required argument 'Treatment'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"instanceId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CanaryEvaluation
 	err := ctx.RegisterResource("google-native:apigee/v1:CanaryEvaluation", name, args, &resource, opts...)
 	if err != nil {

@@ -88,6 +88,8 @@ export class Participant extends pulumi.CustomResource {
             resourceInputs["sipRecordingMediaLabel"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["conversationId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Participant.__pulumiType, name, resourceInputs, opts);
     }
 }

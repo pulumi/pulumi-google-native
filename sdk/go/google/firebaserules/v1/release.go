@@ -20,7 +20,7 @@ type Release struct {
 	// Format: `projects/{project_id}/releases/{release_id}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName pulumi.StringOutput `pulumi:"rulesetName"`
 	// Time the release was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -36,6 +36,10 @@ func NewRelease(ctx *pulumi.Context,
 	if args.RulesetName == nil {
 		return nil, errors.New("invalid value for required argument 'RulesetName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Release
 	err := ctx.RegisterResource("google-native:firebaserules/v1:Release", name, args, &resource, opts...)
 	if err != nil {
@@ -71,7 +75,7 @@ type releaseArgs struct {
 	// Format: `projects/{project_id}/releases/{release_id}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName string `pulumi:"rulesetName"`
 }
 
@@ -80,7 +84,7 @@ type ReleaseArgs struct {
 	// Format: `projects/{project_id}/releases/{release_id}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 	RulesetName pulumi.StringInput
 }
 
@@ -135,7 +139,7 @@ func (o ReleaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 func (o ReleaseOutput) RulesetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RulesetName }).(pulumi.StringOutput)
 }

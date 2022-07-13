@@ -41,6 +41,11 @@ func NewReservation(ctx *pulumi.Context,
 		args = &ReservationArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Reservation
 	err := ctx.RegisterResource("google-native:bigqueryreservation/v1beta1:Reservation", name, args, &resource, opts...)
 	if err != nil {

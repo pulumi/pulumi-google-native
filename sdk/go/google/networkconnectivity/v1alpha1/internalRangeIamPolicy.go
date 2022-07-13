@@ -40,6 +40,12 @@ func NewInternalRangeIamPolicy(ctx *pulumi.Context,
 	if args.InternalRangeId == nil {
 		return nil, errors.New("invalid value for required argument 'InternalRangeId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"internalRangeId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InternalRangeIamPolicy
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy", name, args, &resource, opts...)
 	if err != nil {

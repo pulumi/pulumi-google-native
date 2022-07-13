@@ -137,6 +137,8 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["storageBytes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["backupId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Backup.__pulumiType, name, resourceInputs, opts);
     }
 }

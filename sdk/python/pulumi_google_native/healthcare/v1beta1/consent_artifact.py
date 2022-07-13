@@ -294,6 +294,8 @@ class ConsentArtifact(pulumi.CustomResource):
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["user_signature"] = user_signature
             __props__.__dict__["witness_signature"] = witness_signature
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["consent_store_id", "dataset_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ConsentArtifact, __self__).__init__(
             'google-native:healthcare/v1beta1:ConsentArtifact',
             resource_name,

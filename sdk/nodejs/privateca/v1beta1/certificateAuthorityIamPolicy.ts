@@ -89,6 +89,8 @@ export class CertificateAuthorityIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["certificateAuthorityId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CertificateAuthorityIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

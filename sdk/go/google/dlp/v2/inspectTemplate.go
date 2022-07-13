@@ -38,6 +38,11 @@ func NewInspectTemplate(ctx *pulumi.Context,
 		args = &InspectTemplateArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource InspectTemplate
 	err := ctx.RegisterResource("google-native:dlp/v2:InspectTemplate", name, args, &resource, opts...)
 	if err != nil {

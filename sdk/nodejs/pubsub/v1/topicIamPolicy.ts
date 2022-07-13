@@ -79,6 +79,8 @@ export class TopicIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "topicId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(TopicIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

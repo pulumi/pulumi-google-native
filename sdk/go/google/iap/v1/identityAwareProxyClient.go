@@ -36,6 +36,11 @@ func NewIdentityAwareProxyClient(ctx *pulumi.Context,
 	if args.BrandId == nil {
 		return nil, errors.New("invalid value for required argument 'BrandId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"brandId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource IdentityAwareProxyClient
 	err := ctx.RegisterResource("google-native:iap/v1:IdentityAwareProxyClient", name, args, &resource, opts...)
 	if err != nil {

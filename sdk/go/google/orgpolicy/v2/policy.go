@@ -32,6 +32,10 @@ func NewPolicy(ctx *pulumi.Context,
 		args = &PolicyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Policy
 	err := ctx.RegisterResource("google-native:orgpolicy/v2:Policy", name, args, &resource, opts...)
 	if err != nil {

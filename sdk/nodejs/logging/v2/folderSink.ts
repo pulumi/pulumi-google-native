@@ -139,6 +139,8 @@ export class FolderSink extends pulumi.CustomResource {
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["folderId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(FolderSink.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -79,6 +79,8 @@ export class PeeringIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["peeringId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(PeeringIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

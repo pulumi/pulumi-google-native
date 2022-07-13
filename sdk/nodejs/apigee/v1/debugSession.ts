@@ -117,6 +117,8 @@ export class DebugSession extends pulumi.CustomResource {
             resourceInputs["validity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["apiId", "environmentId", "organizationId", "revisionId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DebugSession.__pulumiType, name, resourceInputs, opts);
     }
 }

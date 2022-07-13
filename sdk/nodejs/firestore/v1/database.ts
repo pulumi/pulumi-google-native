@@ -106,6 +106,8 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["databaseId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }

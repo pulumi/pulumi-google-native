@@ -43,6 +43,11 @@ func NewReference(ctx *pulumi.Context,
 	if args.Refers == nil {
 		return nil, errors.New("invalid value for required argument 'Refers'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Reference
 	err := ctx.RegisterResource("google-native:apigee/v1:Reference", name, args, &resource, opts...)
 	if err != nil {

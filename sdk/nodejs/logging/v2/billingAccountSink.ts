@@ -139,6 +139,8 @@ export class BillingAccountSink extends pulumi.CustomResource {
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["billingAccountId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(BillingAccountSink.__pulumiType, name, resourceInputs, opts);
     }
 }

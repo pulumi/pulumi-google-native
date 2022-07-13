@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, create_time=None, display_name=None, labels=None, name=None, state=None, type=None):
+    def __init__(__self__, create_time=None, display_name=None, labels=None, name=None, satisfies_pzs=None, state=None, type=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -31,6 +31,9 @@ class GetInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -71,6 +74,14 @@ class GetInstanceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -97,6 +108,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             display_name=self.display_name,
             labels=self.labels,
             name=self.name,
+            satisfies_pzs=self.satisfies_pzs,
             state=self.state,
             type=self.type)
 
@@ -121,6 +133,7 @@ def get_instance(instance_id: Optional[str] = None,
         display_name=__ret__.display_name,
         labels=__ret__.labels,
         name=__ret__.name,
+        satisfies_pzs=__ret__.satisfies_pzs,
         state=__ret__.state,
         type=__ret__.type)
 

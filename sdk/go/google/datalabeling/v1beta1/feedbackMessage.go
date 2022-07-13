@@ -47,6 +47,13 @@ func NewFeedbackMessage(ctx *pulumi.Context,
 	if args.FeedbackThreadId == nil {
 		return nil, errors.New("invalid value for required argument 'FeedbackThreadId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"annotatedDatasetId",
+		"datasetId",
+		"feedbackThreadId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource FeedbackMessage
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:FeedbackMessage", name, args, &resource, opts...)
 	if err != nil {

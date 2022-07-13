@@ -47,6 +47,12 @@ func NewCaPool(ctx *pulumi.Context,
 	if args.Tier == nil {
 		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"caPoolId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CaPool
 	err := ctx.RegisterResource("google-native:privateca/v1:CaPool", name, args, &resource, opts...)
 	if err != nil {

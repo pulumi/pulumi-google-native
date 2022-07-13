@@ -122,6 +122,8 @@ export class ClientConnectorService extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ClientConnectorService.__pulumiType, name, resourceInputs, opts);
     }
 }

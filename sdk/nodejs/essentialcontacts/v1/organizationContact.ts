@@ -96,6 +96,8 @@ export class OrganizationContact extends pulumi.CustomResource {
             resourceInputs["validationState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationContact.__pulumiType, name, resourceInputs, opts);
     }
 }

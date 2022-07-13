@@ -55,6 +55,11 @@ func NewJob(ctx *pulumi.Context,
 		args = &JobArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Job
 	err := ctx.RegisterResource("google-native:cloudscheduler/v1beta1:Job", name, args, &resource, opts...)
 	if err != nil {

@@ -35,6 +35,11 @@ func NewCustomClass(ctx *pulumi.Context,
 	if args.CustomClassId == nil {
 		return nil, errors.New("invalid value for required argument 'CustomClassId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CustomClass
 	err := ctx.RegisterResource("google-native:speech/v1:CustomClass", name, args, &resource, opts...)
 	if err != nil {

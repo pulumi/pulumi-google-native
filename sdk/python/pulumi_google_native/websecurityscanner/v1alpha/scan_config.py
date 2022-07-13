@@ -289,6 +289,8 @@ class ScanConfig(pulumi.CustomResource):
             __props__.__dict__["starting_urls"] = starting_urls
             __props__.__dict__["target_platforms"] = target_platforms
             __props__.__dict__["user_agent"] = user_agent
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ScanConfig, __self__).__init__(
             'google-native:websecurityscanner/v1alpha:ScanConfig',
             resource_name,

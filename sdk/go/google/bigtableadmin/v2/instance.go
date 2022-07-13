@@ -24,6 +24,8 @@ type Instance struct {
 	// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The current state of the instance.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of the instance. Defaults to `PRODUCTION`.
@@ -55,6 +57,10 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Instance
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -182,6 +188,11 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o InstanceOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The current state of the instance.

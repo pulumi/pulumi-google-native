@@ -113,6 +113,8 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "serverTlsPolicyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ServerTlsPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -37,6 +37,11 @@ func NewSchemaIamPolicy(ctx *pulumi.Context,
 	if args.SchemaId == nil {
 		return nil, errors.New("invalid value for required argument 'SchemaId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"schemaId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource SchemaIamPolicy
 	err := ctx.RegisterResource("google-native:pubsub/v1:SchemaIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -43,6 +43,10 @@ func NewBillingAccountExclusion(ctx *pulumi.Context,
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"billingAccountId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BillingAccountExclusion
 	err := ctx.RegisterResource("google-native:logging/v2:BillingAccountExclusion", name, args, &resource, opts...)
 	if err != nil {

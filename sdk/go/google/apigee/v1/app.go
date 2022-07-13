@@ -56,6 +56,11 @@ func NewApp(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"developerId",
+		"organizationId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource App
 	err := ctx.RegisterResource("google-native:apigee/v1:App", name, args, &resource, opts...)
 	if err != nil {

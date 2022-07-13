@@ -115,6 +115,8 @@ export class Feed extends pulumi.CustomResource {
             resourceInputs["v1Id1"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["v1Id", "v1Id1"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Feed.__pulumiType, name, resourceInputs, opts);
     }
 }

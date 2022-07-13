@@ -273,6 +273,8 @@ export class Product extends pulumi.CustomResource {
             resourceInputs["variants"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["branchId", "catalogId", "location", "productId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Product.__pulumiType, name, resourceInputs, opts);
     }
 }

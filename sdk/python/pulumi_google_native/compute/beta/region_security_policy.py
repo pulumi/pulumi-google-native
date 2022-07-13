@@ -351,6 +351,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["rule_tuple_count"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RegionSecurityPolicy, __self__).__init__(
             'google-native:compute/beta:RegionSecurityPolicy',
             resource_name,

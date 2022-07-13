@@ -98,6 +98,8 @@ export class RowAccessPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "project", "rowAccessPolicyId", "tableId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RowAccessPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

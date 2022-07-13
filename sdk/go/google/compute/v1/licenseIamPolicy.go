@@ -41,6 +41,11 @@ func NewLicenseIamPolicy(ctx *pulumi.Context,
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"resource",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource LicenseIamPolicy
 	err := ctx.RegisterResource("google-native:compute/v1:LicenseIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -120,6 +120,8 @@ export class CertificateTemplate extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["certificateTemplateId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CertificateTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -42,6 +42,13 @@ func NewRegistryGroupIamPolicy(ctx *pulumi.Context,
 	if args.RegistryId == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"groupId",
+		"location",
+		"project",
+		"registryId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource RegistryGroupIamPolicy
 	err := ctx.RegisterResource("google-native:cloudiot/v1:RegistryGroupIamPolicy", name, args, &resource, opts...)
 	if err != nil {

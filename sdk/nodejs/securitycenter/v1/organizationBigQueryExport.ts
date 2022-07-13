@@ -112,6 +112,8 @@ export class OrganizationBigQueryExport extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bigQueryExportId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationBigQueryExport.__pulumiType, name, resourceInputs, opts);
     }
 }

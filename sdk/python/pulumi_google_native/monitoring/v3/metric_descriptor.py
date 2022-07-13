@@ -307,6 +307,8 @@ class MetricDescriptor(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["unit"] = unit
             __props__.__dict__["value_type"] = value_type
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(MetricDescriptor, __self__).__init__(
             'google-native:monitoring/v3:MetricDescriptor',
             resource_name,

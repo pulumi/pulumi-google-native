@@ -120,6 +120,8 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "location", "project", "shareId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Share.__pulumiType, name, resourceInputs, opts);
     }
 }

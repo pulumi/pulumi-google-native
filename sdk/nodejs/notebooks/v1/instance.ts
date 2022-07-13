@@ -285,6 +285,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vmImage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

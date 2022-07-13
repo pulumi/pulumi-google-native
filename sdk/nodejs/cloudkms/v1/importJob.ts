@@ -136,6 +136,8 @@ export class ImportJob extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["importJobId", "keyRingId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ImportJob.__pulumiType, name, resourceInputs, opts);
     }
 }

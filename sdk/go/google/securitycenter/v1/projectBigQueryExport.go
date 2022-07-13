@@ -47,6 +47,11 @@ func NewProjectBigQueryExport(ctx *pulumi.Context,
 	if args.BigQueryExportId == nil {
 		return nil, errors.New("invalid value for required argument 'BigQueryExportId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"bigQueryExportId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ProjectBigQueryExport
 	err := ctx.RegisterResource("google-native:securitycenter/v1:ProjectBigQueryExport", name, args, &resource, opts...)
 	if err != nil {

@@ -95,6 +95,8 @@ export class InstanceNamespaceIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["instanceId", "location", "namespaceId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(InstanceNamespaceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

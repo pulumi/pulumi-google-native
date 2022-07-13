@@ -131,6 +131,8 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["vpcScEnabled"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ProvisioningConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

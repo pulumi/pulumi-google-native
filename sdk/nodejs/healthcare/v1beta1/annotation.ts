@@ -104,6 +104,8 @@ export class Annotation extends pulumi.CustomResource {
             resourceInputs["textAnnotation"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["annotationStoreId", "datasetId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Annotation.__pulumiType, name, resourceInputs, opts);
     }
 }

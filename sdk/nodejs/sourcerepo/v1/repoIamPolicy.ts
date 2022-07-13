@@ -86,6 +86,8 @@ export class RepoIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "repoId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RepoIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

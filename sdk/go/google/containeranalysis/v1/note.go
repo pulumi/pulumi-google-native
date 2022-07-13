@@ -69,6 +69,11 @@ func NewNote(ctx *pulumi.Context,
 	if args.NoteId == nil {
 		return nil, errors.New("invalid value for required argument 'NoteId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"noteId",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Note
 	err := ctx.RegisterResource("google-native:containeranalysis/v1:Note", name, args, &resource, opts...)
 	if err != nil {

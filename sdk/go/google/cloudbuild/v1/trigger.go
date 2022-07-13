@@ -79,6 +79,12 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"projectId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Trigger
 	err := ctx.RegisterResource("google-native:cloudbuild/v1:Trigger", name, args, &resource, opts...)
 	if err != nil {

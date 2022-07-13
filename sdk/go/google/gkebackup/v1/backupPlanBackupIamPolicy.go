@@ -44,6 +44,13 @@ func NewBackupPlanBackupIamPolicy(ctx *pulumi.Context,
 	if args.BackupPlanId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupPlanId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"backupId",
+		"backupPlanId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource BackupPlanBackupIamPolicy
 	err := ctx.RegisterResource("google-native:gkebackup/v1:BackupPlanBackupIamPolicy", name, args, &resource, opts...)
 	if err != nil {

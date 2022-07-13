@@ -208,6 +208,8 @@ class ServiceConsumerIamPolicy(pulumi.CustomResource):
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["consumer_id", "service_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceConsumerIamPolicy, __self__).__init__(
             'google-native:servicemanagement/v1:ServiceConsumerIamPolicy',
             resource_name,

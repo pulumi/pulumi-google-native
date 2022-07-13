@@ -123,6 +123,8 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CapacityCommitment.__pulumiType, name, resourceInputs, opts);
     }
 }

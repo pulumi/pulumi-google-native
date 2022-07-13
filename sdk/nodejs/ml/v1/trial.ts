@@ -123,6 +123,8 @@ export class Trial extends pulumi.CustomResource {
             resourceInputs["trialInfeasible"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "studyId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Trial.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -48,6 +48,14 @@ func NewCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(ctx *pulumi
 	if args.CertificateRevocationListId == nil {
 		return nil, errors.New("invalid value for required argument 'CertificateRevocationListId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"caPoolId",
+		"certificateAuthorityId",
+		"certificateRevocationListId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource CaPoolCertificateAuthorityCertificateRevocationListIamPolicy
 	err := ctx.RegisterResource("google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy", name, args, &resource, opts...)
 	if err != nil {

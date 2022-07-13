@@ -63,6 +63,11 @@ func NewDomain(ctx *pulumi.Context,
 	if args.ReservedIpRange == nil {
 		return nil, errors.New("invalid value for required argument 'ReservedIpRange'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"domainName",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Domain
 	err := ctx.RegisterResource("google-native:managedidentities/v1beta1:Domain", name, args, &resource, opts...)
 	if err != nil {

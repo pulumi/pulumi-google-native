@@ -88,6 +88,8 @@ export class EkmConnection extends pulumi.CustomResource {
             resourceInputs["serviceResolvers"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["ekmConnectionId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(EkmConnection.__pulumiType, name, resourceInputs, opts);
     }
 }

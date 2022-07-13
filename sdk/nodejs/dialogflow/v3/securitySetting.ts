@@ -119,6 +119,8 @@ export class SecuritySetting extends pulumi.CustomResource {
             resourceInputs["retentionWindowDays"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SecuritySetting.__pulumiType, name, resourceInputs, opts);
     }
 }

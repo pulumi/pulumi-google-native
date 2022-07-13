@@ -42,7 +42,9 @@ const computeInstance = new google.compute.v1.Instance("instance", {
     serviceAccounts: [{
         scopes: ["https://www.googleapis.com/auth/cloud-platform"],
     }],
+    tags: { items: ["test"] }, // <--- this is the change compared to step 1
 }, { dependsOn: [computeFirewall] });
 
 export const instanceLink = computeInstance.selfLink;
 export const instanceIP = computeInstance.networkInterfaces[0].accessConfigs[0].natIP;
+export const tag = computeInstance.tags.items[0];

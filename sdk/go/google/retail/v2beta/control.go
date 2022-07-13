@@ -54,6 +54,13 @@ func NewControl(ctx *pulumi.Context,
 	if args.SolutionTypes == nil {
 		return nil, errors.New("invalid value for required argument 'SolutionTypes'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"catalogId",
+		"controlId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Control
 	err := ctx.RegisterResource("google-native:retail/v2beta:Control", name, args, &resource, opts...)
 	if err != nil {

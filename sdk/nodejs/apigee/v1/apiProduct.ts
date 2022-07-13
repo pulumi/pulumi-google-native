@@ -149,6 +149,8 @@ export class ApiProduct extends pulumi.CustomResource {
             resourceInputs["scopes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ApiProduct.__pulumiType, name, resourceInputs, opts);
     }
 }

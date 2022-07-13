@@ -42,6 +42,10 @@ func NewWorkerPool(ctx *pulumi.Context,
 		args = &WorkerPoolArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:cloudbuild/v1alpha1:WorkerPool", name, args, &resource, opts...)
 	if err != nil {

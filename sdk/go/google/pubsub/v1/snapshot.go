@@ -41,6 +41,11 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args.Subscription == nil {
 		return nil, errors.New("invalid value for required argument 'Subscription'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"snapshotId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Snapshot
 	err := ctx.RegisterResource("google-native:pubsub/v1:Snapshot", name, args, &resource, opts...)
 	if err != nil {

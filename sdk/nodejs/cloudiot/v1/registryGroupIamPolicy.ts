@@ -88,6 +88,8 @@ export class RegistryGroupIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["groupId", "location", "project", "registryId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegistryGroupIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

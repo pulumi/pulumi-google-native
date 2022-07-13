@@ -139,6 +139,8 @@ export class OrganizationSink extends pulumi.CustomResource {
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationSink.__pulumiType, name, resourceInputs, opts);
     }
 }

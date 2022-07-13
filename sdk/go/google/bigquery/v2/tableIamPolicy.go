@@ -43,6 +43,12 @@ func NewTableIamPolicy(ctx *pulumi.Context,
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"datasetId",
+		"project",
+		"tableId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TableIamPolicy
 	err := ctx.RegisterResource("google-native:bigquery/v2:TableIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -109,6 +109,8 @@ export class OrganizationMuteConfig extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["muteConfigId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationMuteConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

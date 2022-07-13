@@ -247,6 +247,8 @@ class TestMatrix(pulumi.CustomResource):
             __props__.__dict__["test_executions"] = None
             __props__.__dict__["test_matrix_id"] = None
             __props__.__dict__["timestamp"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TestMatrix, __self__).__init__(
             'google-native:testing/v1:TestMatrix',
             resource_name,

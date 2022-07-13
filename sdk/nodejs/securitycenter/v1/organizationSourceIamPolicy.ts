@@ -89,6 +89,8 @@ export class OrganizationSourceIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["organizationId", "sourceId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(OrganizationSourceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

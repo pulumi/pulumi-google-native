@@ -66,6 +66,11 @@ func NewCustomer(ctx *pulumi.Context,
 	if args.OrgPostalAddress == nil {
 		return nil, errors.New("invalid value for required argument 'OrgPostalAddress'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"accountId",
+		"channelPartnerLinkId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Customer
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:Customer", name, args, &resource, opts...)
 	if err != nil {

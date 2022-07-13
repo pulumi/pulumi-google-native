@@ -46,6 +46,10 @@ func NewTargetHttpProxy(ctx *pulumi.Context,
 		args = &TargetHttpProxyArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource TargetHttpProxy
 	err := ctx.RegisterResource("google-native:compute/beta:TargetHttpProxy", name, args, &resource, opts...)
 	if err != nil {

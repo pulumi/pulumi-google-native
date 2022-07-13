@@ -222,6 +222,8 @@ class EkmConnectionIamPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["ekm_connection_id", "location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EkmConnectionIamPolicy, __self__).__init__(
             'google-native:cloudkms/v1:EkmConnectionIamPolicy',
             resource_name,

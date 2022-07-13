@@ -149,6 +149,8 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["statusMessage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NodeTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }

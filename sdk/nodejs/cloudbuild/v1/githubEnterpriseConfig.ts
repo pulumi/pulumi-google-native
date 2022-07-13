@@ -125,6 +125,8 @@ export class GithubEnterpriseConfig extends pulumi.CustomResource {
             resourceInputs["webhookKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(GithubEnterpriseConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

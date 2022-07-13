@@ -182,6 +182,8 @@ class RegionAutoscalingPolicyIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region_id'")
             __props__.__dict__["region_id"] = region_id
             __props__.__dict__["version"] = version
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["autoscaling_policy_id", "project", "region_id"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RegionAutoscalingPolicyIamPolicy, __self__).__init__(
             'google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy',
             resource_name,

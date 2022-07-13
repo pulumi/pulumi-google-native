@@ -209,6 +209,8 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["webhookConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "projectId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Trigger.__pulumiType, name, resourceInputs, opts);
     }
 }

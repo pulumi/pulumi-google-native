@@ -110,6 +110,8 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["bigQueryExportId", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ProjectBigQueryExport.__pulumiType, name, resourceInputs, opts);
     }
 }

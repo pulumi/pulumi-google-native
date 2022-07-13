@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+        /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
         /// </summary>
         public readonly string RulesetName;
         /// <summary>

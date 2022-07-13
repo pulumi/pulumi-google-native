@@ -48,6 +48,10 @@ func NewModel(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Model
 	err := ctx.RegisterResource("google-native:firebaseml/v1beta2:Model", name, args, &resource, opts...)
 	if err != nil {

@@ -95,6 +95,8 @@ export class LakeContentIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["contentId", "lakeId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(LakeContentIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -56,6 +56,13 @@ func NewProvider(ctx *pulumi.Context,
 	if args.WorkloadIdentityPoolProviderId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolProviderId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+		"workloadIdentityPoolId",
+		"workloadIdentityPoolProviderId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Provider
 	err := ctx.RegisterResource("google-native:iam/v1:Provider", name, args, &resource, opts...)
 	if err != nil {

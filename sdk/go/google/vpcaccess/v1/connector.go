@@ -53,6 +53,12 @@ func NewConnector(ctx *pulumi.Context,
 	if args.ConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectorId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"connectorId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Connector
 	err := ctx.RegisterResource("google-native:vpcaccess/v1:Connector", name, args, &resource, opts...)
 	if err != nil {

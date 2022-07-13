@@ -232,6 +232,8 @@ class InstantSnapshot(pulumi.CustomResource):
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["status"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "zone"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(InstantSnapshot, __self__).__init__(
             'google-native:compute/alpha:InstantSnapshot',
             resource_name,

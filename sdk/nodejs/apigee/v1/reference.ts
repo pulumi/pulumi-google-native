@@ -88,6 +88,8 @@ export class Reference extends pulumi.CustomResource {
             resourceInputs["resourceType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["environmentId", "organizationId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Reference.__pulumiType, name, resourceInputs, opts);
     }
 }

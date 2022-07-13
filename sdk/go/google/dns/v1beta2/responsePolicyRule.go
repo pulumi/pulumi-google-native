@@ -41,6 +41,11 @@ func NewResponsePolicyRule(ctx *pulumi.Context,
 	if args.ResponsePolicy == nil {
 		return nil, errors.New("invalid value for required argument 'ResponsePolicy'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+		"responsePolicy",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ResponsePolicyRule
 	err := ctx.RegisterResource("google-native:dns/v1beta2:ResponsePolicyRule", name, args, &resource, opts...)
 	if err != nil {

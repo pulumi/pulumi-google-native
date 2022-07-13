@@ -52,6 +52,10 @@ func NewHttpHealthCheck(ctx *pulumi.Context,
 		args = &HttpHealthCheckArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource HttpHealthCheck
 	err := ctx.RegisterResource("google-native:compute/alpha:HttpHealthCheck", name, args, &resource, opts...)
 	if err != nil {

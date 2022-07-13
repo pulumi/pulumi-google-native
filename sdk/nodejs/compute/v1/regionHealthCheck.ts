@@ -149,6 +149,8 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["unhealthyThreshold"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(RegionHealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }

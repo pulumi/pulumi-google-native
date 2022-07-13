@@ -89,6 +89,8 @@ export class ClientGatewayIamPolicy extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["clientGatewayId", "location", "project"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(ClientGatewayIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -48,6 +48,14 @@ func NewContext(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"environmentId",
+		"location",
+		"project",
+		"sessionId",
+		"userId",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Context
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Context", name, args, &resource, opts...)
 	if err != nil {

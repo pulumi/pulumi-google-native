@@ -84,6 +84,8 @@ export class CustomerRepricingConfig extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["accountId", "customerId"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(CustomerRepricingConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -40,6 +40,12 @@ func NewParticipant(ctx *pulumi.Context,
 	if args.ConversationId == nil {
 		return nil, errors.New("invalid value for required argument 'ConversationId'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"conversationId",
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Participant
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Participant", name, args, &resource, opts...)
 	if err != nil {

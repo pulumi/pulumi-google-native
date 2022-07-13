@@ -303,6 +303,8 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
             __props__.__dict__["ssl_ca"] = ssl_ca
             __props__.__dict__["webhook_key"] = webhook_key
             __props__.__dict__["create_time"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(GithubEnterpriseConfig, __self__).__init__(
             'google-native:cloudbuild/v1:GithubEnterpriseConfig',
             resource_name,

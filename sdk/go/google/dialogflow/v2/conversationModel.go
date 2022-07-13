@@ -48,6 +48,11 @@ func NewConversationModel(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"location",
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource ConversationModel
 	err := ctx.RegisterResource("google-native:dialogflow/v2:ConversationModel", name, args, &resource, opts...)
 	if err != nil {

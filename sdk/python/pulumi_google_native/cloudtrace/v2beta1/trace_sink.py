@@ -128,6 +128,8 @@ class TraceSink(pulumi.CustomResource):
             __props__.__dict__["output_config"] = output_config
             __props__.__dict__["project"] = project
             __props__.__dict__["writer_identity"] = None
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
+        opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TraceSink, __self__).__init__(
             'google-native:cloudtrace/v2beta1:TraceSink',
             resource_name,

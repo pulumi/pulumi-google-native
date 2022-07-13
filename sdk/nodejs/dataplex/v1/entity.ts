@@ -184,6 +184,8 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const replaceOnChanges = { replaceOnChanges: ["lakeId", "location", "project", "zone"] };
+        opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Entity.__pulumiType, name, resourceInputs, opts);
     }
 }

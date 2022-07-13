@@ -82,6 +82,10 @@ func NewInterconnect(ctx *pulumi.Context,
 		args = &InterconnectArgs{}
 	}
 
+	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"project",
+	})
+	opts = append(opts, replaceOnChanges)
 	var resource Interconnect
 	err := ctx.RegisterResource("google-native:compute/alpha:Interconnect", name, args, &resource, opts...)
 	if err != nil {
