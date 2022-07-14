@@ -2,6 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
+
+## 0.21.0 (2022-07-14)
 - Handle network timeouts as retryable [#524](https://github.com/pulumi/pulumi-google-native/pull/524)
 - Add path parameters as required outputs [#539](https://github.com/pulumi/pulumi-google-native/pull/539)
 - Fix handling for resource moving from named to autonamed resources [#551](https://github.com/pulumi/pulumi-google-native/pull/551)
