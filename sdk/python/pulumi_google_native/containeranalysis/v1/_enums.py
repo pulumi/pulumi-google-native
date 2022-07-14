@@ -298,13 +298,17 @@ class DiscoveryOccurrenceAnalysisStatus(str, Enum):
     """
     Analysis has finished successfully.
     """
+    COMPLETE = "COMPLETE"
+    """
+    Analysis has completed
+    """
     FINISHED_FAILED = "FINISHED_FAILED"
     """
     Analysis has finished unsuccessfully, the analysis itself is in a bad state.
     """
     FINISHED_UNSUPPORTED = "FINISHED_UNSUPPORTED"
     """
-    The resource is known not to be supported
+    The resource is known not to be supported.
     """
 
 

@@ -70,6 +70,10 @@ export class Database extends pulumi.CustomResource {
      * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * If set, validate the request and preview the response, but do not actually create the database.
+     */
+    public readonly validateOnly!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -93,6 +97,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["keyPrefix"] = undefined /*out*/;
         } else {
             resourceInputs["appEngineIntegrationMode"] = undefined /*out*/;
@@ -104,6 +109,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["databaseId", "project"] };
@@ -145,4 +151,8 @@ export interface DatabaseArgs {
      * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
      */
     type?: pulumi.Input<enums.firestore.v1.DatabaseType>;
+    /**
+     * If set, validate the request and preview the response, but do not actually create the database.
+     */
+    validateOnly?: pulumi.Input<string>;
 }

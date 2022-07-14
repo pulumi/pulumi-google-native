@@ -43,12 +43,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved for future use.
-        /// </summary>
-        [Output("satisfiesPzs")]
-        public Output<bool> SatisfiesPzs { get; private set; } = null!;
-
-        /// <summary>
         /// The current state of the instance.
         /// </summary>
         [Output("state")]

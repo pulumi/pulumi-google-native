@@ -22,7 +22,8 @@ class DatabaseArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['DatabaseType']] = None):
+                 type: Optional[pulumi.Input['DatabaseType']] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
@@ -32,6 +33,7 @@ class DatabaseArgs:
         :param pulumi.Input[str] location: The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The resource name of the Database. Format: `projects/{project}/databases/{database}`
         :param pulumi.Input['DatabaseType'] type: The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
+        :param pulumi.Input[str] validate_only: If set, validate the request and preview the response, but do not actually create the database.
         """
         pulumi.set(__self__, "database_id", database_id)
         if app_engine_integration_mode is not None:
@@ -48,6 +50,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "project", project)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="databaseId")
@@ -142,6 +146,18 @@ class DatabaseArgs:
     def type(self, value: Optional[pulumi.Input['DatabaseType']]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set, validate the request and preview the response, but do not actually create the database.
+        """
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate_only", value)
+
 
 class Database(pulumi.CustomResource):
     @overload
@@ -156,6 +172,7 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['DatabaseType']] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a database.
@@ -171,6 +188,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The resource name of the Database. Format: `projects/{project}/databases/{database}`
         :param pulumi.Input['DatabaseType'] type: The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
+        :param pulumi.Input[str] validate_only: If set, validate the request and preview the response, but do not actually create the database.
         """
         ...
     @overload
@@ -206,6 +224,7 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['DatabaseType']] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -230,6 +249,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
+            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["key_prefix"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -264,6 +284,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["validate_only"] = None
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -334,4 +355,12 @@ class Database(pulumi.CustomResource):
         The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[str]]:
+        """
+        If set, validate the request and preview the response, but do not actually create the database.
+        """
+        return pulumi.get(self, "validate_only")
 

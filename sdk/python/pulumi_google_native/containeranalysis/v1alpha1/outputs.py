@@ -1233,7 +1233,9 @@ class ComplianceVersionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cpeUri":
+        if key == "benchmarkDocument":
+            suggest = "benchmark_document"
+        elif key == "cpeUri":
             suggest = "cpe_uri"
 
         if suggest:
@@ -1248,15 +1250,26 @@ class ComplianceVersionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 benchmark_document: str,
                  cpe_uri: str,
                  version: str):
         """
         Describes the CIS benchmark version that is applicable to a given OS and os version.
+        :param str benchmark_document: The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
         :param str cpe_uri: The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
         :param str version: The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
         """
+        pulumi.set(__self__, "benchmark_document", benchmark_document)
         pulumi.set(__self__, "cpe_uri", cpe_uri)
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="benchmarkDocument")
+    def benchmark_document(self) -> str:
+        """
+        The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+        """
+        return pulumi.get(self, "benchmark_document")
 
     @property
     @pulumi.getter(name="cpeUri")

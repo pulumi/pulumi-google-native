@@ -13,6 +13,7 @@ from ._enums import *
 
 __all__ = [
     'AliasContextResponse',
+    'AnalysisCompletedResponse',
     'ArtifactHashesResponse',
     'ArtifactResponse',
     'ArtifactRuleResponse',
@@ -121,6 +122,41 @@ class AliasContextResponse(dict):
         The alias name.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AnalysisCompletedResponse(dict):
+    """
+    Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "analysisType":
+            suggest = "analysis_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnalysisCompletedResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnalysisCompletedResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnalysisCompletedResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 analysis_type: Sequence[str]):
+        """
+        Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+        """
+        pulumi.set(__self__, "analysis_type", analysis_type)
+
+    @property
+    @pulumi.getter(name="analysisType")
+    def analysis_type(self) -> Sequence[str]:
+        return pulumi.get(self, "analysis_type")
 
 
 @pulumi.output_type
@@ -1637,7 +1673,11 @@ class DiscoveredResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "analysisStatus":
+        if key == "analysisCompleted":
+            suggest = "analysis_completed"
+        elif key == "analysisError":
+            suggest = "analysis_error"
+        elif key == "analysisStatus":
             suggest = "analysis_status"
         elif key == "analysisStatusError":
             suggest = "analysis_status_error"
@@ -1658,21 +1698,39 @@ class DiscoveredResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 analysis_completed: 'outputs.AnalysisCompletedResponse',
+                 analysis_error: Sequence['outputs.StatusResponse'],
                  analysis_status: str,
                  analysis_status_error: 'outputs.StatusResponse',
                  continuous_analysis: str,
                  last_analysis_time: str):
         """
         Provides information about the analysis status of a discovered resource.
+        :param Sequence['StatusResponse'] analysis_error: Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
         :param str analysis_status: The status of discovery for the resource.
         :param 'StatusResponse' analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
         :param str continuous_analysis: Whether the resource is continuously analyzed.
         :param str last_analysis_time: The last time continuous analysis was done for this resource. Deprecated, do not use.
         """
+        pulumi.set(__self__, "analysis_completed", analysis_completed)
+        pulumi.set(__self__, "analysis_error", analysis_error)
         pulumi.set(__self__, "analysis_status", analysis_status)
         pulumi.set(__self__, "analysis_status_error", analysis_status_error)
         pulumi.set(__self__, "continuous_analysis", continuous_analysis)
         pulumi.set(__self__, "last_analysis_time", last_analysis_time)
+
+    @property
+    @pulumi.getter(name="analysisCompleted")
+    def analysis_completed(self) -> 'outputs.AnalysisCompletedResponse':
+        return pulumi.get(self, "analysis_completed")
+
+    @property
+    @pulumi.getter(name="analysisError")
+    def analysis_error(self) -> Sequence['outputs.StatusResponse']:
+        """
+        Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        """
+        return pulumi.get(self, "analysis_error")
 
     @property
     @pulumi.getter(name="analysisStatus")

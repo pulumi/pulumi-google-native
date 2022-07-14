@@ -1313,17 +1313,33 @@ class ComplianceOccurrenceArgs:
 @pulumi.input_type
 class ComplianceVersionArgs:
     def __init__(__self__, *,
+                 benchmark_document: Optional[pulumi.Input[str]] = None,
                  cpe_uri: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Describes the CIS benchmark version that is applicable to a given OS and os version.
+        :param pulumi.Input[str] benchmark_document: The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
         :param pulumi.Input[str] cpe_uri: The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
         :param pulumi.Input[str] version: The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
         """
+        if benchmark_document is not None:
+            pulumi.set(__self__, "benchmark_document", benchmark_document)
         if cpe_uri is not None:
             pulumi.set(__self__, "cpe_uri", cpe_uri)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="benchmarkDocument")
+    def benchmark_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+        """
+        return pulumi.get(self, "benchmark_document")
+
+    @benchmark_document.setter
+    def benchmark_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "benchmark_document", value)
 
     @property
     @pulumi.getter(name="cpeUri")

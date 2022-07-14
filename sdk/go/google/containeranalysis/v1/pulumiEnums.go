@@ -3543,9 +3543,11 @@ const (
 	DiscoveryOccurrenceAnalysisStatusScanning = DiscoveryOccurrenceAnalysisStatus("SCANNING")
 	// Analysis has finished successfully.
 	DiscoveryOccurrenceAnalysisStatusFinishedSuccess = DiscoveryOccurrenceAnalysisStatus("FINISHED_SUCCESS")
+	// Analysis has completed
+	DiscoveryOccurrenceAnalysisStatusComplete = DiscoveryOccurrenceAnalysisStatus("COMPLETE")
 	// Analysis has finished unsuccessfully, the analysis itself is in a bad state.
 	DiscoveryOccurrenceAnalysisStatusFinishedFailed = DiscoveryOccurrenceAnalysisStatus("FINISHED_FAILED")
-	// The resource is known not to be supported
+	// The resource is known not to be supported.
 	DiscoveryOccurrenceAnalysisStatusFinishedUnsupported = DiscoveryOccurrenceAnalysisStatus("FINISHED_UNSUPPORTED")
 )
 

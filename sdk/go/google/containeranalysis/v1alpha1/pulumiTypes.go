@@ -3961,6 +3961,8 @@ func (o ComplianceOccurrenceResponseOutput) NonCompliantFiles() NonCompliantFile
 
 // Describes the CIS benchmark version that is applicable to a given OS and os version.
 type ComplianceVersion struct {
+	// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+	BenchmarkDocument *string `pulumi:"benchmarkDocument"`
 	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
 	CpeUri *string `pulumi:"cpeUri"`
 	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
@@ -3980,6 +3982,8 @@ type ComplianceVersionInput interface {
 
 // Describes the CIS benchmark version that is applicable to a given OS and os version.
 type ComplianceVersionArgs struct {
+	// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+	BenchmarkDocument pulumi.StringPtrInput `pulumi:"benchmarkDocument"`
 	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
 	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
 	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
@@ -4038,6 +4042,11 @@ func (o ComplianceVersionOutput) ToComplianceVersionOutputWithContext(ctx contex
 	return o
 }
 
+// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+func (o ComplianceVersionOutput) BenchmarkDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceVersion) *string { return v.BenchmarkDocument }).(pulumi.StringPtrOutput)
+}
+
 // The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
 func (o ComplianceVersionOutput) CpeUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComplianceVersion) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
@@ -4070,6 +4079,8 @@ func (o ComplianceVersionArrayOutput) Index(i pulumi.IntInput) ComplianceVersion
 
 // Describes the CIS benchmark version that is applicable to a given OS and os version.
 type ComplianceVersionResponse struct {
+	// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+	BenchmarkDocument string `pulumi:"benchmarkDocument"`
 	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
 	CpeUri string `pulumi:"cpeUri"`
 	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
@@ -4089,6 +4100,11 @@ func (o ComplianceVersionResponseOutput) ToComplianceVersionResponseOutput() Com
 
 func (o ComplianceVersionResponseOutput) ToComplianceVersionResponseOutputWithContext(ctx context.Context) ComplianceVersionResponseOutput {
 	return o
+}
+
+// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+func (o ComplianceVersionResponseOutput) BenchmarkDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceVersionResponse) string { return v.BenchmarkDocument }).(pulumi.StringOutput)
 }
 
 // The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.

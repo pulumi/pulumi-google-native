@@ -68,6 +68,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// If set, validate the request and preview the response, but do not actually create the database.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<string?> ValidateOnly { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Database resource with the given unique name, arguments, and options.
@@ -162,6 +168,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Firestore.V1.DatabaseType>? Type { get; set; }
+
+        /// <summary>
+        /// If set, validate the request and preview the response, but do not actually create the database.
+        /// </summary>
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
 
         public DatabaseArgs()
         {

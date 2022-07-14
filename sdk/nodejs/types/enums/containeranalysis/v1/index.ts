@@ -304,11 +304,15 @@ export const DiscoveryOccurrenceAnalysisStatus = {
      */
     FinishedSuccess: "FINISHED_SUCCESS",
     /**
+     * Analysis has completed
+     */
+    Complete: "COMPLETE",
+    /**
      * Analysis has finished unsuccessfully, the analysis itself is in a bad state.
      */
     FinishedFailed: "FINISHED_FAILED",
     /**
-     * The resource is known not to be supported
+     * The resource is known not to be supported.
      */
     FinishedUnsupported: "FINISHED_UNSUPPORTED",
 } as const;

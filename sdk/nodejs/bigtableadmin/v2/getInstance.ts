@@ -42,10 +42,6 @@ export interface GetInstanceResult {
      */
     readonly name: string;
     /**
-     * Reserved for future use.
-     */
-    readonly satisfiesPzs: boolean;
-    /**
      * The current state of the instance.
      */
     readonly state: string;

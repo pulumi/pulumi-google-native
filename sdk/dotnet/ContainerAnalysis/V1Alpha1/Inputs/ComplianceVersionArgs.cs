@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class ComplianceVersionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+        /// </summary>
+        [Input("benchmarkDocument")]
+        public Input<string>? BenchmarkDocument { get; set; }
+
+        /// <summary>
         /// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
         /// </summary>
         [Input("cpeUri")]

@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<Inputs.SecretArgs>? SshClientCert { get; set; }
 
         /// <summary>
+        /// Password (passphrase) for ssh client certificate if it has one.
+        /// </summary>
+        [Input("sshClientCertPass")]
+        public Input<Inputs.SecretArgs>? SshClientCertPass { get; set; }
+
+        /// <summary>
         /// The user account used to authenticate.
         /// </summary>
         [Input("username")]

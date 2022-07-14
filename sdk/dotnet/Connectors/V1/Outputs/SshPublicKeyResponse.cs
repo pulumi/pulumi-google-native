@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly Outputs.SecretResponse SshClientCert;
         /// <summary>
+        /// Password (passphrase) for ssh client certificate if it has one.
+        /// </summary>
+        public readonly Outputs.SecretResponse SshClientCertPass;
+        /// <summary>
         /// The user account used to authenticate.
         /// </summary>
         public readonly string Username;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 
             Outputs.SecretResponse sshClientCert,
 
+            Outputs.SecretResponse sshClientCertPass,
+
             string username)
         {
             CertType = certType;
             Password = password;
             SshClientCert = sshClientCert;
+            SshClientCertPass = sshClientCertPass;
             Username = username;
         }
     }

@@ -1916,7 +1916,7 @@
       }
     }
   },
-  "revision": "20220706",
+  "revision": "20220623",
   "rootUrl": "https://sqladmin.googleapis.com/",
   "schemas": {
     "AclEntry": {

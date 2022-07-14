@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<int>? WindowAfter { get; set; }
 
         /// <summary>
-        /// Number of characters before the finding to consider.
+        /// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
         /// </summary>
         [Input("windowBefore")]
         public Input<int>? WindowBefore { get; set; }

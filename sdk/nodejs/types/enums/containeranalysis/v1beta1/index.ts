@@ -397,6 +397,10 @@ export const DiscoveredAnalysisStatus = {
      */
     FinishedSuccess: "FINISHED_SUCCESS",
     /**
+     * Analysis has completed.
+     */
+    Complete: "COMPLETE",
+    /**
      * Analysis has finished unsuccessfully, the analysis itself is in a bad state.
      */
     FinishedFailed: "FINISHED_FAILED",
