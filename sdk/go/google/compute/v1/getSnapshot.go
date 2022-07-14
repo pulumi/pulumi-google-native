@@ -66,6 +66,10 @@ type LookupSnapshotResult struct {
 	SourceDiskEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceDiskEncryptionKey"`
 	// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId string `pulumi:"sourceDiskId"`
+	// URL of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicy string `pulumi:"sourceSnapshotSchedulePolicy"`
+	// ID of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicyId string `pulumi:"sourceSnapshotSchedulePolicyId"`
 	// The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
 	Status string `pulumi:"status"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
@@ -210,6 +214,16 @@ func (o LookupSnapshotResultOutput) SourceDiskEncryptionKey() CustomerEncryption
 // The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 func (o LookupSnapshotResultOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// URL of the resource policy which created this scheduled snapshot.
+func (o LookupSnapshotResultOutput) SourceSnapshotSchedulePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceSnapshotSchedulePolicy }).(pulumi.StringOutput)
+}
+
+// ID of the resource policy which created this scheduled snapshot.
+func (o LookupSnapshotResultOutput) SourceSnapshotSchedulePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceSnapshotSchedulePolicyId }).(pulumi.StringOutput)
 }
 
 // The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.

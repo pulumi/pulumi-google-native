@@ -2052,7 +2052,7 @@ class GooglePrivacyDlpV2HotwordRuleArgs:
         The rule that adjusts the likelihood of findings within a certain proximity of hotwords.
         :param pulumi.Input['GooglePrivacyDlpV2RegexArgs'] hotword_regex: Regular expression pattern defining what qualifies as a hotword.
         :param pulumi.Input['GooglePrivacyDlpV2LikelihoodAdjustmentArgs'] likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
-        :param pulumi.Input['GooglePrivacyDlpV2ProximityArgs'] proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+        :param pulumi.Input['GooglePrivacyDlpV2ProximityArgs'] proximity: Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         if hotword_regex is not None:
             pulumi.set(__self__, "hotword_regex", hotword_regex)
@@ -2089,7 +2089,7 @@ class GooglePrivacyDlpV2HotwordRuleArgs:
     @pulumi.getter
     def proximity(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ProximityArgs']]:
         """
-        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+        Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         return pulumi.get(self, "proximity")
 
@@ -3339,7 +3339,7 @@ class GooglePrivacyDlpV2ProximityArgs:
         """
         Message for specifying a window around a finding to apply a detection rule.
         :param pulumi.Input[int] window_after: Number of characters after the finding to consider.
-        :param pulumi.Input[int] window_before: Number of characters before the finding to consider.
+        :param pulumi.Input[int] window_before: Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         if window_after is not None:
             pulumi.set(__self__, "window_after", window_after)
@@ -3362,7 +3362,7 @@ class GooglePrivacyDlpV2ProximityArgs:
     @pulumi.getter(name="windowBefore")
     def window_before(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of characters before the finding to consider.
+        Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         return pulumi.get(self, "window_before")
 

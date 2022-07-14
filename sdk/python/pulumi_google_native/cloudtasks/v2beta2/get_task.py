@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTaskResult:
-    def __init__(__self__, app_engine_http_request=None, create_time=None, name=None, pull_message=None, schedule_time=None, status=None, view=None):
+    def __init__(__self__, app_engine_http_request=None, create_time=None, http_request=None, name=None, pull_message=None, schedule_time=None, status=None, view=None):
         if app_engine_http_request and not isinstance(app_engine_http_request, dict):
             raise TypeError("Expected argument 'app_engine_http_request' to be a dict")
         pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if http_request and not isinstance(http_request, dict):
+            raise TypeError("Expected argument 'http_request' to be a dict")
+        pulumi.set(__self__, "http_request", http_request)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -57,6 +60,14 @@ class GetTaskResult:
         The time that the task was created. `create_time` will be truncated to the nearest second.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="httpRequest")
+    def http_request(self) -> 'outputs.HttpRequestResponse':
+        """
+        HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        """
+        return pulumi.get(self, "http_request")
 
     @property
     @pulumi.getter
@@ -107,6 +118,7 @@ class AwaitableGetTaskResult(GetTaskResult):
         return GetTaskResult(
             app_engine_http_request=self.app_engine_http_request,
             create_time=self.create_time,
+            http_request=self.http_request,
             name=self.name,
             pull_message=self.pull_message,
             schedule_time=self.schedule_time,
@@ -138,6 +150,7 @@ def get_task(location: Optional[str] = None,
     return AwaitableGetTaskResult(
         app_engine_http_request=__ret__.app_engine_http_request,
         create_time=__ret__.create_time,
+        http_request=__ret__.http_request,
         name=__ret__.name,
         pull_message=__ret__.pull_message,
         schedule_time=__ret__.schedule_time,

@@ -72,10 +72,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Reserved for future use.
-        /// </summary>
-        public readonly bool SatisfiesPzs;
-        /// <summary>
         /// The current state of the instance.
         /// </summary>
         public readonly string State;
@@ -94,8 +90,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             string name,
 
-            bool satisfiesPzs,
-
             string state,
 
             string type)
@@ -104,7 +98,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
             DisplayName = displayName;
             Labels = labels;
             Name = name;
-            SatisfiesPzs = satisfiesPzs;
             State = state;
             Type = type;
         }

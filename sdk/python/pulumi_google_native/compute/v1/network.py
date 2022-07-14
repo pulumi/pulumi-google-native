@@ -294,6 +294,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["routing_config"] = routing_config
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["firewall_policy"] = None
             __props__.__dict__["gateway_i_pv4"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["peerings"] = None
@@ -328,6 +329,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["enable_ula_internal_ipv6"] = None
+        __props__.__dict__["firewall_policy"] = None
         __props__.__dict__["gateway_i_pv4"] = None
         __props__.__dict__["internal_ipv6_range"] = None
         __props__.__dict__["ipv4_range"] = None
@@ -375,6 +377,14 @@ class Network(pulumi.CustomResource):
         Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
         """
         return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @property
+    @pulumi.getter(name="firewallPolicy")
+    def firewall_policy(self) -> pulumi.Output[str]:
+        """
+        URL of the firewall policy the network is associated with.
+        """
+        return pulumi.get(self, "firewall_policy")
 
     @property
     @pulumi.getter(name="gatewayIPv4")

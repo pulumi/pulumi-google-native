@@ -18,6 +18,12 @@ __all__ = [
     'AttemptStatusResponse',
     'BindingResponse',
     'ExprResponse',
+    'HeaderOverrideResponse',
+    'HeaderResponse',
+    'HttpRequestResponse',
+    'HttpTargetResponse',
+    'OAuthTokenResponse',
+    'OidcTokenResponse',
     'PullMessageResponse',
     'PullTargetResponse',
     'QueueStatsResponse',
@@ -25,6 +31,7 @@ __all__ = [
     'RetryConfigResponse',
     'StatusResponse',
     'TaskStatusResponse',
+    'UriOverrideResponse',
 ]
 
 @pulumi.output_type
@@ -383,6 +390,342 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class HeaderOverrideResponse(dict):
+    """
+    Wraps the Header object.
+    """
+    def __init__(__self__, *,
+                 header: 'outputs.HeaderResponse'):
+        """
+        Wraps the Header object.
+        :param 'HeaderResponse' header: header embodying a key and a value.
+        """
+        pulumi.set(__self__, "header", header)
+
+    @property
+    @pulumi.getter
+    def header(self) -> 'outputs.HeaderResponse':
+        """
+        header embodying a key and a value.
+        """
+        return pulumi.get(self, "header")
+
+
+@pulumi.output_type
+class HeaderResponse(dict):
+    """
+    Defines a header message. A header can have a key and a value.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        Defines a header message. A header can have a key and a value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class HttpRequestResponse(dict):
+    """
+    HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpMethod":
+            suggest = "http_method"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRequestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRequestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRequestResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 body: str,
+                 headers: Mapping[str, str],
+                 http_method: str,
+                 oauth_token: 'outputs.OAuthTokenResponse',
+                 oidc_token: 'outputs.OidcTokenResponse',
+                 url: str):
+        """
+        HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
+        :param str body: HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+        :param Mapping[str, str] headers: HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+        :param str http_method: The HTTP method to use for the request. The default is POST.
+        :param 'OAuthTokenResponse' oauth_token: If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        :param 'OidcTokenResponse' oidc_token: If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        :param str url: The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+        """
+        pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "oauth_token", oauth_token)
+        pulumi.set(__self__, "oidc_token", oidc_token)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def body(self) -> str:
+        """
+        HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+        """
+        return pulumi.get(self, "body")
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Mapping[str, str]:
+        """
+        HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> str:
+        """
+        The HTTP method to use for the request. The default is POST.
+        """
+        return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> 'outputs.OAuthTokenResponse':
+        """
+        If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        """
+        return pulumi.get(self, "oauth_token")
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> 'outputs.OidcTokenResponse':
+        """
+        If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        """
+        return pulumi.get(self, "oidc_token")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class HttpTargetResponse(dict):
+    """
+    HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerOverrides":
+            suggest = "header_overrides"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+        elif key == "uriOverride":
+            suggest = "uri_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_overrides: Sequence['outputs.HeaderOverrideResponse'],
+                 http_method: str,
+                 oauth_token: 'outputs.OAuthTokenResponse',
+                 oidc_token: 'outputs.OidcTokenResponse',
+                 uri_override: 'outputs.UriOverrideResponse'):
+        """
+        HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+        :param Sequence['HeaderOverrideResponse'] header_overrides: HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        :param str http_method: The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        :param 'OAuthTokenResponse' oauth_token: If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        :param 'OidcTokenResponse' oidc_token: If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        :param 'UriOverrideResponse' uri_override: Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        """
+        pulumi.set(__self__, "header_overrides", header_overrides)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "oauth_token", oauth_token)
+        pulumi.set(__self__, "oidc_token", oidc_token)
+        pulumi.set(__self__, "uri_override", uri_override)
+
+    @property
+    @pulumi.getter(name="headerOverrides")
+    def header_overrides(self) -> Sequence['outputs.HeaderOverrideResponse']:
+        """
+        HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        """
+        return pulumi.get(self, "header_overrides")
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> str:
+        """
+        The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        """
+        return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> 'outputs.OAuthTokenResponse':
+        """
+        If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        """
+        return pulumi.get(self, "oauth_token")
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> 'outputs.OidcTokenResponse':
+        """
+        If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        """
+        return pulumi.get(self, "oidc_token")
+
+    @property
+    @pulumi.getter(name="uriOverride")
+    def uri_override(self) -> 'outputs.UriOverrideResponse':
+        """
+        Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        """
+        return pulumi.get(self, "uri_override")
+
+
+@pulumi.output_type
+class OAuthTokenResponse(dict):
+    """
+    Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OAuthTokenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OAuthTokenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OAuthTokenResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scope: str,
+                 service_account_email: str):
+        """
+        Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        :param str scope: OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        :param str service_account_email: [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+
+@pulumi.output_type
+class OidcTokenResponse(dict):
+    """
+    Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OidcTokenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audience: str,
+                 service_account_email: str):
+        """
+        Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        :param str audience: Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        :param str service_account_email: [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> str:
+        """
+        Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        """
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        return pulumi.get(self, "service_account_email")
 
 
 @pulumi.output_type
@@ -810,5 +1153,71 @@ class TaskStatusResponse(dict):
         The status of the task's last attempt. This field is not calculated for pull tasks.
         """
         return pulumi.get(self, "last_attempt_status")
+
+
+@pulumi.output_type
+class UriOverrideResponse(dict):
+    """
+    Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+    """
+    def __init__(__self__, *,
+                 host: str,
+                 path: str,
+                 port: str,
+                 query: str,
+                 scheme: str):
+        """
+        Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+        :param str host: Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+        :param str path: Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+        :param str port: Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+        :param str query: Uri Query. Will replace the query part of the task uri.
+        :param str scheme: Scheme override. When specified, the Uri scheme is replaced by the provided value.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def query(self) -> str:
+        """
+        Uri Query. Will replace the query part of the task uri.
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> str:
+        """
+        Scheme override. When specified, the Uri scheme is replaced by the provided value.
+        """
+        return pulumi.get(self, "scheme")
 
 

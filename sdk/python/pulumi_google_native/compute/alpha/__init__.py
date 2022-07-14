@@ -125,6 +125,7 @@ from .get_target_vpn_gateway import *
 from .get_url_map import *
 from .get_vpn_gateway import *
 from .get_vpn_tunnel import *
+from .get_zone_queued_resource import *
 from .global_address import *
 from .global_forwarding_rule import *
 from .global_network_endpoint_group import *
@@ -216,5 +217,6 @@ from .target_vpn_gateway import *
 from .url_map import *
 from .vpn_gateway import *
 from .vpn_tunnel import *
+from .zone_queued_resource import *
 from ._inputs import *
 from . import outputs

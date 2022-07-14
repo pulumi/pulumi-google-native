@@ -18475,6 +18475,175 @@ func (in *interconnectLinkTypePtr) ToInterconnectLinkTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectLinkTypePtrOutput)
 }
 
+// Strategy for distributing VMs across zones in a region.
+type LocationPolicyTargetShape string
+
+const (
+	// GCE picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
+	LocationPolicyTargetShapeAny = LocationPolicyTargetShape("ANY")
+	// GCE always selects a single zone for all the VMs, optimizing for resource quotas, available reservations and general capacity. Recommended for batch workloads that cannot tollerate distribution over multiple zones. This the default shape in Bulk Insert and Capacity Advisor APIs.
+	LocationPolicyTargetShapeAnySingleZone = LocationPolicyTargetShape("ANY_SINGLE_ZONE")
+	// GCE prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across allowed zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
+	LocationPolicyTargetShapeBalanced = LocationPolicyTargetShape("BALANCED")
+)
+
+func (LocationPolicyTargetShape) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyTargetShape)(nil)).Elem()
+}
+
+func (e LocationPolicyTargetShape) ToLocationPolicyTargetShapeOutput() LocationPolicyTargetShapeOutput {
+	return pulumi.ToOutput(e).(LocationPolicyTargetShapeOutput)
+}
+
+func (e LocationPolicyTargetShape) ToLocationPolicyTargetShapeOutputWithContext(ctx context.Context) LocationPolicyTargetShapeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LocationPolicyTargetShapeOutput)
+}
+
+func (e LocationPolicyTargetShape) ToLocationPolicyTargetShapePtrOutput() LocationPolicyTargetShapePtrOutput {
+	return e.ToLocationPolicyTargetShapePtrOutputWithContext(context.Background())
+}
+
+func (e LocationPolicyTargetShape) ToLocationPolicyTargetShapePtrOutputWithContext(ctx context.Context) LocationPolicyTargetShapePtrOutput {
+	return LocationPolicyTargetShape(e).ToLocationPolicyTargetShapeOutputWithContext(ctx).ToLocationPolicyTargetShapePtrOutputWithContext(ctx)
+}
+
+func (e LocationPolicyTargetShape) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LocationPolicyTargetShape) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LocationPolicyTargetShape) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LocationPolicyTargetShape) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LocationPolicyTargetShapeOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyTargetShapeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyTargetShape)(nil)).Elem()
+}
+
+func (o LocationPolicyTargetShapeOutput) ToLocationPolicyTargetShapeOutput() LocationPolicyTargetShapeOutput {
+	return o
+}
+
+func (o LocationPolicyTargetShapeOutput) ToLocationPolicyTargetShapeOutputWithContext(ctx context.Context) LocationPolicyTargetShapeOutput {
+	return o
+}
+
+func (o LocationPolicyTargetShapeOutput) ToLocationPolicyTargetShapePtrOutput() LocationPolicyTargetShapePtrOutput {
+	return o.ToLocationPolicyTargetShapePtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyTargetShapeOutput) ToLocationPolicyTargetShapePtrOutputWithContext(ctx context.Context) LocationPolicyTargetShapePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationPolicyTargetShape) *LocationPolicyTargetShape {
+		return &v
+	}).(LocationPolicyTargetShapePtrOutput)
+}
+
+func (o LocationPolicyTargetShapeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyTargetShapeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LocationPolicyTargetShape) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LocationPolicyTargetShapeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyTargetShapeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LocationPolicyTargetShape) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LocationPolicyTargetShapePtrOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyTargetShapePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPolicyTargetShape)(nil)).Elem()
+}
+
+func (o LocationPolicyTargetShapePtrOutput) ToLocationPolicyTargetShapePtrOutput() LocationPolicyTargetShapePtrOutput {
+	return o
+}
+
+func (o LocationPolicyTargetShapePtrOutput) ToLocationPolicyTargetShapePtrOutputWithContext(ctx context.Context) LocationPolicyTargetShapePtrOutput {
+	return o
+}
+
+func (o LocationPolicyTargetShapePtrOutput) Elem() LocationPolicyTargetShapeOutput {
+	return o.ApplyT(func(v *LocationPolicyTargetShape) LocationPolicyTargetShape {
+		if v != nil {
+			return *v
+		}
+		var ret LocationPolicyTargetShape
+		return ret
+	}).(LocationPolicyTargetShapeOutput)
+}
+
+func (o LocationPolicyTargetShapePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyTargetShapePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LocationPolicyTargetShape) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LocationPolicyTargetShapeInput is an input type that accepts LocationPolicyTargetShapeArgs and LocationPolicyTargetShapeOutput values.
+// You can construct a concrete instance of `LocationPolicyTargetShapeInput` via:
+//
+//          LocationPolicyTargetShapeArgs{...}
+type LocationPolicyTargetShapeInput interface {
+	pulumi.Input
+
+	ToLocationPolicyTargetShapeOutput() LocationPolicyTargetShapeOutput
+	ToLocationPolicyTargetShapeOutputWithContext(context.Context) LocationPolicyTargetShapeOutput
+}
+
+var locationPolicyTargetShapePtrType = reflect.TypeOf((**LocationPolicyTargetShape)(nil)).Elem()
+
+type LocationPolicyTargetShapePtrInput interface {
+	pulumi.Input
+
+	ToLocationPolicyTargetShapePtrOutput() LocationPolicyTargetShapePtrOutput
+	ToLocationPolicyTargetShapePtrOutputWithContext(context.Context) LocationPolicyTargetShapePtrOutput
+}
+
+type locationPolicyTargetShapePtr string
+
+func LocationPolicyTargetShapePtr(v string) LocationPolicyTargetShapePtrInput {
+	return (*locationPolicyTargetShapePtr)(&v)
+}
+
+func (*locationPolicyTargetShapePtr) ElementType() reflect.Type {
+	return locationPolicyTargetShapePtrType
+}
+
+func (in *locationPolicyTargetShapePtr) ToLocationPolicyTargetShapePtrOutput() LocationPolicyTargetShapePtrOutput {
+	return pulumi.ToOutput(in).(LocationPolicyTargetShapePtrOutput)
+}
+
+func (in *locationPolicyTargetShapePtr) ToLocationPolicyTargetShapePtrOutputWithContext(ctx context.Context) LocationPolicyTargetShapePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LocationPolicyTargetShapePtrOutput)
+}
+
 // This is deprecated and has no effect. Do not use.
 type LogConfigCloudAuditOptionsLogName string
 
@@ -38718,6 +38887,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectInterconnectTypePtrInput)(nil)).Elem(), InterconnectInterconnectType("DEDICATED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectLinkTypeInput)(nil)).Elem(), InterconnectLinkType("LINK_TYPE_ETHERNET_100G_LR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectLinkTypePtrInput)(nil)).Elem(), InterconnectLinkType("LINK_TYPE_ETHERNET_100G_LR"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyTargetShapeInput)(nil)).Elem(), LocationPolicyTargetShape("ANY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyTargetShapePtrInput)(nil)).Elem(), LocationPolicyTargetShape("ANY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsLogNameInput)(nil)).Elem(), LogConfigCloudAuditOptionsLogName("ADMIN_ACTIVITY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsLogNamePtrInput)(nil)).Elem(), LogConfigCloudAuditOptionsLogName("ADMIN_ACTIVITY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigDataAccessOptionsLogModeInput)(nil)).Elem(), LogConfigDataAccessOptionsLogMode("LOG_FAIL_CLOSED"))
@@ -39176,6 +39347,8 @@ func init() {
 	pulumi.RegisterOutputType(InterconnectInterconnectTypePtrOutput{})
 	pulumi.RegisterOutputType(InterconnectLinkTypeOutput{})
 	pulumi.RegisterOutputType(InterconnectLinkTypePtrOutput{})
+	pulumi.RegisterOutputType(LocationPolicyTargetShapeOutput{})
+	pulumi.RegisterOutputType(LocationPolicyTargetShapePtrOutput{})
 	pulumi.RegisterOutputType(LogConfigCloudAuditOptionsLogNameOutput{})
 	pulumi.RegisterOutputType(LogConfigCloudAuditOptionsLogNamePtrOutput{})
 	pulumi.RegisterOutputType(LogConfigDataAccessOptionsLogModeOutput{})

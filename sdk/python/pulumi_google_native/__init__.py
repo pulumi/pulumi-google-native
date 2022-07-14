@@ -1153,7 +1153,8 @@ _utilities.register(
    "google-native:compute/alpha:TargetVpnGateway": "TargetVpnGateway",
    "google-native:compute/alpha:UrlMap": "UrlMap",
    "google-native:compute/alpha:VpnGateway": "VpnGateway",
-   "google-native:compute/alpha:VpnTunnel": "VpnTunnel"
+   "google-native:compute/alpha:VpnTunnel": "VpnTunnel",
+   "google-native:compute/alpha:ZoneQueuedResource": "ZoneQueuedResource"
   }
  },
  {

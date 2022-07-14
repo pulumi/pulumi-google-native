@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Looker specific column info of this column.
+        /// </summary>
+        [Input("lookerColumnSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs>? LookerColumnSpec { get; set; }
+
+        /// <summary>
         /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         /// </summary>
         [Input("mode")]

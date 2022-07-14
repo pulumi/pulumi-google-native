@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkResult:
-    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, gateway_i_pv4=None, internal_ipv6_range=None, ipv4_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
+    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, ipv4_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if auto_create_subnetworks and not isinstance(auto_create_subnetworks, bool):
             raise TypeError("Expected argument 'auto_create_subnetworks' to be a bool")
         pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
@@ -32,6 +32,9 @@ class GetNetworkResult:
         if enable_ula_internal_ipv6 and not isinstance(enable_ula_internal_ipv6, bool):
             raise TypeError("Expected argument 'enable_ula_internal_ipv6' to be a bool")
         pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
+        if firewall_policy and not isinstance(firewall_policy, str):
+            raise TypeError("Expected argument 'firewall_policy' to be a str")
+        pulumi.set(__self__, "firewall_policy", firewall_policy)
         if gateway_i_pv4 and not isinstance(gateway_i_pv4, str):
             raise TypeError("Expected argument 'gateway_i_pv4' to be a str")
         pulumi.set(__self__, "gateway_i_pv4", gateway_i_pv4)
@@ -104,6 +107,14 @@ class GetNetworkResult:
         Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
         """
         return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @property
+    @pulumi.getter(name="firewallPolicy")
+    def firewall_policy(self) -> str:
+        """
+        URL of the firewall policy the network is associated with.
+        """
+        return pulumi.get(self, "firewall_policy")
 
     @property
     @pulumi.getter(name="gatewayIPv4")
@@ -212,6 +223,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             enable_ula_internal_ipv6=self.enable_ula_internal_ipv6,
+            firewall_policy=self.firewall_policy,
             gateway_i_pv4=self.gateway_i_pv4,
             internal_ipv6_range=self.internal_ipv6_range,
             ipv4_range=self.ipv4_range,
@@ -246,6 +258,7 @@ def get_network(network: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         enable_ula_internal_ipv6=__ret__.enable_ula_internal_ipv6,
+        firewall_policy=__ret__.firewall_policy,
         gateway_i_pv4=__ret__.gateway_i_pv4,
         internal_ipv6_range=__ret__.internal_ipv6_range,
         ipv4_range=__ret__.ipv4_range,

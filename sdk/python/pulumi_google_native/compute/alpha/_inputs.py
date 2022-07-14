@@ -48,6 +48,7 @@ __all__ = [
     'BackendServiceLogConfigArgs',
     'BackendArgs',
     'BindingArgs',
+    'BulkInsertInstanceResourceArgs',
     'CacheKeyPolicyArgs',
     'CallCredentialsArgs',
     'ChannelCredentialsArgs',
@@ -59,10 +60,13 @@ __all__ = [
     'ConsistentHashLoadBalancerSettingsHttpCookieArgs',
     'ConsistentHashLoadBalancerSettingsArgs',
     'CorsPolicyArgs',
+    'CustomErrorResponsePolicyCustomErrorResponseRuleArgs',
+    'CustomErrorResponsePolicyArgs',
     'CustomerEncryptionKeyArgs',
     'DeprecationStatusArgs',
     'DiskAsyncReplicationArgs',
     'DiskInstantiationConfigArgs',
+    'DiskParamsArgs',
     'DisplayDeviceArgs',
     'DistributionPolicyZoneConfigurationArgs',
     'DistributionPolicyArgs',
@@ -116,6 +120,7 @@ __all__ = [
     'InstanceParamsArgs',
     'InstancePropertiesPatchArgs',
     'InstancePropertiesArgs',
+    'InstanceArgs',
     'Int64RangeMatchArgs',
     'InterconnectAttachmentPartnerMetadataArgs',
     'InterconnectMacsecPreSharedKeyArgs',
@@ -125,6 +130,7 @@ __all__ = [
     'LicenseResourceCommitmentArgs',
     'LicenseResourceRequirementsArgs',
     'LocalDiskArgs',
+    'LocationPolicyArgs',
     'LogConfigCloudAuditOptionsArgs',
     'LogConfigCounterOptionsCustomFieldArgs',
     'LogConfigCounterOptionsArgs',
@@ -792,6 +798,7 @@ class AttachedDiskInitializeParamsArgs:
                  on_update_action: Optional[pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction']] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
@@ -814,6 +821,7 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction'] on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param pulumi.Input[str] source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
@@ -852,6 +860,8 @@ class AttachedDiskInitializeParamsArgs:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if replica_zones is not None:
             pulumi.set(__self__, "replica_zones", replica_zones)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source_image is not None:
@@ -1032,6 +1042,18 @@ class AttachedDiskInitializeParamsArgs:
     @replica_zones.setter
     def replica_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "replica_zones", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -2901,7 +2923,7 @@ class BackendArgs:
         :param pulumi.Input[int] max_rate: Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param pulumi.Input[float] max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param pulumi.Input[float] max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
-        :param pulumi.Input[float] max_utilization: Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        :param pulumi.Input[float] max_utilization: Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         if balancing_mode is not None:
             pulumi.set(__self__, "balancing_mode", balancing_mode)
@@ -3064,7 +3086,7 @@ class BackendArgs:
     @pulumi.getter(name="maxUtilization")
     def max_utilization(self) -> Optional[pulumi.Input[float]]:
         """
-        Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         return pulumi.get(self, "max_utilization")
 
@@ -3143,6 +3165,145 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class BulkInsertInstanceResourceArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input['InstanceArgs']] = None,
+                 instance_properties: Optional[pulumi.Input['InstancePropertiesArgs']] = None,
+                 location_policy: Optional[pulumi.Input['LocationPolicyArgs']] = None,
+                 min_count: Optional[pulumi.Input[str]] = None,
+                 name_pattern: Optional[pulumi.Input[str]] = None,
+                 per_instance_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None):
+        """
+        A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+        :param pulumi.Input[str] count: The maximum number of instances to create.
+        :param pulumi.Input['InstanceArgs'] instance: DEPRECATED: Please use instance_properties instead.
+        :param pulumi.Input['InstancePropertiesArgs'] instance_properties: The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+        :param pulumi.Input['LocationPolicyArgs'] location_policy: Policy for chosing target zone. For more information, see Create VMs in bulk .
+        :param pulumi.Input[str] min_count: The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+        :param pulumi.Input[str] name_pattern: The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] per_instance_properties: Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+        :param pulumi.Input[str] source_instance_template: Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if instance is not None:
+            warnings.warn("""DEPRECATED: Please use instance_properties instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance is deprecated: DEPRECATED: Please use instance_properties instead.""")
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if instance_properties is not None:
+            pulumi.set(__self__, "instance_properties", instance_properties)
+        if location_policy is not None:
+            pulumi.set(__self__, "location_policy", location_policy)
+        if min_count is not None:
+            pulumi.set(__self__, "min_count", min_count)
+        if name_pattern is not None:
+            pulumi.set(__self__, "name_pattern", name_pattern)
+        if per_instance_properties is not None:
+            pulumi.set(__self__, "per_instance_properties", per_instance_properties)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of instances to create.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input['InstanceArgs']]:
+        """
+        DEPRECATED: Please use instance_properties instead.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input['InstanceArgs']]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> Optional[pulumi.Input['InstancePropertiesArgs']]:
+        """
+        The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @instance_properties.setter
+    def instance_properties(self, value: Optional[pulumi.Input['InstancePropertiesArgs']]):
+        pulumi.set(self, "instance_properties", value)
+
+    @property
+    @pulumi.getter(name="locationPolicy")
+    def location_policy(self) -> Optional[pulumi.Input['LocationPolicyArgs']]:
+        """
+        Policy for chosing target zone. For more information, see Create VMs in bulk .
+        """
+        return pulumi.get(self, "location_policy")
+
+    @location_policy.setter
+    def location_policy(self, value: Optional[pulumi.Input['LocationPolicyArgs']]):
+        pulumi.set(self, "location_policy", value)
+
+    @property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+        """
+        return pulumi.get(self, "min_count")
+
+    @min_count.setter
+    def min_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_count", value)
+
+    @property
+    @pulumi.getter(name="namePattern")
+    def name_pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+        """
+        return pulumi.get(self, "name_pattern")
+
+    @name_pattern.setter
+    def name_pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_pattern", value)
+
+    @property
+    @pulumi.getter(name="perInstanceProperties")
+    def per_instance_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+        """
+        return pulumi.get(self, "per_instance_properties")
+
+    @per_instance_properties.setter
+    def per_instance_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "per_instance_properties", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+        """
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance_template", value)
 
 
 @pulumi.input_type
@@ -3922,6 +4083,102 @@ class CorsPolicyArgs:
 
 
 @pulumi.input_type
+class CustomErrorResponsePolicyCustomErrorResponseRuleArgs:
+    def __init__(__self__, *,
+                 match_response_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 override_response_code: Optional[pulumi.Input[int]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] match_response_codes: Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        :param pulumi.Input[int] override_response_code: The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        :param pulumi.Input[str] path: The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+        """
+        if match_response_codes is not None:
+            pulumi.set(__self__, "match_response_codes", match_response_codes)
+        if override_response_code is not None:
+            pulumi.set(__self__, "override_response_code", override_response_code)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="matchResponseCodes")
+    def match_response_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        return pulumi.get(self, "match_response_codes")
+
+    @match_response_codes.setter
+    def match_response_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "match_response_codes", value)
+
+    @property
+    @pulumi.getter(name="overrideResponseCode")
+    def override_response_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        return pulumi.get(self, "override_response_code")
+
+    @override_response_code.setter
+    def override_response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_response_code", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class CustomErrorResponsePolicyArgs:
+    def __init__(__self__, *,
+                 error_response_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]]] = None,
+                 error_service: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]] error_response_rules: Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+        """
+        if error_response_rules is not None:
+            pulumi.set(__self__, "error_response_rules", error_response_rules)
+        if error_service is not None:
+            pulumi.set(__self__, "error_service", error_service)
+
+    @property
+    @pulumi.getter(name="errorResponseRules")
+    def error_response_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]]]:
+        """
+        Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        """
+        return pulumi.get(self, "error_response_rules")
+
+    @error_response_rules.setter
+    def error_response_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]]]):
+        pulumi.set(self, "error_response_rules", value)
+
+    @property
+    @pulumi.getter(name="errorService")
+    def error_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+        """
+        return pulumi.get(self, "error_service")
+
+    @error_service.setter
+    def error_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_service", value)
+
+
+@pulumi.input_type
 class CustomerEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -4189,6 +4446,30 @@ class DiskInstantiationConfigArgs:
     @instantiate_from.setter
     def instantiate_from(self, value: Optional[pulumi.Input['DiskInstantiationConfigInstantiateFrom']]):
         pulumi.set(self, "instantiate_from", value)
+
+
+@pulumi.input_type
+class DiskParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Additional disk params.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type
@@ -6835,6 +7116,7 @@ class HttpRouteRuleMatchArgs:
 @pulumi.input_type
 class HttpRouteRuleArgs:
     def __init__(__self__, *,
+                 custom_error_response_policy: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  header_action: Optional[pulumi.Input['HttpHeaderActionArgs']] = None,
                  http_filter_configs: Optional[pulumi.Input[Sequence[pulumi.Input['HttpFilterConfigArgs']]]] = None,
@@ -6846,6 +7128,7 @@ class HttpRouteRuleArgs:
                  url_redirect: Optional[pulumi.Input['HttpRedirectActionArgs']] = None):
         """
         The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
+        :param pulumi.Input['CustomErrorResponsePolicyArgs'] custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param pulumi.Input[str] description: The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
         :param pulumi.Input['HttpHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input['HttpFilterConfigArgs']]] http_filter_configs: Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -6856,6 +7139,8 @@ class HttpRouteRuleArgs:
         :param pulumi.Input[str] service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         :param pulumi.Input['HttpRedirectActionArgs'] url_redirect: When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
+        if custom_error_response_policy is not None:
+            pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if header_action is not None:
@@ -6874,6 +7159,18 @@ class HttpRouteRuleArgs:
             pulumi.set(__self__, "service", service)
         if url_redirect is not None:
             pulumi.set(__self__, "url_redirect", url_redirect)
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]:
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
+
+    @custom_error_response_policy.setter
+    def custom_error_response_policy(self, value: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "custom_error_response_policy", value)
 
     @property
     @pulumi.getter
@@ -7992,6 +8289,558 @@ class InstancePropertiesArgs:
 
 
 @pulumi.input_type
+class InstanceArgs:
+    def __init__(__self__, *,
+                 advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
+                 confidential_instance_config: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
+                 display_device: Optional[pulumi.Input['DisplayDeviceArgs']] = None,
+                 erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 instance_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 key_revocation_action_type: Optional[pulumi.Input['InstanceKeyRevocationActionType']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input['MetadataArgs']] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
+                 network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
+                 params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
+                 post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
+                 preserved_state_size_gb: Optional[pulumi.Input[str]] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
+                 reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
+                 resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
+                 secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
+                 shielded_instance_integrity_policy: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']] = None,
+                 shielded_vm_config: Optional[pulumi.Input['ShieldedVmConfigArgs']] = None,
+                 shielded_vm_integrity_policy: Optional[pulumi.Input['ShieldedVmIntegrityPolicyArgs']] = None,
+                 source_machine_image: Optional[pulumi.Input[str]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 tags: Optional[pulumi.Input['TagsArgs']] = None):
+        """
+        Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+        :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+        :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+        :param pulumi.Input['DisplayDeviceArgs'] display_device: Enables display device for the instance.
+        :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        :param pulumi.Input['InstanceKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
+        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+        :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+        :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+        :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        :param pulumi.Input['InstanceParamsArgs'] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
+        :param pulumi.Input[str] preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
+        :param pulumi.Input['SchedulingArgs'] scheduling: Sets the scheduling options for this instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input['ShieldedVmConfigArgs'] shielded_vm_config: Deprecating, please use shielded_instance_config.
+        :param pulumi.Input['ShieldedVmIntegrityPolicyArgs'] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
+        :param pulumi.Input[str] source_machine_image: Source machine image
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
+        :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+        """
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        if can_ip_forward is not None:
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if display_device is not None:
+            pulumi.set(__self__, "display_device", display_device)
+        if erase_windows_vss_signature is not None:
+            pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
+        if guest_accelerators is not None:
+            pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if instance_encryption_key is not None:
+            pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+        if post_key_revocation_action_type is not None:
+            pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
+        if preserved_state_size_gb is not None:
+            pulumi.set(__self__, "preserved_state_size_gb", preserved_state_size_gb)
+        if private_ipv6_google_access is not None:
+            pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
+        if secure_tags is not None:
+            pulumi.set(__self__, "secure_tags", secure_tags)
+        if service_accounts is not None:
+            pulumi.set(__self__, "service_accounts", service_accounts)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if shielded_instance_integrity_policy is not None:
+            pulumi.set(__self__, "shielded_instance_integrity_policy", shielded_instance_integrity_policy)
+        if shielded_vm_config is not None:
+            pulumi.set(__self__, "shielded_vm_config", shielded_vm_config)
+        if shielded_vm_integrity_policy is not None:
+            pulumi.set(__self__, "shielded_vm_integrity_policy", shielded_vm_integrity_policy)
+        if source_machine_image is not None:
+            pulumi.set(__self__, "source_machine_image", source_machine_image)
+        if source_machine_image_encryption_key is not None:
+            pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @can_ip_forward.setter
+    def can_ip_forward(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_ip_forward", value)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional[pulumi.Input['ConfidentialInstanceConfigArgs']]:
+        return pulumi.get(self, "confidential_instance_config")
+
+    @confidential_instance_config.setter
+    def confidential_instance_config(self, value: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']]):
+        pulumi.set(self, "confidential_instance_config", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the resource should be protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]]:
+        """
+        Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+        """
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]]):
+        pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter(name="displayDevice")
+    def display_device(self) -> Optional[pulumi.Input['DisplayDeviceArgs']]:
+        """
+        Enables display device for the instance.
+        """
+        return pulumi.get(self, "display_device")
+
+    @display_device.setter
+    def display_device(self, value: Optional[pulumi.Input['DisplayDeviceArgs']]):
+        pulumi.set(self, "display_device", value)
+
+    @property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @erase_windows_vss_signature.setter
+    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "erase_windows_vss_signature", value)
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]]:
+        """
+        A list of the type and count of accelerator cards attached to the instance.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @guest_accelerators.setter
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]]):
+        pulumi.set(self, "guest_accelerators", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
+        """
+        Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        """
+        return pulumi.get(self, "instance_encryption_key")
+
+    @instance_encryption_key.setter
+    def instance_encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
+        pulumi.set(self, "instance_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input['InstanceKeyRevocationActionType']]:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input['InstanceKeyRevocationActionType']]):
+        pulumi.set(self, "key_revocation_action_type", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels to apply to this instance. These can be later modified by the setLabels method.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['MetadataArgs']]:
+        """
+        The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['MetadataArgs']]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]:
+        """
+        An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['NetworkPerformanceConfigArgs']]:
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['NetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InstanceParamsArgs']]:
+        """
+        Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InstanceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter(name="postKeyRevocationActionType")
+    def post_key_revocation_action_type(self) -> Optional[pulumi.Input['InstancePostKeyRevocationActionType']]:
+        """
+        PostKeyRevocationActionType of the instance.
+        """
+        return pulumi.get(self, "post_key_revocation_action_type")
+
+    @post_key_revocation_action_type.setter
+    def post_key_revocation_action_type(self, value: Optional[pulumi.Input['InstancePostKeyRevocationActionType']]):
+        pulumi.set(self, "post_key_revocation_action_type", value)
+
+    @property
+    @pulumi.getter(name="preservedStateSizeGb")
+    def preserved_state_size_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+        """
+        return pulumi.get(self, "preserved_state_size_gb")
+
+    @preserved_state_size_gb.setter
+    def preserved_state_size_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preserved_state_size_gb", value)
+
+    @property
+    @pulumi.getter(name="privateIpv6GoogleAccess")
+    def private_ipv6_google_access(self) -> Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]:
+        """
+        The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        """
+        return pulumi.get(self, "private_ipv6_google_access")
+
+    @private_ipv6_google_access.setter
+    def private_ipv6_google_access(self, value: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]):
+        pulumi.set(self, "private_ipv6_google_access", value)
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['ReservationAffinityArgs']]:
+        """
+        Specifies the reservations that this instance can consume from.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['ReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Resource policies applied to this instance.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_policies", value)
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['SchedulingArgs']]:
+        """
+        Sets the scheduling options for this instance.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['SchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
+    @pulumi.getter(name="secureTags")
+    def secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+        """
+        return pulumi.get(self, "secure_tags")
+
+    @secure_tags.setter
+    def secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "secure_tags", value)
+
+    @property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]]:
+        """
+        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        """
+        return pulumi.get(self, "service_accounts")
+
+    @service_accounts.setter
+    def service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]]):
+        pulumi.set(self, "service_accounts", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ShieldedInstanceConfigArgs']]:
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceIntegrityPolicy")
+    def shielded_instance_integrity_policy(self) -> Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']]:
+        return pulumi.get(self, "shielded_instance_integrity_policy")
+
+    @shielded_instance_integrity_policy.setter
+    def shielded_instance_integrity_policy(self, value: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']]):
+        pulumi.set(self, "shielded_instance_integrity_policy", value)
+
+    @property
+    @pulumi.getter(name="shieldedVmConfig")
+    def shielded_vm_config(self) -> Optional[pulumi.Input['ShieldedVmConfigArgs']]:
+        """
+        Deprecating, please use shielded_instance_config.
+        """
+        return pulumi.get(self, "shielded_vm_config")
+
+    @shielded_vm_config.setter
+    def shielded_vm_config(self, value: Optional[pulumi.Input['ShieldedVmConfigArgs']]):
+        pulumi.set(self, "shielded_vm_config", value)
+
+    @property
+    @pulumi.getter(name="shieldedVmIntegrityPolicy")
+    def shielded_vm_integrity_policy(self) -> Optional[pulumi.Input['ShieldedVmIntegrityPolicyArgs']]:
+        """
+        Deprecating, please use shielded_instance_integrity_policy.
+        """
+        return pulumi.get(self, "shielded_vm_integrity_policy")
+
+    @shielded_vm_integrity_policy.setter
+    def shielded_vm_integrity_policy(self, value: Optional[pulumi.Input['ShieldedVmIntegrityPolicyArgs']]):
+        pulumi.set(self, "shielded_vm_integrity_policy", value)
+
+    @property
+    @pulumi.getter(name="sourceMachineImage")
+    def source_machine_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source machine image
+        """
+        return pulumi.get(self, "source_machine_image")
+
+    @source_machine_image.setter
+    def source_machine_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_machine_image", value)
+
+    @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
+        """
+        Source machine image encryption key when creating an instance from a machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
+
+    @source_machine_image_encryption_key.setter
+    def source_machine_image_encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
+        pulumi.set(self, "source_machine_image_encryption_key", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input['TagsArgs']]:
+        """
+        Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input['TagsArgs']]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
 class Int64RangeMatchArgs:
     def __init__(__self__, *,
                  range_end: Optional[pulumi.Input[str]] = None,
@@ -8441,6 +9290,46 @@ class LocalDiskArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+
+@pulumi.input_type
+class LocationPolicyArgs:
+    def __init__(__self__, *,
+                 locations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 target_shape: Optional[pulumi.Input['LocationPolicyTargetShape']] = None):
+        """
+        Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] locations: Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+        :param pulumi.Input['LocationPolicyTargetShape'] target_shape: Strategy for distributing VMs across zones in a region.
+        """
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if target_shape is not None:
+            pulumi.set(__self__, "target_shape", target_shape)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter(name="targetShape")
+    def target_shape(self) -> Optional[pulumi.Input['LocationPolicyTargetShape']]:
+        """
+        Strategy for distributing VMs across zones in a region.
+        """
+        return pulumi.get(self, "target_shape")
+
+    @target_shape.setter
+    def target_shape(self, value: Optional[pulumi.Input['LocationPolicyTargetShape']]):
+        pulumi.set(self, "target_shape", value)
 
 
 @pulumi.input_type
@@ -10133,6 +11022,7 @@ class PacketMirroringNetworkInfoArgs:
 @pulumi.input_type
 class PathMatcherArgs:
     def __init__(__self__, *,
+                 default_custom_error_response_policy: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']] = None,
                  default_route_action: Optional[pulumi.Input['HttpRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['HttpRedirectActionArgs']] = None,
@@ -10143,6 +11033,7 @@ class PathMatcherArgs:
                  route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]] = None):
         """
         A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
+        :param pulumi.Input['CustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param pulumi.Input['HttpRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
         :param pulumi.Input[str] default_service: The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
         :param pulumi.Input['HttpRedirectActionArgs'] default_url_redirect: When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
@@ -10152,6 +11043,8 @@ class PathMatcherArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PathRuleArgs']]] path_rules: The list of path rules. Use this list instead of routeRules when routing based on simple path matching is all that's required. The order by which path rules are specified does not matter. Matches are always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/* irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only one of pathRules or routeRules must be set.
         :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]] route_rules: The list of HTTP route rules. Use this list instead of pathRules when advanced route matching and routing actions are desired. routeRules are evaluated in order of priority, from the lowest to highest number. Within a given pathMatcher, you can set only one of pathRules or routeRules.
         """
+        if default_custom_error_response_policy is not None:
+            pulumi.set(__self__, "default_custom_error_response_policy", default_custom_error_response_policy)
         if default_route_action is not None:
             pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
@@ -10168,6 +11061,18 @@ class PathMatcherArgs:
             pulumi.set(__self__, "path_rules", path_rules)
         if route_rules is not None:
             pulumi.set(__self__, "route_rules", route_rules)
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]:
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
+
+    @default_custom_error_response_policy.setter
+    def default_custom_error_response_policy(self, value: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "default_custom_error_response_policy", value)
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -10269,17 +11174,21 @@ class PathMatcherArgs:
 @pulumi.input_type
 class PathRuleArgs:
     def __init__(__self__, *,
+                 custom_error_response_policy: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']] = None,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  route_action: Optional[pulumi.Input['HttpRouteActionArgs']] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  url_redirect: Optional[pulumi.Input['HttpRedirectActionArgs']] = None):
         """
         A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
+        :param pulumi.Input['CustomErrorResponsePolicyArgs'] custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
         :param pulumi.Input['HttpRouteActionArgs'] route_action: In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
         :param pulumi.Input[str] service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         :param pulumi.Input['HttpRedirectActionArgs'] url_redirect: When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
+        if custom_error_response_policy is not None:
+            pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
         if route_action is not None:
@@ -10288,6 +11197,18 @@ class PathRuleArgs:
             pulumi.set(__self__, "service", service)
         if url_redirect is not None:
             pulumi.set(__self__, "url_redirect", url_redirect)
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]:
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
+
+    @custom_error_response_policy.setter
+    def custom_error_response_policy(self, value: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "custom_error_response_policy", value)
 
     @property
     @pulumi.getter

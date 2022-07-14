@@ -698,6 +698,8 @@ class SshPublicKeyResponse(dict):
             suggest = "cert_type"
         elif key == "sshClientCert":
             suggest = "ssh_client_cert"
+        elif key == "sshClientCertPass":
+            suggest = "ssh_client_cert_pass"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SshPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
@@ -714,17 +716,20 @@ class SshPublicKeyResponse(dict):
                  cert_type: str,
                  password: 'outputs.SecretResponse',
                  ssh_client_cert: 'outputs.SecretResponse',
+                 ssh_client_cert_pass: 'outputs.SecretResponse',
                  username: str):
         """
         Parameters to support Ssh public key Authentication.
         :param str cert_type: Format of SSH Client cert.
         :param 'SecretResponse' password: This is an optional field used in case client has enabled multi-factor authentication
         :param 'SecretResponse' ssh_client_cert: SSH Client Cert. It should contain both public and private key.
+        :param 'SecretResponse' ssh_client_cert_pass: Password (passphrase) for ssh client certificate if it has one.
         :param str username: The user account used to authenticate.
         """
         pulumi.set(__self__, "cert_type", cert_type)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "ssh_client_cert", ssh_client_cert)
+        pulumi.set(__self__, "ssh_client_cert_pass", ssh_client_cert_pass)
         pulumi.set(__self__, "username", username)
 
     @property
@@ -750,6 +755,14 @@ class SshPublicKeyResponse(dict):
         SSH Client Cert. It should contain both public and private key.
         """
         return pulumi.get(self, "ssh_client_cert")
+
+    @property
+    @pulumi.getter(name="sshClientCertPass")
+    def ssh_client_cert_pass(self) -> 'outputs.SecretResponse':
+        """
+        Password (passphrase) for ssh client certificate if it has one.
+        """
+        return pulumi.get(self, "ssh_client_cert_pass")
 
     @property
     @pulumi.getter

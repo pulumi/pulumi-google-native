@@ -33,6 +33,8 @@ type LookupTaskResult struct {
 	AppEngineHttpRequest AppEngineHttpRequestResponse `pulumi:"appEngineHttpRequest"`
 	// The time that the task was created. `create_time` will be truncated to the nearest second.
 	CreateTime string `pulumi:"createTime"`
+	// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+	HttpRequest HttpRequestResponse `pulumi:"httpRequest"`
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name string `pulumi:"name"`
 	// LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
@@ -92,6 +94,11 @@ func (o LookupTaskResultOutput) AppEngineHttpRequest() AppEngineHttpRequestRespo
 // The time that the task was created. `create_time` will be truncated to the nearest second.
 func (o LookupTaskResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTaskResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+func (o LookupTaskResultOutput) HttpRequest() HttpRequestResponseOutput {
+	return o.ApplyT(func(v LookupTaskResult) HttpRequestResponse { return v.HttpRequest }).(HttpRequestResponseOutput)
 }
 
 // Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.

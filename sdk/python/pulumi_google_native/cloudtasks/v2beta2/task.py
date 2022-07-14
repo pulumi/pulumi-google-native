@@ -19,6 +19,7 @@ class TaskArgs:
     def __init__(__self__, *,
                  queue_id: pulumi.Input[str],
                  app_engine_http_request: Optional[pulumi.Input['AppEngineHttpRequestArgs']] = None,
+                 http_request: Optional[pulumi.Input['HttpRequestArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class TaskArgs:
         """
         The set of arguments for constructing a Task resource.
         :param pulumi.Input['AppEngineHttpRequestArgs'] app_engine_http_request: App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
+        :param pulumi.Input['HttpRequestArgs'] http_request: HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
         :param pulumi.Input[str] name: Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         :param pulumi.Input['PullMessageArgs'] pull_message: LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
         :param pulumi.Input['TaskResponseView'] response_view: The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
@@ -36,6 +38,8 @@ class TaskArgs:
         pulumi.set(__self__, "queue_id", queue_id)
         if app_engine_http_request is not None:
             pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
+        if http_request is not None:
+            pulumi.set(__self__, "http_request", http_request)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -69,6 +73,18 @@ class TaskArgs:
     @app_engine_http_request.setter
     def app_engine_http_request(self, value: Optional[pulumi.Input['AppEngineHttpRequestArgs']]):
         pulumi.set(self, "app_engine_http_request", value)
+
+    @property
+    @pulumi.getter(name="httpRequest")
+    def http_request(self) -> Optional[pulumi.Input['HttpRequestArgs']]:
+        """
+        HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        """
+        return pulumi.get(self, "http_request")
+
+    @http_request.setter
+    def http_request(self, value: Optional[pulumi.Input['HttpRequestArgs']]):
+        pulumi.set(self, "http_request", value)
 
     @property
     @pulumi.getter
@@ -143,6 +159,7 @@ class Task(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_request: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']]] = None,
+                 http_request: Optional[pulumi.Input[pulumi.InputType['HttpRequestArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -157,6 +174,7 @@ class Task(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']] app_engine_http_request: App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
+        :param pulumi.Input[pulumi.InputType['HttpRequestArgs']] http_request: HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
         :param pulumi.Input[str] name: Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         :param pulumi.Input[pulumi.InputType['PullMessageArgs']] pull_message: LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
         :param pulumi.Input['TaskResponseView'] response_view: The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
@@ -187,6 +205,7 @@ class Task(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_request: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']]] = None,
+                 http_request: Optional[pulumi.Input[pulumi.InputType['HttpRequestArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -209,6 +228,7 @@ class Task(pulumi.CustomResource):
             __props__ = TaskArgs.__new__(TaskArgs)
 
             __props__.__dict__["app_engine_http_request"] = app_engine_http_request
+            __props__.__dict__["http_request"] = http_request
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -247,6 +267,7 @@ class Task(pulumi.CustomResource):
 
         __props__.__dict__["app_engine_http_request"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["http_request"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -272,6 +293,14 @@ class Task(pulumi.CustomResource):
         The time that the task was created. `create_time` will be truncated to the nearest second.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="httpRequest")
+    def http_request(self) -> pulumi.Output['outputs.HttpRequestResponse']:
+        """
+        HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        """
+        return pulumi.get(self, "http_request")
 
     @property
     @pulumi.getter

@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetQueueResult:
-    def __init__(__self__, app_engine_http_target=None, name=None, pull_target=None, purge_time=None, rate_limits=None, retry_config=None, state=None, stats=None, task_ttl=None, tombstone_ttl=None):
+    def __init__(__self__, app_engine_http_target=None, http_target=None, name=None, pull_target=None, purge_time=None, rate_limits=None, retry_config=None, state=None, stats=None, task_ttl=None, tombstone_ttl=None):
         if app_engine_http_target and not isinstance(app_engine_http_target, dict):
             raise TypeError("Expected argument 'app_engine_http_target' to be a dict")
         pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
+        if http_target and not isinstance(http_target, dict):
+            raise TypeError("Expected argument 'http_target' to be a dict")
+        pulumi.set(__self__, "http_target", http_target)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -58,6 +61,14 @@ class GetQueueResult:
         App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
         """
         return pulumi.get(self, "app_engine_http_target")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> 'outputs.HttpTargetResponse':
+        """
+        An http_target is used to override the target values for HTTP tasks.
+        """
+        return pulumi.get(self, "http_target")
 
     @property
     @pulumi.getter
@@ -139,6 +150,7 @@ class AwaitableGetQueueResult(GetQueueResult):
             yield self
         return GetQueueResult(
             app_engine_http_target=self.app_engine_http_target,
+            http_target=self.http_target,
             name=self.name,
             pull_target=self.pull_target,
             purge_time=self.purge_time,
@@ -171,6 +183,7 @@ def get_queue(location: Optional[str] = None,
 
     return AwaitableGetQueueResult(
         app_engine_http_target=__ret__.app_engine_http_target,
+        http_target=__ret__.http_target,
         name=__ret__.name,
         pull_target=__ret__.pull_target,
         purge_time=__ret__.purge_time,

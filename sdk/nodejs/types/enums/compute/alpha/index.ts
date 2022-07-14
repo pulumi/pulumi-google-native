@@ -2144,6 +2144,26 @@ export const InterconnectLinkType = {
  */
 export type InterconnectLinkType = (typeof InterconnectLinkType)[keyof typeof InterconnectLinkType];
 
+export const LocationPolicyTargetShape = {
+    /**
+     * GCE picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
+     */
+    Any: "ANY",
+    /**
+     * GCE always selects a single zone for all the VMs, optimizing for resource quotas, available reservations and general capacity. Recommended for batch workloads that cannot tollerate distribution over multiple zones. This the default shape in Bulk Insert and Capacity Advisor APIs.
+     */
+    AnySingleZone: "ANY_SINGLE_ZONE",
+    /**
+     * GCE prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across allowed zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
+     */
+    Balanced: "BALANCED",
+} as const;
+
+/**
+ * Strategy for distributing VMs across zones in a region.
+ */
+export type LocationPolicyTargetShape = (typeof LocationPolicyTargetShape)[keyof typeof LocationPolicyTargetShape];
+
 export const LogConfigCloudAuditOptionsLogName = {
     /**
      * This is deprecated and has no effect. Do not use.

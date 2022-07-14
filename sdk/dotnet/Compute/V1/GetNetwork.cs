@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool EnableUlaInternalIpv6;
         /// <summary>
+        /// URL of the firewall policy the network is associated with.
+        /// </summary>
+        public readonly string FirewallPolicy;
+        /// <summary>
         /// The gateway address for default routing out of the network, selected by GCP.
         /// </summary>
         public readonly string GatewayIPv4;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             bool enableUlaInternalIpv6,
 
+            string firewallPolicy,
+
             string gatewayIPv4,
 
             string internalIpv6Range,
@@ -158,6 +164,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             EnableUlaInternalIpv6 = enableUlaInternalIpv6;
+            FirewallPolicy = firewallPolicy;
             GatewayIPv4 = gatewayIPv4;
             InternalIpv6Range = internalIpv6Range;
             Ipv4Range = ipv4Range;

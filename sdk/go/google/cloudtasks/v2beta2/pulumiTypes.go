@@ -1140,6 +1140,1282 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Defines a header message. A header can have a key and a value.
+type Header struct {
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// HeaderInput is an input type that accepts HeaderArgs and HeaderOutput values.
+// You can construct a concrete instance of `HeaderInput` via:
+//
+//          HeaderArgs{...}
+type HeaderInput interface {
+	pulumi.Input
+
+	ToHeaderOutput() HeaderOutput
+	ToHeaderOutputWithContext(context.Context) HeaderOutput
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderArgs struct {
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (i HeaderArgs) ToHeaderOutput() HeaderOutput {
+	return i.ToHeaderOutputWithContext(context.Background())
+}
+
+func (i HeaderArgs) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput)
+}
+
+func (i HeaderArgs) ToHeaderPtrOutput() HeaderPtrOutput {
+	return i.ToHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i HeaderArgs) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput).ToHeaderPtrOutputWithContext(ctx)
+}
+
+// HeaderPtrInput is an input type that accepts HeaderArgs, HeaderPtr and HeaderPtrOutput values.
+// You can construct a concrete instance of `HeaderPtrInput` via:
+//
+//          HeaderArgs{...}
+//
+//  or:
+//
+//          nil
+type HeaderPtrInput interface {
+	pulumi.Input
+
+	ToHeaderPtrOutput() HeaderPtrOutput
+	ToHeaderPtrOutputWithContext(context.Context) HeaderPtrOutput
+}
+
+type headerPtrType HeaderArgs
+
+func HeaderPtr(v *HeaderArgs) HeaderPtrInput {
+	return (*headerPtrType)(v)
+}
+
+func (*headerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Header)(nil)).Elem()
+}
+
+func (i *headerPtrType) ToHeaderPtrOutput() HeaderPtrOutput {
+	return i.ToHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *headerPtrType) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderPtrOutput)
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderOutput struct{ *pulumi.OutputState }
+
+func (HeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (o HeaderOutput) ToHeaderOutput() HeaderOutput {
+	return o
+}
+
+func (o HeaderOutput) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return o
+}
+
+func (o HeaderOutput) ToHeaderPtrOutput() HeaderPtrOutput {
+	return o.ToHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o HeaderOutput) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Header) *Header {
+		return &v
+	}).(HeaderPtrOutput)
+}
+
+func (o HeaderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o HeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (HeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Header)(nil)).Elem()
+}
+
+func (o HeaderPtrOutput) ToHeaderPtrOutput() HeaderPtrOutput {
+	return o
+}
+
+func (o HeaderPtrOutput) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return o
+}
+
+func (o HeaderPtrOutput) Elem() HeaderOutput {
+	return o.ApplyT(func(v *Header) Header {
+		if v != nil {
+			return *v
+		}
+		var ret Header
+		return ret
+	}).(HeaderOutput)
+}
+
+func (o HeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Header) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Header) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Wraps the Header object.
+type HeaderOverride struct {
+	// header embodying a key and a value.
+	Header *Header `pulumi:"header"`
+}
+
+// HeaderOverrideInput is an input type that accepts HeaderOverrideArgs and HeaderOverrideOutput values.
+// You can construct a concrete instance of `HeaderOverrideInput` via:
+//
+//          HeaderOverrideArgs{...}
+type HeaderOverrideInput interface {
+	pulumi.Input
+
+	ToHeaderOverrideOutput() HeaderOverrideOutput
+	ToHeaderOverrideOutputWithContext(context.Context) HeaderOverrideOutput
+}
+
+// Wraps the Header object.
+type HeaderOverrideArgs struct {
+	// header embodying a key and a value.
+	Header HeaderPtrInput `pulumi:"header"`
+}
+
+func (HeaderOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderOverride)(nil)).Elem()
+}
+
+func (i HeaderOverrideArgs) ToHeaderOverrideOutput() HeaderOverrideOutput {
+	return i.ToHeaderOverrideOutputWithContext(context.Background())
+}
+
+func (i HeaderOverrideArgs) ToHeaderOverrideOutputWithContext(ctx context.Context) HeaderOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOverrideOutput)
+}
+
+// HeaderOverrideArrayInput is an input type that accepts HeaderOverrideArray and HeaderOverrideArrayOutput values.
+// You can construct a concrete instance of `HeaderOverrideArrayInput` via:
+//
+//          HeaderOverrideArray{ HeaderOverrideArgs{...} }
+type HeaderOverrideArrayInput interface {
+	pulumi.Input
+
+	ToHeaderOverrideArrayOutput() HeaderOverrideArrayOutput
+	ToHeaderOverrideArrayOutputWithContext(context.Context) HeaderOverrideArrayOutput
+}
+
+type HeaderOverrideArray []HeaderOverrideInput
+
+func (HeaderOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderOverride)(nil)).Elem()
+}
+
+func (i HeaderOverrideArray) ToHeaderOverrideArrayOutput() HeaderOverrideArrayOutput {
+	return i.ToHeaderOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i HeaderOverrideArray) ToHeaderOverrideArrayOutputWithContext(ctx context.Context) HeaderOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOverrideArrayOutput)
+}
+
+// Wraps the Header object.
+type HeaderOverrideOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderOverride)(nil)).Elem()
+}
+
+func (o HeaderOverrideOutput) ToHeaderOverrideOutput() HeaderOverrideOutput {
+	return o
+}
+
+func (o HeaderOverrideOutput) ToHeaderOverrideOutputWithContext(ctx context.Context) HeaderOverrideOutput {
+	return o
+}
+
+// header embodying a key and a value.
+func (o HeaderOverrideOutput) Header() HeaderPtrOutput {
+	return o.ApplyT(func(v HeaderOverride) *Header { return v.Header }).(HeaderPtrOutput)
+}
+
+type HeaderOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderOverride)(nil)).Elem()
+}
+
+func (o HeaderOverrideArrayOutput) ToHeaderOverrideArrayOutput() HeaderOverrideArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideArrayOutput) ToHeaderOverrideArrayOutputWithContext(ctx context.Context) HeaderOverrideArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideArrayOutput) Index(i pulumi.IntInput) HeaderOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderOverride {
+		return vs[0].([]HeaderOverride)[vs[1].(int)]
+	}).(HeaderOverrideOutput)
+}
+
+// Wraps the Header object.
+type HeaderOverrideResponse struct {
+	// header embodying a key and a value.
+	Header HeaderResponse `pulumi:"header"`
+}
+
+// Wraps the Header object.
+type HeaderOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderOverrideResponse)(nil)).Elem()
+}
+
+func (o HeaderOverrideResponseOutput) ToHeaderOverrideResponseOutput() HeaderOverrideResponseOutput {
+	return o
+}
+
+func (o HeaderOverrideResponseOutput) ToHeaderOverrideResponseOutputWithContext(ctx context.Context) HeaderOverrideResponseOutput {
+	return o
+}
+
+// header embodying a key and a value.
+func (o HeaderOverrideResponseOutput) Header() HeaderResponseOutput {
+	return o.ApplyT(func(v HeaderOverrideResponse) HeaderResponse { return v.Header }).(HeaderResponseOutput)
+}
+
+type HeaderOverrideResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderOverrideResponse)(nil)).Elem()
+}
+
+func (o HeaderOverrideResponseArrayOutput) ToHeaderOverrideResponseArrayOutput() HeaderOverrideResponseArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideResponseArrayOutput) ToHeaderOverrideResponseArrayOutputWithContext(ctx context.Context) HeaderOverrideResponseArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideResponseArrayOutput) Index(i pulumi.IntInput) HeaderOverrideResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderOverrideResponse {
+		return vs[0].([]HeaderOverrideResponse)[vs[1].(int)]
+	}).(HeaderOverrideResponseOutput)
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderResponse struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderResponseOutput struct{ *pulumi.OutputState }
+
+func (HeaderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderResponse)(nil)).Elem()
+}
+
+func (o HeaderResponseOutput) ToHeaderResponseOutput() HeaderResponseOutput {
+	return o
+}
+
+func (o HeaderResponseOutput) ToHeaderResponseOutputWithContext(ctx context.Context) HeaderResponseOutput {
+	return o
+}
+
+func (o HeaderResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v HeaderResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o HeaderResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HeaderResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
+type HttpRequest struct {
+	// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+	Body *string `pulumi:"body"`
+	// HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+	Headers map[string]string `pulumi:"headers"`
+	// The HTTP method to use for the request. The default is POST.
+	HttpMethod *HttpRequestHttpMethod `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken *OAuthToken `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken *OidcToken `pulumi:"oidcToken"`
+	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+	Url string `pulumi:"url"`
+}
+
+// HttpRequestInput is an input type that accepts HttpRequestArgs and HttpRequestOutput values.
+// You can construct a concrete instance of `HttpRequestInput` via:
+//
+//          HttpRequestArgs{...}
+type HttpRequestInput interface {
+	pulumi.Input
+
+	ToHttpRequestOutput() HttpRequestOutput
+	ToHttpRequestOutputWithContext(context.Context) HttpRequestOutput
+}
+
+// HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
+type HttpRequestArgs struct {
+	// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// The HTTP method to use for the request. The default is POST.
+	HttpMethod HttpRequestHttpMethodPtrInput `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken OidcTokenPtrInput `pulumi:"oidcToken"`
+	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (HttpRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRequest)(nil)).Elem()
+}
+
+func (i HttpRequestArgs) ToHttpRequestOutput() HttpRequestOutput {
+	return i.ToHttpRequestOutputWithContext(context.Background())
+}
+
+func (i HttpRequestArgs) ToHttpRequestOutputWithContext(ctx context.Context) HttpRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestOutput)
+}
+
+func (i HttpRequestArgs) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
+	return i.ToHttpRequestPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRequestArgs) ToHttpRequestPtrOutputWithContext(ctx context.Context) HttpRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestOutput).ToHttpRequestPtrOutputWithContext(ctx)
+}
+
+// HttpRequestPtrInput is an input type that accepts HttpRequestArgs, HttpRequestPtr and HttpRequestPtrOutput values.
+// You can construct a concrete instance of `HttpRequestPtrInput` via:
+//
+//          HttpRequestArgs{...}
+//
+//  or:
+//
+//          nil
+type HttpRequestPtrInput interface {
+	pulumi.Input
+
+	ToHttpRequestPtrOutput() HttpRequestPtrOutput
+	ToHttpRequestPtrOutputWithContext(context.Context) HttpRequestPtrOutput
+}
+
+type httpRequestPtrType HttpRequestArgs
+
+func HttpRequestPtr(v *HttpRequestArgs) HttpRequestPtrInput {
+	return (*httpRequestPtrType)(v)
+}
+
+func (*httpRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRequest)(nil)).Elem()
+}
+
+func (i *httpRequestPtrType) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
+	return i.ToHttpRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRequestPtrType) ToHttpRequestPtrOutputWithContext(ctx context.Context) HttpRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRequestPtrOutput)
+}
+
+// HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
+type HttpRequestOutput struct{ *pulumi.OutputState }
+
+func (HttpRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRequest)(nil)).Elem()
+}
+
+func (o HttpRequestOutput) ToHttpRequestOutput() HttpRequestOutput {
+	return o
+}
+
+func (o HttpRequestOutput) ToHttpRequestOutputWithContext(ctx context.Context) HttpRequestOutput {
+	return o
+}
+
+func (o HttpRequestOutput) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
+	return o.ToHttpRequestPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRequestOutput) ToHttpRequestPtrOutputWithContext(ctx context.Context) HttpRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRequest) *HttpRequest {
+		return &v
+	}).(HttpRequestPtrOutput)
+}
+
+// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+func (o HttpRequestOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRequest) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+// HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+func (o HttpRequestOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HttpRequest) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// The HTTP method to use for the request. The default is POST.
+func (o HttpRequestOutput) HttpMethod() HttpRequestHttpMethodPtrOutput {
+	return o.ApplyT(func(v HttpRequest) *HttpRequestHttpMethod { return v.HttpMethod }).(HttpRequestHttpMethodPtrOutput)
+}
+
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpRequestOutput) OauthToken() OAuthTokenPtrOutput {
+	return o.ApplyT(func(v HttpRequest) *OAuthToken { return v.OauthToken }).(OAuthTokenPtrOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpRequestOutput) OidcToken() OidcTokenPtrOutput {
+	return o.ApplyT(func(v HttpRequest) *OidcToken { return v.OidcToken }).(OidcTokenPtrOutput)
+}
+
+// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+func (o HttpRequestOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRequest) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type HttpRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRequest)(nil)).Elem()
+}
+
+func (o HttpRequestPtrOutput) ToHttpRequestPtrOutput() HttpRequestPtrOutput {
+	return o
+}
+
+func (o HttpRequestPtrOutput) ToHttpRequestPtrOutputWithContext(ctx context.Context) HttpRequestPtrOutput {
+	return o
+}
+
+func (o HttpRequestPtrOutput) Elem() HttpRequestOutput {
+	return o.ApplyT(func(v *HttpRequest) HttpRequest {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRequest
+		return ret
+	}).(HttpRequestOutput)
+}
+
+// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+func (o HttpRequestPtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+func (o HttpRequestPtrOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HttpRequest) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringMapOutput)
+}
+
+// The HTTP method to use for the request. The default is POST.
+func (o HttpRequestPtrOutput) HttpMethod() HttpRequestHttpMethodPtrOutput {
+	return o.ApplyT(func(v *HttpRequest) *HttpRequestHttpMethod {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(HttpRequestHttpMethodPtrOutput)
+}
+
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpRequestPtrOutput) OauthToken() OAuthTokenPtrOutput {
+	return o.ApplyT(func(v *HttpRequest) *OAuthToken {
+		if v == nil {
+			return nil
+		}
+		return v.OauthToken
+	}).(OAuthTokenPtrOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpRequestPtrOutput) OidcToken() OidcTokenPtrOutput {
+	return o.ApplyT(func(v *HttpRequest) *OidcToken {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(OidcTokenPtrOutput)
+}
+
+// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+func (o HttpRequestPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
+type HttpRequestResponse struct {
+	// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+	Body string `pulumi:"body"`
+	// HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+	Headers map[string]string `pulumi:"headers"`
+	// The HTTP method to use for the request. The default is POST.
+	HttpMethod string `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken OAuthTokenResponse `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken OidcTokenResponse `pulumi:"oidcToken"`
+	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+	Url string `pulumi:"url"`
+}
+
+// HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
+type HttpRequestResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRequestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRequestResponse)(nil)).Elem()
+}
+
+func (o HttpRequestResponseOutput) ToHttpRequestResponseOutput() HttpRequestResponseOutput {
+	return o
+}
+
+func (o HttpRequestResponseOutput) ToHttpRequestResponseOutputWithContext(ctx context.Context) HttpRequestResponseOutput {
+	return o
+}
+
+// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
+func (o HttpRequestResponseOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRequestResponse) string { return v.Body }).(pulumi.StringOutput)
+}
+
+// HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+func (o HttpRequestResponseOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HttpRequestResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// The HTTP method to use for the request. The default is POST.
+func (o HttpRequestResponseOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRequestResponse) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpRequestResponseOutput) OauthToken() OAuthTokenResponseOutput {
+	return o.ApplyT(func(v HttpRequestResponse) OAuthTokenResponse { return v.OauthToken }).(OAuthTokenResponseOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpRequestResponseOutput) OidcToken() OidcTokenResponseOutput {
+	return o.ApplyT(func(v HttpRequestResponse) OidcTokenResponse { return v.OidcToken }).(OidcTokenResponseOutput)
+}
+
+// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+func (o HttpRequestResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRequestResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTarget struct {
+	// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	HeaderOverrides []HeaderOverride `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+	HttpMethod *HttpTargetHttpMethod `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken *OAuthToken `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken *OidcToken `pulumi:"oidcToken"`
+	// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+	UriOverride *UriOverride `pulumi:"uriOverride"`
+}
+
+// HttpTargetInput is an input type that accepts HttpTargetArgs and HttpTargetOutput values.
+// You can construct a concrete instance of `HttpTargetInput` via:
+//
+//          HttpTargetArgs{...}
+type HttpTargetInput interface {
+	pulumi.Input
+
+	ToHttpTargetOutput() HttpTargetOutput
+	ToHttpTargetOutputWithContext(context.Context) HttpTargetOutput
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetArgs struct {
+	// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	HeaderOverrides HeaderOverrideArrayInput `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+	HttpMethod HttpTargetHttpMethodPtrInput `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken OidcTokenPtrInput `pulumi:"oidcToken"`
+	// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+	UriOverride UriOverridePtrInput `pulumi:"uriOverride"`
+}
+
+func (HttpTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpTarget)(nil)).Elem()
+}
+
+func (i HttpTargetArgs) ToHttpTargetOutput() HttpTargetOutput {
+	return i.ToHttpTargetOutputWithContext(context.Background())
+}
+
+func (i HttpTargetArgs) ToHttpTargetOutputWithContext(ctx context.Context) HttpTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetOutput)
+}
+
+func (i HttpTargetArgs) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return i.ToHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i HttpTargetArgs) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetOutput).ToHttpTargetPtrOutputWithContext(ctx)
+}
+
+// HttpTargetPtrInput is an input type that accepts HttpTargetArgs, HttpTargetPtr and HttpTargetPtrOutput values.
+// You can construct a concrete instance of `HttpTargetPtrInput` via:
+//
+//          HttpTargetArgs{...}
+//
+//  or:
+//
+//          nil
+type HttpTargetPtrInput interface {
+	pulumi.Input
+
+	ToHttpTargetPtrOutput() HttpTargetPtrOutput
+	ToHttpTargetPtrOutputWithContext(context.Context) HttpTargetPtrOutput
+}
+
+type httpTargetPtrType HttpTargetArgs
+
+func HttpTargetPtr(v *HttpTargetArgs) HttpTargetPtrInput {
+	return (*httpTargetPtrType)(v)
+}
+
+func (*httpTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpTarget)(nil)).Elem()
+}
+
+func (i *httpTargetPtrType) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return i.ToHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *httpTargetPtrType) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetPtrOutput)
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetOutput struct{ *pulumi.OutputState }
+
+func (HttpTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpTarget)(nil)).Elem()
+}
+
+func (o HttpTargetOutput) ToHttpTargetOutput() HttpTargetOutput {
+	return o
+}
+
+func (o HttpTargetOutput) ToHttpTargetOutputWithContext(ctx context.Context) HttpTargetOutput {
+	return o
+}
+
+func (o HttpTargetOutput) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return o.ToHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (o HttpTargetOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpTarget) *HttpTarget {
+		return &v
+	}).(HttpTargetPtrOutput)
+}
+
+// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+func (o HttpTargetOutput) HeaderOverrides() HeaderOverrideArrayOutput {
+	return o.ApplyT(func(v HttpTarget) []HeaderOverride { return v.HeaderOverrides }).(HeaderOverrideArrayOutput)
+}
+
+// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+func (o HttpTargetOutput) HttpMethod() HttpTargetHttpMethodPtrOutput {
+	return o.ApplyT(func(v HttpTarget) *HttpTargetHttpMethod { return v.HttpMethod }).(HttpTargetHttpMethodPtrOutput)
+}
+
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpTargetOutput) OauthToken() OAuthTokenPtrOutput {
+	return o.ApplyT(func(v HttpTarget) *OAuthToken { return v.OauthToken }).(OAuthTokenPtrOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpTargetOutput) OidcToken() OidcTokenPtrOutput {
+	return o.ApplyT(func(v HttpTarget) *OidcToken { return v.OidcToken }).(OidcTokenPtrOutput)
+}
+
+// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+func (o HttpTargetOutput) UriOverride() UriOverridePtrOutput {
+	return o.ApplyT(func(v HttpTarget) *UriOverride { return v.UriOverride }).(UriOverridePtrOutput)
+}
+
+type HttpTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpTarget)(nil)).Elem()
+}
+
+func (o HttpTargetPtrOutput) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return o
+}
+
+func (o HttpTargetPtrOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return o
+}
+
+func (o HttpTargetPtrOutput) Elem() HttpTargetOutput {
+	return o.ApplyT(func(v *HttpTarget) HttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret HttpTarget
+		return ret
+	}).(HttpTargetOutput)
+}
+
+// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+func (o HttpTargetPtrOutput) HeaderOverrides() HeaderOverrideArrayOutput {
+	return o.ApplyT(func(v *HttpTarget) []HeaderOverride {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderOverrides
+	}).(HeaderOverrideArrayOutput)
+}
+
+// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+func (o HttpTargetPtrOutput) HttpMethod() HttpTargetHttpMethodPtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *HttpTargetHttpMethod {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(HttpTargetHttpMethodPtrOutput)
+}
+
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpTargetPtrOutput) OauthToken() OAuthTokenPtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *OAuthToken {
+		if v == nil {
+			return nil
+		}
+		return v.OauthToken
+	}).(OAuthTokenPtrOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpTargetPtrOutput) OidcToken() OidcTokenPtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *OidcToken {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(OidcTokenPtrOutput)
+}
+
+// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+func (o HttpTargetPtrOutput) UriOverride() UriOverridePtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *UriOverride {
+		if v == nil {
+			return nil
+		}
+		return v.UriOverride
+	}).(UriOverridePtrOutput)
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetResponse struct {
+	// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	HeaderOverrides []HeaderOverrideResponse `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+	HttpMethod string `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken OAuthTokenResponse `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken OidcTokenResponse `pulumi:"oidcToken"`
+	// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+	UriOverride UriOverrideResponse `pulumi:"uriOverride"`
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpTargetResponse)(nil)).Elem()
+}
+
+func (o HttpTargetResponseOutput) ToHttpTargetResponseOutput() HttpTargetResponseOutput {
+	return o
+}
+
+func (o HttpTargetResponseOutput) ToHttpTargetResponseOutputWithContext(ctx context.Context) HttpTargetResponseOutput {
+	return o
+}
+
+// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+func (o HttpTargetResponseOutput) HeaderOverrides() HeaderOverrideResponseArrayOutput {
+	return o.ApplyT(func(v HttpTargetResponse) []HeaderOverrideResponse { return v.HeaderOverrides }).(HeaderOverrideResponseArrayOutput)
+}
+
+// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+func (o HttpTargetResponseOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpTargetResponse) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpTargetResponseOutput) OauthToken() OAuthTokenResponseOutput {
+	return o.ApplyT(func(v HttpTargetResponse) OAuthTokenResponse { return v.OauthToken }).(OAuthTokenResponseOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpTargetResponseOutput) OidcToken() OidcTokenResponseOutput {
+	return o.ApplyT(func(v HttpTargetResponse) OidcTokenResponse { return v.OidcToken }).(OidcTokenResponseOutput)
+}
+
+// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+func (o HttpTargetResponseOutput) UriOverride() UriOverrideResponseOutput {
+	return o.ApplyT(func(v HttpTargetResponse) UriOverrideResponse { return v.UriOverride }).(UriOverrideResponseOutput)
+}
+
+// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+type OAuthToken struct {
+	// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+	Scope *string `pulumi:"scope"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+}
+
+// OAuthTokenInput is an input type that accepts OAuthTokenArgs and OAuthTokenOutput values.
+// You can construct a concrete instance of `OAuthTokenInput` via:
+//
+//          OAuthTokenArgs{...}
+type OAuthTokenInput interface {
+	pulumi.Input
+
+	ToOAuthTokenOutput() OAuthTokenOutput
+	ToOAuthTokenOutputWithContext(context.Context) OAuthTokenOutput
+}
+
+// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+type OAuthTokenArgs struct {
+	// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+}
+
+func (OAuthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthToken)(nil)).Elem()
+}
+
+func (i OAuthTokenArgs) ToOAuthTokenOutput() OAuthTokenOutput {
+	return i.ToOAuthTokenOutputWithContext(context.Background())
+}
+
+func (i OAuthTokenArgs) ToOAuthTokenOutputWithContext(ctx context.Context) OAuthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenOutput)
+}
+
+func (i OAuthTokenArgs) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
+	return i.ToOAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i OAuthTokenArgs) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenOutput).ToOAuthTokenPtrOutputWithContext(ctx)
+}
+
+// OAuthTokenPtrInput is an input type that accepts OAuthTokenArgs, OAuthTokenPtr and OAuthTokenPtrOutput values.
+// You can construct a concrete instance of `OAuthTokenPtrInput` via:
+//
+//          OAuthTokenArgs{...}
+//
+//  or:
+//
+//          nil
+type OAuthTokenPtrInput interface {
+	pulumi.Input
+
+	ToOAuthTokenPtrOutput() OAuthTokenPtrOutput
+	ToOAuthTokenPtrOutputWithContext(context.Context) OAuthTokenPtrOutput
+}
+
+type oauthTokenPtrType OAuthTokenArgs
+
+func OAuthTokenPtr(v *OAuthTokenArgs) OAuthTokenPtrInput {
+	return (*oauthTokenPtrType)(v)
+}
+
+func (*oauthTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OAuthToken)(nil)).Elem()
+}
+
+func (i *oauthTokenPtrType) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
+	return i.ToOAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *oauthTokenPtrType) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenPtrOutput)
+}
+
+// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+type OAuthTokenOutput struct{ *pulumi.OutputState }
+
+func (OAuthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthToken)(nil)).Elem()
+}
+
+func (o OAuthTokenOutput) ToOAuthTokenOutput() OAuthTokenOutput {
+	return o
+}
+
+func (o OAuthTokenOutput) ToOAuthTokenOutputWithContext(ctx context.Context) OAuthTokenOutput {
+	return o
+}
+
+func (o OAuthTokenOutput) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
+	return o.ToOAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (o OAuthTokenOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthToken) *OAuthToken {
+		return &v
+	}).(OAuthTokenPtrOutput)
+}
+
+// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+func (o OAuthTokenOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o OAuthTokenOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OAuthToken) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+type OAuthTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (OAuthTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OAuthToken)(nil)).Elem()
+}
+
+func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutput() OAuthTokenPtrOutput {
+	return o
+}
+
+func (o OAuthTokenPtrOutput) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OAuthTokenPtrOutput {
+	return o
+}
+
+func (o OAuthTokenPtrOutput) Elem() OAuthTokenOutput {
+	return o.ApplyT(func(v *OAuthToken) OAuthToken {
+		if v != nil {
+			return *v
+		}
+		var ret OAuthToken
+		return ret
+	}).(OAuthTokenOutput)
+}
+
+// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+func (o OAuthTokenPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OAuthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o OAuthTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OAuthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+type OAuthTokenResponse struct {
+	// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+	Scope string `pulumi:"scope"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+type OAuthTokenResponseOutput struct{ *pulumi.OutputState }
+
+func (OAuthTokenResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthTokenResponse)(nil)).Elem()
+}
+
+func (o OAuthTokenResponseOutput) ToOAuthTokenResponseOutput() OAuthTokenResponseOutput {
+	return o
+}
+
+func (o OAuthTokenResponseOutput) ToOAuthTokenResponseOutputWithContext(ctx context.Context) OAuthTokenResponseOutput {
+	return o
+}
+
+// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+func (o OAuthTokenResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuthTokenResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o OAuthTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuthTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+type OidcToken struct {
+	// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+	Audience *string `pulumi:"audience"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+}
+
+// OidcTokenInput is an input type that accepts OidcTokenArgs and OidcTokenOutput values.
+// You can construct a concrete instance of `OidcTokenInput` via:
+//
+//          OidcTokenArgs{...}
+type OidcTokenInput interface {
+	pulumi.Input
+
+	ToOidcTokenOutput() OidcTokenOutput
+	ToOidcTokenOutputWithContext(context.Context) OidcTokenOutput
+}
+
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+type OidcTokenArgs struct {
+	// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+}
+
+func (OidcTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcToken)(nil)).Elem()
+}
+
+func (i OidcTokenArgs) ToOidcTokenOutput() OidcTokenOutput {
+	return i.ToOidcTokenOutputWithContext(context.Background())
+}
+
+func (i OidcTokenArgs) ToOidcTokenOutputWithContext(ctx context.Context) OidcTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenOutput)
+}
+
+func (i OidcTokenArgs) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
+	return i.ToOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i OidcTokenArgs) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenOutput).ToOidcTokenPtrOutputWithContext(ctx)
+}
+
+// OidcTokenPtrInput is an input type that accepts OidcTokenArgs, OidcTokenPtr and OidcTokenPtrOutput values.
+// You can construct a concrete instance of `OidcTokenPtrInput` via:
+//
+//          OidcTokenArgs{...}
+//
+//  or:
+//
+//          nil
+type OidcTokenPtrInput interface {
+	pulumi.Input
+
+	ToOidcTokenPtrOutput() OidcTokenPtrOutput
+	ToOidcTokenPtrOutputWithContext(context.Context) OidcTokenPtrOutput
+}
+
+type oidcTokenPtrType OidcTokenArgs
+
+func OidcTokenPtr(v *OidcTokenArgs) OidcTokenPtrInput {
+	return (*oidcTokenPtrType)(v)
+}
+
+func (*oidcTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OidcToken)(nil)).Elem()
+}
+
+func (i *oidcTokenPtrType) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
+	return i.ToOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *oidcTokenPtrType) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenPtrOutput)
+}
+
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+type OidcTokenOutput struct{ *pulumi.OutputState }
+
+func (OidcTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcToken)(nil)).Elem()
+}
+
+func (o OidcTokenOutput) ToOidcTokenOutput() OidcTokenOutput {
+	return o
+}
+
+func (o OidcTokenOutput) ToOidcTokenOutputWithContext(ctx context.Context) OidcTokenOutput {
+	return o
+}
+
+func (o OidcTokenOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
+	return o.ToOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcToken) *OidcToken {
+		return &v
+	}).(OidcTokenPtrOutput)
+}
+
+// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+func (o OidcTokenOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o OidcTokenOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OidcToken) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+type OidcTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (OidcTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OidcToken)(nil)).Elem()
+}
+
+func (o OidcTokenPtrOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
+	return o
+}
+
+func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
+	return o
+}
+
+func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
+	return o.ApplyT(func(v *OidcToken) OidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret OidcToken
+		return ret
+	}).(OidcTokenOutput)
+}
+
+// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+func (o OidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o OidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+type OidcTokenResponse struct {
+	// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+	Audience string `pulumi:"audience"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+type OidcTokenResponseOutput struct{ *pulumi.OutputState }
+
+func (OidcTokenResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcTokenResponse)(nil)).Elem()
+}
+
+func (o OidcTokenResponseOutput) ToOidcTokenResponseOutput() OidcTokenResponseOutput {
+	return o
+}
+
+func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx context.Context) OidcTokenResponseOutput {
+	return o
+}
+
+// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
 // The pull message contains data that can be used by the caller of LeaseTasks to process the task. This proto can only be used for tasks in a queue which has pull_target set.
 type PullMessage struct {
 	// A data payload consumed by the worker to execute the task.
@@ -2127,6 +3403,276 @@ func (o TaskStatusResponseOutput) LastAttemptStatus() AttemptStatusResponseOutpu
 	return o.ApplyT(func(v TaskStatusResponse) AttemptStatusResponse { return v.LastAttemptStatus }).(AttemptStatusResponseOutput)
 }
 
+// Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverride struct {
+	// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+	Host *string `pulumi:"host"`
+	// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+	Path *string `pulumi:"path"`
+	// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+	Port *string `pulumi:"port"`
+	// Uri Query. Will replace the query part of the task uri.
+	Query *string `pulumi:"query"`
+	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+	Scheme *UriOverrideScheme `pulumi:"scheme"`
+}
+
+// UriOverrideInput is an input type that accepts UriOverrideArgs and UriOverrideOutput values.
+// You can construct a concrete instance of `UriOverrideInput` via:
+//
+//          UriOverrideArgs{...}
+type UriOverrideInput interface {
+	pulumi.Input
+
+	ToUriOverrideOutput() UriOverrideOutput
+	ToUriOverrideOutputWithContext(context.Context) UriOverrideOutput
+}
+
+// Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideArgs struct {
+	// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Uri Query. Will replace the query part of the task uri.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+	Scheme UriOverrideSchemePtrInput `pulumi:"scheme"`
+}
+
+func (UriOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverride)(nil)).Elem()
+}
+
+func (i UriOverrideArgs) ToUriOverrideOutput() UriOverrideOutput {
+	return i.ToUriOverrideOutputWithContext(context.Background())
+}
+
+func (i UriOverrideArgs) ToUriOverrideOutputWithContext(ctx context.Context) UriOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriOverrideOutput)
+}
+
+func (i UriOverrideArgs) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return i.ToUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (i UriOverrideArgs) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriOverrideOutput).ToUriOverridePtrOutputWithContext(ctx)
+}
+
+// UriOverridePtrInput is an input type that accepts UriOverrideArgs, UriOverridePtr and UriOverridePtrOutput values.
+// You can construct a concrete instance of `UriOverridePtrInput` via:
+//
+//          UriOverrideArgs{...}
+//
+//  or:
+//
+//          nil
+type UriOverridePtrInput interface {
+	pulumi.Input
+
+	ToUriOverridePtrOutput() UriOverridePtrOutput
+	ToUriOverridePtrOutputWithContext(context.Context) UriOverridePtrOutput
+}
+
+type uriOverridePtrType UriOverrideArgs
+
+func UriOverridePtr(v *UriOverrideArgs) UriOverridePtrInput {
+	return (*uriOverridePtrType)(v)
+}
+
+func (*uriOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UriOverride)(nil)).Elem()
+}
+
+func (i *uriOverridePtrType) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return i.ToUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *uriOverridePtrType) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriOverridePtrOutput)
+}
+
+// Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideOutput struct{ *pulumi.OutputState }
+
+func (UriOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverride)(nil)).Elem()
+}
+
+func (o UriOverrideOutput) ToUriOverrideOutput() UriOverrideOutput {
+	return o
+}
+
+func (o UriOverrideOutput) ToUriOverrideOutputWithContext(ctx context.Context) UriOverrideOutput {
+	return o
+}
+
+func (o UriOverrideOutput) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return o.ToUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (o UriOverrideOutput) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UriOverride) *UriOverride {
+		return &v
+	}).(UriOverridePtrOutput)
+}
+
+// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+func (o UriOverrideOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+func (o UriOverrideOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriOverride) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+func (o UriOverrideOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriOverride) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Uri Query. Will replace the query part of the task uri.
+func (o UriOverrideOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriOverride) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+func (o UriOverrideOutput) Scheme() UriOverrideSchemePtrOutput {
+	return o.ApplyT(func(v UriOverride) *UriOverrideScheme { return v.Scheme }).(UriOverrideSchemePtrOutput)
+}
+
+type UriOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (UriOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UriOverride)(nil)).Elem()
+}
+
+func (o UriOverridePtrOutput) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return o
+}
+
+func (o UriOverridePtrOutput) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return o
+}
+
+func (o UriOverridePtrOutput) Elem() UriOverrideOutput {
+	return o.ApplyT(func(v *UriOverride) UriOverride {
+		if v != nil {
+			return *v
+		}
+		var ret UriOverride
+		return ret
+	}).(UriOverrideOutput)
+}
+
+// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+func (o UriOverridePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+func (o UriOverridePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+func (o UriOverridePtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uri Query. Will replace the query part of the task uri.
+func (o UriOverridePtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+func (o UriOverridePtrOutput) Scheme() UriOverrideSchemePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *UriOverrideScheme {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(UriOverrideSchemePtrOutput)
+}
+
+// Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideResponse struct {
+	// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+	Host string `pulumi:"host"`
+	// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+	Path string `pulumi:"path"`
+	// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+	Port string `pulumi:"port"`
+	// Uri Query. Will replace the query part of the task uri.
+	Query string `pulumi:"query"`
+	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+	Scheme string `pulumi:"scheme"`
+}
+
+// Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (UriOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverrideResponse)(nil)).Elem()
+}
+
+func (o UriOverrideResponseOutput) ToUriOverrideResponseOutput() UriOverrideResponseOutput {
+	return o
+}
+
+func (o UriOverrideResponseOutput) ToUriOverrideResponseOutputWithContext(ctx context.Context) UriOverrideResponseOutput {
+	return o
+}
+
+// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+func (o UriOverrideResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+func (o UriOverrideResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+func (o UriOverrideResponseOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// Uri Query. Will replace the query part of the task uri.
+func (o UriOverrideResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+func (o UriOverrideResponseOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestInput)(nil)).Elem(), AppEngineHttpRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestPtrInput)(nil)).Elem(), AppEngineHttpRequestArgs{})
@@ -2138,6 +3684,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderInput)(nil)).Elem(), HeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderPtrInput)(nil)).Elem(), HeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderOverrideInput)(nil)).Elem(), HeaderOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderOverrideArrayInput)(nil)).Elem(), HeaderOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestInput)(nil)).Elem(), HttpRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestPtrInput)(nil)).Elem(), HttpRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetInput)(nil)).Elem(), HttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetPtrInput)(nil)).Elem(), HttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenInput)(nil)).Elem(), OAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenPtrInput)(nil)).Elem(), OAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessageInput)(nil)).Elem(), PullMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessagePtrInput)(nil)).Elem(), PullMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullTargetInput)(nil)).Elem(), PullTargetArgs{})
@@ -2146,6 +3704,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsPtrInput)(nil)).Elem(), RateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigInput)(nil)).Elem(), RetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigPtrInput)(nil)).Elem(), RetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UriOverrideInput)(nil)).Elem(), UriOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UriOverridePtrInput)(nil)).Elem(), UriOverrideArgs{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestResponseOutput{})
@@ -2163,6 +3723,25 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(HeaderOutput{})
+	pulumi.RegisterOutputType(HeaderPtrOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideArrayOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideResponseOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideResponseArrayOutput{})
+	pulumi.RegisterOutputType(HeaderResponseOutput{})
+	pulumi.RegisterOutputType(HttpRequestOutput{})
+	pulumi.RegisterOutputType(HttpRequestPtrOutput{})
+	pulumi.RegisterOutputType(HttpRequestResponseOutput{})
+	pulumi.RegisterOutputType(HttpTargetOutput{})
+	pulumi.RegisterOutputType(HttpTargetPtrOutput{})
+	pulumi.RegisterOutputType(HttpTargetResponseOutput{})
+	pulumi.RegisterOutputType(OAuthTokenOutput{})
+	pulumi.RegisterOutputType(OAuthTokenPtrOutput{})
+	pulumi.RegisterOutputType(OAuthTokenResponseOutput{})
+	pulumi.RegisterOutputType(OidcTokenOutput{})
+	pulumi.RegisterOutputType(OidcTokenPtrOutput{})
+	pulumi.RegisterOutputType(OidcTokenResponseOutput{})
 	pulumi.RegisterOutputType(PullMessageOutput{})
 	pulumi.RegisterOutputType(PullMessagePtrOutput{})
 	pulumi.RegisterOutputType(PullMessageResponseOutput{})
@@ -2178,4 +3757,7 @@ func init() {
 	pulumi.RegisterOutputType(RetryConfigResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(TaskStatusResponseOutput{})
+	pulumi.RegisterOutputType(UriOverrideOutput{})
+	pulumi.RegisterOutputType(UriOverridePtrOutput{})
+	pulumi.RegisterOutputType(UriOverrideResponseOutput{})
 }

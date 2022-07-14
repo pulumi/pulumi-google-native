@@ -4439,6 +4439,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Strategy for distributing VMs across zones in a region.
+    /// </summary>
+    [EnumType]
+    public readonly struct LocationPolicyTargetShape : IEquatable<LocationPolicyTargetShape>
+    {
+        private readonly string _value;
+
+        private LocationPolicyTargetShape(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// GCE picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
+        /// </summary>
+        public static LocationPolicyTargetShape Any { get; } = new LocationPolicyTargetShape("ANY");
+        /// <summary>
+        /// GCE always selects a single zone for all the VMs, optimizing for resource quotas, available reservations and general capacity. Recommended for batch workloads that cannot tollerate distribution over multiple zones. This the default shape in Bulk Insert and Capacity Advisor APIs.
+        /// </summary>
+        public static LocationPolicyTargetShape AnySingleZone { get; } = new LocationPolicyTargetShape("ANY_SINGLE_ZONE");
+        /// <summary>
+        /// GCE prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across allowed zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
+        /// </summary>
+        public static LocationPolicyTargetShape Balanced { get; } = new LocationPolicyTargetShape("BALANCED");
+
+        public static bool operator ==(LocationPolicyTargetShape left, LocationPolicyTargetShape right) => left.Equals(right);
+        public static bool operator !=(LocationPolicyTargetShape left, LocationPolicyTargetShape right) => !left.Equals(right);
+
+        public static explicit operator string(LocationPolicyTargetShape value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LocationPolicyTargetShape other && Equals(other);
+        public bool Equals(LocationPolicyTargetShape other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]

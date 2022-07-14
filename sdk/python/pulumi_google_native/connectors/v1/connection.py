@@ -287,7 +287,6 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["suspended"] = suspended
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["egress_backends"] = None
             __props__.__dict__["envoy_image_location"] = None
             __props__.__dict__["image_location"] = None
             __props__.__dict__["name"] = None
@@ -324,7 +323,6 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["connector_version"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
-        __props__.__dict__["egress_backends"] = None
         __props__.__dict__["envoy_image_location"] = None
         __props__.__dict__["image_location"] = None
         __props__.__dict__["labels"] = None
@@ -386,14 +384,6 @@ class Connection(pulumi.CustomResource):
         Optional. Description of the resource.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="egressBackends")
-    def egress_backends(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Outbound domains/hosts needs to be allowlisted.
-        """
-        return pulumi.get(self, "egress_backends")
 
     @property
     @pulumi.getter(name="envoyImageLocation")

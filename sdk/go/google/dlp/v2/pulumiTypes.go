@@ -8011,7 +8011,7 @@ type GooglePrivacyDlpV2HotwordRule struct {
 	HotwordRegex *GooglePrivacyDlpV2Regex `pulumi:"hotwordRegex"`
 	// Likelihood adjustment to apply to all matching findings.
 	LikelihoodAdjustment *GooglePrivacyDlpV2LikelihoodAdjustment `pulumi:"likelihoodAdjustment"`
-	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 	Proximity *GooglePrivacyDlpV2Proximity `pulumi:"proximity"`
 }
 
@@ -8032,7 +8032,7 @@ type GooglePrivacyDlpV2HotwordRuleArgs struct {
 	HotwordRegex GooglePrivacyDlpV2RegexPtrInput `pulumi:"hotwordRegex"`
 	// Likelihood adjustment to apply to all matching findings.
 	LikelihoodAdjustment GooglePrivacyDlpV2LikelihoodAdjustmentPtrInput `pulumi:"likelihoodAdjustment"`
-	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 	Proximity GooglePrivacyDlpV2ProximityPtrInput `pulumi:"proximity"`
 }
 
@@ -8126,7 +8126,7 @@ func (o GooglePrivacyDlpV2HotwordRuleOutput) LikelihoodAdjustment() GooglePrivac
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput)
 }
 
-// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2HotwordRuleOutput) Proximity() GooglePrivacyDlpV2ProximityPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2HotwordRule) *GooglePrivacyDlpV2Proximity { return v.Proximity }).(GooglePrivacyDlpV2ProximityPtrOutput)
 }
@@ -8175,7 +8175,7 @@ func (o GooglePrivacyDlpV2HotwordRulePtrOutput) LikelihoodAdjustment() GooglePri
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput)
 }
 
-// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2HotwordRulePtrOutput) Proximity() GooglePrivacyDlpV2ProximityPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2HotwordRule) *GooglePrivacyDlpV2Proximity {
 		if v == nil {
@@ -8191,7 +8191,7 @@ type GooglePrivacyDlpV2HotwordRuleResponse struct {
 	HotwordRegex GooglePrivacyDlpV2RegexResponse `pulumi:"hotwordRegex"`
 	// Likelihood adjustment to apply to all matching findings.
 	LikelihoodAdjustment GooglePrivacyDlpV2LikelihoodAdjustmentResponse `pulumi:"likelihoodAdjustment"`
-	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 	Proximity GooglePrivacyDlpV2ProximityResponse `pulumi:"proximity"`
 }
 
@@ -8222,7 +8222,7 @@ func (o GooglePrivacyDlpV2HotwordRuleResponseOutput) LikelihoodAdjustment() Goog
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput)
 }
 
-// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2HotwordRuleResponseOutput) Proximity() GooglePrivacyDlpV2ProximityResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2HotwordRuleResponse) GooglePrivacyDlpV2ProximityResponse { return v.Proximity }).(GooglePrivacyDlpV2ProximityResponseOutput)
 }
@@ -14146,7 +14146,7 @@ func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) NumericalStatsConfig() Go
 type GooglePrivacyDlpV2Proximity struct {
 	// Number of characters after the finding to consider.
 	WindowAfter *int `pulumi:"windowAfter"`
-	// Number of characters before the finding to consider.
+	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 	WindowBefore *int `pulumi:"windowBefore"`
 }
 
@@ -14165,7 +14165,7 @@ type GooglePrivacyDlpV2ProximityInput interface {
 type GooglePrivacyDlpV2ProximityArgs struct {
 	// Number of characters after the finding to consider.
 	WindowAfter pulumi.IntPtrInput `pulumi:"windowAfter"`
-	// Number of characters before the finding to consider.
+	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 	WindowBefore pulumi.IntPtrInput `pulumi:"windowBefore"`
 }
 
@@ -14252,7 +14252,7 @@ func (o GooglePrivacyDlpV2ProximityOutput) WindowAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Proximity) *int { return v.WindowAfter }).(pulumi.IntPtrOutput)
 }
 
-// Number of characters before the finding to consider.
+// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2ProximityOutput) WindowBefore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Proximity) *int { return v.WindowBefore }).(pulumi.IntPtrOutput)
 }
@@ -14291,7 +14291,7 @@ func (o GooglePrivacyDlpV2ProximityPtrOutput) WindowAfter() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Number of characters before the finding to consider.
+// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2ProximityPtrOutput) WindowBefore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2Proximity) *int {
 		if v == nil {
@@ -14305,7 +14305,7 @@ func (o GooglePrivacyDlpV2ProximityPtrOutput) WindowBefore() pulumi.IntPtrOutput
 type GooglePrivacyDlpV2ProximityResponse struct {
 	// Number of characters after the finding to consider.
 	WindowAfter int `pulumi:"windowAfter"`
-	// Number of characters before the finding to consider.
+	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 	WindowBefore int `pulumi:"windowBefore"`
 }
 
@@ -14329,7 +14329,7 @@ func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowAfter() pulumi.IntOutpu
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowAfter }).(pulumi.IntOutput)
 }
 
-// Number of characters before the finding to consider.
+// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowBefore() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowBefore }).(pulumi.IntOutput)
 }

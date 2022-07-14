@@ -8,6 +8,7 @@ __all__ = [
     'EntryType',
     'GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType',
+    'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
@@ -98,6 +99,36 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType(str, Enum):
     MYSQL = "MYSQL"
     """
     Cloud SQL for MySQL.
+    """
+
+
+class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(str, Enum):
+    """
+    Looker specific column type of this column.
+    """
+    LOOKER_COLUMN_TYPE_UNSPECIFIED = "LOOKER_COLUMN_TYPE_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    DIMENSION = "DIMENSION"
+    """
+    Dimension.
+    """
+    DIMENSION_GROUP = "DIMENSION_GROUP"
+    """
+    Dimension group - parent for Dimension.
+    """
+    FILTER = "FILTER"
+    """
+    Filter.
+    """
+    MEASURE = "MEASURE"
+    """
+    Measure.
+    """
+    PAREMETER = "PAREMETER"
+    """
+    Parameter.
     """
 
 

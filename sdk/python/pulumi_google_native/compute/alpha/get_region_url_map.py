@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionUrlMapResult:
-    def __init__(__self__, creation_timestamp=None, default_route_action=None, default_service=None, default_url_redirect=None, description=None, fingerprint=None, header_action=None, host_rules=None, kind=None, name=None, path_matchers=None, region=None, self_link=None, tests=None):
+    def __init__(__self__, creation_timestamp=None, default_custom_error_response_policy=None, default_route_action=None, default_service=None, default_url_redirect=None, description=None, fingerprint=None, header_action=None, host_rules=None, kind=None, name=None, path_matchers=None, region=None, self_link=None, tests=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if default_custom_error_response_policy and not isinstance(default_custom_error_response_policy, dict):
+            raise TypeError("Expected argument 'default_custom_error_response_policy' to be a dict")
+        pulumi.set(__self__, "default_custom_error_response_policy", default_custom_error_response_policy)
         if default_route_action and not isinstance(default_route_action, dict):
             raise TypeError("Expected argument 'default_route_action' to be a dict")
         pulumi.set(__self__, "default_route_action", default_route_action)
@@ -70,6 +73,14 @@ class GetRegionUrlMapResult:
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> 'outputs.CustomErrorResponsePolicyResponse':
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the Load Balancer level and applies only when no policy has been defined for the error code at lower levels like PathMatcher, RouteRule and PathRule within this UrlMap. For example, consider a UrlMap with the following configuration: - defaultCustomErrorResponsePolicy containing policies for responding to 5xx and 4xx errors - A PathMatcher configured for *.example.com has defaultCustomErrorResponsePolicy for 4xx. If a request for http://www.example.com/ encounters a 404, the policy in pathMatcher.defaultCustomErrorResponsePolicy will be enforced. When the request for http://www.example.com/ encounters a 502, the policy in UrlMap.defaultCustomErrorResponsePolicy will be enforced. When a request that does not match any host in *.example.com such as http://www.myotherexample.com/, encounters a 404, UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -183,6 +194,7 @@ class AwaitableGetRegionUrlMapResult(GetRegionUrlMapResult):
             yield self
         return GetRegionUrlMapResult(
             creation_timestamp=self.creation_timestamp,
+            default_custom_error_response_policy=self.default_custom_error_response_policy,
             default_route_action=self.default_route_action,
             default_service=self.default_service,
             default_url_redirect=self.default_url_redirect,
@@ -217,6 +229,7 @@ def get_region_url_map(project: Optional[str] = None,
 
     return AwaitableGetRegionUrlMapResult(
         creation_timestamp=__ret__.creation_timestamp,
+        default_custom_error_response_policy=__ret__.default_custom_error_response_policy,
         default_route_action=__ret__.default_route_action,
         default_service=__ret__.default_service,
         default_url_redirect=__ret__.default_url_redirect,

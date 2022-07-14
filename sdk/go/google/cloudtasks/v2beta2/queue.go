@@ -16,7 +16,9 @@ type Queue struct {
 
 	// App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
 	AppEngineHttpTarget AppEngineHttpTargetResponseOutput `pulumi:"appEngineHttpTarget"`
-	Location            pulumi.StringOutput               `pulumi:"location"`
+	// An http_target is used to override the target values for HTTP tasks.
+	HttpTarget HttpTargetResponseOutput `pulumi:"httpTarget"`
+	Location   pulumi.StringOutput      `pulumi:"location"`
 	// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -84,7 +86,9 @@ func (QueueState) ElementType() reflect.Type {
 type queueArgs struct {
 	// App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
 	AppEngineHttpTarget *AppEngineHttpTarget `pulumi:"appEngineHttpTarget"`
-	Location            *string              `pulumi:"location"`
+	// An http_target is used to override the target values for HTTP tasks.
+	HttpTarget *HttpTarget `pulumi:"httpTarget"`
+	Location   *string     `pulumi:"location"`
 	// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -104,7 +108,9 @@ type queueArgs struct {
 type QueueArgs struct {
 	// App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
 	AppEngineHttpTarget AppEngineHttpTargetPtrInput
-	Location            pulumi.StringPtrInput
+	// An http_target is used to override the target values for HTTP tasks.
+	HttpTarget HttpTargetPtrInput
+	Location   pulumi.StringPtrInput
 	// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -160,6 +166,11 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 // App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
 func (o QueueOutput) AppEngineHttpTarget() AppEngineHttpTargetResponseOutput {
 	return o.ApplyT(func(v *Queue) AppEngineHttpTargetResponseOutput { return v.AppEngineHttpTarget }).(AppEngineHttpTargetResponseOutput)
+}
+
+// An http_target is used to override the target values for HTTP tasks.
+func (o QueueOutput) HttpTarget() HttpTargetResponseOutput {
+	return o.ApplyT(func(v *Queue) HttpTargetResponseOutput { return v.HttpTarget }).(HttpTargetResponseOutput)
 }
 
 func (o QueueOutput) Location() pulumi.StringOutput {

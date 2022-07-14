@@ -122,6 +122,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly options!: pulumi.Output<string>;
     /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.alpha.DiskParamsResponse>;
+    /**
      * Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
      */
     public readonly physicalBlockSizeBytes!: pulumi.Output<string>;
@@ -267,6 +271,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["multiWriter"] = args ? args.multiWriter : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
@@ -327,6 +332,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["multiWriter"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["options"] = undefined /*out*/;
+            resourceInputs["params"] = undefined /*out*/;
             resourceInputs["physicalBlockSizeBytes"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisionedIops"] = undefined /*out*/;
@@ -428,6 +434,10 @@ export interface DiskArgs {
      * Internal use only.
      */
     options?: pulumi.Input<string>;
+    /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    params?: pulumi.Input<inputs.compute.alpha.DiskParamsArgs>;
     /**
      * Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
      */

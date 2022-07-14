@@ -61,6 +61,112 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
     }
 
     /// <summary>
+    /// The HTTP method to use for the request. The default is POST.
+    /// </summary>
+    [EnumType]
+    public readonly struct HttpRequestHttpMethod : IEquatable<HttpRequestHttpMethod>
+    {
+        private readonly string _value;
+
+        private HttpRequestHttpMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// HTTP method unspecified
+        /// </summary>
+        public static HttpRequestHttpMethod HttpMethodUnspecified { get; } = new HttpRequestHttpMethod("HTTP_METHOD_UNSPECIFIED");
+        /// <summary>
+        /// HTTP POST
+        /// </summary>
+        public static HttpRequestHttpMethod Post { get; } = new HttpRequestHttpMethod("POST");
+        /// <summary>
+        /// HTTP GET
+        /// </summary>
+        public static HttpRequestHttpMethod Get { get; } = new HttpRequestHttpMethod("GET");
+        /// <summary>
+        /// HTTP HEAD
+        /// </summary>
+        public static HttpRequestHttpMethod Head { get; } = new HttpRequestHttpMethod("HEAD");
+        /// <summary>
+        /// HTTP PUT
+        /// </summary>
+        public static HttpRequestHttpMethod Put { get; } = new HttpRequestHttpMethod("PUT");
+        /// <summary>
+        /// HTTP DELETE
+        /// </summary>
+        public static HttpRequestHttpMethod Delete { get; } = new HttpRequestHttpMethod("DELETE");
+
+        public static bool operator ==(HttpRequestHttpMethod left, HttpRequestHttpMethod right) => left.Equals(right);
+        public static bool operator !=(HttpRequestHttpMethod left, HttpRequestHttpMethod right) => !left.Equals(right);
+
+        public static explicit operator string(HttpRequestHttpMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is HttpRequestHttpMethod other && Equals(other);
+        public bool Equals(HttpRequestHttpMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+    /// </summary>
+    [EnumType]
+    public readonly struct HttpTargetHttpMethod : IEquatable<HttpTargetHttpMethod>
+    {
+        private readonly string _value;
+
+        private HttpTargetHttpMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// HTTP method unspecified
+        /// </summary>
+        public static HttpTargetHttpMethod HttpMethodUnspecified { get; } = new HttpTargetHttpMethod("HTTP_METHOD_UNSPECIFIED");
+        /// <summary>
+        /// HTTP POST
+        /// </summary>
+        public static HttpTargetHttpMethod Post { get; } = new HttpTargetHttpMethod("POST");
+        /// <summary>
+        /// HTTP GET
+        /// </summary>
+        public static HttpTargetHttpMethod Get { get; } = new HttpTargetHttpMethod("GET");
+        /// <summary>
+        /// HTTP HEAD
+        /// </summary>
+        public static HttpTargetHttpMethod Head { get; } = new HttpTargetHttpMethod("HEAD");
+        /// <summary>
+        /// HTTP PUT
+        /// </summary>
+        public static HttpTargetHttpMethod Put { get; } = new HttpTargetHttpMethod("PUT");
+        /// <summary>
+        /// HTTP DELETE
+        /// </summary>
+        public static HttpTargetHttpMethod Delete { get; } = new HttpTargetHttpMethod("DELETE");
+
+        public static bool operator ==(HttpTargetHttpMethod left, HttpTargetHttpMethod right) => left.Equals(right);
+        public static bool operator !=(HttpTargetHttpMethod left, HttpTargetHttpMethod right) => !left.Equals(right);
+
+        public static explicit operator string(HttpTargetHttpMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is HttpTargetHttpMethod other && Equals(other);
+        public bool Equals(HttpTargetHttpMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
     /// </summary>
     [EnumType]
@@ -94,6 +200,47 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TaskResponseView other && Equals(other);
         public bool Equals(TaskResponseView other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+    /// </summary>
+    [EnumType]
+    public readonly struct UriOverrideScheme : IEquatable<UriOverrideScheme>
+    {
+        private readonly string _value;
+
+        private UriOverrideScheme(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Scheme unspecified. Defaults to HTTPS.
+        /// </summary>
+        public static UriOverrideScheme SchemeUnspecified { get; } = new UriOverrideScheme("SCHEME_UNSPECIFIED");
+        /// <summary>
+        /// Convert the scheme to HTTP, e.g., https://www.google.ca will change to http://www.google.ca.
+        /// </summary>
+        public static UriOverrideScheme Http { get; } = new UriOverrideScheme("HTTP");
+        /// <summary>
+        /// Convert the scheme to HTTPS, e.g., http://www.google.ca will change to https://www.google.ca.
+        /// </summary>
+        public static UriOverrideScheme Https { get; } = new UriOverrideScheme("HTTPS");
+
+        public static bool operator ==(UriOverrideScheme left, UriOverrideScheme right) => left.Equals(right);
+        public static bool operator !=(UriOverrideScheme left, UriOverrideScheme right) => !left.Equals(right);
+
+        public static explicit operator string(UriOverrideScheme value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UriOverrideScheme other && Equals(other);
+        public bool Equals(UriOverrideScheme other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -39,6 +39,10 @@ export class Queue extends pulumi.CustomResource {
      * App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
      */
     public readonly appEngineHttpTarget!: pulumi.Output<outputs.cloudtasks.v2beta2.AppEngineHttpTargetResponse>;
+    /**
+     * An http_target is used to override the target values for HTTP tasks.
+     */
+    public readonly httpTarget!: pulumi.Output<outputs.cloudtasks.v2beta2.HttpTargetResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
@@ -90,6 +94,7 @@ export class Queue extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
+            resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -103,6 +108,7 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["stats"] = undefined /*out*/;
         } else {
             resourceInputs["appEngineHttpTarget"] = undefined /*out*/;
+            resourceInputs["httpTarget"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -130,6 +136,10 @@ export interface QueueArgs {
      * App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
      */
     appEngineHttpTarget?: pulumi.Input<inputs.cloudtasks.v2beta2.AppEngineHttpTargetArgs>;
+    /**
+     * An http_target is used to override the target values for HTTP tasks.
+     */
+    httpTarget?: pulumi.Input<inputs.cloudtasks.v2beta2.HttpTargetArgs>;
     location?: pulumi.Input<string>;
     /**
      * Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.

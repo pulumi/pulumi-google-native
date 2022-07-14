@@ -632,12 +632,14 @@ class SshPublicKeyArgs:
                  cert_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input['SecretArgs']] = None,
                  ssh_client_cert: Optional[pulumi.Input['SecretArgs']] = None,
+                 ssh_client_cert_pass: Optional[pulumi.Input['SecretArgs']] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         Parameters to support Ssh public key Authentication.
         :param pulumi.Input[str] cert_type: Format of SSH Client cert.
         :param pulumi.Input['SecretArgs'] password: This is an optional field used in case client has enabled multi-factor authentication
         :param pulumi.Input['SecretArgs'] ssh_client_cert: SSH Client Cert. It should contain both public and private key.
+        :param pulumi.Input['SecretArgs'] ssh_client_cert_pass: Password (passphrase) for ssh client certificate if it has one.
         :param pulumi.Input[str] username: The user account used to authenticate.
         """
         if cert_type is not None:
@@ -646,6 +648,8 @@ class SshPublicKeyArgs:
             pulumi.set(__self__, "password", password)
         if ssh_client_cert is not None:
             pulumi.set(__self__, "ssh_client_cert", ssh_client_cert)
+        if ssh_client_cert_pass is not None:
+            pulumi.set(__self__, "ssh_client_cert_pass", ssh_client_cert_pass)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -684,6 +688,18 @@ class SshPublicKeyArgs:
     @ssh_client_cert.setter
     def ssh_client_cert(self, value: Optional[pulumi.Input['SecretArgs']]):
         pulumi.set(self, "ssh_client_cert", value)
+
+    @property
+    @pulumi.getter(name="sshClientCertPass")
+    def ssh_client_cert_pass(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        Password (passphrase) for ssh client certificate if it has one.
+        """
+        return pulumi.get(self, "ssh_client_cert_pass")
+
+    @ssh_client_cert_pass.setter
+    def ssh_client_cert_pass(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "ssh_client_cert_pass", value)
 
     @property
     @pulumi.getter

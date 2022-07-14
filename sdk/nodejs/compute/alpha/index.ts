@@ -124,6 +124,7 @@ export * from "./getTargetVpnGateway";
 export * from "./getUrlMap";
 export * from "./getVpnGateway";
 export * from "./getVpnTunnel";
+export * from "./getZoneQueuedResource";
 export * from "./globalAddress";
 export * from "./globalForwardingRule";
 export * from "./globalNetworkEndpointGroup";
@@ -215,6 +216,7 @@ export * from "./targetVpnGateway";
 export * from "./urlMap";
 export * from "./vpnGateway";
 export * from "./vpnTunnel";
+export * from "./zoneQueuedResource";
 
 // Export enums:
 export * from "../../types/enums/compute/alpha";
@@ -325,6 +327,7 @@ import { TargetVpnGateway } from "./targetVpnGateway";
 import { UrlMap } from "./urlMap";
 import { VpnGateway } from "./vpnGateway";
 import { VpnTunnel } from "./vpnTunnel";
+import { ZoneQueuedResource } from "./zoneQueuedResource";
 
 const _module = {
     version: utilities.getVersion(),
@@ -540,6 +543,8 @@ const _module = {
                 return new VpnGateway(name, <any>undefined, { urn })
             case "google-native:compute/alpha:VpnTunnel":
                 return new VpnTunnel(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:ZoneQueuedResource":
+                return new ZoneQueuedResource(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

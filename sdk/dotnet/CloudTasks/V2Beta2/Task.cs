@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        /// </summary>
+        [Output("httpRequest")]
+        public Output<Outputs.HttpRequestResponse> HttpRequest { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -122,6 +128,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// </summary>
         [Input("appEngineHttpRequest")]
         public Input<Inputs.AppEngineHttpRequestArgs>? AppEngineHttpRequest { get; set; }
+
+        /// <summary>
+        /// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        /// </summary>
+        [Input("httpRequest")]
+        public Input<Inputs.HttpRequestArgs>? HttpRequest { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

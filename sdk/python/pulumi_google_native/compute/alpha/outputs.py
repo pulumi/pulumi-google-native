@@ -50,6 +50,7 @@ __all__ = [
     'BackendServiceLocalityLoadBalancingPolicyConfigResponse',
     'BackendServiceLogConfigResponse',
     'BindingResponse',
+    'BulkInsertInstanceResourceResponse',
     'CacheKeyPolicyResponse',
     'CallCredentialsResponse',
     'ChannelCredentialsResponse',
@@ -61,16 +62,20 @@ __all__ = [
     'ConsistentHashLoadBalancerSettingsHttpCookieResponse',
     'ConsistentHashLoadBalancerSettingsResponse',
     'CorsPolicyResponse',
+    'CustomErrorResponsePolicyCustomErrorResponseRuleResponse',
+    'CustomErrorResponsePolicyResponse',
     'CustomerEncryptionKeyResponse',
     'DeprecationStatusResponse',
     'DiskAsyncReplicationResponse',
     'DiskInstantiationConfigResponse',
+    'DiskParamsResponse',
     'DiskResourceStatusAsyncReplicationStatusResponse',
     'DiskResourceStatusResponse',
     'DisplayDeviceResponse',
     'DistributionPolicyResponse',
     'DistributionPolicyZoneConfigurationResponse',
     'DurationResponse',
+    'ErrorInfoResponse',
     'ExprResponse',
     'ExternalVpnGatewayInterfaceResponse',
     'FileContentBufferResponse',
@@ -94,6 +99,8 @@ __all__ = [
     'HTTPHealthCheckResponse',
     'HTTPSHealthCheckResponse',
     'HealthCheckLogConfigResponse',
+    'HelpLinkResponse',
+    'HelpResponse',
     'HostRuleResponse',
     'HttpFaultAbortResponse',
     'HttpFaultDelayResponse',
@@ -128,6 +135,7 @@ __all__ = [
     'InstanceParamsResponse',
     'InstancePropertiesPatchResponse',
     'InstancePropertiesResponse',
+    'InstanceResponse',
     'InstantSnapshotResourceStatusResponse',
     'Int64RangeMatchResponse',
     'InterconnectAttachmentPartnerMetadataResponse',
@@ -141,6 +149,8 @@ __all__ = [
     'LicenseResourceCommitmentResponse',
     'LicenseResourceRequirementsResponse',
     'LocalDiskResponse',
+    'LocalizedMessageResponse',
+    'LocationPolicyResponse',
     'LogConfigCloudAuditOptionsResponse',
     'LogConfigCounterOptionsCustomFieldResponse',
     'LogConfigCounterOptionsResponse',
@@ -183,7 +193,13 @@ __all__ = [
     'PrincipalResponse',
     'PublicAdvertisedPrefixPublicDelegatedPrefixResponse',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixResponse',
+    'QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse',
+    'QueuedResourceStatusFailedDataErrorErrorsItemResponse',
+    'QueuedResourceStatusFailedDataErrorResponse',
+    'QueuedResourceStatusFailedDataResponse',
+    'QueuedResourceStatusResponse',
     'QueuingPolicyResponse',
+    'QuotaExceededInfoResponse',
     'RbacPolicyResponse',
     'RegionSslPolicyWarningsItemDataItemResponse',
     'RegionSslPolicyWarningsItemResponse',
@@ -915,6 +931,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "provisioned_iops"
         elif key == "replicaZones":
             suggest = "replica_zones"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "sourceImage":
@@ -954,6 +972,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  on_update_action: str,
                  provisioned_iops: str,
                  replica_zones: Sequence[str],
+                 resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  source_image: str,
                  source_image_encryption_key: 'outputs.CustomerEncryptionKeyResponse',
@@ -976,6 +995,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param str provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param Sequence[str] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param str source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
         :param 'CustomerEncryptionKeyResponse' source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
@@ -997,6 +1017,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "on_update_action", on_update_action)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         pulumi.set(__self__, "replica_zones", replica_zones)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source_image", source_image)
         pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
@@ -1115,6 +1136,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         """
         return pulumi.get(self, "replica_zones")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -2521,7 +2550,7 @@ class BackendResponse(dict):
         :param int max_rate: Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
-        :param float max_utilization: Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        :param float max_utilization: Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         pulumi.set(__self__, "balancing_mode", balancing_mode)
         pulumi.set(__self__, "capacity_scaler", capacity_scaler)
@@ -2628,7 +2657,7 @@ class BackendResponse(dict):
     @pulumi.getter(name="maxUtilization")
     def max_utilization(self) -> float:
         """
-        Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         return pulumi.get(self, "max_utilization")
 
@@ -3397,6 +3426,132 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class BulkInsertInstanceResourceResponse(dict):
+    """
+    A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceProperties":
+            suggest = "instance_properties"
+        elif key == "locationPolicy":
+            suggest = "location_policy"
+        elif key == "minCount":
+            suggest = "min_count"
+        elif key == "namePattern":
+            suggest = "name_pattern"
+        elif key == "perInstanceProperties":
+            suggest = "per_instance_properties"
+        elif key == "sourceInstanceTemplate":
+            suggest = "source_instance_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BulkInsertInstanceResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BulkInsertInstanceResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BulkInsertInstanceResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: str,
+                 instance: 'outputs.InstanceResponse',
+                 instance_properties: 'outputs.InstancePropertiesResponse',
+                 location_policy: 'outputs.LocationPolicyResponse',
+                 min_count: str,
+                 name_pattern: str,
+                 per_instance_properties: Mapping[str, str],
+                 source_instance_template: str):
+        """
+        A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+        :param str count: The maximum number of instances to create.
+        :param 'InstanceResponse' instance: DEPRECATED: Please use instance_properties instead.
+        :param 'InstancePropertiesResponse' instance_properties: The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+        :param 'LocationPolicyResponse' location_policy: Policy for chosing target zone. For more information, see Create VMs in bulk .
+        :param str min_count: The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+        :param str name_pattern: The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+        :param Mapping[str, str] per_instance_properties: Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+        :param str source_instance_template: Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "instance_properties", instance_properties)
+        pulumi.set(__self__, "location_policy", location_policy)
+        pulumi.set(__self__, "min_count", min_count)
+        pulumi.set(__self__, "name_pattern", name_pattern)
+        pulumi.set(__self__, "per_instance_properties", per_instance_properties)
+        pulumi.set(__self__, "source_instance_template", source_instance_template)
+
+    @property
+    @pulumi.getter
+    def count(self) -> str:
+        """
+        The maximum number of instances to create.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> 'outputs.InstanceResponse':
+        """
+        DEPRECATED: Please use instance_properties instead.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> 'outputs.InstancePropertiesResponse':
+        """
+        The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @property
+    @pulumi.getter(name="locationPolicy")
+    def location_policy(self) -> 'outputs.LocationPolicyResponse':
+        """
+        Policy for chosing target zone. For more information, see Create VMs in bulk .
+        """
+        return pulumi.get(self, "location_policy")
+
+    @property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> str:
+        """
+        The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+        """
+        return pulumi.get(self, "min_count")
+
+    @property
+    @pulumi.getter(name="namePattern")
+    def name_pattern(self) -> str:
+        """
+        The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+        """
+        return pulumi.get(self, "name_pattern")
+
+    @property
+    @pulumi.getter(name="perInstanceProperties")
+    def per_instance_properties(self) -> Mapping[str, str]:
+        """
+        Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+        """
+        return pulumi.get(self, "per_instance_properties")
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> str:
+        """
+        Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+        """
+        return pulumi.get(self, "source_instance_template")
 
 
 @pulumi.output_type
@@ -4191,6 +4346,121 @@ class CorsPolicyResponse(dict):
 
 
 @pulumi.output_type
+class CustomErrorResponsePolicyCustomErrorResponseRuleResponse(dict):
+    """
+    Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchResponseCodes":
+            suggest = "match_response_codes"
+        elif key == "overrideResponseCode":
+            suggest = "override_response_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomErrorResponsePolicyCustomErrorResponseRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomErrorResponsePolicyCustomErrorResponseRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomErrorResponsePolicyCustomErrorResponseRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_response_codes: Sequence[str],
+                 override_response_code: int,
+                 path: str):
+        """
+        Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+        :param Sequence[str] match_response_codes: Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        :param int override_response_code: The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        :param str path: The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+        """
+        pulumi.set(__self__, "match_response_codes", match_response_codes)
+        pulumi.set(__self__, "override_response_code", override_response_code)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="matchResponseCodes")
+    def match_response_codes(self) -> Sequence[str]:
+        """
+        Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        return pulumi.get(self, "match_response_codes")
+
+    @property
+    @pulumi.getter(name="overrideResponseCode")
+    def override_response_code(self) -> int:
+        """
+        The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        return pulumi.get(self, "override_response_code")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class CustomErrorResponsePolicyResponse(dict):
+    """
+    Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorResponseRules":
+            suggest = "error_response_rules"
+        elif key == "errorService":
+            suggest = "error_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomErrorResponsePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomErrorResponsePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomErrorResponsePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_response_rules: Sequence['outputs.CustomErrorResponsePolicyCustomErrorResponseRuleResponse'],
+                 error_service: str):
+        """
+        Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+        :param Sequence['CustomErrorResponsePolicyCustomErrorResponseRuleResponse'] error_response_rules: Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        :param str error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+        """
+        pulumi.set(__self__, "error_response_rules", error_response_rules)
+        pulumi.set(__self__, "error_service", error_service)
+
+    @property
+    @pulumi.getter(name="errorResponseRules")
+    def error_response_rules(self) -> Sequence['outputs.CustomErrorResponsePolicyCustomErrorResponseRuleResponse']:
+        """
+        Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        """
+        return pulumi.get(self, "error_response_rules")
+
+    @property
+    @pulumi.getter(name="errorService")
+    def error_service(self) -> str:
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+        """
+        return pulumi.get(self, "error_service")
+
+
+@pulumi.output_type
 class CustomerEncryptionKeyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4494,6 +4764,45 @@ class DiskInstantiationConfigResponse(dict):
 
 
 @pulumi.output_type
+class DiskParamsResponse(dict):
+    """
+    Additional disk params.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, str]):
+        """
+        Additional disk params.
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class DiskResourceStatusAsyncReplicationStatusResponse(dict):
     def __init__(__self__, *,
                  state: str):
@@ -4683,6 +4992,50 @@ class DurationResponse(dict):
         Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class ErrorInfoResponse(dict):
+    """
+    Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+    """
+    def __init__(__self__, *,
+                 domain: str,
+                 metadatas: Mapping[str, str],
+                 reason: str):
+        """
+        Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+        :param str domain: The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        :param Mapping[str, str] metadatas: Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        :param str reason: The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match /[A-Z0-9_]+/.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "metadatas", metadatas)
+        pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Mapping[str, str]:
+        """
+        Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match /[A-Z0-9_]+/.
+        """
+        return pulumi.get(self, "reason")
 
 
 @pulumi.output_type
@@ -6310,6 +6663,61 @@ class HealthCheckLogConfigResponse(dict):
 
 
 @pulumi.output_type
+class HelpLinkResponse(dict):
+    """
+    Describes a URL link.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 url: str):
+        """
+        Describes a URL link.
+        :param str description: Describes what the link offers.
+        :param str url: The URL of the link.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Describes what the link offers.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the link.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class HelpResponse(dict):
+    """
+    Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.
+    """
+    def __init__(__self__, *,
+                 links: Sequence['outputs.HelpLinkResponse']):
+        """
+        Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.
+        :param Sequence['HelpLinkResponse'] links: URL(s) pointing to additional information on handling the current error.
+        """
+        pulumi.set(__self__, "links", links)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Sequence['outputs.HelpLinkResponse']:
+        """
+        URL(s) pointing to additional information on handling the current error.
+        """
+        return pulumi.get(self, "links")
+
+
+@pulumi.output_type
 class HostRuleResponse(dict):
     """
     UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
@@ -7331,7 +7739,9 @@ class HttpRouteRuleResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "headerAction":
+        if key == "customErrorResponsePolicy":
+            suggest = "custom_error_response_policy"
+        elif key == "headerAction":
             suggest = "header_action"
         elif key == "httpFilterConfigs":
             suggest = "http_filter_configs"
@@ -7356,6 +7766,7 @@ class HttpRouteRuleResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_error_response_policy: 'outputs.CustomErrorResponsePolicyResponse',
                  description: str,
                  header_action: 'outputs.HttpHeaderActionResponse',
                  http_filter_configs: Sequence['outputs.HttpFilterConfigResponse'],
@@ -7367,6 +7778,7 @@ class HttpRouteRuleResponse(dict):
                  url_redirect: 'outputs.HttpRedirectActionResponse'):
         """
         The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
+        :param 'CustomErrorResponsePolicyResponse' custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param str description: The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
         :param 'HttpHeaderActionResponse' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         :param Sequence['HttpFilterConfigResponse'] http_filter_configs: Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -7377,6 +7789,7 @@ class HttpRouteRuleResponse(dict):
         :param str service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         :param 'HttpRedirectActionResponse' url_redirect: When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
+        pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "header_action", header_action)
         pulumi.set(__self__, "http_filter_configs", http_filter_configs)
@@ -7386,6 +7799,14 @@ class HttpRouteRuleResponse(dict):
         pulumi.set(__self__, "route_action", route_action)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "url_redirect", url_redirect)
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> 'outputs.CustomErrorResponsePolicyResponse':
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
 
     @property
     @pulumi.getter
@@ -8894,6 +9315,666 @@ class InstancePropertiesResponse(dict):
 
 
 @pulumi.output_type
+class InstanceResponse(dict):
+    """
+    Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
+        elif key == "canIpForward":
+            suggest = "can_ip_forward"
+        elif key == "confidentialInstanceConfig":
+            suggest = "confidential_instance_config"
+        elif key == "cpuPlatform":
+            suggest = "cpu_platform"
+        elif key == "creationTimestamp":
+            suggest = "creation_timestamp"
+        elif key == "deletionProtection":
+            suggest = "deletion_protection"
+        elif key == "displayDevice":
+            suggest = "display_device"
+        elif key == "eraseWindowsVssSignature":
+            suggest = "erase_windows_vss_signature"
+        elif key == "guestAccelerators":
+            suggest = "guest_accelerators"
+        elif key == "instanceEncryptionKey":
+            suggest = "instance_encryption_key"
+        elif key == "keyRevocationActionType":
+            suggest = "key_revocation_action_type"
+        elif key == "labelFingerprint":
+            suggest = "label_fingerprint"
+        elif key == "lastStartTimestamp":
+            suggest = "last_start_timestamp"
+        elif key == "lastStopTimestamp":
+            suggest = "last_stop_timestamp"
+        elif key == "lastSuspendedTimestamp":
+            suggest = "last_suspended_timestamp"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "networkPerformanceConfig":
+            suggest = "network_performance_config"
+        elif key == "postKeyRevocationActionType":
+            suggest = "post_key_revocation_action_type"
+        elif key == "preservedStateSizeGb":
+            suggest = "preserved_state_size_gb"
+        elif key == "privateIpv6GoogleAccess":
+            suggest = "private_ipv6_google_access"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
+        elif key == "resourcePolicies":
+            suggest = "resource_policies"
+        elif key == "resourceStatus":
+            suggest = "resource_status"
+        elif key == "satisfiesPzs":
+            suggest = "satisfies_pzs"
+        elif key == "secureTags":
+            suggest = "secure_tags"
+        elif key == "selfLink":
+            suggest = "self_link"
+        elif key == "selfLinkWithId":
+            suggest = "self_link_with_id"
+        elif key == "serviceAccounts":
+            suggest = "service_accounts"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+        elif key == "shieldedInstanceIntegrityPolicy":
+            suggest = "shielded_instance_integrity_policy"
+        elif key == "shieldedVmConfig":
+            suggest = "shielded_vm_config"
+        elif key == "shieldedVmIntegrityPolicy":
+            suggest = "shielded_vm_integrity_policy"
+        elif key == "sourceMachineImage":
+            suggest = "source_machine_image"
+        elif key == "sourceMachineImageEncryptionKey":
+            suggest = "source_machine_image_encryption_key"
+        elif key == "startRestricted":
+            suggest = "start_restricted"
+        elif key == "statusMessage":
+            suggest = "status_message"
+        elif key == "upcomingMaintenance":
+            suggest = "upcoming_maintenance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advanced_machine_features: 'outputs.AdvancedMachineFeaturesResponse',
+                 can_ip_forward: bool,
+                 confidential_instance_config: 'outputs.ConfidentialInstanceConfigResponse',
+                 cpu_platform: str,
+                 creation_timestamp: str,
+                 deletion_protection: bool,
+                 description: str,
+                 disks: Sequence['outputs.AttachedDiskResponse'],
+                 display_device: 'outputs.DisplayDeviceResponse',
+                 erase_windows_vss_signature: bool,
+                 fingerprint: str,
+                 guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 hostname: str,
+                 instance_encryption_key: 'outputs.CustomerEncryptionKeyResponse',
+                 key_revocation_action_type: str,
+                 kind: str,
+                 label_fingerprint: str,
+                 labels: Mapping[str, str],
+                 last_start_timestamp: str,
+                 last_stop_timestamp: str,
+                 last_suspended_timestamp: str,
+                 machine_type: str,
+                 metadata: 'outputs.MetadataResponse',
+                 min_cpu_platform: str,
+                 name: str,
+                 network_interfaces: Sequence['outputs.NetworkInterfaceResponse'],
+                 network_performance_config: 'outputs.NetworkPerformanceConfigResponse',
+                 params: 'outputs.InstanceParamsResponse',
+                 post_key_revocation_action_type: str,
+                 preserved_state_size_gb: str,
+                 private_ipv6_google_access: str,
+                 reservation_affinity: 'outputs.ReservationAffinityResponse',
+                 resource_policies: Sequence[str],
+                 resource_status: 'outputs.ResourceStatusResponse',
+                 satisfies_pzs: bool,
+                 scheduling: 'outputs.SchedulingResponse',
+                 secure_tags: Sequence[str],
+                 self_link: str,
+                 self_link_with_id: str,
+                 service_accounts: Sequence['outputs.ServiceAccountResponse'],
+                 shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
+                 shielded_instance_integrity_policy: 'outputs.ShieldedInstanceIntegrityPolicyResponse',
+                 shielded_vm_config: 'outputs.ShieldedVmConfigResponse',
+                 shielded_vm_integrity_policy: 'outputs.ShieldedVmIntegrityPolicyResponse',
+                 source_machine_image: str,
+                 source_machine_image_encryption_key: 'outputs.CustomerEncryptionKeyResponse',
+                 start_restricted: bool,
+                 status: str,
+                 status_message: str,
+                 tags: 'outputs.TagsResponse',
+                 upcoming_maintenance: 'outputs.UpcomingMaintenanceResponse',
+                 zone: str):
+        """
+        Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+        :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param bool can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+        :param str cpu_platform: The CPU platform used by this instance.
+        :param str creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param bool deletion_protection: Whether the resource should be protected against deletion.
+        :param str description: An optional description of this resource. Provide this property when you create the resource.
+        :param Sequence['AttachedDiskResponse'] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+        :param 'DisplayDeviceResponse' display_device: Enables display device for the instance.
+        :param bool erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        :param str fingerprint: Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
+        :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
+        :param str hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+        :param 'CustomerEncryptionKeyResponse' instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        :param str kind: Type of the resource. Always compute#instance for instances.
+        :param str label_fingerprint: A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
+        :param Mapping[str, str] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
+        :param str last_start_timestamp: Last start timestamp in RFC3339 text format.
+        :param str last_stop_timestamp: Last stop timestamp in RFC3339 text format.
+        :param str last_suspended_timestamp: Last suspended timestamp in RFC3339 text format.
+        :param str machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+        :param 'MetadataResponse' metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+        :param str min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+        :param str name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param Sequence['NetworkInterfaceResponse'] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        :param 'InstanceParamsResponse' params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
+        :param str preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+        :param str private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param Sequence[str] resource_policies: Resource policies applied to this instance.
+        :param 'ResourceStatusResponse' resource_status: Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        :param bool satisfies_pzs: Reserved for future use.
+        :param 'SchedulingResponse' scheduling: Sets the scheduling options for this instance.
+        :param Sequence[str] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+        :param str self_link: Server-defined URL for this resource.
+        :param str self_link_with_id: Server-defined URL for this resource with the resource id.
+        :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param 'ShieldedVmConfigResponse' shielded_vm_config: Deprecating, please use shielded_instance_config.
+        :param 'ShieldedVmIntegrityPolicyResponse' shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
+        :param str source_machine_image: Source machine image
+        :param 'CustomerEncryptionKeyResponse' source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
+        :param bool start_restricted: Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+        :param str status: The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
+        :param str status_message: An optional, human-readable explanation of the status.
+        :param 'TagsResponse' tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+        :param 'UpcomingMaintenanceResponse' upcoming_maintenance: Specifies upcoming maintenance for the instance.
+        :param str zone: URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
+        pulumi.set(__self__, "can_ip_forward", can_ip_forward)
+        pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        pulumi.set(__self__, "cpu_platform", cpu_platform)
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "display_device", display_device)
+        pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "last_start_timestamp", last_start_timestamp)
+        pulumi.set(__self__, "last_stop_timestamp", last_stop_timestamp)
+        pulumi.set(__self__, "last_suspended_timestamp", last_suspended_timestamp)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_performance_config", network_performance_config)
+        pulumi.set(__self__, "params", params)
+        pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
+        pulumi.set(__self__, "preserved_state_size_gb", preserved_state_size_gb)
+        pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        pulumi.set(__self__, "resource_policies", resource_policies)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
+        pulumi.set(__self__, "scheduling", scheduling)
+        pulumi.set(__self__, "secure_tags", secure_tags)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "self_link_with_id", self_link_with_id)
+        pulumi.set(__self__, "service_accounts", service_accounts)
+        pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        pulumi.set(__self__, "shielded_instance_integrity_policy", shielded_instance_integrity_policy)
+        pulumi.set(__self__, "shielded_vm_config", shielded_vm_config)
+        pulumi.set(__self__, "shielded_vm_integrity_policy", shielded_vm_integrity_policy)
+        pulumi.set(__self__, "source_machine_image", source_machine_image)
+        pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
+        pulumi.set(__self__, "start_restricted", start_restricted)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "upcoming_maintenance", upcoming_maintenance)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> 'outputs.AdvancedMachineFeaturesResponse':
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> bool:
+        """
+        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> 'outputs.ConfidentialInstanceConfigResponse':
+        return pulumi.get(self, "confidential_instance_config")
+
+    @property
+    @pulumi.getter(name="cpuPlatform")
+    def cpu_platform(self) -> str:
+        """
+        The CPU platform used by this instance.
+        """
+        return pulumi.get(self, "cpu_platform")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        Whether the resource should be protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.AttachedDiskResponse']:
+        """
+        Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="displayDevice")
+    def display_device(self) -> 'outputs.DisplayDeviceResponse':
+        """
+        Enables display device for the instance.
+        """
+        return pulumi.get(self, "display_device")
+
+    @property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> bool:
+        """
+        Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Sequence['outputs.AcceleratorConfigResponse']:
+        """
+        A list of the type and count of accelerator cards attached to the instance.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
+        """
+        Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        """
+        return pulumi.get(self, "instance_encryption_key")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        Type of the resource. Always compute#instance for instances.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> str:
+        """
+        A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels to apply to this instance. These can be later modified by the setLabels method.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastStartTimestamp")
+    def last_start_timestamp(self) -> str:
+        """
+        Last start timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_start_timestamp")
+
+    @property
+    @pulumi.getter(name="lastStopTimestamp")
+    def last_stop_timestamp(self) -> str:
+        """
+        Last stop timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_stop_timestamp")
+
+    @property
+    @pulumi.getter(name="lastSuspendedTimestamp")
+    def last_suspended_timestamp(self) -> str:
+        """
+        Last suspended timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_suspended_timestamp")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.MetadataResponse':
+        """
+        The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> str:
+        """
+        Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Sequence['outputs.NetworkInterfaceResponse']:
+        """
+        An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> 'outputs.NetworkPerformanceConfigResponse':
+        return pulumi.get(self, "network_performance_config")
+
+    @property
+    @pulumi.getter
+    def params(self) -> 'outputs.InstanceParamsResponse':
+        """
+        Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter(name="postKeyRevocationActionType")
+    def post_key_revocation_action_type(self) -> str:
+        """
+        PostKeyRevocationActionType of the instance.
+        """
+        return pulumi.get(self, "post_key_revocation_action_type")
+
+    @property
+    @pulumi.getter(name="preservedStateSizeGb")
+    def preserved_state_size_gb(self) -> str:
+        """
+        Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+        """
+        return pulumi.get(self, "preserved_state_size_gb")
+
+    @property
+    @pulumi.getter(name="privateIpv6GoogleAccess")
+    def private_ipv6_google_access(self) -> str:
+        """
+        The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        """
+        return pulumi.get(self, "private_ipv6_google_access")
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> 'outputs.ReservationAffinityResponse':
+        """
+        Specifies the reservations that this instance can consume from.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Sequence[str]:
+        """
+        Resource policies applied to this instance.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.ResourceStatusResponse':
+        """
+        Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> 'outputs.SchedulingResponse':
+        """
+        Sets the scheduling options for this instance.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @property
+    @pulumi.getter(name="secureTags")
+    def secure_tags(self) -> Sequence[str]:
+        """
+        [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+        """
+        return pulumi.get(self, "secure_tags")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        Server-defined URL for this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> str:
+        """
+        Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> Sequence['outputs.ServiceAccountResponse']:
+        """
+        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        """
+        return pulumi.get(self, "service_accounts")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> 'outputs.ShieldedInstanceConfigResponse':
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceIntegrityPolicy")
+    def shielded_instance_integrity_policy(self) -> 'outputs.ShieldedInstanceIntegrityPolicyResponse':
+        return pulumi.get(self, "shielded_instance_integrity_policy")
+
+    @property
+    @pulumi.getter(name="shieldedVmConfig")
+    def shielded_vm_config(self) -> 'outputs.ShieldedVmConfigResponse':
+        """
+        Deprecating, please use shielded_instance_config.
+        """
+        return pulumi.get(self, "shielded_vm_config")
+
+    @property
+    @pulumi.getter(name="shieldedVmIntegrityPolicy")
+    def shielded_vm_integrity_policy(self) -> 'outputs.ShieldedVmIntegrityPolicyResponse':
+        """
+        Deprecating, please use shielded_instance_integrity_policy.
+        """
+        return pulumi.get(self, "shielded_vm_integrity_policy")
+
+    @property
+    @pulumi.getter(name="sourceMachineImage")
+    def source_machine_image(self) -> str:
+        """
+        Source machine image
+        """
+        return pulumi.get(self, "source_machine_image")
+
+    @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
+        """
+        Source machine image encryption key when creating an instance from a machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="startRestricted")
+    def start_restricted(self) -> bool:
+        """
+        Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+        """
+        return pulumi.get(self, "start_restricted")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> str:
+        """
+        An optional, human-readable explanation of the status.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> 'outputs.TagsResponse':
+        """
+        Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="upcomingMaintenance")
+    def upcoming_maintenance(self) -> 'outputs.UpcomingMaintenanceResponse':
+        """
+        Specifies upcoming maintenance for the instance.
+        """
+        return pulumi.get(self, "upcoming_maintenance")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
 class InstantSnapshotResourceStatusResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9661,6 +10742,89 @@ class LocalDiskResponse(dict):
         Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
         """
         return pulumi.get(self, "disk_type")
+
+
+@pulumi.output_type
+class LocalizedMessageResponse(dict):
+    """
+    Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+    """
+    def __init__(__self__, *,
+                 locale: str,
+                 message: str):
+        """
+        Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+        :param str locale: The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        :param str message: The localized error message in the above locale.
+        """
+        pulumi.set(__self__, "locale", locale)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> str:
+        """
+        The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        return pulumi.get(self, "locale")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class LocationPolicyResponse(dict):
+    """
+    Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetShape":
+            suggest = "target_shape"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocationPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocationPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocationPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 locations: Mapping[str, str],
+                 target_shape: str):
+        """
+        Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+        :param Mapping[str, str] locations: Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+        :param str target_shape: Strategy for distributing VMs across zones in a region.
+        """
+        pulumi.set(__self__, "locations", locations)
+        pulumi.set(__self__, "target_shape", target_shape)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Mapping[str, str]:
+        """
+        Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter(name="targetShape")
+    def target_shape(self) -> str:
+        """
+        Strategy for distributing VMs across zones in a region.
+        """
+        return pulumi.get(self, "target_shape")
 
 
 @pulumi.output_type
@@ -11776,7 +12940,9 @@ class PathMatcherResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultRouteAction":
+        if key == "defaultCustomErrorResponsePolicy":
+            suggest = "default_custom_error_response_policy"
+        elif key == "defaultRouteAction":
             suggest = "default_route_action"
         elif key == "defaultService":
             suggest = "default_service"
@@ -11801,6 +12967,7 @@ class PathMatcherResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 default_custom_error_response_policy: 'outputs.CustomErrorResponsePolicyResponse',
                  default_route_action: 'outputs.HttpRouteActionResponse',
                  default_service: str,
                  default_url_redirect: 'outputs.HttpRedirectActionResponse',
@@ -11811,6 +12978,7 @@ class PathMatcherResponse(dict):
                  route_rules: Sequence['outputs.HttpRouteRuleResponse']):
         """
         A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
+        :param 'CustomErrorResponsePolicyResponse' default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param 'HttpRouteActionResponse' default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
         :param str default_service: The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
         :param 'HttpRedirectActionResponse' default_url_redirect: When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
@@ -11820,6 +12988,7 @@ class PathMatcherResponse(dict):
         :param Sequence['PathRuleResponse'] path_rules: The list of path rules. Use this list instead of routeRules when routing based on simple path matching is all that's required. The order by which path rules are specified does not matter. Matches are always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/* irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only one of pathRules or routeRules must be set.
         :param Sequence['HttpRouteRuleResponse'] route_rules: The list of HTTP route rules. Use this list instead of pathRules when advanced route matching and routing actions are desired. routeRules are evaluated in order of priority, from the lowest to highest number. Within a given pathMatcher, you can set only one of pathRules or routeRules.
         """
+        pulumi.set(__self__, "default_custom_error_response_policy", default_custom_error_response_policy)
         pulumi.set(__self__, "default_route_action", default_route_action)
         pulumi.set(__self__, "default_service", default_service)
         pulumi.set(__self__, "default_url_redirect", default_url_redirect)
@@ -11828,6 +12997,14 @@ class PathMatcherResponse(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "path_rules", path_rules)
         pulumi.set(__self__, "route_rules", route_rules)
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> 'outputs.CustomErrorResponsePolicyResponse':
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -11902,7 +13079,9 @@ class PathRuleResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "routeAction":
+        if key == "customErrorResponsePolicy":
+            suggest = "custom_error_response_policy"
+        elif key == "routeAction":
             suggest = "route_action"
         elif key == "urlRedirect":
             suggest = "url_redirect"
@@ -11919,21 +13098,32 @@ class PathRuleResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_error_response_policy: 'outputs.CustomErrorResponsePolicyResponse',
                  paths: Sequence[str],
                  route_action: 'outputs.HttpRouteActionResponse',
                  service: str,
                  url_redirect: 'outputs.HttpRedirectActionResponse'):
         """
         A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
+        :param 'CustomErrorResponsePolicyResponse' custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param Sequence[str] paths: The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
         :param 'HttpRouteActionResponse' route_action: In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
         :param str service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         :param 'HttpRedirectActionResponse' url_redirect: When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
+        pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         pulumi.set(__self__, "paths", paths)
         pulumi.set(__self__, "route_action", route_action)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "url_redirect", url_redirect)
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> 'outputs.CustomErrorResponsePolicyResponse':
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
 
     @property
     @pulumi.getter
@@ -12493,6 +13683,237 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
 
 
 @pulumi.output_type
+class QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorInfo":
+            suggest = "error_info"
+        elif key == "localizedMessage":
+            suggest = "localized_message"
+        elif key == "quotaInfo":
+            suggest = "quota_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_info: 'outputs.ErrorInfoResponse',
+                 help: 'outputs.HelpResponse',
+                 localized_message: 'outputs.LocalizedMessageResponse',
+                 quota_info: 'outputs.QuotaExceededInfoResponse'):
+        pulumi.set(__self__, "error_info", error_info)
+        pulumi.set(__self__, "help", help)
+        pulumi.set(__self__, "localized_message", localized_message)
+        pulumi.set(__self__, "quota_info", quota_info)
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> 'outputs.ErrorInfoResponse':
+        return pulumi.get(self, "error_info")
+
+    @property
+    @pulumi.getter
+    def help(self) -> 'outputs.HelpResponse':
+        return pulumi.get(self, "help")
+
+    @property
+    @pulumi.getter(name="localizedMessage")
+    def localized_message(self) -> 'outputs.LocalizedMessageResponse':
+        return pulumi.get(self, "localized_message")
+
+    @property
+    @pulumi.getter(name="quotaInfo")
+    def quota_info(self) -> 'outputs.QuotaExceededInfoResponse':
+        return pulumi.get(self, "quota_info")
+
+
+@pulumi.output_type
+class QueuedResourceStatusFailedDataErrorErrorsItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueuedResourceStatusFailedDataErrorErrorsItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueuedResourceStatusFailedDataErrorErrorsItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueuedResourceStatusFailedDataErrorErrorsItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 error_details: Sequence['outputs.QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse'],
+                 location: str,
+                 message: str):
+        """
+        :param str code: The error type identifier for this error.
+        :param Sequence['QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse'] error_details: An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        :param str location: Indicates the field in the request that caused the error. This property is optional.
+        :param str message: An optional, human-readable error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "error_details", error_details)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Sequence['outputs.QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse']:
+        """
+        An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        """
+        return pulumi.get(self, "error_details")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        An optional, human-readable error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class QueuedResourceStatusFailedDataErrorResponse(dict):
+    """
+    The error(s) that caused the QueuedResource to enter the FAILED state.
+    """
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.QueuedResourceStatusFailedDataErrorErrorsItemResponse']):
+        """
+        The error(s) that caused the QueuedResource to enter the FAILED state.
+        :param Sequence['QueuedResourceStatusFailedDataErrorErrorsItemResponse'] errors: The array of errors encountered while processing this operation.
+        """
+        pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.QueuedResourceStatusFailedDataErrorErrorsItemResponse']:
+        """
+        The array of errors encountered while processing this operation.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class QueuedResourceStatusFailedDataResponse(dict):
+    """
+    Additional status detail for the FAILED state.
+    """
+    def __init__(__self__, *,
+                 error: 'outputs.QueuedResourceStatusFailedDataErrorResponse'):
+        """
+        Additional status detail for the FAILED state.
+        :param 'QueuedResourceStatusFailedDataErrorResponse' error: The error(s) that caused the QueuedResource to enter the FAILED state.
+        """
+        pulumi.set(__self__, "error", error)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.QueuedResourceStatusFailedDataErrorResponse':
+        """
+        The error(s) that caused the QueuedResource to enter the FAILED state.
+        """
+        return pulumi.get(self, "error")
+
+
+@pulumi.output_type
+class QueuedResourceStatusResponse(dict):
+    """
+    [Output only] Result of queuing and provisioning based on deferred capacity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failedData":
+            suggest = "failed_data"
+        elif key == "provisioningOperations":
+            suggest = "provisioning_operations"
+        elif key == "queuingPolicy":
+            suggest = "queuing_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueuedResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueuedResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueuedResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failed_data: 'outputs.QueuedResourceStatusFailedDataResponse',
+                 provisioning_operations: Sequence[str],
+                 queuing_policy: 'outputs.QueuingPolicyResponse'):
+        """
+        [Output only] Result of queuing and provisioning based on deferred capacity.
+        :param 'QueuedResourceStatusFailedDataResponse' failed_data: Additional status detail for the FAILED state.
+        :param Sequence[str] provisioning_operations: [Output only] Fully qualified URL of the provisioning GCE operation to track the provisioning along with provisioning errors. The referenced operation may not exist after having been deleted or expired.
+        :param 'QueuingPolicyResponse' queuing_policy: Constraints for the time when the resource(s) start provisioning. Always exposed as absolute times.
+        """
+        pulumi.set(__self__, "failed_data", failed_data)
+        pulumi.set(__self__, "provisioning_operations", provisioning_operations)
+        pulumi.set(__self__, "queuing_policy", queuing_policy)
+
+    @property
+    @pulumi.getter(name="failedData")
+    def failed_data(self) -> 'outputs.QueuedResourceStatusFailedDataResponse':
+        """
+        Additional status detail for the FAILED state.
+        """
+        return pulumi.get(self, "failed_data")
+
+    @property
+    @pulumi.getter(name="provisioningOperations")
+    def provisioning_operations(self) -> Sequence[str]:
+        """
+        [Output only] Fully qualified URL of the provisioning GCE operation to track the provisioning along with provisioning errors. The referenced operation may not exist after having been deleted or expired.
+        """
+        return pulumi.get(self, "provisioning_operations")
+
+    @property
+    @pulumi.getter(name="queuingPolicy")
+    def queuing_policy(self) -> 'outputs.QueuingPolicyResponse':
+        """
+        Constraints for the time when the resource(s) start provisioning. Always exposed as absolute times.
+        """
+        return pulumi.get(self, "queuing_policy")
+
+
+@pulumi.output_type
 class QueuingPolicyResponse(dict):
     """
     Queuing parameters for the requested deferred capacity.
@@ -12542,6 +13963,80 @@ class QueuingPolicyResponse(dict):
         Absolute deadline for waiting for capacity in RFC3339 text format.
         """
         return pulumi.get(self, "valid_until_time")
+
+
+@pulumi.output_type
+class QuotaExceededInfoResponse(dict):
+    """
+    Additional details for quota exceeded error for resource quota.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "limitName":
+            suggest = "limit_name"
+        elif key == "metricName":
+            suggest = "metric_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuotaExceededInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuotaExceededInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuotaExceededInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimensions: Mapping[str, str],
+                 limit: float,
+                 limit_name: str,
+                 metric_name: str):
+        """
+        Additional details for quota exceeded error for resource quota.
+        :param Mapping[str, str] dimensions: The map holding related quota dimensions.
+        :param float limit: Current effective quota limit. The limit's unit depends on the quota type or metric.
+        :param str limit_name: The name of the quota limit.
+        :param str metric_name: The Compute Engine quota metric name.
+        """
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "limit_name", limit_name)
+        pulumi.set(__self__, "metric_name", metric_name)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Mapping[str, str]:
+        """
+        The map holding related quota dimensions.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> float:
+        """
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter(name="limitName")
+    def limit_name(self) -> str:
+        """
+        The name of the quota limit.
+        """
+        return pulumi.get(self, "limit_name")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> str:
+        """
+        The Compute Engine quota metric name.
+        """
+        return pulumi.get(self, "metric_name")
 
 
 @pulumi.output_type

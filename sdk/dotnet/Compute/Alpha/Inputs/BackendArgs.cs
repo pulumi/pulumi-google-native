@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<double>? MaxRatePerInstance { get; set; }
 
         /// <summary>
-        /// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        /// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         /// </summary>
         [Input("maxUtilization")]
         public Input<double>? MaxUtilization { get; set; }

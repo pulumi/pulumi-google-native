@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         [Output("appEngineHttpTarget")]
         public Output<Outputs.AppEngineHttpTargetResponse> AppEngineHttpTarget { get; private set; } = null!;
 
+        /// <summary>
+        /// An http_target is used to override the target values for HTTP tasks.
+        /// </summary>
+        [Output("httpTarget")]
+        public Output<Outputs.HttpTargetResponse> HttpTarget { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -136,6 +142,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.AppEngineHttpTargetArgs>? AppEngineHttpTarget { get; set; }
+
+        /// <summary>
+        /// An http_target is used to override the target values for HTTP tasks.
+        /// </summary>
+        [Input("httpTarget")]
+        public Input<Inputs.HttpTargetArgs>? HttpTarget { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

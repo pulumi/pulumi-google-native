@@ -19,7 +19,9 @@ type Task struct {
 	AppEngineHttpRequest AppEngineHttpRequestResponseOutput `pulumi:"appEngineHttpRequest"`
 	// The time that the task was created. `create_time` will be truncated to the nearest second.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	Location   pulumi.StringOutput `pulumi:"location"`
+	// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+	HttpRequest HttpRequestResponseOutput `pulumi:"httpRequest"`
+	Location    pulumi.StringOutput       `pulumi:"location"`
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -84,7 +86,9 @@ func (TaskState) ElementType() reflect.Type {
 type taskArgs struct {
 	// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
 	AppEngineHttpRequest *AppEngineHttpRequest `pulumi:"appEngineHttpRequest"`
-	Location             *string               `pulumi:"location"`
+	// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+	HttpRequest *HttpRequest `pulumi:"httpRequest"`
+	Location    *string      `pulumi:"location"`
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -101,7 +105,9 @@ type taskArgs struct {
 type TaskArgs struct {
 	// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
 	AppEngineHttpRequest AppEngineHttpRequestPtrInput
-	Location             pulumi.StringPtrInput
+	// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+	HttpRequest HttpRequestPtrInput
+	Location    pulumi.StringPtrInput
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -159,6 +165,11 @@ func (o TaskOutput) AppEngineHttpRequest() AppEngineHttpRequestResponseOutput {
 // The time that the task was created. `create_time` will be truncated to the nearest second.
 func (o TaskOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+func (o TaskOutput) HttpRequest() HttpRequestResponseOutput {
+	return o.ApplyT(func(v *Task) HttpRequestResponseOutput { return v.HttpRequest }).(HttpRequestResponseOutput)
 }
 
 func (o TaskOutput) Location() pulumi.StringOutput {

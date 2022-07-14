@@ -52,6 +52,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly enableUlaInternalIpv6!: pulumi.Output<boolean>;
     /**
+     * URL of the firewall policy the network is associated with.
+     */
+    public /*out*/ readonly firewallPolicy!: pulumi.Output<string>;
+    /**
      * The gateway address for default routing out of the network, selected by GCP.
      */
     public /*out*/ readonly gatewayIPv4!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["routingConfig"] = args ? args.routingConfig : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["firewallPolicy"] = undefined /*out*/;
             resourceInputs["gatewayIPv4"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
@@ -141,6 +146,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["enableUlaInternalIpv6"] = undefined /*out*/;
+            resourceInputs["firewallPolicy"] = undefined /*out*/;
             resourceInputs["gatewayIPv4"] = undefined /*out*/;
             resourceInputs["internalIpv6Range"] = undefined /*out*/;
             resourceInputs["ipv4Range"] = undefined /*out*/;

@@ -6,13 +6,76 @@ from enum import Enum
 
 __all__ = [
     'AppEngineHttpRequestHttpMethod',
+    'HttpRequestHttpMethod',
+    'HttpTargetHttpMethod',
     'TaskResponseView',
+    'UriOverrideScheme',
 ]
 
 
 class AppEngineHttpRequestHttpMethod(str, Enum):
     """
     The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
+    """
+    HTTP_METHOD_UNSPECIFIED = "HTTP_METHOD_UNSPECIFIED"
+    """
+    HTTP method unspecified
+    """
+    POST = "POST"
+    """
+    HTTP POST
+    """
+    GET = "GET"
+    """
+    HTTP GET
+    """
+    HEAD = "HEAD"
+    """
+    HTTP HEAD
+    """
+    PUT = "PUT"
+    """
+    HTTP PUT
+    """
+    DELETE = "DELETE"
+    """
+    HTTP DELETE
+    """
+
+
+class HttpRequestHttpMethod(str, Enum):
+    """
+    The HTTP method to use for the request. The default is POST.
+    """
+    HTTP_METHOD_UNSPECIFIED = "HTTP_METHOD_UNSPECIFIED"
+    """
+    HTTP method unspecified
+    """
+    POST = "POST"
+    """
+    HTTP POST
+    """
+    GET = "GET"
+    """
+    HTTP GET
+    """
+    HEAD = "HEAD"
+    """
+    HTTP HEAD
+    """
+    PUT = "PUT"
+    """
+    HTTP PUT
+    """
+    DELETE = "DELETE"
+    """
+    HTTP DELETE
+    """
+
+
+class HttpTargetHttpMethod(str, Enum):
+    """
+    The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
     """
     HTTP_METHOD_UNSPECIFIED = "HTTP_METHOD_UNSPECIFIED"
     """
@@ -55,4 +118,22 @@ class TaskResponseView(str, Enum):
     FULL = "FULL"
     """
     All information is returned. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Queue resource.
+    """
+
+
+class UriOverrideScheme(str, Enum):
+    """
+    Scheme override. When specified, the Uri scheme is replaced by the provided value.
+    """
+    SCHEME_UNSPECIFIED = "SCHEME_UNSPECIFIED"
+    """
+    Scheme unspecified. Defaults to HTTPS.
+    """
+    HTTP = "HTTP"
+    """
+    Convert the scheme to HTTP, e.g., https://www.google.ca will change to http://www.google.ca.
+    """
+    HTTPS = "HTTPS"
+    """
+    Convert the scheme to HTTPS, e.g., http://www.google.ca will change to https://www.google.ca.
     """

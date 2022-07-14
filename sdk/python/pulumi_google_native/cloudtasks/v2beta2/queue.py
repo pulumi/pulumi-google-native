@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['QueueArgs', 'Queue']
@@ -17,6 +18,7 @@ __all__ = ['QueueArgs', 'Queue']
 class QueueArgs:
     def __init__(__self__, *,
                  app_engine_http_target: Optional[pulumi.Input['AppEngineHttpTargetArgs']] = None,
+                 http_target: Optional[pulumi.Input['HttpTargetArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,6 +30,7 @@ class QueueArgs:
         """
         The set of arguments for constructing a Queue resource.
         :param pulumi.Input['AppEngineHttpTargetArgs'] app_engine_http_target: App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
+        :param pulumi.Input['HttpTargetArgs'] http_target: An http_target is used to override the target values for HTTP tasks.
         :param pulumi.Input[str] name: Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
         :param pulumi.Input['PullTargetArgs'] pull_target: Pull target. A pull queue is a queue that has a PullTarget.
         :param pulumi.Input['RateLimitsArgs'] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts however they control how tasks are attempted in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc).
@@ -37,6 +40,8 @@ class QueueArgs:
         """
         if app_engine_http_target is not None:
             pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
+        if http_target is not None:
+            pulumi.set(__self__, "http_target", http_target)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -65,6 +70,18 @@ class QueueArgs:
     @app_engine_http_target.setter
     def app_engine_http_target(self, value: Optional[pulumi.Input['AppEngineHttpTargetArgs']]):
         pulumi.set(self, "app_engine_http_target", value)
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> Optional[pulumi.Input['HttpTargetArgs']]:
+        """
+        An http_target is used to override the target values for HTTP tasks.
+        """
+        return pulumi.get(self, "http_target")
+
+    @http_target.setter
+    def http_target(self, value: Optional[pulumi.Input['HttpTargetArgs']]):
+        pulumi.set(self, "http_target", value)
 
     @property
     @pulumi.getter
@@ -163,6 +180,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_target: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpTargetArgs']]] = None,
+                 http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -178,6 +196,7 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppEngineHttpTargetArgs']] app_engine_http_target: App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
+        :param pulumi.Input[pulumi.InputType['HttpTargetArgs']] http_target: An http_target is used to override the target values for HTTP tasks.
         :param pulumi.Input[str] name: Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
         :param pulumi.Input[pulumi.InputType['PullTargetArgs']] pull_target: Pull target. A pull queue is a queue that has a PullTarget.
         :param pulumi.Input[pulumi.InputType['RateLimitsArgs']] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts however they control how tasks are attempted in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc).
@@ -210,6 +229,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_target: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpTargetArgs']]] = None,
+                 http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -233,6 +253,7 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_http_target"] = app_engine_http_target
+            __props__.__dict__["http_target"] = http_target
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -269,6 +290,7 @@ class Queue(pulumi.CustomResource):
         __props__ = QueueArgs.__new__(QueueArgs)
 
         __props__.__dict__["app_engine_http_target"] = None
+        __props__.__dict__["http_target"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -289,6 +311,14 @@ class Queue(pulumi.CustomResource):
         App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
         """
         return pulumi.get(self, "app_engine_http_target")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> pulumi.Output['outputs.HttpTargetResponse']:
+        """
+        An http_target is used to override the target values for HTTP tasks.
+        """
+        return pulumi.get(self, "http_target")
 
     @property
     @pulumi.getter

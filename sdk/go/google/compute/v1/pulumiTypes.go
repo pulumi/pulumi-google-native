@@ -4064,7 +4064,7 @@ type Backend struct {
 	MaxRatePerEndpoint *float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance *float64 `pulumi:"maxRatePerInstance"`
-	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization *float64 `pulumi:"maxUtilization"`
 }
 
@@ -4103,7 +4103,7 @@ type BackendArgs struct {
 	MaxRatePerEndpoint pulumi.Float64PtrInput `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance pulumi.Float64PtrInput `pulumi:"maxRatePerInstance"`
-	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization pulumi.Float64PtrInput `pulumi:"maxUtilization"`
 }
 
@@ -4214,7 +4214,7 @@ func (o BackendOutput) MaxRatePerInstance() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxRatePerInstance }).(pulumi.Float64PtrOutput)
 }
 
-// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendOutput) MaxUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxUtilization }).(pulumi.Float64PtrOutput)
 }
@@ -5206,7 +5206,7 @@ type BackendResponse struct {
 	MaxRatePerEndpoint float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance float64 `pulumi:"maxRatePerInstance"`
-	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization float64 `pulumi:"maxUtilization"`
 }
 
@@ -5280,7 +5280,7 @@ func (o BackendResponseOutput) MaxRatePerInstance() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxRatePerInstance }).(pulumi.Float64Output)
 }
 
-// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendResponseOutput) MaxUtilization() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
 }

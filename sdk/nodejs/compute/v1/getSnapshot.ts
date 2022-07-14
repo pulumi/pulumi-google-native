@@ -107,6 +107,14 @@ export interface GetSnapshotResult {
      */
     readonly sourceDiskId: string;
     /**
+     * URL of the resource policy which created this scheduled snapshot.
+     */
+    readonly sourceSnapshotSchedulePolicy: string;
+    /**
+     * ID of the resource policy which created this scheduled snapshot.
+     */
+    readonly sourceSnapshotSchedulePolicyId: string;
+    /**
      * The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
      */
     readonly status: string;

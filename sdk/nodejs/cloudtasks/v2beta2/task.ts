@@ -43,6 +43,10 @@ export class Task extends pulumi.CustomResource {
      * The time that the task was created. `create_time` will be truncated to the nearest second.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+     */
+    public readonly httpRequest!: pulumi.Output<outputs.cloudtasks.v2beta2.HttpRequestResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
@@ -82,6 +86,7 @@ export class Task extends pulumi.CustomResource {
                 throw new Error("Missing required property 'queueId'");
             }
             resourceInputs["appEngineHttpRequest"] = args ? args.appEngineHttpRequest : undefined;
+            resourceInputs["httpRequest"] = args ? args.httpRequest : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -95,6 +100,7 @@ export class Task extends pulumi.CustomResource {
         } else {
             resourceInputs["appEngineHttpRequest"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["httpRequest"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -119,6 +125,10 @@ export interface TaskArgs {
      * App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
      */
     appEngineHttpRequest?: pulumi.Input<inputs.cloudtasks.v2beta2.AppEngineHttpRequestArgs>;
+    /**
+     * HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+     */
+    httpRequest?: pulumi.Input<inputs.cloudtasks.v2beta2.HttpRequestArgs>;
     location?: pulumi.Input<string>;
     /**
      * Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.

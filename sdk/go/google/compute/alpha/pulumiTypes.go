@@ -1849,6 +1849,8 @@ type AttachedDiskInitializeParams struct {
 	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones []string `pulumi:"replicaZones"`
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -1906,6 +1908,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -2070,6 +2074,11 @@ func (o AttachedDiskInitializeParamsOutput) ProvisionedIops() pulumi.StringPtrOu
 // URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 func (o AttachedDiskInitializeParamsOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o AttachedDiskInitializeParamsOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -2268,6 +2277,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) ReplicaZones() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o AttachedDiskInitializeParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
 // Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 func (o AttachedDiskInitializeParamsPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
@@ -2360,6 +2379,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	ProvisionedIops string `pulumi:"provisionedIops"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones []string `pulumi:"replicaZones"`
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -2459,6 +2480,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedIops() pulumi.Str
 // URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 func (o AttachedDiskInitializeParamsResponseOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o AttachedDiskInitializeParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -5037,7 +5063,7 @@ type Backend struct {
 	MaxRatePerEndpoint *float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance *float64 `pulumi:"maxRatePerInstance"`
-	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization *float64 `pulumi:"maxUtilization"`
 }
 
@@ -5076,7 +5102,7 @@ type BackendArgs struct {
 	MaxRatePerEndpoint pulumi.Float64PtrInput `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance pulumi.Float64PtrInput `pulumi:"maxRatePerInstance"`
-	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization pulumi.Float64PtrInput `pulumi:"maxUtilization"`
 }
 
@@ -5187,7 +5213,7 @@ func (o BackendOutput) MaxRatePerInstance() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxRatePerInstance }).(pulumi.Float64PtrOutput)
 }
 
-// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendOutput) MaxUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxUtilization }).(pulumi.Float64PtrOutput)
 }
@@ -6179,7 +6205,7 @@ type BackendResponse struct {
 	MaxRatePerEndpoint float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance float64 `pulumi:"maxRatePerInstance"`
-	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 	MaxUtilization float64 `pulumi:"maxUtilization"`
 }
 
@@ -6253,7 +6279,7 @@ func (o BackendResponseOutput) MaxRatePerInstance() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxRatePerInstance }).(pulumi.Float64Output)
 }
 
-// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+// Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendResponseOutput) MaxUtilization() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
 }
@@ -8865,6 +8891,366 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+type BulkInsertInstanceResource struct {
+	// The maximum number of instances to create.
+	Count *string `pulumi:"count"`
+	// DEPRECATED: Please use instance_properties instead.
+	//
+	// Deprecated: DEPRECATED: Please use instance_properties instead.
+	Instance *InstanceType `pulumi:"instance"`
+	// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+	InstanceProperties *InstanceProperties `pulumi:"instanceProperties"`
+	// Policy for chosing target zone. For more information, see Create VMs in bulk .
+	LocationPolicy *LocationPolicy `pulumi:"locationPolicy"`
+	// The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+	MinCount *string `pulumi:"minCount"`
+	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+	NamePattern *string `pulumi:"namePattern"`
+	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+	PerInstanceProperties map[string]string `pulumi:"perInstanceProperties"`
+	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
+}
+
+// BulkInsertInstanceResourceInput is an input type that accepts BulkInsertInstanceResourceArgs and BulkInsertInstanceResourceOutput values.
+// You can construct a concrete instance of `BulkInsertInstanceResourceInput` via:
+//
+//          BulkInsertInstanceResourceArgs{...}
+type BulkInsertInstanceResourceInput interface {
+	pulumi.Input
+
+	ToBulkInsertInstanceResourceOutput() BulkInsertInstanceResourceOutput
+	ToBulkInsertInstanceResourceOutputWithContext(context.Context) BulkInsertInstanceResourceOutput
+}
+
+// A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+type BulkInsertInstanceResourceArgs struct {
+	// The maximum number of instances to create.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// DEPRECATED: Please use instance_properties instead.
+	//
+	// Deprecated: DEPRECATED: Please use instance_properties instead.
+	Instance InstanceTypePtrInput `pulumi:"instance"`
+	// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+	InstanceProperties InstancePropertiesPtrInput `pulumi:"instanceProperties"`
+	// Policy for chosing target zone. For more information, see Create VMs in bulk .
+	LocationPolicy LocationPolicyPtrInput `pulumi:"locationPolicy"`
+	// The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+	MinCount pulumi.StringPtrInput `pulumi:"minCount"`
+	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+	NamePattern pulumi.StringPtrInput `pulumi:"namePattern"`
+	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+	PerInstanceProperties pulumi.StringMapInput `pulumi:"perInstanceProperties"`
+	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+	SourceInstanceTemplate pulumi.StringPtrInput `pulumi:"sourceInstanceTemplate"`
+}
+
+func (BulkInsertInstanceResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BulkInsertInstanceResource)(nil)).Elem()
+}
+
+func (i BulkInsertInstanceResourceArgs) ToBulkInsertInstanceResourceOutput() BulkInsertInstanceResourceOutput {
+	return i.ToBulkInsertInstanceResourceOutputWithContext(context.Background())
+}
+
+func (i BulkInsertInstanceResourceArgs) ToBulkInsertInstanceResourceOutputWithContext(ctx context.Context) BulkInsertInstanceResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourceOutput)
+}
+
+func (i BulkInsertInstanceResourceArgs) ToBulkInsertInstanceResourcePtrOutput() BulkInsertInstanceResourcePtrOutput {
+	return i.ToBulkInsertInstanceResourcePtrOutputWithContext(context.Background())
+}
+
+func (i BulkInsertInstanceResourceArgs) ToBulkInsertInstanceResourcePtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourceOutput).ToBulkInsertInstanceResourcePtrOutputWithContext(ctx)
+}
+
+// BulkInsertInstanceResourcePtrInput is an input type that accepts BulkInsertInstanceResourceArgs, BulkInsertInstanceResourcePtr and BulkInsertInstanceResourcePtrOutput values.
+// You can construct a concrete instance of `BulkInsertInstanceResourcePtrInput` via:
+//
+//          BulkInsertInstanceResourceArgs{...}
+//
+//  or:
+//
+//          nil
+type BulkInsertInstanceResourcePtrInput interface {
+	pulumi.Input
+
+	ToBulkInsertInstanceResourcePtrOutput() BulkInsertInstanceResourcePtrOutput
+	ToBulkInsertInstanceResourcePtrOutputWithContext(context.Context) BulkInsertInstanceResourcePtrOutput
+}
+
+type bulkInsertInstanceResourcePtrType BulkInsertInstanceResourceArgs
+
+func BulkInsertInstanceResourcePtr(v *BulkInsertInstanceResourceArgs) BulkInsertInstanceResourcePtrInput {
+	return (*bulkInsertInstanceResourcePtrType)(v)
+}
+
+func (*bulkInsertInstanceResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BulkInsertInstanceResource)(nil)).Elem()
+}
+
+func (i *bulkInsertInstanceResourcePtrType) ToBulkInsertInstanceResourcePtrOutput() BulkInsertInstanceResourcePtrOutput {
+	return i.ToBulkInsertInstanceResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *bulkInsertInstanceResourcePtrType) ToBulkInsertInstanceResourcePtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourcePtrOutput)
+}
+
+// A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+type BulkInsertInstanceResourceOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BulkInsertInstanceResource)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourceOutput) ToBulkInsertInstanceResourceOutput() BulkInsertInstanceResourceOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourceOutput) ToBulkInsertInstanceResourceOutputWithContext(ctx context.Context) BulkInsertInstanceResourceOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourceOutput) ToBulkInsertInstanceResourcePtrOutput() BulkInsertInstanceResourcePtrOutput {
+	return o.ToBulkInsertInstanceResourcePtrOutputWithContext(context.Background())
+}
+
+func (o BulkInsertInstanceResourceOutput) ToBulkInsertInstanceResourcePtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BulkInsertInstanceResource) *BulkInsertInstanceResource {
+		return &v
+	}).(BulkInsertInstanceResourcePtrOutput)
+}
+
+// The maximum number of instances to create.
+func (o BulkInsertInstanceResourceOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// DEPRECATED: Please use instance_properties instead.
+//
+// Deprecated: DEPRECATED: Please use instance_properties instead.
+func (o BulkInsertInstanceResourceOutput) Instance() InstanceTypePtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) *InstanceType { return v.Instance }).(InstanceTypePtrOutput)
+}
+
+// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+func (o BulkInsertInstanceResourceOutput) InstanceProperties() InstancePropertiesPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) *InstanceProperties { return v.InstanceProperties }).(InstancePropertiesPtrOutput)
+}
+
+// Policy for chosing target zone. For more information, see Create VMs in bulk .
+func (o BulkInsertInstanceResourceOutput) LocationPolicy() LocationPolicyPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) *LocationPolicy { return v.LocationPolicy }).(LocationPolicyPtrOutput)
+}
+
+// The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+func (o BulkInsertInstanceResourceOutput) MinCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) *string { return v.MinCount }).(pulumi.StringPtrOutput)
+}
+
+// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+func (o BulkInsertInstanceResourceOutput) NamePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) *string { return v.NamePattern }).(pulumi.StringPtrOutput)
+}
+
+// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+func (o BulkInsertInstanceResourceOutput) PerInstanceProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) map[string]string { return v.PerInstanceProperties }).(pulumi.StringMapOutput)
+}
+
+// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+func (o BulkInsertInstanceResourceOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) *string { return v.SourceInstanceTemplate }).(pulumi.StringPtrOutput)
+}
+
+type BulkInsertInstanceResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BulkInsertInstanceResource)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourcePtrOutput) ToBulkInsertInstanceResourcePtrOutput() BulkInsertInstanceResourcePtrOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePtrOutput) ToBulkInsertInstanceResourcePtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePtrOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePtrOutput) Elem() BulkInsertInstanceResourceOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) BulkInsertInstanceResource {
+		if v != nil {
+			return *v
+		}
+		var ret BulkInsertInstanceResource
+		return ret
+	}).(BulkInsertInstanceResourceOutput)
+}
+
+// The maximum number of instances to create.
+func (o BulkInsertInstanceResourcePtrOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.StringPtrOutput)
+}
+
+// DEPRECATED: Please use instance_properties instead.
+//
+// Deprecated: DEPRECATED: Please use instance_properties instead.
+func (o BulkInsertInstanceResourcePtrOutput) Instance() InstanceTypePtrOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) *InstanceType {
+		if v == nil {
+			return nil
+		}
+		return v.Instance
+	}).(InstanceTypePtrOutput)
+}
+
+// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+func (o BulkInsertInstanceResourcePtrOutput) InstanceProperties() InstancePropertiesPtrOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) *InstanceProperties {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceProperties
+	}).(InstancePropertiesPtrOutput)
+}
+
+// Policy for chosing target zone. For more information, see Create VMs in bulk .
+func (o BulkInsertInstanceResourcePtrOutput) LocationPolicy() LocationPolicyPtrOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) *LocationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.LocationPolicy
+	}).(LocationPolicyPtrOutput)
+}
+
+// The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+func (o BulkInsertInstanceResourcePtrOutput) MinCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+func (o BulkInsertInstanceResourcePtrOutput) NamePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamePattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+func (o BulkInsertInstanceResourcePtrOutput) PerInstanceProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PerInstanceProperties
+	}).(pulumi.StringMapOutput)
+}
+
+// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+func (o BulkInsertInstanceResourcePtrOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInstanceTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+type BulkInsertInstanceResourceResponse struct {
+	// The maximum number of instances to create.
+	Count string `pulumi:"count"`
+	// DEPRECATED: Please use instance_properties instead.
+	//
+	// Deprecated: DEPRECATED: Please use instance_properties instead.
+	Instance InstanceResponse `pulumi:"instance"`
+	// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+	InstanceProperties InstancePropertiesResponse `pulumi:"instanceProperties"`
+	// Policy for chosing target zone. For more information, see Create VMs in bulk .
+	LocationPolicy LocationPolicyResponse `pulumi:"locationPolicy"`
+	// The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+	MinCount string `pulumi:"minCount"`
+	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+	NamePattern string `pulumi:"namePattern"`
+	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+	PerInstanceProperties map[string]string `pulumi:"perInstanceProperties"`
+	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
+}
+
+// A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
+type BulkInsertInstanceResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BulkInsertInstanceResourceResponse)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourceResponseOutput) ToBulkInsertInstanceResourceResponseOutput() BulkInsertInstanceResourceResponseOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourceResponseOutput) ToBulkInsertInstanceResourceResponseOutputWithContext(ctx context.Context) BulkInsertInstanceResourceResponseOutput {
+	return o
+}
+
+// The maximum number of instances to create.
+func (o BulkInsertInstanceResourceResponseOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: Please use instance_properties instead.
+//
+// Deprecated: DEPRECATED: Please use instance_properties instead.
+func (o BulkInsertInstanceResourceResponseOutput) Instance() InstanceResponseOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) InstanceResponse { return v.Instance }).(InstanceResponseOutput)
+}
+
+// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
+func (o BulkInsertInstanceResourceResponseOutput) InstanceProperties() InstancePropertiesResponseOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) InstancePropertiesResponse { return v.InstanceProperties }).(InstancePropertiesResponseOutput)
+}
+
+// Policy for chosing target zone. For more information, see Create VMs in bulk .
+func (o BulkInsertInstanceResourceResponseOutput) LocationPolicy() LocationPolicyResponseOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) LocationPolicyResponse { return v.LocationPolicy }).(LocationPolicyResponseOutput)
+}
+
+// The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
+func (o BulkInsertInstanceResourceResponseOutput) MinCount() pulumi.StringOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) string { return v.MinCount }).(pulumi.StringOutput)
+}
+
+// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
+func (o BulkInsertInstanceResourceResponseOutput) NamePattern() pulumi.StringOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) string { return v.NamePattern }).(pulumi.StringOutput)
+}
+
+// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+func (o BulkInsertInstanceResourceResponseOutput) PerInstanceProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) map[string]string { return v.PerInstanceProperties }).(pulumi.StringMapOutput)
+}
+
+// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
+func (o BulkInsertInstanceResourceResponseOutput) SourceInstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) string { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
+}
+
 // Message containing what to include in the cache key for a request for Cloud CDN.
 type CacheKeyPolicy struct {
 	// If true, requests to different hosts will be cached separately.
@@ -11469,6 +11855,380 @@ func (o CorsPolicyResponseOutput) MaxAge() pulumi.IntOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) int { return v.MaxAge }).(pulumi.IntOutput)
 }
 
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicy struct {
+	// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	ErrorResponseRules []CustomErrorResponsePolicyCustomErrorResponseRule `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+	ErrorService *string `pulumi:"errorService"`
+}
+
+// CustomErrorResponsePolicyInput is an input type that accepts CustomErrorResponsePolicyArgs and CustomErrorResponsePolicyOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyInput` via:
+//
+//          CustomErrorResponsePolicyArgs{...}
+type CustomErrorResponsePolicyInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyOutput() CustomErrorResponsePolicyOutput
+	ToCustomErrorResponsePolicyOutputWithContext(context.Context) CustomErrorResponsePolicyOutput
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyArgs struct {
+	// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	ErrorResponseRules CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+	ErrorService pulumi.StringPtrInput `pulumi:"errorService"`
+}
+
+func (CustomErrorResponsePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyOutput() CustomErrorResponsePolicyOutput {
+	return i.ToCustomErrorResponsePolicyOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyOutputWithContext(ctx context.Context) CustomErrorResponsePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyOutput)
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return i.ToCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyOutput).ToCustomErrorResponsePolicyPtrOutputWithContext(ctx)
+}
+
+// CustomErrorResponsePolicyPtrInput is an input type that accepts CustomErrorResponsePolicyArgs, CustomErrorResponsePolicyPtr and CustomErrorResponsePolicyPtrOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyPtrInput` via:
+//
+//          CustomErrorResponsePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomErrorResponsePolicyPtrInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput
+	ToCustomErrorResponsePolicyPtrOutputWithContext(context.Context) CustomErrorResponsePolicyPtrOutput
+}
+
+type customErrorResponsePolicyPtrType CustomErrorResponsePolicyArgs
+
+func CustomErrorResponsePolicyPtr(v *CustomErrorResponsePolicyArgs) CustomErrorResponsePolicyPtrInput {
+	return (*customErrorResponsePolicyPtrType)(v)
+}
+
+func (*customErrorResponsePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i *customErrorResponsePolicyPtrType) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return i.ToCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *customErrorResponsePolicyPtrType) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyPtrOutput)
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyOutput() CustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyOutputWithContext(ctx context.Context) CustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return o.ToCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomErrorResponsePolicy) *CustomErrorResponsePolicy {
+		return &v
+	}).(CustomErrorResponsePolicyPtrOutput)
+}
+
+// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+func (o CustomErrorResponsePolicyOutput) ErrorResponseRules() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicy) []CustomErrorResponsePolicyCustomErrorResponseRule {
+		return v.ErrorResponseRules
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+func (o CustomErrorResponsePolicyOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicy) *string { return v.ErrorService }).(pulumi.StringPtrOutput)
+}
+
+type CustomErrorResponsePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyPtrOutput) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyPtrOutput) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyPtrOutput) Elem() CustomErrorResponsePolicyOutput {
+	return o.ApplyT(func(v *CustomErrorResponsePolicy) CustomErrorResponsePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CustomErrorResponsePolicy
+		return ret
+	}).(CustomErrorResponsePolicyOutput)
+}
+
+// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+func (o CustomErrorResponsePolicyPtrOutput) ErrorResponseRules() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v *CustomErrorResponsePolicy) []CustomErrorResponsePolicyCustomErrorResponseRule {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorResponseRules
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+func (o CustomErrorResponsePolicyPtrOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomErrorResponsePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRule struct {
+	// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes []string `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode *int `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+	Path *string `pulumi:"path"`
+}
+
+// CustomErrorResponsePolicyCustomErrorResponseRuleInput is an input type that accepts CustomErrorResponsePolicyCustomErrorResponseRuleArgs and CustomErrorResponsePolicyCustomErrorResponseRuleOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyCustomErrorResponseRuleInput` via:
+//
+//          CustomErrorResponsePolicyCustomErrorResponseRuleArgs{...}
+type CustomErrorResponsePolicyCustomErrorResponseRuleInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleOutput() CustomErrorResponsePolicyCustomErrorResponseRuleOutput
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleOutput
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleArgs struct {
+	// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes pulumi.StringArrayInput `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode pulumi.IntPtrInput `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArgs) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutput() CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return i.ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArgs) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyCustomErrorResponseRuleOutput)
+}
+
+// CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput is an input type that accepts CustomErrorResponsePolicyCustomErrorResponseRuleArray and CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput` via:
+//
+//          CustomErrorResponsePolicyCustomErrorResponseRuleArray{ CustomErrorResponsePolicyCustomErrorResponseRuleArgs{...} }
+type CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput
+}
+
+type CustomErrorResponsePolicyCustomErrorResponseRuleArray []CustomErrorResponsePolicyCustomErrorResponseRuleInput
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArray) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return i.ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArray) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput)
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutput() CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return o
+}
+
+// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) MatchResponseCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRule) []string { return v.MatchResponseCodes }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) OverrideResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRule) *int { return v.OverrideResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) Index(i pulumi.IntInput) CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponsePolicyCustomErrorResponseRule {
+		return vs[0].([]CustomErrorResponsePolicyCustomErrorResponseRule)[vs[1].(int)]
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleOutput)
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleResponse struct {
+	// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes []string `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode int `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+	Path string `pulumi:"path"`
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRuleResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput() CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput {
+	return o
+}
+
+// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) MatchResponseCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRuleResponse) []string { return v.MatchResponseCodes }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) OverrideResponseCode() pulumi.IntOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRuleResponse) int { return v.OverrideResponseCode }).(pulumi.IntOutput)
+}
+
+// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRuleResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponsePolicyCustomErrorResponseRuleResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponsePolicyCustomErrorResponseRuleResponse {
+		return vs[0].([]CustomErrorResponsePolicyCustomErrorResponseRuleResponse)[vs[1].(int)]
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput)
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyResponse struct {
+	// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	ErrorResponseRules []CustomErrorResponsePolicyCustomErrorResponseRuleResponse `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+	ErrorService string `pulumi:"errorService"`
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyResponseOutput) ToCustomErrorResponsePolicyResponseOutput() CustomErrorResponsePolicyResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyResponseOutput) ToCustomErrorResponsePolicyResponseOutputWithContext(ctx context.Context) CustomErrorResponsePolicyResponseOutput {
+	return o
+}
+
+// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+func (o CustomErrorResponsePolicyResponseOutput) ErrorResponseRules() CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyResponse) []CustomErrorResponsePolicyCustomErrorResponseRuleResponse {
+		return v.ErrorResponseRules
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+func (o CustomErrorResponsePolicyResponseOutput) ErrorService() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyResponse) string { return v.ErrorService }).(pulumi.StringOutput)
+}
+
 type CustomerEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -12373,6 +13133,172 @@ func (o DiskInstantiationConfigResponseArrayOutput) Index(i pulumi.IntInput) Dis
 	}).(DiskInstantiationConfigResponseOutput)
 }
 
+// Additional disk params.
+type DiskParams struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// DiskParamsInput is an input type that accepts DiskParamsArgs and DiskParamsOutput values.
+// You can construct a concrete instance of `DiskParamsInput` via:
+//
+//          DiskParamsArgs{...}
+type DiskParamsInput interface {
+	pulumi.Input
+
+	ToDiskParamsOutput() DiskParamsOutput
+	ToDiskParamsOutputWithContext(context.Context) DiskParamsOutput
+}
+
+// Additional disk params.
+type DiskParamsArgs struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (DiskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskParams)(nil)).Elem()
+}
+
+func (i DiskParamsArgs) ToDiskParamsOutput() DiskParamsOutput {
+	return i.ToDiskParamsOutputWithContext(context.Background())
+}
+
+func (i DiskParamsArgs) ToDiskParamsOutputWithContext(ctx context.Context) DiskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskParamsOutput)
+}
+
+func (i DiskParamsArgs) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return i.ToDiskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i DiskParamsArgs) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskParamsOutput).ToDiskParamsPtrOutputWithContext(ctx)
+}
+
+// DiskParamsPtrInput is an input type that accepts DiskParamsArgs, DiskParamsPtr and DiskParamsPtrOutput values.
+// You can construct a concrete instance of `DiskParamsPtrInput` via:
+//
+//          DiskParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskParamsPtrInput interface {
+	pulumi.Input
+
+	ToDiskParamsPtrOutput() DiskParamsPtrOutput
+	ToDiskParamsPtrOutputWithContext(context.Context) DiskParamsPtrOutput
+}
+
+type diskParamsPtrType DiskParamsArgs
+
+func DiskParamsPtr(v *DiskParamsArgs) DiskParamsPtrInput {
+	return (*diskParamsPtrType)(v)
+}
+
+func (*diskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskParams)(nil)).Elem()
+}
+
+func (i *diskParamsPtrType) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return i.ToDiskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *diskParamsPtrType) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskParamsPtrOutput)
+}
+
+// Additional disk params.
+type DiskParamsOutput struct{ *pulumi.OutputState }
+
+func (DiskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskParams)(nil)).Elem()
+}
+
+func (o DiskParamsOutput) ToDiskParamsOutput() DiskParamsOutput {
+	return o
+}
+
+func (o DiskParamsOutput) ToDiskParamsOutputWithContext(ctx context.Context) DiskParamsOutput {
+	return o
+}
+
+func (o DiskParamsOutput) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return o.ToDiskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o DiskParamsOutput) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskParams) *DiskParams {
+		return &v
+	}).(DiskParamsPtrOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o DiskParamsOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskParams) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type DiskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskParams)(nil)).Elem()
+}
+
+func (o DiskParamsPtrOutput) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return o
+}
+
+func (o DiskParamsPtrOutput) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return o
+}
+
+func (o DiskParamsPtrOutput) Elem() DiskParamsOutput {
+	return o.ApplyT(func(v *DiskParams) DiskParams {
+		if v != nil {
+			return *v
+		}
+		var ret DiskParams
+		return ret
+	}).(DiskParamsOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o DiskParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DiskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Additional disk params.
+type DiskParamsResponse struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// Additional disk params.
+type DiskParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskParamsResponse)(nil)).Elem()
+}
+
+func (o DiskParamsResponseOutput) ToDiskParamsResponseOutput() DiskParamsResponseOutput {
+	return o
+}
+
+func (o DiskParamsResponseOutput) ToDiskParamsResponseOutputWithContext(ctx context.Context) DiskParamsResponseOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o DiskParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
 type DiskResourceStatusAsyncReplicationStatusResponse struct {
 	State string `pulumi:"state"`
 }
@@ -13110,6 +14036,46 @@ func (o DurationResponseOutput) Nanos() pulumi.IntOutput {
 // Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
 func (o DurationResponseOutput) Seconds() pulumi.StringOutput {
 	return o.ApplyT(func(v DurationResponse) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+// Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+type ErrorInfoResponse struct {
+	// The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+	Domain string `pulumi:"domain"`
+	// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+	Metadatas map[string]string `pulumi:"metadatas"`
+	// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match /[A-Z0-9_]+/.
+	Reason string `pulumi:"reason"`
+}
+
+// Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+type ErrorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorInfoResponseOutput) ToErrorInfoResponseOutput() ErrorInfoResponseOutput {
+	return o
+}
+
+func (o ErrorInfoResponseOutput) ToErrorInfoResponseOutputWithContext(ctx context.Context) ErrorInfoResponseOutput {
+	return o
+}
+
+// The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+func (o ErrorInfoResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorInfoResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+func (o ErrorInfoResponseOutput) Metadatas() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ErrorInfoResponse) map[string]string { return v.Metadatas }).(pulumi.StringMapOutput)
+}
+
+// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match /[A-Z0-9_]+/.
+func (o ErrorInfoResponseOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorInfoResponse) string { return v.Reason }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -18158,6 +19124,85 @@ func (o HealthCheckLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v HealthCheckLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
+// Describes a URL link.
+type HelpLinkResponse struct {
+	// Describes what the link offers.
+	Description string `pulumi:"description"`
+	// The URL of the link.
+	Url string `pulumi:"url"`
+}
+
+// Describes a URL link.
+type HelpLinkResponseOutput struct{ *pulumi.OutputState }
+
+func (HelpLinkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HelpLinkResponse)(nil)).Elem()
+}
+
+func (o HelpLinkResponseOutput) ToHelpLinkResponseOutput() HelpLinkResponseOutput {
+	return o
+}
+
+func (o HelpLinkResponseOutput) ToHelpLinkResponseOutputWithContext(ctx context.Context) HelpLinkResponseOutput {
+	return o
+}
+
+// Describes what the link offers.
+func (o HelpLinkResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v HelpLinkResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The URL of the link.
+func (o HelpLinkResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v HelpLinkResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type HelpLinkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HelpLinkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HelpLinkResponse)(nil)).Elem()
+}
+
+func (o HelpLinkResponseArrayOutput) ToHelpLinkResponseArrayOutput() HelpLinkResponseArrayOutput {
+	return o
+}
+
+func (o HelpLinkResponseArrayOutput) ToHelpLinkResponseArrayOutputWithContext(ctx context.Context) HelpLinkResponseArrayOutput {
+	return o
+}
+
+func (o HelpLinkResponseArrayOutput) Index(i pulumi.IntInput) HelpLinkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HelpLinkResponse {
+		return vs[0].([]HelpLinkResponse)[vs[1].(int)]
+	}).(HelpLinkResponseOutput)
+}
+
+// Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.
+type HelpResponse struct {
+	// URL(s) pointing to additional information on handling the current error.
+	Links []HelpLinkResponse `pulumi:"links"`
+}
+
+// Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.
+type HelpResponseOutput struct{ *pulumi.OutputState }
+
+func (HelpResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HelpResponse)(nil)).Elem()
+}
+
+func (o HelpResponseOutput) ToHelpResponseOutput() HelpResponseOutput {
+	return o
+}
+
+func (o HelpResponseOutput) ToHelpResponseOutputWithContext(ctx context.Context) HelpResponseOutput {
+	return o
+}
+
+// URL(s) pointing to additional information on handling the current error.
+func (o HelpResponseOutput) Links() HelpLinkResponseArrayOutput {
+	return o.ApplyT(func(v HelpResponse) []HelpLinkResponse { return v.Links }).(HelpLinkResponseArrayOutput)
+}
+
 // UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
 type HostRule struct {
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -20823,6 +21868,8 @@ func (o HttpRouteActionResponseOutput) WeightedBackendServices() WeightedBackend
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRule struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description *string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -20856,6 +21903,8 @@ type HttpRouteRuleInput interface {
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleArgs struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -20926,6 +21975,11 @@ func (o HttpRouteRuleOutput) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
 
 func (o HttpRouteRuleOutput) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
 	return o
+}
+
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o HttpRouteRuleOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyT(func(v HttpRouteRule) *CustomErrorResponsePolicy { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
 }
 
 // The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
@@ -21237,6 +22291,8 @@ func (o HttpRouteRuleMatchResponseArrayOutput) Index(i pulumi.IntInput) HttpRout
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleResponse struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -21270,6 +22326,11 @@ func (o HttpRouteRuleResponseOutput) ToHttpRouteRuleResponseOutput() HttpRouteRu
 
 func (o HttpRouteRuleResponseOutput) ToHttpRouteRuleResponseOutputWithContext(ctx context.Context) HttpRouteRuleResponseOutput {
 	return o
+}
+
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o HttpRouteRuleResponseOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
+	return o.ApplyT(func(v HttpRouteRuleResponse) CustomErrorResponsePolicyResponse { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyResponseOutput)
 }
 
 // The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
@@ -21809,6 +22870,776 @@ func (o InitialStateConfigResponseOutput) Keks() FileContentBufferResponseArrayO
 // The Platform Key (PK).
 func (o InitialStateConfigResponseOutput) Pk() FileContentBufferResponseOutput {
 	return o.ApplyT(func(v InitialStateConfigResponse) FileContentBufferResponse { return v.Pk }).(FileContentBufferResponseOutput)
+}
+
+// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+type InstanceType struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+	CanIpForward               *bool                       `pulumi:"canIpForward"`
+	ConfidentialInstanceConfig *ConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
+	// Whether the resource should be protected against deletion.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description *string `pulumi:"description"`
+	// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+	Disks []AttachedDisk `pulumi:"disks"`
+	// Enables display device for the instance.
+	DisplayDevice *DisplayDevice `pulumi:"displayDevice"`
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
+	// A list of the type and count of accelerator cards attached to the instance.
+	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
+	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+	Hostname *string `pulumi:"hostname"`
+	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+	InstanceEncryptionKey *CustomerEncryptionKey `pulumi:"instanceEncryptionKey"`
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+	KeyRevocationActionType *InstanceKeyRevocationActionType `pulumi:"keyRevocationActionType"`
+	// Labels to apply to this instance. These can be later modified by the setLabels method.
+	Labels map[string]string `pulumi:"labels"`
+	// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+	MachineType *string `pulumi:"machineType"`
+	// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+	Metadata *Metadata `pulumi:"metadata"`
+	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name *string `pulumi:"name"`
+	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+	NetworkInterfaces        []NetworkInterface        `pulumi:"networkInterfaces"`
+	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params *InstanceParams `pulumi:"params"`
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType *InstancePostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
+	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+	PreservedStateSizeGb *string `pulumi:"preservedStateSizeGb"`
+	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+	PrivateIpv6GoogleAccess *InstancePrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
+	// Resource policies applied to this instance.
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// Sets the scheduling options for this instance.
+	Scheduling *Scheduling `pulumi:"scheduling"`
+	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+	SecureTags []string `pulumi:"secureTags"`
+	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+	ServiceAccounts                 []ServiceAccount                 `pulumi:"serviceAccounts"`
+	ShieldedInstanceConfig          *ShieldedInstanceConfig          `pulumi:"shieldedInstanceConfig"`
+	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy `pulumi:"shieldedInstanceIntegrityPolicy"`
+	// Deprecating, please use shielded_instance_config.
+	ShieldedVmConfig *ShieldedVmConfig `pulumi:"shieldedVmConfig"`
+	// Deprecating, please use shielded_instance_integrity_policy.
+	ShieldedVmIntegrityPolicy *ShieldedVmIntegrityPolicy `pulumi:"shieldedVmIntegrityPolicy"`
+	// Source machine image
+	SourceMachineImage *string `pulumi:"sourceMachineImage"`
+	// Source machine image encryption key when creating an instance from a machine image.
+	SourceMachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
+	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+	Tags *Tags `pulumi:"tags"`
+}
+
+// InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
+// You can construct a concrete instance of `InstanceTypeInput` via:
+//
+//          InstanceTypeArgs{...}
+type InstanceTypeInput interface {
+	pulumi.Input
+
+	ToInstanceTypeOutput() InstanceTypeOutput
+	ToInstanceTypeOutputWithContext(context.Context) InstanceTypeOutput
+}
+
+// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+type InstanceTypeArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+	CanIpForward               pulumi.BoolPtrInput                `pulumi:"canIpForward"`
+	ConfidentialInstanceConfig ConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
+	// Whether the resource should be protected against deletion.
+	DeletionProtection pulumi.BoolPtrInput `pulumi:"deletionProtection"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+	Disks AttachedDiskArrayInput `pulumi:"disks"`
+	// Enables display device for the instance.
+	DisplayDevice DisplayDevicePtrInput `pulumi:"displayDevice"`
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature pulumi.BoolPtrInput `pulumi:"eraseWindowsVssSignature"`
+	// A list of the type and count of accelerator cards attached to the instance.
+	GuestAccelerators AcceleratorConfigArrayInput `pulumi:"guestAccelerators"`
+	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+	InstanceEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"instanceEncryptionKey"`
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+	KeyRevocationActionType InstanceKeyRevocationActionTypePtrInput `pulumi:"keyRevocationActionType"`
+	// Labels to apply to this instance. These can be later modified by the setLabels method.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+	Metadata MetadataPtrInput `pulumi:"metadata"`
+	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+	NetworkInterfaces        NetworkInterfaceArrayInput       `pulumi:"networkInterfaces"`
+	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceParamsPtrInput `pulumi:"params"`
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType InstancePostKeyRevocationActionTypePtrInput `pulumi:"postKeyRevocationActionType"`
+	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+	PreservedStateSizeGb pulumi.StringPtrInput `pulumi:"preservedStateSizeGb"`
+	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+	PrivateIpv6GoogleAccess InstancePrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// Resource policies applied to this instance.
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
+	// Sets the scheduling options for this instance.
+	Scheduling SchedulingPtrInput `pulumi:"scheduling"`
+	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+	SecureTags pulumi.StringArrayInput `pulumi:"secureTags"`
+	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+	ServiceAccounts                 ServiceAccountArrayInput                `pulumi:"serviceAccounts"`
+	ShieldedInstanceConfig          ShieldedInstanceConfigPtrInput          `pulumi:"shieldedInstanceConfig"`
+	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyPtrInput `pulumi:"shieldedInstanceIntegrityPolicy"`
+	// Deprecating, please use shielded_instance_config.
+	ShieldedVmConfig ShieldedVmConfigPtrInput `pulumi:"shieldedVmConfig"`
+	// Deprecating, please use shielded_instance_integrity_policy.
+	ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicyPtrInput `pulumi:"shieldedVmIntegrityPolicy"`
+	// Source machine image
+	SourceMachineImage pulumi.StringPtrInput `pulumi:"sourceMachineImage"`
+	// Source machine image encryption key when creating an instance from a machine image.
+	SourceMachineImageEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"sourceMachineImageEncryptionKey"`
+	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+	Tags TagsPtrInput `pulumi:"tags"`
+}
+
+func (InstanceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceType)(nil)).Elem()
+}
+
+func (i InstanceTypeArgs) ToInstanceTypeOutput() InstanceTypeOutput {
+	return i.ToInstanceTypeOutputWithContext(context.Background())
+}
+
+func (i InstanceTypeArgs) ToInstanceTypeOutputWithContext(ctx context.Context) InstanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTypeOutput)
+}
+
+func (i InstanceTypeArgs) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return i.ToInstanceTypePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTypeArgs) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTypeOutput).ToInstanceTypePtrOutputWithContext(ctx)
+}
+
+// InstanceTypePtrInput is an input type that accepts InstanceTypeArgs, InstanceTypePtr and InstanceTypePtrOutput values.
+// You can construct a concrete instance of `InstanceTypePtrInput` via:
+//
+//          InstanceTypeArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTypePtrInput interface {
+	pulumi.Input
+
+	ToInstanceTypePtrOutput() InstanceTypePtrOutput
+	ToInstanceTypePtrOutputWithContext(context.Context) InstanceTypePtrOutput
+}
+
+type instanceTypePtrType InstanceTypeArgs
+
+func InstanceTypePtr(v *InstanceTypeArgs) InstanceTypePtrInput {
+	return (*instanceTypePtrType)(v)
+}
+
+func (*instanceTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceType)(nil)).Elem()
+}
+
+func (i *instanceTypePtrType) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return i.ToInstanceTypePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTypePtrType) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTypePtrOutput)
+}
+
+// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+type InstanceTypeOutput struct{ *pulumi.OutputState }
+
+func (InstanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceType)(nil)).Elem()
+}
+
+func (o InstanceTypeOutput) ToInstanceTypeOutput() InstanceTypeOutput {
+	return o
+}
+
+func (o InstanceTypeOutput) ToInstanceTypeOutputWithContext(ctx context.Context) InstanceTypeOutput {
+	return o
+}
+
+func (o InstanceTypeOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return o.ToInstanceTypePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTypeOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceType) *InstanceType {
+		return &v
+	}).(InstanceTypePtrOutput)
+}
+
+// Controls for advanced machine-related behavior features.
+func (o InstanceTypeOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v InstanceType) *AdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+func (o InstanceTypeOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceType) *bool { return v.CanIpForward }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceTypeOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceType) *ConfidentialInstanceConfig { return v.ConfidentialInstanceConfig }).(ConfidentialInstanceConfigPtrOutput)
+}
+
+// Whether the resource should be protected against deletion.
+func (o InstanceTypeOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceType) *bool { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o InstanceTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+func (o InstanceTypeOutput) Disks() AttachedDiskArrayOutput {
+	return o.ApplyT(func(v InstanceType) []AttachedDisk { return v.Disks }).(AttachedDiskArrayOutput)
+}
+
+// Enables display device for the instance.
+func (o InstanceTypeOutput) DisplayDevice() DisplayDevicePtrOutput {
+	return o.ApplyT(func(v InstanceType) *DisplayDevice { return v.DisplayDevice }).(DisplayDevicePtrOutput)
+}
+
+// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+func (o InstanceTypeOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceType) *bool { return v.EraseWindowsVssSignature }).(pulumi.BoolPtrOutput)
+}
+
+// A list of the type and count of accelerator cards attached to the instance.
+func (o InstanceTypeOutput) GuestAccelerators() AcceleratorConfigArrayOutput {
+	return o.ApplyT(func(v InstanceType) []AcceleratorConfig { return v.GuestAccelerators }).(AcceleratorConfigArrayOutput)
+}
+
+// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+func (o InstanceTypeOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceType) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+func (o InstanceTypeOutput) InstanceEncryptionKey() CustomerEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v InstanceType) *CustomerEncryptionKey { return v.InstanceEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
+}
+
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+func (o InstanceTypeOutput) KeyRevocationActionType() InstanceKeyRevocationActionTypePtrOutput {
+	return o.ApplyT(func(v InstanceType) *InstanceKeyRevocationActionType { return v.KeyRevocationActionType }).(InstanceKeyRevocationActionTypePtrOutput)
+}
+
+// Labels to apply to this instance. These can be later modified by the setLabels method.
+func (o InstanceTypeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceType) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+func (o InstanceTypeOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceType) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+func (o InstanceTypeOutput) Metadata() MetadataPtrOutput {
+	return o.ApplyT(func(v InstanceType) *Metadata { return v.Metadata }).(MetadataPtrOutput)
+}
+
+// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+func (o InstanceTypeOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceType) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o InstanceTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+func (o InstanceTypeOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v InstanceType) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
+}
+
+func (o InstanceTypeOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceType) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+func (o InstanceTypeOutput) Params() InstanceParamsPtrOutput {
+	return o.ApplyT(func(v InstanceType) *InstanceParams { return v.Params }).(InstanceParamsPtrOutput)
+}
+
+// PostKeyRevocationActionType of the instance.
+func (o InstanceTypeOutput) PostKeyRevocationActionType() InstancePostKeyRevocationActionTypePtrOutput {
+	return o.ApplyT(func(v InstanceType) *InstancePostKeyRevocationActionType { return v.PostKeyRevocationActionType }).(InstancePostKeyRevocationActionTypePtrOutput)
+}
+
+// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+func (o InstanceTypeOutput) PreservedStateSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceType) *string { return v.PreservedStateSizeGb }).(pulumi.StringPtrOutput)
+}
+
+// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+func (o InstanceTypeOutput) PrivateIpv6GoogleAccess() InstancePrivateIpv6GoogleAccessPtrOutput {
+	return o.ApplyT(func(v InstanceType) *InstancePrivateIpv6GoogleAccess { return v.PrivateIpv6GoogleAccess }).(InstancePrivateIpv6GoogleAccessPtrOutput)
+}
+
+// Specifies the reservations that this instance can consume from.
+func (o InstanceTypeOutput) ReservationAffinity() ReservationAffinityPtrOutput {
+	return o.ApplyT(func(v InstanceType) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
+}
+
+// Resource policies applied to this instance.
+func (o InstanceTypeOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceType) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
+// Sets the scheduling options for this instance.
+func (o InstanceTypeOutput) Scheduling() SchedulingPtrOutput {
+	return o.ApplyT(func(v InstanceType) *Scheduling { return v.Scheduling }).(SchedulingPtrOutput)
+}
+
+// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+func (o InstanceTypeOutput) SecureTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceType) []string { return v.SecureTags }).(pulumi.StringArrayOutput)
+}
+
+// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+func (o InstanceTypeOutput) ServiceAccounts() ServiceAccountArrayOutput {
+	return o.ApplyT(func(v InstanceType) []ServiceAccount { return v.ServiceAccounts }).(ServiceAccountArrayOutput)
+}
+
+func (o InstanceTypeOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceType) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
+}
+
+func (o InstanceTypeOutput) ShieldedInstanceIntegrityPolicy() ShieldedInstanceIntegrityPolicyPtrOutput {
+	return o.ApplyT(func(v InstanceType) *ShieldedInstanceIntegrityPolicy { return v.ShieldedInstanceIntegrityPolicy }).(ShieldedInstanceIntegrityPolicyPtrOutput)
+}
+
+// Deprecating, please use shielded_instance_config.
+func (o InstanceTypeOutput) ShieldedVmConfig() ShieldedVmConfigPtrOutput {
+	return o.ApplyT(func(v InstanceType) *ShieldedVmConfig { return v.ShieldedVmConfig }).(ShieldedVmConfigPtrOutput)
+}
+
+// Deprecating, please use shielded_instance_integrity_policy.
+func (o InstanceTypeOutput) ShieldedVmIntegrityPolicy() ShieldedVmIntegrityPolicyPtrOutput {
+	return o.ApplyT(func(v InstanceType) *ShieldedVmIntegrityPolicy { return v.ShieldedVmIntegrityPolicy }).(ShieldedVmIntegrityPolicyPtrOutput)
+}
+
+// Source machine image
+func (o InstanceTypeOutput) SourceMachineImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceType) *string { return v.SourceMachineImage }).(pulumi.StringPtrOutput)
+}
+
+// Source machine image encryption key when creating an instance from a machine image.
+func (o InstanceTypeOutput) SourceMachineImageEncryptionKey() CustomerEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v InstanceType) *CustomerEncryptionKey { return v.SourceMachineImageEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
+}
+
+// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+func (o InstanceTypeOutput) Tags() TagsPtrOutput {
+	return o.ApplyT(func(v InstanceType) *Tags { return v.Tags }).(TagsPtrOutput)
+}
+
+type InstanceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceType)(nil)).Elem()
+}
+
+func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return o
+}
+
+func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return o
+}
+
+func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
+	return o.ApplyT(func(v *InstanceType) InstanceType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceType
+		return ret
+	}).(InstanceTypeOutput)
+}
+
+// Controls for advanced machine-related behavior features.
+func (o InstanceTypePtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *AdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+func (o InstanceTypePtrOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanIpForward
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceTypePtrOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *ConfidentialInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceConfig
+	}).(ConfidentialInstanceConfigPtrOutput)
+}
+
+// Whether the resource should be protected against deletion.
+func (o InstanceTypePtrOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o InstanceTypePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+func (o InstanceTypePtrOutput) Disks() AttachedDiskArrayOutput {
+	return o.ApplyT(func(v *InstanceType) []AttachedDisk {
+		if v == nil {
+			return nil
+		}
+		return v.Disks
+	}).(AttachedDiskArrayOutput)
+}
+
+// Enables display device for the instance.
+func (o InstanceTypePtrOutput) DisplayDevice() DisplayDevicePtrOutput {
+	return o.ApplyT(func(v *InstanceType) *DisplayDevice {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayDevice
+	}).(DisplayDevicePtrOutput)
+}
+
+// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+func (o InstanceTypePtrOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EraseWindowsVssSignature
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of the type and count of accelerator cards attached to the instance.
+func (o InstanceTypePtrOutput) GuestAccelerators() AcceleratorConfigArrayOutput {
+	return o.ApplyT(func(v *InstanceType) []AcceleratorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GuestAccelerators
+	}).(AcceleratorConfigArrayOutput)
+}
+
+// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+func (o InstanceTypePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+func (o InstanceTypePtrOutput) InstanceEncryptionKey() CustomerEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *CustomerEncryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceEncryptionKey
+	}).(CustomerEncryptionKeyPtrOutput)
+}
+
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+func (o InstanceTypePtrOutput) KeyRevocationActionType() InstanceKeyRevocationActionTypePtrOutput {
+	return o.ApplyT(func(v *InstanceType) *InstanceKeyRevocationActionType {
+		if v == nil {
+			return nil
+		}
+		return v.KeyRevocationActionType
+	}).(InstanceKeyRevocationActionTypePtrOutput)
+}
+
+// Labels to apply to this instance. These can be later modified by the setLabels method.
+func (o InstanceTypePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceType) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+func (o InstanceTypePtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+func (o InstanceTypePtrOutput) Metadata() MetadataPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *Metadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(MetadataPtrOutput)
+}
+
+// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+func (o InstanceTypePtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o InstanceTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+func (o InstanceTypePtrOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *InstanceType) []NetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceArrayOutput)
+}
+
+func (o InstanceTypePtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *NetworkPerformanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkPerformanceConfig
+	}).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+func (o InstanceTypePtrOutput) Params() InstanceParamsPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *InstanceParams {
+		if v == nil {
+			return nil
+		}
+		return v.Params
+	}).(InstanceParamsPtrOutput)
+}
+
+// PostKeyRevocationActionType of the instance.
+func (o InstanceTypePtrOutput) PostKeyRevocationActionType() InstancePostKeyRevocationActionTypePtrOutput {
+	return o.ApplyT(func(v *InstanceType) *InstancePostKeyRevocationActionType {
+		if v == nil {
+			return nil
+		}
+		return v.PostKeyRevocationActionType
+	}).(InstancePostKeyRevocationActionTypePtrOutput)
+}
+
+// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+func (o InstanceTypePtrOutput) PreservedStateSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreservedStateSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+func (o InstanceTypePtrOutput) PrivateIpv6GoogleAccess() InstancePrivateIpv6GoogleAccessPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *InstancePrivateIpv6GoogleAccess {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIpv6GoogleAccess
+	}).(InstancePrivateIpv6GoogleAccessPtrOutput)
+}
+
+// Specifies the reservations that this instance can consume from.
+func (o InstanceTypePtrOutput) ReservationAffinity() ReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *ReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(ReservationAffinityPtrOutput)
+}
+
+// Resource policies applied to this instance.
+func (o InstanceTypePtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceType) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Sets the scheduling options for this instance.
+func (o InstanceTypePtrOutput) Scheduling() SchedulingPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *Scheduling {
+		if v == nil {
+			return nil
+		}
+		return v.Scheduling
+	}).(SchedulingPtrOutput)
+}
+
+// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+func (o InstanceTypePtrOutput) SecureTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceType) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecureTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+func (o InstanceTypePtrOutput) ServiceAccounts() ServiceAccountArrayOutput {
+	return o.ApplyT(func(v *InstanceType) []ServiceAccount {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccounts
+	}).(ServiceAccountArrayOutput)
+}
+
+func (o InstanceTypePtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *ShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(ShieldedInstanceConfigPtrOutput)
+}
+
+func (o InstanceTypePtrOutput) ShieldedInstanceIntegrityPolicy() ShieldedInstanceIntegrityPolicyPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *ShieldedInstanceIntegrityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceIntegrityPolicy
+	}).(ShieldedInstanceIntegrityPolicyPtrOutput)
+}
+
+// Deprecating, please use shielded_instance_config.
+func (o InstanceTypePtrOutput) ShieldedVmConfig() ShieldedVmConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *ShieldedVmConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedVmConfig
+	}).(ShieldedVmConfigPtrOutput)
+}
+
+// Deprecating, please use shielded_instance_integrity_policy.
+func (o InstanceTypePtrOutput) ShieldedVmIntegrityPolicy() ShieldedVmIntegrityPolicyPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *ShieldedVmIntegrityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedVmIntegrityPolicy
+	}).(ShieldedVmIntegrityPolicyPtrOutput)
+}
+
+// Source machine image
+func (o InstanceTypePtrOutput) SourceMachineImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMachineImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source machine image encryption key when creating an instance from a machine image.
+func (o InstanceTypePtrOutput) SourceMachineImageEncryptionKey() CustomerEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *CustomerEncryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.SourceMachineImageEncryptionKey
+	}).(CustomerEncryptionKeyPtrOutput)
+}
+
+// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+func (o InstanceTypePtrOutput) Tags() TagsPtrOutput {
+	return o.ApplyT(func(v *InstanceType) *Tags {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(TagsPtrOutput)
 }
 
 type InstanceGroupManagerActionsSummaryResponse struct {
@@ -24866,6 +26697,383 @@ func (o InstancePropertiesResponseOutput) Tags() TagsResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) TagsResponse { return v.Tags }).(TagsResponseOutput)
 }
 
+// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+type InstanceResponse struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
+	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+	CanIpForward               bool                               `pulumi:"canIpForward"`
+	ConfidentialInstanceConfig ConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
+	// The CPU platform used by this instance.
+	CpuPlatform string `pulumi:"cpuPlatform"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// Whether the resource should be protected against deletion.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description string `pulumi:"description"`
+	// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+	Disks []AttachedDiskResponse `pulumi:"disks"`
+	// Enables display device for the instance.
+	DisplayDevice DisplayDeviceResponse `pulumi:"displayDevice"`
+	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+	EraseWindowsVssSignature bool `pulumi:"eraseWindowsVssSignature"`
+	// Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
+	Fingerprint string `pulumi:"fingerprint"`
+	// A list of the type and count of accelerator cards attached to the instance.
+	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
+	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+	Hostname string `pulumi:"hostname"`
+	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+	InstanceEncryptionKey CustomerEncryptionKeyResponse `pulumi:"instanceEncryptionKey"`
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
+	// Type of the resource. Always compute#instance for instances.
+	Kind string `pulumi:"kind"`
+	// A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
+	LabelFingerprint string `pulumi:"labelFingerprint"`
+	// Labels to apply to this instance. These can be later modified by the setLabels method.
+	Labels map[string]string `pulumi:"labels"`
+	// Last start timestamp in RFC3339 text format.
+	LastStartTimestamp string `pulumi:"lastStartTimestamp"`
+	// Last stop timestamp in RFC3339 text format.
+	LastStopTimestamp string `pulumi:"lastStopTimestamp"`
+	// Last suspended timestamp in RFC3339 text format.
+	LastSuspendedTimestamp string `pulumi:"lastSuspendedTimestamp"`
+	// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+	MachineType string `pulumi:"machineType"`
+	// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+	Metadata MetadataResponse `pulumi:"metadata"`
+	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
+	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name string `pulumi:"name"`
+	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+	NetworkInterfaces        []NetworkInterfaceResponse       `pulumi:"networkInterfaces"`
+	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceParamsResponse `pulumi:"params"`
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
+	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+	PreservedStateSizeGb string `pulumi:"preservedStateSizeGb"`
+	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
+	// Specifies the reservations that this instance can consume from.
+	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
+	// Resource policies applied to this instance.
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+	ResourceStatus ResourceStatusResponse `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
+	// Sets the scheduling options for this instance.
+	Scheduling SchedulingResponse `pulumi:"scheduling"`
+	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+	SecureTags []string `pulumi:"secureTags"`
+	// Server-defined URL for this resource.
+	SelfLink string `pulumi:"selfLink"`
+	// Server-defined URL for this resource with the resource id.
+	SelfLinkWithId string `pulumi:"selfLinkWithId"`
+	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+	ServiceAccounts                 []ServiceAccountResponse                `pulumi:"serviceAccounts"`
+	ShieldedInstanceConfig          ShieldedInstanceConfigResponse          `pulumi:"shieldedInstanceConfig"`
+	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponse `pulumi:"shieldedInstanceIntegrityPolicy"`
+	// Deprecating, please use shielded_instance_config.
+	ShieldedVmConfig ShieldedVmConfigResponse `pulumi:"shieldedVmConfig"`
+	// Deprecating, please use shielded_instance_integrity_policy.
+	ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicyResponse `pulumi:"shieldedVmIntegrityPolicy"`
+	// Source machine image
+	SourceMachineImage string `pulumi:"sourceMachineImage"`
+	// Source machine image encryption key when creating an instance from a machine image.
+	SourceMachineImageEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceMachineImageEncryptionKey"`
+	// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+	StartRestricted bool `pulumi:"startRestricted"`
+	// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
+	Status string `pulumi:"status"`
+	// An optional, human-readable explanation of the status.
+	StatusMessage string `pulumi:"statusMessage"`
+	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+	Tags TagsResponse `pulumi:"tags"`
+	// Specifies upcoming maintenance for the instance.
+	UpcomingMaintenance UpcomingMaintenanceResponse `pulumi:"upcomingMaintenance"`
+	// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	Zone string `pulumi:"zone"`
+}
+
+// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
+type InstanceResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceResponse)(nil)).Elem()
+}
+
+func (o InstanceResponseOutput) ToInstanceResponseOutput() InstanceResponseOutput {
+	return o
+}
+
+func (o InstanceResponseOutput) ToInstanceResponseOutputWithContext(ctx context.Context) InstanceResponseOutput {
+	return o
+}
+
+// Controls for advanced machine-related behavior features.
+func (o InstanceResponseOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) AdvancedMachineFeaturesResponse { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesResponseOutput)
+}
+
+// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
+func (o InstanceResponseOutput) CanIpForward() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceResponse) bool { return v.CanIpForward }).(pulumi.BoolOutput)
+}
+
+func (o InstanceResponseOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) ConfidentialInstanceConfigResponse { return v.ConfidentialInstanceConfig }).(ConfidentialInstanceConfigResponseOutput)
+}
+
+// The CPU platform used by this instance.
+func (o InstanceResponseOutput) CpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.CpuPlatform }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o InstanceResponseOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether the resource should be protected against deletion.
+func (o InstanceResponseOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceResponse) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o InstanceResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+func (o InstanceResponseOutput) Disks() AttachedDiskResponseArrayOutput {
+	return o.ApplyT(func(v InstanceResponse) []AttachedDiskResponse { return v.Disks }).(AttachedDiskResponseArrayOutput)
+}
+
+// Enables display device for the instance.
+func (o InstanceResponseOutput) DisplayDevice() DisplayDeviceResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) DisplayDeviceResponse { return v.DisplayDevice }).(DisplayDeviceResponseOutput)
+}
+
+// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+func (o InstanceResponseOutput) EraseWindowsVssSignature() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceResponse) bool { return v.EraseWindowsVssSignature }).(pulumi.BoolOutput)
+}
+
+// Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
+func (o InstanceResponseOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// A list of the type and count of accelerator cards attached to the instance.
+func (o InstanceResponseOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput {
+	return o.ApplyT(func(v InstanceResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
+}
+
+// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+func (o InstanceResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+func (o InstanceResponseOutput) InstanceEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) CustomerEncryptionKeyResponse { return v.InstanceEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+func (o InstanceResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#instance for instances.
+func (o InstanceResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
+func (o InstanceResponseOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+// Labels to apply to this instance. These can be later modified by the setLabels method.
+func (o InstanceResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Last start timestamp in RFC3339 text format.
+func (o InstanceResponseOutput) LastStartTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.LastStartTimestamp }).(pulumi.StringOutput)
+}
+
+// Last stop timestamp in RFC3339 text format.
+func (o InstanceResponseOutput) LastStopTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.LastStopTimestamp }).(pulumi.StringOutput)
+}
+
+// Last suspended timestamp in RFC3339 text format.
+func (o InstanceResponseOutput) LastSuspendedTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.LastSuspendedTimestamp }).(pulumi.StringOutput)
+}
+
+// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
+func (o InstanceResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+func (o InstanceResponseOutput) Metadata() MetadataResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) MetadataResponse { return v.Metadata }).(MetadataResponseOutput)
+}
+
+// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+func (o InstanceResponseOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o InstanceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+func (o InstanceResponseOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v InstanceResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
+}
+
+func (o InstanceResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
+}
+
+// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+func (o InstanceResponseOutput) Params() InstanceParamsResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) InstanceParamsResponse { return v.Params }).(InstanceParamsResponseOutput)
+}
+
+// PostKeyRevocationActionType of the instance.
+func (o InstanceResponseOutput) PostKeyRevocationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.PostKeyRevocationActionType }).(pulumi.StringOutput)
+}
+
+// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+func (o InstanceResponseOutput) PreservedStateSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.PreservedStateSizeGb }).(pulumi.StringOutput)
+}
+
+// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+func (o InstanceResponseOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
+}
+
+// Specifies the reservations that this instance can consume from.
+func (o InstanceResponseOutput) ReservationAffinity() ReservationAffinityResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
+}
+
+// Resource policies applied to this instance.
+func (o InstanceResponseOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceResponse) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
+// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+func (o InstanceResponseOutput) ResourceStatus() ResourceStatusResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) ResourceStatusResponse { return v.ResourceStatus }).(ResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o InstanceResponseOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceResponse) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// Sets the scheduling options for this instance.
+func (o InstanceResponseOutput) Scheduling() SchedulingResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) SchedulingResponse { return v.Scheduling }).(SchedulingResponseOutput)
+}
+
+// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+func (o InstanceResponseOutput) SecureTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceResponse) []string { return v.SecureTags }).(pulumi.StringArrayOutput)
+}
+
+// Server-defined URL for this resource.
+func (o InstanceResponseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o InstanceResponseOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+func (o InstanceResponseOutput) ServiceAccounts() ServiceAccountResponseArrayOutput {
+	return o.ApplyT(func(v InstanceResponse) []ServiceAccountResponse { return v.ServiceAccounts }).(ServiceAccountResponseArrayOutput)
+}
+
+func (o InstanceResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
+}
+
+func (o InstanceResponseOutput) ShieldedInstanceIntegrityPolicy() ShieldedInstanceIntegrityPolicyResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) ShieldedInstanceIntegrityPolicyResponse {
+		return v.ShieldedInstanceIntegrityPolicy
+	}).(ShieldedInstanceIntegrityPolicyResponseOutput)
+}
+
+// Deprecating, please use shielded_instance_config.
+func (o InstanceResponseOutput) ShieldedVmConfig() ShieldedVmConfigResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) ShieldedVmConfigResponse { return v.ShieldedVmConfig }).(ShieldedVmConfigResponseOutput)
+}
+
+// Deprecating, please use shielded_instance_integrity_policy.
+func (o InstanceResponseOutput) ShieldedVmIntegrityPolicy() ShieldedVmIntegrityPolicyResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) ShieldedVmIntegrityPolicyResponse { return v.ShieldedVmIntegrityPolicy }).(ShieldedVmIntegrityPolicyResponseOutput)
+}
+
+// Source machine image
+func (o InstanceResponseOutput) SourceMachineImage() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.SourceMachineImage }).(pulumi.StringOutput)
+}
+
+// Source machine image encryption key when creating an instance from a machine image.
+func (o InstanceResponseOutput) SourceMachineImageEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) CustomerEncryptionKeyResponse { return v.SourceMachineImageEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+func (o InstanceResponseOutput) StartRestricted() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceResponse) bool { return v.StartRestricted }).(pulumi.BoolOutput)
+}
+
+// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
+func (o InstanceResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// An optional, human-readable explanation of the status.
+func (o InstanceResponseOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+func (o InstanceResponseOutput) Tags() TagsResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) TagsResponse { return v.Tags }).(TagsResponseOutput)
+}
+
+// Specifies upcoming maintenance for the instance.
+func (o InstanceResponseOutput) UpcomingMaintenance() UpcomingMaintenanceResponseOutput {
+	return o.ApplyT(func(v InstanceResponse) UpcomingMaintenanceResponse { return v.UpcomingMaintenance }).(UpcomingMaintenanceResponseOutput)
+}
+
+// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o InstanceResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Zone }).(pulumi.StringOutput)
+}
+
 type InstantSnapshotResourceStatusResponse struct {
 	// The storage size of this instant snapshot.
 	StorageSizeBytes string `pulumi:"storageSizeBytes"`
@@ -26843,6 +29051,231 @@ func (o LocalDiskResponseArrayOutput) Index(i pulumi.IntInput) LocalDiskResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalDiskResponse {
 		return vs[0].([]LocalDiskResponse)[vs[1].(int)]
 	}).(LocalDiskResponseOutput)
+}
+
+// Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+type LocalizedMessageResponse struct {
+	// The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+	Locale string `pulumi:"locale"`
+	// The localized error message in the above locale.
+	Message string `pulumi:"message"`
+}
+
+// Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+type LocalizedMessageResponseOutput struct{ *pulumi.OutputState }
+
+func (LocalizedMessageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalizedMessageResponse)(nil)).Elem()
+}
+
+func (o LocalizedMessageResponseOutput) ToLocalizedMessageResponseOutput() LocalizedMessageResponseOutput {
+	return o
+}
+
+func (o LocalizedMessageResponseOutput) ToLocalizedMessageResponseOutputWithContext(ctx context.Context) LocalizedMessageResponseOutput {
+	return o
+}
+
+// The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+func (o LocalizedMessageResponseOutput) Locale() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalizedMessageResponse) string { return v.Locale }).(pulumi.StringOutput)
+}
+
+// The localized error message in the above locale.
+func (o LocalizedMessageResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalizedMessageResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+type LocationPolicy struct {
+	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+	Locations map[string]string `pulumi:"locations"`
+	// Strategy for distributing VMs across zones in a region.
+	TargetShape *LocationPolicyTargetShape `pulumi:"targetShape"`
+}
+
+// LocationPolicyInput is an input type that accepts LocationPolicyArgs and LocationPolicyOutput values.
+// You can construct a concrete instance of `LocationPolicyInput` via:
+//
+//          LocationPolicyArgs{...}
+type LocationPolicyInput interface {
+	pulumi.Input
+
+	ToLocationPolicyOutput() LocationPolicyOutput
+	ToLocationPolicyOutputWithContext(context.Context) LocationPolicyOutput
+}
+
+// Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+type LocationPolicyArgs struct {
+	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+	Locations pulumi.StringMapInput `pulumi:"locations"`
+	// Strategy for distributing VMs across zones in a region.
+	TargetShape LocationPolicyTargetShapePtrInput `pulumi:"targetShape"`
+}
+
+func (LocationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicy)(nil)).Elem()
+}
+
+func (i LocationPolicyArgs) ToLocationPolicyOutput() LocationPolicyOutput {
+	return i.ToLocationPolicyOutputWithContext(context.Background())
+}
+
+func (i LocationPolicyArgs) ToLocationPolicyOutputWithContext(ctx context.Context) LocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyOutput)
+}
+
+func (i LocationPolicyArgs) ToLocationPolicyPtrOutput() LocationPolicyPtrOutput {
+	return i.ToLocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i LocationPolicyArgs) ToLocationPolicyPtrOutputWithContext(ctx context.Context) LocationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyOutput).ToLocationPolicyPtrOutputWithContext(ctx)
+}
+
+// LocationPolicyPtrInput is an input type that accepts LocationPolicyArgs, LocationPolicyPtr and LocationPolicyPtrOutput values.
+// You can construct a concrete instance of `LocationPolicyPtrInput` via:
+//
+//          LocationPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type LocationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToLocationPolicyPtrOutput() LocationPolicyPtrOutput
+	ToLocationPolicyPtrOutputWithContext(context.Context) LocationPolicyPtrOutput
+}
+
+type locationPolicyPtrType LocationPolicyArgs
+
+func LocationPolicyPtr(v *LocationPolicyArgs) LocationPolicyPtrInput {
+	return (*locationPolicyPtrType)(v)
+}
+
+func (*locationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPolicy)(nil)).Elem()
+}
+
+func (i *locationPolicyPtrType) ToLocationPolicyPtrOutput() LocationPolicyPtrOutput {
+	return i.ToLocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *locationPolicyPtrType) ToLocationPolicyPtrOutputWithContext(ctx context.Context) LocationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyPtrOutput)
+}
+
+// Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+type LocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicy)(nil)).Elem()
+}
+
+func (o LocationPolicyOutput) ToLocationPolicyOutput() LocationPolicyOutput {
+	return o
+}
+
+func (o LocationPolicyOutput) ToLocationPolicyOutputWithContext(ctx context.Context) LocationPolicyOutput {
+	return o
+}
+
+func (o LocationPolicyOutput) ToLocationPolicyPtrOutput() LocationPolicyPtrOutput {
+	return o.ToLocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyOutput) ToLocationPolicyPtrOutputWithContext(ctx context.Context) LocationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationPolicy) *LocationPolicy {
+		return &v
+	}).(LocationPolicyPtrOutput)
+}
+
+// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+func (o LocationPolicyOutput) Locations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LocationPolicy) map[string]string { return v.Locations }).(pulumi.StringMapOutput)
+}
+
+// Strategy for distributing VMs across zones in a region.
+func (o LocationPolicyOutput) TargetShape() LocationPolicyTargetShapePtrOutput {
+	return o.ApplyT(func(v LocationPolicy) *LocationPolicyTargetShape { return v.TargetShape }).(LocationPolicyTargetShapePtrOutput)
+}
+
+type LocationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPolicy)(nil)).Elem()
+}
+
+func (o LocationPolicyPtrOutput) ToLocationPolicyPtrOutput() LocationPolicyPtrOutput {
+	return o
+}
+
+func (o LocationPolicyPtrOutput) ToLocationPolicyPtrOutputWithContext(ctx context.Context) LocationPolicyPtrOutput {
+	return o
+}
+
+func (o LocationPolicyPtrOutput) Elem() LocationPolicyOutput {
+	return o.ApplyT(func(v *LocationPolicy) LocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret LocationPolicy
+		return ret
+	}).(LocationPolicyOutput)
+}
+
+// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+func (o LocationPolicyPtrOutput) Locations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LocationPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringMapOutput)
+}
+
+// Strategy for distributing VMs across zones in a region.
+func (o LocationPolicyPtrOutput) TargetShape() LocationPolicyTargetShapePtrOutput {
+	return o.ApplyT(func(v *LocationPolicy) *LocationPolicyTargetShape {
+		if v == nil {
+			return nil
+		}
+		return v.TargetShape
+	}).(LocationPolicyTargetShapePtrOutput)
+}
+
+// Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+type LocationPolicyResponse struct {
+	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+	Locations map[string]string `pulumi:"locations"`
+	// Strategy for distributing VMs across zones in a region.
+	TargetShape string `pulumi:"targetShape"`
+}
+
+// Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
+type LocationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyResponse)(nil)).Elem()
+}
+
+func (o LocationPolicyResponseOutput) ToLocationPolicyResponseOutput() LocationPolicyResponseOutput {
+	return o
+}
+
+func (o LocationPolicyResponseOutput) ToLocationPolicyResponseOutputWithContext(ctx context.Context) LocationPolicyResponseOutput {
+	return o
+}
+
+// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+func (o LocationPolicyResponseOutput) Locations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LocationPolicyResponse) map[string]string { return v.Locations }).(pulumi.StringMapOutput)
+}
+
+// Strategy for distributing VMs across zones in a region.
+func (o LocationPolicyResponseOutput) TargetShape() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationPolicyResponse) string { return v.TargetShape }).(pulumi.StringOutput)
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -33592,6 +36025,8 @@ func (o PacketMirroringNetworkInfoResponseOutput) Url() pulumi.StringOutput {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcher struct {
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	DefaultCustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"defaultCustomErrorResponsePolicy"`
 	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction *HttpRouteAction `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
@@ -33623,6 +36058,8 @@ type PathMatcherInput interface {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherArgs struct {
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	DefaultCustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"defaultCustomErrorResponsePolicy"`
 	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionPtrInput `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
@@ -33693,6 +36130,11 @@ func (o PathMatcherOutput) ToPathMatcherOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathMatcherOutput) DefaultCustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyT(func(v PathMatcher) *CustomErrorResponsePolicy { return v.DefaultCustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
+}
+
 // defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 func (o PathMatcherOutput) DefaultRouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *HttpRouteAction { return v.DefaultRouteAction }).(HttpRouteActionPtrOutput)
@@ -33755,6 +36197,8 @@ func (o PathMatcherArrayOutput) Index(i pulumi.IntInput) PathMatcherOutput {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherResponse struct {
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	DefaultCustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"defaultCustomErrorResponsePolicy"`
 	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionResponse `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
@@ -33786,6 +36230,13 @@ func (o PathMatcherResponseOutput) ToPathMatcherResponseOutput() PathMatcherResp
 
 func (o PathMatcherResponseOutput) ToPathMatcherResponseOutputWithContext(ctx context.Context) PathMatcherResponseOutput {
 	return o
+}
+
+// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathMatcherResponseOutput) DefaultCustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
+	return o.ApplyT(func(v PathMatcherResponse) CustomErrorResponsePolicyResponse {
+		return v.DefaultCustomErrorResponsePolicy
+	}).(CustomErrorResponsePolicyResponseOutput)
 }
 
 // defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
@@ -33850,6 +36301,8 @@ func (o PathMatcherResponseArrayOutput) Index(i pulumi.IntInput) PathMatcherResp
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRule struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
 	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
@@ -33873,6 +36326,8 @@ type PathRuleInput interface {
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRuleArgs struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
 	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
@@ -33935,6 +36390,11 @@ func (o PathRuleOutput) ToPathRuleOutputWithContext(ctx context.Context) PathRul
 	return o
 }
 
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathRuleOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyT(func(v PathRule) *CustomErrorResponsePolicy { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
+}
+
 // The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 func (o PathRuleOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PathRule) []string { return v.Paths }).(pulumi.StringArrayOutput)
@@ -33977,6 +36437,8 @@ func (o PathRuleArrayOutput) Index(i pulumi.IntInput) PathRuleOutput {
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRuleResponse struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
 	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
@@ -34000,6 +36462,11 @@ func (o PathRuleResponseOutput) ToPathRuleResponseOutput() PathRuleResponseOutpu
 
 func (o PathRuleResponseOutput) ToPathRuleResponseOutputWithContext(ctx context.Context) PathRuleResponseOutput {
 	return o
+}
+
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathRuleResponseOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
+	return o.ApplyT(func(v PathRuleResponse) CustomErrorResponsePolicyResponse { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyResponseOutput)
 }
 
 // The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
@@ -35212,6 +37679,234 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput) Index(
 	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput)
 }
 
+type QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse struct {
+	ErrorInfo        ErrorInfoResponse         `pulumi:"errorInfo"`
+	Help             HelpResponse              `pulumi:"help"`
+	LocalizedMessage LocalizedMessageResponse  `pulumi:"localizedMessage"`
+	QuotaInfo        QuotaExceededInfoResponse `pulumi:"quotaInfo"`
+}
+
+type QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput() QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutputWithContext(ctx context.Context) QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput) ErrorInfo() ErrorInfoResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse) ErrorInfoResponse {
+		return v.ErrorInfo
+	}).(ErrorInfoResponseOutput)
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput) Help() HelpResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse) HelpResponse {
+		return v.Help
+	}).(HelpResponseOutput)
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput) LocalizedMessage() LocalizedMessageResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse) LocalizedMessageResponse {
+		return v.LocalizedMessage
+	}).(LocalizedMessageResponseOutput)
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput) QuotaInfo() QuotaExceededInfoResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse) QuotaExceededInfoResponse {
+		return v.QuotaInfo
+	}).(QuotaExceededInfoResponseOutput)
+}
+
+type QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput() QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutputWithContext(ctx context.Context) QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput) Index(i pulumi.IntInput) QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse {
+		return vs[0].([]QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse)[vs[1].(int)]
+	}).(QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput)
+}
+
+type QueuedResourceStatusFailedDataErrorErrorsItemResponse struct {
+	// The error type identifier for this error.
+	Code string `pulumi:"code"`
+	// An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+	ErrorDetails []QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse `pulumi:"errorDetails"`
+	// Indicates the field in the request that caused the error. This property is optional.
+	Location string `pulumi:"location"`
+	// An optional, human-readable error message.
+	Message string `pulumi:"message"`
+}
+
+type QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedResourceStatusFailedDataErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemResponseOutput() QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemResponseOutputWithContext(ctx context.Context) QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput {
+	return o
+}
+
+// The error type identifier for this error.
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput) ErrorDetails() QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemResponse) []QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse {
+		return v.ErrorDetails
+	}).(QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput)
+}
+
+// Indicates the field in the request that caused the error. This property is optional.
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// An optional, human-readable error message.
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorErrorsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueuedResourceStatusFailedDataErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput() QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput) ToQueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutputWithContext(ctx context.Context) QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput) Index(i pulumi.IntInput) QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueuedResourceStatusFailedDataErrorErrorsItemResponse {
+		return vs[0].([]QueuedResourceStatusFailedDataErrorErrorsItemResponse)[vs[1].(int)]
+	}).(QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput)
+}
+
+// The error(s) that caused the QueuedResource to enter the FAILED state.
+type QueuedResourceStatusFailedDataErrorResponse struct {
+	// The array of errors encountered while processing this operation.
+	Errors []QueuedResourceStatusFailedDataErrorErrorsItemResponse `pulumi:"errors"`
+}
+
+// The error(s) that caused the QueuedResource to enter the FAILED state.
+type QueuedResourceStatusFailedDataErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStatusFailedDataErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedResourceStatusFailedDataErrorResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStatusFailedDataErrorResponseOutput) ToQueuedResourceStatusFailedDataErrorResponseOutput() QueuedResourceStatusFailedDataErrorResponseOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataErrorResponseOutput) ToQueuedResourceStatusFailedDataErrorResponseOutputWithContext(ctx context.Context) QueuedResourceStatusFailedDataErrorResponseOutput {
+	return o
+}
+
+// The array of errors encountered while processing this operation.
+func (o QueuedResourceStatusFailedDataErrorResponseOutput) Errors() QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataErrorResponse) []QueuedResourceStatusFailedDataErrorErrorsItemResponse {
+		return v.Errors
+	}).(QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput)
+}
+
+// Additional status detail for the FAILED state.
+type QueuedResourceStatusFailedDataResponse struct {
+	// The error(s) that caused the QueuedResource to enter the FAILED state.
+	Error QueuedResourceStatusFailedDataErrorResponse `pulumi:"error"`
+}
+
+// Additional status detail for the FAILED state.
+type QueuedResourceStatusFailedDataResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStatusFailedDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedResourceStatusFailedDataResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStatusFailedDataResponseOutput) ToQueuedResourceStatusFailedDataResponseOutput() QueuedResourceStatusFailedDataResponseOutput {
+	return o
+}
+
+func (o QueuedResourceStatusFailedDataResponseOutput) ToQueuedResourceStatusFailedDataResponseOutputWithContext(ctx context.Context) QueuedResourceStatusFailedDataResponseOutput {
+	return o
+}
+
+// The error(s) that caused the QueuedResource to enter the FAILED state.
+func (o QueuedResourceStatusFailedDataResponseOutput) Error() QueuedResourceStatusFailedDataErrorResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStatusFailedDataResponse) QueuedResourceStatusFailedDataErrorResponse {
+		return v.Error
+	}).(QueuedResourceStatusFailedDataErrorResponseOutput)
+}
+
+// [Output only] Result of queuing and provisioning based on deferred capacity.
+type QueuedResourceStatusResponse struct {
+	// Additional status detail for the FAILED state.
+	FailedData QueuedResourceStatusFailedDataResponse `pulumi:"failedData"`
+	// [Output only] Fully qualified URL of the provisioning GCE operation to track the provisioning along with provisioning errors. The referenced operation may not exist after having been deleted or expired.
+	ProvisioningOperations []string `pulumi:"provisioningOperations"`
+	// Constraints for the time when the resource(s) start provisioning. Always exposed as absolute times.
+	QueuingPolicy QueuingPolicyResponse `pulumi:"queuingPolicy"`
+}
+
+// [Output only] Result of queuing and provisioning based on deferred capacity.
+type QueuedResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedResourceStatusResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStatusResponseOutput) ToQueuedResourceStatusResponseOutput() QueuedResourceStatusResponseOutput {
+	return o
+}
+
+func (o QueuedResourceStatusResponseOutput) ToQueuedResourceStatusResponseOutputWithContext(ctx context.Context) QueuedResourceStatusResponseOutput {
+	return o
+}
+
+// Additional status detail for the FAILED state.
+func (o QueuedResourceStatusResponseOutput) FailedData() QueuedResourceStatusFailedDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStatusResponse) QueuedResourceStatusFailedDataResponse { return v.FailedData }).(QueuedResourceStatusFailedDataResponseOutput)
+}
+
+// [Output only] Fully qualified URL of the provisioning GCE operation to track the provisioning along with provisioning errors. The referenced operation may not exist after having been deleted or expired.
+func (o QueuedResourceStatusResponseOutput) ProvisioningOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v QueuedResourceStatusResponse) []string { return v.ProvisioningOperations }).(pulumi.StringArrayOutput)
+}
+
+// Constraints for the time when the resource(s) start provisioning. Always exposed as absolute times.
+func (o QueuedResourceStatusResponseOutput) QueuingPolicy() QueuingPolicyResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStatusResponse) QueuingPolicyResponse { return v.QueuingPolicy }).(QueuingPolicyResponseOutput)
+}
+
 // Queuing parameters for the requested deferred capacity.
 type QueuingPolicy struct {
 	// Relative deadline for waiting for capacity.
@@ -35402,6 +38097,53 @@ func (o QueuingPolicyResponseOutput) ValidUntilDuration() DurationResponseOutput
 // Absolute deadline for waiting for capacity in RFC3339 text format.
 func (o QueuingPolicyResponseOutput) ValidUntilTime() pulumi.StringOutput {
 	return o.ApplyT(func(v QueuingPolicyResponse) string { return v.ValidUntilTime }).(pulumi.StringOutput)
+}
+
+// Additional details for quota exceeded error for resource quota.
+type QuotaExceededInfoResponse struct {
+	// The map holding related quota dimensions.
+	Dimensions map[string]string `pulumi:"dimensions"`
+	// Current effective quota limit. The limit's unit depends on the quota type or metric.
+	Limit float64 `pulumi:"limit"`
+	// The name of the quota limit.
+	LimitName string `pulumi:"limitName"`
+	// The Compute Engine quota metric name.
+	MetricName string `pulumi:"metricName"`
+}
+
+// Additional details for quota exceeded error for resource quota.
+type QuotaExceededInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (QuotaExceededInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaExceededInfoResponse)(nil)).Elem()
+}
+
+func (o QuotaExceededInfoResponseOutput) ToQuotaExceededInfoResponseOutput() QuotaExceededInfoResponseOutput {
+	return o
+}
+
+func (o QuotaExceededInfoResponseOutput) ToQuotaExceededInfoResponseOutputWithContext(ctx context.Context) QuotaExceededInfoResponseOutput {
+	return o
+}
+
+// The map holding related quota dimensions.
+func (o QuotaExceededInfoResponseOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v QuotaExceededInfoResponse) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
+}
+
+// Current effective quota limit. The limit's unit depends on the quota type or metric.
+func (o QuotaExceededInfoResponseOutput) Limit() pulumi.Float64Output {
+	return o.ApplyT(func(v QuotaExceededInfoResponse) float64 { return v.Limit }).(pulumi.Float64Output)
+}
+
+// The name of the quota limit.
+func (o QuotaExceededInfoResponseOutput) LimitName() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaExceededInfoResponse) string { return v.LimitName }).(pulumi.StringOutput)
+}
+
+// The Compute Engine quota metric name.
+func (o QuotaExceededInfoResponseOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaExceededInfoResponse) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 type RbacPolicy struct {
@@ -55258,6 +58000,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigPtrInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourceInput)(nil)).Elem(), BulkInsertInstanceResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePtrInput)(nil)).Elem(), BulkInsertInstanceResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyInput)(nil)).Elem(), CacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyPtrInput)(nil)).Elem(), CacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CallCredentialsInput)(nil)).Elem(), CallCredentialsArgs{})
@@ -55280,6 +58024,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsHttpCookiePtrInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsHttpCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyInput)(nil)).Elem(), CorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyPtrInput)(nil)).Elem(), CorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyInput)(nil)).Elem(), CustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyPtrInput)(nil)).Elem(), CustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRuleInput)(nil)).Elem(), CustomErrorResponsePolicyCustomErrorResponseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput)(nil)).Elem(), CustomErrorResponsePolicyCustomErrorResponseRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusInput)(nil)).Elem(), DeprecationStatusArgs{})
@@ -55288,6 +58036,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskAsyncReplicationPtrInput)(nil)).Elem(), DiskAsyncReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInput)(nil)).Elem(), DiskInstantiationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigArrayInput)(nil)).Elem(), DiskInstantiationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskParamsInput)(nil)).Elem(), DiskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskParamsPtrInput)(nil)).Elem(), DiskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDeviceInput)(nil)).Elem(), DisplayDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDevicePtrInput)(nil)).Elem(), DisplayDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyInput)(nil)).Elem(), DistributionPolicyArgs{})
@@ -55373,6 +58123,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskPtrInput)(nil)).Elem(), ImageRawDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigInput)(nil)).Elem(), InitialStateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigPtrInput)(nil)).Elem(), InitialStateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), InstanceGroupManagerAllInstancesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAllInstancesConfigPtrInput)(nil)).Elem(), InstanceGroupManagerAllInstancesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyArgs{})
@@ -55413,6 +58165,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceRequirementsPtrInput)(nil)).Elem(), LicenseResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskInput)(nil)).Elem(), LocalDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskArrayInput)(nil)).Elem(), LocalDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyInput)(nil)).Elem(), LocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyPtrInput)(nil)).Elem(), LocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigInput)(nil)).Elem(), LogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigArrayInput)(nil)).Elem(), LogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsInput)(nil)).Elem(), LogConfigCloudAuditOptionsArgs{})
@@ -55799,6 +58553,9 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourceOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourcePtrOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourceResponseOutput{})
 	pulumi.RegisterOutputType(CacheKeyPolicyOutput{})
 	pulumi.RegisterOutputType(CacheKeyPolicyPtrOutput{})
 	pulumi.RegisterOutputType(CacheKeyPolicyResponseOutput{})
@@ -55833,6 +58590,13 @@ func init() {
 	pulumi.RegisterOutputType(CorsPolicyOutput{})
 	pulumi.RegisterOutputType(CorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(CorsPolicyResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyPtrOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyResponseOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyResponseOutput{})
@@ -55846,6 +58610,9 @@ func init() {
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskParamsOutput{})
+	pulumi.RegisterOutputType(DiskParamsPtrOutput{})
+	pulumi.RegisterOutputType(DiskParamsResponseOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
@@ -55861,6 +58628,7 @@ func init() {
 	pulumi.RegisterOutputType(DurationOutput{})
 	pulumi.RegisterOutputType(DurationPtrOutput{})
 	pulumi.RegisterOutputType(DurationResponseOutput{})
+	pulumi.RegisterOutputType(ErrorInfoResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -55939,6 +58707,9 @@ func init() {
 	pulumi.RegisterOutputType(HealthCheckLogConfigOutput{})
 	pulumi.RegisterOutputType(HealthCheckLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(HelpLinkResponseOutput{})
+	pulumi.RegisterOutputType(HelpLinkResponseArrayOutput{})
+	pulumi.RegisterOutputType(HelpResponseOutput{})
 	pulumi.RegisterOutputType(HostRuleOutput{})
 	pulumi.RegisterOutputType(HostRuleArrayOutput{})
 	pulumi.RegisterOutputType(HostRuleResponseOutput{})
@@ -55994,6 +58765,8 @@ func init() {
 	pulumi.RegisterOutputType(InitialStateConfigOutput{})
 	pulumi.RegisterOutputType(InitialStateConfigPtrOutput{})
 	pulumi.RegisterOutputType(InitialStateConfigResponseOutput{})
+	pulumi.RegisterOutputType(InstanceTypeOutput{})
+	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerActionsSummaryResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAllInstancesConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAllInstancesConfigPtrOutput{})
@@ -56036,6 +58809,7 @@ func init() {
 	pulumi.RegisterOutputType(InstancePropertiesPatchPtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPatchResponseOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(InstanceResponseOutput{})
 	pulumi.RegisterOutputType(InstantSnapshotResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
@@ -56072,6 +58846,10 @@ func init() {
 	pulumi.RegisterOutputType(LocalDiskArrayOutput{})
 	pulumi.RegisterOutputType(LocalDiskResponseOutput{})
 	pulumi.RegisterOutputType(LocalDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(LocalizedMessageResponseOutput{})
+	pulumi.RegisterOutputType(LocationPolicyOutput{})
+	pulumi.RegisterOutputType(LocationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(LocationPolicyResponseOutput{})
 	pulumi.RegisterOutputType(LogConfigOutput{})
 	pulumi.RegisterOutputType(LogConfigArrayOutput{})
 	pulumi.RegisterOutputType(LogConfigCloudAuditOptionsOutput{})
@@ -56214,9 +58992,17 @@ func init() {
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStatusFailedDataErrorErrorsItemResponseOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStatusFailedDataErrorErrorsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStatusFailedDataErrorResponseOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStatusFailedDataResponseOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(QueuingPolicyOutput{})
 	pulumi.RegisterOutputType(QueuingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(QueuingPolicyResponseOutput{})
+	pulumi.RegisterOutputType(QuotaExceededInfoResponseOutput{})
 	pulumi.RegisterOutputType(RbacPolicyOutput{})
 	pulumi.RegisterOutputType(RbacPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RbacPolicyResponseOutput{})

@@ -2092,7 +2092,7 @@ class BackendResponse(dict):
         :param int max_rate: Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
-        :param float max_utilization: Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        :param float max_utilization: Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         pulumi.set(__self__, "balancing_mode", balancing_mode)
         pulumi.set(__self__, "capacity_scaler", capacity_scaler)
@@ -2199,7 +2199,7 @@ class BackendResponse(dict):
     @pulumi.getter(name="maxUtilization")
     def max_utilization(self) -> float:
         """
-        Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         return pulumi.get(self, "max_utilization")
 

@@ -298,6 +298,8 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
+            __props__.__dict__["source_snapshot_schedule_policy"] = None
+            __props__.__dict__["source_snapshot_schedule_policy_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["storage_bytes"] = None
             __props__.__dict__["storage_bytes_status"] = None
@@ -347,6 +349,8 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["source_disk"] = None
         __props__.__dict__["source_disk_encryption_key"] = None
         __props__.__dict__["source_disk_id"] = None
+        __props__.__dict__["source_snapshot_schedule_policy"] = None
+        __props__.__dict__["source_snapshot_schedule_policy_id"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["storage_bytes"] = None
         __props__.__dict__["storage_bytes_status"] = None
@@ -525,6 +529,22 @@ class Snapshot(pulumi.CustomResource):
         The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotSchedulePolicy")
+    def source_snapshot_schedule_policy(self) -> pulumi.Output[str]:
+        """
+        URL of the resource policy which created this scheduled snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_schedule_policy")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotSchedulePolicyId")
+    def source_snapshot_schedule_policy_id(self) -> pulumi.Output[str]:
+        """
+        ID of the resource policy which created this scheduled snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_schedule_policy_id")
 
     @property
     @pulumi.getter

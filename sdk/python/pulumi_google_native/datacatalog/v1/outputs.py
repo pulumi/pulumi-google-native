@@ -20,6 +20,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1BigQueryTableSpecResponse',
     'GoogleCloudDatacatalogV1BusinessContextResponse',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse',
+    'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse',
     'GoogleCloudDatacatalogV1ColumnSchemaResponse',
     'GoogleCloudDatacatalogV1ContactsPersonResponse',
     'GoogleCloudDatacatalogV1ContactsResponse',
@@ -508,13 +509,53 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse(dict):
+    """
+    Column info specific to Looker System.
+    """
+    def __init__(__self__, *,
+                 type: str):
+        """
+        Column info specific to Looker System.
+        :param str type: Looker specific column type of this column.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Looker specific column type of this column.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
     """
     A column within a schema. Columns can be nested inside other columns.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lookerColumnSpec":
+            suggest = "looker_column_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1ColumnSchemaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1ColumnSchemaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1ColumnSchemaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  column: str,
                  description: str,
+                 looker_column_spec: 'outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse',
                  mode: str,
                  subcolumns: Sequence['outputs.GoogleCloudDatacatalogV1ColumnSchemaResponse'],
                  type: str):
@@ -522,12 +563,14 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
         A column within a schema. Columns can be nested inside other columns.
         :param str column: Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
         :param str description: Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
+        :param 'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse' looker_column_spec: Looker specific column info of this column.
         :param str mode: Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         :param Sequence['GoogleCloudDatacatalogV1ColumnSchemaResponse'] subcolumns: Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         :param str type: Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
         """
         pulumi.set(__self__, "column", column)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "looker_column_spec", looker_column_spec)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "subcolumns", subcolumns)
         pulumi.set(__self__, "type", type)
@@ -547,6 +590,14 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
         Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="lookerColumnSpec")
+    def looker_column_spec(self) -> 'outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse':
+        """
+        Looker specific column info of this column.
+        """
+        return pulumi.get(self, "looker_column_spec")
 
     @property
     @pulumi.getter

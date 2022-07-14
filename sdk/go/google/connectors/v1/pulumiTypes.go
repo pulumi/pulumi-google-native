@@ -2270,6 +2270,8 @@ type SshPublicKey struct {
 	Password *Secret `pulumi:"password"`
 	// SSH Client Cert. It should contain both public and private key.
 	SshClientCert *Secret `pulumi:"sshClientCert"`
+	// Password (passphrase) for ssh client certificate if it has one.
+	SshClientCertPass *Secret `pulumi:"sshClientCertPass"`
 	// The user account used to authenticate.
 	Username *string `pulumi:"username"`
 }
@@ -2293,6 +2295,8 @@ type SshPublicKeyArgs struct {
 	Password SecretPtrInput `pulumi:"password"`
 	// SSH Client Cert. It should contain both public and private key.
 	SshClientCert SecretPtrInput `pulumi:"sshClientCert"`
+	// Password (passphrase) for ssh client certificate if it has one.
+	SshClientCertPass SecretPtrInput `pulumi:"sshClientCertPass"`
 	// The user account used to authenticate.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -2390,6 +2394,11 @@ func (o SshPublicKeyOutput) SshClientCert() SecretPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *Secret { return v.SshClientCert }).(SecretPtrOutput)
 }
 
+// Password (passphrase) for ssh client certificate if it has one.
+func (o SshPublicKeyOutput) SshClientCertPass() SecretPtrOutput {
+	return o.ApplyT(func(v SshPublicKey) *Secret { return v.SshClientCertPass }).(SecretPtrOutput)
+}
+
 // The user account used to authenticate.
 func (o SshPublicKeyOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -2449,6 +2458,16 @@ func (o SshPublicKeyPtrOutput) SshClientCert() SecretPtrOutput {
 	}).(SecretPtrOutput)
 }
 
+// Password (passphrase) for ssh client certificate if it has one.
+func (o SshPublicKeyPtrOutput) SshClientCertPass() SecretPtrOutput {
+	return o.ApplyT(func(v *SshPublicKey) *Secret {
+		if v == nil {
+			return nil
+		}
+		return v.SshClientCertPass
+	}).(SecretPtrOutput)
+}
+
 // The user account used to authenticate.
 func (o SshPublicKeyPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshPublicKey) *string {
@@ -2467,6 +2486,8 @@ type SshPublicKeyResponse struct {
 	Password SecretResponse `pulumi:"password"`
 	// SSH Client Cert. It should contain both public and private key.
 	SshClientCert SecretResponse `pulumi:"sshClientCert"`
+	// Password (passphrase) for ssh client certificate if it has one.
+	SshClientCertPass SecretResponse `pulumi:"sshClientCertPass"`
 	// The user account used to authenticate.
 	Username string `pulumi:"username"`
 }
@@ -2499,6 +2520,11 @@ func (o SshPublicKeyResponseOutput) Password() SecretResponseOutput {
 // SSH Client Cert. It should contain both public and private key.
 func (o SshPublicKeyResponseOutput) SshClientCert() SecretResponseOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) SecretResponse { return v.SshClientCert }).(SecretResponseOutput)
+}
+
+// Password (passphrase) for ssh client certificate if it has one.
+func (o SshPublicKeyResponseOutput) SshClientCertPass() SecretResponseOutput {
+	return o.ApplyT(func(v SshPublicKeyResponse) SecretResponse { return v.SshClientCertPass }).(SecretResponseOutput)
 }
 
 // The user account used to authenticate.
