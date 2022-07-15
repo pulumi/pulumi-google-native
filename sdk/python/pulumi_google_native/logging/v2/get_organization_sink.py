@@ -187,10 +187,7 @@ def get_organization_sink(organization_id: Optional[str] = None,
     __args__ = dict()
     __args__['organizationId'] = organization_id
     __args__['sinkId'] = sink_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getOrganizationSink', __args__, opts=opts, typ=GetOrganizationSinkResult).value
 
     return AwaitableGetOrganizationSinkResult(

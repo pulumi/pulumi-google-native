@@ -183,10 +183,7 @@ def get_transfer_job(project_id: Optional[str] = None,
     __args__ = dict()
     __args__['projectId'] = project_id
     __args__['transferJobId'] = transfer_job_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:storagetransfer/v1:getTransferJob', __args__, opts=opts, typ=GetTransferJobResult).value
 
     return AwaitableGetTransferJobResult(

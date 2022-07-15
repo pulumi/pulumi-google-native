@@ -47,7 +47,7 @@ class GetFolderResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+        The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\\p{L}\\p{N}]([\\p{L}\\p{N}_- ]{0,28}[\\p{L}\\p{N}])?`.
         """
         return pulumi.get(self, "display_name")
 
@@ -96,10 +96,7 @@ def get_folder(folder_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['folderId'] = folder_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudresourcemanager/v2beta1:getFolder', __args__, opts=opts, typ=GetFolderResult).value
 
     return AwaitableGetFolderResult(

@@ -38,7 +38,7 @@ class GetKeystoreResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        Resource ID for this keystore. Values must match the regular expression `[\\w[:space:]-.]{1,255}`.
         """
         return pulumi.get(self, "name")
 
@@ -64,10 +64,7 @@ def get_keystore(environment_id: Optional[str] = None,
     __args__['environmentId'] = environment_id
     __args__['keystoreId'] = keystore_id
     __args__['organizationId'] = organization_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getKeystore', __args__, opts=opts, typ=GetKeystoreResult).value
 
     return AwaitableGetKeystoreResult(

@@ -374,7 +374,7 @@ class ExecStepConfigArgs:
         Common configurations for an ExecStep.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['GcsObjectArgs'] gcs_object: A Google Cloud Storage object containing the executable.
-        :param pulumi.Input['ExecStepConfigInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        :param pulumi.Input['ExecStepConfigInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\\(Unix\\)).
         :param pulumi.Input[str] local_path: An absolute path to the executable on the VM.
         """
         if allowed_success_codes is not None:
@@ -414,7 +414,7 @@ class ExecStepConfigArgs:
     @pulumi.getter
     def interpreter(self) -> Optional[pulumi.Input['ExecStepConfigInterpreter']]:
         """
-        The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\\(Unix\\)).
         """
         return pulumi.get(self, "interpreter")
 
@@ -1541,7 +1541,7 @@ class SoftwareRecipeStepExtractArchiveArgs:
         Extracts an archive of the type specified in the specified directory.
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input['SoftwareRecipeStepExtractArchiveType'] type: The type of the archive to extract.
-        :param pulumi.Input[str] destination: Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
+        :param pulumi.Input[str] destination: Directory to extract archive to. Defaults to `/` on Linux or `C:\\` on Windows.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
         pulumi.set(__self__, "type", type)
@@ -1576,7 +1576,7 @@ class SoftwareRecipeStepExtractArchiveArgs:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
+        Directory to extract archive to. Defaults to `/` on Linux or `C:\\` on Windows.
         """
         return pulumi.get(self, "destination")
 
@@ -1696,7 +1696,7 @@ class SoftwareRecipeStepRunScriptArgs:
         Runs a script through an interpreter.
         :param pulumi.Input[str] script: The shell script to be executed.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param pulumi.Input['SoftwareRecipeStepRunScriptInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        :param pulumi.Input['SoftwareRecipeStepRunScriptInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\\(Unix\\)).
         """
         pulumi.set(__self__, "script", script)
         if allowed_exit_codes is not None:
@@ -1732,7 +1732,7 @@ class SoftwareRecipeStepRunScriptArgs:
     @pulumi.getter
     def interpreter(self) -> Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']]:
         """
-        The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\\(Unix\\)).
         """
         return pulumi.get(self, "interpreter")
 

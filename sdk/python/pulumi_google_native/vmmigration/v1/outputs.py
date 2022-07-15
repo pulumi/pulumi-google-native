@@ -1118,7 +1118,7 @@ class NetworkInterfaceResponse(dict):
         """
         NetworkInterface represents a NIC of a VM.
         :param str external_ip: The external IP to define in the NIC.
-        :param str internal_ip: The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        :param str internal_ip: The internal IP to define in the NIC. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         :param str network: The network to connect the NIC to.
         :param str subnetwork: The subnetwork to connect the NIC to.
         """
@@ -1139,7 +1139,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> str:
         """
-        The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        The internal IP to define in the NIC. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         """
         return pulumi.get(self, "internal_ip")
 

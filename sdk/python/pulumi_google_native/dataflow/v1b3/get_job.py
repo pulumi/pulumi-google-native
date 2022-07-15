@@ -165,7 +165,7 @@ class GetJobResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+        User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         """
         return pulumi.get(self, "labels")
 
@@ -335,10 +335,7 @@ def get_job(job_id: Optional[str] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['view'] = view
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:dataflow/v1b3:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(

@@ -562,7 +562,7 @@ class AndroidTestLoopArgs:
                  scenario_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scenarios: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
-        A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
+        A test of an Android Application with a Test Loop. The intent \\ will be implicitly added, since Games is the only user of this api, for the time being.
         :param pulumi.Input['FileReferenceArgs'] app_apk: The APK for the application under test.
         :param pulumi.Input['AppBundleArgs'] app_bundle: A multi-apk app bundle for the application under test.
         :param pulumi.Input[str] app_package_id: The java package for the application under test. The default is determined by examining the application's manifest.
@@ -1343,7 +1343,7 @@ class ObbFileArgs:
         """
         An opaque binary blob file to install on the device before the test starts.
         :param pulumi.Input['FileReferenceArgs'] obb: Opaque Binary Blob (OBB) file(s) to install on the device.
-        :param pulumi.Input[str] obb_file_name: OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        :param pulumi.Input[str] obb_file_name: OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \\/Android/obb/\\/ on the device.
         """
         pulumi.set(__self__, "obb", obb)
         pulumi.set(__self__, "obb_file_name", obb_file_name)
@@ -1364,7 +1364,7 @@ class ObbFileArgs:
     @pulumi.getter(name="obbFileName")
     def obb_file_name(self) -> pulumi.Input[str]:
         """
-        OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \\/Android/obb/\\/ on the device.
         """
         return pulumi.get(self, "obb_file_name")
 
