@@ -43,7 +43,7 @@ class GetHl7V2StoreResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         """
         return pulumi.get(self, "labels")
 
@@ -115,10 +115,7 @@ def get_hl7_v2_store(dataset_id: Optional[str] = None,
     __args__['hl7V2StoreId'] = hl7_v2_store_id
     __args__['location'] = location
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getHl7V2Store', __args__, opts=opts, typ=GetHl7V2StoreResult).value
 
     return AwaitableGetHl7V2StoreResult(

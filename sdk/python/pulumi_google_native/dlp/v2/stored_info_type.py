@@ -24,7 +24,7 @@ class StoredInfoTypeArgs:
         The set of arguments for constructing a StoredInfoType resource.
         :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Configuration of the storedInfoType to create.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
-        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "config", config)
         if location is not None:
@@ -74,7 +74,7 @@ class StoredInfoTypeArgs:
     @pulumi.getter(name="storedInfoTypeId")
     def stored_info_type_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         return pulumi.get(self, "stored_info_type_id")
 
@@ -101,7 +101,7 @@ class StoredInfoType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] config: Configuration of the storedInfoType to create.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
-        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         ...
     @overload
@@ -133,14 +133,9 @@ class StoredInfoType(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')

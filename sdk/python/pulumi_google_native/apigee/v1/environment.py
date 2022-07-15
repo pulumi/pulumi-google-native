@@ -32,7 +32,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
         :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
-        :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -124,7 +124,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +169,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
         :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
-        :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
         ...
@@ -205,14 +205,9 @@ class Environment(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')

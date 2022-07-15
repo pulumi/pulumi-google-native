@@ -32,7 +32,7 @@ class SecurityReportArgs:
         """
         The set of arguments for constructing a SecurityReport resource.
         :param Any time_range: Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
-        :param pulumi.Input[str] csv_delimiter: Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
+        :param pulumi.Input[str] csv_delimiter: Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\\t`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: A list of dimensions. https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
         :param pulumi.Input[str] display_name: Security Report display name which users can specify.
         :param pulumi.Input[str] envgroup_hostname: Hostname needs to be specified if query intends to run at host level. This field is only allowed when query is submitted by CreateHostSecurityReport where analytics data will be grouped by organization and hostname.
@@ -101,7 +101,7 @@ class SecurityReportArgs:
     @pulumi.getter(name="csvDelimiter")
     def csv_delimiter(self) -> Optional[pulumi.Input[str]]:
         """
-        Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
+        Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\\t`).
         """
         return pulumi.get(self, "csv_delimiter")
 
@@ -245,7 +245,7 @@ class SecurityReport(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] csv_delimiter: Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
+        :param pulumi.Input[str] csv_delimiter: Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\\t`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: A list of dimensions. https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
         :param pulumi.Input[str] display_name: Security Report display name which users can specify.
         :param pulumi.Input[str] envgroup_hostname: Hostname needs to be specified if query intends to run at host level. This field is only allowed when query is submitted by CreateHostSecurityReport where analytics data will be grouped by organization and hostname.
@@ -298,14 +298,9 @@ class SecurityReport(pulumi.CustomResource):
                  report_definition_id: Optional[pulumi.Input[str]] = None,
                  time_range: Optional[Any] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')

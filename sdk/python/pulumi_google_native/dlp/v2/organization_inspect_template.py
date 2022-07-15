@@ -29,7 +29,7 @@ class OrganizationInspectTemplateArgs:
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs'] inspect_config: The core content of the template. Configuration of the scanning process.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
-        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
@@ -107,7 +107,7 @@ class OrganizationInspectTemplateArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         return pulumi.get(self, "template_id")
 
@@ -138,7 +138,7 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']] inspect_config: The core content of the template. Configuration of the scanning process.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
-        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         ...
     @overload
@@ -172,14 +172,9 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')

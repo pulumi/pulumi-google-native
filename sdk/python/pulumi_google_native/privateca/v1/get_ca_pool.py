@@ -101,10 +101,7 @@ def get_ca_pool(ca_pool_id: Optional[str] = None,
     __args__['caPoolId'] = ca_pool_id
     __args__['location'] = location
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1:getCaPool', __args__, opts=opts, typ=GetCaPoolResult).value
 
     return AwaitableGetCaPoolResult(

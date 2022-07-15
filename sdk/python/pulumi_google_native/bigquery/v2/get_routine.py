@@ -86,7 +86,7 @@ class GetRoutineResult:
     @pulumi.getter(name="definitionBody")
     def definition_body(self) -> str:
         """
-        The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\\n", y))` The definition_body is `concat(x, "\\n", y)` (\\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\\n";\\n'` The definition_body is `return "\\n";\\n` Note that both \\n are replaced with linebreaks.
         """
         return pulumi.get(self, "definition_body")
 
@@ -223,10 +223,7 @@ def get_routine(dataset_id: Optional[str] = None,
     __args__['project'] = project
     __args__['readMask'] = read_mask
     __args__['routineId'] = routine_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:bigquery/v2:getRoutine', __args__, opts=opts, typ=GetRoutineResult).value
 
     return AwaitableGetRoutineResult(

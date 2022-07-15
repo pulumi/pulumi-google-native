@@ -127,7 +127,7 @@ class ExecStepConfigArgs:
         Common configurations for an ExecStep.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_success_codes: Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
         :param pulumi.Input['GcsObjectArgs'] gcs_object: A Cloud Storage object containing the executable.
-        :param pulumi.Input['ExecStepConfigInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        :param pulumi.Input['ExecStepConfigInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\\(Unix\\)).
         :param pulumi.Input[str] local_path: An absolute path to the executable on the VM.
         """
         if allowed_success_codes is not None:
@@ -167,7 +167,7 @@ class ExecStepConfigArgs:
     @pulumi.getter
     def interpreter(self) -> Optional[pulumi.Input['ExecStepConfigInterpreter']]:
         """
-        The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\\(Unix\\)).
         """
         return pulumi.get(self, "interpreter")
 

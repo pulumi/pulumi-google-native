@@ -160,10 +160,7 @@ def get_target_vpn_gateway(project: Optional[str] = None,
     __args__['project'] = project
     __args__['region'] = region
     __args__['targetVpnGateway'] = target_vpn_gateway
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getTargetVpnGateway', __args__, opts=opts, typ=GetTargetVpnGatewayResult).value
 
     return AwaitableGetTargetVpnGatewayResult(

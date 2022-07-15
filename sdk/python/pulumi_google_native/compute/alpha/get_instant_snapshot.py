@@ -257,10 +257,7 @@ def get_instant_snapshot(instant_snapshot: Optional[str] = None,
     __args__['instantSnapshot'] = instant_snapshot
     __args__['project'] = project
     __args__['zone'] = zone
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getInstantSnapshot', __args__, opts=opts, typ=GetInstantSnapshotResult).value
 
     return AwaitableGetInstantSnapshotResult(

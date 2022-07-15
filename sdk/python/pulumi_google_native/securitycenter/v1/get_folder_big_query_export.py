@@ -134,10 +134,7 @@ def get_folder_big_query_export(big_query_export_id: Optional[str] = None,
     __args__ = dict()
     __args__['bigQueryExportId'] = big_query_export_id
     __args__['folderId'] = folder_id
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getFolderBigQueryExport', __args__, opts=opts, typ=GetFolderBigQueryExportResult).value
 
     return AwaitableGetFolderBigQueryExportResult(

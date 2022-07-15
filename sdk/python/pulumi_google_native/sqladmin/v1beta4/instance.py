@@ -83,7 +83,7 @@ class InstanceArgs:
         :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input['SslCertArgs'] server_ca_cert: SSL configuration.
-        :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. \This property is read-only.
+        :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. \\This property is read-only.
         :param pulumi.Input['SettingsArgs'] settings: The user settings.
         :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
@@ -527,7 +527,7 @@ class InstanceArgs:
     @pulumi.getter(name="serviceAccountEmailAddress")
     def service_account_email_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The service account email address assigned to the instance. \This property is read-only.
+        The service account email address assigned to the instance. \\This property is read-only.
         """
         return pulumi.get(self, "service_account_email_address")
 
@@ -647,7 +647,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[pulumi.InputType['SslCertArgs']] server_ca_cert: SSL configuration.
-        :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. \This property is read-only.
+        :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. \\This property is read-only.
         :param pulumi.Input[pulumi.InputType['SettingsArgs']] settings: The user settings.
         :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
@@ -711,14 +711,9 @@ class Instance(pulumi.CustomResource):
                  state: Optional[pulumi.Input['InstanceState']] = None,
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -1085,7 +1080,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountEmailAddress")
     def service_account_email_address(self) -> pulumi.Output[str]:
         """
-        The service account email address assigned to the instance. \This property is read-only.
+        The service account email address assigned to the instance. \\This property is read-only.
         """
         return pulumi.get(self, "service_account_email_address")
 

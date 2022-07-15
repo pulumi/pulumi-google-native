@@ -1556,7 +1556,7 @@ class NetworkInterfaceResponse(dict):
         """
         NetworkInterface represents a NIC of a VM.
         :param str external_ip: The external IP to define in the NIC.
-        :param str internal_ip: The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        :param str internal_ip: The internal IP to define in the NIC. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         :param str network: The network to connect the NIC to.
         :param str subnetwork: The subnetwork to connect the NIC to.
         """
@@ -1577,7 +1577,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> str:
         """
-        The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        The internal IP to define in the NIC. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         """
         return pulumi.get(self, "internal_ip")
 
@@ -2079,7 +2079,7 @@ class TargetVMDetailsResponse(dict):
         :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param str disk_type: The disk type to use in the VM.
         :param str external_ip: The external IP to define in the VM.
-        :param str internal_ip: The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        :param str internal_ip: The internal IP to define in the VM. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         :param Mapping[str, str] labels: A map of labels to associate with the VM.
         :param str license_type: The license type to use in OS adaptation.
         :param str machine_type: The machine type to create the VM with.
@@ -2162,7 +2162,7 @@ class TargetVMDetailsResponse(dict):
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> str:
         """
-        The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        The internal IP to define in the VM. The formats accepted are: `ephemeral` \\ ipv4 address \\ a named address resource full path.
         """
         return pulumi.get(self, "internal_ip")
 

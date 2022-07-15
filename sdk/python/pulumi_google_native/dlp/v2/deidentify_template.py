@@ -29,7 +29,7 @@ class DeidentifyTemplateArgs:
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
-        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         if deidentify_config is not None:
             pulumi.set(__self__, "deidentify_config", deidentify_config)
@@ -108,7 +108,7 @@ class DeidentifyTemplateArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         return pulumi.get(self, "template_id")
 
@@ -139,7 +139,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
-        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         ...
     @overload
@@ -173,14 +173,9 @@ class DeidentifyTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')

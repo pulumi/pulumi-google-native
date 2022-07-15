@@ -159,10 +159,7 @@ def get_notification_channel(notification_channel_id: Optional[str] = None,
     __args__ = dict()
     __args__['notificationChannelId'] = notification_channel_id
     __args__['project'] = project
-    if opts is None:
-        opts = pulumi.InvokeOptions()
-    if opts.version is None:
-        opts.version = _utilities.get_version()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult).value
 
     return AwaitableGetNotificationChannelResult(
