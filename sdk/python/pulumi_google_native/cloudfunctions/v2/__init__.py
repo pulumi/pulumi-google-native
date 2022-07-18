@@ -6,7 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .function import *
 from .function_iam_policy import *
+from .get_function import *
 from .get_function_iam_policy import *
 from ._inputs import *
 from . import outputs

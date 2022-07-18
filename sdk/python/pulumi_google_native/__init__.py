@@ -601,10 +601,15 @@ _utilities.register(
   "mod": "beyondcorp/v1",
   "fqn": "pulumi_google_native.beyondcorp.v1",
   "classes": {
+   "google-native:beyondcorp/v1:AppConnection": "AppConnection",
    "google-native:beyondcorp/v1:AppConnectionIamPolicy": "AppConnectionIamPolicy",
+   "google-native:beyondcorp/v1:AppConnector": "AppConnector",
    "google-native:beyondcorp/v1:AppConnectorIamPolicy": "AppConnectorIamPolicy",
+   "google-native:beyondcorp/v1:AppGateway": "AppGateway",
    "google-native:beyondcorp/v1:AppGatewayIamPolicy": "AppGatewayIamPolicy",
+   "google-native:beyondcorp/v1:ClientConnectorService": "ClientConnectorService",
    "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy": "ClientConnectorServiceIamPolicy",
+   "google-native:beyondcorp/v1:ClientGateway": "ClientGateway",
    "google-native:beyondcorp/v1:ClientGatewayIamPolicy": "ClientGatewayIamPolicy"
   }
  },
@@ -833,6 +838,7 @@ _utilities.register(
   "mod": "cloudfunctions/v2",
   "fqn": "pulumi_google_native.cloudfunctions.v2",
   "classes": {
+   "google-native:cloudfunctions/v2:Function": "Function",
    "google-native:cloudfunctions/v2:FunctionIamPolicy": "FunctionIamPolicy"
   }
  },

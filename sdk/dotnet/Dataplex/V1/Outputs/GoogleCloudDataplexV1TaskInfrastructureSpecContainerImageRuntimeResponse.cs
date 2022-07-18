@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse
     {
         /// <summary>
+        /// Optional. Container image to use.
+        /// </summary>
+        public readonly string Image;
+        /// <summary>
         /// Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
         /// </summary>
         public readonly ImmutableArray<string> JavaJars;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse(
+            string image,
+
             ImmutableArray<string> javaJars,
 
             ImmutableDictionary<string, string> properties,
 
             ImmutableArray<string> pythonPackages)
         {
+            Image = image;
             JavaJars = javaJars;
             Properties = properties;
             PythonPackages = pythonPackages;

@@ -178,7 +178,7 @@ func (o CertificateProviderInstanceResponseOutput) PluginInstance() pulumi.Strin
 
 // Specification of traffic destination attributes.
 type Destination struct {
-	// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+	// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
 	Hosts []string `pulumi:"hosts"`
 	// Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
 	HttpHeaderMatch *HttpHeaderMatch `pulumi:"httpHeaderMatch"`
@@ -201,7 +201,7 @@ type DestinationInput interface {
 
 // Specification of traffic destination attributes.
 type DestinationArgs struct {
-	// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+	// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
 	// Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
 	HttpHeaderMatch HttpHeaderMatchPtrInput `pulumi:"httpHeaderMatch"`
@@ -263,7 +263,7 @@ func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) D
 	return o
 }
 
-// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
 func (o DestinationOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Destination) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
@@ -305,7 +305,7 @@ func (o DestinationArrayOutput) Index(i pulumi.IntInput) DestinationOutput {
 
 // Specification of traffic destination attributes.
 type DestinationResponse struct {
-	// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+	// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
 	Hosts []string `pulumi:"hosts"`
 	// Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
 	HttpHeaderMatch HttpHeaderMatchResponse `pulumi:"httpHeaderMatch"`
@@ -330,7 +330,7 @@ func (o DestinationResponseOutput) ToDestinationResponseOutputWithContext(ctx co
 	return o
 }
 
-// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
 func (o DestinationResponseOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DestinationResponse) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
@@ -816,7 +816,7 @@ func (o GoogleCloudNetworksecurityV1CertificateProviderResponseOutput) GrpcEndpo
 
 // Specification of the GRPC Endpoint.
 type GoogleCloudNetworksecurityV1GrpcEndpoint struct {
-	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 	TargetUri string `pulumi:"targetUri"`
 }
 
@@ -833,7 +833,7 @@ type GoogleCloudNetworksecurityV1GrpcEndpointInput interface {
 
 // Specification of the GRPC Endpoint.
 type GoogleCloudNetworksecurityV1GrpcEndpointArgs struct {
-	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 	TargetUri pulumi.StringInput `pulumi:"targetUri"`
 }
 
@@ -915,7 +915,7 @@ func (o GoogleCloudNetworksecurityV1GrpcEndpointOutput) ToGoogleCloudNetworksecu
 	}).(GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput)
 }
 
-// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o GoogleCloudNetworksecurityV1GrpcEndpointOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudNetworksecurityV1GrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
 }
@@ -944,7 +944,7 @@ func (o GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput) Elem() GoogleCloudNet
 	}).(GoogleCloudNetworksecurityV1GrpcEndpointOutput)
 }
 
-// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput) TargetUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1GrpcEndpoint) *string {
 		if v == nil {
@@ -956,7 +956,7 @@ func (o GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput) TargetUri() pulumi.St
 
 // Specification of the GRPC Endpoint.
 type GoogleCloudNetworksecurityV1GrpcEndpointResponse struct {
-	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 	TargetUri string `pulumi:"targetUri"`
 }
 
@@ -975,7 +975,7 @@ func (o GoogleCloudNetworksecurityV1GrpcEndpointResponseOutput) ToGoogleCloudNet
 	return o
 }
 
-// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
 func (o GoogleCloudNetworksecurityV1GrpcEndpointResponseOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudNetworksecurityV1GrpcEndpointResponse) string { return v.TargetUri }).(pulumi.StringOutput)
 }
@@ -1482,7 +1482,7 @@ func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIa
 	}).(GoogleIamV1BindingResponseOutput)
 }
 
-// Specification of HTTP header match atrributes.
+// Specification of HTTP header match attributes.
 type HttpHeaderMatch struct {
 	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
 	HeaderName string `pulumi:"headerName"`
@@ -1501,7 +1501,7 @@ type HttpHeaderMatchInput interface {
 	ToHttpHeaderMatchOutputWithContext(context.Context) HttpHeaderMatchOutput
 }
 
-// Specification of HTTP header match atrributes.
+// Specification of HTTP header match attributes.
 type HttpHeaderMatchArgs struct {
 	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
@@ -1562,7 +1562,7 @@ func (i *httpHeaderMatchPtrType) ToHttpHeaderMatchPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(HttpHeaderMatchPtrOutput)
 }
 
-// Specification of HTTP header match atrributes.
+// Specification of HTTP header match attributes.
 type HttpHeaderMatchOutput struct{ *pulumi.OutputState }
 
 func (HttpHeaderMatchOutput) ElementType() reflect.Type {
@@ -1641,7 +1641,7 @@ func (o HttpHeaderMatchPtrOutput) RegexMatch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specification of HTTP header match atrributes.
+// Specification of HTTP header match attributes.
 type HttpHeaderMatchResponse struct {
 	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
 	HeaderName string `pulumi:"headerName"`
@@ -1649,7 +1649,7 @@ type HttpHeaderMatchResponse struct {
 	RegexMatch string `pulumi:"regexMatch"`
 }
 
-// Specification of HTTP header match atrributes.
+// Specification of HTTP header match attributes.
 type HttpHeaderMatchResponseOutput struct{ *pulumi.OutputState }
 
 func (HttpHeaderMatchResponseOutput) ElementType() reflect.Type {
@@ -2006,7 +2006,7 @@ func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
 type Source struct {
 	// Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
 	IpBlocks []string `pulumi:"ipBlocks"`
-	// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+	// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
 	Principals []string `pulumi:"principals"`
 }
 
@@ -2025,7 +2025,7 @@ type SourceInput interface {
 type SourceArgs struct {
 	// Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
 	IpBlocks pulumi.StringArrayInput `pulumi:"ipBlocks"`
-	// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+	// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
 	Principals pulumi.StringArrayInput `pulumi:"principals"`
 }
 
@@ -2086,7 +2086,7 @@ func (o SourceOutput) IpBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Source) []string { return v.IpBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
 func (o SourceOutput) Principals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Source) []string { return v.Principals }).(pulumi.StringArrayOutput)
 }
@@ -2115,7 +2115,7 @@ func (o SourceArrayOutput) Index(i pulumi.IntInput) SourceOutput {
 type SourceResponse struct {
 	// Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
 	IpBlocks []string `pulumi:"ipBlocks"`
-	// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+	// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
 	Principals []string `pulumi:"principals"`
 }
 
@@ -2139,7 +2139,7 @@ func (o SourceResponseOutput) IpBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SourceResponse) []string { return v.IpBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
 func (o SourceResponseOutput) Principals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SourceResponse) []string { return v.Principals }).(pulumi.StringArrayOutput)
 }

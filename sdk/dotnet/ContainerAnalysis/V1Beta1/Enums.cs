@@ -834,6 +834,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public static DiscoveredAnalysisStatus FinishedSuccess { get; } = new DiscoveredAnalysisStatus("FINISHED_SUCCESS");
         /// <summary>
+        /// Analysis has completed.
+        /// </summary>
+        public static DiscoveredAnalysisStatus Complete { get; } = new DiscoveredAnalysisStatus("COMPLETE");
+        /// <summary>
         /// Analysis has finished unsuccessfully, the analysis itself is in a bad state.
         /// </summary>
         public static DiscoveredAnalysisStatus FinishedFailed { get; } = new DiscoveredAnalysisStatus("FINISHED_FAILED");

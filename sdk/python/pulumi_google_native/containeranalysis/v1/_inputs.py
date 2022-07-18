@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'AliasContextArgs',
+    'AnalysisCompletedArgs',
     'ArtifactArgs',
     'AttestationNoteArgs',
     'AttestationOccurrenceArgs',
@@ -133,6 +134,26 @@ class AliasContextArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class AnalysisCompletedArgs:
+    def __init__(__self__, *,
+                 analysis_type: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+        """
+        if analysis_type is not None:
+            pulumi.set(__self__, "analysis_type", analysis_type)
+
+    @property
+    @pulumi.getter(name="analysisType")
+    def analysis_type(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "analysis_type")
+
+    @analysis_type.setter
+    def analysis_type(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "analysis_type", value)
 
 
 @pulumi.input_type
@@ -1958,6 +1979,8 @@ class DiscoveryNoteArgs:
 @pulumi.input_type
 class DiscoveryOccurrenceArgs:
     def __init__(__self__, *,
+                 analysis_completed: Optional[pulumi.Input['AnalysisCompletedArgs']] = None,
+                 analysis_error: Optional[pulumi.Input[Sequence[pulumi.Input['StatusArgs']]]] = None,
                  analysis_status: Optional[pulumi.Input['DiscoveryOccurrenceAnalysisStatus']] = None,
                  analysis_status_error: Optional[pulumi.Input['StatusArgs']] = None,
                  continuous_analysis: Optional[pulumi.Input['DiscoveryOccurrenceContinuousAnalysis']] = None,
@@ -1965,12 +1988,17 @@ class DiscoveryOccurrenceArgs:
                  last_scan_time: Optional[pulumi.Input[str]] = None):
         """
         Provides information about the analysis status of a discovered resource.
+        :param pulumi.Input[Sequence[pulumi.Input['StatusArgs']]] analysis_error: Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
         :param pulumi.Input['DiscoveryOccurrenceAnalysisStatus'] analysis_status: The status of discovery for the resource.
         :param pulumi.Input['StatusArgs'] analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
         :param pulumi.Input['DiscoveryOccurrenceContinuousAnalysis'] continuous_analysis: Whether the resource is continuously analyzed.
         :param pulumi.Input[str] cpe: The CPE of the resource being scanned.
         :param pulumi.Input[str] last_scan_time: The last time this resource was scanned.
         """
+        if analysis_completed is not None:
+            pulumi.set(__self__, "analysis_completed", analysis_completed)
+        if analysis_error is not None:
+            pulumi.set(__self__, "analysis_error", analysis_error)
         if analysis_status is not None:
             pulumi.set(__self__, "analysis_status", analysis_status)
         if analysis_status_error is not None:
@@ -1981,6 +2009,27 @@ class DiscoveryOccurrenceArgs:
             pulumi.set(__self__, "cpe", cpe)
         if last_scan_time is not None:
             pulumi.set(__self__, "last_scan_time", last_scan_time)
+
+    @property
+    @pulumi.getter(name="analysisCompleted")
+    def analysis_completed(self) -> Optional[pulumi.Input['AnalysisCompletedArgs']]:
+        return pulumi.get(self, "analysis_completed")
+
+    @analysis_completed.setter
+    def analysis_completed(self, value: Optional[pulumi.Input['AnalysisCompletedArgs']]):
+        pulumi.set(self, "analysis_completed", value)
+
+    @property
+    @pulumi.getter(name="analysisError")
+    def analysis_error(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatusArgs']]]]:
+        """
+        Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        """
+        return pulumi.get(self, "analysis_error")
+
+    @analysis_error.setter
+    def analysis_error(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatusArgs']]]]):
+        pulumi.set(self, "analysis_error", value)
 
     @property
     @pulumi.getter(name="analysisStatus")

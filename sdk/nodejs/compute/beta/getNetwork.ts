@@ -43,6 +43,10 @@ export interface GetNetworkResult {
      */
     readonly enableUlaInternalIpv6: boolean;
     /**
+     * URL of the firewall policy the network is associated with.
+     */
+    readonly firewallPolicy: string;
+    /**
      * The gateway address for default routing out of the network, selected by GCP.
      */
     readonly gatewayIPv4: string;

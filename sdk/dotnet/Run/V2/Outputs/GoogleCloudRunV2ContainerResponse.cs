@@ -48,6 +48,10 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// Volume to mount into the container's filesystem.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2VolumeMountResponse> VolumeMounts;
+        /// <summary>
+        /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        /// </summary>
+        public readonly string WorkingDir;
 
         [OutputConstructor]
         private GoogleCloudRunV2ContainerResponse(
@@ -65,7 +69,9 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 
             Outputs.GoogleCloudRunV2ResourceRequirementsResponse resources,
 
-            ImmutableArray<Outputs.GoogleCloudRunV2VolumeMountResponse> volumeMounts)
+            ImmutableArray<Outputs.GoogleCloudRunV2VolumeMountResponse> volumeMounts,
+
+            string workingDir)
         {
             Args = args;
             Command = command;
@@ -75,6 +81,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
             Ports = ports;
             Resources = resources;
             VolumeMounts = volumeMounts;
+            WorkingDir = workingDir;
         }
     }
 }

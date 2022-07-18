@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Args;
         /// <summary>
+        /// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+        /// </summary>
+        public readonly string KmsKey;
+        /// <summary>
         /// Optional. The maximum duration after which the job execution is expired.
         /// </summary>
         public readonly string MaxJobExecutionLifetime;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         private GoogleCloudDataplexV1TaskExecutionSpecResponse(
             ImmutableDictionary<string, string> args,
 
+            string kmsKey,
+
             string maxJobExecutionLifetime,
 
             string project,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
             string serviceAccount)
         {
             Args = args;
+            KmsKey = kmsKey;
             MaxJobExecutionLifetime = maxJobExecutionLifetime;
             Project = project;
             ServiceAccount = serviceAccount;

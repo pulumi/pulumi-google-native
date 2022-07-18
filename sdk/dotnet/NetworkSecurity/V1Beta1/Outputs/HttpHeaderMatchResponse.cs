@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// Specification of HTTP header match atrributes.
+    /// Specification of HTTP header match attributes.
     /// </summary>
     [OutputType]
     public sealed class HttpHeaderMatchResponse

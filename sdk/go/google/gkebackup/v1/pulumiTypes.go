@@ -814,7 +814,7 @@ type ClusterMetadataResponse struct {
 	AnthosVersion string `pulumi:"anthosVersion"`
 	// A list of the Backup for GKE CRD versions found in the cluster.
 	BackupCrdVersions map[string]string `pulumi:"backupCrdVersions"`
-	// The source cluster from which this Backup was created. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* This is inherited from the parent BackupPlan's cluster field.
+	// The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
 	Cluster string `pulumi:"cluster"`
 	// GKE version
 	GkeVersion string `pulumi:"gkeVersion"`
@@ -847,7 +847,7 @@ func (o ClusterMetadataResponseOutput) BackupCrdVersions() pulumi.StringMapOutpu
 	return o.ApplyT(func(v ClusterMetadataResponse) map[string]string { return v.BackupCrdVersions }).(pulumi.StringMapOutput)
 }
 
-// The source cluster from which this Backup was created. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* This is inherited from the parent BackupPlan's cluster field.
+// The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
 func (o ClusterMetadataResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMetadataResponse) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -1030,7 +1030,7 @@ func (o ClusterResourceRestoreScopeResponseOutput) SelectedGroupKinds() GroupKin
 
 // Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 type EncryptionKey struct {
-	// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+	// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	GcpKmsEncryptionKey *string `pulumi:"gcpKmsEncryptionKey"`
 }
 
@@ -1047,7 +1047,7 @@ type EncryptionKeyInput interface {
 
 // Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 type EncryptionKeyArgs struct {
-	// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+	// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	GcpKmsEncryptionKey pulumi.StringPtrInput `pulumi:"gcpKmsEncryptionKey"`
 }
 
@@ -1129,7 +1129,7 @@ func (o EncryptionKeyOutput) ToEncryptionKeyPtrOutputWithContext(ctx context.Con
 	}).(EncryptionKeyPtrOutput)
 }
 
-// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 func (o EncryptionKeyOutput) GcpKmsEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionKey) *string { return v.GcpKmsEncryptionKey }).(pulumi.StringPtrOutput)
 }
@@ -1158,7 +1158,7 @@ func (o EncryptionKeyPtrOutput) Elem() EncryptionKeyOutput {
 	}).(EncryptionKeyOutput)
 }
 
-// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 func (o EncryptionKeyPtrOutput) GcpKmsEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EncryptionKey) *string {
 		if v == nil {
@@ -1170,7 +1170,7 @@ func (o EncryptionKeyPtrOutput) GcpKmsEncryptionKey() pulumi.StringPtrOutput {
 
 // Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 type EncryptionKeyResponse struct {
-	// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+	// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	GcpKmsEncryptionKey string `pulumi:"gcpKmsEncryptionKey"`
 }
 
@@ -1189,7 +1189,7 @@ func (o EncryptionKeyResponseOutput) ToEncryptionKeyResponseOutputWithContext(ct
 	return o
 }
 
-// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 func (o EncryptionKeyResponseOutput) GcpKmsEncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionKeyResponse) string { return v.GcpKmsEncryptionKey }).(pulumi.StringOutput)
 }
@@ -2297,7 +2297,7 @@ func (o RestoreConfigResponseOutput) VolumeDataRestorePolicy() pulumi.StringOutp
 type RetentionPolicy struct {
 	// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 	BackupDeleteLockDays *int `pulumi:"backupDeleteLockDays"`
-	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
 	BackupRetainDays *int `pulumi:"backupRetainDays"`
 	// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 	Locked *bool `pulumi:"locked"`
@@ -2318,7 +2318,7 @@ type RetentionPolicyInput interface {
 type RetentionPolicyArgs struct {
 	// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 	BackupDeleteLockDays pulumi.IntPtrInput `pulumi:"backupDeleteLockDays"`
-	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
 	BackupRetainDays pulumi.IntPtrInput `pulumi:"backupRetainDays"`
 	// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 	Locked pulumi.BoolPtrInput `pulumi:"locked"`
@@ -2407,7 +2407,7 @@ func (o RetentionPolicyOutput) BackupDeleteLockDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicy) *int { return v.BackupDeleteLockDays }).(pulumi.IntPtrOutput)
 }
 
-// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
 func (o RetentionPolicyOutput) BackupRetainDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicy) *int { return v.BackupRetainDays }).(pulumi.IntPtrOutput)
 }
@@ -2451,7 +2451,7 @@ func (o RetentionPolicyPtrOutput) BackupDeleteLockDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
 func (o RetentionPolicyPtrOutput) BackupRetainDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RetentionPolicy) *int {
 		if v == nil {
@@ -2475,7 +2475,7 @@ func (o RetentionPolicyPtrOutput) Locked() pulumi.BoolPtrOutput {
 type RetentionPolicyResponse struct {
 	// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
 	BackupDeleteLockDays int `pulumi:"backupDeleteLockDays"`
-	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+	// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
 	BackupRetainDays int `pulumi:"backupRetainDays"`
 	// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
 	Locked bool `pulumi:"locked"`
@@ -2501,7 +2501,7 @@ func (o RetentionPolicyResponseOutput) BackupDeleteLockDays() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) int { return v.BackupDeleteLockDays }).(pulumi.IntOutput)
 }
 
-// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
 func (o RetentionPolicyResponseOutput) BackupRetainDays() pulumi.IntOutput {
 	return o.ApplyT(func(v RetentionPolicyResponse) int { return v.BackupRetainDays }).(pulumi.IntOutput)
 }
@@ -2513,7 +2513,7 @@ func (o RetentionPolicyResponseOutput) Locked() pulumi.BoolOutput {
 
 // Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type Schedule struct {
-	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 	Paused *bool `pulumi:"paused"`
@@ -2532,7 +2532,7 @@ type ScheduleInput interface {
 
 // Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type ScheduleArgs struct {
-	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 	CronSchedule pulumi.StringPtrInput `pulumi:"cronSchedule"`
 	// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 	Paused pulumi.BoolPtrInput `pulumi:"paused"`
@@ -2616,7 +2616,7 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	}).(SchedulePtrOutput)
 }
 
-// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 func (o ScheduleOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schedule) *string { return v.CronSchedule }).(pulumi.StringPtrOutput)
 }
@@ -2650,7 +2650,7 @@ func (o SchedulePtrOutput) Elem() ScheduleOutput {
 	}).(ScheduleOutput)
 }
 
-// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 func (o SchedulePtrOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schedule) *string {
 		if v == nil {
@@ -2672,7 +2672,7 @@ func (o SchedulePtrOutput) Paused() pulumi.BoolPtrOutput {
 
 // Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
 type ScheduleResponse struct {
-	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+	// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 	CronSchedule string `pulumi:"cronSchedule"`
 	// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
 	Paused bool `pulumi:"paused"`
@@ -2693,7 +2693,7 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
-// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
 func (o ScheduleResponseOutput) CronSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.CronSchedule }).(pulumi.StringOutput)
 }

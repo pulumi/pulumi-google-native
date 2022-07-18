@@ -368,7 +368,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse(dic
                  uri: str):
         """
         Gateway represents a user facing component that serves as an entrance to enable connectivity.
-        :param str app_gateway: AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+        :param str app_gateway: AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
         :param int ingress_port: Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         :param str type: The type of hosting used by the gateway.
         :param str uri: Server-defined URI for this resource.
@@ -382,7 +382,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse(dic
     @pulumi.getter(name="appGateway")
     def app_gateway(self) -> str:
         """
-        AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+        AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
         """
         return pulumi.get(self, "app_gateway")
 

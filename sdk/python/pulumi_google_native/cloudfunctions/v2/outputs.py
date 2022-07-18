@@ -15,7 +15,19 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'BuildConfigResponse',
+    'EventFilterResponse',
+    'EventTriggerResponse',
     'ExprResponse',
+    'GoogleCloudFunctionsV2StateMessageResponse',
+    'RepoSourceResponse',
+    'SecretEnvVarResponse',
+    'SecretVersionResponse',
+    'SecretVolumeResponse',
+    'ServiceConfigResponse',
+    'SourceProvenanceResponse',
+    'SourceResponse',
+    'StorageSourceResponse',
 ]
 
 @pulumi.output_type
@@ -165,6 +177,300 @@ class BindingResponse(dict):
 
 
 @pulumi.output_type
+class BuildConfigResponse(dict):
+    """
+    Describes the Build step of the function that builds a container from the given source.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dockerRepository":
+            suggest = "docker_repository"
+        elif key == "entryPoint":
+            suggest = "entry_point"
+        elif key == "environmentVariables":
+            suggest = "environment_variables"
+        elif key == "sourceProvenance":
+            suggest = "source_provenance"
+        elif key == "workerPool":
+            suggest = "worker_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuildConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuildConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuildConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build: str,
+                 docker_repository: str,
+                 entry_point: str,
+                 environment_variables: Mapping[str, str],
+                 runtime: str,
+                 source: 'outputs.SourceResponse',
+                 source_provenance: 'outputs.SourceProvenanceResponse',
+                 worker_pool: str):
+        """
+        Describes the Build step of the function that builds a container from the given source.
+        :param str build: The Cloud Build name of the latest successful deployment of the function.
+        :param str docker_repository: Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        :param str entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function
+        :param str runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
+        :param 'SourceResponse' source: The location of the function source code.
+        :param 'SourceProvenanceResponse' source_provenance: A permanent fixed identifier for source.
+        :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        """
+        pulumi.set(__self__, "build", build)
+        pulumi.set(__self__, "docker_repository", docker_repository)
+        pulumi.set(__self__, "entry_point", entry_point)
+        pulumi.set(__self__, "environment_variables", environment_variables)
+        pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_provenance", source_provenance)
+        pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter
+    def build(self) -> str:
+        """
+        The Cloud Build name of the latest successful deployment of the function.
+        """
+        return pulumi.get(self, "build")
+
+    @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> str:
+        """
+        Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        """
+        return pulumi.get(self, "docker_repository")
+
+    @property
+    @pulumi.getter(name="entryPoint")
+    def entry_point(self) -> str:
+        """
+        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        """
+        return pulumi.get(self, "entry_point")
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Mapping[str, str]:
+        """
+        User-provided build-time environment variables for the function
+        """
+        return pulumi.get(self, "environment_variables")
+
+    @property
+    @pulumi.getter
+    def runtime(self) -> str:
+        """
+        The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
+        """
+        return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter
+    def source(self) -> 'outputs.SourceResponse':
+        """
+        The location of the function source code.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceProvenance")
+    def source_provenance(self) -> 'outputs.SourceProvenanceResponse':
+        """
+        A permanent fixed identifier for source.
+        """
+        return pulumi.get(self, "source_provenance")
+
+    @property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> str:
+        """
+        Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        """
+        return pulumi.get(self, "worker_pool")
+
+
+@pulumi.output_type
+class EventFilterResponse(dict):
+    """
+    Filters events based on exact matches on the CloudEvents attributes.
+    """
+    def __init__(__self__, *,
+                 attribute: str,
+                 operator: str,
+                 value: str):
+        """
+        Filters events based on exact matches on the CloudEvents attributes.
+        :param str attribute: The name of a CloudEvents attribute.
+        :param str operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        :param str value: The value for the attribute.
+        """
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> str:
+        """
+        The name of a CloudEvents attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value for the attribute.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class EventTriggerResponse(dict):
+    """
+    Describes EventTrigger, used to request events to be sent from another service.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventFilters":
+            suggest = "event_filters"
+        elif key == "eventType":
+            suggest = "event_type"
+        elif key == "pubsubTopic":
+            suggest = "pubsub_topic"
+        elif key == "retryPolicy":
+            suggest = "retry_policy"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "triggerRegion":
+            suggest = "trigger_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 channel: str,
+                 event_filters: Sequence['outputs.EventFilterResponse'],
+                 event_type: str,
+                 pubsub_topic: str,
+                 retry_policy: str,
+                 service_account_email: str,
+                 trigger: str,
+                 trigger_region: str):
+        """
+        Describes EventTrigger, used to request events to be sent from another service.
+        :param str channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        :param Sequence['EventFilterResponse'] event_filters: Criteria used to filter events.
+        :param str event_type: The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
+        :param str pubsub_topic: Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
+        :param str retry_policy: Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
+        :param str service_account_email: Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
+        :param str trigger: The resource name of the Eventarc trigger. The format of this field is `projects/{project}/locations/{region}/triggers/{trigger}`.
+        :param str trigger_region: The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "event_filters", event_filters)
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        pulumi.set(__self__, "retry_policy", retry_policy)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "trigger", trigger)
+        pulumi.set(__self__, "trigger_region", trigger_region)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter(name="eventFilters")
+    def event_filters(self) -> Sequence['outputs.EventFilterResponse']:
+        """
+        Criteria used to filter events.
+        """
+        return pulumi.get(self, "event_filters")
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> str:
+        """
+        The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
+        """
+        return pulumi.get(self, "event_type")
+
+    @property
+    @pulumi.getter(name="pubsubTopic")
+    def pubsub_topic(self) -> str:
+        """
+        Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
+        """
+        return pulumi.get(self, "pubsub_topic")
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> str:
+        """
+        Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> str:
+        """
+        The resource name of the Eventarc trigger. The format of this field is `projects/{project}/locations/{region}/triggers/{trigger}`.
+        """
+        return pulumi.get(self, "trigger")
+
+    @property
+    @pulumi.getter(name="triggerRegion")
+    def trigger_region(self) -> str:
+        """
+        The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
+        """
+        return pulumi.get(self, "trigger_region")
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -217,5 +523,685 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GoogleCloudFunctionsV2StateMessageResponse(dict):
+    """
+    Informational messages about the state of the Cloud Function or Operation.
+    """
+    def __init__(__self__, *,
+                 message: str,
+                 severity: str,
+                 type: str):
+        """
+        Informational messages about the state of the Cloud Function or Operation.
+        :param str message: The message.
+        :param str severity: Severity of the state message.
+        :param str type: One-word CamelCase type of the state message.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The message.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> str:
+        """
+        Severity of the state message.
+        """
+        return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        One-word CamelCase type of the state message.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RepoSourceResponse(dict):
+    """
+    Location of the source in a Google Cloud Source Repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchName":
+            suggest = "branch_name"
+        elif key == "commitSha":
+            suggest = "commit_sha"
+        elif key == "invertRegex":
+            suggest = "invert_regex"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "tagName":
+            suggest = "tag_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepoSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepoSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepoSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_name: str,
+                 commit_sha: str,
+                 dir: str,
+                 invert_regex: bool,
+                 project: str,
+                 repo_name: str,
+                 tag_name: str):
+        """
+        Location of the source in a Google Cloud Source Repository.
+        :param str branch_name: Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        :param str commit_sha: Explicit commit SHA to build.
+        :param str dir: Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
+        :param bool invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
+        :param str project: ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+        :param str repo_name: Name of the Cloud Source Repository.
+        :param str tag_name: Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        """
+        pulumi.set(__self__, "branch_name", branch_name)
+        pulumi.set(__self__, "commit_sha", commit_sha)
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> str:
+        """
+        Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        """
+        return pulumi.get(self, "branch_name")
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> str:
+        """
+        Explicit commit SHA to build.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @property
+    @pulumi.getter
+    def dir(self) -> str:
+        """
+        Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
+        """
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        """
+        Only trigger a build if the revision regex does NOT match the revision regex.
+        """
+        return pulumi.get(self, "invert_regex")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Name of the Cloud Source Repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> str:
+        """
+        Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        """
+        return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
+class SecretEnvVarResponse(dict):
+    """
+    Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 project: str,
+                 secret: str,
+                 version: str):
+        """
+        Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+        :param str key: Name of the environment variable.
+        :param str project: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+        :param str secret: Name of the secret in secret manager (not the full resource name).
+        :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        Name of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SecretVersionResponse(dict):
+    """
+    Configuration for a single version.
+    """
+    def __init__(__self__, *,
+                 path: str,
+                 version: str):
+        """
+        Configuration for a single version.
+        :param str path: Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+        :param str version: Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SecretVolumeResponse(dict):
+    """
+    Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretVolumeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretVolumeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretVolumeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: str,
+                 project: str,
+                 secret: str,
+                 versions: Sequence['outputs.SecretVersionResponse']):
+        """
+        Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
+        :param str mount_path: The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        :param str project: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+        :param str secret: Name of the secret in secret manager (not the full resource name).
+        :param Sequence['SecretVersionResponse'] versions: List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        Name of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.SecretVersionResponse']:
+        """
+        List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+        """
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class ServiceConfigResponse(dict):
+    """
+    Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allTrafficOnLatestRevision":
+            suggest = "all_traffic_on_latest_revision"
+        elif key == "availableMemory":
+            suggest = "available_memory"
+        elif key == "environmentVariables":
+            suggest = "environment_variables"
+        elif key == "ingressSettings":
+            suggest = "ingress_settings"
+        elif key == "maxInstanceCount":
+            suggest = "max_instance_count"
+        elif key == "minInstanceCount":
+            suggest = "min_instance_count"
+        elif key == "secretEnvironmentVariables":
+            suggest = "secret_environment_variables"
+        elif key == "secretVolumes":
+            suggest = "secret_volumes"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+        elif key == "vpcConnector":
+            suggest = "vpc_connector"
+        elif key == "vpcConnectorEgressSettings":
+            suggest = "vpc_connector_egress_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 all_traffic_on_latest_revision: bool,
+                 available_memory: str,
+                 environment_variables: Mapping[str, str],
+                 ingress_settings: str,
+                 max_instance_count: int,
+                 min_instance_count: int,
+                 revision: str,
+                 secret_environment_variables: Sequence['outputs.SecretEnvVarResponse'],
+                 secret_volumes: Sequence['outputs.SecretVolumeResponse'],
+                 service: str,
+                 service_account_email: str,
+                 timeout_seconds: int,
+                 uri: str,
+                 vpc_connector: str,
+                 vpc_connector_egress_settings: str):
+        """
+        Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+        :param bool all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
+        :param str available_memory: The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
+        :param Mapping[str, str] environment_variables: Environment variables that shall be available during function execution.
+        :param str ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
+        :param int max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+        :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
+        :param str revision: The name of service revision.
+        :param Sequence['SecretEnvVarResponse'] secret_environment_variables: Secret environment variables configuration.
+        :param Sequence['SecretVolumeResponse'] secret_volumes: Secret volumes configuration.
+        :param str service: Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
+        :param str service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
+        :param int timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
+        :param str uri: URI of the Service deployed.
+        :param str vpc_connector: The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*/locations/*/connectors/*`.
+        :param str vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
+        """
+        pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+        pulumi.set(__self__, "available_memory", available_memory)
+        pulumi.set(__self__, "environment_variables", environment_variables)
+        pulumi.set(__self__, "ingress_settings", ingress_settings)
+        pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "min_instance_count", min_instance_count)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        pulumi.set(__self__, "secret_volumes", secret_volumes)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "vpc_connector", vpc_connector)
+        pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
+
+    @property
+    @pulumi.getter(name="allTrafficOnLatestRevision")
+    def all_traffic_on_latest_revision(self) -> bool:
+        """
+        Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
+        """
+        return pulumi.get(self, "all_traffic_on_latest_revision")
+
+    @property
+    @pulumi.getter(name="availableMemory")
+    def available_memory(self) -> str:
+        """
+        The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
+        """
+        return pulumi.get(self, "available_memory")
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Mapping[str, str]:
+        """
+        Environment variables that shall be available during function execution.
+        """
+        return pulumi.get(self, "environment_variables")
+
+    @property
+    @pulumi.getter(name="ingressSettings")
+    def ingress_settings(self) -> str:
+        """
+        The ingress settings for the function, controlling what traffic can reach it.
+        """
+        return pulumi.get(self, "ingress_settings")
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> int:
+        """
+        The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> int:
+        """
+        The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> str:
+        """
+        The name of service revision.
+        """
+        return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Sequence['outputs.SecretEnvVarResponse']:
+        """
+        Secret environment variables configuration.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Sequence['outputs.SecretVolumeResponse']:
+        """
+        Secret volumes configuration.
+        """
+        return pulumi.get(self, "secret_volumes")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> int:
+        """
+        The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of the Service deployed.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="vpcConnector")
+    def vpc_connector(self) -> str:
+        """
+        The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*/locations/*/connectors/*`.
+        """
+        return pulumi.get(self, "vpc_connector")
+
+    @property
+    @pulumi.getter(name="vpcConnectorEgressSettings")
+    def vpc_connector_egress_settings(self) -> str:
+        """
+        The egress settings for the connector, controlling what traffic is diverted through it.
+        """
+        return pulumi.get(self, "vpc_connector_egress_settings")
+
+
+@pulumi.output_type
+class SourceProvenanceResponse(dict):
+    """
+    Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resolvedRepoSource":
+            suggest = "resolved_repo_source"
+        elif key == "resolvedStorageSource":
+            suggest = "resolved_storage_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceProvenanceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceProvenanceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceProvenanceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resolved_repo_source: 'outputs.RepoSourceResponse',
+                 resolved_storage_source: 'outputs.StorageSourceResponse'):
+        """
+        Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
+        :param 'RepoSourceResponse' resolved_repo_source: A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
+        :param 'StorageSourceResponse' resolved_storage_source: A copy of the build's `source.storage_source`, if exists, with any generations resolved.
+        """
+        pulumi.set(__self__, "resolved_repo_source", resolved_repo_source)
+        pulumi.set(__self__, "resolved_storage_source", resolved_storage_source)
+
+    @property
+    @pulumi.getter(name="resolvedRepoSource")
+    def resolved_repo_source(self) -> 'outputs.RepoSourceResponse':
+        """
+        A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
+        """
+        return pulumi.get(self, "resolved_repo_source")
+
+    @property
+    @pulumi.getter(name="resolvedStorageSource")
+    def resolved_storage_source(self) -> 'outputs.StorageSourceResponse':
+        """
+        A copy of the build's `source.storage_source`, if exists, with any generations resolved.
+        """
+        return pulumi.get(self, "resolved_storage_source")
+
+
+@pulumi.output_type
+class SourceResponse(dict):
+    """
+    The location of the function source code.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoSource":
+            suggest = "repo_source"
+        elif key == "storageSource":
+            suggest = "storage_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repo_source: 'outputs.RepoSourceResponse',
+                 storage_source: 'outputs.StorageSourceResponse'):
+        """
+        The location of the function source code.
+        :param 'RepoSourceResponse' repo_source: If provided, get the source from this location in a Cloud Source Repository.
+        :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Google Cloud Storage.
+        """
+        pulumi.set(__self__, "repo_source", repo_source)
+        pulumi.set(__self__, "storage_source", storage_source)
+
+    @property
+    @pulumi.getter(name="repoSource")
+    def repo_source(self) -> 'outputs.RepoSourceResponse':
+        """
+        If provided, get the source from this location in a Cloud Source Repository.
+        """
+        return pulumi.get(self, "repo_source")
+
+    @property
+    @pulumi.getter(name="storageSource")
+    def storage_source(self) -> 'outputs.StorageSourceResponse':
+        """
+        If provided, get the source from this location in Google Cloud Storage.
+        """
+        return pulumi.get(self, "storage_source")
+
+
+@pulumi.output_type
+class StorageSourceResponse(dict):
+    """
+    Location of the source in an archive file in Google Cloud Storage.
+    """
+    def __init__(__self__, *,
+                 bucket: str,
+                 generation: str,
+                 object: str):
+        """
+        Location of the source in an archive file in Google Cloud Storage.
+        :param str bucket: Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        :param str generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        :param str object: Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> str:
+        """
+        Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        """
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def object(self) -> str:
+        """
+        Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+        """
+        return pulumi.get(self, "object")
 
 

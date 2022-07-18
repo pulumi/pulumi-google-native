@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+        /// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// . The number of times the job has been retried (excluding the initial attempt).
+        /// The number of times the job has been retried (excluding the initial attempt).
         /// </summary>
         public readonly int RetryCount;
         /// <summary>

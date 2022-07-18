@@ -941,18 +941,22 @@ class GoogleCloudDataplexV1TaskExecutionSpecArgs:
     def __init__(__self__, *,
                  service_account: pulumi.Input[str],
                  args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  max_job_execution_lifetime: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         Execution related settings, like retry and service_account.
         :param pulumi.Input[str] service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] args: Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
+        :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
         :param pulumi.Input[str] max_job_execution_lifetime: Optional. The maximum duration after which the job execution is expired.
         :param pulumi.Input[str] project: Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
         """
         pulumi.set(__self__, "service_account", service_account)
         if args is not None:
             pulumi.set(__self__, "args", args)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if max_job_execution_lifetime is not None:
             pulumi.set(__self__, "max_job_execution_lifetime", max_job_execution_lifetime)
         if project is not None:
@@ -981,6 +985,18 @@ class GoogleCloudDataplexV1TaskExecutionSpecArgs:
     @args.setter
     def args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter(name="maxJobExecutionLifetime")
@@ -1050,21 +1066,37 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs:
 @pulumi.input_type
 class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs:
     def __init__(__self__, *,
+                 image: Optional[pulumi.Input[str]] = None,
                  java_jars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Container Image Runtime Configuration used with Batch execution.
+        :param pulumi.Input[str] image: Optional. Container image to use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] java_jars: Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] python_packages: Optional. A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
         """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if java_jars is not None:
             pulumi.set(__self__, "java_jars", java_jars)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if python_packages is not None:
             pulumi.set(__self__, "python_packages", python_packages)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
 
     @property
     @pulumi.getter(name="javaJars")

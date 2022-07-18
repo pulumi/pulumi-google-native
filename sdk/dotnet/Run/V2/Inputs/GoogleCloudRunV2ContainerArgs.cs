@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
             set => _volumeMounts = value;
         }
 
+        /// <summary>
+        /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        /// </summary>
+        [Input("workingDir")]
+        public Input<string>? WorkingDir { get; set; }
+
         public GoogleCloudRunV2ContainerArgs()
         {
         }

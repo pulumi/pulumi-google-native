@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool> EnableUlaInternalIpv6 { get; private set; } = null!;
 
         /// <summary>
+        /// URL of the firewall policy the network is associated with.
+        /// </summary>
+        [Output("firewallPolicy")]
+        public Output<string> FirewallPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The gateway address for default routing out of the network, selected by GCP.
         /// </summary>
         [Output("gatewayIPv4")]

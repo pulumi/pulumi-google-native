@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     public sealed class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+        /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
         /// </summary>
         [Input("appGateway", required: true)]
         public Input<string> AppGateway { get; set; } = null!;

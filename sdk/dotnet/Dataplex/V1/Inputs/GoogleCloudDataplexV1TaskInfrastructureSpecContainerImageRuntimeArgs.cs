@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Container image to use.
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
         [Input("javaJars")]
         private InputList<string>? _javaJars;
 

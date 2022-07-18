@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
     public sealed class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse
     {
         /// <summary>
-        /// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+        /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
         /// </summary>
         public readonly string AppGateway;
         /// <summary>

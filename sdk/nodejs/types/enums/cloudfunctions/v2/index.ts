@@ -25,3 +25,87 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const EventTriggerRetryPolicy = {
+    /**
+     * Not specified.
+     */
+    RetryPolicyUnspecified: "RETRY_POLICY_UNSPECIFIED",
+    /**
+     * Do not retry.
+     */
+    RetryPolicyDoNotRetry: "RETRY_POLICY_DO_NOT_RETRY",
+    /**
+     * Retry on any failure, retry up to 7 days with an exponential backoff (capped at 10 seconds).
+     */
+    RetryPolicyRetry: "RETRY_POLICY_RETRY",
+} as const;
+
+/**
+ * Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
+ */
+export type EventTriggerRetryPolicy = (typeof EventTriggerRetryPolicy)[keyof typeof EventTriggerRetryPolicy];
+
+export const FunctionEnvironment = {
+    /**
+     * Unspecified
+     */
+    EnvironmentUnspecified: "ENVIRONMENT_UNSPECIFIED",
+    /**
+     * Gen 1
+     */
+    Gen1: "GEN_1",
+    /**
+     * Gen 2
+     */
+    Gen2: "GEN_2",
+} as const;
+
+/**
+ * Describe whether the function is gen1 or gen2.
+ */
+export type FunctionEnvironment = (typeof FunctionEnvironment)[keyof typeof FunctionEnvironment];
+
+export const ServiceConfigIngressSettings = {
+    /**
+     * Unspecified.
+     */
+    IngressSettingsUnspecified: "INGRESS_SETTINGS_UNSPECIFIED",
+    /**
+     * Allow HTTP traffic from public and private sources.
+     */
+    AllowAll: "ALLOW_ALL",
+    /**
+     * Allow HTTP traffic from only private VPC sources.
+     */
+    AllowInternalOnly: "ALLOW_INTERNAL_ONLY",
+    /**
+     * Allow HTTP traffic from private VPC sources and through GCLB.
+     */
+    AllowInternalAndGclb: "ALLOW_INTERNAL_AND_GCLB",
+} as const;
+
+/**
+ * The ingress settings for the function, controlling what traffic can reach it.
+ */
+export type ServiceConfigIngressSettings = (typeof ServiceConfigIngressSettings)[keyof typeof ServiceConfigIngressSettings];
+
+export const ServiceConfigVpcConnectorEgressSettings = {
+    /**
+     * Unspecified.
+     */
+    VpcConnectorEgressSettingsUnspecified: "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
+    /**
+     * Use the VPC Access Connector only for private IP space from RFC1918.
+     */
+    PrivateRangesOnly: "PRIVATE_RANGES_ONLY",
+    /**
+     * Force the use of VPC Access Connector for all egress traffic from the function.
+     */
+    AllTraffic: "ALL_TRAFFIC",
+} as const;
+
+/**
+ * The egress settings for the connector, controlling what traffic is diverted through it.
+ */
+export type ServiceConfigVpcConnectorEgressSettings = (typeof ServiceConfigVpcConnectorEgressSettings)[keyof typeof ServiceConfigVpcConnectorEgressSettings];

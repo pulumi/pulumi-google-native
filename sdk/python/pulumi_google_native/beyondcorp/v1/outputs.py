@@ -12,11 +12,421 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AllocatedConnectionResponse',
+    'ConfigResponse',
+    'DestinationRouteResponse',
+    'EgressResponse',
+    'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse',
+    'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse',
+    'GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse',
+    'GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponse',
+    'GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse',
     'GoogleIamV1AuditConfigResponse',
     'GoogleIamV1AuditLogConfigResponse',
     'GoogleIamV1BindingResponse',
     'GoogleTypeExprResponse',
+    'IngressResponse',
+    'PeeredVpcResponse',
 ]
+
+@pulumi.output_type
+class AllocatedConnectionResponse(dict):
+    """
+    Allocated connection of the AppGateway.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressPort":
+            suggest = "ingress_port"
+        elif key == "pscUri":
+            suggest = "psc_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocatedConnectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocatedConnectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocatedConnectionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ingress_port: int,
+                 psc_uri: str):
+        """
+        Allocated connection of the AppGateway.
+        :param int ingress_port: The ingress port of an allocated connection
+        :param str psc_uri: The PSC uri of an allocated connection
+        """
+        pulumi.set(__self__, "ingress_port", ingress_port)
+        pulumi.set(__self__, "psc_uri", psc_uri)
+
+    @property
+    @pulumi.getter(name="ingressPort")
+    def ingress_port(self) -> int:
+        """
+        The ingress port of an allocated connection
+        """
+        return pulumi.get(self, "ingress_port")
+
+    @property
+    @pulumi.getter(name="pscUri")
+    def psc_uri(self) -> str:
+        """
+        The PSC uri of an allocated connection
+        """
+        return pulumi.get(self, "psc_uri")
+
+
+@pulumi.output_type
+class ConfigResponse(dict):
+    """
+    The basic ingress config for ClientGateways.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationRoutes":
+            suggest = "destination_routes"
+        elif key == "transportProtocol":
+            suggest = "transport_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_routes: Sequence['outputs.DestinationRouteResponse'],
+                 transport_protocol: str):
+        """
+        The basic ingress config for ClientGateways.
+        :param Sequence['DestinationRouteResponse'] destination_routes: The settings used to configure basic ClientGateways.
+        :param str transport_protocol: Immutable. The transport protocol used between the client and the server.
+        """
+        pulumi.set(__self__, "destination_routes", destination_routes)
+        pulumi.set(__self__, "transport_protocol", transport_protocol)
+
+    @property
+    @pulumi.getter(name="destinationRoutes")
+    def destination_routes(self) -> Sequence['outputs.DestinationRouteResponse']:
+        """
+        The settings used to configure basic ClientGateways.
+        """
+        return pulumi.get(self, "destination_routes")
+
+    @property
+    @pulumi.getter(name="transportProtocol")
+    def transport_protocol(self) -> str:
+        """
+        Immutable. The transport protocol used between the client and the server.
+        """
+        return pulumi.get(self, "transport_protocol")
+
+
+@pulumi.output_type
+class DestinationRouteResponse(dict):
+    """
+    The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
+    """
+    def __init__(__self__, *,
+                 address: str,
+                 netmask: str):
+        """
+        The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
+        :param str address: The network address of the subnet for which the packet is routed to the ClientGateway.
+        :param str netmask: The network mask of the subnet for which the packet is routed to the ClientGateway.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "netmask", netmask)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The network address of the subnet for which the packet is routed to the ClientGateway.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def netmask(self) -> str:
+        """
+        The network mask of the subnet for which the packet is routed to the ClientGateway.
+        """
+        return pulumi.get(self, "netmask")
+
+
+@pulumi.output_type
+class EgressResponse(dict):
+    """
+    The details of the egress info. One of the following options should be set.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "peeredVpc":
+            suggest = "peered_vpc"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EgressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EgressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EgressResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 peered_vpc: 'outputs.PeeredVpcResponse'):
+        """
+        The details of the egress info. One of the following options should be set.
+        :param 'PeeredVpcResponse' peered_vpc: A VPC from the consumer project.
+        """
+        pulumi.set(__self__, "peered_vpc", peered_vpc)
+
+    @property
+    @pulumi.getter(name="peeredVpc")
+    def peered_vpc(self) -> 'outputs.PeeredVpcResponse':
+        """
+        A VPC from the consumer project.
+        """
+        return pulumi.get(self, "peered_vpc")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse(dict):
+    """
+    ApplicationEndpoint represents a remote application endpoint.
+    """
+    def __init__(__self__, *,
+                 host: str,
+                 port: int):
+        """
+        ApplicationEndpoint represents a remote application endpoint.
+        :param str host: Hostname or IP address of the remote application endpoint.
+        :param int port: Port of the remote application endpoint.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Hostname or IP address of the remote application endpoint.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port of the remote application endpoint.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse(dict):
+    """
+    Gateway represents a user facing component that serves as an entrance to enable connectivity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appGateway":
+            suggest = "app_gateway"
+        elif key == "ingressPort":
+            suggest = "ingress_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 app_gateway: str,
+                 ingress_port: int,
+                 type: str,
+                 uri: str):
+        """
+        Gateway represents a user facing component that serves as an entrance to enable connectivity.
+        :param str app_gateway: AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
+        :param int ingress_port: Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        :param str type: The type of hosting used by the gateway.
+        :param str uri: Server-defined URI for this resource.
+        """
+        pulumi.set(__self__, "app_gateway", app_gateway)
+        pulumi.set(__self__, "ingress_port", ingress_port)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="appGateway")
+    def app_gateway(self) -> str:
+        """
+        AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
+        """
+        return pulumi.get(self, "app_gateway")
+
+    @property
+    @pulumi.getter(name="ingressPort")
+    def ingress_port(self) -> int:
+        """
+        Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        """
+        return pulumi.get(self, "ingress_port")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of hosting used by the gateway.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Server-defined URI for this resource.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse(dict):
+    """
+    PrincipalInfo represents an Identity oneof.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: 'outputs.GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponse'):
+        """
+        PrincipalInfo represents an Identity oneof.
+        :param 'GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponse' service_account: A GCP service account.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> 'outputs.GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponse':
+        """
+        A GCP service account.
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountResponse(dict):
+    """
+    ServiceAccount represents a GCP service account.
+    """
+    def __init__(__self__, *,
+                 email: str):
+        """
+        ServiceAccount represents a GCP service account.
+        :param str email: Email address of the service account.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Email address of the service account.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse(dict):
+    """
+    ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
+    """
+    def __init__(__self__, *,
+                 resource: Mapping[str, str],
+                 status: str,
+                 sub: Sequence['outputs.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse'],
+                 time: str):
+        """
+        ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
+        :param Mapping[str, str] resource: Specific details for the resource. This is for internal use only.
+        :param str status: Overall health status. Overall status is derived based on the status of each sub level resources.
+        :param Sequence['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse'] sub: List of Info for the sub level resources.
+        :param str time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
+        """
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "sub", sub)
+        pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Mapping[str, str]:
+        """
+        Specific details for the resource. This is for internal use only.
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Overall health status. Overall status is derived based on the status of each sub level resources.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def sub(self) -> Sequence['outputs.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse']:
+        """
+        List of Info for the sub level resources.
+        """
+        return pulumi.get(self, "sub")
+
+    @property
+    @pulumi.getter
+    def time(self) -> str:
+        """
+        The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
+        """
+        return pulumi.get(self, "time")
+
 
 @pulumi.output_type
 class GoogleIamV1AuditConfigResponse(dict):
@@ -217,5 +627,66 @@ class GoogleTypeExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class IngressResponse(dict):
+    """
+    Settings of how to connect to the ClientGateway. One of the following options should be set.
+    """
+    def __init__(__self__, *,
+                 config: 'outputs.ConfigResponse'):
+        """
+        Settings of how to connect to the ClientGateway. One of the following options should be set.
+        :param 'ConfigResponse' config: The basic ingress config for ClientGateways.
+        """
+        pulumi.set(__self__, "config", config)
+
+    @property
+    @pulumi.getter
+    def config(self) -> 'outputs.ConfigResponse':
+        """
+        The basic ingress config for ClientGateways.
+        """
+        return pulumi.get(self, "config")
+
+
+@pulumi.output_type
+class PeeredVpcResponse(dict):
+    """
+    The peered VPC owned by the consumer project.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkVpc":
+            suggest = "network_vpc"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PeeredVpcResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PeeredVpcResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PeeredVpcResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_vpc: str):
+        """
+        The peered VPC owned by the consumer project.
+        :param str network_vpc: The name of the peered VPC owned by the consumer project.
+        """
+        pulumi.set(__self__, "network_vpc", network_vpc)
+
+    @property
+    @pulumi.getter(name="networkVpc")
+    def network_vpc(self) -> str:
+        """
+        The name of the peered VPC owned by the consumer project.
+        """
+        return pulumi.get(self, "network_vpc")
 
 

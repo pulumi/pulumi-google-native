@@ -21,14 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:beyondcorp/v1:AppConnection":
+		r = &AppConnection{}
 	case "google-native:beyondcorp/v1:AppConnectionIamPolicy":
 		r = &AppConnectionIamPolicy{}
+	case "google-native:beyondcorp/v1:AppConnector":
+		r = &AppConnector{}
 	case "google-native:beyondcorp/v1:AppConnectorIamPolicy":
 		r = &AppConnectorIamPolicy{}
+	case "google-native:beyondcorp/v1:AppGateway":
+		r = &AppGateway{}
 	case "google-native:beyondcorp/v1:AppGatewayIamPolicy":
 		r = &AppGatewayIamPolicy{}
+	case "google-native:beyondcorp/v1:ClientConnectorService":
+		r = &ClientConnectorService{}
 	case "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy":
 		r = &ClientConnectorServiceIamPolicy{}
+	case "google-native:beyondcorp/v1:ClientGateway":
+		r = &ClientGateway{}
 	case "google-native:beyondcorp/v1:ClientGatewayIamPolicy":
 		r = &ClientGatewayIamPolicy{}
 	default:

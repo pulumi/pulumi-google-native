@@ -481,6 +481,8 @@ type GoogleCloudRunV2Container struct {
 	Resources *GoogleCloudRunV2ResourceRequirements `pulumi:"resources"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts []GoogleCloudRunV2VolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir *string `pulumi:"workingDir"`
 }
 
 // GoogleCloudRunV2ContainerInput is an input type that accepts GoogleCloudRunV2ContainerArgs and GoogleCloudRunV2ContainerOutput values.
@@ -512,6 +514,8 @@ type GoogleCloudRunV2ContainerArgs struct {
 	Resources GoogleCloudRunV2ResourceRequirementsPtrInput `pulumi:"resources"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts GoogleCloudRunV2VolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
 }
 
 func (GoogleCloudRunV2ContainerArgs) ElementType() reflect.Type {
@@ -604,6 +608,11 @@ func (o GoogleCloudRunV2ContainerOutput) Resources() GoogleCloudRunV2ResourceReq
 // Volume to mount into the container's filesystem.
 func (o GoogleCloudRunV2ContainerOutput) VolumeMounts() GoogleCloudRunV2VolumeMountArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []GoogleCloudRunV2VolumeMount { return v.VolumeMounts }).(GoogleCloudRunV2VolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o GoogleCloudRunV2ContainerOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2Container) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudRunV2ContainerArrayOutput struct{ *pulumi.OutputState }
@@ -806,6 +815,8 @@ type GoogleCloudRunV2ContainerResponse struct {
 	Resources GoogleCloudRunV2ResourceRequirementsResponse `pulumi:"resources"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts []GoogleCloudRunV2VolumeMountResponse `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir string `pulumi:"workingDir"`
 }
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
@@ -863,6 +874,11 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Resources() GoogleCloudRunV2Res
 // Volume to mount into the container's filesystem.
 func (o GoogleCloudRunV2ContainerResponseOutput) VolumeMounts() GoogleCloudRunV2VolumeMountResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []GoogleCloudRunV2VolumeMountResponse { return v.VolumeMounts }).(GoogleCloudRunV2VolumeMountResponseArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o GoogleCloudRunV2ContainerResponseOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) string { return v.WorkingDir }).(pulumi.StringOutput)
 }
 
 type GoogleCloudRunV2ContainerResponseArrayOutput struct{ *pulumi.OutputState }
@@ -2259,7 +2275,7 @@ func (o GoogleCloudRunV2SecretKeySelectorResponseOutput) Version() pulumi.String
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
 type GoogleCloudRunV2SecretVolumeSource struct {
-	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
 	DefaultMode *int `pulumi:"defaultMode"`
 	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
 	Items []GoogleCloudRunV2VersionToPath `pulumi:"items"`
@@ -2280,7 +2296,7 @@ type GoogleCloudRunV2SecretVolumeSourceInput interface {
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
 type GoogleCloudRunV2SecretVolumeSourceArgs struct {
-	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
 	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
 	Items GoogleCloudRunV2VersionToPathArrayInput `pulumi:"items"`
@@ -2366,7 +2382,7 @@ func (o GoogleCloudRunV2SecretVolumeSourceOutput) ToGoogleCloudRunV2SecretVolume
 	}).(GoogleCloudRunV2SecretVolumeSourcePtrOutput)
 }
 
-// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
 func (o GoogleCloudRunV2SecretVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
@@ -2405,7 +2421,7 @@ func (o GoogleCloudRunV2SecretVolumeSourcePtrOutput) Elem() GoogleCloudRunV2Secr
 	}).(GoogleCloudRunV2SecretVolumeSourceOutput)
 }
 
-// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
 func (o GoogleCloudRunV2SecretVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2SecretVolumeSource) *int {
 		if v == nil {
@@ -2437,7 +2453,7 @@ func (o GoogleCloudRunV2SecretVolumeSourcePtrOutput) Secret() pulumi.StringPtrOu
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
 type GoogleCloudRunV2SecretVolumeSourceResponse struct {
-	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
 	DefaultMode int `pulumi:"defaultMode"`
 	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
 	Items []GoogleCloudRunV2VersionToPathResponse `pulumi:"items"`
@@ -2460,7 +2476,7 @@ func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) ToGoogleCloudRunV2Secr
 	return o
 }
 
-// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
 func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }

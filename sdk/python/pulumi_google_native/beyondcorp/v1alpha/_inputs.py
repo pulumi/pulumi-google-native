@@ -238,7 +238,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs:
                  type: pulumi.Input['GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType']):
         """
         Gateway represents a user facing component that serves as an entrance to enable connectivity.
-        :param pulumi.Input[str] app_gateway: AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+        :param pulumi.Input[str] app_gateway: AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
         :param pulumi.Input['GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType'] type: The type of hosting used by the gateway.
         """
         pulumi.set(__self__, "app_gateway", app_gateway)
@@ -248,7 +248,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs:
     @pulumi.getter(name="appGateway")
     def app_gateway(self) -> pulumi.Input[str]:
         """
-        AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+        AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
         """
         return pulumi.get(self, "app_gateway")
 

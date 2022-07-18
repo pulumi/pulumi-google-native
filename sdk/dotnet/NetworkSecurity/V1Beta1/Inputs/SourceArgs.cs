@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
         private InputList<string>? _principals;
 
         /// <summary>
-        /// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+        /// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
         /// </summary>
         public InputList<string> Principals
         {

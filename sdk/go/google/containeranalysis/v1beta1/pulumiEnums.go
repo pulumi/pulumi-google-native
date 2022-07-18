@@ -3409,6 +3409,8 @@ const (
 	DiscoveredAnalysisStatusScanning = DiscoveredAnalysisStatus("SCANNING")
 	// Analysis has finished successfully.
 	DiscoveredAnalysisStatusFinishedSuccess = DiscoveredAnalysisStatus("FINISHED_SUCCESS")
+	// Analysis has completed.
+	DiscoveredAnalysisStatusComplete = DiscoveredAnalysisStatus("COMPLETE")
 	// Analysis has finished unsuccessfully, the analysis itself is in a bad state.
 	DiscoveredAnalysisStatusFinishedFailed = DiscoveredAnalysisStatus("FINISHED_FAILED")
 	// The resource is known not to be supported

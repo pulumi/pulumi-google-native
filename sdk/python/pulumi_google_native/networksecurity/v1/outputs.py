@@ -95,7 +95,7 @@ class DestinationResponse(dict):
                  ports: Sequence[int]):
         """
         Specification of traffic destination attributes.
-        :param Sequence[str] hosts: List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+        :param Sequence[str] hosts: List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
         :param 'HttpHeaderMatchResponse' http_header_match: Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
         :param Sequence[str] methods: Optional. A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
         :param Sequence[int] ports: List of destination ports to match. At least one port should match.
@@ -109,7 +109,7 @@ class DestinationResponse(dict):
     @pulumi.getter
     def hosts(self) -> Sequence[str]:
         """
-        List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+        List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
         """
         return pulumi.get(self, "hosts")
 
@@ -271,7 +271,7 @@ class GoogleCloudNetworksecurityV1GrpcEndpointResponse(dict):
                  target_uri: str):
         """
         Specification of the GRPC Endpoint.
-        :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+        :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
         pulumi.set(__self__, "target_uri", target_uri)
 
@@ -279,7 +279,7 @@ class GoogleCloudNetworksecurityV1GrpcEndpointResponse(dict):
     @pulumi.getter(name="targetUri")
     def target_uri(self) -> str:
         """
-        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
         return pulumi.get(self, "target_uri")
 
@@ -433,7 +433,7 @@ class GoogleIamV1BindingResponse(dict):
 @pulumi.output_type
 class HttpHeaderMatchResponse(dict):
     """
-    Specification of HTTP header match atrributes.
+    Specification of HTTP header match attributes.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -458,7 +458,7 @@ class HttpHeaderMatchResponse(dict):
                  header_name: str,
                  regex_match: str):
         """
-        Specification of HTTP header match atrributes.
+        Specification of HTTP header match attributes.
         :param str header_name: The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
         :param str regex_match: The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
         """
@@ -582,7 +582,7 @@ class SourceResponse(dict):
         """
         Specification of traffic source attributes.
         :param Sequence[str] ip_blocks: Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
-        :param Sequence[str] principals: Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+        :param Sequence[str] principals: Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
         """
         pulumi.set(__self__, "ip_blocks", ip_blocks)
         pulumi.set(__self__, "principals", principals)
@@ -599,7 +599,7 @@ class SourceResponse(dict):
     @pulumi.getter
     def principals(self) -> Sequence[str]:
         """
-        Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+        Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
         """
         return pulumi.get(self, "principals")
 

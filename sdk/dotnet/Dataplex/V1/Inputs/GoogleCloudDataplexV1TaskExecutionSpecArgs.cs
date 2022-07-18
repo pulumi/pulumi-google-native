@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         }
 
         /// <summary>
+        /// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
+        /// <summary>
         /// Optional. The maximum duration after which the job execution is expired.
         /// </summary>
         [Input("maxJobExecutionLifetime")]

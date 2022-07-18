@@ -16,6 +16,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     [OutputType]
     public sealed class DiscoveryOccurrenceResponse
     {
+        public readonly Outputs.AnalysisCompletedResponse AnalysisCompleted;
+        /// <summary>
+        /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.StatusResponse> AnalysisError;
         /// <summary>
         /// The status of discovery for the resource.
         /// </summary>
@@ -43,6 +48,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
         [OutputConstructor]
         private DiscoveryOccurrenceResponse(
+            Outputs.AnalysisCompletedResponse analysisCompleted,
+
+            ImmutableArray<Outputs.StatusResponse> analysisError,
+
             string analysisStatus,
 
             Outputs.StatusResponse analysisStatusError,
@@ -55,6 +64,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
             string lastScanTime)
         {
+            AnalysisCompleted = analysisCompleted;
+            AnalysisError = analysisError;
             AnalysisStatus = analysisStatus;
             AnalysisStatusError = analysisStatusError;
             ArchiveTime = archiveTime;

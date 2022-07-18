@@ -18,7 +18,7 @@ type TransferConfig struct {
 	AuthorizationCode pulumi.StringPtrOutput `pulumi:"authorizationCode"`
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntOutput `pulumi:"dataRefreshWindowDays"`
-	// Data source id. Cannot be changed once data transfer is created.
+	// Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
 	// Region in which BigQuery dataset is located.
 	DatasetRegion pulumi.StringOutput `pulumi:"datasetRegion"`
@@ -108,7 +108,7 @@ type transferConfigArgs struct {
 	AuthorizationCode *string `pulumi:"authorizationCode"`
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays *int `pulumi:"dataRefreshWindowDays"`
-	// Data source id. Cannot be changed once data transfer is created.
+	// Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// The BigQuery target dataset id.
 	DestinationDatasetId *string `pulumi:"destinationDatasetId"`
@@ -146,7 +146,7 @@ type TransferConfigArgs struct {
 	AuthorizationCode pulumi.StringPtrInput
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntPtrInput
-	// Data source id. Cannot be changed once data transfer is created.
+	// Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	DataSourceId pulumi.StringPtrInput
 	// The BigQuery target dataset id.
 	DestinationDatasetId pulumi.StringPtrInput
@@ -225,7 +225,7 @@ func (o TransferConfigOutput) DataRefreshWindowDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.IntOutput { return v.DataRefreshWindowDays }).(pulumi.IntOutput)
 }
 
-// Data source id. Cannot be changed once data transfer is created.
+// Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 func (o TransferConfigOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
 }

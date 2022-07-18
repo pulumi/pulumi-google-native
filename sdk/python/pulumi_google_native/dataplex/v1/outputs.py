@@ -1146,8 +1146,8 @@ class GoogleCloudDataplexV1JobResponse(dict):
         A job represents an instance of a task.
         :param str end_time: The time when the job ended.
         :param str message: Additional information about the current state.
-        :param str name: The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
-        :param int retry_count: . The number of times the job has been retried (excluding the initial attempt).
+        :param str name: The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
+        :param int retry_count: The number of times the job has been retried (excluding the initial attempt).
         :param str service: The underlying service running a job.
         :param str service_job: The full resource name for the job run under a particular service.
         :param str start_time: The time when the job was started.
@@ -1184,7 +1184,7 @@ class GoogleCloudDataplexV1JobResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+        The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
         """
         return pulumi.get(self, "name")
 
@@ -1192,7 +1192,7 @@ class GoogleCloudDataplexV1JobResponse(dict):
     @pulumi.getter(name="retryCount")
     def retry_count(self) -> int:
         """
-        . The number of times the job has been retried (excluding the initial attempt).
+        The number of times the job has been retried (excluding the initial attempt).
         """
         return pulumi.get(self, "retry_count")
 
@@ -1693,7 +1693,9 @@ class GoogleCloudDataplexV1TaskExecutionSpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxJobExecutionLifetime":
+        if key == "kmsKey":
+            suggest = "kms_key"
+        elif key == "maxJobExecutionLifetime":
             suggest = "max_job_execution_lifetime"
         elif key == "serviceAccount":
             suggest = "service_account"
@@ -1711,17 +1713,20 @@ class GoogleCloudDataplexV1TaskExecutionSpecResponse(dict):
 
     def __init__(__self__, *,
                  args: Mapping[str, str],
+                 kms_key: str,
                  max_job_execution_lifetime: str,
                  project: str,
                  service_account: str):
         """
         Execution related settings, like retry and service_account.
         :param Mapping[str, str] args: Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
+        :param str kms_key: Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
         :param str max_job_execution_lifetime: Optional. The maximum duration after which the job execution is expired.
         :param str project: Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
         :param str service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         """
         pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "kms_key", kms_key)
         pulumi.set(__self__, "max_job_execution_lifetime", max_job_execution_lifetime)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account", service_account)
@@ -1733,6 +1738,14 @@ class GoogleCloudDataplexV1TaskExecutionSpecResponse(dict):
         Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
         """
         return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter(name="maxJobExecutionLifetime")
@@ -1888,18 +1901,29 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse(d
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 image: str,
                  java_jars: Sequence[str],
                  properties: Mapping[str, str],
                  python_packages: Sequence[str]):
         """
         Container Image Runtime Configuration used with Batch execution.
+        :param str image: Optional. Container image to use.
         :param Sequence[str] java_jars: Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
         :param Mapping[str, str] properties: Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         :param Sequence[str] python_packages: Optional. A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
         """
+        pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "java_jars", java_jars)
         pulumi.set(__self__, "properties", properties)
         pulumi.set(__self__, "python_packages", python_packages)
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        Optional. Container image to use.
+        """
+        return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="javaJars")

@@ -34,6 +34,8 @@ type LookupInstanceResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
 	Name string `pulumi:"name"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The current state of the instance.
 	State string `pulumi:"state"`
 	// The type of the instance. Defaults to `PRODUCTION`.
@@ -94,6 +96,11 @@ func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 // The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
 func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The current state of the instance.

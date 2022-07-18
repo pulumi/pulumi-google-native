@@ -880,7 +880,7 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoi
 
 // Gateway represents a user facing component that serves as an entrance to enable connectivity.
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway struct {
-	// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+	// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
 	AppGateway string `pulumi:"appGateway"`
 	// The type of hosting used by the gateway.
 	Type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayType `pulumi:"type"`
@@ -899,7 +899,7 @@ type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayInput interfa
 
 // Gateway represents a user facing component that serves as an entrance to enable connectivity.
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs struct {
-	// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+	// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
 	AppGateway pulumi.StringInput `pulumi:"appGateway"`
 	// The type of hosting used by the gateway.
 	Type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput `pulumi:"type"`
@@ -983,7 +983,7 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayOutput) To
 	}).(GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrOutput)
 }
 
-// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayOutput) AppGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway) string { return v.AppGateway }).(pulumi.StringOutput)
 }
@@ -1019,7 +1019,7 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrOutput)
 	}).(GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayOutput)
 }
 
-// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrOutput) AppGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway) *string {
 		if v == nil {
@@ -1041,7 +1041,7 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrOutput)
 
 // Gateway represents a user facing component that serves as an entrance to enable connectivity.
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse struct {
-	// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+	// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
 	AppGateway string `pulumi:"appGateway"`
 	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 	IngressPort int `pulumi:"ingressPort"`
@@ -1066,7 +1066,7 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponseOu
 	return o
 }
 
-// AppGateway name in following format: projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
 func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponseOutput) AppGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse) string {
 		return v.AppGateway

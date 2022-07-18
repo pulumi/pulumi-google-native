@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Outputs
     public sealed class GoogleCloudNetworksecurityV1GrpcEndpointResponse
     {
         /// <summary>
-        /// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+        /// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         /// </summary>
         public readonly string TargetUri;
 

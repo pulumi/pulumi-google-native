@@ -400,6 +400,10 @@ class DiscoveredAnalysisStatus(str, Enum):
     """
     Analysis has finished successfully.
     """
+    COMPLETE = "COMPLETE"
+    """
+    Analysis has completed.
+    """
     FINISHED_FAILED = "FINISHED_FAILED"
     """
     Analysis has finished unsuccessfully, the analysis itself is in a bad state.

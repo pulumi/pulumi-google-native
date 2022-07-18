@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
         private InputList<string>? _hosts;
 
         /// <summary>
-        /// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
+        /// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
         /// </summary>
         public InputList<string> Hosts
         {

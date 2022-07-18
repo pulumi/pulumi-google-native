@@ -11,11 +11,332 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'ConfigArgs',
+    'DestinationRouteArgs',
+    'EgressArgs',
+    'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointArgs',
+    'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs',
+    'GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs',
+    'GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoArgs',
+    'GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
     'GoogleTypeExprArgs',
+    'IngressArgs',
+    'PeeredVpcArgs',
 ]
+
+@pulumi.input_type
+class ConfigArgs:
+    def __init__(__self__, *,
+                 destination_routes: pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]],
+                 transport_protocol: pulumi.Input['ConfigTransportProtocol']):
+        """
+        The basic ingress config for ClientGateways.
+        :param pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]] destination_routes: The settings used to configure basic ClientGateways.
+        :param pulumi.Input['ConfigTransportProtocol'] transport_protocol: Immutable. The transport protocol used between the client and the server.
+        """
+        pulumi.set(__self__, "destination_routes", destination_routes)
+        pulumi.set(__self__, "transport_protocol", transport_protocol)
+
+    @property
+    @pulumi.getter(name="destinationRoutes")
+    def destination_routes(self) -> pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]]:
+        """
+        The settings used to configure basic ClientGateways.
+        """
+        return pulumi.get(self, "destination_routes")
+
+    @destination_routes.setter
+    def destination_routes(self, value: pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]]):
+        pulumi.set(self, "destination_routes", value)
+
+    @property
+    @pulumi.getter(name="transportProtocol")
+    def transport_protocol(self) -> pulumi.Input['ConfigTransportProtocol']:
+        """
+        Immutable. The transport protocol used between the client and the server.
+        """
+        return pulumi.get(self, "transport_protocol")
+
+    @transport_protocol.setter
+    def transport_protocol(self, value: pulumi.Input['ConfigTransportProtocol']):
+        pulumi.set(self, "transport_protocol", value)
+
+
+@pulumi.input_type
+class DestinationRouteArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 netmask: pulumi.Input[str]):
+        """
+        The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
+        :param pulumi.Input[str] address: The network address of the subnet for which the packet is routed to the ClientGateway.
+        :param pulumi.Input[str] netmask: The network mask of the subnet for which the packet is routed to the ClientGateway.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "netmask", netmask)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        The network address of the subnet for which the packet is routed to the ClientGateway.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def netmask(self) -> pulumi.Input[str]:
+        """
+        The network mask of the subnet for which the packet is routed to the ClientGateway.
+        """
+        return pulumi.get(self, "netmask")
+
+    @netmask.setter
+    def netmask(self, value: pulumi.Input[str]):
+        pulumi.set(self, "netmask", value)
+
+
+@pulumi.input_type
+class EgressArgs:
+    def __init__(__self__, *,
+                 peered_vpc: Optional[pulumi.Input['PeeredVpcArgs']] = None):
+        """
+        The details of the egress info. One of the following options should be set.
+        :param pulumi.Input['PeeredVpcArgs'] peered_vpc: A VPC from the consumer project.
+        """
+        if peered_vpc is not None:
+            pulumi.set(__self__, "peered_vpc", peered_vpc)
+
+    @property
+    @pulumi.getter(name="peeredVpc")
+    def peered_vpc(self) -> Optional[pulumi.Input['PeeredVpcArgs']]:
+        """
+        A VPC from the consumer project.
+        """
+        return pulumi.get(self, "peered_vpc")
+
+    @peered_vpc.setter
+    def peered_vpc(self, value: Optional[pulumi.Input['PeeredVpcArgs']]):
+        pulumi.set(self, "peered_vpc", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 port: pulumi.Input[int]):
+        """
+        ApplicationEndpoint represents a remote application endpoint.
+        :param pulumi.Input[str] host: Hostname or IP address of the remote application endpoint.
+        :param pulumi.Input[int] port: Port of the remote application endpoint.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        Hostname or IP address of the remote application endpoint.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Port of the remote application endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs:
+    def __init__(__self__, *,
+                 app_gateway: pulumi.Input[str],
+                 type: pulumi.Input['GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType']):
+        """
+        Gateway represents a user facing component that serves as an entrance to enable connectivity.
+        :param pulumi.Input[str] app_gateway: AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
+        :param pulumi.Input['GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType'] type: The type of hosting used by the gateway.
+        """
+        pulumi.set(__self__, "app_gateway", app_gateway)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="appGateway")
+    def app_gateway(self) -> pulumi.Input[str]:
+        """
+        AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
+        """
+        return pulumi.get(self, "app_gateway")
+
+    @app_gateway.setter
+    def app_gateway(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_gateway", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType']:
+        """
+        The type of hosting used by the gateway.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType']):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input[str]] = None):
+        """
+        ServiceAccount represents a GCP service account.
+        :param pulumi.Input[str] email: Email address of the service account.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the service account.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoArgs:
+    def __init__(__self__, *,
+                 service_account: Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs']] = None):
+        """
+        PrincipalInfo represents an Identity oneof.
+        :param pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs'] service_account: A GCP service account.
+        """
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs']]:
+        """
+        A GCP service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs']]):
+        pulumi.set(self, "service_account", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 resource: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus']] = None,
+                 sub: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]]] = None,
+                 time: Optional[pulumi.Input[str]] = None):
+        """
+        ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
+        :param pulumi.Input[str] id: Unique Id for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource: Specific details for the resource. This is for internal use only.
+        :param pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus'] status: Overall health status. Overall status is derived based on the status of each sub level resources.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]] sub: List of Info for the sub level resources.
+        :param pulumi.Input[str] time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
+        """
+        pulumi.set(__self__, "id", id)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if sub is not None:
+            pulumi.set(__self__, "sub", sub)
+        if time is not None:
+            pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Unique Id for the resource.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Specific details for the resource. This is for internal use only.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus']]:
+        """
+        Overall health status. Overall status is derived based on the status of each sub level resources.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus']]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def sub(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]]]:
+        """
+        List of Info for the sub level resources.
+        """
+        return pulumi.get(self, "sub")
+
+    @sub.setter
+    def sub(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]]]):
+        pulumi.set(self, "sub", value)
+
+    @property
+    @pulumi.getter
+    def time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
+        """
+        return pulumi.get(self, "time")
+
+    @time.setter
+    def time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time", value)
+
 
 @pulumi.input_type
 class GoogleIamV1AuditConfigArgs:
@@ -223,5 +544,52 @@ class GoogleTypeExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class IngressArgs:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input['ConfigArgs']] = None):
+        """
+        Settings of how to connect to the ClientGateway. One of the following options should be set.
+        :param pulumi.Input['ConfigArgs'] config: The basic ingress config for ClientGateways.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['ConfigArgs']]:
+        """
+        The basic ingress config for ClientGateways.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['ConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+
+@pulumi.input_type
+class PeeredVpcArgs:
+    def __init__(__self__, *,
+                 network_vpc: pulumi.Input[str]):
+        """
+        The peered VPC owned by the consumer project.
+        :param pulumi.Input[str] network_vpc: The name of the peered VPC owned by the consumer project.
+        """
+        pulumi.set(__self__, "network_vpc", network_vpc)
+
+    @property
+    @pulumi.getter(name="networkVpc")
+    def network_vpc(self) -> pulumi.Input[str]:
+        """
+        The name of the peered VPC owned by the consumer project.
+        """
+        return pulumi.get(self, "network_vpc")
+
+    @network_vpc.setter
+    def network_vpc(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_vpc", value)
 
 

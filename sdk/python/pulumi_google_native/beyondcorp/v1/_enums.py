@@ -5,8 +5,110 @@
 from enum import Enum
 
 __all__ = [
+    'AppConnectionType',
+    'AppGatewayHostType',
+    'AppGatewayType',
+    'ConfigTransportProtocol',
+    'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType',
+    'GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus',
     'GoogleIamV1AuditLogConfigLogType',
 ]
+
+
+class AppConnectionType(str, Enum):
+    """
+    Required. The type of network connectivity used by the AppConnection.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    TCP_PROXY = "TCP_PROXY"
+    """
+    TCP Proxy based BeyondCorp AppConnection. API will default to this if unset.
+    """
+
+
+class AppGatewayHostType(str, Enum):
+    """
+    Required. The type of hosting used by the AppGateway.
+    """
+    HOST_TYPE_UNSPECIFIED = "HOST_TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    GCP_REGIONAL_MIG = "GCP_REGIONAL_MIG"
+    """
+    AppGateway hosted in a GCP regional managed instance group.
+    """
+
+
+class AppGatewayType(str, Enum):
+    """
+    Required. The type of network connectivity used by the AppGateway.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    TCP_PROXY = "TCP_PROXY"
+    """
+    TCP Proxy based BeyondCorp Connection. API will default to this if unset.
+    """
+
+
+class ConfigTransportProtocol(str, Enum):
+    """
+    Required. Immutable. The transport protocol used between the client and the server.
+    """
+    TRANSPORT_PROTOCOL_UNSPECIFIED = "TRANSPORT_PROTOCOL_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    TCP = "TCP"
+    """
+    TCP protocol.
+    """
+
+
+class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType(str, Enum):
+    """
+    Required. The type of hosting used by the gateway.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    GCP_REGIONAL_MIG = "GCP_REGIONAL_MIG"
+    """
+    Gateway hosted in a GCP regional managed instance group.
+    """
+
+
+class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus(str, Enum):
+    """
+    Overall health status. Overall status is derived based on the status of each sub level resources.
+    """
+    HEALTH_STATUS_UNSPECIFIED = "HEALTH_STATUS_UNSPECIFIED"
+    """
+    Health status is unknown: not initialized or failed to retrieve.
+    """
+    HEALTHY = "HEALTHY"
+    """
+    The resource is healthy.
+    """
+    UNHEALTHY = "UNHEALTHY"
+    """
+    The resource is unhealthy.
+    """
+    UNRESPONSIVE = "UNRESPONSIVE"
+    """
+    The resource is unresponsive.
+    """
+    DEGRADED = "DEGRADED"
+    """
+    Some sub-resources are UNHEALTHY.
+    """
 
 
 class GoogleIamV1AuditLogConfigLogType(str, Enum):

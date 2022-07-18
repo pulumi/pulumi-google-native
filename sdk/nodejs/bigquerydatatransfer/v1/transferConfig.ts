@@ -44,7 +44,7 @@ export class TransferConfig extends pulumi.CustomResource {
      */
     public readonly dataRefreshWindowDays!: pulumi.Output<number>;
     /**
-     * Data source id. Cannot be changed once data transfer is created.
+     * Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     public readonly dataSourceId!: pulumi.Output<string>;
     /**
@@ -197,7 +197,7 @@ export interface TransferConfigArgs {
      */
     dataRefreshWindowDays?: pulumi.Input<number>;
     /**
-     * Data source id. Cannot be changed once data transfer is created.
+     * Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     dataSourceId?: pulumi.Input<string>;
     /**

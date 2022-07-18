@@ -2205,9 +2205,9 @@ type GoogleCloudDataplexV1JobResponse struct {
 	EndTime string `pulumi:"endTime"`
 	// Additional information about the current state.
 	Message string `pulumi:"message"`
-	// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+	// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
 	Name string `pulumi:"name"`
-	// . The number of times the job has been retried (excluding the initial attempt).
+	// The number of times the job has been retried (excluding the initial attempt).
 	RetryCount int `pulumi:"retryCount"`
 	// The underlying service running a job.
 	Service string `pulumi:"service"`
@@ -2246,12 +2246,12 @@ func (o GoogleCloudDataplexV1JobResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
 func (o GoogleCloudDataplexV1JobResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// . The number of times the job has been retried (excluding the initial attempt).
+// The number of times the job has been retried (excluding the initial attempt).
 func (o GoogleCloudDataplexV1JobResponseOutput) RetryCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) int { return v.RetryCount }).(pulumi.IntOutput)
 }
@@ -3571,6 +3571,8 @@ func (o GoogleCloudDataplexV1StorageFormatResponseOutput) MimeType() pulumi.Stri
 type GoogleCloudDataplexV1TaskExecutionSpec struct {
 	// Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
 	Args map[string]string `pulumi:"args"`
+	// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime *string `pulumi:"maxJobExecutionLifetime"`
 	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
@@ -3594,6 +3596,8 @@ type GoogleCloudDataplexV1TaskExecutionSpecInput interface {
 type GoogleCloudDataplexV1TaskExecutionSpecArgs struct {
 	// Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
 	Args pulumi.StringMapInput `pulumi:"args"`
+	// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime pulumi.StringPtrInput `pulumi:"maxJobExecutionLifetime"`
 	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
@@ -3634,6 +3638,11 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) Args() pulumi.StringMapOut
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) map[string]string { return v.Args }).(pulumi.StringMapOutput)
 }
 
+// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The maximum duration after which the job execution is expired.
 func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) MaxJobExecutionLifetime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) *string { return v.MaxJobExecutionLifetime }).(pulumi.StringPtrOutput)
@@ -3653,6 +3662,8 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) ServiceAccount() pulumi.St
 type GoogleCloudDataplexV1TaskExecutionSpecResponse struct {
 	// Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
 	Args map[string]string `pulumi:"args"`
+	// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+	KmsKey string `pulumi:"kmsKey"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime string `pulumi:"maxJobExecutionLifetime"`
 	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
@@ -3679,6 +3690,11 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) ToGoogleCloudDatap
 // Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
 func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) Args() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) map[string]string { return v.Args }).(pulumi.StringMapOutput)
+}
+
+// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Optional. The maximum duration after which the job execution is expired.
@@ -4115,6 +4131,8 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse
 
 // Container Image Runtime Configuration used with Batch execution.
 type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime struct {
+	// Optional. Container image to use.
+	Image *string `pulumi:"image"`
 	// Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
 	JavaJars []string `pulumi:"javaJars"`
 	// Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
@@ -4136,6 +4154,8 @@ type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeInput inter
 
 // Container Image Runtime Configuration used with Batch execution.
 type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs struct {
+	// Optional. Container image to use.
+	Image pulumi.StringPtrInput `pulumi:"image"`
 	// Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
 	JavaJars pulumi.StringArrayInput `pulumi:"javaJars"`
 	// Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
@@ -4222,6 +4242,11 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput) 
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput)
 }
 
+// Optional. Container image to use.
+func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
 // Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput) JavaJars() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime) []string { return v.JavaJars }).(pulumi.StringArrayOutput)
@@ -4265,6 +4290,16 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutpu
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput)
 }
 
+// Optional. Container image to use.
+func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput) JavaJars() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime) []string {
@@ -4297,6 +4332,8 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutpu
 
 // Container Image Runtime Configuration used with Batch execution.
 type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse struct {
+	// Optional. Container image to use.
+	Image string `pulumi:"image"`
 	// Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
 	JavaJars []string `pulumi:"javaJars"`
 	// Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
@@ -4318,6 +4355,13 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse
 
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponseOutput) ToGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponseOutput {
 	return o
+}
+
+// Optional. Container image to use.
+func (o GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponseOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse) string {
+		return v.Image
+	}).(pulumi.StringOutput)
 }
 
 // Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar

@@ -762,11 +762,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// </summary>
         public static DiscoveryOccurrenceAnalysisStatus FinishedSuccess { get; } = new DiscoveryOccurrenceAnalysisStatus("FINISHED_SUCCESS");
         /// <summary>
+        /// Analysis has completed
+        /// </summary>
+        public static DiscoveryOccurrenceAnalysisStatus Complete { get; } = new DiscoveryOccurrenceAnalysisStatus("COMPLETE");
+        /// <summary>
         /// Analysis has finished unsuccessfully, the analysis itself is in a bad state.
         /// </summary>
         public static DiscoveryOccurrenceAnalysisStatus FinishedFailed { get; } = new DiscoveryOccurrenceAnalysisStatus("FINISHED_FAILED");
         /// <summary>
-        /// The resource is known not to be supported
+        /// The resource is known not to be supported.
         /// </summary>
         public static DiscoveryOccurrenceAnalysisStatus FinishedUnsupported { get; } = new DiscoveryOccurrenceAnalysisStatus("FINISHED_UNSUPPORTED");
 

@@ -293,6 +293,8 @@ class GoogleCloudRunV2ContainerResponse(dict):
         suggest = None
         if key == "volumeMounts":
             suggest = "volume_mounts"
+        elif key == "workingDir":
+            suggest = "working_dir"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ContainerResponse. Access the value via the '{suggest}' property getter instead.")
@@ -313,7 +315,8 @@ class GoogleCloudRunV2ContainerResponse(dict):
                  name: str,
                  ports: Sequence['outputs.GoogleCloudRunV2ContainerPortResponse'],
                  resources: 'outputs.GoogleCloudRunV2ResourceRequirementsResponse',
-                 volume_mounts: Sequence['outputs.GoogleCloudRunV2VolumeMountResponse']):
+                 volume_mounts: Sequence['outputs.GoogleCloudRunV2VolumeMountResponse'],
+                 working_dir: str):
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -324,6 +327,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
         :param Sequence['GoogleCloudRunV2ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'GoogleCloudRunV2ResourceRequirementsResponse' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         :param Sequence['GoogleCloudRunV2VolumeMountResponse'] volume_mounts: Volume to mount into the container's filesystem.
+        :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "command", command)
@@ -333,6 +337,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
+        pulumi.set(__self__, "working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -397,6 +402,14 @@ class GoogleCloudRunV2ContainerResponse(dict):
         Volume to mount into the container's filesystem.
         """
         return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> str:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+        return pulumi.get(self, "working_dir")
 
 
 @pulumi.output_type
@@ -976,7 +989,7 @@ class GoogleCloudRunV2SecretVolumeSourceResponse(dict):
                  secret: str):
         """
         The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
-        :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+        :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
         :param Sequence['GoogleCloudRunV2VersionToPathResponse'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         :param str secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         """
@@ -988,7 +1001,7 @@ class GoogleCloudRunV2SecretVolumeSourceResponse(dict):
     @pulumi.getter(name="defaultMode")
     def default_mode(self) -> int:
         """
-        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
+        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
         """
         return pulumi.get(self, "default_mode")
 

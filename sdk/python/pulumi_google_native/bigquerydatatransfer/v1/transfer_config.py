@@ -37,7 +37,7 @@ class TransferConfigArgs:
         The set of arguments for constructing a TransferConfig resource.
         :param pulumi.Input[str] authorization_code: Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
-        :param pulumi.Input[str] data_source_id: Data source id. Cannot be changed once data transfer is created.
+        :param pulumi.Input[str] data_source_id: Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[bool] disabled: Is this config disabled. When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[str] display_name: User specified display name for the data transfer.
@@ -117,7 +117,7 @@ class TransferConfigArgs:
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Data source id. Cannot be changed once data transfer is created.
+        Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         """
         return pulumi.get(self, "data_source_id")
 
@@ -318,7 +318,7 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorization_code: Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&scope=data_source_scopes &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
-        :param pulumi.Input[str] data_source_id: Data source id. Cannot be changed once data transfer is created.
+        :param pulumi.Input[str] data_source_id: Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[bool] disabled: Is this config disabled. When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[str] display_name: User specified display name for the data transfer.
@@ -475,7 +475,7 @@ class TransferConfig(pulumi.CustomResource):
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> pulumi.Output[str]:
         """
-        Data source id. Cannot be changed once data transfer is created.
+        Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         """
         return pulumi.get(self, "data_source_id")
 

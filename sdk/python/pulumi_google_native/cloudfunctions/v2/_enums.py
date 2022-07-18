@@ -6,6 +6,10 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'EventTriggerRetryPolicy',
+    'FunctionEnvironment',
+    'ServiceConfigIngressSettings',
+    'ServiceConfigVpcConnectorEgressSettings',
 ]
 
 
@@ -28,4 +32,80 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class EventTriggerRetryPolicy(str, Enum):
+    """
+    Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
+    """
+    RETRY_POLICY_UNSPECIFIED = "RETRY_POLICY_UNSPECIFIED"
+    """
+    Not specified.
+    """
+    RETRY_POLICY_DO_NOT_RETRY = "RETRY_POLICY_DO_NOT_RETRY"
+    """
+    Do not retry.
+    """
+    RETRY_POLICY_RETRY = "RETRY_POLICY_RETRY"
+    """
+    Retry on any failure, retry up to 7 days with an exponential backoff (capped at 10 seconds).
+    """
+
+
+class FunctionEnvironment(str, Enum):
+    """
+    Describe whether the function is gen1 or gen2.
+    """
+    ENVIRONMENT_UNSPECIFIED = "ENVIRONMENT_UNSPECIFIED"
+    """
+    Unspecified
+    """
+    GEN1 = "GEN_1"
+    """
+    Gen 1
+    """
+    GEN2 = "GEN_2"
+    """
+    Gen 2
+    """
+
+
+class ServiceConfigIngressSettings(str, Enum):
+    """
+    The ingress settings for the function, controlling what traffic can reach it.
+    """
+    INGRESS_SETTINGS_UNSPECIFIED = "INGRESS_SETTINGS_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    ALLOW_ALL = "ALLOW_ALL"
+    """
+    Allow HTTP traffic from public and private sources.
+    """
+    ALLOW_INTERNAL_ONLY = "ALLOW_INTERNAL_ONLY"
+    """
+    Allow HTTP traffic from only private VPC sources.
+    """
+    ALLOW_INTERNAL_AND_GCLB = "ALLOW_INTERNAL_AND_GCLB"
+    """
+    Allow HTTP traffic from private VPC sources and through GCLB.
+    """
+
+
+class ServiceConfigVpcConnectorEgressSettings(str, Enum):
+    """
+    The egress settings for the connector, controlling what traffic is diverted through it.
+    """
+    VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED = "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    PRIVATE_RANGES_ONLY = "PRIVATE_RANGES_ONLY"
+    """
+    Use the VPC Access Connector only for private IP space from RFC1918.
+    """
+    ALL_TRAFFIC = "ALL_TRAFFIC"
+    """
+    Force the use of VPC Access Connector for all egress traffic from the function.
     """

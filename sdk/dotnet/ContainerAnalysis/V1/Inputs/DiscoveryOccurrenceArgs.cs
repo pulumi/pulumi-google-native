@@ -15,6 +15,21 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// </summary>
     public sealed class DiscoveryOccurrenceArgs : Pulumi.ResourceArgs
     {
+        [Input("analysisCompleted")]
+        public Input<Inputs.AnalysisCompletedArgs>? AnalysisCompleted { get; set; }
+
+        [Input("analysisError")]
+        private InputList<Inputs.StatusArgs>? _analysisError;
+
+        /// <summary>
+        /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        /// </summary>
+        public InputList<Inputs.StatusArgs> AnalysisError
+        {
+            get => _analysisError ?? (_analysisError = new InputList<Inputs.StatusArgs>());
+            set => _analysisError = value;
+        }
+
         /// <summary>
         /// The status of discovery for the resource.
         /// </summary>

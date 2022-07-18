@@ -22,6 +22,8 @@ type Network struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
 	EnableUlaInternalIpv6 pulumi.BoolOutput `pulumi:"enableUlaInternalIpv6"`
+	// URL of the firewall policy the network is associated with.
+	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// The gateway address for default routing out of the network, selected by GCP.
 	GatewayIPv4 pulumi.StringOutput `pulumi:"gatewayIPv4"`
 	// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
@@ -203,6 +205,11 @@ func (o NetworkOutput) Description() pulumi.StringOutput {
 // Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
 func (o NetworkOutput) EnableUlaInternalIpv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.EnableUlaInternalIpv6 }).(pulumi.BoolOutput)
+}
+
+// URL of the firewall policy the network is associated with.
+func (o NetworkOutput) FirewallPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.FirewallPolicy }).(pulumi.StringOutput)
 }
 
 // The gateway address for default routing out of the network, selected by GCP.
