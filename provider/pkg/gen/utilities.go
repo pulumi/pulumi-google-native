@@ -56,6 +56,19 @@ func apiPropNameToSdkName(typeName string, name string) string {
 	}
 }
 
+var contentTypeRegexes = []*regexp.Regexp{
+	regexp.MustCompile(`[Ss]et the (?:` + "`)?" + `Content-Type(?:` + "`" + `)? header`),
+}
+
+func requiresContentType(desc string) bool {
+	for _, contentTypeRegex := range contentTypeRegexes {
+		if contentTypeRegex.MatchString(desc) {
+			return true
+		}
+	}
+	return false
+}
+
 // propertyFormatRegexes is a list of regular expressions to match property formats in property descriptions.
 var propertyFormatRegexes = []*regexp.Regexp{
 	// Example: "The resource name in the format `foo/*`"

@@ -123,6 +123,14 @@ type ResourceAutoname struct {
 	ValidationRegex string `json:"validationRegex,omitempty"`
 }
 
+type ContentType struct {
+	// FieldName specifies an optional string pattern for the field to use to inform the content type
+	// At most one of FieldName or Value should be specified.
+	FieldName string `json:"fieldName,omitempty"`
+	// Value specifies the explicit content-type to use for the operation.
+	Value string
+}
+
 type PollingStrategy string
 
 const (
@@ -148,6 +156,8 @@ type Operations struct {
 type CreateAPIOperation struct {
 	CloudAPIOperation
 	Autoname ResourceAutoname `json:"autoname,omitempty"`
+	// ContentType specifies custom content type required for the operation.
+	ContentType ContentType `json:"contentType,omitempty"`
 }
 
 type UpdateAPIOperation struct {

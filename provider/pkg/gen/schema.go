@@ -751,6 +751,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
+	// Detect resources that override the content-type used and mark them as such.
+	err := detectContentTypeSpecification(dd.createMethod.Description, dd.updateMethod.Description, inputProperties,
+		resourceMeta, resourceTok)
+	if err != nil {
+		return err
+	}
+
 	description := dd.createMethod.Description
 
 	// Apply auto-naming.
@@ -797,6 +804,23 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
+	return nil
+}
+
+func detectContentTypeSpecification(createDesc string, updateDesc string,
+	inputProperties map[string]schema.PropertySpec,
+	resourceMeta resources.CloudAPIResource, tok string) error {
+	if requiresContentType(createDesc) || requiresContentType(updateDesc) {
+		contentTypeField := "contentType"
+		if field, has := contentTypeFieldOverrides[tok]; has {
+			contentTypeField = field
+		}
+		_, hasContentType := inputProperties[contentTypeField]
+		if !hasContentType {
+			return fmt.Errorf("expected a content type field for resource: %q", tok)
+		}
+		resourceMeta.Create.ContentType.FieldName = contentTypeField
+	}
 	return nil
 }
 

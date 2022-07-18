@@ -147,6 +147,8 @@ var autonameOverrides = map[string]string{
 	"google-native:cloudkms/v1:KeyRing":          "keyRingId",
 }
 
+var contentTypeFieldOverrides = map[string]string{}
+
 // autonameExcludes is a set of resource tokens which should be explicitly excluded from autonaming.
 var autonameExcludes = codegen.NewStringSet(
 	"google-native:bigtableadmin/v1:Cluster",

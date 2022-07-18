@@ -167,6 +167,8 @@ func (c *GoogleClient) RequestWithTimeout(
 // multipartBoundary is a random string used to separate parts of multi-part request bodies.
 const multipartBoundary = "boundary-fa78ad331d"
 
+func (c *GoogleClient) UploadFormDataWithTimeout()
+
 // UploadWithTimeout performs a multi-part upload using the specified HTTP method, rawurl, etc. using the specified
 // timeout.
 func (c *GoogleClient) UploadWithTimeout(

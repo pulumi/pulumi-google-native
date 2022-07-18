@@ -149,3 +149,23 @@ func TestPropertyPatterns(t *testing.T) {
 		assert.Equal(t, expected, actual)
 	}
 }
+
+func Test_contentTypePropertyPattern(t *testing.T) {
+	type args struct {
+		sdkName string
+		desc    string
+		params  codegen.StringSet
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.want, contentTypePropertyPattern(tt.args.sdkName, tt.args.desc, tt.args.params), "contentTypePropertyPattern(%v, %v, %v)", tt.args.sdkName, tt.args.desc, tt.args.params)
+		})
+	}
+}
