@@ -53,7 +53,7 @@ class GetDataExchangeResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+        Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         """
         return pulumi.get(self, "display_name")
 

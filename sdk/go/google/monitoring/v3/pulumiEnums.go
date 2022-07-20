@@ -3156,6 +3156,183 @@ func (in *resourceGroupResourceTypePtr) ToResourceGroupResourceTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceGroupResourceTypePtrOutput)
 }
 
+// A class of status codes to accept.
+type ResponseStatusCodeStatusClass string
+
+const (
+	// Default value that matches no status codes.
+	ResponseStatusCodeStatusClassStatusClassUnspecified = ResponseStatusCodeStatusClass("STATUS_CLASS_UNSPECIFIED")
+	// The class of status codes between 100 and 199.
+	ResponseStatusCodeStatusClassStatusClass1xx = ResponseStatusCodeStatusClass("STATUS_CLASS_1XX")
+	// The class of status codes between 200 and 299.
+	ResponseStatusCodeStatusClassStatusClass2xx = ResponseStatusCodeStatusClass("STATUS_CLASS_2XX")
+	// The class of status codes between 300 and 399.
+	ResponseStatusCodeStatusClassStatusClass3xx = ResponseStatusCodeStatusClass("STATUS_CLASS_3XX")
+	// The class of status codes between 400 and 499.
+	ResponseStatusCodeStatusClassStatusClass4xx = ResponseStatusCodeStatusClass("STATUS_CLASS_4XX")
+	// The class of status codes between 500 and 599.
+	ResponseStatusCodeStatusClassStatusClass5xx = ResponseStatusCodeStatusClass("STATUS_CLASS_5XX")
+	// The class of all status codes.
+	ResponseStatusCodeStatusClassStatusClassAny = ResponseStatusCodeStatusClass("STATUS_CLASS_ANY")
+)
+
+func (ResponseStatusCodeStatusClass) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponseStatusCodeStatusClass)(nil)).Elem()
+}
+
+func (e ResponseStatusCodeStatusClass) ToResponseStatusCodeStatusClassOutput() ResponseStatusCodeStatusClassOutput {
+	return pulumi.ToOutput(e).(ResponseStatusCodeStatusClassOutput)
+}
+
+func (e ResponseStatusCodeStatusClass) ToResponseStatusCodeStatusClassOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ResponseStatusCodeStatusClassOutput)
+}
+
+func (e ResponseStatusCodeStatusClass) ToResponseStatusCodeStatusClassPtrOutput() ResponseStatusCodeStatusClassPtrOutput {
+	return e.ToResponseStatusCodeStatusClassPtrOutputWithContext(context.Background())
+}
+
+func (e ResponseStatusCodeStatusClass) ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassPtrOutput {
+	return ResponseStatusCodeStatusClass(e).ToResponseStatusCodeStatusClassOutputWithContext(ctx).ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx)
+}
+
+func (e ResponseStatusCodeStatusClass) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ResponseStatusCodeStatusClass) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ResponseStatusCodeStatusClass) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ResponseStatusCodeStatusClass) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ResponseStatusCodeStatusClassOutput struct{ *pulumi.OutputState }
+
+func (ResponseStatusCodeStatusClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponseStatusCodeStatusClass)(nil)).Elem()
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToResponseStatusCodeStatusClassOutput() ResponseStatusCodeStatusClassOutput {
+	return o
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToResponseStatusCodeStatusClassOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassOutput {
+	return o
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToResponseStatusCodeStatusClassPtrOutput() ResponseStatusCodeStatusClassPtrOutput {
+	return o.ToResponseStatusCodeStatusClassPtrOutputWithContext(context.Background())
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResponseStatusCodeStatusClass) *ResponseStatusCodeStatusClass {
+		return &v
+	}).(ResponseStatusCodeStatusClassPtrOutput)
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResponseStatusCodeStatusClass) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ResponseStatusCodeStatusClassOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResponseStatusCodeStatusClass) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResponseStatusCodeStatusClassPtrOutput struct{ *pulumi.OutputState }
+
+func (ResponseStatusCodeStatusClassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResponseStatusCodeStatusClass)(nil)).Elem()
+}
+
+func (o ResponseStatusCodeStatusClassPtrOutput) ToResponseStatusCodeStatusClassPtrOutput() ResponseStatusCodeStatusClassPtrOutput {
+	return o
+}
+
+func (o ResponseStatusCodeStatusClassPtrOutput) ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassPtrOutput {
+	return o
+}
+
+func (o ResponseStatusCodeStatusClassPtrOutput) Elem() ResponseStatusCodeStatusClassOutput {
+	return o.ApplyT(func(v *ResponseStatusCodeStatusClass) ResponseStatusCodeStatusClass {
+		if v != nil {
+			return *v
+		}
+		var ret ResponseStatusCodeStatusClass
+		return ret
+	}).(ResponseStatusCodeStatusClassOutput)
+}
+
+func (o ResponseStatusCodeStatusClassPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ResponseStatusCodeStatusClassPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ResponseStatusCodeStatusClass) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResponseStatusCodeStatusClassInput is an input type that accepts ResponseStatusCodeStatusClassArgs and ResponseStatusCodeStatusClassOutput values.
+// You can construct a concrete instance of `ResponseStatusCodeStatusClassInput` via:
+//
+//          ResponseStatusCodeStatusClassArgs{...}
+type ResponseStatusCodeStatusClassInput interface {
+	pulumi.Input
+
+	ToResponseStatusCodeStatusClassOutput() ResponseStatusCodeStatusClassOutput
+	ToResponseStatusCodeStatusClassOutputWithContext(context.Context) ResponseStatusCodeStatusClassOutput
+}
+
+var responseStatusCodeStatusClassPtrType = reflect.TypeOf((**ResponseStatusCodeStatusClass)(nil)).Elem()
+
+type ResponseStatusCodeStatusClassPtrInput interface {
+	pulumi.Input
+
+	ToResponseStatusCodeStatusClassPtrOutput() ResponseStatusCodeStatusClassPtrOutput
+	ToResponseStatusCodeStatusClassPtrOutputWithContext(context.Context) ResponseStatusCodeStatusClassPtrOutput
+}
+
+type responseStatusCodeStatusClassPtr string
+
+func ResponseStatusCodeStatusClassPtr(v string) ResponseStatusCodeStatusClassPtrInput {
+	return (*responseStatusCodeStatusClassPtr)(&v)
+}
+
+func (*responseStatusCodeStatusClassPtr) ElementType() reflect.Type {
+	return responseStatusCodeStatusClassPtrType
+}
+
+func (in *responseStatusCodeStatusClassPtr) ToResponseStatusCodeStatusClassPtrOutput() ResponseStatusCodeStatusClassPtrOutput {
+	return pulumi.ToOutput(in).(ResponseStatusCodeStatusClassPtrOutput)
+}
+
+func (in *responseStatusCodeStatusClassPtr) ToResponseStatusCodeStatusClassPtrOutputWithContext(ctx context.Context) ResponseStatusCodeStatusClassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ResponseStatusCodeStatusClassPtrOutput)
+}
+
 // A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
 type ServiceLevelObjectiveCalendarPeriod string
 
@@ -3758,6 +3935,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelVerificationStatusPtrInput)(nil)).Elem(), NotificationChannelVerificationStatus("VERIFICATION_STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceTypeInput)(nil)).Elem(), ResourceGroupResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceTypePtrInput)(nil)).Elem(), ResourceGroupResourceType("RESOURCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponseStatusCodeStatusClassInput)(nil)).Elem(), ResponseStatusCodeStatusClass("STATUS_CLASS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponseStatusCodeStatusClassPtrInput)(nil)).Elem(), ResponseStatusCodeStatusClass("STATUS_CLASS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelObjectiveCalendarPeriodInput)(nil)).Elem(), ServiceLevelObjectiveCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelObjectiveCalendarPeriodPtrInput)(nil)).Elem(), ServiceLevelObjectiveCalendarPeriod("CALENDAR_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigCheckerTypeInput)(nil)).Elem(), UptimeCheckConfigCheckerType("CHECKER_TYPE_UNSPECIFIED"))
@@ -3801,6 +3980,8 @@ func init() {
 	pulumi.RegisterOutputType(NotificationChannelVerificationStatusPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceTypeOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceTypePtrOutput{})
+	pulumi.RegisterOutputType(ResponseStatusCodeStatusClassOutput{})
+	pulumi.RegisterOutputType(ResponseStatusCodeStatusClassPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLevelObjectiveCalendarPeriodOutput{})
 	pulumi.RegisterOutputType(ServiceLevelObjectiveCalendarPeriodPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigCheckerTypeOutput{})

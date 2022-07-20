@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<bool> Manual { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
+        /// The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<int> ResourceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Output("retainDays")]
         public Output<int> RetainDays { get; private set; } = null!;
@@ -284,7 +284,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Input("retainDays")]
         public Input<int>? RetainDays { get; set; }

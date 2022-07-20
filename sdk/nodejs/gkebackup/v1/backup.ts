@@ -99,7 +99,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly manual!: pulumi.Output<boolean>;
     /**
-     * The fully qualified name of the Backup. `projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*`
+     * The fully qualified name of the Backup. projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceCount!: pulumi.Output<number>;
     /**
-     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
      */
     public readonly retainDays!: pulumi.Output<number>;
     /**
@@ -261,7 +261,7 @@ export interface BackupArgs {
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
      */
     retainDays?: pulumi.Input<number>;
 }

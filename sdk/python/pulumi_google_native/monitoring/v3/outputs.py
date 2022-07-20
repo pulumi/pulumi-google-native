@@ -49,6 +49,7 @@ __all__ = [
     'PerformanceThresholdResponse',
     'RequestBasedSliResponse',
     'ResourceGroupResponse',
+    'ResponseStatusCodeResponse',
     'ServiceLevelIndicatorResponse',
     'StatusResponse',
     'TcpCheckResponse',
@@ -1063,7 +1064,9 @@ class HttpCheckResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "authInfo":
+        if key == "acceptedResponseStatusCodes":
+            suggest = "accepted_response_status_codes"
+        elif key == "authInfo":
             suggest = "auth_info"
         elif key == "contentType":
             suggest = "content_type"
@@ -1088,6 +1091,7 @@ class HttpCheckResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accepted_response_status_codes: Sequence['outputs.ResponseStatusCodeResponse'],
                  auth_info: 'outputs.BasicAuthenticationResponse',
                  body: str,
                  content_type: str,
@@ -1100,6 +1104,7 @@ class HttpCheckResponse(dict):
                  validate_ssl: bool):
         """
         Information involved in an HTTP/HTTPS Uptime check request.
+        :param Sequence['ResponseStatusCodeResponse'] accepted_response_status_codes: If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
         :param 'BasicAuthenticationResponse' auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
         :param str body: The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
         :param str content_type: The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
@@ -1111,6 +1116,7 @@ class HttpCheckResponse(dict):
         :param bool use_ssl: If true, use HTTPS instead of HTTP to run the check.
         :param bool validate_ssl: Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
         """
+        pulumi.set(__self__, "accepted_response_status_codes", accepted_response_status_codes)
         pulumi.set(__self__, "auth_info", auth_info)
         pulumi.set(__self__, "body", body)
         pulumi.set(__self__, "content_type", content_type)
@@ -1121,6 +1127,14 @@ class HttpCheckResponse(dict):
         pulumi.set(__self__, "request_method", request_method)
         pulumi.set(__self__, "use_ssl", use_ssl)
         pulumi.set(__self__, "validate_ssl", validate_ssl)
+
+    @property
+    @pulumi.getter(name="acceptedResponseStatusCodes")
+    def accepted_response_status_codes(self) -> Sequence['outputs.ResponseStatusCodeResponse']:
+        """
+        If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+        """
+        return pulumi.get(self, "accepted_response_status_codes")
 
     @property
     @pulumi.getter(name="authInfo")
@@ -2261,6 +2275,58 @@ class ResourceGroupResponse(dict):
         The resource type of the group members.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class ResponseStatusCodeResponse(dict):
+    """
+    A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusClass":
+            suggest = "status_class"
+        elif key == "statusValue":
+            suggest = "status_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponseStatusCodeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponseStatusCodeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponseStatusCodeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 status_class: str,
+                 status_value: int):
+        """
+        A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+        :param str status_class: A class of status codes to accept.
+        :param int status_value: A status code to accept.
+        """
+        pulumi.set(__self__, "status_class", status_class)
+        pulumi.set(__self__, "status_value", status_value)
+
+    @property
+    @pulumi.getter(name="statusClass")
+    def status_class(self) -> str:
+        """
+        A class of status codes to accept.
+        """
+        return pulumi.get(self, "status_class")
+
+    @property
+    @pulumi.getter(name="statusValue")
+    def status_value(self) -> int:
+        """
+        A status code to accept.
+        """
+        return pulumi.get(self, "status_value")
 
 
 @pulumi.output_type

@@ -27,8 +27,8 @@ class RestorePlanArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RestorePlan resource.
-        :param pulumi.Input[str] backup_plan: Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
-        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        :param pulumi.Input[str] backup_plan: Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         :param pulumi.Input['RestoreConfigArgs'] restore_config: Configuration of Restores created via this RestorePlan.
         :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
@@ -51,7 +51,7 @@ class RestorePlanArgs:
     @pulumi.getter(name="backupPlan")
     def backup_plan(self) -> pulumi.Input[str]:
         """
-        Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
+        Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -63,7 +63,7 @@ class RestorePlanArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -158,8 +158,8 @@ class RestorePlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_plan: Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
-        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        :param pulumi.Input[str] backup_plan: Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
         :param pulumi.Input[pulumi.InputType['RestoreConfigArgs']] restore_config: Configuration of Restores created via this RestorePlan.
@@ -271,7 +271,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter(name="backupPlan")
     def backup_plan(self) -> pulumi.Output[str]:
         """
-        Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
+        Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -279,7 +279,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -324,7 +324,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
+        The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
         """
         return pulumi.get(self, "name")
 

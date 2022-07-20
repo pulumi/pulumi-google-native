@@ -20,7 +20,7 @@ type DataExchange struct {
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Documentation describing the data exchange.
 	Documentation pulumi.StringOutput `pulumi:"documentation"`
@@ -91,7 +91,7 @@ type dataExchangeArgs struct {
 	DataExchangeId string `pulumi:"dataExchangeId"`
 	// Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 	Description *string `pulumi:"description"`
-	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Documentation describing the data exchange.
 	Documentation *string `pulumi:"documentation"`
@@ -109,7 +109,7 @@ type DataExchangeArgs struct {
 	DataExchangeId pulumi.StringInput
 	// Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 	Description pulumi.StringPtrInput
-	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 	DisplayName pulumi.StringInput
 	// Optional. Documentation describing the data exchange.
 	Documentation pulumi.StringPtrInput
@@ -168,7 +168,7 @@ func (o DataExchangeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 func (o DataExchangeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

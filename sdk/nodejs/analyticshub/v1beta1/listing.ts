@@ -54,7 +54,7 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+     * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -178,7 +178,7 @@ export interface ListingArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+     * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
      */
     displayName: pulumi.Input<string>;
     /**

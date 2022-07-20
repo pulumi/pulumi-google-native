@@ -87,7 +87,7 @@ export interface GetBackupResult {
      */
     readonly manual: boolean;
     /**
-     * The fully qualified name of the Backup. `projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*`
+     * The fully qualified name of the Backup. projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*
      */
     readonly name: string;
     /**
@@ -99,7 +99,7 @@ export interface GetBackupResult {
      */
     readonly resourceCount: number;
     /**
-     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+     * The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
      */
     readonly retainDays: number;
     /**

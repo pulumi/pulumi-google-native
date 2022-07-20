@@ -23,6 +23,7 @@ __all__ = [
     'MonitoringQueryLanguageConditionEvaluationMissingData',
     'NotificationChannelVerificationStatus',
     'ResourceGroupResourceType',
+    'ResponseStatusCodeStatusClass',
     'ServiceLevelObjectiveCalendarPeriod',
     'UptimeCheckConfigCheckerType',
     'UptimeCheckConfigSelectedRegionsItem',
@@ -558,6 +559,40 @@ class ResourceGroupResourceType(str, Enum):
     AWS_ELB_LOAD_BALANCER = "AWS_ELB_LOAD_BALANCER"
     """
     A group of Amazon ELB load balancers.
+    """
+
+
+class ResponseStatusCodeStatusClass(str, Enum):
+    """
+    A class of status codes to accept.
+    """
+    STATUS_CLASS_UNSPECIFIED = "STATUS_CLASS_UNSPECIFIED"
+    """
+    Default value that matches no status codes.
+    """
+    STATUS_CLASS1XX = "STATUS_CLASS_1XX"
+    """
+    The class of status codes between 100 and 199.
+    """
+    STATUS_CLASS2XX = "STATUS_CLASS_2XX"
+    """
+    The class of status codes between 200 and 299.
+    """
+    STATUS_CLASS3XX = "STATUS_CLASS_3XX"
+    """
+    The class of status codes between 300 and 399.
+    """
+    STATUS_CLASS4XX = "STATUS_CLASS_4XX"
+    """
+    The class of status codes between 400 and 499.
+    """
+    STATUS_CLASS5XX = "STATUS_CLASS_5XX"
+    """
+    The class of status codes between 500 and 599.
+    """
+    STATUS_CLASS_ANY = "STATUS_CLASS_ANY"
+    """
+    The class of all status codes.
     """
 
 

@@ -318,7 +318,7 @@ class ClusterMetadataResponse(dict):
         Information about the GKE cluster from which this Backup was created.
         :param str anthos_version: Anthos version
         :param Mapping[str, str] backup_crd_versions: A list of the Backup for GKE CRD versions found in the cluster.
-        :param str cluster: The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
+        :param str cluster: The source cluster from which this Backup was created. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* This is inherited from the parent BackupPlan's cluster field.
         :param str gke_version: GKE version
         :param str k8s_version: The Kubernetes server version of the source cluster.
         """
@@ -348,7 +348,7 @@ class ClusterMetadataResponse(dict):
     @pulumi.getter
     def cluster(self) -> str:
         """
-        The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
+        The source cluster from which this Backup was created. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* This is inherited from the parent BackupPlan's cluster field.
         """
         return pulumi.get(self, "cluster")
 
@@ -434,7 +434,7 @@ class EncryptionKeyResponse(dict):
                  gcp_kms_encryption_key: str):
         """
         Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
-        :param str gcp_kms_encryption_key: Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        :param str gcp_kms_encryption_key: Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
         """
         pulumi.set(__self__, "gcp_kms_encryption_key", gcp_kms_encryption_key)
 
@@ -442,7 +442,7 @@ class EncryptionKeyResponse(dict):
     @pulumi.getter(name="gcpKmsEncryptionKey")
     def gcp_kms_encryption_key(self) -> str:
         """
-        Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
         """
         return pulumi.get(self, "gcp_kms_encryption_key")
 
@@ -809,7 +809,7 @@ class RetentionPolicyResponse(dict):
         """
         RetentionPolicy defines a Backup retention policy for a BackupPlan.
         :param int backup_delete_lock_days: Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
-        :param int backup_retain_days: The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+        :param int backup_retain_days: The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
         :param bool locked: This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
         """
         pulumi.set(__self__, "backup_delete_lock_days", backup_delete_lock_days)
@@ -828,7 +828,7 @@ class RetentionPolicyResponse(dict):
     @pulumi.getter(name="backupRetainDays")
     def backup_retain_days(self) -> int:
         """
-        The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. Default: 0 (no automatic deletion)
+        The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
         """
         return pulumi.get(self, "backup_retain_days")
 
@@ -868,7 +868,7 @@ class ScheduleResponse(dict):
                  paused: bool):
         """
         Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
-        :param str cron_schedule: A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+        :param str cron_schedule: A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
         :param bool paused: This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
         """
         pulumi.set(__self__, "cron_schedule", cron_schedule)
@@ -878,7 +878,7 @@ class ScheduleResponse(dict):
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> str:
         """
-        A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
+        A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
         """
         return pulumi.get(self, "cron_schedule")
 

@@ -954,6 +954,63 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
     /// <summary>
+    /// A class of status codes to accept.
+    /// </summary>
+    [EnumType]
+    public readonly struct ResponseStatusCodeStatusClass : IEquatable<ResponseStatusCodeStatusClass>
+    {
+        private readonly string _value;
+
+        private ResponseStatusCodeStatusClass(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value that matches no status codes.
+        /// </summary>
+        public static ResponseStatusCodeStatusClass StatusClassUnspecified { get; } = new ResponseStatusCodeStatusClass("STATUS_CLASS_UNSPECIFIED");
+        /// <summary>
+        /// The class of status codes between 100 and 199.
+        /// </summary>
+        public static ResponseStatusCodeStatusClass StatusClass1xx { get; } = new ResponseStatusCodeStatusClass("STATUS_CLASS_1XX");
+        /// <summary>
+        /// The class of status codes between 200 and 299.
+        /// </summary>
+        public static ResponseStatusCodeStatusClass StatusClass2xx { get; } = new ResponseStatusCodeStatusClass("STATUS_CLASS_2XX");
+        /// <summary>
+        /// The class of status codes between 300 and 399.
+        /// </summary>
+        public static ResponseStatusCodeStatusClass StatusClass3xx { get; } = new ResponseStatusCodeStatusClass("STATUS_CLASS_3XX");
+        /// <summary>
+        /// The class of status codes between 400 and 499.
+        /// </summary>
+        public static ResponseStatusCodeStatusClass StatusClass4xx { get; } = new ResponseStatusCodeStatusClass("STATUS_CLASS_4XX");
+        /// <summary>
+        /// The class of status codes between 500 and 599.
+        /// </summary>
+        public static ResponseStatusCodeStatusClass StatusClass5xx { get; } = new ResponseStatusCodeStatusClass("STATUS_CLASS_5XX");
+        /// <summary>
+        /// The class of all status codes.
+        /// </summary>
+        public static ResponseStatusCodeStatusClass StatusClassAny { get; } = new ResponseStatusCodeStatusClass("STATUS_CLASS_ANY");
+
+        public static bool operator ==(ResponseStatusCodeStatusClass left, ResponseStatusCodeStatusClass right) => left.Equals(right);
+        public static bool operator !=(ResponseStatusCodeStatusClass left, ResponseStatusCodeStatusClass right) => !left.Equals(right);
+
+        public static explicit operator string(ResponseStatusCodeStatusClass value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ResponseStatusCodeStatusClass other && Equals(other);
+        public bool Equals(ResponseStatusCodeStatusClass other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
     /// </summary>
     [EnumType]

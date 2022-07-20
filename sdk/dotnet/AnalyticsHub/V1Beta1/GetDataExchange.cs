@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+        /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

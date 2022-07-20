@@ -22,7 +22,7 @@ type BackupPlan struct {
 	BackupPlanId pulumi.StringOutput `pulumi:"backupPlanId"`
 	// Defines a schedule for automatic Backup creation via this BackupPlan.
 	BackupSchedule ScheduleResponseOutput `pulumi:"backupSchedule"`
-	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The timestamp when this BackupPlan resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -35,7 +35,7 @@ type BackupPlan struct {
 	// A set of custom labels supplied by user.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
+	// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
@@ -105,7 +105,7 @@ type backupPlanArgs struct {
 	BackupPlanId string `pulumi:"backupPlanId"`
 	// Defines a schedule for automatic Backup creation via this BackupPlan.
 	BackupSchedule *Schedule `pulumi:"backupSchedule"`
-	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 	Cluster string `pulumi:"cluster"`
 	// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
 	Deactivated *bool `pulumi:"deactivated"`
@@ -127,7 +127,7 @@ type BackupPlanArgs struct {
 	BackupPlanId pulumi.StringInput
 	// Defines a schedule for automatic Backup creation via this BackupPlan.
 	BackupSchedule SchedulePtrInput
-	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 	Cluster pulumi.StringInput
 	// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
 	Deactivated pulumi.BoolPtrInput
@@ -193,7 +193,7 @@ func (o BackupPlanOutput) BackupSchedule() ScheduleResponseOutput {
 	return o.ApplyT(func(v *BackupPlan) ScheduleResponseOutput { return v.BackupSchedule }).(ScheduleResponseOutput)
 }
 
-// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 func (o BackupPlanOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -227,7 +227,7 @@ func (o BackupPlanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
+// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
 func (o BackupPlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

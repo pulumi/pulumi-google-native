@@ -570,6 +570,42 @@ export const ResourceGroupResourceType = {
  */
 export type ResourceGroupResourceType = (typeof ResourceGroupResourceType)[keyof typeof ResourceGroupResourceType];
 
+export const ResponseStatusCodeStatusClass = {
+    /**
+     * Default value that matches no status codes.
+     */
+    StatusClassUnspecified: "STATUS_CLASS_UNSPECIFIED",
+    /**
+     * The class of status codes between 100 and 199.
+     */
+    StatusClass1xx: "STATUS_CLASS_1XX",
+    /**
+     * The class of status codes between 200 and 299.
+     */
+    StatusClass2xx: "STATUS_CLASS_2XX",
+    /**
+     * The class of status codes between 300 and 399.
+     */
+    StatusClass3xx: "STATUS_CLASS_3XX",
+    /**
+     * The class of status codes between 400 and 499.
+     */
+    StatusClass4xx: "STATUS_CLASS_4XX",
+    /**
+     * The class of status codes between 500 and 599.
+     */
+    StatusClass5xx: "STATUS_CLASS_5XX",
+    /**
+     * The class of all status codes.
+     */
+    StatusClassAny: "STATUS_CLASS_ANY",
+} as const;
+
+/**
+ * A class of status codes to accept.
+ */
+export type ResponseStatusCodeStatusClass = (typeof ResponseStatusCodeStatusClass)[keyof typeof ResponseStatusCodeStatusClass];
+
 export const ServiceLevelObjectiveCalendarPeriod = {
     /**
      * Undefined period, raises an error.

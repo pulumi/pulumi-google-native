@@ -3643,6 +3643,8 @@ func (o GoogleMonitoringV3RangeResponseOutput) Min() pulumi.Float64Output {
 
 // Information involved in an HTTP/HTTPS Uptime check request.
 type HttpCheck struct {
+	// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+	AcceptedResponseStatusCodes []ResponseStatusCode `pulumi:"acceptedResponseStatusCodes"`
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	AuthInfo *BasicAuthentication `pulumi:"authInfo"`
 	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
@@ -3678,6 +3680,8 @@ type HttpCheckInput interface {
 
 // Information involved in an HTTP/HTTPS Uptime check request.
 type HttpCheckArgs struct {
+	// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+	AcceptedResponseStatusCodes ResponseStatusCodeArrayInput `pulumi:"acceptedResponseStatusCodes"`
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	AuthInfo BasicAuthenticationPtrInput `pulumi:"authInfo"`
 	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
@@ -3778,6 +3782,11 @@ func (o HttpCheckOutput) ToHttpCheckPtrOutputWithContext(ctx context.Context) Ht
 	}).(HttpCheckPtrOutput)
 }
 
+// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+func (o HttpCheckOutput) AcceptedResponseStatusCodes() ResponseStatusCodeArrayOutput {
+	return o.ApplyT(func(v HttpCheck) []ResponseStatusCode { return v.AcceptedResponseStatusCodes }).(ResponseStatusCodeArrayOutput)
+}
+
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
 func (o HttpCheckOutput) AuthInfo() BasicAuthenticationPtrOutput {
 	return o.ApplyT(func(v HttpCheck) *BasicAuthentication { return v.AuthInfo }).(BasicAuthenticationPtrOutput)
@@ -3850,6 +3859,16 @@ func (o HttpCheckPtrOutput) Elem() HttpCheckOutput {
 		var ret HttpCheck
 		return ret
 	}).(HttpCheckOutput)
+}
+
+// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+func (o HttpCheckPtrOutput) AcceptedResponseStatusCodes() ResponseStatusCodeArrayOutput {
+	return o.ApplyT(func(v *HttpCheck) []ResponseStatusCode {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedResponseStatusCodes
+	}).(ResponseStatusCodeArrayOutput)
 }
 
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -3954,6 +3973,8 @@ func (o HttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput {
 
 // Information involved in an HTTP/HTTPS Uptime check request.
 type HttpCheckResponse struct {
+	// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+	AcceptedResponseStatusCodes []ResponseStatusCodeResponse `pulumi:"acceptedResponseStatusCodes"`
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	AuthInfo BasicAuthenticationResponse `pulumi:"authInfo"`
 	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
@@ -3989,6 +4010,11 @@ func (o HttpCheckResponseOutput) ToHttpCheckResponseOutput() HttpCheckResponseOu
 
 func (o HttpCheckResponseOutput) ToHttpCheckResponseOutputWithContext(ctx context.Context) HttpCheckResponseOutput {
 	return o
+}
+
+// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+func (o HttpCheckResponseOutput) AcceptedResponseStatusCodes() ResponseStatusCodeResponseArrayOutput {
+	return o.ApplyT(func(v HttpCheckResponse) []ResponseStatusCodeResponse { return v.AcceptedResponseStatusCodes }).(ResponseStatusCodeResponseArrayOutput)
 }
 
 // The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -7934,6 +7960,168 @@ func (o ResourceGroupResponseOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGroupResponse) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
+// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+type ResponseStatusCode struct {
+	// A class of status codes to accept.
+	StatusClass *ResponseStatusCodeStatusClass `pulumi:"statusClass"`
+	// A status code to accept.
+	StatusValue *int `pulumi:"statusValue"`
+}
+
+// ResponseStatusCodeInput is an input type that accepts ResponseStatusCodeArgs and ResponseStatusCodeOutput values.
+// You can construct a concrete instance of `ResponseStatusCodeInput` via:
+//
+//          ResponseStatusCodeArgs{...}
+type ResponseStatusCodeInput interface {
+	pulumi.Input
+
+	ToResponseStatusCodeOutput() ResponseStatusCodeOutput
+	ToResponseStatusCodeOutputWithContext(context.Context) ResponseStatusCodeOutput
+}
+
+// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+type ResponseStatusCodeArgs struct {
+	// A class of status codes to accept.
+	StatusClass ResponseStatusCodeStatusClassPtrInput `pulumi:"statusClass"`
+	// A status code to accept.
+	StatusValue pulumi.IntPtrInput `pulumi:"statusValue"`
+}
+
+func (ResponseStatusCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponseStatusCode)(nil)).Elem()
+}
+
+func (i ResponseStatusCodeArgs) ToResponseStatusCodeOutput() ResponseStatusCodeOutput {
+	return i.ToResponseStatusCodeOutputWithContext(context.Background())
+}
+
+func (i ResponseStatusCodeArgs) ToResponseStatusCodeOutputWithContext(ctx context.Context) ResponseStatusCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponseStatusCodeOutput)
+}
+
+// ResponseStatusCodeArrayInput is an input type that accepts ResponseStatusCodeArray and ResponseStatusCodeArrayOutput values.
+// You can construct a concrete instance of `ResponseStatusCodeArrayInput` via:
+//
+//          ResponseStatusCodeArray{ ResponseStatusCodeArgs{...} }
+type ResponseStatusCodeArrayInput interface {
+	pulumi.Input
+
+	ToResponseStatusCodeArrayOutput() ResponseStatusCodeArrayOutput
+	ToResponseStatusCodeArrayOutputWithContext(context.Context) ResponseStatusCodeArrayOutput
+}
+
+type ResponseStatusCodeArray []ResponseStatusCodeInput
+
+func (ResponseStatusCodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponseStatusCode)(nil)).Elem()
+}
+
+func (i ResponseStatusCodeArray) ToResponseStatusCodeArrayOutput() ResponseStatusCodeArrayOutput {
+	return i.ToResponseStatusCodeArrayOutputWithContext(context.Background())
+}
+
+func (i ResponseStatusCodeArray) ToResponseStatusCodeArrayOutputWithContext(ctx context.Context) ResponseStatusCodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponseStatusCodeArrayOutput)
+}
+
+// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+type ResponseStatusCodeOutput struct{ *pulumi.OutputState }
+
+func (ResponseStatusCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponseStatusCode)(nil)).Elem()
+}
+
+func (o ResponseStatusCodeOutput) ToResponseStatusCodeOutput() ResponseStatusCodeOutput {
+	return o
+}
+
+func (o ResponseStatusCodeOutput) ToResponseStatusCodeOutputWithContext(ctx context.Context) ResponseStatusCodeOutput {
+	return o
+}
+
+// A class of status codes to accept.
+func (o ResponseStatusCodeOutput) StatusClass() ResponseStatusCodeStatusClassPtrOutput {
+	return o.ApplyT(func(v ResponseStatusCode) *ResponseStatusCodeStatusClass { return v.StatusClass }).(ResponseStatusCodeStatusClassPtrOutput)
+}
+
+// A status code to accept.
+func (o ResponseStatusCodeOutput) StatusValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResponseStatusCode) *int { return v.StatusValue }).(pulumi.IntPtrOutput)
+}
+
+type ResponseStatusCodeArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponseStatusCodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponseStatusCode)(nil)).Elem()
+}
+
+func (o ResponseStatusCodeArrayOutput) ToResponseStatusCodeArrayOutput() ResponseStatusCodeArrayOutput {
+	return o
+}
+
+func (o ResponseStatusCodeArrayOutput) ToResponseStatusCodeArrayOutputWithContext(ctx context.Context) ResponseStatusCodeArrayOutput {
+	return o
+}
+
+func (o ResponseStatusCodeArrayOutput) Index(i pulumi.IntInput) ResponseStatusCodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponseStatusCode {
+		return vs[0].([]ResponseStatusCode)[vs[1].(int)]
+	}).(ResponseStatusCodeOutput)
+}
+
+// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+type ResponseStatusCodeResponse struct {
+	// A class of status codes to accept.
+	StatusClass string `pulumi:"statusClass"`
+	// A status code to accept.
+	StatusValue int `pulumi:"statusValue"`
+}
+
+// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
+type ResponseStatusCodeResponseOutput struct{ *pulumi.OutputState }
+
+func (ResponseStatusCodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponseStatusCodeResponse)(nil)).Elem()
+}
+
+func (o ResponseStatusCodeResponseOutput) ToResponseStatusCodeResponseOutput() ResponseStatusCodeResponseOutput {
+	return o
+}
+
+func (o ResponseStatusCodeResponseOutput) ToResponseStatusCodeResponseOutputWithContext(ctx context.Context) ResponseStatusCodeResponseOutput {
+	return o
+}
+
+// A class of status codes to accept.
+func (o ResponseStatusCodeResponseOutput) StatusClass() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponseStatusCodeResponse) string { return v.StatusClass }).(pulumi.StringOutput)
+}
+
+// A status code to accept.
+func (o ResponseStatusCodeResponseOutput) StatusValue() pulumi.IntOutput {
+	return o.ApplyT(func(v ResponseStatusCodeResponse) int { return v.StatusValue }).(pulumi.IntOutput)
+}
+
+type ResponseStatusCodeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponseStatusCodeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponseStatusCodeResponse)(nil)).Elem()
+}
+
+func (o ResponseStatusCodeResponseArrayOutput) ToResponseStatusCodeResponseArrayOutput() ResponseStatusCodeResponseArrayOutput {
+	return o
+}
+
+func (o ResponseStatusCodeResponseArrayOutput) ToResponseStatusCodeResponseArrayOutputWithContext(ctx context.Context) ResponseStatusCodeResponseArrayOutput {
+	return o
+}
+
+func (o ResponseStatusCodeResponseArrayOutput) Index(i pulumi.IntInput) ResponseStatusCodeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponseStatusCodeResponse {
+		return vs[0].([]ResponseStatusCodeResponse)[vs[1].(int)]
+	}).(ResponseStatusCodeResponseOutput)
+}
+
 // A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An SLI is defined to be good_service / total_service over any queried time interval. The value of performance always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or counting time windows in which the service complies with a criterion. For separation of concerns, a single Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of successful queries or fast-enough queries.
 type ServiceLevelIndicator struct {
 	// Basic SLI on a well-known service type.
@@ -9458,6 +9646,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliPtrInput)(nil)).Elem(), RequestBasedSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupInput)(nil)).Elem(), ResourceGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupPtrInput)(nil)).Elem(), ResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponseStatusCodeInput)(nil)).Elem(), ResponseStatusCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResponseStatusCodeArrayInput)(nil)).Elem(), ResponseStatusCodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelIndicatorInput)(nil)).Elem(), ServiceLevelIndicatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelIndicatorPtrInput)(nil)).Elem(), ServiceLevelIndicatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusInput)(nil)).Elem(), StatusArgs{})
@@ -9590,6 +9780,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupOutput{})
 	pulumi.RegisterOutputType(ResourceGroupPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResponseOutput{})
+	pulumi.RegisterOutputType(ResponseStatusCodeOutput{})
+	pulumi.RegisterOutputType(ResponseStatusCodeArrayOutput{})
+	pulumi.RegisterOutputType(ResponseStatusCodeResponseOutput{})
+	pulumi.RegisterOutputType(ResponseStatusCodeResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceLevelIndicatorOutput{})
 	pulumi.RegisterOutputType(ServiceLevelIndicatorPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLevelIndicatorResponseOutput{})

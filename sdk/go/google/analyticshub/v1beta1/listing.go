@@ -25,7 +25,7 @@ type Listing struct {
 	DataProvider DataProviderResponseOutput `pulumi:"dataProvider"`
 	// Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Documentation describing the listing.
 	Documentation pulumi.StringOutput `pulumi:"documentation"`
@@ -114,7 +114,7 @@ type listingArgs struct {
 	DataProvider *DataProvider `pulumi:"dataProvider"`
 	// Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 	Description *string `pulumi:"description"`
-	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Documentation describing the listing.
 	Documentation *string `pulumi:"documentation"`
@@ -143,7 +143,7 @@ type ListingArgs struct {
 	DataProvider DataProviderPtrInput
 	// Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
 	Description pulumi.StringPtrInput
-	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 	DisplayName pulumi.StringInput
 	// Optional. Documentation describing the listing.
 	Documentation pulumi.StringPtrInput
@@ -222,7 +222,7 @@ func (o ListingOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
 func (o ListingOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -29,7 +29,7 @@ class BackupArgs:
         :param pulumi.Input[int] delete_lock_days: Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
         :param pulumi.Input[str] description: User specified descriptive string for this Backup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
-        :param pulumi.Input[int] retain_days: The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        :param pulumi.Input[int] retain_days: The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         """
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
         if backup_id is not None:
@@ -126,7 +126,7 @@ class BackupArgs:
     @pulumi.getter(name="retainDays")
     def retain_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         """
         return pulumi.get(self, "retain_days")
 
@@ -159,7 +159,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[int] delete_lock_days: Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
         :param pulumi.Input[str] description: User specified descriptive string for this Backup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
-        :param pulumi.Input[int] retain_days: The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        :param pulumi.Input[int] retain_days: The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         """
         ...
     @overload
@@ -427,7 +427,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
+        The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
         """
         return pulumi.get(self, "name")
 
@@ -456,7 +456,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="retainDays")
     def retain_days(self) -> pulumi.Output[int]:
         """
-        The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         """
         return pulumi.get(self, "retain_days")
 

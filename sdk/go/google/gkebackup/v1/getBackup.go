@@ -56,13 +56,13 @@ type LookupBackupResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
 	Manual bool `pulumi:"manual"`
-	// The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
+	// The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
 	Name string `pulumi:"name"`
 	// The total number of Kubernetes Pods contained in the Backup.
 	PodCount int `pulumi:"podCount"`
 	// The total number of Kubernetes resources included in the Backup.
 	ResourceCount int `pulumi:"resourceCount"`
-	// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+	// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
 	RetainDays int `pulumi:"retainDays"`
 	// The time at which this Backup will be automatically deleted (calculated from create_time + retain_days).
 	RetainExpireTime string `pulumi:"retainExpireTime"`
@@ -192,7 +192,7 @@ func (o LookupBackupResultOutput) Manual() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupResult) bool { return v.Manual }).(pulumi.BoolOutput)
 }
 
-// The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
+// The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
 func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -207,7 +207,7 @@ func (o LookupBackupResultOutput) ResourceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupResult) int { return v.ResourceCount }).(pulumi.IntOutput)
 }
 
-// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
 func (o LookupBackupResultOutput) RetainDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupResult) int { return v.RetainDays }).(pulumi.IntOutput)
 }

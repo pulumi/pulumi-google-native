@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
     public sealed class EncryptionKeyResponse
     {
         /// <summary>
-        /// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
         /// </summary>
         public readonly string GcpKmsEncryptionKey;
 

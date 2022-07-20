@@ -80,7 +80,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def cluster(self) -> str:
         """
-        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -128,7 +128,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
+        The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
         """
         return pulumi.get(self, "name")
 

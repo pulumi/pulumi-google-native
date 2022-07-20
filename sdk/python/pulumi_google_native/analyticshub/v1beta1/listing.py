@@ -34,7 +34,7 @@ class ListingArgs:
         """
         The set of arguments for constructing a Listing resource.
         :param pulumi.Input['BigQueryDatasetSourceArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
-        :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+        :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         :param pulumi.Input[str] listing_id: Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
         :param pulumi.Input[Sequence[pulumi.Input['ListingCategoriesItem']]] categories: Optional. Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input['DataProviderArgs'] data_provider: Optional. Details of the data provider who owns the source data.
@@ -95,7 +95,7 @@ class ListingArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+        Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         """
         return pulumi.get(self, "display_name")
 
@@ -260,7 +260,7 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input['ListingCategoriesItem']]] categories: Optional. Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[pulumi.InputType['DataProviderArgs']] data_provider: Optional. Details of the data provider who owns the source data.
         :param pulumi.Input[str] description: Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
-        :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+        :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         :param pulumi.Input[str] documentation: Optional. Documentation describing the listing.
         :param pulumi.Input[str] icon: Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[str] listing_id: Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
@@ -423,7 +423,7 @@ class Listing(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+        Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         """
         return pulumi.get(self, "display_name")
 

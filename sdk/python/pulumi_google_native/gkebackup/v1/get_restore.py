@@ -76,7 +76,7 @@ class GetRestoreResult:
     @pulumi.getter
     def backup(self) -> str:
         """
-        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
+        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         """
         return pulumi.get(self, "backup")
 
@@ -84,7 +84,7 @@ class GetRestoreResult:
     @pulumi.getter
     def cluster(self) -> str:
         """
-        The target cluster into which this Restore will restore data. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` Inherited from parent RestorePlan's cluster value.
+        The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
         """
         return pulumi.get(self, "cluster")
 
@@ -132,7 +132,7 @@ class GetRestoreResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`
+        The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
         """
         return pulumi.get(self, "name")
 

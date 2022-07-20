@@ -93,7 +93,7 @@ class GetListingResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
+        Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         """
         return pulumi.get(self, "display_name")
 

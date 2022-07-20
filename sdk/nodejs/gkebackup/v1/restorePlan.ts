@@ -37,11 +37,11 @@ export class RestorePlan extends pulumi.CustomResource {
     }
 
     /**
-     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*&#47;locations/*&#47;backupPlans/*`.
+     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
      */
     public readonly backupPlan!: pulumi.Output<string>;
     /**
-     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*`
+     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -62,7 +62,7 @@ export class RestorePlan extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The full name of the RestorePlan resource. Format: `projects/*&#47;locations/*&#47;restorePlans/*`.
+     * The full name of the RestorePlan resource. Format: projects/*&#47;locations/*&#47;restorePlans/*.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -146,11 +146,11 @@ export class RestorePlan extends pulumi.CustomResource {
  */
 export interface RestorePlanArgs {
     /**
-     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*&#47;locations/*&#47;backupPlans/*`.
+     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
      */
     backupPlan: pulumi.Input<string>;
     /**
-     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*`
+     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
      */
     cluster: pulumi.Input<string>;
     /**

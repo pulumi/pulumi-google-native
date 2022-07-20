@@ -24,7 +24,7 @@ class RestoreArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Restore resource.
-        :param pulumi.Input[str] backup: Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
+        :param pulumi.Input[str] backup: Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         :param pulumi.Input[str] restore_id: Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
         :param pulumi.Input[str] description: User specified descriptive string for this Restore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
@@ -45,7 +45,7 @@ class RestoreArgs:
     @pulumi.getter
     def backup(self) -> pulumi.Input[str]:
         """
-        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
+        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         """
         return pulumi.get(self, "backup")
 
@@ -136,7 +136,7 @@ class Restore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup: Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
+        :param pulumi.Input[str] backup: Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         :param pulumi.Input[str] description: User specified descriptive string for this Restore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
         :param pulumi.Input[str] restore_id: Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
@@ -260,7 +260,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter
     def backup(self) -> pulumi.Output[str]:
         """
-        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
+        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         """
         return pulumi.get(self, "backup")
 
@@ -268,7 +268,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        The target cluster into which this Restore will restore data. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` Inherited from parent RestorePlan's cluster value.
+        The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
         """
         return pulumi.get(self, "cluster")
 
@@ -321,7 +321,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`
+        The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
         """
         return pulumi.get(self, "name")
 

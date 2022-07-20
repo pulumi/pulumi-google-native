@@ -31,7 +31,7 @@ type LookupBackupPlanResult struct {
 	BackupConfig BackupConfigResponse `pulumi:"backupConfig"`
 	// Defines a schedule for automatic Backup creation via this BackupPlan.
 	BackupSchedule ScheduleResponse `pulumi:"backupSchedule"`
-	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 	Cluster string `pulumi:"cluster"`
 	// The timestamp when this BackupPlan resource was created.
 	CreateTime string `pulumi:"createTime"`
@@ -43,7 +43,7 @@ type LookupBackupPlanResult struct {
 	Etag string `pulumi:"etag"`
 	// A set of custom labels supplied by user.
 	Labels map[string]string `pulumi:"labels"`
-	// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
+	// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
 	Name string `pulumi:"name"`
 	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount int `pulumi:"protectedPodCount"`
@@ -102,7 +102,7 @@ func (o LookupBackupPlanResultOutput) BackupSchedule() ScheduleResponseOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) ScheduleResponse { return v.BackupSchedule }).(ScheduleResponseOutput)
 }
 
-// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 func (o LookupBackupPlanResultOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -132,7 +132,7 @@ func (o LookupBackupPlanResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
+// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
 func (o LookupBackupPlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Name }).(pulumi.StringOutput)
 }

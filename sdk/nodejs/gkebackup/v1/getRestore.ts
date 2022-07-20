@@ -31,11 +31,11 @@ export interface GetRestoreArgs {
 
 export interface GetRestoreResult {
     /**
-     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*`.
+     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
      */
     readonly backup: string;
     /**
-     * The target cluster into which this Restore will restore data. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*` Inherited from parent RestorePlan's cluster value.
+     * The target cluster into which this Restore will restore data. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/* Inherited from parent RestorePlan's cluster value.
      */
     readonly cluster: string;
     /**
@@ -59,7 +59,7 @@ export interface GetRestoreResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The full name of the Restore resource. Format: `projects/*&#47;locations/*&#47;restorePlans/*&#47;restores/*`
+     * The full name of the Restore resource. Format: projects/*&#47;locations/*&#47;restorePlans/*&#47;restores/*
      */
     readonly name: string;
     /**

@@ -29,7 +29,7 @@ class BackupPlanArgs:
         """
         The set of arguments for constructing a BackupPlan resource.
         :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
-        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         :param pulumi.Input['BackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
         :param pulumi.Input['ScheduleArgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
@@ -72,7 +72,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -196,7 +196,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackupConfigArgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
         :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
         :param pulumi.Input[pulumi.InputType['ScheduleArgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
-        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
@@ -336,7 +336,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
+        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -389,7 +389,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
+        The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
         """
         return pulumi.get(self, "name")
 

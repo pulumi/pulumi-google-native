@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class HttpCheckResponse
     {
         /// <summary>
+        /// If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ResponseStatusCodeResponse> AcceptedResponseStatusCodes;
+        /// <summary>
         /// The authentication information. Optional when creating an HTTP check; defaults to empty.
         /// </summary>
         public readonly Outputs.BasicAuthenticationResponse AuthInfo;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 
         [OutputConstructor]
         private HttpCheckResponse(
+            ImmutableArray<Outputs.ResponseStatusCodeResponse> acceptedResponseStatusCodes,
+
             Outputs.BasicAuthenticationResponse authInfo,
 
             string body,
@@ -79,6 +85,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 
             bool validateSsl)
         {
+            AcceptedResponseStatusCodes = acceptedResponseStatusCodes;
             AuthInfo = authInfo;
             Body = body;
             ContentType = contentType;
