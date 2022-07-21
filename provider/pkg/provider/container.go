@@ -154,7 +154,7 @@ func updateNodepool(providerInstance *googleCloudProvider,
 	resp, err2 := readNodepoolStatus(providerInstance, uri)
 	if err2 != nil {
 		logging.V(9).Infof("[%s] Failed to read nodepool status: %v", label, err2)
-		return nil, fmt.Errorf("failed to retrieve nodepool status: %w. Previous error: %w", err2, err)
+		return nil, fmt.Errorf("failed to retrieve nodepool status: %v. Previous error: %w", err2, err)
 	}
 	return resp, err
 }
