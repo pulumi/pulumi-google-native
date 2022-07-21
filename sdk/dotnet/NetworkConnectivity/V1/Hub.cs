@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 {
     /// <summary>
-    /// Creates a new hub in the specified project.
+    /// Creates a new Network Connectivity Center hub in the specified project.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1:Hub")]

@@ -395,7 +395,7 @@ class RoutingVPCArgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
         """
-        RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+        RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
         :param pulumi.Input[str] uri: The URI of the VPC network.
         """
         if uri is not None:

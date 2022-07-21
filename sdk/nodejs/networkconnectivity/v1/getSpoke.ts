@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Gets details about the specified spoke.
+ * Gets details about a Network Connectivity Center spoke.
  */
 export function getSpoke(args: GetSpokeArgs, opts?: pulumi.InvokeOptions): Promise<GetSpokeResult> {
     if (!opts) {

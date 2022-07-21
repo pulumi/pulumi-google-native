@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a spoke in the specified project and location.
+ * Creates a Network Connectivity Center spoke.
  */
 export class Spoke extends pulumi.CustomResource {
     /**

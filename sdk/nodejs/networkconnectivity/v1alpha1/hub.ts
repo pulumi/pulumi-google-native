@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new Hub in a given project and location.
+ * Creates a new Network Connectivity Center hub in the specified project.
  */
 export class Hub extends pulumi.CustomResource {
     /**

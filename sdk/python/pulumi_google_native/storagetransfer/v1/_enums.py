@@ -18,6 +18,10 @@ __all__ = [
     'MetadataOptionsUid',
     'NotificationConfigEventTypesItem',
     'NotificationConfigPayloadFormat',
+    'S3CompatibleMetadataAuthMethod',
+    'S3CompatibleMetadataListApi',
+    'S3CompatibleMetadataProtocol',
+    'S3CompatibleMetadataRequestModel',
     'TransferJobStatus',
     'TransferOptionsOverwriteWhen',
 ]
@@ -269,6 +273,78 @@ class NotificationConfigPayloadFormat(str, Enum):
     JSON = "JSON"
     """
     `TransferOperation` is [formatted as a JSON response](https://developers.google.com/protocol-buffers/docs/proto3#json), in application/json.
+    """
+
+
+class S3CompatibleMetadataAuthMethod(str, Enum):
+    """
+    Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+    """
+    AUTH_METHOD_UNSPECIFIED = "AUTH_METHOD_UNSPECIFIED"
+    """
+    AuthMethod is not specified.
+    """
+    AUTH_METHOD_AWS_SIGNATURE_V4 = "AUTH_METHOD_AWS_SIGNATURE_V4"
+    """
+    Auth requests with AWS SigV4.
+    """
+    AUTH_METHOD_AWS_SIGNATURE_V2 = "AUTH_METHOD_AWS_SIGNATURE_V2"
+    """
+    Auth requests with AWS SigV2.
+    """
+
+
+class S3CompatibleMetadataListApi(str, Enum):
+    """
+    The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+    """
+    LIST_API_UNSPECIFIED = "LIST_API_UNSPECIFIED"
+    """
+    ListApi is not specified.
+    """
+    LIST_OBJECTS_V2 = "LIST_OBJECTS_V2"
+    """
+    Perform listing using ListObjectsV2 API.
+    """
+    LIST_OBJECTS = "LIST_OBJECTS"
+    """
+    Legacy ListObjects API.
+    """
+
+
+class S3CompatibleMetadataProtocol(str, Enum):
+    """
+    Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+    """
+    NETWORK_PROTOCOL_UNSPECIFIED = "NETWORK_PROTOCOL_UNSPECIFIED"
+    """
+    NetworkProtocol is not specified.
+    """
+    NETWORK_PROTOCOL_HTTPS = "NETWORK_PROTOCOL_HTTPS"
+    """
+    Perform requests using HTTPS.
+    """
+    NETWORK_PROTOCOL_HTTP = "NETWORK_PROTOCOL_HTTP"
+    """
+    Not recommended: This sends data in clear-text. This is only appropriate within a closed network or for publicly available data. Perform requests using HTTP.
+    """
+
+
+class S3CompatibleMetadataRequestModel(str, Enum):
+    """
+    Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+    """
+    REQUEST_MODEL_UNSPECIFIED = "REQUEST_MODEL_UNSPECIFIED"
+    """
+    RequestModel is not specified.
+    """
+    REQUEST_MODEL_VIRTUAL_HOSTED_STYLE = "REQUEST_MODEL_VIRTUAL_HOSTED_STYLE"
+    """
+    Perform requests using Virtual Hosted Style. Example: https://bucket-name.s3.region.amazonaws.com/key-name
+    """
+    REQUEST_MODEL_PATH_STYLE = "REQUEST_MODEL_PATH_STYLE"
+    """
+    Perform requests using Path Style. Example: https://s3.region.amazonaws.com/bucket-name/key-name
     """
 
 

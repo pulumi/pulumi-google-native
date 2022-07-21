@@ -2351,6 +2351,682 @@ func (in *notificationConfigPayloadFormatPtr) ToNotificationConfigPayloadFormatP
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationConfigPayloadFormatPtrOutput)
 }
 
+// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+type S3CompatibleMetadataAuthMethod string
+
+const (
+	// AuthMethod is not specified.
+	S3CompatibleMetadataAuthMethodAuthMethodUnspecified = S3CompatibleMetadataAuthMethod("AUTH_METHOD_UNSPECIFIED")
+	// Auth requests with AWS SigV4.
+	S3CompatibleMetadataAuthMethodAuthMethodAwsSignatureV4 = S3CompatibleMetadataAuthMethod("AUTH_METHOD_AWS_SIGNATURE_V4")
+	// Auth requests with AWS SigV2.
+	S3CompatibleMetadataAuthMethodAuthMethodAwsSignatureV2 = S3CompatibleMetadataAuthMethod("AUTH_METHOD_AWS_SIGNATURE_V2")
+)
+
+func (S3CompatibleMetadataAuthMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataAuthMethod)(nil)).Elem()
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToS3CompatibleMetadataAuthMethodOutput() S3CompatibleMetadataAuthMethodOutput {
+	return pulumi.ToOutput(e).(S3CompatibleMetadataAuthMethodOutput)
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToS3CompatibleMetadataAuthMethodOutputWithContext(ctx context.Context) S3CompatibleMetadataAuthMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(S3CompatibleMetadataAuthMethodOutput)
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToS3CompatibleMetadataAuthMethodPtrOutput() S3CompatibleMetadataAuthMethodPtrOutput {
+	return e.ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataAuthMethodPtrOutput {
+	return S3CompatibleMetadataAuthMethod(e).ToS3CompatibleMetadataAuthMethodOutputWithContext(ctx).ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(ctx)
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataAuthMethod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type S3CompatibleMetadataAuthMethodOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataAuthMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataAuthMethod)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToS3CompatibleMetadataAuthMethodOutput() S3CompatibleMetadataAuthMethodOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToS3CompatibleMetadataAuthMethodOutputWithContext(ctx context.Context) S3CompatibleMetadataAuthMethodOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToS3CompatibleMetadataAuthMethodPtrOutput() S3CompatibleMetadataAuthMethodPtrOutput {
+	return o.ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataAuthMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3CompatibleMetadataAuthMethod) *S3CompatibleMetadataAuthMethod {
+		return &v
+	}).(S3CompatibleMetadataAuthMethodPtrOutput)
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataAuthMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataAuthMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataAuthMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type S3CompatibleMetadataAuthMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataAuthMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3CompatibleMetadataAuthMethod)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataAuthMethodPtrOutput) ToS3CompatibleMetadataAuthMethodPtrOutput() S3CompatibleMetadataAuthMethodPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataAuthMethodPtrOutput) ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataAuthMethodPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataAuthMethodPtrOutput) Elem() S3CompatibleMetadataAuthMethodOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadataAuthMethod) S3CompatibleMetadataAuthMethod {
+		if v != nil {
+			return *v
+		}
+		var ret S3CompatibleMetadataAuthMethod
+		return ret
+	}).(S3CompatibleMetadataAuthMethodOutput)
+}
+
+func (o S3CompatibleMetadataAuthMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataAuthMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *S3CompatibleMetadataAuthMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3CompatibleMetadataAuthMethodInput is an input type that accepts S3CompatibleMetadataAuthMethodArgs and S3CompatibleMetadataAuthMethodOutput values.
+// You can construct a concrete instance of `S3CompatibleMetadataAuthMethodInput` via:
+//
+//          S3CompatibleMetadataAuthMethodArgs{...}
+type S3CompatibleMetadataAuthMethodInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataAuthMethodOutput() S3CompatibleMetadataAuthMethodOutput
+	ToS3CompatibleMetadataAuthMethodOutputWithContext(context.Context) S3CompatibleMetadataAuthMethodOutput
+}
+
+var s3compatibleMetadataAuthMethodPtrType = reflect.TypeOf((**S3CompatibleMetadataAuthMethod)(nil)).Elem()
+
+type S3CompatibleMetadataAuthMethodPtrInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataAuthMethodPtrOutput() S3CompatibleMetadataAuthMethodPtrOutput
+	ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(context.Context) S3CompatibleMetadataAuthMethodPtrOutput
+}
+
+type s3compatibleMetadataAuthMethodPtr string
+
+func S3CompatibleMetadataAuthMethodPtr(v string) S3CompatibleMetadataAuthMethodPtrInput {
+	return (*s3compatibleMetadataAuthMethodPtr)(&v)
+}
+
+func (*s3compatibleMetadataAuthMethodPtr) ElementType() reflect.Type {
+	return s3compatibleMetadataAuthMethodPtrType
+}
+
+func (in *s3compatibleMetadataAuthMethodPtr) ToS3CompatibleMetadataAuthMethodPtrOutput() S3CompatibleMetadataAuthMethodPtrOutput {
+	return pulumi.ToOutput(in).(S3CompatibleMetadataAuthMethodPtrOutput)
+}
+
+func (in *s3compatibleMetadataAuthMethodPtr) ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataAuthMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataAuthMethodPtrOutput)
+}
+
+// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+type S3CompatibleMetadataListApi string
+
+const (
+	// ListApi is not specified.
+	S3CompatibleMetadataListApiListApiUnspecified = S3CompatibleMetadataListApi("LIST_API_UNSPECIFIED")
+	// Perform listing using ListObjectsV2 API.
+	S3CompatibleMetadataListApiListObjectsV2 = S3CompatibleMetadataListApi("LIST_OBJECTS_V2")
+	// Legacy ListObjects API.
+	S3CompatibleMetadataListApiListObjects = S3CompatibleMetadataListApi("LIST_OBJECTS")
+)
+
+func (S3CompatibleMetadataListApi) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataListApi)(nil)).Elem()
+}
+
+func (e S3CompatibleMetadataListApi) ToS3CompatibleMetadataListApiOutput() S3CompatibleMetadataListApiOutput {
+	return pulumi.ToOutput(e).(S3CompatibleMetadataListApiOutput)
+}
+
+func (e S3CompatibleMetadataListApi) ToS3CompatibleMetadataListApiOutputWithContext(ctx context.Context) S3CompatibleMetadataListApiOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(S3CompatibleMetadataListApiOutput)
+}
+
+func (e S3CompatibleMetadataListApi) ToS3CompatibleMetadataListApiPtrOutput() S3CompatibleMetadataListApiPtrOutput {
+	return e.ToS3CompatibleMetadataListApiPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataListApi) ToS3CompatibleMetadataListApiPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataListApiPtrOutput {
+	return S3CompatibleMetadataListApi(e).ToS3CompatibleMetadataListApiOutputWithContext(ctx).ToS3CompatibleMetadataListApiPtrOutputWithContext(ctx)
+}
+
+func (e S3CompatibleMetadataListApi) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataListApi) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataListApi) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataListApi) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type S3CompatibleMetadataListApiOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataListApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataListApi)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToS3CompatibleMetadataListApiOutput() S3CompatibleMetadataListApiOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToS3CompatibleMetadataListApiOutputWithContext(ctx context.Context) S3CompatibleMetadataListApiOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToS3CompatibleMetadataListApiPtrOutput() S3CompatibleMetadataListApiPtrOutput {
+	return o.ToS3CompatibleMetadataListApiPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToS3CompatibleMetadataListApiPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataListApiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3CompatibleMetadataListApi) *S3CompatibleMetadataListApi {
+		return &v
+	}).(S3CompatibleMetadataListApiPtrOutput)
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataListApi) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataListApiOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataListApi) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type S3CompatibleMetadataListApiPtrOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataListApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3CompatibleMetadataListApi)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataListApiPtrOutput) ToS3CompatibleMetadataListApiPtrOutput() S3CompatibleMetadataListApiPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataListApiPtrOutput) ToS3CompatibleMetadataListApiPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataListApiPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataListApiPtrOutput) Elem() S3CompatibleMetadataListApiOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadataListApi) S3CompatibleMetadataListApi {
+		if v != nil {
+			return *v
+		}
+		var ret S3CompatibleMetadataListApi
+		return ret
+	}).(S3CompatibleMetadataListApiOutput)
+}
+
+func (o S3CompatibleMetadataListApiPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataListApiPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *S3CompatibleMetadataListApi) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3CompatibleMetadataListApiInput is an input type that accepts S3CompatibleMetadataListApiArgs and S3CompatibleMetadataListApiOutput values.
+// You can construct a concrete instance of `S3CompatibleMetadataListApiInput` via:
+//
+//          S3CompatibleMetadataListApiArgs{...}
+type S3CompatibleMetadataListApiInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataListApiOutput() S3CompatibleMetadataListApiOutput
+	ToS3CompatibleMetadataListApiOutputWithContext(context.Context) S3CompatibleMetadataListApiOutput
+}
+
+var s3compatibleMetadataListApiPtrType = reflect.TypeOf((**S3CompatibleMetadataListApi)(nil)).Elem()
+
+type S3CompatibleMetadataListApiPtrInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataListApiPtrOutput() S3CompatibleMetadataListApiPtrOutput
+	ToS3CompatibleMetadataListApiPtrOutputWithContext(context.Context) S3CompatibleMetadataListApiPtrOutput
+}
+
+type s3compatibleMetadataListApiPtr string
+
+func S3CompatibleMetadataListApiPtr(v string) S3CompatibleMetadataListApiPtrInput {
+	return (*s3compatibleMetadataListApiPtr)(&v)
+}
+
+func (*s3compatibleMetadataListApiPtr) ElementType() reflect.Type {
+	return s3compatibleMetadataListApiPtrType
+}
+
+func (in *s3compatibleMetadataListApiPtr) ToS3CompatibleMetadataListApiPtrOutput() S3CompatibleMetadataListApiPtrOutput {
+	return pulumi.ToOutput(in).(S3CompatibleMetadataListApiPtrOutput)
+}
+
+func (in *s3compatibleMetadataListApiPtr) ToS3CompatibleMetadataListApiPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataListApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataListApiPtrOutput)
+}
+
+// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+type S3CompatibleMetadataProtocol string
+
+const (
+	// NetworkProtocol is not specified.
+	S3CompatibleMetadataProtocolNetworkProtocolUnspecified = S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_UNSPECIFIED")
+	// Perform requests using HTTPS.
+	S3CompatibleMetadataProtocolNetworkProtocolHttps = S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_HTTPS")
+	// Not recommended: This sends data in clear-text. This is only appropriate within a closed network or for publicly available data. Perform requests using HTTP.
+	S3CompatibleMetadataProtocolNetworkProtocolHttp = S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_HTTP")
+)
+
+func (S3CompatibleMetadataProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataProtocol)(nil)).Elem()
+}
+
+func (e S3CompatibleMetadataProtocol) ToS3CompatibleMetadataProtocolOutput() S3CompatibleMetadataProtocolOutput {
+	return pulumi.ToOutput(e).(S3CompatibleMetadataProtocolOutput)
+}
+
+func (e S3CompatibleMetadataProtocol) ToS3CompatibleMetadataProtocolOutputWithContext(ctx context.Context) S3CompatibleMetadataProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(S3CompatibleMetadataProtocolOutput)
+}
+
+func (e S3CompatibleMetadataProtocol) ToS3CompatibleMetadataProtocolPtrOutput() S3CompatibleMetadataProtocolPtrOutput {
+	return e.ToS3CompatibleMetadataProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataProtocol) ToS3CompatibleMetadataProtocolPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataProtocolPtrOutput {
+	return S3CompatibleMetadataProtocol(e).ToS3CompatibleMetadataProtocolOutputWithContext(ctx).ToS3CompatibleMetadataProtocolPtrOutputWithContext(ctx)
+}
+
+func (e S3CompatibleMetadataProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type S3CompatibleMetadataProtocolOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataProtocol)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToS3CompatibleMetadataProtocolOutput() S3CompatibleMetadataProtocolOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToS3CompatibleMetadataProtocolOutputWithContext(ctx context.Context) S3CompatibleMetadataProtocolOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToS3CompatibleMetadataProtocolPtrOutput() S3CompatibleMetadataProtocolPtrOutput {
+	return o.ToS3CompatibleMetadataProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToS3CompatibleMetadataProtocolPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3CompatibleMetadataProtocol) *S3CompatibleMetadataProtocol {
+		return &v
+	}).(S3CompatibleMetadataProtocolPtrOutput)
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type S3CompatibleMetadataProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3CompatibleMetadataProtocol)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataProtocolPtrOutput) ToS3CompatibleMetadataProtocolPtrOutput() S3CompatibleMetadataProtocolPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataProtocolPtrOutput) ToS3CompatibleMetadataProtocolPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataProtocolPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataProtocolPtrOutput) Elem() S3CompatibleMetadataProtocolOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadataProtocol) S3CompatibleMetadataProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret S3CompatibleMetadataProtocol
+		return ret
+	}).(S3CompatibleMetadataProtocolOutput)
+}
+
+func (o S3CompatibleMetadataProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *S3CompatibleMetadataProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3CompatibleMetadataProtocolInput is an input type that accepts S3CompatibleMetadataProtocolArgs and S3CompatibleMetadataProtocolOutput values.
+// You can construct a concrete instance of `S3CompatibleMetadataProtocolInput` via:
+//
+//          S3CompatibleMetadataProtocolArgs{...}
+type S3CompatibleMetadataProtocolInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataProtocolOutput() S3CompatibleMetadataProtocolOutput
+	ToS3CompatibleMetadataProtocolOutputWithContext(context.Context) S3CompatibleMetadataProtocolOutput
+}
+
+var s3compatibleMetadataProtocolPtrType = reflect.TypeOf((**S3CompatibleMetadataProtocol)(nil)).Elem()
+
+type S3CompatibleMetadataProtocolPtrInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataProtocolPtrOutput() S3CompatibleMetadataProtocolPtrOutput
+	ToS3CompatibleMetadataProtocolPtrOutputWithContext(context.Context) S3CompatibleMetadataProtocolPtrOutput
+}
+
+type s3compatibleMetadataProtocolPtr string
+
+func S3CompatibleMetadataProtocolPtr(v string) S3CompatibleMetadataProtocolPtrInput {
+	return (*s3compatibleMetadataProtocolPtr)(&v)
+}
+
+func (*s3compatibleMetadataProtocolPtr) ElementType() reflect.Type {
+	return s3compatibleMetadataProtocolPtrType
+}
+
+func (in *s3compatibleMetadataProtocolPtr) ToS3CompatibleMetadataProtocolPtrOutput() S3CompatibleMetadataProtocolPtrOutput {
+	return pulumi.ToOutput(in).(S3CompatibleMetadataProtocolPtrOutput)
+}
+
+func (in *s3compatibleMetadataProtocolPtr) ToS3CompatibleMetadataProtocolPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataProtocolPtrOutput)
+}
+
+// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+type S3CompatibleMetadataRequestModel string
+
+const (
+	// RequestModel is not specified.
+	S3CompatibleMetadataRequestModelRequestModelUnspecified = S3CompatibleMetadataRequestModel("REQUEST_MODEL_UNSPECIFIED")
+	// Perform requests using Virtual Hosted Style. Example: https://bucket-name.s3.region.amazonaws.com/key-name
+	S3CompatibleMetadataRequestModelRequestModelVirtualHostedStyle = S3CompatibleMetadataRequestModel("REQUEST_MODEL_VIRTUAL_HOSTED_STYLE")
+	// Perform requests using Path Style. Example: https://s3.region.amazonaws.com/bucket-name/key-name
+	S3CompatibleMetadataRequestModelRequestModelPathStyle = S3CompatibleMetadataRequestModel("REQUEST_MODEL_PATH_STYLE")
+)
+
+func (S3CompatibleMetadataRequestModel) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataRequestModel)(nil)).Elem()
+}
+
+func (e S3CompatibleMetadataRequestModel) ToS3CompatibleMetadataRequestModelOutput() S3CompatibleMetadataRequestModelOutput {
+	return pulumi.ToOutput(e).(S3CompatibleMetadataRequestModelOutput)
+}
+
+func (e S3CompatibleMetadataRequestModel) ToS3CompatibleMetadataRequestModelOutputWithContext(ctx context.Context) S3CompatibleMetadataRequestModelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(S3CompatibleMetadataRequestModelOutput)
+}
+
+func (e S3CompatibleMetadataRequestModel) ToS3CompatibleMetadataRequestModelPtrOutput() S3CompatibleMetadataRequestModelPtrOutput {
+	return e.ToS3CompatibleMetadataRequestModelPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataRequestModel) ToS3CompatibleMetadataRequestModelPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataRequestModelPtrOutput {
+	return S3CompatibleMetadataRequestModel(e).ToS3CompatibleMetadataRequestModelOutputWithContext(ctx).ToS3CompatibleMetadataRequestModelPtrOutputWithContext(ctx)
+}
+
+func (e S3CompatibleMetadataRequestModel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataRequestModel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e S3CompatibleMetadataRequestModel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e S3CompatibleMetadataRequestModel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type S3CompatibleMetadataRequestModelOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataRequestModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataRequestModel)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToS3CompatibleMetadataRequestModelOutput() S3CompatibleMetadataRequestModelOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToS3CompatibleMetadataRequestModelOutputWithContext(ctx context.Context) S3CompatibleMetadataRequestModelOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToS3CompatibleMetadataRequestModelPtrOutput() S3CompatibleMetadataRequestModelPtrOutput {
+	return o.ToS3CompatibleMetadataRequestModelPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToS3CompatibleMetadataRequestModelPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataRequestModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3CompatibleMetadataRequestModel) *S3CompatibleMetadataRequestModel {
+		return &v
+	}).(S3CompatibleMetadataRequestModelPtrOutput)
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataRequestModel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataRequestModelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e S3CompatibleMetadataRequestModel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type S3CompatibleMetadataRequestModelPtrOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataRequestModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3CompatibleMetadataRequestModel)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataRequestModelPtrOutput) ToS3CompatibleMetadataRequestModelPtrOutput() S3CompatibleMetadataRequestModelPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataRequestModelPtrOutput) ToS3CompatibleMetadataRequestModelPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataRequestModelPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataRequestModelPtrOutput) Elem() S3CompatibleMetadataRequestModelOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadataRequestModel) S3CompatibleMetadataRequestModel {
+		if v != nil {
+			return *v
+		}
+		var ret S3CompatibleMetadataRequestModel
+		return ret
+	}).(S3CompatibleMetadataRequestModelOutput)
+}
+
+func (o S3CompatibleMetadataRequestModelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataRequestModelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *S3CompatibleMetadataRequestModel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3CompatibleMetadataRequestModelInput is an input type that accepts S3CompatibleMetadataRequestModelArgs and S3CompatibleMetadataRequestModelOutput values.
+// You can construct a concrete instance of `S3CompatibleMetadataRequestModelInput` via:
+//
+//          S3CompatibleMetadataRequestModelArgs{...}
+type S3CompatibleMetadataRequestModelInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataRequestModelOutput() S3CompatibleMetadataRequestModelOutput
+	ToS3CompatibleMetadataRequestModelOutputWithContext(context.Context) S3CompatibleMetadataRequestModelOutput
+}
+
+var s3compatibleMetadataRequestModelPtrType = reflect.TypeOf((**S3CompatibleMetadataRequestModel)(nil)).Elem()
+
+type S3CompatibleMetadataRequestModelPtrInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataRequestModelPtrOutput() S3CompatibleMetadataRequestModelPtrOutput
+	ToS3CompatibleMetadataRequestModelPtrOutputWithContext(context.Context) S3CompatibleMetadataRequestModelPtrOutput
+}
+
+type s3compatibleMetadataRequestModelPtr string
+
+func S3CompatibleMetadataRequestModelPtr(v string) S3CompatibleMetadataRequestModelPtrInput {
+	return (*s3compatibleMetadataRequestModelPtr)(&v)
+}
+
+func (*s3compatibleMetadataRequestModelPtr) ElementType() reflect.Type {
+	return s3compatibleMetadataRequestModelPtrType
+}
+
+func (in *s3compatibleMetadataRequestModelPtr) ToS3CompatibleMetadataRequestModelPtrOutput() S3CompatibleMetadataRequestModelPtrOutput {
+	return pulumi.ToOutput(in).(S3CompatibleMetadataRequestModelPtrOutput)
+}
+
+func (in *s3compatibleMetadataRequestModelPtr) ToS3CompatibleMetadataRequestModelPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataRequestModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataRequestModelPtrOutput)
+}
+
 // Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
 type TransferJobStatus string
 
@@ -2723,6 +3399,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemArrayInput)(nil)).Elem(), NotificationConfigEventTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPayloadFormatInput)(nil)).Elem(), NotificationConfigPayloadFormat("PAYLOAD_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPayloadFormatPtrInput)(nil)).Elem(), NotificationConfigPayloadFormat("PAYLOAD_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataAuthMethodInput)(nil)).Elem(), S3CompatibleMetadataAuthMethod("AUTH_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataAuthMethodPtrInput)(nil)).Elem(), S3CompatibleMetadataAuthMethod("AUTH_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataListApiInput)(nil)).Elem(), S3CompatibleMetadataListApi("LIST_API_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataListApiPtrInput)(nil)).Elem(), S3CompatibleMetadataListApi("LIST_API_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataProtocolInput)(nil)).Elem(), S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataProtocolPtrInput)(nil)).Elem(), S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataRequestModelInput)(nil)).Elem(), S3CompatibleMetadataRequestModel("REQUEST_MODEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataRequestModelPtrInput)(nil)).Elem(), S3CompatibleMetadataRequestModel("REQUEST_MODEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusPtrInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsOverwriteWhenInput)(nil)).Elem(), TransferOptionsOverwriteWhen("OVERWRITE_WHEN_UNSPECIFIED"))
@@ -2756,6 +3440,14 @@ func init() {
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPayloadFormatOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPayloadFormatPtrOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataAuthMethodOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataAuthMethodPtrOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataListApiOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataListApiPtrOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataProtocolOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataProtocolPtrOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataRequestModelOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataRequestModelPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobStatusOutput{})
 	pulumi.RegisterOutputType(TransferJobStatusPtrOutput{})
 	pulumi.RegisterOutputType(TransferOptionsOverwriteWhenOutput{})

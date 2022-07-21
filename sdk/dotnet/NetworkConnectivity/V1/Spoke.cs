@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 {
     /// <summary>
-    /// Creates a spoke in the specified project and location.
+    /// Creates a Network Connectivity Center spoke.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1:Spoke")]
     public partial class Spoke : Pulumi.CustomResource

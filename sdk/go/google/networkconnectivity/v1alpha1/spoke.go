@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new Spoke in a given project and location.
+// Creates a Network Connectivity Center spoke.
 type Spoke struct {
 	pulumi.CustomResourceState
 

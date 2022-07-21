@@ -2342,6 +2342,7 @@ _utilities.register(
    "google-native:networkconnectivity/v1alpha1:Hub": "Hub",
    "google-native:networkconnectivity/v1alpha1:HubIamPolicy": "HubIamPolicy",
    "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy": "InternalRangeIamPolicy",
+   "google-native:networkconnectivity/v1alpha1:ServiceIdentifierIamPolicy": "ServiceIdentifierIamPolicy",
    "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy": "ServiceInstanceIamPolicy",
    "google-native:networkconnectivity/v1alpha1:Spoke": "Spoke",
    "google-native:networkconnectivity/v1alpha1:SpokeIamPolicy": "SpokeIamPolicy"

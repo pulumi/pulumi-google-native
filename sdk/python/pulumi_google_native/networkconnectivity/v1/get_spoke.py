@@ -167,7 +167,7 @@ def get_spoke(location: Optional[str] = None,
               spoke_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpokeResult:
     """
-    Gets details about the specified spoke.
+    Gets details about a Network Connectivity Center spoke.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -196,6 +196,6 @@ def get_spoke_output(location: Optional[pulumi.Input[str]] = None,
                      spoke_id: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpokeResult]:
     """
-    Gets details about the specified spoke.
+    Gets details about a Network Connectivity Center spoke.
     """
     ...

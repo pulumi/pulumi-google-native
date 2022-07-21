@@ -130,7 +130,7 @@ def get_hub(hub_id: Optional[str] = None,
             project: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHubResult:
     """
-    Gets details about the specified hub.
+    Gets details about a Network Connectivity Center hub.
     """
     __args__ = dict()
     __args__['hubId'] = hub_id
@@ -154,6 +154,6 @@ def get_hub_output(hub_id: Optional[pulumi.Input[str]] = None,
                    project: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHubResult]:
     """
-    Gets details about the specified hub.
+    Gets details about a Network Connectivity Center hub.
     """
     ...

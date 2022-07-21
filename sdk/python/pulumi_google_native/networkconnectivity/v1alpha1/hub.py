@@ -158,7 +158,7 @@ class Hub(pulumi.CustomResource):
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new Hub in a given project and location.
+        Creates a new Network Connectivity Center hub in the specified project.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -177,7 +177,7 @@ class Hub(pulumi.CustomResource):
                  args: Optional[HubArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new Hub in a given project and location.
+        Creates a new Network Connectivity Center hub in the specified project.
 
         :param str resource_name: The name of the resource.
         :param HubArgs args: The arguments to use to populate this resource's properties.

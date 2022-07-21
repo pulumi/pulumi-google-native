@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets details about the specified hub.
+// Gets details about a Network Connectivity Center hub.
 func LookupHub(ctx *pulumi.Context, args *LookupHubArgs, opts ...pulumi.InvokeOption) (*LookupHubResult, error) {
 	var rv LookupHubResult
 	err := ctx.Invoke("google-native:networkconnectivity/v1:getHub", args, &rv, opts...)

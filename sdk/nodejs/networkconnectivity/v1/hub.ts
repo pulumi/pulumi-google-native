@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new hub in the specified project.
+ * Creates a new Network Connectivity Center hub in the specified project.
  * Auto-naming is currently not supported for this resource.
  */
 export class Hub extends pulumi.CustomResource {

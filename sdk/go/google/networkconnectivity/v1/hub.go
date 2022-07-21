@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new hub in the specified project.
+// Creates a new Network Connectivity Center hub in the specified project.
 // Auto-naming is currently not supported for this resource.
 type Hub struct {
 	pulumi.CustomResourceState

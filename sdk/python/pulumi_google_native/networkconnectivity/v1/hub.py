@@ -142,7 +142,7 @@ class Hub(pulumi.CustomResource):
                  routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingVPCArgs']]]]] = None,
                  __props__=None):
         """
-        Creates a new hub in the specified project.
+        Creates a new Network Connectivity Center hub in the specified project.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -161,7 +161,7 @@ class Hub(pulumi.CustomResource):
                  args: HubArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new hub in the specified project.
+        Creates a new Network Connectivity Center hub in the specified project.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.

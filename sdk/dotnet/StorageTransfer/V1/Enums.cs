@@ -556,6 +556,170 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
+    /// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+    /// </summary>
+    [EnumType]
+    public readonly struct S3CompatibleMetadataAuthMethod : IEquatable<S3CompatibleMetadataAuthMethod>
+    {
+        private readonly string _value;
+
+        private S3CompatibleMetadataAuthMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// AuthMethod is not specified.
+        /// </summary>
+        public static S3CompatibleMetadataAuthMethod AuthMethodUnspecified { get; } = new S3CompatibleMetadataAuthMethod("AUTH_METHOD_UNSPECIFIED");
+        /// <summary>
+        /// Auth requests with AWS SigV4.
+        /// </summary>
+        public static S3CompatibleMetadataAuthMethod AuthMethodAwsSignatureV4 { get; } = new S3CompatibleMetadataAuthMethod("AUTH_METHOD_AWS_SIGNATURE_V4");
+        /// <summary>
+        /// Auth requests with AWS SigV2.
+        /// </summary>
+        public static S3CompatibleMetadataAuthMethod AuthMethodAwsSignatureV2 { get; } = new S3CompatibleMetadataAuthMethod("AUTH_METHOD_AWS_SIGNATURE_V2");
+
+        public static bool operator ==(S3CompatibleMetadataAuthMethod left, S3CompatibleMetadataAuthMethod right) => left.Equals(right);
+        public static bool operator !=(S3CompatibleMetadataAuthMethod left, S3CompatibleMetadataAuthMethod right) => !left.Equals(right);
+
+        public static explicit operator string(S3CompatibleMetadataAuthMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is S3CompatibleMetadataAuthMethod other && Equals(other);
+        public bool Equals(S3CompatibleMetadataAuthMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+    /// </summary>
+    [EnumType]
+    public readonly struct S3CompatibleMetadataListApi : IEquatable<S3CompatibleMetadataListApi>
+    {
+        private readonly string _value;
+
+        private S3CompatibleMetadataListApi(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// ListApi is not specified.
+        /// </summary>
+        public static S3CompatibleMetadataListApi ListApiUnspecified { get; } = new S3CompatibleMetadataListApi("LIST_API_UNSPECIFIED");
+        /// <summary>
+        /// Perform listing using ListObjectsV2 API.
+        /// </summary>
+        public static S3CompatibleMetadataListApi ListObjectsV2 { get; } = new S3CompatibleMetadataListApi("LIST_OBJECTS_V2");
+        /// <summary>
+        /// Legacy ListObjects API.
+        /// </summary>
+        public static S3CompatibleMetadataListApi ListObjects { get; } = new S3CompatibleMetadataListApi("LIST_OBJECTS");
+
+        public static bool operator ==(S3CompatibleMetadataListApi left, S3CompatibleMetadataListApi right) => left.Equals(right);
+        public static bool operator !=(S3CompatibleMetadataListApi left, S3CompatibleMetadataListApi right) => !left.Equals(right);
+
+        public static explicit operator string(S3CompatibleMetadataListApi value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is S3CompatibleMetadataListApi other && Equals(other);
+        public bool Equals(S3CompatibleMetadataListApi other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct S3CompatibleMetadataProtocol : IEquatable<S3CompatibleMetadataProtocol>
+    {
+        private readonly string _value;
+
+        private S3CompatibleMetadataProtocol(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// NetworkProtocol is not specified.
+        /// </summary>
+        public static S3CompatibleMetadataProtocol NetworkProtocolUnspecified { get; } = new S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_UNSPECIFIED");
+        /// <summary>
+        /// Perform requests using HTTPS.
+        /// </summary>
+        public static S3CompatibleMetadataProtocol NetworkProtocolHttps { get; } = new S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_HTTPS");
+        /// <summary>
+        /// Not recommended: This sends data in clear-text. This is only appropriate within a closed network or for publicly available data. Perform requests using HTTP.
+        /// </summary>
+        public static S3CompatibleMetadataProtocol NetworkProtocolHttp { get; } = new S3CompatibleMetadataProtocol("NETWORK_PROTOCOL_HTTP");
+
+        public static bool operator ==(S3CompatibleMetadataProtocol left, S3CompatibleMetadataProtocol right) => left.Equals(right);
+        public static bool operator !=(S3CompatibleMetadataProtocol left, S3CompatibleMetadataProtocol right) => !left.Equals(right);
+
+        public static explicit operator string(S3CompatibleMetadataProtocol value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is S3CompatibleMetadataProtocol other && Equals(other);
+        public bool Equals(S3CompatibleMetadataProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct S3CompatibleMetadataRequestModel : IEquatable<S3CompatibleMetadataRequestModel>
+    {
+        private readonly string _value;
+
+        private S3CompatibleMetadataRequestModel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// RequestModel is not specified.
+        /// </summary>
+        public static S3CompatibleMetadataRequestModel RequestModelUnspecified { get; } = new S3CompatibleMetadataRequestModel("REQUEST_MODEL_UNSPECIFIED");
+        /// <summary>
+        /// Perform requests using Virtual Hosted Style. Example: https://bucket-name.s3.region.amazonaws.com/key-name
+        /// </summary>
+        public static S3CompatibleMetadataRequestModel RequestModelVirtualHostedStyle { get; } = new S3CompatibleMetadataRequestModel("REQUEST_MODEL_VIRTUAL_HOSTED_STYLE");
+        /// <summary>
+        /// Perform requests using Path Style. Example: https://s3.region.amazonaws.com/bucket-name/key-name
+        /// </summary>
+        public static S3CompatibleMetadataRequestModel RequestModelPathStyle { get; } = new S3CompatibleMetadataRequestModel("REQUEST_MODEL_PATH_STYLE");
+
+        public static bool operator ==(S3CompatibleMetadataRequestModel left, S3CompatibleMetadataRequestModel right) => left.Equals(right);
+        public static bool operator !=(S3CompatibleMetadataRequestModel left, S3CompatibleMetadataRequestModel right) => !left.Equals(right);
+
+        public static explicit operator string(S3CompatibleMetadataRequestModel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is S3CompatibleMetadataRequestModel other && Equals(other);
+        public bool Equals(S3CompatibleMetadataRequestModel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
     /// </summary>
     [EnumType]

@@ -206,7 +206,7 @@ class Spoke(pulumi.CustomResource):
                  spoke_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a spoke in the specified project and location.
+        Creates a Network Connectivity Center spoke.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,7 +227,7 @@ class Spoke(pulumi.CustomResource):
                  args: SpokeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a spoke in the specified project and location.
+        Creates a Network Connectivity Center spoke.
 
         :param str resource_name: The name of the resource.
         :param SpokeArgs args: The arguments to use to populate this resource's properties.

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class TransferSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// An AWS S3 compatible data source.
+        /// </summary>
+        [Input("awsS3CompatibleDataSource")]
+        public Input<Inputs.AwsS3CompatibleDataArgs>? AwsS3CompatibleDataSource { get; set; }
+
+        /// <summary>
         /// An AWS S3 data source.
         /// </summary>
         [Input("awsS3DataSource")]

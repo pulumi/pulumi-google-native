@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets details about the specified spoke.
+// Gets details about a Network Connectivity Center spoke.
 func LookupSpoke(ctx *pulumi.Context, args *LookupSpokeArgs, opts ...pulumi.InvokeOption) (*LookupSpokeResult, error) {
 	var rv LookupSpokeResult
 	err := ctx.Invoke("google-native:networkconnectivity/v1:getSpoke", args, &rv, opts...)

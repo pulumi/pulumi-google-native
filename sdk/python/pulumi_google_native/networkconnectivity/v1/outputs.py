@@ -429,7 +429,7 @@ class RouterApplianceInstanceResponse(dict):
 @pulumi.output_type
 class RoutingVPCResponse(dict):
     """
-    RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+    RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -452,7 +452,7 @@ class RoutingVPCResponse(dict):
                  required_for_new_site_to_site_data_transfer_spokes: bool,
                  uri: str):
         """
-        RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+        RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
         :param bool required_for_new_site_to_site_data_transfer_spokes: If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true.
         :param str uri: The URI of the VPC network.
         """

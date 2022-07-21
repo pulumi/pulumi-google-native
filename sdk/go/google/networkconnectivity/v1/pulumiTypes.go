@@ -1494,7 +1494,7 @@ func (o RouterApplianceInstanceResponseArrayOutput) Index(i pulumi.IntInput) Rou
 	}).(RouterApplianceInstanceResponseOutput)
 }
 
-// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 type RoutingVPC struct {
 	// The URI of the VPC network.
 	Uri *string `pulumi:"uri"`
@@ -1511,7 +1511,7 @@ type RoutingVPCInput interface {
 	ToRoutingVPCOutputWithContext(context.Context) RoutingVPCOutput
 }
 
-// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 type RoutingVPCArgs struct {
 	// The URI of the VPC network.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -1554,7 +1554,7 @@ func (i RoutingVPCArray) ToRoutingVPCArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingVPCArrayOutput)
 }
 
-// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 type RoutingVPCOutput struct{ *pulumi.OutputState }
 
 func (RoutingVPCOutput) ElementType() reflect.Type {
@@ -1594,7 +1594,7 @@ func (o RoutingVPCArrayOutput) Index(i pulumi.IntInput) RoutingVPCOutput {
 	}).(RoutingVPCOutput)
 }
 
-// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 type RoutingVPCResponse struct {
 	// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true.
 	RequiredForNewSiteToSiteDataTransferSpokes bool `pulumi:"requiredForNewSiteToSiteDataTransferSpokes"`
@@ -1602,7 +1602,7 @@ type RoutingVPCResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// RoutingVPC contains information about the VPC networks that are associated with a hub's spokes.
+// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 type RoutingVPCResponseOutput struct{ *pulumi.OutputState }
 
 func (RoutingVPCResponseOutput) ElementType() reflect.Type {

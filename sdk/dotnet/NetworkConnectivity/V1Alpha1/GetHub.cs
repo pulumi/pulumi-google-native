@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
     public static class GetHub
     {
         /// <summary>
-        /// Gets details of a single Hub.
+        /// Gets details about a Network Connectivity Center hub.
         /// </summary>
         public static Task<GetHubResult> InvokeAsync(GetHubArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHubResult>("google-native:networkconnectivity/v1alpha1:getHub", args ?? new GetHubArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets details of a single Hub.
+        /// Gets details about a Network Connectivity Center hub.
         /// </summary>
         public static Output<GetHubResult> Invoke(GetHubInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetHubResult>("google-native:networkconnectivity/v1alpha1:getHub", args ?? new GetHubInvokeArgs(), options.WithDefaults());

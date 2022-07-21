@@ -1244,12 +1244,12 @@ class GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse(dict):
 @pulumi.output_type
 class GoogleCloudRetailV2betaRuleFilterActionResponse(dict):
     """
-    * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+    * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided is combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
     """
     def __init__(__self__, *,
                  filter: str):
         """
-        * Rule Condition: - No Condition provided is a global match. - 1 or more Condition provided is combined with OR operator. * Action Input: The request query and filter that will be applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+        * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided is combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
         :param str filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         """
         pulumi.set(__self__, "filter", filter)
@@ -1368,7 +1368,7 @@ class GoogleCloudRetailV2betaRuleOnewaySynonymsActionResponse(dict):
 @pulumi.output_type
 class GoogleCloudRetailV2betaRuleRedirectActionResponse(dict):
     """
-    Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+    Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1390,7 +1390,7 @@ class GoogleCloudRetailV2betaRuleRedirectActionResponse(dict):
     def __init__(__self__, *,
                  redirect_uri: str):
         """
-        Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+        Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
         :param str redirect_uri: URL must have length equal or less than 2000 characters.
         """
         pulumi.set(__self__, "redirect_uri", redirect_uri)

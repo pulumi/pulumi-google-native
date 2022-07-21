@@ -13,6 +13,7 @@ from ._enums import *
 
 __all__ = [
     'AwsAccessKeyResponse',
+    'AwsS3CompatibleDataResponse',
     'AwsS3DataResponse',
     'AzureBlobStorageDataResponse',
     'AzureCredentialsResponse',
@@ -25,6 +26,7 @@ __all__ = [
     'NotificationConfigResponse',
     'ObjectConditionsResponse',
     'PosixFilesystemResponse',
+    'S3CompatibleMetadataResponse',
     'ScheduleResponse',
     'TimeOfDayResponse',
     'TransferManifestResponse',
@@ -82,6 +84,91 @@ class AwsAccessKeyResponse(dict):
         AWS secret access key. This field is not returned in RPC responses.
         """
         return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
+class AwsS3CompatibleDataResponse(dict):
+    """
+    An AwsS3CompatibleData resource.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "s3Metadata":
+            suggest = "s3_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsS3CompatibleDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsS3CompatibleDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsS3CompatibleDataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 endpoint: str,
+                 path: str,
+                 region: str,
+                 s3_metadata: 'outputs.S3CompatibleMetadataResponse'):
+        """
+        An AwsS3CompatibleData resource.
+        :param str bucket_name: Specifies the name of the bucket.
+        :param str endpoint: Specifies the endpoint of the storage service.
+        :param str path: Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        :param str region: Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+        :param 'S3CompatibleMetadataResponse' s3_metadata: A S3 compatible metadata.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "s3_metadata", s3_metadata)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        Specifies the name of the bucket.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Specifies the endpoint of the storage service.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="s3Metadata")
+    def s3_metadata(self) -> 'outputs.S3CompatibleMetadataResponse':
+        """
+        A S3 compatible metadata.
+        """
+        return pulumi.get(self, "s3_metadata")
 
 
 @pulumi.output_type
@@ -852,6 +939,82 @@ class PosixFilesystemResponse(dict):
 
 
 @pulumi.output_type
+class S3CompatibleMetadataResponse(dict):
+    """
+    S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authMethod":
+            suggest = "auth_method"
+        elif key == "listApi":
+            suggest = "list_api"
+        elif key == "requestModel":
+            suggest = "request_model"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in S3CompatibleMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        S3CompatibleMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        S3CompatibleMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_method: str,
+                 list_api: str,
+                 protocol: str,
+                 request_model: str):
+        """
+        S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+        :param str auth_method: Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+        :param str list_api: The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+        :param str protocol: Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+        :param str request_model: Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+        pulumi.set(__self__, "list_api", list_api)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "request_model", request_model)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> str:
+        """
+        Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter(name="listApi")
+    def list_api(self) -> str:
+        """
+        The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+        """
+        return pulumi.get(self, "list_api")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="requestModel")
+    def request_model(self) -> str:
+        """
+        Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+        """
+        return pulumi.get(self, "request_model")
+
+
+@pulumi.output_type
 class ScheduleResponse(dict):
     """
     Transfers can be scheduled to recur or to run just once.
@@ -1059,7 +1222,7 @@ class TransferOptionsResponse(dict):
         TransferOptions define the actions to be performed on objects in a transfer.
         :param bool delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
         :param bool delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
-        :param 'MetadataOptionsResponse' metadata_options: Represents the selected metadata options for a transfer job. This feature is in Preview.
+        :param 'MetadataOptionsResponse' metadata_options: Represents the selected metadata options for a transfer job.
         :param bool overwrite_objects_already_existing_in_sink: When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
         :param str overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
         """
@@ -1089,7 +1252,7 @@ class TransferOptionsResponse(dict):
     @pulumi.getter(name="metadataOptions")
     def metadata_options(self) -> 'outputs.MetadataOptionsResponse':
         """
-        Represents the selected metadata options for a transfer job. This feature is in Preview.
+        Represents the selected metadata options for a transfer job.
         """
         return pulumi.get(self, "metadata_options")
 
@@ -1118,7 +1281,9 @@ class TransferSpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "awsS3DataSource":
+        if key == "awsS3CompatibleDataSource":
+            suggest = "aws_s3_compatible_data_source"
+        elif key == "awsS3DataSource":
             suggest = "aws_s3_data_source"
         elif key == "azureBlobStorageDataSource":
             suggest = "azure_blob_storage_data_source"
@@ -1157,6 +1322,7 @@ class TransferSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 aws_s3_compatible_data_source: 'outputs.AwsS3CompatibleDataResponse',
                  aws_s3_data_source: 'outputs.AwsS3DataResponse',
                  azure_blob_storage_data_source: 'outputs.AzureBlobStorageDataResponse',
                  gcs_data_sink: 'outputs.GcsDataResponse',
@@ -1172,6 +1338,7 @@ class TransferSpecResponse(dict):
                  transfer_options: 'outputs.TransferOptionsResponse'):
         """
         Configuration for running a transfer.
+        :param 'AwsS3CompatibleDataResponse' aws_s3_compatible_data_source: An AWS S3 compatible data source.
         :param 'AwsS3DataResponse' aws_s3_data_source: An AWS S3 data source.
         :param 'AzureBlobStorageDataResponse' azure_blob_storage_data_source: An Azure Blob Storage data source.
         :param 'GcsDataResponse' gcs_data_sink: A Cloud Storage data sink.
@@ -1186,6 +1353,7 @@ class TransferSpecResponse(dict):
         :param 'TransferManifestResponse' transfer_manifest: A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
         :param 'TransferOptionsResponse' transfer_options: If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
         """
+        pulumi.set(__self__, "aws_s3_compatible_data_source", aws_s3_compatible_data_source)
         pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
         pulumi.set(__self__, "azure_blob_storage_data_source", azure_blob_storage_data_source)
         pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
@@ -1199,6 +1367,14 @@ class TransferSpecResponse(dict):
         pulumi.set(__self__, "source_agent_pool_name", source_agent_pool_name)
         pulumi.set(__self__, "transfer_manifest", transfer_manifest)
         pulumi.set(__self__, "transfer_options", transfer_options)
+
+    @property
+    @pulumi.getter(name="awsS3CompatibleDataSource")
+    def aws_s3_compatible_data_source(self) -> 'outputs.AwsS3CompatibleDataResponse':
+        """
+        An AWS S3 compatible data source.
+        """
+        return pulumi.get(self, "aws_s3_compatible_data_source")
 
     @property
     @pulumi.getter(name="awsS3DataSource")

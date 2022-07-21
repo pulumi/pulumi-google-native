@@ -202,6 +202,276 @@ func (o AwsAccessKeyResponseOutput) SecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsAccessKeyResponse) string { return v.SecretAccessKey }).(pulumi.StringOutput)
 }
 
+// An AwsS3CompatibleData resource.
+type AwsS3CompatibleData struct {
+	// Specifies the name of the bucket.
+	BucketName string `pulumi:"bucketName"`
+	// Specifies the endpoint of the storage service.
+	Endpoint string `pulumi:"endpoint"`
+	// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path *string `pulumi:"path"`
+	// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+	Region *string `pulumi:"region"`
+	// A S3 compatible metadata.
+	S3Metadata *S3CompatibleMetadata `pulumi:"s3Metadata"`
+}
+
+// AwsS3CompatibleDataInput is an input type that accepts AwsS3CompatibleDataArgs and AwsS3CompatibleDataOutput values.
+// You can construct a concrete instance of `AwsS3CompatibleDataInput` via:
+//
+//          AwsS3CompatibleDataArgs{...}
+type AwsS3CompatibleDataInput interface {
+	pulumi.Input
+
+	ToAwsS3CompatibleDataOutput() AwsS3CompatibleDataOutput
+	ToAwsS3CompatibleDataOutputWithContext(context.Context) AwsS3CompatibleDataOutput
+}
+
+// An AwsS3CompatibleData resource.
+type AwsS3CompatibleDataArgs struct {
+	// Specifies the name of the bucket.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Specifies the endpoint of the storage service.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// A S3 compatible metadata.
+	S3Metadata S3CompatibleMetadataPtrInput `pulumi:"s3Metadata"`
+}
+
+func (AwsS3CompatibleDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsS3CompatibleData)(nil)).Elem()
+}
+
+func (i AwsS3CompatibleDataArgs) ToAwsS3CompatibleDataOutput() AwsS3CompatibleDataOutput {
+	return i.ToAwsS3CompatibleDataOutputWithContext(context.Background())
+}
+
+func (i AwsS3CompatibleDataArgs) ToAwsS3CompatibleDataOutputWithContext(ctx context.Context) AwsS3CompatibleDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsS3CompatibleDataOutput)
+}
+
+func (i AwsS3CompatibleDataArgs) ToAwsS3CompatibleDataPtrOutput() AwsS3CompatibleDataPtrOutput {
+	return i.ToAwsS3CompatibleDataPtrOutputWithContext(context.Background())
+}
+
+func (i AwsS3CompatibleDataArgs) ToAwsS3CompatibleDataPtrOutputWithContext(ctx context.Context) AwsS3CompatibleDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsS3CompatibleDataOutput).ToAwsS3CompatibleDataPtrOutputWithContext(ctx)
+}
+
+// AwsS3CompatibleDataPtrInput is an input type that accepts AwsS3CompatibleDataArgs, AwsS3CompatibleDataPtr and AwsS3CompatibleDataPtrOutput values.
+// You can construct a concrete instance of `AwsS3CompatibleDataPtrInput` via:
+//
+//          AwsS3CompatibleDataArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsS3CompatibleDataPtrInput interface {
+	pulumi.Input
+
+	ToAwsS3CompatibleDataPtrOutput() AwsS3CompatibleDataPtrOutput
+	ToAwsS3CompatibleDataPtrOutputWithContext(context.Context) AwsS3CompatibleDataPtrOutput
+}
+
+type awsS3CompatibleDataPtrType AwsS3CompatibleDataArgs
+
+func AwsS3CompatibleDataPtr(v *AwsS3CompatibleDataArgs) AwsS3CompatibleDataPtrInput {
+	return (*awsS3CompatibleDataPtrType)(v)
+}
+
+func (*awsS3CompatibleDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsS3CompatibleData)(nil)).Elem()
+}
+
+func (i *awsS3CompatibleDataPtrType) ToAwsS3CompatibleDataPtrOutput() AwsS3CompatibleDataPtrOutput {
+	return i.ToAwsS3CompatibleDataPtrOutputWithContext(context.Background())
+}
+
+func (i *awsS3CompatibleDataPtrType) ToAwsS3CompatibleDataPtrOutputWithContext(ctx context.Context) AwsS3CompatibleDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsS3CompatibleDataPtrOutput)
+}
+
+// An AwsS3CompatibleData resource.
+type AwsS3CompatibleDataOutput struct{ *pulumi.OutputState }
+
+func (AwsS3CompatibleDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsS3CompatibleData)(nil)).Elem()
+}
+
+func (o AwsS3CompatibleDataOutput) ToAwsS3CompatibleDataOutput() AwsS3CompatibleDataOutput {
+	return o
+}
+
+func (o AwsS3CompatibleDataOutput) ToAwsS3CompatibleDataOutputWithContext(ctx context.Context) AwsS3CompatibleDataOutput {
+	return o
+}
+
+func (o AwsS3CompatibleDataOutput) ToAwsS3CompatibleDataPtrOutput() AwsS3CompatibleDataPtrOutput {
+	return o.ToAwsS3CompatibleDataPtrOutputWithContext(context.Background())
+}
+
+func (o AwsS3CompatibleDataOutput) ToAwsS3CompatibleDataPtrOutputWithContext(ctx context.Context) AwsS3CompatibleDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsS3CompatibleData) *AwsS3CompatibleData {
+		return &v
+	}).(AwsS3CompatibleDataPtrOutput)
+}
+
+// Specifies the name of the bucket.
+func (o AwsS3CompatibleDataOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3CompatibleData) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Specifies the endpoint of the storage service.
+func (o AwsS3CompatibleDataOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3CompatibleData) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o AwsS3CompatibleDataOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsS3CompatibleData) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+func (o AwsS3CompatibleDataOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsS3CompatibleData) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A S3 compatible metadata.
+func (o AwsS3CompatibleDataOutput) S3Metadata() S3CompatibleMetadataPtrOutput {
+	return o.ApplyT(func(v AwsS3CompatibleData) *S3CompatibleMetadata { return v.S3Metadata }).(S3CompatibleMetadataPtrOutput)
+}
+
+type AwsS3CompatibleDataPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsS3CompatibleDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsS3CompatibleData)(nil)).Elem()
+}
+
+func (o AwsS3CompatibleDataPtrOutput) ToAwsS3CompatibleDataPtrOutput() AwsS3CompatibleDataPtrOutput {
+	return o
+}
+
+func (o AwsS3CompatibleDataPtrOutput) ToAwsS3CompatibleDataPtrOutputWithContext(ctx context.Context) AwsS3CompatibleDataPtrOutput {
+	return o
+}
+
+func (o AwsS3CompatibleDataPtrOutput) Elem() AwsS3CompatibleDataOutput {
+	return o.ApplyT(func(v *AwsS3CompatibleData) AwsS3CompatibleData {
+		if v != nil {
+			return *v
+		}
+		var ret AwsS3CompatibleData
+		return ret
+	}).(AwsS3CompatibleDataOutput)
+}
+
+// Specifies the name of the bucket.
+func (o AwsS3CompatibleDataPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3CompatibleData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the endpoint of the storage service.
+func (o AwsS3CompatibleDataPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3CompatibleData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o AwsS3CompatibleDataPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3CompatibleData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+func (o AwsS3CompatibleDataPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3CompatibleData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// A S3 compatible metadata.
+func (o AwsS3CompatibleDataPtrOutput) S3Metadata() S3CompatibleMetadataPtrOutput {
+	return o.ApplyT(func(v *AwsS3CompatibleData) *S3CompatibleMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.S3Metadata
+	}).(S3CompatibleMetadataPtrOutput)
+}
+
+// An AwsS3CompatibleData resource.
+type AwsS3CompatibleDataResponse struct {
+	// Specifies the name of the bucket.
+	BucketName string `pulumi:"bucketName"`
+	// Specifies the endpoint of the storage service.
+	Endpoint string `pulumi:"endpoint"`
+	// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path string `pulumi:"path"`
+	// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+	Region string `pulumi:"region"`
+	// A S3 compatible metadata.
+	S3Metadata S3CompatibleMetadataResponse `pulumi:"s3Metadata"`
+}
+
+// An AwsS3CompatibleData resource.
+type AwsS3CompatibleDataResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsS3CompatibleDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsS3CompatibleDataResponse)(nil)).Elem()
+}
+
+func (o AwsS3CompatibleDataResponseOutput) ToAwsS3CompatibleDataResponseOutput() AwsS3CompatibleDataResponseOutput {
+	return o
+}
+
+func (o AwsS3CompatibleDataResponseOutput) ToAwsS3CompatibleDataResponseOutputWithContext(ctx context.Context) AwsS3CompatibleDataResponseOutput {
+	return o
+}
+
+// Specifies the name of the bucket.
+func (o AwsS3CompatibleDataResponseOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3CompatibleDataResponse) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Specifies the endpoint of the storage service.
+func (o AwsS3CompatibleDataResponseOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3CompatibleDataResponse) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o AwsS3CompatibleDataResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3CompatibleDataResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+func (o AwsS3CompatibleDataResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3CompatibleDataResponse) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// A S3 compatible metadata.
+func (o AwsS3CompatibleDataResponseOutput) S3Metadata() S3CompatibleMetadataResponseOutput {
+	return o.ApplyT(func(v AwsS3CompatibleDataResponse) S3CompatibleMetadataResponse { return v.S3Metadata }).(S3CompatibleMetadataResponseOutput)
+}
+
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3Data struct {
 	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -2870,6 +3140,250 @@ func (o PosixFilesystemResponseOutput) RootDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v PosixFilesystemResponse) string { return v.RootDirectory }).(pulumi.StringOutput)
 }
 
+// S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+type S3CompatibleMetadata struct {
+	// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+	AuthMethod *S3CompatibleMetadataAuthMethod `pulumi:"authMethod"`
+	// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+	ListApi *S3CompatibleMetadataListApi `pulumi:"listApi"`
+	// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+	Protocol *S3CompatibleMetadataProtocol `pulumi:"protocol"`
+	// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+	RequestModel *S3CompatibleMetadataRequestModel `pulumi:"requestModel"`
+}
+
+// S3CompatibleMetadataInput is an input type that accepts S3CompatibleMetadataArgs and S3CompatibleMetadataOutput values.
+// You can construct a concrete instance of `S3CompatibleMetadataInput` via:
+//
+//          S3CompatibleMetadataArgs{...}
+type S3CompatibleMetadataInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataOutput() S3CompatibleMetadataOutput
+	ToS3CompatibleMetadataOutputWithContext(context.Context) S3CompatibleMetadataOutput
+}
+
+// S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+type S3CompatibleMetadataArgs struct {
+	// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+	AuthMethod S3CompatibleMetadataAuthMethodPtrInput `pulumi:"authMethod"`
+	// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+	ListApi S3CompatibleMetadataListApiPtrInput `pulumi:"listApi"`
+	// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+	Protocol S3CompatibleMetadataProtocolPtrInput `pulumi:"protocol"`
+	// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+	RequestModel S3CompatibleMetadataRequestModelPtrInput `pulumi:"requestModel"`
+}
+
+func (S3CompatibleMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadata)(nil)).Elem()
+}
+
+func (i S3CompatibleMetadataArgs) ToS3CompatibleMetadataOutput() S3CompatibleMetadataOutput {
+	return i.ToS3CompatibleMetadataOutputWithContext(context.Background())
+}
+
+func (i S3CompatibleMetadataArgs) ToS3CompatibleMetadataOutputWithContext(ctx context.Context) S3CompatibleMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3CompatibleMetadataOutput)
+}
+
+func (i S3CompatibleMetadataArgs) ToS3CompatibleMetadataPtrOutput() S3CompatibleMetadataPtrOutput {
+	return i.ToS3CompatibleMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i S3CompatibleMetadataArgs) ToS3CompatibleMetadataPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3CompatibleMetadataOutput).ToS3CompatibleMetadataPtrOutputWithContext(ctx)
+}
+
+// S3CompatibleMetadataPtrInput is an input type that accepts S3CompatibleMetadataArgs, S3CompatibleMetadataPtr and S3CompatibleMetadataPtrOutput values.
+// You can construct a concrete instance of `S3CompatibleMetadataPtrInput` via:
+//
+//          S3CompatibleMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type S3CompatibleMetadataPtrInput interface {
+	pulumi.Input
+
+	ToS3CompatibleMetadataPtrOutput() S3CompatibleMetadataPtrOutput
+	ToS3CompatibleMetadataPtrOutputWithContext(context.Context) S3CompatibleMetadataPtrOutput
+}
+
+type s3compatibleMetadataPtrType S3CompatibleMetadataArgs
+
+func S3CompatibleMetadataPtr(v *S3CompatibleMetadataArgs) S3CompatibleMetadataPtrInput {
+	return (*s3compatibleMetadataPtrType)(v)
+}
+
+func (*s3compatibleMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3CompatibleMetadata)(nil)).Elem()
+}
+
+func (i *s3compatibleMetadataPtrType) ToS3CompatibleMetadataPtrOutput() S3CompatibleMetadataPtrOutput {
+	return i.ToS3CompatibleMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *s3compatibleMetadataPtrType) ToS3CompatibleMetadataPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3CompatibleMetadataPtrOutput)
+}
+
+// S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+type S3CompatibleMetadataOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadata)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataOutput) ToS3CompatibleMetadataOutput() S3CompatibleMetadataOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataOutput) ToS3CompatibleMetadataOutputWithContext(ctx context.Context) S3CompatibleMetadataOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataOutput) ToS3CompatibleMetadataPtrOutput() S3CompatibleMetadataPtrOutput {
+	return o.ToS3CompatibleMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o S3CompatibleMetadataOutput) ToS3CompatibleMetadataPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3CompatibleMetadata) *S3CompatibleMetadata {
+		return &v
+	}).(S3CompatibleMetadataPtrOutput)
+}
+
+// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+func (o S3CompatibleMetadataOutput) AuthMethod() S3CompatibleMetadataAuthMethodPtrOutput {
+	return o.ApplyT(func(v S3CompatibleMetadata) *S3CompatibleMetadataAuthMethod { return v.AuthMethod }).(S3CompatibleMetadataAuthMethodPtrOutput)
+}
+
+// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+func (o S3CompatibleMetadataOutput) ListApi() S3CompatibleMetadataListApiPtrOutput {
+	return o.ApplyT(func(v S3CompatibleMetadata) *S3CompatibleMetadataListApi { return v.ListApi }).(S3CompatibleMetadataListApiPtrOutput)
+}
+
+// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+func (o S3CompatibleMetadataOutput) Protocol() S3CompatibleMetadataProtocolPtrOutput {
+	return o.ApplyT(func(v S3CompatibleMetadata) *S3CompatibleMetadataProtocol { return v.Protocol }).(S3CompatibleMetadataProtocolPtrOutput)
+}
+
+// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+func (o S3CompatibleMetadataOutput) RequestModel() S3CompatibleMetadataRequestModelPtrOutput {
+	return o.ApplyT(func(v S3CompatibleMetadata) *S3CompatibleMetadataRequestModel { return v.RequestModel }).(S3CompatibleMetadataRequestModelPtrOutput)
+}
+
+type S3CompatibleMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3CompatibleMetadata)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataPtrOutput) ToS3CompatibleMetadataPtrOutput() S3CompatibleMetadataPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataPtrOutput) ToS3CompatibleMetadataPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataPtrOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataPtrOutput) Elem() S3CompatibleMetadataOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadata) S3CompatibleMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret S3CompatibleMetadata
+		return ret
+	}).(S3CompatibleMetadataOutput)
+}
+
+// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+func (o S3CompatibleMetadataPtrOutput) AuthMethod() S3CompatibleMetadataAuthMethodPtrOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadata) *S3CompatibleMetadataAuthMethod {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMethod
+	}).(S3CompatibleMetadataAuthMethodPtrOutput)
+}
+
+// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+func (o S3CompatibleMetadataPtrOutput) ListApi() S3CompatibleMetadataListApiPtrOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadata) *S3CompatibleMetadataListApi {
+		if v == nil {
+			return nil
+		}
+		return v.ListApi
+	}).(S3CompatibleMetadataListApiPtrOutput)
+}
+
+// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+func (o S3CompatibleMetadataPtrOutput) Protocol() S3CompatibleMetadataProtocolPtrOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadata) *S3CompatibleMetadataProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(S3CompatibleMetadataProtocolPtrOutput)
+}
+
+// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+func (o S3CompatibleMetadataPtrOutput) RequestModel() S3CompatibleMetadataRequestModelPtrOutput {
+	return o.ApplyT(func(v *S3CompatibleMetadata) *S3CompatibleMetadataRequestModel {
+		if v == nil {
+			return nil
+		}
+		return v.RequestModel
+	}).(S3CompatibleMetadataRequestModelPtrOutput)
+}
+
+// S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+type S3CompatibleMetadataResponse struct {
+	// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+	AuthMethod string `pulumi:"authMethod"`
+	// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+	ListApi string `pulumi:"listApi"`
+	// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+	Protocol string `pulumi:"protocol"`
+	// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+	RequestModel string `pulumi:"requestModel"`
+}
+
+// S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
+type S3CompatibleMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (S3CompatibleMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3CompatibleMetadataResponse)(nil)).Elem()
+}
+
+func (o S3CompatibleMetadataResponseOutput) ToS3CompatibleMetadataResponseOutput() S3CompatibleMetadataResponseOutput {
+	return o
+}
+
+func (o S3CompatibleMetadataResponseOutput) ToS3CompatibleMetadataResponseOutputWithContext(ctx context.Context) S3CompatibleMetadataResponseOutput {
+	return o
+}
+
+// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+func (o S3CompatibleMetadataResponseOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v S3CompatibleMetadataResponse) string { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+func (o S3CompatibleMetadataResponseOutput) ListApi() pulumi.StringOutput {
+	return o.ApplyT(func(v S3CompatibleMetadataResponse) string { return v.ListApi }).(pulumi.StringOutput)
+}
+
+// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+func (o S3CompatibleMetadataResponseOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v S3CompatibleMetadataResponse) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+func (o S3CompatibleMetadataResponseOutput) RequestModel() pulumi.StringOutput {
+	return o.ApplyT(func(v S3CompatibleMetadataResponse) string { return v.RequestModel }).(pulumi.StringOutput)
+}
+
 // Transfers can be scheduled to recur or to run just once.
 type Schedule struct {
 	// The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
@@ -3556,7 +4070,7 @@ type TransferOptions struct {
 	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
-	// Represents the selected metadata options for a transfer job. This feature is in Preview.
+	// Represents the selected metadata options for a transfer job.
 	MetadataOptions *MetadataOptions `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -3581,7 +4095,7 @@ type TransferOptionsArgs struct {
 	DeleteObjectsFromSourceAfterTransfer pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
-	// Represents the selected metadata options for a transfer job. This feature is in Preview.
+	// Represents the selected metadata options for a transfer job.
 	MetadataOptions MetadataOptionsPtrInput `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -3677,7 +4191,7 @@ func (o TransferOptionsOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v TransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
-// Represents the selected metadata options for a transfer job. This feature is in Preview.
+// Represents the selected metadata options for a transfer job.
 func (o TransferOptionsOutput) MetadataOptions() MetadataOptionsPtrOutput {
 	return o.ApplyT(func(v TransferOptions) *MetadataOptions { return v.MetadataOptions }).(MetadataOptionsPtrOutput)
 }
@@ -3736,7 +4250,7 @@ func (o TransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Represents the selected metadata options for a transfer job. This feature is in Preview.
+// Represents the selected metadata options for a transfer job.
 func (o TransferOptionsPtrOutput) MetadataOptions() MetadataOptionsPtrOutput {
 	return o.ApplyT(func(v *TransferOptions) *MetadataOptions {
 		if v == nil {
@@ -3772,7 +4286,7 @@ type TransferOptionsResponse struct {
 	DeleteObjectsFromSourceAfterTransfer bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink bool `pulumi:"deleteObjectsUniqueInSink"`
-	// Represents the selected metadata options for a transfer job. This feature is in Preview.
+	// Represents the selected metadata options for a transfer job.
 	MetadataOptions MetadataOptionsResponse `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
@@ -3805,7 +4319,7 @@ func (o TransferOptionsResponseOutput) DeleteObjectsUniqueInSink() pulumi.BoolOu
 	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolOutput)
 }
 
-// Represents the selected metadata options for a transfer job. This feature is in Preview.
+// Represents the selected metadata options for a transfer job.
 func (o TransferOptionsResponseOutput) MetadataOptions() MetadataOptionsResponseOutput {
 	return o.ApplyT(func(v TransferOptionsResponse) MetadataOptionsResponse { return v.MetadataOptions }).(MetadataOptionsResponseOutput)
 }
@@ -3822,6 +4336,8 @@ func (o TransferOptionsResponseOutput) OverwriteWhen() pulumi.StringOutput {
 
 // Configuration for running a transfer.
 type TransferSpec struct {
+	// An AWS S3 compatible data source.
+	AwsS3CompatibleDataSource *AwsS3CompatibleData `pulumi:"awsS3CompatibleDataSource"`
 	// An AWS S3 data source.
 	AwsS3DataSource *AwsS3Data `pulumi:"awsS3DataSource"`
 	// An Azure Blob Storage data source.
@@ -3863,6 +4379,8 @@ type TransferSpecInput interface {
 
 // Configuration for running a transfer.
 type TransferSpecArgs struct {
+	// An AWS S3 compatible data source.
+	AwsS3CompatibleDataSource AwsS3CompatibleDataPtrInput `pulumi:"awsS3CompatibleDataSource"`
 	// An AWS S3 data source.
 	AwsS3DataSource AwsS3DataPtrInput `pulumi:"awsS3DataSource"`
 	// An Azure Blob Storage data source.
@@ -3969,6 +4487,11 @@ func (o TransferSpecOutput) ToTransferSpecPtrOutputWithContext(ctx context.Conte
 	}).(TransferSpecPtrOutput)
 }
 
+// An AWS S3 compatible data source.
+func (o TransferSpecOutput) AwsS3CompatibleDataSource() AwsS3CompatibleDataPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *AwsS3CompatibleData { return v.AwsS3CompatibleDataSource }).(AwsS3CompatibleDataPtrOutput)
+}
+
 // An AWS S3 data source.
 func (o TransferSpecOutput) AwsS3DataSource() AwsS3DataPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *AwsS3Data { return v.AwsS3DataSource }).(AwsS3DataPtrOutput)
@@ -4056,6 +4579,16 @@ func (o TransferSpecPtrOutput) Elem() TransferSpecOutput {
 		var ret TransferSpec
 		return ret
 	}).(TransferSpecOutput)
+}
+
+// An AWS S3 compatible data source.
+func (o TransferSpecPtrOutput) AwsS3CompatibleDataSource() AwsS3CompatibleDataPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *AwsS3CompatibleData {
+		if v == nil {
+			return nil
+		}
+		return v.AwsS3CompatibleDataSource
+	}).(AwsS3CompatibleDataPtrOutput)
 }
 
 // An AWS S3 data source.
@@ -4190,6 +4723,8 @@ func (o TransferSpecPtrOutput) TransferOptions() TransferOptionsPtrOutput {
 
 // Configuration for running a transfer.
 type TransferSpecResponse struct {
+	// An AWS S3 compatible data source.
+	AwsS3CompatibleDataSource AwsS3CompatibleDataResponse `pulumi:"awsS3CompatibleDataSource"`
 	// An AWS S3 data source.
 	AwsS3DataSource AwsS3DataResponse `pulumi:"awsS3DataSource"`
 	// An Azure Blob Storage data source.
@@ -4231,6 +4766,11 @@ func (o TransferSpecResponseOutput) ToTransferSpecResponseOutput() TransferSpecR
 
 func (o TransferSpecResponseOutput) ToTransferSpecResponseOutputWithContext(ctx context.Context) TransferSpecResponseOutput {
 	return o
+}
+
+// An AWS S3 compatible data source.
+func (o TransferSpecResponseOutput) AwsS3CompatibleDataSource() AwsS3CompatibleDataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) AwsS3CompatibleDataResponse { return v.AwsS3CompatibleDataSource }).(AwsS3CompatibleDataResponseOutput)
 }
 
 // An AWS S3 data source.
@@ -4301,6 +4841,8 @@ func (o TransferSpecResponseOutput) TransferOptions() TransferOptionsResponseOut
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsAccessKeyInput)(nil)).Elem(), AwsAccessKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsAccessKeyPtrInput)(nil)).Elem(), AwsAccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3CompatibleDataInput)(nil)).Elem(), AwsS3CompatibleDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3CompatibleDataPtrInput)(nil)).Elem(), AwsS3CompatibleDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3DataInput)(nil)).Elem(), AwsS3DataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsS3DataPtrInput)(nil)).Elem(), AwsS3DataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureBlobStorageDataInput)(nil)).Elem(), AzureBlobStorageDataArgs{})
@@ -4325,6 +4867,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectConditionsPtrInput)(nil)).Elem(), ObjectConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemInput)(nil)).Elem(), PosixFilesystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemPtrInput)(nil)).Elem(), PosixFilesystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataInput)(nil)).Elem(), S3CompatibleMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataPtrInput)(nil)).Elem(), S3CompatibleMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleInput)(nil)).Elem(), ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePtrInput)(nil)).Elem(), ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
@@ -4338,6 +4882,9 @@ func init() {
 	pulumi.RegisterOutputType(AwsAccessKeyOutput{})
 	pulumi.RegisterOutputType(AwsAccessKeyPtrOutput{})
 	pulumi.RegisterOutputType(AwsAccessKeyResponseOutput{})
+	pulumi.RegisterOutputType(AwsS3CompatibleDataOutput{})
+	pulumi.RegisterOutputType(AwsS3CompatibleDataPtrOutput{})
+	pulumi.RegisterOutputType(AwsS3CompatibleDataResponseOutput{})
 	pulumi.RegisterOutputType(AwsS3DataOutput{})
 	pulumi.RegisterOutputType(AwsS3DataPtrOutput{})
 	pulumi.RegisterOutputType(AwsS3DataResponseOutput{})
@@ -4374,6 +4921,9 @@ func init() {
 	pulumi.RegisterOutputType(PosixFilesystemOutput{})
 	pulumi.RegisterOutputType(PosixFilesystemPtrOutput{})
 	pulumi.RegisterOutputType(PosixFilesystemResponseOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataPtrOutput{})
+	pulumi.RegisterOutputType(S3CompatibleMetadataResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(SchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleResponseOutput{})

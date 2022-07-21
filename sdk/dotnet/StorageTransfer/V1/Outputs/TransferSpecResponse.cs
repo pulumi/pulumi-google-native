@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class TransferSpecResponse
     {
         /// <summary>
+        /// An AWS S3 compatible data source.
+        /// </summary>
+        public readonly Outputs.AwsS3CompatibleDataResponse AwsS3CompatibleDataSource;
+        /// <summary>
         /// An AWS S3 data source.
         /// </summary>
         public readonly Outputs.AwsS3DataResponse AwsS3DataSource;
@@ -71,6 +75,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
         [OutputConstructor]
         private TransferSpecResponse(
+            Outputs.AwsS3CompatibleDataResponse awsS3CompatibleDataSource,
+
             Outputs.AwsS3DataResponse awsS3DataSource,
 
             Outputs.AzureBlobStorageDataResponse azureBlobStorageDataSource,
@@ -97,6 +103,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             Outputs.TransferOptionsResponse transferOptions)
         {
+            AwsS3CompatibleDataSource = awsS3CompatibleDataSource;
             AwsS3DataSource = awsS3DataSource;
             AzureBlobStorageDataSource = azureBlobStorageDataSource;
             GcsDataSink = gcsDataSink;

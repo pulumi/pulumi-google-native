@@ -277,6 +277,86 @@ export const NotificationConfigPayloadFormat = {
  */
 export type NotificationConfigPayloadFormat = (typeof NotificationConfigPayloadFormat)[keyof typeof NotificationConfigPayloadFormat];
 
+export const S3CompatibleMetadataAuthMethod = {
+    /**
+     * AuthMethod is not specified.
+     */
+    AuthMethodUnspecified: "AUTH_METHOD_UNSPECIFIED",
+    /**
+     * Auth requests with AWS SigV4.
+     */
+    AuthMethodAwsSignatureV4: "AUTH_METHOD_AWS_SIGNATURE_V4",
+    /**
+     * Auth requests with AWS SigV2.
+     */
+    AuthMethodAwsSignatureV2: "AUTH_METHOD_AWS_SIGNATURE_V2",
+} as const;
+
+/**
+ * Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+ */
+export type S3CompatibleMetadataAuthMethod = (typeof S3CompatibleMetadataAuthMethod)[keyof typeof S3CompatibleMetadataAuthMethod];
+
+export const S3CompatibleMetadataListApi = {
+    /**
+     * ListApi is not specified.
+     */
+    ListApiUnspecified: "LIST_API_UNSPECIFIED",
+    /**
+     * Perform listing using ListObjectsV2 API.
+     */
+    ListObjectsV2: "LIST_OBJECTS_V2",
+    /**
+     * Legacy ListObjects API.
+     */
+    ListObjects: "LIST_OBJECTS",
+} as const;
+
+/**
+ * The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+ */
+export type S3CompatibleMetadataListApi = (typeof S3CompatibleMetadataListApi)[keyof typeof S3CompatibleMetadataListApi];
+
+export const S3CompatibleMetadataProtocol = {
+    /**
+     * NetworkProtocol is not specified.
+     */
+    NetworkProtocolUnspecified: "NETWORK_PROTOCOL_UNSPECIFIED",
+    /**
+     * Perform requests using HTTPS.
+     */
+    NetworkProtocolHttps: "NETWORK_PROTOCOL_HTTPS",
+    /**
+     * Not recommended: This sends data in clear-text. This is only appropriate within a closed network or for publicly available data. Perform requests using HTTP.
+     */
+    NetworkProtocolHttp: "NETWORK_PROTOCOL_HTTP",
+} as const;
+
+/**
+ * Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+ */
+export type S3CompatibleMetadataProtocol = (typeof S3CompatibleMetadataProtocol)[keyof typeof S3CompatibleMetadataProtocol];
+
+export const S3CompatibleMetadataRequestModel = {
+    /**
+     * RequestModel is not specified.
+     */
+    RequestModelUnspecified: "REQUEST_MODEL_UNSPECIFIED",
+    /**
+     * Perform requests using Virtual Hosted Style. Example: https://bucket-name.s3.region.amazonaws.com/key-name
+     */
+    RequestModelVirtualHostedStyle: "REQUEST_MODEL_VIRTUAL_HOSTED_STYLE",
+    /**
+     * Perform requests using Path Style. Example: https://s3.region.amazonaws.com/bucket-name/key-name
+     */
+    RequestModelPathStyle: "REQUEST_MODEL_PATH_STYLE",
+} as const;
+
+/**
+ * Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+ */
+export type S3CompatibleMetadataRequestModel = (typeof S3CompatibleMetadataRequestModel)[keyof typeof S3CompatibleMetadataRequestModel];
+
 export const TransferJobStatus = {
     /**
      * Zero is an illegal value.
