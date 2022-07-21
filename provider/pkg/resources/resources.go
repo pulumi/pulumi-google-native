@@ -18,6 +18,8 @@ import (
 	"fmt"
 	"net/url"
 	"strings"
+
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 )
 
 // CloudAPIMetadata is a collection of all resources and functions in the Google Cloud REST API.
@@ -47,6 +49,7 @@ func (e CloudAPIEndpoint) URI(
 	if len(e.SelfLinkProperty) > 0 {
 		v, ok := outputs[e.SelfLinkProperty].(string)
 		if !ok {
+			logging.V(9).Infof("missing selfLink property in %+v", outputs)
 			return "", fmt.Errorf("selfLink property %q not found", e.SelfLinkProperty)
 		}
 		return v, nil
@@ -148,8 +151,10 @@ type ResourceAutoname struct {
 type PollingStrategy string
 
 const (
-	DefaultPoll       = PollingStrategy("")
-	KNativeStatusPoll = PollingStrategy("KNativeStatusPoll")
+	DefaultPoll                   = PollingStrategy("")
+	KNativeStatusPoll             = PollingStrategy("KNativeStatusPoll")
+	ClusterAwaitRestingStatePoll  = PollingStrategy("ClusterAwaitRestingStatePoll")
+	NodepoolAwaitRestingStatePoll = PollingStrategy("NodepoolAwaitRestingStatePoll")
 )
 
 // Polling specifies the polling strategy to use for a resource.
@@ -258,7 +263,11 @@ type CloudAPIProperty struct {
 	// The name of the container property that was "flattened" during SDK generation, i.e. extra layer that exists
 	// in the API payload but does not exist in the SDK.
 	Container string `json:"container,omitempty"`
-	SdkName   string `json:"sdkName,omitempty"`
+	// Flatten is the opposite of the container - i.e. this layer of the property will be flattened so any properties
+	// within this property will be promoted to this position. This essentially removes a layer that exists in the SDK
+	// but doesn't in the API payload.
+	Flatten bool   `json:"flatten,omitempty"`
+	SdkName string `json:"sdkName,omitempty"`
 	// CopyFromOutputs equal to true means that the value for this property during an update should be taken from
 	// the previous state of the resource, not user inputs.
 	CopyFromOutputs bool `json:"copyFromOutputs,omitempty"`

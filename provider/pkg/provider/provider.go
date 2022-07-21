@@ -724,6 +724,8 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 					strings.Contains(strings.ToLower(operationType), "delete") {
 					return resp, err
 				}
+
+				continuePollingForRestingState := false
 				// Check if there's a target link.
 				if targetLink, has := resp["targetLink"].(string); has {
 					// Try reading resource state.
@@ -735,14 +737,30 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 						}
 						return resp, getErr
 					}
-					// A partial error could happen, so both response and error could be available.
-					return state, err
+					if pollingStrategy == resources.NodepoolAwaitRestingStatePoll {
+						npStatus, hasStatus := state["status"].(string)
+						if hasStatus && npStatus == "RUNNING" || npStatus == "RUNNING_WITH_ERROR" || npStatus == "ERROR" {
+							return state, err
+						}
+						continuePollingForRestingState = true
+					} else if pollingStrategy == resources.ClusterAwaitRestingStatePoll {
+						cStatus, hasStatus := state["status"].(string)
+						if hasStatus && cStatus == "RUNNING" || cStatus == "DEGRADED" || cStatus == "ERROR" {
+							return state, err
+						}
+						continuePollingForRestingState = true
+					} else {
+						// A partial error could happen, so both response and error could be available.
+						return state, err
+					}
 				}
 				// At this point, we assume either a complete failure or a clean response.
 				if err != nil {
 					return resp, err
 				}
-				return resp, nil
+				if !continuePollingForRestingState {
+					return resp, nil
+				}
 			}
 
 			if selfLink, has := resp["selfLink"].(string); has && hasStatus {
@@ -891,7 +909,32 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		return &rpc.UpdateResponse{}, nil
 	}
 
-	var op map[string]interface{}
+	var resp, op map[string]interface{}
+	if f, ok := resourceUpdateOverrides[resourceKey]; ok {
+		var err error
+		logging.V(9).Infof("[%s] calling custom update function for resource: %+v", label, resourceKey)
+		resp, err = f(p, label, &res, inputs, oldState)
+		if err != nil {
+			logging.V(9).Infof("[%s] custom update override failed: %+v, resp: %+v", label, err, resp)
+			if resp != nil {
+				checkpoint, cpErr := plugin.MarshalProperties(
+					checkpointObject(inputs, resp),
+					plugin.MarshalOptions{
+						Label:        fmt.Sprintf("%s.partialCheckpoint", label),
+						KeepUnknowns: true,
+						KeepSecrets:  true,
+						SkipNulls:    true,
+					},
+				)
+				if cpErr != nil {
+					return nil, errors.Wrapf(err, "checkpointing update: %s", cpErr)
+				}
+				return nil, partialError(req.Id, err, checkpoint, nil)
+			}
+			return nil, err
+		}
+	}
+
 	if needsMultiPartFormdataContentType(contentType, res) {
 		var err error
 		uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
@@ -957,13 +1000,11 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
+		resp, err = p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
+		if err != nil {
+			return nil, errors.Wrapf(err, "waiting for completion")
+		}
 	}
-
-	resp, err := p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
-	if err != nil {
-		return nil, errors.Wrapf(err, "waiting for completion")
-	}
-
 	// Read the inputs to persist them into state.
 	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
 		Label:        fmt.Sprintf("%s.newInputs", label),
