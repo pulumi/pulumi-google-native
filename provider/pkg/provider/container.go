@@ -18,6 +18,7 @@ import (
 var emptyPropVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
 var nodepoolUpdateHandlers = map[string]func(
 	p *googleCloudProvider,
+	urn resource.URN,
 	label string,
 	res *resources.CloudAPIResource,
 	newInputs,
@@ -47,7 +48,7 @@ var nodepoolUpdateHandlers = map[string]func(
 	"locations": updateNodePoolMapping(
 		mustParsePropertyPath("locations"),
 		"locations",
-		resource.NewArrayProperty(nil),
+		resource.NewArrayProperty([]resource.PropertyValue{}),
 		"",
 		"PUT"),
 	"version": updateNodePoolMapping(
@@ -72,7 +73,9 @@ func mustParsePropertyPath(pattern string) resource.PropertyPath {
 	return pp
 }
 
-func updateNodepool(providerInstance *googleCloudProvider,
+func updateNodepool(
+	providerInstance *googleCloudProvider,
+	urn resource.URN,
 	label string,
 	res *resources.CloudAPIResource,
 	inputs resource.PropertyMap,
@@ -135,7 +138,7 @@ func updateNodepool(providerInstance *googleCloudProvider,
 						break
 					}
 					logging.V(9).Infof("[%s] calling update handler", label)
-					err = updateHandler(providerInstance, label, res, inputs, oldState)
+					err = updateHandler(providerInstance, urn, label, res, inputs, oldState)
 					if err != nil {
 						logging.V(9).Infof("[%s] failure updating: %+v", label, err)
 						break
@@ -213,12 +216,14 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 	PropertyValue,
 	operationSuffix string, httpMethod string) func(
 	p *googleCloudProvider,
+	urn resource.URN,
 	label string,
 	res *resources.CloudAPIResource,
 	newInputs,
 	oldState resource.PropertyMap,
 ) error {
 	return func(p *googleCloudProvider,
+		urn resource.URN,
 		label string,
 		res *resources.CloudAPIResource,
 		newInputs,
@@ -253,7 +258,7 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
 
-		_, err = p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
+		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
 		if err != nil {
 			return errors.Wrapf(err, "waiting for completion")
 		}
@@ -263,12 +268,14 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 
 func updateNodePoolConfig(diffPropPath resource.PropertyPath, defaultIfMissing resource.PropertyValue) func(
 	p *googleCloudProvider,
+	urn resource.URN,
 	label string,
 	res *resources.CloudAPIResource,
 	newInputs,
 	oldState resource.PropertyMap,
 ) error {
 	return func(p *googleCloudProvider,
+		urn resource.URN,
 		label string,
 		res *resources.CloudAPIResource,
 		newInputs,
@@ -311,7 +318,7 @@ func updateNodePoolConfig(diffPropPath resource.PropertyPath, defaultIfMissing r
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
 
-		_, err = p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
+		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
 		if err != nil {
 			return errors.Wrapf(err, "waiting for completion")
 		}

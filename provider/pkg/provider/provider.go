@@ -521,7 +521,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.Create.CloudAPIOperation, op)
+	resp, err := p.waitForResourceOpCompletion(urn, res.Create.CloudAPIOperation, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -667,6 +667,7 @@ func (p *googleCloudProvider) handleFormDataUpload(uri string, res *resources.Cl
 // N.B if a resource is partially created it is important to return the partial state in addition
 // to the error. Otherwise, the partially created resource will be leaked.
 func (p *googleCloudProvider) waitForResourceOpCompletion(
+	urn resource.URN,
 	operation resources.CloudAPIOperation,
 	resp map[string]interface{},
 ) (map[string]interface{}, error) {
@@ -681,9 +682,12 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		pollingStrategy = operation.Polling.Strategy
 	}
 	for {
-		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
-
 		var pollURI string
+
+		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
+		if details, has := resp["detail"]; has {
+			_ = p.host.LogStatus(context.Background(), diag.Info, urn, fmt.Sprintf("%v", details))
+		}
 
 		// if the resource has a custom polling strategy, use that.
 		switch pollingStrategy {
@@ -913,7 +917,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	if f, ok := resourceUpdateOverrides[resourceKey]; ok {
 		var err error
 		logging.V(9).Infof("[%s] calling custom update function for resource: %+v", label, resourceKey)
-		resp, err = f(p, label, &res, inputs, oldState)
+		resp, err = f(p, urn, label, &res, inputs, oldState)
 		if err != nil {
 			logging.V(9).Infof("[%s] custom update override failed: %+v, resp: %+v", label, err, resp)
 			if resp != nil {
@@ -1000,7 +1004,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
-		resp, err = p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
+		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
 		if err != nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
@@ -1087,7 +1091,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.Delete, resp)
+	_, err = p.waitForResourceOpCompletion(urn, res.Delete, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}

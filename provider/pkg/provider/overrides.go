@@ -26,6 +26,7 @@ import (
 
 var resourceUpdateOverrides = map[string]func(
 	providerInstance *googleCloudProvider,
+	urn resource.URN,
 	label string,
 	res *resources.CloudAPIResource,
 	inputs,
