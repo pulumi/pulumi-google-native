@@ -106,7 +106,7 @@ func TestRequestWithTimeout(t *testing.T) {
 				return t.Valid(), nil
 			})
 			c.http = oauth2.NewClient(context.Background(), ts)
-			_, err := c.RequestWithTimeout("GET", server.URL, body, 1*time.Second)
+			_, err := c.RequestWithTimeout("GET", server.URL, "", body, 1*time.Second)
 			if test.err != nil {
 				assert.EqualError(t, err, test.err.Error())
 			} else {

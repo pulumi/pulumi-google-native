@@ -152,6 +152,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
 
         /// <summary>
+        /// File to upload.
+        /// </summary>
+        [Input("file")]
+        public Input<AssetOrArchive>? File { get; set; }
+
+        /// <summary>
         /// Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
         /// </summary>
         [Input("name")]

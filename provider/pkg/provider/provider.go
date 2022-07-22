@@ -20,7 +20,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
+	"mime/multipart"
 	"net"
 	"net/http"
 	"os"
@@ -211,7 +213,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 			return nil, err
 		}
 
-		resp, err = p.client.RequestWithTimeout(inv.Verb, uri, nil, 0)
+		resp, err = p.client.RequestWithTimeout(inv.Verb, uri, "", nil, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s", err)
 		}
@@ -503,6 +505,11 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	body := p.prepareAPIInputs(inputs, nil, res.Create.SDKProperties)
 
 	var op map[string]interface{}
+	var contentType string
+	if val, hasContentType := inputs["contentType"]; hasContentType {
+		contentType = val.StringValue()
+	}
+
 	if res.AssetUpload {
 		var content []byte
 		source := inputs["source"]
@@ -519,8 +526,67 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if err != nil {
 			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
 		}
+	} else if contentType == "multipart/form-data" && len(res.FormDataUpload.FormFields) > 0 {
+		buf := bytes.Buffer{}
+		mp := multipart.NewWriter(&buf)
+		var closables []io.Closer
+		defer func() {
+			for _, c := range closables {
+				_ = c.Close()
+			}
+		}()
+
+		for k, v := range res.FormDataUpload.FormFields {
+			if v.SdkName != "" {
+				k = v.SdkName
+			}
+			field, ok := inputs[resource.PropertyKey(k)]
+			if !ok {
+				logging.V(9).Infof("Missing form field: %v in inputs", k)
+				continue
+			}
+
+			if field.IsAsset() {
+				p := field.AssetValue().Path
+				file, err := os.Open(p)
+				if err != nil {
+					return nil, err
+				}
+				closables = append(closables, file)
+				fw, err := mp.CreateFormFile(k, p)
+				if err != nil {
+					return nil, err
+				}
+				_, err = io.Copy(fw, file)
+
+			} else if field.IsArchive() {
+				fw, err := mp.CreateFormField(k)
+				if err != nil {
+					return nil, err
+				}
+				b, err := field.ArchiveValue().Bytes(resource.ZIPArchive)
+				if err != nil {
+					return nil, err
+				}
+				_, err = io.Copy(fw, bytes.NewReader(b))
+			} else if field.IsString() {
+				fw, err := mp.CreateFormField(k)
+				if err != nil {
+					return nil, err
+				}
+				_, err = io.Copy(fw, strings.NewReader(field.StringValue()))
+			}
+			if err != nil {
+				return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
+			}
+		}
+		_ = mp.Close()
+		op, err = retryRequest(p.client, res.Create.Verb, uri, mp.FormDataContentType(), buf.Bytes())
+		if err != nil {
+			return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
+		}
 	} else {
-		op, err = retryRequest(p.client, res.Create.Verb, uri, body)
+		op, err = retryRequest(p.client, res.Create.Verb, uri, "", body)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
@@ -537,7 +603,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if idErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
 		}
-		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), nil, 0)
+		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), "", nil, 0)
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
@@ -646,7 +712,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				// Check if there's a target link.
 				if targetLink, has := resp["targetLink"].(string); has {
 					// Try reading resource state.
-					state, getErr := p.client.RequestWithTimeout("GET", targetLink, nil, 0)
+					state, getErr := p.client.RequestWithTimeout("GET", targetLink, "", nil, 0)
 					if getErr != nil {
 						if err != nil {
 							// Return the original creation error if resource read failed.
@@ -686,7 +752,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		time.Sleep(retryPolicy.Duration())
 
 		logging.V(9).Infof("Polling URL: %q", pollURI)
-		op, err := p.client.RequestWithTimeout("GET", pollURI, nil, 0)
+		op, err := p.client.RequestWithTimeout("GET", pollURI, "", nil, 0)
 		if err != nil {
 			return resp, errors.Wrapf(err, "polling operation status")
 		}
@@ -724,7 +790,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	// Read the current state of the resource from the API.
-	newState, err := retryRequest(p.client, res.Read.Verb, uri, nil)
+	newState, err := retryRequest(p.client, res.Read.Verb, uri, "", nil)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -852,7 +918,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, err
 	}
 
-	op, err := retryRequest(p.client, res.Update.Verb, uri, body)
+	op, err := retryRequest(p.client, res.Update.Verb, uri, "", body)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
@@ -935,7 +1001,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := retryRequest(p.client, res.Delete.Verb, uri, nil)
+	resp, err := retryRequest(p.client, res.Delete.Verb, uri, "", nil)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
@@ -950,7 +1016,8 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 // Deprecated: retryRequest is a temporary retry helper that will be replaced by centralized retry logic after some
 // additional refactoring. This function should not be used outside the provider CRUD methods.
-func retryRequest(client *googleclient.GoogleClient, method string, rawurl string, body map[string]interface{},
+func retryRequest(client *googleclient.GoogleClient, method string, rawurl string,
+	contentType string, body any,
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -966,7 +1033,7 @@ func retryRequest(client *googleclient.GoogleClient, method string, rawurl strin
 		case <-ctx.Done():
 			return nil, fmt.Errorf("request %s %s timed out after %s", method, rawurl, timeout)
 		case <-time.After(retryPolicy.Duration()):
-			resp, err := client.RequestWithTimeout(method, rawurl, body, 0)
+			resp, err := client.RequestWithTimeout(method, rawurl, contentType, body, 0)
 			if err != nil {
 				// Retryable error
 				if gerr, ok := err.(*googleapi.Error); ok {

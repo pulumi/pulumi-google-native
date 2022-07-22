@@ -173,9 +173,9 @@ type CloudAPIResource struct {
 
 	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
-	RootURL string `json:"rootUrl"`
-
-	AssetUpload bool `json:"assetUpload,omitempty"`
+	RootURL        string         `json:"rootUrl"`
+	FormDataUpload FormDataUpload `json:"formDataUpload,omitempty"`
+	AssetUpload    bool           `json:"assetUpload,omitempty"`
 	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
 	IDProperty string `json:"idProperty,omitempty"`
@@ -184,6 +184,10 @@ type CloudAPIResource struct {
 	// Example: `projects/{project}/global/backendBuckets/{resource}/getIamPolicy`
 	IDPath   string            `json:"idPath,omitempty"`
 	IDParams map[string]string `json:"idParams,omitempty"`
+}
+
+type FormDataUpload struct {
+	FormFields map[string]CloudAPIProperty `json:"formFields,omitempty"`
 }
 
 // CloudAPIFunction is a function in Google Cloud REST API.
