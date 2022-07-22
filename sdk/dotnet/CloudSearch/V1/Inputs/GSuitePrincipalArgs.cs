@@ -13,19 +13,19 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     public sealed class GSuitePrincipalArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This principal represents all users of the G Suite domain of the customer.
+        /// This principal represents all users of the Google Workspace domain of the customer.
         /// </summary>
         [Input("gsuiteDomain")]
         public Input<bool>? GsuiteDomain { get; set; }
 
         /// <summary>
-        /// This principal references a G Suite group account
+        /// This principal references a Google Workspace group name.
         /// </summary>
         [Input("gsuiteGroupEmail")]
         public Input<string>? GsuiteGroupEmail { get; set; }
 
         /// <summary>
-        /// This principal references a G Suite user account
+        /// This principal references a Google Workspace user account.
         /// </summary>
         [Input("gsuiteUserEmail")]
         public Input<string>? GsuiteUserEmail { get; set; }

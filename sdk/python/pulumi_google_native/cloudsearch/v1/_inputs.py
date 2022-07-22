@@ -315,9 +315,9 @@ class GSuitePrincipalArgs:
                  gsuite_group_email: Optional[pulumi.Input[str]] = None,
                  gsuite_user_email: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] gsuite_domain: This principal represents all users of the G Suite domain of the customer.
-        :param pulumi.Input[str] gsuite_group_email: This principal references a G Suite group account
-        :param pulumi.Input[str] gsuite_user_email: This principal references a G Suite user account
+        :param pulumi.Input[bool] gsuite_domain: This principal represents all users of the Google Workspace domain of the customer.
+        :param pulumi.Input[str] gsuite_group_email: This principal references a Google Workspace group name.
+        :param pulumi.Input[str] gsuite_user_email: This principal references a Google Workspace user account.
         """
         if gsuite_domain is not None:
             pulumi.set(__self__, "gsuite_domain", gsuite_domain)
@@ -330,7 +330,7 @@ class GSuitePrincipalArgs:
     @pulumi.getter(name="gsuiteDomain")
     def gsuite_domain(self) -> Optional[pulumi.Input[bool]]:
         """
-        This principal represents all users of the G Suite domain of the customer.
+        This principal represents all users of the Google Workspace domain of the customer.
         """
         return pulumi.get(self, "gsuite_domain")
 
@@ -342,7 +342,7 @@ class GSuitePrincipalArgs:
     @pulumi.getter(name="gsuiteGroupEmail")
     def gsuite_group_email(self) -> Optional[pulumi.Input[str]]:
         """
-        This principal references a G Suite group account
+        This principal references a Google Workspace group name.
         """
         return pulumi.get(self, "gsuite_group_email")
 
@@ -354,7 +354,7 @@ class GSuitePrincipalArgs:
     @pulumi.getter(name="gsuiteUserEmail")
     def gsuite_user_email(self) -> Optional[pulumi.Input[str]]:
         """
-        This principal references a G Suite user account
+        This principal references a Google Workspace user account.
         """
         return pulumi.get(self, "gsuite_user_email")
 

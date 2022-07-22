@@ -372,9 +372,9 @@ class GSuitePrincipalResponse(dict):
                  gsuite_group_email: str,
                  gsuite_user_email: str):
         """
-        :param bool gsuite_domain: This principal represents all users of the G Suite domain of the customer.
-        :param str gsuite_group_email: This principal references a G Suite group account
-        :param str gsuite_user_email: This principal references a G Suite user account
+        :param bool gsuite_domain: This principal represents all users of the Google Workspace domain of the customer.
+        :param str gsuite_group_email: This principal references a Google Workspace group name.
+        :param str gsuite_user_email: This principal references a Google Workspace user account.
         """
         pulumi.set(__self__, "gsuite_domain", gsuite_domain)
         pulumi.set(__self__, "gsuite_group_email", gsuite_group_email)
@@ -384,7 +384,7 @@ class GSuitePrincipalResponse(dict):
     @pulumi.getter(name="gsuiteDomain")
     def gsuite_domain(self) -> bool:
         """
-        This principal represents all users of the G Suite domain of the customer.
+        This principal represents all users of the Google Workspace domain of the customer.
         """
         return pulumi.get(self, "gsuite_domain")
 
@@ -392,7 +392,7 @@ class GSuitePrincipalResponse(dict):
     @pulumi.getter(name="gsuiteGroupEmail")
     def gsuite_group_email(self) -> str:
         """
-        This principal references a G Suite group account
+        This principal references a Google Workspace group name.
         """
         return pulumi.get(self, "gsuite_group_email")
 
@@ -400,7 +400,7 @@ class GSuitePrincipalResponse(dict):
     @pulumi.getter(name="gsuiteUserEmail")
     def gsuite_user_email(self) -> str:
         """
-        This principal references a G Suite user account
+        This principal references a Google Workspace user account.
         """
         return pulumi.get(self, "gsuite_user_email")
 

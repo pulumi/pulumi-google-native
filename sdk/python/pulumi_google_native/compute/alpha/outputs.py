@@ -138,6 +138,8 @@ __all__ = [
     'InstanceResponse',
     'InstantSnapshotResourceStatusResponse',
     'Int64RangeMatchResponse',
+    'InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse',
+    'InterconnectAttachmentConfigurationConstraintsResponse',
     'InterconnectAttachmentPartnerMetadataResponse',
     'InterconnectAttachmentPrivateInfoResponse',
     'InterconnectCircuitInfoResponse',
@@ -10062,6 +10064,86 @@ class Int64RangeMatchResponse(dict):
 
 
 @pulumi.output_type
+class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse(dict):
+    def __init__(__self__, *,
+                 max: int,
+                 min: int):
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> int:
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> int:
+        return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class InterconnectAttachmentConfigurationConstraintsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bgpMd5":
+            suggest = "bgp_md5"
+        elif key == "bgpPeerAsnRanges":
+            suggest = "bgp_peer_asn_ranges"
+        elif key == "networkConnectivityCenter":
+            suggest = "network_connectivity_center"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectAttachmentConfigurationConstraintsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectAttachmentConfigurationConstraintsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectAttachmentConfigurationConstraintsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bgp_md5: str,
+                 bgp_peer_asn_ranges: Sequence['outputs.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse'],
+                 network_connectivity_center: str):
+        """
+        :param str bgp_md5: Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+        :param Sequence['InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse'] bgp_peer_asn_ranges: List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+        :param str network_connectivity_center: Network Connectivity Center constraints, which can take one of the following values: NCC_UNCONSTRAINED, NCC_SPOKE_REQUIRED
+        """
+        pulumi.set(__self__, "bgp_md5", bgp_md5)
+        pulumi.set(__self__, "bgp_peer_asn_ranges", bgp_peer_asn_ranges)
+        pulumi.set(__self__, "network_connectivity_center", network_connectivity_center)
+
+    @property
+    @pulumi.getter(name="bgpMd5")
+    def bgp_md5(self) -> str:
+        """
+        Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+        """
+        return pulumi.get(self, "bgp_md5")
+
+    @property
+    @pulumi.getter(name="bgpPeerAsnRanges")
+    def bgp_peer_asn_ranges(self) -> Sequence['outputs.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse']:
+        """
+        List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+        """
+        return pulumi.get(self, "bgp_peer_asn_ranges")
+
+    @property
+    @pulumi.getter(name="networkConnectivityCenter")
+    def network_connectivity_center(self) -> str:
+        """
+        Network Connectivity Center constraints, which can take one of the following values: NCC_UNCONSTRAINED, NCC_SPOKE_REQUIRED
+        """
+        return pulumi.get(self, "network_connectivity_center")
+
+
+@pulumi.output_type
 class InterconnectAttachmentPartnerMetadataResponse(dict):
     """
     Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.
@@ -11371,7 +11453,7 @@ class NetworkEndpointGroupAppEngineResponse(dict):
         """
         Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
         :param str service: Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
-        :param str url_mask: A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        :param str url_mask: A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
         :param str version: Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
         """
         pulumi.set(__self__, "service", service)
@@ -11390,7 +11472,7 @@ class NetworkEndpointGroupAppEngineResponse(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> str:
         """
-        A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -11431,7 +11513,7 @@ class NetworkEndpointGroupCloudFunctionResponse(dict):
         """
         Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
         :param str function: A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
-        :param str url_mask: A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        :param str url_mask: A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         pulumi.set(__self__, "function", function)
         pulumi.set(__self__, "url_mask", url_mask)
@@ -11448,7 +11530,7 @@ class NetworkEndpointGroupCloudFunctionResponse(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> str:
         """
-        A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -14174,7 +14256,7 @@ class RequestMirrorPolicyResponse(dict):
                  backend_service: str):
         """
         A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
-        :param str backend_service: The full or partial URL to the BackendService resource being mirrored to.
+        :param str backend_service: The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service. 
         """
         pulumi.set(__self__, "backend_service", backend_service)
 
@@ -14182,7 +14264,7 @@ class RequestMirrorPolicyResponse(dict):
     @pulumi.getter(name="backendService")
     def backend_service(self) -> str:
         """
-        The full or partial URL to the BackendService resource being mirrored to.
+        The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service. 
         """
         return pulumi.get(self, "backend_service")
 
@@ -15410,7 +15492,9 @@ class ResourceStatusResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "upcomingMaintenance":
+        if key == "physicalHost":
+            suggest = "physical_host"
+        elif key == "upcomingMaintenance":
             suggest = "upcoming_maintenance"
 
         if suggest:
@@ -15425,13 +15509,24 @@ class ResourceStatusResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 physical_host: str,
                  scheduling: 'outputs.ResourceStatusSchedulingResponse',
                  upcoming_maintenance: 'outputs.ResourceStatusUpcomingMaintenanceResponse'):
         """
         Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
+        :param str physical_host: An opaque ID of the host on which the VM is running.
         """
+        pulumi.set(__self__, "physical_host", physical_host)
         pulumi.set(__self__, "scheduling", scheduling)
         pulumi.set(__self__, "upcoming_maintenance", upcoming_maintenance)
+
+    @property
+    @pulumi.getter(name="physicalHost")
+    def physical_host(self) -> str:
+        """
+        An opaque ID of the host on which the VM is running.
+        """
+        return pulumi.get(self, "physical_host")
 
     @property
     @pulumi.getter

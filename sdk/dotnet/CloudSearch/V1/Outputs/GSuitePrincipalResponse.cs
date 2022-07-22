@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
     public sealed class GSuitePrincipalResponse
     {
         /// <summary>
-        /// This principal represents all users of the G Suite domain of the customer.
+        /// This principal represents all users of the Google Workspace domain of the customer.
         /// </summary>
         public readonly bool GsuiteDomain;
         /// <summary>
-        /// This principal references a G Suite group account
+        /// This principal references a Google Workspace group name.
         /// </summary>
         public readonly string GsuiteGroupEmail;
         /// <summary>
-        /// This principal references a G Suite user account
+        /// This principal references a Google Workspace user account.
         /// </summary>
         public readonly string GsuiteUserEmail;
 

@@ -16,15 +16,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     [OutputType]
     public sealed class ResourceStatusResponse
     {
+        /// <summary>
+        /// An opaque ID of the host on which the VM is running.
+        /// </summary>
+        public readonly string PhysicalHost;
         public readonly Outputs.ResourceStatusSchedulingResponse Scheduling;
         public readonly Outputs.ResourceStatusUpcomingMaintenanceResponse UpcomingMaintenance;
 
         [OutputConstructor]
         private ResourceStatusResponse(
+            string physicalHost,
+
             Outputs.ResourceStatusSchedulingResponse scheduling,
 
             Outputs.ResourceStatusUpcomingMaintenanceResponse upcomingMaintenance)
         {
+            PhysicalHost = physicalHost;
             Scheduling = scheduling;
             UpcomingMaintenance = upcomingMaintenance;
         }

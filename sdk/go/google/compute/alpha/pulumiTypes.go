@@ -27290,6 +27290,95 @@ func (o Int64RangeMatchResponseOutput) RangeStart() pulumi.StringOutput {
 	return o.ApplyT(func(v Int64RangeMatchResponse) string { return v.RangeStart }).(pulumi.StringOutput)
 }
 
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) Index(i pulumi.IntInput) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
+		return vs[0].([]InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)[vs[1].(int)]
+	}).(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsResponse struct {
+	// Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+	BgpMd5 string `pulumi:"bgpMd5"`
+	// List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+	BgpPeerAsnRanges []InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse `pulumi:"bgpPeerAsnRanges"`
+	// Network Connectivity Center constraints, which can take one of the following values: NCC_UNCONSTRAINED, NCC_SPOKE_REQUIRED
+	NetworkConnectivityCenter string `pulumi:"networkConnectivityCenter"`
+}
+
+type InterconnectAttachmentConfigurationConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentConfigurationConstraintsResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) ToInterconnectAttachmentConfigurationConstraintsResponseOutput() InterconnectAttachmentConfigurationConstraintsResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) ToInterconnectAttachmentConfigurationConstraintsResponseOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsResponseOutput {
+	return o
+}
+
+// Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) BgpMd5() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsResponse) string { return v.BgpMd5 }).(pulumi.StringOutput)
+}
+
+// List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) BgpPeerAsnRanges() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsResponse) []InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
+		return v.BgpPeerAsnRanges
+	}).(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput)
+}
+
+// Network Connectivity Center constraints, which can take one of the following values: NCC_UNCONSTRAINED, NCC_SPOKE_REQUIRED
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) NetworkConnectivityCenter() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsResponse) string {
+		return v.NetworkConnectivityCenter
+	}).(pulumi.StringOutput)
+}
+
 // Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.
 type InterconnectAttachmentPartnerMetadata struct {
 	// Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner's portal. For instance "Chicago 1". This value may be validated to match approved Partner values.
@@ -31388,7 +31477,7 @@ func (o NamedPortResponseArrayOutput) Index(i pulumi.IntInput) NamedPortResponse
 type NetworkEndpointGroupAppEngine struct {
 	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
 	Service *string `pulumi:"service"`
-	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask *string `pulumi:"urlMask"`
 	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
 	Version *string `pulumi:"version"`
@@ -31409,7 +31498,7 @@ type NetworkEndpointGroupAppEngineInput interface {
 type NetworkEndpointGroupAppEngineArgs struct {
 	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
 	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -31498,7 +31587,7 @@ func (o NetworkEndpointGroupAppEngineOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngine) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 func (o NetworkEndpointGroupAppEngineOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngine) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
 }
@@ -31542,7 +31631,7 @@ func (o NetworkEndpointGroupAppEnginePtrOutput) Service() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 func (o NetworkEndpointGroupAppEnginePtrOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupAppEngine) *string {
 		if v == nil {
@@ -31566,7 +31655,7 @@ func (o NetworkEndpointGroupAppEnginePtrOutput) Version() pulumi.StringPtrOutput
 type NetworkEndpointGroupAppEngineResponse struct {
 	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
 	Service string `pulumi:"service"`
-	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
 	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
 	Version string `pulumi:"version"`
@@ -31592,7 +31681,7 @@ func (o NetworkEndpointGroupAppEngineResponseOutput) Service() pulumi.StringOutp
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngineResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 func (o NetworkEndpointGroupAppEngineResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngineResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
@@ -31606,7 +31695,7 @@ func (o NetworkEndpointGroupAppEngineResponseOutput) Version() pulumi.StringOutp
 type NetworkEndpointGroupCloudFunction struct {
 	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
 	Function *string `pulumi:"function"`
-	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 	UrlMask *string `pulumi:"urlMask"`
 }
 
@@ -31625,7 +31714,7 @@ type NetworkEndpointGroupCloudFunctionInput interface {
 type NetworkEndpointGroupCloudFunctionArgs struct {
 	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
 	Function pulumi.StringPtrInput `pulumi:"function"`
-	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
 }
 
@@ -31712,7 +31801,7 @@ func (o NetworkEndpointGroupCloudFunctionOutput) Function() pulumi.StringPtrOutp
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunction) *string { return v.Function }).(pulumi.StringPtrOutput)
 }
 
-// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 func (o NetworkEndpointGroupCloudFunctionOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunction) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
 }
@@ -31751,7 +31840,7 @@ func (o NetworkEndpointGroupCloudFunctionPtrOutput) Function() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 func (o NetworkEndpointGroupCloudFunctionPtrOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupCloudFunction) *string {
 		if v == nil {
@@ -31765,7 +31854,7 @@ func (o NetworkEndpointGroupCloudFunctionPtrOutput) UrlMask() pulumi.StringPtrOu
 type NetworkEndpointGroupCloudFunctionResponse struct {
 	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
 	Function string `pulumi:"function"`
-	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
 }
 
@@ -31789,7 +31878,7 @@ func (o NetworkEndpointGroupCloudFunctionResponseOutput) Function() pulumi.Strin
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunctionResponse) string { return v.Function }).(pulumi.StringOutput)
 }
 
-// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 func (o NetworkEndpointGroupCloudFunctionResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunctionResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
@@ -38432,7 +38521,7 @@ func (o RegionSslPolicyWarningsItemResponseArrayOutput) Index(i pulumi.IntInput)
 
 // A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicy struct {
-	// The full or partial URL to the BackendService resource being mirrored to.
+	// The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService *string `pulumi:"backendService"`
 }
 
@@ -38449,7 +38538,7 @@ type RequestMirrorPolicyInput interface {
 
 // A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicyArgs struct {
-	// The full or partial URL to the BackendService resource being mirrored to.
+	// The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService pulumi.StringPtrInput `pulumi:"backendService"`
 }
 
@@ -38531,7 +38620,7 @@ func (o RequestMirrorPolicyOutput) ToRequestMirrorPolicyPtrOutputWithContext(ctx
 	}).(RequestMirrorPolicyPtrOutput)
 }
 
-// The full or partial URL to the BackendService resource being mirrored to.
+// The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
 func (o RequestMirrorPolicyOutput) BackendService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RequestMirrorPolicy) *string { return v.BackendService }).(pulumi.StringPtrOutput)
 }
@@ -38560,7 +38649,7 @@ func (o RequestMirrorPolicyPtrOutput) Elem() RequestMirrorPolicyOutput {
 	}).(RequestMirrorPolicyOutput)
 }
 
-// The full or partial URL to the BackendService resource being mirrored to.
+// The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
 func (o RequestMirrorPolicyPtrOutput) BackendService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RequestMirrorPolicy) *string {
 		if v == nil {
@@ -38572,7 +38661,7 @@ func (o RequestMirrorPolicyPtrOutput) BackendService() pulumi.StringPtrOutput {
 
 // A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicyResponse struct {
-	// The full or partial URL to the BackendService resource being mirrored to.
+	// The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
 	BackendService string `pulumi:"backendService"`
 }
 
@@ -38591,7 +38680,7 @@ func (o RequestMirrorPolicyResponseOutput) ToRequestMirrorPolicyResponseOutputWi
 	return o
 }
 
-// The full or partial URL to the BackendService resource being mirrored to.
+// The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
 func (o RequestMirrorPolicyResponseOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestMirrorPolicyResponse) string { return v.BackendService }).(pulumi.StringOutput)
 }
@@ -42383,6 +42472,8 @@ func (o ResourcePolicyWeeklyCycleResponseOutput) DayOfWeeks() ResourcePolicyWeek
 
 // Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
 type ResourceStatusResponse struct {
+	// An opaque ID of the host on which the VM is running.
+	PhysicalHost        string                                    `pulumi:"physicalHost"`
 	Scheduling          ResourceStatusSchedulingResponse          `pulumi:"scheduling"`
 	UpcomingMaintenance ResourceStatusUpcomingMaintenanceResponse `pulumi:"upcomingMaintenance"`
 }
@@ -42400,6 +42491,11 @@ func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutput() ResourceS
 
 func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutputWithContext(ctx context.Context) ResourceStatusResponseOutput {
 	return o
+}
+
+// An opaque ID of the host on which the VM is running.
+func (o ResourceStatusResponseOutput) PhysicalHost() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusResponse) string { return v.PhysicalHost }).(pulumi.StringOutput)
 }
 
 func (o ResourceStatusResponseOutput) Scheduling() ResourceStatusSchedulingResponseOutput {
@@ -58814,6 +58910,9 @@ func init() {
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchResponseOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataResponseOutput{})

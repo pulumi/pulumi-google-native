@@ -58,6 +58,8 @@ type LookupSnapshotResult struct {
 	Licenses []string `pulumi:"licenses"`
 	// An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
 	LocationHint string `pulumi:"locationHint"`
+	// Number of days the snapshot should be retained before being deleted automatically.
+	MaxRetentionDays int `pulumi:"maxRetentionDays"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Reserved for future use.
@@ -210,6 +212,11 @@ func (o LookupSnapshotResultOutput) Licenses() pulumi.StringArrayOutput {
 // An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
 func (o LookupSnapshotResultOutput) LocationHint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.LocationHint }).(pulumi.StringOutput)
+}
+
+// Number of days the snapshot should be retained before being deleted automatically.
+func (o LookupSnapshotResultOutput) MaxRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) int { return v.MaxRetentionDays }).(pulumi.IntOutput)
 }
 
 // Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

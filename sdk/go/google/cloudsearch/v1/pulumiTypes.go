@@ -1185,11 +1185,11 @@ func (o FilterResponseArrayOutput) Index(i pulumi.IntInput) FilterResponseOutput
 }
 
 type GSuitePrincipal struct {
-	// This principal represents all users of the G Suite domain of the customer.
+	// This principal represents all users of the Google Workspace domain of the customer.
 	GsuiteDomain *bool `pulumi:"gsuiteDomain"`
-	// This principal references a G Suite group account
+	// This principal references a Google Workspace group name.
 	GsuiteGroupEmail *string `pulumi:"gsuiteGroupEmail"`
-	// This principal references a G Suite user account
+	// This principal references a Google Workspace user account.
 	GsuiteUserEmail *string `pulumi:"gsuiteUserEmail"`
 }
 
@@ -1205,11 +1205,11 @@ type GSuitePrincipalInput interface {
 }
 
 type GSuitePrincipalArgs struct {
-	// This principal represents all users of the G Suite domain of the customer.
+	// This principal represents all users of the Google Workspace domain of the customer.
 	GsuiteDomain pulumi.BoolPtrInput `pulumi:"gsuiteDomain"`
-	// This principal references a G Suite group account
+	// This principal references a Google Workspace group name.
 	GsuiteGroupEmail pulumi.StringPtrInput `pulumi:"gsuiteGroupEmail"`
-	// This principal references a G Suite user account
+	// This principal references a Google Workspace user account.
 	GsuiteUserEmail pulumi.StringPtrInput `pulumi:"gsuiteUserEmail"`
 }
 
@@ -1264,17 +1264,17 @@ func (o GSuitePrincipalOutput) ToGSuitePrincipalOutputWithContext(ctx context.Co
 	return o
 }
 
-// This principal represents all users of the G Suite domain of the customer.
+// This principal represents all users of the Google Workspace domain of the customer.
 func (o GSuitePrincipalOutput) GsuiteDomain() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GSuitePrincipal) *bool { return v.GsuiteDomain }).(pulumi.BoolPtrOutput)
 }
 
-// This principal references a G Suite group account
+// This principal references a Google Workspace group name.
 func (o GSuitePrincipalOutput) GsuiteGroupEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GSuitePrincipal) *string { return v.GsuiteGroupEmail }).(pulumi.StringPtrOutput)
 }
 
-// This principal references a G Suite user account
+// This principal references a Google Workspace user account.
 func (o GSuitePrincipalOutput) GsuiteUserEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GSuitePrincipal) *string { return v.GsuiteUserEmail }).(pulumi.StringPtrOutput)
 }
@@ -1300,11 +1300,11 @@ func (o GSuitePrincipalArrayOutput) Index(i pulumi.IntInput) GSuitePrincipalOutp
 }
 
 type GSuitePrincipalResponse struct {
-	// This principal represents all users of the G Suite domain of the customer.
+	// This principal represents all users of the Google Workspace domain of the customer.
 	GsuiteDomain bool `pulumi:"gsuiteDomain"`
-	// This principal references a G Suite group account
+	// This principal references a Google Workspace group name.
 	GsuiteGroupEmail string `pulumi:"gsuiteGroupEmail"`
-	// This principal references a G Suite user account
+	// This principal references a Google Workspace user account.
 	GsuiteUserEmail string `pulumi:"gsuiteUserEmail"`
 }
 
@@ -1322,17 +1322,17 @@ func (o GSuitePrincipalResponseOutput) ToGSuitePrincipalResponseOutputWithContex
 	return o
 }
 
-// This principal represents all users of the G Suite domain of the customer.
+// This principal represents all users of the Google Workspace domain of the customer.
 func (o GSuitePrincipalResponseOutput) GsuiteDomain() pulumi.BoolOutput {
 	return o.ApplyT(func(v GSuitePrincipalResponse) bool { return v.GsuiteDomain }).(pulumi.BoolOutput)
 }
 
-// This principal references a G Suite group account
+// This principal references a Google Workspace group name.
 func (o GSuitePrincipalResponseOutput) GsuiteGroupEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GSuitePrincipalResponse) string { return v.GsuiteGroupEmail }).(pulumi.StringOutput)
 }
 
-// This principal references a G Suite user account
+// This principal references a Google Workspace user account.
 func (o GSuitePrincipalResponseOutput) GsuiteUserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GSuitePrincipalResponse) string { return v.GsuiteUserEmail }).(pulumi.StringOutput)
 }

@@ -9805,7 +9805,7 @@ class NetworkEndpointGroupAppEngineArgs:
         """
         Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
         :param pulumi.Input[str] service: Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
-        :param pulumi.Input[str] url_mask: A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        :param pulumi.Input[str] url_mask: A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
         :param pulumi.Input[str] version: Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
         """
         if service is not None:
@@ -9831,7 +9831,7 @@ class NetworkEndpointGroupAppEngineArgs:
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -9860,7 +9860,7 @@ class NetworkEndpointGroupCloudFunctionArgs:
         """
         Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
         :param pulumi.Input[str] function: A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
-        :param pulumi.Input[str] url_mask: A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        :param pulumi.Input[str] url_mask: A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         if function is not None:
             pulumi.set(__self__, "function", function)
@@ -9883,7 +9883,7 @@ class NetworkEndpointGroupCloudFunctionArgs:
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -11832,7 +11832,7 @@ class RequestMirrorPolicyArgs:
                  backend_service: Optional[pulumi.Input[str]] = None):
         """
         A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
-        :param pulumi.Input[str] backend_service: The full or partial URL to the BackendService resource being mirrored to.
+        :param pulumi.Input[str] backend_service: The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service. 
         """
         if backend_service is not None:
             pulumi.set(__self__, "backend_service", backend_service)
@@ -11841,7 +11841,7 @@ class RequestMirrorPolicyArgs:
     @pulumi.getter(name="backendService")
     def backend_service(self) -> Optional[pulumi.Input[str]]:
         """
-        The full or partial URL to the BackendService resource being mirrored to.
+        The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service. 
         """
         return pulumi.get(self, "backend_service")
 

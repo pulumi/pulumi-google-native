@@ -3007,6 +3007,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static GuestOsFeatureType MultiIpSubnet { get; } = new GuestOsFeatureType("MULTI_IP_SUBNET");
         public static GuestOsFeatureType SecureBoot { get; } = new GuestOsFeatureType("SECURE_BOOT");
         public static GuestOsFeatureType SevCapable { get; } = new GuestOsFeatureType("SEV_CAPABLE");
+        public static GuestOsFeatureType SevLiveMigratable { get; } = new GuestOsFeatureType("SEV_LIVE_MIGRATABLE");
         public static GuestOsFeatureType SevSnpCapable { get; } = new GuestOsFeatureType("SEV_SNP_CAPABLE");
         public static GuestOsFeatureType UefiCompatible { get; } = new GuestOsFeatureType("UEFI_COMPATIBLE");
         public static GuestOsFeatureType VirtioScsiMultiqueue { get; } = new GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE");
@@ -8684,7 +8685,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+    /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
     /// </summary>
     [EnumType]
     public readonly struct TargetInstanceNatPolicy : IEquatable<TargetInstanceNatPolicy>

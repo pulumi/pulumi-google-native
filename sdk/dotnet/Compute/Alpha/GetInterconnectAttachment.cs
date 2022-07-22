@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string CloudRouterIpv6InterfaceId;
         /// <summary>
+        /// Constraints for this attachment, if any. The attachment does not work if these constraints are not met.
+        /// </summary>
+        public readonly Outputs.InterconnectAttachmentConfigurationConstraintsResponse ConfigurationConstraints;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -178,6 +182,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// If the attachment is on a Cross-Cloud Interconnect connection, this field contains the interconnect's remote location service provider. Example values: "Amazon Web Services" "Microsoft Azure". The field is set only for attachments on Cross-Cloud Interconnect connections. Its value is copied from the InterconnectRemoteLocation remoteService field.
+        /// </summary>
+        public readonly string RemoteService;
+        /// <summary>
         /// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network &amp; region within which the Cloud Router is configured.
         /// </summary>
         public readonly string Router;
@@ -202,6 +210,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
+        /// </summary>
+        public readonly int SubnetLength;
+        /// <summary>
         /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         /// </summary>
         public readonly string Type;
@@ -225,6 +237,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             string cloudRouterIpv6Address,
 
             string cloudRouterIpv6InterfaceId,
+
+            Outputs.InterconnectAttachmentConfigurationConstraintsResponse configurationConstraints,
 
             string creationTimestamp,
 
@@ -270,6 +284,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string region,
 
+            string remoteService,
+
             string router,
 
             bool satisfiesPzs,
@@ -282,6 +298,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string state,
 
+            int subnetLength,
+
             string type,
 
             int vlanTag8021q)
@@ -293,6 +311,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CloudRouterIpAddress = cloudRouterIpAddress;
             CloudRouterIpv6Address = cloudRouterIpv6Address;
             CloudRouterIpv6InterfaceId = cloudRouterIpv6InterfaceId;
+            ConfigurationConstraints = configurationConstraints;
             CreationTimestamp = creationTimestamp;
             CustomerRouterIpAddress = customerRouterIpAddress;
             CustomerRouterIpv6Address = customerRouterIpv6Address;
@@ -315,12 +334,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             PartnerMetadata = partnerMetadata;
             PrivateInterconnectInfo = privateInterconnectInfo;
             Region = region;
+            RemoteService = remoteService;
             Router = router;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             StackType = stackType;
             State = state;
+            SubnetLength = subnetLength;
             Type = type;
             VlanTag8021q = vlanTag8021q;
         }

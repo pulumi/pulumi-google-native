@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         public readonly int DataRefreshWindowDays;
         /// <summary>
-        /// Data source id. Cannot be changed once data transfer is created. The full list of available data source ids can be returned through API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list The individual data source id can also be found in the bq tab in the 'Setting up a data transfer' section for each data source. For example, the data source id for Cloud Storage transfers is listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// Data source ID. This cannot be changed once data transfer is created. The full list of available data source IDs can be returned through an API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list
         /// </summary>
         public readonly string DataSourceId;
         /// <summary>

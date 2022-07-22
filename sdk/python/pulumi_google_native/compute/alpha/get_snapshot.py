@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, max_retention_days=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -68,6 +68,9 @@ class GetSnapshotResult:
         if location_hint and not isinstance(location_hint, str):
             raise TypeError("Expected argument 'location_hint' to be a str")
         pulumi.set(__self__, "location_hint", location_hint)
+        if max_retention_days and not isinstance(max_retention_days, int):
+            raise TypeError("Expected argument 'max_retention_days' to be a int")
+        pulumi.set(__self__, "max_retention_days", max_retention_days)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -252,6 +255,14 @@ class GetSnapshotResult:
         return pulumi.get(self, "location_hint")
 
     @property
+    @pulumi.getter(name="maxRetentionDays")
+    def max_retention_days(self) -> int:
+        """
+        Number of days the snapshot should be retained before being deleted automatically.
+        """
+        return pulumi.get(self, "max_retention_days")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -418,6 +429,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             license_codes=self.license_codes,
             licenses=self.licenses,
             location_hint=self.location_hint,
+            max_retention_days=self.max_retention_days,
             name=self.name,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
@@ -467,6 +479,7 @@ def get_snapshot(project: Optional[str] = None,
         license_codes=__ret__.license_codes,
         licenses=__ret__.licenses,
         location_hint=__ret__.location_hint,
+        max_retention_days=__ret__.max_retention_days,
         name=__ret__.name,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,

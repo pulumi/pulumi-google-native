@@ -836,7 +836,7 @@
       }
     }
   },
-  "revision": "20220713",
+  "revision": "20220719",
   "rootUrl": "https://documentai.googleapis.com/",
   "schemas": {
     "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata": {

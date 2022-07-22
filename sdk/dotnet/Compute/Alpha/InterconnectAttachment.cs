@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> CloudRouterIpv6InterfaceId { get; private set; } = null!;
 
         /// <summary>
+        /// Constraints for this attachment, if any. The attachment does not work if these constraints are not met.
+        /// </summary>
+        [Output("configurationConstraints")]
+        public Output<Outputs.InterconnectAttachmentConfigurationConstraintsResponse> ConfigurationConstraints { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -190,6 +196,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// If the attachment is on a Cross-Cloud Interconnect connection, this field contains the interconnect's remote location service provider. Example values: "Amazon Web Services" "Microsoft Azure". The field is set only for attachments on Cross-Cloud Interconnect connections. Its value is copied from the InterconnectRemoteLocation remoteService field.
+        /// </summary>
+        [Output("remoteService")]
+        public Output<string> RemoteService { get; private set; } = null!;
+
+        /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Output("requestId")]
@@ -230,6 +242,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
+        /// </summary>
+        [Output("subnetLength")]
+        public Output<int> SubnetLength { get; private set; } = null!;
 
         /// <summary>
         /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
@@ -448,6 +466,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("stackType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InterconnectAttachmentStackType>? StackType { get; set; }
+
+        /// <summary>
+        /// Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
+        /// </summary>
+        [Input("subnetLength")]
+        public Input<int>? SubnetLength { get; set; }
 
         /// <summary>
         /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 

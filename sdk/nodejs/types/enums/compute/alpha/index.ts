@@ -1478,6 +1478,7 @@ export const GuestOsFeatureType = {
     MultiIpSubnet: "MULTI_IP_SUBNET",
     SecureBoot: "SECURE_BOOT",
     SevCapable: "SEV_CAPABLE",
+    SevLiveMigratable: "SEV_LIVE_MIGRATABLE",
     SevSnpCapable: "SEV_SNP_CAPABLE",
     UefiCompatible: "UEFI_COMPATIBLE",
     VirtioScsiMultiqueue: "VIRTIO_SCSI_MULTIQUEUE",
@@ -4024,7 +4025,7 @@ export const TargetInstanceNatPolicy = {
 } as const;
 
 /**
- * NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+ * Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
  */
 export type TargetInstanceNatPolicy = (typeof TargetInstanceNatPolicy)[keyof typeof TargetInstanceNatPolicy];
 

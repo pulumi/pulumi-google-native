@@ -1572,6 +1572,7 @@ class GuestOsFeatureType(str, Enum):
     MULTI_IP_SUBNET = "MULTI_IP_SUBNET"
     SECURE_BOOT = "SECURE_BOOT"
     SEV_CAPABLE = "SEV_CAPABLE"
+    SEV_LIVE_MIGRATABLE = "SEV_LIVE_MIGRATABLE"
     SEV_SNP_CAPABLE = "SEV_SNP_CAPABLE"
     UEFI_COMPATIBLE = "UEFI_COMPATIBLE"
     VIRTIO_SCSI_MULTIQUEUE = "VIRTIO_SCSI_MULTIQUEUE"
@@ -3809,7 +3810,7 @@ class TargetHttpsProxyQuicOverride(str, Enum):
 
 class TargetInstanceNatPolicy(str, Enum):
     """
-    NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+    Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
     """
     NO_NAT = "NO_NAT"
     """

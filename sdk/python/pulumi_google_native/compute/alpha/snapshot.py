@@ -22,6 +22,7 @@ class SnapshotArgs:
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
+                 max_retention_days: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,7 @@ class SnapshotArgs:
         :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
+        :param pulumi.Input[int] max_retention_days: Number of days the snapshot should be retained before being deleted automatically.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['CustomerEncryptionKeyArgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
@@ -57,6 +59,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "labels", labels)
         if location_hint is not None:
             pulumi.set(__self__, "location_hint", location_hint)
+        if max_retention_days is not None:
+            pulumi.set(__self__, "max_retention_days", max_retention_days)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -135,6 +139,18 @@ class SnapshotArgs:
     @location_hint.setter
     def location_hint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location_hint", value)
+
+    @property
+    @pulumi.getter(name="maxRetentionDays")
+    def max_retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of days the snapshot should be retained before being deleted automatically.
+        """
+        return pulumi.get(self, "max_retention_days")
+
+    @max_retention_days.setter
+    def max_retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_retention_days", value)
 
     @property
     @pulumi.getter
@@ -252,6 +268,7 @@ class Snapshot(pulumi.CustomResource):
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
+                 max_retention_days: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -272,6 +289,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
+        :param pulumi.Input[int] max_retention_days: Number of days the snapshot should be retained before being deleted automatically.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
@@ -310,6 +328,7 @@ class Snapshot(pulumi.CustomResource):
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
+                 max_retention_days: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -333,6 +352,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_hint"] = location_hint
+            __props__.__dict__["max_retention_days"] = max_retention_days
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
@@ -404,6 +424,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["license_codes"] = None
         __props__.__dict__["licenses"] = None
         __props__.__dict__["location_hint"] = None
+        __props__.__dict__["max_retention_days"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
@@ -553,6 +574,14 @@ class Snapshot(pulumi.CustomResource):
         An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
         """
         return pulumi.get(self, "location_hint")
+
+    @property
+    @pulumi.getter(name="maxRetentionDays")
+    def max_retention_days(self) -> pulumi.Output[int]:
+        """
+        Number of days the snapshot should be retained before being deleted automatically.
+        """
+        return pulumi.get(self, "max_retention_days")
 
     @property
     @pulumi.getter

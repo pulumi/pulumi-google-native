@@ -118,7 +118,7 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs:
     def __init__(__self__, *,
                  logging_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs']] = None):
         """
-        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs'] logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         """
         if logging_settings is not None:

@@ -12249,6 +12249,7 @@ const (
 	GuestOsFeatureTypeMultiIpSubnet            = GuestOsFeatureType("MULTI_IP_SUBNET")
 	GuestOsFeatureTypeSecureBoot               = GuestOsFeatureType("SECURE_BOOT")
 	GuestOsFeatureTypeSevCapable               = GuestOsFeatureType("SEV_CAPABLE")
+	GuestOsFeatureTypeSevLiveMigratable        = GuestOsFeatureType("SEV_LIVE_MIGRATABLE")
 	GuestOsFeatureTypeSevSnpCapable            = GuestOsFeatureType("SEV_SNP_CAPABLE")
 	GuestOsFeatureTypeUefiCompatible           = GuestOsFeatureType("UEFI_COMPATIBLE")
 	GuestOsFeatureTypeVirtioScsiMultiqueue     = GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE")
@@ -37491,7 +37492,7 @@ func (in *targetHttpsProxyQuicOverridePtr) ToTargetHttpsProxyQuicOverridePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(TargetHttpsProxyQuicOverridePtrOutput)
 }
 
-// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
 type TargetInstanceNatPolicy string
 
 const (
