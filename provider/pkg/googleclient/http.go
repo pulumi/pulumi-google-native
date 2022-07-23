@@ -110,8 +110,13 @@ func (c *GoogleClient) RequestWithTimeout(
 
 	var res *http.Response
 	var buf bytes.Buffer
+
 	if body != nil && contentType == "application/json" {
 		err := json.NewEncoder(&buf).Encode(body)
+		if err != nil {
+			return nil, err
+		}
+		rawurl, err = addQueryParams(rawurl, map[string]string{"alt": "json"})
 		if err != nil {
 			return nil, err
 		}
@@ -127,12 +132,8 @@ func (c *GoogleClient) RequestWithTimeout(
 		return nil, err
 	}
 
-	u, err := addQueryParams(rawurl, map[string]string{"alt": "json"})
-	if err != nil {
-		return nil, err
-	}
 	// TODO: request not handling timeout
-	req, err := http.NewRequest(method, u, &buf)
+	req, err := http.NewRequest(method, rawurl, &buf)
 	if err != nil {
 		return nil, err
 	}

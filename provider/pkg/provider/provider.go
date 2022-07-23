@@ -511,82 +511,11 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}
 
 	if res.AssetUpload {
-		var content []byte
-		source := inputs["source"]
-		if source.IsAsset() {
-			content, err = source.AssetValue().Bytes()
-		} else if source.IsArchive() {
-			content, err = source.ArchiveValue().Bytes(resource.ZIPArchive)
-		}
-		if err != nil {
-			return nil, err
-		}
-
-		op, err = p.client.UploadWithTimeout(res.Create.Verb, uri, body, content, 0)
-		if err != nil {
-			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
-		}
+		op, err = p.handleAssetUpload(uri, &res, inputs, body)
 	} else if contentType == "multipart/form-data" && len(res.FormDataUpload.FormFields) > 0 {
-		buf := bytes.Buffer{}
-		mp := multipart.NewWriter(&buf)
-		var closables []io.Closer
-		defer func() {
-			for _, c := range closables {
-				_ = c.Close()
-			}
-		}()
-
-		for k, v := range res.FormDataUpload.FormFields {
-			if v.SdkName != "" {
-				k = v.SdkName
-			}
-			field, ok := inputs[resource.PropertyKey(k)]
-			if !ok {
-				logging.V(9).Infof("Missing form field: %v in inputs", k)
-				continue
-			}
-
-			if field.IsAsset() {
-				p := field.AssetValue().Path
-				file, err := os.Open(p)
-				if err != nil {
-					return nil, err
-				}
-				closables = append(closables, file)
-				fw, err := mp.CreateFormFile(k, p)
-				if err != nil {
-					return nil, err
-				}
-				_, err = io.Copy(fw, file)
-
-			} else if field.IsArchive() {
-				fw, err := mp.CreateFormField(k)
-				if err != nil {
-					return nil, err
-				}
-				b, err := field.ArchiveValue().Bytes(resource.ZIPArchive)
-				if err != nil {
-					return nil, err
-				}
-				_, err = io.Copy(fw, bytes.NewReader(b))
-			} else if field.IsString() {
-				fw, err := mp.CreateFormField(k)
-				if err != nil {
-					return nil, err
-				}
-				_, err = io.Copy(fw, strings.NewReader(field.StringValue()))
-			}
-			if err != nil {
-				return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
-			}
-		}
-		_ = mp.Close()
-		op, err = retryRequest(p.client, res.Create.Verb, uri, mp.FormDataContentType(), buf.Bytes())
-		if err != nil {
-			return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
-		}
+		op, err = p.handleFormDataUpload(uri, &res, inputs)
 	} else {
-		op, err = retryRequest(p.client, res.Create.Verb, uri, "", body)
+		op, err = retryRequest(p.client, res.Create.Verb, uri, contentType, body)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
@@ -642,6 +571,90 @@ func (p *googleCloudProvider) prepareAPIInputs(
 	properties map[string]resources.CloudAPIProperty,
 ) map[string]interface{} {
 	return p.converter.SdkPropertiesToRequestBody(properties, inputs.Mappable(), state.Mappable())
+}
+
+func (p *googleCloudProvider) handleAssetUpload(uri string, res *resources.CloudAPIResource,
+	inputs resource.PropertyMap, body map[string]interface{}) (op map[string]interface{}, err error) {
+	var content []byte
+
+	source := inputs["source"]
+	if source.IsAsset() {
+		content, err = source.AssetValue().Bytes()
+	} else if source.IsArchive() {
+		content, err = source.ArchiveValue().Bytes(resource.ZIPArchive)
+	}
+	if err != nil {
+		return nil, err
+	}
+
+	op, err = p.client.UploadWithTimeout(res.Create.Verb, uri, body, content, 0)
+	if err != nil {
+		return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
+	}
+	return
+}
+
+func (p *googleCloudProvider) handleFormDataUpload(uri string, res *resources.CloudAPIResource,
+	inputs resource.PropertyMap) (map[string]interface{}, error) {
+	buf := bytes.Buffer{}
+	mp := multipart.NewWriter(&buf)
+	var closables []io.Closer
+	defer func() {
+		for _, c := range closables {
+			_ = c.Close()
+		}
+	}()
+
+	for k, v := range res.FormDataUpload.FormFields {
+		if v.SdkName != "" {
+			k = v.SdkName
+		}
+		field, ok := inputs[resource.PropertyKey(k)]
+		if !ok {
+			logging.V(9).Infof("Missing form field: %v in inputs", k)
+			continue
+		}
+
+		var err error
+		if field.IsAsset() {
+			p := field.AssetValue().Path
+			file, err := os.Open(p)
+			if err != nil {
+				return nil, err
+			}
+			closables = append(closables, file)
+			fw, err := mp.CreateFormFile(k, p)
+			if err != nil {
+				return nil, err
+			}
+			_, err = io.Copy(fw, file)
+		} else if field.IsArchive() {
+			fw, err := mp.CreateFormField(k)
+			if err != nil {
+				return nil, err
+			}
+			b, err := field.ArchiveValue().Bytes(resource.ZIPArchive)
+			if err != nil {
+				return nil, err
+			}
+			_, err = io.Copy(fw, bytes.NewReader(b))
+		} else if field.IsString() {
+			fw, err := mp.CreateFormField(k)
+			if err != nil {
+				return nil, err
+			}
+			_, err = io.Copy(fw, strings.NewReader(field.StringValue()))
+		}
+		if err != nil {
+			return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
+		}
+	}
+	_ = mp.Close()
+	op, err := retryRequest(p.client, res.Create.Verb, uri, mp.FormDataContentType(), buf.Bytes())
+	if err != nil {
+		return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
+	}
+	return op, nil
 }
 
 // waitForResourceOpCompletion keeps polling the resource or operation URL until it gets
@@ -837,7 +850,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 }
 
 // Update updates an existing resource with new values.
-func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
+func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
 	urn := resource.URN(req.GetUrn())
 	label := fmt.Sprintf("%s.Update(%s)", p.name, urn)
 	logging.V(9).Infof("%s executing", label)
@@ -858,6 +871,11 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, errors.Wrapf(err, "reading resource state")
 	}
 
+	var contentType string
+	if val, hasContentType := inputs["contentType"]; hasContentType {
+		contentType = val.StringValue()
+	}
+
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
@@ -865,62 +883,74 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	}
 
 	if res.Update.Undefined() {
-		logging.V(1).Infof("update is currently undefined for resource: %q. %s will not be updated",
-			resourceKey, req.GetId())
+		_ = p.host.Log(ctx, diag.Warning, urn, fmt.Sprintf("update is currently undefined for resource: %q. "+
+			"%s will not be updated",
+			resourceKey, req.GetId()))
 		return &rpc.UpdateResponse{}, nil
-	}
-
-	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
-	if res.Update.UpdateMask.BodyPropertyName != "" || res.Update.UpdateMask.QueryParamName != "" {
-		newJson, err := json.Marshal(inputs)
-		if err != nil {
-			return nil, errors.Errorf("failed to serialize new inputs as json")
-		}
-		// Extract old inputs from the `__inputs` field of the old state.
-		oldInputs := parseCheckpointObject(oldState)
-		oldJson, err := json.Marshal(oldInputs)
-		if err != nil {
-			return nil, errors.Errorf("failed to serialize existing inputs as json")
-		}
-		patch, err := jsonpatch.CreateMergePatch(oldJson, newJson)
-		if err != nil {
-			return nil, errors.Errorf("failed to generate patch")
-		}
-		var keys []string
-		patchObj := map[string]interface{}{}
-		if err = json.Unmarshal(patch, &patchObj); err != nil {
-			return nil, errors.Errorf("failed to unmarshal patch object")
-		}
-		for k := range patchObj {
-			found := false
-			for name, sdkProp := range res.Update.SDKProperties {
-				if sdkProp.SdkName == k {
-					keys = append(keys, strcase.ToSnake(name))
-					found = true
-					break
-				}
-			}
-			if !found {
-				keys = append(keys, strcase.ToSnake(k))
-			}
-		}
-		if res.Update.UpdateMask.QueryParamName != "" {
-			inputs[resource.PropertyKey(res.Update.UpdateMask.QueryParamName)] =
-				resource.NewStringProperty(strings.Join(keys, ","))
-		}
-		if res.Update.UpdateMask.BodyPropertyName != "" {
-			body[res.Update.UpdateMask.BodyPropertyName] = map[string]interface{}{"paths": keys}
-		}
 	}
 
 	uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to generate URL with inputs: %+v: %w", inputs, err)
 	}
 
-	op, err := retryRequest(p.client, res.Update.Verb, uri, "", body)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
+	var op map[string]interface{}
+	if contentType == "multipart/form-data" && len(res.FormDataUpload.FormFields) > 0 {
+		var err error
+		// It's a bit hacky to shortcircuit and just update with data upload but in all the 3
+		// resources affected (apigee) - this seems the right thing to do.
+		op, err = p.handleFormDataUpload(uri, &res, inputs)
+		if err != nil {
+			return nil, fmt.Errorf("error sending formdata request: %s: %q", err, uri)
+		}
+	} else {
+		body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
+		if res.Update.UpdateMask.BodyPropertyName != "" || res.Update.UpdateMask.QueryParamName != "" {
+			newJson, err := json.Marshal(inputs)
+			if err != nil {
+				return nil, errors.Errorf("failed to serialize new inputs as json")
+			}
+			// Extract old inputs from the `__inputs` field of the old state.
+			oldInputs := parseCheckpointObject(oldState)
+			oldJson, err := json.Marshal(oldInputs)
+			if err != nil {
+				return nil, errors.Errorf("failed to serialize existing inputs as json")
+			}
+			patch, err := jsonpatch.CreateMergePatch(oldJson, newJson)
+			if err != nil {
+				return nil, errors.Errorf("failed to generate patch")
+			}
+			var keys []string
+			patchObj := map[string]interface{}{}
+			if err = json.Unmarshal(patch, &patchObj); err != nil {
+				return nil, errors.Errorf("failed to unmarshal patch object")
+			}
+			for k := range patchObj {
+				found := false
+				for name, sdkProp := range res.Update.SDKProperties {
+					if sdkProp.SdkName == k {
+						keys = append(keys, strcase.ToSnake(name))
+						found = true
+						break
+					}
+				}
+				if !found {
+					keys = append(keys, strcase.ToSnake(k))
+				}
+			}
+			if res.Update.UpdateMask.QueryParamName != "" {
+				inputs[resource.PropertyKey(res.Update.UpdateMask.QueryParamName)] =
+					resource.NewStringProperty(strings.Join(keys, ","))
+			}
+			if res.Update.UpdateMask.BodyPropertyName != "" {
+				body[res.Update.UpdateMask.BodyPropertyName] = map[string]interface{}{"paths": keys}
+			}
+		}
+
+		op, err = retryRequest(p.client, res.Update.Verb, uri, "", body)
+		if err != nil {
+			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
+		}
 	}
 
 	resp, err := p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
