@@ -89,7 +89,6 @@ func (e CloudAPIEndpoint) URI(
 	if err != nil {
 		return "", fmt.Errorf("parsing resource URL %q: %w", id, err)
 	}
-	uri.Scheme = "https"
 	query := uri.Query()
 	for key, value := range queryMap {
 		query.Set(key, value)
