@@ -1047,7 +1047,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 // Deprecated: retryRequest is a temporary retry helper that will be replaced by centralized retry logic after some
 // additional refactoring. This function should not be used outside the provider CRUD methods.
 func retryRequest(client *googleclient.GoogleClient, method string, rawurl string,
-	contentType string, body any,
+	contentType string, body interface{},
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,

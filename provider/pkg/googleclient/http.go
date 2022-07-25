@@ -95,7 +95,7 @@ func (c *GoogleClient) OAuth2Token() *oauth2.Token { return c.token }
 func (c *GoogleClient) RequestWithTimeout(
 	method, rawurl string,
 	contentType string,
-	body any,
+	body interface{},
 	timeout time.Duration,
 ) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
