@@ -891,14 +891,13 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		return &rpc.UpdateResponse{}, nil
 	}
 
-	uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
-	if err != nil {
-		return nil, fmt.Errorf("failed to generate URL with inputs: %+v: %w", inputs, err)
-	}
-
 	var op map[string]interface{}
 	if needsMultiPartFormdataContentType(contentType, res) {
 		var err error
+		uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
+		if err != nil {
+			return nil, fmt.Errorf("failed to generate URL with inputs: %+v: %w", inputs, err)
+		}
 		// It's a bit hacky to shortcircuit and just update with data upload but in all the 3
 		// resources affected (apigee) - this seems the right thing to do.
 		op, err = p.handleFormDataUpload(uri, &res, inputs)
@@ -947,6 +946,11 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 			if res.Update.UpdateMask.BodyPropertyName != "" {
 				body[res.Update.UpdateMask.BodyPropertyName] = map[string]interface{}{"paths": keys}
 			}
+		}
+
+		uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
+		if err != nil {
+			return nil, fmt.Errorf("failed to generate URL with inputs: %+v: %w", inputs, err)
 		}
 
 		op, err = retryRequest(p.client, res.Update.Verb, uri, "", body)
