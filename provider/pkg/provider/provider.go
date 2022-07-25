@@ -650,7 +650,7 @@ func (p *googleCloudProvider) handleFormDataUpload(uri string, res *resources.Cl
 		}
 	}
 	if err := mp.Close(); err != nil {
-		logging.V(9).Infof("failed to close multipart/form-data writer: %w", err)
+		logging.V(9).Infof("failed to close multipart/form-data writer: %v", err)
 	}
 	op, err := retryRequest(p.client, res.Create.Verb, uri, mp.FormDataContentType(), buf.Bytes())
 	if err != nil {
