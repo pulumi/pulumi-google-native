@@ -649,7 +649,9 @@ func (p *googleCloudProvider) handleFormDataUpload(uri string, res *resources.Cl
 			return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
 		}
 	}
-	_ = mp.Close()
+	if err := mp.Close(); err != nil {
+		logging.V(9).Infof("failed to close multipart/form-data writer: %w", err)
+	}
 	op, err := retryRequest(p.client, res.Create.Verb, uri, mp.FormDataContentType(), buf.Bytes())
 	if err != nil {
 		return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
@@ -895,13 +897,13 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	}
 
 	var op map[string]interface{}
-	if contentType == "multipart/form-data" && len(res.FormDataUpload.FormFields) > 0 {
+	if needsMultiPartFormdataContentType(contentType, res) {
 		var err error
 		// It's a bit hacky to shortcircuit and just update with data upload but in all the 3
 		// resources affected (apigee) - this seems the right thing to do.
 		op, err = p.handleFormDataUpload(uri, &res, inputs)
 		if err != nil {
-			return nil, fmt.Errorf("error sending formdata request: %s: %q", err, uri)
+			return nil, fmt.Errorf("error sending formdata request for URI %q: %w", uri, err)
 		}
 	} else {
 		body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
@@ -980,6 +982,10 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	return &rpc.UpdateResponse{
 		Properties: outputs,
 	}, nil
+}
+
+func needsMultiPartFormdataContentType(contentType string, res resources.CloudAPIResource) bool {
+	return contentType == "multipart/form-data" && len(res.FormDataUpload.FormFields) > 0
 }
 
 // Delete tears down an existing resource with the given ID. If it fails, the resource is assumed
