@@ -16,6 +16,7 @@ package resources
 
 import (
 	"fmt"
+	"net/url"
 	"strings"
 )
 
@@ -52,13 +53,25 @@ func (e CloudAPIEndpoint) URI(
 	}
 
 	id := e.Template
+	queryMap := map[string]string{}
 	idParams := e.Values
 	for _, param := range idParams {
 		var propValue string
-		if v, has := EvalPropertyValue(inputs, param.SdkName); has {
+		sdkName := param.SdkName
+		if sdkName == "" {
+			sdkName = param.Name
+		}
+		if v, has := EvalPropertyValue(inputs, sdkName); has {
 			propValue = v
-		} else if v, has := EvalPropertyValue(outputs, param.SdkName); has {
+		} else if v, has := EvalPropertyValue(outputs, sdkName); has {
 			propValue = v
+		}
+
+		if param.Kind == "query" {
+			if propValue != "" {
+				queryMap[param.Name] = propValue
+			}
+			continue
 		}
 
 		if propValue == "" {
@@ -72,7 +85,16 @@ func (e CloudAPIEndpoint) URI(
 
 		id = strings.Replace(id, fmt.Sprintf("{%s}", param.Name), propValue, 1)
 	}
-	return id, nil
+	uri, err := url.Parse(id)
+	if err != nil {
+		return "", fmt.Errorf("parsing resource URL %q: %w", id, err)
+	}
+	query := uri.Query()
+	for key, value := range queryMap {
+		query.Set(key, value)
+	}
+	uri.RawQuery = query.Encode()
+	return uri.String(), nil
 }
 
 func EvalPropertyValue(values map[string]interface{}, path string) (string, bool) {
@@ -173,9 +195,9 @@ type CloudAPIResource struct {
 
 	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
-	RootURL string `json:"rootUrl"`
-
-	AssetUpload bool `json:"assetUpload,omitempty"`
+	RootURL        string         `json:"rootUrl"`
+	FormDataUpload FormDataUpload `json:"formDataUpload,omitempty"`
+	AssetUpload    bool           `json:"assetUpload,omitempty"`
 	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
 	IDProperty string `json:"idProperty,omitempty"`
@@ -184,6 +206,10 @@ type CloudAPIResource struct {
 	// Example: `projects/{project}/global/backendBuckets/{resource}/getIamPolicy`
 	IDPath   string            `json:"idPath,omitempty"`
 	IDParams map[string]string `json:"idParams,omitempty"`
+}
+
+type FormDataUpload struct {
+	FormFields map[string]CloudAPIProperty `json:"formFields,omitempty"`
 }
 
 // CloudAPIFunction is a function in Google Cloud REST API.

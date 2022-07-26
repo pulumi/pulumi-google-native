@@ -153,6 +153,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
 
         /// <summary>
+        /// File to upload.
+        /// </summary>
+        [Input("file")]
+        public Input<AssetOrArchive>? File { get; set; }
+
+        /// <summary>
         /// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
         /// </summary>
         [Input("format", required: true)]

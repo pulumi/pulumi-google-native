@@ -20,7 +20,8 @@ class ResourcefileArgs:
                  type: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None):
         """
         The set of arguments for constructing a Resourcefile resource.
         :param pulumi.Input[str] name: Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\\\!@#$%^&{}\\[\\]()+\\-=,.~'` ]{1,255}
@@ -28,6 +29,7 @@ class ResourcefileArgs:
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "name", name)
@@ -39,6 +41,8 @@ class ResourcefileArgs:
             pulumi.set(__self__, "data", data)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -118,6 +122,18 @@ class ResourcefileArgs:
     def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "extensions", value)
 
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
+        """
+        File to upload.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
+        pulumi.set(self, "file", value)
+
 
 class Resourcefile(pulumi.CustomResource):
     @overload
@@ -128,6 +144,7 @@ class Resourcefile(pulumi.CustomResource):
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -141,6 +158,7 @@ class Resourcefile(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\\\!@#$%^&{}\\[\\]()+\\-=,.~'` ]{1,255}
         :param pulumi.Input[str] type: Required. Resource file type. {{ resource_file_type }}
         """
@@ -173,6 +191,7 @@ class Resourcefile(pulumi.CustomResource):
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -191,6 +210,7 @@ class Resourcefile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["extensions"] = extensions
+            __props__.__dict__["file"] = file
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name

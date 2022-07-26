@@ -91,6 +91,7 @@ export class Api extends pulumi.CustomResource {
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["data"] = args ? args.data : undefined;
             resourceInputs["extensions"] = args ? args.extensions : undefined;
+            resourceInputs["file"] = args ? args.file : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["validate"] = args ? args.validate : undefined;
@@ -139,6 +140,10 @@ export interface ApiArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * File to upload.
+     */
+    file?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
      */

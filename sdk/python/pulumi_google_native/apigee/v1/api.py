@@ -20,6 +20,7 @@ class ApiArgs:
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  validate: Optional[pulumi.Input[str]] = None):
         """
@@ -28,6 +29,7 @@ class ApiArgs:
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
         :param pulumi.Input[str] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """
@@ -40,6 +42,8 @@ class ApiArgs:
             pulumi.set(__self__, "data", data)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if validate is not None:
@@ -104,6 +108,18 @@ class ApiArgs:
 
     @property
     @pulumi.getter
+    def file(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
+        """
+        File to upload.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
+        pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
@@ -136,6 +152,7 @@ class Api(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  validate: Optional[pulumi.Input[str]] = None,
@@ -149,6 +166,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
         :param pulumi.Input[str] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """
@@ -180,6 +198,7 @@ class Api(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  validate: Optional[pulumi.Input[str]] = None,
@@ -196,6 +215,7 @@ class Api(pulumi.CustomResource):
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
             __props__.__dict__["extensions"] = extensions
+            __props__.__dict__["file"] = file
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

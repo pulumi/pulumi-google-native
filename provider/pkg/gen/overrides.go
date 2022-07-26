@@ -218,6 +218,46 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			},
 		},
 	},
+	"google-native:apigee/v1:Api": {
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Endpoint: resources.CloudAPIEndpoint{
+					Template: "https://apigee.googleapis.com/v1/organizations/{organizationsId}/apis",
+					Values: []resources.CloudAPIResourceParam{
+						{
+							Name: "action",
+							Kind: "query",
+						},
+						{
+							Name: "name",
+							Kind: "query",
+						},
+						{
+							Name: "validate",
+							Kind: "query",
+						},
+						{
+							Name:    "organizationsId",
+							SdkName: "organizationId",
+							Kind:    "path",
+						},
+					},
+				},
+				SDKProperties: map[string]resources.CloudAPIProperty{
+					"contentType": {},
+					"data": {
+						Format: "byte",
+					},
+					"extensions": {
+						Items: &resources.CloudAPIProperty{},
+					},
+				},
+
+				Verb: "POST",
+			},
+			UpdateMask: resources.UpdateMask{},
+		},
+	},
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones

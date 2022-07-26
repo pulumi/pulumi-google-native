@@ -132,6 +132,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
 
         /// <summary>
+        /// File to upload.
+        /// </summary>
+        [Input("file")]
+        public Input<AssetOrArchive>? File { get; set; }
+
+        /// <summary>
         /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&amp;{}\[\]()+\-=,.~'` ]{1,255}
         /// </summary>
         [Input("name", required: true)]

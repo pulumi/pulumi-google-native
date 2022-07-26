@@ -102,6 +102,8 @@ type aliasArgs struct {
 	EnvironmentId string  `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions []map[string]string `pulumi:"extensions"`
+	// File to upload.
+	File pulumi.AssetOrArchive `pulumi:"file"`
 	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
 	Format string `pulumi:"format"`
 	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
@@ -125,6 +127,8 @@ type AliasArgs struct {
 	EnvironmentId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions pulumi.StringMapArrayInput
+	// File to upload.
+	File pulumi.AssetOrArchiveInput
 	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
 	Format pulumi.StringInput
 	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
