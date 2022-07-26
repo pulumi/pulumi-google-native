@@ -512,7 +512,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 	if res.AssetUpload {
 		op, err = p.handleAssetUpload(uri, &res, inputs, body)
-	} else if contentType == "multipart/form-data" && len(res.FormDataUpload.FormFields) > 0 {
+	} else if needsMultiPartFormdataContentType(contentType, res) {
 		op, err = p.handleFormDataUpload(uri, &res, inputs)
 	} else {
 		op, err = retryRequest(p.client, res.Create.Verb, uri, contentType, body)

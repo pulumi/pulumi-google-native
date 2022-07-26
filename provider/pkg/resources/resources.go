@@ -69,7 +69,7 @@ func (e CloudAPIEndpoint) URI(
 
 		if param.Kind == "query" {
 			if propValue != "" {
-				queryMap[sdkName] = propValue
+				queryMap[param.Name] = propValue
 			}
 			continue
 		}
