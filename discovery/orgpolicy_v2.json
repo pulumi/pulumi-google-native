@@ -751,7 +751,7 @@
       }
     }
   },
-  "revision": "20220720",
+  "revision": "20220725",
   "rootUrl": "https://orgpolicy.googleapis.com/",
   "schemas": {
     "GoogleCloudOrgpolicyV2AlternatePolicySpec": {
